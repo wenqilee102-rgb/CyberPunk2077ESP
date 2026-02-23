@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"animAnimNodeSourceChannel_WeightedVector","d":8,"e":[{"a":{"a":26,"c":{"b":"animIAnimNodeSourceChannel_Vector"}},"b":"channel","c":128},{"a":{"a":10},"b":"weight","c":128},{"a":{"b":"animFloatLink"},"b":"weightLink","c":128},{"a":{"b":"animNamedTrackIndex"},"b":"weightFloatTrack","c":128}]}

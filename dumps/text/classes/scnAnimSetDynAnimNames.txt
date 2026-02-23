@@ -1,0 +1,5 @@
+import struct scnAnimSetDynAnimNames
+{
+	var animVariable : static:1,CName;
+	var animNames : array:CName;
+}

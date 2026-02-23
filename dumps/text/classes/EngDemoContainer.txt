@@ -1,0 +1,37 @@
+class EngDemoContainer extends BaseSkillCheckContainer
+{
+	public    var engineeringCheck : handle:EngineeringSkillCheck;
+	public    var demolitionCheck : handle:DemolitionSkillCheck;
+
+	function Initialize(container : handle:BaseSkillCheckContainer); // Initialize;BaseSkillCheckContainer
+}
+
+class abstract BaseSkillCheckContainer extends IScriptable
+{
+	protected var hackingCheckSlot : handle:HackingSkillCheck;
+	protected var engineeringCheckSlot : handle:EngineeringSkillCheck;
+	protected var demolitionCheckSlot : handle:DemolitionSkillCheck;
+	protected var isInitialized : Bool;
+
+	function GetDemolitionSlot() : handle:DemolitionSkillCheck; // GetDemolitionSlot;
+	function GetEngineeringSlot() : handle:EngineeringSkillCheck; // GetEngineeringSlot;
+	function GetHackingSlot() : handle:HackingSkillCheck; // GetHackingSlot;
+	function Initialize(container : handle:BaseSkillCheckContainer); // Initialize;BaseSkillCheckContainer
+	function InitializeBackdoor(difficulty : EGameplayChallengeLevel); // InitializeBackdoor;EGameplayChallengeLevel
+	function IsInitialized() : Bool; // IsInitialized;
+	function TryToInitialize(slotToInitialize : handle:SkillCheckBase); // TryToInitialize;SkillCheckBase
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,855 @@
+class BasicDistractionDeviceControllerPS extends ScriptableDeviceComponentPS
+{
+	protected var distractorType : EPlaystyleType;
+	protected var basicDistractionDeviceSkillChecks : handle:EngDemoContainer;
+	protected var effectOnStartNames : array:CName;
+	protected var animationType : EAnimationType;
+	protected var forceAnimationSystem : Bool;
+	public    var overrideDistractionActionId : TweakDBID;
+
+	event OnInstantiated() : Bool; // OnInstantiated
+
+	function ActionQuickHackDistraction() : handle:QuickHackDistraction; // ActionQuickHackDistraction;
+	function ActionSpiderbotDistractDevice() : handle:SpiderbotDistractDevice; // ActionSpiderbotDistractDevice;
+	function ActionSpiderbotDistractDevicePerformed() : handle:SpiderbotDistractDevicePerformed; // ActionSpiderbotDistractDevicePerformed;
+	function CanCreateAnyQuickHackActions() : Bool; // CanCreateAnyQuickHackActions;
+	function CanCreateAnySpiderbotActions() : Bool; // CanCreateAnySpiderbotActions;
+	function GameAttached(); // GameAttached;
+	function GetAnimationType() : EAnimationType; // GetAnimationType;
+	function GetEffectOnStartNames() : array:CName; // GetEffectOnStartNames;
+	function GetForceAnimationSystem() : Bool; // GetForceAnimationSystem;
+	function GetQuickHackActions(out actions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetQuickHackActions;array<DeviceAction>script_ref<GetActionsContext>
+	function GetSkillCheckContainerForSetup() : handle:BaseSkillCheckContainer; // GetSkillCheckContainerForSetup;
+	function GetSpiderbotActions(actions : script_ref:array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetSpiderbotActions;script_ref<array<DeviceAction>>script_ref<GetActionsContext>
+	function Initialize(); // Initialize;
+	function OnSpiderbotDistractExplosiveDevice(evt : handle:SpiderbotDistractDevice) : EntityNotificationType; // OnSpiderbotDistractExplosiveDevice;SpiderbotDistractDevice
+	function OnSpiderbotDistractExplosiveDevicePerformed(evt : handle:SpiderbotDistractDevicePerformed) : EntityNotificationType; // OnSpiderbotDistractExplosiveDevicePerformed;SpiderbotDistractDevicePerformed
+}
+
+class ScriptableDeviceComponentPS extends SharedGameplayPS
+{
+	protected var isInitialized : Bool;
+	protected var forceResolveStateOnAttach : Bool;
+	protected var forceVisibilityInAnimSystemOnLogicReady : Bool;
+	protected var masters : array:handle:gameDeviceComponentPS;
+	protected var mastersCached : Bool;
+	protected var deviceName : String;
+	protected var activationState : EActivationState;
+	protected var drawGridLink : Bool;
+	protected var isLinkDynamic : Bool;
+	protected var fullDepth : Bool;
+	public    var virtualNetworkShapeID : TweakDBID;
+	protected var tweakDBRecord : TweakDBID;
+	protected var tweakDBDescriptionRecord : TweakDBID;
+	protected var contentScale : TweakDBID;
+	protected var skillCheckContainer : handle:BaseSkillCheckContainer;
+	protected var hasUICameraZoom : Bool;
+	protected var allowUICameraZoomDynamicSwitch : Bool;
+	protected var hasFullScreenUI : Bool;
+	protected var hasAuthorizationModule : Bool;
+	protected var hasPersonalLinkSlot : Bool;
+	protected var backdoorBreachDifficulty : EGameplayChallengeLevel;
+	protected var shouldSkipNetrunnerMinigame : Bool;
+	protected var minigameDefinition : TweakDBID;
+	protected var minigameAttempt : Int32;
+	protected var hackingMinigameState : gameuiHackingMinigameState;
+	protected var disablePersonalLinkAutoDisconnect : Bool;
+	protected var canHandleAdvancedInteraction : Bool;
+	protected var canBeTrapped : Bool;
+	protected var disassembleProperties : DisassembleOptions;
+	protected var flatheadScavengeProperties : SpiderbotScavengeOptions;
+	protected var destructionProperties : DestructionData;
+	protected var canPlayerTakeOverControl : Bool;
+	protected var canBeInDeviceChain : Bool;
+	protected var personalLinkForced : Bool;
+	protected var personalLinkCustomInteraction : TweakDBID;
+	protected var personalLinkStatus : EPersonalLinkConnectionStatus;
+	protected var isAdvancedInteractionModeOn : Bool;
+	protected var juryrigTrapState : EJuryrigTrapState;
+	protected var isControlledByThePlayer : Bool;
+	private   var isHighlightedInFocusMode : Bool;
+	protected var wasQuickHacked : Bool;
+	protected var wasQuickHackAttempt : Bool;
+	protected var lastPerformedQuickHack : CName;
+	protected var isGlitching : Bool;
+	protected var isTimedTurnOff : Bool;
+	protected var isRestarting : Bool;
+	protected var blockSecurityWakeUp : Bool;
+	protected var isLockedViaSequencer : Bool;
+	protected var distractExecuted : Bool;
+	protected var distractionTimeCompleted : Bool;
+	protected var hasNPCWorkspotKillInteraction : Bool;
+	protected var shouldNPCWorkspotFinishLoop : Bool;
+	protected var durabilityState : EDeviceDurabilityState;
+	protected var hasBeenScavenged : Bool;
+	protected var currentlyAuthorizedUsers : array:SecuritySystemClearanceEntry;
+	protected var performedActions : array:SPerformedActions;
+	protected var isInitialStateOperationPerformed : Bool;
+	protected var illegalActions : IllegalActionTypes;
+	protected var disableQuickHacks : Bool;
+	private   var availableQuickHacks : array:CName;
+	protected var isKeyloggerInstalled : Bool;
+	private   var actionsWithDisabledRPGChecks : array:TweakDBID;
+	private   var availableSpiderbotActions : array:CName;
+	protected var currentSpiderbotActionPerformed : handle:ScriptableDeviceAction;
+	protected var isSpiderbotInteractionOrdered : Bool;
+	protected var shouldScannerShowStatus : Bool;
+	protected var shouldScannerShowNetwork : Bool;
+	protected var shouldScannerShowAttitude : Bool;
+	protected var shouldScannerShowRole : Bool;
+	protected var shouldScannerShowHealth : Bool;
+	protected var debugDevice : Bool;
+	protected var debugName : CName;
+	protected var debugExposeQuickHacks : Bool;
+	protected var debugPath : CName;
+	protected var debugID : Uint32;
+	private   var isUnderEMPEffect : Bool;
+	protected var deviceOperationsSetup : handle:DeviceOperationsContainer;
+	protected var connectionHighlightObjects : array:NodeRef;
+	private   var activeContexts : array:gamedeviceRequestType;
+	private   var playstyles : array:EPlaystyle;
+	private   var quickHackVulnerabilties : array:TweakDBID;
+	private   var quickHackVulnerabiltiesInitialized : Bool;
+	private   var willingInvestigators : array:entEntityID;
+	private   var isInteractive : Bool;
+
+	static function IsConnectedToMaintenanceSystem() : Bool; // ScriptableDeviceComponentPS::IsConnectedToMaintenanceSystem;
+	static function SetActionsInactiveAll(actions : script_ref:array:handle:gamedeviceAction, optional reason : String, optional exludedAction : CName); // ScriptableDeviceComponentPS::SetActionsInactiveAll;script_ref<array<DeviceAction>>StringCName
+
+	event OnInstantiated() : Bool; // OnInstantiated
+	event OnRevokeQuickHackAccess(evt : handle:RevokeQuickHackAccess) : Bool; // OnRevokeQuickHackAccess
+
+	function ActionActivateDevice() : handle:ActivateDevice; // ActionActivateDevice;
+	function ActionAuthorizeUser(optional isForced : Bool) : handle:AuthorizeUser; // ActionAuthorizeUser;Bool
+	function ActionDeactivateDevice() : handle:DeactivateDevice; // ActionDeactivateDevice;
+	function ActionDemolition(context : script_ref:gameGetActionsContext) : handle:ActionDemolition; // ActionDemolition;script_ref<GetActionsContext>
+	function ActionDeviceStatus() : handle:BaseDeviceStatus; // ActionDeviceStatus;
+	function ActionDisassembleDevice() : handle:DisassembleDevice; // ActionDisassembleDevice;
+	function ActionEngineering(context : script_ref:gameGetActionsContext) : handle:ActionEngineering; // ActionEngineering;script_ref<GetActionsContext>
+	function ActionFixDevice() : handle:FixDevice; // ActionFixDevice;
+	function ActionGlitchScreen(actionID : TweakDBID, programID : TweakDBID, optional timeout : Float) : handle:GlitchScreen; // ActionGlitchScreen;TweakDBIDTweakDBIDFloat
+	function ActionHacking(context : script_ref:gameGetActionsContext) : handle:ActionHacking; // ActionHacking;script_ref<GetActionsContext>
+	function ActionOpenFullscreenUI() : handle:OpenFullscreenUI; // ActionOpenFullscreenUI;
+	function ActionOverloadDevice() : handle:OverloadDevice; // ActionOverloadDevice;
+	function ActionPay(context : script_ref:gameGetActionsContext) : handle:Pay; // ActionPay;script_ref<GetActionsContext>
+	function ActionPing() : handle:PingDevice; // ActionPing;
+	function ActionProgramSetDeviceAttitude() : handle:ProgramSetDeviceAttitude; // ActionProgramSetDeviceAttitude;
+	function ActionProgramSetDeviceOff() : handle:ProgramSetDeviceOff; // ActionProgramSetDeviceOff;
+	function ActionQuestBreachAccessPoint() : handle:QuestBreachAccessPoint; // ActionQuestBreachAccessPoint;
+	function ActionQuestDisableFixing() : handle:QuestDisableFixing; // ActionQuestDisableFixing;
+	function ActionQuestEnableFixing() : handle:QuestEnableFixing; // ActionQuestEnableFixing;
+	function ActionQuestForceActivate() : handle:QuestForceActivate; // ActionQuestForceActivate;
+	function ActionQuestForceAuthorizationDisabled() : handle:QuestForceAuthorizationDisabled; // ActionQuestForceAuthorizationDisabled;
+	function ActionQuestForceAuthorizationEnabled() : handle:QuestForceAuthorizationEnabled; // ActionQuestForceAuthorizationEnabled;
+	function ActionQuestForceCameraZoom(enable : Bool, optional instant : Bool) : handle:QuestForceCameraZoom; // ActionQuestForceCameraZoom;BoolBool
+	function ActionQuestForceCameraZoomNoWorkspot(value : Bool) : handle:QuestForceCameraZoom; // ActionQuestForceCameraZoomNoWorkspot;Bool
+	function ActionQuestForceDeactivate() : handle:QuestForceDeactivate; // ActionQuestForceDeactivate;
+	function ActionQuestForceDestructible() : handle:QuestForceDestructible; // ActionQuestForceDestructible;
+	function ActionQuestForceDisabled() : handle:QuestForceDisabled; // ActionQuestForceDisabled;
+	function ActionQuestForceDisconnectPersonalLink() : handle:QuestForceDisconnectPersonalLink; // ActionQuestForceDisconnectPersonalLink;
+	function ActionQuestForceEnabled() : handle:QuestForceEnabled; // ActionQuestForceEnabled;
+	function ActionQuestForceIndestructible() : handle:QuestForceIndestructible; // ActionQuestForceIndestructible;
+	function ActionQuestForceInvulnerable() : handle:QuestForceInvulnerable; // ActionQuestForceInvulnerable;
+	function ActionQuestForceJuryrigTrapArmed() : handle:QuestForceJuryrigTrapArmed; // ActionQuestForceJuryrigTrapArmed;
+	function ActionQuestForceJuryrigTrapDeactivated() : handle:QuestForceJuryrigTrapDeactivated; // ActionQuestForceJuryrigTrapDeactivated;
+	function ActionQuestForceOFF() : handle:QuestForceOFF; // ActionQuestForceOFF;
+	function ActionQuestForceON() : handle:QuestForceON; // ActionQuestForceON;
+	function ActionQuestForcePersonalLinkUnderStrictQuestControl() : handle:QuestForcePersonalLinkUnderStrictQuestControl; // ActionQuestForcePersonalLinkUnderStrictQuestControl;
+	function ActionQuestForcePower() : handle:QuestForcePower; // ActionQuestForcePower;
+	function ActionQuestForceSecuritySystemAlarmed() : handle:QuestForceSecuritySystemAlarmed; // ActionQuestForceSecuritySystemAlarmed;
+	function ActionQuestForceSecuritySystemArmed() : handle:QuestForceSecuritySystemArmed; // ActionQuestForceSecuritySystemArmed;
+	function ActionQuestForceSecuritySystemSafe() : handle:QuestForceSecuritySystemSafe; // ActionQuestForceSecuritySystemSafe;
+	function ActionQuestForceStopTakeControlOverCamera() : handle:QuestForceStopTakeControlOverCamera; // ActionQuestForceStopTakeControlOverCamera;
+	function ActionQuestForceTakeControlOverCamera() : handle:QuestForceTakeControlOverCamera; // ActionQuestForceTakeControlOverCamera;
+	function ActionQuestForceTakeControlOverCameraWithChain() : handle:QuestForceTakeControlOverCameraWithChain; // ActionQuestForceTakeControlOverCameraWithChain;
+	function ActionQuestForceUnpower() : handle:QuestForceUnpower; // ActionQuestForceUnpower;
+	function ActionQuestRemoveQuickHacks() : handle:QuestRemoveQuickHacks; // ActionQuestRemoveQuickHacks;
+	function ActionQuestResetDeviceToInitialState() : handle:QuestResetDeviceToInitialState; // ActionQuestResetDeviceToInitialState;
+	function ActionQuestResetPerfomedActionsStorage() : handle:QuestResetPerformedActionsStorage; // ActionQuestResetPerfomedActionsStorage;
+	function ActionQuestRestoreQuickHacks() : handle:QuestRestoreQuickHacks; // ActionQuestRestoreQuickHacks;
+	function ActionQuestStartGlitch() : handle:QuestStartGlitch; // ActionQuestStartGlitch;
+	function ActionQuestStopGlitch() : handle:QuestStopGlitch; // ActionQuestStopGlitch;
+	function ActionQuickHackAoeDamage() : handle:QuickHackAoeDamage; // ActionQuickHackAoeDamage;
+	function ActionQuickHackDistraction() : handle:QuickHackDistraction; // ActionQuickHackDistraction;
+	function ActionQuickHackHighPitchNoise() : handle:QuickHackHighPitchNoise; // ActionQuickHackHighPitchNoise;
+	function ActionQuickHackToggleON() : handle:QuickHackToggleON; // ActionQuickHackToggleON;
+	function ActionRemoteBreach() : handle:RemoteBreach; // ActionRemoteBreach;
+	function ActionScavenge(context : script_ref:gameGetActionsContext) : handle:ActionScavenge; // ActionScavenge;script_ref<GetActionsContext>
+	function ActionSecurityBreachNotification(lastKnownPosition : Vector4, whoBreached : handle:gameObject, type : ESecurityNotificationType) : handle:SecuritySystemInput; // ActionSecurityBreachNotification;Vector4GameObjectESecurityNotificationType
+	function ActionSetAuthorizationModuleOFF() : handle:SetAuthorizationModuleOFF; // ActionSetAuthorizationModuleOFF;
+	function ActionSetAuthorizationModuleON() : handle:SetAuthorizationModuleON; // ActionSetAuthorizationModuleON;
+	function ActionSetDeviceAttitude() : handle:SetDeviceAttitude; // ActionSetDeviceAttitude;
+	function ActionSetDeviceOFF() : handle:SetDeviceOFF; // ActionSetDeviceOFF;
+	function ActionSetDeviceON() : handle:SetDeviceON; // ActionSetDeviceON;
+	function ActionSetDevicePowered() : handle:SetDevicePowered; // ActionSetDevicePowered;
+	function ActionSetDeviceUnpowered() : handle:SetDeviceUnpowered; // ActionSetDeviceUnpowered;
+	function ActionSetExposeQuickHacks() : handle:SetExposeQuickHacks; // ActionSetExposeQuickHacks;
+	function ActionSpiderbotDistraction() : handle:SpiderbotDistraction; // ActionSpiderbotDistraction;
+	function ActionTakeOverSecuritySystem(executor : handle:gameObject) : handle:TakeOverSecuritySystem; // ActionTakeOverSecuritySystem;GameObject
+	function ActionToggleActivate() : handle:ToggleActivate; // ActionToggleActivate;
+	function ActionToggleActivation() : handle:ToggleActivation; // ActionToggleActivation;
+	function ActionToggleJuryrigTrap() : handle:ToggleJuryrigTrap; // ActionToggleJuryrigTrap;
+	function ActionToggleNetrunnerDive(abortDive : Bool, optional skipMinigame : Bool, optional isRemote : Bool) : handle:ToggleNetrunnerDive; // ActionToggleNetrunnerDive;BoolBoolBool
+	function ActionToggleON() : handle:ToggleON; // ActionToggleON;
+	function ActionTogglePersonalLink(executor : whandle:gameObject, optional questForcesDisconnection : Bool, optional skipMinigame : Bool) : handle:TogglePersonalLink; // ActionTogglePersonalLink;GameObjectBoolBool
+	function ActionTogglePower() : handle:TogglePower; // ActionTogglePower;
+	function ActionToggleTakeOverControl() : handle:ToggleTakeOverControl; // ActionToggleTakeOverControl;
+	function ActionToggleZoomInteraction() : handle:ToggleZoomInteraction; // ActionToggleZoomInteraction;
+	function ActionVehicleOverrideAccelerate() : handle:VehicleOverrideAccelerate; // ActionVehicleOverrideAccelerate;
+	function ActionVehicleOverrideExplode() : handle:VehicleOverrideExplode; // ActionVehicleOverrideExplode;
+	function ActionVehicleOverrideForceBrakes() : handle:VehicleOverrideForceBrakes; // ActionVehicleOverrideForceBrakes;
+	function AddActiveContext(context : gamedeviceRequestType); // AddActiveContext;gamedeviceRequestType
+	function AddAvailableQuickHack(quickHackName : CName); // AddAvailableQuickHack;CName
+	function AddAvailableSpiderbotActions(SpiderbotActionName : CName); // AddAvailableSpiderbotActions;CName
+	function AddPlaystyle(playstyle : EPlaystyle); // AddPlaystyle;EPlaystyle
+	function AddQuickHackVulnerability(data : TweakDBID); // AddQuickHackVulnerability;TweakDBID
+	function AddUser(user : entEntityID, level : ESecurityAccessLevel) : Bool; // AddUser;EntityIDESecurityAccessLevel
+	function AddWillingInvestigator(id : entEntityID); // AddWillingInvestigator;EntityID
+	function AllowsUICameraZoomDynamicSwitch() : Bool; // AllowsUICameraZoomDynamicSwitch;
+	function BreakDevice(); // BreakDevice;
+	function CacheDevices(); // CacheDevices;
+	function CanAddEngineeringSkillcheck() : Bool; // CanAddEngineeringSkillcheck;
+	function CanBeDisassembled() : Bool; // CanBeDisassembled;
+	function CanBeFixed() : Bool; // CanBeFixed;
+	function CanBeInDeviceChain() : Bool; // CanBeInDeviceChain;
+	function CanBeScavenged() : Bool; // CanBeScavenged;
+	function CanBeScavengedBySpiderbot() : Bool; // CanBeScavengedBySpiderbot;
+	function CanBeTrapped() : Bool; // CanBeTrapped;
+	function CanConnectToPersonalLink() : Bool; // CanConnectToPersonalLink;
+	function CanCreateAnyQuickHackActions() : Bool; // CanCreateAnyQuickHackActions;
+	function CanCreateAnySpiderbotActions() : Bool; // CanCreateAnySpiderbotActions;
+	function CanPassAnySkillCheck(requester : handle:gameObject) : Bool; // CanPassAnySkillCheck;GameObject
+	function CanPassAnySkillCheckOnMaster(requester : handle:gameObject) : Bool; // CanPassAnySkillCheckOnMaster;GameObject
+	function CanPassDemolitionSkillCheck(requester : handle:gameObject) : Bool; // CanPassDemolitionSkillCheck;GameObject
+	function CanPassEngineeringSkillCheck(requester : handle:gameObject) : Bool; // CanPassEngineeringSkillCheck;GameObject
+	function CanPassHackingSkillCheck(requester : handle:gameObject) : Bool; // CanPassHackingSkillCheck;GameObject
+	function CanPayToAuthorize() : Bool; // CanPayToAuthorize;
+	function CanPerformReprimand() : Bool; // CanPerformReprimand;
+	function CanPlayerTakeOverControl() : Bool; // CanPlayerTakeOverControl;
+	function CanPlayerUseQuickHackVulnerability(data : TweakDBID) : Bool; // CanPlayerUseQuickHackVulnerability;TweakDBID
+	function CanRevealDevicesGridWhenUnpowered() : Bool; // CanRevealDevicesGridWhenUnpowered;
+	function CheckIfMyBackdoorsWereRevealedInNetworkPing() : Bool; // CheckIfMyBackdoorsWereRevealedInNetworkPing;
+	function ClearAvailableQuickHacks(); // ClearAvailableQuickHacks;
+	function ClearAvailableSpiderbotActions(); // ClearAvailableSpiderbotActions;
+	function ClearWillingInvestigators(); // ClearWillingInvestigators;
+	function CreateSkillcheckInfo(context : script_ref:gameGetActionsContext) : array:UIInteractionSkillCheck; // CreateSkillcheckInfo;script_ref<GetActionsContext>
+	function CurrentlyAuthorizedUsers() : array:SecuritySystemClearanceEntry; // CurrentlyAuthorizedUsers;
+	function DemolitionPerformed() : Bool; // DemolitionPerformed;
+	function DetermineAreaHintIndicatorState(context : gameGetActionsContext); // DetermineAreaHintIndicatorState;GetActionsContext
+	function DetermineGameplayViability(context : script_ref:gameGetActionsContext, hasActiveActions : Bool) : Bool; // DetermineGameplayViability;script_ref<GetActionsContext>Bool
+	function DetermineInitialPlaystyle(); // DetermineInitialPlaystyle;
+	function DetermineInteractionState(interactionComponent : handle:gameinteractionsComponent, context : script_ref:gameGetActionsContext); // DetermineInteractionState;InteractionComponentscript_ref<GetActionsContext>
+	function DisableDevice(); // DisableDevice;
+	function DisbaleRPGChecksForAction(actionID : TweakDBID); // DisbaleRPGChecksForAction;TweakDBID
+	function DisconnectPersonalLink(executor : handle:gameObject, layer : CName, optional isForcedByQuest : Bool); // DisconnectPersonalLink;GameObjectCNameBool
+	function DisconnectPersonalLink(evt : handle:ScriptableDeviceAction, optional isForcedByQuest : Bool); // DisconnectPersonalLink;ScriptableDeviceActionBool
+	function DrawBetweenEntities(shouldDraw : Bool, focusModeOnly : Bool, fxResource : gameFxResource, masterID : entEntityID, slaveID : entEntityID, revealMaster : Bool, revealSlave : Bool, optional onlyRemoveWeakLink : Bool, optional isEyeContact : Bool, optional isPermanent : Bool); // DrawBetweenEntities;BoolBoolFxResourceEntityIDEntityIDBoolBoolBoolBoolBool
+	function EnableDebugQuickHacks(val : Int32); // EnableDebugQuickHacks;Int32
+	function EnableDevice(); // EnableDevice;
+	function EnableRPGChecksForAction(actionID : TweakDBID); // EnableRPGChecksForAction;TweakDBID
+	function EngineeringPerformed() : Bool; // EngineeringPerformed;
+	function ErasePassedSkillchecks(); // ErasePassedSkillchecks;
+	function EvaluateActionsRPGAvailabilty(outActions : script_ref:array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // EvaluateActionsRPGAvailabilty;script_ref<array<DeviceAction>>script_ref<GetActionsContext>
+	function ExecuteCurrentSpiderbotActionPerformed(); // ExecuteCurrentSpiderbotActionPerformed;
+	function ExecutePSAction(action : handle:ScriptableDeviceAction, persistentState : handle:gamePersistentState); // ExecutePSAction;ScriptableDeviceActionPersistentState
+	function ExecutePSAction(action : handle:ScriptableDeviceAction, optional layerTag : CName); // ExecutePSAction;ScriptableDeviceActionCName
+	function ExecutePSActionWithDelay(action : handle:ScriptableDeviceAction, persistentState : handle:gamePersistentState, optional forcedDelay : Float); // ExecutePSActionWithDelay;ScriptableDeviceActionPersistentStateFloat
+	function ExtractActions(actionNames : script_ref:array:CName) : array:handle:gamedeviceAction; // ExtractActions;script_ref<array<CName>>
+	function ExtractEntityID(evt : handle:entTriggerEvent) : entEntityID; // ExtractEntityID;TriggerEvent
+	function ExtractIDs(persistentStates : script_ref:array:handle:gamePersistentState, persistentIDs : script_ref:array:gamePersistentID); // ExtractIDs;script_ref<array<PersistentState>>script_ref<array<PersistentID>>
+	function ExtractKeycardsFromAuthorizationData(data : script_ref:array:SecurityAccessLevelEntry) : array:TweakDBID; // ExtractKeycardsFromAuthorizationData;script_ref<array<SecurityAccessLevelEntry>>
+	function ExtractKeycardsFromAuthorizationData(data : script_ref:array:SecurityAccessLevelEntryClient) : array:TweakDBID; // ExtractKeycardsFromAuthorizationData;script_ref<array<SecurityAccessLevelEntryClient>>
+	function ExtractPasswordsFromAuthorizationData(data : script_ref:array:SecurityAccessLevelEntryClient) : array:CName; // ExtractPasswordsFromAuthorizationData;script_ref<array<SecurityAccessLevelEntryClient>>
+	function ExtractPasswordsFromAuthorizationData(data : script_ref:array:SecurityAccessLevelEntry) : array:CName; // ExtractPasswordsFromAuthorizationData;script_ref<array<SecurityAccessLevelEntry>>
+	function FinalizeGetActions(out outActions : array:handle:gamedeviceAction); // FinalizeGetActions;array<DeviceAction>
+	function FinalizeGetQuickHackActions(outActions : script_ref:array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // FinalizeGetQuickHackActions;script_ref<array<DeviceAction>>script_ref<GetActionsContext>
+	function FinalizeNetrunnerDive(state : gameuiHackingMinigameState); // FinalizeNetrunnerDive;HackingMinigameState
+	function FinalizeNetworkLinkRegistration(registerAsMaster : Bool, relevantDevices : script_ref:array:handle:gameDeviceComponentPS, breachedResource : gameFxResource, defaultResource : gameFxResource, isPing : Bool, lifetime : Float, optional revealSlave : Bool, optional revealMaster : Bool); // FinalizeNetworkLinkRegistration;Boolscript_ref<array<DeviceComponentPS>>FxResourceFxResourceBoolFloatBoolBool
+	function FindActionInTweakList(actionName : CName, allowedNames : script_ref:array:String) : Bool; // FindActionInTweakList;CNamescript_ref<array<String>>
+	function FindCurrentAuthorizationLevelForUser(user : entEntityID) : ESecurityAccessLevel; // FindCurrentAuthorizationLevelForUser;EntityID
+	function FinishDistraction(); // FinishDistraction;
+	function ForceDeviceON(); // ForceDeviceON;
+	function ForceDisableDevice(); // ForceDisableDevice;
+	function ForceEnableDevice(); // ForceEnableDevice;
+	function ForceResolveGameplayStateOnAttach() : Bool; // ForceResolveGameplayStateOnAttach;
+	function ForceVisibilityInAnimSystemOnLogicReady() : Bool; // ForceVisibilityInAnimSystemOnLogicReady;
+	function GameAttached(); // GameAttached;
+	function GenerateContext(requestType : gamedeviceRequestType, providedClearance : handle:gamedeviceClearance, optional providedProcessInitiator : handle:gameObject, optional providedRequestor : entEntityID) : gameGetActionsContext; // GenerateContext;gamedeviceRequestTypeClearanceGameObjectEntityID
+	function GetActionByName(actionName : CName, context : script_ref:gameGetActionsContext) : handle:gamedeviceAction; // GetActionByName;CNamescript_ref<GetActionsContext>
+	function GetActionByName(actionName : CName, optional entityID : entEntityID) : handle:gamedeviceAction; // GetActionByName;CNameEntityID
+	function GetActionWidgets(context : script_ref:gameGetActionsContext) : array:SActionWidgetPackage; // GetActionWidgets;script_ref<GetActionsContext>
+	function GetActions(out outActions : array:handle:gamedeviceAction, context : gameGetActionsContext) : Bool; // GetActions;array<DeviceAction>GetActionsContext
+	function GetActionsRestrictionData(allowedNames : script_ref:array:String, disallowedNames : script_ref:array:String, inactiveReason : script_ref:String) : Bool; // GetActionsRestrictionData;script_ref<array<String>>script_ref<array<String>>script_ref<String>
+	function GetActionsSequencer() : handle:ActionsSequencerControllerPS; // GetActionsSequencer;
+	function GetActivationState() : EActivationState; // GetActivationState;
+	function GetActiveContexts() : array:gamedeviceRequestType; // GetActiveContexts;
+	function GetActiveQuickHackVulnerabilities() : array:TweakDBID; // GetActiveQuickHackVulnerabilities;
+	function GetAllQuickHackVulnerabilities() : array:TweakDBID; // GetAllQuickHackVulnerabilities;
+	function GetAreaEffectStimRangeByAction(action : handle:ScriptableDeviceAction) : Float; // GetAreaEffectStimRangeByAction;ScriptableDeviceAction
+	function GetAvailableQuickHacks() : array:CName; // GetAvailableQuickHacks;
+	function GetAvailableSpiderbotActions() : array:CName; // GetAvailableSpiderbotActions;
+	function GetBackdoorDevices() : array:handle:ScriptableDeviceComponentPS; // GetBackdoorDevices;
+	function GetCityLightSystem() : handle:CityLightSystem; // GetCityLightSystem;
+	function GetClearance() : handle:gamedeviceClearance; // GetClearance
+	function GetConnectionHighlightObjects() : array:NodeRef; // GetConnectionHighlightObjects;
+	function GetContentAssignmentID() : TweakDBID; // GetContentAssignmentID;
+	function GetCurrentlyQueuedSpiderbotAction() : handle:ScriptableDeviceAction; // GetCurrentlyQueuedSpiderbotAction;
+	function GetCustomClearance(min : Int32, max : Int32) : handle:gamedeviceClearance; // GetCustomClearance;Int32Int32
+	function GetDebugName() : String; // GetDebugName;
+	function GetDebugPath() : CName; // GetDebugPath;
+	function GetDebugTags() : String; // GetDebugTags;
+	function GetDeviceIconID() : CName; // GetDeviceIconID;
+	function GetDeviceIconPath() : String; // GetDeviceIconPath
+	function GetDeviceName() : String; // GetDeviceName
+	function GetDeviceOperationsContainer() : handle:DeviceOperationsContainer; // GetDeviceOperationsContainer;
+	function GetDeviceStatus() : String; // GetDeviceStatus
+	function GetDeviceStatusAction() : handle:BaseDeviceStatus; // GetDeviceStatusAction;
+	function GetDeviceStatusTextData() : handle:textTextParameterSet; // GetDeviceStatusTextData;
+	function GetDeviceWidget(context : script_ref:gameGetActionsContext) : SDeviceWidgetPackage; // GetDeviceWidget;script_ref<GetActionsContext>
+	function GetDistractionDuration(action : handle:ScriptableDeviceAction) : Float; // GetDistractionDuration;ScriptableDeviceAction
+	function GetDistractionDuration(effectName : CName) : Float; // GetDistractionDuration;CName
+	function GetDropPointSystem() : handle:DropPointSystem; // GetDropPointSystem;
+	function GetDurabilityState() : EDeviceDurabilityState; // GetDurabilityState;
+	function GetDurabilityType() : EDeviceDurabilityType; // GetDurabilityType;
+	function GetEquipmentSystem() : handle:EquipmentSystem; // GetEquipmentSystem;
+	function GetFullAuthorizationData() : array:SecurityAccessLevelEntryClient; // GetFullAuthorizationData;
+	function GetFullAuthorizationDataSegregated(passwords : script_ref:array:CName, keycards : script_ref:array:TweakDBID); // GetFullAuthorizationDataSegregated;script_ref<array<CName>>script_ref<array<TweakDBID>>
+	function GetHudManager() : handle:HUDManager; // GetHudManager;
+	function GetImmediateParents() : array:handle:gameDeviceComponentPS; // GetImmediateParents;
+	function GetInkWidgetTweakDBID(context : script_ref:gameGetActionsContext) : TweakDBID; // GetInkWidgetTweakDBID;script_ref<GetActionsContext>
+	function GetJuryrigTrapState() : EJuryrigTrapState; // GetJuryrigTrapState;
+	function GetKeycardLocalizedString(record : TweakDBID) : String; // GetKeycardLocalizedString;TweakDBID
+	function GetKeycardRecord(record : TweakDBID) : handle:gamedataItem_Record; // GetKeycardRecord;TweakDBID
+	function GetKeycards() : array:TweakDBID; // GetKeycards;
+	function GetKeypadWidgetStyle() : TweakDBID; // GetKeypadWidgetStyle;
+	function GetLocalPassword() : CName; // GetLocalPassword;
+	function GetLocalPlayer() : handle:gameObject; // GetLocalPlayer;
+	function GetLocalPlayerControlledGameObject() : handle:gameObject; // GetLocalPlayerControlledGameObject;
+	function GetMasterDevicesTweaks() : array:TweakDBID; // GetMasterDevicesTweaks;
+	function GetMinigameActionByName(actionName : CName, context : script_ref:gameGetActionsContext) : handle:gamedeviceAction; // GetMinigameActionByName;CNamescript_ref<GetActionsContext>
+	function GetMinigameActions(outActions : script_ref:array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetMinigameActions;script_ref<array<DeviceAction>>script_ref<GetActionsContext>
+	function GetMinigameAttempt() : Int32; // GetMinigameAttempt;
+	function GetMinigameDefinition() : TweakDBID; // GetMinigameDefinition;
+	function GetMySecurityAccessLevel() : ESecurityAccessLevel; // GetMySecurityAccessLevel;
+	function GetNetworkArea() : whandle:NetworkAreaControllerPS; // GetNetworkArea;
+	function GetNetworkBlackboard() : handle:gameIBlackboard; // GetNetworkBlackboard;
+	function GetNetworkBlackboardDef() : handle:NetworkBlackboardDef; // GetNetworkBlackboardDef;
+	function GetNetworkSizeCount() : Int32; // GetNetworkSizeCount;
+	function GetParents(out outDevices : array:handle:gameDeviceComponentPS); // GetParents;array<DeviceComponentPS>
+	function GetPasswords() : array:CName; // GetPasswords;
+	function GetPerformedActions() : array:SPerformedActions; // GetPerformedActions;
+	function GetPerformedActionsIDs() : array:CName; // GetPerformedActionsIDs;
+	function GetPersonalLinkStatus() : EPersonalLinkConnectionStatus; // GetPersonalLinkStatus;
+	function GetPlayerEntityID() : entEntityID; // GetPlayerEntityID;
+	function GetPlayerMainObject() : handle:gameObject; // GetPlayerMainObject;
+	function GetPlaystyles() : array:EPlaystyle; // GetPlaystyles;
+	function GetQuestActionByName(actionName : CName) : handle:gamedeviceAction; // GetQuestActionByName;CName
+	function GetQuestActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetQuestActions;array<DeviceAction>script_ref<GetActionsContext>
+	function GetQuickHackActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetQuickHackActions;array<DeviceAction>script_ref<GetActionsContext>
+	function GetQuickHackActionsExternal(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetQuickHackActionsExternal;array<DeviceAction>script_ref<GetActionsContext>
+	function GetRemoteActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetRemoteActions;array<DeviceAction>script_ref<GetActionsContext>
+	function GetScannerStatusRecord() : TweakDBID; // GetScannerStatusRecord;
+	function GetSecurityAlarm() : handle:SecurityAlarmControllerPS; // GetSecurityAlarm;
+	function GetSecurityAreasWithUserInside(whoToCheck : handle:gameObject) : array:handle:SecurityAreaControllerPS; // GetSecurityAreasWithUserInside;GameObject
+	function GetSecurityAreasWithUserInside(whoToCheck : entEntityID) : array:handle:SecurityAreaControllerPS; // GetSecurityAreasWithUserInside;EntityID
+	function GetSecurityAreasWithUsersInside() : array:handle:SecurityAreaControllerPS; // GetSecurityAreasWithUsersInside;
+	function GetSecurityAreasWithUsersInside(uniqueUsers : script_ref:array:AreaEntry) : array:handle:SecurityAreaControllerPS; // GetSecurityAreasWithUsersInside;script_ref<array<AreaEntry>>
+	function GetSkillCheckContainer() : handle:BaseSkillCheckContainer; // GetSkillCheckContainer;
+	function GetSkillCheckContainerForSetup() : handle:BaseSkillCheckContainer; // GetSkillCheckContainerForSetup;
+	function GetSpiderbotActions(outActions : script_ref:array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetSpiderbotActions;script_ref<array<DeviceAction>>script_ref<GetActionsContext>
+	function GetTakeOverControlSystem() : handle:TakeOverControlSystem; // GetTakeOverControlSystem;
+	function GetThumbnailWidget() : SThumbnailWidgetPackage; // GetThumbnailWidget;
+	function GetTotalClearance(optional entityID : entEntityID) : gameGetActionsContext; // GetTotalClearance;EntityID
+	function GetTotalClearanceValue() : handle:gamedeviceClearance; // GetTotalClearanceValue;
+	function GetTweakDBDescriptionRecord() : TweakDBID; // GetTweakDBDescriptionRecord;
+	function GetTweakDBRecord() : TweakDBID; // GetTweakDBRecord;
+	function GetUniqueConnectionTypes() : array:DeviceConnectionScannerData; // GetUniqueConnectionTypes;
+	function GetUserAuthorizationLevel(user : entEntityID) : ESecurityAccessLevel; // GetUserAuthorizationLevel;EntityID
+	function GetVirtualNetworkShapeID() : TweakDBID; // GetVirtualNetworkShapeID;
+	function GetVirtualSystem(out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;VirtualSystemPS
+	function GetWidgetTypeName() : CName; // GetWidgetTypeName
+	function GetWidgetVisualState() : EWidgetState; // GetWidgetVisualState;
+	function GetWillingInvestigators() : array:entEntityID; // GetWillingInvestigators;
+	function HackingMinigameEnded(state : gameuiHackingMinigameState); // HackingMinigameEnded;HackingMinigameState
+	function HackingPerformed() : Bool; // HackingPerformed;
+	function HasActiveContext(context : gamedeviceRequestType) : Bool; // HasActiveContext;gamedeviceRequestType
+	function HasActiveStaticHackingSkillcheck() : Bool; // HasActiveStaticHackingSkillcheck;
+	function HasAdvancedInteractions() : Bool; // HasAdvancedInteractions;
+	function HasAnyActionsWithDisabledRPGChecks() : Bool; // HasAnyActionsWithDisabledRPGChecks;
+	function HasAnyActiveQuickHackVulnerabilities() : Bool; // HasAnyActiveQuickHackVulnerabilities;
+	function HasAnyAvailableQuickHack() : Bool; // HasAnyAvailableQuickHack;
+	function HasAnyAvailableSpiderbotActions() : Bool; // HasAnyAvailableSpiderbotActions;
+	function HasAnyPlaystyle() : Bool; // HasAnyPlaystyle;
+	function HasAnyQuickHack() : Bool; // HasAnyQuickHack;
+	function HasAnySkillCheckActive() : Bool; // HasAnySkillCheckActive;
+	function HasAnySpiderbotAction() : Bool; // HasAnySpiderbotAction;
+	function HasAuthorizationModule() : Bool; // HasAuthorizationModule;
+	function HasCyberdeck() : Bool; // HasCyberdeck;
+	function HasFullScreenUI() : Bool; // HasFullScreenUI;
+	function HasHasQuickHackVulnerabilitiesInitialized() : Bool; // HasHasQuickHackVulnerabilitiesInitialized;
+	function HasNPCWorkspotKillInteraction() : Bool; // HasNPCWorkspotKillInteraction;
+	function HasPersonalLinkSlot() : Bool; // HasPersonalLinkSlot;
+	function HasPlaystyle(playstyle : EPlaystyle) : Bool; // HasPlaystyle;EPlaystyle
+	function HasQuickHackVulnerability(data : TweakDBID) : Bool; // HasQuickHackVulnerability;TweakDBID
+	function HasQuickHacksDisabled() : Bool; // HasQuickHacksDisabled;
+	function HasUICameraZoom() : Bool; // HasUICameraZoom;
+	function HasWillingInvestigator(id : entEntityID) : Bool; // HasWillingInvestigator;EntityID
+	function IgnoreDisallowedAction(actionName : String) : Bool; // IgnoreDisallowedAction;String
+	function Initialize(); // Initialize;
+	function InitializeBackdoorSkillcheck(); // InitializeBackdoorSkillcheck;
+	function InitializeContentScale(); // InitializeContentScale;
+	function InitializeQuickHackVulnerabilities(); // InitializeQuickHackVulnerabilities;
+	function InitializeRPGParams(); // InitializeRPGParams;
+	function InitializeSkillChecks(container : handle:BaseSkillCheckContainer, optional isOverride : Bool); // InitializeSkillChecks;BaseSkillCheckContainerBool
+	function InitializeStatPools(); // InitializeStatPools;
+	function InitializeStats(); // InitializeStats;
+	function InitializeWrapper(container : handle:BaseSkillCheckContainer); // InitializeWrapper;BaseSkillCheckContainer
+	function IsActionRPGRequirementDisabled(actionID : TweakDBID) : Bool; // IsActionRPGRequirementDisabled;TweakDBID
+	function IsActivated() : Bool; // IsActivated;
+	function IsAdvancedInteractionModeOff() : Bool; // IsAdvancedInteractionModeOff;
+	function IsAdvancedInteractionModeOn() : Bool; // IsAdvancedInteractionModeOn;
+	function IsAuthorizationModuleOff() : Bool; // IsAuthorizationModuleOff;
+	function IsAuthorizationModuleOn() : Bool; // IsAuthorizationModuleOn;
+	function IsAuthorizationValid() : Bool; // IsAuthorizationValid;
+	function IsBroken() : Bool; // IsBroken;
+	function IsConnectedToAccessPoint() : Bool; // IsConnectedToAccessPoint;
+	function IsConnectedToActionsSequencer() : Bool; // IsConnectedToActionsSequencer;
+	function IsConnectedToCLS() : Bool; // IsConnectedToCLS;
+	function IsConnectedToSystem() : Bool; // IsConnectedToSystem;
+	function IsControlledByPlayer() : Bool; // IsControlledByPlayer;
+	function IsControlledByThePlayer() : Bool; // IsControlledByThePlayer;
+	function IsDemolitionSkillCheckActive() : Bool; // IsDemolitionSkillCheckActive;
+	function IsDeviceSecured() : Bool; // IsDeviceSecured;
+	function IsDeviceSecuredWithKeycard() : Bool; // IsDeviceSecuredWithKeycard;
+	function IsDeviceSecuredWithPassword() : Bool; // IsDeviceSecuredWithPassword;
+	function IsDisabled() : Bool; // IsDisabled;
+	function IsDisruptivePlayerStatusEffectPresent() : Bool; // IsDisruptivePlayerStatusEffectPresent;
+	function IsDistracting() : Bool; // IsDistracting;
+	function IsEnabled() : Bool; // IsEnabled;
+	function IsEngineeringSkillCheckActive() : Bool; // IsEngineeringSkillCheckActive;
+	function IsGlitching() : Bool; // IsGlitching;
+	function IsHackingSkillCheckActive() : Bool; // IsHackingSkillCheckActive;
+	function IsHighlightedInFocusMode() : Bool; // IsHighlightedInFocusMode;
+	function IsInDirectInteractionRange() : Bool; // IsInDirectInteractionRange;
+	function IsIniatialStateOperationPerformed() : Bool; // IsIniatialStateOperationPerformed;
+	function IsInitialized() : Bool; // IsInitialized;
+	function IsInteractive() : Bool; // IsInteractive;
+	function IsInvestigated() : Bool; // IsInvestigated;
+	function IsJuryrigTrapArmed() : Bool; // IsJuryrigTrapArmed;
+	function IsJuryrigTrapTriggered() : Bool; // IsJuryrigTrapTriggered;
+	function IsJuryrigTrapUnarmed() : Bool; // IsJuryrigTrapUnarmed;
+	function IsLinkDynamic() : Bool; // IsLinkDynamic;
+	function IsLockedViaSequencer() : Bool; // IsLockedViaSequencer;
+	function IsLogInExclusiveMode() : Bool; // IsLogInExclusiveMode;
+	function IsMainframe() : Bool; // IsMainframe;
+	function IsOFF() : Bool; // IsOFF;
+	function IsOFFTimed() : Bool; // IsOFFTimed;
+	function IsON() : Bool; // IsON;
+	function IsPartOfSystem(systemType : ESystems) : Bool; // IsPartOfSystem;ESystems
+	function IsPersonalLinkActionIllegal() : Bool; // IsPersonalLinkActionIllegal;
+	function IsPersonalLinkConnected() : Bool; // IsPersonalLinkConnected;
+	function IsPersonalLinkConnecting() : Bool; // IsPersonalLinkConnecting;
+	function IsPersonalLinkDisconnected() : Bool; // IsPersonalLinkDisconnected;
+	function IsPersonalLinkDisconnecting() : Bool; // IsPersonalLinkDisconnecting;
+	function IsPlayerAuthorized() : Bool; // IsPlayerAuthorized;
+	function IsPlayerPerformingTakedown() : Bool; // IsPlayerPerformingTakedown;
+	function IsPotentiallyQuickHackable() : Bool; // IsPotentiallyQuickHackable;
+	function IsPowered() : Bool; // IsPowered;
+	function IsPoweredAndEnabled() : Bool; // IsPoweredAndEnabled;
+	function IsRestarting() : Bool; // IsRestarting;
+	function IsSecurityWakeUpBlocked() : Bool; // IsSecurityWakeUpBlocked;
+	function IsSkillCheckActive() : Bool; // IsSkillCheckActive;
+	function IsSomeoneUsingNPCWorkspot() : Bool; // IsSomeoneUsingNPCWorkspot;
+	function IsSpiderbotActionsConditionsFulfilled() : Bool; // IsSpiderbotActionsConditionsFulfilled;
+	function IsSpiderbotInteractionOrdered() : Bool; // IsSpiderbotInteractionOrdered;
+	function IsTimedTurnOff() : Bool; // IsTimedTurnOff;
+	function IsUnpowered() : Bool; // IsUnpowered;
+	function IsUserAlreadyOnTheList(entityID : entEntityID) : Int32; // IsUserAlreadyOnTheList;EntityID
+	function IsUserAuthorized(user : entEntityID) : Bool; // IsUserAuthorized;EntityID
+	function LogResaveInfo(); // LogResaveInfo;
+	function LogicReady(); // LogicReady;
+	function MarkActionsAsQuickHacks(actionsToMark : script_ref:array:handle:gamedeviceAction); // MarkActionsAsQuickHacks;script_ref<array<DeviceAction>>
+	function MarkActionsAsSpiderbotActions(actionsToMark : script_ref:array:handle:gamedeviceAction); // MarkActionsAsSpiderbotActions;script_ref<array<DeviceAction>>
+	function MasterUserAuthorizationAttempt(userToAuthorize : entEntityID, optional password : CName) : Bool; // MasterUserAuthorizationAttempt;EntityIDCName
+	function Notify(notifier : handle:ActionNotifier, action : handle:ScriptableDeviceAction); // Notify;ActionNotifierScriptableDeviceAction
+	function NotifyParents(); // NotifyParents;
+	function NotifyParents_Event(); // NotifyParents_Event;
+	function OnActionCooldownEvent(evt : handle:ActionCooldownEvent) : EntityNotificationType; // OnActionCooldownEvent;ActionCooldownEvent
+	function OnActionDemolition(evt : handle:ActionDemolition) : EntityNotificationType; // OnActionDemolition;ActionDemolition
+	function OnActionEngineering(evt : handle:ActionEngineering) : EntityNotificationType; // OnActionEngineering;ActionEngineering
+	function OnActionForceResetDevice(evt : handle:ActionForceResetDevice) : EntityNotificationType; // OnActionForceResetDevice;ActionForceResetDevice
+	function OnActionHacking(evt : handle:ActionHacking) : EntityNotificationType; // OnActionHacking;ActionHacking
+	function OnActionOverride(evt : handle:ActionOverride) : EntityNotificationType; // OnActionOverride;ActionOverride
+	function OnActionPing(evt : handle:PingDevice) : EntityNotificationType; // OnActionPing;PingDevice
+	function OnActionRemoteBreach(evt : handle:RemoteBreach) : EntityNotificationType; // OnActionRemoteBreach;RemoteBreach
+	function OnActionScavenge(evt : handle:ActionScavenge) : EntityNotificationType; // OnActionScavenge;ActionScavenge
+	function OnActivateDevice(evt : handle:ActivateDevice) : EntityNotificationType; // OnActivateDevice;ActivateDevice
+	function OnAddActiveContext(evt : handle:AddActiveContextEvent) : EntityNotificationType; // OnAddActiveContext;AddActiveContextEvent
+	function OnAddUserEvent(evt : handle:AddUserEvent) : EntityNotificationType; // OnAddUserEvent;AddUserEvent
+	function OnAuthorizeUser(evt : handle:AuthorizeUser) : EntityNotificationType; // OnAuthorizeUser;AuthorizeUser
+	function OnDeactivateDevice(evt : handle:DeactivateDevice) : EntityNotificationType; // OnDeactivateDevice;DeactivateDevice
+	function OnDelayedActionEvent(evt : handle:DelayedDeviceActionEvent) : EntityNotificationType; // OnDelayedActionEvent;DelayedDeviceActionEvent
+	function OnDeviceDynamicConnectionChange(evt : handle:gameDeviceDynamicConnectionChange) : EntityNotificationType; // OnDeviceDynamicConnectionChange;DeviceDynamicConnectionChange
+	function OnDisassembleDevice(evt : handle:DisassembleDevice) : EntityNotificationType; // OnDisassembleDevice;DisassembleDevice
+	function OnFixDevice(evt : handle:FixDevice) : EntityNotificationType; // OnFixDevice;FixDevice
+	function OnForceUpdateDefaultHighlightEvent(evt : handle:ForceUpdateDefaultHighlightEvent) : EntityNotificationType; // OnForceUpdateDefaultHighlightEvent;ForceUpdateDefaultHighlightEvent
+	function OnFullSystemRestart(evt : handle:FullSystemRestart) : EntityNotificationType; // OnFullSystemRestart;FullSystemRestart
+	function OnGameAttached(evt : handle:GameAttachedEvent) : EntityNotificationType; // OnGameAttached;GameAttachedEvent
+	function OnGlitchScreen(evt : handle:GlitchScreen) : EntityNotificationType; // OnGlitchScreen;GlitchScreen
+	function OnLogicReady(evt : handle:SetLogicReadyEvent) : EntityNotificationType; // OnLogicReady;SetLogicReadyEvent
+	function OnNotifyHighlightedDevice(evt : handle:NotifyHighlightedDevice) : EntityNotificationType; // OnNotifyHighlightedDevice;NotifyHighlightedDevice
+	function OnNotifyParents(evt : handle:NotifyParentsEvent) : EntityNotificationType; // OnNotifyParents;NotifyParentsEvent
+	function OnOpenFullscreenUI(evt : handle:OpenFullscreenUI) : EntityNotificationType; // OnOpenFullscreenUI;OpenFullscreenUI
+	function OnOverloadDevice(evt : handle:OverloadDevice) : EntityNotificationType; // OnOverloadDevice;OverloadDevice
+	function OnPSRefreshEvent(evt : handle:PSRefreshEvent) : EntityNotificationType; // OnPSRefreshEvent;PSRefreshEvent
+	function OnPingNetworkGridEvent(evt : handle:PingNetworkGridEvent) : EntityNotificationType; // OnPingNetworkGridEvent;PingNetworkGridEvent
+	function OnPingSquadEvent(evt : handle:ForwardPingToSquadEvent) : EntityNotificationType; // OnPingSquadEvent;ForwardPingToSquadEvent
+	function OnProcessRelevantDevicesForNetworkGridEvent(evt : handle:ProcessRelevantDevicesForNetworkGridEvent) : EntityNotificationType; // OnProcessRelevantDevicesForNetworkGridEvent;ProcessRelevantDevicesForNetworkGridEvent
+	function OnProgramSetDeviceAttitude(evt : handle:ProgramSetDeviceAttitude) : EntityNotificationType; // OnProgramSetDeviceAttitude;ProgramSetDeviceAttitude
+	function OnProgramSetDeviceOff(evt : handle:ProgramSetDeviceOff) : EntityNotificationType; // OnProgramSetDeviceOff;ProgramSetDeviceOff
+	function OnQuestBreachAccessPoint(evt : handle:QuestBreachAccessPoint) : EntityNotificationType; // OnQuestBreachAccessPoint;QuestBreachAccessPoint
+	function OnQuestDisableFixing(evt : handle:QuestDisableFixing) : EntityNotificationType; // OnQuestDisableFixing;QuestDisableFixing
+	function OnQuestEnableFixing(evt : handle:QuestEnableFixing) : EntityNotificationType; // OnQuestEnableFixing;QuestEnableFixing
+	function OnQuestForceActivate(evt : handle:QuestForceActivate) : EntityNotificationType; // OnQuestForceActivate;QuestForceActivate
+	function OnQuestForceAuthorizationDisabled(evt : handle:QuestForceAuthorizationDisabled) : EntityNotificationType; // OnQuestForceAuthorizationDisabled;QuestForceAuthorizationDisabled
+	function OnQuestForceAuthorizationEnabled(evt : handle:QuestForceAuthorizationEnabled) : EntityNotificationType; // OnQuestForceAuthorizationEnabled;QuestForceAuthorizationEnabled
+	function OnQuestForceCameraZoom(evt : handle:QuestForceCameraZoom) : EntityNotificationType; // OnQuestForceCameraZoom;QuestForceCameraZoom
+	function OnQuestForceDeactivate(evt : handle:QuestForceDeactivate) : EntityNotificationType; // OnQuestForceDeactivate;QuestForceDeactivate
+	function OnQuestForceDestructible(evt : handle:QuestForceDestructible) : EntityNotificationType; // OnQuestForceDestructible;QuestForceDestructible
+	function OnQuestForceDisabled(evt : handle:QuestForceDisabled) : EntityNotificationType; // OnQuestForceDisabled;QuestForceDisabled
+	function OnQuestForceDisconnectPersonalLink(evt : handle:QuestForceDisconnectPersonalLink) : EntityNotificationType; // OnQuestForceDisconnectPersonalLink;QuestForceDisconnectPersonalLink
+	function OnQuestForceEnabled(evt : handle:QuestForceEnabled) : EntityNotificationType; // OnQuestForceEnabled;QuestForceEnabled
+	function OnQuestForceIndestructible(evt : handle:QuestForceIndestructible) : EntityNotificationType; // OnQuestForceIndestructible;QuestForceIndestructible
+	function OnQuestForceInvulnerable(evt : handle:QuestForceInvulnerable) : EntityNotificationType; // OnQuestForceInvulnerable;QuestForceInvulnerable
+	function OnQuestForceJuryrigTrapArmed(evt : handle:QuestForceJuryrigTrapArmed) : EntityNotificationType; // OnQuestForceJuryrigTrapArmed;QuestForceJuryrigTrapArmed
+	function OnQuestForceJuryrigTrapDeactivated(evt : handle:QuestForceJuryrigTrapDeactivated) : EntityNotificationType; // OnQuestForceJuryrigTrapDeactivated;QuestForceJuryrigTrapDeactivated
+	function OnQuestForceOFF(evt : handle:QuestForceOFF) : EntityNotificationType; // OnQuestForceOFF;QuestForceOFF
+	function OnQuestForceON(evt : handle:QuestForceON) : EntityNotificationType; // OnQuestForceON;QuestForceON
+	function OnQuestForcePersonalLinkUnderStrictQuestControl(evt : handle:QuestForcePersonalLinkUnderStrictQuestControl) : EntityNotificationType; // OnQuestForcePersonalLinkUnderStrictQuestControl;QuestForcePersonalLinkUnderStrictQuestControl
+	function OnQuestForcePower(evt : handle:QuestForcePower) : EntityNotificationType; // OnQuestForcePower;QuestForcePower
+	function OnQuestForceSecuritySystemAlarmed(evt : handle:QuestForceSecuritySystemAlarmed) : EntityNotificationType; // OnQuestForceSecuritySystemAlarmed;QuestForceSecuritySystemAlarmed
+	function OnQuestForceSecuritySystemArmed(evt : handle:QuestForceSecuritySystemArmed) : EntityNotificationType; // OnQuestForceSecuritySystemArmed;QuestForceSecuritySystemArmed
+	function OnQuestForceSecuritySystemSafe(evt : handle:QuestForceSecuritySystemSafe) : EntityNotificationType; // OnQuestForceSecuritySystemSafe;QuestForceSecuritySystemSafe
+	function OnQuestForceUnpower(evt : handle:QuestForceUnpower) : EntityNotificationType; // OnQuestForceUnpower;QuestForceUnpower
+	function OnQuestMinigameRequest(); // OnQuestMinigameRequest;
+	function OnQuestRemoveQuickHacks(evt : handle:QuestRemoveQuickHacks) : EntityNotificationType; // OnQuestRemoveQuickHacks;QuestRemoveQuickHacks
+	function OnQuestResetDeviceToInitialState(evt : handle:QuestResetDeviceToInitialState) : EntityNotificationType; // OnQuestResetDeviceToInitialState;QuestResetDeviceToInitialState
+	function OnQuestResetPerfomedActionsStorage(evt : handle:QuestResetPerformedActionsStorage) : EntityNotificationType; // OnQuestResetPerfomedActionsStorage;QuestResetPerformedActionsStorage
+	function OnQuestResolveSkillchecks(evt : handle:ResolveAllSkillchecksEvent) : EntityNotificationType; // OnQuestResolveSkillchecks;ResolveAllSkillchecksEvent
+	function OnQuestRestoreQuickHacks(evt : handle:QuestRestoreQuickHacks) : EntityNotificationType; // OnQuestRestoreQuickHacks;QuestRestoreQuickHacks
+	function OnQuestSetSkillchecks(evt : handle:SetSkillcheckEvent) : EntityNotificationType; // OnQuestSetSkillchecks;SetSkillcheckEvent
+	function OnQuestStartGlitch(evt : handle:QuestStartGlitch) : EntityNotificationType; // OnQuestStartGlitch;QuestStartGlitch
+	function OnQuestStopGlitch(evt : handle:QuestStopGlitch) : EntityNotificationType; // OnQuestStopGlitch;QuestStopGlitch
+	function OnQuickHackAoeDamage(evt : handle:QuickHackAoeDamage) : EntityNotificationType; // OnQuickHackAoeDamage;QuickHackAoeDamage
+	function OnQuickHackAuthorization(evt : handle:QuickHackAuthorization) : EntityNotificationType; // OnQuickHackAuthorization;QuickHackAuthorization
+	function OnQuickHackDistraction(evt : handle:QuickHackDistraction) : EntityNotificationType; // OnQuickHackDistraction;QuickHackDistraction
+	function OnQuickHackHighPitchNoise(evt : handle:QuickHackHighPitchNoise) : EntityNotificationType; // OnQuickHackHighPitchNoise;QuickHackHighPitchNoise
+	function OnQuickHackToggleOn(evt : handle:QuickHackToggleON) : EntityNotificationType; // OnQuickHackToggleOn;QuickHackToggleON
+	function OnRemoveActiveContext(evt : handle:RemoveActiveContextEvent) : EntityNotificationType; // OnRemoveActiveContext;RemoveActiveContextEvent
+	function OnRequestActionWidgetsUpdate(evt : handle:RequestActionWidgetsUpdateEvent); // OnRequestActionWidgetsUpdate;RequestActionWidgetsUpdateEvent
+	function OnRequestUIRefresh(evt : handle:RequestUIRefreshEvent); // OnRequestUIRefresh;RequestUIRefreshEvent
+	function OnResolveSkillchecksEvent(evt : handle:ResolveSkillchecksEvent) : EntityNotificationType; // OnResolveSkillchecksEvent;ResolveSkillchecksEvent
+	function OnRevealDevicesGridEvent(evt : handle:RevealDevicesGridEvent) : EntityNotificationType; // OnRevealDevicesGridEvent;RevealDevicesGridEvent
+	function OnRevealNetworkGridEvent(evt : handle:RevealNetworkGridEvent) : EntityNotificationType; // OnRevealNetworkGridEvent;RevealNetworkGridEvent
+	function OnSecurityAlarmBreachResponse(evt : handle:SecurityAlarmBreachResponse) : EntityNotificationType; // OnSecurityAlarmBreachResponse;SecurityAlarmBreachResponse
+	function OnSecurityAreaCrossingPerimeter(evt : handle:SecurityAreaCrossingPerimeter) : EntityNotificationType; // OnSecurityAreaCrossingPerimeter;SecurityAreaCrossingPerimeter
+	function OnSecuritySystemForceAttitudeChange(evt : handle:SecuritySystemForceAttitudeChange) : EntityNotificationType; // OnSecuritySystemForceAttitudeChange;SecuritySystemForceAttitudeChange
+	function OnSecuritySystemOutput(evt : handle:SecuritySystemOutput) : EntityNotificationType; // OnSecuritySystemOutput;SecuritySystemOutput
+	function OnSequencerLock(evt : handle:SequencerLock) : EntityNotificationType; // OnSequencerLock;SequencerLock
+	function OnSetAsQuestImportantEvent(evt : handle:gameSetAsQuestImportantEvent) : EntityNotificationType; // OnSetAsQuestImportantEvent;SetAsQuestImportantEvent
+	function OnSetAuthorizationModuleOFF(evt : handle:SetAuthorizationModuleOFF) : EntityNotificationType; // OnSetAuthorizationModuleOFF;SetAuthorizationModuleOFF
+	function OnSetAuthorizationModuleON(evt : handle:SetAuthorizationModuleON) : EntityNotificationType; // OnSetAuthorizationModuleON;SetAuthorizationModuleON
+	function OnSetCustomPersonalLinkReason(evt : handle:SetCustomPersonalLinkReason) : EntityNotificationType; // OnSetCustomPersonalLinkReason;SetCustomPersonalLinkReason
+	function OnSetDeviceOFF(evt : handle:SetDeviceOFF) : EntityNotificationType; // OnSetDeviceOFF;SetDeviceOFF
+	function OnSetDeviceON(evt : handle:SetDeviceON) : EntityNotificationType; // OnSetDeviceON;SetDeviceON
+	function OnSetDevicePowered(evt : handle:SetDevicePowered) : EntityNotificationType; // OnSetDevicePowered;SetDevicePowered
+	function OnSetDeviceUnpowered(evt : handle:SetDeviceUnpowered) : EntityNotificationType; // OnSetDeviceUnpowered;SetDeviceUnpowered
+	function OnSetExposeQuickHacks(evt : handle:SetExposeQuickHacks) : EntityNotificationType; // OnSetExposeQuickHacks;SetExposeQuickHacks
+	function OnSetIsSpiderbotInteractionOrderedEvent(evt : handle:SetIsSpiderbotInteractionOrderedEvent) : EntityNotificationType; // OnSetIsSpiderbotInteractionOrderedEvent;SetIsSpiderbotInteractionOrderedEvent
+	function OnSetWasQuickHacked(evt : handle:SetQuickHackEvent) : EntityNotificationType; // OnSetWasQuickHacked;SetQuickHackEvent
+	function OnSetWasQuickHackedAtempt(evt : handle:SetQuickHackAttemptEvent) : EntityNotificationType; // OnSetWasQuickHackedAtempt;SetQuickHackAttemptEvent
+	function OnTCSTakeOverControlActivate(evt : handle:TCSTakeOverControlActivate) : EntityNotificationType; // OnTCSTakeOverControlActivate;TCSTakeOverControlActivate
+	function OnTCSTakeOverControlDeactivate(evt : handle:TCSTakeOverControlDeactivate) : EntityNotificationType; // OnTCSTakeOverControlDeactivate;TCSTakeOverControlDeactivate
+	function OnTargetAssessmentRequest(evt : handle:TargetAssessmentRequest) : EntityNotificationType; // OnTargetAssessmentRequest;TargetAssessmentRequest
+	function OnThumbnailUI(evt : handle:ThumbnailUI) : EntityNotificationType; // OnThumbnailUI;ThumbnailUI
+	function OnToggleActivate(evt : handle:ToggleActivate) : EntityNotificationType; // OnToggleActivate;ToggleActivate
+	function OnToggleActivation(evt : handle:ToggleActivation) : EntityNotificationType; // OnToggleActivation;ToggleActivation
+	function OnToggleJuryrigTrap(evt : handle:ToggleJuryrigTrap) : EntityNotificationType; // OnToggleJuryrigTrap;ToggleJuryrigTrap
+	function OnToggleNetrunnerDive(evt : handle:ToggleNetrunnerDive) : EntityNotificationType; // OnToggleNetrunnerDive;ToggleNetrunnerDive
+	function OnToggleON(evt : handle:ToggleON) : EntityNotificationType; // OnToggleON;ToggleON
+	function OnTogglePersonalLink(evt : handle:TogglePersonalLink) : EntityNotificationType; // OnTogglePersonalLink;TogglePersonalLink
+	function OnTogglePower(evt : handle:TogglePower) : EntityNotificationType; // OnTogglePower;TogglePower
+	function OnToggleTakeOverControl(evt : handle:ToggleTakeOverControl) : EntityNotificationType; // OnToggleTakeOverControl;ToggleTakeOverControl
+	function OnToggleZoomInteraction(evt : handle:ToggleZoomInteraction) : EntityNotificationType; // OnToggleZoomInteraction;ToggleZoomInteraction
+	function OnVehicleOverrideAccelerate(evt : handle:VehicleOverrideAccelerate) : EntityNotificationType; // OnVehicleOverrideAccelerate;VehicleOverrideAccelerate
+	function OnVehicleOverrideExplode(evt : handle:VehicleOverrideExplode) : EntityNotificationType; // OnVehicleOverrideExplode;VehicleOverrideExplode
+	function OnVehicleOverrideForceBrakes(evt : handle:VehicleOverrideForceBrakes) : EntityNotificationType; // OnVehicleOverrideForceBrakes;VehicleOverrideForceBrakes
+	function OnWakeUpEvent(evt : handle:WakeUpFromRestartEvent) : EntityNotificationType; // OnWakeUpEvent;WakeUpFromRestartEvent
+	function PassDeviceName(deviceName : script_ref:String, optional dbgDeviceName : CName); // PassDeviceName;script_ref<String>CName
+	function PerformRestart(); // PerformRestart;
+	function PingSquad(); // PingSquad;
+	function PowerDevice(); // PowerDevice;
+	function PushChoicesToInteractionComponent(interactionComponent : handle:gameinteractionsComponent, context : script_ref:gameGetActionsContext, choices : script_ref:array:gameinteractionsChoice); // PushChoicesToInteractionComponent;InteractionComponentscript_ref<GetActionsContext>script_ref<array<InteractionChoice>>
+	function PushInactiveInteractionChoice(context : script_ref:gameGetActionsContext, choices : script_ref:array:gameinteractionsChoice); // PushInactiveInteractionChoice;script_ref<GetActionsContext>script_ref<array<InteractionChoice>>
+	function PushPersistentData(data : script_ref:BaseDeviceData); // PushPersistentData;script_ref<BaseDeviceData>
+	function PushResaveData(data : BaseResaveData); // PushResaveData;BaseResaveData
+	function PushReturnActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext) : Bool; // PushReturnActions;array<DeviceAction>script_ref<GetActionsContext>
+	function PushSkillCheckActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext) : Bool; // PushSkillCheckActions;array<DeviceAction>script_ref<GetActionsContext>
+	function QuestResolveSkillchecks(); // QuestResolveSkillchecks;
+	function QuestSetSkillchecks(container : handle:BaseSkillCheckContainer); // QuestSetSkillchecks;BaseSkillCheckContainer
+	function RefreshPS(); // RefreshPS;
+	function RefreshUI(blackboard : handle:gameIBlackboard); // RefreshUI;IBlackboard
+	function RegisterDebugEnableQuickHacksListener(); // RegisterDebugEnableQuickHacksListener;
+	function RemoveActiveContext(context : gamedeviceRequestType); // RemoveActiveContext;gamedeviceRequestType
+	function RemoveAvailableQuickHack(quickHackName : CName); // RemoveAvailableQuickHack;CName
+	function RemoveAvailableSpiderbotActions(SpiderbotActionName : CName); // RemoveAvailableSpiderbotActions;CName
+	function RemovePlaystyle(playstyle : EPlaystyle); // RemovePlaystyle;EPlaystyle
+	function RemoveQuickHackVoulnerability(data : TweakDBID); // RemoveQuickHackVoulnerability;TweakDBID
+	function RemoveUser(user : entEntityID) : Bool; // RemoveUser;EntityID
+	function RequestActionWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestActionWidgetsUpdate;IBlackboard
+	function RequestBreadCrumbUpdate(blackboard : handle:gameIBlackboard, data : SBreadCrumbUpdateData); // RequestBreadCrumbUpdate;IBlackboardSBreadCrumbUpdateData
+	function RequestDeviceWidgetsUpdate(blackboard : handle:gameIBlackboard, widgetsData : array:SDeviceWidgetPackage); // RequestDeviceWidgetsUpdate;IBlackboardarray<SDeviceWidgetPackage>
+	function RequestDeviceWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestDeviceWidgetsUpdate;IBlackboard
+	function ResetPerformedActionsStorage(); // ResetPerformedActionsStorage;
+	function ResloveUIOnAction(action : handle:ScriptableDeviceAction); // ResloveUIOnAction;ScriptableDeviceAction
+	function ResolveActionHackingCompleted(evt : handle:ActionHacking); // ResolveActionHackingCompleted;ActionHacking
+	function ResolveBaseActionOperation(action : handle:ScriptableDeviceAction); // ResolveBaseActionOperation;ScriptableDeviceAction
+	function ResolveDeviceWidgetTweakDBData(data : SDeviceWidgetPackage) : SDeviceWidgetPackage; // ResolveDeviceWidgetTweakDBData;SDeviceWidgetPackage
+	function ResolveDive(isBackdoor : Bool); // ResolveDive;Bool
+	function ResolveOtherSkillchecks(); // ResolveOtherSkillchecks;
+	function ResolvePersonalLinkConnection(evt : handle:TogglePersonalLink, abortOperations : Bool); // ResolvePersonalLinkConnection;TogglePersonalLinkBool
+	function RevealDevicesGrid(shouldDraw : Bool, optional ownerEntityPosition : Vector4, optional fxDefault : gameFxResource, optional isPing : Bool, optional lifetime : Float, optional revealSlave : Bool, optional revealMaster : Bool, optional ignoreRevealed : Bool); // RevealDevicesGrid;BoolVector4FxResourceBoolFloatBoolBoolBool
+	function RevealDevicesGridOnEntity_Event(shouldDraw : Bool, target : entEntityID); // RevealDevicesGridOnEntity_Event;BoolEntityID
+	function RevealNetworkGrid(shouldDraw : Bool, optional ownerEntityPosition : Vector4, optional fxDefault : gameFxResource, optional fxBreached : gameFxResource, optional isPing : Bool, optional lifetime : Float, optional revealSlave : Bool, optional revealMaster : Bool, optional ignoreRevealed : Bool); // RevealNetworkGrid;BoolVector4FxResourceFxResourceBoolFloatBoolBoolBool
+	function SceneInteractionsBlocked() : Bool; // SceneInteractionsBlocked;
+	function SendActionFailedEvent(failedAction : handle:ScriptableDeviceAction, whereToSend : entEntityID, optional context : String) : EntityNotificationType; // SendActionFailedEvent;ScriptableDeviceActionEntityIDString
+	function SendDeviceNotOperationalEvent(); // SendDeviceNotOperationalEvent;
+	function SendPSChangedEvent(); // SendPSChangedEvent;
+	function SendSpiderbotToPerformAction(action : handle:ScriptableDeviceAction, oryginalExecutor : whandle:gameObject); // SendSpiderbotToPerformAction;ScriptableDeviceActionGameObject
+	function SetActionIllegality(outActions : script_ref:array:handle:gamedeviceAction, isIllegal : Bool); // SetActionIllegality;script_ref<array<DeviceAction>>Bool
+	function SetActionsQuickHacksExecutioner(outActions : script_ref:array:handle:gamedeviceAction); // SetActionsQuickHacksExecutioner;script_ref<array<DeviceAction>>
+	function SetAdvancedInteractionModeOn(value : Bool); // SetAdvancedInteractionModeOn;Bool
+	function SetBlockSecurityWakeUp(value : Bool); // SetBlockSecurityWakeUp;Bool
+	function SetCurrentSpiderbotActionPerformed(action : handle:ScriptableDeviceAction); // SetCurrentSpiderbotActionPerformed;ScriptableDeviceAction
+	function SetDeviceState(state : EDeviceStatus); // SetDeviceState;EDeviceStatus
+	function SetDurabilityState(newState : EDeviceDurabilityState); // SetDurabilityState;EDeviceDurabilityState
+	function SetDurabilityType(durabilityType : EDeviceDurabilityType); // SetDurabilityType;EDeviceDurabilityType
+	function SetEMPEffectActiveState(isActive : Bool); // SetEMPEffectActiveState;Bool
+	function SetFocusModeData(isHighlighted : Bool); // SetFocusModeData;Bool
+	function SetGlitchingState(isGlitching : Bool); // SetGlitchingState;Bool
+	function SetHasPersonalLinkSlot(isPersonalLinkSlotPresent : Bool); // SetHasPersonalLinkSlot;Bool
+	function SetHasUICameraZoom(hasUICameraZoom : Bool); // SetHasUICameraZoom;Bool
+	function SetInactiveActionsWithExceptions(out outActions : array:handle:gamedeviceAction); // SetInactiveActionsWithExceptions;array<DeviceAction>
+	function SetInitialStateOperataionPerformed(value : Bool); // SetInitialStateOperataionPerformed;Bool
+	function SetInteractionState(isActive : Bool); // SetInteractionState;Bool
+	function SetJuryrigTrapActiveState(newState : Bool); // SetJuryrigTrapActiveState;Bool
+	function SetJuryrigTrapArmedState(newState : EJuryrigTrapState); // SetJuryrigTrapArmedState;EJuryrigTrapState
+	function SetMinigameState(state : gameuiHackingMinigameState); // SetMinigameState;HackingMinigameState
+	function SetPSMPostpondedParameterBool(value : Bool); // SetPSMPostpondedParameterBool;Bool
+	function SetPersonalLinkStatus(status : EPersonalLinkConnectionStatus); // SetPersonalLinkStatus;EPersonalLinkConnectionStatus
+	function SetPlayerTakeOverControl(canBeControlled : Bool); // SetPlayerTakeOverControl;Bool
+	function ShouldDebug() : Bool; // ShouldDebug;
+	function ShouldDrawGridLink() : Bool; // ShouldDrawGridLink;
+	function ShouldExposePersonalLinkAction() : Bool; // ShouldExposePersonalLinkAction;
+	function ShouldForceAuthorizeUser(context : script_ref:gameGetActionsContext) : Bool; // ShouldForceAuthorizeUser;script_ref<GetActionsContext>
+	function ShouldNPCWorkspotFinishLoop() : Bool; // ShouldNPCWorkspotFinishLoop;
+	function ShouldPersonalLinkBlockActions() : Bool; // ShouldPersonalLinkBlockActions;
+	function ShouldRevealDevicesGrid() : Bool; // ShouldRevealDevicesGrid;
+	function ShouldRevealNetworkGrid() : Bool; // ShouldRevealNetworkGrid;
+	function ShouldScannerShowAttitude() : Bool; // ShouldScannerShowAttitude;
+	function ShouldScannerShowHealth() : Bool; // ShouldScannerShowHealth;
+	function ShouldScannerShowNetwork() : Bool; // ShouldScannerShowNetwork;
+	function ShouldScannerShowRole() : Bool; // ShouldScannerShowRole;
+	function ShouldScannerShowStatus() : Bool; // ShouldScannerShowStatus;
+	function ShouldShowExamineIntaraction() : Bool; // ShouldShowExamineIntaraction;
+	function StorePerformedActionID(oryginalAction : handle:ScriptableDeviceAction); // StorePerformedActionID;ScriptableDeviceAction
+	function TriggerSecuritySystemNotification(whoBreached : handle:gameObject, lastKnownPosition : Vector4, type : ESecurityNotificationType, optional forceNotification : Bool); // TriggerSecuritySystemNotification;GameObjectVector4ESecurityNotificationTypeBool
+	function TriggerWakeUpDelayedEvent(duration : Int32); // TriggerWakeUpDelayedEvent;Int32
+	function TryGetDevice(out device : whandle:Device) : Bool; // TryGetDevice;Device
+	function TryInitializeSkillChecks(); // TryInitializeSkillChecks;
+	function TurnAuthorizationModuleOFF(); // TurnAuthorizationModuleOFF;
+	function TurnAuthorizationModuleON() : Bool; // TurnAuthorizationModuleON;
+	function TutorialProcessSkillcheck(choices : script_ref:array:gameinteractionsChoice); // TutorialProcessSkillcheck;script_ref<array<InteractionChoice>>
+	function UnpowerDevice(); // UnpowerDevice;
+	function UpdateAvailAbleQuickHacks(actions : script_ref:array:handle:gamedeviceAction); // UpdateAvailAbleQuickHacks;script_ref<array<DeviceAction>>
+	function UpdateAvailableSpiderbotActions(actions : script_ref:array:handle:gamedeviceAction); // UpdateAvailableSpiderbotActions;script_ref<array<DeviceAction>>
+	function UpdateQuickHackableState(isQuickHackable : Bool); // UpdateQuickHackableState;Bool
+	function UseNotifier(action : handle:ScriptableDeviceAction); // UseNotifier;ScriptableDeviceAction
+	function UserAuthorizationAttempt(userToAuthorize : entEntityID, optional password : CName, optional userToAuthorizeHandle : handle:gameObject) : Bool; // UserAuthorizationAttempt;EntityIDCNameGameObject
+	function WakeUpDevice() : Bool; // WakeUpDevice;
+	function WasActionPerformed(actionID : CName) : Int32; // WasActionPerformed;CName
+	function WasActionPerformed(actionID : CName, context : EActionContext) : Bool; // WasActionPerformed;CNameEActionContext
+	function WasDemolitionSkillCheckActive() : Bool; // WasDemolitionSkillCheckActive;
+	function WasDeviceActionPerformed(actionID : CName) : Bool; // WasDeviceActionPerformed;CName
+	function WasEngineeringSkillCheckActive() : Bool; // WasEngineeringSkillCheckActive;
+	function WasHackingMinigameSucceeded() : Bool; // WasHackingMinigameSucceeded;
+	function WasHackingSkillCheckActive() : Bool; // WasHackingSkillCheckActive;
+	function WasQuickHackAttempt() : Bool; // WasQuickHackAttempt;
+	function WasQuickHackJustPerformed(quickHackName : CName) : Bool; // WasQuickHackJustPerformed;CName
+	function WasQuickHacked() : Bool; // WasQuickHacked;
+	function WashackingMinigameFailed() : Bool; // WashackingMinigameFailed;
+}
+
+class SharedGameplayPS extends gameDeviceComponentPS
+{
+	protected var deviceState : EDeviceStatus;
+	protected var authorizationProperties : AuthorizationData;
+	protected var wasStateCached : Bool;
+	protected var wasStateSet : Bool;
+	protected var cachedDeviceState : EDeviceStatus;
+	protected var revealDevicesGrid : Bool;
+	protected var revealDevicesGridWhenUnpowered : Bool;
+	protected var wasRevealedInNetworkPing : Bool;
+	protected var hasNetworkBackdoor : Bool;
+
+	function CacheDeviceState(state : EDeviceStatus); // CacheDeviceState;EDeviceStatus
+	function CheckMasterConnectedClassTypes() : ConnectedClassTypes; // CheckMasterConnectedClassTypes;
+	function EvaluateDeviceState(); // EvaluateDeviceState;
+	function FindHighestSecurityAccessLevel(securityAreas : script_ref:array:handle:SecurityAreaControllerPS) : ESecurityAccessLevel; // FindHighestSecurityAccessLevel;script_ref<array<SecurityAreaControllerPS>>
+	function GetAccessPoints() : array:handle:AccessPointControllerPS; // GetAccessPoints;
+	function GetBackdoorAccessPoint() : handle:AccessPointControllerPS; // GetBackdoorAccessPoint;
+	function GetDeviceState() : EDeviceStatus; // GetDeviceState;
+	function GetNetworkName() : String; // GetNetworkName;
+	function GetSecurityAccessLevel() : ESecurityAccessLevel; // GetSecurityAccessLevel;
+	function HasNetworkBackdoor() : Bool; // HasNetworkBackdoor;
+	function IsBreached() : Bool; // IsBreached;
+	function IsConnectedToBackdoorDevice() : Bool; // IsConnectedToBackdoorDevice;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsConnectedToSecuritySystem(out level : ESecurityAccessLevel) : Bool; // IsConnectedToSecuritySystem;ESecurityAccessLevel
+	function IsPartOfSystem(systemType : ESystems) : Bool; // IsPartOfSystem;ESystems
+	function IsPuppet() : Bool; // IsPuppet;
+	function OnSetRevealedInNetwork(evt : handle:SetRevealedInNetwork) : EntityNotificationType; // OnSetRevealedInNetwork;SetRevealedInNetwork
+	function QueueEntityEvent(entityID : entEntityID, evt : handle:redEvent); // QueueEntityEvent;EntityIDEvent
+	function QueuePSEvent(targetPS : whandle:gamePersistentState, evt : handle:redEvent); // QueuePSEvent;PersistentStateEvent
+	function QueuePSEvent(targetID : gamePersistentID, psClassName : CName, evt : handle:redEvent); // QueuePSEvent;PersistentIDCNameEvent
+	function QueuePSEventWithDelay(targetPS : whandle:gamePersistentState, evt : handle:redEvent, delay : Float); // QueuePSEventWithDelay;PersistentStateEventFloat
+	function QueuePSEventWithDelay(targetID : gamePersistentID, psClassName : CName, evt : handle:redEvent, delay : Float); // QueuePSEventWithDelay;PersistentIDCNameEventFloat
+	function SetDeviceState(state : EDeviceStatus); // SetDeviceState;EDeviceStatus
+	function SetRevealedInNetworkPing(wasRevealed : Bool); // SetRevealedInNetworkPing;Bool
+	function WasRevealedInNetworkPing() : Bool; // WasRevealedInNetworkPing;
+}
+
+import class gameDeviceComponentPS extends gameComponentPS
+{
+	protected var markAsQuest : Bool;
+	protected var autoToggleQuestMark : Bool;
+	protected var factToDisableQuestMark : CName;
+	protected var callbackToDisableQuestMarkID : Uint32;
+	protected var backdoorObjectiveData : handle:BackDoorObjectiveData;
+	protected var controlPanelObjectiveData : handle:ControlPanelObjectiveData;
+	protected var deviceUIStyle : gamedataComputerUIStyle;
+	protected var blackboard : whandle:gameIBlackboard;
+	protected var isScanned : Bool;
+	private   var isBeingScanned : Bool;
+	protected var exposeQuickHacks : Bool;
+	protected var isAttachedToGame : Bool;
+	protected var isLogicReady : Bool;
+	protected var maxDevicesToExtractInOneFrame : Int32;
+
+	import function GetClearance() : handle:gamedeviceClearance; // GetClearance
+	import function GetDeviceIconPath() : String; // GetDeviceIconPath
+	import function GetDeviceName() : String; // GetDeviceName
+	import function GetDeviceStatus() : String; // GetDeviceStatus
+	import function GetNativeActions(out outActions : array:handle:gamedeviceAction, context : gameGetActionsContext); // GetNativeActions
+	import function GetWidgetTypeName() : CName; // GetWidgetTypeName
+
+	function ActionThumbnailUI() : handle:ThumbnailUI; // ActionThumbnailUI;
+	function DetermineInteractionState(interactionComponent : handle:gameinteractionsComponent, context : script_ref:gameGetActionsContext); // DetermineInteractionState;InteractionComponentscript_ref<GetActionsContext>
+	function ExposeQuickHacks(); // ExposeQuickHacks;
+	function ExposeQuickHacks(shouldExpose : Bool); // ExposeQuickHacks;Bool
+	function GetActionWidgets(context : script_ref:gameGetActionsContext) : array:SActionWidgetPackage; // GetActionWidgets;script_ref<GetActionsContext>
+	function GetActions(out outActions : array:handle:gamedeviceAction, context : gameGetActionsContext) : Bool; // GetActions;array<DeviceAction>GetActionsContext
+	function GetActionsToNative(context : gameGetActionsContext) : array:handle:gamedeviceAction; // GetActionsToNative;GetActionsContext
+	function GetAncestors(out outDevices : array:handle:gameDeviceComponentPS); // GetAncestors;array<DeviceComponentPS>
+	function GetAttachedSlaveForPing(optional context : handle:MasterControllerPS) : handle:gameDeviceComponentPS; // GetAttachedSlaveForPing;MasterControllerPS
+	function GetBackdoorObjectiveData() : handle:BackDoorObjectiveData; // GetBackdoorObjectiveData;
+	function GetBackgroundTextureTweakDBID() : TweakDBID; // GetBackgroundTextureTweakDBID;
+	function GetBlackboard() : handle:gameIBlackboard; // GetBlackboard;
+	function GetBlackboardDef() : handle:DeviceBaseBlackboardDef; // GetBlackboardDef;
+	function GetChildren(out outDevices : array:handle:gameDeviceComponentPS); // GetChildren;array<DeviceComponentPS>
+	function GetControlPanelObjectiveData() : handle:ControlPanelObjectiveData; // GetControlPanelObjectiveData;
+	function GetDeviceIconID() : CName; // GetDeviceIconID;
+	function GetDeviceIconTweakDBID() : TweakDBID; // GetDeviceIconTweakDBID;
+	function GetDeviceWidget(context : script_ref:gameGetActionsContext) : SDeviceWidgetPackage; // GetDeviceWidget;script_ref<GetActionsContext>
+	function GetFactToDisableQuestMarkName() : CName; // GetFactToDisableQuestMarkName;
+	function GetFirstAttachedSlave() : handle:gameDeviceComponentPS; // GetFirstAttachedSlave;
+	function GetImmediateParents() : array:handle:gameDeviceComponentPS; // GetImmediateParents;
+	function GetInkWidgetLibraryID(context : script_ref:gameGetActionsContext) : CName; // GetInkWidgetLibraryID;script_ref<GetActionsContext>
+	function GetInkWidgetLibraryPath() : redResourceReferenceScriptToken; // GetInkWidgetLibraryPath;
+	function GetInkWidgetTweakDBID(context : script_ref:gameGetActionsContext) : TweakDBID; // GetInkWidgetTweakDBID;script_ref<GetActionsContext>
+	function GetLazyAncestors() : array:handle:gameLazyDevice; // GetLazyAncestors;
+	function GetLazyChildren(out outDevices : array:handle:gameLazyDevice); // GetLazyChildren;array<LazyDevice>
+	function GetLazyParents() : array:handle:gameLazyDevice; // GetLazyParents;
+	function GetMyEntityID() : entEntityID; // GetMyEntityID;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetOwnerEntityWeak() : whandle:entEntity; // GetOwnerEntityWeak;
+	function GetPS(deviceLink : DeviceLink) : handle:gameDeviceComponentPS; // GetPS;DeviceLink
+	function GetParents(out outDevices : array:handle:gameDeviceComponentPS); // GetParents;array<DeviceComponentPS>
+	function GetPersistentStateName() : CName; // GetPersistentStateName;
+	function GetQuestActionByName(actionName : CName) : handle:gamedeviceAction; // GetQuestActionByName;CName
+	function GetQuestActionByNameToNative(actionName : CName) : handle:gamedeviceAction; // GetQuestActionByNameToNative;CName
+	function GetQuestActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetQuestActions;array<DeviceAction>script_ref<GetActionsContext>
+	function GetQuestActionsToNative(context : gameGetActionsContext) : array:handle:gamedeviceAction; // GetQuestActionsToNative;GetActionsContext
+	function GetSecurityAreas(optional includeInactive : Bool, optional returnOnlyDirectlyConnected : Bool) : array:handle:SecurityAreaControllerPS; // GetSecurityAreas;BoolBool
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetThumbnailAction() : handle:ThumbnailUI; // GetThumbnailAction;
+	function GetThumbnailWidget() : SThumbnailWidgetPackage; // GetThumbnailWidget;
+	function GetVirtualSystem(slave : handle:gameDeviceComponentPS, out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;DeviceComponentPSVirtualSystemPS
+	function GetVirtualSystem(id : gamePersistentID, out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;PersistentIDVirtualSystemPS
+	function GetVirtualSystem(out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;VirtualSystemPS
+	function GetVirtualSystemType() : EVirtualSystem; // GetVirtualSystemType;
+	function HackGetOwner() : handle:entEntity; // HackGetOwner;
+	function HasAnyDeviceConnection() : Bool; // HasAnyDeviceConnection;
+	function HasAnySlave() : Bool; // HasAnySlave;
+	function InitializeGameplayObjectives(); // InitializeGameplayObjectives;
+	function InitializeQuestDBCallbacksForQuestmark(); // InitializeQuestDBCallbacksForQuestmark;
+	function IsAnyMasterFlaggedAsQuest() : Bool; // IsAnyMasterFlaggedAsQuest;
+	function IsAttachedToGame() : Bool; // IsAttachedToGame;
+	function IsAutoTogglingQuestMark() : Bool; // IsAutoTogglingQuestMark;
+	function IsBeingScanned() : Bool; // IsBeingScanned;
+	function IsLogicReady() : Bool; // IsLogicReady;
+	function IsMarkedAsQuest() : Bool; // IsMarkedAsQuest;
+	function IsMasterType() : Bool; // IsMasterType;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function IsScanned() : Bool; // IsScanned;
+	function IsStatic() : Bool; // IsStatic;
+	function OnExtractDevicesEvent(evt : handle:ExtractDevicesEvent) : EntityNotificationType; // OnExtractDevicesEvent;ExtractDevicesEvent
+	function OnMaraudersMapDeviceDebug(sink : handle:worldMaraudersMapDevicesSink); // OnMaraudersMapDeviceDebug;MaraudersMapDevicesSink
+	function PassBlackboard(blackboard : handle:gameIBlackboard); // PassBlackboard;IBlackboard
+	function ProcessDevicesLazy(lazyDevices : script_ref:array:handle:gameLazyDevice, optional eventToSendOnCompleted : handle:ProcessDevicesEvent); // ProcessDevicesLazy;script_ref<array<LazyDevice>>ProcessDevicesEvent
+	function RefreshUI(blackboard : handle:gameIBlackboard); // RefreshUI;IBlackboard
+	function RequestActionWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestActionWidgetsUpdate;IBlackboard
+	function RequestBreadCrumbUpdate(blackboard : handle:gameIBlackboard, data : SBreadCrumbUpdateData); // RequestBreadCrumbUpdate;IBlackboardSBreadCrumbUpdateData
+	function ResloveUIOnAction(action : handle:ScriptableDeviceAction); // ResloveUIOnAction;ScriptableDeviceAction
+	function ResolveExtractDevicesEvent(evt : handle:ExtractDevicesEvent); // ResolveExtractDevicesEvent;ExtractDevicesEvent
+	function SetIsBeingScannedFlag(isBeingScanned : Bool); // SetIsBeingScannedFlag;Bool
+	function SetIsMarkedAsQuest(isQuest : Bool); // SetIsMarkedAsQuest;Bool
+	function SetIsScanComplete(isComplete : Bool); // SetIsScanComplete;Bool
+	function UnInitializeQuestDBCallbacksForQuestmark(); // UnInitializeQuestDBCallbacksForQuestmark;
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,16 @@
+import struct meshCookedClothMeshTopologyData
+{
+	var cookedData : DataBuffer;
+	var gfxIndexToTriangles : array:Uint32;
+	var phxIndexToTriangles : array:Uint32;
+	var gfxBarycentrics : array:Uint32;
+	var phxBarycentrics : array:Uint32;
+	var phxLodSwitchData : array:Uint32;
+	var phxSimulated : array:Uint32;
+	var gfxNumIndicesToTriangles : Uint32;
+	var phxNumIndicesToTriangles : Uint32;
+	var gfxNumBarycentrics : Uint32;
+	var phxNumBarycentrics : Uint32;
+	var phxNumLodSwitchData : Uint32;
+	var phxNumSimulated : Uint32;
+}

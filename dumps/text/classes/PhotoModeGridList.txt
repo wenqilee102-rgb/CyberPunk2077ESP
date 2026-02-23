@@ -1,0 +1,146 @@
+class PhotoModeGridList extends inkRadioGroupController
+{
+	private   var ScrollArea : inkScrollAreaWidgetReference;
+	private   var ContentRoot : inkWidgetReference;
+	private   var SliderWidget : inkWidgetReference;
+	private   var rowOffset : Int32;
+	private   var firstOffset : Int32;
+	private   var rowLibraryId : CName;
+	private   var buttonLibraryId : CName;
+	private   var parentListItem : whandle:PhotoModeMenuListItem;
+	private   var buttons : array:whandle:PhotoModeGridButton;
+	private   var rows : array:whandle:inkWidget;
+	private   var sliderController : whandle:inkSliderController;
+	private   var ItemsInRow : Int32;
+	private   var RowsCount : Int32;
+	private   var SelectedIndex : Int32;
+	private   var PreviousSelectedIndex : Int32;
+	private   var visibleSize : Float;
+	private   var visibleRows : Int32;
+	private   var scrollRow : Int32;
+	private   var isVisibleOnscreen : Bool;
+
+	event OnInitialize() : Bool; // OnInitialize
+	event OnSliderValueChanged(sliderController : whandle:inkSliderController, progress : Float, value : Float) : Bool; // OnSliderValueChanged
+	event OnUninitialize() : Bool; // OnUninitialize
+	event OnValueChanged(controller : whandle:inkRadioGroupController, selectedIndex : Int32) : Bool; // OnValueChanged
+
+	function AddButton(parentWidget : whandle:inkWidget); // AddButton;inkWidget
+	function AddRow() : whandle:inkWidget; // AddRow;
+	function GetRow(buttonIndex : Int32) : Int32; // GetRow;Int32
+	function GetRowClamped(row : Int32) : Int32; // GetRowClamped;Int32
+	function GetSelectedRow() : Int32; // GetSelectedRow;
+	function HandleReleasedInput(e : handle:inkPointerEvent, optional gameCtrl : whandle:gameuiWidgetGameController); // HandleReleasedInput;inkPointerEventinkGameController
+	function OnDeSelected(); // OnDeSelected;
+	function OnGridButtonAction(buttonindex : Int32); // OnGridButtonAction;Int32
+	function OnGridButtonSelected(buttonindex : Int32); // OnGridButtonSelected;Int32
+	function OnSelected(); // OnSelected;
+	function OnVisbilityChanged(visible : Bool); // OnVisbilityChanged;Bool
+	function ScrollToRow(row : Int32); // ScrollToRow;Int32
+	function SelectButton(index : Int32); // SelectButton;Int32
+	function SetGridButtonImage(buttonIndex : Uint32, atlasPath : redResourceReferenceScriptToken, imagePart : CName, buttonData : Int32); // SetGridButtonImage;Uint32ResRefCNameInt32
+	function SetGridButtonImageForceVisible(buttonIndex : Uint32); // SetGridButtonImageForceVisible;Uint32
+	function SetGridData(gridData : script_ref:array:gameuiPhotoModeOptionGridButtonData); // SetGridData;script_ref<array<PhotoModeOptionGridButtonData>>
+	function Setup(listItem : handle:PhotoModeMenuListItem, rows : Int32, itemsInRow : Int32) : Float; // Setup;PhotoModeMenuListItemInt32Int32
+	function TrySelectDown() : Bool; // TrySelectDown;
+	function TrySelectLeft() : Bool; // TrySelectLeft;
+	function TrySelectRight() : Bool; // TrySelectRight;
+	function TrySelectUp() : Bool; // TrySelectUp;
+	function Update(timeDelta : Float); // Update;Float
+	function UpdateButtonsVisibility(); // UpdateButtonsVisibility;
+	function UpdateScroll(); // UpdateScroll;
+	function UpdateSelectedState(); // UpdateSelectedState;
+	function UpdateSize(timeDelta : Float); // UpdateSize;Float
+}
+
+import class inkRadioGroupController extends inkWidgetLogicController
+{
+	var toggleRefs : array:inkWidgetReference;
+	var alwaysToggled : Bool;
+	var selectedIndex : Int32;
+	var ValueChanged : inkRadioGroupChangedCallback;
+
+	import function AddToggle(toAdd : whandle:inkToggleController); // AddToggle
+	import function GetController(index : Int32) : whandle:inkToggleController; // GetController
+	import function GetControllers(out controllers : array:whandle:inkToggleController); // GetControllers
+	import function GetCurrentIndex() : Int32; // GetCurrentIndex
+	import function GetIndexForToggle(controller : whandle:inkToggleController) : Int32; // GetIndexForToggle
+	import function RemoveToggle(index : Int32); // RemoveToggle
+	import function RemoveToggleController(toRemove : whandle:inkToggleController); // RemoveToggleController
+	import function Toggle(toToggle : Int32); // Toggle
+
+	function AddToggles(toAdd : script_ref:array:whandle:inkToggleController); // AddToggles;script_ref<array<inkToggleController>>
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

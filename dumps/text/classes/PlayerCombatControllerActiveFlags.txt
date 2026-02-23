@@ -1,0 +1,8 @@
+struct PlayerCombatControllerActiveFlags
+{
+	public    var crouchActive : Bool;
+	public    var crouchTimerPassed : Bool;
+	public    var isTracked : Bool;
+	public    var usingJhonnyReplacer : Bool;
+	public    var usingQuickHack : Bool;
+}

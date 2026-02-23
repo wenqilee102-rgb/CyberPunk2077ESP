@@ -1,0 +1,19 @@
+import class worldAcousticSectorNode extends worldNode
+{
+	var data : raRef:worldAcousticDataResource;
+	var inSectorCoordsX : Uint32;
+	var inSectorCoordsY : Uint32;
+	var inSectorCoordsZ : Uint32;
+	var generatorId : Uint32;
+	var edgeMask : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

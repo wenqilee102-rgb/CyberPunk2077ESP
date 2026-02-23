@@ -1,0 +1,27 @@
+import class audioAudioMaterialMetadataMapItem extends audioAudioMetadata
+{
+	var footstepsMetadata : CName;
+	var npcFootstepsMetadata : CName;
+	var ragdollMetadata : CName;
+	var physicalMaterial : CName;
+	var obstructionData : CName;
+	var reflectionParams : CName;
+	var meleeMaterialName : CName;
+	var vehicleMaterialName : CName;
+	var foliageMaterialName : CName;
+	var foliagePaletteTag : CName;
+	var meleeMaterialType : audioMeleeMaterialType;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

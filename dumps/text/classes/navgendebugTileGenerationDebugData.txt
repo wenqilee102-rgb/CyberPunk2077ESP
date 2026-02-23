@@ -1,0 +1,11 @@
+import class navgendebugTileGenerationDebugData extends ISerializable
+{
+	var tileIndex : Uint32;
+	var heightfield : navgendebugHeightfield;
+	var contours : navgendebugContourSet;
+	var polyMesh : navgendebugPolyMesh;
+}
+
+import class abstract ISerializable
+{
+}

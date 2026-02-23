@@ -1,0 +1,7 @@
+import struct inputInputSystemNullInterface extends inputIInputSystem
+{
+}
+
+import struct abstract inputIInputSystem
+{
+}

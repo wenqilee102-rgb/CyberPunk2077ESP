@@ -1,0 +1,4 @@
+import struct gameHitRepresentationResults
+{
+	var sults : array:gameHitRepresentationResult;
+}

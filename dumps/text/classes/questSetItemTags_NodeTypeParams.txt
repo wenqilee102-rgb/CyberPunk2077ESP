@@ -1,0 +1,7 @@
+import struct questSetItemTags_NodeTypeParams
+{
+	var objectRef : handle:questUniversalRef;
+	var itemId : TweakDBID;
+	var addTags : Bool;
+	var tags : gameEItemDynamicTags;
+}

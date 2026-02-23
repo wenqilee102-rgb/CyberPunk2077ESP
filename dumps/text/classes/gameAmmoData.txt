@@ -1,0 +1,6 @@
+import struct gameAmmoData
+{
+	var id : gameItemID;
+	var available : Int32;
+	var equipped : Int32;
+}

@@ -1,0 +1,4 @@
+import struct entReplicatedLookAtData
+{
+	var creationNetTime : netTime;
+}

@@ -1,0 +1,29 @@
+import class gameEffectAction_NewEffect_Ricochet extends gameEffectPostAction
+{
+	var tagInThisFile : CName;
+	var forwardOffset : Float;
+	var childEffect : Bool;
+	var childEffectTag : CName;
+}
+
+import class abstract gameEffectPostAction extends gameEffectAction
+{
+}
+
+import class abstract gameEffectAction extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameGameSession extends gameBaseGameSession
+{
+}
+
+import struct abstract gameBaseGameSession
+{
+}

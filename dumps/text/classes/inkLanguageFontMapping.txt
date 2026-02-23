@@ -1,0 +1,10 @@
+import struct inkLanguageFontMapping
+{
+	var languageCode : CName;
+	var font : raRef:inkFontFamilyResource;
+	var fontSizeModifier : Int16;
+	var trackingModifier : Uint32;
+	var lineHeightModifier : Float;
+	var fontSizeModifierFloat : Float;
+	var styleModifer : CName;
+}

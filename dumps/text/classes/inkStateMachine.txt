@@ -1,0 +1,11 @@
+import class abstract inkStateMachine extends inkIStateMachine
+{
+}
+
+import class abstract inkIStateMachine extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

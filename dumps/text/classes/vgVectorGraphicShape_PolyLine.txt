@@ -1,0 +1,15 @@
+import class vgVectorGraphicShape_PolyLine extends vgBaseVectorGraphicShape
+{
+	var ints : array:Vector2;
+	var roke : Float;
+}
+
+import class abstract vgBaseVectorGraphicShape extends ISerializable
+{
+	var calTransform : Matrix;
+	var yle : handle:vgVectorGraphicStyle;
+}
+
+import class abstract ISerializable
+{
+}

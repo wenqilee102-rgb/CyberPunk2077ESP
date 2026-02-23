@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameItemAddedEvent","c":"ItemAddedEvent","d":24,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"a":26,"c":{"b":"gameItemData"}},"b":"itemData","c":128},{"a":{"a":6},"b":"currentQuantity","c":128},{"a":{"a":1},"b":"flaggedAsSilent","c":128}]}

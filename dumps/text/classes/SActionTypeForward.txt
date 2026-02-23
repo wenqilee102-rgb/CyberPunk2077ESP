@@ -1,0 +1,6 @@
+struct SActionTypeForward
+{
+	public    var qHack : Bool;
+	public    var techie : Bool;
+	public    var master : Bool;
+}

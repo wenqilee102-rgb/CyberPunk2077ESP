@@ -1,0 +1,17 @@
+import class AIbehaviorRandomConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var chance : Float;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+class CluePSData extends IScriptable
+{
+	private   var id : Int32;
+	private   var isEnabled : Bool;
+	private   var wasInspected : Bool;
+	private   var isScanned : Bool;
+	private   var conclusionQuestState : EConclusionQuestState;
+
+	function GetConclusionState() : EConclusionQuestState; // GetConclusionState;
+	function GetID() : Int32; // GetID;
+	function IsEnabled() : Bool; // IsEnabled;
+	function IsScanned() : Bool; // IsScanned;
+	function SetConclusionState(state : EConclusionQuestState); // SetConclusionState;EConclusionQuestState
+	function SetupData(id : Int32, isEnabled : Bool, wasInspected : Bool, isScanned : Bool, conclusionQuestState : EConclusionQuestState); // SetupData;Int32BoolBoolBoolEConclusionQuestState
+	function WasInspected() : Bool; // WasInspected;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct animAnimMultiBoolToFloatEntry
+{
+	var group : CName;
+	var name : CName;
+}

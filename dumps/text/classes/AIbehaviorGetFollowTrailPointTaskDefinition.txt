@@ -1,0 +1,14 @@
+import class AIbehaviorGetFollowTrailPointTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var inTrailDelay : handle:AIArgumentMapping;
+	var outFollowTrailPoint : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

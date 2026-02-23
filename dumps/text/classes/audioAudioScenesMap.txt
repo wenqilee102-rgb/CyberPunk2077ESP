@@ -1,0 +1,18 @@
+import class audioAudioScenesMap extends audioAudioMetadata
+{
+	var defaultScene : CName;
+	var scenesToActivateByQuestEvent : handle:audioAudioSceneDictionary;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class Sample_Replicated_Serializable extends ISerializable
+{
+	var property : Bool;
+}
+
+import class abstract ISerializable
+{
+}

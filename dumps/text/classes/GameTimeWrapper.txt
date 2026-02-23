@@ -1,0 +1,4 @@
+import struct GameTimeWrapper
+{
+	var gameTime : GameTime;
+}

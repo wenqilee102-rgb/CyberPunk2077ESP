@@ -1,0 +1,29 @@
+import class entSpawnEffectEvent extends redEvent
+{
+	var blackboard : handle:worldEffectBlackboard;
+	var effectName : CName;
+	var idForRandomizedEffect : CRUID;
+	var effectInstanceName : CName;
+	var persistOnDetach : Bool;
+	var breakAllLoops : Bool;
+	var breakAllOnDestroy : Bool;
+	var e3hackDeferCount : Uint32;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

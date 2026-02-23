@@ -1,0 +1,30 @@
+class AnimFeature_PlayerHitReactionData extends animAnimFeature
+{
+	public    var hitDirection : Float;
+	public    var hitStrength : Float;
+	public    var isMeleeHit : Bool;
+	public    var isLightMeleeHit : Bool;
+	public    var isStrongMeleeHit : Bool;
+	public    var isQuickMeleeHit : Bool;
+	public    var isExplosion : Bool;
+	public    var isPressureWave : Bool;
+	public    var meleeAttackDirection : Int32;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

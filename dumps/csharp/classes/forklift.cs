@@ -1,0 +1,58 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class forklift : InteractiveDevice
+	{
+		private CBool _reversed;
+		private CHandle<AnimFeature_ForkliftDevice> _animFeature;
+		private CHandle<entAnimationControllerComponent> _animationController;
+		private CBool _isPlayerUnder;
+		private CHandle<entPhysicalMeshComponent> _cargoBox;
+
+		[Ordinal(98)] 
+		[RED("reversed")] 
+		public CBool Reversed
+		{
+			get => GetProperty(ref _reversed);
+			set => SetProperty(ref _reversed, value);
+		}
+
+		[Ordinal(99)] 
+		[RED("animFeature")] 
+		public CHandle<AnimFeature_ForkliftDevice> AnimFeature
+		{
+			get => GetProperty(ref _animFeature);
+			set => SetProperty(ref _animFeature, value);
+		}
+
+		[Ordinal(100)] 
+		[RED("animationController")] 
+		public CHandle<entAnimationControllerComponent> AnimationController
+		{
+			get => GetProperty(ref _animationController);
+			set => SetProperty(ref _animationController, value);
+		}
+
+		[Ordinal(101)] 
+		[RED("isPlayerUnder")] 
+		public CBool IsPlayerUnder
+		{
+			get => GetProperty(ref _isPlayerUnder);
+			set => SetProperty(ref _isPlayerUnder, value);
+		}
+
+		[Ordinal(102)] 
+		[RED("cargoBox")] 
+		public CHandle<entPhysicalMeshComponent> CargoBox
+		{
+			get => GetProperty(ref _cargoBox);
+			set => SetProperty(ref _cargoBox, value);
+		}
+
+		public forklift(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

@@ -1,0 +1,10 @@
+struct ProgramData
+{
+	public    var id : String;
+	public    var commandLists : array:array:ElementData;
+	public    var effects : array:ProgramEffect;
+	public    var type : ProgramType;
+	public    var localizationKey : String;
+	public    var startAsUnknown : Bool;
+	public    var wasCompleted : Bool;
+}

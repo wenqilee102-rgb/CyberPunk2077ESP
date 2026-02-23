@@ -1,0 +1,4 @@
+struct PreventionSystemConfig
+{
+	public    var record : TweakDBID;
+}

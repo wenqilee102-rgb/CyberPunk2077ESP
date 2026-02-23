@@ -1,0 +1,27 @@
+import class vehicleCameraManagerFT extends vehicleCameraManager
+{
+	import function FT_GetActiveCameraType() : vehicleCameraType; // FT_GetActiveCameraType
+	import function FT_IsSceneModeActive() : Bool; // FT_IsSceneModeActive
+	import function FT_RequestSceneMode(active : Bool); // FT_RequestSceneMode
+}
+
+import class vehicleCameraManager extends IScriptable
+{
+	import function GetActivePerspective() : vehicleCameraPerspective; // GetActivePerspective
+	import function GetPersistentPerspective() : vehicleCameraPerspective; // GetPersistentPerspective
+	import function IsTPPActive() : Bool; // IsTPPActive
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

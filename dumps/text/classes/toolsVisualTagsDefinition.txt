@@ -1,0 +1,4 @@
+import struct toolsVisualTagsDefinition
+{
+	var name : CName;
+}

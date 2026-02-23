@@ -1,0 +1,13 @@
+import class scnChoiceNodeNsBasicLookAtParams extends scnChoiceNodeNsLookAtParams
+{
+	var slotName : CName;
+	var offset : Vector3;
+}
+
+import class abstract scnChoiceNodeNsLookAtParams extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

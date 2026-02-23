@@ -1,0 +1,1 @@
+{"b":"gameMuppetCompressedInputStates","d":8,"g":true,"e":[{"a":{"a":1},"b":"usesCompression","c":128},{"a":{"a":31,"c":{"a":3}},"b":"compressedInputStates","c":128},{"a":{"a":7},"b":"firstFrameId","c":128},{"a":{"b":"netTime"},"b":"replicationTime","c":128}]}

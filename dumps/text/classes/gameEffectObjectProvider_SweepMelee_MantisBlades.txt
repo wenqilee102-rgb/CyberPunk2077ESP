@@ -1,0 +1,40 @@
+import class gameEffectObjectProvider_SweepMelee_MantisBlades extends gameEffectObjectProvider_SweepMelee_Box
+{
+}
+
+import class gameEffectObjectProvider_SweepMelee_Box extends gameEffectObjectProvider_SweepOverTime
+{
+	var playerStaticDetectionConeDistance : Float;
+	var playerStaticDetectionConeStartAngle : Float;
+	var playerStaticDetectionConeEndAngle : Float;
+	var playerUseCameraForObstructionChecks : Bool;
+	var checkMeleeInvulnerability : Bool;
+}
+
+import class abstract gameEffectObjectProvider_SweepOverTime extends gameEffectObjectProvider
+{
+	var filterData : handle:physicsFilterData;
+	var queryPreset : physicsQueryPreset;
+}
+
+import class abstract gameEffectObjectProvider extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

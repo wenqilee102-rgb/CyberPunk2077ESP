@@ -1,0 +1,9 @@
+import struct gameinteractionsvisInteractionDisplayData
+{
+	var putAction : CName;
+	var wInputKey : EInputKey;
+	var HoldAction : Bool;
+	var calizedName : String;
+	var pe : gameinteractionsChoiceTypeWrapper;
+	var oice : gameinteractionsChoice;
+}

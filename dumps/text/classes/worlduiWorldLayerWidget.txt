@@ -1,0 +1,7 @@
+import struct worlduiWorldLayerWidget extends inkIWidgetComponentWrapper
+{
+}
+
+import struct abstract inkIWidgetComponentWrapper
+{
+}

@@ -1,0 +1,7 @@
+import struct gameMuppetInputActionCrouch extends gameIMuppetInputAction
+{
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

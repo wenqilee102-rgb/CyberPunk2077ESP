@@ -1,0 +1,8 @@
+import struct gamePingEntry
+{
+	var owner : whandle:gameObject;
+	var worldPosition : Vector4;
+	var time : netTime;
+	var pingType : gamedataPingType;
+	var hitObject : whandle:entEntity;
+}

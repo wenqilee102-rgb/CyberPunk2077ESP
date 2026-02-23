@@ -1,0 +1,11 @@
+import class animAnimNodeSourceChannel_WeightedVector extends ISerializable
+{
+	var channel : handle:animIAnimNodeSourceChannel_Vector;
+	var weight : Float;
+	var weightLink : animFloatLink;
+	var weightFloatTrack : animNamedTrackIndex;
+}
+
+import class abstract ISerializable
+{
+}

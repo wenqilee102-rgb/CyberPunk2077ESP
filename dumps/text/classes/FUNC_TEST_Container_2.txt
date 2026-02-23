@@ -1,0 +1,10 @@
+struct FUNC_TEST_Container_2
+{
+	public    var FloatBox : Float;
+	public    var IntBox : Int32;
+	public    var BoolBox : Bool;
+	public    var NameBox : CName;
+	public    var StringBox : String;
+	public    var CNameBox : CName;
+	public    var TweakBox : TweakDBID;
+}

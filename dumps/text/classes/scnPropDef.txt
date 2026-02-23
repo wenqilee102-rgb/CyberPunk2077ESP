@@ -1,0 +1,17 @@
+import struct scnPropDef
+{
+	var propId : scnPropId;
+	var propName : String;
+	var specPropRecordId : TweakDBID;
+	var animSets : array:scnRidAnimSetSRRefId;
+	var cinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var dynamicAnimSets : array:scnDynamicAnimSetSRRefId;
+	var entityAcquisitionPlan : scnEntityAcquisitionPlan;
+	var findEntityInEntityParams : scnFindEntityInEntityParams;
+	var spawnDespawnParams : scnSpawnDespawnEntityParams;
+	var spawnSetParams : scnSpawnSetParams;
+	var communityParams : scnCommunityParams;
+	var spawnerParams : scnSpawnerParams;
+	var findEntityInNodeParams : scnFindEntityInNodeParams;
+	var findEntityInWorldParams : scnFindEntityInWorldParams;
+}

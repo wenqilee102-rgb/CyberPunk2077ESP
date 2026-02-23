@@ -1,0 +1,6 @@
+struct subtitleLineMapEntry
+{
+	public    var id : CRUID;
+	public    var widget : whandle:inkWidget;
+	public    var owner : whandle:gameObject;
+}

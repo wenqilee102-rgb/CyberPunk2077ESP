@@ -1,0 +1,7 @@
+import struct PSODescBlendModeDesc
+{
+	var numTargets : Uint8;
+	var independent : Bool;
+	var alphaToCoverage : Bool;
+	var renderTarget : [8]PSODescRenderTarget;
+}

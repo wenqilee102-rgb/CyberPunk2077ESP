@@ -1,0 +1,16 @@
+import class inkColorCorrectionEffect extends inkIEffect
+{
+	var brightness : Float;
+	var contrast : Float;
+	var saturation : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

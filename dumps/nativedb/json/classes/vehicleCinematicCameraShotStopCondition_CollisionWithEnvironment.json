@@ -1,0 +1,1 @@
+{"a":"vehicleCinematicCameraShotStopCondition","b":"vehicleCinematicCameraShotStopCondition_CollisionWithEnvironment","d":8,"f":[{"a":"Evaluate;CinematicCameraDataWorldTransform","b":"Evaluate","c":{"a":1},"d":32,"e":[{"a":{"b":"CinematicCameraData"},"b":"data","c":0},{"a":{"b":"WorldTransform"},"b":"finalTransform","c":0}]}]}

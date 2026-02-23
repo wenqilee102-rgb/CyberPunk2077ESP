@@ -1,0 +1,45 @@
+class GameplayQuestSystem extends gameScriptableSystem
+{
+	private   var quests : array:handle:GamplayQuestData;
+
+	function AddObjective(objectiveData : handle:GemplayObjectiveData); // AddObjective;GemplayObjectiveData
+	function CreateQuest(objectiveData : handle:GemplayObjectiveData) : handle:GamplayQuestData; // CreateQuest;GemplayObjectiveData
+	function EvaluateQuest(questData : handle:GamplayQuestData); // EvaluateQuest;GamplayQuestData
+	function GetJournal() : handle:gameJournalManager; // GetJournal;
+	function GetQuestData(objectiveData : handle:GemplayObjectiveData) : handle:GamplayQuestData; // GetQuestData;GemplayObjectiveData
+	function HasQuest(questUniqueId : script_ref:String) : Bool; // HasQuest;script_ref<String>
+	function OnRegisterObjective(request : handle:RegisterGameplayObjectiveRequest); // OnRegisterObjective;RegisterGameplayObjectiveRequest
+	function OnSetObjectiveState(request : handle:SetGameplayObjectiveStateRequest); // OnSetObjectiveState;SetGameplayObjectiveStateRequest
+	function RemoveQuest(questData : handle:GamplayQuestData) : Bool; // RemoveQuest;GamplayQuestData
+	function SetObjectiveState(objectiveData : handle:GemplayObjectiveData, objectiveState : gameJournalEntryState); // SetObjectiveState;GemplayObjectiveDatagameJournalEntryState
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

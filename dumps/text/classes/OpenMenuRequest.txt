@@ -1,0 +1,29 @@
+class OpenMenuRequest extends redEvent
+{
+	public    var menuName : CName;
+	public    var userData : handle:IScriptable;
+	public    var jumpBack : Bool;
+	public    var eventData : MenuData;
+	public    var submenuName : CName;
+	public    var isMainMenu : Bool;
+	public    var internal : Bool;
+	public    var hubMenuInstanceID : Uint32;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

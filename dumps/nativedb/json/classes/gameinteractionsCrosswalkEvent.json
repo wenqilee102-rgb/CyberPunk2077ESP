@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameinteractionsCrosswalkEvent","c":"CrosswalkEvent","d":24,"e":[{"a":{"b":"worldTrafficLightColor"},"b":"trafficLightColor","c":128},{"a":{"b":"worldTrafficLightColor"},"b":"oldTrafficLightColor","c":128},{"a":{"a":10},"b":"totalDistance","c":128},{"a":{"a":10},"b":"distanceLeft","c":128}]}

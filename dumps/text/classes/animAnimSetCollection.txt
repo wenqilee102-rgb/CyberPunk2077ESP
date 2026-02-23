@@ -1,0 +1,6 @@
+import struct animAnimSetCollection
+{
+	var animSets : array:raRef:animAnimSet;
+	var overrideAnimSets : array:animOverrideAnimSetRef;
+	var animWrapperVariables : array:animAnimWrapperVariableDescription;
+}

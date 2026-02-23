@@ -1,0 +1,9 @@
+import class inkWidgetClipboardData extends ISerializable
+{
+	var widget : handle:inkWidget;
+	var widgetPath : inkWidgetPath;
+}
+
+import class abstract ISerializable
+{
+}

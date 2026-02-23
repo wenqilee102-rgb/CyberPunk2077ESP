@@ -1,0 +1,4 @@
+import struct gameStatusEffectTDBPicker
+{
+	var statusEffect : TweakDBID;
+}

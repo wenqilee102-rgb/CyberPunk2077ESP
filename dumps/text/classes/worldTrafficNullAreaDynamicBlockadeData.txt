@@ -1,0 +1,8 @@
+import class worldTrafficNullAreaDynamicBlockadeData extends ISerializable
+{
+	var nullAreasBlockades : array:worldTrafficNullAreaDynamicBlockade;
+}
+
+import class abstract ISerializable
+{
+}

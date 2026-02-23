@@ -1,0 +1,1 @@
+{"a":"gameuiWidgetGameController","b":"BaseChunkGameController","d":0,"e":[{"a":{"a":27,"c":{"b":"gameIBlackboard"}},"b":"chunkBlackboard","c":130},{"a":{"a":26,"c":{"b":"UI_ScannerModulesDef"}},"b":"chunkBlackboardDef","c":130},{"a":{"a":26,"c":{"b":"UI_ScannerDef"}},"b":"questClueBlackboardDef","c":130}],"f":[{"a":"OnInitialize","c":{"a":1},"d":98}]}

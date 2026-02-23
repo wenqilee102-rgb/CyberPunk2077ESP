@@ -1,0 +1,12 @@
+import struct entReplicatedLookAtAdd extends entReplicatedLookAtData
+{
+	var bodyPart : CName;
+	var request : animLookAtRequest;
+	var targetPositionProvider : handle:entIPositionProvider;
+	var ref : animLookAtRef;
+}
+
+import struct entReplicatedLookAtData
+{
+	var creationNetTime : netTime;
+}

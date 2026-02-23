@@ -1,0 +1,27 @@
+import struct Transform
+{
+	var position : Vector4;
+	var orientation : Quaternion;
+
+	import static function GetForward(xform : Transform) : Vector4; // GetForward
+	import static function GetInverse(xform : Transform) : Transform; // GetInverse
+	import static function GetOrientation(xform : Transform) : Quaternion; // GetOrientation
+	import static function GetPitch(xform : Transform) : Float; // GetPitch
+	import static function GetPosition(xform : Transform) : Vector4; // GetPosition
+	import static function GetRight(xform : Transform) : Vector4; // GetRight
+	import static function GetRoll(xform : Transform) : Float; // GetRoll
+	import static function GetUp(xform : Transform) : Vector4; // GetUp
+	import static function GetYaw(xform : Transform) : Float; // GetYaw
+	import static function SetIdentity(xform : Transform); // SetIdentity
+	import static function SetInverse(xform : Transform); // SetInverse
+	import static function SetOrientation(xform : Transform, quat : Quaternion); // SetOrientation
+	import static function SetOrientationEuler(xform : Transform, euler : EulerAngles); // SetOrientationEuler
+	import static function SetOrientationFromDir(xform : Transform, direction : Vector4); // SetOrientationFromDir
+	import static function SetPosition(xform : Transform, v : Vector4); // SetPosition
+	import static function ToEulerAngles(xform : Transform) : EulerAngles; // ToEulerAngles
+	import static function ToMatrix(xform : Transform) : Matrix; // ToMatrix
+	import static function TransformPoint(xform : Transform, v : Vector4) : Vector4; // TransformPoint
+	import static function TransformVector(xform : Transform, v : Vector4) : Vector4; // TransformVector
+
+	static function Create(position : Vector4, optional orientation : Quaternion) : Transform; // Transform::Create;Vector4Quaternion
+}

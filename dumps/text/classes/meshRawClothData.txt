@@ -1,0 +1,9 @@
+import struct meshRawClothData
+{
+	var state : physicsclothState;
+	var maxDistanceChannel : array:DataBuffer;
+	var maxDistanceExtChannel : array:DataBuffer;
+	var backstopDistanceChannel : array:DataBuffer;
+	var backstopRadiusChannel : array:DataBuffer;
+	var selfCollisionChannel : array:DataBuffer;
+}

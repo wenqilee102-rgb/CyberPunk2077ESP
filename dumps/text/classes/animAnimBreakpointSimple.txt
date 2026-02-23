@@ -1,0 +1,9 @@
+import struct animAnimBreakpointSimple extends animIAnimBreakpoint
+{
+	var hitCount : Uint32;
+}
+
+import struct abstract animIAnimBreakpoint
+{
+	var enabled : Bool;
+}

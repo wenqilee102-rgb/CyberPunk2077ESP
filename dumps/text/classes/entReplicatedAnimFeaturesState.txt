@@ -1,0 +1,5 @@
+import struct entReplicatedAnimFeaturesState
+{
+	var items : array:entReplicatedAnimFeature;
+	var lastAppliedActionsTime : netTime;
+}

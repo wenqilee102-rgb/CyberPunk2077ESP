@@ -1,0 +1,4 @@
+import struct scnDynamicAnimSetSRRefId
+{
+	var id : Uint32;
+}

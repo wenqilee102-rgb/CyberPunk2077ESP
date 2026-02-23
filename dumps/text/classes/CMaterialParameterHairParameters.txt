@@ -1,0 +1,14 @@
+import class CMaterialParameterHairParameters extends CMaterialParameter
+{
+	var hairProfile : rRef:CHairProfile;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

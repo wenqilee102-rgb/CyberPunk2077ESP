@@ -1,0 +1,54 @@
+import class gamestateMachineComponent extends gamePlayerControlledComponent
+{
+	var packageName : String;
+
+	import function AddStateMachine(stateMachineName : CName, instanceData : gamestateMachineStateMachineInstanceData, owner : whandle:entEntity, optional tryHotSwap : Bool); // AddStateMachine
+	import function GetSnapshotContainer() : gamestateMachineStateSnapshotsContainer; // GetSnapshotContainer
+	import function IsStateMachinePresent(stateMachineIdentifier : gamestateMachineStateMachineIdentifier) : Bool; // IsStateMachinePresent
+	import function RemoveStateMachine(stateMachineIdentifier : gamestateMachineStateMachineIdentifier); // RemoveStateMachine
+
+	event OnRipOff(evt : handle:RipOff) : Bool; // OnRipOff
+	event OnStartFinisherEvent(evt : handle:gameeventsStartFinisherEvent) : Bool; // OnStartFinisherEvent
+	event OnStartMountingEvent(mountingEvent : handle:gamemountingMountingEvent) : Bool; // OnStartMountingEvent
+	event OnStartTakedownEvent(startTakedownEvent : handle:gameeventsStartTakedownEvent) : Bool; // OnStartTakedownEvent
+	event OnStartUnmountingEvent(unmountingEvent : handle:gamemountingUnmountingEvent) : Bool; // OnStartUnmountingEvent
+
+	function MountAsChild(mountingEvent : handle:gamemountingMountingEvent, ownerEntity : handle:entEntity); // MountAsChild;MountingEventEntity
+	function MountFromParent(mountingEvent : handle:gamemountingMountingEvent, ownerEntity : handle:entEntity); // MountFromParent;MountingEventEntity
+	function UnmountChild(unmountingEvent : handle:gamemountingUnmountingEvent, ownerEntity : handle:entEntity); // UnmountChild;UnmountingEventEntity
+	function UnmountFromParent(unmountingEvent : handle:gamemountingUnmountingEvent, ownerEntity : handle:entEntity); // UnmountFromParent;UnmountingEventEntity
+}
+
+import class gamePlayerControlledComponent extends entIComponent
+{
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

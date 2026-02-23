@@ -1,0 +1,17 @@
+import struct gameprojectileWeaponParams
+{
+	var targetPosition : Vector4;
+	var smartGunSpreadOnHitPlane : Vector3;
+	var charge : Float;
+	var trackedTargetComponent : whandle:entIPlacedComponent;
+	var smartGunAccuracy : Float;
+	var smartGunIsProjectileGuided : Bool;
+	var hitPlaneOffset : Vector4;
+	var shootingOffset : Float;
+	var ignoreWeaponOwnerCollision : Bool;
+	var ignoreMountedVehicleCollision : Bool;
+	var ricochetData : gameRicochetData;
+	var range : Float;
+
+	import static function AddObjectToIgnoreCollisionWith(self : gameprojectileWeaponParams, entityID : entEntityID); // AddObjectToIgnoreCollisionWith
+}

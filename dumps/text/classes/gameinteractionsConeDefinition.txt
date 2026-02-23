@@ -1,0 +1,15 @@
+import class gameinteractionsConeDefinition extends gameinteractionsIShapeDefinition
+{
+	var pos1 : Vector4;
+	var pos2 : Vector4;
+	var radius1 : Float;
+	var radius2 : Float;
+}
+
+import class abstract gameinteractionsIShapeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

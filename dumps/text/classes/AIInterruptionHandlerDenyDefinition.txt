@@ -1,0 +1,17 @@
+import class AIInterruptionHandlerDenyDefinition extends AIInterruptionHandlerDefinition
+{
+}
+
+import class abstract AIInterruptionHandlerDefinition extends LibTreeINodeDefinition
+{
+	var signal : AIInterruptionSignal;
+	var supportLessImportantSignals : Bool;
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

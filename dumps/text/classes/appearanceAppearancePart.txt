@@ -1,0 +1,4 @@
+import struct appearanceAppearancePart
+{
+	var resource : raRef:entEntityTemplate;
+}

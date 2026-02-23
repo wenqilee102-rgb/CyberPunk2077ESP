@@ -1,0 +1,25 @@
+class abstract InventoryGPRestrictionHelper extends IScriptable
+{
+	static function BlockedBySceneTier(playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::BlockedBySceneTier;PlayerPuppet
+	static function CanDrop(itemData : whandle:UIInventoryItem, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanDrop;UIInventoryItemPlayerPuppet
+	static function CanDrop(itemData : script_ref:gameInventoryItemData, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanDrop;script_ref<InventoryItemData>PlayerPuppet
+	static function CanEquip(itemData : script_ref:gameInventoryItemData, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanEquip;script_ref<InventoryItemData>PlayerPuppet
+	static function CanInteractByEquipmentArea(itemData : whandle:UIInventoryItem, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanInteractByEquipmentArea;UIInventoryItemPlayerPuppet
+	static function CanInteractByEquipmentArea(itemData : script_ref:gameInventoryItemData, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanInteractByEquipmentArea;script_ref<InventoryItemData>PlayerPuppet
+	static function CanUse(itemData : script_ref:gameInventoryItemData, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanUse;script_ref<InventoryItemData>PlayerPuppet
+	static function CanUse(itemData : whandle:UIInventoryItem, playerPuppet : whandle:PlayerPuppet) : Bool; // InventoryGPRestrictionHelper::CanUse;UIInventoryItemPlayerPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

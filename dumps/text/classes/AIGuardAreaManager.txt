@@ -1,0 +1,31 @@
+import class AIGuardAreaManager extends AIIGuardAreaManager
+{
+	import function AssignRestrictMovementArea(npcEntityID : entEntityID, restrictMovementArea : NodeRef) : Bool; // AssignRestrictMovementArea
+	import function FindPointInRestrictMovementArea(npcEntityID : entEntityID, referencePoint : Vector4, out restrictMovementAreaPoint : Vector4) : Bool; // FindPointInRestrictMovementArea
+	import function GetAllPuppetsInRestrictMovementArea(area : AIScriptGuardArea) : array:entEntityID; // GetAllPuppetsInRestrictMovementArea
+	import function HasAssignedRestrictMovementArea(npcEntityID : entEntityID) : Bool; // HasAssignedRestrictMovementArea
+	import function IsPointInPursuitZone(npcEntityID : entEntityID, point : Vector4) : Bool; // IsPointInPursuitZone
+	import function IsPointInRestrictMovementArea(npcEntityID : entEntityID, point : Vector4, optional onlyActualArea : Bool) : Bool; // IsPointInRestrictMovementArea
+}
+
+import class abstract AIIGuardAreaManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

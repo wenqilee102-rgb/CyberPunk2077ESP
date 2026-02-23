@@ -1,0 +1,18 @@
+import class CSkinProfile extends CResource
+{
+	var blurSize : Float;
+	var diffuse : Color;
+	var falloff : Color;
+	var roughness0 : Float;
+	var roughness1 : Float;
+	var lobeMix : Float;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

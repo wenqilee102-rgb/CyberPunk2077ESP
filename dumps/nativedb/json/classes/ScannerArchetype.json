@@ -1,0 +1,1 @@
+{"a":"ScannerChunk","b":"ScannerArchetype","d":0,"e":[{"a":{"b":"gamedataArchetypeType"},"b":"archetype","c":129}],"f":[{"a":"GetArchtype;","b":"GetArchtype","c":{"b":"gamedataArchetypeType"},"d":176},{"a":"GetType;","b":"GetType","c":{"b":"ScannerDataType"},"d":32},{"a":"Set;gamedataArchetypeType","b":"Set","d":48,"e":[{"a":{"b":"gamedataArchetypeType"},"b":"a","c":0}]}]}

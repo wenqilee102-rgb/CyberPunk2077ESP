@@ -1,0 +1,27 @@
+class AnimationsConstructor extends IScriptable
+{
+	private   var duration : Float;
+	private   var type : inkanimInterpolationType;
+	private   var mode : inkanimInterpolationMode;
+	private   var isAdditive : Bool;
+
+	function NewColorInterpolator(startColor : HDRColor, endColor : HDRColor) : handle:inkanimColorInterpolator; // NewColorInterpolator;HDRColorHDRColor
+	function NewMarginInterpolator(startMargin : inkMargin, endMargin : inkMargin) : handle:inkanimMarginInterpolator; // NewMarginInterpolator;inkMargininkMargin
+	function NewRotationInterpolator(startRotation : Float, endRotation : Float) : handle:inkanimRotationInterpolator; // NewRotationInterpolator;FloatFloat
+	function NewSizeInterpolator(startSize : Vector2, endSize : Vector2) : handle:inkanimSizeInterpolator; // NewSizeInterpolator;Vector2Vector2
+	function SetGenericSettings(animDuration : Float, animType : inkanimInterpolationType, animMode : inkanimInterpolationMode, isAdditive : Bool); // SetGenericSettings;FloatinkanimInterpolationTypeinkanimInterpolationModeBool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

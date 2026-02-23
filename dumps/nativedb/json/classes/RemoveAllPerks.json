@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"RemoveAllPerks","d":0,"e":[{"a":{"a":1},"b":"unequipPerkItems","c":128},{"a":{"a":1},"b":"removeCost","c":128}],"f":[{"a":"Set;GameObjectBoolBool","b":"Set","d":48,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"_owner","c":0},{"a":{"a":1},"b":"unequip","c":0},{"a":{"a":1},"b":"free","c":0}]}]}

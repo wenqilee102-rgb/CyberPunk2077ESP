@@ -1,0 +1,59 @@
+import class gameStatPoolsSystem extends gameIStatPoolsSystem
+{
+	import static function GetStatPoolType(damageType : gamedataDamageType) : gamedataStatPoolType; // GetStatPoolType
+
+	import function GetActiveModifierRecordID(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, type : gameStatPoolModificationTypes, out isModifierDefault : Bool) : TweakDBID; // GetActiveModifierRecordID
+	import function GetBonus(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, optional perc : Bool) : Float; // GetBonus
+	import function GetModifier(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, type : gameStatPoolModificationTypes, out modifier : gameStatPoolModifier) : Bool; // GetModifier
+	import function GetStatPoolMaxPointValue(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Float; // GetStatPoolMaxPointValue
+	import function GetStatPoolValue(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, optional perc : Bool) : Float; // GetStatPoolValue
+	import function GetStatPoolValueCustomLimit(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, optional perc : Bool) : Float; // GetStatPoolValueCustomLimit
+	import function HasActiveStatPool(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Bool; // HasActiveStatPool
+	import function HasStatPoolValueReachedCustomLimit(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Bool; // HasStatPoolValueReachedCustomLimit
+	import function HasStatPoolValueReachedMax(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Bool; // HasStatPoolValueReachedMax
+	import function HasStatPoolValueReachedMin(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Bool; // HasStatPoolValueReachedMin
+	import function IsExtraModifierApplied(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, modifierRecordID : TweakDBID); // IsExtraModifierApplied
+	import function IsStatPoolAdded(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Bool; // IsStatPoolAdded
+	import function IsStatPoolModificationDelayed(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType) : Bool; // IsStatPoolModificationDelayed
+	import function RequestAddingExtraModifier(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, type : gameStatPoolModificationTypes, modifierRecordID : TweakDBID); // RequestAddingExtraModifier
+	import function RequestAddingStatPool(objID : gameStatsObjectID, statPoolRecordID : TweakDBID, optional forceCreateStatPools : Bool); // RequestAddingStatPool
+	import function RequestChangingStatPoolValue(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, diff : Float, instigator : whandle:gameObject, forceChunkTransfering : Bool, optional perc : Bool, optional ignoreCustomLimit : Bool); // RequestChangingStatPoolValue
+	import function RequestMarkingStatPoolActive(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType); // RequestMarkingStatPoolActive
+	import function RequestRegisteringListener(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, listener : handle:gameIStatPoolsListener); // RequestRegisteringListener
+	import function RequestRemovingExtraModifier(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, modifierRecordID : TweakDBID); // RequestRemovingExtraModifier
+	import function RequestRemovingStatPool(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType); // RequestRemovingStatPool
+	import function RequestResetingModifier(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, type : gameStatPoolModificationTypes); // RequestResetingModifier
+	import function RequestSettingModifier(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, type : gameStatPoolModificationTypes, modifier : gameStatPoolModifier); // RequestSettingModifier
+	import function RequestSettingModifierWithRecord(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, type : gameStatPoolModificationTypes, modifierRecordID : TweakDBID); // RequestSettingModifierWithRecord
+	import function RequestSettingStatPoolBonus(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, bonus : Float, instigator : whandle:gameObject, persistentBonus : Bool, optional perc : Bool); // RequestSettingStatPoolBonus
+	import function RequestSettingStatPoolMaxValue(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, instigator : whandle:gameObject); // RequestSettingStatPoolMaxValue
+	import function RequestSettingStatPoolMinValue(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, instigator : whandle:gameObject); // RequestSettingStatPoolMinValue
+	import function RequestSettingStatPoolValue(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, newValue : Float, instigator : whandle:gameObject, optional perc : Bool, optional ignoreCustomLimit : Bool); // RequestSettingStatPoolValue
+	import function RequestSettingStatPoolValueCustomLimit(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, newValue : Float, instigator : whandle:gameObject, optional perc : Bool); // RequestSettingStatPoolValueCustomLimit
+	import function RequestSettingStatPoolValueIgnoreChangeMode(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, newValue : Float, instigator : whandle:gameObject, optional perc : Bool); // RequestSettingStatPoolValueIgnoreChangeMode
+	import function RequestUnregisteringListener(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, listener : handle:gameIStatPoolsListener); // RequestUnregisteringListener
+	import function ToPercentage(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, value : Float) : Float; // ToPercentage
+	import function ToPoints(objID : gameStatsObjectID, statPoolType : gamedataStatPoolType, percValue : Float) : Float; // ToPoints
+}
+
+import class abstract gameIStatPoolsSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,20 @@
+class abstract AISubActionRandomize_Record_Implementation extends IScriptable
+{
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionRandomize_Record, duration : Float, interrupted : Bool); // AISubActionRandomize_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionRandomize_RecordFloatBool
+	static function GetAnimVariation(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionRandomize_Record) : Int32; // AISubActionRandomize_Record_Implementation::GetAnimVariation;ScriptExecutionContextAISubActionRandomize_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionRandomize_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionRandomize_Record_Implementation::Update;ScriptExecutionContextAISubActionRandomize_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

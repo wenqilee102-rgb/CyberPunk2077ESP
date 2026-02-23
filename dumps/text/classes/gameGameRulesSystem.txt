@@ -1,0 +1,30 @@
+import class gameGameRulesSystem extends gameIGameRulesSystem
+{
+}
+
+import class abstract gameIGameRulesSystem extends gameIGameSystem
+{
+	import function GetHeistStatus() : grsHeistStatus; // GetHeistStatus
+	import function IsGameUnsuccessful() : Bool; // IsGameUnsuccessful
+	import function IsGameVictorious() : Bool; // IsGameVictorious
+	import function IsPlayerReady(PeerID : String) : Bool; // IsPlayerReady
+	import function SendChat(chat : String); // SendChat
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

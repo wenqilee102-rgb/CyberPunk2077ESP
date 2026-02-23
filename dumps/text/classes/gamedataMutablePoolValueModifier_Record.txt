@@ -1,0 +1,58 @@
+import class gamedataMutablePoolValueModifier_Record extends gamedataPoolValueModifier_Record
+{
+	import function DelayOnChangeMod() : whandle:gamedataStatModifier_Record; // DelayOnChangeMod
+	import function DelayOnChangeModHandle() : handle:gamedataStatModifier_Record; // DelayOnChangeModHandle
+	import function EnabledMod() : whandle:gamedataStatModifier_Record; // EnabledMod
+	import function EnabledModHandle() : handle:gamedataStatModifier_Record; // EnabledModHandle
+	import function GetRangeBeginModsCount() : Int32; // GetRangeBeginModsCount
+	import function GetRangeBeginModsItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetRangeBeginModsItem
+	import function GetRangeBeginModsItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetRangeBeginModsItemHandle
+	import function GetRangeEndModsCount() : Int32; // GetRangeEndModsCount
+	import function GetRangeEndModsItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetRangeEndModsItem
+	import function GetRangeEndModsItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetRangeEndModsItemHandle
+	import function GetStartDelayModsCount() : Int32; // GetStartDelayModsCount
+	import function GetStartDelayModsItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStartDelayModsItem
+	import function GetStartDelayModsItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStartDelayModsItemHandle
+	import function GetValuePerSecModsCount() : Int32; // GetValuePerSecModsCount
+	import function GetValuePerSecModsItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetValuePerSecModsItem
+	import function GetValuePerSecModsItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetValuePerSecModsItemHandle
+	import function RangeBeginMods(out outList : array:whandle:gamedataStatModifier_Record); // RangeBeginMods
+	import function RangeBeginModsContains(item : whandle:gamedataStatModifier_Record) : Bool; // RangeBeginModsContains
+	import function RangeEndMods(out outList : array:whandle:gamedataStatModifier_Record); // RangeEndMods
+	import function RangeEndModsContains(item : whandle:gamedataStatModifier_Record) : Bool; // RangeEndModsContains
+	import function StartDelayMods(out outList : array:whandle:gamedataStatModifier_Record); // StartDelayMods
+	import function StartDelayModsContains(item : whandle:gamedataStatModifier_Record) : Bool; // StartDelayModsContains
+	import function ValuePerSecMods(out outList : array:whandle:gamedataStatModifier_Record); // ValuePerSecMods
+	import function ValuePerSecModsContains(item : whandle:gamedataStatModifier_Record) : Bool; // ValuePerSecModsContains
+}
+
+import class gamedataPoolValueModifier_Record extends gamedataTweakDBRecord
+{
+	import function DelayOnChange() : Bool; // DelayOnChange
+	import function Enabled() : Bool; // Enabled
+	import function RangeBegin() : Float; // RangeBegin
+	import function RangeEnd() : Float; // RangeEnd
+	import function StartDelay() : Float; // StartDelay
+	import function UsingPointValues() : Bool; // UsingPointValues
+	import function ValuePerSec() : Float; // ValuePerSec
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

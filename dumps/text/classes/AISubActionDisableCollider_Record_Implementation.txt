@@ -1,0 +1,21 @@
+class abstract AISubActionDisableCollider_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableCollider_Record); // AISubActionDisableCollider_Record_Implementation::Activate;ScriptExecutionContextAISubActionDisableCollider_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableCollider_Record, duration : Float, interrupted : Bool); // AISubActionDisableCollider_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionDisableCollider_RecordFloatBool
+	static function IsDelayConditionFulfilled(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableCollider_Record, duration : Float) : Bool; // AISubActionDisableCollider_Record_Implementation::IsDelayConditionFulfilled;ScriptExecutionContextAISubActionDisableCollider_RecordFloat
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableCollider_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionDisableCollider_Record_Implementation::Update;ScriptExecutionContextAISubActionDisableCollider_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

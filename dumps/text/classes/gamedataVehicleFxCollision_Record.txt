@@ -1,0 +1,28 @@
+import class gamedataVehicleFxCollision_Record extends gamedataTweakDBRecord
+{
+	import function GetMaterialsCount() : Int32; // GetMaterialsCount
+	import function GetMaterialsItem(index : Int32) : whandle:gamedataVehicleFxCollisionMaterial_Record; // GetMaterialsItem
+	import function GetMaterialsItemHandle(index : Int32) : handle:gamedataVehicleFxCollisionMaterial_Record; // GetMaterialsItemHandle
+	import function Materials(out outList : array:whandle:gamedataVehicleFxCollisionMaterial_Record); // Materials
+	import function MaterialsContains(item : whandle:gamedataVehicleFxCollisionMaterial_Record) : Bool; // MaterialsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

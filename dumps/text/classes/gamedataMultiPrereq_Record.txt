@@ -1,0 +1,34 @@
+import class gamedataMultiPrereq_Record extends gamedataIPrereq_Record
+{
+	import function AggregationType() : CName; // AggregationType
+	import function GetNestedPrereqsCount() : Int32; // GetNestedPrereqsCount
+	import function GetNestedPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetNestedPrereqsItem
+	import function GetNestedPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetNestedPrereqsItemHandle
+	import function NestedPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // NestedPrereqs
+	import function NestedPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // NestedPrereqsContains
+}
+
+import class gamedataIPrereq_Record extends gamedataTweakDBRecord
+{
+	import function PrereqClassName() : CName; // PrereqClassName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

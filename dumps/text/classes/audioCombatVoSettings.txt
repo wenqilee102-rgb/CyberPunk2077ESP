@@ -1,0 +1,27 @@
+import class audioCombatVoSettings extends audioAudioMetadata
+{
+	var answerGroupName : CName;
+	var isPlayerAlly : Bool;
+	var contexts : CName;
+	var voTriggerVariations : CName;
+	var generalGruntSettings : audioGeneralVoiceGruntSettings;
+	var voTriggerLimits : audioVoiceTriggerLimits;
+	var overridingVoTriggerLimits : CName;
+	var barkTriggerLimits : audioVoiceTriggerLimits;
+	var gruntTriggerLimits : audioVoiceTriggerLimits;
+	var minDamageToInterruptVoWithPainShort : Float;
+	var minDamageToInterruptVoWithPainLong : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,37 @@
+class FilterNPCDodgeOpportunity extends gameEffectObjectGroupFilter_Scripted
+{
+	private   var applyToTechWeapons : Bool;
+	private   var doDodgingTargetsGetFilteredOut : Bool;
+
+	function Process(ctx : gameEffectScriptContext, out filterCtx : gameEffectGroupFilterScriptContext) : Bool; // Process;EffectScriptContextEffectGroupFilterScriptContext
+}
+
+import class gameEffectObjectGroupFilter_Scripted extends gameEffectObjectGroupFilter
+{
+}
+
+import class abstract gameEffectObjectGroupFilter extends gameEffectObjectFilter
+{
+}
+
+import class abstract gameEffectObjectFilter extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

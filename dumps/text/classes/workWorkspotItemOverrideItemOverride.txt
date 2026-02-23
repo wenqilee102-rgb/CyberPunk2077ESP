@@ -1,0 +1,5 @@
+import struct workWorkspotItemOverrideItemOverride
+{
+	var prevItemId : TweakDBID;
+	var newItemId : TweakDBID;
+}

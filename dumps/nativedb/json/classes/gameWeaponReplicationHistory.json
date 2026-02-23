@@ -1,0 +1,1 @@
+{"b":"gameWeaponReplicationHistory","d":8,"g":true,"e":[{"a":{"a":15},"b":"weaponSlot","c":128},{"a":{"a":31,"c":{"b":"gameReplicatedShotData"}},"b":"shots","c":128},{"a":{"a":7},"b":"latestShotId","c":128},{"a":{"b":"gameReplicatedContinuousAttack"},"b":"continuousAttack","c":128}]}

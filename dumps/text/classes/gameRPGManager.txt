@@ -1,0 +1,238 @@
+import class gameRPGManager extends IScriptable
+{
+	import static function ApplyAbilityArray(owner : whandle:gameObject, abilities : array:whandle:gamedataGameplayAbility_Record); // ApplyAbilityArray
+	import static function CalculateAdditiveModifiers(modifiers : array:whandle:gamedataStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateAdditiveModifiers
+	import static function CalculateAdditiveMultiplierModifiers(modifiers : array:whandle:gamedataStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateAdditiveMultiplierModifiers
+	import static function CalculateBuyPrice(context : ScriptGameInstance, vendor : whandle:gameObject, itemID : gameItemID, multiplier : Float) : Int32; // CalculateBuyPrice
+	import static function CalculateCombinedModifier(modifier : whandle:gamedataCombinedStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateCombinedModifier
+	import static function CalculateConstantModifier(modifier : whandle:gamedataConstantStatModifier_Record) : Float; // CalculateConstantModifier
+	import static function CalculateCurveModifier(modifier : whandle:gamedataCurveStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateCurveModifier
+	import static function CalculateMultiplierModifiers(modifiers : array:whandle:gamedataStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateMultiplierModifiers
+	import static function CalculatePowerDifferential(target : whandle:gameObject) : gameEPowerDifferential; // CalculatePowerDifferential
+	import static function CalculateRandomModifier(modifier : whandle:gamedataRandomStatModifier_Record) : Float; // CalculateRandomModifier
+	import static function CalculateSellPrice(context : ScriptGameInstance, vendor : whandle:gameObject, itemID : gameItemID) : Int32; // CalculateSellPrice
+	import static function CalculateSellPriceItemData(context : ScriptGameInstance, vendor : whandle:gameObject, itemData : handle:gameItemData) : Int32; // CalculateSellPriceItemData
+	import static function CalculateStatModifier(modifier : whandle:gamedataStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateStatModifier
+	import static function CalculateStatModifiers(modifiers : array:whandle:gamedataStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // CalculateStatModifiers
+	import static function GetFloatItemQuality(qualityStat : Float) : gamedataQuality; // GetFloatItemQuality
+	import static function GetInnerItemDataQuality(itemData : gameInnerItemData) : gamedataQuality; // GetInnerItemDataQuality
+	import static function GetItemData(gi : ScriptGameInstance, owner : handle:gameObject, itemID : gameItemID) : whandle:gameItemData; // GetItemData
+	import static function GetItemDataQuality(itemData : whandle:gameItemData) : gamedataQuality; // GetItemDataQuality
+	import static function GetQualityBasedOnPowerLevel(); // GetQualityBasedOnPowerLevel
+	import static function GetRefObjectID(refObjectName : CName, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : gameStatsObjectID; // GetRefObjectID
+	import static function IsInnerItemDataIconic(itemData : gameInnerItemData) : Bool; // IsInnerItemDataIconic
+	import static function IsItemBroken(itemData : handle:gameItemData) : Bool; // IsItemBroken
+	import static function IsItemDataIconic(itemData : whandle:gameItemData) : Bool; // IsItemDataIconic
+	import static function IsSlotAvailable(itemData : whandle:gameItemData, attachmentSlotRecord : whandle:gamedataAttachmentSlot_Record) : Bool; // IsSlotAvailable
+	import static function ShouldFlipNegativeValue(record : whandle:gamedataStat_Record) : Bool; // ShouldFlipNegativeValue
+	import static function ShouldSlotBeAvailable(owner : whandle:gameObject, item : gameItemID, attachmentSlotRecord : whandle:gamedataAttachmentSlot_Record) : Bool; // ShouldSlotBeAvailable
+
+	static function ApplyAbility(owner : whandle:gameObject, ability : whandle:gamedataGameplayAbility_Record); // gameRPGManager::ApplyAbility;GameObjectGameplayAbility_Record
+	static function ApplyAbilityGroup(owner : whandle:gameObject, group : whandle:gamedataGameplayAbilityGroup_Record); // gameRPGManager::ApplyAbilityGroup;GameObjectGameplayAbilityGroup_Record
+	static function ApplyEffectorsArray(owner : whandle:gameObject, arr : script_ref:array:whandle:gamedataEffector_Record); // gameRPGManager::ApplyEffectorsArray;GameObjectscript_ref<array<Effector_Record>>
+	static function ApplyGLP(owner : whandle:gameObject, package : whandle:gamedataGameplayLogicPackage_Record); // gameRPGManager::ApplyGLP;GameObjectGameplayLogicPackage_Record
+	static function ApplyGLPArray(owner : whandle:gameObject, arr : script_ref:array:whandle:gamedataGameplayLogicPackage_Record, optional ignoreAppliedPackages : Bool, optional withAnimationWrapperOverrides : Int32); // gameRPGManager::ApplyGLPArray;GameObjectscript_ref<array<GameplayLogicPackage_Record>>BoolInt32
+	static function ApplyStatModifierGroups(owner : whandle:gameObject, arr : script_ref:array:whandle:gamedataStatModifierGroup_Record); // gameRPGManager::ApplyStatModifierGroups;GameObjectscript_ref<array<StatModifierGroup_Record>>
+	static function AwardExperienceFromDamage(hitEvent : handle:gameeventsHitEvent, damagePercentage : Float); // gameRPGManager::AwardExperienceFromDamage;gameHitEventFloat
+	static function AwardExperienceFromDeflect(hitEvent : handle:gameeventsHitEvent); // gameRPGManager::AwardExperienceFromDeflect;gameHitEvent
+	static function AwardExperienceFromLocomotion(player : whandle:PlayerPuppet, amount : Float); // gameRPGManager::AwardExperienceFromLocomotion;PlayerPuppetFloat
+	static function AwardExperienceFromQuickhack(player : whandle:PlayerPuppet, cost : Float, target : entEntityID, category : gamedataHackCategory); // gameRPGManager::AwardExperienceFromQuickhack;PlayerPuppetFloatEntityIDgamedataHackCategory
+	static function AwardExperienceFromResourceSpent(player : whandle:PlayerPuppet, value : Float, type : gamedataStatPoolType, optional hitEvent : handle:gameeventsHitEvent); // gameRPGManager::AwardExperienceFromResourceSpent;PlayerPuppetFloatgamedataStatPoolTypegameHitEvent
+	static function AwardExperienceInstantly(player : whandle:PlayerPuppet, amount : Int32, type : gamedataProficiencyType); // gameRPGManager::AwardExperienceInstantly;PlayerPuppetInt32gamedataProficiencyType
+	static function AwardXP(gi : ScriptGameInstance, amount : Float, type : gamedataProficiencyType); // gameRPGManager::AwardXP;GameInstanceFloatgamedataProficiencyType
+	static function BreakItem(gi : ScriptGameInstance, owner : handle:gameObject, itemID : gameItemID) : Bool; // gameRPGManager::BreakItem;GameInstanceGameObjectItemID
+	static function CalculateEP1Reward(gi : ScriptGameInstance, experienceValue : Float, playerLevel : Float) : Float; // gameRPGManager::CalculateEP1Reward;GameInstanceFloatFloat
+	static function CalculateMinorActivityReward(gi : ScriptGameInstance, experienceValue : Float) : Float; // gameRPGManager::CalculateMinorActivityReward;GameInstanceFloat
+	static function CalculatePowerDifferential(level : Int32) : gameEPowerDifferential; // gameRPGManager::CalculatePowerDifferential;Int32
+	static function CalculateStatModifiers(addValue : Float, multValue : Float, addMultValue : Float, modifiers : script_ref:array:whandle:gamedataStatModifier_Record, context : ScriptGameInstance, root : whandle:gameObject, targetID : gameStatsObjectID, optional instigator : gameStatsObjectID, optional itemStatsID : gameStatsObjectID) : Float; // gameRPGManager::CalculateStatModifiers;FloatFloatFloatscript_ref<array<StatModifier_Record>>GameInstanceGameObjectStatsObjectIDStatsObjectIDStatsObjectID
+	static function CalculateStreetStoryReward(gi : ScriptGameInstance, experienceValue : Float) : Float; // gameRPGManager::CalculateStreetStoryReward;GameInstanceFloat
+	static function CalculateThreatValue(obj : handle:gameObject) : Float; // gameRPGManager::CalculateThreatValue;GameObject
+	static function CanAffordAndPerformCyberwareUpgrade(owner : handle:gameObject, currentQuality : gamedataQuality, upgradeItemRecord : handle:gamedataItem_Record, out costData : CyberwareUpgradeCostData) : Bool; // gameRPGManager::CanAffordAndPerformCyberwareUpgrade;GameObjectgamedataQualityItem_RecordCyberwareUpgradeCostData
+	static function CanDownloadFunds(gi : ScriptGameInstance, itemID : gameItemID) : Bool; // gameRPGManager::CanDownloadFunds;GameInstanceItemID
+	static function CanItemBeDisassembled(gameInstance : ScriptGameInstance, itemData : whandle:gameItemData) : Bool; // gameRPGManager::CanItemBeDisassembled;GameInstancegameItemData
+	static function CanItemBeDisassembled(gameInstance : ScriptGameInstance, itemID : gameItemID) : Bool; // gameRPGManager::CanItemBeDisassembled;GameInstanceItemID
+	static function CanItemBeDropped(puppet : handle:gameObject, itemData : handle:gameItemData) : Bool; // gameRPGManager::CanItemBeDropped;GameObjectgameItemData
+	static function CanPartBeUnequipped(data : gameInventoryItemData, slotId : TweakDBID) : Bool; // gameRPGManager::CanPartBeUnequipped;InventoryItemDataTweakDBID
+	static function CanPlayerCraftFromInventory(obj : whandle:gameObject) : Bool; // gameRPGManager::CanPlayerCraftFromInventory;GameObject
+	static function CanPlayerUpgradeFromInventory(obj : whandle:gameObject) : Bool; // gameRPGManager::CanPlayerUpgradeFromInventory;GameObject
+	static function CanUpgradeCyberware(owner : handle:gameObject, itemID : gameItemID, isEquipped : Bool, selectedQuality : gamedataQuality, out upgradeItemQuality : gamedataQuality, out upgradeItemRecord : handle:gamedataItem_Record, out costData : CyberwareUpgradeCostData, optional updateOutputOnFailure : Bool) : Bool; // gameRPGManager::CanUpgradeCyberware;GameObjectItemIDBoolgamedataQualitygamedataQualityItem_RecordCyberwareUpgradeCostDataBool
+	static function CheckDifficultyToPerkLevel(perk : gamedataPerkType, difficulty : EGameplayChallengeLevel, id : entEntityID) : Int32; // gameRPGManager::CheckDifficultyToPerkLevel;gamedataPerkTypeEGameplayChallengeLevelEntityID
+	static function CheckDifficultyToStatValue(gi : ScriptGameInstance, skill : gamedataStatType, difficulty : EGameplayChallengeLevel, id : entEntityID) : Int32; // gameRPGManager::CheckDifficultyToStatValue;GameInstancegamedataStatTypeEGameplayChallengeLevelEntityID
+	static function CheckPerkPrereqs(itemData : handle:gameItemData, owner : handle:gameObject, perkRequiredName : script_ref:String) : Bool; // gameRPGManager::CheckPerkPrereqs;gameItemDataGameObjectscript_ref<String>
+	static function CheckPrereq(prereqRecord : whandle:gamedataIPrereq_Record, target : whandle:gameObject, optional referenceStatsID : gameStatsObjectID) : Bool; // gameRPGManager::CheckPrereq;IPrereq_RecordGameObjectStatsObjectID
+	static function CheckPrereqs(prereqs : script_ref:array:whandle:gamedataIPrereq_Record, target : whandle:gameObject, optional referenceStatsID : gameStatsObjectID) : Bool; // gameRPGManager::CheckPrereqs;script_ref<array<IPrereq_Record>>GameObjectStatsObjectID
+	static function ConsumeItem(obj : whandle:gameObject, evt : handle:gameinteractionsChoiceEvent) : Bool; // gameRPGManager::ConsumeItem;GameObjectInteractionChoiceEvent
+	static function ConvertCombinedValueToQuality(combinedValue : Int32) : gamedataQuality; // gameRPGManager::ConvertCombinedValueToQuality;Int32
+	static function ConvertPlayerLevelToCyberwareQuality(playerLevel : Float, includeAboveLegendary : Bool) : gamedataQuality; // gameRPGManager::ConvertPlayerLevelToCyberwareQuality;FloatBool
+	static function ConvertQualityToCombinedValue(quality : gamedataQuality) : Int32; // gameRPGManager::ConvertQualityToCombinedValue;gamedataQuality
+	static function ConvertQualityToItemPlusValue(quality : gamedataQuality) : Int32; // gameRPGManager::ConvertQualityToItemPlusValue;gamedataQuality
+	static function ConvertQualityToNonPlusQuality(quality : gamedataQuality) : gamedataQuality; // gameRPGManager::ConvertQualityToNonPlusQuality;gamedataQuality
+	static function CreateCombinedStatModifier(statType : gamedataStatType, modType : gameStatModifierType, refStat : gamedataStatType, opSymbol : gameCombinedStatOperation, value : Float, refObject : gameStatObjectsRelation) : handle:gameStatModifierData_Deprecated; // gameRPGManager::CreateCombinedStatModifier;gamedataStatTypegameStatModifierTypegamedataStatTypegameCombinedStatOperationFloatgameStatObjectsRelation
+	static function CreateCurveModifier(statRecord : handle:gamedataCurveStatModifier_Record) : handle:gameStatModifierData_Deprecated; // gameRPGManager::CreateCurveModifier;CurveStatModifier_Record
+	static function CreateReplaceEquipmentRequest(owner : handle:gameObject, equippedItemID : gameItemID, upgradeItemID : gameItemID, optional partItemID : gameItemID); // gameRPGManager::CreateReplaceEquipmentRequest;GameObjectItemIDItemIDItemID
+	static function CreateSimpleQuickhackData(playerOwner : handle:PlayerPuppet, targetScriptedPuppet : handle:ScriptedPuppet, quickhackActionRecord : handle:gamedataObjectAction_Record) : handle:QuickhackData; // gameRPGManager::CreateSimpleQuickhackData;PlayerPuppetScriptedPuppetObjectAction_Record
+	static function CreateStatModifier(statType : gamedataStatType, modType : gameStatModifierType, value : Float) : handle:gameStatModifierData_Deprecated; // gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat
+	static function CreateStatModifierUsingCurve(statType : gamedataStatType, modType : gameStatModifierType, refStat : gamedataStatType, curveName : CName, columnName : CName) : handle:gameStatModifierData_Deprecated; // gameRPGManager::CreateStatModifierUsingCurve;gamedataStatTypegameStatModifierTypegamedataStatTypeCNameCName
+	static function CyberwareHasSideUpgrade(itemID : gameItemID, out sideUpgradeItemRecord : handle:gamedataItem_Record) : Bool; // gameRPGManager::CyberwareHasSideUpgrade;ItemIDItem_Record
+	static function CyberwareHasUpgrade(game : ScriptGameInstance, itemID : gameItemID, currentQuality : gamedataQuality, desiredQuality : gamedataQuality, out upgradeItemRecord : handle:gamedataItem_Record) : Bool; // gameRPGManager::CyberwareHasUpgrade;GameInstanceItemIDgamedataQualitygamedataQualityItem_Record
+	static function DecrementQuickHackBlackboard(gameInstance : ScriptGameInstance, actionID : TweakDBID); // gameRPGManager::DecrementQuickHackBlackboard;GameInstanceTweakDBID
+	static function DoesPlayerHaveQuickHack(player : whandle:PlayerPuppet, quickHackTweak : TweakDBID) : Bool; // gameRPGManager::DoesPlayerHaveQuickHack;PlayerPuppetTweakDBID
+	static function DropManyItems(gameInstance : ScriptGameInstance, obj : whandle:gameObject, items : script_ref:array:gameItemModParams); // gameRPGManager::DropManyItems;GameInstanceGameObjectscript_ref<array<ItemModParams>>
+	static function ExtractItemsOfEquipArea(type : gamedataEquipmentArea, input : script_ref:array:whandle:gameItemData, output : script_ref:array:whandle:gameItemData) : Bool; // gameRPGManager::ExtractItemsOfEquipArea;gamedataEquipmentAreascript_ref<array<gameItemData>>script_ref<array<gameItemData>>
+	static function ForceEquipItemOnPlayer(puppet : handle:gameObject, itemTDBID : TweakDBID, addToInv : Bool); // gameRPGManager::ForceEquipItemOnPlayer;GameObjectTweakDBIDBool
+	static function ForceEquipPersonalLink(player : handle:PlayerPuppet) : Bool; // gameRPGManager::ForceEquipPersonalLink;PlayerPuppet
+	static function ForceEquipStrongArms(player : handle:PlayerPuppet, instantStatChange : Bool) : Bool; // gameRPGManager::ForceEquipStrongArms;PlayerPuppetBool
+	static function ForceItemTier(obj : whandle:gameObject, itemData : whandle:gameItemData, forcedQuality : CName); // gameRPGManager::ForceItemTier;GameObjectgameItemDataCName
+	static function ForceUnequipItemFromPlayer(puppet : handle:gameObject, slotTDBID : TweakDBID, removeItem : Bool); // gameRPGManager::ForceUnequipItemFromPlayer;GameObjectTweakDBIDBool
+	static function ForceUnequipPersonalLink(player : handle:PlayerPuppet) : Bool; // gameRPGManager::ForceUnequipPersonalLink;PlayerPuppet
+	static function ForceUnequipStrongArms(player : handle:PlayerPuppet) : Bool; // gameRPGManager::ForceUnequipStrongArms;PlayerPuppet
+	static function GetAmmoCount(owner : handle:gameObject, itemID : gameItemID) : String; // gameRPGManager::GetAmmoCount;GameObjectItemID
+	static function GetAmmoCountValue(owner : handle:gameObject, itemID : gameItemID) : Int32; // gameRPGManager::GetAmmoCountValue;GameObjectItemID
+	static function GetAttachmentSlotID(slot : script_ref:String) : TweakDBID; // gameRPGManager::GetAttachmentSlotID;script_ref<String>
+	static function GetAttachmentSlotIDs() : array:TweakDBID; // gameRPGManager::GetAttachmentSlotIDs;
+	static function GetAttributeDataRecord(type : gamedataAttributeDataType) : handle:gamedataAttributeData_Record; // gameRPGManager::GetAttributeDataRecord;gamedataAttributeDataType
+	static function GetAvailableSlotsForQuality(itemData : whandle:gameItemData, quality : gamedataQuality) : Float; // gameRPGManager::GetAvailableSlotsForQuality;gameItemDatagamedataQuality
+	static function GetBluelineBuildCheckValue(player : handle:gameObject, contentAssignment : handle:gamedataContentAssignment_Record, difficulty : EGameplayChallengeLevel) : Int32; // gameRPGManager::GetBluelineBuildCheckValue;GameObjectContentAssignment_RecordEGameplayChallengeLevel
+	static function GetBluelinePaymentValue(player : handle:gameObject, contentAssignment : handle:gamedataContentAssignment_Record, difficulty : EGameplayChallengeLevel) : Int32; // gameRPGManager::GetBluelinePaymentValue;GameObjectContentAssignment_RecordEGameplayChallengeLevel
+	static function GetBuildScore(player : handle:gameObject, buildToCheck : handle:gamedataPlayerBuild_Record) : Int32; // gameRPGManager::GetBuildScore;GameObjectPlayerBuild_Record
+	static function GetBumpedQuality(quality : gamedataQuality) : gamedataQuality; // gameRPGManager::GetBumpedQuality;gamedataQuality
+	static function GetCharacterWeakspotCount(puppet : handle:gamePuppet) : Int32; // gameRPGManager::GetCharacterWeakspotCount;gamePuppet
+	static function GetCheckValue(gi : ScriptGameInstance, powerLevel : Float, difficulty : EGameplayChallengeLevel) : Int32; // gameRPGManager::GetCheckValue;GameInstanceFloatEGameplayChallengeLevel
+	static function GetCombinedItemQualityValue(game : ScriptGameInstance, itemID : gameItemID) : Int32; // gameRPGManager::GetCombinedItemQualityValue;GameInstanceItemID
+	static function GetCraftingMaterialRecord(quality : gamedataQuality, optional isQuickhack : Bool) : handle:gamedataItem_Record; // gameRPGManager::GetCraftingMaterialRecord;gamedataQualityBool
+	static function GetCyberwareUpgradeCost(itemRecord : handle:gamedataItem_Record) : Int32; // gameRPGManager::GetCyberwareUpgradeCost;Item_Record
+	static function GetCyberwareUpgradeData(owner : handle:gameObject, itemData : whandle:UIInventoryItem, upgradeItemRecord : handle:gamedataItem_Record, costData : CyberwareUpgradeCostData, seed : Uint32, inventorySystem : whandle:UIInventoryScriptableSystem, useMultichoice : Bool) : handle:RipperdocTokenPopupData; // gameRPGManager::GetCyberwareUpgradeData;GameObjectUIInventoryItemItem_RecordCyberwareUpgradeCostDataUint32UIInventoryScriptableSystemBool
+	static function GetCyberwareUpgradeItemDataWithOffset(owner : handle:gameObject, upgradeItemRecord : handle:gamedataItem_Record, statsShardTDBID : TweakDBID, seed : Uint32, offset : Int32) : handle:gameItemData; // gameRPGManager::GetCyberwareUpgradeItemDataWithOffset;GameObjectItem_RecordTweakDBIDUint32Int32
+	static function GetCyberwareUpgradeShardCount(owner : handle:gameObject, quality : gamedataQuality) : Int32; // gameRPGManager::GetCyberwareUpgradeShardCount;GameObjectgamedataQuality
+	static function GetCyberwareUpgradeShardID(quality : gamedataQuality) : TweakDBID; // gameRPGManager::GetCyberwareUpgradeShardID;gamedataQuality
+	static function GetCyberwareUpgradeShardItemData(owner : handle:gameObject, quality : gamedataQuality) : whandle:gameItemData; // gameRPGManager::GetCyberwareUpgradeShardItemData;GameObjectgamedataQuality
+	static function GetDominatingDamageType(gi : ScriptGameInstance, itemData : whandle:gameItemData) : gamedataDamageType; // gameRPGManager::GetDominatingDamageType;GameInstancegameItemData
+	static function GetEquipRequirements(owner : handle:gameObject, itemData : handle:gameItemData) : array:gameSItemStackRequirementData; // gameRPGManager::GetEquipRequirements;GameObjectgameItemData
+	static function GetFirstUnmetEquipRequirement(owner : handle:gameObject, equipRequirements : script_ref:array:gameSItemStackRequirementData) : gameSItemStackRequirementData; // gameRPGManager::GetFirstUnmetEquipRequirement;GameObjectscript_ref<array<SItemStackRequirementData>>
+	static function GetHighestResistances(obj : handle:gameObject) : array:gameStatTotalValue; // gameRPGManager::GetHighestResistances;GameObject
+	static function GetItemActions(itemID : gameItemID) : array:whandle:gamedataObjectAction_Record; // gameRPGManager::GetItemActions;ItemID
+	static function GetItemCategory(itemID : gameItemID) : gamedataItemCategory; // gameRPGManager::GetItemCategory;ItemID
+	static function GetItemFromInventory(object : handle:gameObject, item : TweakDBID) : gameItemID; // gameRPGManager::GetItemFromInventory;GameObjectTweakDBID
+	static function GetItemPlus(itemData : handle:gameItemData) : Float; // gameRPGManager::GetItemPlus;gameItemData
+	static function GetItemQuality(qualityStat : Float) : gamedataQuality; // gameRPGManager::GetItemQuality;Float
+	static function GetItemQuality(itemData : gameInnerItemData) : gamedataQuality; // gameRPGManager::GetItemQuality;InnerItemData
+	static function GetItemQuality(itemData : whandle:gameItemData) : gamedataQuality; // gameRPGManager::GetItemQuality;gameItemData
+	static function GetItemQualityFromRecord(itemRecord : handle:gamedataItem_Record) : gamedataQuality; // gameRPGManager::GetItemQualityFromRecord;Item_Record
+	static function GetItemRecord(itemID : gameItemID) : handle:gamedataItem_Record; // gameRPGManager::GetItemRecord;ItemID
+	static function GetItemStackWeight(owner : whandle:gameObject, itemData : whandle:gameItemData) : Float; // gameRPGManager::GetItemStackWeight;GameObjectgameItemData
+	static function GetItemTierForUpgrades(itemData : whandle:gameItemData) : gamedataQuality; // gameRPGManager::GetItemTierForUpgrades;gameItemData
+	static function GetItemTierForUpgrades(tierStat : Float) : gamedataQuality; // gameRPGManager::GetItemTierForUpgrades;Float
+	static function GetItemTierFromName(tierName : CName) : Float; // gameRPGManager::GetItemTierFromName;CName
+	static function GetItemType(itemID : gameItemID) : gamedataItemType; // gameRPGManager::GetItemType;ItemID
+	static function GetItemWeight(itemData : handle:gameItemData) : Float; // gameRPGManager::GetItemWeight;gameItemData
+	static function GetLevelPercentage(object : handle:gameObject) : Int32; // gameRPGManager::GetLevelPercentage;GameObject
+	static function GetListOfRandomStatsFromEvolutionType(evolution : gamedataWeaponEvolution) : array:whandle:gamedataStat_Record; // gameRPGManager::GetListOfRandomStatsFromEvolutionType;gamedataWeaponEvolution
+	static function GetLowestResistances(obj : handle:gameObject) : array:gameStatTotalValue; // gameRPGManager::GetLowestResistances;GameObject
+	static function GetMaxStats(obj : handle:gameObject, stats : script_ref:array:gamedataStatType) : array:gameStatTotalValue; // gameRPGManager::GetMaxStats;GameObjectscript_ref<array<gamedataStatType>>
+	static function GetMinStats(obj : handle:gameObject, stats : script_ref:array:gamedataStatType) : array:gameStatTotalValue; // gameRPGManager::GetMinStats;GameObjectscript_ref<array<gamedataStatType>>
+	static function GetModsSlotIDs(type : gamedataItemType) : array:TweakDBID; // gameRPGManager::GetModsSlotIDs;gamedataItemType
+	static function GetMonoWireQuickHackData(playerOwner : handle:PlayerPuppet, targetScriptedPuppet : handle:ScriptedPuppet, weaponObject : handle:gameweaponObject) : handle:QuickhackData; // gameRPGManager::GetMonoWireQuickHackData;PlayerPuppetScriptedPuppetWeaponObject
+	static function GetMonoWireQuickhackRecord(weaponObject : handle:gameweaponObject) : handle:gamedataItem_Record; // gameRPGManager::GetMonoWireQuickhackRecord;WeaponObject
+	static function GetNestedPrereqs(prereqs : script_ref:array:whandle:gamedataIPrereq_Record) : array:handle:gamedataStatPrereq_Record; // gameRPGManager::GetNestedPrereqs;script_ref<array<IPrereq_Record>>
+	static function GetNewPerkRecord(type : gamedataNewPerkType) : handle:gamedataNewPerk_Record; // gameRPGManager::GetNewPerkRecord;gamedataNewPerkType
+	static function GetNextItemQuality(itemData : whandle:gameItemData) : gamedataQuality; // gameRPGManager::GetNextItemQuality;gameItemData
+	static function GetPlayerCurrentHealthPercent(gi : ScriptGameInstance) : Float; // gameRPGManager::GetPlayerCurrentHealthPercent;GameInstance
+	static function GetPlayerNextLevelBasedOnRandomQuality(quality : gamedataQuality) : Int32; // gameRPGManager::GetPlayerNextLevelBasedOnRandomQuality;gamedataQuality
+	static function GetPlayerQuickHackList(player : whandle:PlayerPuppet) : array:TweakDBID; // gameRPGManager::GetPlayerQuickHackList;PlayerPuppet
+	static function GetPlayerQuickHackListWithQuality(player : whandle:PlayerPuppet) : array:PlayerQuickhackData; // gameRPGManager::GetPlayerQuickHackListWithQuality;PlayerPuppet
+	static function GetPowerLevelFromContentAssignment(gi : ScriptGameInstance, contentAssignmentID : TweakDBID) : Float; // gameRPGManager::GetPowerLevelFromContentAssignment;GameInstanceTweakDBID
+	static function GetProficiencyRecord(type : gamedataProficiencyType) : handle:gamedataProficiency_Record; // gameRPGManager::GetProficiencyRecord;gamedataProficiencyType
+	static function GetRandomizedGadget(puppet : whandle:ScriptedPuppet) : TweakDBID; // gameRPGManager::GetRandomizedGadget;ScriptedPuppet
+	static function GetRandomizedHealingConsumable(puppet : whandle:ScriptedPuppet) : TweakDBID; // gameRPGManager::GetRandomizedHealingConsumable;ScriptedPuppet
+	static function GetRarityMultiplier(puppet : whandle:NPCPuppet, curveName : CName) : Float; // gameRPGManager::GetRarityMultiplier;NPCPuppetCName
+	static function GetResistanceTypeFromDamageType(damageType : gamedataDamageType) : gamedataStatType; // gameRPGManager::GetResistanceTypeFromDamageType;gamedataDamageType
+	static function GetRetrievableAttachments(itemData : whandle:gameItemData) : array:ItemAttachments; // gameRPGManager::GetRetrievableAttachments;gameItemData
+	static function GetScannerResistanceDetails(obj : handle:gameObject, statType : gamedataStatType, optional player : handle:gameObject) : ScannerStatDetails; // gameRPGManager::GetScannerResistanceDetails;GameObjectgamedataStatTypeGameObject
+	static function GetStatRecord(type : gamedataStatType) : handle:gamedataStat_Record; // gameRPGManager::GetStatRecord;gamedataStatType
+	static function GetStatValueFromObject(gi : ScriptGameInstance, object : whandle:gameObject, stat : gamedataStatType) : Float; // gameRPGManager::GetStatValueFromObject;GameInstanceGameObjectgamedataStatType
+	static function GetStatValues(obj : handle:gameObject, stats : script_ref:array:gamedataStatType) : array:gameStatTotalValue; // gameRPGManager::GetStatValues;GameObjectscript_ref<array<gamedataStatType>>
+	static function GetTraitRecord(type : gamedataTraitType) : handle:gamedataTrait_Record; // gameRPGManager::GetTraitRecord;gamedataTraitType
+	static function GetVendorWareRequirement(game : ScriptGameInstance, record : whandle:gamedataVendorWare_Record, itemStatsID : gameStatsObjectID) : gameSItemStackRequirementData; // gameRPGManager::GetVendorWareRequirement;GameInstanceVendorWare_RecordStatsObjectID
+	static function GetWeaponAmmoTDBID(weaponID : gameItemID) : TweakDBID; // gameRPGManager::GetWeaponAmmoTDBID;ItemID
+	static function GetWeaponEvolution(itemID : gameItemID) : gamedataWeaponEvolution; // gameRPGManager::GetWeaponEvolution;ItemID
+	static function GiveReward(gi : ScriptGameInstance, rewardID : TweakDBID, optional target : gameStatsObjectID, optional moneyMultiplier : Float); // gameRPGManager::GiveReward;GameInstanceTweakDBIDStatsObjectIDFloat
+	static function GiveReward(gi : ScriptGameInstance, rewardID : TweakDBID, amount : Int32, optional target : gameStatsObjectID, optional moneyMultiplier : Float); // gameRPGManager::GiveReward;GameInstanceTweakDBIDInt32StatsObjectIDFloat
+	static function GiveScavengeReward(gi : ScriptGameInstance, rewardID : TweakDBID, scavengeTargetEntityID : entEntityID); // gameRPGManager::GiveScavengeReward;GameInstanceTweakDBIDEntityID
+	static function HandleBuyShardPopupClosed(owner : handle:gameObject, equippedItemId : gameItemID, resultData : handle:RipperdocTokenPopupCloseData); // gameRPGManager::HandleBuyShardPopupClosed;GameObjectItemIDRipperdocTokenPopupCloseData
+	static function HasDownloadFundsAction(itemID : gameItemID) : Bool; // gameRPGManager::HasDownloadFundsAction;ItemID
+	static function HasItem(obj : whandle:gameObject, id : gameItemID) : Bool; // gameRPGManager::HasItem;GameObjectItemID
+	static function HasItem(obj : whandle:gameObject, id : TweakDBID) : Bool; // gameRPGManager::HasItem;GameObjectTweakDBID
+	static function HasSmartLinkRequirement(itemData : handle:gameItemData) : Bool; // gameRPGManager::HasSmartLinkRequirement;gameItemData
+	static function HasStatFlag(owner : whandle:gameObject, flag : gamedataStatType) : Bool; // gameRPGManager::HasStatFlag;GameObjectgamedataStatType
+	static function HealPuppetAfterQuickhack(gi : ScriptGameInstance, executor : handle:gameObject); // gameRPGManager::HealPuppetAfterQuickhack;GameInstanceGameObject
+	static function IncrementQuickHackBlackboard(gameInstance : ScriptGameInstance, actionID : TweakDBID); // gameRPGManager::IncrementQuickHackBlackboard;GameInstanceTweakDBID
+	static function InjectStatModifier(gi : ScriptGameInstance, obj : handle:gameObject, modifier : handle:gameStatModifierData_Deprecated); // gameRPGManager::InjectStatModifier;GameInstanceGameObjectgameStatModifierData
+	static function InjectStatModifierToItem(gi : ScriptGameInstance, itemData : handle:gameItemData, modifier : handle:gameStatModifierData_Deprecated); // gameRPGManager::InjectStatModifierToItem;GameInstancegameItemDatagameStatModifierData
+	static function IsClothingMod(type : gamedataItemType) : Bool; // gameRPGManager::IsClothingMod;gamedataItemType
+	static function IsClothingMod(itemID : gameItemID) : Bool; // gameRPGManager::IsClothingMod;ItemID
+	static function IsDamageStat(stat : gamedataStatType) : Bool; // gameRPGManager::IsDamageStat;gamedataStatType
+	static function IsInventoryEmpty(object : whandle:gameObject) : Bool; // gameRPGManager::IsInventoryEmpty;GameObject
+	static function IsItemAdaptiveStemCells(itemID : TweakDBID) : Bool; // gameRPGManager::IsItemAdaptiveStemCells;TweakDBID
+	static function IsItemClothing(itemID : gameItemID) : Bool; // gameRPGManager::IsItemClothing;ItemID
+	static function IsItemCrafted(itemData : whandle:gameItemData) : Bool; // gameRPGManager::IsItemCrafted;gameItemData
+	static function IsItemCrafted(gi : ScriptGameInstance, itemId : gameItemID) : Bool; // gameRPGManager::IsItemCrafted;GameInstanceItemID
+	static function IsItemCyberware(itemID : gameItemID) : Bool; // gameRPGManager::IsItemCyberware;ItemID
+	static function IsItemEffectivelyIdentical(itemID1 : gameItemID, itemID2 : gameItemID) : Bool; // gameRPGManager::IsItemEffectivelyIdentical;ItemIDItemID
+	static function IsItemEquipped(owner : whandle:gameObject, itemID : gameItemID) : Bool; // gameRPGManager::IsItemEquipped;GameObjectItemID
+	static function IsItemGadget(itemID : gameItemID) : Bool; // gameRPGManager::IsItemGadget;ItemID
+	static function IsItemIconic(itemData : whandle:gameItemData) : Bool; // gameRPGManager::IsItemIconic;gameItemData
+	static function IsItemIconic(itemData : gameInnerItemData) : Bool; // gameRPGManager::IsItemIconic;InnerItemData
+	static function IsItemMaxLevel(itemData : whandle:gameItemData) : Bool; // gameRPGManager::IsItemMaxLevel;gameItemData
+	static function IsItemMaxTier(itemData : whandle:gameItemData) : Bool; // gameRPGManager::IsItemMaxTier;gameItemData
+	static function IsItemMisc(itemID : gameItemID) : Bool; // gameRPGManager::IsItemMisc;ItemID
+	static function IsItemProgram(itemID : gameItemID) : Bool; // gameRPGManager::IsItemProgram;ItemID
+	static function IsItemSingleInstance(itemData : whandle:gameItemData) : Bool; // gameRPGManager::IsItemSingleInstance;gameItemData
+	static function IsItemTypeCyberwareWeapon(type : gamedataItemType) : Bool; // gameRPGManager::IsItemTypeCyberwareWeapon;gamedataItemType
+	static function IsItemWeapon(itemID : gameItemID) : Bool; // gameRPGManager::IsItemWeapon;ItemID
+	static function IsMuzzleAttachment(type : gamedataItemType) : Bool; // gameRPGManager::IsMuzzleAttachment;gamedataItemType
+	static function IsNonModifableSlot(slot : TweakDBID) : Bool; // gameRPGManager::IsNonModifableSlot;TweakDBID
+	static function IsRicochetChanceEnabled(gi : ScriptGameInstance, owner : handle:gameObject, itemID : gameItemID) : Bool; // gameRPGManager::IsRicochetChanceEnabled;GameInstanceGameObjectItemID
+	static function IsScopeAttachment(itemID : gameItemID) : Bool; // gameRPGManager::IsScopeAttachment;ItemID
+	static function IsScopeAttachment(type : gamedataItemType) : Bool; // gameRPGManager::IsScopeAttachment;gamedataItemType
+	static function IsTechPierceEnabled(gi : ScriptGameInstance, owner : handle:gameObject, itemID : gameItemID) : Bool; // gameRPGManager::IsTechPierceEnabled;GameInstanceGameObjectItemID
+	static function IsWeaponMelee(type : gamedataItemType) : Bool; // gameRPGManager::IsWeaponMelee;gamedataItemType
+	static function IsWeaponMod(type : gamedataItemType) : Bool; // gameRPGManager::IsWeaponMod;gamedataItemType
+	static function IsWeaponMod(itemID : gameItemID) : Bool; // gameRPGManager::IsWeaponMod;ItemID
+	static function ItemQualityEnumToValue(q : gamedataQuality) : Float; // gameRPGManager::ItemQualityEnumToValue;gamedataQuality
+	static function ItemQualityNameToValue(q : CName) : Float; // gameRPGManager::ItemQualityNameToValue;CName
+	static function PrepareGameEffectAttack(gi : ScriptGameInstance, instigator : handle:gameObject, source : handle:gameObject, attackName : TweakDBID, optional position : Vector4, optional hitFlags : array:SHitFlag, optional target : handle:gameObject, optional tickRateOverride : Float) : handle:gameAttack_GameEffect; // gameRPGManager::PrepareGameEffectAttack;GameInstanceGameObjectGameObjectTweakDBIDVector4array<SHitFlag>GameObjectFloat
+	static function ProcessOnLootedPackages(owner : whandle:gameObject, itemID : gameItemID); // gameRPGManager::ProcessOnLootedPackages;GameObjectItemID
+	static function ProcessReadAction(choice : handle:gameinteractionsChoiceEvent); // gameRPGManager::ProcessReadAction;InteractionChoiceEvent
+	static function RemoveAbility(owner : whandle:gameObject, ability : whandle:gamedataGameplayAbility_Record); // gameRPGManager::RemoveAbility;GameObjectGameplayAbility_Record
+	static function RemoveAbilityGroup(owner : whandle:gameObject, group : whandle:gamedataGameplayAbilityGroup_Record); // gameRPGManager::RemoveAbilityGroup;GameObjectGameplayAbilityGroup_Record
+	static function RemoveDuplicatedHacks(commands : script_ref:array:PlayerQuickhackData); // gameRPGManager::RemoveDuplicatedHacks;script_ref<array<PlayerQuickhackData>>
+	static function RemoveDuplicatedHacks(deck : script_ref:array:whandle:gamedataObjectAction_Record, splinter : script_ref:array:whandle:gamedataObjectAction_Record); // gameRPGManager::RemoveDuplicatedHacks;script_ref<array<ObjectAction_Record>>script_ref<array<ObjectAction_Record>>
+	static function RemoveEffectorsArray(owner : whandle:gameObject, arr : script_ref:array:whandle:gamedataEffector_Record); // gameRPGManager::RemoveEffectorsArray;GameObjectscript_ref<array<Effector_Record>>
+	static function RemoveGLP(owner : whandle:gameObject, package : whandle:gamedataGameplayLogicPackage_Record); // gameRPGManager::RemoveGLP;GameObjectGameplayLogicPackage_Record
+	static function RemoveStatModifierGroups(owner : whandle:gameObject, arr : script_ref:array:whandle:gamedataStatModifierGroup_Record); // gameRPGManager::RemoveStatModifierGroups;GameObjectscript_ref<array<StatModifierGroup_Record>>
+	static function ResistancesList() : array:gamedataStatType; // gameRPGManager::ResistancesList;
+	static function ReturnRetrievableWeaponMods(itemData : whandle:gameItemData, owner : whandle:gameObject); // gameRPGManager::ReturnRetrievableWeaponMods;gameItemDataGameObject
+	static function SendAddAchievementRequest(gi : ScriptGameInstance, achievement : gamedataAchievement, achievementRecord : whandle:gamedataAchievement_Record); // gameRPGManager::SendAddAchievementRequest;GameInstancegamedataAchievementAchievement_Record
+	static function SendPhotoModeItemUnlockRequest(gi : ScriptGameInstance, photoModeItm : whandle:gamedataPhotoModeItem_Record); // gameRPGManager::SendPhotoModeItemUnlockRequest;GameInstancePhotoModeItem_Record
+	static function SetDroppedWeaponQuality(npc : whandle:ScriptedPuppet, itemData : whandle:gameItemData); // gameRPGManager::SetDroppedWeaponQuality;ScriptedPuppetgameItemData
+	static function SetQualityBasedOnLevel(object : whandle:gameObject) : CName; // gameRPGManager::SetQualityBasedOnLevel;GameObject
+	static function ShouldShowCWChoice(owner : handle:gameObject, itemData : whandle:UIInventoryItem) : Bool; // gameRPGManager::ShouldShowCWChoice;GameObjectUIInventoryItem
+	static function StatRecordToModifier(statRecord : handle:gamedataStatModifier_Record) : handle:gameStatModifierData_Deprecated; // gameRPGManager::StatRecordToModifier;StatModifier_Record
+	static function ToggleHolsteredArmAppearance(puppet : handle:gameObject, setHoleInArm : Bool); // gameRPGManager::ToggleHolsteredArmAppearance;GameObjectBool
+	static function ToggleLootHighlight(obj : whandle:gameObject, enable : Bool); // gameRPGManager::ToggleLootHighlight;GameObjectBool
+	static function TogglePersonalLinkAppearance(puppet : handle:gameObject); // gameRPGManager::TogglePersonalLinkAppearance;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

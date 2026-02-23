@@ -1,0 +1,31 @@
+class DoorWidgetCustomData extends WidgetCustomData
+{
+	private   var passcode : Int32;
+	private   var card : CName;
+	private   var isPasswordKnown : Bool;
+
+	function GetCardName() : CName; // GetCardName;
+	function GetPasscode() : Int32; // GetPasscode;
+	function IsPasswordKnown() : Bool; // IsPasswordKnown;
+	function SetCardName(cardName : CName); // SetCardName;CName
+	function SetIsPasswordKnown(choice : Bool); // SetIsPasswordKnown;Bool
+	function SetPasscode(newCode : Int32); // SetPasscode;Int32
+}
+
+class WidgetCustomData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"AINPCStanceStateCheck","b":"CheckStanceState","d":0,"e":[{"a":{"b":"gamedataNPCStanceState"},"b":"state","c":128}],"f":[{"a":"GetStateToCheck;","b":"GetStateToCheck","c":{"b":"gamedataNPCStanceState"},"d":33}]}

@@ -1,0 +1,16 @@
+import struct physicsPhysicsJointLimitConePair extends physicsPhysicsJointLimitBase
+{
+	var swingY : physicsPhysicsJointMotion;
+	var swingZ : physicsPhysicsJointMotion;
+	var yAngle : Float;
+	var zAngle : Float;
+}
+
+import struct physicsPhysicsJointLimitBase
+{
+	var restitution : Float;
+	var bounceThreshold : Float;
+	var stiffness : Float;
+	var damping : Float;
+	var contactDistance : Float;
+}

@@ -1,0 +1,9 @@
+import struct questLevelUpData
+{
+	var lvl : Int32;
+	var type : gamedataProficiencyType;
+	var perkPoints : Int32;
+	var attributePoints : Int32;
+	var espionagePoints : Int32;
+	var disableAction : Bool;
+}

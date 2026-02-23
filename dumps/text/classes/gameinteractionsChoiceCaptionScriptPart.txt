@@ -1,0 +1,23 @@
+import class gameinteractionsChoiceCaptionScriptPart extends gameinteractionsChoiceCaptionPart
+{
+	function GetPartType() : gamedataChoiceCaptionPartType; // GetPartType;
+}
+
+import class abstract gameinteractionsChoiceCaptionPart extends IScriptable
+{
+	import function GetType() : gamedataChoiceCaptionPartType; // GetType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

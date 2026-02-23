@@ -1,0 +1,7 @@
+import struct scnDebugSymbols
+{
+	var performersDebugSymbols : array:scnPerformerSymbol;
+	var workspotsDebugSymbols : array:scnWorkspotSymbol;
+	var sceneEventsDebugSymbols : array:scnSceneEventSymbol;
+	var sceneNodesDebugSymbols : array:scnNodeSymbol;
+}

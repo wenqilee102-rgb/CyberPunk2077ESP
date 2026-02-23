@@ -1,0 +1,6 @@
+import struct scndevEvent
+{
+	var nodeId : scnNodeId;
+	var type : scndevEventType;
+	var message : String;
+}

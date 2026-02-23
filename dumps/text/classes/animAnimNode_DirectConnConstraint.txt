@@ -1,0 +1,32 @@
+import class animAnimNode_DirectConnConstraint extends animAnimNode_OnePoseInput
+{
+	var sourceTransform : handle:animIAnimNodeSourceChannel_QsTransform;
+	var isSourceTransformResaved : Bool;
+	var sourceTransformIndex : animTransformIndex;
+	var transformIndex : animTransformIndex;
+	var posX : Bool;
+	var posY : Bool;
+	var posZ : Bool;
+	var rotX : Bool;
+	var rotY : Bool;
+	var rotZ : Bool;
+	var scaleX : Bool;
+	var scaleY : Bool;
+	var scaleZ : Bool;
+	var weight : Float;
+	var weightNode : animFloatLink;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

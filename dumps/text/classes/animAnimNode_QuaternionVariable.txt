@@ -1,0 +1,17 @@
+import class animAnimNode_QuaternionVariable extends animAnimNode_QuaternionValue
+{
+	var variableName : CName;
+}
+
+import class abstract animAnimNode_QuaternionValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"SetBodyPositionEvent","d":0,"e":[{"a":{"b":"Vector4"},"b":"bodyPosition","c":128},{"a":{"b":"entEntityID"},"b":"bodyPositionID","c":128},{"a":{"a":1},"b":"pickedUp","c":128}]}

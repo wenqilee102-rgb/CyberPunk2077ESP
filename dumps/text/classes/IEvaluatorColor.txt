@@ -1,0 +1,11 @@
+import class abstract IEvaluatorColor extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

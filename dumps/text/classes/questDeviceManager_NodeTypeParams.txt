@@ -1,0 +1,13 @@
+import class questDeviceManager_NodeTypeParams extends ISerializable
+{
+	var objectRef : NodeRef;
+	var slotName : CName;
+	var entityRef : gameEntityReference;
+	var deviceControllerClass : CName;
+	var deviceAction : CName;
+	var actionProperties : array:questDeviceManager_ActionProperty;
+}
+
+import class abstract ISerializable
+{
+}

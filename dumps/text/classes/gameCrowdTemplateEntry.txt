@@ -1,0 +1,7 @@
+import struct gameCrowdTemplateEntry
+{
+	var entryName : CName;
+	var markings : array:CName;
+	var phases : array:gameCrowdTemplateEntryPhase;
+	var type : gameCrowdEntryType;
+}

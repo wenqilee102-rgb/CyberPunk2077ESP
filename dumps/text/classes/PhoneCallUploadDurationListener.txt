@@ -1,0 +1,45 @@
+class PhoneCallUploadDurationListener extends gameCustomValueStatPoolsListener
+{
+	public    var gameInstance : ScriptGameInstance;
+	public    var requesterPuppet : whandle:ScriptedPuppet;
+	public    var requesterID : entEntityID;
+	public    var duration : Float;
+	public    var statPoolType : gamedataStatPoolType;
+
+	event OnStatPoolAdded() : Bool; // OnStatPoolAdded
+	event OnStatPoolMaxValueReached(value : Float) : Bool; // OnStatPoolMaxValueReached
+	event OnStatPoolRemoved() : Bool; // OnStatPoolRemoved
+
+	function SendUploadFinishedEvent(); // SendUploadFinishedEvent;
+	function SendUploadStartedEvent(); // SendUploadStartedEvent;
+	function SetRegenBehavior(); // SetRegenBehavior;
+	function UnregisterListener(); // UnregisterListener;
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

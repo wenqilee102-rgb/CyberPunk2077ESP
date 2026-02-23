@@ -1,0 +1,10 @@
+import class localizationPersistenceCLNumberDateContainer extends ISerializable
+{
+	var clNumber : CName;
+	var clTimestamp : CName;
+	var clGeneratedIds : array:String;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+enum gameuiDamageIndicatorMode
+{
+	Off = 0,
+	DamageOnly = 1,
+	On = 2
+}

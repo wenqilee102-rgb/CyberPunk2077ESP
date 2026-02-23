@@ -1,0 +1,6 @@
+import struct FoliageShadowConfig
+{
+	var foliageShadowCascadeGradient : Float;
+	var foliageShadowCascadeFilterScale : Float;
+	var foliageShadowCascadeGradientDistanceRange : Float;
+}

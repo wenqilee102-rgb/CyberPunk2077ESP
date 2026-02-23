@@ -1,0 +1,5 @@
+import struct inkLanguageFont
+{
+	var font : raRef:inkFontFamilyResource;
+	var mapper : handle:inkLanguageFontMapper;
+}

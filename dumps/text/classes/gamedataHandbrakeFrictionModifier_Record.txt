@@ -1,0 +1,34 @@
+import class gamedataHandbrakeFrictionModifier_Record extends gamedataDriveHelper_Record
+{
+	import function AdditionalBrakeForLongUse() : Float; // AdditionalBrakeForLongUse
+	import function BlendOutTime() : Float; // BlendOutTime
+	import function PostHandbrakeTractionBoost() : Float; // PostHandbrakeTractionBoost
+	import function RearWheelsLatFrictionCoef() : Float; // RearWheelsLatFrictionCoef
+	import function RearWheelsLongFrictionCoef() : Float; // RearWheelsLongFrictionCoef
+}
+
+import class gamedataDriveHelper_Record extends gamedataTweakDBRecord
+{
+	import function Type() : whandle:gamedataDriveHelperType_Record; // Type
+	import function TypeHandle() : handle:gamedataDriveHelperType_Record; // TypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

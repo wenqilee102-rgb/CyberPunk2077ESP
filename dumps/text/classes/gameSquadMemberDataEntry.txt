@@ -1,0 +1,5 @@
+import struct gameSquadMemberDataEntry
+{
+	var squadName : CName;
+	var squadType : AISquadType;
+}

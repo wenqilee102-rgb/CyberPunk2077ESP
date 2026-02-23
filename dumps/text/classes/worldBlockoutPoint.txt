@@ -1,0 +1,11 @@
+import class worldBlockoutPoint extends ISerializable
+{
+	var position : Vector2;
+	var edges : array:Uint32;
+	var constraint : Int32;
+	var isFree : Bool;
+}
+
+import class abstract ISerializable
+{
+}

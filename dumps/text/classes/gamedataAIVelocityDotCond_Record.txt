@@ -1,0 +1,34 @@
+import class gamedataAIVelocityDotCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function DotRange() : Vector2; // DotRange
+	import function PositionTarget() : whandle:gamedataAIActionTarget_Record; // PositionTarget
+	import function PositionTargetHandle() : handle:gamedataAIActionTarget_Record; // PositionTargetHandle
+	import function TimePeriod() : Float; // TimePeriod
+	import function VelocityTarget() : whandle:gamedataAIActionTarget_Record; // VelocityTarget
+	import function VelocityTargetHandle() : handle:gamedataAIActionTarget_Record; // VelocityTargetHandle
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

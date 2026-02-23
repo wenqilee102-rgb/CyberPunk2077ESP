@@ -1,0 +1,7 @@
+import struct AISquadCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

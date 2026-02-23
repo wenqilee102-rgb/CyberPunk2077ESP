@@ -1,0 +1,35 @@
+class ScannerSkillchecks extends ScannerChunk
+{
+	private   var skillchecks : array:UIInteractionSkillCheck;
+	private   var authorizationRequired : Bool;
+	private   var isPlayerAuthorized : Bool;
+
+	function GetAuthorization() : Bool; // GetAuthorization;
+	function GetPlayerAuthorization() : Bool; // GetPlayerAuthorization;
+	function GetSkillchecks() : array:UIInteractionSkillCheck; // GetSkillchecks;
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+	function Set(sklchs : script_ref:array:UIInteractionSkillCheck); // Set;script_ref<array<UIInteractionSkillCheck>>
+	function SetAuthorization(auth : Bool); // SetAuthorization;Bool
+	function SetPlayerAuthorization(auth : Bool); // SetPlayerAuthorization;Bool
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

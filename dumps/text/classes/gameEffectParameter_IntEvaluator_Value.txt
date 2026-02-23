@@ -1,0 +1,12 @@
+import class gameEffectParameter_IntEvaluator_Value extends gameIEffectParameter_IntEvaluator
+{
+	var value : Uint32;
+}
+
+import class abstract gameIEffectParameter_IntEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

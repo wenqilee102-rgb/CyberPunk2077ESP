@@ -1,0 +1,35 @@
+import class gamedataAISubActionMeleeAttackManager_Record extends gamedataAISubAction_Record
+{
+	import function FxDelay() : Float; // FxDelay
+	import function Name() : CName; // Name
+	import function SendFriendlyFireWarning() : Bool; // SendFriendlyFireWarning
+	import function SpawnTrail() : Bool; // SpawnTrail
+	import function SpawnWeaponFX() : Bool; // SpawnWeaponFX
+	import function TrailDelay() : Float; // TrailDelay
+	import function TrailDuration() : Float; // TrailDuration
+	import function WarningDelay() : Float; // WarningDelay
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

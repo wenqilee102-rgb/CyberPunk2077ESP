@@ -1,0 +1,6 @@
+struct VendingTerminalSetup
+{
+	public    var vendorTweakID : TweakDBID;
+	public    var vendingBlacklist : array:EVendorMode;
+	public    var timeToCompletePurchase : Float;
+}

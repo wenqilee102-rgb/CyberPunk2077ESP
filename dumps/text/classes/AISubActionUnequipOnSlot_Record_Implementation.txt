@@ -1,0 +1,23 @@
+class abstract AISubActionUnequipOnSlot_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionUnequipOnSlot_Record); // AISubActionUnequipOnSlot_Record_Implementation::Activate;ScriptExecutionContextAISubActionUnequipOnSlot_Record
+	static function ApplyAnimFeature(context : AIbehaviorScriptExecutionContext, itemsToUnequip : script_ref:array:NPCItemToEquip); // AISubActionUnequipOnSlot_Record_Implementation::ApplyAnimFeature;ScriptExecutionContextscript_ref<array<NPCItemToEquip>>
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionUnequipOnSlot_Record, duration : Float, interrupted : Bool); // AISubActionUnequipOnSlot_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionUnequipOnSlot_RecordFloatBool
+	static function Drop(context : AIbehaviorScriptExecutionContext, itemToUnequip : NPCItemToEquip) : Bool; // AISubActionUnequipOnSlot_Record_Implementation::Drop;ScriptExecutionContextNPCItemToEquip
+	static function Unequip(context : AIbehaviorScriptExecutionContext, dropItem : Bool, itemsToUnequip : array:NPCItemToEquip) : Bool; // AISubActionUnequipOnSlot_Record_Implementation::Unequip;ScriptExecutionContextBoolarray<NPCItemToEquip>
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionUnequipOnSlot_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionUnequipOnSlot_Record_Implementation::Update;ScriptExecutionContextAISubActionUnequipOnSlot_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

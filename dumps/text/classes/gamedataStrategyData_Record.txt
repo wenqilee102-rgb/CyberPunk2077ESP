@@ -1,0 +1,30 @@
+import class gamedataStrategyData_Record extends gamedataTweakDBRecord
+{
+	import function MinDirectDistance() : Float; // MinDirectDistance
+	import function MinDistanceBetweenSpawningVehicles() : Vector2; // MinDistanceBetweenSpawningVehicles
+	import function PlayerToIntersectionDistance() : Vector2; // PlayerToIntersectionDistance
+	import function VehicleSpawnAngleRange() : Vector2; // VehicleSpawnAngleRange
+	import function VehicleSpawnDistanceRange() : Vector2; // VehicleSpawnDistanceRange
+	import function VehicleSpawnDistanceRangeHighway() : Vector2; // VehicleSpawnDistanceRangeHighway
+	import function VehicleSpawnDistanceRangeOnFoot() : Vector2; // VehicleSpawnDistanceRangeOnFoot
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

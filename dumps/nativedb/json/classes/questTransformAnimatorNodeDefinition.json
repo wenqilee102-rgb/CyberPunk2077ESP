@@ -1,0 +1,1 @@
+{"a":"questSignalStoppingNodeDefinition","b":"questTransformAnimatorNodeDefinition","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"objectRef","c":128},{"a":{"a":14},"b":"animationName","c":128},{"a":{"a":26,"c":{"b":"questTransformAnimatorNode_ActionType"}},"b":"action","c":128}]}

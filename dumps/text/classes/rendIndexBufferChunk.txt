@@ -1,0 +1,5 @@
+import struct rendIndexBufferChunk
+{
+	var pe : GpuWrapApieIndexBufferChunkType;
+	var teOffset : Uint32;
+}

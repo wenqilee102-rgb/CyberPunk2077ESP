@@ -1,0 +1,11 @@
+import struct audioMixingActionData
+{
+	var actionType : audioMixingActionType;
+	var voContext : locVoiceoverContext;
+	var tagValue : CName;
+	var dbOffset : Float;
+	var distanceRolloffFactor : Float;
+	var voEventOverride : CName;
+	var customParametersSetKey : Uint64;
+	var customParameters : array:audioAudSimpleParameter;
+}

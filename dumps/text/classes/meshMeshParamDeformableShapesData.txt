@@ -1,0 +1,14 @@
+import class meshMeshParamDeformableShapesData extends meshMeshParameter
+{
+	var ownerIndex : array:Uint8;
+	var startingPose : array:Transform;
+	var finalPose : array:Transform;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

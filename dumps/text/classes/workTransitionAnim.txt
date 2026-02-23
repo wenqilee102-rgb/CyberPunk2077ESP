@@ -1,0 +1,7 @@
+import struct workTransitionAnim
+{
+	var idleA : CName;
+	var idleB : CName;
+	var transitionAtoB : CName;
+	var transitionBtoA : CName;
+}

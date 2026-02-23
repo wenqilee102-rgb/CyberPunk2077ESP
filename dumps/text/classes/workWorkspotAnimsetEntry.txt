@@ -1,0 +1,6 @@
+import struct workWorkspotAnimsetEntry
+{
+	var rig : raRef:animRig;
+	var animations : animAnimSetup;
+	var loadingHandles : array:rRef:animAnimSet;
+}

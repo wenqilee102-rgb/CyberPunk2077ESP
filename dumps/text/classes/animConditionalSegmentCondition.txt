@@ -1,0 +1,7 @@
+import struct animConditionalSegmentCondition
+{
+	var lod : Int32;
+	var group : CName;
+	var name : CName;
+	var animFeatureValue : Bool;
+}

@@ -1,0 +1,5 @@
+import struct questVariantState
+{
+	var name : CName;
+	var show : Bool;
+}

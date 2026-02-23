@@ -1,0 +1,12 @@
+import class gameinteractionsContainedInShapesPredicate extends gameinteractionsIPredicateType
+{
+	var useCameraPosition : Bool;
+}
+
+import class abstract gameinteractionsIPredicateType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,18 @@
+import class TonemappingModeLottes extends ITonemappingMode
+{
+	var maxInput : Float;
+	var contrast : Float;
+	var midIn : Float;
+	var midOut : Float;
+	var crosstalk : Vector3;
+	var crosstalkSaturation : Vector3;
+}
+
+import class abstract ITonemappingMode extends ISerializable
+{
+	var colorPreservation : curveData:Float;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import struct gametargetingSystemHitInfo
+{
+	var queryMask : Uint64;
+	var entityId : entEntityID;
+	var entity : whandle:entEntity;
+	var component : whandle:entIComponent;
+	var aimStartPosition : Vector4;
+	var closestHitPosition : Vector4;
+	var isTransparent : Bool;
+
+	import static function IsValid(self : gametargetingSystemHitInfo) : Bool; // IsValid
+}

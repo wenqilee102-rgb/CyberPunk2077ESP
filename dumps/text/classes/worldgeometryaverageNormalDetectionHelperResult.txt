@@ -1,0 +1,26 @@
+import class worldgeometryaverageNormalDetectionHelperResult extends IScriptable
+{
+	import function GetAverageNormal() : Vector4; // GetAverageNormal
+	import function GetAveragePredictedNormal() : Vector4; // GetAveragePredictedNormal
+	import function GetAveragePredictedSlope() : Vector4; // GetAveragePredictedSlope
+	import function GetAverageSlope() : Vector4; // GetAverageSlope
+	import function GetCentreMaterialName() : CName; // GetCentreMaterialName
+	import function GetCentreNormal() : Vector4; // GetCentreNormal
+	import function GetCentreSlope() : Vector4; // GetCentreSlope
+	import function GetQuery(); // GetQuery
+	import function GetQueryResult(); // GetQueryResult
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

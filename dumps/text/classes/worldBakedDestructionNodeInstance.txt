@@ -1,0 +1,19 @@
+import class worldBakedDestructionNodeInstance extends worldMeshNodeInstance
+{
+}
+
+import class worldMeshNodeInstance extends worldSnappableNodeInstance
+{
+}
+
+import class abstract worldSnappableNodeInstance extends worldINodeInstance
+{
+}
+
+import class abstract worldINodeInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

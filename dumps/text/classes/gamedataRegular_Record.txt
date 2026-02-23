@@ -1,0 +1,33 @@
+import class gamedataRegular_Record extends gamedataProjectileLaunch_Record
+{
+	import function StartVelocity() : Float; // StartVelocity
+	import function StartVelocityCharged() : Float; // StartVelocityCharged
+}
+
+import class gamedataProjectileLaunch_Record extends gamedataTweakDBRecord
+{
+	import function ApplyAdditiveProjectileSpiraling() : Bool; // ApplyAdditiveProjectileSpiraling
+	import function CanTrackDevices() : Bool; // CanTrackDevices
+	import function Type() : whandle:gamedataProjectileLaunchMode_Record; // Type
+	import function TypeHandle() : handle:gamedataProjectileLaunchMode_Record; // TypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

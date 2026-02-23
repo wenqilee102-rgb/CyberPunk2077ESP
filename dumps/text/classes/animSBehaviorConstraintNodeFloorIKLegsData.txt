@@ -1,0 +1,13 @@
+import struct animSBehaviorConstraintNodeFloorIKLegsData
+{
+	var Min rel offset : Float;
+	var Max rel offset : Float;
+	var Min trace offset : Float;
+	var Max trace offset : Float;
+	var verticalOffsetBlendUpTime : Float;
+	var verticalOffsetBlendDownTime : Float;
+	var Max distance for trace update : Float;
+	var Max angle from upright normal : Float;
+	var Max angle from upright normal to side : Float;
+	var Max angle from upright normal to revert orientation : Float;
+}

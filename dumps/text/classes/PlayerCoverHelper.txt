@@ -1,0 +1,19 @@
+class PlayerCoverHelper extends IScriptable
+{
+	static function BlockCoverVisibilityReduction(owner : whandle:gameObject); // PlayerCoverHelper::BlockCoverVisibilityReduction;GameObject
+	static function GetBlockCoverStatusEffectID() : TweakDBID; // PlayerCoverHelper::GetBlockCoverStatusEffectID;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,45 @@
+class RipperdocTokenPopupData extends inkGameNotificationData
+{
+	public    var costData : CyberwareUpgradeCostData;
+	public    var baseItemData : handle:UIInventoryItem;
+	public    var option1InventoryItem : handle:UIInventoryItem;
+	public    var option2InventoryItem : handle:UIInventoryItem;
+	public    var option3InventoryItem : handle:UIInventoryItem;
+	public    var cyberwareUpgradeData : handle:InventoryTooltiData_CyberwareUpgradeData;
+	public    var displayContext : handle:ItemDisplayContextData;
+	public    var option1GameItemData : handle:gameItemData;
+	public    var option2GameItemData : handle:gameItemData;
+	public    var option3GameItemData : handle:gameItemData;
+	public    var option1SideItemData : handle:gameItemData;
+	public    var option2SideItemData : handle:gameItemData;
+	public    var option3SideItemData : handle:gameItemData;
+}
+
+import class inkGameNotificationData extends inkUserData
+{
+	var notificationName : CName;
+	var requiredGameState : CName;
+	var isBlocking : Bool;
+	var useCursor : Bool;
+	var queueName : CName;
+	var introAnimation : CName;
+	var token : whandle:inkGameNotificationToken;
+}
+
+import class inkUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

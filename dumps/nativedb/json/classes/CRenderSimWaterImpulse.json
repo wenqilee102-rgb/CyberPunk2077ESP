@@ -1,0 +1,1 @@
+{"a":"IDynamicTextureGenerator","b":"CRenderSimWaterImpulse","d":8,"e":[{"a":{"a":6},"b":"resolution","c":128},{"a":{"a":10},"b":"simulationSpeed","c":128}],"f":[{"a":"AddImpulse","d":12}]}

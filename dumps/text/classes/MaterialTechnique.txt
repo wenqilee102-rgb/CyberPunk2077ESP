@@ -1,0 +1,6 @@
+import struct MaterialTechnique
+{
+	var passes : array:MaterialPass;
+	var featureFlagsEnabledMask : FeatureFlagsMask;
+	var streamsToBind : Uint32;
+}

@@ -1,0 +1,42 @@
+class StatPoolPrereqListener extends BaseStatPoolPrereqListener
+{
+	protected var state : whandle:StatPoolPrereqState;
+
+	event OnStatPoolValueReached(oldValue : Float, newValue : Float, percToPoints : Float) : Bool; // OnStatPoolValueReached
+
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+	function RegisterState(state : handle:gamePrereqState); // RegisterState;PrereqState
+}
+
+class BaseStatPoolPrereqListener extends gameCustomValueStatPoolsListener
+{
+	function RegisterState(state : handle:gamePrereqState); // RegisterState;PrereqState
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

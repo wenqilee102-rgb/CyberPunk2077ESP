@@ -1,0 +1,32 @@
+class UI_HUDProgressBarDef extends gamebbScriptDefinition
+{
+	public    var TimerID : gamebbScriptID_Variant;
+	public    var Header : gamebbScriptID_String;
+	public    var BottomText : gamebbScriptID_String;
+	public    var CompletedText : gamebbScriptID_String;
+	public    var FailedText : gamebbScriptID_String;
+	public    var Active : gamebbScriptID_Bool;
+	public    var Progress : gamebbScriptID_Float;
+	public    var ProgressBump : gamebbScriptID_Float;
+	public    var MessageType : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,128 @@
+class WeaponPositionComponent extends gameScriptableComponent
+{
+	private   var playerPuppet : whandle:PlayerPuppet;
+	private   var tweakPoseState : TweakWeaponPose;
+	private   var tweakPosition : Bool;
+	private   var tweakRotation : Bool;
+	private   var fineTuneWeaponPose : Bool;
+	private   var positionSensitivity : Float;
+	private   var positionSensitivityFineTuning : Float;
+	private   var rotationSensitivity : Float;
+	private   var rotationSensitivityFineTuning : Float;
+	private   var visionSwitch : Bool;
+	private   var visSys : handle:gameVisionModeSystem;
+	private   var weaponPosDeltaX : Float;
+	private   var weaponPosDeltaY : Float;
+	private   var weaponPosDeltaZ : Float;
+	private   var weaponRotDeltaX : Float;
+	private   var weaponRotDeltaY : Float;
+	private   var weaponRotDeltaZ : Float;
+	private   var weaponPosVec : Vector4;
+	private   var weaponRotVec : Vector4;
+	private   var weaponAimPosVec : Vector4;
+	private   var weaponAimRotVec : Vector4;
+	private   var weaponPosOffsetFromInput : Vector4;
+	private   var weaponRotOffsetFromInput : Vector4;
+	private   var weaponAimPosOffsetFromInput : Vector4;
+	private   var weaponAimRotOffsetFromInput : Vector4;
+	private   var cameraStandHeight : Float;
+	private   var cameraCrouchHeight : Float;
+	private   var cameraResetPitch : Bool;
+	private   var cameraHeightOffset : Float;
+	private   var UILayerID0 : Uint32;
+	private   var UILayerID1 : Uint32;
+	private   var UILayerID2 : Uint32;
+	private   var UILayerID3 : Uint32;
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+
+	function ClearDebugInfo(); // ClearDebugInfo;
+	function GetBlackboardBoolVariable(id : gamebbScriptID_Bool) : Bool; // GetBlackboardBoolVariable;BlackboardID_Bool
+	function GetBlackboardIntVariable(id : gamebbScriptID_Int32) : Int32; // GetBlackboardIntVariable;BlackboardID_Int
+	function IsOwnerAiming() : Bool; // IsOwnerAiming;
+	function OnGameAttach(); // OnGameAttach;
+	function OnUpdate(deltaTime : Float); // OnUpdate;Float
+	function ResetData(); // ResetData;
+	function ResetDeltas(); // ResetDeltas;
+	function ResetWeaponAimOffsetFromInput(); // ResetWeaponAimOffsetFromInput;
+	function ResetWeaponOffsetFromInput(); // ResetWeaponOffsetFromInput;
+	function SendCameraData(); // SendCameraData;
+	function SendData(); // SendData;
+	function SendWeaponPositionData(); // SendWeaponPositionData;
+	function SetBlackboardBoolVariable(id : gamebbScriptID_Bool, varValue : Bool); // SetBlackboardBoolVariable;BlackboardID_BoolBool
+	function SetBlackboardIntVariable(id : gamebbScriptID_Int32, value : Int32); // SetBlackboardIntVariable;BlackboardID_IntInt32
+	function ShouldDisplayDebugInfo() : Bool; // ShouldDisplayDebugInfo;
+	function UpdateCameraData(); // UpdateCameraData;
+	function UpdateData(); // UpdateData;
+	function UpdateDebugInfo(); // UpdateDebugInfo;
+	function UpdateTweakDBParams(); // UpdateTweakDBParams;
+	function UpdateWeaponPositionDataFromInput(); // UpdateWeaponPositionDataFromInput;
+	function UpdateWeaponPositionDataFromTweakDB(); // UpdateWeaponPositionDataFromTweakDB;
+	function UpdateWeaponPositionDataFromWeaponStats(); // UpdateWeaponPositionDataFromWeaponStats;
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

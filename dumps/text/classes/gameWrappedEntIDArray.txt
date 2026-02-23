@@ -1,0 +1,4 @@
+import struct gameWrappedEntIDArray
+{
+	var arr : array:entEntityID;
+}

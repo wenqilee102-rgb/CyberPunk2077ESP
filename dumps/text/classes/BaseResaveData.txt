@@ -1,0 +1,5 @@
+struct BaseResaveData
+{
+	public    var baseDeviceData : BaseDeviceData;
+	public    var tweakDBRecord : TweakDBID;
+}

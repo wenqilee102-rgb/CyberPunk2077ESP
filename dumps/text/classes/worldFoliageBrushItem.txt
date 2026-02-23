@@ -1,0 +1,11 @@
+import class worldFoliageBrushItem extends ISerializable
+{
+	var Mesh : rRef:CMesh;
+	var MeshAppearance : CName;
+	var Params : worldFoliageBrushParams;
+	var Selected : Bool;
+}
+
+import class abstract ISerializable
+{
+}

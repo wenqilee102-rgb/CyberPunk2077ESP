@@ -1,0 +1,23 @@
+class abstract MathHelper extends IScriptable
+{
+	static function EulerNumber() : Float; // MathHelper::EulerNumber;
+	static function IsFloatInRange(value : Float, min : Float, max : Float, optional leftClosed : Bool, optional rightClosed : Bool) : Bool; // MathHelper::IsFloatInRange;FloatFloatFloatBoolBool
+	static function NegativeInfinity() : Float; // MathHelper::NegativeInfinity;
+	static function NormalizeF(value : Float, min : Float, max : Float) : Float; // MathHelper::NormalizeF;FloatFloatFloat
+	static function PositiveInfinity() : Float; // MathHelper::PositiveInfinity;
+	static function RandFromNormalDist(optional mean : Float, optional stdDev : Float) : Float; // MathHelper::RandFromNormalDist;FloatFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

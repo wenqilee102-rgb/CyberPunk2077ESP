@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"gameEquipRequest","c":"EquipRequest","d":24,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"a":6},"b":"slotIndex","c":128},{"a":{"a":1},"b":"addToInventory","c":128},{"a":{"a":1},"b":"equipToCurrentActiveSlot","c":128}]}

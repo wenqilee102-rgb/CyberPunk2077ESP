@@ -1,0 +1,27 @@
+class Target extends IScriptable
+{
+	private   var target : whandle:gameObject;
+	private   var isInteresting : Bool;
+	private   var isVisible : Bool;
+
+	function CreateTarget(currentTarget : whandle:gameObject, interesting : Bool, visible : Bool); // CreateTarget;GameObjectBoolBool
+	function GetTarget() : whandle:gameObject; // GetTarget;
+	function IsInteresting() : Bool; // IsInteresting;
+	function IsVisible() : Bool; // IsVisible;
+	function SetIsInteresting(interestingChange : Bool); // SetIsInteresting;Bool
+	function SetIsVisible(_isVisible : Bool); // SetIsVisible;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

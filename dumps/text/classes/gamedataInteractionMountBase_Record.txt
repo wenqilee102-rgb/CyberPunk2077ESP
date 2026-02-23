@@ -1,0 +1,36 @@
+import class gamedataInteractionMountBase_Record extends gamedataInteractionBase_Record
+{
+	import function Tag() : CName; // Tag
+	import function VehicleMountSlot() : CName; // VehicleMountSlot
+}
+
+import class gamedataInteractionBase_Record extends gamedataTweakDBRecord
+{
+	import function Action() : String; // Action
+	import function Caption() : CName; // Caption
+	import function CaptionIcon() : whandle:gamedataChoiceCaptionIconPart_Record; // CaptionIcon
+	import function CaptionIconHandle() : handle:gamedataChoiceCaptionIconPart_Record; // CaptionIconHandle
+	import function Description() : CName; // Description
+	import function Name() : String; // Name
+	import function PrereqID() : String; // PrereqID
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

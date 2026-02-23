@@ -1,0 +1,23 @@
+import class animAnimNode_DampVector extends animAnimNode_VectorValue
+{
+	var defaultIncreaseSpeed : Vector4;
+	var defaultDecreaseSpeed : Vector4;
+	var startFromDefaultValue : Bool;
+	var defaultInitialValue : Vector4;
+	var inputNode : animVectorLink;
+	var increaseSpeedNode : animVectorLink;
+	var decreaseSpeedNode : animVectorLink;
+}
+
+import class abstract animAnimNode_VectorValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

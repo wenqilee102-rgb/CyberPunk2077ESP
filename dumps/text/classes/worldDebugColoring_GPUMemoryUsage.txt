@@ -1,0 +1,19 @@
+import class worldDebugColoring_GPUMemoryUsage extends worldDebugColoring_MetricsUsageAbstractBase
+{
+}
+
+import class abstract worldDebugColoring_MetricsUsageAbstractBase extends worldEditorDebugColoringSettings
+{
+	var maxColor : Color;
+	var minColor : Color;
+	var minSize : Uint32;
+	var maxSize : Uint32;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

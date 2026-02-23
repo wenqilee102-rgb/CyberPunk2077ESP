@@ -1,0 +1,36 @@
+import class gameweaponAnimFeature_WeaponData extends animAnimFeature
+{
+	var cycleTime : Float;
+	var chargePercentage : Float;
+	var timeInMaxCharge : Float;
+	var ammoRemaining : Int32;
+	var triggerMode : Int32;
+	var isMagazineFull : Bool;
+	var isTriggerDown : Bool;
+
+	import function SetAmmoRemaining(ammoRemaining : Int32); // SetAmmoRemaining
+	import function SetChargePercentage(chargePercentage : Float); // SetChargePercentage
+	import function SetCycleTime(cycleTime : Float); // SetCycleTime
+	import function SetMagazineFull(magazineFull : Bool); // SetMagazineFull
+	import function SetTimeInMaxCharge(timeInMaxCharge : Float); // SetTimeInMaxCharge
+	import function SetTriggerDown(triggerDown : Bool); // SetTriggerDown
+	import function SetTriggerMode(triggerMode : gamedataTriggerMode); // SetTriggerMode
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

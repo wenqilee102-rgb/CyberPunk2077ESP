@@ -1,0 +1,28 @@
+import class gamedataCrowdSettingsPackageBase_Record extends gamedataTweakDBRecord
+{
+	import function GetSpecsCount() : Int32; // GetSpecsCount
+	import function GetSpecsItem(index : Int32) : whandle:gamedataCrowdSlotMovementPatternBase_Record; // GetSpecsItem
+	import function GetSpecsItemHandle(index : Int32) : handle:gamedataCrowdSlotMovementPatternBase_Record; // GetSpecsItemHandle
+	import function Specs(out outList : array:whandle:gamedataCrowdSlotMovementPatternBase_Record); // Specs
+	import function SpecsContains(item : whandle:gamedataCrowdSlotMovementPatternBase_Record) : Bool; // SpecsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+class abstract AISubActionSpawnFX_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSpawnFX_Record); // AISubActionSpawnFX_Record_Implementation::Activate;ScriptExecutionContextAISubActionSpawnFX_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSpawnFX_Record, duration : Float, interrupted : Bool); // AISubActionSpawnFX_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionSpawnFX_RecordFloatBool
+	static function DespawnFX(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSpawnFX_Record); // AISubActionSpawnFX_Record_Implementation::DespawnFX;ScriptExecutionContextAISubActionSpawnFX_Record
+	static function SpawnFX(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSpawnFX_Record); // AISubActionSpawnFX_Record_Implementation::SpawnFX;ScriptExecutionContextAISubActionSpawnFX_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSpawnFX_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionSpawnFX_Record_Implementation::Update;ScriptExecutionContextAISubActionSpawnFX_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

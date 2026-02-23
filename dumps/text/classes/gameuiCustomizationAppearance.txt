@@ -1,0 +1,12 @@
+import struct gameuiCustomizationAppearance extends gameuiCensorshipInfo
+{
+	var name : CName;
+	var resource : raRef:appearanceAppearanceResource;
+	var definition : CName;
+}
+
+import struct gameuiCensorshipInfo
+{
+	var censorFlag : CensorshipFlags;
+	var censorFlagAction : gameuiCharacterCustomizationActionType;
+}

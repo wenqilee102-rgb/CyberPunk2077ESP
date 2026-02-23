@@ -1,0 +1,5 @@
+import struct gameRazerChromaAnimationSet
+{
+	var name : CName;
+	var animations : array:gameRazerChromaAnimation;
+}

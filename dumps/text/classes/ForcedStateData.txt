@@ -1,0 +1,7 @@
+struct ForcedStateData
+{
+	public    var state : ECLSForcedState;
+	public    var sourceName : CName;
+	public    var priority : EPriority;
+	public    var savable : Bool;
+}

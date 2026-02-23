@@ -1,0 +1,1 @@
+{"b":"SMovementPattern","d":0,"g":true,"e":[{"a":{"a":10},"b":"speed","c":128},{"a":{"a":10},"b":"distance","c":128},{"a":{"b":"EMovementDirection"},"b":"direction","c":128}]}

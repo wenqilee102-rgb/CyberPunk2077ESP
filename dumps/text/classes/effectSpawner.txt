@@ -1,0 +1,7 @@
+import class effectSpawner extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

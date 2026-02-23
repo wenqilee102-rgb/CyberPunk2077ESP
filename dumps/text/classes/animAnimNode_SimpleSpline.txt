@@ -1,0 +1,25 @@
+import class animAnimNode_SimpleSpline extends animAnimNode_OnePoseInput
+{
+	var areSourceChannelsResaved : Bool;
+	var startTransform : animTransformIndex;
+	var middleTransform : animTransformIndex;
+	var endTransform : animTransformIndex;
+	var constrainedTransform : animTransformIndex;
+	var progressMode : animConstraintWeightMode;
+	var defaultProgress : Float;
+	var progressTrack : animNamedTrackIndex;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

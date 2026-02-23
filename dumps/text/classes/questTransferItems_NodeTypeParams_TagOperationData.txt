@@ -1,0 +1,6 @@
+import struct questTransferItems_NodeTypeParams_TagOperationData
+{
+	var tagToTransfer : CName;
+	var itemIDsToIgnore : array:TweakDBID;
+	var tagsToIgnore : array:CName;
+}

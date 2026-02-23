@@ -1,0 +1,8 @@
+struct TVResaveData
+{
+	public    var mediaResaveData : MediaResaveData;
+	public    var channels : array:STvChannel;
+	public    var securedText : CName;
+	public    var muteInterface : Bool;
+	public    var useWhiteNoiseFX : Bool;
+}

@@ -1,0 +1,7 @@
+import struct gameSPartSlots
+{
+	var status : gameESlotState;
+	var installedPart : gameItemID;
+	var slotID : TweakDBID;
+	var innerItemData : gameInnerItemData;
+}

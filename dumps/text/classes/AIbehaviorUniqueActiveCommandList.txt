@@ -1,0 +1,13 @@
+import struct AIbehaviorUniqueActiveCommandList
+{
+	import static function Add(list : script_ref:AIbehaviorUniqueActiveCommandList, command : handle:AICommand); // Add
+	import static function ClearActionCommand(list : script_ref:AIbehaviorUniqueActiveCommandList, commandName : CName); // ClearActionCommand
+	import static function Contains(list : script_ref:AIbehaviorUniqueActiveCommandList, command : CName) : Bool; // Contains
+	import static function ContainsById(list : script_ref:AIbehaviorUniqueActiveCommandList, commandId : Uint32) : Bool; // ContainsById
+	import static function GetId(list : script_ref:AIbehaviorUniqueActiveCommandList, command : CName, out id : Uint32) : Bool; // GetId
+	import static function IsActionCommandById(list : script_ref:AIbehaviorUniqueActiveCommandList, commandId : Uint32) : Bool; // IsActionCommandById
+	import static function IsActionCommandByName(list : script_ref:AIbehaviorUniqueActiveCommandList, commandName : CName) : Bool; // IsActionCommandByName
+	import static function Remove(list : script_ref:AIbehaviorUniqueActiveCommandList, commandName : CName); // Remove
+	import static function Size(list : script_ref:AIbehaviorUniqueActiveCommandList) : Int32; // Size
+	import static function TrackActionCommand(list : script_ref:AIbehaviorUniqueActiveCommandList, commandName : CName); // TrackActionCommand
+}

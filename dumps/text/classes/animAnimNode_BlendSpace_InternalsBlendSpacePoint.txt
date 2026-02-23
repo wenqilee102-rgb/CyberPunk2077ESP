@@ -1,0 +1,9 @@
+import struct animAnimNode_BlendSpace_InternalsBlendSpacePoint
+{
+	var animationName : CName;
+	var useFixedCoordinates : Bool;
+	var fixedCoordinates : array:Float;
+	var useStaticPose : Bool;
+	var staticPoseTime : Float;
+	var staticPoseProgress : Float;
+}

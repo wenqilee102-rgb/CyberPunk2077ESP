@@ -1,0 +1,10 @@
+import class gameEntityToAppearancesAndColorVariantsMapEntry extends ISerializable
+{
+	var entityPathHash : Uint64;
+	var debugEntityPath : String;
+	var appearancesAndTheirColorVariants : array:gameEntityAppearanceColorVariantsArray;
+}
+
+import class abstract ISerializable
+{
+}

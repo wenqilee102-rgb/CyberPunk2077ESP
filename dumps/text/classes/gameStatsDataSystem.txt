@@ -1,0 +1,32 @@
+import class gameStatsDataSystem extends gameIStatsDataSystem
+{
+	import function GetArmorEffectivenessValue(optional isPlayer : Bool) : Float; // GetArmorEffectivenessValue
+	import function GetDifficulty() : gameDifficulty; // GetDifficulty
+	import function GetMaxValueFromCurve(curveSetName : CName, optional curveName : CName, optional difficulty : gameDifficulty) : Float; // GetMaxValueFromCurve
+	import function GetMinValueFromCurve(curveSetName : CName, optional curveName : CName, optional difficulty : gameDifficulty) : Float; // GetMinValueFromCurve
+	import function GetSuggestedDefenseValues(playerLevel : Float) : gameSuggestedDefenseValues; // GetSuggestedDefenseValues
+	import function GetValueFromCurve(curveSetName : CName, argumentValue : Float, optional curveName : CName, optional difficulty : gameDifficulty) : Float; // GetValueFromCurve
+	import function SetDifficulty(difficulty : gameDifficulty); // SetDifficulty
+}
+
+import class abstract gameIStatsDataSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

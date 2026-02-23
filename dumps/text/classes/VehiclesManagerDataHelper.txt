@@ -1,0 +1,20 @@
+class VehiclesManagerDataHelper extends IScriptable
+{
+	static function GetRadioStations(player : handle:gameObject) : array:handle:IScriptable; // VehiclesManagerDataHelper::GetRadioStations;GameObject
+	static function GetVehicles(player : handle:gameObject) : array:handle:IScriptable; // VehiclesManagerDataHelper::GetVehicles;GameObject
+	static function PushRadioStationData(result : script_ref:array:handle:IScriptable, record : handle:gamedataRadioStation_Record); // VehiclesManagerDataHelper::PushRadioStationData;script_ref<array<IScriptable>>RadioStation_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

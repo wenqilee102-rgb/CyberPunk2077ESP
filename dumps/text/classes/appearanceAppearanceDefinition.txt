@@ -1,0 +1,24 @@
+import class appearanceAppearanceDefinition extends ISerializable
+{
+	var name : CName;
+	var parentAppearance : CName;
+	var partsMasks : array:array:CName;
+	var partsValues : array:appearanceAppearancePart;
+	var partsOverrides : array:appearanceAppearancePartOverrides;
+	var proxyMesh : raRef:CMesh;
+	var forcedLodDistance : Uint8;
+	var proxyMeshAppearance : CName;
+	var cookedDataPathOverride : raRef:CResource;
+	var parametersBuffer : entEntityParametersBuffer;
+	var visualTags : redTagList;
+	var inheritedVisualTags : redTagList;
+	var hitRepresentationOverrides : array:gameHitRepresentationOverride;
+	var compiledData : serializationDeferredDataBuffer;
+	var resolvedDependencies : array:raRef:CResource;
+	var looseDependencies : array:raRef:CResource;
+	var censorFlags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

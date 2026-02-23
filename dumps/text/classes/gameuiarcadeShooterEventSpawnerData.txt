@@ -1,0 +1,8 @@
+import struct gameuiarcadeShooterEventSpawnerData
+{
+	var dataName : CName;
+	var targetSpawner : inkWidgetReference;
+	var tiedSpawner : inkWidgetReference;
+	var triggerCondition : gameuiarcadeShooterTriggerType;
+	var delayDuration : Float;
+}

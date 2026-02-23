@@ -1,0 +1,10 @@
+import struct gamestateMachineConsumableParameterWeakIScriptable extends gamestateMachineActionParameterWeakIScriptable
+{
+	var consumed : Bool;
+}
+
+import struct gamestateMachineActionParameterWeakIScriptable
+{
+	var name : CName;
+	var value : whandle:IScriptable;
+}

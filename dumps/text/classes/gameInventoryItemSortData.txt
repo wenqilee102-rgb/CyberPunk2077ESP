@@ -1,0 +1,14 @@
+import struct gameInventoryItemSortData
+{
+	var Name : String;
+	var Quality : Int32;
+	var Price : Int32;
+	var Weight : Float;
+	var DPS : Int32;
+	var ItemType : Int32;
+	var QuestItem : Bool;
+	var NewItem : Bool;
+	var DLCAddedItem : Bool;
+	var ChimeraMod : Bool;
+	var IsPlayerFavourite : Bool;
+}

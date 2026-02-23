@@ -1,0 +1,5 @@
+struct SNewsFeedData
+{
+	public    var interval : Float;
+	public    var elements : array:SNewsFeedElementData;
+}

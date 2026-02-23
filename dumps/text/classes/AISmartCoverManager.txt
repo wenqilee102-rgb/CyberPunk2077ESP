@@ -1,0 +1,54 @@
+import class AISmartCoverManager extends AIISmartCoverManager
+{
+	import function GetCoverActionType(occupant : handle:gameObject) : AIUninterruptibleActionType; // GetCoverActionType
+	import function GetCoverHeight(coverId : Uint64) : gameCoverHeight; // GetCoverHeight
+	import function GetCoverPosition(coverId : Uint64) : Vector4; // GetCoverPosition
+	import function GetCoverRemainingHealthPercentage(coverId : Uint64) : Float; // GetCoverRemainingHealthPercentage
+	import function GetCoverWorldForward(coverId : Uint64) : Vector4; // GetCoverWorldForward
+	import function GetCoverWorldUp(coverId : Uint64) : Vector4; // GetCoverWorldUp
+	import function GetCurrentCover(occupant : handle:gameObject) : Uint64; // GetCurrentCover
+	import function GetDemandCoverHolder(nodeRef : NodeRef) : handle:AICoverDemandHolder; // GetDemandCoverHolder
+	import function GetThreatsNotProtectedFrom(coverId : Uint64, occupant : handle:gameObject, angleMultiplier : Float, predictionTime : Float, trackingMode : gamedataTrackingMode) : array:AITrackedLocation; // GetThreatsNotProtectedFrom
+	import function GetUsableExposureSpotsForCover(coverId : Uint64, threat : handle:gameObject) : array:gameAvailableExposureMethodResult; // GetUsableExposureSpotsForCover
+	import function GetUsableExposureSpotsForCoverOccupant(occupant : handle:gameObject, threat : handle:gameObject) : array:gameAvailableExposureMethodResult; // GetUsableExposureSpotsForCoverOccupant
+	import function GetUsableExposureSpotsForCoverTolerance(coverId : Uint64, threat : handle:gameObject, maxTolerance : Float) : array:gameAvailableExposureMethodResult; // GetUsableExposureSpotsForCoverTolerance
+	import function GetUsableExposureSpotsNumForCoverTolerance(coverId : Uint64, threat : handle:gameObject, maxTolerance : Float, useRoughCalculations : Bool) : Uint32; // GetUsableExposureSpotsNumForCoverTolerance
+	import function IsCoverAvailable(coverId : Uint64, occupant : handle:gameObject) : Bool; // IsCoverAvailable
+	import function IsCoverRegular(coverIdValue : Uint64) : Bool; // IsCoverRegular
+	import function IsCoverValid(coverId : Uint64) : Bool; // IsCoverValid
+	import function IsEnteringOrLeavingCover(occupant : handle:gameObject) : Bool; // IsEnteringOrLeavingCover
+	import function IsProtectingHorizontallyAgainstObject(coverId : Uint64, object : handle:gameObject, angleMultiplier : Float) : Bool; // IsProtectingHorizontallyAgainstObject
+	import function IsShootingSpot(coverIdValue : Uint64) : Bool; // IsShootingSpot
+	import function LeaveCoverImmediately(occupant : handle:gameObject); // LeaveCoverImmediately
+	import function NodeRefToObjectId(nodeRef : NodeRef) : Uint64; // NodeRefToObjectId
+	import function NotifyGotDamageInCover(coverId : Uint64, damageTime : EngineTime, executingCoverAction : Bool, isShooting : Bool); // NotifyGotDamageInCover
+	import function RegisterCoverOccupant(coverId : Uint64, occupant : handle:gameObject); // RegisterCoverOccupant
+	import function RegisterCoverPreInstanceData(globalNodeRef : worldGlobalNodeRef, isEnabled : Bool); // RegisterCoverPreInstanceData
+	import function SetCoverDisabled(globalNodeRef : worldGlobalNodeRef); // SetCoverDisabled
+	import function SetCoverEnabled(globalNodeRef : worldGlobalNodeRef); // SetCoverEnabled
+	import function SetMaxAllowedActionHalfAngleDeg(angleDeg : Float); // SetMaxAllowedActionHalfAngleDeg
+	import function UnregisterCoverOccupant(occupant : handle:gameObject); // UnregisterCoverOccupant
+	import function UnregisterCoverPreInstanceData(globalNodeRef : worldGlobalNodeRef); // UnregisterCoverPreInstanceData
+}
+
+import class abstract AIISmartCoverManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

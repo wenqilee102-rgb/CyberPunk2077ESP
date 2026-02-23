@@ -1,0 +1,7 @@
+import struct gameinteractionsPublisherChoiceEvent extends gameinteractionsPublisherBaseEvent
+{
+}
+
+import struct abstract gameinteractionsPublisherBaseEvent
+{
+}

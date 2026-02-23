@@ -1,0 +1,1 @@
+{"a":"DoorControllerPS","b":"MovableWallScreenControllerPS","d":0,"f":[{"a":"OnInstantiated","c":{"a":1},"d":98},{"a":"GetDeviceIconPath","c":{"a":12},"d":32},{"a":"Initialize;","b":"Initialize","d":34}]}

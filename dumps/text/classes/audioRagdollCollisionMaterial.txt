@@ -1,0 +1,19 @@
+import class audioRagdollCollisionMaterial extends audioAudioMetadata
+{
+	var lightCollisionEventName : CName;
+	var heavyCollisionEventName : CName;
+	var dismemberedLimbCollisionEventName : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

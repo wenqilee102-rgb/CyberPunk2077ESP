@@ -1,0 +1,54 @@
+import struct Vector4
+{
+	var X : Float;
+	var Y : Float;
+	var Z : Float;
+	var W : Float;
+
+	import static function ClampLength(self : Vector4, min : Float, max : Float) : Vector4; // ClampLength
+	import static function Cross(a : Vector4, b : Vector4) : Vector4; // Cross
+	import static function Distance(from : Vector4, to : Vector4) : Float; // Distance
+	import static function Distance2D(from : Vector4, to : Vector4) : Float; // Distance2D
+	import static function DistanceSquared(from : Vector4, to : Vector4) : Float; // DistanceSquared
+	import static function DistanceSquared2D(from : Vector4, to : Vector4) : Float; // DistanceSquared2D
+	import static function DistanceToEdge(point : Vector4, a : Vector4, b : Vector4) : Float; // DistanceToEdge
+	import static function Dot(a : Vector4, b : Vector4) : Float; // Dot
+	import static function Dot2D(a : Vector4, b : Vector4) : Float; // Dot2D
+	import static function FromHeading(heading : Float) : Vector4; // FromHeading
+	import static function GetAngleBetween(from : Vector4, to : Vector4) : Float; // GetAngleBetween
+	import static function GetAngleDegAroundAxis(dirA : Vector4, dirB : Vector4, axis : Vector4) : Float; // GetAngleDegAroundAxis
+	import static function Heading(dir : Vector4) : Float; // Heading
+	import static function Interpolate(v1 : Vector4, v2 : Vector4, ratio : Float) : Vector4; // Interpolate
+	import static function IsXYZZero(self : Vector4) : Bool; // IsXYZZero
+	import static function IsZero(self : Vector4) : Bool; // IsZero
+	import static function Length(a : Vector4) : Float; // Length
+	import static function Length2D(a : Vector4) : Float; // Length2D
+	import static function LengthSquared(a : Vector4) : Float; // LengthSquared
+	import static function Mirror(dir : Vector4, normal : Vector4) : Vector4; // Mirror
+	import static function NearestPointOnEdge(point : Vector4, a : Vector4, b : Vector4) : Vector4; // NearestPointOnEdge
+	import static function Normalize(a : Vector4) : Vector4; // Normalize
+	import static function Normalize2D(a : Vector4) : Vector4; // Normalize2D
+	import static function ProjectPointToPlane(p1 : Vector4, p2 : Vector4, p3 : Vector4, toProject : Vector4) : Vector4; // ProjectPointToPlane
+	import static function Rand() : Vector4; // Rand
+	import static function Rand2D() : Vector4; // Rand2D
+	import static function RotByAngleXY(vec : Vector4, angleDeg : Float) : Vector4; // RotByAngleXY
+	import static function RotateAxis(vector : Vector4, axis : Vector4, angle : Float) : Vector4; // RotateAxis
+	import static function ToRotation(dir : Vector4) : EulerAngles; // ToRotation
+	import static function Transform(m : Matrix, point : Vector4) : Vector4; // Transform
+	import static function TransformDir(m : Matrix, point : Vector4) : Vector4; // TransformDir
+	import static function TransformH(m : Matrix, point : Vector4) : Vector4; // TransformH
+	import static function Vector3To4(v3 : Vector3) : Vector4; // Vector3To4
+	import static function Vector4To3(v4 : Vector4) : Vector3; // Vector4To3
+	import static function Zero(out self : Vector4); // Zero
+
+	static function EmptyVector() : Vector4; // Vector4::EmptyVector;
+	static function FRONT() : Vector4; // Vector4::FRONT;
+	static function Lerp(a : Vector4, b : Vector4, t : Float) : Vector4; // Vector4::Lerp;Vector4Vector4Float
+	static function RIGHT() : Vector4; // Vector4::RIGHT;
+	static function RandCone(coneDir : Float, coneAngle : Float, minRadius : Float, maxRadius : Float) : Vector4; // Vector4::RandCone;FloatFloatFloatFloat
+	static function RandRing(minRadius : Float, maxRadius : Float) : Vector4; // Vector4::RandRing;FloatFloat
+	static function RandRingStatic(seed : Int32, minRadius : Float, maxRadius : Float) : Vector4; // Vector4::RandRingStatic;Int32FloatFloat
+	static function ToString(vec : Vector4) : String; // Vector4::ToString;Vector4
+	static function ToStringPrec(vec : Vector4, precision : Int32) : String; // Vector4::ToStringPrec;Vector4Int32
+	static function UP() : Vector4; // Vector4::UP;
+}

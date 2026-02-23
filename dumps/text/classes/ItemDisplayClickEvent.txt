@@ -1,0 +1,33 @@
+class ItemDisplayClickEvent extends redEvent
+{
+	public    var itemData : gameInventoryItemData;
+	public    var displayContext : gameItemDisplayContext;
+	public    var display : whandle:InventoryItemDisplayController;
+	public    var isBuybackStack : Bool;
+	public    var isQuestBought : Bool;
+	public    var toggleVisibilityRequest : Bool;
+	public    var transmogItem : gameItemID;
+	public    var uiInventoryItem : handle:UIInventoryItem;
+	public    var displayContextData : whandle:ItemDisplayContextData;
+	public    var additionalData : handle:IScriptable;
+	public    var evt : handle:inkPointerEvent;
+	public    var actionName : handle:inkActionName;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

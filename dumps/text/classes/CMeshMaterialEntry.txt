@@ -1,0 +1,6 @@
+import struct CMeshMaterialEntry
+{
+	var name : CName;
+	var index : Uint16;
+	var isLocalInstance : Bool;
+}

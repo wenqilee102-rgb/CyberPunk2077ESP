@@ -1,0 +1,46 @@
+class AIRagdollDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	public    var ragdollInstigator : whandle:gameObject;
+	public    var closestNavmeshPoint : Vector4;
+	public    var ragdollOutOfNavmesh : Bool;
+	public    var isUnderwater : Bool;
+	public    var poseAllowsRecovery : Bool;
+
+	function DoCheckIfPoseAllowsRecovery(context : AIbehaviorScriptExecutionContext) : Bool; // DoCheckIfPoseAllowsRecovery;ScriptExecutionContext
+	function DoCheckWaterLevel(context : AIbehaviorScriptExecutionContext) : Bool; // DoCheckWaterLevel;ScriptExecutionContext
+	function DoClearActiveStatusEffect(context : AIbehaviorScriptExecutionContext) : Bool; // DoClearActiveStatusEffect;ScriptExecutionContext
+	function DoGetRagdollInstigator(context : AIbehaviorScriptExecutionContext) : Bool; // DoGetRagdollInstigator;ScriptExecutionContext
+	function DoHandleDownedSignals(context : AIbehaviorScriptExecutionContext) : Bool; // DoHandleDownedSignals;ScriptExecutionContext
+	function DoHandleRagdollReaction(context : AIbehaviorScriptExecutionContext) : Bool; // DoHandleRagdollReaction;ScriptExecutionContext
+	function HasSpaceToRecover(owner : handle:NPCPuppet, queryDimensions : script_ref:array:Float, originTransform : WorldTransform) : Bool; // HasSpaceToRecover;NPCPuppetscript_ref<array<Float>>WorldTransform
+	function SendDownedSignal(context : AIbehaviorScriptExecutionContext, puppet : handle:ScriptedPuppet, downedTypeTag : CName); // SendDownedSignal;ScriptExecutionContextScriptedPuppetCName
+	function SendStatusEffectSignal(context : AIbehaviorScriptExecutionContext, puppet : handle:ScriptedPuppet, seTypeTag : CName); // SendStatusEffectSignal;ScriptExecutionContextScriptedPuppetCName
+	function TorsoAngleWithinParamters(maxAllowedAngle : Float, hipsPosition : Vector4, chestPosition : Vector4, legsPosition : Vector4) : Bool; // TorsoAngleWithinParamters;FloatVector4Vector4Vector4
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

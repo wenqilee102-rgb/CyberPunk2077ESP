@@ -1,0 +1,1 @@
+{"b":"SpawnerData","d":0,"g":true,"e":[{"a":{"b":"entEntityID"},"b":"spawnerID","c":128},{"a":{"a":31,"c":{"a":14}},"b":"entryNames","c":128}],"f":[{"a":"SpawnerData::Construct;EntityIDCName","b":"Construct","c":{"b":"SpawnerData"},"d":56,"e":[{"a":{"b":"entEntityID"},"b":"id","c":0},{"a":{"a":14},"b":"entry","c":0}]}]}

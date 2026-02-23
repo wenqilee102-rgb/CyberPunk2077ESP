@@ -1,0 +1,1 @@
+{"a":"MarketSystemRequest","b":"DispenseStackRequest","d":0,"e":[{"a":{"b":"Vector4"},"b":"position","c":128},{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"a":6},"b":"amount","c":128},{"a":{"a":1},"b":"shouldPay","c":128},{"a":{"a":1},"b":"bypassStock","c":128}]}

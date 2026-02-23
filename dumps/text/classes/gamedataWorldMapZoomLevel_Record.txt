@@ -1,0 +1,36 @@
+import class gamedataWorldMapZoomLevel_Record extends gamedataTweakDBRecord
+{
+	import function CanChangeFilters() : Bool; // CanChangeFilters
+	import function Fov() : Float; // Fov
+	import function GetMappinFilterGroupsCount() : Int32; // GetMappinFilterGroupsCount
+	import function GetMappinFilterGroupsItem(index : Int32) : whandle:gamedataMappinUIFilterGroup_Record; // GetMappinFilterGroupsItem
+	import function GetMappinFilterGroupsItemHandle(index : Int32) : handle:gamedataMappinUIFilterGroup_Record; // GetMappinFilterGroupsItemHandle
+	import function IconScale() : Float; // IconScale
+	import function MappinFilterGroups(out outList : array:whandle:gamedataMappinUIFilterGroup_Record); // MappinFilterGroups
+	import function MappinFilterGroupsContains(item : whandle:gamedataMappinUIFilterGroup_Record) : Bool; // MappinFilterGroupsContains
+	import function PanSpeed() : Float; // PanSpeed
+	import function Rotation() : EulerAngles; // Rotation
+	import function ShowDistricts() : Bool; // ShowDistricts
+	import function ShowSubDistricts() : Bool; // ShowSubDistricts
+	import function Zoom() : Float; // Zoom
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

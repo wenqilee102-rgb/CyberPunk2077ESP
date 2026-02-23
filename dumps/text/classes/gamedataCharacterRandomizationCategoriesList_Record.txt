@@ -1,0 +1,28 @@
+import class gamedataCharacterRandomizationCategoriesList_Record extends gamedataTweakDBRecord
+{
+	import function GetListCount() : Int32; // GetListCount
+	import function GetListItem(index : Int32) : whandle:gamedataCharacterRandomizationCategoryUI_Record; // GetListItem
+	import function GetListItemHandle(index : Int32) : handle:gamedataCharacterRandomizationCategoryUI_Record; // GetListItemHandle
+	import function List(out outList : array:whandle:gamedataCharacterRandomizationCategoryUI_Record); // List
+	import function ListContains(item : whandle:gamedataCharacterRandomizationCategoryUI_Record) : Bool; // ListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

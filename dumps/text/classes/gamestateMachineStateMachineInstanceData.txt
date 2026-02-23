@@ -1,0 +1,6 @@
+import struct gamestateMachineStateMachineInstanceData
+{
+	var referenceName : CName;
+	var priority : Uint32;
+	var initData : handle:IScriptable;
+}

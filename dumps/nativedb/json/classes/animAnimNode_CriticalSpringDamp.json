@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloatValue","b":"animAnimNode_CriticalSpringDamp","d":8,"e":[{"a":{"a":10},"b":"smoothTime","c":128},{"a":{"a":1},"b":"useRange","c":128},{"a":{"a":10},"b":"rangeMin","c":128},{"a":{"a":10},"b":"rangeMax","c":128},{"a":{"a":1},"b":"useRawTime","c":128},{"a":{"b":"animFloatLink"},"b":"inputNode","c":128}]}

@@ -1,0 +1,5 @@
+import struct gameNPCstubData
+{
+	var spawnerID : entEntityID;
+	var entryID : CName;
+}

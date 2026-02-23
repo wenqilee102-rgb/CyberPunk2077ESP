@@ -1,0 +1,6 @@
+import struct EmitterGroupParams
+{
+	var group : EEmitterGroup;
+	var emissionScale : Float;
+	var opacityScale : Float;
+}

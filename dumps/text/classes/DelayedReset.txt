@@ -1,0 +1,27 @@
+class DelayedReset extends gameDelaySystemScriptedDelayCallbackWrapper
+{
+	private   var controller : whandle:CraftingLogicController;
+
+	static function CreateAndDispatch(controller : whandle:CraftingLogicController, player : whandle:PlayerPuppet, time : Float); // DelayedReset::CreateAndDispatch;CraftingLogicControllerPlayerPuppetFloat
+
+	function Call(); // Call;
+}
+
+import class gameDelaySystemScriptedDelayCallbackWrapper extends IScriptable
+{
+	function Call(); // Call;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

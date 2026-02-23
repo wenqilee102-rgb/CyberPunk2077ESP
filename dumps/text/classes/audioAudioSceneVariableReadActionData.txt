@@ -1,0 +1,6 @@
+import struct audioAudioSceneVariableReadActionData
+{
+	var name : CName;
+	var comparer : audioNumberComparer;
+	var value : Int32;
+}

@@ -1,0 +1,1 @@
+{"b":"gameSpawnRequestResult","c":"SpawnRequestResult","d":24,"g":true,"e":[{"a":{"a":7},"b":"requestID","c":128},{"a":{"b":"vehiclePoliceStrategy"},"b":"policeStrategy","c":128},{"a":{"b":"gameDynamicVehicleType"},"b":"vehicleType","c":128},{"a":{"a":31,"c":{"a":27,"c":{"b":"gameObject"}}},"b":"spawnedObjects","c":128},{"a":{"a":1},"b":"success","c":128}]}

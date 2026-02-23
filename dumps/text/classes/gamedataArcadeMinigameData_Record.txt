@@ -1,0 +1,32 @@
+import class gamedataArcadeMinigameData_Record extends gamedataTweakDBRecord
+{
+	import function ArcadeGameplayScreenTDBID() : CName; // ArcadeGameplayScreenTDBID
+	import function ArcadeMenuScreenTDBID() : CName; // ArcadeMenuScreenTDBID
+	import function ArcadePermanentResourceList() : array:redResourceReferenceScriptToken; // ArcadePermanentResourceList
+	import function ArcadeScoreboardScreenTDBID() : CName; // ArcadeScoreboardScreenTDBID
+	import function ArcadeStartBackgroundMusic() : CName; // ArcadeStartBackgroundMusic
+	import function ArcadeStopBackgroundMusic() : CName; // ArcadeStopBackgroundMusic
+	import function ArcadeStopSFXs() : CName; // ArcadeStopSFXs
+	import function GetArcadePermanentResourceListCount() : Int32; // GetArcadePermanentResourceListCount
+	import function GetArcadePermanentResourceListItem(index : Int32) : redResourceReferenceScriptToken; // GetArcadePermanentResourceListItem
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

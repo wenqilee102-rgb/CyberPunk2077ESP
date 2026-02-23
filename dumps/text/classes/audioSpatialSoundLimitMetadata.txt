@@ -1,0 +1,20 @@
+import class audioSpatialSoundLimitMetadata extends audioAudioMetadata
+{
+	var eventNames : array:CName;
+	var writeOnlyEventNames : array:CName;
+	var readOnlyEventNames : array:CName;
+	var radius : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

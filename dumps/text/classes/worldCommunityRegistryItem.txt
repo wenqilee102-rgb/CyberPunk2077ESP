@@ -1,0 +1,7 @@
+import struct worldCommunityRegistryItem
+{
+	var entriesInitialState : array:worldCommunityEntryInitialState;
+	var template : handle:communityCommunityTemplateData;
+	var communityId : gameCommunityID;
+	var communityAreaType : worldCommunityRegistryItemAreaNodeType;
+}

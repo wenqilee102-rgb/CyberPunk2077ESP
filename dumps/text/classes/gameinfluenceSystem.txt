@@ -1,0 +1,28 @@
+import class gameinfluenceSystem extends gameinfluenceISystem
+{
+	import function SetSearchValue(position : Vector4, radius : Float); // SetSearchValue
+	import function SetSearchValueLerp(position : Vector4, radius : Float, minValue : Float, maxValue : Float); // SetSearchValueLerp
+	import function SetSearchValueSquad(position : Vector4, radius : Float, owner : handle:gamePuppet); // SetSearchValueSquad
+}
+
+import class abstract gameinfluenceISystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

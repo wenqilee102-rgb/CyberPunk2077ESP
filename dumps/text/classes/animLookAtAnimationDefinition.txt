@@ -1,0 +1,7 @@
+import struct animLookAtAnimationDefinition
+{
+	var minTransitionDuration : Float;
+	var playAnimProbability : Float;
+	var animDelay : Float;
+	var animations : array:CName;
+}

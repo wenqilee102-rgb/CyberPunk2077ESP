@@ -1,0 +1,12 @@
+import class worldFoliageRawItem extends ISerializable
+{
+	var Mesh : raRef:CMesh;
+	var MeshAppearance : CName;
+	var Position : Vector3;
+	var Rotation : Quaternion;
+	var Scale : Float;
+}
+
+import class abstract ISerializable
+{
+}

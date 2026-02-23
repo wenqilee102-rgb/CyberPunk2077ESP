@@ -1,0 +1,17 @@
+struct SDeviceMappinData
+{
+	public    var mappinName : CName;
+	public    var mappinType : TweakDBID;
+	public    var mappinVariant : gamedataMappinVariant;
+	public    var enabled : Bool;
+	public    var range : Float;
+	public    var caption : String;
+	public    var offset : Vector4;
+	public    var position : Vector4;
+	public    var permanent : Bool;
+	public    var checkIfIsTarget : Bool;
+	public    var id : gameNewMappinID;
+	public    var active : Bool;
+	public    var gameplayRole : EGameplayRole;
+	public    var visualStateData : handle:GameplayRoleMappinData;
+}

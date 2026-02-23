@@ -1,0 +1,7 @@
+import struct RenderProxyCustomData_MaterialParams extends IRenderProxyCustomData
+{
+}
+
+import struct abstract IRenderProxyCustomData
+{
+}

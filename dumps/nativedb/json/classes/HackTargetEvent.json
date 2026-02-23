@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"HackTargetEvent","d":0,"e":[{"a":{"b":"entEntityID"},"b":"netrunnerID","c":128},{"a":{"b":"entEntityID"},"b":"targetID","c":128},{"a":{"a":27,"c":{"b":"gamedataObjectAction_Record"}},"b":"objectRecord","c":128},{"a":{"b":"HackTargetSettings"},"b":"settings","c":128}]}

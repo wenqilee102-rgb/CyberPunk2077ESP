@@ -1,0 +1,32 @@
+import class gamedataMappinUIFilterGroup_Record extends gamedataTweakDBRecord
+{
+	import function FilterName() : CName; // FilterName
+	import function FilterType() : whandle:gamedataWorldMapFilter_Record; // FilterType
+	import function FilterTypeHandle() : handle:gamedataWorldMapFilter_Record; // FilterTypeHandle
+	import function GetMappinsCount() : Int32; // GetMappinsCount
+	import function GetMappinsItem(index : Int32) : whandle:gamedataMappinVariant_Record; // GetMappinsItem
+	import function GetMappinsItemHandle(index : Int32) : handle:gamedataMappinVariant_Record; // GetMappinsItemHandle
+	import function Mappins(out outList : array:whandle:gamedataMappinVariant_Record); // Mappins
+	import function MappinsContains(item : whandle:gamedataMappinVariant_Record) : Bool; // MappinsContains
+	import function ShouldCollectMappins() : Bool; // ShouldCollectMappins
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

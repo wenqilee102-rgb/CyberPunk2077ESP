@@ -1,0 +1,6 @@
+struct NcartTimetableSetup
+{
+	public    var departFrequency : Int32;
+	public    var uiUpdateFrequency : Int32;
+	public    var trainLines : array:Int32;
+}

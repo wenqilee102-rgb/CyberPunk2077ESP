@@ -1,0 +1,5 @@
+import struct gameTutorialOverlayData
+{
+	var widgetLibraryResource : redResourceReferenceScriptToken;
+	var itemName : CName;
+}

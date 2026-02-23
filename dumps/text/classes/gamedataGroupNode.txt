@@ -1,0 +1,26 @@
+import class gamedataGroupNode extends gamedataDataNode
+{
+	var name : String;
+	var base : String;
+	var schema : String;
+	var isInline : Bool;
+	var baseGroup : whandle:gamedataGroupNode;
+	var schemaGroup : whandle:gamedataGroupNode;
+	var package : whandle:gamedataPackageNode;
+	var fileNode : handle:gamedataFileNode;
+	var inlineGroupId : Uint32;
+	var inheritanceState : gamedataGroupNodeInheritanceState;
+	var serializedVariables : array:gamedataGroupNodeGroupVariable;
+	var tags : array:CName;
+}
+
+import class abstract gamedataDataNode extends ISerializable
+{
+	var nodeType : gamedataDataNodeType;
+	var fileName : String;
+	var parent : whandle:gamedataDataNode;
+}
+
+import class abstract ISerializable
+{
+}

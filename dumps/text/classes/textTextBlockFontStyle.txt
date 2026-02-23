@@ -1,0 +1,6 @@
+import struct textTextBlockFontStyle
+{
+	var fontStyle : CName;
+	var outlineSize : Int32;
+	var outlineColor : HDRColor;
+}

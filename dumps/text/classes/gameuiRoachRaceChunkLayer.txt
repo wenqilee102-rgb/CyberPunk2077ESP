@@ -1,0 +1,4 @@
+import struct gameuiRoachRaceChunkLayer
+{
+	var chunks : array:gameuiRoachRaceChunk;
+}

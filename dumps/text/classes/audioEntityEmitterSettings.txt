@@ -1,0 +1,8 @@
+import struct audioEntityEmitterSettings
+{
+	var emitterName : CName;
+	var positionName : CName;
+	var emitterDecorators : array:CName;
+	var keepAlive : Bool;
+	var isObjectPerPositionEmitter : Bool;
+}

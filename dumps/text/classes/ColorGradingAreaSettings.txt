@@ -1,0 +1,30 @@
+import class ColorGradingAreaSettings extends IAreaSettings
+{
+	var contrast : Float;
+	var contrastPivot : Float;
+	var saturation : Float;
+	var hue : Float;
+	var brightness : Float;
+	var lift : ColorBalance;
+	var gammaValue : ColorBalance;
+	var gain : ColorBalance;
+	var offset : ColorBalance;
+	var lowRange : Float;
+	var shadowOffset : ColorBalance;
+	var midtoneOffset : ColorBalance;
+	var highRange : Float;
+	var highlightOffset : ColorBalance;
+	var ldrLut : ColorGradingLutParams;
+	var hdrLut : ColorGradingLutParams;
+	var forceHdrLut : Bool;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

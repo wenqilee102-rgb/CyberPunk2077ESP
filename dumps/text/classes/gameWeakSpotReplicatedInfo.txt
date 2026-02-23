@@ -1,0 +1,6 @@
+import struct gameWeakSpotReplicatedInfo
+{
+	var weakSpotRecordID : Uint64;
+	var wsHealthValue : Float;
+	var LastDamageInstigator : whandle:gamePuppet;
+}

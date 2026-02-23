@@ -1,0 +1,5 @@
+import struct AIGuardAreaConnectedCommunity
+{
+	var communityArea : gameEntityReference;
+	var isPrimary : Bool;
+}

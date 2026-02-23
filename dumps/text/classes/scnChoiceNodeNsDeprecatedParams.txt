@@ -1,0 +1,5 @@
+import struct scnChoiceNodeNsDeprecatedParams
+{
+	var actorId : scnActorId;
+	var propId : scnPropId;
+}

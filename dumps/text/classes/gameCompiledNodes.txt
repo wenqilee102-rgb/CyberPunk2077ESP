@@ -1,0 +1,8 @@
+import class gameCompiledNodes extends ISerializable
+{
+	var compiledSmartObjects : array:gameCompiledSmartObjectNode;
+}
+
+import class abstract ISerializable
+{
+}

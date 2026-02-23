@@ -1,0 +1,73 @@
+import class gamedataAITacticTicket_Record extends gamedataAITicket_Record
+{
+	import function GetSectorsCount() : Int32; // GetSectorsCount
+	import function GetSectorsItem(index : Int32) : whandle:gamedataAISectorType_Record; // GetSectorsItem
+	import function GetSectorsItemHandle(index : Int32) : handle:gamedataAISectorType_Record; // GetSectorsItemHandle
+	import function OffensiveTactic() : Bool; // OffensiveTactic
+	import function Sectors(out outList : array:whandle:gamedataAISectorType_Record); // Sectors
+	import function SectorsContains(item : whandle:gamedataAISectorType_Record) : Bool; // SectorsContains
+	import function TacticTimeout() : Float; // TacticTimeout
+}
+
+import class gamedataAITicket_Record extends gamedataTweakDBRecord
+{
+	import function ActivationCondition(out outList : array:whandle:gamedataAITicketCondition_Record); // ActivationCondition
+	import function ActivationConditionContains(item : whandle:gamedataAITicketCondition_Record) : Bool; // ActivationConditionContains
+	import function ConditionSuccessDuration() : Float; // ConditionSuccessDuration
+	import function Cooldowns(out outList : array:whandle:gamedataAIActionCooldown_Record); // Cooldowns
+	import function CooldownsContains(item : whandle:gamedataAIActionCooldown_Record) : Bool; // CooldownsContains
+	import function DeactivationCondition(out outList : array:whandle:gamedataAITicketCondition_Record); // DeactivationCondition
+	import function DeactivationConditionCheckInterval() : Float; // DeactivationConditionCheckInterval
+	import function DeactivationConditionContains(item : whandle:gamedataAITicketCondition_Record) : Bool; // DeactivationConditionContains
+	import function Difficulty() : whandle:gamedataAIDifficulty_Record; // Difficulty
+	import function DifficultyComparisonOp() : whandle:gamedataAIComparison_Record; // DifficultyComparisonOp
+	import function DifficultyComparisonOpHandle() : handle:gamedataAIComparison_Record; // DifficultyComparisonOpHandle
+	import function DifficultyHandle() : handle:gamedataAIDifficulty_Record; // DifficultyHandle
+	import function GetActivationConditionCount() : Int32; // GetActivationConditionCount
+	import function GetActivationConditionItem(index : Int32) : whandle:gamedataAITicketCondition_Record; // GetActivationConditionItem
+	import function GetActivationConditionItemHandle(index : Int32) : handle:gamedataAITicketCondition_Record; // GetActivationConditionItemHandle
+	import function GetCooldownsCount() : Int32; // GetCooldownsCount
+	import function GetCooldownsItem(index : Int32) : whandle:gamedataAIActionCooldown_Record; // GetCooldownsItem
+	import function GetCooldownsItemHandle(index : Int32) : handle:gamedataAIActionCooldown_Record; // GetCooldownsItemHandle
+	import function GetDeactivationConditionCount() : Int32; // GetDeactivationConditionCount
+	import function GetDeactivationConditionItem(index : Int32) : whandle:gamedataAITicketCondition_Record; // GetDeactivationConditionItem
+	import function GetDeactivationConditionItemHandle(index : Int32) : handle:gamedataAITicketCondition_Record; // GetDeactivationConditionItemHandle
+	import function GetSyncWithTicketsCount() : Int32; // GetSyncWithTicketsCount
+	import function GetSyncWithTicketsItem(index : Int32) : whandle:gamedataAITicketType_Record; // GetSyncWithTicketsItem
+	import function GetSyncWithTicketsItemHandle(index : Int32) : handle:gamedataAITicketType_Record; // GetSyncWithTicketsItemHandle
+	import function MaxNumberOfTickets() : Int32; // MaxNumberOfTickets
+	import function MaxTicketDesyncTime() : Float; // MaxTicketDesyncTime
+	import function MinNumberOfTickets() : Int32; // MinNumberOfTickets
+	import function MinTicketDesyncTime() : Float; // MinTicketDesyncTime
+	import function PercentageNumberOfTickets() : Float; // PercentageNumberOfTickets
+	import function ReleaseAll() : Bool; // ReleaseAll
+	import function RevokeOnTimeout() : Bool; // RevokeOnTimeout
+	import function ScaleNumberOfTicketsFromWorkspots() : Bool; // ScaleNumberOfTicketsFromWorkspots
+	import function StartCooldownOnFailure() : Bool; // StartCooldownOnFailure
+	import function SyncTimeout() : Float; // SyncTimeout
+	import function SyncWithTickets(out outList : array:whandle:gamedataAITicketType_Record); // SyncWithTickets
+	import function SyncWithTicketsContains(item : whandle:gamedataAITicketType_Record) : Bool; // SyncWithTicketsContains
+	import function TicketType() : whandle:gamedataAITicketType_Record; // TicketType
+	import function TicketTypeHandle() : handle:gamedataAITicketType_Record; // TicketTypeHandle
+	import function Timeout() : Float; // Timeout
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

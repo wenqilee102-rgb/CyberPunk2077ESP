@@ -1,0 +1,31 @@
+import class DistantFogAreaSettings extends IAreaSettings
+{
+	var range : curveData:Float;
+	var albedoNear : curveData:HDRColor;
+	var albedoFar : curveData:HDRColor;
+	var nearDistance : curveData:Float;
+	var farDistance : curveData:Float;
+	var density : curveData:Float;
+	var height : curveData:Float;
+	var heightFallof : curveData:Float;
+	var densitySecond : curveData:Float;
+	var heightSecond : curveData:Float;
+	var heightFallofSecond : curveData:Float;
+	var simpleColor : curveData:HDRColor;
+	var simpleDensity : curveData:Float;
+	var envProbeColor : curveData:HDRColor;
+	var envProbeDensity : curveData:Float;
+	var skyAltitudeBegin : curveData:Float;
+	var skyAltitudeEnd : curveData:Float;
+	var skyOpacity : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

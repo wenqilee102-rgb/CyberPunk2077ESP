@@ -1,0 +1,5 @@
+import struct audioFlybySettings
+{
+	var movementSpeed : Float;
+	var flybyEvent : CName;
+}

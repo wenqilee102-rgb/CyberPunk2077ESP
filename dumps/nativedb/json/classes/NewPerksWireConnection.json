@@ -1,0 +1,1 @@
+{"b":"NewPerksWireConnection","d":0,"g":true,"e":[{"a":{"b":"gamedataNewPerkSlotType"},"b":"targetSlot","c":128},{"a":{"a":1},"b":"dependanciesPresenceToggle","c":128},{"a":{"a":31,"c":{"b":"gamedataNewPerkSlotType"}},"b":"connectionDependancies","c":128},{"a":{"a":31,"c":{"b":"inkWidgetReference"}},"b":"wires","c":128}]}

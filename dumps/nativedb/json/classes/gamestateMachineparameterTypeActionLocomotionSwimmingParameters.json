@@ -1,0 +1,1 @@
+{"a":"gamestateMachineparameterTypeActionLocomotionParameters","b":"gamestateMachineparameterTypeActionLocomotionSwimmingParameters","c":"LocomotionSwimmingParameters","d":8,"f":[{"a":"SetBuoyancyLineFraction","d":4,"e":[{"a":{"a":10},"b":"val","c":0}]},{"a":"SetDragCoefficient","d":4,"e":[{"a":{"a":10},"b":"val","c":0}]}]}

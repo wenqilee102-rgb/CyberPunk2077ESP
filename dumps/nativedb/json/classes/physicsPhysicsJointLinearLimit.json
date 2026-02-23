@@ -1,0 +1,1 @@
+{"a":"physicsPhysicsJointLimitBase","b":"physicsPhysicsJointLinearLimit","d":8,"g":true,"e":[{"a":{"b":"physicsPhysicsJointMotion"},"b":"x","c":128},{"a":{"b":"physicsPhysicsJointMotion"},"b":"y","c":128},{"a":{"b":"physicsPhysicsJointMotion"},"b":"z","c":128},{"a":{"a":10},"b":"value","c":128}]}

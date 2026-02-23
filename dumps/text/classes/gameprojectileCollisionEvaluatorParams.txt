@@ -1,0 +1,27 @@
+import class gameprojectileCollisionEvaluatorParams extends IScriptable
+{
+	var target : whandle:gameObject;
+	var isPiercableSurface : Bool;
+	var isWaterSurface : Bool;
+	var isAutoBounceSurface : Bool;
+	var angle : Float;
+	var numBounces : Uint32;
+	var position : Vector4;
+	var projectilePenetration : CName;
+	var isTechPiercing : Bool;
+	var isDestructible : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

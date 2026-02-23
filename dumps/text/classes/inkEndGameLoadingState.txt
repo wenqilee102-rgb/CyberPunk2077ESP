@@ -1,0 +1,7 @@
+import struct inkEndGameLoadingState extends inkIStateMachineState
+{
+}
+
+import struct abstract inkIStateMachineState
+{
+}

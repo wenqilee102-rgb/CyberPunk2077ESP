@@ -1,0 +1,7 @@
+import struct audioAnyStateTransitionEntry
+{
+	var isDisabled : Bool;
+	var sourceStateId : Uint8;
+	var targetStateId : Uint8;
+	var transitionTime : Float;
+}

@@ -1,0 +1,1 @@
+{"a":"ModuleInstance","b":"IconsInstance","d":0,"e":[{"a":{"a":1},"b":"isForcedVisibleThroughWalls","c":128}],"f":[{"a":"SetContext;BoolBoolBool","b":"SetContext","d":48,"e":[{"a":{"a":1},"b":"_isLookedAt","c":0},{"a":{"a":1},"b":"_isRevealed","c":0},{"a":{"a":1},"b":"_isForcedVisibleThroughWalls","c":0}]}]}

@@ -1,0 +1,1 @@
+{"b":"questMultiplayerTeleportPuppetParams","d":8,"g":true,"e":[{"a":{"a":1},"b":"teleportAllPlayers","c":128},{"a":{"a":14},"b":"spawnPointTag","c":128},{"a":{"b":"gameEntityReference"},"b":"destinationRef","c":128},{"a":{"b":"Vector3"},"b":"destinationOffset","c":128},{"a":{"b":"gameEntityReference"},"b":"areaNodeTriggerRef","c":128}]}

@@ -1,0 +1,7 @@
+import struct workAdjustAndPlayCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

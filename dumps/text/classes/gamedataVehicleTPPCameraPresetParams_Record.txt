@@ -1,0 +1,33 @@
+import class gamedataVehicleTPPCameraPresetParams_Record extends gamedataTweakDBRecord
+{
+	import function AirFlowDistortionSizeHorizontal() : Float; // AirFlowDistortionSizeHorizontal
+	import function AirFlowDistortionSizeVertical() : Float; // AirFlowDistortionSizeVertical
+	import function AirFlowDistortionSpeedMax() : Float; // AirFlowDistortionSpeedMax
+	import function AirFlowDistortionSpeedMin() : Float; // AirFlowDistortionSpeedMin
+	import function BaseBoomLength() : Float; // BaseBoomLength
+	import function BoomLengthOffset() : Float; // BoomLengthOffset
+	import function DefaultRotationPitch() : Float; // DefaultRotationPitch
+	import function Distance() : CName; // Distance
+	import function Height() : CName; // Height
+	import function LookAtOffset() : Vector3; // LookAtOffset
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

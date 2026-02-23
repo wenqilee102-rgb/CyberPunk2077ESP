@@ -1,0 +1,7 @@
+import struct locVoiceTag
+{
+	var voiceTag : CName;
+	var voicesetScenePath : String;
+	var id : CRUID;
+	var isApuc : Bool;
+}

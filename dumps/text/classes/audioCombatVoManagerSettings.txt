@@ -1,0 +1,32 @@
+import class audioCombatVoManagerSettings extends audioAudioMetadata
+{
+	var thresholdDbForCombatDialog : Float;
+	var maxVoHearableHorizontalDistance : Float;
+	var maxVoHearableVerticalDistance : Float;
+	var maxVoVisibleDistance : Float;
+	var triggerVoEventBufferTime : Float;
+	var triggerIdleChattersTime : Float;
+	var minNoVOTimeNeededToTryPlayingGenericVO : Float;
+	var specificVoicesetVoVariationMinRepeatTime : Float;
+	var forceApucVoiceTagSelectionProbability : Float;
+	var voiceTagSelectionRandomTimeOffset : Float;
+	var genericRelaxedVOContexts : array:CName;
+	var genericFearVOContexts : array:CName;
+	var genericAlertedVOContexts : array:CName;
+	var genericCombatVOContexts : array:CName;
+	var genericCombatLosingVOContexts : array:CName;
+	var genericCombatSingleEnemyVOContexts : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

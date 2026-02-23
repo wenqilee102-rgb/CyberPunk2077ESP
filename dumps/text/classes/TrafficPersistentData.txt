@@ -1,0 +1,4 @@
+struct TrafficPersistentData
+{
+	public    var invertTrafficEvents : Bool;
+}

@@ -1,0 +1,6 @@
+struct IllegalActionTypes
+{
+	public    var regularActions : Bool;
+	public    var quickHacks : Bool;
+	public    var skillChecks : Bool;
+}

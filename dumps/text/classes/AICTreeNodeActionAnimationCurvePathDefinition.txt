@@ -1,0 +1,40 @@
+import class AICTreeNodeActionAnimationCurvePathDefinition extends AICTreeNodeActionDefinition
+{
+	var nodeReference : LibTreeDefNodeRef;
+	var controllersSetupName : LibTreeDefCName;
+	var useStart : LibTreeDefBool;
+	var useStop : LibTreeDefBool;
+	var blendTime : LibTreeDefFloat;
+	var globalInBlendTime : LibTreeDefFloat;
+	var globalOutBlendTime : LibTreeDefFloat;
+	var turnCharacterToMatchVelocity : LibTreeDefBool;
+	var customStartAnimationName : LibTreeDefCName;
+	var customMainAnimationName : LibTreeDefCName;
+	var customStopAnimationName : LibTreeDefCName;
+	var startSnapToTerrain : LibTreeDefBool;
+	var mainSnapToTerrain : LibTreeDefBool;
+	var stopSnapToTerrain : LibTreeDefBool;
+	var startSnapToTerrainBlendTime : LibTreeDefFloat;
+	var stopSnapToTerrainBlendTime : LibTreeDefFloat;
+}
+
+import class abstract AICTreeNodeActionDefinition extends AICTreeExtendableNodeDefinition
+{
+}
+
+import class abstract AICTreeExtendableNodeDefinition extends AICTreeNodeDefinition
+{
+	var optionalChild : handle:LibTreeINodeDefinition;
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

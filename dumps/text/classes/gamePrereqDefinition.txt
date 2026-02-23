@@ -1,0 +1,5 @@
+import struct gamePrereqDefinition
+{
+	var prereqName : CName;
+	var prereq : handle:gameIPrereq;
+}

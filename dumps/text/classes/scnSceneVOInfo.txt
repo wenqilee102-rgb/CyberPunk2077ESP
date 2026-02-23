@@ -1,0 +1,7 @@
+import struct scnSceneVOInfo
+{
+	var inVoTrigger : CName;
+	var outVoTrigger : CName;
+	var duration : Float;
+	var id : Uint16;
+}

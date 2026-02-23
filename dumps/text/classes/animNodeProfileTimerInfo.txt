@@ -1,0 +1,5 @@
+import struct animNodeProfileTimerInfo
+{
+	var name : CName;
+	var mode : animNodeProfileTimerMode;
+}

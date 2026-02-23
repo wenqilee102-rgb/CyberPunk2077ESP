@@ -1,0 +1,1 @@
+{"b":"InventoryComboBoxData","d":0,"g":true,"e":[{"a":{"a":12},"b":"Message","c":128},{"a":{"a":31,"c":{"b":"gameInventoryItemData"}},"b":"ItemsToDisplay","c":128},{"a":{"a":1},"b":"ShowUnequipButton","c":128},{"a":{"b":"gameInventoryItemData"},"b":"ShowcaseItem","c":128},{"a":{"a":1},"b":"DisplayShowcase","c":128},{"a":{"a":1},"b":"ForceDouble","c":128}]}

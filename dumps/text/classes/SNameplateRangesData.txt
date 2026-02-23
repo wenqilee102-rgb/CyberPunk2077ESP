@@ -1,0 +1,12 @@
+struct SNameplateRangesData
+{
+	private   var c_DisplayRange : Float;
+	private   var c_MaxDisplayRange : Float;
+	private   var c_MaxDisplayRangeNotAggressive : Float;
+	private   var c_DisplayRangeNotAggressive : Float;
+
+	static function GetDisplayRange() : Float; // SNameplateRangesData::GetDisplayRange;
+	static function GetDisplayRangeNotAggressive() : Float; // SNameplateRangesData::GetDisplayRangeNotAggressive;
+	static function GetMaxDisplayRange() : Float; // SNameplateRangesData::GetMaxDisplayRange;
+	static function GetMaxDisplayRangeNotAggressive() : Float; // SNameplateRangesData::GetMaxDisplayRangeNotAggressive;
+}

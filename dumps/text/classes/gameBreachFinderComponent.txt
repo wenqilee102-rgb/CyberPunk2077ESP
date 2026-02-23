@@ -1,0 +1,77 @@
+import class gameBreachFinderComponent extends entIComponent
+{
+	public    var owner : whandle:gameObject;
+	public    var audioSystem : handle:gameGameAudioSystem;
+	public    var statsSystem : handle:gameStatsSystem;
+	public    var hitCount : Int32;
+	public    var almostTimeout : Bool;
+	public    var breachDurationMin : Float;
+	public    var breachDurationMax : Float;
+	public    var breachDurationIncreasePerStreak : Float;
+	public    var breachDurationIncreaseForAnyStreak : Float;
+	public    var breachDurationIncreaseOnFirstLookat : Float;
+	public    var breachDurationIncreaseOnFirstHit : Float;
+	public    var breachCooldownMin : Float;
+	public    var breachCooldownMax : Float;
+	public    var breachCooldownDecreasePerStreak : Float;
+	public    var onBreachDestroyedAttackRecord : handle:gamedataAttack_GameEffect_Record;
+	public    var onBreachDestroyedHealthToDamage : Float;
+	public    var onBreachDestroyedHealthToDamageBoss : Float;
+	public    var desiredBreachDuration : Float;
+	public    var cooldownAfterBreach : Float;
+
+	static function TryProcessBreachHit(hitEvent : handle:gameeventsHitEvent, isHeadshot : Bool, optional checkOnly : Bool) : Bool; // gameBreachFinderComponent::TryProcessBreachHit;gameHitEventBoolBool
+
+	import function CanTrackedBreachBeKilledByDamage(damage : Float) : Bool; // CanTrackedBreachBeKilledByDamage
+	import function GetTrackedBreachComponent() : whandle:gameBreachComponent; // GetTrackedBreachComponent
+	import function GetTrackedBreachPuppet() : whandle:gamePuppet; // GetTrackedBreachPuppet
+	import function IsTrackedBreachHit(hitEvent : handle:gameeventsHitEvent, isMeleeAttack : Bool, isBulletExplosion : Bool) : Bool; // IsTrackedBreachHit
+	import function OnTrackedBreachDamaged(damage : Float); // OnTrackedBreachDamaged
+
+	event OnDamageDealt(evt : handle:gameeventsTargetDamageEvent) : Bool; // OnDamageDealt
+
+	function GetBreachStreak() : Float; // GetBreachStreak;
+	function GetCooldownAfterBreach() : Float; // GetCooldownAfterBreach;
+	function GetDesiredBreachDuration() : Float; // GetDesiredBreachDuration;
+	function Init(owner : whandle:gameObject); // Init;GameObject
+	function IsAlmostBreachTimeout(currentBreachDuration : Float) : Bool; // IsAlmostBreachTimeout;Float
+	function OnBreachDestroyed(); // OnBreachDestroyed;
+	function OnFirstBreachHit(); // OnFirstBreachHit;
+	function OnFirstBreachLookat(); // OnFirstBreachLookat;
+	function OnStartedTrackingBreach(); // OnStartedTrackingBreach;
+	function OnStoppedTrackingBreach(); // OnStoppedTrackingBreach;
+	function ProcessBreachHit(hitEvent : handle:gameeventsHitEvent); // ProcessBreachHit;gameHitEvent
+	function ShouldStartTrackingBreach(timeSinceLastBreach : Float) : Bool; // ShouldStartTrackingBreach;Float
+	function ShouldStopTrackingBreach(currentBreachDuration : Float) : Bool; // ShouldStopTrackingBreach;Float
+	function SpawnFinalAttack(instigator : whandle:gameObject, attackRecord : handle:gamedataAttack_GameEffect_Record, breach : handle:gameBreachComponent, puppet : handle:NPCPuppet); // SpawnFinalAttack;GameObjectAttack_GameEffect_RecordBreachComponentNPCPuppet
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

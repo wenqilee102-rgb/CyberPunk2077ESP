@@ -1,0 +1,13 @@
+import class animAnimSetupResource extends CResource
+{
+	var dependencies : array:rRef:animAnimSet;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

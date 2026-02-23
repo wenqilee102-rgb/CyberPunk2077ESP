@@ -1,0 +1,22 @@
+import class worldStaticStickerNode extends worldNode
+{
+	var labels : array:String;
+	var showBackground : Bool;
+	var textColor : Color;
+	var backgroundColor : Color;
+	var sprites : array:raRef:CBitmapTexture;
+	var spriteSize : Int32;
+	var alignSpritesHorizontally : Bool;
+	var scale : Float;
+	var visibilityDistance : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

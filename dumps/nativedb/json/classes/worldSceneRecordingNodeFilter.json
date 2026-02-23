@@ -1,0 +1,1 @@
+{"b":"worldSceneRecordingNodeFilter","d":8,"g":true,"e":[{"a":{"a":10},"b":"streamInNodesWithStreamingDistanceMoreThan","c":128},{"a":{"a":10},"b":"streamOutPrefabProxyMeshesWithStreamingDistanceMoreThan","c":128},{"a":{"a":1},"b":"meshNodesOnly","c":128},{"a":{"b":"worldSceneRecordingNodeMeshResourceFilter"},"b":"meshResourceFilter","c":128}]}

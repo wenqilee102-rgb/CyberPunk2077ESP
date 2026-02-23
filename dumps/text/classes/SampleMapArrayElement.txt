@@ -1,0 +1,6 @@
+import struct SampleMapArrayElement
+{
+	var myKey : Uint32;
+	var someStringProperty : String;
+	var someArrayProperty : array:String;
+}

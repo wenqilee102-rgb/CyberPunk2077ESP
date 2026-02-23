@@ -1,0 +1,9 @@
+import class gameStatsSystemSave extends ISerializable
+{
+	var statsObjectsData : array:gameStatsSeedKey;
+	var statModifiersData : array:gameStatModifierSave;
+}
+
+import class abstract ISerializable
+{
+}

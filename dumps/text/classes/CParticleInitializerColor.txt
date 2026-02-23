@@ -1,0 +1,20 @@
+import class CParticleInitializerColor extends IParticleInitializer
+{
+	var color : handle:IEvaluatorColor;
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

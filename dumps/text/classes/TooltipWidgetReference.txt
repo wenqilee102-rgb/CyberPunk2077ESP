@@ -1,0 +1,5 @@
+struct TooltipWidgetReference
+{
+	public    var identifier : CName;
+	public    var widgetLibraryReference : inkWidgetLibraryReference;
+}

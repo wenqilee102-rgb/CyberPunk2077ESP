@@ -1,0 +1,1 @@
+{"a":"gamedataAISubAction_Record","b":"gamedataAISubActionActivateLightPreset_Record","c":"AISubActionActivateLightPreset_Record","d":24,"f":[{"a":"Delay","c":{"a":10},"d":4},{"a":"LightPreset","c":{"a":27,"c":{"b":"gamedataLightPreset_Record"}},"d":4},{"a":"LightPresetHandle","c":{"a":26,"c":{"b":"gamedataLightPreset_Record"}},"d":4}]}

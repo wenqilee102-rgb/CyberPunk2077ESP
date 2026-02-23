@@ -1,0 +1,4 @@
+import struct AIbehaviorBehaviorInstanceCallStack
+{
+	var resourceHashes : array:Uint32;
+}

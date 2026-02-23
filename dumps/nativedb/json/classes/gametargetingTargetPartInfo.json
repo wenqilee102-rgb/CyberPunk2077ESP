@@ -1,0 +1,1 @@
+{"b":"gametargetingTargetPartInfo","c":"TS_TargetPartInfo","d":24,"g":true,"f":[{"a":"GetComponent","c":{"a":27,"c":{"b":"gameTargetingComponent"}},"d":12,"e":[{"a":{"b":"gametargetingTargetPartInfo"},"b":"self","c":0}]},{"a":"GetPlayerAngleDistance","c":{"b":"EulerAngles"},"d":12,"e":[{"a":{"b":"gametargetingTargetPartInfo"},"b":"self","c":0}]}]}

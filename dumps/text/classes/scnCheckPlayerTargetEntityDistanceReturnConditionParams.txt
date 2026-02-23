@@ -1,0 +1,6 @@
+import struct scnCheckPlayerTargetEntityDistanceReturnConditionParams
+{
+	var distance : Float;
+	var comparisonType : EComparisonType;
+	var targetEntity : gameEntityReference;
+}

@@ -1,0 +1,5 @@
+import struct servicesTrialHelper
+{
+	import static function IsInPS5TrialMode() : Bool; // IsInPS5TrialMode
+	import static function ShowUpgradeTrialVersionCommerceDialog(); // ShowUpgradeTrialVersionCommerceDialog
+}

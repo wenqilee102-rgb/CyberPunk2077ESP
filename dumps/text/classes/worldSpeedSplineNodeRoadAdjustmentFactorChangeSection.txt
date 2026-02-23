@@ -1,0 +1,5 @@
+import struct worldSpeedSplineNodeRoadAdjustmentFactorChangeSection
+{
+	var pos : Float;
+	var targetFactor : Float;
+}

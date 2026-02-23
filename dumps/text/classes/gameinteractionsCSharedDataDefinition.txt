@@ -1,0 +1,5 @@
+import struct gameinteractionsCSharedDataDefinition
+{
+	var defaultChoices : array:String;
+	var visualizer : handle:gameuiIChoiceVisualizer;
+}

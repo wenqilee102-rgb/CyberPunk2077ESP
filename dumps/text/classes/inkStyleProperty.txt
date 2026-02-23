@@ -1,0 +1,5 @@
+import struct inkStyleProperty
+{
+	var propertyPath : CName;
+	var value : Variant;
+}

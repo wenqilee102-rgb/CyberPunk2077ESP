@@ -1,0 +1,5 @@
+import struct gamePrereqData
+{
+	var bAndValues : Bool;
+	var prereqList : array:gamePrereqCheckData;
+}

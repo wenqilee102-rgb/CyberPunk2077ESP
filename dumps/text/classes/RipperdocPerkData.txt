@@ -1,0 +1,20 @@
+class RipperdocPerkData extends IScriptable
+{
+	public    var Perk : TweakDBID;
+	public    var Area : gamedataNewPerkSlotType;
+	public    var Level : Int32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

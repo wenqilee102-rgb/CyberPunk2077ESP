@@ -1,0 +1,10 @@
+import struct physicsFractureFieldParams
+{
+	var origin : Vector3;
+	var fractureFieldValue : Float;
+	var destructionTypeMask : physicsDestructionType;
+	var fractureFieldTypeMask : physicsFractureFieldType;
+	var fractureFieldOptionsMask : physicsFractureFieldOptions;
+	var fractureFieldEffect : physicsFractureFieldEffect;
+	var fractureFieldValueType : physicsFractureFieldValueType;
+}

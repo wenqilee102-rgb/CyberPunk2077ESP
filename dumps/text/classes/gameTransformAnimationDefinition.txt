@@ -1,0 +1,11 @@
+import struct gameTransformAnimationDefinition
+{
+	var name : CName;
+	var autoStart : Bool;
+	var autoStartDelay : Float;
+	var timesToPlay : Uint32;
+	var looping : Bool;
+	var timeScale : Float;
+	var reverse : Bool;
+	var timeline : gameTransformAnimationTimeline;
+}

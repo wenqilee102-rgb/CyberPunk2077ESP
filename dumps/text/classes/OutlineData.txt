@@ -1,0 +1,5 @@
+struct OutlineData
+{
+	public    var outlineType : EOutlineType;
+	public    var outlineOpacity : Float;
+}

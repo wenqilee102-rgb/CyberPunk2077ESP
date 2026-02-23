@@ -1,0 +1,22 @@
+import class animAnimNode_CriticalSpringDamp extends animAnimNode_FloatValue
+{
+	var smoothTime : Float;
+	var useRange : Bool;
+	var rangeMin : Float;
+	var rangeMax : Float;
+	var useRawTime : Bool;
+	var inputNode : animFloatLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

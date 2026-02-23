@@ -1,0 +1,26 @@
+class DeviceLinkRequest extends redEvent
+{
+	private   var deviceLink : DeviceLink;
+
+	static function Construct(id : gamePersistentID, _className : CName) : handle:DeviceLinkRequest; // DeviceLinkRequest::Construct;PersistentIDCName
+
+	function GetLink() : DeviceLink; // GetLink;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

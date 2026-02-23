@@ -1,0 +1,7 @@
+import struct workRegisterCleanupCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

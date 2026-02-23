@@ -1,0 +1,5 @@
+enum AutoDriveDriveType
+{
+	GoToDestination = 0,
+	FreeRoam = 1
+}

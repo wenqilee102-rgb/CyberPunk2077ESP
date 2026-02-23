@@ -1,0 +1,6 @@
+import struct gameAttackDebugData
+{
+	var pointOfViewTransform : WorldTransform;
+	var projectileHitplaneSpread : Vector4;
+	var bulletStartPosition : Vector4;
+}

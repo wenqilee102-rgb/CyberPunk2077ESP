@@ -1,0 +1,37 @@
+import class gamedataHomingParameters_Record extends gamedataTweakDBRecord
+{
+	import function Accuracy() : Float; // Accuracy
+	import function AngleInHitPlane() : Float; // AngleInHitPlane
+	import function AngleInVerticalPlane() : Float; // AngleInVerticalPlane
+	import function AngleInterpolationDuration() : Float; // AngleInterpolationDuration
+	import function BendFactor() : Float; // BendFactor
+	import function BendTimeRatio() : Float; // BendTimeRatio
+	import function EndLeanAngle() : Float; // EndLeanAngle
+	import function HalfLeanAngle() : Float; // HalfLeanAngle
+	import function InterpolationTimeRatio() : Float; // InterpolationTimeRatio
+	import function LinearTimeRatio() : Float; // LinearTimeRatio
+	import function ReturnTimeMargin() : Float; // ReturnTimeMargin
+	import function ShouldRotate() : Bool; // ShouldRotate
+	import function SnapRadius() : Float; // SnapRadius
+	import function StartVelocity() : Float; // StartVelocity
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

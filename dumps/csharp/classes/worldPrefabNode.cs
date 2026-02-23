@@ -1,0 +1,166 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class worldPrefabNode : worldNode
+	{
+		private raRef<worldPrefab> _prefab;
+		private CHandle<worldPrefabInstanceData> _instanceData;
+		private CHandle<worldPrefabVariantsList> _enabledVariants;
+		private CBool _canBeToggledInGame;
+		private CBool _noCollisions;
+		private CBool _enableRenderSceneLayerOverride;
+		private CEnum<RenderSceneLayerMask> _renderSceneLayerMask;
+		private CEnum<worldPrefabStreamingImportance> _streamingImportance;
+		private CEnum<worldPrefabStreamingOcclusion> _streamingOcclusionOverride;
+		private CEnum<worldPrefabInteriorMapContribution> _interiorMapContribution;
+		private CBool _ignoreMeshEmbeddedOccluders;
+		private CBool _ignoreAllOccluders;
+		private CUInt8 _occluderAutoHideDistanceScale;
+		private CEnum<worldPrefabProxyMeshOnly> _proxyMeshOnly;
+		private CBool _proxyScaleOverride;
+		private Vector3 _proxyScale;
+		private CBool _applyMaxStreamingDistance;
+
+		[Ordinal(4)] 
+		[RED("prefab")] 
+		public raRef<worldPrefab> Prefab
+		{
+			get => GetProperty(ref _prefab);
+			set => SetProperty(ref _prefab, value);
+		}
+
+		[Ordinal(5)] 
+		[RED("instanceData")] 
+		public CHandle<worldPrefabInstanceData> InstanceData
+		{
+			get => GetProperty(ref _instanceData);
+			set => SetProperty(ref _instanceData, value);
+		}
+
+		[Ordinal(6)] 
+		[RED("enabledVariants")] 
+		public CHandle<worldPrefabVariantsList> EnabledVariants
+		{
+			get => GetProperty(ref _enabledVariants);
+			set => SetProperty(ref _enabledVariants, value);
+		}
+
+		[Ordinal(7)] 
+		[RED("canBeToggledInGame")] 
+		public CBool CanBeToggledInGame
+		{
+			get => GetProperty(ref _canBeToggledInGame);
+			set => SetProperty(ref _canBeToggledInGame, value);
+		}
+
+		[Ordinal(8)] 
+		[RED("noCollisions")] 
+		public CBool NoCollisions
+		{
+			get => GetProperty(ref _noCollisions);
+			set => SetProperty(ref _noCollisions, value);
+		}
+
+		[Ordinal(9)] 
+		[RED("enableRenderSceneLayerOverride")] 
+		public CBool EnableRenderSceneLayerOverride
+		{
+			get => GetProperty(ref _enableRenderSceneLayerOverride);
+			set => SetProperty(ref _enableRenderSceneLayerOverride, value);
+		}
+
+		[Ordinal(10)] 
+		[RED("renderSceneLayerMask")] 
+		public CEnum<RenderSceneLayerMask> RenderSceneLayerMask
+		{
+			get => GetProperty(ref _renderSceneLayerMask);
+			set => SetProperty(ref _renderSceneLayerMask, value);
+		}
+
+		[Ordinal(11)] 
+		[RED("streamingImportance")] 
+		public CEnum<worldPrefabStreamingImportance> StreamingImportance
+		{
+			get => GetProperty(ref _streamingImportance);
+			set => SetProperty(ref _streamingImportance, value);
+		}
+
+		[Ordinal(12)] 
+		[RED("streamingOcclusionOverride")] 
+		public CEnum<worldPrefabStreamingOcclusion> StreamingOcclusionOverride
+		{
+			get => GetProperty(ref _streamingOcclusionOverride);
+			set => SetProperty(ref _streamingOcclusionOverride, value);
+		}
+
+		[Ordinal(13)] 
+		[RED("interiorMapContribution")] 
+		public CEnum<worldPrefabInteriorMapContribution> InteriorMapContribution
+		{
+			get => GetProperty(ref _interiorMapContribution);
+			set => SetProperty(ref _interiorMapContribution, value);
+		}
+
+		[Ordinal(14)] 
+		[RED("ignoreMeshEmbeddedOccluders")] 
+		public CBool IgnoreMeshEmbeddedOccluders
+		{
+			get => GetProperty(ref _ignoreMeshEmbeddedOccluders);
+			set => SetProperty(ref _ignoreMeshEmbeddedOccluders, value);
+		}
+
+		[Ordinal(15)] 
+		[RED("ignoreAllOccluders")] 
+		public CBool IgnoreAllOccluders
+		{
+			get => GetProperty(ref _ignoreAllOccluders);
+			set => SetProperty(ref _ignoreAllOccluders, value);
+		}
+
+		[Ordinal(16)] 
+		[RED("occluderAutoHideDistanceScale")] 
+		public CUInt8 OccluderAutoHideDistanceScale
+		{
+			get => GetProperty(ref _occluderAutoHideDistanceScale);
+			set => SetProperty(ref _occluderAutoHideDistanceScale, value);
+		}
+
+		[Ordinal(17)] 
+		[RED("proxyMeshOnly")] 
+		public CEnum<worldPrefabProxyMeshOnly> ProxyMeshOnly
+		{
+			get => GetProperty(ref _proxyMeshOnly);
+			set => SetProperty(ref _proxyMeshOnly, value);
+		}
+
+		[Ordinal(18)] 
+		[RED("proxyScaleOverride")] 
+		public CBool ProxyScaleOverride
+		{
+			get => GetProperty(ref _proxyScaleOverride);
+			set => SetProperty(ref _proxyScaleOverride, value);
+		}
+
+		[Ordinal(19)] 
+		[RED("proxyScale")] 
+		public Vector3 ProxyScale
+		{
+			get => GetProperty(ref _proxyScale);
+			set => SetProperty(ref _proxyScale, value);
+		}
+
+		[Ordinal(20)] 
+		[RED("applyMaxStreamingDistance")] 
+		public CBool ApplyMaxStreamingDistance
+		{
+			get => GetProperty(ref _applyMaxStreamingDistance);
+			set => SetProperty(ref _applyMaxStreamingDistance, value);
+		}
+
+		public worldPrefabNode(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

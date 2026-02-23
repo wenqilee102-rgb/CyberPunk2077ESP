@@ -1,0 +1,88 @@
+import class gameTelemetryTelemetrySystem extends gameITelemetrySystem
+{
+	import static function GetTelemetryInventoryItemFromID(owner : whandle:gameObject, itemID : gameItemID) : gameTelemetryInventoryItem; // GetTelemetryInventoryItemFromID
+	import static function GetTelemetryInventoryItemFromdata(itemData : whandle:gameItemData) : gameTelemetryInventoryItem; // GetTelemetryInventoryItemFromdata
+
+	import function LogActiveCyberwareUsed(owner : whandle:gameObject, itemID : gameItemID); // LogActiveCyberwareUsed
+	import function LogAttributeUpgraded(attributeType : gamedataStatType, lvl : Int32); // LogAttributeUpgraded
+	import function LogBodyDisposed(); // LogBodyDisposed
+	import function LogBraindanceReset(); // LogBraindanceReset
+	import function LogCombatGadgetUsed(owner : whandle:gameObject, itemID : gameItemID); // LogCombatGadgetUsed
+	import function LogConsumableUsed(owner : whandle:gameObject, itemID : gameItemID); // LogConsumableUsed
+	import function LogDamageByVehicle(hitEvent : handle:gameeventsHitEvent); // LogDamageByVehicle
+	import function LogDamageDealt(damage : gameTelemetryDamageDealt); // LogDamageDealt
+	import function LogDevPointsAddedFromReward(addDevPointEffectorTDBID : TweakDBID, amount : Int32, type : gamedataDevelopmentPointType); // LogDevPointsAddedFromReward
+	import function LogDistrictChanged(districtName : String, isNew : Bool); // LogDistrictChanged
+	import function LogEnemyDown(telemetryEnemyDown : gameTelemetryEnemyDown); // LogEnemyDown
+	import function LogEnteringOrExitingVehicle(isExiting : Bool); // LogEnteringOrExitingVehicle
+	import function LogHeadshotGGP(num : Int32); // LogHeadshotGGP
+	import function LogHeatLevelChanged(heatLevel : Uint32, reason : String, crimescore : Uint32); // LogHeatLevelChanged
+	import function LogHitDefense(defenseType : gameTelemetryHitDefenseType); // LogHitDefense
+	import function LogInventoryMenuClosed(); // LogInventoryMenuClosed
+	import function LogItemAcquired(itemTDBID : TweakDBID, meanOfAcquisition : String); // LogItemAcquired
+	import function LogItemCrafting(telemetryInventoryItem : gameTelemetryInventoryItem, craftingAction : CName); // LogItemCrafting
+	import function LogItemDisassembled(owner : whandle:gameObject, itemID : gameItemID); // LogItemDisassembled
+	import function LogItemDrop(owner : whandle:gameObject, itemID : gameItemID); // LogItemDrop
+	import function LogItemReward(owner : whandle:gameObject, itemID : gameItemID); // LogItemReward
+	import function LogItemTransaction(buyer : whandle:gameObject, seller : whandle:gameObject, itemID : gameItemID, pricePerItem : Uint32, itemQuantity : Uint32, totalPrice : Uint32); // LogItemTransaction
+	import function LogLastCheckpointLoaded(); // LogLastCheckpointLoaded
+	import function LogLevelGained(evt : gameTelemetryLevelGained); // LogLevelGained
+	import function LogNewPerkRemoved(perkRemoved : gamedataNewPerkType); // LogNewPerkRemoved
+	import function LogNewPerkUpgraded(newPerkUpgraded : gamedataNewPerkType, lvl : Int32, developementPointType : gamedataDevelopmentPointType); // LogNewPerkUpgraded
+	import function LogNumberOfCombatants(numberOfCombatants : Int32); // LogNumberOfCombatants
+	import function LogPartInstalled(modifiedItem : gameTelemetryInventoryItem, itemPart : gameTelemetryInventoryItem, slotID : TweakDBID); // LogPartInstalled
+	import function LogPerkUpgraded(perkUpgraded : gamedataPerkType, lvl : Int32); // LogPerkUpgraded
+	import function LogPerksRemoved(respecCost : Int32, perksRemoved : array:gamedataPerkType); // LogPerksRemoved
+	import function LogPhotomodeAttributeChanged(); // LogPhotomodeAttributeChanged
+	import function LogPlayerDeathEvent(evt : handle:gameeventsDeathEvent); // LogPlayerDeathEvent
+	import function LogPlayerInDangerousArea(dangerous : Bool); // LogPlayerInDangerousArea
+	import function LogPlayerReachedCriticalHealth(healthIsCritical : Bool); // LogPlayerReachedCriticalHealth
+	import function LogPlayerVehicleDamageReceived(damage : Int32); // LogPlayerVehicleDamageReceived
+	import function LogPlayerVehicleExploded(); // LogPlayerVehicleExploded
+	import function LogPlayerVehicleImpact(); // LogPlayerVehicleImpact
+	import function LogQuickHack(telemetryQuickHack : gameTelemetryQuickHack); // LogQuickHack
+	import function LogRewardGiven(rewardName : CName, rewardTDBID : TweakDBID, rewardMoney : Int32); // LogRewardGiven
+	import function LogSkillbookUsed(owner : whandle:gameObject, itemID : gameItemID); // LogSkillbookUsed
+	import function LogSpecialMovementPerformed(mvtType : gameTelemetryMovementType); // LogSpecialMovementPerformed
+	import function LogTakedown(takedownAction : CName, target : whandle:gameObject); // LogTakedown
+	import function LogVendorMenuState(vendorid : TweakDBID, isOpening : Bool); // LogVendorMenuState
+	import function LogWardrobeUsed(slotsUsed : Int32); // LogWardrobeUsed
+	import function LogWeaponAttackPerformed(weapon : whandle:gameweaponObject); // LogWeaponAttackPerformed
+	import function LogXPReward(xpRecordID : TweakDBID, amount : Int32, type : gamedataProficiencyType); // LogXPReward
+	import function OnSettingsSave(); // OnSettingsSave
+}
+
+import class abstract gameITelemetrySystem extends gameIGameSystem
+{
+	import function ClearPlaythroughEp1(); // ClearPlaythroughEp1
+	import function LogCharacterCustomizationCancelled(); // LogCharacterCustomizationCancelled
+	import function LogCharacterCustomizationChanged(); // LogCharacterCustomizationChanged
+	import function LogInitialChoiceAttributeChanged(attribute : gamedataStatType); // LogInitialChoiceAttributeChanged
+	import function LogInitialChoiceBodyGenderSelected(isMale : Bool); // LogInitialChoiceBodyGenderSelected
+	import function LogInitialChoiceBrainGenderSelected(isMale : Bool); // LogInitialChoiceBrainGenderSelected
+	import function LogInitialChoiceDifficultySelected(difficulty : gameDifficulty); // LogInitialChoiceDifficultySelected
+	import function LogInitialChoiceLifePathSelected(lifePathID : TweakDBID); // LogInitialChoiceLifePathSelected
+	import function LogInitialChoiceOptionSelected(option : handle:gameuiCharacterCustomizationOption, value : Uint32); // LogInitialChoiceOptionSelected
+	import function LogInitialChoicePresetSelected(presetName : CName, optional fromInit : Bool); // LogInitialChoicePresetSelected
+	import function LogInitialChoiceSetStatege(state : gameInitalChoiceStage); // LogInitialChoiceSetStatege
+	import function LogNewGameStarted(); // LogNewGameStarted
+	import function LogPlaythroughEp1(); // LogPlaythroughEp1
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

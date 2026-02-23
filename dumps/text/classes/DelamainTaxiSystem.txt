@@ -1,0 +1,53 @@
+class DelamainTaxiSystem extends gameScriptableSystem
+{
+	private   var isDelamainTaxiEnabledOnMap : Bool;
+	private   var delamainMappinID : gameNewMappinID;
+	private   var currentTravelCost : Int32;
+	private   var HUDHidden : Bool;
+	private   var delamainTaxi : whandle:DelamainTaxiComponent;
+
+	function GetTravelCost() : Int32; // GetTravelCost;
+	function HasActiveDestination() : Bool; // HasActiveDestination;
+	function IsDelamainTaxiEnabledOnMap() : Bool; // IsDelamainTaxiEnabledOnMap;
+	function OnCancelDelamainRideRequest(request : handle:CancelDelamainRideRequest); // OnCancelDelamainRideRequest;CancelDelamainRideRequest
+	function OnCancelDriveIfNecessaryRequest(request : handle:CancelDriveIfNecessaryRequest); // OnCancelDriveIfNecessaryRequest;CancelDriveIfNecessaryRequest
+	function OnDelamainTaxiArrivedRequest(request : handle:DelamainTaxiArrivedRequest); // OnDelamainTaxiArrivedRequest;DelamainTaxiArrivedRequest
+	function OnDelamainTaxiCancelledRequest(request : handle:DelamainTaxiCancelledRequest); // OnDelamainTaxiCancelledRequest;DelamainTaxiCancelledRequest
+	function OnDelamainTaxiMenuToggledRequest(evt : handle:DelamainTaxiMenuToggledEvent); // OnDelamainTaxiMenuToggledRequest;DelamainTaxiMenuToggledEvent
+	function OnPayTravelRequest(request : handle:PayTravelRequest); // OnPayTravelRequest;PayTravelRequest
+	function OnRegisterDelamainTaxiRequest(request : handle:RegisterDelamainTaxiRequest); // OnRegisterDelamainTaxiRequest;RegisterDelamainTaxiRequest
+	function OnSetHUDHiddenRequest(request : handle:SetHUDHiddenRequest); // OnSetHUDHiddenRequest;SetHUDHiddenRequest
+	function OnSetTravelDestinationRequest(request : handle:SetTravelDestinationRequest); // OnSetTravelDestinationRequest;SetTravelDestinationRequest
+	function OnStartDelamainTaxiRequest(request : handle:StartDelamainTaxiRequest); // OnStartDelamainTaxiRequest;StartDelamainTaxiRequest
+	function OnUnregisterCurrentTaxiRequest(evt : handle:UnregisterCurrentTaxiRequest); // OnUnregisterCurrentTaxiRequest;UnregisterCurrentTaxiRequest
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class toolsMessageLocation_Resource extends toolsIMessageLocation
+{
+	var path : MessageResourcePath;
+}
+
+import class abstract toolsIMessageLocation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

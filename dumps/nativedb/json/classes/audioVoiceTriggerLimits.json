@@ -1,0 +1,1 @@
+{"b":"audioVoiceTriggerLimits","d":8,"g":true,"e":[{"a":{"a":10},"b":"probability","c":128},{"a":{"a":10},"b":"singleNpcMinRepeatTime","c":128},{"a":{"a":10},"b":"allNpcsMinRepeatTime","c":128},{"a":{"a":10},"b":"allNpcsSharingVoicesetMinRepeatTime","c":128},{"a":{"a":10},"b":"combatVolume","c":128}]}

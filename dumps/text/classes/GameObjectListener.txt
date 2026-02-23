@@ -1,0 +1,24 @@
+class GameObjectListener extends IScriptable
+{
+	public    var prereqOwner : handle:gamePrereqState;
+	public    var e3HackBlock : Bool;
+
+	function ModifyOwner(owner : handle:gamePrereqState); // ModifyOwner;PrereqState
+	function OnRevealAccessPoint(shouldReveal : Bool); // OnRevealAccessPoint;Bool
+	function OnStatusEffectTrigger(shouldTrigger : Bool); // OnStatusEffectTrigger;Bool
+	function RegisterOwner(owner : handle:gamePrereqState) : Bool; // RegisterOwner;PrereqState
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

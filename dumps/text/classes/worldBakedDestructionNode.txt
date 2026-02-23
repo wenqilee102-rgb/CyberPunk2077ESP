@@ -1,0 +1,50 @@
+import class worldBakedDestructionNode extends worldMeshNode
+{
+	var meshFractured : raRef:CMesh;
+	var meshFracturedAppearance : CName;
+	var numFrames : Float;
+	var frameRate : Float;
+	var playOnlyOnce : Bool;
+	var restartOnTrigger : Bool;
+	var disableCollidersOnTrigger : Bool;
+	var filterDataSource : physicsFilterDataSource;
+	var filterData : handle:physicsFilterData;
+	var damageThreshold : Float;
+	var damageEndurance : Float;
+	var impulseToDamage : Float;
+	var contactToDamage : Float;
+	var accumulateDamage : Bool;
+	var fractureFieldMask : physicsFractureFieldType;
+	var destructionEffect : raRef:worldEffect;
+	var audioMetadata : CName;
+	var navigationSetting : NavGenNavigationSetting;
+	var useMeshNavmeshSettings : Bool;
+}
+
+import class worldMeshNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var forceAutoHideDistance : Float;
+	var occluderType : visWorldOccluderType;
+	var occluderAutohideDistanceScale : Uint8;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var castRayTracedGlobalShadows : shadowsShadowCastingMode;
+	var castRayTracedLocalShadows : shadowsShadowCastingMode;
+	var windImpulseEnabled : Bool;
+	var removeFromRainMap : Bool;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+	var lodLevelScales : Uint32;
+	var version : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

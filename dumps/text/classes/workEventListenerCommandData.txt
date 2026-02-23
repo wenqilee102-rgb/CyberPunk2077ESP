@@ -1,0 +1,7 @@
+import struct workEventListenerCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

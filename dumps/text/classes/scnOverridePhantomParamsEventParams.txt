@@ -1,0 +1,6 @@
+import struct scnOverridePhantomParamsEventParams
+{
+	var performer : scnPerformerId;
+	var overrideSpawnEffect : CName;
+	var overrideIdleEffect : CName;
+}

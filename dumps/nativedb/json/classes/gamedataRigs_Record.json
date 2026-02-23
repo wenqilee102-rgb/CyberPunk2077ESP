@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataRigs_Record","c":"Rigs_Record","d":24,"f":[{"a":"GetRigsResRefsCount","c":{"a":6},"d":4},{"a":"GetRigsResRefsItem","c":{"b":"redResourceReferenceScriptToken"},"d":4,"e":[{"a":{"a":6},"b":"index","c":0}]},{"a":"RigsResRefs","c":{"a":31,"c":{"b":"redResourceReferenceScriptToken"}},"d":4}]}

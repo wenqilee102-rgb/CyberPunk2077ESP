@@ -1,0 +1,12 @@
+import struct vehicleVehicleCustomMultilayer
+{
+	var onlyForPlayerVehicleAppearances : array:CName;
+	var affectedComponents : array:CName;
+	var excludedComponents : array:CName;
+	var customMlSetup : redResourceReferenceScriptToken;
+	var customMlMask : redResourceReferenceScriptToken;
+	var coatLayerMin : Float;
+	var coatLayerMax : Float;
+
+	static function FromRecord(record : handle:gamedataVehicleCustomMultilayer_Record) : vehicleVehicleCustomMultilayer; // vehicleVehicleCustomMultilayer::FromRecord;VehicleCustomMultilayer_Record
+}

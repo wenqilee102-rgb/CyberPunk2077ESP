@@ -1,0 +1,19 @@
+import struct gameActionMoveToPositionState extends gameActionReplicatedState
+{
+	var target : Vector3;
+	var useSpotReservation : Bool;
+	var usePathfinding : Bool;
+	var useStart : Bool;
+	var useStop : Bool;
+	var movementType : moveMovementType;
+	var strafingTarget : whandle:gameObject;
+}
+
+import struct gameActionReplicatedState
+{
+	var replicationId : Uint32;
+	var type : Uint16;
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var updateBucket : Uint8;
+}

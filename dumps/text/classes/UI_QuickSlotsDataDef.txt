@@ -1,0 +1,42 @@
+class UI_QuickSlotsDataDef extends gamebbScriptDefinition
+{
+	public    var UIRadialContextRequest : gamebbScriptID_Bool;
+	public    var UIRadialContextRightStickAngle : gamebbScriptID_Float;
+	public    var leftStick : gamebbScriptID_Vector4;
+	public    var DPadCommand : gamebbScriptID_Variant;
+	public    var KeyboardCommand : gamebbScriptID_Variant;
+	public    var WheelInteractionStarted : gamebbScriptID_Variant;
+	public    var WheelInteractionEnded : gamebbScriptID_Variant;
+	public    var CyberwareAssignmentComplete : gamebbScriptID_Bool;
+	public    var WheelAssignmentComplete : gamebbScriptID_Bool;
+	public    var quickSlotsStructure : gamebbScriptID_Variant;
+	public    var activeQuickSlotItem : gamebbScriptID_Variant;
+	public    var quickSlotsActiveWeaponIndex : gamebbScriptID_Int32;
+	public    var quickhackPanelOpen : gamebbScriptID_Bool;
+	public    var quickhackPanelBlocked : gamebbScriptID_Bool;
+	public    var quickHackDataSelected : gamebbScriptID_Variant;
+	public    var quickhackPanelKeepContext : gamebbScriptID_Bool;
+	public    var dpadHintRefresh : gamebbScriptID_Bool;
+	public    var containerConsumable : gamebbScriptID_Variant;
+	public    var consumableBeingUsed : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

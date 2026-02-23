@@ -1,0 +1,50 @@
+class CrowdMemberBaseComponent extends gameCrowdMemberComponent
+{
+}
+
+import class gameCrowdMemberComponent extends entIComponent
+{
+	import function AllowWorkspotsUsage(allowUsage : Bool); // AllowWorkspotsUsage
+	import function ChangeFearStage(stage : gameFearStage, optional playInitAniation : Bool) : Bool; // ChangeFearStage
+	import function ChangeMoveType(name : CName) : Bool; // ChangeMoveType
+	import function CheckEmptyPath(distance : Float) : Bool; // CheckEmptyPath
+	import function CheckIsMoving() : Bool; // CheckIsMoving
+	import function CheckTrafficPath(context : gameJoinTrafficNPCContext) : Bool; // CheckTrafficPath
+	import function GetMovementDirection() : Vector4; // GetMovementDirection
+	import function IsBlockedInTraffic() : Bool; // IsBlockedInTraffic
+	import function IsInCrowd() : Bool; // IsInCrowd
+	import function OnCrowdReaction(stimType : gamedataStimType); // OnCrowdReaction
+	import function SetThreatLastKnownPosition(position : Vector4); // SetThreatLastKnownPosition
+	import function TryChangeMovementDirection(); // TryChangeMovementDirection
+	import function TryStopTrafficMovement(); // TryStopTrafficMovement
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

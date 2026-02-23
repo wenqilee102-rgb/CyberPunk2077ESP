@@ -1,0 +1,78 @@
+import class gamedataAISubActionShootToPoint_Record extends gamedataAISubActionShootWithWeapon_Record
+{
+	import function GetPointPositionCount() : Int32; // GetPointPositionCount
+	import function GetPointPositionItem(index : Int32) : Vector3; // GetPointPositionItem
+	import function GetWaypointTagCount() : Int32; // GetWaypointTagCount
+	import function GetWaypointTagItem(index : Int32) : CName; // GetWaypointTagItem
+	import function PointPosition() : array:Vector3; // PointPosition
+	import function PointPositionContains(item : Vector3) : Bool; // PointPositionContains
+	import function PositionObj() : whandle:gamedataAIActionTarget_Record; // PositionObj
+	import function PositionObjHandle() : handle:gamedataAIActionTarget_Record; // PositionObjHandle
+	import function RotationObj() : whandle:gamedataAIActionTarget_Record; // RotationObj
+	import function RotationObjHandle() : handle:gamedataAIActionTarget_Record; // RotationObjHandle
+	import function TargetPositionObj() : whandle:gamedataAIActionTarget_Record; // TargetPositionObj
+	import function TargetPositionObjHandle() : handle:gamedataAIActionTarget_Record; // TargetPositionObjHandle
+	import function WaypointTag() : array:CName; // WaypointTag
+	import function WaypointTagContains(item : CName) : Bool; // WaypointTagContains
+}
+
+import class gamedataAISubActionShootWithWeapon_Record extends gamedataAISubAction_Record
+{
+	import function AimingDelay() : Float; // AimingDelay
+	import function Delay() : Float; // Delay
+	import function DualWieldShootingStyle() : CName; // DualWieldShootingStyle
+	import function GetPauseConditionCount() : Int32; // GetPauseConditionCount
+	import function GetPauseConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetPauseConditionItem
+	import function GetPauseConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetPauseConditionItemHandle
+	import function GetShootingPatternPackagesCount() : Int32; // GetShootingPatternPackagesCount
+	import function GetShootingPatternPackagesItem(index : Int32) : whandle:gamedataAIPatternsPackage_Record; // GetShootingPatternPackagesItem
+	import function GetShootingPatternPackagesItemHandle(index : Int32) : handle:gamedataAIPatternsPackage_Record; // GetShootingPatternPackagesItemHandle
+	import function GetWeaponSlotsCount() : Int32; // GetWeaponSlotsCount
+	import function GetWeaponSlotsItem(index : Int32) : whandle:gamedataAttachmentSlot_Record; // GetWeaponSlotsItem
+	import function GetWeaponSlotsItemHandle(index : Int32) : handle:gamedataAttachmentSlot_Record; // GetWeaponSlotsItemHandle
+	import function Instigator() : whandle:gamedataAIActionTarget_Record; // Instigator
+	import function InstigatorHandle() : handle:gamedataAIActionTarget_Record; // InstigatorHandle
+	import function MaxNumberOfShots() : Int32; // MaxNumberOfShots
+	import function NumberOfShots() : Int32; // NumberOfShots
+	import function PauseCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // PauseCondition
+	import function PauseConditionCheckInterval() : Float; // PauseConditionCheckInterval
+	import function PauseConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // PauseConditionContains
+	import function PredictionTime() : Float; // PredictionTime
+	import function RangedAttack() : whandle:gamedataRangedAttack_Record; // RangedAttack
+	import function RangedAttackHandle() : handle:gamedataRangedAttack_Record; // RangedAttackHandle
+	import function ShootingPatternPackages(out outList : array:whandle:gamedataAIPatternsPackage_Record); // ShootingPatternPackages
+	import function ShootingPatternPackagesContains(item : whandle:gamedataAIPatternsPackage_Record) : Bool; // ShootingPatternPackagesContains
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function TargetOffset() : Vector3; // TargetOffset
+	import function TbhCoefficient() : Float; // TbhCoefficient
+	import function TriggerMode() : whandle:gamedataTriggerMode_Record; // TriggerMode
+	import function TriggerModeHandle() : handle:gamedataTriggerMode_Record; // TriggerModeHandle
+	import function WeaponCustomEvent() : CName; // WeaponCustomEvent
+	import function WeaponSlots(out outList : array:whandle:gamedataAttachmentSlot_Record); // WeaponSlots
+	import function WeaponSlotsContains(item : whandle:gamedataAttachmentSlot_Record) : Bool; // WeaponSlotsContains
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

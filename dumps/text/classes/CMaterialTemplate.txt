@@ -1,0 +1,37 @@
+import class CMaterialTemplate extends IMaterialDefinition
+{
+	var name : CName;
+	var parameters : [3]array:handle:CMaterialParameter;
+	var techniques : array:MaterialTechnique;
+	var samplerStates : [3]array:SamplerStateInfo;
+	var usedParameters : [3]array:MaterialUsedParameter;
+	var materialPriority : EMaterialPriority;
+	var materialType : ERenderMaterialType;
+	var audioTag : CName;
+	var resourceVersion : Uint8;
+}
+
+import class abstract IMaterialDefinition extends IMaterial
+{
+	var paramBlockSize : [3]Uint32;
+	var canHaveTangentUpdate : Bool;
+	var canHaveDismemberment : Bool;
+	var hasDPL : Bool;
+	var canBeMasked : Bool;
+	var shadingRateMode : EMaterialShadingRateMode;
+	var materialVersion : Uint8;
+	var vertexFactories : array:EMaterialVertexFactory;
+}
+
+import class abstract IMaterial extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

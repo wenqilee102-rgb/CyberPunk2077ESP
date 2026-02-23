@@ -1,0 +1,33 @@
+import class gamedataArcadeCollidableObject_Record extends gamedataArcadeObject_Record
+{
+	import function BoundingShapeRelativeArea() : Vector2; // BoundingShapeRelativeArea
+}
+
+import class gamedataArcadeObject_Record extends gamedataTweakDBRecord
+{
+	import function Animation() : CName; // Animation
+	import function ImageAnchorPoint() : Vector2; // ImageAnchorPoint
+	import function ImageTextureAtlas() : redResourceReferenceScriptToken; // ImageTextureAtlas
+	import function ImageTexturePart() : CName; // ImageTexturePart
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

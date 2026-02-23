@@ -1,0 +1,1 @@
+{"a":"vehicleIRacingSystem","b":"vehicleRacingSystem","c":"RacingSystem","d":8,"f":[{"a":"IsAIVehicleRegistered","c":{"a":1},"d":4,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"vehicle","c":0}]},{"a":"IsRaceInProgress","c":{"a":1},"d":4}]}

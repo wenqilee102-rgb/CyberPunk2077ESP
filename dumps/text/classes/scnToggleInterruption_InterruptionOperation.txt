@@ -1,0 +1,12 @@
+import class scnToggleInterruption_InterruptionOperation extends scnIInterruptionOperation
+{
+	var enable : Bool;
+}
+
+import class abstract scnIInterruptionOperation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct gameCameraLocation
+{
+	var position : Vector3;
+	var rotation : EulerAngles;
+}

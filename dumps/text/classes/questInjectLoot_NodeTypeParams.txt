@@ -1,0 +1,10 @@
+import class questInjectLoot_NodeTypeParams extends ISerializable
+{
+	var objectRef : handle:questUniversalRef;
+	var lootOperations : array:handle:questInjectLoot_NodeTypeParams_OperationData;
+	var operations : array:questInjectLoot_NodeTypeParams_OperationData;
+}
+
+import class abstract ISerializable
+{
+}

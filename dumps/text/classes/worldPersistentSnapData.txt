@@ -1,0 +1,8 @@
+import struct worldPersistentSnapData
+{
+	var targetObjectPath : worldRelativeNodePath;
+	var targetSocketName : CName;
+	var snapTangent : Bool;
+	var reverseTangent : Bool;
+	var preserveLength : Bool;
+}

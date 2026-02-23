@@ -1,0 +1,7 @@
+enum MuramasaOption
+{
+	WheelCover = 0,
+	WheelRims = 1,
+	Branding = 2,
+	BackRest = 3
+}

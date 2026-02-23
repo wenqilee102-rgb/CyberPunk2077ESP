@@ -1,0 +1,1 @@
+{"a":"userSettingsVar","b":"userSettingsVarFloat","c":"ConfigVarFloat","d":8,"f":[{"a":"GetDefaultValue","c":{"a":10},"d":4},{"a":"GetMaxValue","c":{"a":10},"d":4},{"a":"GetMinValue","c":{"a":10},"d":4},{"a":"GetStepValue","c":{"a":10},"d":4},{"a":"GetValue","c":{"a":10},"d":4},{"a":"SetValue","d":4,"e":[{"a":{"a":10},"b":"value","c":0}]}]}

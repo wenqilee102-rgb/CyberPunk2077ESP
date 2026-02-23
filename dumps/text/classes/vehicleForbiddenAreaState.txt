@@ -1,0 +1,7 @@
+import struct vehicleForbiddenAreaState
+{
+	var globalNodeIDHash : Uint64;
+	var enabled : Bool;
+	var dismount : Bool;
+	var blockCombat : Bool;
+}

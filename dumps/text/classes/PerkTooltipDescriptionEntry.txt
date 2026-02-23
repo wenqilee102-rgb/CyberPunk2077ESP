@@ -1,0 +1,8 @@
+struct PerkTooltipDescriptionEntry
+{
+	public    var wrapper : inkWidgetReference;
+	public    var level : inkTextWidgetReference;
+	public    var text : inkTextWidgetReference;
+	public    var videoLabel : inkWidgetReference;
+	public    var highlightLabel : inkWidgetReference;
+}

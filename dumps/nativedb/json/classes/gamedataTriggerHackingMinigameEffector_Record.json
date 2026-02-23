@@ -1,0 +1,1 @@
+{"a":"gamedataEffector_Record","b":"gamedataTriggerHackingMinigameEffector_Record","c":"TriggerHackingMinigameEffector_Record","d":24,"f":[{"a":"JournalEntry","c":{"a":12},"d":4},{"a":"Reward","c":{"a":27,"c":{"b":"gamedataRewardBase_Record"}},"d":4},{"a":"RewardHandle","c":{"a":26,"c":{"b":"gamedataRewardBase_Record"}},"d":4}]}

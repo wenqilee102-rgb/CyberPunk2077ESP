@@ -1,0 +1,15 @@
+import class physicsSectorCacheArtifact extends CResource
+{
+	var sectorGeometryKeys : array:physicsGeometryKey;
+	var sectorInPlaceGeometry : handle:physicsGeometryCacheArtifact;
+	var sectorBounds : Box;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

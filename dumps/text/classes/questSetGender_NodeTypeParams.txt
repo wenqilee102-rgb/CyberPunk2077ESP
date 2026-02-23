@@ -1,0 +1,6 @@
+import struct questSetGender_NodeTypeParams
+{
+	var puppetRef : gameEntityReference;
+	var isPlayer : Bool;
+	var gender : CName;
+}

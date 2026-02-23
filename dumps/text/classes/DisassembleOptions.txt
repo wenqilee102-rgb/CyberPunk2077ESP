@@ -1,0 +1,4 @@
+struct DisassembleOptions
+{
+	public    var canBeDisassembled : Bool;
+}

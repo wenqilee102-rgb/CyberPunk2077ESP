@@ -1,0 +1,7 @@
+import struct workworkspotAnimObjectDebugger extends workDebuggingTool
+{
+}
+
+import struct abstract workDebuggingTool
+{
+}

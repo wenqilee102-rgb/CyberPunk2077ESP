@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameAttachmentSlotEventsAttachmentSlotEvent","c":"AttachmentSlotEvent","d":28,"f":[{"a":"GetSlotID","c":{"a":15},"d":4},{"a":"SetSlotID","d":4,"e":[{"a":{"a":15},"b":"slotId","c":0}]}]}

@@ -1,0 +1,13 @@
+import class abstract LibTreeCTreeResource extends CResource
+{
+	var variables : LibTreeDefTreeVariablesList;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

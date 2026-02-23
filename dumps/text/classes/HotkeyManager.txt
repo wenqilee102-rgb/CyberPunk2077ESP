@@ -1,0 +1,9 @@
+struct HotkeyManager
+{
+	static function AddMissingHotkeys(hotkeys : script_ref:array:handle:Hotkey); // HotkeyManager::AddMissingHotkeys;script_ref<array<Hotkey>>
+	static function GetHotkeyTypeForItemID(owner : whandle:gameObject, hotkeys : script_ref:array:handle:Hotkey, itemID : gameItemID) : gameEHotkey; // HotkeyManager::GetHotkeyTypeForItemID;GameObjectscript_ref<array<Hotkey>>ItemID
+	static function GetHotkeyTypeFromItemID(hotkeys : script_ref:array:handle:Hotkey, itemID : gameItemID) : gameEHotkey; // HotkeyManager::GetHotkeyTypeFromItemID;script_ref<array<Hotkey>>ItemID
+	static function GetItemIDFromHotkey(hotkeys : script_ref:array:handle:Hotkey, hotkey : gameEHotkey) : gameItemID; // HotkeyManager::GetItemIDFromHotkey;script_ref<array<Hotkey>>EHotkey
+	static function InitializeHotkeys(hotkeys : script_ref:array:handle:Hotkey); // HotkeyManager::InitializeHotkeys;script_ref<array<Hotkey>>
+	static function IsItemInHotkey(hotkeys : script_ref:array:handle:Hotkey, itemID : gameItemID) : Bool; // HotkeyManager::IsItemInHotkey;script_ref<array<Hotkey>>ItemID
+}

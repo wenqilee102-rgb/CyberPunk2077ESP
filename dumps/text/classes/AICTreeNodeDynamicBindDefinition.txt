@@ -1,0 +1,19 @@
+import class AICTreeNodeDynamicBindDefinition extends AICTreeNodeDynamicDefinition
+{
+}
+
+import class abstract AICTreeNodeDynamicDefinition extends AICTreeNodeDefinition
+{
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,41 @@
+class OxygenStatListener extends gameCustomValueStatPoolsListener
+{
+	public    var ownerPuppet : whandle:PlayerPuppet;
+	public    var oxygenVfxBlackboard : handle:worldEffectBlackboard;
+
+	event OnStatPoolMinValueReached(value : Float) : Bool; // OnStatPoolMinValueReached
+	event OnStatPoolValueReached(oldValue : Float, newValue : Float, percToPoints : Float) : Bool; // OnStatPoolValueReached
+
+	function CriticalOxygenLevel(b : Bool); // CriticalOxygenLevel;Bool
+	function IsOutOfOxygen(b : Bool); // IsOutOfOxygen;Bool
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+	function TestOxygenLevel(oldValue : Float, newValue : Float, percToPoints : Float); // TestOxygenLevel;FloatFloatFloat
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

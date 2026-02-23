@@ -1,0 +1,9 @@
+import struct animImportFacialSetupCombinedDesc
+{
+	var face : animImportFacialSetupDesc;
+	var eyes : animImportFacialSetupDesc;
+	var tongue : animImportFacialSetupDesc;
+	var usedTransformIndices : array:Uint16;
+	var lipsyncOverrideToMainPosesTracksMapping : array:Int16;
+	var firstLipsyncOverrideTrackIndex : Int16;
+}

@@ -1,0 +1,9 @@
+import struct inkMenuEntry
+{
+	var name : CName;
+	var menuWidget : rRef:inkWidgetLibraryResource;
+	var depth : Uint32;
+	var spawnMode : inkSpawnMode;
+	var isAffectedByFadeout : Bool;
+	var inputContext : CName;
+}

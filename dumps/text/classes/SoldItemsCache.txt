@@ -1,0 +1,24 @@
+class SoldItemsCache extends IScriptable
+{
+	private   var cache : array:handle:SoldItem;
+
+	function AddItem(itemID : gameItemID, quantity : Int32, piecePrice : Int32); // AddItem;ItemIDInt32Int32
+	function AddItem(item : handle:SoldItem); // AddItem;SoldItem
+	function GetItem(itemID : gameItemID) : handle:SoldItem; // GetItem;ItemID
+	function GetItemPrice(itemID : gameItemID) : Int32; // GetItemPrice;ItemID
+	function RemoveItem(itemID : gameItemID, quantity : Int32); // RemoveItem;ItemIDInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,41 @@
+class EquipItemCommandDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	public    var equipCommand : whandle:AIEquipCommand;
+	public    var unequipCommand : whandle:AIUnequipCommand;
+	public    var slotIdName : TweakDBID;
+	public    var itemIdName : TweakDBID;
+
+	function DoEndCommand() : Bool; // DoEndCommand;
+	function DoSetupEquipCommand() : Bool; // DoSetupEquipCommand;
+	function DoSetupUnequipCommand() : Bool; // DoSetupUnequipCommand;
+	function GetDurationOverride() : Float; // GetDurationOverride;
+	function GetFailIfItemNotFound() : Bool; // GetFailIfItemNotFound;
+	function GetUnequipDurationOverride() : Float; // GetUnequipDurationOverride;
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,214 @@
+class CollectDropPointRewards extends ActionBool
+{
+	function SetProperties(); // SetProperties;
+}
+
+class abstract ActionBool extends ScriptableDeviceAction
+{
+	function CreateActionWidgetPackage(optional actions : array:handle:gamedeviceAction); // CreateActionWidgetPackage;array<DeviceAction>
+	function CreateCustomInteraction(optional actions : array:handle:gamedeviceAction, customName1 : script_ref:String, customName2 : script_ref:String, optional customID1 : TweakDBID, optional customID2 : TweakDBID); // CreateCustomInteraction;array<DeviceAction>script_ref<String>script_ref<String>TweakDBIDTweakDBID
+	function GetCurrentDisplayString() : String; // GetCurrentDisplayString
+	function GetProperties() : array:handle:gamedeviceActionProperty; // GetProperties
+	function GetValue() : Bool; // GetValue;
+	function OverrideInteractionRecord(newRecordforTrue : TweakDBID, newRecordForFalse : TweakDBID); // OverrideInteractionRecord;TweakDBIDTweakDBID
+}
+
+class abstract ScriptableDeviceAction extends BaseScriptableAction
+{
+	public    var prop : handle:gamedeviceActionProperty;
+	protected var actionWidgetPackage : SActionWidgetPackage;
+	protected var spiderbotActionLocationOverride : NodeRef;
+	protected var duration : Float;
+	private   var canTriggerStim : Bool;
+	private   var wasPerformedOnOwner : Bool;
+	private   var shouldActivateDevice : Bool;
+	private   var disableSpread : Bool;
+	protected var isQuickHack : Bool;
+	protected var isSpiderbotAction : Bool;
+	protected var attachedProgram : TweakDBID;
+	protected var activeStatusEffect : TweakDBID;
+	protected var interactionIconType : TweakDBID;
+	protected var hasInteraction : Bool;
+	protected var inactiveReason : String;
+	protected var widgetStyle : gamedataComputerUIStyle;
+
+	static function IsAvailable(device : handle:ScriptableDeviceComponentPS) : Bool; // ScriptableDeviceAction::IsAvailable;ScriptableDeviceComponentPS
+	static function IsClearanceValid(clearance : handle:gamedeviceClearance) : Bool; // ScriptableDeviceAction::IsClearanceValid;Clearance
+	static function IsDefaultConditionMet(device : handle:ScriptableDeviceComponentPS, context : script_ref:gameGetActionsContext) : Bool; // ScriptableDeviceAction::IsDefaultConditionMet;ScriptableDeviceComponentPSscript_ref<GetActionsContext>
+
+	function AddDeviceName(deviceName : script_ref:String); // AddDeviceName;script_ref<String>
+	function CanSpiderbotCompleteThisAction(device : handle:ScriptableDeviceComponentPS) : Bool; // CanSpiderbotCompleteThisAction;ScriptableDeviceComponentPS
+	function CanTriggerStim() : Bool; // CanTriggerStim;
+	function ClearIllegal(); // ClearIllegal;
+	function CompleteAction(gameInstance : ScriptGameInstance); // CompleteAction;GameInstance
+	function CreateActionWidgetPackage(widgetTweakDBID : TweakDBID, optional actions : array:handle:gamedeviceAction); // CreateActionWidgetPackage;TweakDBIDarray<DeviceAction>
+	function CreateActionWidgetPackage(optional actions : array:handle:gamedeviceAction); // CreateActionWidgetPackage;array<DeviceAction>
+	function CreateCustomInteraction(optional actions : array:handle:gamedeviceAction, customName1 : script_ref:String, customName2 : script_ref:String, optional customID1 : TweakDBID, optional customID2 : TweakDBID); // CreateCustomInteraction;array<DeviceAction>script_ref<String>script_ref<String>TweakDBIDTweakDBID
+	function CreateInteraction(optional actions : array:handle:gamedeviceAction, optional alternativeMainChoiceRecord : String, optional alternativeMainChoiceTweakDBID : TweakDBID); // CreateInteraction;array<DeviceAction>StringTweakDBID
+	function GetActionName() : CName; // GetActionName;
+	function GetActionWidgetPackage() : SActionWidgetPackage; // GetActionWidgetPackage;
+	function GetActiveStatusEffectTweakDBID() : TweakDBID; // GetActiveStatusEffectTweakDBID;
+	function GetAttachedProgramTweakDBID() : TweakDBID; // GetAttachedProgramTweakDBID;
+	function GetAwarenessCost(gameInstance : ScriptGameInstance) : Float; // GetAwarenessCost;GameInstance
+	function GetCost() : Int32; // GetCost;
+	function GetDefaultActionName() : CName; // GetDefaultActionName;
+	function GetDeviceName() : String; // GetDeviceName;
+	function GetDurationFromTDBRecord(record : TweakDBID) : Float; // GetDurationFromTDBRecord;TweakDBID
+	function GetDurationValue() : Float; // GetDurationValue;
+	function GetInactiveReason() : String; // GetInactiveReason;
+	function GetInkWidgetLibraryID() : CName; // GetInkWidgetLibraryID;
+	function GetInkWidgetLibraryPath() : redResourceReferenceScriptToken; // GetInkWidgetLibraryPath;
+	function GetInkWidgetTweakDBID() : TweakDBID; // GetInkWidgetTweakDBID;
+	function GetInteractionChoice() : gameinteractionsChoice; // GetInteractionChoice;
+	function GetInteractionIcon() : whandle:gamedataChoiceCaptionIconPart_Record; // GetInteractionIcon;
+	function GetInteractionLayer() : CName; // GetInteractionLayer;
+	function GetObjectActionRecord() : whandle:gamedataObjectAction_Record; // GetObjectActionRecord;
+	function GetOwnerPS(game : ScriptGameInstance) : handle:ScriptableDeviceComponentPS; // GetOwnerPS;GameInstance
+	function GetRequestType() : gamedeviceRequestType; // GetRequestType;
+	function GetSpiderbotLocationOverrideReference() : NodeRef; // GetSpiderbotLocationOverrideReference;
+	function HasUI() : Bool; // HasUI;
+	function IsCompleted() : Bool; // IsCompleted;
+	function IsIllegal() : Bool; // IsIllegal;
+	function IsQuickHack() : Bool; // IsQuickHack;
+	function IsRemoteHack() : Bool; // IsRemoteHack;
+	function IsSpiderbotAction() : Bool; // IsSpiderbotAction;
+	function IsSpreadDisabled() : Bool; // IsSpreadDisabled;
+	function IsStarted() : Bool; // IsStarted;
+	function ProduceInteractionParts(); // ProduceInteractionParts;
+	function ResolveAction(data : handle:ResolveActionData) : Bool; // ResolveAction;ResolveActionData
+	function ResolveActionWidgetTweakDBData(); // ResolveActionWidgetTweakDBData;
+	function SetActiveStatusEffectTweakDBID(effectID : TweakDBID); // SetActiveStatusEffectTweakDBID;TweakDBID
+	function SetAsQuickHack(optional wasExecutedAtLeastOnce : Bool); // SetAsQuickHack;Bool
+	function SetAsSpiderbotAction(); // SetAsSpiderbotAction;
+	function SetAttachedProgramTweakDBID(programID : TweakDBID); // SetAttachedProgramTweakDBID;TweakDBID
+	function SetCanSkipPayCost(value : Bool); // SetCanSkipPayCost;Bool
+	function SetCanTriggerStim(canTrigger : Bool); // SetCanTriggerStim;Bool
+	function SetCompleted(); // SetCompleted;
+	function SetDisableSpread(value : Bool); // SetDisableSpread;Bool
+	function SetDurationValue(duration : Float); // SetDurationValue;Float
+	function SetIllegal(isIllegal : Bool); // SetIllegal;Bool
+	function SetInactiveReason(reasonStr : script_ref:String); // SetInactiveReason;script_ref<String>
+	function SetInactiveReasonAsCaption(); // SetInactiveReasonAsCaption;
+	function SetInactiveWithReason(isActiveIf : Bool, reason : script_ref:String); // SetInactiveWithReason;Boolscript_ref<String>
+	function SetInkWidgetTweakDBID(id : TweakDBID); // SetInkWidgetTweakDBID;TweakDBID
+	function SetInteractionIcon(iconType : TweakDBID); // SetInteractionIcon;TweakDBID
+	function SetInteractionLayer(layer : CName); // SetInteractionLayer;CName
+	function SetObjectActionID(id : TweakDBID); // SetObjectActionID;TweakDBID
+	function SetShouldActivateDevice(value : Bool); // SetShouldActivateDevice;Bool
+	function SetSpiderbotLocationOverrideReference(targetLocationReference : NodeRef); // SetSpiderbotLocationOverrideReference;NodeRef
+	function SetWidgetStyle(style : gamedataComputerUIStyle); // SetWidgetStyle;gamedataComputerUIStyle
+	function ShouldActivateDevice() : Bool; // ShouldActivateDevice;
+	function StartUpload(gameInstance : ScriptGameInstance); // StartUpload;GameInstance
+}
+
+class abstract BaseScriptableAction extends gamedeviceAction
+{
+	protected var requesterID : entEntityID;
+	protected var executor : whandle:gameObject;
+	protected var proxyExecutor : whandle:gameObject;
+	protected var costComponents : array:whandle:gamedataObjectActionCost_Record;
+	protected var objectActionID : TweakDBID;
+	protected var objectActionRecord : whandle:gamedataObjectAction_Record;
+	protected var inkWidgetID : TweakDBID;
+	protected var interactionChoice : gameinteractionsChoice;
+	protected var interactionLayer : CName;
+	protected var isActionRPGCheckDissabled : Bool;
+	protected var canSkipPayCost : Bool;
+	protected var calculatedBaseCost : Int32;
+	public    var deviceActionQueue : handle:DeviceActionQueue;
+	public    var isActionQueueingUsed : Bool;
+	public    var isQueuedAction : Bool;
+	public    var isInactive : Bool;
+	public    var isTargetDead : Bool;
+	public    var activationTimeReduction : Float;
+	public    var IsAppliedByMonowire : Bool;
+
+	static function GetBaseCostStatic(executor : whandle:gameObject, actionRecord : whandle:gamedataObjectAction_Record) : Int32; // BaseScriptableAction::GetBaseCostStatic;GameObjectObjectAction_Record
+	static function GetCostMods(costComponents : script_ref:array:whandle:gamedataObjectActionCost_Record, out costMods : array:whandle:gamedataStatModifier_Record); // BaseScriptableAction::GetCostMods;script_ref<array<ObjectActionCost_Record>>array<StatModifier_Record>
+
+	function CanInterrupt(target : whandle:gameObject, optional actionRecord : whandle:gamedataObjectAction_Record) : Bool; // CanInterrupt;GameObjectObjectAction_Record
+	function CanPayCost(optional user : handle:gameObject, optional checkForOverclockedState : Bool) : Bool; // CanPayCost;GameObjectBool
+	function CanSkipPayCost(isJustConsulting : Bool) : Bool; // CanSkipPayCost;Bool
+	function CompleteAction(gameInstance : ScriptGameInstance); // CompleteAction;GameInstance
+	function GetActionID() : CName; // GetActionID;
+	function GetActivationTime() : Float; // GetActivationTime;
+	function GetBaseCost() : Int32; // GetBaseCost;
+	function GetCooldownDuration() : Float; // GetCooldownDuration;
+	function GetCost() : Int32; // GetCost;
+	function GetDetonateGranadeCostReduction(legendaryPlusPlus : Bool) : Float; // GetDetonateGranadeCostReduction;Bool
+	function GetDeviceActionMaxQueueSize() : Int32; // GetDeviceActionMaxQueueSize;
+	function GetDeviceActionQueue() : whandle:DeviceActionQueue; // GetDeviceActionQueue;
+	function GetDeviceActionQueueNames() : array:CName; // GetDeviceActionQueueNames;
+	function GetDeviceActionQueueSize() : Int32; // GetDeviceActionQueueSize;
+	function GetDurationTime() : Float; // GetDurationTime;
+	function GetExecutor() : whandle:gameObject; // GetExecutor;
+	function GetExecutorLevel() : Float; // GetExecutorLevel;
+	function GetGameplayCategoryID() : TweakDBID; // GetGameplayCategoryID;
+	function GetGameplayCategoryRecord() : whandle:gamedataObjectActionGameplayCategory_Record; // GetGameplayCategoryRecord;
+	function GetIsActionRPGCheckDissabled() : Bool; // GetIsActionRPGCheckDissabled;
+	function GetMadnessLvl3ProgramCostReduction(targetID : entEntityID) : Float; // GetMadnessLvl3ProgramCostReduction;EntityID
+	function GetModifiedDurationTime(baseValue : Float) : Float; // GetModifiedDurationTime;Float
+	function GetObjectActionID() : TweakDBID; // GetObjectActionID;
+	function GetObjectActionRecord() : whandle:gamedataObjectAction_Record; // GetObjectActionRecord;
+	function GetOwnerPS(game : ScriptGameInstance) : handle:gamePersistentState; // GetOwnerPS;GameInstance
+	function GetPowerLevelDiff() : Float; // GetPowerLevelDiff;
+	function GetProxyExecutor() : whandle:gameObject; // GetProxyExecutor;
+	function GetRequesterID() : entEntityID; // GetRequesterID;
+	function GetTweakDBChoiceID() : TweakDBID; // GetTweakDBChoiceID;
+	function GetTweakDBChoiceRecord() : String; // GetTweakDBChoiceRecord;
+	function IsEyesInTheSkyPerk() : Bool; // IsEyesInTheSkyPerk;
+	function IsFirstUniqueCategoryInQueue(targetID : entEntityID, category : gamedataHackCategory) : Bool; // IsFirstUniqueCategoryInQueue;EntityIDgamedataHackCategory
+	function IsInactive() : Bool; // IsInactive;
+	function IsInteractionChoiceValid() : Bool; // IsInteractionChoiceValid;
+	function IsPossible(target : whandle:gameObject, optional actionRecord : whandle:gamedataObjectAction_Record, optional objectActionsCallbackController : whandle:gameObjectActionsCallbackController) : Bool; // IsPossible;GameObjectObjectAction_RecordgameObjectActionsCallbackController
+	function IsVisible(context : script_ref:gameGetActionsContext, optional objectActionsCallbackController : whandle:gameObjectActionsCallbackController) : Bool; // IsVisible;script_ref<GetActionsContext>gameObjectActionsCallbackController
+	function IsVisible(player : whandle:gameObject, optional objectActionsCallbackController : whandle:gameObjectActionsCallbackController) : Bool; // IsVisible;GameObjectgameObjectActionsCallbackController
+	function PayCost(optional checkForOverclockedState : Bool) : Bool; // PayCost;Bool
+	function ProcessEffectors(actionEffects : script_ref:array:whandle:gamedataObjectActionEffect_Record, gameInstance : ScriptGameInstance); // ProcessEffectors;script_ref<array<ObjectActionEffect_Record>>GameInstance
+	function ProcessRPGAction(gameInstance : ScriptGameInstance, optional gameplayRoleComponent : handle:GameplayRoleComponent); // ProcessRPGAction;GameInstanceGameplayRoleComponent
+	function ProcessStatusEffects(actionEffects : script_ref:array:whandle:gamedataObjectActionEffect_Record, gameInstance : ScriptGameInstance); // ProcessStatusEffects;script_ref<array<ObjectActionEffect_Record>>GameInstance
+	function ProduceInteractionPart(); // ProduceInteractionPart;
+	function PutActionInQuickhackQueue(gameInstance : ScriptGameInstance, gameplayRoleComponent : handle:GameplayRoleComponent) : Bool; // PutActionInQuickhackQueue;GameInstanceGameplayRoleComponent
+	function RegisterAsRequester(id : entEntityID); // RegisterAsRequester;EntityID
+	function ResetStatusEffectIfActionIsQueued(entityID : entEntityID, statusEffectRecord : handle:gamedataStatusEffect_Record, gameInstance : ScriptGameInstance); // ResetStatusEffectIfActionIsQueued;EntityIDStatusEffect_RecordGameInstance
+	function SetActive(); // SetActive;
+	function SetExecutor(executor : whandle:gameObject); // SetExecutor;GameObject
+	function SetInactive(); // SetInactive;
+	function SetIsActionRPGCheckDissabled(value : Bool); // SetIsActionRPGCheckDissabled;Bool
+	function SetObjectActionID(id : TweakDBID); // SetObjectActionID;TweakDBID
+	function SetProxyExecutor(proxy : whandle:gameObject); // SetProxyExecutor;GameObject
+	function StartAction(gameInstance : ScriptGameInstance); // StartAction;GameInstance
+	function StartUpload(gameInstance : ScriptGameInstance); // StartUpload;GameInstance
+}
+
+import class gamedeviceAction extends redEvent
+{
+	var actionName : CName;
+	var clearanceLevel : Int32;
+	var localizedObjectName : String;
+	var paymentQuantity : Int32;
+
+	import function GetCurrentDisplayString() : String; // GetCurrentDisplayString
+	import function GetDeviceClassName() : CName; // GetDeviceClassName
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+	import function GetProperties() : array:handle:gamedeviceActionProperty; // GetProperties
+	import function SetUp(ps : handle:gamePersistentState); // SetUp
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

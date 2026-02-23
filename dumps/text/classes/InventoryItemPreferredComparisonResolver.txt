@@ -1,0 +1,42 @@
+class InventoryItemPreferredComparisonResolver extends IScriptable
+{
+	private   var cacheadAreaItems : array:handle:InventoryItemPreferredAreaItems;
+	private   var cachedComparableTypes : array:handle:InventoryItemComparableTypesCache;
+	private   var typeComparableItemsCache : array:handle:InventoryTypeComparableItemsCache;
+	private   var inventoryScriptableSystem : handle:UIInventoryScriptableSystem;
+	private   var forcedCompareItem : whandle:UIInventoryItem;
+	private   var useForceCompare : Bool;
+
+	static function Make(inventoryScriptableSystem : handle:UIInventoryScriptableSystem) : handle:InventoryItemPreferredComparisonResolver; // InventoryItemPreferredComparisonResolver::Make;UIInventoryScriptableSystem
+
+	function CacheComparableType(item : whandle:UIInventoryItem) : handle:InventoryItemComparableTypesCache; // CacheComparableType;UIInventoryItem
+	function CompareItemsByQuality(lhs : whandle:UIInventoryItem, rhs : whandle:UIInventoryItem) : gameItemComparisonState; // CompareItemsByQuality;UIInventoryItemUIInventoryItem
+	function CompareItemsByStats(lhs : whandle:UIInventoryItem, rhs : whandle:UIInventoryItem) : gameItemComparisonState; // CompareItemsByStats;UIInventoryItemUIInventoryItem
+	function DisableForceComparedItem(); // DisableForceComparedItem;
+	function FlushCache(); // FlushCache;
+	function ForceComparedItem(item : whandle:UIInventoryItem); // ForceComparedItem;UIInventoryItem
+	function GetAreaItems(equipmentArea : gamedataEquipmentArea, optional comparedItemID : gameItemID) : handle:InventoryItemPreferredAreaItems; // GetAreaItems;gamedataEquipmentAreaItemID
+	function GetComparableItems(item : whandle:UIInventoryItem) : array:whandle:UIInventoryItem; // GetComparableItems;UIInventoryItem
+	function GetComparableTypes(item : whandle:UIInventoryItem) : handle:InventoryItemComparableTypesCache; // GetComparableTypes;UIInventoryItem
+	function GetItemComparisonState(item : whandle:UIInventoryItem) : gameItemComparisonState; // GetItemComparisonState;UIInventoryItem
+	function GetPreferredComparisonItem(item : whandle:UIInventoryItem) : whandle:UIInventoryItem; // GetPreferredComparisonItem;UIInventoryItem
+	function GetPrefferedEquipedItemToCompare(item : whandle:UIInventoryItem, itemsToCompare : script_ref:array:whandle:UIInventoryItem) : Int32; // GetPrefferedEquipedItemToCompare;UIInventoryItemscript_ref<array<UIInventoryItem>>
+	function GetTypeComparableItems(item : whandle:UIInventoryItem) : handle:InventoryTypeComparableItemsCache; // GetTypeComparableItems;UIInventoryItem
+	function IsBetterComparableNewItem(uiScriptableSystem : whandle:UIScriptableSystem, item : whandle:UIInventoryItem) : Bool; // IsBetterComparableNewItem;UIScriptableSystemUIInventoryItem
+	function IsComparable(item : whandle:UIInventoryItem) : Bool; // IsComparable;UIInventoryItem
+	function IsTypeComparable(baseItem : whandle:UIInventoryItem, comparedType : gamedataItemType) : Bool; // IsTypeComparable;UIInventoryItemgamedataItemType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

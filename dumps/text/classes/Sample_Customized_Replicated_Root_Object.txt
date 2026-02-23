@@ -1,0 +1,9 @@
+import struct Sample_Customized_Replicated_Root_Object extends Sample_Replicated_Root_Object
+{
+	var bool2 : Bool;
+}
+
+import struct Sample_Replicated_Root_Object
+{
+	var bool : Bool;
+}

@@ -1,0 +1,6 @@
+enum EGOGMenuState
+{
+	None = 0,
+	LoadGame = 1,
+	MainMenu = 2
+}

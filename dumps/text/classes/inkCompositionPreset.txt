@@ -1,0 +1,7 @@
+import struct inkCompositionPreset
+{
+	var stateName : CName;
+	var useBackgroundTexture : Bool;
+	var shaderParams : fxCompositionShaderParams;
+	var transitions : array:inkCompositionTransition;
+}

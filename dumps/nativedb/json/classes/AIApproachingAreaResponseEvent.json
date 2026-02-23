@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"AIApproachingAreaResponseEvent","d":8,"e":[{"a":{"a":27,"c":{"b":"entEntity"}},"b":"sender","c":128},{"a":{"a":27,"c":{"b":"gameStaticAreaShapeComponent"}},"b":"areaComponent","c":128},{"a":{"a":1},"b":"isPassingThrough","c":128}]}

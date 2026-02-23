@@ -1,0 +1,6 @@
+struct ForkliftSetup
+{
+	public    var actionActivateName : CName;
+	public    var liftingAnimationTime : Float;
+	public    var hasDistractionQuickhack : Bool;
+}

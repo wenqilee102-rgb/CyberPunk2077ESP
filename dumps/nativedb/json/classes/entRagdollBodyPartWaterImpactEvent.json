@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"entRagdollBodyPartWaterImpactEvent","c":"RagdollBodyPartWaterImpactEvent","d":8,"e":[{"a":{"b":"Vector4"},"b":"worldPosition","c":128},{"a":{"b":"Vector4"},"b":"linearVelocity","c":128},{"a":{"a":10},"b":"depthBelowSurface","c":128},{"a":{"a":1},"b":"isTorso","c":128}]}

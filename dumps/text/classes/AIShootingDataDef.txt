@@ -1,0 +1,45 @@
+class AIShootingDataDef extends AIBlackboardDef
+{
+	public    var shootingPatternPackage : gamebbScriptID_Variant;
+	public    var shootingPattern : gamebbScriptID_Variant;
+	public    var patternList : gamebbScriptID_Variant;
+	public    var rightArmLookAtLimitReached : gamebbScriptID_Int32;
+	public    var totalShotsFired : gamebbScriptID_Int32;
+	public    var shotsInBurstFired : gamebbScriptID_Int32;
+	public    var desiredNumberOfShots : gamebbScriptID_Int32;
+	public    var nextShotTimeStamp : gamebbScriptID_Float;
+	public    var shotTimeStamp : gamebbScriptID_Float;
+	public    var maxChargedTimeStamp : gamebbScriptID_Float;
+	public    var chargeStartTimeStamp : gamebbScriptID_Float;
+	public    var pauseConditionCheckTimeStamp : gamebbScriptID_Float;
+	public    var lastChargeLevel : gamebbScriptID_Float;
+	public    var fullyCharged : gamebbScriptID_Bool;
+	public    var weaponOverheated : gamebbScriptID_Bool;
+	public    var requestedTriggerMode : gamebbScriptID_Int32;
+	public    var shootingFromCar : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+	function Initialize(blackboard : handle:gameIBlackboard); // Initialize;IBlackboard
+}
+
+class abstract AIBlackboardDef extends gamebbScriptDefinition
+{
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

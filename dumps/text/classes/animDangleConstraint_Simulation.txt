@@ -1,0 +1,15 @@
+import class abstract animDangleConstraint_Simulation extends ISerializable
+{
+	var collisionRoundedShapes : array:animCollisionRoundedShape;
+	var jsonCollisionShapes : rRef:JsonResource;
+	var jsonCollisionShapesLoadedSuccessfully : Bool;
+	var alpha : Float;
+	var rotateParentToLookAtDangle : Bool;
+	var parentRotationAltersTransformsOfDangleAndItsChildren : Bool;
+	var parentRotationAltersTransformsOfNonDanglesAndItsChildren : Bool;
+	var dangleAltersTransformsOfItsChildren : Bool;
+}
+
+import class abstract ISerializable
+{
+}

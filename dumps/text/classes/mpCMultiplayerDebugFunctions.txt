@@ -1,0 +1,5 @@
+import struct mpCMultiplayerDebugFunctions
+{
+	import static function MPDebugPlaySound(sound : CName, position : Vector4); // MPDebugPlaySound
+	import static function MPDebugRemoteClientShutdown(hardExit : Bool); // MPDebugRemoteClientShutdown
+}

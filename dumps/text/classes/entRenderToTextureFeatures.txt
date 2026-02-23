@@ -1,0 +1,11 @@
+import struct entRenderToTextureFeatures
+{
+	var renderDecals : Bool;
+	var renderParticles : Bool;
+	var renderForwardNoTXAA : Bool;
+	var antiAliasing : entRenderToTextureFeaturesPlatform;
+	var contactShadows : Bool;
+	var localShadows : Bool;
+	var SSAO : entRenderToTextureFeaturesPlatform;
+	var reflections : entRenderToTextureFeaturesPlatform;
+}

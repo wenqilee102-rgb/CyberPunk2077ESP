@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"UI_FastForwardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"FastForwardAvailable","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"FastForwardActive","c":128}]}

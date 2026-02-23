@@ -1,0 +1,21 @@
+class StatsSystemHelper extends IScriptable
+{
+	static function GetDetailedStatInfo(obj : handle:gameObject, statType : gamedataStatType, statData : script_ref:gameStatDetailedData) : Bool; // StatsSystemHelper::GetDetailedStatInfo;GameObjectgamedataStatTypescript_ref<gameStatDetailedData>
+	static function GetStatPrereqModifiersValue(game : ScriptGameInstance, ownerID : gameStatsObjectID, statPrereqID : TweakDBID) : Float; // StatsSystemHelper::GetStatPrereqModifiersValue;GameInstanceStatsObjectIDTweakDBID
+	static function GetStatValue(obj : handle:gameObject, statType : gamedataStatType) : Float; // StatsSystemHelper::GetStatValue;GameObjectgamedataStatType
+	static function GetStatValue(obj : handle:gameObject, objID : gameStatsObjectID, statType : gamedataStatType) : Float; // StatsSystemHelper::GetStatValue;GameObjectStatsObjectIDgamedataStatType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

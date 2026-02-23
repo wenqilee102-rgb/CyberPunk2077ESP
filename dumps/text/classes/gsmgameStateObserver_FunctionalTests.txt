@@ -1,0 +1,7 @@
+import struct gsmgameStateObserver_FunctionalTests extends gsmIStateObserver
+{
+}
+
+import struct abstract gsmIStateObserver
+{
+}

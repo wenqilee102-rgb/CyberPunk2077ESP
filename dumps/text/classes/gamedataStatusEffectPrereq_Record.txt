@@ -1,0 +1,36 @@
+import class gamedataStatusEffectPrereq_Record extends gamedataIPrereq_Record
+{
+	import function CheckType() : whandle:gamedataCheckType_Record; // CheckType
+	import function CheckTypeHandle() : handle:gamedataCheckType_Record; // CheckTypeHandle
+	import function EvaluateOnRegister() : Bool; // EvaluateOnRegister
+	import function Invert() : Bool; // Invert
+	import function ObjectToCheck() : CName; // ObjectToCheck
+	import function StatusEffect() : whandle:gamedataStatusEffect_Record; // StatusEffect
+	import function StatusEffectHandle() : handle:gamedataStatusEffect_Record; // StatusEffectHandle
+	import function TagToCheck() : CName; // TagToCheck
+}
+
+import class gamedataIPrereq_Record extends gamedataTweakDBRecord
+{
+	import function PrereqClassName() : CName; // PrereqClassName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

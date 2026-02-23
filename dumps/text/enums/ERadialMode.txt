@@ -1,0 +1,5 @@
+enum ERadialMode
+{
+	ApplyOnlyActiveSlot = 0,
+	ApplyActiveSlotAndConsumables = 1
+}

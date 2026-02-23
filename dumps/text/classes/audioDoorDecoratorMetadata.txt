@@ -1,0 +1,28 @@
+import class audioDoorDecoratorMetadata extends audioEmitterMetadata
+{
+	var startOpen : CName;
+	var startClose : CName;
+	var endOpen : CName;
+	var endClose : CName;
+	var openLoop : CName;
+	var closeLoop : CName;
+	var openTime : Float;
+	var closeTime : Float;
+}
+
+import class abstract audioEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

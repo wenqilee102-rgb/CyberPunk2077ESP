@@ -1,0 +1,30 @@
+class UIInventoryItemProgramData extends IScriptable
+{
+	public    var MemoryCost : Int32;
+	public    var BaseCost : Int32;
+	public    var UploadTime : Float;
+	public    var Duration : Float;
+	public    var Cooldown : Float;
+	public    var AttackEffects : array:handle:DamageEffectUIEntry;
+
+	static function GetAdditionalOverheatDuration(effectToCast : whandle:gamedataStatusEffect_Record) : Float; // UIInventoryItemProgramData::GetAdditionalOverheatDuration;StatusEffect_Record
+	static function GetCooldown(instance : whandle:UIInventoryItemProgramData, actionRecord : whandle:gamedataObjectAction_Record, player : whandle:PlayerPuppet); // UIInventoryItemProgramData::GetCooldown;UIInventoryItemProgramDataObjectAction_RecordPlayerPuppet
+	static function GetDurationAndAttackEffects(instance : whandle:UIInventoryItemProgramData, actionRecord : whandle:gamedataObjectAction_Record, player : whandle:PlayerPuppet); // UIInventoryItemProgramData::GetDurationAndAttackEffects;UIInventoryItemProgramDataObjectAction_RecordPlayerPuppet
+	static function GetUploadTime(instance : whandle:UIInventoryItemProgramData, actionRecord : whandle:gamedataObjectAction_Record, player : whandle:PlayerPuppet); // UIInventoryItemProgramData::GetUploadTime;UIInventoryItemProgramDataObjectAction_RecordPlayerPuppet
+	static function Make(itemRecord : whandle:gamedataItem_Record, player : whandle:PlayerPuppet) : handle:UIInventoryItemProgramData; // UIInventoryItemProgramData::Make;Item_RecordPlayerPuppet
+	static function StatModifiersExcept(statModifiers : script_ref:array:whandle:gamedataStatModifier_Record, except : script_ref:array:whandle:gamedataStatModifier_Record) : array:whandle:gamedataStatModifier_Record; // UIInventoryItemProgramData::StatModifiersExcept;script_ref<array<StatModifier_Record>>script_ref<array<StatModifier_Record>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

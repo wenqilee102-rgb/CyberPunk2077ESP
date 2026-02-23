@@ -1,0 +1,32 @@
+import class physicsSystemJoint extends physicsISystemObject
+{
+	var localToWorld : Matrix;
+	var pinA : handle:physicsPhysicalJointPin;
+	var pinB : handle:physicsPhysicalJointPin;
+	var linearLimit : physicsPhysicsJointLinearLimit;
+	var twistLimit : physicsPhysicsJointAngularLimitPair;
+	var swingLimit : physicsPhysicsJointLimitConePair;
+	var driveY : physicsPhysicsJointDrive;
+	var driveX : physicsPhysicsJointDrive;
+	var driveZ : physicsPhysicsJointDrive;
+	var driveTwist : physicsPhysicsJointDrive;
+	var driveSwing : physicsPhysicsJointDrive;
+	var driveSLERP : physicsPhysicsJointDrive;
+	var driveVelocity : physicsPhysicsJointDriveVelocity;
+	var drivePosition : Matrix;
+	var projectionEnabled : Bool;
+	var linearTolerance : Float;
+	var angularTolerance : Float;
+	var isBreakable : Bool;
+	var breakingForce : Float;
+	var breakingTorque : Float;
+}
+
+import class abstract physicsISystemObject extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class scnVarComparison_FactConditionType extends scnInterruptFactConditionType
+{
+	var params : scnVarComparison_FactConditionTypeParams;
+}
+
+import class abstract scnInterruptFactConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,4 @@
+import struct gameinteractionsvisDialogChoiceHubs
+{
+	var choiceHubs : array:gameinteractionsvisListChoiceHubData;
+}

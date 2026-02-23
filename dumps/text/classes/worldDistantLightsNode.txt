@@ -1,0 +1,14 @@
+import class worldDistantLightsNode extends worldNode
+{
+	var data : raRef:CDistantLightsResource;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

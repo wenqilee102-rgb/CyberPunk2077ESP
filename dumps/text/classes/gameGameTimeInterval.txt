@@ -1,0 +1,6 @@
+import struct gameGameTimeInterval
+{
+	var begin : GameTime;
+	var end : GameTime;
+	var ignoreDays : Bool;
+}

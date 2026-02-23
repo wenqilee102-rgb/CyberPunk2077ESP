@@ -1,0 +1,33 @@
+class SkillTooltipData extends BasePerksMenuTooltipData
+{
+	public    var proficiencyType : gamedataProficiencyType;
+	public    var attributeRecord : handle:gamedataAttribute_Record;
+	public    var skillData : handle:ProficiencyDisplayData;
+
+	function RefreshRuntimeData(); // RefreshRuntimeData;
+}
+
+class BasePerksMenuTooltipData extends ATooltipData
+{
+	public    var manager : handle:PlayerDevelopmentDataManager;
+
+	function RefreshRuntimeData(); // RefreshRuntimeData;
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

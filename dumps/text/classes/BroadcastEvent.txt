@@ -1,0 +1,31 @@
+class BroadcastEvent extends redEvent
+{
+	public    var broadcastType : EBroadcasteingType;
+	public    var shouldOverride : Bool;
+	public    var lifetime : Float;
+	public    var stimType : gamedataStimType;
+	public    var stimData : senseStimInvestigateData;
+	public    var radius : Float;
+	public    var propagationChange : Bool;
+	public    var directTarget : whandle:entEntity;
+	public    var delay : Float;
+	public    var purelyDirect : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

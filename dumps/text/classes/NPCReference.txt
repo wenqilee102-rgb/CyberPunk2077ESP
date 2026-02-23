@@ -1,0 +1,8 @@
+struct NPCReference
+{
+	public    var communitySpawner : NodeRef;
+	public    var entryName : CName;
+
+	static function GetSpawnerEntityID(self : NPCReference) : entEntityID; // NPCReference::GetSpawnerEntityID;NPCReference
+	static function IsValid(self : NPCReference) : Bool; // NPCReference::IsValid;NPCReference
+}

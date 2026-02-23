@@ -1,0 +1,5 @@
+import struct worldRelativeNodePath
+{
+	var parentsToSkip : Uint32;
+	var elements : array:worldRelativeNodePathElement;
+}

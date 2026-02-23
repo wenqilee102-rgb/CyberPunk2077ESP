@@ -1,0 +1,13 @@
+struct PlayerVisionModeControllerBBListeners
+{
+	public    var kerenzikov : handle:redCallbackObject;
+	public    var restrictedScene : handle:redCallbackObject;
+	public    var dead : handle:redCallbackObject;
+	public    var takedown : handle:redCallbackObject;
+	public    var deviceTakeover : handle:redCallbackObject;
+	public    var braindanceFPP : handle:redCallbackObject;
+	public    var braindanceActive : handle:redCallbackObject;
+	public    var veryHardLanding : handle:redCallbackObject;
+	public    var isBriefingActive : handle:redCallbackObject;
+	public    var twintoneOverrideShown : handle:redCallbackObject;
+}

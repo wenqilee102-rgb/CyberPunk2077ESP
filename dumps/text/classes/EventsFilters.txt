@@ -1,0 +1,5 @@
+struct EventsFilters
+{
+	public    var incomingEventsFilter : EFilterType;
+	public    var outgoingEventsFilter : EFilterType;
+}

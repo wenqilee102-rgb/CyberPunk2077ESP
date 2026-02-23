@@ -1,0 +1,5 @@
+struct SecurityAlarmSetup
+{
+	public    var useSound : Bool;
+	public    var alarmSound : CName;
+}

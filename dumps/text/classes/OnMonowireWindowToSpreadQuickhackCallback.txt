@@ -1,0 +1,28 @@
+class OnMonowireWindowToSpreadQuickhackCallback extends gameDelaySystemScriptedDelayCallbackWrapper
+{
+	public    var MonoWireApplyQuickhackEffector : handle:MonoWireQuickHackApplyEffector;
+	public    var PlayerPuppet : whandle:PlayerPuppet;
+
+	static function Create(effector : handle:MonoWireQuickHackApplyEffector, playerPuppet : handle:PlayerPuppet) : handle:OnMonowireWindowToSpreadQuickhackCallback; // OnMonowireWindowToSpreadQuickhackCallback::Create;MonoWireQuickHackApplyEffectorPlayerPuppet
+
+	function Call(); // Call;
+}
+
+import class gameDelaySystemScriptedDelayCallbackWrapper extends IScriptable
+{
+	function Call(); // Call;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

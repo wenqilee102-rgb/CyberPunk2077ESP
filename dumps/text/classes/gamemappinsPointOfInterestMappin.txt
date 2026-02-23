@@ -1,0 +1,50 @@
+import class gamemappinsPointOfInterestMappin extends gamemappinsIMappin
+{
+	import function GetCharacterRecordID() : TweakDBID; // GetCharacterRecordID
+	import function GetJournalPathHash() : Uint32; // GetJournalPathHash
+	import function GetJournalQuestPathHash() : Uint32; // GetJournalQuestPathHash
+	import function GetSlotName() : CName; // GetSlotName
+	import function IsInsideSecurityAreaTrigger() : Bool; // IsInsideSecurityAreaTrigger
+}
+
+import class abstract gamemappinsIMappin extends gamemappinsIVisualObject
+{
+	import function GetDisplayName() : String; // GetDisplayName
+	import function GetDistanceToPlayer() : Float; // GetDistanceToPlayer
+	import function GetEntityID() : entEntityID; // GetEntityID
+	import function GetNewMappinID() : gameNewMappinID; // GetNewMappinID
+	import function GetPhase() : gamedataMappinPhase; // GetPhase
+	import function GetScriptData() : whandle:gamemappinsMappinScriptData; // GetScriptData
+	import function GetVariant() : gamedataMappinVariant; // GetVariant
+	import function GetVerticalRelationToPlayer() : gamemappinsVerticalPositioning; // GetVerticalRelationToPlayer
+	import function GetWorldPosition() : Vector4; // GetWorldPosition
+	import function IsActive() : Bool; // IsActive
+	import function IsPlayerTracked() : Bool; // IsPlayerTracked
+	import function IsQuestAreaMappin() : Bool; // IsQuestAreaMappin
+	import function IsQuestEntityMappin() : Bool; // IsQuestEntityMappin
+	import function IsQuestImportant() : Bool; // IsQuestImportant
+	import function IsQuestMappin() : Bool; // IsQuestMappin
+	import function IsQuestNPCMappin() : Bool; // IsQuestNPCMappin
+	import function IsQuestPath() : Bool; // IsQuestPath
+	import function IsStatic() : Bool; // IsStatic
+	import function IsVisible() : Bool; // IsVisible
+	import function IsVisited() : Bool; // IsVisited
+}
+
+import class abstract gamemappinsIVisualObject extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

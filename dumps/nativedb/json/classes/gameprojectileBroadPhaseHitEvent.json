@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameprojectileBroadPhaseHitEvent","d":24,"e":[{"a":{"b":"physicsTraceResult"},"b":"traceResult","c":128},{"a":{"b":"Vector4"},"b":"position","c":128},{"a":{"a":27,"c":{"b":"entEntity"}},"b":"hitObject","c":128},{"a":{"a":27,"c":{"b":"entIComponent"}},"b":"hitComponent","c":128}]}

@@ -1,0 +1,5 @@
+import struct gameCommunitySpawnSetNameToIDEntry
+{
+	var communityId : gameCommunityID;
+	var nameReference : CName;
+}

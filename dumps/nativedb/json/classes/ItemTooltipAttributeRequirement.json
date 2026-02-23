@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"ItemTooltipAttributeRequirement","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"labelRef","c":129}],"f":[{"a":"SetData;MinimalItemTooltipDataStatRequirement","b":"SetData","d":48,"e":[{"a":{"a":26,"c":{"b":"MinimalItemTooltipDataStatRequirement"}},"b":"data","c":0}]}]}

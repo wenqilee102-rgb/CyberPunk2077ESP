@@ -1,0 +1,5 @@
+import struct entTemplateInclude
+{
+	var name : CName;
+	var template : raRef:entEntityTemplate;
+}

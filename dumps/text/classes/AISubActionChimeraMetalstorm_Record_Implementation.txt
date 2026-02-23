@@ -1,0 +1,20 @@
+class abstract AISubActionChimeraMetalstorm_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChimeraMetalstorm_Record); // AISubActionChimeraMetalstorm_Record_Implementation::Activate;ScriptExecutionContextAISubActionChimeraMetalstorm_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChimeraMetalstorm_Record, duration : Float, interrupted : Bool); // AISubActionChimeraMetalstorm_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionChimeraMetalstorm_RecordFloatBool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChimeraMetalstorm_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionChimeraMetalstorm_Record_Implementation::Update;ScriptExecutionContextAISubActionChimeraMetalstorm_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

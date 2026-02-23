@@ -1,0 +1,17 @@
+import class CEvaluatorFloatCurve extends IEvaluatorFloat
+{
+	var curves : curveData:Float;
+	var numberOfCurveSamples : Uint32;
+}
+
+import class abstract IEvaluatorFloat extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

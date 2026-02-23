@@ -1,0 +1,29 @@
+import class gamedataAttitudeGroup_Record extends gamedataTweakDBRecord
+{
+	import function AttitudeToSelf() : String; // AttitudeToSelf
+	import function DefaultAttitude() : String; // DefaultAttitude
+	import function IsState() : Bool; // IsState
+	import function Name() : CName; // Name
+	import function Parent() : whandle:gamedataAttitudeGroup_Record; // Parent
+	import function ParentHandle() : handle:gamedataAttitudeGroup_Record; // ParentHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

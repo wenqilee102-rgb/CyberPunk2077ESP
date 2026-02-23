@@ -1,0 +1,10 @@
+import struct scnscreenplayDialogLine
+{
+	var itemId : scnscreenplayItemId;
+	var speaker : scnActorId;
+	var addressee : scnActorId;
+	var usage : scnscreenplayLineUsage;
+	var locstringId : scnlocLocstringId;
+	var maleLipsyncAnimationName : CName;
+	var femaleLipsyncAnimationName : CName;
+}

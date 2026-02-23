@@ -1,0 +1,5 @@
+import struct gameMuppetHighLevelState
+{
+	var isDead : Bool;
+	var deathFrameId : Uint32;
+}

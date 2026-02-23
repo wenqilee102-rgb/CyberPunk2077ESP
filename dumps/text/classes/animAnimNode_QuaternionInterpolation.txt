@@ -1,0 +1,20 @@
+import class animAnimNode_QuaternionInterpolation extends animAnimNode_QuaternionValue
+{
+	var interpolationType : animQuaternionInterpolationType;
+	var firstInput : animQuaternionLink;
+	var secondInput : animQuaternionLink;
+	var weight : animFloatLink;
+}
+
+import class abstract animAnimNode_QuaternionValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameDropInstruction
+{
+	var itemID : gameItemID;
+	var quantity : Int32;
+
+	import static function Create(itemID : gameItemID, optional quantity : Int32) : gameDropInstruction; // Create
+}

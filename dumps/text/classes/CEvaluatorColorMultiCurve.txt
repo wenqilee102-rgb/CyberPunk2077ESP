@@ -1,0 +1,17 @@
+import class CEvaluatorColorMultiCurve extends IEvaluatorColor
+{
+	var curves : multiChannelCurve:Float;
+	var numberOfCurveSamples : Uint32;
+}
+
+import class abstract IEvaluatorColor extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

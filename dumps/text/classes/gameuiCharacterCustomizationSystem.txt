@@ -1,0 +1,52 @@
+import class gameuiCharacterCustomizationSystem extends gameuiICharacterCustomizationSystem
+{
+}
+
+import class abstract gameuiICharacterCustomizationSystem extends gameIGameSystem
+{
+	private   var puppetPreviewGameController : whandle:gameuiCharacterCreationPuppetPreviewGameController;
+
+	import function ApplyChangeToOption(option : handle:gameuiCharacterCustomizationOption, newValue : Uint32); // ApplyChangeToOption
+	import function ApplyEditTag(editTag : gameuiCharacterCustomizationEditTag); // ApplyEditTag
+	import function ApplyUIPreset(presetName : CName); // ApplyUIPreset
+	import function CancelFinalizedStateUpdate() : Bool; // CancelFinalizedStateUpdate
+	import function ClearState() : Bool; // ClearState
+	import function FinalizeState() : Bool; // FinalizeState
+	import function GetArmsOptions(optional presetName : CName) : array:handle:gameuiCharacterCustomizationOption; // GetArmsOptions
+	import function GetBodyOptions(optional presetName : CName) : array:handle:gameuiCharacterCustomizationOption; // GetBodyOptions
+	import function GetHeadOptions(optional presetName : CName) : array:handle:gameuiCharacterCustomizationOption; // GetHeadOptions
+	import function GetRandomizationParameters() : handle:gameuiCharacterRandomizationParametersData; // GetRandomizationParameters
+	import function GetState() : handle:gameuiICharacterCustomizationState; // GetState
+	import function GetUnitedOptions(head : Bool, body : Bool, arms : Bool, optional headPreset : CName, optional bodyPreset : CName, optional armsPreset : CName) : array:handle:gameuiCharacterCustomizationOption; // GetUnitedOptions
+	import function HasCharacterCustomizationComponent(entity : handle:entEntity) : Bool; // HasCharacterCustomizationComponent
+	import function InitializeOptionsFromFinalizedState(); // InitializeOptionsFromFinalizedState
+	import function InitializeState() : Bool; // InitializeState
+	import function IsNudityAllowed() : Bool; // IsNudityAllowed
+	import function IsTransgenderAllowed() : Bool; // IsTransgenderAllowed
+	import function RandomizeOptions(randomizeData : handle:gameuiCharacterRandomizationParametersData); // RandomizeOptions
+	import function ReFinalizeState() : Bool; // ReFinalizeState
+	import function SetRandomizationParameters(data : handle:gameuiCharacterRandomizationParametersData); // SetRandomizationParameters
+	import function TriggerVoiceToneSample(); // TriggerVoiceToneSample
+
+	function GetPuppetPreviewGameController() : whandle:gameuiCharacterCreationPuppetPreviewGameController; // GetPuppetPreviewGameController;
+	function RegisterPuppetPreviewGameController(puppetPreviewGameController : whandle:gameuiCharacterCreationPuppetPreviewGameController); // RegisterPuppetPreviewGameController;inkCharacterCreationPuppetPreviewGameController
+	function UnregisterPuppetPreviewGameController(); // UnregisterPuppetPreviewGameController;
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class AIbehaviorPassiveEventTagConditionDefinition extends AIbehaviorPassiveConditionDefinition
+{
+	var tag : CName;
+	var deactivateEvents : Bool;
+}
+
+import class abstract AIbehaviorPassiveConditionDefinition extends ISerializable
+{
+	var invert : Bool;
+}
+
+import class abstract ISerializable
+{
+}

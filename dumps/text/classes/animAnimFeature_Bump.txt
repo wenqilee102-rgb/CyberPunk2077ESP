@@ -1,0 +1,26 @@
+import class animAnimFeature_Bump extends animAnimFeature
+{
+	var direction : Float;
+	var source : Float;
+	var intensity : Float;
+	var isBumping : Bool;
+	var bumpType : Int32;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

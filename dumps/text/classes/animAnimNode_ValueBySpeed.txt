@@ -1,0 +1,22 @@
+import class animAnimNode_ValueBySpeed extends animAnimNode_FloatValue
+{
+	var defaultValue : Float;
+	var clampType : animClampType;
+	var rangeMin : Float;
+	var rangeMax : Float;
+	var resetOnActivation : Bool;
+	var speed : animFloatLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

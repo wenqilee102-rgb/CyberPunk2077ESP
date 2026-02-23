@@ -1,0 +1,5 @@
+import struct questPrefabVariantReplicatedInfo
+{
+	var variantNameKey : CName;
+	var show : Bool;
+}

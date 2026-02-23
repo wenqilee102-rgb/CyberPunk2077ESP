@@ -1,0 +1,5 @@
+struct KeyBindings
+{
+	public    var DPAD_UP : TweakDBID;
+	public    var RB : TweakDBID;
+}

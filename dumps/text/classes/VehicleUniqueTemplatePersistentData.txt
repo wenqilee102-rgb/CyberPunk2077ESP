@@ -1,0 +1,7 @@
+struct VehicleUniqueTemplatePersistentData
+{
+	public    var modelName : CName;
+	public    var templatesID : array:TweakDBID;
+
+	static function ToTemplate(data : VehicleUniqueTemplatePersistentData, index : Int32) : VehicleVisualCustomizationTemplate; // VehicleUniqueTemplatePersistentData::ToTemplate;VehicleUniqueTemplatePersistentDataInt32
+}

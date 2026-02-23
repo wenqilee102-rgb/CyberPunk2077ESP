@@ -1,0 +1,29 @@
+class OutlineRequest extends IScriptable
+{
+	private   var requester : CName;
+	private   var outlineDuration : Float;
+	private   var outlineData : OutlineData;
+
+	static function CreateRequest(requester : CName, data : OutlineData, optional expectedDuration : Float) : handle:OutlineRequest; // OutlineRequest::CreateRequest;CNameOutlineDataFloat
+
+	function GetData() : OutlineData; // GetData;
+	function GetOutlineDuration() : Float; // GetOutlineDuration;
+	function GetRequestOpacity() : Float; // GetRequestOpacity;
+	function GetRequestType() : EOutlineType; // GetRequestType;
+	function GetRequester() : CName; // GetRequester;
+	function UpdateData(newData : OutlineData); // UpdateData;OutlineData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

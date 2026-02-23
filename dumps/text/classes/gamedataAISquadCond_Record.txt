@@ -1,0 +1,38 @@
+import class gamedataAISquadCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function GetHasTicketsCount() : Int32; // GetHasTicketsCount
+	import function GetHasTicketsItem(index : Int32) : whandle:gamedataAITicketType_Record; // GetHasTicketsItem
+	import function GetHasTicketsItemHandle(index : Int32) : handle:gamedataAITicketType_Record; // GetHasTicketsItemHandle
+	import function GetTicketsConditionCheckCount() : Int32; // GetTicketsConditionCheckCount
+	import function GetTicketsConditionCheckItem(index : Int32) : whandle:gamedataAITicketType_Record; // GetTicketsConditionCheckItem
+	import function GetTicketsConditionCheckItemHandle(index : Int32) : handle:gamedataAITicketType_Record; // GetTicketsConditionCheckItemHandle
+	import function HasTickets(out outList : array:whandle:gamedataAITicketType_Record); // HasTickets
+	import function HasTicketsContains(item : whandle:gamedataAITicketType_Record) : Bool; // HasTicketsContains
+	import function TicketsConditionCheck(out outList : array:whandle:gamedataAITicketType_Record); // TicketsConditionCheck
+	import function TicketsConditionCheckContains(item : whandle:gamedataAITicketType_Record) : Bool; // TicketsConditionCheckContains
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

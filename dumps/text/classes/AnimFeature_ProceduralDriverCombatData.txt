@@ -1,0 +1,26 @@
+class AnimFeature_ProceduralDriverCombatData extends animAnimFeature
+{
+	public    var isEnabled : Bool;
+	public    var yawDirectionFlipped : Bool;
+	public    var yaw : Float;
+	public    var pitch : Float;
+	public    var roll : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

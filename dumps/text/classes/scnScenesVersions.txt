@@ -1,0 +1,14 @@
+import class scnScenesVersions extends CResource
+{
+	var currentVersion : Uint32;
+	var scenes : array:scnScenesVersionsSceneChanges;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

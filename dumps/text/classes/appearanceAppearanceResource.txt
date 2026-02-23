@@ -1,0 +1,33 @@
+import class appearanceAppearanceResource extends resStreamedResource
+{
+	var alternateAppearanceSettingName : CName;
+	var alternateAppearanceSuffixes : array:CName;
+	var alternateAppearanceMapping : array:appearanceAlternateAppearanceEntry;
+	var censorshipMapping : array:appearanceCensorshipEntry;
+	var Wounds : array:handle:entdismembermentWoundResource;
+	var DismEffects : array:handle:entdismembermentEffectResource;
+	var DismWoundConfig : entdismembermentWoundsConfigSet;
+	var baseType : CName;
+	var baseEntityType : CName;
+	var baseEntity : raRef:entEntityTemplate;
+	var partType : CName;
+	var preset : CName;
+	var appearances : array:handle:appearanceAppearanceDefinition;
+	var commonCookData : raRef:appearanceCookedAppearanceData;
+	var proxyPolyCount : Int32;
+	var forceCompileProxy : Bool;
+	var generatePlayerBlockingCollisionForProxy : Bool;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

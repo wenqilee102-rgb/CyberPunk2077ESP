@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataParticleDamage_Record","c":"ParticleDamage_Record","d":24,"f":[{"a":"Attack","c":{"a":27,"c":{"b":"gamedataAttack_Record"}},"d":4},{"a":"AttackHandle","c":{"a":26,"c":{"b":"gamedataAttack_Record"}},"d":4},{"a":"Cooldown","c":{"a":10},"d":4},{"a":"ParticlePath","c":{"b":"redResourceReferenceScriptToken"},"d":4}]}

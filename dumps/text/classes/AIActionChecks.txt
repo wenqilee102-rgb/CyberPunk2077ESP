@@ -1,0 +1,37 @@
+class AIActionChecks extends IScriptable
+{
+	static function CheckAllNPCStateTypes(puppet : handle:ScriptedPuppet, npcStates : script_ref:AIActionNPCStates) : Bool; // AIActionChecks::CheckAllNPCStateTypes;ScriptedPuppetscript_ref<AIActionNPCStates>
+	static function CheckAllPlayerStateTypes(playerPuppet : handle:ScriptedPuppet, playerStates : script_ref:AIActionPlayerStates) : Bool; // AIActionChecks::CheckAllPlayerStateTypes;ScriptedPuppetscript_ref<AIActionPlayerStates>
+	static function CheckBehaviorState(puppet : handle:ScriptedPuppet, behaviorStates : script_ref:array:gamedataNPCBehaviorState) : Bool; // AIActionChecks::CheckBehaviorState;ScriptedPuppetscript_ref<array<gamedataNPCBehaviorState>>
+	static function CheckDefenseMode(puppet : handle:ScriptedPuppet, defenseMode : script_ref:array:gamedataDefenseMode) : Bool; // AIActionChecks::CheckDefenseMode;ScriptedPuppetscript_ref<array<gamedataDefenseMode>>
+	static function CheckHighLevelState(puppet : handle:ScriptedPuppet, highLevelStates : script_ref:array:gamedataNPCHighLevelState) : Bool; // AIActionChecks::CheckHighLevelState;ScriptedPuppetscript_ref<array<gamedataNPCHighLevelState>>
+	static function CheckLocomotionMode(puppet : handle:ScriptedPuppet, locomotionMode : script_ref:array:gamedataLocomotionMode) : Bool; // AIActionChecks::CheckLocomotionMode;ScriptedPuppetscript_ref<array<gamedataLocomotionMode>>
+	static function CheckMountedVehicleDesiredTags(puppet : handle:ScriptedPuppet, desiredTags : script_ref:array:CName) : Bool; // AIActionChecks::CheckMountedVehicleDesiredTags;ScriptedPuppetscript_ref<array<CName>>
+	static function CheckNPCState(puppet : handle:ScriptedPuppet, npcStates : script_ref:AIActionNPCStates) : Bool; // AIActionChecks::CheckNPCState;ScriptedPuppetscript_ref<AIActionNPCStates>
+	static function CheckOwnerState(puppet : handle:ScriptedPuppet, npcStates : script_ref:AIActionNPCStates, checkAll : Bool) : Bool; // AIActionChecks::CheckOwnerState;ScriptedPuppetscript_ref<AIActionNPCStates>Bool
+	static function CheckPSMBodyCarryState(playerPuppet : handle:ScriptedPuppet, bodyCarryStates : script_ref:array:gamePSMBodyCarrying) : Bool; // AIActionChecks::CheckPSMBodyCarryState;ScriptedPuppetscript_ref<array<gamePSMBodyCarrying>>
+	static function CheckPSMCombatState(playerPuppet : handle:ScriptedPuppet, combatStates : script_ref:array:gamePSMCombat) : Bool; // AIActionChecks::CheckPSMCombatState;ScriptedPuppetscript_ref<array<gamePSMCombat>>
+	static function CheckPSMLocomotionState(playerPuppet : handle:ScriptedPuppet, locomotionStates : script_ref:array:gamePSMLocomotionStates) : Bool; // AIActionChecks::CheckPSMLocomotionState;ScriptedPuppetscript_ref<array<gamePSMLocomotionStates>>
+	static function CheckPSMMeleeState(playerPuppet : handle:ScriptedPuppet, meleeStates : script_ref:array:gamePSMMelee) : Bool; // AIActionChecks::CheckPSMMeleeState;ScriptedPuppetscript_ref<array<gamePSMMelee>>
+	static function CheckPSMUpperBodyState(playerPuppet : handle:ScriptedPuppet, upperBodyStates : script_ref:array:gamePSMUpperBodyStates) : Bool; // AIActionChecks::CheckPSMUpperBodyState;ScriptedPuppetscript_ref<array<gamePSMUpperBodyStates>>
+	static function CheckPSMZoneState(playerPuppet : handle:ScriptedPuppet, zoneStates : script_ref:array:gamePSMZones) : Bool; // AIActionChecks::CheckPSMZoneState;ScriptedPuppetscript_ref<array<gamePSMZones>>
+	static function CheckPlayerState(playerPuppet : handle:ScriptedPuppet, playerStates : script_ref:AIActionPlayerStates) : Bool; // AIActionChecks::CheckPlayerState;ScriptedPuppetscript_ref<AIActionPlayerStates>
+	static function CheckStanceState(puppet : handle:ScriptedPuppet, stanceStates : script_ref:array:gamedataNPCStanceState) : Bool; // AIActionChecks::CheckStanceState;ScriptedPuppetscript_ref<array<gamedataNPCStanceState>>
+	static function CheckTargetState(target : handle:ScriptedPuppet, targetStates : script_ref:AIActionTargetStates, checkAll : Bool) : Bool; // AIActionChecks::CheckTargetState;ScriptedPuppetscript_ref<AIActionTargetStates>Bool
+	static function CheckUpperBodyState(puppet : handle:ScriptedPuppet, upperBodyStates : script_ref:array:gamedataNPCUpperBodyState) : Bool; // AIActionChecks::CheckUpperBodyState;ScriptedPuppetscript_ref<array<gamedataNPCUpperBodyState>>
+	static function GetPSMBlackbordInt(playerPuppet : handle:ScriptedPuppet, id : gamebbScriptID_Int32) : Int32; // AIActionChecks::GetPSMBlackbordInt;ScriptedPuppetBlackboardID_Int
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

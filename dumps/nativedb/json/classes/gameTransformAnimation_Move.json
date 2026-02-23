@@ -1,0 +1,1 @@
+{"a":"gameTransformAnimationTrackItemImpl","b":"gameTransformAnimation_Move","d":8,"e":[{"a":{"a":26,"c":{"b":"gameTransformAnimation_Position"}},"b":"startPositionEvaluator","c":128},{"a":{"a":26,"c":{"b":"gameTransformAnimation_Position"}},"b":"targetPositionEvaluator","c":128},{"a":{"a":26,"c":{"b":"gameTransformAnimation_Movement"}},"b":"movement","c":128}]}

@@ -1,0 +1,19 @@
+import class LibTreeDefTreeVariableBool extends LibTreeDefTreeVariableBoolBase
+{
+	var exportAsProperty : Bool;
+	var defaultValue : Bool;
+}
+
+import class abstract LibTreeDefTreeVariableBoolBase extends LibTreeDefTreeVariable
+{
+}
+
+import class abstract LibTreeDefTreeVariable extends ISerializable
+{
+	var id : Uint16;
+	var readableName : CName;
+}
+
+import class abstract ISerializable
+{
+}

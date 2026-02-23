@@ -1,0 +1,11 @@
+struct AttemptedToStopFactsSet extends BunkerSystemsFactsSet
+{
+}
+
+struct BunkerSystemsFactsSet
+{
+	public    var ALPHA_FACT : CName;
+	public    var BRAVO_FACT : CName;
+	public    var SIERRA_FACT : CName;
+	public    var VICTOR_FACT : CName;
+}

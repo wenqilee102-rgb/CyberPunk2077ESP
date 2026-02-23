@@ -1,0 +1,4 @@
+import struct scnlocSignature
+{
+	var val : Uint64;
+}

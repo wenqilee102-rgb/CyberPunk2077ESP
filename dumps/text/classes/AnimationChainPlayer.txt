@@ -1,0 +1,32 @@
+class AnimationChainPlayer extends IScriptable
+{
+	public    var animationProxy : handle:inkanimProxy;
+	public    var current : handle:AnimationChain;
+	public    var current_stage : Int32;
+	public    var next : handle:AnimationChain;
+	public    var owner : whandle:inkWidgetLogicController;
+
+	event OnNextAnimation(optional anim : handle:inkanimProxy) : Bool; // OnNextAnimation
+
+	function BeginAnimation(animationChain : handle:AnimationChain); // BeginAnimation;AnimationChain
+	function Clean(); // Clean;
+	function GetEndEvent(animOptions : script_ref:inkanimPlaybackOptions) : inkanimEventType; // GetEndEvent;script_ref<inkAnimOptions>
+	function HandleInteruption(); // HandleInteruption;
+	function Play(animationChain : handle:AnimationChain); // Play;AnimationChain
+	function PlayAnimationStage(stage : Int32); // PlayAnimationStage;Int32
+	function PlayNow(animationChain : handle:AnimationChain); // PlayNow;AnimationChain
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

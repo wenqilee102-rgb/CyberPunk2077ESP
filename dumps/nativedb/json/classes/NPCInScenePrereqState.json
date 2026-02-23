@@ -1,0 +1,1 @@
+{"a":"gamePrereqState","b":"NPCInScenePrereqState","d":0,"e":[{"a":{"a":26,"c":{"b":"gameScriptedPrereqSceneInspectionListenerWrapper"}},"b":"sceneListener","c":128}],"f":[{"a":"OnSceneInspectionStateChanged;Bool","b":"OnSceneInspectionStateChanged","d":50,"e":[{"a":{"a":1},"b":"isEntityInScene","c":0}]}]}

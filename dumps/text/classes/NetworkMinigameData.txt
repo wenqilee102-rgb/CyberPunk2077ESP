@@ -1,0 +1,10 @@
+struct NetworkMinigameData
+{
+	public    var gridData : array:CellData;
+	public    var playerBufferSize : Int32;
+	public    var basicAccess : ProgramData;
+	public    var playerPrograms : array:ProgramData;
+	public    var enemyBufferSize : Int32;
+	public    var enemyLockNetwork : ProgramData;
+	public    var enemyPrograms : array:ProgramData;
+}

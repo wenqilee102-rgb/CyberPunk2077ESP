@@ -1,0 +1,8 @@
+import struct gamebbScriptID_CName extends gamebbScriptID
+{
+}
+
+import struct gamebbScriptID
+{
+	var None : gamebbID;
+}

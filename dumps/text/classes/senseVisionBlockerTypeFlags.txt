@@ -1,0 +1,5 @@
+import struct senseVisionBlockerTypeFlags
+{
+	import static function IsTypeSet(self : script_ref:senseVisionBlockerTypeFlags, blockerType : EVisionBlockerType) : Bool; // IsTypeSet
+	import static function SetType(self : script_ref:senseVisionBlockerTypeFlags, blockerType : EVisionBlockerType, value : Bool); // SetType
+}

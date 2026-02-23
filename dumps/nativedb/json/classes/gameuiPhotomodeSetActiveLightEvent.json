@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameuiPhotomodeSetActiveLightEvent","c":"PhotomodeSetActiveLightEvent","d":8,"e":[{"a":{"a":1},"b":"isLightTabActive","c":128},{"a":{"a":1},"b":"isCurrentLightEnabled","c":128},{"a":{"a":6},"b":"lightIndex","c":128}],"f":[{"a":"GetIndex;","b":"GetIndex","c":{"a":6},"d":176}]}

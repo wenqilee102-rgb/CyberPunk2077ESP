@@ -1,0 +1,8 @@
+import struct questTransferItems_NodeTypeParams
+{
+	var giver : handle:questUniversalRef;
+	var receiver : handle:questUniversalRef;
+	var transferAllOperation : handle:questTransferItems_NodeTypeParams_TransferAllOperationData;
+	var itemOperations : array:questTransferItems_NodeTypeParams_OperationData;
+	var tagOperations : array:questTransferItems_NodeTypeParams_TagOperationData;
+}

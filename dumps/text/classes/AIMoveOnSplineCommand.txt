@@ -1,0 +1,66 @@
+import class AIMoveOnSplineCommand extends AIMoveCommand
+{
+	var spline : NodeRef;
+	var movementType : AIMovementTypeSpec;
+	var rotateEntityTowardsFacingTarget : Bool;
+	var facingTarget : whandle:gameObject;
+	var shootingTarget : whandle:gameObject;
+	var companion : whandle:gameObject;
+	var desiredDistance : Float;
+	var deadZoneRadius : Float;
+	var catchUpWithCompanion : Bool;
+	var teleportToCompanion : Bool;
+	var useMatchForSpeedForPlayer : Bool;
+	var startFromClosestPoint : Bool;
+	var splineRecalculation : Bool;
+	var ignoreNavigation : Bool;
+	var snapToTerrain : Bool;
+	var ignoreLineOfSightCheck : Bool;
+	var useAlertedState : Bool;
+	var useStart : Bool;
+	var useStop : Bool;
+	var useCombatState : Bool;
+	var reverse : Bool;
+	var useOMLReservation : Bool;
+	var disableFootIK : Bool;
+	var allowCrowdOnPath : Bool;
+	var lookAtTarget : whandle:gameObject;
+	var minSearchAngle : Float;
+	var maxSearchAngle : Float;
+	var noWaitToEndDistance : Float;
+	var noWaitToEndCompanionDistance : Float;
+	var maxCompanionDistanceOnSpline : Float;
+}
+
+import class AIMoveCommand extends AICommand
+{
+	var removeAfterCombat : Bool;
+	var ignoreInCombat : Bool;
+	var alwaysUseStealth : Bool;
+}
+
+import class AICommand extends IScriptable
+{
+	var id : Uint32;
+	var state : AICommandState;
+	var questBlockId : Uint64;
+	var category : CName;
+
+	import function Copy() : handle:AICommand; // Copy
+	import function GetCategory() : CName; // GetCategory
+	import function SetCategory(value : CName); // SetCategory
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

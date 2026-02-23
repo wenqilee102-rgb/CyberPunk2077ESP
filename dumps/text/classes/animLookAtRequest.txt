@@ -1,0 +1,14 @@
+import struct animLookAtRequest
+{
+	var transitionSpeed : Float;
+	var hasOutTransition : Bool;
+	var outTransitionSpeed : Float;
+	var followingSpeedFactorOverride : Float;
+	var limits : animLookAtLimits;
+	var suppress : Float;
+	var mode : Int32;
+	var calculatePositionInParentSpace : Bool;
+	var priority : Int32;
+	var additionalParts : static:2,animLookAtPartRequest;
+	var invalid : Bool;
+}

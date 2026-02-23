@@ -1,0 +1,6 @@
+struct SPerkArea
+{
+	public    var type : gamedataPerkArea;
+	public    var unlocked : Bool;
+	public    var boughtPerks : array:SPerk;
+}

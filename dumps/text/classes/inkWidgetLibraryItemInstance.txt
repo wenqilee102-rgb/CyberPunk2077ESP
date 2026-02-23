@@ -1,0 +1,10 @@
+import class inkWidgetLibraryItemInstance extends ISerializable
+{
+	var rootWidget : handle:inkWidget;
+	var gameController : handle:inkIWidgetController;
+	var rootResolution : inkETextureResolution;
+}
+
+import class abstract ISerializable
+{
+}

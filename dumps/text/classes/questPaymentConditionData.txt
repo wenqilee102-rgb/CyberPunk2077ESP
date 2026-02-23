@@ -1,0 +1,6 @@
+import struct questPaymentConditionData
+{
+	var isInverted : Bool;
+	var paymentItemId : gameItemID;
+	var paymentAmount : Uint32;
+}

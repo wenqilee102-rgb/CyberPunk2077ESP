@@ -1,0 +1,13 @@
+import class animPoseInfoLoggerEntry_Transform extends animPoseInfoLoggerEntry
+{
+	var transform : animTransformIndex;
+	var logInModelSpace : Bool;
+}
+
+import class abstract animPoseInfoLoggerEntry extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

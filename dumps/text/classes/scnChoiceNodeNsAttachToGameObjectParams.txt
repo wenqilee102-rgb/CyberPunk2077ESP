@@ -1,0 +1,5 @@
+import struct scnChoiceNodeNsAttachToGameObjectParams
+{
+	var nodeRef : NodeRef;
+	var visualizerStyle : scnChoiceNodeNsVisualizerStyle;
+}

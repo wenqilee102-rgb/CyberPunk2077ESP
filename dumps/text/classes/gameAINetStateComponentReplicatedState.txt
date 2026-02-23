@@ -1,0 +1,17 @@
+import struct gameAINetStateComponentReplicatedState extends netIComponentState
+{
+	var replHighLevelState : gameNetAIState;
+	var replUpperBodyState : gameNetAIState;
+	var replStanceState : gameNetAIState;
+	var replHitReactionModeState : gameNetAIState;
+	var replBehaviorState : gameNetAIState;
+	var replPhaseState : gameNetAIState;
+	var replDefenseMode : gameNetAIState;
+	var replLocomotionMode : gameNetAIState;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

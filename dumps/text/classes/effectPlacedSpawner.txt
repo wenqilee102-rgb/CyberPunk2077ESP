@@ -1,0 +1,12 @@
+import class effectPlacedSpawner extends effectSpawner
+{
+	var placement : handle:effectIPlacementEntries;
+}
+
+import class effectSpawner extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

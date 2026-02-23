@@ -1,0 +1,6 @@
+import struct worldFoliageBrushParams
+{
+	var Proximity : Float;
+	var Scale : Float;
+	var ScaleVariation : Float;
+}

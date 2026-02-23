@@ -1,0 +1,49 @@
+import class gamedataSensePreset_Record extends gamedataTweakDBRecord
+{
+	import function Curves(out outList : array:whandle:gamedataDetectionCurve_Record); // Curves
+	import function CurvesContains(item : whandle:gamedataDetectionCurve_Record) : Bool; // CurvesContains
+	import function DayNightCurve() : CName; // DayNightCurve
+	import function DetectionCoolDownTime() : Float; // DetectionCoolDownTime
+	import function DetectionDifficultyModifierEasy() : Float; // DetectionDifficultyModifierEasy
+	import function DetectionDifficultyModifierHard() : Float; // DetectionDifficultyModifierHard
+	import function DetectionDifficultyModifierNormal() : Float; // DetectionDifficultyModifierNormal
+	import function DetectionDifficultyModifierVeryHard() : Float; // DetectionDifficultyModifierVeryHard
+	import function DetectionDropFactor() : Float; // DetectionDropFactor
+	import function DetectionFactor() : Float; // DetectionFactor
+	import function DetectionPartCoolDownTime() : Float; // DetectionPartCoolDownTime
+	import function GetCurvesCount() : Int32; // GetCurvesCount
+	import function GetCurvesItem(index : Int32) : whandle:gamedataDetectionCurve_Record; // GetCurvesItem
+	import function GetCurvesItemHandle(index : Int32) : handle:gamedataDetectionCurve_Record; // GetCurvesItemHandle
+	import function GetMaterialCurvesCount() : Int32; // GetMaterialCurvesCount
+	import function GetMaterialCurvesItem(index : Int32) : whandle:gamedataDetectionCurve_Record; // GetMaterialCurvesItem
+	import function GetMaterialCurvesItemHandle(index : Int32) : handle:gamedataDetectionCurve_Record; // GetMaterialCurvesItemHandle
+	import function GetShapesCount() : Int32; // GetShapesCount
+	import function GetShapesItem(index : Int32) : whandle:gamedataSenseShape_Record; // GetShapesItem
+	import function GetShapesItemHandle(index : Int32) : handle:gamedataSenseShape_Record; // GetShapesItemHandle
+	import function IgnorePhysicsTest() : Bool; // IgnorePhysicsTest
+	import function MaterialCurves(out outList : array:whandle:gamedataDetectionCurve_Record); // MaterialCurves
+	import function MaterialCurvesContains(item : whandle:gamedataDetectionCurve_Record) : Bool; // MaterialCurvesContains
+	import function Shapes(out outList : array:whandle:gamedataSenseShape_Record); // Shapes
+	import function ShapesContains(item : whandle:gamedataSenseShape_Record) : Bool; // ShapesContains
+	import function UseZCorrection() : Bool; // UseZCorrection
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct gameSItemStack
+{
+	var itemID : gameItemID;
+	var quantity : Int32;
+	var powerLevel : Int32;
+	var vendorItemID : TweakDBID;
+	var isAvailable : Bool;
+	var requirement : gameSItemStackRequirementData;
+	var dynamicTags : array:CName;
+}

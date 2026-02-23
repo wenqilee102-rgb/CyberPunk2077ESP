@@ -1,0 +1,6 @@
+struct SDevelopmentPoints
+{
+	public    var type : gamedataDevelopmentPointType;
+	public    var spent : Int32;
+	public    var unspent : Int32;
+}

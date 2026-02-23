@@ -1,0 +1,64 @@
+import class gamedataMappinUISettings_Record extends gamedataMappinUIRuntimeProfile_Record
+{
+	import function CompletedPOIOpacity() : Float; // CompletedPOIOpacity
+	import function ShowInTier3() : Bool; // ShowInTier3
+}
+
+import class gamedataMappinUIRuntimeProfile_Record extends gamedataTweakDBRecord
+{
+	import function ClampEllipseSize() : Vector2; // ClampEllipseSize
+	import function ClampRectMargin() : Vector2; // ClampRectMargin
+	import function ClampX() : Bool; // ClampX
+	import function ClampY() : Bool; // ClampY
+	import function ClampingParams() : whandle:gamedataMappinClampingSettings_Record; // ClampingParams
+	import function ClampingParamsHandle() : handle:gamedataMappinClampingSettings_Record; // ClampingParamsHandle
+	import function DynamicClamping() : Bool; // DynamicClamping
+	import function GetVisibleInTierCount() : Int32; // GetVisibleInTierCount
+	import function GetVisibleInTierItem(index : Int32) : Bool; // GetVisibleInTierItem
+	import function HoverRadius() : Float; // HoverRadius
+	import function IsLoot() : Bool; // IsLoot
+	import function KeepNameplate() : Bool; // KeepNameplate
+	import function OpacityAngleParams() : whandle:gamedataMappinUIParamGroup_Record; // OpacityAngleParams
+	import function OpacityAngleParamsHandle() : handle:gamedataMappinUIParamGroup_Record; // OpacityAngleParamsHandle
+	import function OpacityCustomParams() : whandle:gamedataMappinUICustomOpacityParams_Record; // OpacityCustomParams
+	import function OpacityCustomParamsHandle() : handle:gamedataMappinUICustomOpacityParams_Record; // OpacityCustomParamsHandle
+	import function OpacityDistanceParams() : whandle:gamedataMappinUIParamGroup_Record; // OpacityDistanceParams
+	import function OpacityDistanceParamsHandle() : handle:gamedataMappinUIParamGroup_Record; // OpacityDistanceParamsHandle
+	import function Priority() : Int32; // Priority
+	import function ScaleByDistance() : Bool; // ScaleByDistance
+	import function ScaleDistanceParams() : whandle:gamedataMappinUIParamGroup_Record; // ScaleDistanceParams
+	import function ScaleDistanceParamsHandle() : handle:gamedataMappinUIParamGroup_Record; // ScaleDistanceParamsHandle
+	import function ScaleDistanceScanningParams() : whandle:gamedataMappinUIParamGroup_Record; // ScaleDistanceScanningParams
+	import function ScaleDistanceScanningParamsHandle() : handle:gamedataMappinUIParamGroup_Record; // ScaleDistanceScanningParamsHandle
+	import function ScreenOffset() : Vector2; // ScreenOffset
+	import function ShowDistance() : Bool; // ShowDistance
+	import function ShowDistanceMinRange() : Float; // ShowDistanceMinRange
+	import function ShowNameMinRange() : Float; // ShowNameMinRange
+	import function ShowTrackedIcon() : Bool; // ShowTrackedIcon
+	import function UseQuestProperties() : Bool; // UseQuestProperties
+	import function VisibleInBraindance() : Bool; // VisibleInBraindance
+	import function VisibleInScanning() : Bool; // VisibleInScanning
+	import function VisibleInTier() : array:Bool; // VisibleInTier
+	import function VisibleInTierContains(item : Bool) : Bool; // VisibleInTierContains
+	import function WorldOffset() : Vector3; // WorldOffset
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

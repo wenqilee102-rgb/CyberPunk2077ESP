@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"RegisterDropPointMappinRequest","d":0,"e":[{"a":{"b":"entEntityID"},"b":"ownerID","c":128},{"a":{"b":"Vector4"},"b":"position","c":128},{"a":{"b":"gameNewMappinID"},"b":"trackingAlternativeMappinID","c":128}]}

@@ -1,0 +1,6 @@
+struct LookAtData
+{
+	public    var idle : Int32;
+	public    var category : Int32;
+	public    var personality : gamedataStatType;
+}

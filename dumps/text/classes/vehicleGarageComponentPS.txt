@@ -1,0 +1,37 @@
+import class vehicleGarageComponentPS extends gameComponentPS
+{
+	var spawnedVehiclesData : array:vehicleGarageComponentVehicleData;
+	var unregisteredVehiclesData : array:vehicleGarageComponentVehicleData;
+	var unlockedVehicles : array:vehicleGarageVehicleID;
+	var unlockedVehicleArray : array:vehicleUnlockedVehicle;
+	var uiFavoritedVehicles : array:vehicleGarageVehicleID;
+	var activeVehicles : static:3,vehicleGarageVehicleID;
+	var mountedVehicleData : vehicleGarageComponentVehicleData;
+	var mountedVehicleStolen : Bool;
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

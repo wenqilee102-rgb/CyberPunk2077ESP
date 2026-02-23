@@ -1,0 +1,26 @@
+class RipperdocTokenManager extends IScriptable
+{
+	public    var player : whandle:PlayerPuppet;
+	public    var tokenBlackboard : whandle:gameIBlackboard;
+	public    var gameInstance : ScriptGameInstance;
+
+	function ApplyToken(cyberwareItemID : gameItemID); // ApplyToken;ItemID
+	function GetTokensAmount() : Int32; // GetTokensAmount;
+	function IfPlayerHasTokens() : Bool; // IfPlayerHasTokens;
+	function Initialize(player : whandle:PlayerPuppet); // Initialize;PlayerPuppet
+	function IsItemUpgraded(cyberwareItem : gameItemID) : Bool; // IsItemUpgraded;ItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

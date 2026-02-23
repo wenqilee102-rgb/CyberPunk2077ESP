@@ -1,0 +1,40 @@
+import class animAnimFeature_VehiclePassenger extends animAnimFeature
+{
+	var overallForceMS : Vector4;
+	var turnSpeed : Float;
+	var bankSpeed : Float;
+	var longitudinalForce : Float;
+	var transversalForce : Float;
+	var collisionForceLR : Float;
+	var collisionForceFB : Float;
+	var speed : Float;
+	var inputLR : Float;
+	var inputFB : Float;
+	var inputGas : Float;
+	var inputBreak : Float;
+	var inputHandBreak : Float;
+	var vehicleRoll : Float;
+	var vehiclePitch : Float;
+	var isCar : Bool;
+	var inAir : Bool;
+	var clutchInUse : Bool;
+	var headCollision : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

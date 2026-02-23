@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"scannerBorderLogicController","d":0,"e":[{"a":{"a":31,"c":{"b":"inkWidgetReference"}},"b":"braindanceSetVisible","c":129},{"a":{"a":31,"c":{"b":"inkWidgetReference"}},"b":"braindanceSetHidden","c":129}],"f":[{"a":"SetBraindanceMode;Bool","b":"SetBraindanceMode","d":48,"e":[{"a":{"a":1},"b":"isBraindance","c":0}]}]}

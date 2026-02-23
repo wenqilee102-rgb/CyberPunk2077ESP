@@ -1,0 +1,6 @@
+import struct audioPerfectChargePerkSounds
+{
+	var perfectChargeChargingSound : CName;
+	var perfectChargeChargedSound : CName;
+	var perfectChargeShootingSound : CName;
+}

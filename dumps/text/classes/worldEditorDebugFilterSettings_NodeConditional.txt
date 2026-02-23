@@ -1,0 +1,14 @@
+import class worldEditorDebugFilterSettings_NodeConditional extends worldEditorDebugFilterSettings
+{
+	var isDiscarded : Bool;
+	var isProxyDependencyModeAutoSet : Bool;
+	var isProxyDependencyModeDiscardedSet : Bool;
+}
+
+import class abstract worldEditorDebugFilterSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

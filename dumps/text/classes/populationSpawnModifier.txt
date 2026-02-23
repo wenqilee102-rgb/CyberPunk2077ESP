@@ -1,0 +1,12 @@
+import class populationSpawnModifier extends populationModifier
+{
+	var spawnParameter : handle:gameObjectSpawnParameter;
+}
+
+import class abstract populationModifier extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

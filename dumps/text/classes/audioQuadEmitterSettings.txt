@@ -1,0 +1,9 @@
+import struct audioQuadEmitterSettings
+{
+	var Enabled : Bool;
+	var Interleaved : Bool;
+	var Radius : Float;
+	var Offset : Vector3;
+	var Angle : Float;
+	var Events : [4]audioAudEventStruct;
+}

@@ -1,0 +1,25 @@
+import class abstract audioWeaponSettings extends audioAudioMetadata
+{
+	var bulletType : audioWeaponBulletType;
+	var shellCasingType : audioWeaponShellCasingType;
+	var weaponHandlingSettings : audioWeaponHandlingSettings;
+	var singleShotInSandevistan : Bool;
+	var chargeStartSound : CName;
+	var chargeReadySound : CName;
+	var chargeOverchargeSound : CName;
+	var chargeDischargeSound : CName;
+	var fireModeSounds : audioWeaponFireModeSounds;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

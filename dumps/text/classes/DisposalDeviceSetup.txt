@@ -1,0 +1,8 @@
+struct DisposalDeviceSetup
+{
+	public    var numberOfUses : Int32;
+	public    var isBodyRequired : Bool;
+	public    var actionName : TweakDBID;
+	public    var takedownActionName : TweakDBID;
+	public    var nonlethalTakedownActionName : TweakDBID;
+}

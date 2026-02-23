@@ -1,0 +1,1 @@
+{"a":"gamestateMachineparameterTypeActionLocomotionParameters","b":"gamestateMachineparameterTypeActionLocomotionBraindanceParameters","c":"LocomotionBraindanceParameters","d":8,"f":[{"a":"SetLowerMovementLimit","d":4,"e":[{"a":{"a":10},"b":"val","c":0}]},{"a":"SetUpperMovementLimit","d":4,"e":[{"a":{"a":10},"b":"val","c":0}]}]}

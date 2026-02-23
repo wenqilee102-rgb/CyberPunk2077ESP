@@ -1,0 +1,5 @@
+import struct questResetContainers_NodeTypeParams
+{
+	var containerNodeRef : NodeRef;
+	var clearReinitData : Bool;
+}

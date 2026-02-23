@@ -1,0 +1,1 @@
+{"a":"questICharacterManagerParameters_NodeSubType","b":"questCharacterManagerParameters_SetGroupsAttitude","d":8,"e":[{"a":{"a":1},"b":"set","c":128},{"a":{"a":14},"b":"group1Name","c":128},{"a":{"a":14},"b":"group2Name","c":128},{"a":{"b":"EAIAttitude"},"b":"attitude","c":128}]}

@@ -1,0 +1,19 @@
+import class animRigIk2Setup extends animIRigIkSetup
+{
+	var firstBone : CName;
+	var secondBone : CName;
+	var endBone : CName;
+	var hingeAxis : animAxis;
+	var firstBoneIdx : Int16;
+	var secondBoneIdx : Int16;
+	var endBoneIdx : Int16;
+}
+
+import class abstract animIRigIkSetup extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

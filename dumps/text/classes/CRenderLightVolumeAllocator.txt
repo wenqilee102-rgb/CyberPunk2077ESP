@@ -1,0 +1,7 @@
+import struct CRenderLightVolumeAllocator extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

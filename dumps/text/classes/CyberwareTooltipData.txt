@@ -1,0 +1,25 @@
+class CyberwareTooltipData extends ATooltipData
+{
+	public    var label : String;
+	public    var slotData : array:handle:CyberwareSlotTooltipData;
+
+	function AddCyberwareSlotItemData(itemData : script_ref:gameInventoryItemData); // AddCyberwareSlotItemData;script_ref<InventoryItemData>
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

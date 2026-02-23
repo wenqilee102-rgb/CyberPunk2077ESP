@@ -1,0 +1,7 @@
+struct TooltipWidgetStyledReference
+{
+	public    var identifier : CName;
+	public    var widgetLibraryReference : inkWidgetLibraryReference;
+	public    var menuTooltipStylePath : redResourceReferenceScriptToken;
+	public    var hudTooltipStylePath : redResourceReferenceScriptToken;
+}

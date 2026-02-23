@@ -1,0 +1,9 @@
+import class inkWidgetLibraryItemUnpackedView extends ISerializable
+{
+	var name : CName;
+	var instance : handle:inkWidgetLibraryItemInstance;
+}
+
+import class abstract ISerializable
+{
+}

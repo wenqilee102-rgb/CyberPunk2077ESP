@@ -1,0 +1,17 @@
+import class gsmGameDefinition extends CResource
+{
+	var mainQuests : array:handle:gsmMainQuest;
+	var world : raRef:worldWorld;
+	var streamingWorld : raRef:CResource;
+	var worldName : String;
+	var spawnPointTags : redTagList;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

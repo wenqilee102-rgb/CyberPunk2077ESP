@@ -1,0 +1,6 @@
+struct PlayerTotalDamageAgainstHealth
+{
+	public    var player : whandle:gameObject;
+	public    var totalDamage : Float;
+	public    var targetHealth : Float;
+}

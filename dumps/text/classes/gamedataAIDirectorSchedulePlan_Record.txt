@@ -1,0 +1,26 @@
+import class gamedataAIDirectorSchedulePlan_Record extends gamedataTweakDBRecord
+{
+	import function MinTensionToPerform() : Float; // MinTensionToPerform
+	import function SpawningDesc() : whandle:gamedataAIDirectorScheduleSpawningDesc_Record; // SpawningDesc
+	import function SpawningDescHandle() : handle:gamedataAIDirectorScheduleSpawningDesc_Record; // SpawningDescHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

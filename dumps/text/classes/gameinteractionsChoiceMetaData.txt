@@ -1,0 +1,8 @@
+import struct gameinteractionsChoiceMetaData
+{
+	var tweakDBName : String;
+	var tweakDBID : TweakDBID;
+	var type : gameinteractionsChoiceTypeWrapper;
+
+	import static function GetTweakData(metaData : gameinteractionsChoiceMetaData) : whandle:gamedataInteractionBase_Record; // GetTweakData
+}

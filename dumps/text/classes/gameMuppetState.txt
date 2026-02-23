@@ -1,0 +1,16 @@
+import struct gameMuppetState
+{
+	var frameId : Uint32;
+	var highLevelState : gameMuppetHighLevelState;
+	var healthState : gameMuppetHealthState;
+	var physicalMoveState : gameMuppetPhysicalState;
+	var lookState : gameMuppetLookState;
+	var moveState : gameMuppetMoveState;
+	var upperBodyState : gameMuppetUpperBodyState;
+	var scanningState : gameMuppetScanningState;
+	var inventoryState : gameMuppetInventoryState;
+	var abilities : gameMuppetAbilities;
+	var stateMachinesSnapshot : gameMuppetStateMachinesSnapshot;
+	var controllersSnapshot : gameMuppetControllersSnapshot;
+	var snapFrameId : Uint32;
+}

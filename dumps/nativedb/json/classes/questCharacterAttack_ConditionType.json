@@ -1,0 +1,1 @@
+{"a":"questICharacterConditionType","b":"questCharacterAttack_ConditionType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"attackerRef","c":128},{"a":{"b":"gameEntityReference"},"b":"targetRef","c":128},{"a":{"a":1},"b":"isTargetPlayer","c":128}]}

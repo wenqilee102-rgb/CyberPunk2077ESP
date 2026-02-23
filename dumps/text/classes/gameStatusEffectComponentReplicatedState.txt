@@ -1,0 +1,10 @@
+import struct gameStatusEffectComponentReplicatedState extends netIComponentState
+{
+	var replicatedInfo : array:gameStatusEffectReplicatedInfo;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

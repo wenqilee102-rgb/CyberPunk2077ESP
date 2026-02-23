@@ -1,0 +1,4 @@
+struct EquipmentWidgets
+{
+	public    var widgetArray : array:inkWidgetReference;
+}

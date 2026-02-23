@@ -1,0 +1,8 @@
+import struct gameMuppetPhysicalState
+{
+	var position : Vector4;
+	var worldYaw : Float;
+	var velocity : Vector4;
+	var isOnGround : Bool;
+	var groundNormal : Vector4;
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"VehicleLightQuestChangeColorEvent","d":0,"e":[{"a":{"b":"Color"},"b":"color","c":128},{"a":{"b":"vehicleELightType"},"b":"lightType","c":128},{"a":{"a":1},"b":"forceOverrideEmissiveColor","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

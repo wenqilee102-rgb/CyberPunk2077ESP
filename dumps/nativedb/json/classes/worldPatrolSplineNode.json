@@ -1,0 +1,1 @@
+{"a":"worldSplineNode","b":"worldPatrolSplineNode","d":8,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"worldPatrolSplinePointDefinition"}}},"b":"patrolPointDefs","c":128},{"a":{"a":31,"c":{"a":16}},"b":"patrolPoints","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"worldTrafficSpotDefinition"}}},"b":"spots","c":128}]}

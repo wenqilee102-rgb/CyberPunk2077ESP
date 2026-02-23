@@ -1,0 +1,23 @@
+import struct gameEffectData
+{
+	import static function GetBool(ctx : gameEffectData, id : gamebbScriptID_Bool, out value : Bool) : Bool; // GetBool
+	import static function GetEntity(ctx : gameEffectData, id : gamebbScriptID_EntityPtr, out value : whandle:entEntity) : Bool; // GetEntity
+	import static function GetEulerAngles(ctx : gameEffectData, id : gamebbScriptID_EulerAngles, out value : EulerAngles) : Bool; // GetEulerAngles
+	import static function GetFloat(ctx : gameEffectData, id : gamebbScriptID_Float, out value : Float) : Bool; // GetFloat
+	import static function GetInt(ctx : gameEffectData, id : gamebbScriptID_Int32, out value : Int32) : Bool; // GetInt
+	import static function GetName(ctx : gameEffectData, id : gamebbScriptID_CName, out value : CName) : Bool; // GetName
+	import static function GetQuat(ctx : gameEffectData, id : gamebbScriptID_Quaternion, out value : Quaternion) : Bool; // GetQuat
+	import static function GetString(ctx : gameEffectData, id : gamebbScriptID_String, out value : String) : Bool; // GetString
+	import static function GetVariant(ctx : gameEffectData, id : gamebbScriptID_Variant, out value : Variant) : Bool; // GetVariant
+	import static function GetVector(ctx : gameEffectData, id : gamebbScriptID_Vector4, out value : Vector4) : Bool; // GetVector
+	import static function SetBool(ctx : gameEffectData, id : gamebbScriptID_Bool, value : Bool) : Bool; // SetBool
+	import static function SetEntity(ctx : gameEffectData, id : gamebbScriptID_EntityPtr, value : whandle:entEntity) : Bool; // SetEntity
+	import static function SetEulerAngles(ctx : gameEffectData, id : gamebbScriptID_EulerAngles, value : EulerAngles) : Bool; // SetEulerAngles
+	import static function SetFloat(ctx : gameEffectData, id : gamebbScriptID_Float, value : Float) : Bool; // SetFloat
+	import static function SetInt(ctx : gameEffectData, id : gamebbScriptID_Int32, value : Int32) : Bool; // SetInt
+	import static function SetName(ctx : gameEffectData, id : gamebbScriptID_CName, value : CName) : Bool; // SetName
+	import static function SetQuat(ctx : gameEffectData, id : gamebbScriptID_Quaternion, value : Quaternion) : Bool; // SetQuat
+	import static function SetString(ctx : gameEffectData, id : gamebbScriptID_String, value : String) : Bool; // SetString
+	import static function SetVariant(ctx : gameEffectData, id : gamebbScriptID_Variant, value : Variant) : Bool; // SetVariant
+	import static function SetVector(ctx : gameEffectData, id : gamebbScriptID_Vector4, value : Vector4) : Bool; // SetVector
+}

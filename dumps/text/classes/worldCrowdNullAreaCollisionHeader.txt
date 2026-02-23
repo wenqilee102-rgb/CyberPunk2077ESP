@@ -1,0 +1,8 @@
+import struct worldCrowdNullAreaCollisionHeader
+{
+	var direction : Vector3;
+	var radius : Float;
+	var speed : Float;
+	var flags : Uint8;
+	var userData : Uint64;
+}

@@ -1,0 +1,9 @@
+import class AIbehaviorMonitorConditionDefinition extends ISerializable
+{
+	var condition : handle:AIbehaviorConditionDefinition;
+	var timeout : Float;
+}
+
+import class abstract ISerializable
+{
+}

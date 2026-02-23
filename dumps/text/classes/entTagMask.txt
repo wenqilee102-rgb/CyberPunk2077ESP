@@ -1,0 +1,6 @@
+import struct entTagMask
+{
+	var hardTags : redTagList;
+	var softTags : redTagList;
+	var excludedTags : redTagList;
+}

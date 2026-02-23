@@ -1,0 +1,1 @@
+{"a":"questICharacterConditionType","b":"questCharacterCombat_ConditionType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"objectRef","c":128},{"a":{"a":1},"b":"isPlayer","c":128},{"a":{"a":1},"b":"inverted","c":128}]}

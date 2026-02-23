@@ -1,0 +1,19 @@
+import class animAnimNode_TrackSetter extends animAnimNode_OnePoseInput
+{
+	var track : animNamedTrackIndex;
+	var value : animFloatLink;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

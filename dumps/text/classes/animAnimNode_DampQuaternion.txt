@@ -1,0 +1,21 @@
+import class animAnimNode_DampQuaternion extends animAnimNode_QuaternionValue
+{
+	var defaultRotationSpeed : Float;
+	var defaultInitialValue : EulerAngles;
+	var inputNode : animQuaternionLink;
+	var initialValueNode : animQuaternionLink;
+	var rotationSpeedNode : animFloatLink;
+}
+
+import class abstract animAnimNode_QuaternionValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

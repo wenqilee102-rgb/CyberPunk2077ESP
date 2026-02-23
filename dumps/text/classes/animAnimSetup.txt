@@ -1,0 +1,6 @@
+import struct animAnimSetup
+{
+	var cinematics : array:animAnimSetupEntry;
+	var gameplay : array:animAnimSetupEntry;
+	var hash : Uint64;
+}

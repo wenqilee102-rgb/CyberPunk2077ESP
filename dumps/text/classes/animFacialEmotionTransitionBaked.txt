@@ -1,0 +1,14 @@
+import struct animFacialEmotionTransitionBaked
+{
+	var toIdleMale : CName;
+	var facialKey_Male : CName;
+	var toIdleFemale : CName;
+	var facialKey_Female : CName;
+	var transitionType : animFacialEmotionTransitionType;
+	var transitionDuration : Float;
+	var timeScale : Float;
+	var toIdleWeight : Float;
+	var toIdleNeckWeight : Float;
+	var facialKeyWeight : Float;
+	var customTransitionAnim : CName;
+}

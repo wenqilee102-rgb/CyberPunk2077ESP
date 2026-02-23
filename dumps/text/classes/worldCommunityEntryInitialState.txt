@@ -1,0 +1,6 @@
+import struct worldCommunityEntryInitialState
+{
+	var entryName : CName;
+	var initialPhaseName : CName;
+	var entryActiveOnStart : Bool;
+}

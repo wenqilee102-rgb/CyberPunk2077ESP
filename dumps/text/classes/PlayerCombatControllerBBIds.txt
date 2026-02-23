@@ -1,0 +1,4 @@
+struct PlayerCombatControllerBBIds
+{
+	public    var crouchActive : handle:gamebbScriptDefinition;
+}

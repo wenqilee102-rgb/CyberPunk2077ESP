@@ -1,0 +1,39 @@
+class MorningPreset extends SmartHousePreset
+{
+	function GetIconName() : CName; // GetIconName;
+	function GetPresetName() : CName; // GetPresetName;
+	function QueueDoorActions(device : handle:DoorControllerPS); // QueueDoorActions;DoorControllerPS
+	function QueueRadioActions(device : handle:RadioControllerPS); // QueueRadioActions;RadioControllerPS
+	function QueueSwitchActions(device : handle:SimpleSwitchControllerPS); // QueueSwitchActions;SimpleSwitchControllerPS
+	function QueueTVActions(device : handle:TVControllerPS); // QueueTVActions;TVControllerPS
+	function QueueWindowBlinderActions(device : handle:WindowBlindersControllerPS); // QueueWindowBlinderActions;WindowBlindersControllerPS
+}
+
+class abstract SmartHousePreset extends IScriptable
+{
+	protected var timetable : SPresetTimetableEntry;
+
+	function ExecutePresetActions(devices : script_ref:array:handle:gameDeviceComponentPS); // ExecutePresetActions;script_ref<array<DeviceComponentPS>>
+	function GetIconName() : CName; // GetIconName;
+	function GetPresetName() : CName; // GetPresetName;
+	function GetTimeTable() : SPresetTimetableEntry; // GetTimeTable;
+	function QueueDoorActions(device : handle:DoorControllerPS); // QueueDoorActions;DoorControllerPS
+	function QueueRadioActions(device : handle:RadioControllerPS); // QueueRadioActions;RadioControllerPS
+	function QueueSwitchActions(device : handle:SimpleSwitchControllerPS); // QueueSwitchActions;SimpleSwitchControllerPS
+	function QueueTVActions(device : handle:TVControllerPS); // QueueTVActions;TVControllerPS
+	function QueueWindowBlinderActions(device : handle:WindowBlindersControllerPS); // QueueWindowBlinderActions;WindowBlindersControllerPS
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

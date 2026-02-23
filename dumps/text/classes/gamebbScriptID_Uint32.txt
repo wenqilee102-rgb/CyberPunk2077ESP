@@ -1,0 +1,8 @@
+import struct gamebbScriptID_Uint32 extends gamebbScriptID
+{
+}
+
+import struct gamebbScriptID
+{
+	var None : gamebbID;
+}

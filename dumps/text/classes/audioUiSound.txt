@@ -1,0 +1,4 @@
+import struct audioUiSound
+{
+	var events : array:CName;
+}

@@ -1,0 +1,17 @@
+import struct gameScriptsDebugOverlaySink
+{
+	import static function ClearKey(sink : gameScriptsDebugOverlaySink, key : String); // ClearKey
+	import static function PushBool(sink : gameScriptsDebugOverlaySink, key : String, value : Bool); // PushBool
+	import static function PushFloat(sink : gameScriptsDebugOverlaySink, key : String, value : Float); // PushFloat
+	import static function PushInt32(sink : gameScriptsDebugOverlaySink, key : String, value : Int32); // PushInt32
+	import static function PushName(sink : gameScriptsDebugOverlaySink, key : String, value : CName); // PushName
+	import static function PushQuaternion(sink : gameScriptsDebugOverlaySink, key : String, value : Quaternion); // PushQuaternion
+	import static function PushString(sink : gameScriptsDebugOverlaySink, key : String, value : String); // PushString
+	import static function PushUint32(sink : gameScriptsDebugOverlaySink, key : String, value : Uint32); // PushUint32
+	import static function PushVector2(sink : gameScriptsDebugOverlaySink, key : String, value : Vector2); // PushVector2
+	import static function PushVector4(sink : gameScriptsDebugOverlaySink, key : String, value : Vector4); // PushVector4
+	import static function RegisterListener_OnClicked(sink : gameScriptsDebugOverlaySink, system : whandle:gameScriptableSystem, key : String) : CName; // RegisterListener_OnClicked
+	import static function SetKeyColor(sink : gameScriptsDebugOverlaySink, key : String, color : Color); // SetKeyColor
+	import static function SetRoot(sink : gameScriptsDebugOverlaySink, rootPath : String); // SetRoot
+	import static function UnregisterListener_OnClicked(sink : gameScriptsDebugOverlaySink, system : whandle:gameScriptableSystem, fullPath : CName); // UnregisterListener_OnClicked
+}

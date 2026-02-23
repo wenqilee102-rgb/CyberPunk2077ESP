@@ -1,0 +1,13 @@
+import class toolsMessageLocation_Point extends toolsIMessageLocation
+{
+	var resourcePath : MessageResourcePath;
+	var point : Vector3;
+}
+
+import class abstract toolsIMessageLocation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

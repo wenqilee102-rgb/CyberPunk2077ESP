@@ -1,0 +1,5 @@
+enum EDebuggerColor
+{
+	RED = 0,
+	YELLOW = 1
+}

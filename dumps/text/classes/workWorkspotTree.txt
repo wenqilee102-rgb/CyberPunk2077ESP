@@ -1,0 +1,34 @@
+import class workWorkspotTree extends ISerializable
+{
+	var workspotRig : raRef:animRig;
+	var globalProps : array:workWorkspotGlobalProp;
+	var propsPlaySyncAnim : Bool;
+	var rootEntry : handle:workIEntry;
+	var idCounter : Uint32;
+	var dontInjectWorkspotGraph : Bool;
+	var animGraphSlotName : CName;
+	var autoTransitionBlendTime : Float;
+	var initialActions : array:handle:workIWorkspotItemAction;
+	var initialCanUseExits : Bool;
+	var blendOutTime : Float;
+	var finalAnimsets : array:workWorkspotAnimsetEntry;
+	var tags : redTagList;
+	var itemsPolicy : workWorkspotItemPolicy;
+	var censorshipFlags : CensorshipFlags;
+	var customTransitionAnims : array:workTransitionAnim;
+	var inertializationDurationEnter : Float;
+	var inertializationDurationExitNatural : Float;
+	var inertializationDurationExitForced : Float;
+	var useTimeLimitForSequences : Bool;
+	var frezeAtTheLastFrame_UseWithCaution : Bool;
+	var sequencesTimeLimit : Float;
+	var snapToTerrain : Bool;
+	var unmountBodyCarry : Bool;
+	var statusEffectID : TweakDBID;
+	var whitelistVisualTags : redTagList;
+	var blacklistVisualTags : redTagList;
+}
+
+import class abstract ISerializable
+{
+}

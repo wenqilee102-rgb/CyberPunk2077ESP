@@ -1,0 +1,9 @@
+import class animAnimSetEntry extends ISerializable
+{
+	var animation : handle:animAnimation;
+	var events : handle:animEventsContainer;
+}
+
+import class abstract ISerializable
+{
+}

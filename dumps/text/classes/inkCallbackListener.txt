@@ -1,0 +1,5 @@
+import struct inkCallbackListener
+{
+	var object : whandle:IScriptable;
+	var functionName : CName;
+}

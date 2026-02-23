@@ -1,0 +1,18 @@
+import class AIbehaviorNodeRefToInstanceTaskDefinition extends AIbehaviorNodeRefConverterTaskDefinition
+{
+}
+
+import class abstract AIbehaviorNodeRefConverterTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var nodeRef : handle:AIArgumentMapping;
+	var result : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

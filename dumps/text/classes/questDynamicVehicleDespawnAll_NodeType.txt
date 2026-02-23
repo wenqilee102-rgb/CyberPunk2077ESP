@@ -1,0 +1,12 @@
+import class questDynamicVehicleDespawnAll_NodeType extends questIDynamicSpawnSystemType
+{
+	var ImmediateDespawn : Bool;
+}
+
+import class abstract questIDynamicSpawnSystemType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

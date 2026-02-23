@@ -1,0 +1,6 @@
+import struct gameStatusEffectReplicatedInfo
+{
+	var statusEffectRecordID : TweakDBID;
+	var stackCount : Uint32;
+	var source : CName;
+}

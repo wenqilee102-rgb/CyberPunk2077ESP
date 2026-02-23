@@ -1,0 +1,10 @@
+import struct vehicleCinematicCameraShotUpdateContext
+{
+	var cameraComponent : handle:vehicleCinematicCameraComponent;
+	var vehicleType : gamedataVehicleType;
+	var vehicleTransform : WorldTransform;
+	var vehicleBoundingBox : Box;
+	var vehicleSpeed : Float;
+	var engineTime : Float;
+	var deltaTime : Float;
+}

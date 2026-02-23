@@ -1,0 +1,6 @@
+import struct scnDialogLineDuplicationParams
+{
+	var executionTag : Uint8;
+	var additionalSpeakerId : scnActorId;
+	var isHolocallSpeaker : Bool;
+}

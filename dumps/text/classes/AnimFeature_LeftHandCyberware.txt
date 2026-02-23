@@ -1,0 +1,30 @@
+class AnimFeature_LeftHandCyberware extends animAnimFeature
+{
+	public    var actionDuration : Float;
+	public    var state : Int32;
+	public    var isQuickAction : Bool;
+	public    var isChargeAction : Bool;
+	public    var isLoopAction : Bool;
+	public    var isCatchAction : Bool;
+	public    var isSafeAction : Bool;
+	public    var chargeNormalized : Float;
+	public    var hasCWPerk : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

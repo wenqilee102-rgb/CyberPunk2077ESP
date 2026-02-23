@@ -1,0 +1,6 @@
+struct HSBColor
+{
+	public    var Hue : Float;
+	public    var Saturation : Float;
+	public    var Brightness : Float;
+}

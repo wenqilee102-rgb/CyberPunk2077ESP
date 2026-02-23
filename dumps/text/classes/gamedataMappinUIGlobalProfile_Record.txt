@@ -1,0 +1,33 @@
+import class gamedataMappinUIGlobalProfile_Record extends gamedataTweakDBRecord
+{
+	import function CompletedPOIOpacity() : Float; // CompletedPOIOpacity
+	import function GetNameplateVisibleInTierCount() : Int32; // GetNameplateVisibleInTierCount
+	import function GetNameplateVisibleInTierItem(index : Int32) : Bool; // GetNameplateVisibleInTierItem
+	import function GpsPortalIconScale() : Float; // GpsPortalIconScale
+	import function NameplateVisibleInBraindance() : Bool; // NameplateVisibleInBraindance
+	import function NameplateVisibleInTier() : array:Bool; // NameplateVisibleInTier
+	import function NameplateVisibleInTierContains(item : Bool) : Bool; // NameplateVisibleInTierContains
+	import function VerticalRelationTolerance() : Float; // VerticalRelationTolerance
+	import function VerticalRelationVisibleRangeMax() : Float; // VerticalRelationVisibleRangeMax
+	import function VerticalRelationVisibleRangeMin() : Float; // VerticalRelationVisibleRangeMin
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,63 @@
+class QuestDataWrapper extends AJournalEntryWrapper
+{
+	private   var isNew : Bool;
+	private   var quest : whandle:gameJournalQuest;
+	private   var title : String;
+	private   var description : String;
+	private   var questObjectives : array:handle:QuestObjectiveWrapper;
+	private   var links : array:whandle:gameJournalEntry;
+	private   var questStatus : gameJournalEntryState;
+	private   var isTracked : Bool;
+	private   var isChildTracked : Bool;
+	private   var recommendedLevel : Int32;
+	private   var district : handle:gamedataDistrict_Record;
+	private   var journalManager : whandle:gameJournalManager;
+
+	function Equals(questData : handle:QuestDataWrapper) : Bool; // Equals;QuestDataWrapper
+	function Equals(questUniqueId : Int32) : Bool; // Equals;Int32
+	function GetDescription() : String; // GetDescription;
+	function GetDistrict() : gamedataDistrict; // GetDistrict;
+	function GetId() : String; // GetId;
+	function GetLevel() : Int32; // GetLevel;
+	function GetLinks() : array:whandle:gameJournalEntry; // GetLinks;
+	function GetObjectives() : array:handle:QuestObjectiveWrapper; // GetObjectives;
+	function GetQuest() : whandle:gameJournalQuest; // GetQuest;
+	function GetStatus() : gameJournalEntryState; // GetStatus;
+	function GetTitle() : String; // GetTitle;
+	function GetType() : gameJournalQuestType; // GetType;
+	function HasBriefing() : Bool; // HasBriefing;
+	function Init(journalManager : whandle:gameJournalManager, currQuest : whandle:gameJournalQuest, title : script_ref:String, description : script_ref:String, links : script_ref:array:whandle:gameJournalEntry, questObjectives : script_ref:array:handle:QuestObjectiveWrapper, questStatus : gameJournalEntryState, isTracked : Bool, uniqueId : Int32, recommendedLevel : Int32, isNew : Bool, district : handle:gamedataDistrict_Record); // Init;JournalManagerJournalQuestscript_ref<String>script_ref<String>script_ref<array<JournalEntry>>script_ref<array<QuestObjectiveWrapper>>gameJournalEntryStateBoolInt32Int32BoolDistrict_Record
+	function IsNew() : Bool; // IsNew;
+	function IsOptional() : Bool; // IsOptional;
+	function IsTracked() : Bool; // IsTracked;
+	function IsTrackedInHierarchy() : Bool; // IsTrackedInHierarchy;
+	function ToString() : String; // ToString;
+	function UpdateIsNew(value : Bool); // UpdateIsNew;Bool
+}
+
+class abstract AJournalEntryWrapper extends ABaseWrapper
+{
+	private   var UniqueId : Int32;
+
+	function GetUniqueId() : Int32; // GetUniqueId;
+	function SetUniqueId(uniqueId : Int32); // SetUniqueId;Int32
+}
+
+class abstract ABaseWrapper extends IScriptable
+{
+	function ToString() : String; // ToString;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

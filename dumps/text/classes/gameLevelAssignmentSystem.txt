@@ -1,0 +1,29 @@
+import class gameLevelAssignmentSystem extends gameILevelAssignmentSystem
+{
+	import function GetLevelAssignment(levelAssignmentTDBID : TweakDBID) : Int32; // GetLevelAssignment
+	import function IsLocked(levelAssignmentTDBID : TweakDBID) : Bool; // IsLocked
+	import function LockLevelAssignment(levelAssignmentTDBID : TweakDBID); // LockLevelAssignment
+	import function MarkPlayerLevelRestored(optional playerLevelRestored : Bool); // MarkPlayerLevelRestored
+}
+
+import class abstract gameILevelAssignmentSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

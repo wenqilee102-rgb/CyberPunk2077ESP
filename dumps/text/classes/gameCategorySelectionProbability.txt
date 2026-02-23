@@ -1,0 +1,4 @@
+import struct gameCategorySelectionProbability
+{
+	var probabilities : array:gameSpotSequenceCategory;
+}

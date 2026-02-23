@@ -1,0 +1,71 @@
+import class gamedataVehicleDestruction_Record extends gamedataTweakDBRecord
+{
+	import function ChargePortCenter() : Vector3; // ChargePortCenter
+	import function ChargePortRadius() : Float; // ChargePortRadius
+	import function DamageExponent() : Float; // DamageExponent
+	import function DamageThreshold() : Float; // DamageThreshold
+	import function DeformableParts(out outList : array:whandle:gamedataVehicleDeformablePart_Record); // DeformableParts
+	import function DeformablePartsContains(item : whandle:gamedataVehicleDeformablePart_Record) : Bool; // DeformablePartsContains
+	import function DetachableParts(out outList : array:whandle:gamedataVehicleDetachablePart_Record); // DetachableParts
+	import function DetachablePartsContains(item : whandle:gamedataVehicleDetachablePart_Record) : Bool; // DetachablePartsContains
+	import function DetachedPartExplosionEffect() : redResourceReferenceScriptToken; // DetachedPartExplosionEffect
+	import function DoorDetachRules(out outList : array:whandle:gamedataVehicleDoorDetachRule_Record); // DoorDetachRules
+	import function DoorDetachRulesContains(item : whandle:gamedataVehicleDoorDetachRule_Record) : Bool; // DoorDetachRulesContains
+	import function EnableOnHit() : Bool; // EnableOnHit
+	import function ForcePropagationFalloff() : Float; // ForcePropagationFalloff
+	import function GetDeformablePartsCount() : Int32; // GetDeformablePartsCount
+	import function GetDeformablePartsItem(index : Int32) : whandle:gamedataVehicleDeformablePart_Record; // GetDeformablePartsItem
+	import function GetDeformablePartsItemHandle(index : Int32) : handle:gamedataVehicleDeformablePart_Record; // GetDeformablePartsItemHandle
+	import function GetDetachablePartsCount() : Int32; // GetDetachablePartsCount
+	import function GetDetachablePartsItem(index : Int32) : whandle:gamedataVehicleDetachablePart_Record; // GetDetachablePartsItem
+	import function GetDetachablePartsItemHandle(index : Int32) : handle:gamedataVehicleDetachablePart_Record; // GetDetachablePartsItemHandle
+	import function GetDoorDetachRulesCount() : Int32; // GetDoorDetachRulesCount
+	import function GetDoorDetachRulesItem(index : Int32) : whandle:gamedataVehicleDoorDetachRule_Record; // GetDoorDetachRulesItem
+	import function GetDoorDetachRulesItemHandle(index : Int32) : handle:gamedataVehicleDoorDetachRule_Record; // GetDoorDetachRulesItemHandle
+	import function GetGlassCount() : Int32; // GetGlassCount
+	import function GetGlassItem(index : Int32) : whandle:gamedataVehicleDestructibleGlass_Record; // GetGlassItem
+	import function GetGlassItemHandle(index : Int32) : handle:gamedataVehicleDestructibleGlass_Record; // GetGlassItemHandle
+	import function GetLightsCount() : Int32; // GetLightsCount
+	import function GetLightsItem(index : Int32) : whandle:gamedataVehicleDestructibleLight_Record; // GetLightsItem
+	import function GetLightsItemHandle(index : Int32) : handle:gamedataVehicleDestructibleLight_Record; // GetLightsItemHandle
+	import function GetPointDampersCount() : Int32; // GetPointDampersCount
+	import function GetPointDampersItem(index : Int32) : whandle:gamedataVehicleDestructionPointDamper_Record; // GetPointDampersItem
+	import function GetPointDampersItemHandle(index : Int32) : handle:gamedataVehicleDestructionPointDamper_Record; // GetPointDampersItemHandle
+	import function GetWheelsCount() : Int32; // GetWheelsCount
+	import function GetWheelsItem(index : Int32) : whandle:gamedataVehicleDestructibleWheel_Record; // GetWheelsItem
+	import function GetWheelsItemHandle(index : Int32) : handle:gamedataVehicleDestructibleWheel_Record; // GetWheelsItemHandle
+	import function Glass(out outList : array:whandle:gamedataVehicleDestructibleGlass_Record); // Glass
+	import function GlassContains(item : whandle:gamedataVehicleDestructibleGlass_Record) : Bool; // GlassContains
+	import function GridDimensions() : Vector3; // GridDimensions
+	import function GridLocalOffset() : Vector3; // GridLocalOffset
+	import function Lights(out outList : array:whandle:gamedataVehicleDestructibleLight_Record); // Lights
+	import function LightsContains(item : whandle:gamedataVehicleDestructibleLight_Record) : Bool; // LightsContains
+	import function OnHitVelocity() : Float; // OnHitVelocity
+	import function PointDampers(out outList : array:whandle:gamedataVehicleDestructionPointDamper_Record); // PointDampers
+	import function PointDampersContains(item : whandle:gamedataVehicleDestructionPointDamper_Record) : Bool; // PointDampersContains
+	import function VehicleDimensions() : Vector3; // VehicleDimensions
+	import function VelocityValueMaxDamage() : Float; // VelocityValueMaxDamage
+	import function VelocityValueMinDamage() : Float; // VelocityValueMinDamage
+	import function Wheels(out outList : array:whandle:gamedataVehicleDestructibleWheel_Record); // Wheels
+	import function WheelsContains(item : whandle:gamedataVehicleDestructibleWheel_Record) : Bool; // WheelsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

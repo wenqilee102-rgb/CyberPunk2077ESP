@@ -1,0 +1,1 @@
+{"a":"gamedataEffector_Record","b":"gamedataConvertDamageToStatPoolEffector_Record","c":"ConvertDamageToStatPoolEffector_Record","d":24,"f":[{"a":"OpSymbol","c":{"a":14},"d":4},{"a":"StatPoolType","c":{"a":27,"c":{"b":"gamedataStatPool_Record"}},"d":4},{"a":"StatPoolTypeHandle","c":{"a":26,"c":{"b":"gamedataStatPool_Record"}},"d":4},{"a":"Value","c":{"a":10},"d":4}]}

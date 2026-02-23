@@ -1,0 +1,10 @@
+import struct animStackTransformsExtender_Entry
+{
+	var transformInfo : animTransformInfo;
+	var snapMethod : animStackTransformsExtender_SnapToBoneMethod;
+	var snapToReference : Bool;
+	var snapTargetBone : animTransformIndex;
+	var offsetToReference : Bool;
+	var offsetSpaceBone : animTransformIndex;
+	var offset : QsTransform;
+}

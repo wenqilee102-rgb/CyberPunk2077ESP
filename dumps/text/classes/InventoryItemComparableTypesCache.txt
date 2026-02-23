@@ -1,0 +1,21 @@
+class InventoryItemComparableTypesCache extends IScriptable
+{
+	public    var itemType : gamedataItemType;
+	public    var itemTypeRecord : whandle:gamedataItemType_Record;
+	public    var comparableTypes : array:gamedataItemType;
+	public    var comparableRecordTypes : array:whandle:gamedataItemType_Record;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

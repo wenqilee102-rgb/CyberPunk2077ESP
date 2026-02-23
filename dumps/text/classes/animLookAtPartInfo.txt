@@ -1,0 +1,5 @@
+import struct animLookAtPartInfo
+{
+	var partName : CName;
+	var defaultPositionBoneName : CName;
+}

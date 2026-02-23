@@ -1,0 +1,11 @@
+import struct HeadlessGameEngine extends BaseGameEngine
+{
+}
+
+import struct BaseGameEngine extends CBaseEngine
+{
+}
+
+import struct CBaseEngine
+{
+}

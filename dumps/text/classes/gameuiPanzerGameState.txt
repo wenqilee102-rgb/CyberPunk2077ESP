@@ -1,0 +1,35 @@
+import class gameuiPanzerGameState extends gameuiSideScrollerMiniGameStateAdvanced
+{
+}
+
+import class abstract gameuiSideScrollerMiniGameStateAdvanced extends IScriptable
+{
+	var opertyMaxScore : CName;
+	var opertyCurrentLives : CName;
+	var opertyCurrentScore : CName;
+	var PropertyChanged : gameuiGameStatePropertyChangedCallback;
+
+	import function AddLife(); // AddLife
+	import function AddScore(); // AddScore
+	import function GetLives(); // GetLives
+	import function GetMaxScore(); // GetMaxScore
+	import function GetScore() : Uint32; // GetScore
+	import function SetLives(); // SetLives
+	import function SetMaxScore(score : Uint32); // SetMaxScore
+	import function SetScore(); // SetScore
+	import function SpendLife(); // SpendLife
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

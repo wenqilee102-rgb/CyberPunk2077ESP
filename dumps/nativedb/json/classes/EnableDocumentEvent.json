@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"EnableDocumentEvent","d":0,"e":[{"a":{"b":"EDocumentType"},"b":"documentType","c":128},{"a":{"a":14},"b":"documentName","c":128},{"a":{"b":"SDocumentAdress"},"b":"documentAdress","c":128},{"a":{"a":1},"b":"enable","c":128},{"a":{"a":1},"b":"entireFolder","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

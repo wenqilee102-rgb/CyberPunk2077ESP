@@ -1,0 +1,50 @@
+class HitShapeUserDataBase extends gameHitShapeUserData
+{
+	public    var hitShapeTag : CName;
+	public    var hitShapeType : EHitShapeType;
+	public    var hitReactionZone : EHitReactionZone;
+	public    var dismembermentPart : EAIDismembermentBodyPart;
+	public    var isProtectionLayer : Bool;
+	public    var quickHacksPierceProtection : Bool;
+	public    var isInternalWeakspot : Bool;
+	public    var hitShapeDamageMod : Float;
+
+	static function DisableHitShape(gameObj : whandle:gameObject, shapeName : CName, hierarchical : Bool); // HitShapeUserDataBase::DisableHitShape;GameObjectCNameBool
+	static function DoQuickHacksPierceProtection(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::DoQuickHacksPierceProtection;HitShapeUserDataBase
+	static function EnableHitShape(gameObj : whandle:gameObject, shapeName : CName, hierarchical : Bool); // HitShapeUserDataBase::EnableHitShape;GameObjectCNameBool
+	static function GetDismembermentBodyPart(userData : handle:HitShapeUserDataBase) : gameDismBodyPart; // HitShapeUserDataBase::GetDismembermentBodyPart;HitShapeUserDataBase
+	static function GetHitReactionZone(userData : handle:HitShapeUserDataBase) : EHitReactionZone; // HitShapeUserDataBase::GetHitReactionZone;HitShapeUserDataBase
+	static function GetHitShapeDamageMod(userData : handle:HitShapeUserDataBase) : Float; // HitShapeUserDataBase::GetHitShapeDamageMod;HitShapeUserDataBase
+	static function IsHitReactionZoneArm(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneArm;HitShapeUserDataBase
+	static function IsHitReactionZoneHead(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneHead;HitShapeUserDataBase
+	static function IsHitReactionZoneLeftArm(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneLeftArm;HitShapeUserDataBase
+	static function IsHitReactionZoneLeftLeg(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneLeftLeg;HitShapeUserDataBase
+	static function IsHitReactionZoneLeg(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneLeg;HitShapeUserDataBase
+	static function IsHitReactionZoneLimb(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneLimb;HitShapeUserDataBase
+	static function IsHitReactionZoneRightArm(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneRightArm;HitShapeUserDataBase
+	static function IsHitReactionZoneRightLeg(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneRightLeg;HitShapeUserDataBase
+	static function IsHitReactionZoneTorso(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsHitReactionZoneTorso;HitShapeUserDataBase
+	static function IsInternalWeakspot(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsInternalWeakspot;HitShapeUserDataBase
+	static function IsProtectionLayer(userData : handle:HitShapeUserDataBase) : Bool; // HitShapeUserDataBase::IsProtectionLayer;HitShapeUserDataBase
+
+	function GetShapeType() : EHitShapeType; // GetShapeType;
+	function IsHead() : Bool; // IsHead;
+}
+
+import class gameHitShapeUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

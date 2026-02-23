@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorMovementPolicyTaskDefinition","d":8,"e":[{"a":{"a":1},"b":"useCurrentPolicy","c":128},{"a":{"a":1},"b":"waitForPolicy","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"stopWhenDestinationReached","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"AIbehaviorMovementPolicyTaskItemDefinition"}}},"b":"policies","c":128}]}

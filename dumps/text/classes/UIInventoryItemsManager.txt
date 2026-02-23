@@ -1,0 +1,90 @@
+class UIInventoryItemsManager extends IScriptable
+{
+	private   var iconsNameResolver : handle:gameuiIconsNameResolver;
+	private   var useMaleIcons : Bool;
+	private   var ammoTypeCache : handle:inkScriptIntHashMap;
+	private   var statsMapCache : handle:inkScriptWeakHashMap;
+	private   var statsPropertiesCache : handle:inkScriptHashMap;
+	private   var player : whandle:PlayerPuppet;
+	private   var transactionSystem : handle:gameTransactionSystem;
+	private   var statsDataSystem : handle:gameStatsDataSystem;
+	private   var uiScriptableSystem : whandle:UIScriptableSystem;
+	private   var inventoryManager : whandle:gameInventoryManager;
+	private   var equippedItemsFetched : Bool;
+	private   var equippedItems : array:gameItemID;
+	private   var transmogItemsFetched : Bool;
+	private   var transmogItems : array:gameItemID;
+	private   var maxStatValuesData : array:handle:WeaponMaxStatValueData;
+	private   var notSellableTags : array:CName;
+	private   var TEMP_cuverBarsEnabled : Bool;
+	private   var TEMP_separatorBarsEnabled : Bool;
+
+	static function GetAmmo(itemRecord : whandle:gamedataItem_Record, optional force : Bool, manager : whandle:UIInventoryItemsManager) : Int32; // UIInventoryItemsManager::GetAmmo;Item_RecordBoolUIInventoryItemsManager
+	static function GetBlacklistedTags() : array:CName; // UIInventoryItemsManager::GetBlacklistedTags;
+	static function GetCyberwarEquipmentAreas() : array:gamedataEquipmentArea; // UIInventoryItemsManager::GetCyberwarEquipmentAreas;
+	static function GetItemTypeWeapon(itemType : gamedataItemType) : WeaponType; // UIInventoryItemsManager::GetItemTypeWeapon;gamedataItemType
+	static function GetStashBlacklistedTags() : array:CName; // UIInventoryItemsManager::GetStashBlacklistedTags;
+	static function GetUIStatProperties(statType : gamedataStatType, roundValue : Bool, optional manager : whandle:UIInventoryItemsManager) : handle:UIItemStatProperties; // UIInventoryItemsManager::GetUIStatProperties;gamedataStatTypeBoolUIInventoryItemsManager
+	static function GetUIStatProperties(statType : gamedataStatType, optional manager : whandle:UIInventoryItemsManager) : handle:UIItemStatProperties; // UIInventoryItemsManager::GetUIStatProperties;gamedataStatTypeUIInventoryItemsManager
+	static function GetUIStatsMap(itemType : gamedataItemType, optional manager : whandle:UIInventoryItemsManager) : whandle:gamedataUIStatsMap_Record; // UIInventoryItemsManager::GetUIStatsMap;gamedataItemTypeUIInventoryItemsManager
+	static function IsItemTypeCloting(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeCloting;gamedataItemType
+	static function IsItemTypeCyberware(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeCyberware;gamedataItemType
+	static function IsItemTypeCyberwareWeapon(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeCyberwareWeapon;gamedataItemType
+	static function IsItemTypeGrenade(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeGrenade;gamedataItemType
+	static function IsItemTypeMeleeWeapon(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeMeleeWeapon;gamedataItemType
+	static function IsItemTypeRangedWeapon(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeRangedWeapon;gamedataItemType
+	static function IsItemTypeWeapon(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::IsItemTypeWeapon;gamedataItemType
+	static function IsSellableStatic(itemData : handle:gameItemData) : Bool; // UIInventoryItemsManager::IsSellableStatic;gameItemData
+	static function IsSellableStatic(itemData : handle:gameItemData, filterTags : script_ref:array:CName) : Bool; // UIInventoryItemsManager::IsSellableStatic;gameItemDatascript_ref<array<CName>>
+	static function Make(player : whandle:PlayerPuppet, transactionSystem : handle:gameTransactionSystem, uiScriptableSystem : whandle:UIScriptableSystem) : handle:UIInventoryItemsManager; // UIInventoryItemsManager::Make;PlayerPuppetTransactionSystemUIScriptableSystem
+	static function QualityFromInt(quality : Int32) : gamedataQuality; // UIInventoryItemsManager::QualityFromInt;Int32
+	static function QualityToInt(quality : gamedataQuality) : Int32; // UIInventoryItemsManager::QualityToInt;gamedataQuality
+	static function QualityToName(quality : gamedataQuality) : CName; // UIInventoryItemsManager::QualityToName;gamedataQuality
+	static function ResolveItemIconName(itemTweakID : TweakDBID, itemRecord : whandle:gamedataItem_Record, manager : whandle:UIInventoryItemsManager) : String; // UIInventoryItemsManager::ResolveItemIconName;TweakDBIDItem_RecordUIInventoryItemsManager
+	static function ResolveItemIconName(itemTweakID : TweakDBID, itemRecord : whandle:gamedataItem_Record, useMaleIcon : Bool) : String; // UIInventoryItemsManager::ResolveItemIconName;TweakDBIDItem_RecordBool
+	static function ResolveItemIconName(itemTweakID : TweakDBID, itemRecord : whandle:gamedataItem_Record, player : whandle:PlayerPuppet) : String; // UIInventoryItemsManager::ResolveItemIconName;TweakDBIDItem_RecordPlayerPuppet
+	static function ShouldHideTier(itemType : gamedataItemType) : Bool; // UIInventoryItemsManager::ShouldHideTier;gamedataItemType
+
+	function AddTransmogIfNotEmpty(itemID : gameItemID); // AddTransmogIfNotEmpty;ItemID
+	function AttachPlayer(player : whandle:PlayerPuppet); // AttachPlayer;PlayerPuppet
+	function FlushAmmoCache(); // FlushAmmoCache;
+	function FlushEquippedItems(); // FlushEquippedItems;
+	function FlushStatMaps(); // FlushStatMaps;
+	function FlushTransmogItems(); // FlushTransmogItems;
+	function GetAttachedPlayer() : whandle:PlayerPuppet; // GetAttachedPlayer;
+	function GetCachedEquippedItems() : array:gameItemID; // GetCachedEquippedItems;
+	function GetCachedTransmogItems() : array:gameItemID; // GetCachedTransmogItems;
+	function GetCachedUIStatProperties(statType : gamedataStatType, roundValue : Bool) : whandle:UIItemStatProperties; // GetCachedUIStatProperties;gamedataStatTypeBool
+	function GetCachedUIStatProperties(statType : gamedataStatType) : whandle:UIItemStatProperties; // GetCachedUIStatProperties;gamedataStatType
+	function GetCurveBarsEnabled() : Bool; // GetCurveBarsEnabled;
+	function GetInventoryManager() : whandle:gameInventoryManager; // GetInventoryManager;
+	function GetNumberOfSlots(equipmentArea : gamedataEquipmentArea) : Int32; // GetNumberOfSlots;gamedataEquipmentArea
+	function GetPlayerBufferSize() : Float; // GetPlayerBufferSize;
+	function GetRawEquippedItems(equipmentArea : gamedataEquipmentArea) : array:gameItemID; // GetRawEquippedItems;gamedataEquipmentArea
+	function GetSeparatorBarsEnabled() : Bool; // GetSeparatorBarsEnabled;
+	function GetStatsSystemValueFromCurve(set : CName, curve : CName, value : Float) : Float; // GetStatsSystemValueFromCurve;CNameCNameFloat
+	function GetTransactionSystem() : whandle:gameTransactionSystem; // GetTransactionSystem;
+	function GetWeaponStatMaxValue(stat : gamedataStatType) : Float; // GetWeaponStatMaxValue;gamedataStatType
+	function IsItemEquipped(itemID : gameItemID) : Bool; // IsItemEquipped;ItemID
+	function IsItemNew(item : gameItemID) : Bool; // IsItemNew;ItemID
+	function IsItemPlayerFavourite(item : gameItemID) : Bool; // IsItemPlayerFavourite;ItemID
+	function IsItemTransmog(itemID : gameItemID) : Bool; // IsItemTransmog;ItemID
+	function IsSellable(itemData : handle:gameItemData) : Bool; // IsSellable;gameItemData
+	function PopulatemaxStatValues(); // PopulatemaxStatValues;
+	function SetCuverBarsEnabled(value : Bool); // SetCuverBarsEnabled;Bool
+	function SetSeparatorBarsEnabled(value : Bool); // SetSeparatorBarsEnabled;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

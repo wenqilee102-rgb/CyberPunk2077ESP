@@ -1,0 +1,6 @@
+enum gameinfluenceTestLineResult
+{
+	Fail = 0,
+	Success = 1,
+	Unknown = 2
+}

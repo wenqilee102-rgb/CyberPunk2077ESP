@@ -1,0 +1,15 @@
+import class scnInteractionShapeParams extends ISerializable
+{
+	var preset : scnChoiceNodeNsSizePreset;
+	var offset : Vector3;
+	var rotation : Quaternion;
+	var customIndicationRange : Float;
+	var customActivationRange : Float;
+	var activationYawLimit : Float;
+	var activationBaseLength : Float;
+	var activationHeight : Float;
+}
+
+import class abstract ISerializable
+{
+}

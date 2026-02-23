@@ -1,0 +1,7 @@
+import struct worldTrafficLightDefinition
+{
+	var positionOnLane : Float;
+	var groupIdx : Uint32;
+	var extent : Float;
+	var timeline : array:worldTrafficLightStage;
+}

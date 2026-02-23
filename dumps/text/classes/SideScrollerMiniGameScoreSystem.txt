@@ -1,0 +1,40 @@
+class SideScrollerMiniGameScoreSystem extends gameScriptableSystem
+{
+	private   var scoreData : [3]Int32;
+	private   var gameNames : [3]String;
+
+	function GetGameId(gameName : script_ref:String) : Int32; // GetGameId;script_ref<String>
+	function GetMaxScore(gameName : script_ref:String) : Int32; // GetMaxScore;script_ref<String>
+	function OnAttach(); // OnAttach;
+	function OnSendScore(request : handle:SendScoreRequest); // OnSendScore;SendScoreRequest
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

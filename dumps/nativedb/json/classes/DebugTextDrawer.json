@@ -1,0 +1,1 @@
+{"a":"gameObject","b":"DebugTextDrawer","d":0,"e":[{"a":{"a":12},"b":"text","c":129},{"a":{"b":"Color"},"b":"color","c":129}],"f":[{"a":"OnRequestComponents","c":{"a":1},"d":98,"e":[{"a":{"b":"entEntityRequestComponentsInterface"},"b":"ri","c":0}]},{"a":"OnTakeControl","c":{"a":1},"d":98,"e":[{"a":{"b":"entEntityResolveComponentsInterface"},"b":"ri","c":0}]}]}

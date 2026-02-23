@@ -1,0 +1,27 @@
+import class gameuiGamepadLightController extends gameuiIGamepadLightController
+{
+	import function ResetControllerColor(); // ResetControllerColor
+	import function SetControllerColor(r : Uint8, g : Uint8, b : Uint8); // SetControllerColor
+}
+
+import class abstract gameuiIGamepadLightController extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

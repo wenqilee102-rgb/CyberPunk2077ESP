@@ -1,0 +1,40 @@
+import struct Quaternion
+{
+	var i : Float;
+	var j : Float;
+	var k : Float;
+	var r : Float;
+
+	import static function BuildFromDirectionVector(direction : Vector4, optional up : Vector4) : Quaternion; // BuildFromDirectionVector
+	import static function Conjugate(q : Quaternion) : Quaternion; // Conjugate
+	import static function Dot(a : Quaternion, b : Quaternion) : Float; // Dot
+	import static function GetAngle(q : Quaternion) : Float; // GetAngle
+	import static function GetAxes(quat : Quaternion, out forward : Vector4, out right : Vector4, out up : Vector4); // GetAxes
+	import static function GetAxis(q : Quaternion) : Vector4; // GetAxis
+	import static function GetForward(quat : Quaternion) : Vector4; // GetForward
+	import static function GetRight(quat : Quaternion) : Vector4; // GetRight
+	import static function GetUp(quat : Quaternion) : Vector4; // GetUp
+	import static function GetXAxis(quat : Quaternion) : Vector4; // GetXAxis
+	import static function GetYAxis(quat : Quaternion) : Vector4; // GetYAxis
+	import static function GetZAxis(quat : Quaternion) : Vector4; // GetZAxis
+	import static function Lerp(q1 : Quaternion, q2 : Quaternion, t : Float) : Quaternion; // Lerp
+	import static function Magnitude(quat : Quaternion) : Float; // Magnitude
+	import static function MagnitudeSq(quat : Quaternion) : Float; // MagnitudeSq
+	import static function MulInverse(q1 : Quaternion, q2 : Quaternion) : Quaternion; // MulInverse
+	import static function Normalize(quat : Quaternion); // Normalize
+	import static function Normalized(quat : Quaternion) : Quaternion; // Normalized
+	import static function Rand(min : Float, max : Float) : Quaternion; // Rand
+	import static function SetAxisAngle(out q : Quaternion, axis : Vector4, angle : Float); // SetAxisAngle
+	import static function SetIdentity(quat : Quaternion); // SetIdentity
+	import static function SetInverse(quat : Quaternion); // SetInverse
+	import static function SetInverse(); // SetInverse
+	import static function SetShortestRotation(q : Quaternion, v1 : Vector4, v2 : Vector4); // SetShortestRotation
+	import static function SetXRot(q : Quaternion, angle : Float); // SetXRot
+	import static function SetYRot(q : Quaternion, angle : Float); // SetYRot
+	import static function SetZRot(q : Quaternion, angle : Float); // SetZRot
+	import static function Slerp(q1 : Quaternion, q2 : Quaternion, t : Float) : Quaternion; // Slerp
+	import static function ToEulerAngles(quat : Quaternion) : EulerAngles; // ToEulerAngles
+	import static function ToMatrix(quat : Quaternion) : Matrix; // ToMatrix
+	import static function Transform(quat : Quaternion, v : Vector4) : Vector4; // Transform
+	import static function TransformInverse(quat : Quaternion, v : Vector4) : Vector4; // TransformInverse
+}

@@ -1,0 +1,10 @@
+import struct interopEntityEffectSpawnerSyncData
+{
+	var componentID : EditorObjectID;
+	var componentParentID : EditorObjectID;
+	var componentName : CName;
+	var effects : array:interopEntityEffectSelectionSyncData;
+	var templatePath : String;
+	var templateColor : Color;
+	var included : Bool;
+}

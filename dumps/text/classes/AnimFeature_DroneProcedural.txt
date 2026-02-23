@@ -1,0 +1,34 @@
+class AnimFeature_DroneProcedural extends animAnimFeature
+{
+	public    var mass : Float;
+	public    var size_front : Float;
+	public    var size_back : Float;
+	public    var size_left : Float;
+	public    var size_right : Float;
+	public    var walk_tilt_coef : Float;
+	public    var mass_normalized_coef : Float;
+	public    var tilt_angle_on_speed : Float;
+	public    var speed_idle_threshold : Float;
+	public    var starting_recovery_ballance : Float;
+	public    var pseudo_acceleration : Float;
+	public    var turn_inertia_damping : Float;
+	public    var combat_default_z_offset : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

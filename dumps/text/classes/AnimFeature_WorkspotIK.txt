@@ -1,0 +1,29 @@
+class AnimFeature_WorkspotIK extends animAnimFeature
+{
+	public    var rightHandPosition : Vector4;
+	public    var leftHandPosition : Vector4;
+	public    var cameraPosition : Vector4;
+	public    var rightHandRotation : Quaternion;
+	public    var leftHandRotation : Quaternion;
+	public    var cameraRotation : Quaternion;
+	public    var shouldCrouch : Bool;
+	public    var isInteractingWithDevice : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

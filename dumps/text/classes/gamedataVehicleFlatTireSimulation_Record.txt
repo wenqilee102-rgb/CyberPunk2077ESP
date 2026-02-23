@@ -1,0 +1,27 @@
+import class gamedataVehicleFlatTireSimulation_Record extends gamedataTweakDBRecord
+{
+	import function Front() : whandle:gamedataVehicleFlatTireSimParams_Record; // Front
+	import function FrontHandle() : handle:gamedataVehicleFlatTireSimParams_Record; // FrontHandle
+	import function Rear() : whandle:gamedataVehicleFlatTireSimParams_Record; // Rear
+	import function RearHandle() : handle:gamedataVehicleFlatTireSimParams_Record; // RearHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,23 @@
+import class questSwitchToScenario_NodeType extends questIUIManagerNodeType
+{
+	var startScenarioName : CName;
+	var endScenarioName : CName;
+	var userData : handle:inkUserData;
+	var forceOpenDuringFadeout : Bool;
+}
+
+import class abstract questIUIManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

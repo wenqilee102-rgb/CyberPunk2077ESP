@@ -1,0 +1,42 @@
+class PuppetStateDef extends gamebbScriptDefinition
+{
+	public    var HighLevel : gamebbScriptID_Int32;
+	public    var UpperBody : gamebbScriptID_Int32;
+	public    var BehaviorState : gamebbScriptID_Int32;
+	public    var PhaseState : gamebbScriptID_Int32;
+	public    var Stance : gamebbScriptID_Int32;
+	public    var HitReactionMode : gamebbScriptID_Int32;
+	public    var DefenseMode : gamebbScriptID_Int32;
+	public    var LocomotionMode : gamebbScriptID_Int32;
+	public    var WeakSpots : gamebbScriptID_Int32;
+	public    var ReactionBehavior : gamebbScriptID_Int32;
+	public    var ForceRagdollOnDeath : gamebbScriptID_Bool;
+	public    var InExclusiveAction : gamebbScriptID_Bool;
+	public    var SlotAnimationInProgress : gamebbScriptID_Bool;
+	public    var WorkspotAnimationInProgress : gamebbScriptID_Bool;
+	public    var InAirAnimation : gamebbScriptID_Bool;
+	public    var InPendingBehavior : gamebbScriptID_Bool;
+	public    var HasCalledReinforcements : gamebbScriptID_Bool;
+	public    var IsBodyDisposed : gamebbScriptID_Bool;
+	public    var DetectionPercentage : gamebbScriptID_Float;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

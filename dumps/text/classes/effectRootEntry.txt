@@ -1,0 +1,5 @@
+import struct effectRootEntry
+{
+	var relativePosition : Vector3;
+	var relativeRotation : Quaternion;
+}

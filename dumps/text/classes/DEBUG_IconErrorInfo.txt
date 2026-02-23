@@ -1,0 +1,23 @@
+class DEBUG_IconErrorInfo extends IScriptable
+{
+	public    var itemName : String;
+	public    var innerItemName : String;
+	public    var resolvedIconName : String;
+	public    var errorMessage : String;
+	public    var errorType : inkIconResult;
+	public    var isManuallySet : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

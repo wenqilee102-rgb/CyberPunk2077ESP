@@ -1,0 +1,12 @@
+import class animRigTagCondition extends animIStaticCondition
+{
+	var tag : CName;
+}
+
+import class abstract animIStaticCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

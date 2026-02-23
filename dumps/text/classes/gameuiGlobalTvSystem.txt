@@ -1,0 +1,27 @@
+import class gameuiGlobalTvSystem extends gameIGlobalTvSystem
+{
+	import function RegisterTVChannelOnController(gameController : whandle:gameuiWidgetGameController, previousChannelID : Int32, activeChannelID : Int32); // RegisterTVChannelOnController
+	import function UnregisterTVChannelFromEntity(entity : whandle:entEntity); // UnregisterTVChannelFromEntity
+}
+
+import class abstract gameIGlobalTvSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

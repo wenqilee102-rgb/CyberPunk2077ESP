@@ -1,0 +1,1 @@
+{"a":"animAnimNode_Base","b":"animAnimNode_RuntimeSwitch","d":8,"e":[{"a":{"a":26,"c":{"b":"animIRuntimeCondition"}},"b":"condition","c":128},{"a":{"b":"animPoseLink"},"b":"True","c":128},{"a":{"b":"animPoseLink"},"b":"False","c":128}]}

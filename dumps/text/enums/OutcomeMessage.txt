@@ -1,0 +1,5 @@
+enum OutcomeMessage
+{
+	Success = 0,
+	Failure = 1
+}

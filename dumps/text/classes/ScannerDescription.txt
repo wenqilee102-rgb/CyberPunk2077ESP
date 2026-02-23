@@ -1,0 +1,30 @@
+class ScannerDescription extends ScannerChunk
+{
+	private   var defaultFluffDescription : String;
+	private   var customDescriptions : array:String;
+
+	function GetCustomDescriptions() : array:String; // GetCustomDescriptions;
+	function GetDefaultDescription() : String; // GetDefaultDescription;
+	function GetType() : ScannerDataType; // GetType;
+	function Set(defaultDesc : script_ref:String, optional customDesc : array:String); // Set;script_ref<String>array<String>
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

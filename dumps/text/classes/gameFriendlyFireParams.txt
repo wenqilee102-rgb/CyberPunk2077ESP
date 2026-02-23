@@ -1,0 +1,29 @@
+import class gameFriendlyFireParams extends IScriptable
+{
+	var attitude : whandle:gameAttitudeAgent;
+	var slots : whandle:entSlotComponent;
+	var attachmentName : CName;
+	var slotId : Int32;
+	var spread : Float;
+	var maxRange : Float;
+
+	import function SetCurrentTargetComponent(currentTarget : whandle:gameTargetingComponent); // SetCurrentTargetComponent
+	import function SetCurrentTargetObject(currentTarget : whandle:gameObject); // SetCurrentTargetObject
+	import function SetFFApplyAttitude(FFApplyAttitude : EAIAttitude); // SetFFApplyAttitude
+	import function SetGeometry(spread : Float, maxRange : Float); // SetGeometry
+	import function SetShooter(attitude : whandle:gameAttitudeAgent, slotName : CName, attachmentName : CName); // SetShooter
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

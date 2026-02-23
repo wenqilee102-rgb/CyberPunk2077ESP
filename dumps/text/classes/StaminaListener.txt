@@ -1,0 +1,46 @@
+class StaminaListener extends gameCustomValueStatPoolsListener
+{
+	private   var player : whandle:PlayerPuppet;
+	private   var psmAdded : Bool;
+	private   var staminaValue : Float;
+	private   var staminPerc : Float;
+	private   var sfxThreshold : Float;
+	private   var sfxDelay : Float;
+	private   var sfxName : CName;
+	private   var delayID : gameDelayID;
+
+	event OnStatPoolMinValueReached(value : Float) : Bool; // OnStatPoolMinValueReached
+
+	function GetStaminaPerc() : Float; // GetStaminaPerc;
+	function GetStaminaValue() : Float; // GetStaminaValue;
+	function Init(player : whandle:PlayerPuppet); // Init;PlayerPuppet
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

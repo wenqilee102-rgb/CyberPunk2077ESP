@@ -1,0 +1,1 @@
+{"a":"IWorldWidgetComponent","b":"StreetSignWidgetComponent","d":8,"e":[{"a":{"a":15},"b":"streetSignTDBID","c":128},{"a":{"a":1},"b":"isAStreetName","c":128},{"a":{"a":15},"b":"streetNameSignTDBID","c":128},{"a":{"a":26,"c":{"b":"inkTweakDBIDSelector"}},"b":"signSelector","c":128},{"a":{"a":7},"b":"signVersion","c":128}]}

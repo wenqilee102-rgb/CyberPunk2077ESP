@@ -1,0 +1,5 @@
+enum inputESimplifiedInputDevice
+{
+	KBM = 0,
+	PAD = 1
+}

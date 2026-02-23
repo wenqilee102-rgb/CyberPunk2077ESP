@@ -1,0 +1,28 @@
+import class gamedataVehicleAppearancesToColorTemplate_Record extends gamedataTweakDBRecord
+{
+	import function ColorTemplates(out outList : array:whandle:gamedataVehicleColorTemplate_Record); // ColorTemplates
+	import function ColorTemplatesContains(item : whandle:gamedataVehicleColorTemplate_Record) : Bool; // ColorTemplatesContains
+	import function GetColorTemplatesCount() : Int32; // GetColorTemplatesCount
+	import function GetColorTemplatesItem(index : Int32) : whandle:gamedataVehicleColorTemplate_Record; // GetColorTemplatesItem
+	import function GetColorTemplatesItemHandle(index : Int32) : handle:gamedataVehicleColorTemplate_Record; // GetColorTemplatesItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

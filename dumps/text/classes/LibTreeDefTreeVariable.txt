@@ -1,0 +1,9 @@
+import class abstract LibTreeDefTreeVariable extends ISerializable
+{
+	var id : Uint16;
+	var readableName : CName;
+}
+
+import class abstract ISerializable
+{
+}

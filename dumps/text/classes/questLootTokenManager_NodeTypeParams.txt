@@ -1,0 +1,5 @@
+import struct questLootTokenManager_NodeTypeParams
+{
+	var tokenNodeRef : NodeRef;
+	var lootTokenState : questLootTokenState;
+}

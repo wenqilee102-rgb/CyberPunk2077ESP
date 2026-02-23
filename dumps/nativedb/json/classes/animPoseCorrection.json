@@ -1,0 +1,1 @@
+{"b":"animPoseCorrection","d":8,"g":true,"e":[{"a":{"a":10},"b":"rbfCoefficient","c":128},{"a":{"a":10},"b":"rbfPowValue","c":128},{"a":{"a":31,"c":{"b":"animCompareBone"}},"b":"compareBones","c":128},{"a":{"a":31,"c":{"b":"animBoneCorrection"}},"b":"boneCorrections","c":128}]}

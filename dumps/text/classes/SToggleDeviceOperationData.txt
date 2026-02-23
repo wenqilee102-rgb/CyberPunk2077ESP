@@ -1,0 +1,5 @@
+struct SToggleDeviceOperationData
+{
+	public    var operationName : CName;
+	public    var enable : Bool;
+}

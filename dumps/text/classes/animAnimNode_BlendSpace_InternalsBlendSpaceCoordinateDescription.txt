@@ -1,0 +1,7 @@
+import struct animAnimNode_BlendSpace_InternalsBlendSpaceCoordinateDescription
+{
+	var name : CName;
+	var minValue : Float;
+	var maxValue : Float;
+	var gridDivisionsCount : Uint32;
+}

@@ -1,0 +1,11 @@
+import class gamedataPackageNode extends ISerializable
+{
+	var name : String;
+	var serializedVariables : array:handle:gamedataVariableNode;
+	var serializedGroups : array:handle:gamedataGroupNode;
+	var files : array:handle:gamedataFileNode;
+}
+
+import class abstract ISerializable
+{
+}

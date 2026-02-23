@@ -1,0 +1,7 @@
+import struct scnActorRid
+{
+	var tag : scnRidTag;
+	var animations : array:scnAnimationRid;
+	var facialAnimations : array:scnAnimationRid;
+	var cyberwareAnimations : array:scnAnimationRid;
+}

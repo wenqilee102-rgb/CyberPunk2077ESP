@@ -1,0 +1,12 @@
+import struct AINavigationSystemResult
+{
+	var hasFailed : Bool;
+	var hasPath : Bool;
+	var hasClosestPointOnNavmesh : Bool;
+	var hasClosestReachablePoint : Bool;
+	var lastSourcePosition : WorldPosition;
+	var lastTargetPosition : WorldPosition;
+	var adjustedTargetPosition : WorldPosition;
+	var closestPointOnNavmesh : WorldPosition;
+	var closestReachablePoint : WorldPosition;
+}

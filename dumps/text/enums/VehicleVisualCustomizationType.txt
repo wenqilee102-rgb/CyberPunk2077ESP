@@ -1,0 +1,5 @@
+enum VehicleVisualCustomizationType
+{
+	Generic = 0,
+	Unique = 1
+}

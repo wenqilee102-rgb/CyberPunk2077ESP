@@ -1,0 +1,22 @@
+class abstract AISubActionEquipOnBody_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionEquipOnBody_Record); // AISubActionEquipOnBody_Record_Implementation::Activate;ScriptExecutionContextAISubActionEquipOnBody_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionEquipOnBody_Record, duration : Float, interrupted : Bool); // AISubActionEquipOnBody_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionEquipOnBody_RecordFloatBool
+	static function EquipOnBody(context : AIbehaviorScriptExecutionContext, itemsToEquip : script_ref:array:NPCItemToEquip) : Bool; // AISubActionEquipOnBody_Record_Implementation::EquipOnBody;ScriptExecutionContextscript_ref<array<NPCItemToEquip>>
+	static function GetItemsToEquip(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCharacterRecordEquip_Record, itemsToEquip : script_ref:array:NPCItemToEquip) : Bool; // AISubActionEquipOnBody_Record_Implementation::GetItemsToEquip;ScriptExecutionContextAISubActionCharacterRecordEquip_Recordscript_ref<array<NPCItemToEquip>>
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionEquipOnBody_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionEquipOnBody_Record_Implementation::Update;ScriptExecutionContextAISubActionEquipOnBody_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

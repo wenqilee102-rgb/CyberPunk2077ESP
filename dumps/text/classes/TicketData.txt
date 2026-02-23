@@ -1,0 +1,7 @@
+struct TicketData
+{
+	public    var requestID : Uint32;
+	public    var policeStrategy : vehiclePoliceStrategy;
+	public    var vehicleType : gameDynamicVehicleType;
+	public    var isFallback : Bool;
+}

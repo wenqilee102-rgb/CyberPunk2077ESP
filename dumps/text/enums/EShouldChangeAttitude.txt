@@ -1,0 +1,5 @@
+enum EShouldChangeAttitude
+{
+	PERSISTENTLY = 0,
+	TEMPORARLY = 1
+}

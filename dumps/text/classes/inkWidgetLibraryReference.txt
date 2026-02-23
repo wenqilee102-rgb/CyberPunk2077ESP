@@ -1,0 +1,5 @@
+import struct inkWidgetLibraryReference
+{
+	var widgetLibrary : inkWidgetLibraryResourceWrapper;
+	var widgetItem : CName;
+}

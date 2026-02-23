@@ -1,0 +1,4 @@
+import struct animAdditionalTransformContainer
+{
+	var entries : array:handle:animAdditionalTransformEntry;
+}

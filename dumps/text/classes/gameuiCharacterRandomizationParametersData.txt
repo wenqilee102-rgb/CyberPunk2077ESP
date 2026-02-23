@@ -1,0 +1,21 @@
+import class gameuiCharacterRandomizationParametersData extends IScriptable
+{
+	import function GetRating() : Int32; // GetRating
+	import function IsCategoryLocked(category : gamedataCharacterRandomizationCategory) : Bool; // IsCategoryLocked
+	import function SetLockedCategories(categories : array:gamedataCharacterRandomizationCategory); // SetLockedCategories
+	import function SetRating(rating : Int32); // SetRating
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

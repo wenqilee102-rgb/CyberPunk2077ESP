@@ -1,0 +1,13 @@
+import class scnInterestingConversationsResource extends CResource
+{
+	var conversationGroups : array:handle:scnInterestingConversationsGroup;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

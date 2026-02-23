@@ -1,0 +1,11 @@
+import struct gameEffectScriptContext
+{
+	import static function GetBlackboard(ctx : gameEffectScriptContext) : handle:gameIBlackboard; // GetBlackboard
+	import static function GetGameInstance(ctx : gameEffectScriptContext) : ScriptGameInstance; // GetGameInstance
+	import static function GetInstigator(ctx : gameEffectScriptContext) : handle:entEntity; // GetInstigator
+	import static function GetSharedData(ctx : gameEffectScriptContext) : gameEffectData; // GetSharedData
+	import static function GetSource(ctx : gameEffectScriptContext) : handle:entEntity; // GetSource
+	import static function GetWeapon(ctx : gameEffectScriptContext) : handle:entEntity; // GetWeapon
+	import static function ReportError(ctx : gameEffectScriptContext, error : String); // ReportError
+	import static function SpawnEffect(ctx : gameEffectScriptContext, resource : gameFxResource, transform : WorldTransform, optional ignoreTimeDilation : Bool); // SpawnEffect
+}

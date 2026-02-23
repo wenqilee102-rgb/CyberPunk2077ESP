@@ -1,0 +1,19 @@
+import class questVehicleWater_ConditionType extends questIVehicleConditionType
+{
+	var anyVehicle : Bool;
+	var vehicleRef : gameEntityReference;
+	var submergedOnly : Bool;
+	var onEnter : Bool;
+}
+
+import class abstract questIVehicleConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct AIArchetypeSetEntry
+{
+	var name : CName;
+	var resource : rRef:AIArchetype;
+}

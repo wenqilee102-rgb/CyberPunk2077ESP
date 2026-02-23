@@ -1,0 +1,7 @@
+import struct scnSceneMarkerInternalsWorkspotEntry
+{
+	var instanceId : CRUID;
+	var instanceOrigin : Transform;
+	var entries : array:scnSceneMarkerInternalsWorkspotEntrySocket;
+	var exits : array:scnSceneMarkerInternalsWorkspotEntrySocket;
+}

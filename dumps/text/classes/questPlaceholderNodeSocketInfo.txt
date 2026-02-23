@@ -1,0 +1,5 @@
+import struct questPlaceholderNodeSocketInfo
+{
+	var name : CName;
+	var type : questSocketType;
+}

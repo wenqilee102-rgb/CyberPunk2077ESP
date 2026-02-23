@@ -1,0 +1,8 @@
+import class gameHitRepresentationOverride extends ISerializable
+{
+	var represenationOverride : gameHitShapeContainer;
+}
+
+import class abstract ISerializable
+{
+}

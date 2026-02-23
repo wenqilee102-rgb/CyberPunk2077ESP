@@ -1,0 +1,8 @@
+import struct gameuiPlayerBioMonitor
+{
+	var currentHealth : Int32;
+	var maximumHealth : Int32;
+	var currentCyberwarePct : Int32;
+	var currentArmor : Int32;
+	var maximumArmor : Int32;
+}

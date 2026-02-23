@@ -1,0 +1,21 @@
+import class worldNodesGroup extends ISerializable
+{
+	var name : CName;
+	var id : Uint64;
+	var groupUniqueId : CRUID;
+	var nodes : array:handle:worldNode;
+	var subGroups : array:handle:worldNodesGroup;
+	var type : worldNodeGroupType;
+	var keepPosition : Bool;
+	var transform : Transform;
+	var transformCalculated : Bool;
+	var customPivotOffset : Transform;
+	var proxyMeshGroupBuildParams : worldProxyMeshGroupBuildParams;
+	var proxyMesh : raRef:CMesh;
+	var proxyDistanceFactor : Float;
+	var metadataArray : array:handle:worldPrefabMetadata;
+}
+
+import class abstract ISerializable
+{
+}

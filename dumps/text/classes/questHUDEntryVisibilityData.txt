@@ -1,0 +1,5 @@
+import struct questHUDEntryVisibilityData
+{
+	var hudEntryName : CName;
+	var visibility : worlduiEntryVisibility;
+}

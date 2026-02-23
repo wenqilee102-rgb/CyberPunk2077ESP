@@ -1,0 +1,6 @@
+import struct inkLanguageSpecificImagData
+{
+	var languageID : inkLanguageId;
+	var textureAtlasForLanguage : raRef:inkTextureAtlas;
+	var partNameForLanguage : CName;
+}

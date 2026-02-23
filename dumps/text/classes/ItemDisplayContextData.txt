@@ -1,0 +1,37 @@
+class ItemDisplayContextData extends IScriptable
+{
+	private   var player : whandle:gameObject;
+	private   var displayContext : gameItemDisplayContext;
+	private   var displayComparison : Bool;
+	private   var tags : array:CName;
+
+	static function Make() : handle:ItemDisplayContextData; // ItemDisplayContextData::Make;
+	static function Make(player : whandle:gameObject, displayContext : gameItemDisplayContext, optional displayComparison : Bool) : handle:ItemDisplayContextData; // ItemDisplayContextData::Make;GameObjectItemDisplayContextBool
+
+	function AddTag(tag : CName); // AddTag;CName
+	function Copy() : handle:ItemDisplayContextData; // Copy;
+	function GetDisplayComparison() : Bool; // GetDisplayComparison;
+	function GetDisplayContext() : gameItemDisplayContext; // GetDisplayContext;
+	function GetPlayer() : whandle:gameObject; // GetPlayer;
+	function GetPlayerAsPuppet() : whandle:PlayerPuppet; // GetPlayerAsPuppet;
+	function GetTooltipDisplayContext() : InventoryTooltipDisplayContext; // GetTooltipDisplayContext;
+	function HasTag(tag : CName) : Bool; // HasTag;CName
+	function IsCraftingItem() : Bool; // IsCraftingItem;
+	function IsVendorItem() : Bool; // IsVendorItem;
+	function RemoveTag(tag : CName); // RemoveTag;CName
+	function SetDisplayComparison(value : Bool) : handle:ItemDisplayContextData; // SetDisplayComparison;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

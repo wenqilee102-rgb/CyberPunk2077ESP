@@ -1,0 +1,15 @@
+struct OutputPersistentData
+{
+	public    var currentSecurityState : ESecuritySystemState;
+	public    var breachOrigin : EBreachOrigin;
+	public    var securityStateChanged : Bool;
+	public    var lastKnownPosition : Vector4;
+	public    var type : ESecurityNotificationType;
+	public    var areaType : ESecurityAreaType;
+	public    var objectOfInterest : entEntityID;
+	public    var whoBreached : entEntityID;
+	public    var reporter : gamePersistentID;
+	public    var id : Int32;
+
+	static function IsValid(self : script_ref:OutputPersistentData) : Bool; // OutputPersistentData::IsValid;script_ref<OutputPersistentData>
+}

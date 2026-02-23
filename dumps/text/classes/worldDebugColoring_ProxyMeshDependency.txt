@@ -1,0 +1,14 @@
+import class worldDebugColoring_ProxyMeshDependency extends worldEditorDebugColoringSettings
+{
+	var noneColor : Color;
+	var hasProxyColor : Color;
+	var discardColor : Color;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

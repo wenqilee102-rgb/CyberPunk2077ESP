@@ -1,0 +1,1 @@
+{"a":"ObjectScanningDescription","b":"NPCScanningDescription","d":0,"e":[{"a":{"a":15},"b":"NPCGameplayDescription","c":134},{"a":{"a":31,"c":{"a":15}},"b":"NPCCustomDescriptions","c":134}],"f":[{"a":"GetCustomDesriptions;","b":"GetCustomDesriptions","c":{"a":31,"c":{"a":15}},"d":160},{"a":"GetGameplayDesription;","b":"GetGameplayDesription","c":{"a":15},"d":160}]}

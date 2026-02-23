@@ -1,0 +1,34 @@
+import class AIbehaviorDrivePanicTreeNodeDefinition extends AIbehaviorDriveTreeNodeDefinition
+{
+	var allowSimplifiedMovement : handle:AIArgumentMapping;
+	var ignoreTickets : handle:AIArgumentMapping;
+	var disableStuckDetection : handle:AIArgumentMapping;
+	var useSpeedBasedLookupRange : handle:AIArgumentMapping;
+	var tryDriveAwayFromPlayer : handle:AIArgumentMapping;
+	var needDriver : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDriveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

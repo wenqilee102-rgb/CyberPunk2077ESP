@@ -1,0 +1,9 @@
+import struct gameuiGenericNotificationSaveData extends gameuiBaseUIData
+{
+	var notificationsData : array:gameuiGenericNotificationData;
+}
+
+import struct abstract gameuiBaseUIData
+{
+	var id : Int64;
+}

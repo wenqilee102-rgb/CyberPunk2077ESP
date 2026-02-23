@@ -1,0 +1,31 @@
+import class gamedataSceneCameraDoF_Record extends gamedataTweakDBRecord
+{
+	import function DofFarBlur() : Float; // DofFarBlur
+	import function DofFarFocus() : Float; // DofFarFocus
+	import function DofIntensity() : Float; // DofIntensity
+	import function DofNearBlur() : Float; // DofNearBlur
+	import function DofNearFocus() : Float; // DofNearFocus
+	import function ProfileName() : CName; // ProfileName
+	import function UseFarPlane() : Bool; // UseFarPlane
+	import function UseNearPlane() : Bool; // UseNearPlane
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class gameEntityAppearanceColorVariantsArray extends ISerializable
+{
+	var appearanceName : CName;
+	var colorVariants : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"netEntityAttachmentInterface","b":"gamecarryReplicatedEntitySetAttachmentToEntity","d":8,"g":true,"e":[{"a":{"a":27,"c":{"b":"entEntity"}},"b":"entity","c":128},{"a":{"a":14},"b":"slot","c":128},{"a":{"b":"Transform"},"b":"localTransform","c":128}]}

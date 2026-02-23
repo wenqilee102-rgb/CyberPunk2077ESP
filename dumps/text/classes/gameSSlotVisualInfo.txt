@@ -1,0 +1,6 @@
+import struct gameSSlotVisualInfo
+{
+	var areaType : gamedataEquipmentArea;
+	var isHidden : Bool;
+	var visualItem : gameItemID;
+}

@@ -1,0 +1,8 @@
+struct NPCDebugInfo
+{
+	public    var spawnerID : entEntityID;
+	public    var communityName : CName;
+	public    var characterRecord : handle:gamedataCharacter_Record;
+
+	static function IsValid(self : NPCDebugInfo) : Bool; // NPCDebugInfo::IsValid;NPCDebugInfo
+}

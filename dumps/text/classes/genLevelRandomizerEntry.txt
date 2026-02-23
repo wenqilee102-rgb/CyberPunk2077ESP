@@ -1,0 +1,7 @@
+import struct genLevelRandomizerEntry
+{
+	var id : String;
+	var templateName : CName;
+	var spawnPos : NodeRef;
+	var probability : Float;
+}

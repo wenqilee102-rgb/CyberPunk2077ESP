@@ -1,0 +1,5 @@
+enum MessageHash
+{
+	Invalid = 0,
+	Fake = -1
+}

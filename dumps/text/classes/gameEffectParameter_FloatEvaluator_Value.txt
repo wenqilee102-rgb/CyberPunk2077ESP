@@ -1,0 +1,12 @@
+import class gameEffectParameter_FloatEvaluator_Value extends gameIEffectParameter_FloatEvaluator
+{
+	var value : Float;
+}
+
+import class abstract gameIEffectParameter_FloatEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

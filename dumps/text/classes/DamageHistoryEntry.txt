@@ -1,0 +1,10 @@
+struct DamageHistoryEntry
+{
+	public    var hitEvent : handle:gameeventsHitEvent;
+	public    var totalDamageReceived : Float;
+	public    var frameReceived : Uint64;
+	public    var timestamp : Float;
+	public    var healthAtTheTime : Float;
+	public    var source : whandle:gameObject;
+	public    var target : whandle:gameObject;
+}

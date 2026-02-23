@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloatValue","b":"animAnimNode_MultiBoolToFloatValue","d":8,"e":[{"a":{"a":1},"b":"allMustBeTrue","c":128},{"a":{"a":10},"b":"onTrue","c":128},{"a":{"a":10},"b":"onFalse","c":128},{"a":{"a":31,"c":{"b":"animAnimMultiBoolToFloatEntry"}},"b":"inputsData","c":128}]}

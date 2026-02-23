@@ -1,0 +1,1 @@
+{"b":"inkVideoSequenceEntry","d":8,"g":true,"e":[{"a":{"a":30,"c":{"b":"Bink"}},"b":"videoResource","c":128},{"a":{"a":14},"b":"audioEvent","c":128},{"a":{"a":1},"b":"syncToAudio","c":128},{"a":{"a":1},"b":"retriggerAudioOnLoop","c":128},{"a":{"a":1},"b":"loop","c":128}]}

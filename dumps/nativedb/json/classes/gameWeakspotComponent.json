@@ -1,0 +1,1 @@
+{"a":"entIComponent","b":"gameWeakspotComponent","c":"WeakspotComponent","d":24,"e":[{"a":{"b":"gameWeakspotPhysicalDestructionProperties"},"b":"defaultPhysicalDestructionProperties","c":128}],"f":[{"a":"GetWeakspots","d":132,"e":[{"a":{"a":31,"c":{"a":27,"c":{"b":"gameWeakspotObject"}}},"b":"outWeakspots","c":2}]}]}

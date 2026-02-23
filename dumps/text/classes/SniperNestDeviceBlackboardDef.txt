@@ -1,0 +1,27 @@
+class SniperNestDeviceBlackboardDef extends gamebbScriptDefinition
+{
+	public    var IsInTheSniperNest : gamebbScriptID_Bool;
+	public    var FastForwardToZoom4 : gamebbScriptID_Bool;
+	public    var SniperNestDefaultSpeedMultiplier : gamebbScriptID_Float;
+	public    var SniperNestZoomedSpeedMultiplier : gamebbScriptID_Float;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

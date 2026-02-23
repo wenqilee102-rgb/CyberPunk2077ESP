@@ -1,0 +1,4 @@
+import struct animPoseCorrectionGroup
+{
+	var poseCorrections : static:2,animPoseCorrection;
+}

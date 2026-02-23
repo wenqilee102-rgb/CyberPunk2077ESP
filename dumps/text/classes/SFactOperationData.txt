@@ -1,0 +1,6 @@
+struct SFactOperationData
+{
+	public    var factName : CName;
+	public    var factValue : Int32;
+	public    var operationType : EMathOperationType;
+}

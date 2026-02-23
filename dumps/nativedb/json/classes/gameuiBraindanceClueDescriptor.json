@@ -1,0 +1,1 @@
+{"b":"gameuiBraindanceClueDescriptor","c":"BraindanceClueDescriptor","d":8,"g":true,"e":[{"a":{"b":"gameuiEClueDescriptorMode"},"b":"mode","c":128},{"a":{"b":"gameuiEBraindanceLayer"},"b":"layer","c":128},{"a":{"a":10},"b":"startTime","c":128},{"a":{"a":10},"b":"endTime","c":128},{"a":{"a":14},"b":"clueName","c":128}]}

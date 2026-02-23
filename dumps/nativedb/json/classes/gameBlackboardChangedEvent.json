@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameBlackboardChangedEvent","c":"BlackboardChangedEvent","d":24,"e":[{"a":{"a":26,"c":{"b":"gamebbScriptDefinition"}},"b":"definition","c":128},{"a":{"b":"gamebbScriptID"},"b":"id","c":128}],"f":[{"a":"GetDefinition","c":{"a":26,"c":{"b":"gamebbScriptDefinition"}},"d":132},{"a":"GetID","c":{"b":"gamebbScriptID"},"d":132}]}

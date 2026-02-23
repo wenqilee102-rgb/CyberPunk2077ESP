@@ -1,0 +1,23 @@
+import class MorphTargetMesh extends resStreamedResource
+{
+	var baseMesh : rRef:CMesh;
+	var targets : array:MorphTargetMeshEntry;
+	var boundingBox : Box;
+	var baseTextureParamName : CName;
+	var blob : handle:IRenderResourceBlob;
+	var baseMeshAppearance : CName;
+	var baseTexture : rRef:ITexture;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

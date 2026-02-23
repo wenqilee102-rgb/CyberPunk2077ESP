@@ -1,0 +1,7 @@
+import struct locPackageLocalizationStringSerializer extends redPackageCustomTypeSerializer
+{
+}
+
+import struct abstract redPackageCustomTypeSerializer
+{
+}

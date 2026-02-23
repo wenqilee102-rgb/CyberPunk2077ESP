@@ -1,0 +1,20 @@
+class abstract QuestTypeIconUtils extends IScriptable
+{
+	static function GetFilterIcon(filterType : QuestListItemType) : CName; // QuestTypeIconUtils::GetFilterIcon;QuestListItemType
+	static function GetIcon(filterType : QuestListItemType) : CName; // QuestTypeIconUtils::GetIcon;QuestListItemType
+	static function GetIconState(filterType : QuestListItemType) : CName; // QuestTypeIconUtils::GetIconState;QuestListItemType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

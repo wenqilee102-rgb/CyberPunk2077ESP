@@ -1,0 +1,23 @@
+import class CEvaluatorVectorRandomUniform extends IEvaluatorVector
+{
+	var min : Vector4;
+	var max : Vector4;
+	var lockX : Bool;
+	var lockY : Bool;
+	var lockZ : Bool;
+	var lockW : Bool;
+}
+
+import class abstract IEvaluatorVector extends IEvaluator
+{
+	var freeAxes : EFreeVectorAxes;
+	var spill : Bool;
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

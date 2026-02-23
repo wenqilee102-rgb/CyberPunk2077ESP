@@ -1,0 +1,9 @@
+import class questTransferItems_NodeTypeParams_TransferAllOperationData extends ISerializable
+{
+	var itemIDsToIgnore : array:TweakDBID;
+	var tagsToIgnore : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

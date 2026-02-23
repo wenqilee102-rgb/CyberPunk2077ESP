@@ -1,0 +1,12 @@
+import class entHitRepresentationDataParameter extends entEntityParameter
+{
+	var hitRepresentationOverrides : array:gameHitRepresentationOverride;
+}
+
+import class abstract entEntityParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

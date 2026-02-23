@@ -1,0 +1,26 @@
+import class inkBaseWeakScriptableDataSource extends inkAbstractDataSourceWrapper
+{
+	import function GetItem(index : Uint32) : whandle:IScriptable; // GetItem
+	import function HasItem(data : whandle:IScriptable) : Bool; // HasItem
+}
+
+import class inkAbstractDataSourceWrapper extends IScriptable
+{
+	import function GetItemAsVariant(index : Uint32) : Variant; // GetItemAsVariant
+	import function HasItemAsVariant(data : Variant) : Bool; // HasItemAsVariant
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

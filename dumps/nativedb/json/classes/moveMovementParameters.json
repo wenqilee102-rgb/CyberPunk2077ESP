@@ -1,0 +1,1 @@
+{"b":"moveMovementParameters","c":"MovementParameters","d":8,"g":true,"e":[{"a":{"b":"moveMovementType"},"b":"type","c":128},{"a":{"a":10},"b":"maxSpeed","c":128},{"a":{"a":10},"b":"acceleration","c":128},{"a":{"a":10},"b":"deceleration","c":128},{"a":{"a":10},"b":"rotationSpeed","c":128}]}

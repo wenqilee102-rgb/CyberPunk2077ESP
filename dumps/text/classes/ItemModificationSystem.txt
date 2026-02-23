@@ -1,0 +1,59 @@
+class ItemModificationSystem extends gameScriptableSystem
+{
+	private   var blackboard : whandle:gameIBlackboard;
+	private   var CYBMETA1695 : Bool;
+
+	static function GetAllSlots(obj : handle:gameObject, item : gameItemID) : array:gameSPartSlots; // ItemModificationSystem::GetAllSlots;GameObjectItemID
+	static function GetAllSlotsFromItemData(itemData : whandle:gameItemData) : array:gameSPartSlots; // ItemModificationSystem::GetAllSlotsFromItemData;gameItemData
+	static function GetSlotsForCyberdeckFromItemData(itemData : whandle:gameItemData) : array:gameSPartSlots; // ItemModificationSystem::GetSlotsForCyberdeckFromItemData;gameItemData
+	static function GetattachementFromBlueprint(blueprintRecord : whandle:gamedataItemBlueprintElement_Record, out attachments : array:whandle:gamedataAttachmentSlot_Record); // ItemModificationSystem::GetattachementFromBlueprint;ItemBlueprintElement_Recordarray<AttachmentSlot_Record>
+	static function HasThisShardInstalled(obj : handle:gameObject, cyberdeckID : gameItemID, shardID : gameItemID) : Bool; // ItemModificationSystem::HasThisShardInstalled;GameObjectItemIDItemID
+	static function IsBasePart(obj : handle:gameObject, itemID : gameItemID, slotID : TweakDBID) : Bool; // ItemModificationSystem::IsBasePart;GameObjectItemIDTweakDBID
+	static function IsItemSlotTaken(obj : handle:gameObject, itemID : gameItemID, slotID : TweakDBID) : Bool; // ItemModificationSystem::IsItemSlotTaken;GameObjectItemIDTweakDBID
+
+	function CYBMETA1695(); // CYBMETA1695;
+	function InstallItemPart(obj : handle:gameObject, itemID : gameItemID, partItemID : gameItemID, optional slotID : TweakDBID) : Bool; // InstallItemPart;GameObjectItemIDItemIDTweakDBID
+	function OnAttach(); // OnAttach;
+	function OnInstallItemPart(request : handle:InstallItemPart); // OnInstallItemPart;InstallItemPart
+	function OnRemoveItemPart(request : handle:RemoveItemPart); // OnRemoveItemPart;RemoveItemPart
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSwapItemPart(request : handle:SwapItemPart); // OnSwapItemPart;SwapItemPart
+	function RemoveAllModsFromClothing(); // RemoveAllModsFromClothing;
+	function RemoveItemPart(obj : handle:gameObject, itemID : gameItemID, slotID : TweakDBID, shouldUpdateEntity : Bool) : gameItemID; // RemoveItemPart;GameObjectItemIDTweakDBIDBool
+	function RemoveOtherShards(obj : handle:gameObject, item : gameItemID, shardID : gameItemID); // RemoveOtherShards;GameObjectItemIDItemID
+	function RemovePartEquipGLPs(obj : whandle:gameObject, itemID : gameItemID); // RemovePartEquipGLPs;GameObjectItemID
+	function RemoveRedundantScopesFromAchillesRifles(items : array:whandle:gameItemData); // RemoveRedundantScopesFromAchillesRifles;array<gameItemData>
+	function SendCallback(); // SendCallback;
+	function SetPingTutorialFact(itemID : gameItemID, isUnequip : Bool, obj : handle:gameObject); // SetPingTutorialFact;ItemIDBoolGameObject
+	function SwapItemPart(obj : handle:gameObject, itemID : gameItemID, partItemID : gameItemID, slotID : TweakDBID) : Bool; // SwapItemPart;GameObjectItemIDItemIDTweakDBID
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

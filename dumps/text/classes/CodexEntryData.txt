@@ -1,0 +1,35 @@
+class CodexEntryData extends GenericCodexEntryData
+{
+	public    var category : Int32;
+	public    var imageType : CodexImageType;
+}
+
+class GenericCodexEntryData extends IScriptable
+{
+	public    var hash : Int32;
+	public    var title : String;
+	public    var description : String;
+	public    var journalEntryOverrideDataList : array:handle:gameJournalEntryOverrideData;
+	public    var imageId : TweakDBID;
+	public    var counter : Int32;
+	public    var timeStamp : GameTime;
+	public    var isNew : Bool;
+	public    var isEp1 : Bool;
+	public    var newEntries : array:Int32;
+	public    var itemID : gameItemID;
+	public    var activeDataSync : whandle:CodexListSyncData;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

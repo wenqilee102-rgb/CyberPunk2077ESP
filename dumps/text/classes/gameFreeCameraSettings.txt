@@ -1,0 +1,16 @@
+import struct gameFreeCameraSettings
+{
+	var movPrecision : Float;
+	var rotPrecision : Float;
+	var roll : Float;
+	var fov : Float;
+	var dofIntensity : Float;
+	var dofNearBlur : Float;
+	var dofNearFocus : Float;
+	var dofFarBlur : Float;
+	var dofFarFocus : Float;
+	var iso : Int32;
+	var shutter : Float;
+	var aperture : Float;
+	var lights : array:gameFreeCameraLightSettings;
+}

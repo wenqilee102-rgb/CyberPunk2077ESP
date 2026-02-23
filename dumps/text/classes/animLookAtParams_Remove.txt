@@ -1,0 +1,7 @@
+import class animLookAtParams_Remove extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

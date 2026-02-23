@@ -1,0 +1,7 @@
+import struct interopRTTIClassDumpEntry
+{
+	var i : Int32;
+	var b : Int32;
+	var r : Int32;
+	var a : Int32;
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"QuestSecuritySystemInput","d":4,"e":[{"a":{"b":"SecurityEventScopeSettings"},"b":"notificationScope","c":128},{"a":{"a":31,"c":{"b":"NPCReference"}},"b":"notifySpecificNPCs","c":128},{"a":{"b":"RevealPlayerSettings"},"b":"revealPlayerSettings","c":128}]}

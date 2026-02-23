@@ -1,0 +1,14 @@
+import class worldEnvironmentAreaParameters extends CResource
+{
+	var renderAreaSettings : WorldRenderAreaSettings;
+	var resourceVersion : Uint8;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

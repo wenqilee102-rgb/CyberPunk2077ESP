@@ -1,0 +1,5 @@
+import struct audioVisualTagToFoleyLoopMetadata
+{
+	var visualtags : array:CName;
+	var loop : audioFoleyLoopMetadata;
+}

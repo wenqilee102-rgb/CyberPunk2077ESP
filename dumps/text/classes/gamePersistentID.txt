@@ -1,0 +1,14 @@
+import struct gamePersistentID
+{
+	var entityHash : Uint64;
+	var componentName : CName;
+
+	import static function ExtractEntityID(id : gamePersistentID) : entEntityID; // ExtractEntityID
+	import static function GetComponentName(id : gamePersistentID) : CName; // GetComponentName
+	import static function IsComponent(id : gamePersistentID) : Bool; // IsComponent
+	import static function IsDefined(id : gamePersistentID) : Bool; // IsDefined
+	import static function IsDynamic(id : gamePersistentID) : Bool; // IsDynamic
+	import static function IsEntity(id : gamePersistentID) : Bool; // IsEntity
+	import static function IsStatic(id : gamePersistentID) : Bool; // IsStatic
+	import static function ToDebugString(id : gamePersistentID) : String; // ToDebugString
+}

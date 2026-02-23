@@ -1,0 +1,40 @@
+import struct toolsJiraIssueFields
+{
+	var project : toolsJiraProject;
+	var status : toolsJiraStatus;
+	var resolution : toolsJiraResolution;
+	var summary : String;
+	var issuetype : toolsJiraIssueType;
+	var priority : toolsJiraPriority;
+	var labels : array:String;
+	var assignee : toolsJiraCustomFieldName;
+	var description : String;
+	var versions : array:toolsJiraCustomFieldId;
+	var fixVersions : array:toolsJiraFixVersion;
+	var flagPosition : String;
+	var components : array:toolsJiraCustomFieldName;
+	var attachment : array:toolsJiraAttachment;
+	var customfield_17400 : toolsJiraCustomFieldId;
+	var customfield_18373 : String;
+	var customfield_34100 : toolsJiraCustomFieldValue;
+	var customfield_15306 : array:toolsJiraCustomFieldValue;
+	var customfield_13009 : String;
+	var customfield_10013 : String;
+	var customfield_10503 : String;
+	var customfield_10502 : String;
+	var customfield_34718 : array:toolsJiraCustomFieldValue;
+	var customfield_36106 : array:toolsJiraCustomFieldValue;
+	var customfield_10006 : String;
+	var customfield_10505 : toolsJiraCustomFieldValue;
+	var customfield_10603 : array:toolsJiraCustomFieldValue;
+	var customfield_24700 : String;
+	var customfield_34706 : array:toolsJiraCustomFieldValue;
+	var customfield_25500 : toolsJiraCustomFieldValue;
+	var customfield_15808 : array:toolsJiraCustomFieldValue;
+	var customfield_33701 : String;
+	var customfield_18006 : String;
+	var customfield_29900 : toolsJiraCustomFieldValue;
+	var customfield_10005 : String;
+	var customfield_10606 : String;
+	var customfield_31700 : String;
+}

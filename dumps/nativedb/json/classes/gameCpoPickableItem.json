@@ -1,0 +1,1 @@
+{"a":"gameObject","b":"gameCpoPickableItem","d":8,"e":[{"a":{"a":15},"b":"itemIDToEquip","c":128},{"a":{"a":6},"b":"quickSlotID","c":128}],"f":[{"a":"EquipItem","d":4,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"puppet","c":0}]},{"a":"GetItemIDToEquip","c":{"b":"gameItemID"},"d":4}]}

@@ -1,0 +1,33 @@
+import class gamedataAIPatternsPackage_Record extends gamedataTweakDBRecord
+{
+	import function ActivationConditions(out outList : array:whandle:gamedataAIActionCondition_Record); // ActivationConditions
+	import function ActivationConditionsContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // ActivationConditionsContains
+	import function GetActivationConditionsCount() : Int32; // GetActivationConditionsCount
+	import function GetActivationConditionsItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetActivationConditionsItem
+	import function GetActivationConditionsItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetActivationConditionsItemHandle
+	import function GetPatternsCount() : Int32; // GetPatternsCount
+	import function GetPatternsItem(index : Int32) : whandle:gamedataAIPattern_Record; // GetPatternsItem
+	import function GetPatternsItemHandle(index : Int32) : handle:gamedataAIPattern_Record; // GetPatternsItemHandle
+	import function Patterns(out outList : array:whandle:gamedataAIPattern_Record); // Patterns
+	import function PatternsContains(item : whandle:gamedataAIPattern_Record) : Bool; // PatternsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct questdbgCallstackData
+{
+	var resourceHash : Uint64;
+	var phases : array:questdbgCallstackPhase;
+	var blocks : array:questdbgCallstackBlock;
+	var executed : array:Uint64;
+	var executedHistory : array:Uint64;
+	var failed : array:Uint64;
+	var callstackRevision : Uint32;
+}

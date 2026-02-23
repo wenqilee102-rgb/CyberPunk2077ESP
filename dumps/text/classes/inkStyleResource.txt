@@ -1,0 +1,17 @@
+import class inkStyleResource extends CResource
+{
+	var styles : array:inkStyle;
+	var styleImports : array:rRef:inkStyleResource;
+	var themes : array:inkStyleTheme;
+	var overrides : array:inkStyleOverride;
+	var hideInInheritingStyles : Bool;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

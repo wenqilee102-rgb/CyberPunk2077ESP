@@ -1,0 +1,8 @@
+import class ParticleDamage extends ISerializable
+{
+	var boundingBoxes : array:Box;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,37 @@
+import class gameDebugVisualizerSystem extends gameIDebugVisualizerSystem
+{
+	import function ClearAll(); // ClearAll
+	import function ClearLayer(layerId : Uint32); // ClearLayer
+	import function DrawArrow(start : Vector4, end : Vector4, optional color : Color, optional lifetime : Float) : Uint32; // DrawArrow
+	import function DrawLine(start : Vector4, end : Vector4, optional color : Color, optional lifetime : Float) : Uint32; // DrawLine
+	import function DrawLine3D(start : Vector4, end : Vector4, optional color : Color, optional lifetime : Float) : Uint32; // DrawLine3D
+	import function DrawRect(position : Vector4, size : Vector4, optional color : Color, optional lifetime : Float) : Uint32; // DrawRect
+	import function DrawText(position : Vector4, text : String, optional textAlignment : gameDebugViewETextAlignment, optional color : Color, optional lifetime : Float) : Uint32; // DrawText
+	import function DrawText3D(position : Vector4, text : String, optional color : Color, optional lifetime : Float) : Uint32; // DrawText3D
+	import function DrawWireBox(boxMin : Vector4, boxMax : Vector4, optional color : Color, optional lifetime : Float) : Uint32; // DrawWireBox
+	import function DrawWireSphere(position : Vector4, radius : Float, optional color : Color, optional lifetime : Float) : Uint32; // DrawWireSphere
+	import function SetPosition(layerId : Uint32, position : Vector4); // SetPosition
+	import function SetScale(layerId : Uint32, scale : Vector4); // SetScale
+}
+
+import class abstract gameIDebugVisualizerSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

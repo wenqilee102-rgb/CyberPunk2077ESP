@@ -1,0 +1,6 @@
+import struct gameuiPhoneElementVisibility
+{
+	var tierVisibility : worlduiContextVisibility;
+	var gameContextVisibility : gameuiContext;
+	var slot : inkCompoundWidgetReference;
+}

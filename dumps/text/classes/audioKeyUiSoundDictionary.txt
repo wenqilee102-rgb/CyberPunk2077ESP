@@ -1,0 +1,18 @@
+import class audioKeyUiSoundDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioKeyUiSoundPairDictionaryItem;
+	var entryType : handle:audioKeyUiSoundPairDictionaryItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

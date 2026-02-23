@@ -1,0 +1,4 @@
+import struct scnSceneTime
+{
+	var stu : Uint32;
+}

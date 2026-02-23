@@ -1,0 +1,12 @@
+import class gameinteractionsAlwaysSamePredicate extends gameinteractionsIPredicateType
+{
+	var priority : Float;
+}
+
+import class abstract gameinteractionsIPredicateType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

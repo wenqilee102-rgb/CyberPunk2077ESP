@@ -1,0 +1,11 @@
+struct WeaponVendingMachineSFX extends VendingMachineSFX
+{
+	public    var processing : CName;
+	public    var gunFalls : CName;
+}
+
+struct VendingMachineSFX
+{
+	public    var glitchingStart : CName;
+	public    var glitchingStop : CName;
+}

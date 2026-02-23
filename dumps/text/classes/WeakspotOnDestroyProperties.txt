@@ -1,0 +1,22 @@
+struct WeakspotOnDestroyProperties
+{
+	public    var isInternal : Bool;
+	public    var disableInteraction : Bool;
+	public    var destroyMesh : Bool;
+	public    var disableCollider : Bool;
+	public    var hideMeshParameterValue : CName;
+	public    var playHitFxFromOwnerEntity : Bool;
+	public    var playDestroyedFxFromOwnerEntity : Bool;
+	public    var playBrokenFxFromOwnerEntity : Bool;
+	public    var addFact : CName;
+	public    var sendAIActionAnimFeatureName : CName;
+	public    var sendAIActionAnimFeatureState : Int32;
+	public    var destroyDelay : Float;
+	public    var useWeakspotDestroyStageVFX : Bool;
+	public    var DamageOwnerOnDestroy : Float;
+	public    var customHitSFx : CName;
+	public    var customDestroySFx : CName;
+	public    var attackRecordID : TweakDBID;
+	public    var StatusEffectOnDestroyID : TweakDBID;
+	public    var physicalDestructionComponents : array:gameWeakspotPhysicalDestructionComponent;
+}

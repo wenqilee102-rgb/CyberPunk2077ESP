@@ -1,0 +1,7 @@
+import struct abstract inputInputSystemWin32Base extends inputIInputSystem
+{
+}
+
+import struct abstract inputIInputSystem
+{
+}

@@ -1,0 +1,7 @@
+import struct questCustomQuestNotificationData
+{
+	var header : String;
+	var desc : String;
+	var icon : CName;
+	var fluffHeader : String;
+}

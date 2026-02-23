@@ -1,0 +1,27 @@
+class DelayedJournalUpdate extends redEvent
+{
+	public    var newMessageSpawned : Bool;
+	public    var typing : Bool;
+	public    var delay : Float;
+	public    var entryHash : Uint32;
+	public    var conversationHash : Int32;
+	public    var contactHash : Int32;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

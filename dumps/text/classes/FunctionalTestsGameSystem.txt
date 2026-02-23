@@ -1,0 +1,86 @@
+import class FunctionalTestsGameSystem extends FunctionalTestsIGameSystem
+{
+	import static function GetLocalizationStringByKey(); // GetLocalizationStringByKey
+
+	import function ActivateSpawner(); // ActivateSpawner
+	import function CheckCurrentAnimation(); // CheckCurrentAnimation
+	import function CheckCurrentAnimations(); // CheckCurrentAnimations
+	import function CheckSessionLoaded(); // CheckSessionLoaded
+	import function ClearQuestArrays(); // ClearQuestArrays
+	import function ClearSingleQuest(); // ClearSingleQuest
+	import function DeactivateSpawner(); // DeactivateSpawner
+	import function DespawnEntityByID(); // DespawnEntityByID
+	import function DisableAutoMemoryDump(); // DisableAutoMemoryDump
+	import function DumpMemoryReport(); // DumpMemoryReport
+	import function ExecuteDebugCommand(); // ExecuteDebugCommand
+	import function FakeInputAxisAction(); // FakeInputAxisAction
+	import function FakeInputClickAction(); // FakeInputClickAction
+	import function FakeInputHoldAction(); // FakeInputHoldAction
+	import function FakeInputMultitapAction(); // FakeInputMultitapAction
+	import function FakeInputPressAction(); // FakeInputPressAction
+	import function FakeInputReleaseAction(); // FakeInputReleaseAction
+	import function FakeInputReleaseAxisAction(); // FakeInputReleaseAxisAction
+	import function FakePressButton(); // FakePressButton
+	import function FakeReleaseButton(); // FakeReleaseButton
+	import function FakeSetAxis(); // FakeSetAxis
+	import function GetAnyEntityFromSpawner(); // GetAnyEntityFromSpawner
+	import function GetAxisDeadzoneInner(); // GetAxisDeadzoneInner
+	import function GetAxisDeadzoneOuter(); // GetAxisDeadzoneOuter
+	import function GetBasicCrowdInfo(); // GetBasicCrowdInfo
+	import function GetBoneWorldTransform(); // GetBoneWorldTransform
+	import function GetConfigVar(); // GetConfigVar
+	import function GetCrowdStubsEntitiesIDs(); // GetCrowdStubsEntitiesIDs
+	import function GetCurrentTargetPosition(); // GetCurrentTargetPosition
+	import function GetDebugCameraWorldTransform(); // GetDebugCameraWorldTransform
+	import function GetEntitiesFromSpawner(); // GetEntitiesFromSpawner
+	import function GetEntityByTag(); // GetEntityByTag
+	import function GetEntityComponent(); // GetEntityComponent
+	import function GetEntityIDsFromSpawner(); // GetEntityIDsFromSpawner
+	import function GetLastSaveName(); // GetLastSaveName
+	import function GetLastSpawnedEntityID(); // GetLastSpawnedEntityID
+	import function GetNodeEntityByGlobalName(); // GetNodeEntityByGlobalName
+	import function GetPeerID(); // GetPeerID
+	import function GetPlayerControlledObject(); // GetPlayerControlledObject
+	import function GetPlayerOrientation(); // GetPlayerOrientation
+	import function GetPlayerPosition(); // GetPlayerPosition
+	import function GetSceneEntity(); // GetSceneEntity
+	import function GetSceneEntityID(); // GetSceneEntityID
+	import function GetStaticMarkerWorldMatrix(); // GetStaticMarkerWorldMatrix
+	import function IsQuestBlockFinished(); // IsQuestBlockFinished
+	import function IsQuestBlockStarted(); // IsQuestBlockStarted
+	import function IsSpawnerActive(); // IsSpawnerActive
+	import function IsStreaming(); // IsStreaming
+	import function IsStreamingTestFinished(); // IsStreamingTestFinished
+	import function LookAtPosition(); // LookAtPosition
+	import function NavigateFlatTowards(); // NavigateFlatTowards
+	import function NotifyReachedCurrentDestination(); // NotifyReachedCurrentDestination
+	import function ReleaseAllInput(); // ReleaseAllInput
+	import function RequestAutoSave(); // RequestAutoSave
+	import function SetConfigVar(); // SetConfigVar
+	import function SetCurrentTargetPosition(); // SetCurrentTargetPosition
+	import function SpawnEntity(); // SpawnEntity
+	import function TakeOverInput(); // TakeOverInput
+	import function TeleportPlayer(); // TeleportPlayer
+}
+
+import class abstract FunctionalTestsIGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+import class gamedataChannelData_Record extends gamedataTweakDBRecord
+{
+	import function AudioEvent() : CName; // AudioEvent
+	import function ChannelWidget() : CName; // ChannelWidget
+	import function DynamicTexturePath() : String; // DynamicTexturePath
+	import function LocalizedName() : String; // LocalizedName
+	import function OrderID() : Int32; // OrderID
+	import function OverlayWidgetPath() : String; // OverlayWidgetPath
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameAnimationTransforms
+{
+	var extractedMotion : array:Transform;
+	var gatePosition : Transform;
+	var boneOffset : Transform;
+	var animsetHash : Uint64;
+}

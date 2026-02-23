@@ -1,0 +1,4 @@
+import struct Sample_Replicated_String_Property
+{
+	var property : String;
+}

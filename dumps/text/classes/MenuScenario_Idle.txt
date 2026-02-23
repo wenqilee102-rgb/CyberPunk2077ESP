@@ -1,0 +1,43 @@
+class MenuScenario_Idle extends inkMenuScenario
+{
+	event OnArcadeMinigameBegin(userData : handle:IScriptable) : Bool; // OnArcadeMinigameBegin
+	event OnBlockHub() : Bool; // OnBlockHub
+	event OnEnterScenario(prevScenario : CName, userData : handle:IScriptable) : Bool; // OnEnterScenario
+	event OnLeaveScenario(nextScenario : CName) : Bool; // OnLeaveScenario
+	event OnNetworkBreachBegin() : Bool; // OnNetworkBreachBegin
+	event OnOpenDelamainTaxiMap() : Bool; // OnOpenDelamainTaxiMap
+	event OnOpenFastTravel() : Bool; // OnOpenFastTravel
+	event OnOpenHubMenu() : Bool; // OnOpenHubMenu
+	event OnOpenHubMenu_InitData(userData : handle:IScriptable) : Bool; // OnOpenHubMenu_InitData
+	event OnOpenPauseMenu() : Bool; // OnOpenPauseMenu
+	event OnOpenRadialHubMenu() : Bool; // OnOpenRadialHubMenu
+	event OnOpenRadialHubMenu_InitData(userData : handle:IScriptable) : Bool; // OnOpenRadialHubMenu_InitData
+	event OnOpenTimeSkip() : Bool; // OnOpenTimeSkip
+	event OnOpenWardrobeMenu(userData : handle:IScriptable) : Bool; // OnOpenWardrobeMenu
+	event OnShowDeathMenu() : Bool; // OnShowDeathMenu
+	event OnShowStorageMenu() : Bool; // OnShowStorageMenu
+	event OnUnlockHub() : Bool; // OnUnlockHub
+}
+
+import class inkMenuScenario extends IScriptable
+{
+	import function GetMenusState() : whandle:inkMenusState; // GetMenusState
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function SwitchToScenario(name : CName, optional userData : handle:IScriptable); // SwitchToScenario
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

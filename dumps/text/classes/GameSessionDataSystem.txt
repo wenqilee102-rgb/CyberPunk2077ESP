@@ -1,0 +1,46 @@
+class GameSessionDataSystem extends gameScriptableSystem
+{
+	private   var gameSessionDataModules : array:handle:GameSessionDataModule;
+
+	static function AddDataEntryRequest(context : ScriptGameInstance, dataType : EGameSessionDataType, data : Variant); // GameSessionDataSystem::AddDataEntryRequest;GameInstanceEGameSessionDataTypeVariant
+	static function CheckDataRequest(context : ScriptGameInstance, dataType : EGameSessionDataType, dataHelper : Variant) : Bool; // GameSessionDataSystem::CheckDataRequest;GameInstanceEGameSessionDataTypeVariant
+
+	function GetModule(dataType : EGameSessionDataType) : handle:GameSessionDataModule; // GetModule;EGameSessionDataType
+	function Initialize(); // Initialize;
+	function IsDataValid(dataType : EGameSessionDataType, data : Variant) : Bool; // IsDataValid;EGameSessionDataTypeVariant
+	function OnAttach(); // OnAttach;
+	function OnDataEntryRequest(request : handle:DataEntryRequest); // OnDataEntryRequest;DataEntryRequest
+	function OnDetach(); // OnDetach;
+	function RefreshDebug(); // RefreshDebug;
+	function Uninitialize(); // Uninitialize;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+import class AIbehaviorTrackPatrolProgressNodeDefinition extends AIbehaviorDecoratorNodeDefinition
+{
+	var pathParameters : handle:AIArgumentMapping;
+	var patrolProgress : handle:AIArgumentMapping;
+	var startFromClosestPoint : handle:AIArgumentMapping;
+	var patrolContinuationPolicy : handle:AIArgumentMapping;
+	var teleportPositionAfterTimeSkipping : handle:AIArgumentMapping;
+	var teleportRotationAfterTimeSkipping : handle:AIArgumentMapping;
+	var handleTeleportRequest : handle:AIArgumentMapping;
+	var fastForwardAfterTeleport : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDecoratorNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var child : handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

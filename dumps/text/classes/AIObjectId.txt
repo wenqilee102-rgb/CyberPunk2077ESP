@@ -1,0 +1,4 @@
+import struct AIObjectId
+{
+	var value : Uint64;
+}

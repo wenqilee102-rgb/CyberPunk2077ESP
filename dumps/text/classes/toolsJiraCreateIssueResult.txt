@@ -1,0 +1,11 @@
+import class toolsJiraCreateIssueResult extends ISerializable
+{
+	var id : String;
+	var key : String;
+	var errorMessages : array:String;
+	var errors : toolsJiraIssueFieldsResult;
+}
+
+import class abstract ISerializable
+{
+}

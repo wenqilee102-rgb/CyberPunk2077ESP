@@ -1,0 +1,14 @@
+import struct gamedeviceDataElement
+{
+	var owner : String;
+	var date : String;
+	var title : String;
+	var content : String;
+	var videoPath : redResourceReferenceScriptToken;
+	var journalPath : handle:gameJournalPath;
+	var documentName : CName;
+	var questInfo : gamedeviceQuestInfo;
+	var isEncrypted : Bool;
+	var wasRead : Bool;
+	var isEnabled : Bool;
+}

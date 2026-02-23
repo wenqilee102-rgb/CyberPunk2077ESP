@@ -1,0 +1,25 @@
+struct SDeviceActionBoolData extends SDeviceActionData
+{
+	public    var nameOnTrueRecord : TweakDBID;
+	public    var nameOnTrue : String;
+	public    var nameOnFalseRecord : TweakDBID;
+	public    var nameOnFalse : String;
+
+	static function GetCurrentDisplayName(self : script_ref:SDeviceActionBoolData) : String; // SDeviceActionBoolData::GetCurrentDisplayName;script_ref<SDeviceActionBoolData>
+}
+
+struct SDeviceActionData
+{
+	public    var hasInteraction : Bool;
+	public    var hasUI : Bool;
+	public    var isQuickHack : Bool;
+	public    var isSpiderbotAction : Bool;
+	public    var spiderbotLocationOverrideReference : NodeRef;
+	public    var attachedToSkillCheck : EDeviceChallengeSkill;
+	public    var widgetRecord : TweakDBID;
+	public    var objectActionRecord : TweakDBID;
+	public    var currentDisplayName : CName;
+	public    var interactionRecord : String;
+
+	static function GetCurrentDisplayName(self : script_ref:SDeviceActionData) : String; // SDeviceActionData::GetCurrentDisplayName;script_ref<SDeviceActionData>
+}

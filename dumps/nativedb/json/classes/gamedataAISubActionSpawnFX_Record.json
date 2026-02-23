@@ -1,0 +1,1 @@
+{"a":"gamedataAISubAction_Record","b":"gamedataAISubActionSpawnFX_Record","c":"AISubActionSpawnFX_Record","d":24,"f":[{"a":"AttachmentSlot","c":{"a":27,"c":{"b":"gamedataAttachmentSlot_Record"}},"d":4},{"a":"AttachmentSlotHandle","c":{"a":26,"c":{"b":"gamedataAttachmentSlot_Record"}},"d":4},{"a":"Delay","c":{"a":10},"d":4},{"a":"Name","c":{"a":14},"d":4}]}

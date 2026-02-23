@@ -1,0 +1,14 @@
+import class worldNavigationNode extends worldNode
+{
+	var navigationTileResource : raRef:worldNavigationTileResource;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

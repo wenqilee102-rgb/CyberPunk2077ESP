@@ -1,0 +1,14 @@
+import class AIbehaviorPassiveSignalConditionDefinition extends AIbehaviorPassiveConditionDefinition
+{
+	var tag : CName;
+	var deactivateSignal : Bool;
+}
+
+import class abstract AIbehaviorPassiveConditionDefinition extends ISerializable
+{
+	var invert : Bool;
+}
+
+import class abstract ISerializable
+{
+}

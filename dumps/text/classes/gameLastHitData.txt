@@ -1,0 +1,6 @@
+import struct gameLastHitData
+{
+	var targetEntityId : entEntityID;
+	var hitType : Uint32;
+	var hitShapes : array:CName;
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"SetApartmentScreenMessageEvent","d":0,"e":[{"a":{"a":15},"b":"messageRecordID","c":128},{"a":{"b":"ERentStatus"},"b":"targetRentStatus","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

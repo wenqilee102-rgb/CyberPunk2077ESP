@@ -1,0 +1,7 @@
+struct SStatusEffectOperationData
+{
+	public    var range : Float;
+	public    var duration : Float;
+	public    var offset : Vector4;
+	public    var effect : gameStatusEffectTDBPicker;
+}

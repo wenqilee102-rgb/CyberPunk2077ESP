@@ -1,0 +1,14 @@
+import class worldWeatherState extends ISerializable
+{
+	var minDuration : curveData:Float;
+	var maxDuration : curveData:Float;
+	var environmentAreaParameters : rRef:worldEnvironmentAreaParameters;
+	var effect : raRef:worldEffect;
+	var name : CName;
+	var probability : curveData:Float;
+	var transitionDuration : curveData:Float;
+}
+
+import class abstract ISerializable
+{
+}

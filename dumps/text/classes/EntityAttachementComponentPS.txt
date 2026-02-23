@@ -1,0 +1,38 @@
+class EntityAttachementComponentPS extends gameComponentPS
+{
+	private   var pendingChildAttachements : array:EntityAttachementData;
+
+	function AddPendingChildAttachementRequest(data : script_ref:EntityAttachementData); // AddPendingChildAttachementRequest;script_ref<EntityAttachementData>
+	function ClearPendingChildAttachementRequests(); // ClearPendingChildAttachementRequests;
+	function GetMyEntityID() : entEntityID; // GetMyEntityID;
+	function GetOwnerEntityWeak() : whandle:entEntity; // GetOwnerEntityWeak;
+	function GetPendingChildAttachementsData() : array:EntityAttachementData; // GetPendingChildAttachementsData;
+	function HasPendingChildAttachementRequest(data : script_ref:EntityAttachementData) : Bool; // HasPendingChildAttachementRequest;script_ref<EntityAttachementData>
+	function OnChildAttachementRequest(evt : handle:EntityAttachementRequestEvent) : EntityNotificationType; // OnChildAttachementRequest;EntityAttachementRequestEvent
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

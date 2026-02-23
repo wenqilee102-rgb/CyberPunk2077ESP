@@ -1,0 +1,5 @@
+struct SPlayerCooldown
+{
+	public    var effectID : TweakDBID;
+	public    var instigatorID : TweakDBID;
+}

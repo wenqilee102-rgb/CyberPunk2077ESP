@@ -1,0 +1,5 @@
+enum audioEntityEmitterContextType
+{
+	Entity Emitter = 0,
+	Radio Emitter = 2
+}

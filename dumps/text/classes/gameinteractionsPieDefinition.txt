@@ -1,0 +1,16 @@
+import class gameinteractionsPieDefinition extends gameinteractionsIShapeDefinition
+{
+	var center : Vector4;
+	var baseLength : Float;
+	var halfExtentZ : Float;
+	var radius : Float;
+	var angle : Float;
+}
+
+import class abstract gameinteractionsIShapeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

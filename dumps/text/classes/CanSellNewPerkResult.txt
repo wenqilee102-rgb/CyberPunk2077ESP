@@ -1,0 +1,7 @@
+struct CanSellNewPerkResult
+{
+	public    var success : Bool;
+	public    var title : String;
+	public    var message : String;
+	public    var perkType : gamedataNewPerkType;
+}

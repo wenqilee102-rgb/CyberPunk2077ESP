@@ -1,0 +1,23 @@
+class abstract AISubActionForceUnequip_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceUnequip_Record); // AISubActionForceUnequip_Record_Implementation::Activate;ScriptExecutionContextAISubActionForceUnequip_Record
+	static function ApplyAnimFeature(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceUnequip_Record); // AISubActionForceUnequip_Record_Implementation::ApplyAnimFeature;ScriptExecutionContextAISubActionForceUnequip_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceUnequip_Record, duration : Float, interrupted : Bool); // AISubActionForceUnequip_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionForceUnequip_RecordFloatBool
+	static function Drop(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceUnequip_Record) : Bool; // AISubActionForceUnequip_Record_Implementation::Drop;ScriptExecutionContextAISubActionForceUnequip_Record
+	static function Unequip(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceUnequip_Record) : Bool; // AISubActionForceUnequip_Record_Implementation::Unequip;ScriptExecutionContextAISubActionForceUnequip_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceUnequip_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionForceUnequip_Record_Implementation::Update;ScriptExecutionContextAISubActionForceUnequip_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

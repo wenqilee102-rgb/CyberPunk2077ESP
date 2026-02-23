@@ -1,0 +1,15 @@
+import class worldDebugColoring_TrianglesPerMesh extends worldEditorDebugColoringSettings
+{
+	var maxColor : Color;
+	var minColor : Color;
+	var minCount : Uint32;
+	var maxCount : Uint32;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

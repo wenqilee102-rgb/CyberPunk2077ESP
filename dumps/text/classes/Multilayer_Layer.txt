@@ -1,0 +1,21 @@
+import struct Multilayer_Layer
+{
+	var matTile : Float;
+	var mbTile : Float;
+	var microblend : rRef:CBitmapTexture;
+	var microblendContrast : Float;
+	var microblendNormalStrength : Float;
+	var microblendOffsetU : Float;
+	var microblendOffsetV : Float;
+	var opacity : Float;
+	var offsetU : Float;
+	var offsetV : Float;
+	var material : rRef:Multilayer_LayerTemplate;
+	var colorScale : CName;
+	var normalStrength : CName;
+	var roughLevelsIn : CName;
+	var roughLevelsOut : CName;
+	var metalLevelsIn : CName;
+	var metalLevelsOut : CName;
+	var overrides : CName;
+}

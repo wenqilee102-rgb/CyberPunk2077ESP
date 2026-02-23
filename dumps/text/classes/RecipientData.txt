@@ -1,0 +1,5 @@
+struct RecipientData
+{
+	public    var fuseID : Int32;
+	public    var entryID : Int32;
+}

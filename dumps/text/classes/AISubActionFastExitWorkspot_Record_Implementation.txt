@@ -1,0 +1,21 @@
+class abstract AISubActionFastExitWorkspot_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFastExitWorkspot_Record); // AISubActionFastExitWorkspot_Record_Implementation::Activate;ScriptExecutionContextAISubActionFastExitWorkspot_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFastExitWorkspot_Record, duration : Float, interrupted : Bool); // AISubActionFastExitWorkspot_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionFastExitWorkspot_RecordFloatBool
+	static function ExitWorkspot(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFastExitWorkspot_Record); // AISubActionFastExitWorkspot_Record_Implementation::ExitWorkspot;ScriptExecutionContextAISubActionFastExitWorkspot_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFastExitWorkspot_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionFastExitWorkspot_Record_Implementation::Update;ScriptExecutionContextAISubActionFastExitWorkspot_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

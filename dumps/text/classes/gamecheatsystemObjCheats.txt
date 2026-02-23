@@ -1,0 +1,5 @@
+import struct gamecheatsystemObjCheats
+{
+	var object : whandle:gameObject;
+	var flags : Int32;
+}

@@ -1,0 +1,5 @@
+import struct interopNodeTransformInfo
+{
+	var id : interopStringWithID;
+	var transformInfo : interopTransformInfo;
+}

@@ -1,0 +1,4 @@
+import struct toolsJiraIssueTransition
+{
+	var id : String;
+}

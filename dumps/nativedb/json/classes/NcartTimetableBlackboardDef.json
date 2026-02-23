@@ -1,0 +1,1 @@
+{"a":"DeviceBaseBlackboardDef","b":"NcartTimetableBlackboardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Int32"},"b":"TimeToDepart","c":128},{"a":{"b":"gamebbScriptID_Int32"},"b":"NextTrainLine","c":128}]}

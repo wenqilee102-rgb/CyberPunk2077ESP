@@ -1,0 +1,29 @@
+class PulseAnimation extends IScriptable
+{
+	public    var root : whandle:inkWidget;
+	public    var anim : handle:inkanimProxy;
+	public    var top : Float;
+	public    var bot : Float;
+	public    var time : Float;
+	public    var delay : Float;
+
+	function Configure(root : whandle:inkWidget, topOpacity : Float, bottomOpacity : Float, pulseRate : Float, optional delay : Float); // Configure;inkWidgetFloatFloatFloatFloat
+	function Configure(root : whandle:inkWidget, params : PulseAnimationParams); // Configure;inkWidgetPulseAnimationParams
+	function ForceStop(); // ForceStop;
+	function Start(optional singleLoop : Bool); // Start;Bool
+	function Stop(); // Stop;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

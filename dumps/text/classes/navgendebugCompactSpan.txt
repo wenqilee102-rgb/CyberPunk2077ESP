@@ -1,0 +1,4 @@
+import struct navgendebugCompactSpan
+{
+	var spanData : Uint32;
+}

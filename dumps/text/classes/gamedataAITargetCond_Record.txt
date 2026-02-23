@@ -1,0 +1,42 @@
+import class gamedataAITargetCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function Attitude() : Int32; // Attitude
+	import function InvalidExpectation() : Int32; // InvalidExpectation
+	import function IsActive() : Int32; // IsActive
+	import function IsAlive() : Int32; // IsAlive
+	import function IsCombatTargetVisibleFrom() : whandle:gamedataAIAdditionalTraceType_Record; // IsCombatTargetVisibleFrom
+	import function IsCombatTargetVisibleFromHandle() : handle:gamedataAIAdditionalTraceType_Record; // IsCombatTargetVisibleFromHandle
+	import function IsMoving() : Int32; // IsMoving
+	import function IsVisible() : Int32; // IsVisible
+	import function MaxVisibilityToTargetDistance() : Float; // MaxVisibilityToTargetDistance
+	import function MinAccuracySharedValue() : Float; // MinAccuracySharedValue
+	import function MinAccuracyValue() : Float; // MinAccuracyValue
+	import function MinDetectionValue() : Float; // MinDetectionValue
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

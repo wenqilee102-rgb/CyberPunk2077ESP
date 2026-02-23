@@ -1,0 +1,5 @@
+import struct scnlocLocStoreEmbeddedVariantPayloadEntry
+{
+	var variantId : scnlocVariantId;
+	var content : String;
+}

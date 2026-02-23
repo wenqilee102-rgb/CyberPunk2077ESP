@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"LerpToColorControllerLightRequest","d":0,"e":[{"a":{"b":"Vector3"},"b":"rgb","c":128},{"a":{"a":10},"b":"timeToLerp","c":128},{"a":{"a":1},"b":"useExponentialCurve","c":128}]}

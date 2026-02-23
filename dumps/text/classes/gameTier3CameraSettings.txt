@@ -1,0 +1,9 @@
+import struct gameTier3CameraSettings
+{
+	var yawLeftLimit : Float;
+	var yawRightLimit : Float;
+	var pitchTopLimit : Float;
+	var pitchBottomLimit : Float;
+	var pitchSpeedMultiplier : Float;
+	var yawSpeedMultiplier : Float;
+}

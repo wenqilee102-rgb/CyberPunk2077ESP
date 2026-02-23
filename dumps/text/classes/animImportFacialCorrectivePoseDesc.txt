@@ -1,0 +1,17 @@
+import struct animImportFacialCorrectivePoseDesc
+{
+	var influencedBy : array:CName;
+	var influenceMainWeightIndices : array:Uint16;
+	var poses : array:animImportFacialCorrectivePoseDataDesc;
+	var parentsInBetweenIndices : array:Int16;
+	var parentIndices : array:Uint16;
+	var name : CName;
+	var index : Uint16;
+	var influencedBySpeed : Uint8;
+	var poseType : Uint8;
+	var poseLOD : Uint8;
+	var weights : array:Float;
+	var inBetweenScopeMultipliers : array:Float;
+	var linearCorrection : Bool;
+	var useGlobalWeight : Bool;
+}

@@ -1,0 +1,13 @@
+struct PlayerVisionModeControllerBBValuesIds
+{
+	public    var kerenzikov : gamebbScriptID_Int32;
+	public    var restrictedScene : gamebbScriptID_Int32;
+	public    var dead : gamebbScriptID_Int32;
+	public    var takedown : gamebbScriptID_Int32;
+	public    var deviceTakeover : gamebbScriptID_EntityID;
+	public    var braindanceFPP : gamebbScriptID_Bool;
+	public    var braindanceActive : gamebbScriptID_Bool;
+	public    var veryHardLanding : gamebbScriptID_Int32;
+	public    var isBriefingActive : gamebbScriptID_Bool;
+	public    var twintoneOverrideShown : gamebbScriptID_Bool;
+}

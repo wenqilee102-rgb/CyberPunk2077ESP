@@ -1,0 +1,18 @@
+import class HeatHazeAreaSettings extends IAreaSettings
+{
+	var effectStrength : curveData:Float;
+	var startDistance : curveData:Float;
+	var maxDistance : curveData:Float;
+	var patternScale : curveData:Float;
+	var movementSpeedScale : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

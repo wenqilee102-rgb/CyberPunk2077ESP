@@ -1,0 +1,13 @@
+import struct entdismembermentMeshInfo
+{
+	var Mesh : raRef:CMesh;
+	var MeshAppearance : CName;
+	var AppearanceMap : array:entdismembermentAppearanceMatch;
+	var ShouldReceiveDecal : Bool;
+	var BodyPartMask : physicsRagdollBodyPartE;
+	var WoundType : entdismembermentWoundTypeE;
+	var CullMesh : entdismembermentWoundTypeE;
+	var Offset : Transform;
+	var Scale : Vector3;
+	var Physics : entdismembermentPhysicsInfo;
+}

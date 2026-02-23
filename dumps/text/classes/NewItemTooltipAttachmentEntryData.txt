@@ -1,0 +1,24 @@
+class NewItemTooltipAttachmentEntryData extends IScriptable
+{
+	public    var text : String;
+	public    var colorState : CName;
+	public    var dataPackage : handle:gameUILocalizationDataPackage;
+	public    var attunementData : handle:UIInventoryItemModAttunementData;
+
+	static function Make(text : String, optional dataPackage : handle:gameUILocalizationDataPackage, optional attunementData : handle:UIInventoryItemModAttunementData) : handle:NewItemTooltipAttachmentEntryData; // NewItemTooltipAttachmentEntryData::Make;StringUILocalizationDataPackageUIInventoryItemModAttunementData
+	static function Make(text : String, colorState : CName, optional dataPackage : handle:gameUILocalizationDataPackage, optional attunementData : handle:UIInventoryItemModAttunementData) : handle:NewItemTooltipAttachmentEntryData; // NewItemTooltipAttachmentEntryData::Make;StringCNameUILocalizationDataPackageUIInventoryItemModAttunementData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

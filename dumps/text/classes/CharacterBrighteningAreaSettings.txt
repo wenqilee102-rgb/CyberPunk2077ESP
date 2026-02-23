@@ -1,0 +1,17 @@
+import class CharacterBrighteningAreaSettings extends IAreaSettings
+{
+	var effectStrengthMultiplier : Float;
+	var minDistance : Float;
+	var maxDistance : Float;
+	var envMultiplier : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

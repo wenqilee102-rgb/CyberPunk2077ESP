@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"entAudioEvent","c":"AudioEvent","d":8,"e":[{"a":{"a":14},"b":"eventName","c":128},{"a":{"a":14},"b":"emitterName","c":128},{"a":{"a":14},"b":"nameData","c":128},{"a":{"a":10},"b":"floatData","c":128},{"a":{"b":"audioEventActionType"},"b":"eventType","c":128},{"a":{"b":"audioAudioEventFlags"},"b":"eventFlags","c":128}]}

@@ -1,0 +1,5 @@
+import struct questSetTriggerState_NodeTypeParams
+{
+	var objectRef : NodeRef;
+	var enable : Bool;
+}

@@ -1,0 +1,7 @@
+import struct redCVersionCommandlet extends redICommandlet
+{
+}
+
+import struct abstract redICommandlet
+{
+}

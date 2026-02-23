@@ -1,0 +1,12 @@
+import class questGiveReward_NodeType extends questIRewardManagerNodeType
+{
+	var rewards : array:TweakDBID;
+}
+
+import class abstract questIRewardManagerNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

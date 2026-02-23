@@ -1,0 +1,158 @@
+class LootingController extends inkWidgetLogicController
+{
+	private   var root : whandle:inkWidget;
+	private   var itemsListContainer : inkCompoundWidgetReference;
+	private   var titleContainer : inkCompoundWidgetReference;
+	private   var upArrow : inkWidgetReference;
+	private   var downArrow : inkWidgetReference;
+	private   var listWrapper : inkWidgetReference;
+	private   var actionsListV : inkCompoundWidgetReference;
+	private   var lockedStatusContainer : inkWidgetReference;
+	private   var widgetsPoolList : array:whandle:inkWidget;
+	private   var requestedWidgetsPoolItems : Int32;
+	private   var lootList : array:whandle:inkWidget;
+	private   var requestedItemsPoolItems : Int32;
+	private   var dataManager : whandle:InventoryDataManagerV2;
+	private   var uiInventorySystem : whandle:UIInventoryScriptableSystem;
+	private   var gameInstance : ScriptGameInstance;
+	private   var player : whandle:gameObject;
+	private   var maxItemsNum : Int32;
+	private   var boundOwnerID : entEntityID;
+	private   var lootingItems : array:whandle:gameItemData;
+	private   var uiInventoryItems : array:handle:UIInventoryItem;
+	private   var tooltipProvider : whandle:TooltipProvider;
+	private   var cachedTooltipData : handle:ATooltipData;
+	private   var cachedTooltipUIInventoryItem : handle:UIInventoryItem;
+	private   var displayContext : handle:ItemDisplayContextData;
+	private   var startIndex : Int32;
+	private   var selectedItemIndex : Int32;
+	private   var itemsToCompare : Int32;
+	private   var isShown : Bool;
+	private   var currentComparisonItemId : gameItemID;
+	private   var lastTooltipItemId : gameItemID;
+	private   var currentTooltipItemId : gameItemID;
+	private   var currentTooltipLootingData : handle:TooltipLootingCachedData;
+	private   var lastItemOwnerId : entEntityID;
+	private   var currentItemOwnerId : entEntityID;
+	private   var currentComparisonEquipmentArea : gamedataEquipmentArea;
+	private   var lastListOpenedState : Bool;
+	private   var isComaprisonDirty : Bool;
+	private   var bufferedOwnerId : entEntityID;
+	private   var introAnimProxy : handle:inkanimProxy;
+	private   var currendData : gameinteractionsvisLootData;
+	private   var activeWeaponID : gameItemID;
+	private   var isLocked : Bool;
+	private   var currentWidgetRequestVersion : Int32;
+	private   var currentItemRequestVersion : Int32;
+	private   var brokenLocPrefix : String;
+	private   var requestsCounter : Int32;
+
+	event OnInitialize() : Bool; // OnInitialize
+	event OnItemsPoolItemSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnItemsPoolItemSpawned
+	event OnWidgetsPoolItemSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnWidgetsPoolItemSpawned
+
+	function GetComparisonHealingItem(inspectedItem : whandle:UIInventoryItem) : whandle:UIInventoryItem; // GetComparisonHealingItem;UIInventoryItem
+	function GetCurrentItemOwnerId() : entEntityID; // GetCurrentItemOwnerId;
+	function GetCurrentlyEquippedComparisonItemID(equipmentArea : gamedataEquipmentArea) : gameItemID; // GetCurrentlyEquippedComparisonItemID;gamedataEquipmentArea
+	function GetItemIDForComparison(item : whandle:gameItemData, itemRecord : whandle:gamedataItem_Record, equipmentArea : gamedataEquipmentArea) : gameItemID; // GetItemIDForComparison;gameItemDataItem_RecordgamedataEquipmentArea
+	function GetItemName(itemData : whandle:gameItemData, itemRecord : whandle:gamedataItem_Record) : String; // GetItemName;gameItemDataItem_Record
+	function GetMinimalLootingData(itemData : whandle:gameItemData, itemRecord : whandle:gamedataItem_Record, equipmentArea : gamedataEquipmentArea, comparisionItemData : whandle:gameItemData) : handle:MinimalLootingListItemData; // GetMinimalLootingData;gameItemDataItem_RecordgamedataEquipmentAreagameItemData
+	function GetOrCreateUIInventoryItem(itemData : handle:gameItemData) : whandle:UIInventoryItem; // GetOrCreateUIInventoryItem;gameItemData
+	function GetShardData(itemTDBID : TweakDBID) : whandle:gameJournalOnscreen; // GetShardData;TweakDBID
+	function GetShardData(itemRecord : whandle:gamedataItem_Record) : whandle:gameJournalOnscreen; // GetShardData;Item_Record
+	function GetTooltipOwner(index : Int32) : entEntityID; // GetTooltipOwner;Int32
+	function Hide(); // Hide;
+	function IsShown() : Bool; // IsShown;
+	function IsTooltipVisible() : Bool; // IsTooltipVisible;
+	function RefreshChoicesPool(choices : script_ref:array:gameinteractionsvisInteractionChoiceData); // RefreshChoicesPool;script_ref<array<InteractionChoiceData>>
+	function RefreshComparisonData(); // RefreshComparisonData;
+	function RefreshItemsData(data : script_ref:gameinteractionsvisLootData, visibleItems : Int32, totalItems : Int32, out lastIndex : Int32); // RefreshItemsData;script_ref<LootData>Int32Int32Int32
+	function RefreshItemsPool(totalItems : Int32, visibleItems : Int32); // RefreshItemsPool;Int32Int32
+	function RefreshTooltips(); // RefreshTooltips;
+	function SetActiveWeapon(weaponID : gameItemID); // SetActiveWeapon;ItemID
+	function SetDataManager(dataManager : handle:InventoryDataManagerV2); // SetDataManager;InventoryDataManagerV2
+	function SetDialogOpen(isDialogOpen : Bool); // SetDialogOpen;Bool
+	function SetGameInstance(gameInstance : ScriptGameInstance); // SetGameInstance;GameInstance
+	function SetLootData(data : gameinteractionsvisLootData); // SetLootData;LootData
+	function SetPlayer(player : whandle:gameObject); // SetPlayer;GameObject
+	function SetTooltipVisible(visible : Bool); // SetTooltipVisible;Bool
+	function SetUIInventorySystem(uiInventorySystem : whandle:UIInventoryScriptableSystem); // SetUIInventorySystem;UIInventoryScriptableSystem
+	function Show(); // Show;
+	function ShowLockedStatus(islokced : Bool); // ShowLockedStatus;Bool
+	function UpdateCachedItems(data : gameinteractionsvisLootData); // UpdateCachedItems;LootData
+	function UpdateEquipmentArea(equipmentArea : gamedataEquipmentArea); // UpdateEquipmentArea;gamedataEquipmentArea
+	function UpdateIndexedWidgetData(index : Int32); // UpdateIndexedWidgetData;Int32
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

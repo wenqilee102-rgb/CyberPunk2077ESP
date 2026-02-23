@@ -1,0 +1,12 @@
+import class animAnimStateTransitionCondition_FootPhaseEvent extends animIAnimStateTransitionCondition
+{
+	var footPhase : animEFootPhase;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

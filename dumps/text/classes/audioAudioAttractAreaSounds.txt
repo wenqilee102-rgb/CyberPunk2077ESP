@@ -1,0 +1,18 @@
+import class audioAudioAttractAreaSounds extends audioAudioMetadata
+{
+	var NPCgrunts : array:audioDynamicEventsPerVisualTags;
+	var environmentSounds : array:audioDynamicEventsWithInterval;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

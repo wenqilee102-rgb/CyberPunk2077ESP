@@ -1,0 +1,31 @@
+import class gamedataAimAssistMelee_Record extends gamedataTweakDBRecord
+{
+	import function AimSnapOnAim() : Bool; // AimSnapOnAim
+	import function AimSnapOnAttack() : Bool; // AimSnapOnAttack
+	import function AimSnapOnBlockHit() : Bool; // AimSnapOnBlockHit
+	import function AimSnapOnHit() : Bool; // AimSnapOnHit
+	import function AimSnapOnThrow() : Bool; // AimSnapOnThrow
+	import function MoveToTargetDistanceIntoAttackRange() : Float; // MoveToTargetDistanceIntoAttackRange
+	import function MoveToTargetEnabledAttacks() : Int32; // MoveToTargetEnabledAttacks
+	import function MoveToTargetSearchDistance() : Float; // MoveToTargetSearchDistance
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

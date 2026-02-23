@@ -1,0 +1,7 @@
+struct DEBUG_VisualRecord
+{
+	public    var layerIDs : array:Uint32;
+	public    var puppet : whandle:ScriptedPuppet;
+	public    var infiniteDuration : Bool;
+	public    var showDuration : Float;
+}

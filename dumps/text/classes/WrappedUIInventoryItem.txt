@@ -1,0 +1,21 @@
+class WrappedUIInventoryItem extends IScriptable
+{
+	public    var Item : whandle:UIInventoryItem;
+	public    var AdditionalData : handle:IScriptable;
+
+	static function Make(item : whandle:UIInventoryItem, additionalData : handle:IScriptable) : handle:WrappedUIInventoryItem; // WrappedUIInventoryItem::Make;UIInventoryItemIScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

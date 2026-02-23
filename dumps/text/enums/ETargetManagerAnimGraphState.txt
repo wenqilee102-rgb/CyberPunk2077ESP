@@ -1,0 +1,6 @@
+enum ETargetManagerAnimGraphState
+{
+	MODELOOKAT = 0,
+	IDLE = 1,
+	JAMMED = 2
+}

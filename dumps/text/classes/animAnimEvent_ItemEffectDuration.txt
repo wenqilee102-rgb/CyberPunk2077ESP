@@ -1,0 +1,17 @@
+import class animAnimEvent_ItemEffectDuration extends animAnimEvent
+{
+	var effectName : CName;
+	var sequenceShift : Uint32;
+	var breakAllLoopsOnStop : Bool;
+}
+
+import class abstract animAnimEvent extends ISerializable
+{
+	var startFrame : Uint32;
+	var durationInFrames : Uint32;
+	var eventName : CName;
+}
+
+import class abstract ISerializable
+{
+}

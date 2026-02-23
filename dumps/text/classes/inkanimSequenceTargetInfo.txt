@@ -1,0 +1,8 @@
+import class inkanimSequenceTargetInfo extends ISerializable
+{
+	var path : array:Uint32;
+}
+
+import class abstract ISerializable
+{
+}

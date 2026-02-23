@@ -1,0 +1,7 @@
+import class workWorkspotInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

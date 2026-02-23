@@ -1,0 +1,1 @@
+{"a":"questIVehicleManagerNodeType","b":"questToggleDoor_NodeType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"vehicleRef","c":128},{"a":{"b":"vehicleEQuestVehicleDoorState"},"b":"doorAction","c":128},{"a":{"b":"vehicleEVehicleDoor"},"b":"door","c":128},{"a":{"a":1},"b":"forceScene","c":128},{"a":{"a":1},"b":"toOpen","c":128},{"a":{"a":14},"b":"doorID","c":128}]}

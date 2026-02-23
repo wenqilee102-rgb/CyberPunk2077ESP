@@ -1,0 +1,11 @@
+import struct vehicleVehicleClearCoatOverrides
+{
+	var opacity : Float;
+	var coatTintFwd : Color;
+	var coatTintSide : Color;
+	var coatTintFresnelBias : Float;
+	var coatSpecularColor : Color;
+	var coatFresnelBias : Float;
+
+	static function FromRecord(record : handle:gamedataVehicleClearCoatOverrides_Record) : vehicleVehicleClearCoatOverrides; // vehicleVehicleClearCoatOverrides::FromRecord;VehicleClearCoatOverrides_Record
+}

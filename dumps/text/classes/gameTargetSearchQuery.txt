@@ -1,0 +1,12 @@
+import struct gameTargetSearchQuery
+{
+	var testedSet : gameTargetingSet;
+	var searchFilter : gameTargetSearchFilter;
+	var includeSecondaryTargets : Bool;
+	var ignoreInstigator : Bool;
+	var maxDistance : Float;
+	var filterObjectByDistance : Bool;
+	var queryTarget : entEntityID;
+
+	import static function SetComponentFilter(self : gameTargetSearchQuery, componentFilter : gametargetingSystemScriptFilter); // SetComponentFilter
+}

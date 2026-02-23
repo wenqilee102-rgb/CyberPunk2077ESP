@@ -1,0 +1,33 @@
+import class gamedataAINode_Record extends gamedataAIRecord_Record
+{
+	import function ActivateCondition() : whandle:gamedataAIActionAND_Record; // ActivateCondition
+	import function ActivateConditionHandle() : handle:gamedataAIActionAND_Record; // ActivateConditionHandle
+	import function ActivationCondition() : whandle:gamedataAIActionCondition_Record; // ActivationCondition
+	import function ActivationConditionHandle() : handle:gamedataAIActionCondition_Record; // ActivationConditionHandle
+	import function IsVirtual() : Bool; // IsVirtual
+	import function MinLOD() : Int32; // MinLOD
+}
+
+import class gamedataAIRecord_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

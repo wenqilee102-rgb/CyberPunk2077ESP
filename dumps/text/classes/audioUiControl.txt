@@ -1,0 +1,4 @@
+import struct audioUiControl
+{
+	var uiEventsByAction : handle:audioKeyUiSoundDictionary;
+}

@@ -1,0 +1,9 @@
+import struct gameprojectileLaunchParams
+{
+	var launchMode : gameprojectileELaunchMode;
+	var logicalPositionProvider : handle:entIPositionProvider;
+	var logicalOrientationProvider : handle:entIOrientationProvider;
+	var visualPositionProvider : handle:entIPositionProvider;
+	var visualOrientationProvider : handle:entIOrientationProvider;
+	var ownerVelocityProvider : handle:entIVelocityProvider;
+}

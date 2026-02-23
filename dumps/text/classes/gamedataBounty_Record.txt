@@ -1,0 +1,38 @@
+import class gamedataBounty_Record extends gamedataTweakDBRecord
+{
+	import function BountySetter() : whandle:gamedataAffiliation_Record; // BountySetter
+	import function BountySetterHandle() : handle:gamedataAffiliation_Record; // BountySetterHandle
+	import function DrawWeight() : Float; // DrawWeight
+	import function GetTransgressionsCount() : Int32; // GetTransgressionsCount
+	import function GetTransgressionsItem(index : Int32) : whandle:gamedataTransgression_Record; // GetTransgressionsItem
+	import function GetTransgressionsItemHandle(index : Int32) : handle:gamedataTransgression_Record; // GetTransgressionsItemHandle
+	import function GetVisualTagsFilterCount() : Int32; // GetVisualTagsFilterCount
+	import function GetVisualTagsFilterItem(index : Int32) : CName; // GetVisualTagsFilterItem
+	import function Reward() : whandle:gamedataRewardBase_Record; // Reward
+	import function RewardHandle() : handle:gamedataRewardBase_Record; // RewardHandle
+	import function Transgressions(out outList : array:whandle:gamedataTransgression_Record); // Transgressions
+	import function TransgressionsContains(item : whandle:gamedataTransgression_Record) : Bool; // TransgressionsContains
+	import function VisualTagsFilter() : array:CName; // VisualTagsFilter
+	import function VisualTagsFilterContains(item : CName) : Bool; // VisualTagsFilterContains
+	import function WantedStars() : Int32; // WantedStars
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

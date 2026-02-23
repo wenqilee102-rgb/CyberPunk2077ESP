@@ -1,0 +1,44 @@
+class abstract ABaseQuestObjectiveWrapper extends AJournalEntryWrapper
+{
+	protected var questObjective : whandle:gameJournalQuestObjectiveBase;
+	protected var objectiveStatus : gameJournalEntryState;
+	protected var isTracked : Bool;
+	protected var currentCounter : Int32;
+	protected var totalCounter : Int32;
+
+	function GetCounterText() : String; // GetCounterText;
+	function GetDescription() : String; // GetDescription;
+	function GetQuestObjective() : whandle:gameJournalQuestObjectiveBase; // GetQuestObjective;
+	function GetStatus() : gameJournalEntryState; // GetStatus;
+	function Init(questObjective : whandle:gameJournalQuestObjectiveBase, objectiveStatus : gameJournalEntryState, isTracked : Bool, uniqueId : Int32, currentCounter : Int32, totalCounter : Int32); // Init;JournalQuestObjectiveBasegameJournalEntryStateBoolInt32Int32Int32
+	function IsActive() : Bool; // IsActive;
+	function IsTracked() : Bool; // IsTracked;
+	function IsTrackedInHierarchy() : Bool; // IsTrackedInHierarchy;
+}
+
+class abstract AJournalEntryWrapper extends ABaseWrapper
+{
+	private   var UniqueId : Int32;
+
+	function GetUniqueId() : Int32; // GetUniqueId;
+	function SetUniqueId(uniqueId : Int32); // SetUniqueId;Int32
+}
+
+class abstract ABaseWrapper extends IScriptable
+{
+	function ToString() : String; // ToString;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct gameuiPhotoModeOptionSelectorData
+{
+	var optionData : Int32;
+	var optionText : String;
+}

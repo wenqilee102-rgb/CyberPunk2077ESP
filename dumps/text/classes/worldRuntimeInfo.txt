@@ -1,0 +1,22 @@
+import class worldRuntimeInfo extends IScriptable
+{
+	import function IsClient() : Bool; // IsClient
+	import function IsGamePreview() : Bool; // IsGamePreview
+	import function IsMultiplayer() : Bool; // IsMultiplayer
+	import function IsServer() : Bool; // IsServer
+	import function IsSingleplayer() : Bool; // IsSingleplayer
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

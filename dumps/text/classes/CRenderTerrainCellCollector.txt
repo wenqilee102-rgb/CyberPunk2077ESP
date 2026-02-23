@@ -1,0 +1,7 @@
+import struct CRenderTerrainCellCollector extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

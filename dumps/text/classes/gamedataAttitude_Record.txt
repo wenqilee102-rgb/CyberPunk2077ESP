@@ -1,0 +1,28 @@
+import class gamedataAttitude_Record extends gamedataTweakDBRecord
+{
+	import function Group1() : whandle:gamedataAttitudeGroup_Record; // Group1
+	import function Group1Handle() : handle:gamedataAttitudeGroup_Record; // Group1Handle
+	import function Group2() : whandle:gamedataAttitudeGroup_Record; // Group2
+	import function Group2Handle() : handle:gamedataAttitudeGroup_Record; // Group2Handle
+	import function Value() : String; // Value
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

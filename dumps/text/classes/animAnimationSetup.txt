@@ -1,0 +1,6 @@
+import struct animAnimationSetup
+{
+	var cinematics : animAnimSetCollection;
+	var gameplay : animAnimSetCollection;
+	var finalAnimSetCollection : animAnimSetCollection;
+}

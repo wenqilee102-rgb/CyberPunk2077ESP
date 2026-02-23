@@ -1,0 +1,42 @@
+class UIItemStatProperties extends IScriptable
+{
+	private   var localizedName : String;
+	private   var decimalPlaces : Int32;
+	private   var displayPercent : Bool;
+	private   var displayPlus : Bool;
+	private   var inMeters : Bool;
+	private   var inSeconds : Bool;
+	private   var inSpeed : Bool;
+	private   var multiplyBy100InText : Bool;
+	private   var roundValue : Bool;
+	private   var maxValue : Float;
+	private   var flipNegative : Bool;
+
+	static function Make(localizedName : script_ref:String, decimalPlaces : Int32, displayPercent : Bool, displayPlus : Bool, inMeters : Bool, inSeconds : Bool, inSpeed : Bool, multiplyBy100InText : Bool, roundValue : Bool, maxValue : Float, flipNegative : Bool) : handle:UIItemStatProperties; // UIItemStatProperties::Make;script_ref<String>Int32BoolBoolBoolBoolBoolBoolBoolFloatBool
+
+	function DecimalPlaces() : Int32; // DecimalPlaces;
+	function DisplayPercent() : Bool; // DisplayPercent;
+	function DisplayPlus() : Bool; // DisplayPlus;
+	function FlipNegative() : Bool; // FlipNegative;
+	function GetName() : String; // GetName;
+	function InMeters() : Bool; // InMeters;
+	function InSeconds() : Bool; // InSeconds;
+	function InSpeed() : Bool; // InSpeed;
+	function MaxValue() : Float; // MaxValue;
+	function MultiplyBy100InText() : Bool; // MultiplyBy100InText;
+	function RoundValue() : Bool; // RoundValue;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

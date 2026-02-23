@@ -1,0 +1,15 @@
+import class workTimeOfDayCondition extends workIWorkspotCondition
+{
+	var activeAfter : GameTime;
+	var activeUntil : GameTime;
+}
+
+import class abstract workIWorkspotCondition extends ISerializable
+{
+	var expectedResult : workWorkspotLogic;
+	var equals : Bool;
+}
+
+import class abstract ISerializable
+{
+}

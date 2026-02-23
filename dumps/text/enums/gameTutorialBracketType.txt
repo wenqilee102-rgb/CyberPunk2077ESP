@@ -1,0 +1,5 @@
+enum gameTutorialBracketType
+{
+	WidgetArea = 0,
+	CustomArea = 1
+}

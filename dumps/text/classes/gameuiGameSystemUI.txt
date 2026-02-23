@@ -1,0 +1,71 @@
+import class gameuiGameSystemUI extends gameuiIGameSystemUI
+{
+	import function ClearGlobalThemeOverride(); // ClearGlobalThemeOverride
+	import function GetBlackBarsSizes() : Vector2; // GetBlackBarsSizes
+	import function GetCurrentWindowSize() : Vector2; // GetCurrentWindowSize
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetHudEntryForcedVisibility(entryName : CName) : worlduiEntryVisibility; // GetHudEntryForcedVisibility
+	import function GetHudScalingOverride() : Float; // GetHudScalingOverride
+	import function GetInteractableWidgetUnderCursor() : whandle:inkWidget; // GetInteractableWidgetUnderCursor
+	import function GetInverseUIScale() : Float; // GetInverseUIScale
+	import function GetIsEulaAccepted() : Bool; // GetIsEulaAccepted
+	import function GetNeededPatchIntroPackage() : gameuiPatchIntroPackage; // GetNeededPatchIntroPackage
+	import function GetOneTimeMessageSeen(message : gameuiOneTimeMessage) : Bool; // GetOneTimeMessageSeen
+	import function HideTutorialBracket(bracketID : CName); // HideTutorialBracket
+	import function HideTutorialOverlay(data : gameTutorialOverlayData); // HideTutorialOverlay
+	import function IsPatchIntroNeeded(patchIntro : gameuiPatchIntro) : Bool; // IsPatchIntroNeeded
+	import function MarkPatchIntroAsSeen(patchIntro : gameuiPatchIntro); // MarkPatchIntroAsSeen
+	import function NotifyFastTravelStart(); // NotifyFastTravelStart
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function QueueMenuEvent(eventName : CName, optional userData : handle:IScriptable); // QueueMenuEvent
+	import function RequestDelamainTaxiMenu(); // RequestDelamainTaxiMenu
+	import function RequestFastTravelMenu(); // RequestFastTravelMenu
+	import function RequestVendorMenu(data : handle:questVendorPanelData, optional scenarioName : CName); // RequestVendorMenu
+	import function ResetNavigationOppositeAxisDistanceCost(); // ResetNavigationOppositeAxisDistanceCost
+	import function ResetPatchIntro(patchIntro : gameuiPatchIntro); // ResetPatchIntro
+	import function SetGlobalThemeOverride(themeID : CName); // SetGlobalThemeOverride
+	import function SetHudEntryForcedVisibility(entryName : CName, visibility : worlduiEntryVisibility); // SetHudEntryForcedVisibility
+	import function SetIsEulaAccepted(isEulaAccepted : Bool); // SetIsEulaAccepted
+	import function SetNavigationOppositeAxisDistanceCost(cost : Float); // SetNavigationOppositeAxisDistanceCost
+	import function SetOneTimeMessageSeen(message : gameuiOneTimeMessage, seen : Bool); // SetOneTimeMessageSeen
+	import function ShowTutorialBracket(data : gameTutorialBracketData); // ShowTutorialBracket
+	import function ShowTutorialOverlay(data : gameTutorialOverlayData); // ShowTutorialOverlay
+
+	event OnEnterDelamainTaxiMenu() : Bool; // OnEnterDelamainTaxiMenu
+	event OnEnterFastTravelMenu() : Bool; // OnEnterFastTravelMenu
+	event OnExitDelamainTaxiMenu() : Bool; // OnExitDelamainTaxiMenu
+	event OnExitFastTravelMenu() : Bool; // OnExitFastTravelMenu
+
+	function GetDelamainTaxiSystem() : handle:DelamainTaxiSystem; // GetDelamainTaxiSystem;
+	function GetFastTravelSystem() : handle:FastTravelSystem; // GetFastTravelSystem;
+	function NotifyDelamainTaxiSystem(menuEnabled : Bool); // NotifyDelamainTaxiSystem;Bool
+	function NotifyFastTravelSystem(menuEnabled : Bool); // NotifyFastTravelSystem;Bool
+	function PopGameContext(context : UIGameContext, optional invalidate : Bool); // PopGameContext;UIGameContextBool
+	function PushGameContext(context : UIGameContext); // PushGameContext;UIGameContext
+	function RequestNewVisualState(newVisualState : CName); // RequestNewVisualState;CName
+	function ResetGameContext(); // ResetGameContext;
+	function RestorePreviousVisualState(popVisualState : CName); // RestorePreviousVisualState;CName
+	function SwapGameContext(oldContext : UIGameContext, newContext : UIGameContext); // SwapGameContext;UIGameContextUIGameContext
+}
+
+import class abstract gameuiIGameSystemUI extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,19 @@
+class abstract UIInventoryItemModsStaticData extends IScriptable
+{
+	static function GetAttachmentSlots(itemType : gamedataItemType) : array:TweakDBID; // UIInventoryItemModsStaticData::GetAttachmentSlots;gamedataItemType
+	static function IsAttachmentDedicated(slotID : TweakDBID) : Bool; // UIInventoryItemModsStaticData::IsAttachmentDedicated;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

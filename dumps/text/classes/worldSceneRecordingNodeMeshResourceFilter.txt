@@ -1,0 +1,5 @@
+import struct worldSceneRecordingNodeMeshResourceFilter
+{
+	var forceFilterIgnore : array:raRef:CMesh;
+	var forceFilterMatch : array:raRef:CMesh;
+}

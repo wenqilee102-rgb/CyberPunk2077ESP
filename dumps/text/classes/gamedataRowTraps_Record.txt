@@ -1,0 +1,27 @@
+import class gamedataRowTraps_Record extends gamedataTweakDBRecord
+{
+	import function GetTrapsCount() : Int32; // GetTrapsCount
+	import function GetTrapsItem(index : Int32) : Int32; // GetTrapsItem
+	import function Traps() : array:Int32; // Traps
+	import function TrapsContains(item : Int32) : Bool; // TrapsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

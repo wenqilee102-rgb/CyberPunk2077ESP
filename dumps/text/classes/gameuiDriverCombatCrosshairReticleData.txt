@@ -1,0 +1,5 @@
+import struct gameuiDriverCombatCrosshairReticleData
+{
+	var state : gameuiDriverCombatCrosshairReticleDataState;
+	var opacity : Float;
+}

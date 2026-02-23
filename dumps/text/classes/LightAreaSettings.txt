@@ -1,0 +1,22 @@
+import class LightAreaSettings extends IAreaSettings
+{
+	var latitude : curveData:Float;
+	var season : ETimeOfYearSeason;
+	var sunRotationOffset : curveData:Float;
+	var sunColor : curveData:HDRColor;
+	var sunSize : curveData:Float;
+	var moonRotationOffset : curveData:Float;
+	var moonColor : curveData:HDRColor;
+	var moonSize : curveData:Float;
+	var specularTint : curveData:HDRColor;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

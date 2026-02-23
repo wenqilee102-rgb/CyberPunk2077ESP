@@ -1,0 +1,41 @@
+import class gamedataLootTable_Record extends gamedataTweakDBRecord
+{
+	import function GetLootItemsCount() : Int32; // GetLootItemsCount
+	import function GetLootItemsItem(index : Int32) : whandle:gamedataLootItem_Record; // GetLootItemsItem
+	import function GetLootItemsItemHandle(index : Int32) : handle:gamedataLootItem_Record; // GetLootItemsItemHandle
+	import function GetLootTableInclusionsCount() : Int32; // GetLootTableInclusionsCount
+	import function GetLootTableInclusionsItem(index : Int32) : whandle:gamedataLootTable_Record; // GetLootTableInclusionsItem
+	import function GetLootTableInclusionsItemHandle(index : Int32) : handle:gamedataLootTable_Record; // GetLootTableInclusionsItemHandle
+	import function GetQueriesCount() : Int32; // GetQueriesCount
+	import function GetQueriesItem(index : Int32) : whandle:gamedataItemQueryElement_Record; // GetQueriesItem
+	import function GetQueriesItemHandle(index : Int32) : handle:gamedataItemQueryElement_Record; // GetQueriesItemHandle
+	import function LootGenerationType() : String; // LootGenerationType
+	import function LootItems(out outList : array:whandle:gamedataLootItem_Record); // LootItems
+	import function LootItemsContains(item : whandle:gamedataLootItem_Record) : Bool; // LootItemsContains
+	import function LootTableInclusions(out outList : array:whandle:gamedataLootTable_Record); // LootTableInclusions
+	import function LootTableInclusionsContains(item : whandle:gamedataLootTable_Record) : Bool; // LootTableInclusionsContains
+	import function MaxItemsToLoot() : Int32; // MaxItemsToLoot
+	import function MinItemsToLoot() : Int32; // MinItemsToLoot
+	import function Queries(out outList : array:whandle:gamedataItemQueryElement_Record); // Queries
+	import function QueriesContains(item : whandle:gamedataItemQueryElement_Record) : Bool; // QueriesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

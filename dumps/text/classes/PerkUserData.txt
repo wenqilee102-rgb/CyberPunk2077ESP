@@ -1,0 +1,20 @@
+class PerkUserData extends IScriptable
+{
+	public    var statType : gamedataStatType;
+	public    var cyberwareScreenType : CyberwareScreenType;
+	public    var perkType : gamedataNewPerkType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

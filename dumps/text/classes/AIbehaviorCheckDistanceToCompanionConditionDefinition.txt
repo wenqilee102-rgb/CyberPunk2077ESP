@@ -1,0 +1,24 @@
+import class AIbehaviorCheckDistanceToCompanionConditionDefinition extends AIbehaviorCompanionConditionDefinition
+{
+	var distance : handle:AIArgumentMapping;
+	var comparisonOperator : EComparisonType;
+}
+
+import class abstract AIbehaviorCompanionConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var spline : handle:AIArgumentMapping;
+	var companion : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

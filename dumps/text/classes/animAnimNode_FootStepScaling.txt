@@ -1,0 +1,23 @@
+import class animAnimNode_FootStepScaling extends animAnimNode_OnePoseInput
+{
+	var hipsIndex : animTransformIndex;
+	var leftFootIKIndex : animTransformIndex;
+	var rightFootIKIndex : animTransformIndex;
+	var inputSpeed : animFloatLink;
+	var weight : animFloatLink;
+	var Params : animfssBodyOfflineParams;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

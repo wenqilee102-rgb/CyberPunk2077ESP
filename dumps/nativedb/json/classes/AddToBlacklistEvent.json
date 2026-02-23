@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"AddToBlacklistEvent","d":0,"e":[{"a":{"b":"entEntityID"},"b":"entityIDToAdd","c":128},{"a":{"a":1},"b":"isPlayerEntity","c":128},{"a":{"b":"BlacklistReason"},"b":"reason","c":128}]}

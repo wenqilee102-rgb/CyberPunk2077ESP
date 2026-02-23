@@ -1,0 +1,5 @@
+import struct animIKTargetRef
+{
+	var id : Int32;
+	var part : CName;
+}

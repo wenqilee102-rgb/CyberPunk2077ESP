@@ -1,0 +1,5 @@
+enum HubMenuCharacterItems
+{
+	Skills = 0,
+	Stats = 1
+}

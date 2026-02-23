@@ -1,0 +1,7 @@
+import class abstract scnIInterruptionOperation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

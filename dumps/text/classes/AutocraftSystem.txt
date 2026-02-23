@@ -1,0 +1,43 @@
+class AutocraftSystem extends gameScriptableSystem
+{
+	private   var active : Bool;
+	private   var cycleDuration : Float;
+	private   var currentDelayID : gameDelayID;
+	private   var itemsUsed : array:gameItemID;
+
+	function GetItemsToAutocraft() : array:gameItemID; // GetItemsToAutocraft;
+	function OnCycleEnd(request : handle:AutocraftEndCycleRequest); // OnCycleEnd;AutocraftEndCycleRequest
+	function OnItemUsed(request : handle:RegisterItemUsedRequest); // OnItemUsed;RegisterItemUsedRequest
+	function OnSystemActivate(request : handle:AutocraftActivateRequest); // OnSystemActivate;AutocraftActivateRequest
+	function OnSystemDeactivate(request : handle:AutocraftDeactivateRequest); // OnSystemDeactivate;AutocraftDeactivateRequest
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

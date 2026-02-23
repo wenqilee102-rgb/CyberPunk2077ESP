@@ -1,0 +1,7 @@
+import struct Sample_Replicated_Struct
+{
+	var a : Bool;
+	var b : Bool;
+	var c : Bool;
+	var d_not_replicated_still_OK : Bool;
+}

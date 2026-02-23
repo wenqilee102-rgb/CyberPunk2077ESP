@@ -1,0 +1,7 @@
+import struct worldCompiledEffectPlacementInfo
+{
+	var placementTagIndex : Uint8;
+	var relativePositionIndex : Uint8;
+	var relativeRotationIndex : Uint8;
+	var flags : Uint8;
+}

@@ -1,0 +1,8 @@
+import class AIbehaviorDebugInfoBase extends ISerializable
+{
+	var caption : String;
+}
+
+import class abstract ISerializable
+{
+}

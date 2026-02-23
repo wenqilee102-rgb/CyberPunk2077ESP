@@ -1,0 +1,1 @@
+{"a":"AIFollowerCommand","b":"AIFollowerTakedownCommand","d":0,"e":[{"a":{"b":"gameEntityReference"},"b":"targetRef","c":128},{"a":{"a":1},"b":"approachBeforeTakedown","c":128},{"a":{"a":1},"b":"doNotTeleportIfTargetIsVisible","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"target","c":128}]}

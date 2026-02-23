@@ -1,0 +1,4 @@
+import struct gameuiRoachRaceChunk
+{
+	var obstacles : array:gameuiRoachRaceObstacle;
+}

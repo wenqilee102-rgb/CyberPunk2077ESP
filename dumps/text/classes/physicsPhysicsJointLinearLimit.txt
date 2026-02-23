@@ -1,0 +1,16 @@
+import struct physicsPhysicsJointLinearLimit extends physicsPhysicsJointLimitBase
+{
+	var x : physicsPhysicsJointMotion;
+	var y : physicsPhysicsJointMotion;
+	var z : physicsPhysicsJointMotion;
+	var value : Float;
+}
+
+import struct physicsPhysicsJointLimitBase
+{
+	var restitution : Float;
+	var bounceThreshold : Float;
+	var stiffness : Float;
+	var damping : Float;
+	var contactDistance : Float;
+}

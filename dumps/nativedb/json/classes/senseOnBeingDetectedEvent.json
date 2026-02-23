@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"senseOnBeingDetectedEvent","c":"OnBeingDetectedEvent","d":8,"e":[{"a":{"a":27,"c":{"b":"senseSensorObject"}},"b":"source","c":128},{"a":{"a":1},"b":"isVisible","c":128},{"a":{"a":15},"b":"shapeId","c":128}],"f":[{"a":"GetSourceObject","c":{"a":27,"c":{"b":"gameObject"}},"d":4}]}

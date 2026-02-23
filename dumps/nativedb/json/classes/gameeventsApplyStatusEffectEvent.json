@@ -1,0 +1,1 @@
+{"a":"gameeventsStatusEffectEvent","b":"gameeventsApplyStatusEffectEvent","c":"ApplyStatusEffectEvent","d":8,"e":[{"a":{"a":1},"b":"isNewApplication","c":128},{"a":{"b":"entEntityID"},"b":"instigatorEntityID","c":128},{"a":{"b":"entEntityID"},"b":"proxyEntityID","c":128},{"a":{"a":1},"b":"isAppliedOnSpawn","c":128}]}

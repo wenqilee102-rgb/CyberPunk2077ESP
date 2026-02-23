@@ -1,0 +1,22 @@
+class UILocalizationMap extends IScriptable
+{
+	private   var map : array:UILocRecord;
+
+	function AddRecord(tag : CName, value : script_ref:String); // AddRecord;CNamescript_ref<String>
+	function Init(); // Init;
+	function Localize(tag : CName) : String; // Localize;CName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

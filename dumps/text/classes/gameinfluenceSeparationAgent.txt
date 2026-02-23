@@ -1,0 +1,8 @@
+import struct gameinfluenceSeparationAgent extends gameinfluenceIAgent
+{
+	var radius : Float;
+}
+
+import struct abstract gameinfluenceIAgent
+{
+}

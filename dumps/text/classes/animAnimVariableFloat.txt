@@ -1,0 +1,16 @@
+import class animAnimVariableFloat extends animAnimVariable
+{
+	var value : Float;
+	var default : Float;
+	var min : Float;
+	var max : Float;
+}
+
+import class abstract animAnimVariable extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

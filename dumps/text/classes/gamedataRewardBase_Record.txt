@@ -1,0 +1,61 @@
+import class gamedataRewardBase_Record extends gamedataTweakDBRecord
+{
+	import function Achievement(out outList : array:whandle:gamedataAchievement_Record); // Achievement
+	import function AchievementContains(item : whandle:gamedataAchievement_Record) : Bool; // AchievementContains
+	import function ContentAssignment() : whandle:gamedataContentAssignment_Record; // ContentAssignment
+	import function ContentAssignmentHandle() : handle:gamedataContentAssignment_Record; // ContentAssignmentHandle
+	import function CurrencyPackage(out outList : array:whandle:gamedataCurrencyReward_Record); // CurrencyPackage
+	import function CurrencyPackageContains(item : whandle:gamedataCurrencyReward_Record) : Bool; // CurrencyPackageContains
+	import function Experience(out outList : array:whandle:gamedataXPPoints_Record); // Experience
+	import function ExperienceContains(item : whandle:gamedataXPPoints_Record) : Bool; // ExperienceContains
+	import function GetAchievementCount() : Int32; // GetAchievementCount
+	import function GetAchievementItem(index : Int32) : whandle:gamedataAchievement_Record; // GetAchievementItem
+	import function GetAchievementItemHandle(index : Int32) : handle:gamedataAchievement_Record; // GetAchievementItemHandle
+	import function GetCurrencyPackageCount() : Int32; // GetCurrencyPackageCount
+	import function GetCurrencyPackageItem(index : Int32) : whandle:gamedataCurrencyReward_Record; // GetCurrencyPackageItem
+	import function GetCurrencyPackageItemHandle(index : Int32) : handle:gamedataCurrencyReward_Record; // GetCurrencyPackageItemHandle
+	import function GetExperienceCount() : Int32; // GetExperienceCount
+	import function GetExperienceItem(index : Int32) : whandle:gamedataXPPoints_Record; // GetExperienceItem
+	import function GetExperienceItemHandle(index : Int32) : handle:gamedataXPPoints_Record; // GetExperienceItemHandle
+	import function GetItemsCount() : Int32; // GetItemsCount
+	import function GetItemsItem(index : Int32) : whandle:gamedataInventoryItem_Record; // GetItemsItem
+	import function GetItemsItemHandle(index : Int32) : handle:gamedataInventoryItem_Record; // GetItemsItemHandle
+	import function GetPhotoModeItemCount() : Int32; // GetPhotoModeItemCount
+	import function GetPhotoModeItemItem(index : Int32) : whandle:gamedataPhotoModeItem_Record; // GetPhotoModeItemItem
+	import function GetPhotoModeItemItemHandle(index : Int32) : handle:gamedataPhotoModeItem_Record; // GetPhotoModeItemItemHandle
+	import function GetRecipesCount() : Int32; // GetRecipesCount
+	import function GetRecipesItem(index : Int32) : whandle:gamedataItem_Record; // GetRecipesItem
+	import function GetRecipesItemHandle(index : Int32) : handle:gamedataItem_Record; // GetRecipesItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function Items(out outList : array:whandle:gamedataInventoryItem_Record); // Items
+	import function ItemsContains(item : whandle:gamedataInventoryItem_Record) : Bool; // ItemsContains
+	import function Name() : String; // Name
+	import function PhotoModeItem(out outList : array:whandle:gamedataPhotoModeItem_Record); // PhotoModeItem
+	import function PhotoModeItemContains(item : whandle:gamedataPhotoModeItem_Record) : Bool; // PhotoModeItemContains
+	import function Recipes(out outList : array:whandle:gamedataItem_Record); // Recipes
+	import function RecipesContains(item : whandle:gamedataItem_Record) : Bool; // RecipesContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

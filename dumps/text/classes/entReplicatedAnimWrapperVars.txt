@@ -1,0 +1,5 @@
+import struct entReplicatedAnimWrapperVars
+{
+	var serverReplicatedTime : netTime;
+	var data : array:entReplicatedVariableValue;
+}

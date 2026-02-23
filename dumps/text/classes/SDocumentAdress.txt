@@ -1,0 +1,5 @@
+struct SDocumentAdress
+{
+	public    var folderID : Int32;
+	public    var documentID : Int32;
+}

@@ -1,0 +1,7 @@
+import struct animCurvePathBakerUserInput
+{
+	var controllersSetupName : CName;
+	var useStart : Bool;
+	var useStop : Bool;
+	var blendTime : Float;
+}

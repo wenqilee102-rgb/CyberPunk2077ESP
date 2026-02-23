@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"SecurityAlarmBreachResponse","d":0,"e":[{"a":{"b":"ESecuritySystemState"},"b":"currentSecurityState","c":129}],"f":[{"a":"GetSecurityState;","b":"GetSecurityState","c":{"b":"ESecuritySystemState"},"d":176},{"a":"SetProperties;ESecuritySystemState","b":"SetProperties","d":48,"e":[{"a":{"b":"ESecuritySystemState"},"b":"currentSecuritySystemState","c":0}]}]}

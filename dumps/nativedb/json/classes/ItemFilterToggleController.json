@@ -1,0 +1,1 @@
+{"a":"ToggleController","b":"ItemFilterToggleController","d":0,"e":[{"a":{"b":"inkWidgetReference"},"b":"newItemDot","c":129},{"a":{"a":1},"b":"useCategoryFilter","c":129}],"f":[{"a":"GetIcon;","b":"GetIcon","c":{"a":12},"d":32},{"a":"GetLabelKey;","b":"GetLabelKey","c":{"a":12},"d":32}]}

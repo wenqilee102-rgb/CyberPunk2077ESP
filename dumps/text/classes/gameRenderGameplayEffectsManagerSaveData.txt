@@ -1,0 +1,10 @@
+import class gameRenderGameplayEffectsManagerSaveData extends ISerializable
+{
+	var cyberspacePixelsortParams : gameCyberspacePixelsortEffectParams;
+	var cyberspacePixelsortEnabled : Bool;
+	var enforceScreenSpaceReflectionsUberQuality : Bool;
+}
+
+import class abstract ISerializable
+{
+}

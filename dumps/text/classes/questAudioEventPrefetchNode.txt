@@ -1,0 +1,12 @@
+import class questAudioEventPrefetchNode extends questIAudioNodeType
+{
+	var prefetchEvents : array:questAudioEventPrefetchStruct;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

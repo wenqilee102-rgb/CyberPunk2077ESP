@@ -1,0 +1,53 @@
+class AdamSmasherHealthChangeListener extends gameCustomValueStatPoolsListener
+{
+	public    var owner : whandle:NPCPuppet;
+	public    var player : whandle:PlayerPuppet;
+	private   var adamSmasherComponent : handle:AdamSmasherComponent;
+	private   var statPoolType : gamedataStatPoolType;
+	private   var statPoolSystem : handle:gameStatPoolsSystem;
+
+	function ApplyEmergency(); // ApplyEmergency;
+	function ApplyPhase2(); // ApplyPhase2;
+	function ApplyPhase3(); // ApplyPhase3;
+	function ApplySmashed(); // ApplySmashed;
+	function CheckPhase(oldValue : Float, newValue : Float, percToPoints : Float); // CheckPhase;FloatFloatFloat
+	function DestroyWeakspotGenerator(); // DestroyWeakspotGenerator;
+	function DisableAllSandyEdgerunnerFxs(); // DisableAllSandyEdgerunnerFxs;
+	function DisableFrontPlate(); // DisableFrontPlate;
+	function DisableLauncherWeakspot(); // DisableLauncherWeakspot;
+	function DisableRightArm(); // DisableRightArm;
+	function DisableTorsoWeakspot(); // DisableTorsoWeakspot;
+	function EnableHeadWeakspot(); // EnableHeadWeakspot;
+	function EnableLauncherWeakspot(); // EnableLauncherWeakspot;
+	function EnableTorsoWeakspot(); // EnableTorsoWeakspot;
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+	function RemoveEmergency(); // RemoveEmergency;
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

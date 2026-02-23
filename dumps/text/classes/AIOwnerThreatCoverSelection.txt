@@ -1,0 +1,7 @@
+import struct AIOwnerThreatCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

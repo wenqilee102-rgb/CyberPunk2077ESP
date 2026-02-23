@@ -1,0 +1,5 @@
+struct DestructionData
+{
+	public    var durabilityType : EDeviceDurabilityType;
+	public    var canBeFixed : Bool;
+}

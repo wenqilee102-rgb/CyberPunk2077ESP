@@ -1,0 +1,15 @@
+import struct gameprojectileHitInstance
+{
+	var traceResult : physicsTraceResult;
+	var position : Vector4;
+	var projectilePosition : Vector4;
+	var projectileSourcePosition : Vector4;
+	var forward : Vector4;
+	var velocity : Vector4;
+	var hitObject : whandle:entEntity;
+	var hitWeakspot : whandle:gameWeakspotObject;
+	var hitRepresentationResult : gameQueryResult;
+	var numRicochetBounces : Int32;
+	var isWaterSurfaceImpact : Bool;
+	var hitThroughWaterSurface : Bool;
+}

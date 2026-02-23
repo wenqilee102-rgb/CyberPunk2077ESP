@@ -1,0 +1,17 @@
+import class AIArgumentEnumValue extends AIArgumentDefinition
+{
+	var type : AIArgumentType;
+	var enumClass : CName;
+	var defaultValue : Int64;
+}
+
+import class abstract AIArgumentDefinition extends ISerializable
+{
+	var name : CName;
+	var isPersistent : Bool;
+	var behaviorCallbackName : CName;
+}
+
+import class abstract ISerializable
+{
+}

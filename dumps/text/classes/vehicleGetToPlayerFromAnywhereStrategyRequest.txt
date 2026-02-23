@@ -1,0 +1,28 @@
+import class vehicleGetToPlayerFromAnywhereStrategyRequest extends vehicleBaseStrategyRequest
+{
+	static function Create(spawnDistanceRange : Vector2, minDirectDist : Float) : handle:vehicleGetToPlayerFromAnywhereStrategyRequest; // vehicleGetToPlayerFromAnywhereStrategyRequest::Create;Vector2Float
+}
+
+import class vehicleBaseStrategyRequest extends IScriptable
+{
+	var strategy : vehiclePoliceStrategy;
+	var distanceRange : Vector2;
+	var minDirectDistance : Float;
+	var forceArriveFromBehind : Bool;
+
+	function GetStrategy() : vehiclePoliceStrategy; // GetStrategy;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

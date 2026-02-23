@@ -1,0 +1,41 @@
+class CameraTagEnemyLimitDataModule extends GameSessionDataModule
+{
+	public    var cameraLimit : Int32;
+	public    var cameraList : array:whandle:SurveillanceCamera;
+
+	function AddEntry(data : Variant); // AddEntry;Variant
+	function CheckData(data : Variant) : Bool; // CheckData;Variant
+	function CleanupNulls(); // CleanupNulls;
+	function Initialize(); // Initialize;
+	function IsDataValid(data : Variant) : Bool; // IsDataValid;Variant
+	function RefreshDebug(context : ScriptGameInstance); // RefreshDebug;GameInstance
+	function SendCameraTagLockEvent(index : Int32); // SendCameraTagLockEvent;Int32
+	function Uninitialize(); // Uninitialize;
+}
+
+class GameSessionDataModule extends IScriptable
+{
+	protected var moduleType : EGameSessionDataType;
+
+	function AddEntry(data : Variant); // AddEntry;Variant
+	function CheckData(data : Variant) : Bool; // CheckData;Variant
+	function GetModuleType() : EGameSessionDataType; // GetModuleType;
+	function Initialize(); // Initialize;
+	function IsDataValid(data : Variant) : Bool; // IsDataValid;Variant
+	function RefreshDebug(context : ScriptGameInstance); // RefreshDebug;GameInstance
+	function Uninitialize(); // Uninitialize;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

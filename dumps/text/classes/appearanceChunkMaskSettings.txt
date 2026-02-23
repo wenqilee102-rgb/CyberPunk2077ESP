@@ -1,0 +1,6 @@
+import struct appearanceChunkMaskSettings
+{
+	var chunksIds : array:Uint64;
+	var meshLayout : array:Uint32;
+	var meshGeometryHash : Uint64;
+}

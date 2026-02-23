@@ -1,0 +1,58 @@
+class UIInventoryItemRequirementsManager extends IScriptable
+{
+	private   var itemRequiredLevel : Int32;
+	private   var requiredStrength : Int32;
+	private   var requiredReflex : Int32;
+	private   var perkRequirementName : String;
+	private   var isSmartlinkRequirementMet : Bool;
+	private   var isLevelRequirementMet : Bool;
+	private   var isStrengthRequirementMet : Bool;
+	private   var isReflexRequirementMet : Bool;
+	private   var isPerkRequirementMet : Bool;
+	private   var isHumanityRequirementMet : Bool;
+	private   var isEquippable : Bool;
+	private   var isEquippableAdditionalValue : Bool;
+	private   var isEquippableFetched : Bool;
+	private   var equipRequirements : array:gameSItemStackRequirementData;
+	private   var equipRequirementsFetched : Bool;
+	private   var player : whandle:gameObject;
+	private   var attachedItem : whandle:UIInventoryItem;
+
+	static function Make(inventoryItem : whandle:UIInventoryItem, player : whandle:gameObject) : handle:UIInventoryItemRequirementsManager; // UIInventoryItemRequirementsManager::Make;UIInventoryItemGameObject
+
+	function CheckStatEquipRequirement(statToCheck : gamedataStatType, player : whandle:gameObject, statsSystem : handle:gameStatsSystem) : Bool; // CheckStatEquipRequirement;gamedataStatTypeGameObjectStatsSystem
+	function FetchEquipRequirements(optional force : Bool); // FetchEquipRequirements;Bool
+	function GetFirstUnmetEquipRequirement() : gameSItemStackRequirementData; // GetFirstUnmetEquipRequirement;
+	function GetLevelRequirementValue() : Int32; // GetLevelRequirementValue;
+	function GetPerkRequirementValue() : String; // GetPerkRequirementValue;
+	function GetReflexRequirementValue() : Int32; // GetReflexRequirementValue;
+	function GetStrengthRequirementValue() : Int32; // GetStrengthRequirementValue;
+	function IsAnyItemDisplayRequirementNotMet() : Bool; // IsAnyItemDisplayRequirementNotMet;
+	function IsAnyRequirementNotMet() : Bool; // IsAnyRequirementNotMet;
+	function IsEquippable(optional force : Bool) : Bool; // IsEquippable;Bool
+	function IsEquippableRaw(optional force : Bool) : Bool; // IsEquippableRaw;Bool
+	function IsHumanityRequirementMet() : Bool; // IsHumanityRequirementMet;
+	function IsLevelRequirementMet() : Bool; // IsLevelRequirementMet;
+	function IsPerkRequirementMet() : Bool; // IsPerkRequirementMet;
+	function IsRarityRequirementMet(parentItem : whandle:UIInventoryItem) : Bool; // IsRarityRequirementMet;UIInventoryItem
+	function IsReflexRequirementMet() : Bool; // IsReflexRequirementMet;
+	function IsSmartlinkRequirementMet() : Bool; // IsSmartlinkRequirementMet;
+	function IsStrengthRequirementMet() : Bool; // IsStrengthRequirementMet;
+	function SetIsEquippable(value : Bool); // SetIsEquippable;Bool
+	function SetIsEquippableAdditionalValue(value : Bool); // SetIsEquippableAdditionalValue;Bool
+	function Update(optional statsSystem : handle:gameStatsSystem); // Update;StatsSystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

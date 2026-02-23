@@ -1,0 +1,5 @@
+import struct questTogglePrefabVariant_NodeTypeParams
+{
+	var prefabNodeRef : NodeRef;
+	var variantStates : array:questVariantState;
+}

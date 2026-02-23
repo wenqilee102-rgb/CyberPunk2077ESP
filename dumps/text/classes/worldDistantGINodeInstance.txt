@@ -1,0 +1,11 @@
+import class worldDistantGINodeInstance extends worldINodeInstance
+{
+}
+
+import class abstract worldINodeInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

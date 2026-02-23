@@ -1,0 +1,27 @@
+class BuildBluelinePart extends gameinteractionsvisBluelinePart
+{
+	public    var record : handle:gamedataPlayerBuild_Record;
+	public    var lhsValue : Int32;
+	public    var rhsValue : Int32;
+	public    var comparisonOperator : ECompareOp;
+}
+
+import class gameinteractionsvisBluelinePart extends IScriptable
+{
+	var passed : Bool;
+	var captionIconRecordId : TweakDBID;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

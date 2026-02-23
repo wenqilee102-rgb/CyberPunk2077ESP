@@ -1,0 +1,111 @@
+import class gamedamageAttackData extends IScriptable
+{
+	var attackType : gamedataAttackType;
+	var instigator : whandle:gameObject;
+	var source : whandle:gameObject;
+	var weapon : whandle:gameweaponObject;
+	var attackDefinition : handle:gameIAttack;
+	var attackPosition : Vector4;
+	var weaponCharge : Float;
+	var numRicochetBounces : Int32;
+	var numAttackSpread : Int32;
+	var attackTime : Float;
+	var triggerMode : gamedataTriggerMode;
+	private   var flags : array:SHitFlag;
+	private   var statusEffects : array:SHitStatusEffect;
+	private   var hitType : gameuiHitType;
+	private   var vehicleImpactForce : Float;
+	private   var minimumHealthPercent : Float;
+	private   var additionalCritChance : Float;
+	private   var randRoll : Float;
+	private   var hitReactionMin : Int32;
+	private   var hitReactionMax : Int32;
+
+	static function CanEffectCriticallyHit(attackData : handle:gamedamageAttackData, statsSystem : handle:gameStatsSystem) : Bool; // gamedamageAttackData::CanEffectCriticallyHit;AttackDataStatsSystem
+	static function CanGrenadeCriticallyHit(attackData : handle:gamedamageAttackData, statsSystem : handle:gameStatsSystem) : Bool; // gamedamageAttackData::CanGrenadeCriticallyHit;AttackDataStatsSystem
+	static function HasFlag(flags : script_ref:array:SHitFlag, flag : hitFlag) : Bool; // gamedamageAttackData::HasFlag;script_ref<array<SHitFlag>>hitFlag
+	static function IsAreaOfEffect(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsAreaOfEffect;gamedataAttackType
+	static function IsDismembermentCause(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsDismembermentCause;gamedataAttackType
+	static function IsDoT(attackData : handle:gamedamageAttackData) : Bool; // gamedamageAttackData::IsDoT;AttackData
+	static function IsDoT(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsDoT;gamedataAttackType
+	static function IsEffect(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsEffect;gamedataAttackType
+	static function IsExplosion(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsExplosion;gamedataAttackType
+	static function IsHack(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsHack;gamedataAttackType
+	static function IsLightMelee(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsLightMelee;gamedataAttackType
+	static function IsMelee(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsMelee;gamedataAttackType
+	static function IsPlayerInCombat(attackData : handle:gamedamageAttackData) : Bool; // gamedamageAttackData::IsPlayerInCombat;AttackData
+	static function IsPressureWave(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsPressureWave;gamedataAttackType
+	static function IsQuickMelee(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsQuickMelee;gamedataAttackType
+	static function IsRangedOnly(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsRangedOnly;gamedataAttackType
+	static function IsRangedOrDirect(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsRangedOrDirect;gamedataAttackType
+	static function IsRangedOrDirectOrThrown(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsRangedOrDirectOrThrown;gamedataAttackType
+	static function IsReflect(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsReflect;gamedataAttackType
+	static function IsStrongMelee(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsStrongMelee;gamedataAttackType
+	static function IsThrown(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsThrown;gamedataAttackType
+	static function IsWhip(attackType : gamedataAttackType) : Bool; // gamedamageAttackData::IsWhip;gamedataAttackType
+
+	function AddFlag(flag : hitFlag, sourceName : CName); // AddFlag;hitFlagCName
+	function AddStatusEffect(effect : TweakDBID, stacks : Float); // AddStatusEffect;TweakDBIDFloat
+	function ClearDamage(); // ClearDamage;
+	function DoesAttackWeaponHaveTag(tag : CName) : Bool; // DoesAttackWeaponHaveTag;CName
+	function GetAdditionalCritChance() : Float; // GetAdditionalCritChance;
+	function GetAttackDefinition() : handle:gameIAttack; // GetAttackDefinition;
+	function GetAttackPosition() : Vector4; // GetAttackPosition;
+	function GetAttackSubtype() : gamedataAttackSubtype; // GetAttackSubtype;
+	function GetAttackTime() : Float; // GetAttackTime;
+	function GetAttackType() : gamedataAttackType; // GetAttackType;
+	function GetFlags() : array:SHitFlag; // GetFlags;
+	function GetHitReactionSeverityMax() : Int32; // GetHitReactionSeverityMax;
+	function GetHitReactionSeverityMin() : Int32; // GetHitReactionSeverityMin;
+	function GetHitType() : gameuiHitType; // GetHitType;
+	function GetInstigator() : whandle:gameObject; // GetInstigator;
+	function GetMinimumHealthPercent() : Float; // GetMinimumHealthPercent;
+	function GetNumAttackSpread() : Int32; // GetNumAttackSpread;
+	function GetNumRicochetBounces() : Int32; // GetNumRicochetBounces;
+	function GetRandRoll() : Float; // GetRandRoll;
+	function GetSource() : whandle:gameObject; // GetSource;
+	function GetStatusEffects() : array:SHitStatusEffect; // GetStatusEffects;
+	function GetTriggerMode() : gamedataTriggerMode; // GetTriggerMode;
+	function GetVehicleImpactForce() : Float; // GetVehicleImpactForce;
+	function GetWeapon() : whandle:gameweaponObject; // GetWeapon;
+	function GetWeaponCharge() : Float; // GetWeaponCharge;
+	function HasFlag(flag : hitFlag) : Bool; // HasFlag;hitFlag
+	function PreAttack(); // PreAttack;
+	function RemoveFlag(flag : hitFlag, sourceName : CName); // RemoveFlag;hitFlagCName
+	function RemoveFlag(flag : hitFlag); // RemoveFlag;hitFlag
+	function SetAdditionalCritChance(f : Float); // SetAdditionalCritChance;Float
+	function SetAttackDefinition(a : handle:gameIAttack); // SetAttackDefinition;IAttack
+	function SetAttackPosition(position : Vector4); // SetAttackPosition;Vector4
+	function SetAttackTime(time : Float); // SetAttackTime;Float
+	function SetAttackType(attackTypeOverride : gamedataAttackType); // SetAttackType;gamedataAttackType
+	function SetHitReactionSeverityMax(i : Int32); // SetHitReactionSeverityMax;Int32
+	function SetHitReactionSeverityMin(i : Int32); // SetHitReactionSeverityMin;Int32
+	function SetHitType(h : gameuiHitType); // SetHitType;gameuiHitType
+	function SetInstigator(i : whandle:gameObject); // SetInstigator;GameObject
+	function SetMinimumHealthPercent(value : Float); // SetMinimumHealthPercent;Float
+	function SetRandRoll(roll : Float); // SetRandRoll;Float
+	function SetSource(s : whandle:gameObject); // SetSource;GameObject
+	function SetTriggerMode(mode : gamedataTriggerMode); // SetTriggerMode;gamedataTriggerMode
+	function SetVehicleImpactForce(force : Float); // SetVehicleImpactForce;Float
+	function SetWeapon(w : whandle:gameweaponObject); // SetWeapon;WeaponObject
+	function SetWeaponCharge(charge : Float); // SetWeaponCharge;Float
+	function WasBlocked() : Bool; // WasBlocked;
+	function WasBulletBlocked() : Bool; // WasBulletBlocked;
+	function WasBulletDeflected() : Bool; // WasBulletDeflected;
+	function WasDeflected() : Bool; // WasDeflected;
+	function WasDeflectedAny() : Bool; // WasDeflectedAny;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

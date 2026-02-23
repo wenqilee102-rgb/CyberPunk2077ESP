@@ -1,0 +1,5 @@
+struct ChangeInfoWithTimeStamp
+{
+	public    var TimeStamp : Float;
+	public    var Change : Float;
+}

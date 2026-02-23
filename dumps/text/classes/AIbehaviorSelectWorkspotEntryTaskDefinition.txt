@@ -1,0 +1,16 @@
+import class AIbehaviorSelectWorkspotEntryTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var workspotData : handle:AIArgumentMapping;
+	var destinationPosition : handle:AIArgumentMapping;
+	var tangentPoint : handle:AIArgumentMapping;
+	var entranceFromStand : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

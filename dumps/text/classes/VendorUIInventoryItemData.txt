@@ -1,0 +1,38 @@
+class VendorUIInventoryItemData extends WrappedInventoryItemData
+{
+	public    var ItemPrice : Float;
+	public    var IsVendorItem : Bool;
+	public    var IsBuybackStack : Bool;
+	public    var IsEnoughMoney : Bool;
+	public    var IsDLCAddedActiveItem : Bool;
+	public    var IsNotInWardrobe : Bool;
+}
+
+class WrappedInventoryItemData extends IScriptable
+{
+	public    var ItemData : gameInventoryItemData;
+	public    var ComparisonState : gameItemComparisonState;
+	public    var IsNew : Bool;
+	public    var IsPlayerFavourite : Bool;
+	public    var ItemTemplate : Uint32;
+	public    var DisplayContext : gameItemDisplayContext;
+	public    var NotificationListener : handle:ImmediateNotificationListener;
+	public    var Item : handle:UIInventoryItem;
+	public    var DisplayContextData : whandle:ItemDisplayContextData;
+	public    var OverrideQuantity : Int32;
+	public    var IsQuestBought : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

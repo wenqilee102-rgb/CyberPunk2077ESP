@@ -1,0 +1,7 @@
+import struct inkUITransform
+{
+	var translation : Vector2;
+	var scale : Vector2;
+	var shear : Vector2;
+	var rotation : Float;
+}

@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloorIkBase","b":"animAnimNode_FloorIk","d":8,"e":[{"a":{"b":"animSBehaviorConstraintNodeFloorIKVerticalBoneData"},"b":"pelvis","c":128},{"a":{"b":"animSBehaviorConstraintNodeFloorIKLegsData"},"b":"legs","c":128},{"a":{"b":"animSTwoBonesIKSolverData"},"b":"leftLegIK","c":128},{"a":{"b":"animSTwoBonesIKSolverData"},"b":"rightLegIK","c":128}]}

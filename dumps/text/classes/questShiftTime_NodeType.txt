@@ -1,0 +1,28 @@
+import class questShiftTime_NodeType extends questITimeManagerNodeType
+{
+	var timeShiftType : questETimeShiftType;
+	var preventVisualGlitch : Bool;
+	var hours : Uint32;
+	var minutes : Uint32;
+	var seconds : Uint32;
+}
+
+import class abstract questITimeManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

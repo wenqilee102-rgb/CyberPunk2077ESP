@@ -1,0 +1,4 @@
+import struct CComStaticSkeletonData
+{
+	var entries : array:CComStaticSkeletonDataEntry;
+}

@@ -1,0 +1,7 @@
+import struct gamePrereqCheckData
+{
+	var prereqType : gameEPrerequisiteType;
+	var comparisonType : EComparisonType;
+	var contextObject : String;
+	var valueToCompare : Float;
+}

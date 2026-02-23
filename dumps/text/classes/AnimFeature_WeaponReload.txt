@@ -1,0 +1,26 @@
+import class AnimFeature_WeaponReload extends animAnimFeature
+{
+	var emptyReload : Bool;
+	var amountToReload : Int32;
+	var continueLoop : Bool;
+	var loopDuration : Float;
+	var emptyDuration : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

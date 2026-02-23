@@ -1,0 +1,21 @@
+import class inkPointCloudEffect extends inkIEffect
+{
+	var repeat : Float;
+	var offsetX : Float;
+	var offsetY : Float;
+	var angle : Float;
+	var fovScale : Float;
+	var parallaxDepth : Float;
+	var depthToOpacity : Float;
+	var depthToBrightness : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

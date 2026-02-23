@@ -1,0 +1,15 @@
+import class inkRadialWipeEffect extends inkIEffect
+{
+	var startAngle : Float;
+	var transition : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

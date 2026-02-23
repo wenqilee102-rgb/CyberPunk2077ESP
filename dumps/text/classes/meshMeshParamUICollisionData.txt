@@ -1,0 +1,14 @@
+import class meshMeshParamUICollisionData extends meshMeshParameter
+{
+	var uvs : array:Vector2;
+	var trianglesIndices : array:Uint16;
+	var vertices : array:Vector3;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

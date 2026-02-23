@@ -1,0 +1,39 @@
+class VendorSellJunkPopupData extends inkGameNotificationData
+{
+	public    var items : array:whandle:gameItemData;
+	public    var limitedItems : array:handle:VendorJunkSellItem;
+	public    var itemsQuantity : Int32;
+	public    var limitedItemsQuantity : Int32;
+	public    var totalPrice : Float;
+	public    var limitedTotalPrice : Int32;
+	public    var actionType : VendorSellJunkActionType;
+}
+
+import class inkGameNotificationData extends inkUserData
+{
+	var notificationName : CName;
+	var requiredGameState : CName;
+	var isBlocking : Bool;
+	var useCursor : Bool;
+	var queueName : CName;
+	var introAnimation : CName;
+	var token : whandle:inkGameNotificationToken;
+}
+
+import class inkUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

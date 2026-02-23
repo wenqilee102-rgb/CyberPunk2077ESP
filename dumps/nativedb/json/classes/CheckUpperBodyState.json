@@ -1,0 +1,1 @@
+{"a":"AINPCUpperBodyStateCheck","b":"CheckUpperBodyState","d":0,"e":[{"a":{"b":"gamedataNPCUpperBodyState"},"b":"state","c":128}],"f":[{"a":"GetStateToCheck;","b":"GetStateToCheck","c":{"b":"gamedataNPCUpperBodyState"},"d":33}]}

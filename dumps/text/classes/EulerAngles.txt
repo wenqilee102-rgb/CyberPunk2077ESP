@@ -1,0 +1,19 @@
+import struct EulerAngles
+{
+	var Pitch : Float;
+	var Yaw : Float;
+	var Roll : Float;
+
+	import static function AlmostEqual(a : EulerAngles, b : EulerAngles, epsilon : Float) : Bool; // AlmostEqual
+	import static function Dot(a : EulerAngles, b : EulerAngles) : Float; // Dot
+	import static function GetAxes(rotation : EulerAngles, out forward : Vector4, out right : Vector4, out up : Vector4); // GetAxes
+	import static function GetForward(rotation : EulerAngles) : Vector4; // GetForward
+	import static function GetRight(rotation : EulerAngles) : Vector4; // GetRight
+	import static function GetUp(rotation : EulerAngles) : Vector4; // GetUp
+	import static function GetXAxis(rotation : EulerAngles) : Vector4; // GetXAxis
+	import static function GetYAxis(rotation : EulerAngles) : Vector4; // GetYAxis
+	import static function GetZAxis(rotation : EulerAngles) : Vector4; // GetZAxis
+	import static function Rand(min : Float, max : Float) : EulerAngles; // Rand
+	import static function ToMatrix(rotation : EulerAngles) : Matrix; // ToMatrix
+	import static function ToQuat(rotation : EulerAngles) : Quaternion; // ToQuat
+}

@@ -1,0 +1,19 @@
+class abstract AICodeInterface extends IScriptable
+{
+	static function CheckSlotsForEquipment(context : script_ref:AIbehaviorScriptExecutionContext, puppet : handle:gamePuppet, equipmentGroup : CName) : AIbehaviorConditionOutcomes; // AICodeInterface::CheckSlotsForEquipment;script_ref<ScriptExecutionContext>gamePuppetCName
+	static function GetLastRequestedTriggerMode(weapon : handle:gameweaponObject) : gamedataTriggerMode; // AICodeInterface::GetLastRequestedTriggerMode;WeaponObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

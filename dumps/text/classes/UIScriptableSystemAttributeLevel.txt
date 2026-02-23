@@ -1,0 +1,5 @@
+struct UIScriptableSystemAttributeLevel
+{
+	public    var stat : gamedataStatType;
+	public    var level : Int32;
+}

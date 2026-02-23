@@ -1,0 +1,11 @@
+struct Bounty
+{
+	public    var transgressions : array:TweakDBID;
+	public    var bountySetter : TweakDBID;
+	public    var bountID : TweakDBID;
+	public    var moneyAmount : Int32;
+	public    var streetCredAmount : Int32;
+	public    var awarded : Bool;
+	public    var wantedStars : Int32;
+	public    var filteredOut : Bool;
+}

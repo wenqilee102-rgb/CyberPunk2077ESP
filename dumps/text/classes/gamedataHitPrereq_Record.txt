@@ -1,0 +1,38 @@
+import class gamedataHitPrereq_Record extends gamedataIPrereq_Record
+{
+	import function CallbackType() : String; // CallbackType
+	import function Conditions(out outList : array:whandle:gamedataHitPrereqCondition_Record); // Conditions
+	import function ConditionsContains(item : whandle:gamedataHitPrereqCondition_Record) : Bool; // ConditionsContains
+	import function GetConditionsCount() : Int32; // GetConditionsCount
+	import function GetConditionsItem(index : Int32) : whandle:gamedataHitPrereqCondition_Record; // GetConditionsItem
+	import function GetConditionsItemHandle(index : Int32) : handle:gamedataHitPrereqCondition_Record; // GetConditionsItemHandle
+	import function IgnoreSelfInflictedPressureWave() : Bool; // IgnoreSelfInflictedPressureWave
+	import function IsSynchronous() : Bool; // IsSynchronous
+	import function PipelineStage() : String; // PipelineStage
+	import function PipelineType() : String; // PipelineType
+}
+
+import class gamedataIPrereq_Record extends gamedataTweakDBRecord
+{
+	import function PrereqClassName() : CName; // PrereqClassName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

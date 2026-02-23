@@ -1,0 +1,5 @@
+import struct gamestateMachineActionParameterFloat
+{
+	var name : CName;
+	var value : Float;
+}

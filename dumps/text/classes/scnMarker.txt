@@ -1,0 +1,9 @@
+import struct scnMarker
+{
+	var type : scnMarkerType;
+	var localMarkerId : CName;
+	var nodeRef : NodeRef;
+	var entityRef : gameEntityReference;
+	var slotName : CName;
+	var isMounted : Bool;
+}

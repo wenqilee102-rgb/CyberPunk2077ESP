@@ -1,0 +1,5 @@
+import struct rendHistogramBias
+{
+	var mulCoef : Vector3;
+	var addCoef : Vector3;
+}

@@ -1,0 +1,38 @@
+import class animAnimNode_SkAnimAdjuster extends animAnimNode_SkAnim
+{
+	var targetPositionWs : animVectorLink;
+	var targetDirectionWs : animVectorLink;
+	var initialForwardVector : Vector4;
+	var startAdjustmentEventName : CName;
+	var endAdjustmentEventName : CName;
+}
+
+import class animAnimNode_SkAnim extends animAnimNode_Base
+{
+	var animation : CName;
+	var applyMotion : Bool;
+	var isLooped : Bool;
+	var resume : Bool;
+	var collectEvents : Bool;
+	var fireAnimLoopEvent : Bool;
+	var animLoopEventName : CName;
+	var clipFront : Float;
+	var clipEnd : Float;
+	var clipFrontByEvent : CName;
+	var clipEndByEvent : CName;
+	var pushDataByTag : CName;
+	var popDataByTag : CName;
+	var pushSafeCutTag : CName;
+	var convertToAdditive : Bool;
+	var motionProvider : handle:animIMotionTableProvider;
+	var applyInertializationOnAnimSetSwap : Bool;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"DeviceOperationTriggerData","b":"FactOperationTriggerData","d":0,"e":[{"a":{"b":"EComparisonOperator"},"b":"comparisionType","c":128},{"a":{"a":14},"b":"factName","c":128},{"a":{"a":6},"b":"factValue","c":128},{"a":{"a":7},"b":"callbackID","c":128}]}

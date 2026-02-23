@@ -1,0 +1,14 @@
+import class redResourceListResource extends CResource
+{
+	var resources : array:raRef:CResource;
+	var descriptions : array:String;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

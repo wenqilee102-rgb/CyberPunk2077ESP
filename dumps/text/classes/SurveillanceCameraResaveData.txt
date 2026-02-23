@@ -1,0 +1,12 @@
+struct SurveillanceCameraResaveData
+{
+	public    var shouldRotate : Bool;
+	public    var maxRotationAngle : Float;
+	public    var pitchAngle : Float;
+	public    var rotationSpeed : Float;
+	public    var canStreamVideo : Bool;
+	public    var canDetectIntruders : Bool;
+	public    var canBeControled : Bool;
+	public    var factOnFeedReceived : CName;
+	public    var questFactOnDetection : CName;
+}

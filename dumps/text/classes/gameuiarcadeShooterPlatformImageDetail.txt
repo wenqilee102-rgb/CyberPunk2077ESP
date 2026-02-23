@@ -1,0 +1,4 @@
+import struct gameuiarcadeShooterPlatformImageDetail
+{
+	var platformImage : inkWidgetReference;
+}

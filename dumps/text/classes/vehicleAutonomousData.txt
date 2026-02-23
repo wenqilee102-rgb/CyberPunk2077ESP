@@ -1,0 +1,53 @@
+import class vehicleAutonomousData extends ISerializable
+{
+	var owner : whandle:vehicleBaseObject;
+	var useKinematic : Bool;
+	var needDriver : Bool;
+	var aggressiveRammingEnabled : Bool;
+	var ignoreChaseVehiclesLimit : Bool;
+	var boostDrivingStats : Bool;
+	var targetObjToReach : whandle:gameObject;
+	var targetObjToFollow : whandle:gameObject;
+	var targetRef : NodeRef;
+	var splineRef : NodeRef;
+	var splineRefBackwards : NodeRef;
+	var vehicleRef : gameEntityReference;
+	var targetPosition : Vector3;
+	var drivingID : TweakDBID;
+	var distanceMin : Float;
+	var distanceMax : Float;
+	var wantToStop : Bool;
+	var stopHasReachedTarget : Bool;
+	var driveBackwards : Bool;
+	var reverseSpline : Bool;
+	var startFromClosest : Bool;
+	var canClearActions : Bool;
+	var keepDistanceParamBool : Bool;
+	var keepDistanceParamCompanion : whandle:gameObject;
+	var keepDistanceParamDistance : Float;
+	var rubberBandingBool : Bool;
+	var rubberBandingTargetRef : whandle:gameObject;
+	var rubberBandingTargetForwardOffset : Float;
+	var rubberBandingMinDistance : Float;
+	var rubberBandingMaxDistance : Float;
+	var rubberBandingStopAndWait : Bool;
+	var rubberBandingTeleportToCatchUp : Bool;
+	var rubberBandingStayInFront : Bool;
+	var secureTimeOut : Float;
+	var portalsList : handle:vehiclePortalsList;
+	var trafficTryNeighborsForStart : Bool;
+	var trafficTryNeighborsForEnd : Bool;
+	var ignoreNoAIDrivingLanes : Bool;
+	var allowSimplifiedMovement : Bool;
+	var ignoreTickets : Bool;
+	var disableStuckDetection : Bool;
+	var tryDriveAwayFromPlayer : Bool;
+	var useSpeedBasedLookupRange : Bool;
+	var clearTrafficOnPath : Bool;
+	var emergencyPatrol : Bool;
+	var numPatrolLoops : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

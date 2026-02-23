@@ -1,0 +1,78 @@
+import class gamedataShooterBasilisk_Record extends gamedataShooterBossAI_Record
+{
+	import function CannonCoolDown() : Float; // CannonCoolDown
+	import function CannonCount() : Int32; // CannonCount
+	import function CannonFireRate() : Float; // CannonFireRate
+	import function CannonHealthPercent() : Float; // CannonHealthPercent
+	import function CannonMoveDistance() : Float; // CannonMoveDistance
+	import function EnragedCannonCount() : Int32; // EnragedCannonCount
+	import function EnragedMissileCount() : Int32; // EnragedMissileCount
+	import function EnragedTurretBulletCount() : Int32; // EnragedTurretBulletCount
+	import function EnragedTurretInterval() : Float; // EnragedTurretInterval
+	import function MissileCoolDown() : Float; // MissileCoolDown
+	import function MissileCount() : Int32; // MissileCount
+	import function MissileEnhancedSpeed() : Float; // MissileEnhancedSpeed
+	import function MissileExplosionRange() : Float; // MissileExplosionRange
+	import function MissileHealthPercent() : Float; // MissileHealthPercent
+	import function MissileOffset() : Float; // MissileOffset
+	import function MissleFireRate() : Float; // MissleFireRate
+	import function RammingSpeed() : Float; // RammingSpeed
+	import function RammingSpeedTime() : Float; // RammingSpeedTime
+	import function SfxDud() : CName; // SfxDud
+	import function SfxExplosion() : CName; // SfxExplosion
+	import function TurretBulletCount() : Int32; // TurretBulletCount
+	import function TurretHealthPercent() : Float; // TurretHealthPercent
+	import function TurretInterval() : Float; // TurretInterval
+}
+
+import class gamedataShooterBossAI_Record extends gamedataShooterAI_Record
+{
+	import function HealthThreshold() : Int32; // HealthThreshold
+	import function IdleDuration() : Float; // IdleDuration
+}
+
+import class gamedataShooterAI_Record extends gamedataShooterObject_Record
+{
+	import function CollisionDelay() : Float; // CollisionDelay
+	import function Health() : Float; // Health
+	import function LibraryWidget() : String; // LibraryWidget
+	import function MoveSpeed() : Float; // MoveSpeed
+	import function SfxDamage() : CName; // SfxDamage
+	import function SfxDead() : CName; // SfxDead
+}
+
+import class gamedataShooterObject_Record extends gamedataArcadeObject_Record
+{
+	import function Gravity() : Float; // Gravity
+	import function Max_gravity() : Float; // Max_gravity
+	import function Score() : Float; // Score
+}
+
+import class gamedataArcadeObject_Record extends gamedataTweakDBRecord
+{
+	import function Animation() : CName; // Animation
+	import function ImageAnchorPoint() : Vector2; // ImageAnchorPoint
+	import function ImageTextureAtlas() : redResourceReferenceScriptToken; // ImageTextureAtlas
+	import function ImageTexturePart() : CName; // ImageTexturePart
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

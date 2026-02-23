@@ -1,0 +1,14 @@
+import class CParticleDrawerMotionBlur extends IParticleDrawer
+{
+	var stretchPerVelocity : Float;
+	var isGPUBased : Bool;
+}
+
+import class abstract IParticleDrawer extends ISerializable
+{
+	var pivotOffset : Float;
+}
+
+import class abstract ISerializable
+{
+}

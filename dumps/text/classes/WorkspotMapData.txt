@@ -1,0 +1,25 @@
+class WorkspotMapData extends IScriptable
+{
+	public    var action : gamedataWorkspotActionType;
+	public    var workspots : array:handle:WorkspotEntryData;
+
+	function FindFreeWorkspotData() : handle:WorkspotEntryData; // FindFreeWorkspotData;
+	function FindFreeWorkspotRef() : NodeRef; // FindFreeWorkspotRef;
+	function GetFreeWorkspotsCount() : Int32; // GetFreeWorkspotsCount;
+	function ReleaseWorkspot(workspotRef : NodeRef); // ReleaseWorkspot;NodeRef
+	function ReserveWorkspot(workspotRef : NodeRef); // ReserveWorkspot;NodeRef
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

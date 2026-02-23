@@ -1,0 +1,39 @@
+import class worldReflectionProbeNode extends worldNode
+{
+	var probeDataRef : raRef:CReflectionProbeDataResource;
+	var priority : Uint8;
+	var globalProbe : Bool;
+	var boxProjection : Bool;
+	var neighborMode : envUtilsNeighborMode;
+	var edgeScale : Vector3;
+	var lightChannels : rendLightChannel;
+	var emissiveScale : Float;
+	var reflectionDimming : Float;
+	var simpleFogColor : HDRColor;
+	var simpleFogDensity : Float;
+	var skyScale : Float;
+	var allInShadow : Bool;
+	var hideSkyColor : Bool;
+	var volFogAmbient : Bool;
+	var brightnessEVClamp : Int8;
+	var ambientMode : envUtilsReflectionProbeAmbientContributionMode;
+	var captureOffset : Vector3;
+	var nearClipDistance : Float;
+	var farClipDistance : Float;
+	var volumeChannels : rendLightChannel;
+	var blendRange : Uint8;
+	var streamingDistance : Float;
+	var streamingHeight : Float;
+	var subScene : Bool;
+	var noFadeBlend : Bool;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

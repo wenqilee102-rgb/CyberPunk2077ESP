@@ -1,0 +1,23 @@
+import class questEntityManagerRemoteControlVehicle_NodeType extends questIEntityManager_NodeType
+{
+	var parentRef : gameEntityReference;
+	var enable : Bool;
+	var shouldUnseatPassengers : Bool;
+	var shouldModifyInteractionState : Bool;
+}
+
+import class abstract questIEntityManager_NodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

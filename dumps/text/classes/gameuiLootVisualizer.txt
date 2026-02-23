@@ -1,0 +1,11 @@
+import class gameuiLootVisualizer extends gameuiIChoiceVisualizer
+{
+}
+
+import class abstract gameuiIChoiceVisualizer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

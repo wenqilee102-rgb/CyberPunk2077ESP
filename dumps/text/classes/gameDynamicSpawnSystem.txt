@@ -1,0 +1,32 @@
+import class gameDynamicSpawnSystem extends gameIDynamicSpawnSystem
+{
+	import function GetNumberOfSpawnedUnits() : Int32; // GetNumberOfSpawnedUnits
+	import function IsEntityRegistered(id : entEntityID) : Bool; // IsEntityRegistered
+	import function IsInUnmountingRange(position : Vector3) : Bool; // IsInUnmountingRange
+
+	function ChangeAttitude(owner : whandle:gameObject, target : whandle:gameObject, desiredAttitude : EAIAttitude); // ChangeAttitude;GameObjectGameObjectEAIAttitude
+	function SpawnCallback(spawnedObject : handle:gameObject); // SpawnCallback;GameObject
+	function SpawnRequestFinished(requestResult : gameDSSSpawnRequestResult); // SpawnRequestFinished;DSSSpawnRequestResult
+}
+
+import class abstract gameIDynamicSpawnSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

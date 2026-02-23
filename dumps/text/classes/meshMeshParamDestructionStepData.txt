@@ -1,0 +1,13 @@
+import class meshMeshParamDestructionStepData extends meshMeshParameter
+{
+	var offsets : array:physicsDestructionHierarchyOffset;
+	var isInstantRemovable : String;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

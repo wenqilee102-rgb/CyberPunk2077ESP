@@ -1,0 +1,8 @@
+struct GameTimeUtils
+{
+	static function CanPlayerTimeSkip(playerPuppet : handle:PlayerPuppet) : Bool; // GameTimeUtils::CanPlayerTimeSkip;PlayerPuppet
+	static function FastForwardPlayerState(player : handle:gameObject); // GameTimeUtils::FastForwardPlayerState;GameObject
+	static function IsTimeDisplayGlitched(playerPuppet : handle:PlayerPuppet) : Bool; // GameTimeUtils::IsTimeDisplayGlitched;PlayerPuppet
+	static function SetGameTimeText(textWidgetRef : inkTextWidgetReference, textParamsRef : handle:textTextParameterSet, gameTime : GameTime); // GameTimeUtils::SetGameTimeText;inkTextRefinkTextParamsGameTime
+	static function UpdateGameTimeText(timeSystem : handle:gameTimeSystem, textWidgetRef : inkTextWidgetReference, textParamsRef : handle:textTextParameterSet, optional addSeconds : Int32); // GameTimeUtils::UpdateGameTimeText;TimeSysteminkTextRefinkTextParamsInt32
+}

@@ -1,0 +1,6 @@
+import struct EmitterGroupAreaParams
+{
+	var group : EEmitterGroup;
+	var emissionScale : curveData:Float;
+	var opacityScale : curveData:Float;
+}

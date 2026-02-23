@@ -1,0 +1,5 @@
+import struct questNodeCollisionMapArrayElement
+{
+	var objectRef : NodeRef;
+	var componentsCollisionMapArray : array:questComponentCollisionMapArrayElement;
+}

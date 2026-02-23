@@ -1,0 +1,26 @@
+class InteractionAreaOperationTriggerData extends DeviceOperationTriggerData
+{
+	public    var isActivatorPlayer : Bool;
+	public    var isActivatorNPC : Bool;
+	public    var areaTag : CName;
+	public    var operationType : gameinteractionsEInteractionEventType;
+}
+
+class DeviceOperationTriggerData extends IScriptable
+{
+	public    var operationsToExecute : array:handle:OperationExecutionData;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

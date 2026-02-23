@@ -1,0 +1,54 @@
+import class worldInstancedDestructibleMeshNode extends worldMeshNode
+{
+	var staticMesh : raRef:CMesh;
+	var staticMeshAppearance : CName;
+	var simulationType : physicsSimulationType;
+	var filterDataSource : physicsFilterDataSource;
+	var startInactive : Bool;
+	var turnDynamicOnImpulse : Bool;
+	var useAggregate : Bool;
+	var enableSelfCollisionInAggregate : Bool;
+	var isDestructible : Bool;
+	var filterData : handle:physicsFilterData;
+	var damageThreshold : Float;
+	var damageEndurance : Float;
+	var accumulateDamage : Bool;
+	var impulseToDamage : Float;
+	var fracturingEffect : raRef:worldEffect;
+	var idleEffect : raRef:worldEffect;
+	var instanceTransforms : array:Transform;
+	var cookedInstanceTransforms : worldTransformBuffer;
+	var isPierceable : Bool;
+	var isWorkspot : Bool;
+	var navigationSetting : NavGenNavigationSetting;
+	var useMeshNavmeshSettings : Bool;
+	var systemsToNotifyFlags : Uint16;
+}
+
+import class worldMeshNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var forceAutoHideDistance : Float;
+	var occluderType : visWorldOccluderType;
+	var occluderAutohideDistanceScale : Uint8;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var castRayTracedGlobalShadows : shadowsShadowCastingMode;
+	var castRayTracedLocalShadows : shadowsShadowCastingMode;
+	var windImpulseEnabled : Bool;
+	var removeFromRainMap : Bool;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+	var lodLevelScales : Uint32;
+	var version : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

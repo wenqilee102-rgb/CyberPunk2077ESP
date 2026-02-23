@@ -1,0 +1,23 @@
+import class gameLoSFinderParams extends IScriptable
+{
+	import function SetMode(mode : gameLoSMode); // SetMode
+	import function SetOverrideCheckHeight(height : Float); // SetOverrideCheckHeight
+	import function SetPointPreference(); // SetPointPreference
+	import function SetSeeker(seeker : whandle:gameObject, ignoredVisionBlockers : senseVisionBlockerTypeFlags); // SetSeeker
+	import function SetTarget(target : whandle:senseVisibleObject, ignoredVisionBlockers : senseVisionBlockerTypeFlags); // SetTarget
+	import function SetTracesAmountMultiplier(multiplier : Uint32); // SetTracesAmountMultiplier
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

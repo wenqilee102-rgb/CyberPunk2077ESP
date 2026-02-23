@@ -1,0 +1,9 @@
+import struct animFacialSetup_BufferInfo
+{
+	var tracksMapping : animFacialSetup_TracksMapping;
+	var numLipsyncOverridesIndexMapping : Uint16;
+	var numJointRegions : Uint16;
+	var face : animFacialSetup_OneSermoBufferInfo;
+	var eyes : animFacialSetup_OneSermoBufferInfo;
+	var tongue : animFacialSetup_OneSermoBufferInfo;
+}

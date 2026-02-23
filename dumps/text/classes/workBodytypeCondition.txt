@@ -1,0 +1,14 @@
+import class workBodytypeCondition extends workIWorkspotCondition
+{
+	var rig : raRef:animRig;
+}
+
+import class abstract workIWorkspotCondition extends ISerializable
+{
+	var expectedResult : workWorkspotLogic;
+	var equals : Bool;
+}
+
+import class abstract ISerializable
+{
+}

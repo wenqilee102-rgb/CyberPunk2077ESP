@@ -1,0 +1,11 @@
+struct BountyUI
+{
+	public    var issuedBy : String;
+	public    var moneyReward : Int32;
+	public    var streetCredReward : Int32;
+	public    var transgressions : array:String;
+	public    var hasAccess : Bool;
+	public    var level : Int32;
+
+	static function AddTransgression(self : BountyUI, transgression : script_ref:String); // BountyUI::AddTransgression;BountyUIscript_ref<String>
+}

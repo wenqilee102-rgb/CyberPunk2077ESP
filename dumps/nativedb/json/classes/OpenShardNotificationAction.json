@@ -1,0 +1,1 @@
+{"a":"GenericNotificationBaseAction","b":"OpenShardNotificationAction","d":0,"e":[{"a":{"a":26,"c":{"b":"gameuiGameSystemUI"}},"b":"eventDispatcher","c":128}],"f":[{"a":"Execute;IScriptable","b":"Execute","c":{"a":1},"d":32,"e":[{"a":{"a":26,"c":{"b":"IScriptable"}},"b":"data","c":0}]},{"a":"GetLabel;","b":"GetLabel","c":{"a":12},"d":32}]}

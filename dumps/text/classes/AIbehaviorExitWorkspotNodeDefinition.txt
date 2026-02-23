@@ -1,0 +1,28 @@
+import class AIbehaviorExitWorkspotNodeDefinition extends AIbehaviorDecoratorNodeDefinition
+{
+	var skipExitAnimation : handle:AIArgumentMapping;
+	var useSlowExitAnimation : handle:AIArgumentMapping;
+	var doSlowIfFastExitFails : handle:AIArgumentMapping;
+	var stayInWorkspotIfExitFails : handle:AIArgumentMapping;
+	var tryBlendFastExitToWalk : handle:AIArgumentMapping;
+	var dontRequestExit : handle:AIArgumentMapping;
+	var cancelQueuedCommand : handle:AIArgumentMapping;
+	var target : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDecoratorNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var child : handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

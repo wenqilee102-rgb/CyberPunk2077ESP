@@ -1,0 +1,49 @@
+import class AISquadScriptInterface extends IScriptable
+{
+	import function AckOrder(sqAction : CName, et : handle:entEntity) : Bool; // AckOrder
+	import function Commit(sqAction : CName, et : handle:entEntity) : Bool; // Commit
+	import function GetAllAcknowledgedOrders(et : handle:entEntity) : array:Uint32; // GetAllAcknowledgedOrders
+	import function GetAllCommitedOrders(et : handle:entEntity) : array:Uint32; // GetAllCommitedOrders
+	import function GetAllOrders(et : handle:entEntity) : array:Uint32; // GetAllOrders
+	import function GetMembersCount() : Uint32; // GetMembersCount
+	import function GetName() : CName; // GetName
+	import function GetOrderById(orderId : Uint32) : AIsquadsOrder; // GetOrderById
+	import function GetSquadType() : AISquadType; // GetSquadType
+	import function GetTemplate() : CName; // GetTemplate
+	import function GiveOrder(sqAction : CName, et : handle:entEntity) : Uint32; // GiveOrder
+	import function GuardedCall(callThisFunction : CName); // GuardedCall
+	import function HasAcknowledgedOrderBySquadAction(sqAction : CName, et : handle:entEntity) : Bool; // HasAcknowledgedOrderBySquadAction
+	import function HasOrderBySquadAction(sqAction : CName, et : handle:entEntity) : Bool; // HasOrderBySquadAction
+	import function IsSquadActionOpen(sqAction : CName, et : handle:entEntity) : Bool; // IsSquadActionOpen
+	import function Join(et : handle:entEntity) : Bool; // Join
+	import function Leave(et : handle:entEntity) : Bool; // Leave
+	import function ListMembers() : array:handle:entEntity; // ListMembers
+	import function ListMembersWeak() : array:whandle:entEntity; // ListMembersWeak
+	import function ListMembersWithSquadActionWeak(sqAction : CName) : array:whandle:entEntity; // ListMembersWithSquadActionWeak
+	import function LockAccess() : Bool; // LockAccess
+	import function OpenSquadAction(name : CName, et : handle:entEntity, timeout : Float) : Bool; // OpenSquadAction
+	import function RefreshSquadAction(name : CName, et : handle:entEntity, timeout : Float) : Bool; // RefreshSquadAction
+	import function ReportDone(sqAction : CName, et : handle:entEntity) : Bool; // ReportDone
+	import function ReportFail(sqAction : CName, et : handle:entEntity) : Bool; // ReportFail
+	import function RequestOrder(sqAction : CName, et : handle:entEntity) : Bool; // RequestOrder
+	import function RevokeOrder(sqAction : CName, et : handle:entEntity) : Bool; // RevokeOrder
+	import function RevokeSquadAction(name : CName, et : handle:entEntity) : Bool; // RevokeSquadAction
+	import function TriggerActivation(name : CName, et : handle:entEntity) : Bool; // TriggerActivation
+	import function TriggerDeactivation(name : CName, et : handle:entEntity) : Bool; // TriggerDeactivation
+	import function TriggerEvaluation(name : CName, et : handle:entEntity) : Bool; // TriggerEvaluation
+	import function UnlockAccess() : Bool; // UnlockAccess
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

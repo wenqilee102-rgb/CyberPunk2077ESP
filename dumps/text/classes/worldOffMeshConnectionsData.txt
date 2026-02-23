@@ -1,0 +1,13 @@
+import struct worldOffMeshConnectionsData
+{
+	var verts : array:Float;
+	var radii : array:Float;
+	var flags : array:Uint16;
+	var areas : array:Uint8;
+	var directions : array:Uint8;
+	var ids : array:Uint64;
+	var tagIntervals : array:Uint16;
+	var tagsX : array:CName;
+	var globalNodeIDs : array:worldGlobalNodeID;
+	var userData : array:handle:worldOffMeshUserData;
+}

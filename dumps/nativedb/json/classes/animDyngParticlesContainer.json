@@ -1,0 +1,1 @@
+{"b":"animDyngParticlesContainer","d":8,"g":true,"e":[{"a":{"b":"Vector3"},"b":"externalForceWS","c":128},{"a":{"b":"animVectorLink"},"b":"externalForceWsLink","c":128},{"a":{"a":31,"c":{"b":"animDyngParticle"}},"b":"particles","c":128},{"a":{"a":10},"b":"gravityWS","c":128}]}

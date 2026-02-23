@@ -1,0 +1,5 @@
+import struct gameHitRepresentationResult
+{
+	var sult : gameQueryResult;
+	var tityID : entEntityID;
+}

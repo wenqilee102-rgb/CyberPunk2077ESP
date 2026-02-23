@@ -1,0 +1,1 @@
+{"a":"gamedataCoverSelectionParameters_Record","b":"gamedataOwnerDistanceCoverSelectionParameters_Record","c":"OwnerDistanceCoverSelectionParameters_Record","d":24,"f":[{"a":"DistanceToOwnerMultiplier","c":{"a":10},"d":4},{"a":"OwnerMaxDistance","c":{"a":10},"d":4},{"a":"OwnerMinDistance","c":{"a":10},"d":4},{"a":"OwnerPreferredDistance","c":{"a":10},"d":4}]}

@@ -1,0 +1,36 @@
+import class gameuiLevelUpNotificationViewData extends gameuiGenericNotificationViewData
+{
+	var canBeMerged : Bool;
+	var levelupdata : questLevelUpData;
+	var proficiencyRecord : handle:gamedataProficiency_Record;
+	var profString : String;
+
+	function CanMerge(data : handle:gameuiGenericNotificationViewData) : Bool; // CanMerge;GenericNotificationViewData
+}
+
+import class gameuiGenericNotificationViewData extends IScriptable
+{
+	var title : String;
+	var text : String;
+	var soundEvent : CName;
+	var soundAction : CName;
+	public    var action : handle:GenericNotificationBaseAction;
+
+	function CanMerge(data : handle:gameuiGenericNotificationViewData) : Bool; // CanMerge;GenericNotificationViewData
+	function GetPriority() : Int32; // GetPriority;
+	function OnRemoveNotification(data : handle:IScriptable) : Bool; // OnRemoveNotification;IScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

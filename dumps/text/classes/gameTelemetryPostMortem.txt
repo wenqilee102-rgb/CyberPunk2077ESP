@@ -1,0 +1,14 @@
+import struct gameTelemetryPostMortem
+{
+	var crashVisitId : String;
+	var playthroughId : String;
+	var crashVersion : String;
+	var crashPatch : String;
+	var timeCrash : String;
+	var district : String;
+	var zoneType : String;
+	var trackedQuest : gameTelemetryTrackedQuest;
+	var location : Vector3;
+	var sessionLength : Float;
+	var isOom : Bool;
+}

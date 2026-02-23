@@ -1,0 +1,30 @@
+import class audioMeleeWeaponConfiguration extends audioAudioMetadata
+{
+	var fastWhoosh : audioMeleeSound;
+	var normalWhoosh : audioMeleeSound;
+	var slowWhoosh : audioMeleeSound;
+	var detailSound : audioMeleeSound;
+	var handlingSound : audioMeleeSound;
+	var equipSound : audioMeleeSound;
+	var unequipSound : audioMeleeSound;
+	var blockSound : audioMeleeSound;
+	var parrySound : audioMeleeSound;
+	var attackChargedThreshold : Float;
+	var attackChargedSound : audioMeleeSound;
+	var attackDischargedSound : audioMeleeSound;
+	var meleeSoundsByHitPerMaterialType : handle:audioMeleeHitTypeMeleeSoundDictionary;
+	var meleeWeaponConfigurationsByRigTypeMap : audioMeleeRigTypeMeleeWeaponConfigurationMap;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

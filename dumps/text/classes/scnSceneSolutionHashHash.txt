@@ -1,0 +1,4 @@
+import struct scnSceneSolutionHashHash
+{
+	var sceneSolutionHashDate : Uint64;
+}

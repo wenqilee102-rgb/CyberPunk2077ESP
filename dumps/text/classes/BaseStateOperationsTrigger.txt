@@ -1,0 +1,37 @@
+class BaseStateOperationsTrigger extends DeviceOperationsTrigger
+{
+	protected var triggerData : handle:BaseStateOperationTriggerData;
+	private   var wasStateCached : Bool;
+	private   var cachedState : EDeviceStatus;
+
+	function EvaluateTrigger(state : EDeviceStatus, owner : whandle:gameObject, container : handle:DeviceOperationsContainer); // EvaluateTrigger;EDeviceStatusGameObjectDeviceOperationsContainer
+}
+
+class abstract DeviceOperationsTrigger extends IScriptable
+{
+	function ClearDelayIdOnNamedOperation(namedOperation : handle:OperationExecutionData); // ClearDelayIdOnNamedOperation;OperationExecutionData
+	function DelayTriggerExecution(namedOperation : handle:OperationExecutionData, owner : handle:gameObject); // DelayTriggerExecution;OperationExecutionDataGameObject
+	function ExecuteOperationByName(operationName : CName, owner : handle:gameObject, container : handle:DeviceOperationsContainer); // ExecuteOperationByName;CNameGameObjectDeviceOperationsContainer
+	function GetOperationsContainer(owner : handle:gameObject) : handle:DeviceOperationsContainer; // GetOperationsContainer;GameObject
+	function Initialize(owner : handle:gameObject); // Initialize;GameObject
+	function IsPlayerActivator(activator : whandle:gameObject) : Bool; // IsPlayerActivator;GameObject
+	function ResolveOperationsOnTrigger(trigger : handle:DeviceOperationTriggerData, owner : handle:gameObject, container : handle:DeviceOperationsContainer); // ResolveOperationsOnTrigger;DeviceOperationTriggerDataGameObjectDeviceOperationsContainer
+	function RestoreOperationByName(operationName : CName, owner : handle:gameObject, container : handle:DeviceOperationsContainer); // RestoreOperationByName;CNameGameObjectDeviceOperationsContainer
+	function RestoreOperationsOnTrigger(trigger : handle:DeviceOperationTriggerData, owner : handle:gameObject, container : handle:DeviceOperationsContainer); // RestoreOperationsOnTrigger;DeviceOperationTriggerDataGameObjectDeviceOperationsContainer
+	function SetDelayIdOnNamedOperation(delayID : gameDelayID, namedOperation : handle:OperationExecutionData); // SetDelayIdOnNamedOperation;DelayIDOperationExecutionData
+	function UnInitialize(owner : handle:gameObject); // UnInitialize;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

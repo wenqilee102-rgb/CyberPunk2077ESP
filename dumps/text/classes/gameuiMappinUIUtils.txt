@@ -1,0 +1,18 @@
+import struct gameuiMappinUIUtils
+{
+	import static function GetEngineTime() : EngineTime; // GetEngineTime
+	import static function IsPlayerInArea(mappin : whandle:gamemappinsIMappin) : Bool; // IsPlayerInArea
+
+	static function CyclePreventionState(out state : CName); // gameuiMappinUIUtils::CyclePreventionState;CName
+	static function GetFixerVariantData(questSystem : handle:questQuestsSystem, mappin : handle:gamemappinsIMappin) : FixerTooltipMapData; // gameuiMappinUIUtils::GetFixerVariantData;QuestsSystemIMappin
+	static function IsMappinServicePoint(mappinVariant : gamedataMappinVariant) : Bool; // gameuiMappinUIUtils::IsMappinServicePoint;gamedataMappinVariant
+	static function MappinToColor(mappinVariant : gamedataMappinVariant) : CName; // gameuiMappinUIUtils::MappinToColor;gamedataMappinVariant
+	static function MappinToDescriptionString(mappinVariant : gamedataMappinVariant) : CName; // gameuiMappinUIUtils::MappinToDescriptionString;gamedataMappinVariant
+	static function MappinToObjectiveString(mappinVariant : gamedataMappinVariant) : CName; // gameuiMappinUIUtils::MappinToObjectiveString;gamedataMappinVariant
+	static function MappinToString(mappinVariant : gamedataMappinVariant) : CName; // gameuiMappinUIUtils::MappinToString;gamedataMappinVariant
+	static function MappinToString(mappinVariant : gamedataMappinVariant, mappinPhase : gamedataMappinPhase) : CName; // gameuiMappinUIUtils::MappinToString;gamedataMappinVariantgamedataMappinPhase
+	static function MappinToTexturePart(mappinVariant : gamedataMappinVariant) : CName; // gameuiMappinUIUtils::MappinToTexturePart;gamedataMappinVariant
+	static function MappinToTexturePart(mappinVariant : gamedataMappinVariant, mappinPhase : gamedataMappinPhase) : CName; // gameuiMappinUIUtils::MappinToTexturePart;gamedataMappinVariantgamedataMappinPhase
+	static function MappinToTexturePart(mappin : whandle:gamemappinsIMappin) : CName; // gameuiMappinUIUtils::MappinToTexturePart;IMappin
+	static function PlayPreventionBlinkAnimation(widget : whandle:inkWidget, out initialState : CName) : handle:inkanimProxy; // gameuiMappinUIUtils::PlayPreventionBlinkAnimation;inkWidgetCName
+}

@@ -1,0 +1,1 @@
+{"a":"gameuiPanzerMiniGameController","b":"panzerGameController","d":0,"f":[{"a":"OnGameFinishLogic;GameFinishEventAdvanced","b":"OnGameFinishLogic","d":34,"e":[{"a":{"a":26,"c":{"b":"gameuiOnGameFinishEventAdvanced"}},"b":"gameFinishEvent","c":0}]}]}

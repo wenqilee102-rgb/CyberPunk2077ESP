@@ -1,0 +1,1 @@
+{"b":"questSetItemTags_NodeTypeParams","d":8,"g":true,"e":[{"a":{"a":26,"c":{"b":"questUniversalRef"}},"b":"objectRef","c":128},{"a":{"a":15},"b":"itemId","c":128},{"a":{"a":1},"b":"addTags","c":128},{"a":{"b":"gameEItemDynamicTags"},"b":"tags","c":128}]}

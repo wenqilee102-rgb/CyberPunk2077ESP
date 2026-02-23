@@ -1,0 +1,5 @@
+struct VehEntityPlayerStateData
+{
+	public    var entID : entEntityID;
+	public    var state : Int32;
+}

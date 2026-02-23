@@ -1,0 +1,7 @@
+import struct workSetInfiniteSequenceCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

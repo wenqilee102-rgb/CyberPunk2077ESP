@@ -1,0 +1,34 @@
+import class questEntityManagerSetAttachment_ToActor extends questIEntityManagerSetAttachment_NodeSubType
+{
+	var attachmentRef : NodeRef;
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+	var slot : CName;
+	var offsetMode : questAttachmentOffsetMode;
+	var customOffsetPos : Vector3;
+	var customOffsetRot : Quaternion;
+}
+
+import class abstract questIEntityManagerSetAttachment_NodeSubType extends questIEntityManager_NodeSubType
+{
+}
+
+import class abstract questIEntityManager_NodeSubType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

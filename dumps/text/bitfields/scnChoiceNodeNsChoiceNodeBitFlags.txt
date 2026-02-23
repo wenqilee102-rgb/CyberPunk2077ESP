@@ -1,0 +1,5 @@
+bitfield scnChoiceNodeNsChoiceNodeBitFlags
+{
+	IsFocusClue = 1 << 0,
+	IsValidInteractionFailsafeDisabled = 1 << 1
+}

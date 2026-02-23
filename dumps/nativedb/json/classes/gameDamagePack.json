@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gameDamagePack","c":"DamagePack","d":8,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"gameDamage"}}},"b":"damageList","c":128}],"f":[{"a":"AddDamage","d":4},{"a":"GetDamageList","d":4},{"a":"HasValidDamage","d":4}]}

@@ -1,0 +1,35 @@
+import class gamedataTankEnemySpawnerData_Record extends gamedataTweakDBRecord
+{
+	import function EnemyList(out outList : array:whandle:gamedataTankEnemy_Record); // EnemyList
+	import function EnemyListContains(item : whandle:gamedataTankEnemy_Record) : Bool; // EnemyListContains
+	import function GetEnemyListCount() : Int32; // GetEnemyListCount
+	import function GetEnemyListItem(index : Int32) : whandle:gamedataTankEnemy_Record; // GetEnemyListItem
+	import function GetEnemyListItemHandle(index : Int32) : handle:gamedataTankEnemy_Record; // GetEnemyListItemHandle
+	import function GetLevelListCount() : Int32; // GetLevelListCount
+	import function GetLevelListItem(index : Int32) : whandle:gamedataTankLevelSpawnableArrangement_Record; // GetLevelListItem
+	import function GetLevelListItemHandle(index : Int32) : handle:gamedataTankLevelSpawnableArrangement_Record; // GetLevelListItemHandle
+	import function LevelList(out outList : array:whandle:gamedataTankLevelSpawnableArrangement_Record); // LevelList
+	import function LevelListContains(item : whandle:gamedataTankLevelSpawnableArrangement_Record) : Bool; // LevelListContains
+	import function ProjectileSpawnerTDBID() : CName; // ProjectileSpawnerTDBID
+	import function SpawnTime() : Float; // SpawnTime
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

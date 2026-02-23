@@ -1,0 +1,68 @@
+class AICoverHelper extends IScriptable
+{
+	static function CalculateCoverExposureMethod(puppet : whandle:ScriptedPuppet, target : whandle:gameObject, coverID : Uint64, record : whandle:gamedataAISubActionCover_Record, lineOfSightTolerance : Float, trackedLocation : script_ref:AITrackedLocation, exposureMethods : script_ref:array:AICoverExposureMethod) : AICoverExposureMethod; // AICoverHelper::CalculateCoverExposureMethod;ScriptedPuppetGameObjectUint64AISubActionCover_RecordFloatscript_ref<TrackedLocation>script_ref<array<AICoverExposureMethod>>
+	static function CoverActionNameToEnum(actionName : CName) : EAICoverAction; // AICoverHelper::CoverActionNameToEnum;CName
+	static function CoverExposureMethodNameToEnum(exposureMethodName : CName) : AICoverExposureMethod; // AICoverHelper::CoverExposureMethodNameToEnum;CName
+	static function CoverHeightNameToEnum(coverHeight : CName) : gameCoverHeight; // AICoverHelper::CoverHeightNameToEnum;CName
+	static function FillEmptyCoverExposureMethodArray() : array:AICoverExposureMethod; // AICoverHelper::FillEmptyCoverExposureMethodArray;
+	static function FillEmptyCoverExposureMethodNameArray() : array:CName; // AICoverHelper::FillEmptyCoverExposureMethodNameArray;
+	static function GetAbsAngleFromCoverToCombatTarget(puppet : handle:ScriptedPuppet, targetPosition : Vector4, coverID : Uint64) : Float; // AICoverHelper::GetAbsAngleFromCoverToCombatTarget;ScriptedPuppetVector4Uint64
+	static function GetAbsAngleFromCoverToMovementTarget(puppet : handle:ScriptedPuppet, movementTargetPos : Vector4, coverID : Uint64) : Float; // AICoverHelper::GetAbsAngleFromCoverToMovementTarget;ScriptedPuppetVector4Uint64
+	static function GetAbsAngleFromCoverToTargetPosition(puppet : whandle:ScriptedPuppet, coverID : Uint64, targetPosition : Vector4) : Float; // AICoverHelper::GetAbsAngleFromCoverToTargetPosition;ScriptedPuppetUint64Vector4
+	static function GetAvailableExposureSpots(puppet : whandle:ScriptedPuppet, coverID : Uint64, target : whandle:gameObject, requestedExposureMethods : array:AICoverExposureMethod, lineOfSightTolerance : Float, optional exposureMethodPriority : array:whandle:gamedataAIExposureMethodType_Record) : array:AICoverExposureMethod; // AICoverHelper::GetAvailableExposureSpots;ScriptedPuppetUint64GameObjectarray<AICoverExposureMethod>Floatarray<AIExposureMethodType_Record>
+	static function GetAvailableExposureSpots(puppet : whandle:ScriptedPuppet, coverID : Uint64, target : whandle:gameObject, record : whandle:gamedataAISubActionCover_Record, lineOfSightTolerance : Float, optional exposureMethodPriority : array:whandle:gamedataAIExposureMethodType_Record) : array:AICoverExposureMethod; // AICoverHelper::GetAvailableExposureSpots;ScriptedPuppetUint64GameObjectAISubActionCover_RecordFloatarray<AIExposureMethodType_Record>
+	static function GetAvailableExposureSpots(puppet : whandle:ScriptedPuppet, coverID : Uint64, target : whandle:gameObject, record : whandle:gamedataAISubActionCover_Record, lineOfSightTolerance : Float, optional exposureMethodPriority : array:whandle:gamedataAIExposureMethodType_Record, allAvailableExposureMethods : script_ref:array:AICoverExposureMethod) : array:AICoverExposureMethod; // AICoverHelper::GetAvailableExposureSpots;ScriptedPuppetUint64GameObjectAISubActionCover_RecordFloatarray<AIExposureMethodType_Record>script_ref<array<AICoverExposureMethod>>
+	static function GetCoverBlackboard(puppet : handle:ScriptedPuppet) : handle:gameIBlackboard; // AICoverHelper::GetCoverBlackboard;ScriptedPuppet
+	static function GetCoverExposureMethod(puppet : handle:ScriptedPuppet, out method : AICoverExposureMethod); // AICoverHelper::GetCoverExposureMethod;ScriptedPuppetAICoverExposureMethod
+	static function GetCoverExposureMethod(puppet : handle:ScriptedPuppet) : CName; // AICoverHelper::GetCoverExposureMethod;ScriptedPuppet
+	static function GetCoverHeight(puppet : handle:ScriptedPuppet, coverID : Uint64) : gameCoverHeight; // AICoverHelper::GetCoverHeight;ScriptedPuppetUint64
+	static function GetCoverManager(puppet : handle:ScriptedPuppet) : handle:AISmartCoverManager; // AICoverHelper::GetCoverManager;ScriptedPuppet
+	static function GetCoverNPCCurrentlyExposed(puppet : handle:ScriptedPuppet) : Bool; // AICoverHelper::GetCoverNPCCurrentlyExposed;ScriptedPuppet
+	static function GetCoverRemainingHealthPerc(puppet : whandle:ScriptedPuppet, coverID : Uint64) : Float; // AICoverHelper::GetCoverRemainingHealthPerc;ScriptedPuppetUint64
+	static function GetCoverStanceFromExposureSpot(puppet : handle:ScriptedPuppet, exposureSpot : AICoverExposureMethod) : gameCoverHeight; // AICoverHelper::GetCoverStanceFromExposureSpot;ScriptedPuppetAICoverExposureMethod
+	static function GetCoverType(puppet : handle:ScriptedPuppet, coverID : Uint64, out shootingSpot : Bool) : gameCoverHeight; // AICoverHelper::GetCoverType;ScriptedPuppetUint64Bool
+	static function GetCurrentCover(puppet : handle:ScriptedPuppet) : Uint64; // AICoverHelper::GetCurrentCover;ScriptedPuppet
+	static function GetCurrentCoverId(puppet : handle:ScriptedPuppet) : Uint64; // AICoverHelper::GetCurrentCoverId;ScriptedPuppet
+	static function GetCurrentCoverStance(puppet : handle:ScriptedPuppet) : CName; // AICoverHelper::GetCurrentCoverStance;ScriptedPuppet
+	static function GetCurrentCoverStance(puppet : handle:ScriptedPuppet, out coverStance : gameCoverHeight); // AICoverHelper::GetCurrentCoverStance;ScriptedPuppetgameCoverHeight
+	static function GetDesiredCoverStance(puppet : handle:ScriptedPuppet, out coverStance : gameCoverHeight); // AICoverHelper::GetDesiredCoverStance;ScriptedPuppetgameCoverHeight
+	static function GetDesiredCoverStance(puppet : handle:ScriptedPuppet) : CName; // AICoverHelper::GetDesiredCoverStance;ScriptedPuppet
+	static function GetFallbackCoverExposureMethod(puppet : handle:ScriptedPuppet, out method : AICoverExposureMethod); // AICoverHelper::GetFallbackCoverExposureMethod;ScriptedPuppetAICoverExposureMethod
+	static function GetRandomCoverLastAvailableExposureMethod(puppet : handle:ScriptedPuppet, out method : AICoverExposureMethod); // AICoverHelper::GetRandomCoverLastAvailableExposureMethod;ScriptedPuppetAICoverExposureMethod
+	static function HasAnyCoverLastAvailableExposureMethod(puppet : handle:ScriptedPuppet) : Bool; // AICoverHelper::HasAnyCoverLastAvailableExposureMethod;ScriptedPuppet
+	static function HasCoverExposureMethods(ownerPuppet : whandle:ScriptedPuppet, coverID : Uint64, target : whandle:gameObject, exposureMethods : script_ref:array:CName) : Bool; // AICoverHelper::HasCoverExposureMethods;ScriptedPuppetUint64GameObjectscript_ref<array<CName>>
+	static function HasCoverExposureMethods(puppetOwner : whandle:ScriptedPuppet, coverID : Uint64, target : whandle:gameObject, exposureMethods : script_ref:array:AICoverExposureMethod) : Bool; // AICoverHelper::HasCoverExposureMethods;ScriptedPuppetUint64GameObjectscript_ref<array<AICoverExposureMethod>>
+	static function IsCurrentlyInCover(puppet : handle:ScriptedPuppet) : Bool; // AICoverHelper::IsCurrentlyInCover;ScriptedPuppet
+	static function IsCurrentlyInShootingSpot(puppet : handle:ScriptedPuppet) : Bool; // AICoverHelper::IsCurrentlyInShootingSpot;ScriptedPuppet
+	static function IsCurrentlyInSmartObject(puppet : handle:ScriptedPuppet) : Bool; // AICoverHelper::IsCurrentlyInSmartObject;ScriptedPuppet
+	static function IsStandingExposureMethod(exposureMethodName : CName) : Bool; // AICoverHelper::IsStandingExposureMethod;CName
+	static function IsUnsafeExposureMethod(exposureMethodName : CName) : Bool; // AICoverHelper::IsUnsafeExposureMethod;CName
+	static function LeaveCoverImmediately(puppet : handle:ScriptedPuppet) : Bool; // AICoverHelper::LeaveCoverImmediately;ScriptedPuppet
+	static function NotifyGotDamageInCover(puppet : handle:ScriptedPuppet, coverID : Uint64, damageTime : EngineTime, executingCoverAction : Bool); // AICoverHelper::NotifyGotDamageInCover;ScriptedPuppetUint64EngineTimeBool
+	static function RegisterNewCover(puppet : handle:ScriptedPuppet, coverId : Uint64); // AICoverHelper::RegisterNewCover;ScriptedPuppetUint64
+	static function ReturnHighestPriorityMethods(puppet : handle:ScriptedPuppet, record : whandle:gamedataAISubActionCover_Record, exposureMethods : script_ref:array:AICoverExposureMethod) : array:AICoverExposureMethod; // AICoverHelper::ReturnHighestPriorityMethods;ScriptedPuppetAISubActionCover_Recordscript_ref<array<AICoverExposureMethod>>
+	static function SetCoverExposureMethod(puppet : handle:ScriptedPuppet, value : AICoverExposureMethod); // AICoverHelper::SetCoverExposureMethod;ScriptedPuppetAICoverExposureMethod
+	static function SetCoverExposureMethod(puppet : handle:ScriptedPuppet, value : CName); // AICoverHelper::SetCoverExposureMethod;ScriptedPuppetCName
+	static function SetCoverLastAvailableExposureMethod(puppet : handle:ScriptedPuppet, optional exposureMethods : array:AICoverExposureMethod); // AICoverHelper::SetCoverLastAvailableExposureMethod;ScriptedPuppetarray<AICoverExposureMethod>
+	static function SetCoverNPCCurrentlyExposed(puppet : handle:ScriptedPuppet, value : Bool); // AICoverHelper::SetCoverNPCCurrentlyExposed;ScriptedPuppetBool
+	static function SetCurrentCoverStance(puppet : handle:ScriptedPuppet, value : gameCoverHeight); // AICoverHelper::SetCurrentCoverStance;ScriptedPuppetgameCoverHeight
+	static function SetCurrentCoverStance(puppet : handle:ScriptedPuppet, value : CName); // AICoverHelper::SetCurrentCoverStance;ScriptedPuppetCName
+	static function SetDesiredCoverStance(puppet : handle:ScriptedPuppet, value : CName); // AICoverHelper::SetDesiredCoverStance;ScriptedPuppetCName
+	static function SetDesiredCoverStance(puppet : handle:ScriptedPuppet, value : gameCoverHeight); // AICoverHelper::SetDesiredCoverStance;ScriptedPuppetgameCoverHeight
+	static function SetFallbackCoverExposureMethod(puppet : handle:ScriptedPuppet, value : AICoverExposureMethod); // AICoverHelper::SetFallbackCoverExposureMethod;ScriptedPuppetAICoverExposureMethod
+	static function UnregisterLastCover(puppet : handle:ScriptedPuppet); // AICoverHelper::UnregisterLastCover;ScriptedPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class toolsVisualTagsGroup extends ISerializable
+{
+	var name : CName;
+	var tags : array:toolsVisualTagsDefinition;
+}
+
+import class abstract ISerializable
+{
+}

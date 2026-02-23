@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"SetAttribute","d":0,"e":[{"a":{"a":10},"b":"statLevel","c":128},{"a":{"b":"gamedataStatType"},"b":"attributeType","c":128}],"f":[{"a":"Set;GameObjectFloatgamedataStatType","b":"Set","d":48,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"_owner","c":0},{"a":{"a":10},"b":"level","c":0},{"a":{"b":"gamedataStatType"},"b":"type","c":0}]}]}

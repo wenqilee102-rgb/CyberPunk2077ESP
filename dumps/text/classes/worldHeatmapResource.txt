@@ -1,0 +1,16 @@
+import class worldHeatmapResource extends CResource
+{
+	var setup : worldHeatmapSetup;
+	var name : String;
+	var layerNames : array:String;
+	var layers : array:raRef:worldHeatmapLayer;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

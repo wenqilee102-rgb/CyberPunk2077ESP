@@ -1,0 +1,5 @@
+import struct gameStatModifierDetailedData
+{
+	var value : Float;
+	var modifierType : gameStatModifierType;
+}

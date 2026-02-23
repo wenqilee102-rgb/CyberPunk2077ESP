@@ -1,0 +1,1 @@
+{"a":"animAnimFeature","b":"animAnimFeature_WallRun","c":"AnimFeature_WallRun","d":8,"e":[{"a":{"a":1},"b":"wallOnRightSide","c":128},{"a":{"b":"Vector4"},"b":"wallPosition","c":128},{"a":{"b":"Vector4"},"b":"wallNormal","c":128}],"f":[{"a":"SetWallOnRightSide","d":4}]}

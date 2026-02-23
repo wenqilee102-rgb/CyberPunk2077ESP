@@ -1,0 +1,6 @@
+import struct inkWidgetSlotAttachmentParams
+{
+	var slotID : CName;
+	var useSlotLayout : Bool;
+	var layoutOverride : inkWidgetLayout;
+}

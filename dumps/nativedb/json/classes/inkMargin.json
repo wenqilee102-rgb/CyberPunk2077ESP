@@ -1,0 +1,1 @@
+{"b":"inkMargin","d":8,"g":true,"e":[{"a":{"a":10},"b":"left","c":128},{"a":{"a":10},"b":"top","c":128},{"a":{"a":10},"b":"right","c":128},{"a":{"a":10},"b":"bottom","c":128}],"f":[{"a":"SetUniform","d":12,"e":[{"a":{"b":"inkMargin"},"b":"self","c":0},{"a":{"a":10},"b":"uniformThickness","c":0}]}]}

@@ -1,0 +1,12 @@
+import class animAnimStateTransitionCondition_Timed extends animIAnimStateTransitionCondition
+{
+	var timeToFireTransition : Float;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

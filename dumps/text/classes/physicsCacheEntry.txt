@@ -1,0 +1,5 @@
+import struct physicsCacheEntry
+{
+	var entryOffset : Uint32;
+	var entrySize : Uint32;
+}

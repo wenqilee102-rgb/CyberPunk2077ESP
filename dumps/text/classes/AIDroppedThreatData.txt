@@ -1,0 +1,5 @@
+import struct AIDroppedThreatData
+{
+	var threat : whandle:entEntity;
+	var position : Vector4;
+}

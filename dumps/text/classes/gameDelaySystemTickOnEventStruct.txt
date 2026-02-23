@@ -1,0 +1,11 @@
+import class abstract gameDelaySystemTickOnEventStruct extends gameDelaySystemTickStruct
+{
+}
+
+import class abstract gameDelaySystemTickStruct extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct interopStringWithID
+{
+	var text : String;
+	var id : Uint64;
+}

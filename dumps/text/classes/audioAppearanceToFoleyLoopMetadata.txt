@@ -1,0 +1,5 @@
+import struct audioAppearanceToFoleyLoopMetadata
+{
+	var appearances : array:CName;
+	var loop : audioFoleyLoopMetadata;
+}

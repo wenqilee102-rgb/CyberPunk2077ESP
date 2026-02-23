@@ -1,0 +1,5 @@
+enum MessageViewType
+{
+	Sent = 0,
+	Received = 1
+}

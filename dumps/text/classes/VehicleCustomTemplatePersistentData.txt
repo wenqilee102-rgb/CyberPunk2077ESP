@@ -1,0 +1,5 @@
+struct VehicleCustomTemplatePersistentData
+{
+	public    var vehicleID : TweakDBID;
+	public    var template : SavedVehicleVisualCustomizationTemplate;
+}

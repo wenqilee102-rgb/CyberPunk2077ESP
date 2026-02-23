@@ -1,0 +1,17 @@
+import class audioAudioSceneDefaults extends audioAudioMetadata
+{
+	var parameters : array:audioAudSimpleParameter;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+import class enteventsPhysicalCollisionEvent extends redEvent
+{
+	var myComponent : whandle:IScriptable;
+	var otherEntity : whandle:IScriptable;
+	var otherComponent : whandle:IScriptable;
+	var worldPosition : Vector4;
+	var worldNormal : Vector4;
+	var deltaVelocity : Vector4;
+	var impulse : Float;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

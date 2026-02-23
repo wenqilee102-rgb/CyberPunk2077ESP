@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_Float
+{
+	var evaluator : handle:gameIEffectParameter_FloatEvaluator;
+
+	import static function Get(ctx : gameEffectInputParameter_Float, bb : handle:gameIBlackboard) : Float; // Get
+}

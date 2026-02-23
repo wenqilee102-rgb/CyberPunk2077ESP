@@ -1,0 +1,7 @@
+import class gameEffectorObject extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

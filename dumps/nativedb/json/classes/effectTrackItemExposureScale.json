@@ -1,0 +1,1 @@
+{"a":"effectTrackItem","b":"effectTrackItemExposureScale","d":8,"e":[{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"scale","c":128},{"a":{"a":1},"b":"useInitialCameraPosDirForFadeout","c":128},{"a":{"a":10},"b":"fullEffectRadius","c":128},{"a":{"a":10},"b":"fadeOutRadius","c":128},{"a":{"a":10},"b":"fullyVisibleAngle","c":128},{"a":{"a":10},"b":"fadeOutAngle","c":128}]}

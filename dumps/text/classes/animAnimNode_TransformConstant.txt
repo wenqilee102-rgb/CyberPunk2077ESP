@@ -1,0 +1,19 @@
+import class animAnimNode_TransformConstant extends animAnimNode_TransformValue
+{
+	var pos : Vector4;
+	var rotation : Quaternion;
+	var scale : Vector4;
+}
+
+import class abstract animAnimNode_TransformValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

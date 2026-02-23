@@ -1,0 +1,30 @@
+import class animAnimNode_Ik2 extends animAnimNode_Base
+{
+	var firstBone : animTransformIndex;
+	var secondBone : animTransformIndex;
+	var endBone : animTransformIndex;
+	var hingeAxis : animAxis;
+	var minHingeAngleDegrees : Float;
+	var maxHingeAngleDegrees : Float;
+	var firstBoneIkGain : Float;
+	var secondBoneIkGain : Float;
+	var endBoneIkGain : Float;
+	var enforceEndPosition : Bool;
+	var enforceEndOrientation : Bool;
+	var endBoneOffsetPositionLS : Vector4;
+	var bone : animTransformIndex;
+	var floatTrack : animNamedTrackIndex;
+	var inputPoseNode : animPoseLink;
+	var weightNode : animFloatLink;
+	var endTargetPositionNode : animVectorLink;
+	var endTargetOrientationNode : animQuaternionLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

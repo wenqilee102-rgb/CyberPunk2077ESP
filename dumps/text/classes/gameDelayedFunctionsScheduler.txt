@@ -1,0 +1,10 @@
+import class gameDelayedFunctionsScheduler extends ISerializable
+{
+	var initialized : Bool;
+	var currentTime : EngineTime;
+	var nextCallId : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

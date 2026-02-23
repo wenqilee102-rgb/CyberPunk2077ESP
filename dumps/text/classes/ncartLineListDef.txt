@@ -1,0 +1,8 @@
+struct ncartLineListDef
+{
+	public    var lineNumber : Uint32;
+	public    var lineColor : Color;
+	public    var stationsList : array:ncartStationListDef;
+	public    var lineSymbolWidget : inkWidgetReference;
+	public    var lineIsLooped : Bool;
+}

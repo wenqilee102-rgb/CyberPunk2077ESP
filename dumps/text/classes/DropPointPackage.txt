@@ -1,0 +1,28 @@
+class DropPointPackage extends IScriptable
+{
+	private   var itemID : TweakDBID;
+	private   var status : DropPointPackageStatus;
+	private   var predefinedDrop : gamePersistentID;
+	private   var statusHistory : array:DropPointPackageStatus;
+
+	function Holder() : gamePersistentID; // Holder;
+	function Record() : TweakDBID; // Record;
+	function SetHolder(_holder : gamePersistentID); // SetHolder;PersistentID
+	function SetRecord(record : TweakDBID); // SetRecord;TweakDBID
+	function SetStatus(newStatus : DropPointPackageStatus); // SetStatus;DropPointPackageStatus
+	function Status() : DropPointPackageStatus; // Status;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

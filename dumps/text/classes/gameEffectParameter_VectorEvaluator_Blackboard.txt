@@ -1,0 +1,12 @@
+import class gameEffectParameter_VectorEvaluator_Blackboard extends gameIEffectParameter_VectorEvaluator
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+}
+
+import class abstract gameIEffectParameter_VectorEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

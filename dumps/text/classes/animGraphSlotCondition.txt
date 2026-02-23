@@ -1,0 +1,5 @@
+import struct animGraphSlotCondition
+{
+	var condition : handle:animIStaticCondition;
+	var graph : rRef:animAnimGraph;
+}

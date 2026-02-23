@@ -1,0 +1,4 @@
+import struct gameinteractionsOrbID
+{
+	var id : Uint32;
+}

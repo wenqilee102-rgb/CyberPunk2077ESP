@@ -1,0 +1,5 @@
+import struct gameuiOptionsGroup
+{
+	var name : CName;
+	var options : array:CName;
+}

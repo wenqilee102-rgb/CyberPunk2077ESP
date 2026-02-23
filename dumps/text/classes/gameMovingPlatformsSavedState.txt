@@ -1,0 +1,9 @@
+import class gameMovingPlatformsSavedState extends ISerializable
+{
+	var mapping : array:entEntityID;
+	var data : array:gameMovingPlatformSavedData;
+}
+
+import class abstract ISerializable
+{
+}

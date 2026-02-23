@@ -1,0 +1,6 @@
+struct RipperdocCategory
+{
+	public    var equipArea : gamedataEquipmentArea;
+	public    var align : inkEHorizontalAlign;
+	public    var parent : inkCompoundWidgetReference;
+}

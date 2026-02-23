@@ -1,0 +1,7 @@
+import struct inkWidgetStateAnimatedTransition
+{
+	var startState : CName;
+	var endState : CName;
+	var animationName : CName;
+	var playbackOptions : inkanimPlaybackOptions;
+}

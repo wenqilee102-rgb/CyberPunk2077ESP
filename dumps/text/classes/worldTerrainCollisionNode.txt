@@ -1,0 +1,23 @@
+import class worldTerrainCollisionNode extends worldNode
+{
+	var materials : array:CName;
+	var materialIndices : array:Uint8;
+	var heightfieldGeometry : serializationDeferredDataBuffer;
+	var actorTransform : WorldTransform;
+	var extents : Vector4;
+	var streamingDistance : Float;
+	var rowScale : Float;
+	var columnScale : Float;
+	var heightScale : Float;
+	var increaseStreamingDistance : Bool;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

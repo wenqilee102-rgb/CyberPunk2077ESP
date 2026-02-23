@@ -1,0 +1,6 @@
+import struct worldBlockoutEdge
+{
+	var points : [2]Uint32;
+	var areas : [2]Uint32;
+	var isFree : Bool;
+}

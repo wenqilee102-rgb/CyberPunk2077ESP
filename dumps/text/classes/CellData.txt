@@ -1,0 +1,8 @@
+struct CellData
+{
+	public    var position : Vector2;
+	public    var element : ElementData;
+	public    var properties : SpecialProperties;
+	public    var assignedCell : whandle:NetworkMinigameGridCellController;
+	public    var consumed : Bool;
+}

@@ -1,0 +1,7 @@
+import class abstract animIDyngConstraint extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

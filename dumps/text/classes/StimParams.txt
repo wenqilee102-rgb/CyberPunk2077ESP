@@ -1,0 +1,5 @@
+struct StimParams
+{
+	public    var reactionOutput : ReactionOutput;
+	public    var stimData : StimEventData;
+}

@@ -1,0 +1,27 @@
+import class gameuiSubtitleHandlerSystem extends gameISubtitleHandlerSystem
+{
+	import function RegisterSubtitleController(gameController : whandle:gameuiWidgetGameController) : gamePendingSubtitles; // RegisterSubtitleController
+	import function UnregisterSubtitleController(gameController : whandle:gameuiWidgetGameController); // UnregisterSubtitleController
+}
+
+import class abstract gameISubtitleHandlerSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

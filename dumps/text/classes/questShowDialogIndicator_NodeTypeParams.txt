@@ -1,0 +1,5 @@
+import struct questShowDialogIndicator_NodeTypeParams
+{
+	var objectRef : gameEntityReference;
+	var show : Bool;
+}

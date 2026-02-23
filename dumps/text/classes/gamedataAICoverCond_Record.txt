@@ -1,0 +1,54 @@
+import class gamedataAICoverCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function CheckChosenExposureMethod() : array:CName; // CheckChosenExposureMethod
+	import function CheckChosenExposureMethodContains(item : CName) : Bool; // CheckChosenExposureMethodContains
+	import function CheckIfCoverTransitionRequired() : Bool; // CheckIfCoverTransitionRequired
+	import function Cover() : whandle:gamedataAIActionTarget_Record; // Cover
+	import function CoverExposureMethods() : array:CName; // CoverExposureMethods
+	import function CoverExposureMethodsContains(item : CName) : Bool; // CoverExposureMethodsContains
+	import function CoverHandle() : handle:gamedataAIActionTarget_Record; // CoverHandle
+	import function CoverType() : Int32; // CoverType
+	import function DesiredCover() : whandle:gamedataAIActionTarget_Record; // DesiredCover
+	import function DesiredCoverChanged() : Int32; // DesiredCoverChanged
+	import function DesiredCoverHandle() : handle:gamedataAIActionTarget_Record; // DesiredCoverHandle
+	import function GetCheckChosenExposureMethodCount() : Int32; // GetCheckChosenExposureMethodCount
+	import function GetCheckChosenExposureMethodItem(index : Int32) : CName; // GetCheckChosenExposureMethodItem
+	import function GetCoverExposureMethodsCount() : Int32; // GetCoverExposureMethodsCount
+	import function GetCoverExposureMethodsItem(index : Int32) : CName; // GetCoverExposureMethodsItem
+	import function HasAnyLastAvailableExposureMethods() : Int32; // HasAnyLastAvailableExposureMethods
+	import function IsOwnerCrouching() : Int32; // IsOwnerCrouching
+	import function IsOwnerExposed() : Int32; // IsOwnerExposed
+	import function IsProtectingHorizontallyAgainstTarget() : Int32; // IsProtectingHorizontallyAgainstTarget
+	import function MaxCoverToTargetAngle() : Float; // MaxCoverToTargetAngle
+	import function MinCoverHealth() : Float; // MinCoverHealth
+	import function Owner() : whandle:gamedataAIActionTarget_Record; // Owner
+	import function OwnerHandle() : handle:gamedataAIActionTarget_Record; // OwnerHandle
+	import function PredictionTime() : Float; // PredictionTime
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

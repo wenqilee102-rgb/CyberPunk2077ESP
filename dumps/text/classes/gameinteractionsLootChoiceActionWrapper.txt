@@ -1,0 +1,11 @@
+import struct gameinteractionsLootChoiceActionWrapper
+{
+	var removeItem : Bool;
+	var itemId : gameItemID;
+	var action : CName;
+
+	import static function IsHandledByCode(wrapper : gameinteractionsLootChoiceActionWrapper) : Bool; // IsHandledByCode
+	import static function IsIllegal(wrapper : gameinteractionsLootChoiceActionWrapper) : Bool; // IsIllegal
+	import static function IsValid(wrapper : gameinteractionsLootChoiceActionWrapper) : Bool; // IsValid
+	import static function Unwrap(choiceEvent : handle:gameinteractionsChoiceEvent) : gameinteractionsLootChoiceActionWrapper; // Unwrap
+}

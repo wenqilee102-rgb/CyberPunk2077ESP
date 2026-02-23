@@ -1,0 +1,7 @@
+struct STransformAnimationData
+{
+	public    var animationName : CName;
+	public    var operationType : ETransformAnimationOperationType;
+	public    var playData : STransformAnimationPlayEventData;
+	public    var skipData : STransformAnimationSkipEventData;
+}

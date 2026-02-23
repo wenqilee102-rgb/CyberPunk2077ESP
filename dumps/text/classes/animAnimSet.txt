@@ -1,0 +1,25 @@
+import class animAnimSet extends CResource
+{
+	var animations : array:handle:animAnimSetEntry;
+	var animationDataChunks : array:animAnimDataChunk;
+	var fallbackDataAddresses : array:Uint16;
+	var fallbackDataAddressIndexes : array:Uint8;
+	var fallbackAnimFrameDescs : array:animAnimFallbackFrameDesc;
+	var fallbackAnimDescIndexes : array:Uint8;
+	var fallbackAnimDataBuffer : DataBuffer;
+	var fallbackNumPositionData : Uint16;
+	var fallbackNumRotationData : Uint16;
+	var fallbackNumFloatTrackData : Uint16;
+	var rig : rRef:animRig;
+	var tags : redTagList;
+	var version : Uint32;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,48 @@
+import class gamedataAISubActionSetWaypointByTag_Record extends gamedataAISubActionSetTargetByTag_Record
+{
+}
+
+import class gamedataAISubActionSetTargetByTag_Record extends gamedataAISubAction_Record
+{
+	import function AllowedOffMeshTags() : array:CName; // AllowedOffMeshTags
+	import function AllowedOffMeshTagsContains(item : CName) : Bool; // AllowedOffMeshTagsContains
+	import function AvoidSelectingSameTargetMethod() : Int32; // AvoidSelectingSameTargetMethod
+	import function BlockLoSByNonPenetrableObj() : Bool; // BlockLoSByNonPenetrableObj
+	import function Delay() : Float; // Delay
+	import function GetAllowedOffMeshTagsCount() : Int32; // GetAllowedOffMeshTagsCount
+	import function GetAllowedOffMeshTagsItem(index : Int32) : CName; // GetAllowedOffMeshTagsItem
+	import function LineOfSightTarget() : whandle:gamedataAIActionTarget_Record; // LineOfSightTarget
+	import function LineOfSightTargetHandle() : handle:gamedataAIActionTarget_Record; // LineOfSightTargetHandle
+	import function RangeFromObj() : Vector2; // RangeFromObj
+	import function RangeFromOwner() : Vector2; // RangeFromOwner
+	import function RangeObj() : whandle:gamedataAIActionTarget_Record; // RangeObj
+	import function RangeObjHandle() : handle:gamedataAIActionTarget_Record; // RangeObjHandle
+	import function SelectionMethod() : CName; // SelectionMethod
+	import function Tag() : CName; // Tag
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

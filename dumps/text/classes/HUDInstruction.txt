@@ -1,0 +1,28 @@
+class HUDInstruction extends redEvent
+{
+	public    var scannerInstructions : handle:ScanInstance;
+	public    var highlightInstructions : handle:HighlightInstance;
+	public    var braindanceInstructions : handle:BraindanceInstance;
+	public    var iconsInstruction : handle:IconsInstance;
+	public    var quickhackInstruction : handle:QuickhackInstance;
+
+	static function Construct(self : handle:HUDInstruction, id : entEntityID); // HUDInstruction::Construct;HUDInstructionEntityID
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

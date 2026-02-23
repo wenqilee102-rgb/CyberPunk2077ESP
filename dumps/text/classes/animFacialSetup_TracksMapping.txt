@@ -1,0 +1,7 @@
+import struct animFacialSetup_TracksMapping
+{
+	var numEnvelopes : Uint16;
+	var numMainPoses : Uint16;
+	var numLipsyncOverrides : Uint16;
+	var numWrinkles : Uint16;
+}

@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorDelegateTaskDefinition","d":8,"e":[{"a":{"b":"AIbehaviorDelegateTaskRef"},"b":"onActivate","c":128},{"a":{"b":"AIbehaviorDelegateTaskRef"},"b":"onUpdate","c":128},{"a":{"b":"AIbehaviorDelegateTaskRef"},"b":"onDeactivate","c":128}]}

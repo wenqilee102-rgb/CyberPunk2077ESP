@@ -1,0 +1,1 @@
+{"a":"netIComponentState","b":"gameScanningComponentReplicatedState","d":8,"g":true,"e":[{"a":{"b":"gameScanningState"},"b":"scanningState","c":128},{"a":{"a":10},"b":"pctScanned","c":128},{"a":{"a":31,"c":{"b":"netPeerID"}},"b":"controllingPeerIDs","c":128}]}

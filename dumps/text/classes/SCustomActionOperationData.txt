@@ -1,0 +1,5 @@
+struct SCustomActionOperationData
+{
+	public    var actionID : CName;
+	public    var operation : SBaseDeviceOperationData;
+}

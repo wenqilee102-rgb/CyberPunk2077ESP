@@ -1,0 +1,31 @@
+class District extends IScriptable
+{
+	private   var districtID : TweakDBID;
+	private   var presetID : TweakDBID;
+	private   var districtRecord : handle:gamedataDistrict_Record;
+
+	function GetCrimeMultiplier() : Float; // GetCrimeMultiplier;
+	function GetDistrictID() : TweakDBID; // GetDistrictID;
+	function GetDistrictRecord() : handle:gamedataDistrict_Record; // GetDistrictRecord;
+	function GetExplosiveDeviceStimRange() : Float; // GetExplosiveDeviceStimRange;
+	function GetGunshotStimRange() : Float; // GetGunshotStimRange;
+	function GetPresetID() : TweakDBID; // GetPresetID;
+	function GetRadioEntryName() : CName; // GetRadioEntryName;
+	function Initialize(district : TweakDBID); // Initialize;TweakDBID
+	function IsBadlands() : Bool; // IsBadlands;
+	function IsDogTown() : Bool; // IsDogTown;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

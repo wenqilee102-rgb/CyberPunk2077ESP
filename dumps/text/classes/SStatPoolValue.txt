@@ -1,0 +1,5 @@
+struct SStatPoolValue
+{
+	public    var type : gamedataStatPoolType;
+	public    var value : Float;
+}

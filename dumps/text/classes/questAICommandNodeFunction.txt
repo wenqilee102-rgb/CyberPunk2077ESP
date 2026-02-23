@@ -1,0 +1,9 @@
+import struct questAICommandNodeFunction
+{
+	var order : Uint32;
+	var nodeType : CName;
+	var commandCategory : CName;
+	var friendlyName : String;
+	var paramsType : CName;
+	var nodeColor : Color;
+}

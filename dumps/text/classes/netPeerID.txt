@@ -1,0 +1,4 @@
+import struct netPeerID
+{
+	var value : Uint8;
+}

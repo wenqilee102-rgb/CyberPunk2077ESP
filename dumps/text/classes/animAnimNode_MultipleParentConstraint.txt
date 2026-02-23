@@ -1,0 +1,26 @@
+import class animAnimNode_MultipleParentConstraint extends animAnimNode_OnePoseInput
+{
+	var parentsTransform : array:handle:animIAnimNodeSourceChannel_QsTransform;
+	var parentsWeight : array:handle:animIAnimNodeSourceChannel_Float;
+	var areSourceChannelsResaved : Bool;
+	var parentsTransforms : array:animAnimNode_MultipleParentConstraint_ParentInfo;
+	var transformIndex : animTransformIndex;
+	var interpolationType : animEInterpolationType;
+	var weightMode : animConstraintWeightMode;
+	var weight : Float;
+	var weightFloatTrack : animNamedTrackIndex;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

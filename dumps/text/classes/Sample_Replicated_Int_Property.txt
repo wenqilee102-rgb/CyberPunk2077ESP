@@ -1,0 +1,4 @@
+import struct Sample_Replicated_Int_Property
+{
+	var property : Int32;
+}

@@ -1,0 +1,7 @@
+import struct cpConveyorLine
+{
+	var spline : NodeRef;
+	var template : CName;
+	var reverseDirection : Bool;
+	var physicsValidRanges : array:Vector2;
+}

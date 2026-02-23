@@ -1,0 +1,41 @@
+import class gamedataVehicleWeapon_Record extends gamedataTweakDBRecord
+{
+	import function AttackRange() : Float; // AttackRange
+	import function CanFriendlyFire() : Bool; // CanFriendlyFire
+	import function CycleTime() : Float; // CycleTime
+	import function GenericShoot() : Bool; // GenericShoot
+	import function GenericTick() : Bool; // GenericTick
+	import function Item() : whandle:gamedataItem_Record; // Item
+	import function ItemHandle() : handle:gamedataItem_Record; // ItemHandle
+	import function MaxPitch() : Float; // MaxPitch
+	import function MaxYaw() : Float; // MaxYaw
+	import function MinPitch() : Float; // MinPitch
+	import function MinYaw() : Float; // MinYaw
+	import function SingleProjectileCycleTime() : Float; // SingleProjectileCycleTime
+	import function SingleShotProjectiles() : Int32; // SingleShotProjectiles
+	import function Slot() : whandle:gamedataAttachmentSlot_Record; // Slot
+	import function SlotHandle() : handle:gamedataAttachmentSlot_Record; // SlotHandle
+	import function Spread() : Float; // Spread
+	import function WeaponShootAnimEvent() : CName; // WeaponShootAnimEvent
+	import function WholeBurstProjectiles() : Int32; // WholeBurstProjectiles
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

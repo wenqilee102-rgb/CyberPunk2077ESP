@@ -1,0 +1,13 @@
+import class AIResourceReference extends LibTreeCTreeReference
+{
+}
+
+import class abstract LibTreeCTreeReference extends ISerializable
+{
+	var TreeDefinition : rRef:LibTreeCTreeResource;
+	var parameters : LibTreeParameterList;
+}
+
+import class abstract ISerializable
+{
+}

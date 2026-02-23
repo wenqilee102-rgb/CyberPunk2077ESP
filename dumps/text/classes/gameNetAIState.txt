@@ -1,0 +1,6 @@
+import struct gameNetAIState
+{
+	var value : Int32;
+	var prevValue : Int32;
+	var time : Float;
+}

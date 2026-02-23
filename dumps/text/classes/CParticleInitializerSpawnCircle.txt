@@ -1,0 +1,24 @@
+import class CParticleInitializerSpawnCircle extends IParticleInitializer
+{
+	var innerRadius : handle:IEvaluatorFloat;
+	var outerRadius : handle:IEvaluatorFloat;
+	var surfaceOnly : Bool;
+	var worldSpace : Bool;
+	var spawnToLocal : Matrix;
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct gameDSSSpawnRequestResult
+{
+	var requestID : Uint32;
+	var success : Bool;
+	var spawnedObjects : array:whandle:gameObject;
+}

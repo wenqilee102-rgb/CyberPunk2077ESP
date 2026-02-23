@@ -1,0 +1,8 @@
+import class gameuiRootHudSaveData extends ISerializable
+{
+	var entriesVisibility : array:questHUDEntryVisibilityData;
+}
+
+import class abstract ISerializable
+{
+}

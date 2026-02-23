@@ -1,0 +1,28 @@
+import class gamedataShooterBulletList_Record extends gamedataTweakDBRecord
+{
+	import function Data(out outList : array:whandle:gamedataShooterBullet_Record); // Data
+	import function DataContains(item : whandle:gamedataShooterBullet_Record) : Bool; // DataContains
+	import function GetDataCount() : Int32; // GetDataCount
+	import function GetDataItem(index : Int32) : whandle:gamedataShooterBullet_Record; // GetDataItem
+	import function GetDataItemHandle(index : Int32) : handle:gamedataShooterBullet_Record; // GetDataItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

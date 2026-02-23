@@ -1,0 +1,1 @@
+{"b":"gameJoinTrafficNPCContext","c":"JoinTrafficNPCContext","d":24,"g":true,"e":[{"a":{"b":"Vector3"},"b":"startPosition","c":128},{"a":{"b":"Vector3"},"b":"threatPosition","c":128},{"a":{"a":10},"b":"threatRadius","c":128},{"a":{"a":1},"b":"checkRoadIntersection","c":128},{"a":{"a":1},"b":"usePreviousPosition","c":128}]}

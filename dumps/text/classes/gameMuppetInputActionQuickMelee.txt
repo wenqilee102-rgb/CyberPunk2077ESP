@@ -1,0 +1,7 @@
+import struct gameMuppetInputActionQuickMelee extends gameIMuppetInputAction
+{
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

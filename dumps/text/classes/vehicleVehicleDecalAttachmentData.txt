@@ -1,0 +1,7 @@
+import struct vehicleVehicleDecalAttachmentData
+{
+	var componentToAttachTo : CName;
+	var decalReference : redResourceReferenceScriptToken;
+
+	static function FromRecord(record : handle:gamedataVehicleDecalAttachment_Record) : vehicleVehicleDecalAttachmentData; // vehicleVehicleDecalAttachmentData::FromRecord;VehicleDecalAttachment_Record
+}

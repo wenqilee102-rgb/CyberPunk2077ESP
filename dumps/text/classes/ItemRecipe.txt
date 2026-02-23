@@ -1,0 +1,7 @@
+struct ItemRecipe
+{
+	public    var targetItem : TweakDBID;
+	public    var hideOnItemsAdded : array:gameItemID;
+	public    var isHidden : Bool;
+	public    var amount : Int32;
+}

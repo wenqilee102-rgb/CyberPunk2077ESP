@@ -1,0 +1,34 @@
+import class questCharacterManagerParameters_SetStatusEffect extends questICharacterManagerParameters_NodeSubType
+{
+	var puppetRef : gameEntityReference;
+	var isPlayer : Bool;
+	var statusEffectID : TweakDBID;
+	var isPlayerStatusEffectSource : Bool;
+	var statusEffectSourceObject : gameEntityReference;
+	var recordSelector : handle:questRecordSelector;
+	var set : Bool;
+}
+
+import class abstract questICharacterManagerParameters_NodeSubType extends questICharacterManager_NodeSubType
+{
+}
+
+import class abstract questICharacterManager_NodeSubType extends questPuppetNodeType
+{
+}
+
+import class abstract questPuppetNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct scnWorkspotSymbol
+{
+	var wsInstance : scnSceneWorkspotInstanceId;
+	var wsNodeId : scnNodeId;
+	var wsEditorEventId : Uint64;
+}

@@ -1,0 +1,8 @@
+import class gameSmartObjectTransformDictionary extends ISerializable
+{
+	var transforms : array:gameSmartObjectTransformDictionaryTransformEntry;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloatValue","b":"animAnimNode_FloatInterpolation","d":8,"e":[{"a":{"a":10},"b":"x1","c":128},{"a":{"a":10},"b":"x2","c":128},{"a":{"a":10},"b":"y1","c":128},{"a":{"a":10},"b":"y2","c":128},{"a":{"b":"animEAnimGraphMathInterpolation"},"b":"interpolationType","c":128},{"a":{"b":"animFloatLink"},"b":"inputNode","c":128}]}

@@ -1,0 +1,9 @@
+import class animAnimProfileData_RootItem extends ISerializable
+{
+	var timeMS : Float;
+	var children : array:handle:animAnimProfilerData_TreeItem;
+}
+
+import class abstract ISerializable
+{
+}

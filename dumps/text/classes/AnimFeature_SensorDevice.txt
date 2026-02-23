@@ -1,0 +1,34 @@
+class AnimFeature_SensorDevice extends animAnimFeature
+{
+	public    var isCeiling : Bool;
+	public    var isInitialized : Bool;
+	public    var isTurnedOn : Bool;
+	public    var isDestroyed : Bool;
+	public    var wasHit : Bool;
+	public    var state : Int32;
+	public    var wakeState : Int32;
+	public    var isControlled : Bool;
+	public    var overrideRootRotation : Float;
+	public    var pitchAngle : Float;
+	public    var maxRotationAngle : Float;
+	public    var rotationSpeed : Float;
+	public    var currentRotation : Vector4;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

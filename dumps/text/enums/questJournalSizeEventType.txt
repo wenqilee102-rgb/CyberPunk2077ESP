@@ -1,0 +1,5 @@
+enum questJournalSizeEventType
+{
+	Maximize = 0,
+	Minimize = 1
+}

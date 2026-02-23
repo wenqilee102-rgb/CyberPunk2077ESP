@@ -1,0 +1,8 @@
+import struct physicsPhysicsJointLimitBase
+{
+	var restitution : Float;
+	var bounceThreshold : Float;
+	var stiffness : Float;
+	var damping : Float;
+	var contactDistance : Float;
+}

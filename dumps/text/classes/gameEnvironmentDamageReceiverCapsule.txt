@@ -1,0 +1,14 @@
+import class gameEnvironmentDamageReceiverCapsule extends gameEnvironmentDamageReceiverShape
+{
+	var radius : Float;
+	var height : Float;
+}
+
+import class abstract gameEnvironmentDamageReceiverShape extends ISerializable
+{
+	var transform : Transform;
+}
+
+import class abstract ISerializable
+{
+}

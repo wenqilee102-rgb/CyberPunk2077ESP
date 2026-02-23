@@ -1,0 +1,5 @@
+import struct gameVisionModeSystemRevealIdentifier
+{
+	var sourceEntityId : entEntityID;
+	var reason : CName;
+}

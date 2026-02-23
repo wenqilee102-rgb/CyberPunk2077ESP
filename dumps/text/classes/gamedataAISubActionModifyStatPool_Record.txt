@@ -1,0 +1,32 @@
+import class gamedataAISubActionModifyStatPool_Record extends gamedataAISubAction_Record
+{
+	import function Amount() : Float; // Amount
+	import function Delay() : Float; // Delay
+	import function Perc() : Bool; // Perc
+	import function StatPool() : whandle:gamedataStatPool_Record; // StatPool
+	import function StatPoolHandle() : handle:gamedataStatPool_Record; // StatPoolHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,41 @@
+class JournalWrapper extends ABaseWrapper
+{
+	private   var journalManager : whandle:gameJournalManager;
+	private   var journalContext : gameJournalRequestContext;
+	private   var journalSubQuestContext : gameJournalRequestContext;
+	private   var listOfJournalEntries : array:whandle:gameJournalEntry;
+	private   var gameInstance : ScriptGameInstance;
+
+	function BuildQuestData(currQuest : whandle:gameJournalQuest) : handle:QuestDataWrapper; // BuildQuestData;JournalQuest
+	function BuildQuestData_Recursive(currEntity : whandle:gameJournalEntry, out description : String, out questObjectives : array:handle:QuestObjectiveWrapper, out links : array:whandle:gameJournalEntry, foundTracked : Bool); // BuildQuestData_Recursive;JournalEntryStringarray<QuestObjectiveWrapper>array<JournalEntry>Bool
+	function GetDescriptionForCodexEntry(entry : whandle:gameJournalCodexEntry, out result : array:whandle:gameJournalEntry); // GetDescriptionForCodexEntry;JournalCodexEntryarray<JournalEntry>
+	function GetEntryHash(entry : whandle:gameJournalEntry) : Int32; // GetEntryHash;JournalEntry
+	function GetJournalManager() : whandle:gameJournalManager; // GetJournalManager;
+	function GetQuests(out entries : array:whandle:gameJournalEntry); // GetQuests;array<JournalEntry>
+	function GetTrackedEntry() : whandle:gameJournalEntry; // GetTrackedEntry;
+	function GetTrackingStatus(entry : whandle:gameJournalEntry) : Bool; // GetTrackingStatus;JournalEntry
+	function Init(gameInstance : ScriptGameInstance); // Init;GameInstance
+	function IsVisited(entry : whandle:gameJournalEntry) : Bool; // IsVisited;JournalEntry
+	function SetTracking(entry : whandle:gameJournalEntry); // SetTracking;JournalEntry
+	function SetVisited(entry : whandle:gameJournalEntry); // SetVisited;JournalEntry
+	function UpdateQuestData(toUpdate : handle:QuestDataWrapper) : handle:QuestDataWrapper; // UpdateQuestData;QuestDataWrapper
+}
+
+class abstract ABaseWrapper extends IScriptable
+{
+	function ToString() : String; // ToString;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

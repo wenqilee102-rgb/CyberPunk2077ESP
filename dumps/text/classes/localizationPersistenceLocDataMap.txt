@@ -1,0 +1,8 @@
+import class localizationPersistenceLocDataMap extends ISerializable
+{
+	var entries : array:localizationPersistenceLocDataMapEntry;
+}
+
+import class abstract ISerializable
+{
+}

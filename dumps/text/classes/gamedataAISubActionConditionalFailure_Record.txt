@@ -1,0 +1,38 @@
+import class gamedataAISubActionConditionalFailure_Record extends gamedataAISubAction_Record
+{
+	import function Condition(out outList : array:whandle:gamedataAIActionCondition_Record); // Condition
+	import function ConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // ConditionContains
+	import function Cooldowns(out outList : array:whandle:gamedataAIActionCooldown_Record); // Cooldowns
+	import function CooldownsContains(item : whandle:gamedataAIActionCooldown_Record) : Bool; // CooldownsContains
+	import function Delay() : Float; // Delay
+	import function GetConditionCount() : Int32; // GetConditionCount
+	import function GetConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetConditionItem
+	import function GetConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetConditionItemHandle
+	import function GetCooldownsCount() : Int32; // GetCooldownsCount
+	import function GetCooldownsItem(index : Int32) : whandle:gamedataAIActionCooldown_Record; // GetCooldownsItem
+	import function GetCooldownsItemHandle(index : Int32) : handle:gamedataAIActionCooldown_Record; // GetCooldownsItemHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

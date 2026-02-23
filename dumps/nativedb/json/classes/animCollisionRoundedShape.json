@@ -1,0 +1,1 @@
+{"b":"animCollisionRoundedShape","d":8,"g":true,"e":[{"a":{"b":"animTransformIndex"},"b":"bone","c":128},{"a":{"b":"QsTransform"},"b":"transformLS","c":128},{"a":{"a":10},"b":"roundedCornerRadius","c":128},{"a":{"a":10},"b":"xBoxExtent","c":128},{"a":{"a":10},"b":"yBoxExtent","c":128},{"a":{"a":10},"b":"zBoxExtent","c":128}]}

@@ -1,0 +1,7 @@
+import class abstract animIAnimNodeSourceChannel_Float extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

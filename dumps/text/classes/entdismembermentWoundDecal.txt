@@ -1,0 +1,10 @@
+import struct entdismembermentWoundDecal
+{
+	var OffsetA : Vector3;
+	var OffsetB : Vector3;
+	var Scale : Float;
+	var FadeOrigin : Float;
+	var FadePower : Float;
+	var ResourceSets : entdismembermentResourceSetMask;
+	var Material : raRef:IMaterial;
+}

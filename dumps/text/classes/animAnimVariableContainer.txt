@@ -1,0 +1,13 @@
+import class animAnimVariableContainer extends ISerializable
+{
+	var boolVariables : array:handle:animAnimVariableBool;
+	var intVariables : array:handle:animAnimVariableInt;
+	var floatVariables : array:handle:animAnimVariableFloat;
+	var vectorVariables : array:handle:animAnimVariableVector;
+	var quaternionVariables : array:handle:animAnimVariableQuaternion;
+	var transformVariables : array:handle:animAnimVariableTransform;
+}
+
+import class abstract ISerializable
+{
+}

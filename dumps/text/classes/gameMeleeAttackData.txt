@@ -1,0 +1,54 @@
+import class gameMeleeAttackData extends IScriptable
+{
+	var trailAttackSide : String;
+	var isThrust : Bool;
+	var useMiddlePosition : Bool;
+	var startPosition : Vector4;
+	var middlePosition : Vector4;
+	var endPosition : Vector4;
+	var ikOffset : Vector3;
+	var attackName : CName;
+	var attackEffectDirection : CName;
+	var impactFxSlot : CName;
+	var attackSpeed : Float;
+	var attackWindowOpen : Float;
+	var attackWindowClosed : Float;
+	var idleTransitionTime : Float;
+	var holdTransitionTime : Float;
+	var blockTransitionTime : Float;
+	var attackEffectDuration : Float;
+	var attackEffectDelay : Float;
+	var impulseDelay : Float;
+	var cameraSpaceImpulse : Float;
+	var forwardImpulse : Float;
+	var upImpulse : Float;
+	var staminaCost : Float;
+	var weaponChargeCost : Float;
+	var trailStartDelay : Float;
+	var trailStopDelay : Float;
+	var startupDuration : Float;
+	var activeDuration : Float;
+	var recoverDuration : Float;
+	var activeHitDuration : Float;
+	var recoverHitDuration : Float;
+	var standUpDelay : Float;
+	var incrementsCombo : Bool;
+	var hasDeflectAnim : Bool;
+	var hasHitAnim : Bool;
+	var useAdjustmentInsteadOfImpulse : Bool;
+	var enableAdjustingPlayerPositionToTarget : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

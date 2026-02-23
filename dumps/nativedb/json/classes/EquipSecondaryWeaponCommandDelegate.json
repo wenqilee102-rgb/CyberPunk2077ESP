@@ -1,0 +1,1 @@
+{"a":"AIbehaviorScriptBehaviorDelegate","b":"EquipSecondaryWeaponCommandDelegate","d":0,"e":[{"a":{"a":27,"c":{"b":"AISwitchToSecondaryWeaponCommand"}},"b":"command","c":128},{"a":{"a":1},"b":"unEquip","c":128}],"f":[{"a":"DoEndCommand;","b":"DoEndCommand","c":{"a":1},"d":48},{"a":"DoSetupCommand;","b":"DoSetupCommand","c":{"a":1},"d":48}]}

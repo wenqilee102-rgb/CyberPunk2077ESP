@@ -1,0 +1,7 @@
+import class gameWeaponAudio extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,36 @@
+import class gamedataVendorWare_Record extends gamedataTweakDBRecord
+{
+	import function AvailabilityPrereq() : whandle:gamedataIPrereq_Record; // AvailabilityPrereq
+	import function AvailabilityPrereqHandle() : handle:gamedataIPrereq_Record; // AvailabilityPrereqHandle
+	import function ForceQuality() : CName; // ForceQuality
+	import function GenerationPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // GenerationPrereqs
+	import function GenerationPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // GenerationPrereqsContains
+	import function GetGenerationPrereqsCount() : Int32; // GetGenerationPrereqsCount
+	import function GetGenerationPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetGenerationPrereqsItem
+	import function GetGenerationPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetGenerationPrereqsItemHandle
+	import function GetQuantityCount() : Int32; // GetQuantityCount
+	import function GetQuantityItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetQuantityItem
+	import function GetQuantityItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetQuantityItemHandle
+	import function Quantity(out outList : array:whandle:gamedataStatModifier_Record); // Quantity
+	import function QuantityContains(item : whandle:gamedataStatModifier_Record) : Bool; // QuantityContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

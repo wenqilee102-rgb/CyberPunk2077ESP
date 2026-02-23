@@ -1,0 +1,7 @@
+import struct audioVehicleCollisionMapItem
+{
+	var name : CName;
+	var impactEvent : CName;
+	var scrapingLoopStart : CName;
+	var scrapingLoopEnd : CName;
+}

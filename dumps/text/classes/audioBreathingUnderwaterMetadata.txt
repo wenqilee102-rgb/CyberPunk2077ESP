@@ -1,0 +1,23 @@
+import class audioBreathingUnderwaterMetadata extends audioAudioMetadata
+{
+	var inhaleSound : CName;
+	var exhaleSound : CName;
+	var emergenceSound : CName;
+	var struggledEmergenceSound : CName;
+	var divingSuitRTPC : CName;
+	var BPM : Float;
+	var lowOxygen : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct animAnimFeatureEntry
+{
+	var name : CName;
+	var className : CName;
+	var forceAllocate : Bool;
+}

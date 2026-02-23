@@ -1,0 +1,9 @@
+struct AIActionPlayerStates
+{
+	public    var locomotionStates : array:gamePSMLocomotionStates;
+	public    var upperBodyStates : array:gamePSMUpperBodyStates;
+	public    var meleeStates : array:gamePSMMelee;
+	public    var zoneStates : array:gamePSMZones;
+	public    var bodyCarryStates : array:gamePSMBodyCarrying;
+	public    var combatStates : array:gamePSMCombat;
+}

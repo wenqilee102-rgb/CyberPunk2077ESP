@@ -1,0 +1,7 @@
+enum vehicleColorSelectorActiveMode
+{
+	None = 0,
+	Primary = 1,
+	Secondary = 2,
+	Lights = 3
+}

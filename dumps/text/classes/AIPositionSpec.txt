@@ -1,0 +1,13 @@
+import struct AIPositionSpec
+{
+	var entity : whandle:entEntity;
+	var worldPosition : WorldPosition;
+
+	import static function GetEntity(position : AIPositionSpec) : handle:entEntity; // GetEntity
+	import static function GetWorldPosition(position : AIPositionSpec) : Vector4; // GetWorldPosition
+	import static function IsEmpty(position : AIPositionSpec) : Bool; // IsEmpty
+	import static function IsEntity(position : AIPositionSpec) : Bool; // IsEntity
+	import static function IsWorldPosition(position : AIPositionSpec) : Bool; // IsWorldPosition
+	import static function SetEntity(aiPositionSpec : AIPositionSpec, entity : whandle:entEntity); // SetEntity
+	import static function SetWorldPosition(aiPositionSpec : script_ref:AIPositionSpec, position : WorldPosition); // SetWorldPosition
+}

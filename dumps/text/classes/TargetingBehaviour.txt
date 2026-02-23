@@ -1,0 +1,7 @@
+struct TargetingBehaviour
+{
+	public    var initialWakeState : ESensorDeviceWakeState;
+	public    var canRotate : Bool;
+	public    var lostTargetLookAtTime : Float;
+	public    var lostTargetSearchTime : Float;
+}

@@ -1,0 +1,21 @@
+class abstract AISubActionActivateLightPreset_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionActivateLightPreset_Record); // AISubActionActivateLightPreset_Record_Implementation::Activate;ScriptExecutionContextAISubActionActivateLightPreset_Record
+	static function ActivateLightPreset(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionActivateLightPreset_Record); // AISubActionActivateLightPreset_Record_Implementation::ActivateLightPreset;ScriptExecutionContextAISubActionActivateLightPreset_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionActivateLightPreset_Record, duration : Float, interrupted : Bool); // AISubActionActivateLightPreset_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionActivateLightPreset_RecordFloatBool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionActivateLightPreset_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionActivateLightPreset_Record_Implementation::Update;ScriptExecutionContextAISubActionActivateLightPreset_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

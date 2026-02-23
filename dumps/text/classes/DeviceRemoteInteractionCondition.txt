@@ -1,0 +1,25 @@
+class DeviceRemoteInteractionCondition extends gameinteractionsInteractionScriptedCondition
+{
+	function IsLookaAtTarget(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // IsLookaAtTarget;GameObjectGameObject
+	function IsScannerTarget(hotSpotObject : whandle:gameObject) : Bool; // IsScannerTarget;GameObject
+	function ShouldEnableLayer(hotSpotObject : whandle:gameObject) : Bool; // ShouldEnableLayer;GameObject
+	function Test(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // Test;GameObjectGameObject
+}
+
+import class gameinteractionsInteractionScriptedCondition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

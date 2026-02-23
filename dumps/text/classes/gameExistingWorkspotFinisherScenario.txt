@@ -1,0 +1,15 @@
+import class gameExistingWorkspotFinisherScenario extends gameIFinisherScenario
+{
+	var playerWorkspot : raRef:workWorkspotResource;
+	var syncAnimSlotName : CName;
+	var playbackDelay : Float;
+	var blendTime : Float;
+}
+
+import class abstract gameIFinisherScenario extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

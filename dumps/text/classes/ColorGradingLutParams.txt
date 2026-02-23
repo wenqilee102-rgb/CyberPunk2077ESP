@@ -1,0 +1,6 @@
+import struct ColorGradingLutParams
+{
+	var LUT : rRef:CBitmapTexture;
+	var inputMapping : EColorMappingFunction;
+	var outputMapping : EColorMappingFunction;
+}

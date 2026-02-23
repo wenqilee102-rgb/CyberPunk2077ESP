@@ -1,0 +1,21 @@
+import class Multilayer_LayerTemplate extends CResource
+{
+	var overrides : Multilayer_LayerTemplateOverrides;
+	var defaultOverrides : Multilayer_LayerOverrideSelection;
+	var colorTexture : rRef:CBitmapTexture;
+	var normalTexture : rRef:CBitmapTexture;
+	var roughnessTexture : rRef:CBitmapTexture;
+	var metalnessTexture : rRef:CBitmapTexture;
+	var tilingMultiplier : Float;
+	var colorMaskLevelsIn : [2]Float;
+	var colorMaskLevelsOut : [2]Float;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

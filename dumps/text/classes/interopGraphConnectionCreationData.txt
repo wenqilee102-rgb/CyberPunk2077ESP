@@ -1,0 +1,5 @@
+import struct interopGraphConnectionCreationData
+{
+	var data : String;
+	var extraData : array:String;
+}

@@ -1,0 +1,7 @@
+import struct animLookAtRequestForPart
+{
+	var bodyPart : CName;
+	var request : animLookAtRequest;
+	var attachLeftHandToRightHand : Int32;
+	var attachRightHandToLeftHand : Int32;
+}

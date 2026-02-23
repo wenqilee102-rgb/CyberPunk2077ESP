@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"vehicleDriveFollowEvent","d":8,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"targetObjToFollow","c":128},{"a":{"a":10},"b":"distanceMin","c":128},{"a":{"a":10},"b":"distanceMax","c":128},{"a":{"a":1},"b":"stopWhenTargetReached","c":128},{"a":{"a":1},"b":"useTraffic","c":128}]}

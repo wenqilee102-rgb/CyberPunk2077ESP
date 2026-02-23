@@ -1,0 +1,15 @@
+import class worldAudioTagNode extends worldNode
+{
+	var audioTag : CName;
+	var radius : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

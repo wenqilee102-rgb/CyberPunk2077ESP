@@ -1,0 +1,5 @@
+struct CuttingGrenadePotentialTarget
+{
+	public    var entity : whandle:ScriptedPuppet;
+	public    var hits : Int32;
+}

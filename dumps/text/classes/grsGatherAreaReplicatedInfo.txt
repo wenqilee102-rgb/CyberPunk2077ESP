@@ -1,0 +1,6 @@
+import struct grsGatherAreaReplicatedInfo
+{
+	var enteredPlayerIDs : static:7,netPeerID;
+	var hasActiveQuestListener : Bool;
+	var enabled : Bool;
+}

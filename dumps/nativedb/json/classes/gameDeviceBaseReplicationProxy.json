@@ -1,0 +1,1 @@
+{"a":"netIEntityState","b":"gameDeviceBaseReplicationProxy","d":8,"g":true,"e":[{"a":{"a":26,"c":{"b":"gameDeviceReplicatedState"}},"b":"scriptState","c":128},{"a":{"a":7},"b":"versionId","c":128},{"a":{"b":"netTime"},"b":"versionTimestamp","c":128},{"a":{"b":"EulerAngles"},"b":"initialOrientation","c":128},{"a":{"b":"Vector3"},"b":"initialLocation","c":128}]}

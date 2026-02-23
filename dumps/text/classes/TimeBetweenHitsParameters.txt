@@ -1,0 +1,14 @@
+struct TimeBetweenHitsParameters
+{
+	public    var baseCoefficient : Float;
+	public    var baseSourceCoefficient : Float;
+	public    var difficultyLevelCoefficient : Float;
+	public    var groupCoefficient : Float;
+	public    var distanceCoefficient : Float;
+	public    var visibilityCoefficient : Float;
+	public    var playersCountCoefficient : Float;
+	public    var coefficientMultiplier : Float;
+	public    var accuracyCoefficient : Float;
+	public    var coverCoefficient : Float;
+	public    var visionBlockerCoefficient : Float;
+}

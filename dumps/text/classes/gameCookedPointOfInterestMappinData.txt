@@ -1,0 +1,6 @@
+import struct gameCookedPointOfInterestMappinData
+{
+	var journalPathHash : Uint32;
+	var entityID : entEntityID;
+	var position : Vector3;
+}

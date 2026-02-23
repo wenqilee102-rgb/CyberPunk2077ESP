@@ -1,0 +1,1 @@
+{"a":"questCombatNodeParams","b":"questCombatNodeParams_LookAtTarget","d":8,"e":[{"a":{"a":16},"b":"targetNode","c":128},{"a":{"b":"gameEntityReference"},"b":"targetPuppet","c":128},{"a":{"a":10},"b":"duration","c":128},{"a":{"a":1},"b":"immediately","c":128}]}

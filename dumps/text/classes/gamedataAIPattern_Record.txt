@@ -1,0 +1,34 @@
+import class gamedataAIPattern_Record extends gamedataTweakDBRecord
+{
+	import function ActivationConditions(out outList : array:whandle:gamedataAIActionCondition_Record); // ActivationConditions
+	import function ActivationConditionsContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // ActivationConditionsContains
+	import function Delays(out outList : array:whandle:gamedataAIPatternDelay_Record); // Delays
+	import function DelaysContains(item : whandle:gamedataAIPatternDelay_Record) : Bool; // DelaysContains
+	import function GetActivationConditionsCount() : Int32; // GetActivationConditionsCount
+	import function GetActivationConditionsItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetActivationConditionsItem
+	import function GetActivationConditionsItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetActivationConditionsItemHandle
+	import function GetDelaysCount() : Int32; // GetDelaysCount
+	import function GetDelaysItem(index : Int32) : whandle:gamedataAIPatternDelay_Record; // GetDelaysItem
+	import function GetDelaysItemHandle(index : Int32) : handle:gamedataAIPatternDelay_Record; // GetDelaysItemHandle
+	import function PatternSize() : Int32; // PatternSize
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

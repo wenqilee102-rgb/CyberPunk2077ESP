@@ -1,0 +1,32 @@
+class UI_PlayerBioMonitorDef extends gamebbScriptDefinition
+{
+	public    var PlayerStatsInfo : gamebbScriptID_Variant;
+	public    var BuffsList : gamebbScriptID_Variant;
+	public    var DebuffsList : gamebbScriptID_Variant;
+	public    var Cooldowns : gamebbScriptID_Variant;
+	public    var AdrenalineBar : gamebbScriptID_Float;
+	public    var CurrentNetrunnerCharges : gamebbScriptID_Int32;
+	public    var NetworkChargesCapacity : gamebbScriptID_Int32;
+	public    var NetworkName : gamebbScriptID_CName;
+	public    var MemoryPercent : gamebbScriptID_Float;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

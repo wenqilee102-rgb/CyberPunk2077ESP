@@ -1,0 +1,26 @@
+class UI_EquipmentDataDef extends gamebbScriptDefinition
+{
+	public    var EquipmentData : gamebbScriptID_Variant;
+	public    var UIjailbreakData : gamebbScriptID_Variant;
+	public    var ammoLooted : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

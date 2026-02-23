@@ -1,0 +1,28 @@
+class PingNetworkGridEvent extends redEvent
+{
+	public    var ownerEntityPosition : Vector4;
+	public    var fxResource : gameFxResource;
+	public    var lifetime : Float;
+	public    var pingType : EPingType;
+	public    var revealSlave : Bool;
+	public    var revealMaster : Bool;
+	public    var ignoreRevealed : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

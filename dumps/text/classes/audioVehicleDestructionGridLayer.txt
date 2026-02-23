@@ -1,0 +1,11 @@
+import struct audioVehicleDestructionGridLayer
+{
+	var backLeft : audioVehicleDestructionGridCell;
+	var backRight : audioVehicleDestructionGridCell;
+	var centerBackLeft : audioVehicleDestructionGridCell;
+	var centerBackRight : audioVehicleDestructionGridCell;
+	var centerForwardLeft : audioVehicleDestructionGridCell;
+	var centerForwardRight : audioVehicleDestructionGridCell;
+	var frontLeft : audioVehicleDestructionGridCell;
+	var frontRight : audioVehicleDestructionGridCell;
+}

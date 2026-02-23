@@ -1,0 +1,6 @@
+import struct gameuiarcadeShooterLayerInfo
+{
+	var referenceWidget : inkWidgetReference;
+	var planeRelativeValue : Vector2;
+	var layerName : CName;
+}

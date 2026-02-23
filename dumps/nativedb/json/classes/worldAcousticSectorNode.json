@@ -1,0 +1,1 @@
+{"a":"worldNode","b":"worldAcousticSectorNode","d":8,"e":[{"a":{"a":30,"c":{"b":"worldAcousticDataResource"}},"b":"data","c":128},{"a":{"a":7},"b":"inSectorCoordsX","c":128},{"a":{"a":7},"b":"inSectorCoordsY","c":128},{"a":{"a":7},"b":"inSectorCoordsZ","c":128},{"a":{"a":7},"b":"generatorId","c":128},{"a":{"a":3},"b":"edgeMask","c":128}]}

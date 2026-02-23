@@ -1,0 +1,5 @@
+import struct inkInputDevicesMappingsJSON
+{
+	var devices : array:CName;
+	var mappings : array:inkInputIconMappingJSON;
+}

@@ -1,0 +1,25 @@
+import class worldDeviceNode extends worldEntityNode
+{
+	var deviceClassName : CName;
+	var alphaHackStreamingDistanceOverride : Float;
+	var deviceConnections : array:worldDeviceConnections;
+}
+
+import class worldEntityNode extends worldNode
+{
+	var entityTemplate : raRef:entEntityTemplate;
+	var instanceData : handle:entEntityInstanceData;
+	var appearanceName : CName;
+	var ioPriority : entEntitySpawnPriority;
+	var entityLod : Uint16;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

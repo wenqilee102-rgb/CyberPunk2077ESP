@@ -1,0 +1,5 @@
+enum PhoneDialerTabs
+{
+	Unread = 0,
+	Contacts = 1
+}

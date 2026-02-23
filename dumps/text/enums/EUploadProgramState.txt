@@ -1,0 +1,5 @@
+enum EUploadProgramState
+{
+	STARTED = 0,
+	COMPLETED = 1
+}

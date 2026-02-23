@@ -1,0 +1,1 @@
+{"a":"audioEmitterMetadata","b":"audioAdvertMetadata","d":8,"e":[{"a":{"a":31,"c":{"a":14}},"b":"advertSoundNames","c":128},{"a":{"a":10},"b":"minSilenceTime","c":128},{"a":{"a":10},"b":"maxSilenceTime","c":128},{"a":{"a":10},"b":"minDistance","c":128},{"a":{"b":"audioAdvertIndoorFilter"},"b":"filter","c":128}]}

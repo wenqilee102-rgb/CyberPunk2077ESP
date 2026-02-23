@@ -1,0 +1,14 @@
+import struct worldProxyTextureParams
+{
+	var exportVertexColor : Bool;
+	var albedoTextureResolution : worldProxyMeshTexRes;
+	var generateAlbedo : Bool;
+	var normalTextureResolution : worldProxyMeshTexRes;
+	var generateNormal : Bool;
+	var roughnessTextureResolution : worldProxyMeshTexRes;
+	var generateRoughness : Bool;
+	var metalnessTextureResolution : worldProxyMeshTexRes;
+	var generateMetalness : Bool;
+	var disableTextureFilter : Bool;
+	var diffuseAlphaAsEmissive : Bool;
+}

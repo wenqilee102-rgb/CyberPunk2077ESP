@@ -1,0 +1,35 @@
+import class gamedataRangedAttack_Record extends gamedataTweakDBRecord
+{
+	import function NPCAttack() : whandle:gamedataAttack_Record; // NPCAttack
+	import function NPCAttackHandle() : handle:gamedataAttack_Record; // NPCAttackHandle
+	import function NPCTimeDilated() : whandle:gamedataAttack_Projectile_Record; // NPCTimeDilated
+	import function NPCTimeDilatedHandle() : handle:gamedataAttack_Projectile_Record; // NPCTimeDilatedHandle
+	import function PlayerAttack() : whandle:gamedataAttack_Record; // PlayerAttack
+	import function PlayerAttackHandle() : handle:gamedataAttack_Record; // PlayerAttackHandle
+	import function PlayerTimeDilated() : whandle:gamedataAttack_Record; // PlayerTimeDilated
+	import function PlayerTimeDilatedHandle() : handle:gamedataAttack_Record; // PlayerTimeDilatedHandle
+	import function SecondaryPlayerAttack() : whandle:gamedataAttack_Record; // SecondaryPlayerAttack
+	import function SecondaryPlayerAttackHandle() : handle:gamedataAttack_Record; // SecondaryPlayerAttackHandle
+	import function SecondaryPlayerTimeDilated() : whandle:gamedataAttack_Record; // SecondaryPlayerTimeDilated
+	import function SecondaryPlayerTimeDilatedHandle() : handle:gamedataAttack_Record; // SecondaryPlayerTimeDilatedHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

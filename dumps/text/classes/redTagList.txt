@@ -1,0 +1,4 @@
+import struct redTagList
+{
+	var tags : array:CName;
+}

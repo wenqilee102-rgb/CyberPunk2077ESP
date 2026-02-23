@@ -1,0 +1,12 @@
+import struct worlduiSceneWidgetProperties
+{
+	var projectionPlaneSize : Vector2;
+	var renderingPlane : ERenderingPlane;
+	var isAlwaysVisible : Bool;
+	var isInteractable : Bool;
+	var isInteractableFromBehind : Bool;
+	var maxInteractionDistance : Float;
+	var overrideMaxInteractionDistance : Bool;
+	var useCustomFaceVector : Bool;
+	var faceVector : Vector3;
+}

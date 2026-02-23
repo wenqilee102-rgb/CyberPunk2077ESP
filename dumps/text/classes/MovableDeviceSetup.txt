@@ -1,0 +1,4 @@
+struct MovableDeviceSetup
+{
+	public    var numberOfUses : Int32;
+}

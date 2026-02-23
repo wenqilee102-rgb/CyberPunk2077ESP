@@ -1,0 +1,18 @@
+import class questSceneInterrupt_ConditionType extends questISceneConditionType
+{
+	var sceneFile : raRef:scnSceneResource;
+	var onlyInSafeMoment : Bool;
+	var interruptConditions : array:handle:scnIInterruptCondition;
+}
+
+import class abstract questISceneConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

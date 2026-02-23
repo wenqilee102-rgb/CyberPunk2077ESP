@@ -1,0 +1,15 @@
+import class AIbehaviorCombatModeTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var mode : AIbehaviorCombatModes;
+	var priority : Int32;
+	var timeToLive : Float;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

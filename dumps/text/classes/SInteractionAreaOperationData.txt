@@ -1,0 +1,8 @@
+struct SInteractionAreaOperationData
+{
+	public    var isActivatorPlayer : Bool;
+	public    var isActivatorNPC : Bool;
+	public    var areaTag : CName;
+	public    var operationType : gameinteractionsEInteractionEventType;
+	public    var operation : SBaseDeviceOperationData;
+}

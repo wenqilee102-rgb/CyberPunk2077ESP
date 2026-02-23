@@ -1,0 +1,5 @@
+import struct questQuestPrefabsEntry
+{
+	var nodeRef : worldGlobalNodeRef;
+	var loadingMode : worldQuestPrefabLoadingMode;
+}

@@ -1,0 +1,9 @@
+import struct gameuiHudScalingSensitiveWidget
+{
+	var widget : inkWidgetReference;
+	var adjustScale : Bool;
+	var adjustTranslation : Bool;
+	var adjustMargin : Bool;
+	var targetMarginAtDoubleScale : inkMargin;
+	var marginToScalecorrectOverride : inkMargin;
+}

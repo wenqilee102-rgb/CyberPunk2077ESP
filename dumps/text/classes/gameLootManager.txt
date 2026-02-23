@@ -1,0 +1,31 @@
+import class gameLootManager extends gameILootManager
+{
+	import function GenerateLoot(lootID : TweakDBID, out itemList : array:gameItemModParams, optional gameNode : handle:gameObject); // GenerateLoot
+	import function GetDefaultDropItemName() : CName; // GetDefaultDropItemName
+	import function PurgeLoot(); // PurgeLoot
+	import function SpawnItemDrop(obj : handle:gameObject, itemID : gameItemID, optional position : Vector4, optional rotation : Quaternion) : Bool; // SpawnItemDrop
+	import function SpawnItemDropOfManyItems(obj : handle:gameObject, itemInstructions : array:gameDropInstruction, optional dropItemName : CName, optional position : Vector4, optional rotation : Quaternion) : Bool; // SpawnItemDropOfManyItems
+	import function SpawnThrowableItemDrop(obj : handle:gameObject, itemID : gameItemID, position : Vector4, rotation : Quaternion, params : handle:gameprojectileParabolicTrajectoryParams) : Bool; // SpawnThrowableItemDrop
+}
+
+import class abstract gameILootManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

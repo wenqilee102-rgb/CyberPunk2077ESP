@@ -1,0 +1,21 @@
+struct DoorSetup
+{
+	public    var doorType : EDoorType;
+	public    var doorTypeSideOne : EDoorType;
+	public    var doorTypeSideTwo : EDoorType;
+	public    var skillCheckSide : EDoorSkillcheckSide;
+	public    var authorizationSide : EDoorSkillcheckSide;
+	public    var doorTriggerSide : EDoorTriggerSide;
+	public    var isShutter : Bool;
+	public    var initialDoorState : EDoorStatus;
+	public    var canPlayerToggleLockState : Bool;
+	public    var canPlayerToggleSealState : Bool;
+	public    var canPlayerRemotelyAuthorize : Bool;
+	public    var automaticallyClosesItself : Bool;
+	public    var openingSpeed : Float;
+	public    var doorOpeningTime : Float;
+	public    var doorOpeningStimRange : Float;
+	public    var canPayToUnlock : Bool;
+	public    var paymentRecordID : TweakDBID;
+	public    var exposeQuickHacksIfNotConnectedToAP : Bool;
+}

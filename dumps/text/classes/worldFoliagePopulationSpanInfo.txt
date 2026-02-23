@@ -1,0 +1,7 @@
+import struct worldFoliagePopulationSpanInfo
+{
+	var stancesBegin : Uint32;
+	var cketBegin : Uint32;
+	var stancesCount : Uint32;
+	var cketCount : Uint32;
+}

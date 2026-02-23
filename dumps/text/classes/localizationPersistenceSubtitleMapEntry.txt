@@ -1,0 +1,5 @@
+import struct localizationPersistenceSubtitleMapEntry
+{
+	var subtitleGroup : CName;
+	var subtitleFile : raRef:JsonResource;
+}

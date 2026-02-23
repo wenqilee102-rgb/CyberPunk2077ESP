@@ -1,0 +1,5 @@
+enum HoverStatus
+{
+	DEFAULT = 0,
+	HOVER = 1
+}

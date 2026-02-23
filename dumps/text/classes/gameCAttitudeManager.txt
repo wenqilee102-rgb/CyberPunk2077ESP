@@ -1,0 +1,32 @@
+import class gameCAttitudeManager extends gameIAttitudeManager
+{
+	import function GetAttitudeGroup(entityID : entEntityID) : CName; // GetAttitudeGroup
+	import function GetAttitudeRelation(firstGroup : CName, secondGroup : CName) : EAIAttitude; // GetAttitudeRelation
+	import function GetAttitudeRelationFromTweak(firstGroup : TweakDBID, secondGroup : TweakDBID) : EAIAttitude; // GetAttitudeRelationFromTweak
+	import function SetAttitudeGroupRelationPersistent(firstGroup : CName, secondGroup : CName, attitude : EAIAttitude); // SetAttitudeGroupRelationPersistent
+	import function SetAttitudeGroupRelationfromTweakPersistent(firstGroup : TweakDBID, secondGroup : TweakDBID, attitude : EAIAttitude); // SetAttitudeGroupRelationfromTweakPersistent
+	import function SetAttitudeRelation(firstGroup : CName, secondGroup : CName, attitude : EAIAttitude); // SetAttitudeRelation
+	import function SetAttitudeRelationFromTweak(firstGroup : TweakDBID, secondGroup : TweakDBID, attitude : EAIAttitude); // SetAttitudeRelationFromTweak
+}
+
+import class abstract gameIAttitudeManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

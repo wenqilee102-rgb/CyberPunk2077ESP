@@ -1,0 +1,7 @@
+import struct gameSLastUsedWeapon
+{
+	var lastUsedWeapon : gameItemID;
+	var lastUsedRanged : gameItemID;
+	var lastUsedMelee : gameItemID;
+	var lastUsedHeavy : gameItemID;
+}

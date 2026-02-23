@@ -1,0 +1,31 @@
+class NPCAgent extends AgentBase
+{
+	public    var unit : whandle:ScriptedPuppet;
+	public    var hasBeenAttackedByPlayer : Bool;
+	public    var isQuestNPC : Bool;
+	public    var spawnedAsFallback : Bool;
+	public    var markedToBeDespawned : Bool;
+
+	function TryGetAssignedVehicleId() : entEntityID; // TryGetAssignedVehicleId;
+}
+
+class AgentBase extends IScriptable
+{
+	public    var id : entEntityID;
+	public    var gameObject : whandle:gameObject;
+	public    var spawnedType : gameDynamicVehicleType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

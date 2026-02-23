@@ -1,0 +1,5 @@
+enum EMathOperationType
+{
+	Add = 0,
+	Set = 1
+}

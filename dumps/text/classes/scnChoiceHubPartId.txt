@@ -1,0 +1,4 @@
+import struct scnChoiceHubPartId
+{
+	var id : Uint32;
+}

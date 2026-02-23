@@ -1,0 +1,12 @@
+struct ReflectorSFX extends VendingMachineSFX
+{
+	public    var distraction : CName;
+	public    var turnOn : CName;
+	public    var turnOff : CName;
+}
+
+struct VendingMachineSFX
+{
+	public    var glitchingStart : CName;
+	public    var glitchingStop : CName;
+}

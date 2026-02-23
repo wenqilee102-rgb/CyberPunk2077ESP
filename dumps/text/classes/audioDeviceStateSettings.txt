@@ -1,0 +1,8 @@
+import struct audioDeviceStateSettings
+{
+	var powerRestoredSound : CName;
+	var powerCutSound : CName;
+	var turnOnSound : CName;
+	var turnOffSound : CName;
+	var breakingSound : CName;
+}

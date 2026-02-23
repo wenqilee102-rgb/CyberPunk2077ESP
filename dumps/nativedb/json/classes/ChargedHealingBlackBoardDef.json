@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"ChargedHealingBlackBoardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Int32"},"b":"currHealingItemCharge","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"rechargeGoingOn","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

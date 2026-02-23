@@ -1,0 +1,30 @@
+class StatPoolsManager extends IScriptable
+{
+	static function AddDrain(out arr : array:SDamageDealt, type : gamedataStatPoolType, value : Float, dmgType : gamedataDamageType); // StatPoolsManager::AddDrain;array<SDamageDealt>gamedataStatPoolTypeFloatgamedataDamageType
+	static function ApplyDamage(hitEvent : handle:gameeventsHitEvent, forReal : Bool, out valuesLost : array:SDamageDealt); // StatPoolsManager::ApplyDamage;gameHitEventBoolarray<SDamageDealt>
+	static function ApplyDamageSingle(hitEvent : handle:gameeventsHitEvent, dmgType : gamedataDamageType, initialDamageValue : Float, forReal : Bool, valuesLost : script_ref:array:SDamageDealt); // StatPoolsManager::ApplyDamageSingle;gameHitEventgamedataDamageTypeFloatBoolscript_ref<array<SDamageDealt>>
+	static function ApplyDamageToArmorSingle(hitEvent : handle:gameeventsHitEvent, dmgType : gamedataDamageType, out initialDamageValue : Float, forReal : Bool, valuesLost : script_ref:array:SDamageDealt); // StatPoolsManager::ApplyDamageToArmorSingle;gameHitEventgamedataDamageTypeFloatBoolscript_ref<array<SDamageDealt>>
+	static function ApplyDamageToOverShieldSingle(hitEvent : handle:gameeventsHitEvent, dmgType : gamedataDamageType, out initialDamageValue : Float, forReal : Bool, valuesLost : script_ref:array:SDamageDealt); // StatPoolsManager::ApplyDamageToOverShieldSingle;gameHitEventgamedataDamageTypeFloatBoolscript_ref<array<SDamageDealt>>
+	static function ApplyLocalizedDamageSingle(hitEvent : handle:gameeventsHitEvent, dmg : Float, dmgType : gamedataDamageType, poolType : gamedataStatPoolType, forReal : Bool, valuesLost : script_ref:array:SDamageDealt); // StatPoolsManager::ApplyLocalizedDamageSingle;gameHitEventFloatgamedataDamageTypegamedataStatPoolTypeBoolscript_ref<array<SDamageDealt>>
+	static function ApplyStatusEffectDamage(hitEvent : handle:gameeventsHitEvent, resistPoolRecord : handle:gamedataStatPool_Record, statusEffectID : TweakDBID); // StatPoolsManager::ApplyStatusEffectDamage;gameHitEventStatPool_RecordTweakDBID
+	static function DrainStatPool(hitEvent : handle:gameeventsHitEvent, statPoolType : gamedataStatPoolType, value : Float); // StatPoolsManager::DrainStatPool;gameHitEventgamedataStatPoolTypeFloat
+	static function GetBodyPartStatPool(obj : handle:gameObject, bodyPartName : CName, out poolType : gamedataStatPoolType) : Bool; // StatPoolsManager::GetBodyPartStatPool;GameObjectCNamegamedataStatPoolType
+	static function IsFinisherGrace(hitEvent : handle:gameeventsHitEvent) : Bool; // StatPoolsManager::IsFinisherGrace;gameHitEvent
+	static function IsStatPoolValid(type : gamedataStatPoolType) : Bool; // StatPoolsManager::IsStatPoolValid;gamedataStatPoolType
+	static function MergeStatPoolsLost(out to : array:SDamageDealt, from : script_ref:array:SDamageDealt); // StatPoolsManager::MergeStatPoolsLost;array<SDamageDealt>script_ref<array<SDamageDealt>>
+	static function SimulateKill(hitEvent : handle:gameeventsHitEvent) : Bool; // StatPoolsManager::SimulateKill;gameHitEvent
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

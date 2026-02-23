@@ -1,0 +1,44 @@
+import class gameuiQuestUpdateNotificationViewData extends gameuiGenericNotificationViewData
+{
+	var questEntryId : String;
+	var canBeMerged : Bool;
+	var animation : CName;
+	var SMSText : String;
+	var SMSLocKey : String;
+	public    var dontRemoveOnRequest : Bool;
+	public    var entryHash : Int32;
+	public    var rewardSC : Int32;
+	public    var rewardXP : Int32;
+	public    var priority : EGenericNotificationPriority;
+
+	function CanMerge(data : handle:gameuiGenericNotificationViewData) : Bool; // CanMerge;GenericNotificationViewData
+	function GetPriority() : Int32; // GetPriority;
+	function OnRemoveNotification(data : handle:IScriptable) : Bool; // OnRemoveNotification;IScriptable
+}
+
+import class gameuiGenericNotificationViewData extends IScriptable
+{
+	var title : String;
+	var text : String;
+	var soundEvent : CName;
+	var soundAction : CName;
+	public    var action : handle:GenericNotificationBaseAction;
+
+	function CanMerge(data : handle:gameuiGenericNotificationViewData) : Bool; // CanMerge;GenericNotificationViewData
+	function GetPriority() : Int32; // GetPriority;
+	function OnRemoveNotification(data : handle:IScriptable) : Bool; // OnRemoveNotification;IScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

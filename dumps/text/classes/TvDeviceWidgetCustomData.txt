@@ -1,0 +1,25 @@
+class TvDeviceWidgetCustomData extends WidgetCustomData
+{
+	public    var videoPath : redResourceReferenceScriptToken;
+	public    var channelID : TweakDBID;
+	public    var messageRecordID : TweakDBID;
+	public    var looped : Bool;
+}
+
+class WidgetCustomData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

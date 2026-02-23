@@ -1,0 +1,5 @@
+import struct scnLipsyncAnimSetSRRef
+{
+	var lipsyncAnimSet : rRef:animAnimSet;
+	var asyncRefLipsyncAnimSet : raRef:animAnimSet;
+}

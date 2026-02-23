@@ -1,0 +1,24 @@
+import class AICTreeNodeFSMDefinition extends AICTreeNodeCompositeDefinition
+{
+	var defaultState : Uint16;
+	var transitions : array:AIFSMTransitionDefinition;
+	var onEventTransitions : array:AIFSMEventTransitionsListDefinition;
+	var states : array:AIFSMStateDefinition;
+	var sharedVars : AISharedVarTableDefinition;
+}
+
+import class abstract AICTreeNodeCompositeDefinition extends AICTreeNodeDefinition
+{
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,11 @@
+import struct moveReplicatedMovePolicies extends entReplicatedItem
+{
+	var key : Uint64;
+	var policies : handle:movePolicies;
+}
+
+import struct entReplicatedItem
+{
+	var entity : whandle:entEntity;
+	var netTime : netTime;
+}

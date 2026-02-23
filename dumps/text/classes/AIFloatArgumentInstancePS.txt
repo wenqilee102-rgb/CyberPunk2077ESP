@@ -1,0 +1,13 @@
+import class AIFloatArgumentInstancePS extends AIArgumentInstancePS
+{
+	var value : Float;
+}
+
+import class abstract AIArgumentInstancePS extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

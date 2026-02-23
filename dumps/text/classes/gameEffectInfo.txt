@@ -1,0 +1,6 @@
+import struct gameEffectInfo
+{
+	import static function GetFilteredCount(info : gameEffectInfo) : Int32; // GetFilteredCount
+	import static function GetGatheredCount(info : gameEffectInfo) : Int32; // GetGatheredCount
+	import static function GetProcessedCount(info : gameEffectInfo) : Int32; // GetProcessedCount
+}

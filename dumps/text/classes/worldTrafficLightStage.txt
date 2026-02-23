@@ -1,0 +1,5 @@
+import struct worldTrafficLightStage
+{
+	var color : worldTrafficLightColor;
+	var duration : Float;
+}

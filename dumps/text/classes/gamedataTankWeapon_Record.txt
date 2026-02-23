@@ -1,0 +1,41 @@
+import class gamedataTankWeapon_Record extends gamedataArcadeObject_Record
+{
+	import function ChargingTime() : Float; // ChargingTime
+	import function GetRotationCount() : Int32; // GetRotationCount
+	import function GetRotationItem(index : Int32) : Vector2; // GetRotationItem
+	import function PerBurstProjectileCount() : Int32; // PerBurstProjectileCount
+	import function PerBurstProjectileSpawnInterval() : Float; // PerBurstProjectileSpawnInterval
+	import function ProjectileID() : CName; // ProjectileID
+	import function Rof() : Float; // Rof
+	import function Rotation() : array:Vector2; // Rotation
+	import function RotationContains(item : Vector2) : Bool; // RotationContains
+}
+
+import class gamedataArcadeObject_Record extends gamedataTweakDBRecord
+{
+	import function Animation() : CName; // Animation
+	import function ImageAnchorPoint() : Vector2; // ImageAnchorPoint
+	import function ImageTextureAtlas() : redResourceReferenceScriptToken; // ImageTextureAtlas
+	import function ImageTexturePart() : CName; // ImageTexturePart
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

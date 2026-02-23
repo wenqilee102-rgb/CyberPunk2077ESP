@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"HUDManagerDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"ShowHudHintMessege","c":128},{"a":{"b":"gamebbScriptID_String"},"b":"HudHintMessegeContent","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

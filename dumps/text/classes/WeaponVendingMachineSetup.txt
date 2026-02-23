@@ -1,0 +1,6 @@
+struct WeaponVendingMachineSetup
+{
+	public    var vendorTweakID : TweakDBID;
+	public    var junkItemID : TweakDBID;
+	public    var timeToCompletePurchase : Float;
+}

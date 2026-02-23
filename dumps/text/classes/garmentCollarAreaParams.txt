@@ -1,0 +1,8 @@
+import struct garmentCollarAreaParams
+{
+	var enable : Bool;
+	var radiusInCM : Float;
+	var radiusForTriangleRemovalInCM : Float;
+	var offsetFromSkinInCM : Float;
+	var offset : Vector3;
+}

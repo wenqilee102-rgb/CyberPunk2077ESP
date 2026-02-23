@@ -1,0 +1,30 @@
+import class gamedataActionMap_Record extends gamedataTweakDBRecord
+{
+	import function DefaultMap() : whandle:gamedataAINodeMap_Record; // DefaultMap
+	import function DefaultMapHandle() : handle:gamedataAINodeMap_Record; // DefaultMapHandle
+	import function GetMapCount() : Int32; // GetMapCount
+	import function GetMapItem(index : Int32) : whandle:gamedataActionMapField_Record; // GetMapItem
+	import function GetMapItemHandle(index : Int32) : handle:gamedataActionMapField_Record; // GetMapItemHandle
+	import function Map(out outList : array:whandle:gamedataActionMapField_Record); // Map
+	import function MapContains(item : whandle:gamedataActionMapField_Record) : Bool; // MapContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,4 @@
+import struct TrafficGenDynamicTrafficSetting
+{
+	var impact : TrafficGenDynamicImpact;
+}

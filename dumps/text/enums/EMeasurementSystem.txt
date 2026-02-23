@@ -1,0 +1,5 @@
+enum EMeasurementSystem
+{
+	Metric = 0,
+	Imperial = 1
+}

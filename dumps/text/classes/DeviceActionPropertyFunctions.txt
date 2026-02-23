@@ -1,0 +1,39 @@
+class DeviceActionPropertyFunctions extends IScriptable
+{
+	static function GetProperty_Bool(prop : handle:gamedeviceActionProperty, out value : Bool, out nameOnFalse : CName, out nameOnTrue : CName) : Bool; // DeviceActionPropertyFunctions::GetProperty_Bool;DeviceActionPropertyBoolCNameCName
+	static function GetProperty_Bool(prop : handle:gamedeviceActionProperty, out value : Bool) : Bool; // DeviceActionPropertyFunctions::GetProperty_Bool;DeviceActionPropertyBool
+	static function GetProperty_EntityReference(prop : handle:gamedeviceActionProperty, out value : gameEntityReference) : Bool; // DeviceActionPropertyFunctions::GetProperty_EntityReference;DeviceActionPropertyEntityReference
+	static function GetProperty_Float(prop : handle:gamedeviceActionProperty, out value : Float) : Bool; // DeviceActionPropertyFunctions::GetProperty_Float;DeviceActionPropertyFloat
+	static function GetProperty_Int(prop : handle:gamedeviceActionProperty, out value : Int32) : Bool; // DeviceActionPropertyFunctions::GetProperty_Int;DeviceActionPropertyInt32
+	static function GetProperty_IntRanged(prop : handle:gamedeviceActionProperty, out value : Int32, out rangeMin : Int32, out rangeMax : Int32) : Bool; // DeviceActionPropertyFunctions::GetProperty_IntRanged;DeviceActionPropertyInt32Int32Int32
+	static function GetProperty_MediaStatus(prop : handle:gamedeviceActionProperty, out deviceStatus : Int32, stationName : script_ref:String) : Bool; // DeviceActionPropertyFunctions::GetProperty_MediaStatus;DeviceActionPropertyInt32script_ref<String>
+	static function GetProperty_Name(prop : handle:gamedeviceActionProperty, out value : CName) : Bool; // DeviceActionPropertyFunctions::GetProperty_Name;DeviceActionPropertyCName
+	static function GetProperty_NodeRef(prop : handle:gamedeviceActionProperty, out value : NodeRef) : Bool; // DeviceActionPropertyFunctions::GetProperty_NodeRef;DeviceActionPropertyNodeRef
+	static function GetProperty_RadioStatus(prop : handle:gamedeviceActionProperty, out deviceStatus : Int32, stationName : script_ref:String) : Bool; // DeviceActionPropertyFunctions::GetProperty_RadioStatus;DeviceActionPropertyInt32script_ref<String>
+	static function GetProperty_TvStatus(prop : handle:gamedeviceActionProperty, out deviceStatus : Int32, stationName : script_ref:String) : Bool; // DeviceActionPropertyFunctions::GetProperty_TvStatus;DeviceActionPropertyInt32script_ref<String>
+	static function SetUpProperty_Bool(propertyName : CName, value : Bool, nameOnTrue : CName, nameOnFalse : CName) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_Bool;CNameBoolCNameCName
+	static function SetUpProperty_ElevatorInt(propertyName : CName, value : Int32, displayValue : Int32) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_ElevatorInt;CNameInt32Int32
+	static function SetUpProperty_EntityReference(propertyName : CName, value : gameEntityReference) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_EntityReference;CNameEntityReference
+	static function SetUpProperty_Float(propertyName : CName, value : Float) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_Float;CNameFloat
+	static function SetUpProperty_Int(propertyName : CName, value : Int32) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_Int;CNameInt32
+	static function SetUpProperty_IntRanged(propertyName : CName, value : Int32, rangeMin : Int32, rangeMax : Int32) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_IntRanged;CNameInt32Int32Int32
+	static function SetUpProperty_MediaStatus(propertyName : CName, deviceStatus : Int32, stationName : script_ref:String) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_MediaStatus;CNameInt32script_ref<String>
+	static function SetUpProperty_Name(propertyName : CName, value : CName) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_Name;CNameCName
+	static function SetUpProperty_NodeRef(propertyName : CName, value : NodeRef) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_NodeRef;CNameNodeRef
+	static function SetUpProperty_RadioStatus(propertyName : CName, deviceStatus : Int32, stationName : script_ref:String) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_RadioStatus;CNameInt32script_ref<String>
+	static function SetUpProperty_TvStatus(propertyName : CName, deviceStatus : Int32, stationName : script_ref:String) : handle:gamedeviceActionProperty; // DeviceActionPropertyFunctions::SetUpProperty_TvStatus;CNameInt32script_ref<String>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

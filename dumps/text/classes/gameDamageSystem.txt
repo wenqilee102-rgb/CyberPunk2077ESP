@@ -1,0 +1,146 @@
+import class gameDamageSystem extends gameIDamageSystem
+{
+	public    var previewTarget : previewTargetStruct;
+	public    var previewLock : Bool;
+	public    var previewRWLockTemp : ScriptReentrantRWLock;
+
+	import static function GetDamageModFromCurve(curve : CName, value : Float) : Float; // GetDamageModFromCurve
+
+	static function GetEffectiveRangeModifierForWeapon(attackData : handle:gamedamageAttackData, hitPosition : Vector4, statsSystem : handle:gameStatsSystem) : Float; // gameDamageSystem::GetEffectiveRangeModifierForWeapon;AttackDataVector4StatsSystem
+	static function GetMantisBladesCripplingRandStatusEffectID() : TweakDBID; // gameDamageSystem::GetMantisBladesCripplingRandStatusEffectID;
+	static function GetRandomOffset(minOffset : Vector3, maxOffset : Vector3) : Vector3; // gameDamageSystem::GetRandomOffset;Vector3Vector3
+	static function HasGrandFinaleStatFlag(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // gameDamageSystem::HasGrandFinaleStatFlag;StateGameScriptInterface
+
+	import function ProcessSyncStageCallbacks(stage : gameDamagePipelineStage, hitEvent : handle:gameeventsHitEvent, damagePipelineType : gameDamageListenerPipelineType); // ProcessSyncStageCallbacks
+	import function ProcessSyncStageMissCallbacks(missEvent : handle:gameeventsMissEvent); // ProcessSyncStageMissCallbacks
+	import function QueueHitEvent(evt : handle:gameeventsHitEvent, receiver : whandle:gameObject); // QueueHitEvent
+	import function QueueMissEvent(evt : handle:gameeventsMissEvent); // QueueMissEvent
+	import function RegisterListener(damageListener : handle:gameScriptedDamageSystemListener, registereeID : entEntityID, callbackType : gameDamageCallbackType, optional damagePipelineType : gameDamageListenerPipelineType); // RegisterListener
+	import function RegisterSyncListener(damageListener : handle:gameScriptedDamageSystemListener, registereeID : entEntityID, callbackType : gameDamageCallbackType, stage : gameDamagePipelineStage, optional damagePipelineType : gameDamageListenerPipelineType); // RegisterSyncListener
+	import function StartProjectionPipeline(evt : handle:gameeventsProjectedHitEvent); // StartProjectionPipeline
+	import function UnregisterListener(damageListener : handle:gameScriptedDamageSystemListener, registereeID : entEntityID, callbackType : gameDamageCallbackType, optional damagePipelineType : gameDamageListenerPipelineType); // UnregisterListener
+	import function UnregisterSyncListener(damageListener : handle:gameScriptedDamageSystemListener, registereeID : entEntityID, callbackType : gameDamageCallbackType, stage : gameDamagePipelineStage, optional damagePipelineType : gameDamageListenerPipelineType); // UnregisterSyncListener
+
+	function AllowWeaponCrit(attackData : handle:gamedamageAttackData) : Bool; // AllowWeaponCrit;AttackData
+	function ApplyStatusEffectByApplicationRate(hitEvent : handle:gameeventsHitEvent, statType : gamedataStatType, effect : TweakDBID); // ApplyStatusEffectByApplicationRate;gameHitEventgamedataStatTypeTweakDBID
+	function CacheLocalVars(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // CacheLocalVars;gameHitEventCacheData
+	function CalculateDamageVariants(hitEvent : handle:gameeventsHitEvent); // CalculateDamageVariants;gameHitEvent
+	function CalculateGlobalModifiers(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // CalculateGlobalModifiers;gameHitEventCacheData
+	function CalculateSourceModifiers(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // CalculateSourceModifiers;gameHitEventCacheData
+	function CalculateSourceVsTargetModifiers(hitEvent : handle:gameeventsHitEvent); // CalculateSourceVsTargetModifiers;gameHitEvent
+	function CalculateTargetModifiers(hitEvent : handle:gameeventsHitEvent); // CalculateTargetModifiers;gameHitEvent
+	function CalculateVehicleTargetMeleeDamage(weaponObject : handle:gameweaponObject, attackType : gamedataAttackType, isBodySlam : Bool, statSystem : handle:gameStatsSystem) : Float; // CalculateVehicleTargetMeleeDamage;WeaponObjectgamedataAttackTypeBoolStatsSystem
+	function CalculateVehicleTargetRangedDamage(weaponObject : handle:gameweaponObject, chargeDamageMultiplier : Float, statSystem : handle:gameStatsSystem) : Float; // CalculateVehicleTargetRangedDamage;WeaponObjectFloatStatsSystem
+	function CheckForQuickExit(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData) : Bool; // CheckForQuickExit;gameHitEventCacheData
+	function CheckProjectionPipelineTargetConditions(hitEvent : handle:gameeventsProjectedHitEvent) : Bool; // CheckProjectionPipelineTargetConditions;gameProjectedHitEvent
+	function ClearPreviewTargetStruct(); // ClearPreviewTargetStruct;
+	function ConvertDPSToHitDamage(hitEvent : handle:gameeventsHitEvent); // ConvertDPSToHitDamage;gameHitEvent
+	function ConvertHitDataToDamageInfo(hitEvent : handle:gameeventsHitEvent) : array:gameuiDamageInfo; // ConvertHitDataToDamageInfo;gameHitEvent
+	function CreateDebugDataName(gameObject : whandle:gameObject) : CName; // CreateDebugDataName;GameObject
+	function DEBUG_InvulnerabilityCheckForVehicle(hitEvent : handle:gameeventsHitEvent) : Bool; // DEBUG_InvulnerabilityCheckForVehicle;gameHitEvent
+	function DealDamages(hitEvent : handle:gameeventsHitEvent); // DealDamages;gameHitEvent
+	function DeathCheck(hitEvent : handle:gameeventsHitEvent); // DeathCheck;gameHitEvent
+	function DebugDraw_VehicleHit(gameInstance : ScriptGameInstance, hitPosition : Vector4, hitDirection : Vector4, hitMagnitude : Float); // DebugDraw_VehicleHit;GameInstanceVector4Vector4Float
+	function FillInDamageBlackboard(hitEvent : handle:gameeventsHitEvent); // FillInDamageBlackboard;gameHitEvent
+	function GatherDebugData(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData, out hitDebugData : handle:gamedamageHitDebugData); // GatherDebugData;gameHitEventCacheDataHitDebugData
+	function GatherServerData(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData, out serverHitData : handle:gamedamageServerHitData); // GatherServerData;gameHitEventCacheDataServerHitData
+	function GetArmorPenetrationValue(weapon : handle:gameweaponObject, hitEvent : handle:gameeventsHitEvent) : Float; // GetArmorPenetrationValue;WeaponObjectgameHitEvent
+	function GetCritDamageModifier(statSystem : handle:gameStatsSystem, attackData : handle:gamedamageAttackData) : Float; // GetCritDamageModifier;StatsSystemAttackData
+	function GetHeadshotDamageModifier(statSystem : handle:gameStatsSystem, attackData : handle:gamedamageAttackData) : Float; // GetHeadshotDamageModifier;StatsSystemAttackData
+	function GetHitReactionZone(hitEvent : handle:gameeventsProjectedHitEvent) : EHitReactionZone; // GetHitReactionZone;gameProjectedHitEvent
+	function GetSubAttackSubType(attackData : handle:gamedamageAttackData) : gamedataAttackSubtype; // GetSubAttackSubType;AttackData
+	function GetVehiclePerksDamageMultiplier(attackData : handle:gamedamageAttackData) : Float; // GetVehiclePerksDamageMultiplier;AttackData
+	function GetWeakspotDamageModifier(statSystem : handle:gameStatsSystem, attackData : handle:gamedamageAttackData) : Float; // GetWeakspotDamageModifier;StatsSystemAttackData
+	function ImmortalityCheck(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // ImmortalityCheck;gameHitEventCacheData
+	function InvulnerabilityCheck(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // InvulnerabilityCheck;gameHitEventCacheData
+	function IsImmune(target : handle:gameObject, statusEffectID : TweakDBID, attackData : handle:gamedamageAttackData) : Bool; // IsImmune;GameObjectTweakDBIDAttackData
+	function IsOverridenExplosionVsVehicleHit(hitEvent : handle:gameeventsHitEvent) : Bool; // IsOverridenExplosionVsVehicleHit;gameHitEvent
+	function IsTargetImmortal(cache : handle:gamedamageCacheData) : Bool; // IsTargetImmortal;CacheData
+	function IsTargetInvulnerable(cache : handle:gamedamageCacheData) : Bool; // IsTargetInvulnerable;CacheData
+	function ModifyHitData(hitEvent : handle:gameeventsHitEvent); // ModifyHitData;gameHitEvent
+	function ModifyHitFlagsForPlayer(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // ModifyHitFlagsForPlayer;gameHitEventCacheData
+	function PostProcess(hitEvent : handle:gameeventsHitEvent); // PostProcess;gameHitEvent
+	function PreProcess(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData) : Bool; // PreProcess;gameHitEventCacheData
+	function PreProcessVehicleTarget(hitEvent : handle:gameeventsHitEvent); // PreProcessVehicleTarget;gameHitEvent
+	function Process(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // Process;gameHitEventCacheData
+	function ProcessArmor(hitEvent : handle:gameeventsHitEvent); // ProcessArmor;gameHitEvent
+	function ProcessBikeMelee(hitEvent : handle:gameeventsHitEvent); // ProcessBikeMelee;gameHitEvent
+	function ProcessBlockAndDeflect(hitEvent : handle:gameeventsHitEvent); // ProcessBlockAndDeflect;gameHitEvent
+	function ProcessBulletBlockAndDeflect(hitEvent : handle:gameeventsHitEvent); // ProcessBulletBlockAndDeflect;gameHitEvent
+	function ProcessBulletDeflect(hitEvent : handle:gameeventsHitEvent, isBulletTimeActive : Bool, blockingItem : whandle:gameItemObject); // ProcessBulletDeflect;gameHitEventBoolItemObject
+	function ProcessChargeAttack(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // ProcessChargeAttack;gameHitEventCacheData
+	function ProcessClientHit(serverHitData : handle:gamedamageServerHitData); // ProcessClientHit;ServerHitData
+	function ProcessClientKill(serverKillData : handle:gamedamageServerKillData); // ProcessClientKill;ServerKillData
+	function ProcessCriticalHit(hitEvent : handle:gameeventsHitEvent); // ProcessCriticalHit;gameHitEvent
+	function ProcessCrowdTarget(hitEvent : handle:gameeventsHitEvent); // ProcessCrowdTarget;gameHitEvent
+	function ProcessCyberwareModifiers(hitEvent : handle:gameeventsHitEvent); // ProcessCyberwareModifiers;gameHitEvent
+	function ProcessDamageMultipliers(hitEvent : handle:gameeventsHitEvent); // ProcessDamageMultipliers;gameHitEvent
+	function ProcessDamageReduction(hitEvent : handle:gameeventsHitEvent); // ProcessDamageReduction;gameHitEvent
+	function ProcessDeviceExplosionDamageToTierNPC(hitEvent : handle:gameeventsHitEvent); // ProcessDeviceExplosionDamageToTierNPC;gameHitEvent
+	function ProcessDeviceTarget(hitEvent : handle:gameeventsHitEvent); // ProcessDeviceTarget;gameHitEvent
+	function ProcessDodge(hitEvent : handle:gameeventsHitEvent); // ProcessDodge;gameHitEvent
+	function ProcessEffectiveRange(hitEvent : handle:gameeventsHitEvent); // ProcessEffectiveRange;gameHitEvent
+	function ProcessEvasion(hitEvent : handle:gameeventsHitEvent); // ProcessEvasion;gameHitEvent
+	function ProcessGrenadeExplosionDamageToPlayer(hitEvent : handle:gameeventsHitEvent); // ProcessGrenadeExplosionDamageToPlayer;gameHitEvent
+	function ProcessHitReaction(hitEvent : handle:gameeventsHitEvent); // ProcessHitReaction;gameHitEvent
+	function ProcessInstantKill(hitEvent : handle:gameeventsHitEvent); // ProcessInstantKill;gameHitEvent
+	function ProcessLevelDifference(hitEvent : handle:gameeventsHitEvent); // ProcessLevelDifference;gameHitEvent
+	function ProcessLocalizedDamage(hitEvent : handle:gameeventsHitEvent); // ProcessLocalizedDamage;gameHitEvent
+	function ProcessMissPipeline(missEvent : handle:gameeventsMissEvent); // ProcessMissPipeline;gameMissEvent
+	function ProcessMitigation(hitEvent : handle:gameeventsHitEvent); // ProcessMitigation;gameHitEvent
+	function ProcessNPCPassengerVehicleCollision(hitEvent : handle:gameeventsHitEvent); // ProcessNPCPassengerVehicleCollision;gameHitEvent
+	function ProcessOnVehicleMitigation(hitEvent : handle:gameeventsHitEvent); // ProcessOnVehicleMitigation;gameHitEvent
+	function ProcessOneShotProtection(hitEvent : handle:gameeventsHitEvent); // ProcessOneShotProtection;gameHitEvent
+	function ProcessPierceAttack(hitEvent : handle:gameeventsHitEvent); // ProcessPierceAttack;gameHitEvent
+	function ProcessPipeline(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // ProcessPipeline;gameHitEventCacheData
+	function ProcessPlayerFixedPercentageOverride(hitEvent : handle:gameeventsHitEvent); // ProcessPlayerFixedPercentageOverride;gameHitEvent
+	function ProcessPlayerIncomingDamageMultiplier(hitEvent : handle:gameeventsHitEvent); // ProcessPlayerIncomingDamageMultiplier;gameHitEvent
+	function ProcessProjectionPipeline(hitEvent : handle:gameeventsProjectedHitEvent, cache : handle:gamedamageCacheData); // ProcessProjectionPipeline;gameProjectedHitEventCacheData
+	function ProcessQuickHackModifiers(hitEvent : handle:gameeventsHitEvent); // ProcessQuickHackModifiers;gameHitEvent
+	function ProcessRagdollHit(hitEvent : handle:gameeventsHitEvent); // ProcessRagdollHit;gameHitEvent
+	function ProcessReturnedDamage(hitEvent : handle:gameeventsHitEvent); // ProcessReturnedDamage;gameHitEvent
+	function ProcessRicochet(hitEvent : handle:gameeventsHitEvent); // ProcessRicochet;gameHitEvent
+	function ProcessSpreadingMultiplier(hitEvent : handle:gameeventsHitEvent); // ProcessSpreadingMultiplier;gameHitEvent
+	function ProcessStatusEffectApplicationStats(hitEvent : handle:gameeventsHitEvent); // ProcessStatusEffectApplicationStats;gameHitEvent
+	function ProcessStatusEffects(hitEvent : handle:gameeventsHitEvent); // ProcessStatusEffects;gameHitEvent
+	function ProcessStealthAttack(hitEvent : handle:gameeventsHitEvent); // ProcessStealthAttack;gameHitEvent
+	function ProcessTurretAttack(hitEvent : handle:gameeventsHitEvent); // ProcessTurretAttack;gameHitEvent
+	function ProcessTurretDamageTakenFromMelee(hitEvent : handle:gameeventsHitEvent); // ProcessTurretDamageTakenFromMelee;gameHitEvent
+	function ProcessVehicleHit(hitEvent : handle:gameeventsHitEvent); // ProcessVehicleHit;gameHitEvent
+	function ProcessVehicleTarget(hitEvent : handle:gameeventsHitEvent, cache : handle:gamedamageCacheData); // ProcessVehicleTarget;gameHitEventCacheData
+	function ProcessVehicleVsExplosion(hitEvent : handle:gameeventsHitEvent); // ProcessVehicleVsExplosion;gameHitEvent
+	function ScalePlayerDamage(hitEvent : handle:gameeventsHitEvent); // ScalePlayerDamage;gameHitEvent
+	function SendDamageEvents(hitEvent : handle:gameeventsHitEvent, resourcesLost : script_ref:array:SDamageDealt); // SendDamageEvents;gameHitEventscript_ref<array<SDamageDealt>>
+	function SendDamageRequestToPreventionSystem(hitEvent : handle:gameeventsHitEvent); // SendDamageRequestToPreventionSystem;gameHitEvent
+	function SendVehicleImpactTelemetryIfValid(hitEvent : handle:gameeventsHitEvent); // SendVehicleImpactTelemetryIfValid;gameHitEvent
+	function SetPreviewLock(newState : Bool); // SetPreviewLock;Bool
+	function SetPreviewTargetStruct(trackedTarget : whandle:gameObject, bodyPart : EHitReactionZone, hittingBreach : Bool); // SetPreviewTargetStruct;GameObjectEHitReactionZoneBool
+	function SetTutorialFact(factName : CName); // SetTutorialFact;CName
+	function ShouldProcessStatusEffectsOnVehicleDriver(hitEvent : handle:gameeventsHitEvent, out driverEntityID : entEntityID) : Bool; // ShouldProcessStatusEffectsOnVehicleDriver;gameHitEventEntityID
+}
+
+import class abstract gameIDamageSystem extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

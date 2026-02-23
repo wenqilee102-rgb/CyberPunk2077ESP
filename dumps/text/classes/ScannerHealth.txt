@@ -1,0 +1,30 @@
+class ScannerHealth extends ScannerChunk
+{
+	private   var currentHealth : Int32;
+	private   var totalHealth : Int32;
+
+	function GetCurrentHealth() : Int32; // GetCurrentHealth;
+	function GetTotalHealth() : Int32; // GetTotalHealth;
+	function GetType() : ScannerDataType; // GetType;
+	function Set(current : Int32, total : Int32); // Set;Int32Int32
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

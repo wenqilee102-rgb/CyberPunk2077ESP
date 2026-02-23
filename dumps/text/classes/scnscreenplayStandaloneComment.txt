@@ -1,0 +1,5 @@
+import struct scnscreenplayStandaloneComment
+{
+	var itemId : scnscreenplayItemId;
+	var comment : String;
+}

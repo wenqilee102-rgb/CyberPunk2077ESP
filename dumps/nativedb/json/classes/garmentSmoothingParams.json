@@ -1,0 +1,1 @@
+{"b":"garmentSmoothingParams","d":8,"g":true,"e":[{"a":{"a":10},"b":"smoothingStrength","c":128},{"a":{"a":10},"b":"smoothingRadiusInCM","c":128},{"a":{"a":10},"b":"smoothingExponent","c":128},{"a":{"a":7},"b":"smoothingNumNeighbours","c":128},{"a":{"a":1},"b":"smoothNormalsEnabled","c":128}]}

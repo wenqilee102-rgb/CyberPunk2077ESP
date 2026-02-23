@@ -1,0 +1,15 @@
+import class inkStreetSignsLayer extends inkWorldFluffLayer
+{
+}
+
+import class abstract inkWorldFluffLayer extends inkLayer
+{
+}
+
+import class abstract inkLayer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

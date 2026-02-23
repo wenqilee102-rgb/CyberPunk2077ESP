@@ -1,0 +1,5 @@
+import struct gameScanningTooltipElementDef
+{
+	var recordID : TweakDBID;
+	var timePct : Float;
+}

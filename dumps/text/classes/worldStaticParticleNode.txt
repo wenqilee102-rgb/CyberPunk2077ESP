@@ -1,0 +1,17 @@
+import class worldStaticParticleNode extends worldNode
+{
+	var emissionRate : Float;
+	var particleSystem : raRef:CParticleSystem;
+	var forcedAutoHideDistance : Float;
+	var forcedAutoHideRange : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

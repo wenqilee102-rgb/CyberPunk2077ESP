@@ -1,0 +1,28 @@
+import class AICTreeNodeReadWorkspotParamsDefinition extends AICTreeNodeDecoratorDefinition
+{
+	var workspotNodeVarName : CName;
+	var prevWorkspotNodeVarName : CName;
+	var splineNodeVarName : CName;
+	var workspotEntryAnimVar : CName;
+	var animControllerVarName : CName;
+	var splineStartAnimVarName : CName;
+	var splineStopAnimVarName : CName;
+	var moveTargetVarName : CName;
+}
+
+import class abstract AICTreeNodeDecoratorDefinition extends AICTreeNodeDefinition
+{
+	var child : handle:LibTreeINodeDefinition;
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

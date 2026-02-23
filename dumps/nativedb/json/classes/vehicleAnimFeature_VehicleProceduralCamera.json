@@ -1,0 +1,1 @@
+{"a":"animAnimFeature","b":"vehicleAnimFeature_VehicleProceduralCamera","d":8,"e":[{"a":{"b":"Vector4"},"b":"cameraTranslationVS","c":128},{"a":{"b":"Quaternion"},"b":"cameraOrientationVS","c":128},{"a":{"a":10},"b":"cameraTargetWeight","c":128}]}

@@ -1,0 +1,5 @@
+import struct animAnimNode_OrientConstraint_WeightedTransform
+{
+	var transform : animTransformIndex;
+	var weight : Float;
+}

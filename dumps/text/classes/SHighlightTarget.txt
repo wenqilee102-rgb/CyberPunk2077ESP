@@ -1,0 +1,5 @@
+struct SHighlightTarget
+{
+	public    var targetID : entEntityID;
+	public    var highlightType : EFocusForcedHighlightType;
+}

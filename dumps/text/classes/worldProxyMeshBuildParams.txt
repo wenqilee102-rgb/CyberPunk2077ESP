@@ -1,0 +1,18 @@
+import struct worldProxyMeshBuildParams
+{
+	var buildProxy : Bool;
+	var type : worldProxyMeshBuildType;
+	var usedMesh : worldProxyMeshOutputType;
+	var resolution : Uint32;
+	var polycount : Uint32;
+	var polycountPercentage : Float;
+	var coreAxis : worldProxyCoreAxis;
+	var groupingNormals : worldProxyGroupingNormals;
+	var forceSurfaceFlattening : Bool;
+	var forceSeamlessModule : Bool;
+	var enableAlphaMask : Bool;
+	var windows : worldProxyWindowsParams;
+	var textures : worldProxyTextureParams;
+	var customGeometry : worldProxyCustomGeometryParams;
+	var advancedParams : worldProxyMeshAdvancedBuildParams;
+}

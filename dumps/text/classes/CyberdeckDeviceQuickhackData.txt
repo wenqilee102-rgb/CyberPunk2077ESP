@@ -1,0 +1,11 @@
+struct CyberdeckDeviceQuickhackData
+{
+	public    var UIIcon : whandle:gamedataUIIcon_Record;
+	public    var ObjectActionRecord : whandle:gamedataObjectAction_Record;
+	public    var ObjectActionName : CName;
+	public    var ObjectActionLocName : CName;
+	public    var ObjectActionTier : gamedataDeviceHackTier;
+	public    var ObjectActionCategory : gamedataDeviceHackCategory;
+	public    var ObjectActionType : gamedataObjectActionType;
+	public    var Priority : Float;
+}

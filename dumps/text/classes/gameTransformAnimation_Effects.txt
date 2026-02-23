@@ -1,0 +1,11 @@
+import class abstract gameTransformAnimation_Effects extends gameTransformAnimationTrackItemImpl
+{
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

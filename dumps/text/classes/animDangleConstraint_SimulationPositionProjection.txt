@@ -1,0 +1,29 @@
+import class animDangleConstraint_SimulationPositionProjection extends animDangleConstraint_SimulationSingleBone
+{
+	var collisionCapsuleRadius : Float;
+	var collisionCapsuleHeightExtent : Float;
+	var collisionCapsuleAxisLS : Vector3;
+	var directionReferenceBone : animTransformIndex;
+	var projectionType : animPositionProjectionType;
+}
+
+import class abstract animDangleConstraint_SimulationSingleBone extends animDangleConstraint_Simulation
+{
+	var dangleBone : animTransformIndex;
+}
+
+import class abstract animDangleConstraint_Simulation extends ISerializable
+{
+	var collisionRoundedShapes : array:animCollisionRoundedShape;
+	var jsonCollisionShapes : rRef:JsonResource;
+	var jsonCollisionShapesLoadedSuccessfully : Bool;
+	var alpha : Float;
+	var rotateParentToLookAtDangle : Bool;
+	var parentRotationAltersTransformsOfDangleAndItsChildren : Bool;
+	var parentRotationAltersTransformsOfNonDanglesAndItsChildren : Bool;
+	var dangleAltersTransformsOfItsChildren : Bool;
+}
+
+import class abstract ISerializable
+{
+}

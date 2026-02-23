@@ -1,0 +1,94 @@
+import class AITargetTrackerComponent extends gameComponent
+{
+	var TriggersCombat : Bool;
+
+	import function ActivateThreat(et : handle:entEntity); // ActivateThreat
+	import function AddDroppingCooldown(et : handle:entEntity, value : Float); // AddDroppingCooldown
+	import function AddThreat(et : handle:entEntity, isHostile : Bool, pos : Vector4, accuracy : Float, cooldown : Float, isPersistent : Bool) : Uint32; // AddThreat
+	import function AddThreatOnPosition(pos : Vector4, timeToLive : Float) : Uint32; // AddThreatOnPosition
+	import function ClearForceDetected(); // ClearForceDetected
+	import function ClearThreats(); // ClearThreats
+	import function CollectTrackers(onlyHostiles : Bool, onlyInContact : Bool) : array:handle:entEntity; // CollectTrackers
+	import function DeactivateThreat(et : handle:entEntity); // DeactivateThreat
+	import function GetCurrentPreset() : TweakDBID; // GetCurrentPreset
+	import function GetDroppingCooldown(et : handle:entEntity) : Float; // GetDroppingCooldown
+	import function GetHostileThreats(onlyVisible : Bool) : array:AITrackedLocation; // GetHostileThreats
+	import function GetRecentlyDroppedThreat() : AIDroppedThreatData; // GetRecentlyDroppedThreat
+	import function GetThreatBeliefPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatBeliefPositionProvider
+	import function GetThreatLastKnownPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatLastKnownPositionProvider
+	import function GetThreatPersistence(et : handle:entEntity) : AIThreatPersistenceStatus; // GetThreatPersistence
+	import function GetThreatPersistenceBySource(et : handle:entEntity, src : Uint32) : AIThreatPersistenceStatus; // GetThreatPersistenceBySource
+	import function GetThreatPriorityModFromAttackersCurve(attackers : Uint32) : Float; // GetThreatPriorityModFromAttackersCurve
+	import function GetThreatPriorityModFromDistCurve(distanceFromThreat : Float) : Float; // GetThreatPriorityModFromDistCurve
+	import function GetThreatPriorityModFromDmgCurve(timeSinceLastDmg : Float) : Float; // GetThreatPriorityModFromDmgCurve
+	import function GetThreatPriorityModFromHisteresisCurve(timeSinceTargetChange : Float) : Float; // GetThreatPriorityModFromHisteresisCurve
+	import function GetThreatSharedBeliefPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatSharedBeliefPositionProvider
+	import function GetThreatSharedLastKnownPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatSharedLastKnownPositionProvider
+	import function GetThreats(onlyVisible : Bool) : array:AITrackedLocation; // GetThreats
+	import function GetTopHostileThreat(onlyVisible : Bool, out threat : AITrackedLocation) : Bool; // GetTopHostileThreat
+	import function GetVisibleThreatBeliefAccuracy(et : handle:entEntity) : Float; // GetVisibleThreatBeliefAccuracy
+	import function HasHostileThreat(onlyVisible : Bool, optional onlyEntities : Bool) : Bool; // HasHostileThreat
+	import function IsPositionValid(pos : Vector4) : Bool; // IsPositionValid
+	import function MapThreat(et : handle:entEntity) : Uint32; // MapThreat
+	import function PullSquadSync(sqType : AISquadType); // PullSquadSync
+	import function PushSquadSync(sqType : AISquadType); // PushSquadSync
+	import function RegisterListener(et : handle:entEntity, listener : handle:AIScriptsTargetTrackingListener); // RegisterListener
+	import function RemoveThreat(id : Uint32); // RemoveThreat
+	import function RemoveThreatBeliefAccuracyMinValue(et : handle:entEntity, reason : CName); // RemoveThreatBeliefAccuracyMinValue
+	import function RequestThreatBeliefAccuracyMinValue(et : handle:entEntity, reason : CName, minAccuracy : Float); // RequestThreatBeliefAccuracyMinValue
+	import function ResetDroppingCooldown(et : handle:entEntity); // ResetDroppingCooldown
+	import function ResetRecentlyDroppedThreat(optional delay : Float); // ResetRecentlyDroppedThreat
+	import function ResetRecentlyDroppedThreatNoCallbacks(); // ResetRecentlyDroppedThreatNoCallbacks
+	import function SetCurrentPreset(presetId : TweakDBID); // SetCurrentPreset
+	import function SetCurrentThreatsPersistence(isPersistent : Bool, src : Uint32); // SetCurrentThreatsPersistence
+	import function SetForceDetect(); // SetForceDetect
+	import function SetRecentlyDroppedThreat(threat : whandle:entEntity, position : Vector4, optional validFor : Float); // SetRecentlyDroppedThreat
+	import function SetThreatAccuracy(et : handle:entEntity, accuracy : Float); // SetThreatAccuracy
+	import function SetThreatBaseMul(et : handle:entEntity, threatValue : Float); // SetThreatBaseMul
+	import function SetThreatBeliefAccuracy(et : handle:entEntity, accuracy : Float); // SetThreatBeliefAccuracy
+	import function SetThreatPersistence(et : handle:entEntity, isPersistent : Bool, src : Uint32); // SetThreatPersistence
+	import function SetThreatPriorityAttackersCurve(curveName : CName) : Bool; // SetThreatPriorityAttackersCurve
+	import function SetThreatPriorityDistCurve(curveName : CName) : Bool; // SetThreatPriorityDistCurve
+	import function SetThreatPriorityDmgCurve(curveName : CName) : Bool; // SetThreatPriorityDmgCurve
+	import function SetThreatPriorityHisteresisCurve(curveName : CName) : Bool; // SetThreatPriorityHisteresisCurve
+	import function ThreatFromEntity(et : handle:entEntity, out threat : AITrackedLocation) : Bool; // ThreatFromEntity
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

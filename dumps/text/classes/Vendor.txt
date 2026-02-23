@@ -1,0 +1,96 @@
+class Vendor extends IScriptable
+{
+	public    var gameInstance : ScriptGameInstance;
+	public    var vendorObject : whandle:gameObject;
+	private   var tweakID : TweakDBID;
+	private   var lastInteractionTime : Float;
+	private   var stock : array:gameSItemStack;
+	private   var newItems : array:TweakDBID;
+	private   var soldItems : handle:SoldItemsCache;
+	private   var priceMultiplier : Float;
+	private   var vendorPersistentID : gamePersistentID;
+	private   var stockInit : Bool;
+	private   var playerHacksInit : Bool;
+	private   var inventoryInit : Bool;
+	private   var isAttached : Bool;
+	private   var inventoryReinitWithPlayerStats : Bool;
+	private   var vendorRecord : whandle:gamedataVendor_Record;
+	private   var playerHacks : array:gameItemID;
+
+	static function GetMaxItemStacksPerVendor(optional useIncreasedLimit : Bool) : Int32; // Vendor::GetMaxItemStacksPerVendor;Bool
+	static function ShouldDiscardQualityForNewCWs() : Bool; // Vendor::ShouldDiscardQualityForNewCWs;
+
+	function AddItemsToStock(itemStack : script_ref:gameSItemStack); // AddItemsToStock;script_ref<SItemStack>
+	function AlwaysInStock(itemTDBID : TweakDBID) : Bool; // AlwaysInStock;TweakDBID
+	function BuyItemFromVendor(itemStack : script_ref:gameSItemStack, requestId : Int32); // BuyItemFromVendor;script_ref<SItemStack>Int32
+	function BuyItemsFromVendor(itemsStack : script_ref:array:gameSItemStack, requestId : Int32); // BuyItemsFromVendor;script_ref<array<SItemStack>>Int32
+	function BuybackItemFromVendor(itemStack : script_ref:gameSItemStack, requestId : Int32); // BuybackItemFromVendor;script_ref<SItemStack>Int32
+	function BuybackItemsFromVendor(itemsStack : script_ref:array:gameSItemStack, requestId : Int32); // BuybackItemsFromVendor;script_ref<array<SItemStack>>Int32
+	function CalculateQuantityForStack(vendorWare : handle:gamedataVendorWare_Record, player : handle:PlayerPuppet) : Int32; // CalculateQuantityForStack;VendorWare_RecordPlayerPuppet
+	function CompareWithPlayerGrenadesQuality(itemStack : script_ref:gameSItemStack) : Bool; // CompareWithPlayerGrenadesQuality;script_ref<SItemStack>
+	function CompareWithPlayerHealingItemsQuality(itemStack : script_ref:gameSItemStack) : Bool; // CompareWithPlayerHealingItemsQuality;script_ref<SItemStack>
+	function CreateDynamicStockFromPlayerProgression(out outputStacks : array:gameSItemStack, player : whandle:gameObject); // CreateDynamicStockFromPlayerProgression;array<SItemStack>GameObject
+	function CreateStacksFromVendorItem(out outputStacks : array:gameSItemStack, vendorItem : whandle:gamedataVendorItem_Record, player : handle:PlayerPuppet); // CreateStacksFromVendorItem;array<SItemStack>VendorItem_RecordPlayerPuppet
+	function CreateStacksFromVendorItemQuery(out outputStack : array:gameSItemStack, vendorItemQuery : whandle:gamedataVendorItemQuery_Record, player : handle:PlayerPuppet); // CreateStacksFromVendorItemQuery;array<SItemStack>VendorItemQuery_RecordPlayerPuppet
+	function DispenseItemFromVendor(position : Vector4, optional itemID : gameItemID); // DispenseItemFromVendor;Vector4ItemID
+	function DispenseItemStackFromVendor(position : Vector4, itemID : gameItemID, amount : Int32, optional bypassStock : Bool); // DispenseItemStackFromVendor;Vector4ItemIDInt32Bool
+	function DoesEquipAreaContainNewItems(area : gamedataEquipmentArea, checkPlayerCanBuy : Bool) : Bool; // DoesEquipAreaContainNewItems;gamedataEquipmentAreaBool
+	function FillVendorInventory(allowRegeneration : Bool); // FillVendorInventory;Bool
+	function GetAllStockForSale(checkPlayerCanBuy : Bool) : array:gameSItemStack; // GetAllStockForSale;Bool
+	function GetCyberwareForSale(checkPlayerCanBuy : Bool) : array:gameSItemStack; // GetCyberwareForSale;Bool
+	function GetItemIndex(itemID : gameItemID) : Int32; // GetItemIndex;ItemID
+	function GetItemsForSale(checkPlayerCanBuy : Bool) : array:gameSItemStack; // GetItemsForSale;Bool
+	function GetItemsPlayerCanSell(allowQuestItems : Bool, excludeEquipped : Bool) : array:gameSItemStack; // GetItemsPlayerCanSell;BoolBool
+	function GetLastInteractionTime() : Float; // GetLastInteractionTime;
+	function GetMoney() : Int32; // GetMoney;
+	function GetNewItems() : array:TweakDBID; // GetNewItems;
+	function GetPriceMultiplier() : Float; // GetPriceMultiplier;
+	function GetRandomStockItem() : gameItemID; // GetRandomStockItem;
+	function GetSoldItems() : handle:SoldItemsCache; // GetSoldItems;
+	function GetStock() : array:gameSItemStack; // GetStock;
+	function GetVendorObject() : whandle:gameObject; // GetVendorObject;
+	function GetVendorPersistentID() : gamePersistentID; // GetVendorPersistentID;
+	function GetVendorRecord() : handle:gamedataVendor_Record; // GetVendorRecord;
+	function GetVendorTweakID() : TweakDBID; // GetVendorTweakID;
+	function GetVendorType() : gamedataVendorType; // GetVendorType;
+	function InitPlayerHacks(); // InitPlayerHacks;
+	function InitSingleItemStack(out itemStack : gameSItemStack, itemRecord : handle:gamedataItem_Record, itemID : gameItemID); // InitSingleItemStack;SItemStackItem_RecordItemID
+	function Initialize(gameInstance : ScriptGameInstance, vendorID : TweakDBID, vendorObject : handle:gameObject); // Initialize;GameInstanceTweakDBIDGameObject
+	function InitializeStock(); // InitializeStock;
+	function IsAttached() : Bool; // IsAttached;
+	function IsNewItem(itemTDBID : TweakDBID) : Bool; // IsNewItem;TweakDBID
+	function ItemInspected(itemTDBID : TweakDBID); // ItemInspected;TweakDBID
+	function LazyInitStock(); // LazyInitStock;
+	function LoadPlayerHacks(); // LoadPlayerHacks;
+	function OnAttach(owner : whandle:gameObject); // OnAttach;GameObject
+	function OnDeattach(owner : whandle:gameObject); // OnDeattach;GameObject
+	function OnRestored(gameInstance : ScriptGameInstance, forceReinit : Bool); // OnRestored;GameInstanceBool
+	function OnVendorMenuOpen(); // OnVendorMenuOpen;
+	function PerformItemTransfer(buyer : whandle:gameObject, seller : whandle:gameObject, itemTransaction : script_ref:SItemTransaction) : Bool; // PerformItemTransfer;GameObjectGameObjectscript_ref<SItemTransaction>
+	function PlayerCanBuy(itemStack : script_ref:gameSItemStack) : Bool; // PlayerCanBuy;script_ref<SItemStack>
+	function PlayerCanSell(itemID : gameItemID, allowQuestItems : Bool, excludeEquipped : Bool) : Bool; // PlayerCanSell;ItemIDBoolBool
+	function RegenerateStock(); // RegenerateStock;
+	function RemoveItemIDFromStock(itemID : gameItemID) : Bool; // RemoveItemIDFromStock;ItemID
+	function RemoveItemsFromStock(itemStack : script_ref:gameSItemStack) : Bool; // RemoveItemsFromStock;script_ref<SItemStack>
+	function SellItemToVendor(itemStack : script_ref:gameSItemStack, requestId : Int32); // SellItemToVendor;script_ref<SItemStack>Int32
+	function SellItemsToVendor(itemsStack : script_ref:array:gameSItemStack, requestId : Int32); // SellItemsToVendor;script_ref<array<SItemStack>>Int32
+	function SetPersistentID(persistentID : gamePersistentID); // SetPersistentID;PersistentID
+	function SetPriceMultiplier(value : Float); // SetPriceMultiplier;Float
+	function ShouldRegenerateItem(itemTDBID : TweakDBID) : Bool; // ShouldRegenerateItem;TweakDBID
+	function ShouldRegenerateStock() : Bool; // ShouldRegenerateStock;
+	function UpdateNewItems(newStock : script_ref:array:gameSItemStack); // UpdateNewItems;script_ref<array<SItemStack>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,40 @@
+import class gamedataAIReactionCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function GetStimTypeCount() : Int32; // GetStimTypeCount
+	import function GetStimTypeItem(index : Int32) : whandle:gamedataStimType_Record; // GetStimTypeItem
+	import function GetStimTypeItemHandle(index : Int32) : handle:gamedataStimType_Record; // GetStimTypeItemHandle
+	import function InvestigateController() : Bool; // InvestigateController
+	import function Preset() : whandle:gamedataReactionPreset_Record; // Preset
+	import function PresetHandle() : handle:gamedataReactionPreset_Record; // PresetHandle
+	import function ReactionBehaviorName() : CName; // ReactionBehaviorName
+	import function StimType(out outList : array:whandle:gamedataStimType_Record); // StimType
+	import function StimTypeContains(item : whandle:gamedataStimType_Record) : Bool; // StimTypeContains
+	import function ThresholdValue() : whandle:gamedataStatPool_Record; // ThresholdValue
+	import function ThresholdValueHandle() : handle:gamedataStatPool_Record; // ThresholdValueHandle
+	import function ValidStimPosition() : Bool; // ValidStimPosition
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

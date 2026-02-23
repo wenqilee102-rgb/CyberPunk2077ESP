@@ -1,0 +1,9 @@
+import struct gameMuppetSubStepData
+{
+	var frameId : Uint32;
+	var parentFrameId : Uint32;
+	var parentFramePrimaryColor : Bool;
+	var inputState : gameMuppetInputState;
+	var state : gameMuppetState;
+	var resimulationSubsteps : array:gameMuppetSubStepData;
+}

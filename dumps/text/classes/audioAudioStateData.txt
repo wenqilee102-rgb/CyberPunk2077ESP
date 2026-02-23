@@ -1,0 +1,10 @@
+import struct audioAudioStateData
+{
+	var stateName : CName;
+	var enterEvent : CName;
+	var exitEvent : CName;
+	var exitTransitions : array:audioAudioStateTransitionData;
+	var mixingActions : array:audioMixingActionData;
+	var interruptionSources : array:CName;
+	var writeVariableActions : array:audioAudioSceneVariableWriteActionData;
+}

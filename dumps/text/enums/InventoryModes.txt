@@ -1,0 +1,5 @@
+enum InventoryModes
+{
+	Default = 0,
+	Item = 1
+}

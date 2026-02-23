@@ -1,0 +1,26 @@
+import class animAnimNode_AimConstraint_ObjectRotationUp extends animAnimNode_OnePoseInput
+{
+	var targetTransform : animTransformIndex;
+	var upTransform : animTransformIndex;
+	var upTransformVector : Vector3;
+	var transformIndex : animTransformIndex;
+	var forwardAxisLS : Vector3;
+	var upAxisLS : Vector3;
+	var weightMode : animConstraintWeightMode;
+	var weight : Float;
+	var weightFloatTrack : animNamedTrackIndex;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

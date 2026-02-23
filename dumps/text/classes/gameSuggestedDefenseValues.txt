@@ -1,0 +1,7 @@
+import struct gameSuggestedDefenseValues
+{
+	var minArmor : Float;
+	var maxArmor : Float;
+	var minProtection : Float;
+	var maxProtection : Float;
+}

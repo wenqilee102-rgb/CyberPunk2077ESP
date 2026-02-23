@@ -1,0 +1,7 @@
+struct StimIdentificationData
+{
+	public    var sourceID : entEntityID;
+	public    var stimType : gamedataStimType;
+	public    var stimName : CName;
+	public    var delayID : gameDelayID;
+}

@@ -1,0 +1,7 @@
+import struct gameAttackInitContext
+{
+	var record : handle:gamedataAttack_Record;
+	var instigator : whandle:gameObject;
+	var source : whandle:gameObject;
+	var weapon : whandle:gameweaponObject;
+}

@@ -1,0 +1,8 @@
+struct PlayerCombatControllerRefreshPolicy
+{
+	public    var crouchActive : PlayerCombatControllerRefreshPolicyEnum;
+	public    var crouchTimerPassed : PlayerCombatControllerRefreshPolicyEnum;
+	public    var isTracked : PlayerCombatControllerRefreshPolicyEnum;
+	public    var usingJhonnyReplacer : PlayerCombatControllerRefreshPolicyEnum;
+	public    var usingQuickHack : PlayerCombatControllerRefreshPolicyEnum;
+}

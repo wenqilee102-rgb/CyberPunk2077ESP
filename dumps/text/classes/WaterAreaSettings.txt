@@ -1,0 +1,26 @@
+import class WaterAreaSettings extends IAreaSettings
+{
+	var blurMin : Float;
+	var blurMax : Float;
+	var blurExponent : Float;
+	var depth : Float;
+	var density : Float;
+	var lightAbsorptionColor : HDRColor;
+	var lightDecayColor : HDRColor;
+	var globalWaterMask : rRef:CBitmapTexture;
+	var windDir : curveData:Float;
+	var windSpeed : curveData:Float;
+	var windScale : curveData:Float;
+	var amplitude : curveData:Float;
+	var lambda : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

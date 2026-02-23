@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"NewPerkActionRequest","d":0,"e":[{"a":{"b":"gamedataNewPerkType"},"b":"perkType","c":128}],"f":[{"a":"Set;GameObjectgamedataNewPerkType","b":"Set","d":48,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"_owner","c":0},{"a":{"b":"gamedataNewPerkType"},"b":"type","c":0}]}]}

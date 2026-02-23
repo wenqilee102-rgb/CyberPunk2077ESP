@@ -1,0 +1,5 @@
+import struct scnscreenplayStore
+{
+	var lines : array:scnscreenplayDialogLine;
+	var options : array:scnscreenplayChoiceOption;
+}

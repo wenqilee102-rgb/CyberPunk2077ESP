@@ -1,0 +1,5 @@
+import struct entAnimGraphResourceContainerEntry
+{
+	var graphName : CName;
+	var animGraphResource : rRef:animAnimGraph;
+}

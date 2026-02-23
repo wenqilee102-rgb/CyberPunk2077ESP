@@ -1,0 +1,33 @@
+import class gamedataAISubActionMountVehicle_Record extends gamedataAISubAction_Record
+{
+	import function IgnoreFlatTires() : Bool; // IgnoreFlatTires
+	import function MountInstantly() : Bool; // MountInstantly
+	import function Slot() : whandle:gamedataVehicleSeat_Record; // Slot
+	import function SlotHandle() : handle:gamedataVehicleSeat_Record; // SlotHandle
+	import function Vehicle() : whandle:gamedataAIActionTarget_Record; // Vehicle
+	import function VehicleHandle() : handle:gamedataAIActionTarget_Record; // VehicleHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

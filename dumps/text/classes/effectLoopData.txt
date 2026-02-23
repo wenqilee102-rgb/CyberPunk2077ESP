@@ -1,0 +1,5 @@
+import struct effectLoopData
+{
+	var startTime : Float;
+	var endTime : Float;
+}

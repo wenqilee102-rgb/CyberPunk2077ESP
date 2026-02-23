@@ -1,0 +1,24 @@
+class GrenadeMappinData extends gamemappinsMappinScriptData
+{
+	public    var grenadeType : EGrenadeType;
+	public    var iconID : TweakDBID;
+}
+
+import class gamemappinsMappinScriptData extends IScriptable
+{
+	var statPoolType : gamedataStatPoolType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

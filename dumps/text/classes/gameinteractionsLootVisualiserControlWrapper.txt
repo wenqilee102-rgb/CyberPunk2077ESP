@@ -1,0 +1,5 @@
+import struct gameinteractionsLootVisualiserControlWrapper
+{
+	import static function AddOperation(wrapper : script_ref:gameinteractionsLootVisualiserControlWrapper, controlOperation : gameinteractionsELootVisualiserControlOperation, value : Bool); // AddOperation
+	import static function Wrap(wrapper : gameinteractionsLootVisualiserControlWrapper) : handle:gameinteractionsSetChoicesEvent; // Wrap
+}

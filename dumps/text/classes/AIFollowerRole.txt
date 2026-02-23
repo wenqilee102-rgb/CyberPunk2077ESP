@@ -1,0 +1,59 @@
+class AIFollowerRole extends AIRole
+{
+	protected var followerRef : gameEntityReference;
+	private   var followTarget : whandle:gameObject;
+	private   var owner : whandle:gameObject;
+	private   var attitudeGroupName : CName;
+	private   var followTargetSquads : array:CName;
+	private   var playerCombatListener : handle:redCallbackObject;
+	private   var lastStealthLeaveTimeStamp : EngineTime;
+	private   var friendlyTargetSlotListener : handle:gameAttachmentSlotsScriptListener;
+	private   var ownerTargetSlotListener : handle:gameAttachmentSlotsScriptListener;
+	private   var isFriendMelee : Bool;
+	private   var isOwnerSniper : Bool;
+
+	function ChangeAttitude(owner : whandle:gameObject, ownAttitudeAgent : handle:gameAttitudeAgent, followTarget : whandle:gameObject) : Bool; // ChangeAttitude;GameObjectAttitudeAgentGameObject
+	function FindFollowTarget(owner : whandle:gameObject, out followTarget : whandle:gameObject) : Bool; // FindFollowTarget;GameObjectGameObject
+	function GetFollowTarget() : whandle:gameObject; // GetFollowTarget;
+	function GetFollowerRef() : gameEntityReference; // GetFollowerRef;
+	function GetRoleEnum() : EAIRole; // GetRoleEnum;
+	function GetTweakRecordId() : TweakDBID; // GetTweakRecordId;
+	function JoinFollowTargetSquads(owner : whandle:ScriptedPuppet); // JoinFollowTargetSquads;ScriptedPuppet
+	function LeaveFollowTargetSquads(owner : whandle:ScriptedPuppet); // LeaveFollowTargetSquads;ScriptedPuppet
+	function OnFriendlyTargetWeaponChange(itemID : gameItemID); // OnFriendlyTargetWeaponChange;ItemID
+	function OnHighLevelStateEnter(owner : whandle:gameObject, newState : gamedataNPCHighLevelState, previousState : gamedataNPCHighLevelState); // OnHighLevelStateEnter;GameObjectgamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnHighLevelStateExit(owner : whandle:gameObject, leftState : gamedataNPCHighLevelState, nextState : gamedataNPCHighLevelState); // OnHighLevelStateExit;GameObjectgamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnOwnerWeaponChange(itemID : gameItemID); // OnOwnerWeaponChange;ItemID
+	function OnRoleCleared(owner : whandle:gameObject); // OnRoleCleared;GameObject
+	function OnRoleSet(owner : whandle:gameObject); // OnRoleSet;GameObject
+	function RegisterToPlayerCombat(owner : whandle:ScriptedPuppet, player : whandle:PlayerPuppet); // RegisterToPlayerCombat;ScriptedPuppetPlayerPuppet
+	function SetFollowTarget(followTarget : whandle:gameObject); // SetFollowTarget;GameObject
+	function UnregisterToPlayerCombat(owner : whandle:ScriptedPuppet, player : whandle:PlayerPuppet); // UnregisterToPlayerCombat;ScriptedPuppetPlayerPuppet
+	function UpdateSpatialsMultiplier(); // UpdateSpatialsMultiplier;
+}
+
+import class AIRole extends IScriptable
+{
+	import function GetRoleTweakRecord() : handle:gamedataAIRole_Record; // GetRoleTweakRecord
+
+	function GetRoleEnum() : EAIRole; // GetRoleEnum;
+	function GetTweakRecordId() : TweakDBID; // GetTweakRecordId;
+	function OnHighLevelStateEnter(owner : whandle:gameObject, newState : gamedataNPCHighLevelState, previousState : gamedataNPCHighLevelState); // OnHighLevelStateEnter;GameObjectgamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnHighLevelStateExit(owner : whandle:gameObject, leftState : gamedataNPCHighLevelState, nextState : gamedataNPCHighLevelState); // OnHighLevelStateExit;GameObjectgamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnRoleCleared(owner : whandle:gameObject); // OnRoleCleared;GameObject
+	function OnRoleSet(owner : whandle:gameObject); // OnRoleSet;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

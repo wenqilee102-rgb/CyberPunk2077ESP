@@ -1,0 +1,1 @@
+{"b":"TerminalSetup","d":0,"g":true,"e":[{"a":{"a":6},"b":"minClearance","c":128},{"a":{"a":6},"b":"maxClearance","c":128},{"a":{"a":1},"b":"ignoreSlaveAuthorizationModule","c":132},{"a":{"a":1},"b":"allowRemoteAuthorization","c":132},{"a":{"a":1},"b":"shouldForceVirtualSystem","c":128}]}

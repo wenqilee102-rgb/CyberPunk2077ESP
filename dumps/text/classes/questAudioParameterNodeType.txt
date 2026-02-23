@@ -1,0 +1,15 @@
+import class questAudioParameterNodeType extends questIAudioNodeType
+{
+	var param : audioAudParameter;
+	var isMusic : Bool;
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

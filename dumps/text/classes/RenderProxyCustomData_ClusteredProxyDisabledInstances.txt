@@ -1,0 +1,7 @@
+import struct RenderProxyCustomData_ClusteredProxyDisabledInstances extends IRenderProxyCustomData
+{
+}
+
+import struct abstract IRenderProxyCustomData
+{
+}

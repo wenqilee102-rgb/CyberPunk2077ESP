@@ -1,0 +1,34 @@
+import class VolumetricFogAreaSettings extends IAreaSettings
+{
+	var albedo : curveData:HDRColor;
+	var range : curveData:Float;
+	var fogHeight : curveData:Float;
+	var fogHeightFalloff : curveData:Float;
+	var fogHeightMaxCut : curveData:Float;
+	var density : curveData:Float;
+	var absorption : curveData:Float;
+	var ambientScale : curveData:Float;
+	var localAmbientScale : curveData:Float;
+	var globalLightScale : curveData:Float;
+	var globalLightAnisotropy : curveData:Float;
+	var globalLightAnisotropyBase : curveData:Float;
+	var globalLightAnisotropyScale : curveData:Float;
+	var localLightRange : curveData:Float;
+	var localLightScale : curveData:Float;
+	var distantAlbedo : curveData:HDRColor;
+	var distantGlobalLightScale : curveData:Float;
+	var distantGroundIrradiance : curveData:Float;
+	var distantGroundSaturation : curveData:Float;
+	var distantSkyIrradiance : curveData:Float;
+	var distantShadowAmbientDarkening : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

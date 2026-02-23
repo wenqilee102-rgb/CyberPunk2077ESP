@@ -1,0 +1,1 @@
+{"a":"gameObject","b":"DEBUG_VirtualShopkeeper","d":0,"e":[{"a":{"a":12},"b":"vendorID","c":130}],"f":[{"a":"OnInteractionChoice","c":{"a":1},"d":98,"e":[{"a":{"a":26,"c":{"b":"gameinteractionsChoiceEvent"}},"b":"choiceEvent","c":0}]}]}

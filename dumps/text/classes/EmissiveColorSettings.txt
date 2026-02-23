@@ -1,0 +1,23 @@
+import class EmissiveColorSettings extends IAreaSettings
+{
+	var tint : curveData:HDRColor;
+	var saturation : curveData:Float;
+	var brigtness : curveData:Float;
+	var exposure : curveData:Vector2;
+	var cameraLuminance : curveData:Vector2;
+	var evBlend : curveData:Float;
+	var exposureIBL : curveData:Float;
+	var luminanceIBL : curveData:Float;
+	var curveRampIBL : Float;
+	var exposureScale : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+import class gamedataXPPoints_Record extends gamedataTweakDBRecord
+{
+	import function GetQuantityModifiersCount() : Int32; // GetQuantityModifiersCount
+	import function GetQuantityModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetQuantityModifiersItem
+	import function GetQuantityModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetQuantityModifiersItemHandle
+	import function QuantityModifiers(out outList : array:whandle:gamedataStatModifier_Record); // QuantityModifiers
+	import function QuantityModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // QuantityModifiersContains
+	import function Type() : whandle:gamedataProficiency_Record; // Type
+	import function TypeHandle() : handle:gamedataProficiency_Record; // TypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

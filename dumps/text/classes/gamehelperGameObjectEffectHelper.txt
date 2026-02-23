@@ -1,0 +1,21 @@
+import class gamehelperGameObjectEffectHelper extends IScriptable
+{
+	import static function ActivateEffectAction(obj : whandle:gameObject, actionType : gamedataFxActionType, fxName : CName, optional fxBlackboard : handle:worldEffectBlackboard, optional startOnlyIfNotStarted : Bool); // ActivateEffectAction
+	import static function BreakEffectLoopEvent(obj : handle:gameObject, effectName : CName); // BreakEffectLoopEvent
+	import static function StartEffectEvent(obj : handle:gameObject, effectName : CName, optional shouldPersist : Bool, optional blackboard : handle:worldEffectBlackboard, optional startOnlyIfNotStarted : Bool); // StartEffectEvent
+	import static function StopEffectEvent(obj : handle:gameObject, effectName : CName); // StopEffectEvent
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

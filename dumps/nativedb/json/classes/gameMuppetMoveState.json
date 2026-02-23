@@ -1,0 +1,1 @@
+{"b":"gameMuppetMoveState","d":8,"g":true,"e":[{"a":{"a":10},"b":"desiredSpeed","c":128},{"a":{"a":1},"b":"isJumping","c":128},{"a":{"a":1},"b":"isFalling","c":128},{"a":{"a":1},"b":"isDoubleJumped","c":128},{"a":{"b":"gameMuppetMoveStyle"},"b":"moveStyle","c":128},{"a":{"a":7},"b":"jumpStartFrameId","c":128},{"a":{"a":7},"b":"landFrameId","c":128}]}

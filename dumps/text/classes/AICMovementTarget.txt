@@ -1,0 +1,8 @@
+import struct AICMovementTarget extends AIPosition
+{
+}
+
+import struct AIPosition
+{
+	var position : Vector3;
+}

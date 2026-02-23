@@ -1,0 +1,5 @@
+enum EGravityType
+{
+	LowGravity = 0,
+	Regular = 1
+}

@@ -1,0 +1,20 @@
+import class entdismembermentWoundResource extends ISerializable
+{
+	var Name : CName;
+	var WoundType : entdismembermentWoundTypeE;
+	var BodyPart : physicsRagdollBodyPartE;
+	var CullObject : entdismembermentCullObject;
+	var GarmentMorphStrength : Float;
+	var UseProceduralCut : Bool;
+	var UseSingleMeshForRagdoll : Bool;
+	var IsCritical : Bool;
+	var Resources : array:entdismembermentWoundMeshes;
+	var Decals : array:entdismembermentWoundDecal;
+	var CensoredPaths : array:Uint64;
+	var CensoredCookedPaths : array:raRef:CResource;
+	var CensorshipValid : Bool;
+}
+
+import class abstract ISerializable
+{
+}

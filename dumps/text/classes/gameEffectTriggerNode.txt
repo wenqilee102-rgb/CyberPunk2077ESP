@@ -1,0 +1,20 @@
+import class gameEffectTriggerNode extends worldAreaShapeNode
+{
+	var effectDescs : array:handle:gameEffectTriggerEffectDesc;
+}
+
+import class worldAreaShapeNode extends worldNode
+{
+	var color : Color;
+	var outline : handle:AreaShapeOutline;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

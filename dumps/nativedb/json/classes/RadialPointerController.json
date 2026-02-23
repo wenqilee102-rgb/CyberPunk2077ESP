@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"RadialPointerController","d":0,"e":[{"a":{"b":"inkImageWidgetReference"},"b":"pointer","c":129},{"a":{"b":"inkImageWidgetReference"},"b":"feedback","c":129}],"f":[{"a":"SetRotation;FloatFloat","b":"SetRotation","d":48,"e":[{"a":{"a":10},"b":"rawAngle","c":0},{"a":{"a":10},"b":"targetAngle","c":0}]}]}

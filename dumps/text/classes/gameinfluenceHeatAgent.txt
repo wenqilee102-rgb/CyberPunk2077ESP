@@ -1,0 +1,10 @@
+import struct gameinfluenceHeatAgent extends gameinfluenceIAgent
+{
+	var timeToNextUpdate : Float;
+	var heatRadius : Float;
+	var heatValue : Float;
+}
+
+import struct abstract gameinfluenceIAgent
+{
+}

@@ -1,0 +1,13 @@
+import class Multilayer_Mask extends CResource
+{
+	var renderResourceBlob : rendRenderMultilayerMaskResource;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

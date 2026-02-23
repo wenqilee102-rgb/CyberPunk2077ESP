@@ -1,0 +1,30 @@
+class NewHitDataEvent extends redEvent
+{
+	public    var hitIntensity : Int32;
+	public    var hitSource : Int32;
+	public    var hitType : Int32;
+	public    var hitBodyPart : Int32;
+	public    var hitNpcMovementSpeed : Int32;
+	public    var hitDirection : Int32;
+	public    var hitNpcMovementDirection : Int32;
+	public    var stance : Int32;
+	public    var animVariation : Int32;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

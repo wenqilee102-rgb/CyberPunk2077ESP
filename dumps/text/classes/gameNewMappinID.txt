@@ -1,0 +1,4 @@
+import struct gameNewMappinID
+{
+	var value : Uint64;
+}

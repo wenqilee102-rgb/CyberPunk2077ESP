@@ -1,0 +1,17 @@
+import class scnRandomizerNode extends scnSceneGraphNode
+{
+	var mode : scnRandomizerMode;
+	var numOutSockets : Uint32;
+	var weights : [32]Uint8;
+}
+
+import class abstract scnSceneGraphNode extends ISerializable
+{
+	var nodeId : scnNodeId;
+	var ffStrategy : scnFastForwardStrategy;
+	var outputSockets : array:scnOutputSocket;
+}
+
+import class abstract ISerializable
+{
+}

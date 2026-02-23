@@ -1,0 +1,1 @@
+{"a":"gameJournalEntry","b":"gameJournalPhoneChoiceEntry","c":"JournalPhoneChoiceEntry","d":8,"e":[{"a":{"a":13},"b":"text","c":128},{"a":{"a":1},"b":"isQuestImportant","c":128},{"a":{"a":26,"c":{"b":"questIBaseCondition"}},"b":"questCondition","c":128}],"f":[{"a":"GetQuestCondition","d":132},{"a":"GetText","c":{"a":12},"d":132},{"a":"IsQuestImportant","c":{"a":1},"d":132}]}

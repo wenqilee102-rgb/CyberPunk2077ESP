@@ -1,0 +1,5 @@
+struct UILocRecord
+{
+	public    var tag : CName;
+	public    var value : String;
+}

@@ -1,0 +1,12 @@
+import class questMultiplayerAIDirectorParams extends ISerializable
+{
+	var function : questMultiplayerAIDirectorFunction;
+	var status : questMultiplayerAIDirectorStatus;
+	var pathRef : NodeRef;
+	var scheduleEntryName : String;
+	var scheduleName : String;
+}
+
+import class abstract ISerializable
+{
+}

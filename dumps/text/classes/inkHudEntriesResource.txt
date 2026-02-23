@@ -1,0 +1,15 @@
+import class inkHudEntriesResource extends CResource
+{
+	var rootWidget : rRef:inkWidgetLibraryResource;
+	var themeOverride : CName;
+	var entries : array:inkHudWidgetSpawnEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

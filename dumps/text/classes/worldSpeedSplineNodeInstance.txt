@@ -1,0 +1,19 @@
+import class worldSpeedSplineNodeInstance extends worldSplineNodeInstance
+{
+}
+
+import class worldSplineNodeInstance extends worldSocketNodeInstance
+{
+}
+
+import class abstract worldSocketNodeInstance extends worldINodeInstance
+{
+}
+
+import class abstract worldINodeInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

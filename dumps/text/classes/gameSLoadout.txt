@@ -1,0 +1,5 @@
+import struct gameSLoadout
+{
+	var equipAreas : array:gameSEquipArea;
+	var equipmentSets : array:gameSEquipmentSet;
+}

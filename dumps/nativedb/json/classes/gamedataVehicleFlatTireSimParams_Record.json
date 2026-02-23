@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataVehicleFlatTireSimParams_Record","c":"VehicleFlatTireSimParams_Record","d":24,"f":[{"a":"BlowOutImpulse","c":{"a":10},"d":4},{"a":"LateralFrictionDecimation","c":{"a":10},"d":4},{"a":"LongitudinalFrictionDecimation","c":{"a":10},"d":4},{"a":"RotationResistanceTorque","c":{"a":10},"d":4}]}

@@ -1,0 +1,1 @@
+{"a":"animAnimNode_Base","b":"animAnimNode_BlendByMaskDynamic","d":8,"e":[{"a":{"b":"animPoseLink"},"b":"base","c":128},{"a":{"b":"animPoseLink"},"b":"blend","c":128},{"a":{"b":"animIntLink"},"b":"mask","c":128},{"a":{"b":"animFloatLink"},"b":"weight","c":128},{"a":{"a":31,"c":{"a":14}},"b":"masks","c":128},{"a":{"a":26,"c":{"b":"animISyncMethod"}},"b":"syncMethod","c":128}]}

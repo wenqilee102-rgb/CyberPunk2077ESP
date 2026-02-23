@@ -1,0 +1,8 @@
+import struct worldTrafficCollisionSphere
+{
+	var worldPos : Vector3;
+	var direction : Vector3;
+	var radius : Float;
+	var userData : Uint64;
+	var flags : Uint8;
+}

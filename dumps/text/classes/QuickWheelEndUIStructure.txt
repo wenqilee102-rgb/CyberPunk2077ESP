@@ -1,0 +1,7 @@
+struct QuickWheelEndUIStructure
+{
+	public    var ChosenItem : QuickSlotCommand;
+	public    var WasUsed : Bool;
+	public    var WasAssignedToSlot : Bool;
+	public    var WheelDirection : EDPadSlot;
+}

@@ -1,0 +1,10 @@
+import class vehicleVehicleSlotsState extends ISerializable
+{
+	var vehicleDoorState : vehicleVehicleDoorState;
+	var vehicleWindowState : vehicleEVehicleWindowState;
+	var vehicleInteractionState : vehicleVehicleDoorInteractionState;
+}
+
+import class abstract ISerializable
+{
+}

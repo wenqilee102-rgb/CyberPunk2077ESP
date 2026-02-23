@@ -1,0 +1,17 @@
+import class CEvaluatorColorStartEnd extends IEvaluatorColor
+{
+	var start : Color;
+	var end : Color;
+}
+
+import class abstract IEvaluatorColor extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

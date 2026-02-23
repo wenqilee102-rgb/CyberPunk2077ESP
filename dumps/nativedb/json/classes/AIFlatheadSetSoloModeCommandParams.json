@@ -1,0 +1,1 @@
+{"a":"questScriptedAICommandParams","b":"AIFlatheadSetSoloModeCommandParams","d":0,"e":[{"a":{"a":1},"b":"soloMode","c":128}],"f":[{"a":"CreateCommand;","b":"CreateCommand","c":{"a":26,"c":{"b":"AICommand"}},"d":32},{"a":"GetCommandName;","b":"GetCommandName","c":{"a":12},"d":48}]}

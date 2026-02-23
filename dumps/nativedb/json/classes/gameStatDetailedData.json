@@ -1,0 +1,1 @@
+{"b":"gameStatDetailedData","d":8,"g":true,"e":[{"a":{"b":"gamedataStatType"},"b":"statType","c":128},{"a":{"a":10},"b":"limitMin","c":128},{"a":{"a":10},"b":"limitMax","c":128},{"a":{"a":10},"b":"value","c":128},{"a":{"a":31,"c":{"b":"gameStatModifierDetailedData"}},"b":"modifiers","c":128},{"a":{"a":1},"b":"boolStatType","c":128}]}

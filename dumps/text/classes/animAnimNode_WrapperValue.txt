@@ -1,0 +1,19 @@
+import class animAnimNode_WrapperValue extends animAnimNode_FloatValue
+{
+	var wrapperNames : array:CName;
+	var logicOp : animEAnimGraphLogicOp;
+	var oneMinus : Bool;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

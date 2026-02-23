@@ -1,0 +1,12 @@
+import class animHasAnimationCondition extends animIStaticCondition
+{
+	var animationName : CName;
+}
+
+import class abstract animIStaticCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"animAnimNode_OnePoseInput","b":"animAnimNode_TwistConstraint","d":8,"e":[{"a":{"b":"animAxis"},"b":"frontAxis","c":128},{"a":{"b":"animTransformIndex"},"b":"transformA","c":128},{"a":{"b":"animTransformIndex"},"b":"transformB","c":128},{"a":{"a":31,"c":{"b":"animTwistOutput"}},"b":"outputs","c":128},{"a":{"a":1},"b":"debug","c":128}]}

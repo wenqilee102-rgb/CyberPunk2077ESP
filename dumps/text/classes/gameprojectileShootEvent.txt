@@ -1,0 +1,34 @@
+import class gameprojectileShootEvent extends gameprojectileSetUpEvent
+{
+	var localToWorld : Matrix;
+	var startPoint : Vector4;
+	var startVelocity : Vector4;
+	var weaponVelocity : Vector4;
+	var params : gameprojectileWeaponParams;
+}
+
+import class gameprojectileSetUpEvent extends redEvent
+{
+	var owner : whandle:gameObject;
+	var weapon : whandle:gameObject;
+	var trajectoryParams : handle:gameprojectileTrajectoryParams;
+	var lerpMultiplier : Float;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

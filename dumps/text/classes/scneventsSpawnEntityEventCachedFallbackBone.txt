@@ -1,0 +1,5 @@
+import struct scneventsSpawnEntityEventCachedFallbackBone
+{
+	var boneName : CName;
+	var modelSpaceTransform : Transform;
+}

@@ -1,0 +1,8 @@
+import struct moveMovementParameters
+{
+	var type : moveMovementType;
+	var maxSpeed : Float;
+	var acceleration : Float;
+	var deceleration : Float;
+	var rotationSpeed : Float;
+}

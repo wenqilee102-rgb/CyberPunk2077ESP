@@ -1,0 +1,15 @@
+import class questAudioMusicSyncNodeType extends questIAudioNodeType
+{
+	var syncType : audioMusicSyncType;
+	var description : String;
+	var syncTrack : CName;
+	var userCue : CName;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

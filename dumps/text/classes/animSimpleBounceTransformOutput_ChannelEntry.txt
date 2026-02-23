@@ -1,0 +1,5 @@
+import struct animSimpleBounceTransformOutput_ChannelEntry
+{
+	var transformChannel : animTransformChannel;
+	var multiplier : Float;
+}

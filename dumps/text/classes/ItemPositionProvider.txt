@@ -1,0 +1,23 @@
+class ItemPositionProvider extends inkItemPositionProviderWrapper
+{
+	function GetItemPosition(data : Variant) : Uint32; // GetItemPosition;Variant
+	function SaveItemPosition(data : Variant, position : Uint32); // SaveItemPosition;VariantUint32
+}
+
+import class inkItemPositionProviderWrapper extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

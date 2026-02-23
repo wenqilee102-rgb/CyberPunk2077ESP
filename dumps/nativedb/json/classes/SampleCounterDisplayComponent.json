@@ -1,0 +1,1 @@
+{"a":"gameScriptableComponent","b":"SampleCounterDisplayComponent","d":0,"e":[{"a":{"b":"gamePersistentID"},"b":"targetPersistentID","c":128}],"f":[{"a":"DisplayCounter;","b":"DisplayCounter","d":48},{"a":"OnUpdate;Float","b":"OnUpdate","d":48,"e":[{"a":{"a":10},"b":"deltaTime","c":0}]}]}

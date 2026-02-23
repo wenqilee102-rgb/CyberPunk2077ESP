@@ -1,0 +1,5 @@
+import struct audioVoiceTriggerLimitsMapItem
+{
+	var name : CName;
+	var limits : audioVoiceTriggerLimits;
+}

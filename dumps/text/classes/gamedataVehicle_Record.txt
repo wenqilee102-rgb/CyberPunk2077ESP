@@ -1,0 +1,288 @@
+import class gamedataVehicle_Record extends gamedataSpawnableObject_Record
+{
+	import function Affiliation() : whandle:gamedataAffiliation_Record; // Affiliation
+	import function AffiliationHandle() : handle:gamedataAffiliation_Record; // AffiliationHandle
+	import function AppearancesToColorTemplate() : whandle:gamedataVehicleAppearancesToColorTemplate_Record; // AppearancesToColorTemplate
+	import function AppearancesToColorTemplateHandle() : handle:gamedataVehicleAppearancesToColorTemplate_Record; // AppearancesToColorTemplateHandle
+	import function ArchetypeName() : CName; // ArchetypeName
+	import function AttachmentSlots(out outList : array:whandle:gamedataAttachmentSlot_Record); // AttachmentSlots
+	import function AttachmentSlotsContains(item : whandle:gamedataAttachmentSlot_Record) : Bool; // AttachmentSlotsContains
+	import function AudioResourceName() : CName; // AudioResourceName
+	import function BikeDriveModelData() : whandle:gamedataBikeDriveModelData_Record; // BikeDriveModelData
+	import function BikeDriveModelDataHandle() : handle:gamedataBikeDriveModelData_Record; // BikeDriveModelDataHandle
+	import function BlockadeLeftPassengerOffset() : Float; // BlockadeLeftPassengerOffset
+	import function BlockadeRightPassengerOffset() : Float; // BlockadeRightPassengerOffset
+	import function BrakelightColor() : array:Int32; // BrakelightColor
+	import function BrakelightColorContains(item : Int32) : Bool; // BrakelightColorContains
+	import function CameraManagerParams() : whandle:gamedataVehicleCameraManager_Record; // CameraManagerParams
+	import function CameraManagerParamsHandle() : handle:gamedataVehicleCameraManager_Record; // CameraManagerParamsHandle
+	import function CanBeActiveVehicle() : Bool; // CanBeActiveVehicle
+	import function CanDeleteUniqueTemplates() : Bool; // CanDeleteUniqueTemplates
+	import function CanOnlySpawnOnValidRoad() : Bool; // CanOnlySpawnOnValidRoad
+	import function ColorProfilesRestricted() : Bool; // ColorProfilesRestricted
+	import function CrowdMemberSettings() : whandle:gamedataCrowdSettingsPackageBase_Record; // CrowdMemberSettings
+	import function CrowdMemberSettingsHandle() : handle:gamedataCrowdSettingsPackageBase_Record; // CrowdMemberSettingsHandle
+	import function CurvesPath() : redResourceReferenceScriptToken; // CurvesPath
+	import function CustomizableAppearance() : CName; // CustomizableAppearance
+	import function CustomizationMenuType() : CName; // CustomizationMenuType
+	import function CustomizationPreview() : whandle:gamedataVehicleVisualCustomizationPreviewSetup_Record; // CustomizationPreview
+	import function CustomizationPreviewGlow() : whandle:gamedataVehicleVisualCustomizationPreviewGlowSetup_Record; // CustomizationPreviewGlow
+	import function CustomizationPreviewGlowHandle() : handle:gamedataVehicleVisualCustomizationPreviewGlowSetup_Record; // CustomizationPreviewGlowHandle
+	import function CustomizationPreviewHandle() : handle:gamedataVehicleVisualCustomizationPreviewSetup_Record; // CustomizationPreviewHandle
+	import function CustomizeCarRims() : Bool; // CustomizeCarRims
+	import function CustomizeLights() : Bool; // CustomizeLights
+	import function DebugStatusString() : String; // DebugStatusString
+	import function DestroyedAppearance() : CName; // DestroyedAppearance
+	import function Destruction() : whandle:gamedataVehicleDestruction_Record; // Destruction
+	import function DestructionHandle() : handle:gamedataVehicleDestruction_Record; // DestructionHandle
+	import function DisplayName() : CName; // DisplayName
+	import function DisplayOverride() : whandle:gamedataPlayerVehicleDisplayOverride_Record; // DisplayOverride
+	import function DisplayOverrideHandle() : handle:gamedataPlayerVehicleDisplayOverride_Record; // DisplayOverrideHandle
+	import function Driving() : whandle:gamedataBaseDrivingParameters_Record; // Driving
+	import function DrivingHandle() : handle:gamedataBaseDrivingParameters_Record; // DrivingHandle
+	import function DrivingParamsGeneric() : whandle:gamedataBaseDrivingParameters_Record; // DrivingParamsGeneric
+	import function DrivingParamsGenericHandle() : handle:gamedataBaseDrivingParameters_Record; // DrivingParamsGenericHandle
+	import function DrivingParamsPanic() : whandle:gamedataBaseDrivingParameters_Record; // DrivingParamsPanic
+	import function DrivingParamsPanicHandle() : handle:gamedataBaseDrivingParameters_Record; // DrivingParamsPanicHandle
+	import function DrivingParamsRace() : whandle:gamedataBaseDrivingParameters_Record; // DrivingParamsRace
+	import function DrivingParamsRaceHandle() : handle:gamedataBaseDrivingParameters_Record; // DrivingParamsRaceHandle
+	import function EnableDestruction() : Bool; // EnableDestruction
+	import function ExcludedComponentsCustomization() : array:CName; // ExcludedComponentsCustomization
+	import function ExcludedComponentsCustomizationContains(item : CName) : Bool; // ExcludedComponentsCustomizationContains
+	import function ExcludedComponentsGeneric() : array:CName; // ExcludedComponentsGeneric
+	import function ExcludedComponentsGenericContains(item : CName) : Bool; // ExcludedComponentsGenericContains
+	import function FxCollision() : whandle:gamedataVehicleFxCollision_Record; // FxCollision
+	import function FxCollisionHandle() : handle:gamedataVehicleFxCollision_Record; // FxCollisionHandle
+	import function FxWheelsDecals() : whandle:gamedataVehicleFxWheelsDecals_Record; // FxWheelsDecals
+	import function FxWheelsDecalsFrontOverride() : whandle:gamedataVehicleFxWheelsDecals_Record; // FxWheelsDecalsFrontOverride
+	import function FxWheelsDecalsFrontOverrideHandle() : handle:gamedataVehicleFxWheelsDecals_Record; // FxWheelsDecalsFrontOverrideHandle
+	import function FxWheelsDecalsHandle() : handle:gamedataVehicleFxWheelsDecals_Record; // FxWheelsDecalsHandle
+	import function FxWheelsParticles() : whandle:gamedataVehicleFxWheelsParticles_Record; // FxWheelsParticles
+	import function FxWheelsParticlesHandle() : handle:gamedataVehicleFxWheelsParticles_Record; // FxWheelsParticlesHandle
+	import function GenericCustomizationMask() : redResourceReferenceScriptToken; // GenericCustomizationMask
+	import function GetAttachmentSlotsCount() : Int32; // GetAttachmentSlotsCount
+	import function GetAttachmentSlotsItem(index : Int32) : whandle:gamedataAttachmentSlot_Record; // GetAttachmentSlotsItem
+	import function GetAttachmentSlotsItemHandle(index : Int32) : handle:gamedataAttachmentSlot_Record; // GetAttachmentSlotsItemHandle
+	import function GetBrakelightColorCount() : Int32; // GetBrakelightColorCount
+	import function GetBrakelightColorItem(index : Int32) : Int32; // GetBrakelightColorItem
+	import function GetExcludedComponentsCustomizationCount() : Int32; // GetExcludedComponentsCustomizationCount
+	import function GetExcludedComponentsCustomizationItem(index : Int32) : CName; // GetExcludedComponentsCustomizationItem
+	import function GetExcludedComponentsGenericCount() : Int32; // GetExcludedComponentsGenericCount
+	import function GetExcludedComponentsGenericItem(index : Int32) : CName; // GetExcludedComponentsGenericItem
+	import function GetHeadlightColorCount() : Int32; // GetHeadlightColorCount
+	import function GetHeadlightColorItem(index : Int32) : Int32; // GetHeadlightColorItem
+	import function GetInteriorColorCount() : Int32; // GetInteriorColorCount
+	import function GetInteriorColorItem(index : Int32) : Int32; // GetInteriorColorItem
+	import function GetInteriorDamageColorCount() : Int32; // GetInteriorDamageColorCount
+	import function GetInteriorDamageColorItem(index : Int32) : Int32; // GetInteriorDamageColorItem
+	import function GetLeftBlinkerlightColorCount() : Int32; // GetLeftBlinkerlightColorCount
+	import function GetLeftBlinkerlightColorItem(index : Int32) : Int32; // GetLeftBlinkerlightColorItem
+	import function GetPreventionPassengersCount() : Int32; // GetPreventionPassengersCount
+	import function GetPreventionPassengersItem(index : Int32) : whandle:gamedataCharacter_Record; // GetPreventionPassengersItem
+	import function GetPreventionPassengersItemHandle(index : Int32) : handle:gamedataCharacter_Record; // GetPreventionPassengersItemHandle
+	import function GetQueryOnlyExceptionsCount() : Int32; // GetQueryOnlyExceptionsCount
+	import function GetQueryOnlyExceptionsItem(index : Int32) : CName; // GetQueryOnlyExceptionsItem
+	import function GetRandomPassengersCount() : Int32; // GetRandomPassengersCount
+	import function GetRandomPassengersItem(index : Int32) : whandle:gamedataRandomPassengerEntry_Record; // GetRandomPassengersItem
+	import function GetRandomPassengersItemHandle(index : Int32) : handle:gamedataRandomPassengerEntry_Record; // GetRandomPassengersItemHandle
+	import function GetReverselightColorCount() : Int32; // GetReverselightColorCount
+	import function GetReverselightColorItem(index : Int32) : Int32; // GetReverselightColorItem
+	import function GetRightBLinkerlightColorCount() : Int32; // GetRightBLinkerlightColorCount
+	import function GetRightBLinkerlightColorItem(index : Int32) : Int32; // GetRightBLinkerlightColorItem
+	import function GetTppCameraPresetsCount() : Int32; // GetTppCameraPresetsCount
+	import function GetTppCameraPresetsItem(index : Int32) : whandle:gamedataVehicleTPPCameraPresetParams_Record; // GetTppCameraPresetsItem
+	import function GetTppCameraPresetsItemHandle(index : Int32) : handle:gamedataVehicleTPPCameraPresetParams_Record; // GetTppCameraPresetsItemHandle
+	import function GetUtilityLightColorCount() : Int32; // GetUtilityLightColorCount
+	import function GetUtilityLightColorItem(index : Int32) : Int32; // GetUtilityLightColorItem
+	import function GetWeaponsCount() : Int32; // GetWeaponsCount
+	import function GetWeaponsItem(index : Int32) : whandle:gamedataVehicleWeapon_Record; // GetWeaponsItem
+	import function GetWeaponsItemHandle(index : Int32) : handle:gamedataVehicleWeapon_Record; // GetWeaponsItemHandle
+	import function HasSideWindows() : Bool; // HasSideWindows
+	import function HasUniqueCustomization() : Bool; // HasUniqueCustomization
+	import function HasVisualCustomization() : Bool; // HasVisualCustomization
+	import function HeadlightColor() : array:Int32; // HeadlightColor
+	import function HeadlightColorContains(item : Int32) : Bool; // HeadlightColorContains
+	import function HitCooldown() : Float; // HitCooldown
+	import function Icon() : whandle:gamedataUIIcon_Record; // Icon
+	import function IconHandle() : handle:gamedataUIIcon_Record; // IconHandle
+	import function InteriorColor() : array:Int32; // InteriorColor
+	import function InteriorColorContains(item : Int32) : Bool; // InteriorColorContains
+	import function InteriorDamageColor() : array:Int32; // InteriorDamageColor
+	import function InteriorDamageColorContains(item : Int32) : Bool; // InteriorDamageColorContains
+	import function IsArmoredVehicle() : Bool; // IsArmoredVehicle
+	import function IsHackable() : whandle:gamedataIsHackable_Record; // IsHackable
+	import function IsHackableHandle() : handle:gamedataIsHackable_Record; // IsHackableHandle
+	import function LeftBackCamber() : Float; // LeftBackCamber
+	import function LeftBackCamberOffset() : Vector3; // LeftBackCamberOffset
+	import function LeftBlinkerlightColor() : array:Int32; // LeftBlinkerlightColor
+	import function LeftBlinkerlightColorContains(item : Int32) : Bool; // LeftBlinkerlightColorContains
+	import function LeftFrontCamber() : Float; // LeftFrontCamber
+	import function LeftFrontCamberOffset() : Vector3; // LeftFrontCamberOffset
+	import function Manufacturer() : whandle:gamedataVehicleManufacturer_Record; // Manufacturer
+	import function ManufacturerHandle() : handle:gamedataVehicleManufacturer_Record; // ManufacturerHandle
+	import function MaxVehiclePassengersCount() : Int32; // MaxVehiclePassengersCount
+	import function MinVehiclePassengersCount() : Int32; // MinVehiclePassengersCount
+	import function Model() : whandle:gamedataVehicleModel_Record; // Model
+	import function ModelHandle() : handle:gamedataVehicleModel_Record; // ModelHandle
+	import function Player_audio_resource() : String; // Player_audio_resource
+	import function PreventionPassengers(out outList : array:whandle:gamedataCharacter_Record); // PreventionPassengers
+	import function PreventionPassengersContains(item : whandle:gamedataCharacter_Record) : Bool; // PreventionPassengersContains
+	import function QueryOnlyExceptions() : array:CName; // QueryOnlyExceptions
+	import function QueryOnlyExceptionsContains(item : CName) : Bool; // QueryOnlyExceptionsContains
+	import function RandomPassengers(out outList : array:whandle:gamedataRandomPassengerEntry_Record); // RandomPassengers
+	import function RandomPassengersContains(item : whandle:gamedataRandomPassengerEntry_Record) : Bool; // RandomPassengersContains
+	import function ReverselightColor() : array:Int32; // ReverselightColor
+	import function ReverselightColorContains(item : Int32) : Bool; // ReverselightColorContains
+	import function RightBLinkerlightColor() : array:Int32; // RightBLinkerlightColor
+	import function RightBLinkerlightColorContains(item : Int32) : Bool; // RightBLinkerlightColorContains
+	import function RightBackCamber() : Float; // RightBackCamber
+	import function RightBackCamberOffset() : Vector3; // RightBackCamberOffset
+	import function RightFrontCamber() : Float; // RightFrontCamber
+	import function RightFrontCamberOffset() : Vector3; // RightFrontCamberOffset
+	import function TankDriveModelData() : whandle:gamedataTankDriveModelData_Record; // TankDriveModelData
+	import function TankDriveModelDataHandle() : handle:gamedataTankDriveModelData_Record; // TankDriveModelDataHandle
+	import function TppCameraParams() : whandle:gamedataVehicleTPPCameraParams_Record; // TppCameraParams
+	import function TppCameraParamsHandle() : handle:gamedataVehicleTPPCameraParams_Record; // TppCameraParamsHandle
+	import function TppCameraPresets(out outList : array:whandle:gamedataVehicleTPPCameraPresetParams_Record); // TppCameraPresets
+	import function TppCameraPresetsContains(item : whandle:gamedataVehicleTPPCameraPresetParams_Record) : Bool; // TppCameraPresetsContains
+	import function TrafficSuspension() : whandle:gamedataVehicleTrafficSuspension_Record; // TrafficSuspension
+	import function TrafficSuspensionHandle() : handle:gamedataVehicleTrafficSuspension_Record; // TrafficSuspensionHandle
+	import function Traffic_audio_resource() : String; // Traffic_audio_resource
+	import function TwintoneModelName() : CName; // TwintoneModelName
+	import function Type() : whandle:gamedataVehicleType_Record; // Type
+	import function TypeHandle() : handle:gamedataVehicleType_Record; // TypeHandle
+	import function UnmountOffsetPosition() : Vector3; // UnmountOffsetPosition
+	import function UsesSecondaryHoodEmitter() : Bool; // UsesSecondaryHoodEmitter
+	import function UtilityLightColor() : array:Int32; // UtilityLightColor
+	import function UtilityLightColorContains(item : Int32) : Bool; // UtilityLightColorContains
+	import function VehAirControl() : whandle:gamedataVehicleAirControl_Record; // VehAirControl
+	import function VehAirControlAI() : whandle:gamedataVehicleAirControl_Record; // VehAirControlAI
+	import function VehAirControlAIHandle() : handle:gamedataVehicleAirControl_Record; // VehAirControlAIHandle
+	import function VehAirControlHandle() : handle:gamedataVehicleAirControl_Record; // VehAirControlHandle
+	import function VehBehaviorData() : whandle:gamedataVehicleBehaviorData_Record; // VehBehaviorData
+	import function VehBehaviorDataHandle() : handle:gamedataVehicleBehaviorData_Record; // VehBehaviorDataHandle
+	import function VehDataPackage() : whandle:gamedataVehicleDataPackage_Record; // VehDataPackage
+	import function VehDataPackageHandle() : handle:gamedataVehicleDataPackage_Record; // VehDataPackageHandle
+	import function VehDefaultState() : whandle:gamedataVehicleDefaultState_Record; // VehDefaultState
+	import function VehDefaultStateHandle() : handle:gamedataVehicleDefaultState_Record; // VehDefaultStateHandle
+	import function VehDriveModelData() : whandle:gamedataVehicleDriveModelData_Record; // VehDriveModelData
+	import function VehDriveModelDataAI() : whandle:gamedataVehicleDriveModelData_Record; // VehDriveModelDataAI
+	import function VehDriveModelDataAIHandle() : handle:gamedataVehicleDriveModelData_Record; // VehDriveModelDataAIHandle
+	import function VehDriveModelDataHandle() : handle:gamedataVehicleDriveModelData_Record; // VehDriveModelDataHandle
+	import function VehDriverCombat_FPPCameraParams() : whandle:gamedataVehicleFPPCameraParams_Record; // VehDriverCombat_FPPCameraParams
+	import function VehDriverCombat_FPPCameraParamsHandle() : handle:gamedataVehicleFPPCameraParams_Record; // VehDriverCombat_FPPCameraParamsHandle
+	import function VehDriverCombat_ProceduralFPPCameraParams() : whandle:gamedataVehicleProceduralFPPCameraParams_Record; // VehDriverCombat_ProceduralFPPCameraParams
+	import function VehDriverCombat_ProceduralFPPCameraParamsHandle() : handle:gamedataVehicleProceduralFPPCameraParams_Record; // VehDriverCombat_ProceduralFPPCameraParamsHandle
+	import function VehDriver_FPPCameraParams() : whandle:gamedataVehicleFPPCameraParams_Record; // VehDriver_FPPCameraParams
+	import function VehDriver_FPPCameraParamsHandle() : handle:gamedataVehicleFPPCameraParams_Record; // VehDriver_FPPCameraParamsHandle
+	import function VehDriver_ProceduralFPPCameraParams() : whandle:gamedataVehicleProceduralFPPCameraParams_Record; // VehDriver_ProceduralFPPCameraParams
+	import function VehDriver_ProceduralFPPCameraParamsHandle() : handle:gamedataVehicleProceduralFPPCameraParams_Record; // VehDriver_ProceduralFPPCameraParamsHandle
+	import function VehEngineData() : whandle:gamedataVehicleEngineData_Record; // VehEngineData
+	import function VehEngineDataHandle() : handle:gamedataVehicleEngineData_Record; // VehEngineDataHandle
+	import function VehImpactTraffic() : whandle:gamedataVehicleImpactTraffic_Record; // VehImpactTraffic
+	import function VehImpactTrafficHandle() : handle:gamedataVehicleImpactTraffic_Record; // VehImpactTrafficHandle
+	import function VehPassCombatL_FPPCameraParams() : whandle:gamedataVehicleFPPCameraParams_Record; // VehPassCombatL_FPPCameraParams
+	import function VehPassCombatL_FPPCameraParamsHandle() : handle:gamedataVehicleFPPCameraParams_Record; // VehPassCombatL_FPPCameraParamsHandle
+	import function VehPassCombatL_ProceduralFPPCameraParams() : whandle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassCombatL_ProceduralFPPCameraParams
+	import function VehPassCombatL_ProceduralFPPCameraParamsHandle() : handle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassCombatL_ProceduralFPPCameraParamsHandle
+	import function VehPassCombatR_FPPCameraParams() : whandle:gamedataVehicleFPPCameraParams_Record; // VehPassCombatR_FPPCameraParams
+	import function VehPassCombatR_FPPCameraParamsHandle() : handle:gamedataVehicleFPPCameraParams_Record; // VehPassCombatR_FPPCameraParamsHandle
+	import function VehPassCombatR_ProceduralFPPCameraParams() : whandle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassCombatR_ProceduralFPPCameraParams
+	import function VehPassCombatR_ProceduralFPPCameraParamsHandle() : handle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassCombatR_ProceduralFPPCameraParamsHandle
+	import function VehPassL_FPPCameraParams() : whandle:gamedataVehicleFPPCameraParams_Record; // VehPassL_FPPCameraParams
+	import function VehPassL_FPPCameraParamsHandle() : handle:gamedataVehicleFPPCameraParams_Record; // VehPassL_FPPCameraParamsHandle
+	import function VehPassL_ProceduralFPPCameraParams() : whandle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassL_ProceduralFPPCameraParams
+	import function VehPassL_ProceduralFPPCameraParamsHandle() : handle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassL_ProceduralFPPCameraParamsHandle
+	import function VehPassR_FPPCameraParams() : whandle:gamedataVehicleFPPCameraParams_Record; // VehPassR_FPPCameraParams
+	import function VehPassR_FPPCameraParamsHandle() : handle:gamedataVehicleFPPCameraParams_Record; // VehPassR_FPPCameraParamsHandle
+	import function VehPassR_ProceduralFPPCameraParams() : whandle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassR_ProceduralFPPCameraParams
+	import function VehPassR_ProceduralFPPCameraParamsHandle() : handle:gamedataVehicleProceduralFPPCameraParams_Record; // VehPassR_ProceduralFPPCameraParamsHandle
+	import function VehWheelDimensionsSetup() : whandle:gamedataVehicleWheelDimensionsSetup_Record; // VehWheelDimensionsSetup
+	import function VehWheelDimensionsSetupHandle() : handle:gamedataVehicleWheelDimensionsSetup_Record; // VehWheelDimensionsSetupHandle
+	import function VehicleUIData() : whandle:gamedataVehicleUIData_Record; // VehicleUIData
+	import function VehicleUIDataHandle() : handle:gamedataVehicleUIData_Record; // VehicleUIDataHandle
+	import function VisualCustomizationTeaser() : Bool; // VisualCustomizationTeaser
+	import function VisualCustomizationUpdateRequired() : Bool; // VisualCustomizationUpdateRequired
+	import function VisualDestruction() : whandle:gamedataVehicleVisualDestruction_Record; // VisualDestruction
+	import function VisualDestructionHandle() : handle:gamedataVehicleVisualDestruction_Record; // VisualDestructionHandle
+	import function WeaponSafeModeBounds() : whandle:gamedataWeaponSafeModeBounds_Record; // WeaponSafeModeBounds
+	import function WeaponSafeModeBoundsHandle() : handle:gamedataWeaponSafeModeBounds_Record; // WeaponSafeModeBoundsHandle
+	import function Weapons(out outList : array:whandle:gamedataVehicleWeapon_Record); // Weapons
+	import function WeaponsContains(item : whandle:gamedataVehicleWeapon_Record) : Bool; // WeaponsContains
+	import function WidgetStyleSheetPath() : redResourceReferenceScriptToken; // WidgetStyleSheetPath
+}
+
+import class gamedataSpawnableObject_Record extends gamedataBaseObject_Record
+{
+	import function AppearanceName() : CName; // AppearanceName
+	import function EntityTemplatePath() : redResourceReferenceScriptToken; // EntityTemplatePath
+	import function GetMultiplayerTemplatePathsCount() : Int32; // GetMultiplayerTemplatePathsCount
+	import function GetMultiplayerTemplatePathsItem(index : Int32) : redResourceReferenceScriptToken; // GetMultiplayerTemplatePathsItem
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function GetVisualTagsCount() : Int32; // GetVisualTagsCount
+	import function GetVisualTagsItem(index : Int32) : CName; // GetVisualTagsItem
+	import function MultiplayerTemplatePaths() : array:redResourceReferenceScriptToken; // MultiplayerTemplatePaths
+	import function PersistentName() : CName; // PersistentName
+	import function Priority() : whandle:gamedataSpawnableObjectPriority_Record; // Priority
+	import function PriorityHandle() : handle:gamedataSpawnableObjectPriority_Record; // PriorityHandle
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+	import function VisualTags() : array:CName; // VisualTags
+	import function VisualTagsContains(item : CName) : Bool; // VisualTagsContains
+}
+
+import class gamedataBaseObject_Record extends gamedataTweakDBRecord
+{
+	import function Effectors(out outList : array:whandle:gamedataEffector_Record); // Effectors
+	import function EffectorsContains(item : whandle:gamedataEffector_Record) : Bool; // EffectorsContains
+	import function GetEffectorsCount() : Int32; // GetEffectorsCount
+	import function GetEffectorsItem(index : Int32) : whandle:gamedataEffector_Record; // GetEffectorsItem
+	import function GetEffectorsItemHandle(index : Int32) : handle:gamedataEffector_Record; // GetEffectorsItemHandle
+	import function GetObjectActionsCount() : Int32; // GetObjectActionsCount
+	import function GetObjectActionsItem(index : Int32) : whandle:gamedataObjectAction_Record; // GetObjectActionsItem
+	import function GetObjectActionsItemHandle(index : Int32) : handle:gamedataObjectAction_Record; // GetObjectActionsItemHandle
+	import function GetStatModifierGroupsCount() : Int32; // GetStatModifierGroupsCount
+	import function GetStatModifierGroupsItem(index : Int32) : whandle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItem
+	import function GetStatModifierGroupsItemHandle(index : Int32) : handle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function GetStatPoolsCount() : Int32; // GetStatPoolsCount
+	import function GetStatPoolsItem(index : Int32) : whandle:gamedataStatPool_Record; // GetStatPoolsItem
+	import function GetStatPoolsItemHandle(index : Int32) : handle:gamedataStatPool_Record; // GetStatPoolsItemHandle
+	import function GetWeakspotsCount() : Int32; // GetWeakspotsCount
+	import function GetWeakspotsItem(index : Int32) : whandle:gamedataWeakspot_Record; // GetWeakspotsItem
+	import function GetWeakspotsItemHandle(index : Int32) : handle:gamedataWeakspot_Record; // GetWeakspotsItemHandle
+	import function ObjectActions(out outList : array:whandle:gamedataObjectAction_Record); // ObjectActions
+	import function ObjectActionsContains(item : whandle:gamedataObjectAction_Record) : Bool; // ObjectActionsContains
+	import function Savable() : Bool; // Savable
+	import function StatModifierGroups(out outList : array:whandle:gamedataStatModifierGroup_Record); // StatModifierGroups
+	import function StatModifierGroupsContains(item : whandle:gamedataStatModifierGroup_Record) : Bool; // StatModifierGroupsContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function StatPools(out outList : array:whandle:gamedataStatPool_Record); // StatPools
+	import function StatPoolsContains(item : whandle:gamedataStatPool_Record) : Bool; // StatPoolsContains
+	import function Weakspots(out outList : array:whandle:gamedataWeakspot_Record); // Weakspots
+	import function WeakspotsContains(item : whandle:gamedataWeakspot_Record) : Bool; // WeakspotsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

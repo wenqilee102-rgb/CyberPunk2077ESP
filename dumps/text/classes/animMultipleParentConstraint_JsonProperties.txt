@@ -1,0 +1,12 @@
+import class animMultipleParentConstraint_JsonProperties extends ISerializable
+{
+	var parentsTransforms : array:animMultipleParentConstraint_JsonEntry;
+	var transformIndex : CName;
+	var weightMode : animConstraintWeightMode;
+	var weight : Float;
+	var weightFloatTrack : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+import class gamedataVehiclePartsClearCoatOverrides_Record extends gamedataTweakDBRecord
+{
+	import function GetPartsNameCount() : Int32; // GetPartsNameCount
+	import function GetPartsNameItem(index : Int32) : CName; // GetPartsNameItem
+	import function Overrides() : whandle:gamedataVehicleClearCoatOverrides_Record; // Overrides
+	import function OverridesHandle() : handle:gamedataVehicleClearCoatOverrides_Record; // OverridesHandle
+	import function PartsName() : array:CName; // PartsName
+	import function PartsNameContains(item : CName) : Bool; // PartsNameContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

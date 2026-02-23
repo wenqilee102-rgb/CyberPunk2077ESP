@@ -1,0 +1,35 @@
+class Hotkey extends IScriptable
+{
+	private   var hotkey : gameEHotkey;
+	private   var itemID : gameItemID;
+	private   var scope : array:gamedataItemType;
+
+	static function Construct(hotk : gameEHotkey, optional id : gameItemID) : handle:Hotkey; // Hotkey::Construct;EHotkeyItemID
+	static function GetScope(hotkey : gameEHotkey) : array:gamedataItemType; // Hotkey::GetScope;EHotkey
+	static function IsCompatible(hotkey : gameEHotkey, equipmentArea : gamedataEquipmentArea) : Bool; // Hotkey::IsCompatible;EHotkeygamedataEquipmentArea
+	static function IsCompatible(hotkey : gameEHotkey, type : gamedataItemType) : Bool; // Hotkey::IsCompatible;EHotkeygamedataItemType
+	static function ItemTypeMustBeEquipped(itemType : gamedataItemType) : Bool; // Hotkey::ItemTypeMustBeEquipped;gamedataItemType
+
+	function GetHotkey() : gameEHotkey; // GetHotkey;
+	function GetItemID() : gameItemID; // GetItemID;
+	function GetScope() : array:gamedataItemType; // GetScope;
+	function IsCompatible(type : gamedataItemType) : Bool; // IsCompatible;gamedataItemType
+	function IsCompatible(equipmentArea : gamedataEquipmentArea) : Bool; // IsCompatible;gamedataEquipmentArea
+	function IsEmpty() : Bool; // IsEmpty;
+	function SetScope(itemTypes : script_ref:array:gamedataItemType); // SetScope;script_ref<array<gamedataItemType>>
+	function StoreItem(id : gameItemID); // StoreItem;ItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

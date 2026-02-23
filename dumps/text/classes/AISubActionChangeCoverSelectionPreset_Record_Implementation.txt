@@ -1,0 +1,20 @@
+class abstract AISubActionChangeCoverSelectionPreset_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChangeCoverSelectionPreset_Record); // AISubActionChangeCoverSelectionPreset_Record_Implementation::Activate;ScriptExecutionContextAISubActionChangeCoverSelectionPreset_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChangeCoverSelectionPreset_Record, duration : Float, interrupted : Bool); // AISubActionChangeCoverSelectionPreset_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionChangeCoverSelectionPreset_RecordFloatBool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChangeCoverSelectionPreset_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionChangeCoverSelectionPreset_Record_Implementation::Update;ScriptExecutionContextAISubActionChangeCoverSelectionPreset_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

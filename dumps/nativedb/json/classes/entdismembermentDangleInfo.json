@@ -1,0 +1,1 @@
+{"b":"entdismembermentDangleInfo","d":8,"g":true,"e":[{"a":{"a":10},"b":"DangleSegmentLenght","c":128},{"a":{"a":10},"b":"DangleVelocityDamping","c":128},{"a":{"a":10},"b":"DangleBendStiffness","c":128},{"a":{"a":10},"b":"DangleSegmentStiffness","c":128},{"a":{"a":10},"b":"DangleCollisionSphereRadius","c":128}]}

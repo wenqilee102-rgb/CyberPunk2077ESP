@@ -1,0 +1,46 @@
+import class CloudAreaSettings extends IAreaSettings
+{
+	var cloudSunShadowFaloff : curveData:Float;
+	var cloudSunScattering : curveData:Float;
+	var cloudMoonScattering : curveData:Float;
+	var cloudLightColor : curveData:HDRColor;
+	var cloudAmbientIntensity : curveData:Float;
+	var cloudCirrusOpacity : curveData:Float;
+	var cloudCirrusScale : curveData:Float;
+	var cloudCirrusAltitude : curveData:Float;
+	var cloudCirrusTexture : rRef:CBitmapTexture;
+	var volWeatherTexture : rRef:CBitmapTexture;
+	var volNoiseTexture : rRef:CBitmapTexture;
+	var volHorizonCoverage : Float;
+	var volCoverage : curveData:Float;
+	var volDensity : curveData:Float;
+	var cloudsBottom : Float;
+	var cloudsTop : Float;
+	var rayStartOffset : Float;
+	var rayStartFalloff : Float;
+	var lightIntensity : curveData:Float;
+	var reflectionProbeLightIntensity : curveData:Float;
+	var shadowIntensity : curveData:Float;
+	var worldShadowIntensity : curveData:Float;
+	var ambientIntensity : curveData:Float;
+	var ambientOutscatter : curveData:Float;
+	var inScatter : Float;
+	var outScatter : Float;
+	var inVsOutScatter : Float;
+	var silverLining : Float;
+	var volCoverageWindInfluence : Float;
+	var volNoiseWindInfluence : Float;
+	var volDetailWindInfluence : Float;
+	var volDistantFogOpacity : Float;
+	var volCoverageOffset : Vector2;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

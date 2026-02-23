@@ -1,0 +1,8 @@
+import struct scneventsAttachPropToPerformerFallbackData
+{
+	var owner : scnPerformerId;
+	var fallbackCachedBones : static:3,scneventsAttachPropToPerformerCachedFallbackBone;
+	var fallbackAnimset : rRef:animAnimSet;
+	var fallbackAnimationName : CName;
+	var fallbackAnimTime : Float;
+}

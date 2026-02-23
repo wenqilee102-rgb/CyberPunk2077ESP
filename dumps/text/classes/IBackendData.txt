@@ -1,0 +1,7 @@
+import class abstract IBackendData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

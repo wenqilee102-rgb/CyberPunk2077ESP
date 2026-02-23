@@ -1,0 +1,101 @@
+import class gamedataItemAction_Record extends gamedataObjectAction_Record
+{
+	import function IsDefaultLootChoice() : Bool; // IsDefaultLootChoice
+	import function RemoveAfterUse() : Bool; // RemoveAfterUse
+}
+
+import class gamedataObjectAction_Record extends gamedataTweakDBRecord
+{
+	import function ActionName() : CName; // ActionName
+	import function ActivationTime(out outList : array:whandle:gamedataStatModifier_Record); // ActivationTime
+	import function ActivationTimeContains(item : whandle:gamedataStatModifier_Record) : Bool; // ActivationTimeContains
+	import function CompletionEffects(out outList : array:whandle:gamedataObjectActionEffect_Record); // CompletionEffects
+	import function CompletionEffectsContains(item : whandle:gamedataObjectActionEffect_Record) : Bool; // CompletionEffectsContains
+	import function Cooldown() : whandle:gamedataCooldown_Record; // Cooldown
+	import function CooldownHandle() : handle:gamedataCooldown_Record; // CooldownHandle
+	import function Costs(out outList : array:whandle:gamedataObjectActionCost_Record); // Costs
+	import function CostsContains(item : whandle:gamedataObjectActionCost_Record) : Bool; // CostsContains
+	import function DeviceHackCategory() : whandle:gamedataDeviceHackCategory_Record; // DeviceHackCategory
+	import function DeviceHackCategoryHandle() : handle:gamedataDeviceHackCategory_Record; // DeviceHackCategoryHandle
+	import function DurationTime(out outList : array:whandle:gamedataStatModifier_Record); // DurationTime
+	import function DurationTimeContains(item : whandle:gamedataStatModifier_Record) : Bool; // DurationTimeContains
+	import function GameplayCategory() : whandle:gamedataObjectActionGameplayCategory_Record; // GameplayCategory
+	import function GameplayCategoryHandle() : handle:gamedataObjectActionGameplayCategory_Record; // GameplayCategoryHandle
+	import function GetActivationTimeCount() : Int32; // GetActivationTimeCount
+	import function GetActivationTimeItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetActivationTimeItem
+	import function GetActivationTimeItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetActivationTimeItemHandle
+	import function GetCompletionEffectsCount() : Int32; // GetCompletionEffectsCount
+	import function GetCompletionEffectsItem(index : Int32) : whandle:gamedataObjectActionEffect_Record; // GetCompletionEffectsItem
+	import function GetCompletionEffectsItemHandle(index : Int32) : handle:gamedataObjectActionEffect_Record; // GetCompletionEffectsItemHandle
+	import function GetCostsCount() : Int32; // GetCostsCount
+	import function GetCostsItem(index : Int32) : whandle:gamedataObjectActionCost_Record; // GetCostsItem
+	import function GetCostsItemHandle(index : Int32) : handle:gamedataObjectActionCost_Record; // GetCostsItemHandle
+	import function GetDurationTimeCount() : Int32; // GetDurationTimeCount
+	import function GetDurationTimeItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetDurationTimeItem
+	import function GetDurationTimeItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetDurationTimeItemHandle
+	import function GetInstigatorActivePrereqsCount() : Int32; // GetInstigatorActivePrereqsCount
+	import function GetInstigatorActivePrereqsItem(index : Int32) : whandle:gamedataObjectActionPrereq_Record; // GetInstigatorActivePrereqsItem
+	import function GetInstigatorActivePrereqsItemHandle(index : Int32) : handle:gamedataObjectActionPrereq_Record; // GetInstigatorActivePrereqsItemHandle
+	import function GetInstigatorPrereqsCount() : Int32; // GetInstigatorPrereqsCount
+	import function GetInstigatorPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetInstigatorPrereqsItem
+	import function GetInstigatorPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetInstigatorPrereqsItemHandle
+	import function GetInterruptionPrereqsCount() : Int32; // GetInterruptionPrereqsCount
+	import function GetInterruptionPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetInterruptionPrereqsItem
+	import function GetInterruptionPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetInterruptionPrereqsItemHandle
+	import function GetRewardsCount() : Int32; // GetRewardsCount
+	import function GetRewardsItem(index : Int32) : whandle:gamedataRewardBase_Record; // GetRewardsItem
+	import function GetRewardsItemHandle(index : Int32) : handle:gamedataRewardBase_Record; // GetRewardsItemHandle
+	import function GetStartEffectsCount() : Int32; // GetStartEffectsCount
+	import function GetStartEffectsItem(index : Int32) : whandle:gamedataObjectActionEffect_Record; // GetStartEffectsItem
+	import function GetStartEffectsItemHandle(index : Int32) : handle:gamedataObjectActionEffect_Record; // GetStartEffectsItemHandle
+	import function GetTargetActivePrereqsCount() : Int32; // GetTargetActivePrereqsCount
+	import function GetTargetActivePrereqsItem(index : Int32) : whandle:gamedataObjectActionPrereq_Record; // GetTargetActivePrereqsItem
+	import function GetTargetActivePrereqsItemHandle(index : Int32) : handle:gamedataObjectActionPrereq_Record; // GetTargetActivePrereqsItemHandle
+	import function GetTargetPrereqsCount() : Int32; // GetTargetPrereqsCount
+	import function GetTargetPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetTargetPrereqsItem
+	import function GetTargetPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetTargetPrereqsItemHandle
+	import function HackCategory() : whandle:gamedataHackCategory_Record; // HackCategory
+	import function HackCategoryHandle() : handle:gamedataHackCategory_Record; // HackCategoryHandle
+	import function HackTier() : whandle:gamedataDeviceHackTier_Record; // HackTier
+	import function HackTierHandle() : handle:gamedataDeviceHackTier_Record; // HackTierHandle
+	import function InstigatorActivePrereqs(out outList : array:whandle:gamedataObjectActionPrereq_Record); // InstigatorActivePrereqs
+	import function InstigatorActivePrereqsContains(item : whandle:gamedataObjectActionPrereq_Record) : Bool; // InstigatorActivePrereqsContains
+	import function InstigatorPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // InstigatorPrereqs
+	import function InstigatorPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // InstigatorPrereqsContains
+	import function InteractionLayer() : CName; // InteractionLayer
+	import function InterruptionPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // InterruptionPrereqs
+	import function InterruptionPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // InterruptionPrereqsContains
+	import function ObjectActionType() : whandle:gamedataObjectActionType_Record; // ObjectActionType
+	import function ObjectActionTypeHandle() : handle:gamedataObjectActionType_Record; // ObjectActionTypeHandle
+	import function ObjectActionUI() : whandle:gamedataInteractionBase_Record; // ObjectActionUI
+	import function ObjectActionUIHandle() : handle:gamedataInteractionBase_Record; // ObjectActionUIHandle
+	import function Priority() : Float; // Priority
+	import function Rewards(out outList : array:whandle:gamedataRewardBase_Record); // Rewards
+	import function RewardsContains(item : whandle:gamedataRewardBase_Record) : Bool; // RewardsContains
+	import function StartEffects(out outList : array:whandle:gamedataObjectActionEffect_Record); // StartEffects
+	import function StartEffectsContains(item : whandle:gamedataObjectActionEffect_Record) : Bool; // StartEffectsContains
+	import function TargetActivePrereqs(out outList : array:whandle:gamedataObjectActionPrereq_Record); // TargetActivePrereqs
+	import function TargetActivePrereqsContains(item : whandle:gamedataObjectActionPrereq_Record) : Bool; // TargetActivePrereqsContains
+	import function TargetPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // TargetPrereqs
+	import function TargetPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // TargetPrereqsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

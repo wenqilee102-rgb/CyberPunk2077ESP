@@ -1,0 +1,5 @@
+struct SHitStatusEffect
+{
+	public    var stacks : Float;
+	public    var id : TweakDBID;
+}

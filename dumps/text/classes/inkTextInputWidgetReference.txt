@@ -1,0 +1,100 @@
+import struct inkTextInputWidgetReference extends inkLeafWidgetReference
+{
+}
+
+import struct inkLeafWidgetReference extends inkWidgetReference
+{
+}
+
+import struct inkWidgetReference
+{
+	var widget : whandle:inkWidget;
+
+	import static function BindProperty(); // BindProperty
+	import static function CallCustomCallback(self : inkWidgetReference, eventName : CName); // CallCustomCallback
+	import static function ChangeTranslation(self : inkWidgetReference, translationVector : Vector2); // ChangeTranslation
+	import static function Equals(self : inkWidgetReference, other : inkWidgetReference) : Bool; // Equals
+	import static function GatherUserData(self : inkWidgetReference, userDataTypeName : CName, userDataCollection : array:handle:inkUserData); // GatherUserData
+	import static function Get(self : inkWidgetReference) : whandle:inkWidget; // Get
+	import static function GetAnchor(self : inkWidgetReference) : inkEAnchor; // GetAnchor
+	import static function GetAnchorPoint(self : inkWidgetReference) : Vector2; // GetAnchorPoint
+	import static function GetController(self : inkWidgetReference) : whandle:inkWidgetLogicController; // GetController
+	import static function GetControllerByType(self : inkWidgetReference, controllerType : CName) : whandle:inkWidgetLogicController; // GetControllerByType
+	import static function GetControllers(self : inkWidgetReference) : array:whandle:inkWidgetLogicController; // GetControllers
+	import static function GetControllersByType(self : inkWidgetReference, controllerType : CName) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import static function GetDesiredSize(self : inkWidgetReference) : Vector2; // GetDesiredSize
+	import static function GetFitToContent(self : inkWidgetReference) : Bool; // GetFitToContent
+	import static function GetHAlign(self : inkWidgetReference) : inkEHorizontalAlign; // GetHAlign
+	import static function GetMargin(self : inkWidgetReference) : inkMargin; // GetMargin
+	import static function GetName(self : inkWidgetReference) : CName; // GetName
+	import static function GetNumControllers(self : inkWidgetReference) : Int32; // GetNumControllers
+	import static function GetNumControllersOfType(self : inkWidgetReference, controllerType : CName) : Int32; // GetNumControllersOfType
+	import static function GetOpacity(self : inkWidgetReference) : Float; // GetOpacity
+	import static function GetPadding(self : inkWidgetReference) : inkMargin; // GetPadding
+	import static function GetRenderTransformPivot(self : inkWidgetReference) : Vector2; // GetRenderTransformPivot
+	import static function GetRotation(self : inkWidgetReference) : Float; // GetRotation
+	import static function GetScale(self : inkWidgetReference) : Vector2; // GetScale
+	import static function GetShear(self : inkWidgetReference) : Vector2; // GetShear
+	import static function GetSize(self : inkWidgetReference) : Vector2; // GetSize
+	import static function GetSizeCoefficient(self : inkWidgetReference) : Float; // GetSizeCoefficient
+	import static function GetSizeRule(self : inkWidgetReference) : inkESizeRule; // GetSizeRule
+	import static function GetState(self : inkWidgetReference) : CName; // GetState
+	import static function GetStylePath(self : inkWidgetReference) : redResourceReferenceScriptToken; // GetStylePath
+	import static function GetTintColor(self : inkWidgetReference) : HDRColor; // GetTintColor
+	import static function GetTranslation(self : inkWidgetReference) : Vector2; // GetTranslation
+	import static function GetUserData(self : inkWidgetReference, userDataTypeName : CName) : handle:inkUserData; // GetUserData
+	import static function GetUserDataArray(self : inkWidgetReference, userDataTypeName : CName) : array:handle:inkUserData; // GetUserDataArray
+	import static function GetUserDataObjectCount(self : inkWidgetReference, userDataTypeName : CName) : Uint32; // GetUserDataObjectCount
+	import static function GetVAlign(self : inkWidgetReference) : inkEVerticalAlign; // GetVAlign
+	import static function HasUserDataObject(self : inkWidgetReference, userDataTypeName : CName) : Bool; // HasUserDataObject
+	import static function IsInteractive(self : inkWidgetReference) : Bool; // IsInteractive
+	import static function IsValid(self : inkWidgetReference) : Bool; // IsValid
+	import static function IsVisible(self : inkWidgetReference) : Bool; // IsVisible
+	import static function PlayAnimation(self : inkWidgetReference, animationDefinition : handle:inkanimDefinition) : handle:inkanimProxy; // PlayAnimation
+	import static function PlayAnimationWithOptions(self : inkWidgetReference, animationDefinition : handle:inkanimDefinition, playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayAnimationWithOptions
+	import static function RegisterToCallback(self : inkWidgetReference, eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import static function Reparent(self : inkWidgetReference, newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import static function SetAnchor(self : inkWidgetReference, anchor : inkEAnchor); // SetAnchor
+	import static function SetAnchorPoint(self : inkWidgetReference, anchorPoint : Vector2); // SetAnchorPoint
+	import static function SetFitToContent(self : inkWidgetReference, fitToContent : Bool); // SetFitToContent
+	import static function SetHAlign(self : inkWidgetReference, hAlign : inkEHorizontalAlign); // SetHAlign
+	import static function SetInteractive(self : inkWidgetReference, value : Bool); // SetInteractive
+	import static function SetLayout(self : inkWidgetReference, layout : inkWidgetLayout); // SetLayout
+	import static function SetMargin(self : inkWidgetReference, margin : inkMargin); // SetMargin
+	import static function SetName(self : inkWidgetReference, widgetName : CName); // SetName
+	import static function SetOpacity(self : inkWidgetReference, opacity : Float); // SetOpacity
+	import static function SetPadding(self : inkWidgetReference, padding : inkMargin); // SetPadding
+	import static function SetRenderTransformPivot(self : inkWidgetReference, pivot : Vector2); // SetRenderTransformPivot
+	import static function SetRotation(self : inkWidgetReference, angleInDegrees : Float); // SetRotation
+	import static function SetScale(self : inkWidgetReference, scale : Vector2); // SetScale
+	import static function SetShear(self : inkWidgetReference, shear : Vector2); // SetShear
+	import static function SetSize(self : inkWidgetReference, size : Vector2); // SetSize
+	import static function SetSizeCoefficient(self : inkWidgetReference, sizeCoefficient : Float); // SetSizeCoefficient
+	import static function SetSizeRule(self : inkWidgetReference, sizeRule : inkESizeRule); // SetSizeRule
+	import static function SetState(self : inkWidgetReference, state : CName); // SetState
+	import static function SetStyle(self : inkWidgetReference, styleResPath : redResourceReferenceScriptToken); // SetStyle
+	import static function SetTintColor(self : inkWidgetReference, color : HDRColor); // SetTintColor
+	import static function SetTranslation(self : inkWidgetReference, translationVector : Vector2); // SetTranslation
+	import static function SetVAlign(self : inkWidgetReference, vAlign : inkEVerticalAlign); // SetVAlign
+	import static function SetVisible(self : inkWidgetReference, visible : Bool); // SetVisible
+	import static function StopAllAnimations(self : inkWidgetReference); // StopAllAnimations
+	import static function UnbindProperty(); // UnbindProperty
+	import static function UnregisterFromCallback(self : inkWidgetReference, eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+
+	static function DefaultState(self : inkWidgetReference) : CName; // inkWidgetReference::DefaultState;inkWidgetRef
+	static function GetDesiredHeight(self : inkWidgetReference) : Float; // inkWidgetReference::GetDesiredHeight;inkWidgetRef
+	static function GetDesiredWidth(self : inkWidgetReference) : Float; // inkWidgetReference::GetDesiredWidth;inkWidgetRef
+	static function GetHeight(self : inkWidgetReference) : Float; // inkWidgetReference::GetHeight;inkWidgetRef
+	static function GetWidth(self : inkWidgetReference) : Float; // inkWidgetReference::GetWidth;inkWidgetRef
+	static function SetAnchorPoint(self : inkWidgetReference, x : Float, y : Float); // inkWidgetReference::SetAnchorPoint;inkWidgetRefFloatFloat
+	static function SetHeight(self : inkWidgetReference, height : Float); // inkWidgetReference::SetHeight;inkWidgetRefFloat
+	static function SetMargin(self : inkWidgetReference, left : Float, top : Float, right : Float, bottom : Float); // inkWidgetReference::SetMargin;inkWidgetRefFloatFloatFloatFloat
+	static function SetPadding(self : inkWidgetReference, left : Float, top : Float, right : Float, bottom : Float); // inkWidgetReference::SetPadding;inkWidgetRefFloatFloatFloatFloat
+	static function SetRenderTransformPivot(self : inkWidgetReference, x : Float, y : Float); // inkWidgetReference::SetRenderTransformPivot;inkWidgetRefFloatFloat
+	static function SetSize(self : inkWidgetReference, width : Float, height : Float); // inkWidgetReference::SetSize;inkWidgetRefFloatFloat
+	static function SetTintColor(self : inkWidgetReference, color : Color); // inkWidgetReference::SetTintColor;inkWidgetRefColor
+	static function SetTintColor(self : inkWidgetReference, r : Uint8, g : Uint8, b : Uint8, a : Uint8); // inkWidgetReference::SetTintColor;inkWidgetRefUint8Uint8Uint8Uint8
+	static function SetTranslation(self : inkWidgetReference, x : Float, y : Float); // inkWidgetReference::SetTranslation;inkWidgetRefFloatFloat
+	static function SetWidth(self : inkWidgetReference, width : Float); // inkWidgetReference::SetWidth;inkWidgetRefFloat
+	static function UpdateMargin(self : inkWidgetReference, left : Float, top : Float, right : Float, bottom : Float); // inkWidgetReference::UpdateMargin;inkWidgetRefFloatFloatFloatFloat
+}

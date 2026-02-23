@@ -1,0 +1,1064 @@
+class Jukebox extends InteractiveDevice
+{
+	protected var uiComponentBig : whandle:IWorldWidgetComponent;
+
+	event OnNextStation(evt : handle:NextStation) : Bool; // OnNextStation
+	event OnPreviousStation(evt : handle:PreviousStation) : Bool; // OnPreviousStation
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnTogglePlay(evt : handle:TogglePlay) : Bool; // OnTogglePlay
+
+	function AdvertGlitch(start : Bool, data : GlitchData); // AdvertGlitch;BoolGlitchData
+	function CreateBlackboard(); // CreateBlackboard;
+	function DeterminGameplayRole() : EGameplayRole; // DeterminGameplayRole;
+	function GetBlackboardDef() : handle:JukeboxBlackboardDef; // GetBlackboardDef;
+	function GetController() : handle:JukeboxController; // GetController;
+	function GetDevicePS() : handle:JukeboxControllerPS; // GetDevicePS;
+	function GetGlitchData(glitchState : EGlitchState) : GlitchData; // GetGlitchData;EGlitchState
+	function IsPlaying() : Bool; // IsPlaying;
+	function PlayGivenStation(); // PlayGivenStation;
+	function SendDataToUIBlackboard(isPlaying : Bool); // SendDataToUIBlackboard;Bool
+	function SimpleGlitch(on : Bool); // SimpleGlitch;Bool
+	function StartGlitching(glitchState : EGlitchState, optional intensity : Float); // StartGlitching;EGlitchStateFloat
+	function StopGlitching(); // StopGlitching;
+	function StopPlayingStation(); // StopPlayingStation;
+	function TurnOffDevice(); // TurnOffDevice;
+	function TurnOnDevice(); // TurnOnDevice;
+}
+
+class InteractiveDevice extends Device
+{
+	protected var interaction : handle:gameinteractionsComponent;
+	protected var interactionIndicator : handle:gameLightComponent;
+	protected var disableAreaIndicatorID : gameDelayID;
+	protected var delayedUIRefreshID : gameDelayID;
+	private   var isPlayerAround : Bool;
+	protected var disableAreaIndicatorDelayActive : Bool;
+	private   var objectActionsCallbackCtrl : handle:gameObjectActionsCallbackController;
+	private   var investigationData : array:InvestigationData;
+	private   var actionRestrictionPlayerBB : whandle:gameIBlackboard;
+	private   var actionRestrictionCallbackID : handle:redCallbackObject;
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnActionRestrictionChanged(value : Variant) : Bool; // OnActionRestrictionChanged
+	event OnDelayedUIRefreshEvent(evt : handle:DelayedUIRefreshEvent) : Bool; // OnDelayedUIRefreshEvent
+	event OnDetach() : Bool; // OnDetach
+	event OnEMPEnded(evt : handle:EMPEnded) : Bool; // OnEMPEnded
+	event OnEMPHitEvent(evt : handle:EMPHitEvent) : Bool; // OnEMPHitEvent
+	event OnForceUIRefreshEvent(evt : handle:ForceUIRefreshEvent) : Bool; // OnForceUIRefreshEvent
+	event OnInteractionActivated(evt : handle:gameinteractionsInteractionActivationEvent) : Bool; // OnInteractionActivated
+	event OnInteractionUsed(evt : handle:gameinteractionsChoiceEvent) : Bool; // OnInteractionUsed
+	event OnLogicReady(evt : handle:SetLogicReadyEvent) : Bool; // OnLogicReady
+	event OnObjectActionRefreshEvent(evt : handle:gameObjectActionRefreshEvent) : Bool; // OnObjectActionRefreshEvent
+	event OnPerformedAction(evt : handle:PerformedAction) : Bool; // OnPerformedAction
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnSetUICameraZoomEvent(evt : handle:SetUICameraZoomEvent) : Bool; // OnSetUICameraZoomEvent
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnToggleUIInteractivity(evt : handle:ToggleUIInteractivity) : Bool; // OnToggleUIInteractivity
+	event OnUIRefreshedEvent(evt : handle:UIRefreshedEvent) : Bool; // OnUIRefreshedEvent
+	event OnUIUnstreamedEvent(evt : handle:UIUnstreamedEvent) : Bool; // OnUIUnstreamedEvent
+
+	function ActivateDevice(); // ActivateDevice;
+	function CreateObjectActionsCallbackController(instigator : whandle:entEntity); // CreateObjectActionsCallbackController;Entity
+	function CutPower(); // CutPower;
+	function DeactivateDevice(); // DeactivateDevice;
+	function DestroyObjectActionsCallbackController(); // DestroyObjectActionsCallbackController;
+	function DetermineInteractionState(optional context : gameGetActionsContext); // DetermineInteractionState;GetActionsContext
+	function EstimateIfPlayerEntersOrLeaves(evt : handle:gameinteractionsInteractionActivationEvent); // EstimateIfPlayerEntersOrLeaves;InteractionActivationEvent
+	function GetCachedInvestigationPositionsArray(globalNodeRef : worldGlobalNodeRef) : array:Vector4; // GetCachedInvestigationPositionsArray;GlobalNodeRef
+	function GetInvestigationDataIndexFor(globalNodeRef : worldGlobalNodeRef) : Int32; // GetInvestigationDataIndexFor;GlobalNodeRef
+	function GetNetworkBeamEndpoint() : Vector4; // GetNetworkBeamEndpoint;
+	function GetPlayerStateMachineBB(requester : handle:gameObject) : handle:gameIBlackboard; // GetPlayerStateMachineBB;GameObject
+	function HasAnyDirectInteractionActive() : Bool; // HasAnyDirectInteractionActive;
+	function HasInvestigationPositionsArrayCached(globalNodeRef : worldGlobalNodeRef) : Bool; // HasInvestigationPositionsArrayCached;GlobalNodeRef
+	function IsPlayerAround() : Bool; // IsPlayerAround;
+	function IsReadyForUI() : Bool; // IsReadyForUI;
+	function OnDirectInteractionActive(evt : handle:gameinteractionsInteractionActivationEvent, isInteractionActive : Bool); // OnDirectInteractionActive;InteractionActivationEventBool
+	function OnVisibilityChanged(); // OnVisibilityChanged;
+	function PrintWorldSpaceDebug(); // PrintWorldSpaceDebug;
+	function RefreshInteraction(requestType : gamedeviceRequestType, executor : whandle:gameObject); // RefreshInteraction;gamedeviceRequestTypeGameObject
+	function RefreshInteractionTask(data : handle:gameScriptTaskData); // RefreshInteractionTask;ScriptTaskData
+	function RefreshUI(optional isDelayed : Bool); // RefreshUI;Bool
+	function RegisterActionRestrictionCallback(); // RegisterActionRestrictionCallback;
+	function RequestDebuggerRegistration(activator : handle:ScriptedPuppet); // RequestDebuggerRegistration;ScriptedPuppet
+	function ResetChoicesByEvent(); // ResetChoicesByEvent;
+	function SetInvestigationPositionsArray(globalNodeRef : worldGlobalNodeRef, arr : script_ref:array:Vector4); // SetInvestigationPositionsArray;GlobalNodeRefscript_ref<array<Vector4>>
+	function SetIsDoorInteractionActiveBB(evt : handle:gameinteractionsInteractionActivationEvent, isActive : Bool); // SetIsDoorInteractionActiveBB;InteractionActivationEventBool
+	function StartUsing(); // StartUsing;
+	function StopUsing(); // StopUsing;
+	function ToggleDirectLayer(input : Bool); // ToggleDirectLayer;Bool
+	function ToggleLogicLayer(input : Bool); // ToggleLogicLayer;Bool
+	function TurnOffDevice(); // TurnOffDevice;
+	function TurnOffIndicator(); // TurnOffIndicator;
+	function TurnOnDevice(); // TurnOnDevice;
+	function TurnOnIndicator(); // TurnOnIndicator;
+	function UnregisterActionRestrictionCallback(); // UnregisterActionRestrictionCallback;
+	function UpdateDebugInfo(); // UpdateDebugInfo;
+	function UpdateDeviceState(optional isDelayed : Bool) : Bool; // UpdateDeviceState;Bool
+}
+
+class Device extends gameDeviceBase
+{
+	protected var controller : handle:ScriptableDeviceComponent;
+	protected var wasVisible : Bool;
+	protected var isVisible : Bool;
+	protected var controllerTypeName : CName;
+	protected var deviceState : EDeviceStatus;
+	protected var uiComponent : whandle:IWorldWidgetComponent;
+	protected var screenDefinition : SUIScreenDefinition;
+	protected var isUIdirty : Bool;
+	private   var onInputHintManagerInitializedChangedCallback : handle:redCallbackObject;
+	protected var personalLinkComponent : handle:workWorkspotResourceComponent;
+	protected var durabilityType : EDeviceDurabilityType;
+	protected var disassemblableComponent : handle:DisassemblableComponent;
+	protected var localization : handle:entLocalizationStringComponent;
+	protected var IKslotComponent : handle:entSlotComponent;
+	private   var slotComponent : handle:entSlotComponent;
+	private   var isInitialized : Bool;
+	protected var isInsideLogicArea : Bool;
+	protected var cameraComponent : handle:gameCameraComponent;
+	protected var cameraZoomComponent : handle:gameCameraComponent;
+	private   var cameraZoomActive : Bool;
+	protected var ToggleZoomInteractionWorkspot : handle:workWorkspotResourceComponent;
+	protected var ZoomUIListenerID : handle:redCallbackObject;
+	protected var ZoomStateMachineListenerID : handle:redCallbackObject;
+	protected var advanceInteractionStateResolveDelayID : gameDelayID;
+	protected var activeStatusEffect : TweakDBID;
+	protected var activeProgramToUploadOnNPC : TweakDBID;
+	protected var isQhackUploadInProgerss : Bool;
+	protected var scanningTweakDBRecord : TweakDBID;
+	private   var updateRunning : Bool;
+	private   var updateID : gameDelayID;
+	protected var delayedUpdateDeviceStateID : gameDelayID;
+	protected var blackboard : handle:gameIBlackboard;
+	private   var currentPlayerTargetCallbackID : handle:redCallbackObject;
+	private   var wasLookedAtLast : Bool;
+	private   var lastPingSourceID : entEntityID;
+	protected var networkGridBeamFX : gameFxResource;
+	protected var fxResourceMapper : handle:FxResourceMapperComponent;
+	protected var effectVisualization : handle:AreaEffectVisualizationComponent;
+	protected var resourceLibraryComponent : handle:ResourceLibraryComponent;
+	protected var gameplayRoleComponent : handle:GameplayRoleComponent;
+	protected var personalLinkHackSend : Bool;
+	protected var personalLinkFailsafeID : gameDelayID;
+	protected var wasAnimationFastForwarded : Bool;
+	private   var wasEngineeringSkillcheckTriggered : Bool;
+	protected var contentScale : TweakDBID;
+	protected var networkGridBeamOffset : Vector4;
+	public    var areaEffectsData : array:SAreaEffectData;
+	public    var areaEffectsInFocusMode : array:SAreaEffectTargetData;
+	protected var debugOptions : DebuggerProperties;
+	public    var currentlyUploadingAction : whandle:ScriptableDeviceAction;
+	protected var workspotActivator : whandle:gameObject;
+
+	static function GetInteractionClearance() : handle:gamedeviceClearance; // Device::GetInteractionClearance;
+	static function GetPlayerMainObjectStatic(context : ScriptGameInstance) : handle:gameObject; // Device::GetPlayerMainObjectStatic;GameInstance
+	static function MapStimType(stim : DeviceStimType) : gamedataStimType; // Device::MapStimType;DeviceStimType
+
+	event OnAccessPointMiniGameStatus(evt : handle:gameuiAccessPointMiniGameStatus) : Bool; // OnAccessPointMiniGameStatus
+	event OnActionCooldownEvent(evt : handle:ActionCooldownEvent) : Bool; // OnActionCooldownEvent
+	event OnActionPing(evt : handle:PingDevice) : Bool; // OnActionPing
+	event OnAdvanceInteractionStateResolveEvent(evt : handle:AdvanceInteractionStateResolveEvent) : Bool; // OnAdvanceInteractionStateResolveEvent
+	event OnAreaEnter(evt : handle:entAreaEnteredEvent) : Bool; // OnAreaEnter
+	event OnAreaExit(evt : handle:entAreaExitedEvent) : Bool; // OnAreaExit
+	event OnAttitudeChanged(evt : handle:gameeventsAttitudeChangedEvent) : Bool; // OnAttitudeChanged
+	event OnAuthorizeUser(evt : handle:AuthorizeUser) : Bool; // OnAuthorizeUser
+	event OnCancelUpdateEvent(evt : handle:CancelDeviceUpdateEvent) : Bool; // OnCancelUpdateEvent
+	event OnChangeJuryrigTrapState(evt : handle:ChangeJuryrigTrapState) : Bool; // OnChangeJuryrigTrapState
+	event OnChangeLoopCurveEvent(evt : handle:ChangeLoopCurveEvent) : Bool; // OnChangeLoopCurveEvent
+	event OnCommunicationEvent(evt : handle:CommunicationEvent) : Bool; // OnCommunicationEvent
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDelayedDeviceOperation(evt : handle:DelayedOperationEvent) : Bool; // OnDelayedDeviceOperation
+	event OnDelayedUpdateDeviceStateEvent(evt : handle:DelayedUpdateDeviceStateEvent) : Bool; // OnDelayedUpdateDeviceStateEvent
+	event OnDetach() : Bool; // OnDetach
+	event OnDeviceUpdate(evt : handle:DeviceUpdateEvent) : Bool; // OnDeviceUpdate
+	event OnDeviceVisible(evt : handle:gameDeviceVisibilityChangedEvent) : Bool; // OnDeviceVisible
+	event OnDeviceWidgetUpdate(evt : handle:RequestDeviceWidgetUpdateEvent) : Bool; // OnDeviceWidgetUpdate
+	event OnDisableAreaIndicator(evt : handle:DisableAreaIndicatorEvent) : Bool; // OnDisableAreaIndicator
+	event OnDisableRPGRequirementsForQucikHackActions(evt : handle:DisableRPGRequirementsForDeviceActions) : Bool; // OnDisableRPGRequirementsForQucikHackActions
+	event OnDisassembleDevice(evt : handle:DisassembleDevice) : Bool; // OnDisassembleDevice
+	event OnDurabilityLimitReach(evt : handle:DurabilityLimitReach) : Bool; // OnDurabilityLimitReach
+	event OnFactChanged(evt : handle:gameFactChangedEvent) : Bool; // OnFactChanged
+	event OnGameAttached() : Bool; // OnGameAttached
+	event OnGlitchScreen(evt : handle:GlitchScreen) : Bool; // OnGlitchScreen
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnHandleEngineeringSkillcheckSFX(evt : handle:ActionEngineering) : Bool; // OnHandleEngineeringSkillcheckSFX
+	event OnHitEvent(hit : handle:gameeventsHitEvent) : Bool; // OnHitEvent
+	event OnInputHintManagerInitializedChanged(value : Variant) : Bool; // OnInputHintManagerInitializedChanged
+	event OnIsUIZoomDeviceChange(value : Bool) : Bool; // OnIsUIZoomDeviceChange
+	event OnLogicReady(evt : handle:SetLogicReadyEvent) : Bool; // OnLogicReady
+	event OnMissingWorkspotComponentFailsafeEvent(evt : handle:MissingWorkspotComponentFailsafeEvent) : Bool; // OnMissingWorkspotComponentFailsafeEvent
+	event OnNPCKillDelayEvent(evt : handle:NPCKillDelayEvent) : Bool; // OnNPCKillDelayEvent
+	event OnNotifyHighlightedDevice(evt : handle:NotifyHighlightedDevice) : Bool; // OnNotifyHighlightedDevice
+	event OnNotifyParents(evt : handle:NotifyParentsEvent) : Bool; // OnNotifyParents
+	event OnOpenFullscreenUI(evt : handle:OpenFullscreenUI) : Bool; // OnOpenFullscreenUI
+	event OnOverloadDevice(evt : handle:OverloadDevice) : Bool; // OnOverloadDevice
+	event OnPSChangedEvent(evt : handle:gamePSChangedEvent) : Bool; // OnPSChangedEvent
+	event OnPerformedAction(evt : handle:PerformedAction) : Bool; // OnPerformedAction
+	event OnPersitentStateInitialized(evt : handle:GameAttachedEvent) : Bool; // OnPersitentStateInitialized
+	event OnPlayBink(evt : handle:PlayBinkEvent) : Bool; // OnPlayBink
+	event OnPlayInDeviceCallbackEvent(evt : handle:gamePlayInDeviceCallbackEvent) : Bool; // OnPlayInDeviceCallbackEvent
+	event OnPlayerDetectedVisibleEvent(evt : handle:senseOnDetectedEvent) : Bool; // OnPlayerDetectedVisibleEvent
+	event OnPlayerStateMachineZoom(value : Float) : Bool; // OnPlayerStateMachineZoom
+	event OnProjectileBreachEvent(evt : handle:ProjectileBreachEvent) : Bool; // OnProjectileBreachEvent
+	event OnPulseEvent(evt : handle:gameVisionModeUpdateVisuals) : Bool; // OnPulseEvent
+	event OnQuestForceArmJuryrigTrap(evt : handle:QuestForceJuryrigTrapArmed) : Bool; // OnQuestForceArmJuryrigTrap
+	event OnQuestForceCameraZoom(evt : handle:QuestForceCameraZoom) : Bool; // OnQuestForceCameraZoom
+	event OnQuestForceDeactivateJuryrigTrap(evt : handle:QuestForceJuryrigTrapDeactivated) : Bool; // OnQuestForceDeactivateJuryrigTrap
+	event OnQuestForceDisableAuthorization(evt : handle:QuestForceAuthorizationDisabled) : Bool; // OnQuestForceDisableAuthorization
+	event OnQuestForceDisabled(evt : handle:QuestForceDisabled) : Bool; // OnQuestForceDisabled
+	event OnQuestForceEnableAuthorization(evt : handle:QuestForceAuthorizationEnabled) : Bool; // OnQuestForceEnableAuthorization
+	event OnQuestForceEnabled(evt : handle:QuestForceEnabled) : Bool; // OnQuestForceEnabled
+	event OnQuestForceOFF(evt : handle:QuestForceOFF) : Bool; // OnQuestForceOFF
+	event OnQuestForceON(evt : handle:QuestForceON) : Bool; // OnQuestForceON
+	event OnQuestForcePower(evt : handle:QuestForcePower) : Bool; // OnQuestForcePower
+	event OnQuestForceSecuritySystemAlarmed(evt : handle:QuestForceSecuritySystemAlarmed) : Bool; // OnQuestForceSecuritySystemAlarmed
+	event OnQuestForceSecuritySystemArmed(evt : handle:QuestForceSecuritySystemArmed) : Bool; // OnQuestForceSecuritySystemArmed
+	event OnQuestForceSecuritySystemSafe(evt : handle:QuestForceSecuritySystemSafe) : Bool; // OnQuestForceSecuritySystemSafe
+	event OnQuestForceUnpower(evt : handle:QuestForceUnpower) : Bool; // OnQuestForceUnpower
+	event OnQuestResolveSkillchecks(evt : handle:ResolveAllSkillchecksEvent) : Bool; // OnQuestResolveSkillchecks
+	event OnQuestSetSkillchecks(evt : handle:SetSkillcheckEvent) : Bool; // OnQuestSetSkillchecks
+	event OnQuestStartGlitch(evt : handle:QuestStartGlitch) : Bool; // OnQuestStartGlitch
+	event OnQuestStopGlitch(evt : handle:QuestStopGlitch) : Bool; // OnQuestStopGlitch
+	event OnQuickHackDistraction(evt : handle:QuickHackDistraction) : Bool; // OnQuickHackDistraction
+	event OnQuickHackPanelStateChanged(evt : handle:QuickHackPanelStateEvent) : Bool; // OnQuickHackPanelStateChanged
+	event OnQuickHackToggleOn(evt : handle:QuickHackToggleON) : Bool; // OnQuickHackToggleOn
+	event OnQuickSlotCommandUsed(evt : handle:QuickSlotCommandUsed) : Bool; // OnQuickSlotCommandUsed
+	event OnReavealDevicesGrid(evt : handle:RevealDevicesGridOnEntityEvent) : Bool; // OnReavealDevicesGrid
+	event OnRepeatApplyAnimFeatureHACK(evt : handle:RepeatPersonalLinkAnimFeaturesHACK) : Bool; // OnRepeatApplyAnimFeatureHACK
+	event OnRequesBreadCrumbBarUpdate(evt : handle:RequestBreadCrumbBarUpdateEvent) : Bool; // OnRequesBreadCrumbBarUpdate
+	event OnRequestActionWidgetsUpdate(evt : handle:RequestActionWidgetsUpdateEvent) : Bool; // OnRequestActionWidgetsUpdate
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnRequestUiRefresh(evt : handle:RequestUIRefreshEvent) : Bool; // OnRequestUiRefresh
+	event OnReturnToDeviceScreenEvent(evt : handle:ReturnToDeviceScreenEvent) : Bool; // OnReturnToDeviceScreenEvent
+	event OnRevealDeviceRequest(evt : handle:RevealDeviceRequest) : Bool; // OnRevealDeviceRequest
+	event OnRevealNetworkGridOnPulse(evt : handle:RevealNetworkGridOnPulse) : Bool; // OnRevealNetworkGridOnPulse
+	event OnRevealNetworkGridRequestFromNetworkSystem(evt : handle:RevealNetworkGridNetworkRequest) : Bool; // OnRevealNetworkGridRequestFromNetworkSystem
+	event OnRevealStateChanged(evt : handle:RevealStateChangedEvent) : Bool; // OnRevealStateChanged
+	event OnScanningActionFinishedEvent(evt : handle:gameScanningActionFinishedEvent) : Bool; // OnScanningActionFinishedEvent
+	event OnScanningLookedAt(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookedAt
+	event OnSecurityAreaCrossingPerimeter(evt : handle:SecurityAreaCrossingPerimeter) : Bool; // OnSecurityAreaCrossingPerimeter
+	event OnSecuritySystemForceAttitudeChange(evt : handle:SecuritySystemForceAttitudeChange) : Bool; // OnSecuritySystemForceAttitudeChange
+	event OnSecuritySystemOutput(evt : handle:SecuritySystemOutput) : Bool; // OnSecuritySystemOutput
+	event OnSendSpiderbotToPerformActionEvent(evt : handle:SendSpiderbotToPerformActionEvent) : Bool; // OnSendSpiderbotToPerformActionEvent
+	event OnSetAuthorizationModuleOFF(evt : handle:SetAuthorizationModuleOFF) : Bool; // OnSetAuthorizationModuleOFF
+	event OnSetAuthorizationModuleON(evt : handle:SetAuthorizationModuleON) : Bool; // OnSetAuthorizationModuleON
+	event OnSetDeviceAttitude(evt : handle:SetDeviceAttitude) : Bool; // OnSetDeviceAttitude
+	event OnSetDevicePowered(evt : handle:SetDevicePowered) : Bool; // OnSetDevicePowered
+	event OnSetDeviceUnpowered(evt : handle:SetDeviceUnpowered) : Bool; // OnSetDeviceUnpowered
+	event OnSetExposeQuickHacks(evt : handle:SetExposeQuickHacks) : Bool; // OnSetExposeQuickHacks
+	event OnSetOFF(evt : handle:SetDeviceOFF) : Bool; // OnSetOFF
+	event OnSetON(evt : handle:SetDeviceON) : Bool; // OnSetON
+	event OnSlaveStateChanged(evt : handle:gamePSDeviceChangedEvent) : Bool; // OnSlaveStateChanged
+	event OnSpiderbotOrderCompletedEvent(evt : handle:SpiderbotOrderCompletedEvent) : Bool; // OnSpiderbotOrderCompletedEvent
+	event OnTCSInputCameraZoom(evt : handle:TCSInputCameraZoom) : Bool; // OnTCSInputCameraZoom
+	event OnTCSInputDeviceAttack(evt : handle:TCSInputDeviceAttack) : Bool; // OnTCSInputDeviceAttack
+	event OnTCSInputXAxisEvent(evt : handle:TCSInputXAxisEvent) : Bool; // OnTCSInputXAxisEvent
+	event OnTCSInputXYAxisEvent(evt : handle:TCSInputXYAxisEvent) : Bool; // OnTCSInputXYAxisEvent
+	event OnTCSInputYAxisEvent(evt : handle:TCSInputYAxisEvent) : Bool; // OnTCSInputYAxisEvent
+	event OnTCSTakeOverControlActivate(evt : handle:TCSTakeOverControlActivate) : Bool; // OnTCSTakeOverControlActivate
+	event OnTCSTakeOverControlDeactivate(evt : handle:TCSTakeOverControlDeactivate) : Bool; // OnTCSTakeOverControlDeactivate
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnTimetableEntryTriggered(evt : handle:DeviceTimetableEvent) : Bool; // OnTimetableEntryTriggered
+	event OnToggleActivation(evt : handle:ToggleActivation) : Bool; // OnToggleActivation
+	event OnToggleComponents(evt : handle:ToggleComponentsEvent) : Bool; // OnToggleComponents
+	event OnToggleJuryrigTrap(evt : handle:ToggleJuryrigTrap) : Bool; // OnToggleJuryrigTrap
+	event OnToggleNetrunnerDive(evt : handle:ToggleNetrunnerDive) : Bool; // OnToggleNetrunnerDive
+	event OnToggleON(evt : handle:ToggleON) : Bool; // OnToggleON
+	event OnTogglePersonalLink(evt : handle:TogglePersonalLink) : Bool; // OnTogglePersonalLink
+	event OnTogglePower(evt : handle:TogglePower) : Bool; // OnTogglePower
+	event OnToggleTakeOverControl(evt : handle:ToggleTakeOverControl) : Bool; // OnToggleTakeOverControl
+	event OnToggleUIInteractivity(evt : handle:ToggleUIInteractivity) : Bool; // OnToggleUIInteractivity
+	event OnToggleZoomInteraction(evt : handle:ToggleZoomInteraction) : Bool; // OnToggleZoomInteraction
+	event OnUIAction(evt : handle:UIActionEvent) : Bool; // OnUIAction
+	event OnUnregisterFromZoomBlackboardEvent(evt : handle:UnregisterFromZoomBlackboardEvent) : Bool; // OnUnregisterFromZoomBlackboardEvent
+	event OnUpdateWillingInvestigators(evt : handle:UpdateWillingInvestigators) : Bool; // OnUpdateWillingInvestigators
+	event OnUploadProgressStateChanged(evt : handle:UploadProgramProgressEvent) : Bool; // OnUploadProgressStateChanged
+	event OnWorkspotFinished(componentName : CName) : Bool; // OnWorkspotFinished
+	event OndDeviceOperationTriggerDelayed(evt : handle:DelayedDeviceOperationTriggerEvent) : Bool; // OndDeviceOperationTriggerDelayed
+
+	function ActivateDevice(); // ActivateDevice;
+	function AddActiveContext(context : gamedeviceRequestType); // AddActiveContext;gamedeviceRequestType
+	function AddHudButtonHelper(argText : script_ref:String, argIcon : CName); // AddHudButtonHelper;script_ref<String>CName
+	function AdjustInteractionComponent(); // AdjustInteractionComponent;
+	function ApplyActiveStatusEffect(target : entEntityID, statusEffect : TweakDBID); // ApplyActiveStatusEffect;EntityIDTweakDBID
+	function ApplyDamage(attackData : handle:gamedamageAttackData); // ApplyDamage;AttackData
+	function ArmJuryrigTrap(); // ArmJuryrigTrap;
+	function BreakDevice(); // BreakDevice;
+	function CanBeInvestigated() : Bool; // CanBeInvestigated;
+	function CanOverrideNetworkContext() : Bool; // CanOverrideNetworkContext;
+	function CanPassAnySkillCheck() : Bool; // CanPassAnySkillCheck;
+	function CanPassAnySkillCheckOnMaster() : Bool; // CanPassAnySkillCheckOnMaster;
+	function CanPassDemolitionSkillCheck() : Bool; // CanPassDemolitionSkillCheck;
+	function CanPassEngineeringSkillCheck() : Bool; // CanPassEngineeringSkillCheck;
+	function CanPassHackingSkillCheck() : Bool; // CanPassHackingSkillCheck;
+	function CanPlayerUseQuickHackVulnerability(data : TweakDBID) : Bool; // CanPlayerUseQuickHackVulnerability;TweakDBID
+	function CanRevealRemoteActionsWheel() : Bool; // CanRevealRemoteActionsWheel;
+	function CheckDistractionAchievemnt(); // CheckDistractionAchievemnt;
+	function CheckQueryStartPoint(transform : WorldTransform) : Vector4; // CheckQueryStartPoint;WorldTransform
+	function ClearActiveProgramToUploadOnNPC(); // ClearActiveProgramToUploadOnNPC;
+	function ClearActiveStatusEffect(); // ClearActiveStatusEffect;
+	function ClearQuickHacks(); // ClearQuickHacks;
+	function CompileScannerChunks() : Bool; // CompileScannerChunks;
+	function ControlledDeviceInputAction(isPressed : Bool); // ControlledDeviceInputAction;Bool
+	function CreateBlackboard(); // CreateBlackboard;
+	function CreateEMPGameEffect(range : Float); // CreateEMPGameEffect;Float
+	function CreateFxInstance(resource : gameFxResource, transform : WorldTransform) : handle:gameFxInstance; // CreateFxInstance;FxResourceWorldTransform
+	function CreateGameplayObjective(data : handle:GemplayObjectiveData); // CreateGameplayObjective;GemplayObjectiveData
+	function CutPower(); // CutPower;
+	function DeactivateDevice(); // DeactivateDevice;
+	function DeactivateJuryrigTrap(); // DeactivateJuryrigTrap;
+	function DeterminGameplayRoleMappinRange(data : script_ref:SDeviceMappinData) : Float; // DeterminGameplayRoleMappinRange;script_ref<SDeviceMappinData>
+	function DeterminGameplayRoleMappinVisuaState(data : script_ref:SDeviceMappinData) : EMappinVisualState; // DeterminGameplayRoleMappinVisuaState;script_ref<SDeviceMappinData>
+	function DetermineInteractionState(optional context : gameGetActionsContext); // DetermineInteractionState;GetActionsContext
+	function DetermineInteractionStateByTask(optional context : gameGetActionsContext); // DetermineInteractionStateByTask;GetActionsContext
+	function DetermineInteractionStateTask(data : handle:gameScriptTaskData); // DetermineInteractionStateTask;ScriptTaskData
+	function DeviceUpdate(); // DeviceUpdate;
+	function Die(); // Die;
+	function DisplayConnectionWindowOnPlayerHUD(shouldDisplay : Bool, attempt : Int32); // DisplayConnectionWindowOnPlayerHUD;BoolInt32
+	function EnableProximityMappinInteractionLayer(enable : Bool); // EnableProximityMappinInteractionLayer;Bool
+	function EnableProximityRevealInteractionLayer(enable : Bool); // EnableProximityRevealInteractionLayer;Bool
+	function EnableUpdate(shouldEnable : Bool, optional time : Float); // EnableUpdate;BoolFloat
+	function EnterWorkspot(activator : handle:gameObject, optional freeCamera : Bool, optional componentName : CName, optional deviceData : CName); // EnterWorkspot;GameObjectBoolCNameCName
+	function EnterWorkspotWithIK(activator : handle:gameObject, shouldCrouch : Bool, optional cameraFlavour : CName, optional componentName : CName, optional cameraPosition : Vector4, optional cameraRotation : Quaternion, optional rightHandPosition : Vector4, optional rightHandRotation : Quaternion, optional leftHandPosition : Vector4, optional leftHandRotation : Quaternion); // EnterWorkspotWithIK;GameObjectBoolCNameCNameVector4QuaternionVector4QuaternionVector4Quaternion
+	function EvaluateCameraZoomState(executor : handle:gameObject, optional instant : Bool); // EvaluateCameraZoomState;GameObjectBool
+	function EvaluateProximityMappinInteractionLayerState(); // EvaluateProximityMappinInteractionLayerState;
+	function EvaluateProximityRevealInteractionLayerState(); // EvaluateProximityRevealInteractionLayerState;
+	function ExecuteAction(choice : script_ref:gameinteractionsChoice, executor : whandle:gameObject, layerTag : CName); // ExecuteAction;script_ref<InteractionChoice>GameObjectCName
+	function ExecuteAction(action : handle:gamedeviceAction, optional executor : whandle:gameObject) : Bool; // ExecuteAction;DeviceActionGameObject
+	function ExecuteBaseActionOperation(actionClassName : CName); // ExecuteBaseActionOperation;CName
+	function ExecuteDeviceStateOperation(); // ExecuteDeviceStateOperation;
+	function ExtractEntityID(evt : handle:entTriggerEvent) : entEntityID; // ExtractEntityID;TriggerEvent
+	function FastForwardAnimations(); // FastForwardAnimations;
+	function FillObjectDescription(out arr : array:gameScanningTooltipElementDef); // FillObjectDescription;array<ScanningTooltipElementDef>
+	function FireSingleTick(); // FireSingleTick;
+	function ForceReEvaluateGameplayRole(); // ForceReEvaluateGameplayRole;
+	function GetAcousticQuerryStartPoint() : Vector4; // GetAcousticQuerryStartPoint;
+	function GetActionsDebug(context : script_ref:gameGetActionsContext, debugger : handle:DeviceDebuggerComponent, out outActions : array:handle:gamedeviceAction) : Bool; // GetActionsDebug;script_ref<GetActionsContext>DeviceDebuggerComponentarray<DeviceAction>
+	function GetActiveProgramToUploadOnNPC() : TweakDBID; // GetActiveProgramToUploadOnNPC;
+	function GetActiveStatusEffect() : TweakDBID; // GetActiveStatusEffect;
+	function GetAreaEffectLifetimeByAction(action : handle:ScriptableDeviceAction) : Float; // GetAreaEffectLifetimeByAction;ScriptableDeviceAction
+	function GetAreaEffectLifetimeByName(effectName : CName) : Float; // GetAreaEffectLifetimeByName;CName
+	function GetAreaEffectStimRangeByAction(action : handle:ScriptableDeviceAction) : Float; // GetAreaEffectStimRangeByAction;ScriptableDeviceAction
+	function GetBlackboard() : handle:gameIBlackboard; // GetBlackboard;
+	function GetBlackboardDef() : handle:DeviceBaseBlackboardDef; // GetBlackboardDef;
+	function GetBlackboardIntVariable(id : gamebbScriptID_Int32) : Int32; // GetBlackboardIntVariable;BlackboardID_Int
+	function GetBreachedNetworkBeamResource() : gameFxResource; // GetBreachedNetworkBeamResource;
+	function GetCachedInvestigationPositionsArray(globalNodeRef : worldGlobalNodeRef) : array:Vector4; // GetCachedInvestigationPositionsArray;GlobalNodeRef
+	function GetContentScale() : TweakDBID; // GetContentScale;
+	function GetContext(optional processInitiator : handle:gameObject, optional requestType : gamedeviceRequestType) : gameGetActionsContext; // GetContext;GameObjectgamedeviceRequestType
+	function GetController() : handle:ScriptableDeviceComponent; // GetController;
+	function GetCurrentGameplayRole() : EGameplayRole; // GetCurrentGameplayRole;
+	function GetCurrentHealth() : Float; // GetCurrentHealth;
+	function GetCurrentOutline() : EFocusOutlineType; // GetCurrentOutline;
+	function GetCurrentlyUploadingAction() : handle:ScriptableDeviceAction; // GetCurrentlyUploadingAction;
+	function GetDebuggerProperties() : DebuggerProperties; // GetDebuggerProperties;
+	function GetDefaultDevicesBeamResource() : gameFxResource; // GetDefaultDevicesBeamResource;
+	function GetDefaultDistractionAreaEffectData() : handle:AreaEffectData; // GetDefaultDistractionAreaEffectData;
+	function GetDefaultHighlight() : handle:FocusForcedHighlightData; // GetDefaultHighlight;
+	function GetDefaultNetworkBeamResource() : gameFxResource; // GetDefaultNetworkBeamResource;
+	function GetDeviceConnectionsHighlightSystem() : handle:DeviceConnectionsHighlightSystem; // GetDeviceConnectionsHighlightSystem;
+	function GetDeviceLink() : handle:DeviceLinkComponentPS; // GetDeviceLink;
+	function GetDeviceName() : String; // GetDeviceName;
+	function GetDevicePS() : handle:ScriptableDeviceComponentPS; // GetDevicePS;
+	function GetDeviceState() : EDeviceStatus; // GetDeviceState;
+	function GetDeviceStatusString() : String; // GetDeviceStatusString;
+	function GetDistractionControllerSource(optional effectData : handle:AreaEffectData) : handle:entEntity; // GetDistractionControllerSource;AreaEffectData
+	function GetDistractionPointPosition(device : whandle:gameObject) : Vector4; // GetDistractionPointPosition;GameObject
+	function GetDistractionRange(type : DeviceStimType) : Float; // GetDistractionRange;DeviceStimType
+	function GetDistractionStimLifetime(defaultValue : Float) : Float; // GetDistractionStimLifetime;Float
+	function GetEngineeringSkillcheckSFXName() : CName; // GetEngineeringSkillcheckSFXName;
+	function GetEntityFromNode(nodeRef : NodeRef) : handle:entEntity; // GetEntityFromNode;NodeRef
+	function GetFxResourceByKey(key : CName) : gameFxResource; // GetFxResourceByKey;CName
+	function GetFxResourceMapper() : handle:FxResourceMapperComponent; // GetFxResourceMapper;
+	function GetGameController() : handle:DeviceInkGameControllerBase; // GetGameController;
+	function GetGameplayQuestSystem() : handle:GameplayQuestSystem; // GetGameplayQuestSystem;
+	function GetHitSourcePosition(hitSourceEntityID : entEntityID) : Vector4; // GetHitSourcePosition;EntityID
+	function GetInputContextName() : CName; // GetInputContextName;
+	function GetLocalization() : handle:entLocalizationStringComponent; // GetLocalization;
+	function GetMatchingActionProgramName(actions : script_ref:array:handle:gamedeviceAction, searchWord : script_ref:String) : Int32; // GetMatchingActionProgramName;script_ref<array<DeviceAction>>script_ref<String>
+	function GetNetworkBeamEndpoint() : Vector4; // GetNetworkBeamEndpoint;
+	function GetNetworkBeamOffset() : Vector4; // GetNetworkBeamOffset;
+	function GetNetworkBlackboard() : handle:gameIBlackboard; // GetNetworkBlackboard;
+	function GetNetworkBlackboardDef() : handle:NetworkBlackboardDef; // GetNetworkBlackboardDef;
+	function GetNetworkLinkSlotName() : CName; // GetNetworkLinkSlotName;
+	function GetNetworkLinkSlotName(out transform : WorldTransform) : CName; // GetNetworkLinkSlotName;WorldTransform
+	function GetNetworkSecurityLevel() : String; // GetNetworkSecurityLevel;
+	function GetNodePosition(optional nodeRef : NodeRef) : array:Vector4; // GetNodePosition;NodeRef
+	function GetPSClassName() : CName; // GetPSClassName;
+	function GetPSName() : CName; // GetPSName;
+	function GetPlayerCyberDeck() : array:String; // GetPlayerCyberDeck;
+	function GetPlayerMainObject() : handle:gameObject; // GetPlayerMainObject;
+	function GetPlaystyleMappinLocalPos() : Vector4; // GetPlaystyleMappinLocalPos;
+	function GetPlaystyleMappinSlotWorldPos() : Vector4; // GetPlaystyleMappinSlotWorldPos;
+	function GetPlaystyleMappinSlotWorldTransform() : WorldTransform; // GetPlaystyleMappinSlotWorldTransform;
+	function GetResourceLibrary() : handle:ResourceLibraryComponent; // GetResourceLibrary;
+	function GetRevealOnProximityStopLifetimeValue() : Float; // GetRevealOnProximityStopLifetimeValue;
+	function GetScannerAttitudeTweak() : TweakDBID; // GetScannerAttitudeTweak;
+	function GetScannerName() : String; // GetScannerName;
+	function GetScreenDefinition() : ScreenDefinitionPackage; // GetScreenDefinition;
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetSlotComponent() : handle:entSlotComponent; // GetSlotComponent;
+	function GetSlotTag() : CName; // GetSlotTag;
+	function GetSmallestDistractionRange(type : DeviceStimType) : Float; // GetSmallestDistractionRange;DeviceStimType
+	function GetStimTarget() : handle:gameObject; // GetStimTarget;
+	function GetTotalHealth() : Float; // GetTotalHealth;
+	function GetTweakDBRecord() : TweakDBID; // GetTweakDBRecord;
+	function GetWillingInvestigators() : array:entEntityID; // GetWillingInvestigators;
+	function HandlePlayerStateMachineZoom(value : Float); // HandlePlayerStateMachineZoom;Float
+	function HasActiveDistraction() : Bool; // HasActiveDistraction;
+	function HasActiveQuickHackUpload() : Bool; // HasActiveQuickHackUpload;
+	function HasActiveStaticHackingSkillcheck() : Bool; // HasActiveStaticHackingSkillcheck;
+	function HasAnyActiveQuickHackVulnerabilities() : Bool; // HasAnyActiveQuickHackVulnerabilities;
+	function HasAnyDistractions() : Bool; // HasAnyDistractions;
+	function HasAnyNetworkLink(ignorePingLinks : Bool) : Bool; // HasAnyNetworkLink;Bool
+	function HasAnyNetworkLink() : Bool; // HasAnyNetworkLink;
+	function HasAnyPlaystyle() : Bool; // HasAnyPlaystyle;
+	function HasAnyQuickHackActive() : Bool; // HasAnyQuickHackActive;
+	function HasAnySkillCheckActive() : Bool; // HasAnySkillCheckActive;
+	function HasAnySlaveDevices() : Bool; // HasAnySlaveDevices;
+	function HasAnySpiderBotOrdersActive() : Bool; // HasAnySpiderBotOrdersActive;
+	function HasDirectActionsActive() : Bool; // HasDirectActionsActive;
+	function HasImportantInteraction() : Bool; // HasImportantInteraction;
+	function HasInvestigationPositionsArrayCached(globalNodeRef : worldGlobalNodeRef) : Bool; // HasInvestigationPositionsArrayCached;GlobalNodeRef
+	function HasWillingInvestigator(id : entEntityID) : Bool; // HasWillingInvestigator;EntityID
+	function HideAdvanceInteractionInputHints(); // HideAdvanceInteractionInputHints;
+	function HideMappinOnProximity(); // HideMappinOnProximity;
+	function InitializeGameplayObjectives(); // InitializeGameplayObjectives;
+	function InitializeScanningData(); // InitializeScanningData;
+	function InitializeScanningDataTask(data : handle:gameScriptTaskData); // InitializeScanningDataTask;ScriptTaskData
+	function InitializeScreenDefinition(); // InitializeScreenDefinition;
+	function InitiatePersonalLinkWorkspot(puppet : handle:gameObject); // InitiatePersonalLinkWorkspot;GameObject
+	function IsActionQueueEnabled() : Bool; // IsActionQueueEnabled;
+	function IsActionQueueFull() : Bool; // IsActionQueueFull;
+	function IsActive() : Bool; // IsActive;
+	function IsActiveBackdoor() : Bool; // IsActiveBackdoor;
+	function IsActiveProgramToUploadOnNPCValid() : Bool; // IsActiveProgramToUploadOnNPCValid;
+	function IsActiveStatusEffectValid() : Bool; // IsActiveStatusEffectValid;
+	function IsBackdoor() : Bool; // IsBackdoor;
+	function IsBreached() : Bool; // IsBreached;
+	function IsConnectedToActionsSequencer() : Bool; // IsConnectedToActionsSequencer;
+	function IsConnectedToBackdoorDevice() : Bool; // IsConnectedToBackdoorDevice;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsControllingDevices() : Bool; // IsControllingDevices;
+	function IsCyberdeckEquippedOnPlayer() : Bool; // IsCyberdeckEquippedOnPlayer;
+	function IsDemolitionSkillCheckActive() : Bool; // IsDemolitionSkillCheckActive;
+	function IsDevice() : Bool; // IsDevice;
+	function IsDeviceSecured() : Bool; // IsDeviceSecured;
+	function IsDirectInteractionCondition() : Bool; // IsDirectInteractionCondition;
+	function IsEngineeringSkillCheckActive() : Bool; // IsEngineeringSkillCheckActive;
+	function IsGameplayRelevant() : Bool; // IsGameplayRelevant;
+	function IsGameplayRoleStatic() : Bool; // IsGameplayRoleStatic;
+	function IsGameplayRoleValid(role : EGameplayRole) : Bool; // IsGameplayRoleValid;EGameplayRole
+	function IsHackingSkillCheckActive() : Bool; // IsHackingSkillCheckActive;
+	function IsHighlightedInFocusMode() : Bool; // IsHighlightedInFocusMode;
+	function IsInitialized() : Bool; // IsInitialized;
+	function IsInvestigated() : Bool; // IsInvestigated;
+	function IsLockedViaSequencer() : Bool; // IsLockedViaSequencer;
+	function IsLookedAt() : Bool; // IsLookedAt;
+	function IsNetrunner() : Bool; // IsNetrunner;
+	function IsNetworkKnownToPlayer() : Bool; // IsNetworkKnownToPlayer;
+	function IsNetworkLinkDynamic() : Bool; // IsNetworkLinkDynamic;
+	function IsPlayer(entityID : entEntityID) : Bool; // IsPlayer;EntityID
+	function IsPlayerAround() : Bool; // IsPlayerAround;
+	function IsPotentiallyQuickHackable() : Bool; // IsPotentiallyQuickHackable;
+	function IsQuest() : Bool; // IsQuest;
+	function IsQuickHackAble() : Bool; // IsQuickHackAble;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function IsReadyForUI() : Bool; // IsReadyForUI;
+	function IsSolo() : Bool; // IsSolo;
+	function IsTargetTresspassingMyZone(target : handle:gameObject) : Bool; // IsTargetTresspassingMyZone;GameObject
+	function IsTechie() : Bool; // IsTechie;
+	function IsUIdirty() : Bool; // IsUIdirty;
+	function IsVisible() : Bool; // IsVisible;
+	function KillNPCWorkspotUser(killDelay : Float); // KillNPCWorkspotUser;Float
+	function LeaveWorkspot(activator : handle:gameObject); // LeaveWorkspot;GameObject
+	function MarkAsQuest(isQuest : Bool); // MarkAsQuest;Bool
+	function NotifyConnectionHighlightSystem(IsHighlightON : Bool, IsNotifiedByMasterDevice : Bool) : Bool; // NotifyConnectionHighlightSystem;BoolBool
+	function NotifyParents(); // NotifyParents;
+	function OnMaraudersMapDeviceDebug(sink : handle:worldMaraudersMapDevicesSink); // OnMaraudersMapDeviceDebug;MaraudersMapDevicesSink
+	function OnQuestMinigameRequest(); // OnQuestMinigameRequest;
+	function OnVisibilityChanged(); // OnVisibilityChanged;
+	function OrderSpiderbot(); // OrderSpiderbot;
+	function PerformDive(attempt : Int32, isRemote : Bool); // PerformDive;Int32Bool
+	function PingNetworkGrid(lifetime : Float, pingType : EPingType, resource : gameFxResource, revealSlave : Bool, revealMaster : Bool, ignoreRevealed : Bool); // PingNetworkGrid;FloatEPingTypeFxResourceBoolBoolBool
+	function PingNetworkGrid(lifetime : Float, pingType : EPingType, revealSlave : Bool, revealMaster : Bool, ignoreRevealed : Bool); // PingNetworkGrid;FloatEPingTypeBoolBoolBool
+	function PingNetworkGrid_Event(ownerEntityPosition : Vector4, fxResource : gameFxResource, lifetime : Float, pingType : EPingType, revealSlave : Bool, revealMaster : Bool, ignoreRevealed : Bool); // PingNetworkGrid_Event;Vector4FxResourceFloatEPingTypeBoolBoolBool
+	function PlayEffect(effectEventName : CName, effectEventTag : CName); // PlayEffect;CNameCName
+	function ProcessDamagePipeline(evt : handle:gameeventsHitEvent); // ProcessDamagePipeline;gameHitEvent
+	function ProjectileExposeQuickHacks(); // ProjectileExposeQuickHacks;
+	function PulseNetwork(revealNetworkAtEnd : Bool); // PulseNetwork;Bool
+	function PushData(); // PushData;
+	function PushPersistentData(); // PushPersistentData;
+	function ReEvaluateGameplayRole(); // ReEvaluateGameplayRole;
+	function ReactToHit(hit : handle:gameeventsHitEvent); // ReactToHit;gameHitEvent
+	function RefreshInteraction(); // RefreshInteraction;
+	function RefreshUI(optional isDelayed : Bool); // RefreshUI;Bool
+	function RegisterPlayerInputListener(shouldRegister : Bool); // RegisterPlayerInputListener;Bool
+	function RegisterPlayerTargetCallback(); // RegisterPlayerTargetCallback;
+	function RemoveActiveContext(context : gamedeviceRequestType); // RemoveActiveContext;gamedeviceRequestType
+	function RemoveGameplayObjective(data : handle:GemplayObjectiveData); // RemoveGameplayObjective;GemplayObjectiveData
+	function RemoveHudButtonHelper(); // RemoveHudButtonHelper;
+	function RequestActionWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestActionWidgetsUpdate;IBlackboard
+	function RequestDeviceWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestDeviceWidgetsUpdate;IBlackboard
+	function RequestThumbnailWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestThumbnailWidgetsUpdate;IBlackboard
+	function ResavePersistentData(ps : handle:gamePersistentState) : Bool; // ResavePersistentData;PersistentState
+	function ResetChoicesByEvent(); // ResetChoicesByEvent;
+	function ResolveComponents(componentsData : script_ref:array:SComponentOperationData); // ResolveComponents;script_ref<array<SComponentOperationData>>
+	function ResolveDeviceOperationOnFocusMode(visionType : gameVisionModeType, activated : Bool); // ResolveDeviceOperationOnFocusMode;gameVisionModeTypeBool
+	function ResolveGameplayObjectives(show : Bool); // ResolveGameplayObjectives;Bool
+	function ResolveGameplayState(); // ResolveGameplayState;
+	function ResolveGameplayStateByTask(); // ResolveGameplayStateByTask;
+	function ResolveGameplayStateTask(data : handle:gameScriptTaskData); // ResolveGameplayStateTask;ScriptTaskData
+	function ResolveIllegalAction(executor : handle:gameObject, duration : Float); // ResolveIllegalAction;GameObjectFloat
+	function ResolveQuestImportanceOnPerformedAction(action : handle:ScriptableDeviceAction); // ResolveQuestImportanceOnPerformedAction;ScriptableDeviceAction
+	function ResolveQuestMarkOnFact(); // ResolveQuestMarkOnFact;
+	function ResolveRemoteActions(state : Bool); // ResolveRemoteActions;Bool
+	function RestoreBaseActionOperations(); // RestoreBaseActionOperations;
+	function RestoreDeviceState(); // RestoreDeviceState;
+	function RestorePower(); // RestorePower;
+	function RevealDevicesGrid(shouldDraw : Bool); // RevealDevicesGrid;Bool
+	function RevealDevicesGrid_Event(shouldDraw : Bool, optional ownerEntityPosition : Vector4, optional fxDefault : gameFxResource); // RevealDevicesGrid_Event;BoolVector4FxResource
+	function RevealNetworkGrid(shouldDraw : Bool); // RevealNetworkGrid;Bool
+	function RevealNetworkGrid_Event(shouldDraw : Bool, optional ownerEntityPosition : Vector4, optional fxDefault : gameFxResource, optional fxBreached : gameFxResource); // RevealNetworkGrid_Event;BoolVector4FxResourceFxResource
+	function SendDisableAreaIndicatorEvent(); // SendDisableAreaIndicatorEvent;
+	function SendEventToDefaultPS(evt : handle:redEvent); // SendEventToDefaultPS;Event
+	function SendQuickhackCommands(shouldOpen : Bool); // SendQuickhackCommands;Bool
+	function SendSetIsSpiderbotInteractionOrderedEvent(value : Bool); // SendSetIsSpiderbotInteractionOrderedEvent;Bool
+	function SendSkillCheckInfo(display : Bool); // SendSkillCheckInfo;Bool
+	function SetActiveProgramToUploadOnNPC(program : TweakDBID); // SetActiveProgramToUploadOnNPC;TweakDBID
+	function SetActiveStatusEffect(effect : TweakDBID); // SetActiveStatusEffect;TweakDBID
+	function SetClearance(); // SetClearance;
+	function SetCurrentlyUploadingAction(action : handle:ScriptableDeviceAction); // SetCurrentlyUploadingAction;ScriptableDeviceAction
+	function SetGameplayRole(role : EGameplayRole); // SetGameplayRole;EGameplayRole
+	function SetGameplayRoleToNone(); // SetGameplayRoleToNone;
+	function SetInvestigationPositionsArray(globalNodeRef : worldGlobalNodeRef, arr : script_ref:array:Vector4); // SetInvestigationPositionsArray;GlobalNodeRefscript_ref<array<Vector4>>
+	function SetJuryrigTrapComponentState(newState : Bool); // SetJuryrigTrapComponentState;Bool
+	function SetJuryrigTrapState(newState : EJuryrigTrapState); // SetJuryrigTrapState;EJuryrigTrapState
+	function SetLogicReady(); // SetLogicReady;
+	function SetMeshAppearance(appearance : CName, optional component : CName); // SetMeshAppearance;CNameCName
+	function SetScanningProgressBarText(); // SetScanningProgressBarText;
+	function SetStateAlarmed(); // SetStateAlarmed;
+	function SetStateArmed(); // SetStateArmed;
+	function SetStateSafe(); // SetStateSafe;
+	function SetZoomBlackboardValues(newState : Bool, optional lockPlayerFor : Float); // SetZoomBlackboardValues;BoolFloat
+	function ShouldAllowSpiderbotToPerformAction() : Bool; // ShouldAllowSpiderbotToPerformAction;
+	function ShouldAlwasyRefreshUIInLogicAra() : Bool; // ShouldAlwasyRefreshUIInLogicAra;
+	function ShouldBeHighlightedLongerOnPing() : Bool; // ShouldBeHighlightedLongerOnPing;
+	function ShouldEnableRemoteLayer() : Bool; // ShouldEnableRemoteLayer;
+	function ShouldExitZoomOnAuthorization() : Bool; // ShouldExitZoomOnAuthorization;
+	function ShouldInitiateDebug() : Bool; // ShouldInitiateDebug;
+	function ShouldPulseNetwork() : Bool; // ShouldPulseNetwork;
+	function ShouldRegisterToHUD() : Bool; // ShouldRegisterToHUD;
+	function ShouldRevealDevicesGrid() : Bool; // ShouldRevealDevicesGrid;
+	function ShouldShowDamageNumber() : Bool; // ShouldShowDamageNumber;
+	function ShouldShowScanner() : Bool; // ShouldShowScanner;
+	function ShowAdvanceInteractionInputHints(); // ShowAdvanceInteractionInputHints;
+	function ShowGameplayObjective(data : handle:GemplayObjectiveData); // ShowGameplayObjective;GemplayObjectiveData
+	function ShowMappinOnProximity(); // ShowMappinOnProximity;
+	function ShowQuickHackDuration(action : handle:ScriptableDeviceAction); // ShowQuickHackDuration;ScriptableDeviceAction
+	function StartGlitching(glitchState : EGlitchState, optional intensity : Float); // StartGlitching;EGlitchStateFloat
+	function StartOverload(); // StartOverload;
+	function StartPingingNetwork(); // StartPingingNetwork;
+	function StartRevealingOnProximity(); // StartRevealingOnProximity;
+	function StopEMPGameEffect(); // StopEMPGameEffect;
+	function StopGlitching(); // StopGlitching;
+	function StopOverload(killDelay : Float); // StopOverload;Float
+	function StopPingingNetwork(); // StopPingingNetwork;
+	function StopRevealingOnProximity(lifetime : Float); // StopRevealingOnProximity;Float
+	function SucceedGameplayObjective(data : handle:GemplayObjectiveData); // SucceedGameplayObjective;GemplayObjectiveData
+	function TakeControlOverCamera(isOn : Bool); // TakeControlOverCamera;Bool
+	function TerminateConnection(); // TerminateConnection;
+	function ToggleAreaIndicator(turnOn : Bool); // ToggleAreaIndicator;Bool
+	function ToggleCameraZoom(toggle : Bool, optional instant : Bool); // ToggleCameraZoom;BoolBool
+	function ToggleComponentByName(componentName : CName, toggle : Bool); // ToggleComponentByName;CNameBool
+	function TogglePersonalLink(toggle : Bool, puppet : handle:gameObject); // TogglePersonalLink;BoolGameObject
+	function TriggerAreaEffectDistractionByAction(action : handle:ScriptableDeviceAction); // TriggerAreaEffectDistractionByAction;ScriptableDeviceAction
+	function TriggerAreaEffectDistractionByName(effectName : CName); // TriggerAreaEffectDistractionByName;CName
+	function TriggerArreaEffectDistraction(effectData : handle:AreaEffectData, optional executor : handle:gameObject); // TriggerArreaEffectDistraction;AreaEffectDataGameObject
+	function TurnAuthorizationModuleOFF(); // TurnAuthorizationModuleOFF;
+	function TurnAuthorizationModuleON(); // TurnAuthorizationModuleON;
+	function TurnOffDevice(); // TurnOffDevice;
+	function TurnOnDevice(); // TurnOnDevice;
+	function UnRegisterPlayerTargetCallback(); // UnRegisterPlayerTargetCallback;
+	function UpdateDeviceState(optional isDelayed : Bool) : Bool; // UpdateDeviceState;Bool
+	function UploadActiveProgramOnNPC(targetID : entEntityID); // UploadActiveProgramOnNPC;EntityID
+	function WasVisible() : Bool; // WasVisible;
+}
+
+import class gameDeviceBase extends gameObject
+{
+	var isLogicReady : Bool;
+
+	import function GetClientState() : handle:gameDeviceReplicatedState; // GetClientState
+	import function GetServerState() : handle:gameDeviceReplicatedState; // GetServerState
+	import function IsLogicReady() : Bool; // IsLogicReady
+	import function SetAudioResourceName(); // SetAudioResourceName
+
+	function ApplyAnimFeatureToReplicate(obj : handle:gameObject, inputName : CName, value : handle:animAnimFeature); // ApplyAnimFeatureToReplicate;GameObjectCNameAnimFeature
+	function ApplyReplicatedState(state : handle:gameDeviceReplicatedState); // ApplyReplicatedState;DeviceReplicatedState
+	function GetDeviceStateClass() : CName; // GetDeviceStateClass;
+	function IncludeLightsInVisibilityBoundsScript() : Bool; // IncludeLightsInVisibilityBoundsScript;
+	function IsDeviceMovableScript() : Bool; // IsDeviceMovableScript;
+}
+
+import class gameObject extends entGameEntity
+{
+	var persistentState : handle:gamePersistentState;
+	var playerSocket : gamePlayerSocket;
+	var uiSlotComponent : handle:entSlotComponent;
+	var tags : redTagList;
+	var displayName : LocalizationString;
+	var displayDescription : LocalizationString;
+	var audioResourceName : CName;
+	var visibilityCheckDistance : Float;
+	protected var forceRegisterInHudManager : Bool;
+	protected var prereqListeners : array:handle:GameObjectListener;
+	protected var statusEffectListeners : array:handle:StatusEffectTriggerListener;
+	private   var lastEngineTime : Float;
+	private   var accumulatedTimePasssed : Float;
+	protected var scanningComponent : handle:gameScanningComponent;
+	protected var visionComponent : handle:gameVisionModeComponent;
+	protected var isHighlightedInFocusMode : Bool;
+	protected var statusEffectComponent : handle:gameStatusEffectComponent;
+	protected var markAsQuest : Bool;
+	private   var e3ObjectRevealed : Bool;
+	protected var workspotMapper : handle:WorkspotMapperComponent;
+	protected var stimBroadcaster : handle:StimBroadcasterComponent;
+	protected var squadMemberComponent : handle:SquadMemberBaseComponent;
+	private   var sourceShootComponent : handle:gameSourceShootComponent;
+	private   var targetShootComponent : handle:gameTargetShootComponent;
+	protected var receivedDamageHistory : array:DamageHistoryEntry;
+	protected var forceDefeatReward : Bool;
+	protected var killRewardDisabled : Bool;
+	protected var willDieSoon : Bool;
+	private   var isScannerDataDirty : Bool;
+	private   var hasVisibilityForcedInAnimSystem : Bool;
+	protected var isDead : Bool;
+	private   var lastHitInstigatorID : entEntityID;
+	private   var hitInstigatorCooldownID : gameDelayID;
+	protected var isTargetedWithSmartWeapon : Bool;
+
+	static function AddListener(obj : handle:gameObject, listener : handle:GameObjectListener); // gameObject::AddListener;GameObjectGameObjectListener
+	static function AddStatusEffectTriggerListener(target : handle:gameObject, listener : handle:StatusEffectTriggerListener); // gameObject::AddStatusEffectTriggerListener;GameObjectStatusEffectTriggerListener
+	static function ApplyModifierGroup(self : handle:gameObject, modifierGroupID : Uint64); // gameObject::ApplyModifierGroup;GameObjectUint64
+	static function AudioParameter(self : handle:gameObject, parameterName : CName, parameterValue : Float, optional emitterName : CName); // gameObject::AudioParameter;GameObjectCNameFloatCName
+	static function AudioSwitch(self : handle:gameObject, switchName : CName, switchValue : CName, optional emitterName : CName); // gameObject::AudioSwitch;GameObjectCNameCNameCName
+	static function BreakReplicatedEffectLoopEvent(self : handle:gameObject, effectName : CName); // gameObject::BreakReplicatedEffectLoopEvent;GameObjectCName
+	static function ChangeAttitudeToHostile(owner : whandle:gameObject, target : whandle:gameObject); // gameObject::ChangeAttitudeToHostile;GameObjectGameObject
+	static function ChangeAttitudeToNeutral(owner : whandle:gameObject, target : whandle:gameObject); // gameObject::ChangeAttitudeToNeutral;GameObjectGameObject
+	static function ForceVisionAppearance(self : handle:gameObject, data : handle:FocusForcedHighlightData); // gameObject::ForceVisionAppearance;GameObjectFocusForcedHighlightData
+	static function GetActiveWeapon(object : whandle:gameObject) : handle:gameweaponObject; // gameObject::GetActiveWeapon;GameObject
+	static function GetAttackAngleInFloat(hitEvent : handle:gameeventsHitEvent) : Float; // gameObject::GetAttackAngleInFloat;gameHitEvent
+	static function GetAttackAngleInInt(hitEvent : handle:gameeventsHitEvent, optional hitSource : Int32) : Int32; // gameObject::GetAttackAngleInInt;gameHitEventInt32
+	static function GetAttitudeBetween(first : handle:gameObject, second : handle:gameObject) : EAIAttitude; // gameObject::GetAttitudeBetween;GameObjectGameObject
+	static function GetAttitudeTowards(first : handle:gameObject, second : handle:gameObject) : EAIAttitude; // gameObject::GetAttitudeTowards;GameObjectGameObject
+	static function GetFinisherHealthThresholdIncrease(target : whandle:gameObject, playerPuppet : whandle:gameObject) : Float; // gameObject::GetFinisherHealthThresholdIncrease;GameObjectGameObject
+	static function GetLocalAngleForDirectionInInt(direction : Vector4, owner : handle:gameObject) : Int32; // gameObject::GetLocalAngleForDirectionInInt;Vector4GameObject
+	static function GetTDBID(object : whandle:gameObject) : TweakDBID; // gameObject::GetTDBID;GameObject
+	static function GetTargetAngleInFloat(target : handle:gameObject, owner : handle:gameObject) : Float; // gameObject::GetTargetAngleInFloat;GameObjectGameObject
+	static function GetTargetAngleInInt(target : handle:gameObject, owner : handle:gameObject, out backDirection : Int32) : Int32; // gameObject::GetTargetAngleInInt;GameObjectGameObjectInt32
+	static function GetTargetAngleInInt(target : handle:gameObject, owner : handle:gameObject) : Int32; // gameObject::GetTargetAngleInInt;GameObjectGameObject
+	static function IsCooldownActive(self : handle:gameObject, cooldownName : CName, optional id : Int32) : Bool; // gameObject::IsCooldownActive;GameObjectCNameInt32
+	static function IsFriendlyTowardsPlayer(obj : whandle:gameObject) : Bool; // gameObject::IsFriendlyTowardsPlayer;GameObject
+	static function IsVehicle(object : whandle:gameObject) : Bool; // gameObject::IsVehicle;GameObject
+	static function PlayMetadataEvent(self : handle:gameObject, eventName : CName); // gameObject::PlayMetadataEvent;GameObjectCName
+	static function PlaySound(self : handle:gameObject, eventName : CName, optional emitterName : CName); // gameObject::PlaySound;GameObjectCNameCName
+	static function PlaySoundEvent(self : handle:gameObject, eventName : CName); // gameObject::PlaySoundEvent;GameObjectCName
+	static function PlaySoundEventWithParams(self : handle:gameObject, eventName : CName, optional flag : audioAudioEventFlags, optional type : audioEventActionType); // gameObject::PlaySoundEventWithParams;GameObjectCNameaudioAudioEventFlagsaudioEventActionType
+	static function PlaySoundWithParams(self : handle:gameObject, eventName : CName, optional emitterName : CName, optional flag : audioAudioEventFlags, optional type : audioEventActionType); // gameObject::PlaySoundWithParams;GameObjectCNameCNameaudioAudioEventFlagsaudioEventActionType
+	static function PlayVoiceOver(self : handle:gameObject, voName : CName, debugInitialContext : CName, optional delay : Float, optional answeringEntityID : entEntityID, optional canPlayInVehicle : Bool) : gameDelayID; // gameObject::PlayVoiceOver;GameObjectCNameCNameFloatEntityIDBool
+	static function RemoveCooldown(self : handle:gameObject, cooldownName : CName); // gameObject::RemoveCooldown;GameObjectCName
+	static function RemoveListener(obj : handle:gameObject, listener : handle:GameObjectListener); // gameObject::RemoveListener;GameObjectGameObjectListener
+	static function RemoveModifierGroup(self : handle:gameObject, modifierGroupID : Uint64); // gameObject::RemoveModifierGroup;GameObjectUint64
+	static function RemoveStatusEffectTriggerListener(target : handle:gameObject, listener : handle:StatusEffectTriggerListener); // gameObject::RemoveStatusEffectTriggerListener;GameObjectStatusEffectTriggerListener
+	static function SendForceRevealObjectEvent(self : handle:gameObject, reveal : Bool, reason : CName, optional instigatorID : entEntityID, optional lifetime : Float, optional delay : Float); // gameObject::SendForceRevealObjectEvent;GameObjectBoolCNameEntityIDFloatFloat
+	static function SetAudioParameter(self : handle:gameObject, paramName : CName, paramValue : Float); // gameObject::SetAudioParameter;GameObjectCNameFloat
+	static function SetAudioSwitch(self : handle:gameObject, switchName : CName, switchValue : CName); // gameObject::SetAudioSwitch;GameObjectCNameCName
+	static function SetFocusForcedHightlightData(outType : EFocusOutlineType, highType : EFocusForcedHighlightType, prio : EPriority, id : entEntityID, className : CName) : handle:FocusForcedHighlightData; // gameObject::SetFocusForcedHightlightData;EFocusOutlineTypeEFocusForcedHighlightTypeEPriorityEntityIDCName
+	static function SetMeshAppearanceEvent(self : handle:gameObject, appearance : CName); // gameObject::SetMeshAppearanceEvent;GameObjectCName
+	static function StartCooldown(self : handle:gameObject, cooldownName : CName, cooldownDuration : Float, optional ignoreTimeDilation : Bool) : Int32; // gameObject::StartCooldown;GameObjectCNameFloatBool
+	static function StartReplicatedEffectEvent(self : handle:gameObject, effectName : CName, optional shouldPersist : Bool, optional breakAllOnDestroy : Bool); // gameObject::StartReplicatedEffectEvent;GameObjectCNameBoolBool
+	static function StopEffectEvent(self : handle:gameObject, id : entEntityID, effectName : CName); // gameObject::StopEffectEvent;GameObjectEntityIDCName
+	static function StopReplicatedEffectEvent(self : handle:gameObject, effectName : CName); // gameObject::StopReplicatedEffectEvent;GameObjectCName
+	static function StopSound(self : handle:gameObject, eventName : CName, optional emitterName : CName); // gameObject::StopSound;GameObjectCNameCName
+	static function StopSoundEvent(self : handle:gameObject, eventName : CName); // gameObject::StopSoundEvent;GameObjectCName
+	static function TagObject(obj : whandle:gameObject); // gameObject::TagObject;GameObject
+	static function TargetHasDebuff(target : whandle:gameObject) : Bool; // gameObject::TargetHasDebuff;GameObject
+	static function TargetHasLocomotionMalfunction(target : whandle:gameObject) : Bool; // gameObject::TargetHasLocomotionMalfunction;GameObject
+	static function TargetIsStunned(target : whandle:gameObject) : Bool; // gameObject::TargetIsStunned;GameObject
+	static function ToggleForcedVisibilityInAnimSystemEvent(owner : handle:gameObject, sourceName : CName, isVisibe : Bool, optional transitionTime : Float); // gameObject::ToggleForcedVisibilityInAnimSystemEvent;GameObjectCNameBoolFloat
+	static function UntagObject(obj : whandle:gameObject); // gameObject::UntagObject;GameObject
+
+	import function EnableTransformUpdates(enable : Bool); // EnableTransformUpdates
+	import function GetAudioName(); // GetAudioName
+	import function GetBasePS() : handle:gameObjectPS; // GetBasePS
+	import function GetCurrentContext() : CName; // GetCurrentContext
+	import function GetCurveValue(out x : Float, out y : Float, curveName : CName, isDebug : Bool); // GetCurveValue
+	import function GetDisplayDescription() : String; // GetDisplayDescription
+	import function GetDisplayName() : String; // GetDisplayName
+	import function GetGame() : ScriptGameInstance; // GetGame
+	import function GetName() : CName; // GetName
+	import function GetOwner() : whandle:gameObject; // GetOwner
+	import function GetPS() : handle:gameObjectPS; // GetPS
+	import function GetTracedActionName() : String; // GetTracedActionName
+	import function GetUISlotComponent() : handle:entSlotComponent; // GetUISlotComponent
+	import function HasTag(tag : CName) : Bool; // HasTag
+	import function IsPlayerControlled() : Bool; // IsPlayerControlled
+	import function IsSelectedForDebugging() : Bool; // IsSelectedForDebugging
+	import function PlayerLastUsedKBM() : Bool; // PlayerLastUsedKBM
+	import function PlayerLastUsedPS5Pad() : Bool; // PlayerLastUsedPS5Pad
+	import function PlayerLastUsedPad() : Bool; // PlayerLastUsedPad
+	import function QueueReplicatedEvent(evt : handle:redEvent); // QueueReplicatedEvent
+	import function RegisterInputListener(listener : handle:IScriptable, optional name : CName); // RegisterInputListener
+	import function RegisterInputListenerWithOwner(listener : handle:IScriptable, name : CName); // RegisterInputListenerWithOwner
+	import function ReplicateAnimEvent(obj : handle:gameObject, eventName : CName); // ReplicateAnimEvent
+	import function ReplicateAnimFeature(obj : handle:gameObject, inputName : CName, value : handle:animAnimFeature); // ReplicateAnimFeature
+	import function ReplicateInputBool(obj : handle:gameObject, inputName : CName, value : Bool); // ReplicateInputBool
+	import function ReplicateInputFloat(obj : handle:gameObject, inputName : CName, value : Float); // ReplicateInputFloat
+	import function ReplicateInputInt(obj : handle:gameObject, inputName : CName, value : Int32); // ReplicateInputInt
+	import function ReplicateInputVector(obj : handle:gameObject, inputName : CName, value : Vector4); // ReplicateInputVector
+	import function TriggerEvent(eventName : CName, optional data : handle:IScriptable, optional flags : Int32) : Bool; // TriggerEvent
+	import function UnregisterInputListener(listener : handle:IScriptable, optional name : CName); // UnregisterInputListener
+
+	event OnAddOrRemoveListenerForGameObject(evt : handle:AddOrRemoveListenerForGOEvent) : Bool; // OnAddOrRemoveListenerForGameObject
+	event OnAddStatusEffectTriggerListener(evt : handle:AddStatusEffectListenerEvent) : Bool; // OnAddStatusEffectTriggerListener
+	event OnAttitudeChanged(evt : handle:gameeventsAttitudeChangedEvent) : Bool; // OnAttitudeChanged
+	event OnAutoSaveEvent(evt : handle:AutoSaveEvent) : Bool; // OnAutoSaveEvent
+	event OnChangeRewardSettingsEvent(evt : handle:ChangeRewardSettingsEvent) : Bool; // OnChangeRewardSettingsEvent
+	event OnCustomUIAnimationEvent(evt : handle:CustomUIAnimationEvent) : Bool; // OnCustomUIAnimationEvent
+	event OnDamageReceived(evt : handle:gameeventsDamageReceivedEvent) : Bool; // OnDamageReceived
+	event OnDebugOutlineEvent(evt : handle:DebugOutlineEvent) : Bool; // OnDebugOutlineEvent
+	event OnDelayPrereqEvent(evt : handle:DelayPrereqEvent) : Bool; // OnDelayPrereqEvent
+	event OnDetach() : Bool; // OnDetach
+	event OnDeviceLinkRequest(evt : handle:DeviceLinkRequest) : Bool; // OnDeviceLinkRequest
+	event OnGameAttached() : Bool; // OnGameAttached
+	event OnGameplayRoleChangeNotification(evt : handle:GameplayRoleChangeNotification) : Bool; // OnGameplayRoleChangeNotification
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnHit(evt : handle:gameeventsHitEvent) : Bool; // OnHit
+	event OnHitInstigatorCooldown(evt : handle:HitInstigatorCooldownEvent) : Bool; // OnHitInstigatorCooldown
+	event OnHitProjection(evt : handle:gameeventsProjectedHitEvent) : Bool; // OnHitProjection
+	event OnLookedAtEvent(evt : handle:LookedAtEvent) : Bool; // OnLookedAtEvent
+	event OnMiss(evt : handle:gameeventsMissEvent) : Bool; // OnMiss
+	event OnOutlineRequestEvent(evt : handle:OutlineRequestEvent) : Bool; // OnOutlineRequestEvent
+	event OnPhysicalDestructionEvent(evt : handle:entPhysicalDestructionEvent) : Bool; // OnPhysicalDestructionEvent
+	event OnPostInitialize(evt : handle:entPostInitializeEvent) : Bool; // OnPostInitialize
+	event OnPreUninitialize(evt : handle:entPreUninitializeEvent) : Bool; // OnPreUninitialize
+	event OnPulseEvent(evt : handle:gameVisionModeUpdateVisuals) : Bool; // OnPulseEvent
+	event OnRecord1DamageInHistoryEvent(evt : handle:Record1DamageInHistoryEvent) : Bool; // OnRecord1DamageInHistoryEvent
+	event OnRemoveStatusEffectTriggerListener(evt : handle:RemoveStatusEffectListenerEvent) : Bool; // OnRemoveStatusEffectTriggerListener
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnScaleAndLockLeftHandWeaponsCompensateInStashEvent(evt : handle:ScaleAndLockLeftHandWeaponsCompensateInStashEvent) : Bool; // OnScaleAndLockLeftHandWeaponsCompensateInStashEvent
+	event OnScanningLookedAt(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookedAt
+	event OnScanningModeChanged(evt : handle:gameScanningModeEvent) : Bool; // OnScanningModeChanged
+	event OnSetAsQuestImportantEvent(evt : handle:gameSetAsQuestImportantEvent) : Bool; // OnSetAsQuestImportantEvent
+	event OnSmartGunLockEvent(evt : handle:gamesmartGunSmartGunLockEvent) : Bool; // OnSmartGunLockEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect) : Bool; // OnStatusEffectRemoved
+	event OnTagObjectEvent(evt : handle:TagObjectEvent) : Bool; // OnTagObjectEvent
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnToggleOffMeshConnections(evt : handle:ToggleOffMeshConnections) : Bool; // OnToggleOffMeshConnections
+	event OnToggleVisibilityInAnimSystemEvent(evt : handle:ToggleVisibilityInAnimSystemEvent) : Bool; // OnToggleVisibilityInAnimSystemEvent
+	event OnTriggerAttackEffectorWithDelay(evt : handle:TriggerAttackEffectorWithDelay) : Bool; // OnTriggerAttackEffectorWithDelay
+	event OnUnifyIconicsUpgradeCountWithEffectiveTierInStashEvent(evt : handle:UnifyIconicsUpgradeCountWithEffectiveTierInStashEvent) : Bool; // OnUnifyIconicsUpgradeCountWithEffectiveTierInStashEvent
+	event OnVehicleHit(evt : handle:gameeventsVehicleHitEvent) : Bool; // OnVehicleHit
+	event OnWillDieSoonEventEvent(evt : handle:WillDieSoonEvent) : Bool; // OnWillDieSoonEventEvent
+	event OnlinkedClueTagEvent(evt : handle:linkedClueTagEvent) : Bool; // OnlinkedClueTagEvent
+
+	function BlockFinisherThreshold() : Bool; // BlockFinisherThreshold;
+	function BlockWorkspotFinishers() : Bool; // BlockWorkspotFinishers;
+	function CanBeInvestigated() : Bool; // CanBeInvestigated;
+	function CanBeTagged() : Bool; // CanBeTagged;
+	function CanOverrideNetworkContext() : Bool; // CanOverrideNetworkContext;
+	function CanPassDemolitionSkillCheck() : Bool; // CanPassDemolitionSkillCheck;
+	function CanPassEngineeringSkillCheck() : Bool; // CanPassEngineeringSkillCheck;
+	function CanPassHackingSkillCheck() : Bool; // CanPassHackingSkillCheck;
+	function CanPlayerScanThroughWalls() : Bool; // CanPlayerScanThroughWalls;
+	function CanPlayerUseQuickHackVulnerability(data : TweakDBID) : Bool; // CanPlayerUseQuickHackVulnerability;TweakDBID
+	function CanReceivePoiseDamage() : Bool; // CanReceivePoiseDamage;
+	function CanRevealRemoteActionsWheel() : Bool; // CanRevealRemoteActionsWheel;
+	function CancelForcedVisionAppearance(data : handle:FocusForcedHighlightData); // CancelForcedVisionAppearance;FocusForcedHighlightData
+	function CheckIfPreventionShouldReact(damageDealers : script_ref:array:whandle:gameObject); // CheckIfPreventionShouldReact;script_ref<array<GameObject>>
+	function ClearForcedVisibilityInAnimSystem(); // ClearForcedVisibilityInAnimSystem;
+	function CompileScannerChunks() : Bool; // CompileScannerChunks;
+	function DamagePipelineFinalized(evt : handle:gameeventsHitEvent); // DamagePipelineFinalized;gameHitEvent
+	function DeterminGameplayRole() : EGameplayRole; // DeterminGameplayRole;
+	function DeterminGameplayRoleMappinRange(data : script_ref:SDeviceMappinData) : Float; // DeterminGameplayRoleMappinRange;script_ref<SDeviceMappinData>
+	function DeterminGameplayRoleMappinVisuaState(data : script_ref:SDeviceMappinData) : EMappinVisualState; // DeterminGameplayRoleMappinVisuaState;script_ref<SDeviceMappinData>
+	function DisableKillReward(value : Bool); // DisableKillReward;Bool
+	function DisableOffMeshConnections(player : Bool, npc : Bool); // DisableOffMeshConnections;BoolBool
+	function DisplayHitUI(dmgInfos : script_ref:array:gameuiDamageInfo); // DisplayHitUI;script_ref<array<DamageInfo>>
+	function DisplayKillUI(killInfo : gameuiKillInfo); // DisplayKillUI;KillInfo
+	function EnableOffMeshConnections(player : Bool, npc : Bool); // EnableOffMeshConnections;BoolBool
+	function EvaluateMappinsVisualState(); // EvaluateMappinsVisualState;
+	function FillObjectDescription(out arr : array:gameScanningTooltipElementDef); // FillObjectDescription;array<ScanningTooltipElementDef>
+	function FindAndRewardKiller(killType : gameKillType, optional instigator : whandle:gameObject); // FindAndRewardKiller;gameKillTypeGameObject
+	function ForceDefeatReward(value : Bool); // ForceDefeatReward;Bool
+	function ForceVisionAppearance(data : handle:FocusForcedHighlightData); // ForceVisionAppearance;FocusForcedHighlightData
+	function GetAcousticQuerryStartPoint() : Vector4; // GetAcousticQuerryStartPoint;
+	function GetAnimationSystemForcedVisibilityManager() : handle:AnimationSystemForcedVisibilityManager; // GetAnimationSystemForcedVisibilityManager;
+	function GetAttitudeAgent() : handle:gameAttitudeAgent; // GetAttitudeAgent;
+	function GetAttitudeTowards(target : handle:gameObject) : EAIAttitude; // GetAttitudeTowards;GameObject
+	function GetAvailableClueIndex() : Int32; // GetAvailableClueIndex;
+	function GetBraindanceLayer() : braindanceVisionMode; // GetBraindanceLayer;
+	function GetContentScale() : TweakDBID; // GetContentScale;
+	function GetCurrentOutline() : EFocusOutlineType; // GetCurrentOutline;
+	function GetCurrentlyUploadingAction() : handle:ScriptableDeviceAction; // GetCurrentlyUploadingAction;
+	function GetDefaultHighlight() : handle:FocusForcedHighlightData; // GetDefaultHighlight;
+	function GetDefaultHighlightType() : EFocusForcedHighlightType; // GetDefaultHighlightType;
+	function GetDeviceLink() : handle:DeviceLinkComponentPS; // GetDeviceLink;
+	function GetEntitiesAroundObject(optional range : Float, optional searchFilter : gameTargetSearchFilter) : array:handle:entEntity; // GetEntitiesAroundObject;FloatTargetSearchFilter
+	function GetFastTravelSystem() : handle:FastTravelSystem; // GetFastTravelSystem;
+	function GetFocusClueSystem() : handle:FocusCluesSystem; // GetFocusClueSystem;
+	function GetFreeWorkspotDataForAIAction(aiAction : gamedataWorkspotActionType) : handle:WorkspotEntryData; // GetFreeWorkspotDataForAIAction;gamedataWorkspotActionType
+	function GetFreeWorkspotRefForAIAction(aiAction : gamedataWorkspotActionType) : NodeRef; // GetFreeWorkspotRefForAIAction;gamedataWorkspotActionType
+	function GetFreeWorkspotsCountForAIAction(aiAction : gamedataWorkspotActionType) : Int32; // GetFreeWorkspotsCountForAIAction;gamedataWorkspotActionType
+	function GetFxResourceByKey(key : CName) : gameFxResource; // GetFxResourceByKey;CName
+	function GetHudManager() : handle:HUDManager; // GetHudManager;
+	function GetIsBroken() : Bool; // GetIsBroken;
+	function GetIsIconic() : Bool; // GetIsIconic;
+	function GetIsInFastFinisher() : Bool; // GetIsInFastFinisher;
+	function GetLinkedClueData(clueIndex : Int32) : LinkedFocusClueData; // GetLinkedClueData;Int32
+	function GetLootQuality() : gamedataQuality; // GetLootQuality;
+	function GetNPCsAroundObject(optional range : Float) : array:handle:NPCPuppet; // GetNPCsAroundObject;Float
+	function GetNetworkBeamEndpoint() : Vector4; // GetNetworkBeamEndpoint;
+	function GetNetworkLinkSlotName(out transform : WorldTransform) : CName; // GetNetworkLinkSlotName;WorldTransform
+	function GetNetworkLinkSlotName() : CName; // GetNetworkLinkSlotName;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetNumberOfWorkpotsForAIAction(aiAction : gamedataWorkspotActionType) : Int32; // GetNumberOfWorkpotsForAIAction;gamedataWorkspotActionType
+	function GetObjectToForwardHighlight() : array:whandle:gameObject; // GetObjectToForwardHighlight;
+	function GetPSClassName() : CName; // GetPSClassName;
+	function GetPSOwnerData() : PSOwnerData; // GetPSOwnerData;
+	function GetPersistentID() : gamePersistentID; // GetPersistentID;
+	function GetPhoneCallIndicatorSlotName() : CName; // GetPhoneCallIndicatorSlotName;
+	function GetPlaystyleMappinLocalPos() : Vector4; // GetPlaystyleMappinLocalPos;
+	function GetPlaystyleMappinSlotWorldPos() : Vector4; // GetPlaystyleMappinSlotWorldPos;
+	function GetPlaystyleMappinSlotWorldTransform() : WorldTransform; // GetPlaystyleMappinSlotWorldTransform;
+	function GetPreventionSystem() : handle:PreventionSystem; // GetPreventionSystem;
+	function GetQuickHackIndicatorSlotName() : CName; // GetQuickHackIndicatorSlotName;
+	function GetReceivedDamageByPlayerLastTimeStamp() : Float; // GetReceivedDamageByPlayerLastTimeStamp;
+	function GetRoleMappinSlotName() : CName; // GetRoleMappinSlotName;
+	function GetScannableObjects() : array:gameScanningTooltipElementDef; // GetScannableObjects;
+	function GetScannerAttitudeTweak() : TweakDBID; // GetScannerAttitudeTweak;
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetSensesComponent() : handle:senseComponent; // GetSensesComponent;
+	function GetSourceShootComponent() : handle:gameSourceShootComponent; // GetSourceShootComponent;
+	function GetSquadMemberComponent() : handle:SquadMemberBaseComponent; // GetSquadMemberComponent;
+	function GetStatusEffectComponent() : handle:gameStatusEffectComponent; // GetStatusEffectComponent;
+	function GetStimBroadcasterComponent() : handle:StimBroadcasterComponent; // GetStimBroadcasterComponent;
+	function GetTaggingSystem() : handle:FocusModeTaggingSystem; // GetTaggingSystem;
+	function GetTakeOverControlSystem() : handle:TakeOverControlSystem; // GetTakeOverControlSystem;
+	function GetTargetShootComponent() : handle:gameTargetShootComponent; // GetTargetShootComponent;
+	function GetTargetTrackerComponent() : handle:AITargetTrackerComponent; // GetTargetTrackerComponent;
+	function GetTotalCountOfInvestigationSlots() : Int32; // GetTotalCountOfInvestigationSlots;
+	function HandleDeath(instigator : whandle:gameObject); // HandleDeath;GameObject
+	function HandleDeathByTask(instigator : whandle:gameObject); // HandleDeathByTask;GameObject
+	function HandleDeathTask(data : handle:gameScriptTaskData); // HandleDeathTask;ScriptTaskData
+	function HandleICEBreakerUpdate(evt : handle:gameeventsApplyStatusEffectEvent); // HandleICEBreakerUpdate;ApplyStatusEffectEvent
+	function HandleStimsOnHit(evt : handle:gameeventsHitEvent); // HandleStimsOnHit;gameHitEvent
+	function HasActiveDistraction() : Bool; // HasActiveDistraction;
+	function HasActiveQuickHackUpload() : Bool; // HasActiveQuickHackUpload;
+	function HasAnyClue() : Bool; // HasAnyClue;
+	function HasAnyDirectInteractionActive() : Bool; // HasAnyDirectInteractionActive;
+	function HasAnySlaveDevices() : Bool; // HasAnySlaveDevices;
+	function HasAnyStoredClues() : Bool; // HasAnyStoredClues;
+	function HasAttitude(attitude : EAIAttitude) : Bool; // HasAttitude;EAIAttitude
+	function HasDirectActionsActive() : Bool; // HasDirectActionsActive;
+	function HasFinisherAvailable() : Bool; // HasFinisherAvailable;
+	function HasFreeWorkspotForInvestigation() : Bool; // HasFreeWorkspotForInvestigation;
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType, sourceID : entEntityID) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineTypeEntityID
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType, sourceID : entEntityID, sourceName : CName) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineTypeEntityIDCName
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineType
+	function HasImportantInteraction() : Bool; // HasImportantInteraction;
+	function HasOutlineOrFill(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType) : Bool; // HasOutlineOrFill;EFocusForcedHighlightTypeEFocusOutlineType
+	function HasRevealRequest(data : gameVisionModeSystemRevealIdentifier) : Bool; // HasRevealRequest;gameVisionModeSystemRevealIdentifier
+	function HasVisibilityForcedInAnimSystem() : Bool; // HasVisibilityForcedInAnimSystem;
+	function IsAccessPoint() : Bool; // IsAccessPoint;
+	function IsActive() : Bool; // IsActive;
+	function IsActiveBackdoor() : Bool; // IsActiveBackdoor;
+	function IsAmmoLoot() : Bool; // IsAmmoLoot;
+	function IsAnyClueEnabled() : Bool; // IsAnyClueEnabled;
+	function IsAnyPlaystyleValid() : Bool; // IsAnyPlaystyleValid;
+	function IsBackdoor() : Bool; // IsBackdoor;
+	function IsBodyDisposalPossible() : Bool; // IsBodyDisposalPossible;
+	function IsBraindanceBlocked() : Bool; // IsBraindanceBlocked;
+	function IsBreached() : Bool; // IsBreached;
+	function IsClueInspected() : Bool; // IsClueInspected;
+	function IsConnectedToBackdoorDevice() : Bool; // IsConnectedToBackdoorDevice;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsContainer() : Bool; // IsContainer;
+	function IsControllingDevices() : Bool; // IsControllingDevices;
+	function IsCurrentTarget() : Bool; // IsCurrentTarget;
+	function IsCurrentlyScanned() : Bool; // IsCurrentlyScanned;
+	function IsDead() : Bool; // IsDead;
+	function IsDeadNoStatPool() : Bool; // IsDeadNoStatPool;
+	function IsDemolitionSkillCheckActive() : Bool; // IsDemolitionSkillCheckActive;
+	function IsDevice() : Bool; // IsDevice;
+	function IsDrone() : Bool; // IsDrone;
+	function IsDropPoint() : Bool; // IsDropPoint;
+	function IsEngineeringSkillCheckActive() : Bool; // IsEngineeringSkillCheckActive;
+	function IsExplosive() : Bool; // IsExplosive;
+	function IsFastTravelPoint() : Bool; // IsFastTravelPoint;
+	function IsGameplayRelevant() : Bool; // IsGameplayRelevant;
+	function IsGameplayRoleValid(role : EGameplayRole) : Bool; // IsGameplayRoleValid;EGameplayRole
+	function IsGrouppedClue() : Bool; // IsGrouppedClue;
+	function IsHackingPlayer() : Bool; // IsHackingPlayer;
+	function IsHackingSkillCheckActive() : Bool; // IsHackingSkillCheckActive;
+	function IsHandgunAmmoLoot() : Bool; // IsHandgunAmmoLoot;
+	function IsHighlightedInFocusMode() : Bool; // IsHighlightedInFocusMode;
+	function IsHostile() : Bool; // IsHostile;
+	function IsInFinisherHealthThreshold(playerPuppet : whandle:gameObject) : Bool; // IsInFinisherHealthThreshold;GameObject
+	function IsInIconForcedVisibilityRange() : Bool; // IsInIconForcedVisibilityRange;
+	function IsInitialized() : Bool; // IsInitialized;
+	function IsInvestigating() : Bool; // IsInvestigating;
+	function IsInvestigatingObject(targetID : handle:gameObject) : Bool; // IsInvestigatingObject;GameObject
+	function IsItem() : Bool; // IsItem;
+	function IsJohnnyReplacer() : Bool; // IsJohnnyReplacer;
+	function IsNPC() : Bool; // IsNPC;
+	function IsNetrunner() : Bool; // IsNetrunner;
+	function IsNetworkKnownToPlayer() : Bool; // IsNetworkKnownToPlayer;
+	function IsNetworkLinkDynamic() : Bool; // IsNetworkLinkDynamic;
+	function IsNeutral() : Bool; // IsNeutral;
+	function IsObjectRevealed() : Bool; // IsObjectRevealed;
+	function IsPaperdoll() : Bool; // IsPaperdoll;
+	function IsPhotoModeBlocked() : Bool; // IsPhotoModeBlocked;
+	function IsPlayer() : Bool; // IsPlayer;
+	function IsPlayerStash() : Bool; // IsPlayerStash;
+	function IsPrevention() : Bool; // IsPrevention;
+	function IsPuppet() : Bool; // IsPuppet;
+	function IsQuest() : Bool; // IsQuest;
+	function IsQuickHackAble() : Bool; // IsQuickHackAble;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function IsReplacer() : Bool; // IsReplacer;
+	function IsRifleAmmoLoot() : Bool; // IsRifleAmmoLoot;
+	function IsScaningCluesBlocked() : Bool; // IsScaningCluesBlocked;
+	function IsScanned() : Bool; // IsScanned;
+	function IsScannerDataDirty() : Bool; // IsScannerDataDirty;
+	function IsSensor() : Bool; // IsSensor;
+	function IsShardContainer() : Bool; // IsShardContainer;
+	function IsShotgunAmmoLoot() : Bool; // IsShotgunAmmoLoot;
+	function IsSniperAmmoLoot() : Bool; // IsSniperAmmoLoot;
+	function IsSolo() : Bool; // IsSolo;
+	function IsTaggedinFocusMode() : Bool; // IsTaggedinFocusMode;
+	function IsTargetTresspassingMyZone(target : handle:gameObject) : Bool; // IsTargetTresspassingMyZone;GameObject
+	function IsTargetedWithSmartWeapon() : Bool; // IsTargetedWithSmartWeapon;
+	function IsTechie() : Bool; // IsTechie;
+	function IsTurret() : Bool; // IsTurret;
+	function IsVRReplacer() : Bool; // IsVRReplacer;
+	function IsValidHostileTarget() : Bool; // IsValidHostileTarget;
+	function IsVehicle() : Bool; // IsVehicle;
+	function IsWardrobe() : Bool; // IsWardrobe;
+	function MarkAsQuest(isQuest : Bool); // MarkAsQuest;Bool
+	function OnAnimEventReplicated(eventName : CName); // OnAnimEventReplicated;CName
+	function OnAnimFeatureReplicated(inputName : CName, value : handle:animAnimFeature); // OnAnimFeatureReplicated;CNameAnimFeature
+	function OnEventReplicated(evt : handle:redEvent); // OnEventReplicated;Event
+	function OnHitAnimation(hitEvent : handle:gameeventsHitEvent); // OnHitAnimation;gameHitEvent
+	function OnHitBlockedOrDeflected(hitEvent : handle:gameeventsHitEvent); // OnHitBlockedOrDeflected;gameHitEvent
+	function OnHitSounds(hitEvent : handle:gameeventsHitEvent); // OnHitSounds;gameHitEvent
+	function OnHitUI(hitEvent : handle:gameeventsHitEvent); // OnHitUI;gameHitEvent
+	function OnHitVFX(hitEvent : handle:gameeventsHitEvent); // OnHitVFX;gameHitEvent
+	function OnTransformUpdated(); // OnTransformUpdated;
+	function PassUpdate(dt : Float); // PassUpdate;Float
+	function ProcessDamagePipeline(evt : handle:gameeventsHitEvent); // ProcessDamagePipeline;gameHitEvent
+	function ProcessDamageReceived(evt : handle:gameeventsDamageReceivedEvent); // ProcessDamageReceived;gameDamageReceivedEvent
+	function ProlongWeaponGlitchNPCDebuff(player : handle:PlayerPuppet); // ProlongWeaponGlitchNPCDebuff;PlayerPuppet
+	function PulseNetwork(revealNetworkAtEnd : Bool); // PulseNetwork;Bool
+	function PurgeScannerBlackboard(); // PurgeScannerBlackboard;
+	function ReactToHitProcess(hitEvent : handle:gameeventsHitEvent); // ReactToHitProcess;gameHitEvent
+	function Record1DamageInHistory(source : handle:gameObject); // Record1DamageInHistory;GameObject
+	function RegisterToHUDManager(shouldRegister : Bool); // RegisterToHUDManager;Bool
+	function RegisterToHUDManagerByTask(shouldRegister : Bool); // RegisterToHUDManagerByTask;Bool
+	function RegisterToHUDManagerTask(data : handle:gameScriptTaskData); // RegisterToHUDManagerTask;ScriptTaskData
+	function RequestAutoSave(isForced : Bool) : Bool; // RequestAutoSave;Bool
+	function RequestAutoSaveWithDelay(value : Float, maxAttempts : Int32, isForced : Bool); // RequestAutoSaveWithDelay;FloatInt32Bool
+	function RequestHUDRefresh(targetID : entEntityID, optional updateData : handle:HUDActorUpdateData); // RequestHUDRefresh;EntityIDHUDActorUpdateData
+	function RequestHUDRefresh(optional updateData : handle:HUDActorUpdateData); // RequestHUDRefresh;HUDActorUpdateData
+	function ResolveFacts(facts : script_ref:array:SFactOperationData); // ResolveFacts;script_ref<array<SFactOperationData>>
+	function ResolveFocusClueConclusion(clueIndex : Int32, conclusionData : gameScanningTooltipElementDef); // ResolveFocusClueConclusion;Int32ScanningTooltipElementDef
+	function ResolveFocusClueExtendedDescription(clueIndex : Int32); // ResolveFocusClueExtendedDescription;Int32
+	function ResolveHitIstigatorCooldown(instigatorID : entEntityID) : Bool; // ResolveHitIstigatorCooldown;EntityID
+	function RestoreRevealState(); // RestoreRevealState;
+	function RewardKiller(killer : whandle:gameObject, killType : gameKillType, isAnyDamageNonlethal : Bool); // RewardKiller;GameObjectgameKillTypeBool
+	function SendEventToDefaultPS(evt : handle:redEvent); // SendEventToDefaultPS;Event
+	function SendForceRevealObjectEvent(reveal : Bool, reason : CName, optional instigatorID : entEntityID, optional lifetime : Float, optional delay : Float); // SendForceRevealObjectEvent;BoolCNameEntityIDFloatFloat
+	function SendQuickhackCommands(shouldOpen : Bool); // SendQuickhackCommands;Bool
+	function SendReactivateHighlightEvent(); // SendReactivateHighlightEvent;
+	function SetCurrentlyUploadingAction(action : handle:ScriptableDeviceAction); // SetCurrentlyUploadingAction;ScriptableDeviceAction
+	function SetScannerDirty(dirty : Bool); // SetScannerDirty;Bool
+	function ShouldEnableRemoteLayer() : Bool; // ShouldEnableRemoteLayer;
+	function ShouldForceRegisterInHUDManager() : Bool; // ShouldForceRegisterInHUDManager;
+	function ShouldReactToTarget(targetID : entEntityID) : Bool; // ShouldReactToTarget;EntityID
+	function ShouldRegisterToHUD() : Bool; // ShouldRegisterToHUD;
+	function ShouldSendGameAttachedEventToPS() : Bool; // ShouldSendGameAttachedEventToPS;
+	function ShouldShowScanner() : Bool; // ShouldShowScanner;
+	function StartPingingNetwork(); // StartPingingNetwork;
+	function StartStatusEffectSFX(evt : handle:gameeventsApplyStatusEffectEvent); // StartStatusEffectSFX;ApplyStatusEffectEvent
+	function StartStatusEffectVFX(evt : handle:gameeventsApplyStatusEffectEvent); // StartStatusEffectVFX;ApplyStatusEffectEvent
+	function StopPingingNetwork(); // StopPingingNetwork;
+	function StopStatusEffectSFX(evt : handle:gameeventsRemoveStatusEffect); // StopStatusEffectSFX;RemoveStatusEffect
+	function StopStatusEffectVFX(evt : handle:gameeventsRemoveStatusEffect); // StopStatusEffectVFX;RemoveStatusEffect
+	function ToggleForcedVisibilityInAnimSystem(sourceName : CName, isVisibe : Bool, optional transitionTime : Float, optional entityID : entEntityID, optional forcedVisibleOnlyInFrustum : Bool); // ToggleForcedVisibilityInAnimSystem;CNameBoolFloatEntityIDBool
+	function ToggleQuestImportance(isImportant : Bool); // ToggleQuestImportance;Bool
+	function TriggerMenuEvent(eventName : CName); // TriggerMenuEvent;CName
+	function TryGetControlledProxy() : handle:gameObject; // TryGetControlledProxy;
+	function TryOpenQuickhackMenu(shouldOpen : Bool); // TryOpenQuickhackMenu;Bool
+	function Update(dt : Float); // Update;Float
+	function UpdateAdditionalScanningData(); // UpdateAdditionalScanningData;
+	function UpdateDefaultHighlight(); // UpdateDefaultHighlight;
+}
+
+import class entGameEntity extends entEntity
+{
+}
+
+import class entEntity extends IScriptable
+{
+	var customCameraTarget : ECustomCameraTarget;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+
+	import function CanServiceEvent(evtName : CName) : Bool; // CanServiceEvent
+	import function Dispose(); // Dispose
+	import function FindComponentByName(componentName : CName) : handle:entIComponent; // FindComponentByName
+	import function GetControllingPeerID() : Uint32; // GetControllingPeerID
+	import function GetCurrentAppearanceName() : CName; // GetCurrentAppearanceName
+	import function GetCurrentColorVariantName() : CName; // GetCurrentColorVariantName
+	import function GetEntity() : entEntityGameInterface; // GetEntity
+	import function GetEntityID() : entEntityID; // GetEntityID
+	import function GetWorldForward() : Vector4; // GetWorldForward
+	import function GetWorldOrientation() : Quaternion; // GetWorldOrientation
+	import function GetWorldPosition() : Vector4; // GetWorldPosition
+	import function GetWorldRight() : Vector4; // GetWorldRight
+	import function GetWorldUp() : Vector4; // GetWorldUp
+	import function GetWorldYaw() : Float; // GetWorldYaw
+	import function IsAttached() : Bool; // IsAttached
+	import function IsControlledByAnotherClient() : Bool; // IsControlledByAnotherClient
+	import function IsControlledByAnyPeer() : Bool; // IsControlledByAnyPeer
+	import function IsControlledByLocalPeer() : Bool; // IsControlledByLocalPeer
+	import function IsReplicated() : Bool; // IsReplicated
+	import function MatchVisualTag(visualTag : CName) : Bool; // MatchVisualTag
+	import function MatchVisualTags(visualTags : array:CName) : Bool; // MatchVisualTags
+	import function PrefetchAppearanceChange(newAppearanceName : CName); // PrefetchAppearanceChange
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function QueueEventForEntityID(entityID : entEntityID, evt : handle:redEvent) : Bool; // QueueEventForEntityID
+	import function QueueEventForNodeID(nodeID : worldGlobalNodeRef, evt : handle:redEvent) : Bool; // QueueEventForNodeID
+	import function ScheduleAppearanceChange(newAppearanceName : CName); // ScheduleAppearanceChange
+
+	event OnSetGlitchOnUIEvent(evt : handle:SetGlitchOnUIEvent) : Bool; // OnSetGlitchOnUIEvent
+
+	function GetWorldTransform() : WorldTransform; // GetWorldTransform;
+	function OnInspectorDebugDraw(out box : handle:rendInfoBox); // OnInspectorDebugDraw;InfoBox
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

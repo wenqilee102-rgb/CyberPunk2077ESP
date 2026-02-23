@@ -1,0 +1,87 @@
+import class entCharacterCustomizationSkinnedMeshComponent extends entSkinnedMeshComponent
+{
+	var tags : redTagList;
+}
+
+import class entSkinnedMeshComponent extends entISkinTargetComponent
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var acceptDismemberment : Bool;
+	var chunkMask : Uint64;
+	var renderingPlaneAnimationParam : CName;
+	var visibilityAnimationParam : CName;
+	var order : Uint8;
+	var isEnabled : Bool;
+	var LODMode : entMeshComponentLODMode;
+	var useProxyMeshAsShadowMesh : Bool;
+	var forcedLodDistance : entForcedLodDistance;
+	var overrideMeshNavigationImpact : Bool;
+	var navigationImpact : NavGenNavigationSetting;
+	var version : Uint8;
+}
+
+import class abstract entISkinTargetComponent extends entIVisualComponent
+{
+	var skinning : handle:entSkinningBinding;
+	var useSkinningLOD : Bool;
+}
+
+import class abstract entIVisualComponent extends entIPlacedComponent
+{
+	var autoHideDistance : Float;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+	var forceLODLevel : Int8;
+
+	import function TemporaryHide(on : Bool); // TemporaryHide
+}
+
+import class abstract entIPlacedComponent extends entIComponent
+{
+	var localTransform : WorldTransform;
+	var parentTransform : handle:entITransformBinding;
+
+	import function GetInitialOrientation() : Quaternion; // GetInitialOrientation
+	import function GetInitialPosition() : Vector4; // GetInitialPosition
+	import function GetInitialTransform() : Matrix; // GetInitialTransform
+	import function GetLocalOrientation() : Quaternion; // GetLocalOrientation
+	import function GetLocalPosition() : Vector4; // GetLocalPosition
+	import function GetLocalToWorld() : Matrix; // GetLocalToWorld
+	import function GetLocalTransform() : Matrix; // GetLocalTransform
+	import function GetTransformParent(); // GetTransformParent
+	import function SetLocalOrientation(rot : Quaternion); // SetLocalOrientation
+	import function SetLocalPosition(pos : Vector4); // SetLocalPosition
+	import function SetLocalTransform(pos : Vector4, rot : Quaternion); // SetLocalTransform
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

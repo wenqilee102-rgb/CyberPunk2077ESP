@@ -1,0 +1,11 @@
+import struct rendFragmentBuilderScriptProxy
+{
+	import static function AddArrow(self : script_ref:rendFragmentBuilderScriptProxy, start : Vector4, end : Vector4); // AddArrow
+	import static function AddWireAngledRange(self : script_ref:rendFragmentBuilderScriptProxy, matrix : Matrix, height : Float, range : Float, rangeAngle : Float, drawSides : Bool); // AddWireAngledRange
+	import static function BindTransform(self : script_ref:rendFragmentBuilderScriptProxy, localToWorld : Matrix); // BindTransform
+	import static function Construct(self : script_ref:rendFragmentBuilderScriptProxy, debugDrawer : script_ref:rendDebugDrawerScriptProxy); // Construct
+	import static function Done(self : script_ref:rendFragmentBuilderScriptProxy); // Done
+	import static function PopLocalTransform(self : script_ref:rendFragmentBuilderScriptProxy); // PopLocalTransform
+	import static function PushLocalTransform(self : script_ref:rendFragmentBuilderScriptProxy); // PushLocalTransform
+	import static function SetColor(self : script_ref:rendFragmentBuilderScriptProxy, color : Color); // SetColor
+}

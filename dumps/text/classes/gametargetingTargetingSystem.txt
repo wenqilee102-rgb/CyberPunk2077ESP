@@ -1,0 +1,66 @@
+import class gametargetingTargetingSystem extends gameITargetingSystem
+{
+	import function AddIgnoredCollisionEntities(entity : whandle:gameObject); // AddIgnoredCollisionEntities
+	import function AddIgnoredLookAtEntity(instigator : whandle:gameObject, ignoredEntityId : entEntityID); // AddIgnoredLookAtEntity
+	import function AimSnap(instigator : whandle:gameObject); // AimSnap
+	import function BreakAimSnap(instigator : whandle:gameObject); // BreakAimSnap
+	import function BreakLookAt(instigator : whandle:gameObject); // BreakLookAt
+	import function GetAimAssistConfig(owner : whandle:gameObject) : TweakDBID; // GetAimAssistConfig
+	import function GetBestComponentOnTargetObject(shootStartPosition : Vector4, shootStartForward : Vector4, target : whandle:gameObject, componentFilter : gametargetingSystemScriptFilter) : whandle:gameTargetingComponent; // GetBestComponentOnTargetObject
+	import function GetComponentClosestToCrosshair(instigator : whandle:gameObject, out angleDistance : EulerAngles, query : gameTargetSearchQuery) : handle:entIPlacedComponent; // GetComponentClosestToCrosshair
+	import function GetCrosshairData(instigator : whandle:gameObject, out crosshairPosition : Vector4, out crosshairForward : Vector4); // GetCrosshairData
+	import function GetCurrentSpread(instigator : whandle:gameObject) : Vector4; // GetCurrentSpread
+	import function GetDefaultCrosshairData(instigator : whandle:gameObject, out crosshairPosition : Vector4, out crosshairForward : Vector4); // GetDefaultCrosshairData
+	import function GetDefaultCrosshairOrientationProvider(instigator : whandle:gameObject, optional orientationEntitySpace : Quaternion) : handle:entIOrientationProvider; // GetDefaultCrosshairOrientationProvider
+	import function GetDefaultCrosshairPositionProvider(instigator : whandle:gameObject, optional offsetEntitySpace : Vector3) : handle:entIPositionProvider; // GetDefaultCrosshairPositionProvider
+	import function GetLookAtComponent(instigator : whandle:gameObject, optional withLOS : Bool, optional ignoreTranparent : Bool) : whandle:entIComponent; // GetLookAtComponent
+	import function GetLookAtObject(instigator : whandle:gameObject, optional withLOS : Bool, optional ignoreTranparent : Bool) : handle:gameObject; // GetLookAtObject
+	import function GetLookAtPosition(instigator : whandle:gameObject, optional withLOS : Bool, optional ignoreTranparent : Bool) : Vector4; // GetLookAtPosition
+	import function GetObjectClosestToCrosshair(instigator : whandle:gameObject, out angleDistance : EulerAngles, query : gameTargetSearchQuery) : handle:gameObject; // GetObjectClosestToCrosshair
+	import function GetOrientationFromCrosshairToTargetOrientationProvider(instigator : whandle:gameObject, targetComponent : whandle:entIPlacedComponent, optional orientationEntitySpace : Quaternion) : handle:entIOrientationProvider; // GetOrientationFromCrosshairToTargetOrientationProvider
+	import function GetPuppetBlackboardUpdater() : handle:gamePuppetBlackboardUpdater; // GetPuppetBlackboardUpdater
+	import function GetTargetClosestByDistance(instigator : whandle:gameObject, query : gameTargetSearchQuery, position : Vector4, targetPartInfo : gametargetingTargetPartInfo) : handle:gameObject; // GetTargetClosestByDistance
+	import function GetTargetParts(instigator : whandle:gameObject, query : gameTargetSearchQuery, out parts : array:gametargetingTargetPartInfo) : Bool; // GetTargetParts
+	import function GetTargetingSet(instigator : whandle:gameObject, object : whandle:gameObject) : gameTargetingSet; // GetTargetingSet
+	import function GetTrackedTargetComponent(instigator : whandle:gameObject) : whandle:gameTargetingComponent; // GetTrackedTargetComponent
+	import function GetTrackedTargetObject(instigator : whandle:gameObject) : handle:gameObject; // GetTrackedTargetObject
+	import function HasAimSnapActive(instigator : whandle:gameObject) : Bool; // HasAimSnapActive
+	import function IsAnyActiveVehicleVisible(instigator : whandle:gameObject, optional distance : Float) : Bool; // IsAnyActiveVehicleVisible
+	import function IsAnyEnemyOrSensorVisible(instigator : whandle:gameObject, optional distance : Float) : Bool; // IsAnyEnemyOrSensorVisible
+	import function IsAnyEnemyVisible(instigator : whandle:gameObject, optional distance : Float) : Bool; // IsAnyEnemyVisible
+	import function IsVisibleTarget(instigator : whandle:gameObject, target : whandle:gameObject) : Bool; // IsVisibleTarget
+	import function LookAt(instigator : whandle:gameObject, out params : gameaimAssistAimRequest); // LookAt
+	import function OnAimStartBegin(instigator : whandle:gameObject); // OnAimStartBegin
+	import function OnAimStartEnd(instigator : whandle:gameObject); // OnAimStartEnd
+	import function OnAimStop(instigator : whandle:gameObject); // OnAimStop
+	import function ProcessLookAtFilter(instigator : whandle:gameObject, filter : handle:gametargetingSystemTargetFilter); // ProcessLookAtFilter
+	import function RegisterLookAtFilter(instigator : whandle:gameObject, filter : handle:gametargetingSystemTargetFilter) : gametargetingSystemTargetFilterTicket; // RegisterLookAtFilter
+	import function RemoveIgnoredCollisionEntities(entity : whandle:gameObject); // RemoveIgnoredCollisionEntities
+	import function RemoveIgnoredLookAtEntity(instigator : whandle:gameObject, ignoredEntityId : entEntityID); // RemoveIgnoredLookAtEntity
+	import function SetAimAssistConfig(owner : whandle:gameObject, presetId : TweakDBID); // SetAimAssistConfig
+	import function SetIsMovingFast(instigator : whandle:gameObject, isFast : Bool); // SetIsMovingFast
+	import function SetPlayerAimWeaponPositionProvider(instigator : whandle:gameObject, positionProvider : handle:entIPositionProvider); // SetPlayerAimWeaponPositionProvider
+	import function UnregisterLookAtFilter(instigator : whandle:gameObject, filterTicket : gametargetingSystemTargetFilterTicket); // UnregisterLookAtFilter
+}
+
+import class abstract gameITargetingSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

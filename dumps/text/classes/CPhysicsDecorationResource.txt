@@ -1,0 +1,47 @@
+import class CPhysicsDecorationResource extends CMesh
+{
+}
+
+import class CMesh extends resStreamedResource
+{
+	var parameters : array:handle:meshMeshParameter;
+	var boundingBox : Box;
+	var surfaceAreaPerAxis : Vector3;
+	var materialEntries : array:CMeshMaterialEntry;
+	var externalMaterials : array:raRef:IMaterial;
+	var localMaterialInstances : array:handle:CMaterialInstance;
+	var localMaterialBuffer : meshMeshMaterialBuffer;
+	var preloadExternalMaterials : array:rRef:IMaterial;
+	var preloadLocalMaterialInstances : array:handle:IMaterial;
+	var inplaceResources : array:rRef:CResource;
+	var appearances : array:handle:meshMeshAppearance;
+	var objectType : ERenderObjectType;
+	var renderResourceBlob : handle:IRenderResourceBlob;
+	var lodLevelInfo : array:Float;
+	var floatTrackNames : array:CName;
+	var boneNames : array:CName;
+	var boneRigMatrices : array:Matrix;
+	var boneVertexEpsilons : array:Float;
+	var lodBoneMask : array:Uint8;
+	var constrainAutoHideDistanceToTerrainHeightMap : Bool;
+	var forceLoadAllAppearances : Bool;
+	var castGlobalShadowsCachedInCook : Bool;
+	var castLocalShadowsCachedInCook : Bool;
+	var useRayTracingShadowLODBias : Bool;
+	var castsRayTracedShadowsFromOriginalGeometry : Bool;
+	var isShadowMesh : Bool;
+	var isPlayerShadowMesh : Bool;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

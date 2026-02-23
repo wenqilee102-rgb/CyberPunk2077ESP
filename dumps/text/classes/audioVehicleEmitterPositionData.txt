@@ -1,0 +1,12 @@
+import struct audioVehicleEmitterPositionData
+{
+	var engineEmitterPosition : Vector3;
+	var exaustEmitterPosition : Vector3;
+	var centralEmitterPosition : Vector3;
+	var hoodEmitterPosition : Vector3;
+	var trunkEmitterPosition : Vector3;
+	var wheel1Position : Vector3;
+	var wheel2Position : Vector3;
+	var wheel3Position : Vector3;
+	var wheel4Position : Vector3;
+}

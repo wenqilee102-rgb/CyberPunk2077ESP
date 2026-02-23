@@ -1,0 +1,5 @@
+struct SBreadcrumbElementData
+{
+	public    var elementName : String;
+	public    var elementID : Int32;
+}

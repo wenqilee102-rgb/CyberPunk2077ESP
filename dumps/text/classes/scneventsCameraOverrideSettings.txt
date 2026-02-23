@@ -1,0 +1,7 @@
+import struct scneventsCameraOverrideSettings
+{
+	var overrideFov : Bool;
+	var overrideDof : Bool;
+	var resetFov : Bool;
+	var resetDof : Bool;
+}

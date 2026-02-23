@@ -1,0 +1,1 @@
+{"a":"inkIEffect","b":"inkPointCloudEffect","d":8,"e":[{"a":{"a":10},"b":"repeat","c":128},{"a":{"a":10},"b":"offsetX","c":128},{"a":{"a":10},"b":"offsetY","c":128},{"a":{"a":10},"b":"angle","c":128},{"a":{"a":10},"b":"fovScale","c":128},{"a":{"a":10},"b":"parallaxDepth","c":128},{"a":{"a":10},"b":"depthToOpacity","c":128},{"a":{"a":10},"b":"depthToBrightness","c":128}]}

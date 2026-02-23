@@ -1,0 +1,27 @@
+import class gameObjectActionsCallbackController extends IScriptable
+{
+	import static function Create(target : whandle:entEntity, instigator : whandle:entEntity, gameInstance : ScriptGameInstance) : handle:gameObjectActionsCallbackController; // Create
+
+	import function AddObjectAction(objectActionRecord : whandle:gamedataObjectAction_Record); // AddObjectAction
+	import function ClearAllObjectActions(); // ClearAllObjectActions
+	import function HasObjectAction(objectActionRecord : whandle:gamedataObjectAction_Record) : Bool; // HasObjectAction
+	import function IsObjectActionInstigatorPrereqFulfilled(objectActionRecord : whandle:gamedataObjectAction_Record) : Bool; // IsObjectActionInstigatorPrereqFulfilled
+	import function IsObjectActionTargetPrereqFulfilled(objectActionRecord : whandle:gamedataObjectAction_Record) : Bool; // IsObjectActionTargetPrereqFulfilled
+	import function RegisterSkillCheckCallbacks(); // RegisterSkillCheckCallbacks
+	import function UnlockNotifications(); // UnlockNotifications
+	import function UnregisterSkillCheckCallbacks(); // UnregisterSkillCheckCallbacks
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct animAnimFallbackFrameDesc
+{
+	var mPositions : Uint16;
+	var mRotations : Uint16;
+	var mFloatTracks : Uint16;
+}

@@ -1,0 +1,30 @@
+import class gamedataNewPerkLevelData_Record extends gamedataTweakDBRecord
+{
+	import function DataPackage() : whandle:gamedataGameplayLogicPackage_Record; // DataPackage
+	import function DataPackageHandle() : handle:gamedataGameplayLogicPackage_Record; // DataPackageHandle
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function PointsCost() : Int32; // PointsCost
+	import function UiData() : whandle:gamedataNewPerkLevelUIData_Record; // UiData
+	import function UiDataHandle() : handle:gamedataNewPerkLevelUIData_Record; // UiDataHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

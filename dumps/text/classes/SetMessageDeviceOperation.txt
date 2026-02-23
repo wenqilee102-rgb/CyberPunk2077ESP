@@ -1,0 +1,39 @@
+class SetMessageDeviceOperation extends DeviceOperationBase
+{
+	private   var targetRef : NodeRef;
+	private   var messageRecordID : TweakDBID;
+	private   var replaceTextWithCustomNumber : Bool;
+	private   var customNumber : Int32;
+
+	function Execute(owner : whandle:gameObject); // Execute;GameObject
+	function SendEvent(owner : whandle:gameObject); // SendEvent;GameObject
+}
+
+class abstract DeviceOperationBase extends IScriptable
+{
+	public    var operationName : CName;
+	public    var executeOnce : Bool;
+	protected var isEnabled : Bool;
+	public    var toggleOperations : array:SToggleDeviceOperationData;
+	public    var disableDevice : Bool;
+
+	function Execute(owner : whandle:gameObject); // Execute;GameObject
+	function IsEnabled() : Bool; // IsEnabled;
+	function ResolveDisable(disable : Bool, owner : whandle:gameObject); // ResolveDisable;BoolGameObject
+	function Restore(owner : whandle:gameObject); // Restore;GameObject
+	function SetIsEnabled(enabled : Bool); // SetIsEnabled;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

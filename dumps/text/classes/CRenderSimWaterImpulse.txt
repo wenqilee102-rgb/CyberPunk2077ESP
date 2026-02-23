@@ -1,0 +1,15 @@
+import class CRenderSimWaterImpulse extends IDynamicTextureGenerator
+{
+	var resolution : Int32;
+	var simulationSpeed : Float;
+
+	import static function AddImpulse(); // AddImpulse
+}
+
+import class abstract IDynamicTextureGenerator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

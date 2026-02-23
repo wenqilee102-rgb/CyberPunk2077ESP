@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"vehicleCameraManager","c":"VehicleCameraManager","d":8,"f":[{"a":"GetActivePerspective","c":{"b":"vehicleCameraPerspective"},"d":4},{"a":"GetPersistentPerspective","c":{"b":"vehicleCameraPerspective"},"d":4},{"a":"IsTPPActive","c":{"a":1},"d":4}]}

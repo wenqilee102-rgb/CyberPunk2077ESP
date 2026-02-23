@@ -1,0 +1,17 @@
+import class CEvaluatorColorCurve extends IEvaluatorColor
+{
+	var curves : curveData:Vector4;
+	var numberOfCurveSamples : Uint32;
+}
+
+import class abstract IEvaluatorColor extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class vgVectorGraphicStyle extends ISerializable
+{
+	var attributes : array:vgAttributeTypeValuePair;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+enum gameVisionModePatternType
+{
+	Default = 0,
+	Netrunner = 1
+}

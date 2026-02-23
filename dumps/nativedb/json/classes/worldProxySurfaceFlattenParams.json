@@ -1,0 +1,1 @@
+{"b":"worldProxySurfaceFlattenParams","d":8,"g":true,"e":[{"a":{"a":1},"b":"flatten","c":128},{"a":{"b":"worldProxyNormalAngleStepSize"},"b":"groupingStepAngle","c":128},{"a":{"b":"worldProxySyncNormalSource"},"b":"syncNormalSource","c":128},{"a":{"a":10},"b":"coreAxisRotationOffset","c":128},{"a":{"a":1},"b":"postFlattenReduce","c":128}]}

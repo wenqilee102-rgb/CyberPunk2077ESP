@@ -1,0 +1,5 @@
+import struct scnCameraRid
+{
+	var tag : scnRidTag;
+	var animations : array:scnCameraAnimationRid;
+}

@@ -1,0 +1,1 @@
+{"a":"animAnimNode_OnePoseInput","b":"animAnimNode_TranslationLimit","d":8,"e":[{"a":{"b":"animTransformIndex"},"b":"constrainedTransform","c":128},{"a":{"b":"animTransformIndex"},"b":"parentTransform","c":128},{"a":{"b":"animFloatClamp"},"b":"limitOnXAxis","c":128},{"a":{"b":"animFloatClamp"},"b":"limitOnYAxis","c":128},{"a":{"b":"animFloatClamp"},"b":"limitOnZAxis","c":128}]}

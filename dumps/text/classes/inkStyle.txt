@@ -1,0 +1,6 @@
+import struct inkStyle
+{
+	var styleID : CName;
+	var state : CName;
+	var properties : array:inkStyleProperty;
+}

@@ -1,0 +1,8 @@
+import struct aiscriptSharedVarInt
+{
+	var varName : LibTreeSharedVarReferenceName;
+
+	import static function Get(); // Get
+	import static function IsValid(); // IsValid
+	import static function Set(); // Set
+}

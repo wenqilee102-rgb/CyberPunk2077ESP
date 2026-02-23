@@ -1,0 +1,19 @@
+import struct animFacialSetup_OneSermoBufferInfo
+{
+	var numGlobalLimits : Uint16;
+	var numInfluencedPoses : Uint16;
+	var numInfluenceIndices : Uint16;
+	var numUpperLowerFace : Uint16;
+	var numLipsyncPosesSides : Uint16;
+	var numAllCorrectives : Uint16;
+	var numGlobalCorrectiveEntries : Uint16;
+	var numInbetweenCorrectiveEntries : Uint16;
+	var numCorrectiveInfluencedPoses : Uint16;
+	var numCorrectiveInfluenceIndices : Uint16;
+	var numAllMainPoses : Uint16;
+	var numAllMainPosesInbetweens : Uint16;
+	var numAllMainPosesInbetweenScopeMultipliers : Uint16;
+	var numEnvelopesPerTrackMapping : Uint16;
+	var wrinkleStartingIndex : Uint16;
+	var numWrinkles : Uint16;
+}

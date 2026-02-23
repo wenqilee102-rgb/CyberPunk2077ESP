@@ -1,0 +1,5 @@
+import struct gameNetrunnerPrototypeStruct
+{
+	var key : CName;
+	var entityTemplate : raRef:entEntityTemplate;
+}

@@ -1,0 +1,1 @@
+{"a":"effectTrackItem","b":"effectTrackItemFilmGrain","d":8,"e":[{"a":{"a":1},"b":"override","c":128},{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"luminanceBias","c":128},{"a":{"b":"effectEffectParameterEvaluatorVector"},"b":"strength","c":128},{"a":{"a":31,"c":{"b":"ERenderObjectType"}},"b":"mask","c":128}]}

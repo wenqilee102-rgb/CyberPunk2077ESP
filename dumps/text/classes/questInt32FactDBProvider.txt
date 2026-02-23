@@ -1,0 +1,12 @@
+import class questInt32FactDBProvider extends questIInt32ValueProvider
+{
+	var factName : CName;
+}
+
+import class abstract questIInt32ValueProvider extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

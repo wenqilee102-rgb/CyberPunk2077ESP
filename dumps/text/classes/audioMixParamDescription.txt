@@ -1,0 +1,5 @@
+import struct audioMixParamDescription
+{
+	var parameter : CName;
+	var defaultValue : Float;
+}

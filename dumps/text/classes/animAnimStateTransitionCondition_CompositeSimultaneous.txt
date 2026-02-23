@@ -1,0 +1,12 @@
+import class animAnimStateTransitionCondition_CompositeSimultaneous extends animIAnimStateTransitionCondition
+{
+	var conditions : array:handle:animIAnimStateTransitionCondition;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

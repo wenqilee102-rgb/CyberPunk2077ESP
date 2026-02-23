@@ -1,0 +1,29 @@
+import class inkanimBuilder extends IScriptable
+{
+	import function Additive(isAdditive : Bool) : handle:inkanimBuilder; // Additive
+	import function Delay(delay : Float) : handle:inkanimBuilder; // Delay
+	import function Duration(duration : Float) : handle:inkanimBuilder; // Duration
+	import function Interpolate(interpolatorName : CName, startValue : Variant, endValue : Variant) : handle:inkanimBuilder; // Interpolate
+	import function InterpolateFrom(interpolatorName : CName, startValue : Variant) : handle:inkanimBuilder; // InterpolateFrom
+	import function InterpolateTo(interpolatorName : CName, endValue : Variant) : handle:inkanimBuilder; // InterpolateTo
+	import function Mode(mode : inkanimInterpolationMode) : handle:inkanimBuilder; // Mode
+	import function Offset(offset : Float) : handle:inkanimBuilder; // Offset
+	import function Play() : Bool; // Play
+	import function PlayWithOptions(playbackOptions : inkanimPlaybackOptions) : Bool; // PlayWithOptions
+	import function Relative(useRelativeDuration : Bool) : handle:inkanimBuilder; // Relative
+	import function Type(type : inkanimInterpolationType) : handle:inkanimBuilder; // Type
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

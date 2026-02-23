@@ -1,0 +1,12 @@
+import struct questPhoneCallInformation
+{
+	var callMode : questPhoneCallMode;
+	var isAudioCall : Bool;
+	var contactName : CName;
+	var isPlayerCalling : Bool;
+	var isPlayerTriggered : Bool;
+	var callPhase : questPhoneCallPhase;
+	var isRejectable : Bool;
+	var showAvatar : Bool;
+	var visuals : questPhoneCallVisuals;
+}

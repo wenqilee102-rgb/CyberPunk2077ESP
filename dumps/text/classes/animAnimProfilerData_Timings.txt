@@ -1,0 +1,6 @@
+import struct animAnimProfilerData_Timings
+{
+	var className : CName;
+	var avarageExclusiveTimeMS : Float;
+	var avarageInclusiveTimeMS : Float;
+}

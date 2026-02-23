@@ -1,0 +1,11 @@
+import class questPhonePrefabsListener extends worldIQuestPrefabStateListener
+{
+}
+
+import class abstract worldIQuestPrefabStateListener extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

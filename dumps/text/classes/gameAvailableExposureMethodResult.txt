@@ -1,0 +1,5 @@
+import struct gameAvailableExposureMethodResult
+{
+	var distanceToTarget : Float;
+	var method : AICoverExposureMethod;
+}

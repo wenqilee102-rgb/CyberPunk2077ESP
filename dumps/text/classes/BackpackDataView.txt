@@ -1,0 +1,68 @@
+class BackpackDataView extends inkScriptableDataViewWrapper
+{
+	private   var itemSortMode : ItemSortMode;
+	private   var attachmentsList : array:gamedataItemType;
+	private   var uiScriptableSystem : whandle:UIScriptableSystem;
+	protected var itemFilterType : ItemFilterCategory;
+
+	function BindUIScriptableSystem(uiScriptableSystem : whandle:UIScriptableSystem); // BindUIScriptableSystem;UIScriptableSystem
+	function DerivedFilterItem(data : handle:IScriptable) : DerivedFilterResult; // DerivedFilterItem;IScriptable
+	function FilterAttachments(itemData : script_ref:gameInventoryItemData) : Bool; // FilterAttachments;script_ref<InventoryItemData>
+	function FilterClothes(itemData : script_ref:gameInventoryItemData) : Bool; // FilterClothes;script_ref<InventoryItemData>
+	function FilterConsumable(itemData : script_ref:gameInventoryItemData) : Bool; // FilterConsumable;script_ref<InventoryItemData>
+	function FilterCyberware(itemData : script_ref:gameInventoryItemData) : Bool; // FilterCyberware;script_ref<InventoryItemData>
+	function FilterCyberwareByEquipmentArea(equipmentArea : gamedataEquipmentArea) : Bool; // FilterCyberwareByEquipmentArea;gamedataEquipmentArea
+	function FilterCyberwareByItemType(itemType : gamedataItemType) : Bool; // FilterCyberwareByItemType;gamedataItemType
+	function FilterItem(data : handle:IScriptable) : Bool; // FilterItem;IScriptable
+	function FilterQuestItems(itemData : script_ref:gameInventoryItemData) : Bool; // FilterQuestItems;script_ref<InventoryItemData>
+	function FilterWeapons(itemData : script_ref:gameInventoryItemData) : Bool; // FilterWeapons;script_ref<InventoryItemData>
+	function GetFilterType() : ItemFilterCategory; // GetFilterType;
+	function GetSortMode() : ItemSortMode; // GetSortMode;
+	function NewPreSortingInjection(builder : handle:NewItemCompareBuilder) : handle:NewItemCompareBuilder; // NewPreSortingInjection;NewItemCompareBuilder
+	function PreFilterInjection(itemData : script_ref:gameInventoryItemData) : Bool; // PreFilterInjection;script_ref<InventoryItemData>
+	function PreSortingInjection(builder : handle:ItemCompareBuilder) : handle:ItemCompareBuilder; // PreSortingInjection;ItemCompareBuilder
+	function SetFilterType(type : ItemFilterCategory); // SetFilterType;ItemFilterCategory
+	function SetSortMode(mode : ItemSortMode); // SetSortMode;ItemSortMode
+	function SortItem(left : handle:IScriptable, right : handle:IScriptable) : Bool; // SortItem;IScriptableIScriptable
+	function SortItemNew(left : handle:WrappedInventoryItemData, right : handle:WrappedInventoryItemData) : Bool; // SortItemNew;WrappedInventoryItemDataWrappedInventoryItemData
+}
+
+import class inkScriptableDataViewWrapper extends inkBaseScriptableDataSource
+{
+	import function DisableSorting(); // DisableSorting
+	import function EnableSorting(); // EnableSorting
+	import function Filter(); // Filter
+	import function IsSortingEnabled() : Bool; // IsSortingEnabled
+	import function SetSource(source : whandle:inkBaseScriptableDataSource); // SetSource
+	import function Sort(); // Sort
+
+	function FilterItem(data : handle:IScriptable) : Bool; // FilterItem;IScriptable
+	function SortItem(left : handle:IScriptable, right : handle:IScriptable) : Bool; // SortItem;IScriptableIScriptable
+}
+
+import class inkBaseScriptableDataSource extends inkAbstractDataSourceWrapper
+{
+	import function GetItem(index : Uint32) : handle:IScriptable; // GetItem
+	import function HasItem(data : handle:IScriptable) : Bool; // HasItem
+}
+
+import class inkAbstractDataSourceWrapper extends IScriptable
+{
+	import function GetItemAsVariant(index : Uint32) : Variant; // GetItemAsVariant
+	import function HasItemAsVariant(data : Variant) : Bool; // HasItemAsVariant
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

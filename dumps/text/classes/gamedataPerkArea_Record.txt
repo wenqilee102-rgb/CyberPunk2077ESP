@@ -1,0 +1,44 @@
+import class gamedataPerkArea_Record extends gamedataTweakDBRecord
+{
+	import function Curve() : whandle:gamedataCurve_Record; // Curve
+	import function CurveHandle() : handle:gamedataCurve_Record; // CurveHandle
+	import function DisplayName() : String; // DisplayName
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetPerksCount() : Int32; // GetPerksCount
+	import function GetPerksItem(index : Int32) : whandle:gamedataPerk_Record; // GetPerksItem
+	import function GetPerksItemHandle(index : Int32) : handle:gamedataPerk_Record; // GetPerksItemHandle
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function MasteryLevel() : whandle:gamedataStatPrereq_Record; // MasteryLevel
+	import function MasteryLevelHandle() : handle:gamedataStatPrereq_Record; // MasteryLevelHandle
+	import function MaxLevel() : Int32; // MaxLevel
+	import function MinLevel() : Int32; // MinLevel
+	import function Perks(out outList : array:whandle:gamedataPerk_Record); // Perks
+	import function PerksContains(item : whandle:gamedataPerk_Record) : Bool; // PerksContains
+	import function Proficiency() : whandle:gamedataProficiency_Record; // Proficiency
+	import function ProficiencyHandle() : handle:gamedataProficiency_Record; // ProficiencyHandle
+	import function Requirement() : whandle:gamedataIPrereq_Record; // Requirement
+	import function RequirementHandle() : handle:gamedataIPrereq_Record; // RequirementHandle
+	import function Type() : gamedataPerkArea; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

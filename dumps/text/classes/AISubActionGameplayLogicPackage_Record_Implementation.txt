@@ -1,0 +1,22 @@
+class abstract AISubActionGameplayLogicPackage_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGameplayLogicPackage_Record); // AISubActionGameplayLogicPackage_Record_Implementation::Activate;ScriptExecutionContextAISubActionGameplayLogicPackage_Record
+	static function ApplyGameplayLogicPackage(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGameplayLogicPackage_Record); // AISubActionGameplayLogicPackage_Record_Implementation::ApplyGameplayLogicPackage;ScriptExecutionContextAISubActionGameplayLogicPackage_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGameplayLogicPackage_Record, duration : Float, interrupted : Bool); // AISubActionGameplayLogicPackage_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionGameplayLogicPackage_RecordFloatBool
+	static function RemoveGameplayLogicPackage(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGameplayLogicPackage_Record); // AISubActionGameplayLogicPackage_Record_Implementation::RemoveGameplayLogicPackage;ScriptExecutionContextAISubActionGameplayLogicPackage_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGameplayLogicPackage_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionGameplayLogicPackage_Record_Implementation::Update;ScriptExecutionContextAISubActionGameplayLogicPackage_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

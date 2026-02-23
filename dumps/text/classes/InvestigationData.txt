@@ -1,0 +1,5 @@
+struct InvestigationData
+{
+	public    var globalNodeRef : worldGlobalNodeRef;
+	public    var investigationPositionsArray : array:Vector4;
+}

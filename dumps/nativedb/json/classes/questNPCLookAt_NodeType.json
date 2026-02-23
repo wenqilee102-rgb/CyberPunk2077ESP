@@ -1,0 +1,1 @@
+{"a":"questISceneManagerNodeType","b":"questNPCLookAt_NodeType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"puppetRef","c":128},{"a":{"b":"gameEntityReference"},"b":"lookAtTargetRef","c":128},{"a":{"a":1},"b":"assignLookAt","c":128},{"a":{"a":1},"b":"refPlayer","c":128}]}

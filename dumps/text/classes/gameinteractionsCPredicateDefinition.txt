@@ -1,0 +1,7 @@
+import struct gameinteractionsCPredicateDefinition
+{
+	var predicateType : handle:gameinteractionsIPredicateType;
+	var binaryOperator : gameinteractionsEBinaryOperator;
+	var functor1DataDefinition : handle:gameinteractionsCFunctorDefinition;
+	var functor2DataDefinition : handle:gameinteractionsCFunctorDefinition;
+}

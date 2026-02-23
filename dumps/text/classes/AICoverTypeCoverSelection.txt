@@ -1,0 +1,7 @@
+import struct AICoverTypeCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

@@ -1,0 +1,19 @@
+import class animAnimNode_Blend2 extends animAnimNode_Base
+{
+	var minInputValue : Float;
+	var maxInputValue : Float;
+	var timeWarpingEnabled : Bool;
+	var syncMethod : handle:animISyncMethod;
+	var firstInputNode : animPoseLink;
+	var secondInputNode : animPoseLink;
+	var weightNode : animFloatLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

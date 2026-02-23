@@ -1,0 +1,44 @@
+import class gameDismembermentComponent extends entIComponent
+{
+	static function RequestDismemberment(obj : handle:gameObject, bodyPart : gameDismBodyPart, woundType : gameDismWoundType, optional hitPosition : Vector4, optional isCritical : Bool, optional debrisPath : String, optional debrisStrength : Float); // gameDismembermentComponent::RequestDismemberment;GameObjectgameDismBodyPartgameDismWoundTypeVector4BoolStringFloat
+	static function RequestGutsFromLastHit(obj : handle:gameObject, resourcePath : script_ref:String, strength : Float); // gameDismembermentComponent::RequestGutsFromLastHit;GameObjectscript_ref<String>Float
+
+	import function DoDismemberment(bodyPart : gameDismBodyPart, woundType : gameDismWoundType, optional strength : Float, isCritical : Bool, optional debrisPath : String, optional debrisStrength : Float); // DoDismemberment
+	import function GetDismemberedLimbCount() : gameDismemberedLimbCount; // GetDismemberedLimbCount
+	import function ReportExplosion(hitPosition : Vector4, strength : Float); // ReportExplosion
+	import function SpawnGutsFromLastHit(resourcePath : String, strength : Float); // SpawnGutsFromLastHit
+
+	event OnDismemberment(evt : handle:DismembermentEvent) : Bool; // OnDismemberment
+	event OnDismembermentDebris(evt : handle:DismembermentDebrisEvent) : Bool; // OnDismembermentDebris
+	event OnDismembermentExplosion(evt : handle:DismembermentExplosionEvent) : Bool; // OnDismembermentExplosion
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

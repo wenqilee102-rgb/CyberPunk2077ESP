@@ -1,0 +1,1 @@
+{"a":"AICTreeNodeActionDefinition","b":"AICTreeNodeActionTeleportToNodeDefinition","d":8,"e":[{"a":{"b":"LibTreeDefNodeRef"},"b":"nodeRef","c":128},{"a":{"b":"LibTreeDefVector"},"b":"offset","c":128},{"a":{"a":1},"b":"doNavTest","c":128}]}

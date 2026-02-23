@@ -1,0 +1,67 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class StatPoolPrereq : gameIScriptablePrereq
+	{
+		private CEnum<gamedataStatPoolType> _statPoolType;
+		private CArray<wCHandle<gamedataStatModifier_Record>> _valueToCheck;
+		private CEnum<EComparisonType> _comparisonType;
+		private CBool _skipOnApply;
+		private CBool _comparePercentage;
+		private CEnum<ObjectToCheck> _objToCheck;
+
+		[Ordinal(0)] 
+		[RED("statPoolType")] 
+		public CEnum<gamedataStatPoolType> StatPoolType
+		{
+			get => GetProperty(ref _statPoolType);
+			set => SetProperty(ref _statPoolType, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("valueToCheck")] 
+		public CArray<wCHandle<gamedataStatModifier_Record>> ValueToCheck
+		{
+			get => GetProperty(ref _valueToCheck);
+			set => SetProperty(ref _valueToCheck, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("comparisonType")] 
+		public CEnum<EComparisonType> ComparisonType
+		{
+			get => GetProperty(ref _comparisonType);
+			set => SetProperty(ref _comparisonType, value);
+		}
+
+		[Ordinal(3)] 
+		[RED("skipOnApply")] 
+		public CBool SkipOnApply
+		{
+			get => GetProperty(ref _skipOnApply);
+			set => SetProperty(ref _skipOnApply, value);
+		}
+
+		[Ordinal(4)] 
+		[RED("comparePercentage")] 
+		public CBool ComparePercentage
+		{
+			get => GetProperty(ref _comparePercentage);
+			set => SetProperty(ref _comparePercentage, value);
+		}
+
+		[Ordinal(5)] 
+		[RED("objToCheck")] 
+		public CEnum<ObjectToCheck> ObjToCheck
+		{
+			get => GetProperty(ref _objToCheck);
+			set => SetProperty(ref _objToCheck, value);
+		}
+
+		public StatPoolPrereq(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

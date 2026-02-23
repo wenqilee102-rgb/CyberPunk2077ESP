@@ -1,0 +1,14 @@
+import struct rendRenderMorphTargetMeshBlobHeader
+{
+	var version : Uint32;
+	var numDiffs : Uint32;
+	var numDiffsMapping : Uint32;
+	var numTargets : Uint32;
+	var targetStartsInVertexDiffs : array:Uint32;
+	var targetStartsInVertexDiffsMapping : array:Uint32;
+	var targetPositionDiffScale : array:Vector4;
+	var targetPositionDiffOffset : array:Vector4;
+	var numVertexDiffsInEachChunk : array:array:Uint32;
+	var numVertexDiffsMappingInEachChunk : array:array:Uint32;
+	var targetTextureDiffsData : array:rendRenderMorphTargetMeshBlobTextureData;
+}

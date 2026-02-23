@@ -1,0 +1,5 @@
+import struct worldWorldGlobalLightOverrideWithColorParameters
+{
+	var lightDirOverride : GlobalLightingTrajectoryOverride;
+	var lightColorOverride : HDRColor;
+}

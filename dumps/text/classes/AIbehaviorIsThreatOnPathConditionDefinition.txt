@@ -1,0 +1,18 @@
+import class AIbehaviorIsThreatOnPathConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var threatObject : handle:AIArgumentMapping;
+	var threatRadius : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

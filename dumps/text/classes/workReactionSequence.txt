@@ -1,0 +1,29 @@
+import class workReactionSequence extends workIContainerEntry
+{
+	var forcedBlendIn : Float;
+	var reactionTypes : array:TweakDBID;
+	var mainEmotionalState : CName;
+	var emotionalExpression : CName;
+	var facialKeyWeight : Float;
+	var facialIdleMaleAnimation : CName;
+	var facialIdleKey_MaleAnimation : CName;
+	var facialIdleFemaleAnimation : CName;
+	var facialIdleKey_FemaleAnimation : CName;
+}
+
+import class abstract workIContainerEntry extends workIEntry
+{
+	var list : array:handle:workIEntry;
+	var disableAutoTransition : Bool;
+	var idleAnim : CName;
+}
+
+import class abstract workIEntry extends ISerializable
+{
+	var id : workWorkEntryId;
+	var flags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

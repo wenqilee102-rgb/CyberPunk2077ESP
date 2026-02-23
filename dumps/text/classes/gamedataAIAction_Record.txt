@@ -1,0 +1,117 @@
+import class gamedataAIAction_Record extends gamedataAINode_Record
+{
+	import function Ability() : whandle:gamedataGameplayAbility_Record; // Ability
+	import function AbilityHandle() : handle:gamedataGameplayAbility_Record; // AbilityHandle
+	import function AllowBlendDuration() : Float; // AllowBlendDuration
+	import function AllowBlendPercCap() : Float; // AllowBlendPercCap
+	import function AnimData() : whandle:gamedataAIActionAnimData_Record; // AnimData
+	import function AnimDataHandle() : handle:gamedataAIActionAnimData_Record; // AnimDataHandle
+	import function AnimationWrapperOverrides() : array:CName; // AnimationWrapperOverrides
+	import function AnimationWrapperOverridesContains(item : CName) : Bool; // AnimationWrapperOverridesContains
+	import function Commands() : array:CName; // Commands
+	import function CommandsContains(item : CName) : Bool; // CommandsContains
+	import function CompleteWithFailure() : Bool; // CompleteWithFailure
+	import function Cooldowns(out outList : array:whandle:gamedataAIActionCooldown_Record); // Cooldowns
+	import function CooldownsContains(item : whandle:gamedataAIActionCooldown_Record) : Bool; // CooldownsContains
+	import function DisableAction() : Bool; // DisableAction
+	import function DisableActionInMultiplayer() : Bool; // DisableActionInMultiplayer
+	import function FailIfAnimationNotStreamedIn() : Bool; // FailIfAnimationNotStreamedIn
+	import function GetAnimationWrapperOverridesCount() : Int32; // GetAnimationWrapperOverridesCount
+	import function GetAnimationWrapperOverridesItem(index : Int32) : CName; // GetAnimationWrapperOverridesItem
+	import function GetCommandsCount() : Int32; // GetCommandsCount
+	import function GetCommandsItem(index : Int32) : CName; // GetCommandsItem
+	import function GetCooldownsCount() : Int32; // GetCooldownsCount
+	import function GetCooldownsItem(index : Int32) : whandle:gamedataAIActionCooldown_Record; // GetCooldownsItem
+	import function GetCooldownsItemHandle(index : Int32) : handle:gamedataAIActionCooldown_Record; // GetCooldownsItemHandle
+	import function GetInitCooldownsCount() : Int32; // GetInitCooldownsCount
+	import function GetInitCooldownsItem(index : Int32) : whandle:gamedataAIActionCooldown_Record; // GetInitCooldownsItem
+	import function GetInitCooldownsItemHandle(index : Int32) : handle:gamedataAIActionCooldown_Record; // GetInitCooldownsItemHandle
+	import function GetLookatsCount() : Int32; // GetLookatsCount
+	import function GetLookatsItem(index : Int32) : whandle:gamedataAIActionLookAtData_Record; // GetLookatsItem
+	import function GetLookatsItemHandle(index : Int32) : handle:gamedataAIActionLookAtData_Record; // GetLookatsItemHandle
+	import function GetLoopSubActionsCount() : Int32; // GetLoopSubActionsCount
+	import function GetLoopSubActionsItem(index : Int32) : whandle:gamedataAISubAction_Record; // GetLoopSubActionsItem
+	import function GetLoopSubActionsItemHandle(index : Int32) : handle:gamedataAISubAction_Record; // GetLoopSubActionsItemHandle
+	import function GetRecoverySubActionsCount() : Int32; // GetRecoverySubActionsCount
+	import function GetRecoverySubActionsItem(index : Int32) : whandle:gamedataAISubAction_Record; // GetRecoverySubActionsItem
+	import function GetRecoverySubActionsItemHandle(index : Int32) : handle:gamedataAISubAction_Record; // GetRecoverySubActionsItemHandle
+	import function GetStartupSubActionsCount() : Int32; // GetStartupSubActionsCount
+	import function GetStartupSubActionsItem(index : Int32) : whandle:gamedataAISubAction_Record; // GetStartupSubActionsItem
+	import function GetStartupSubActionsItemHandle(index : Int32) : handle:gamedataAISubAction_Record; // GetStartupSubActionsItemHandle
+	import function GetSubActionsCount() : Int32; // GetSubActionsCount
+	import function GetSubActionsItem(index : Int32) : whandle:gamedataAISubAction_Record; // GetSubActionsItem
+	import function GetSubActionsItemHandle(index : Int32) : handle:gamedataAISubAction_Record; // GetSubActionsItemHandle
+	import function GetTicketsCount() : Int32; // GetTicketsCount
+	import function GetTicketsItem(index : Int32) : whandle:gamedataAITicketType_Record; // GetTicketsItem
+	import function GetTicketsItemHandle(index : Int32) : handle:gamedataAITicketType_Record; // GetTicketsItemHandle
+	import function InitCooldowns(out outList : array:whandle:gamedataAIActionCooldown_Record); // InitCooldowns
+	import function InitCooldownsContains(item : whandle:gamedataAIActionCooldown_Record) : Bool; // InitCooldownsContains
+	import function Lookats(out outList : array:whandle:gamedataAIActionLookAtData_Record); // Lookats
+	import function LookatsContains(item : whandle:gamedataAIActionLookAtData_Record) : Bool; // LookatsContains
+	import function Loop() : whandle:gamedataAIActionPhase_Record; // Loop
+	import function LoopEndCondition() : whandle:gamedataAIActionOR_Record; // LoopEndCondition
+	import function LoopEndConditionHandle() : handle:gamedataAIActionOR_Record; // LoopEndConditionHandle
+	import function LoopHandle() : handle:gamedataAIActionPhase_Record; // LoopHandle
+	import function LoopRepeatCondition() : whandle:gamedataAIActionOR_Record; // LoopRepeatCondition
+	import function LoopRepeatConditionHandle() : handle:gamedataAIActionOR_Record; // LoopRepeatConditionHandle
+	import function LoopSubActions(out outList : array:whandle:gamedataAISubAction_Record); // LoopSubActions
+	import function LoopSubActionsContains(item : whandle:gamedataAISubAction_Record) : Bool; // LoopSubActionsContains
+	import function Recovery() : whandle:gamedataAIActionPhase_Record; // Recovery
+	import function RecoveryEndCondition() : whandle:gamedataAIActionOR_Record; // RecoveryEndCondition
+	import function RecoveryEndConditionHandle() : handle:gamedataAIActionOR_Record; // RecoveryEndConditionHandle
+	import function RecoveryHandle() : handle:gamedataAIActionPhase_Record; // RecoveryHandle
+	import function RecoveryRepeatCondition() : whandle:gamedataAIActionOR_Record; // RecoveryRepeatCondition
+	import function RecoveryRepeatConditionHandle() : handle:gamedataAIActionOR_Record; // RecoveryRepeatConditionHandle
+	import function RecoverySubActions(out outList : array:whandle:gamedataAISubAction_Record); // RecoverySubActions
+	import function RecoverySubActionsContains(item : whandle:gamedataAISubAction_Record) : Bool; // RecoverySubActionsContains
+	import function RevokingTicketCompletesAction() : Bool; // RevokingTicketCompletesAction
+	import function Startup() : whandle:gamedataAIActionPhase_Record; // Startup
+	import function StartupEndCondition() : whandle:gamedataAIActionOR_Record; // StartupEndCondition
+	import function StartupEndConditionHandle() : handle:gamedataAIActionOR_Record; // StartupEndConditionHandle
+	import function StartupHandle() : handle:gamedataAIActionPhase_Record; // StartupHandle
+	import function StartupRepeatCondition() : whandle:gamedataAIActionOR_Record; // StartupRepeatCondition
+	import function StartupRepeatConditionHandle() : handle:gamedataAIActionOR_Record; // StartupRepeatConditionHandle
+	import function StartupSubActions(out outList : array:whandle:gamedataAISubAction_Record); // StartupSubActions
+	import function StartupSubActionsContains(item : whandle:gamedataAISubAction_Record) : Bool; // StartupSubActionsContains
+	import function SubActions(out outList : array:whandle:gamedataAISubAction_Record); // SubActions
+	import function SubActionsCanCompleteAction() : Bool; // SubActionsCanCompleteAction
+	import function SubActionsContains(item : whandle:gamedataAISubAction_Record) : Bool; // SubActionsContains
+	import function TicketAcknowledgeTimeout() : Float; // TicketAcknowledgeTimeout
+	import function Tickets(out outList : array:whandle:gamedataAITicketType_Record); // Tickets
+	import function TicketsContains(item : whandle:gamedataAITicketType_Record) : Bool; // TicketsContains
+	import function WaitForAnimationToLoad() : Bool; // WaitForAnimationToLoad
+}
+
+import class gamedataAINode_Record extends gamedataAIRecord_Record
+{
+	import function ActivateCondition() : whandle:gamedataAIActionAND_Record; // ActivateCondition
+	import function ActivateConditionHandle() : handle:gamedataAIActionAND_Record; // ActivateConditionHandle
+	import function ActivationCondition() : whandle:gamedataAIActionCondition_Record; // ActivationCondition
+	import function ActivationConditionHandle() : handle:gamedataAIActionCondition_Record; // ActivationConditionHandle
+	import function IsVirtual() : Bool; // IsVirtual
+	import function MinLOD() : Int32; // MinLOD
+}
+
+import class gamedataAIRecord_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

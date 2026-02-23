@@ -1,0 +1,4 @@
+struct SpiderbotScavengeOptions
+{
+	public    var scavengableBySpiderbot : Bool;
+}

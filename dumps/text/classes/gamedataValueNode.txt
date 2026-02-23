@@ -1,0 +1,16 @@
+import class gamedataValueNode extends gamedataDataNode
+{
+	var data : handle:gamedataValueDataNode;
+	var group : handle:gamedataGroupNode;
+}
+
+import class abstract gamedataDataNode extends ISerializable
+{
+	var nodeType : gamedataDataNodeType;
+	var fileName : String;
+	var parent : whandle:gamedataDataNode;
+}
+
+import class abstract ISerializable
+{
+}

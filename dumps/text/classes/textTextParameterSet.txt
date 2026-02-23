@@ -1,0 +1,83 @@
+import class textTextParameterSet extends IScriptable
+{
+	import function Internal_AddCurrentDate(optional key : String); // Internal_AddCurrentDate
+	import function Internal_AddFloat(value : Float, optional key : String); // Internal_AddFloat
+	import function Internal_AddInteger(value : Int32, optional key : String); // Internal_AddInteger
+	import function Internal_AddLocalizedName(valueLocKey : CName, optional key : String); // Internal_AddLocalizedName
+	import function Internal_AddLocalizedString(valueLocKey : String, optional key : String); // Internal_AddLocalizedString
+	import function Internal_AddMeasurement(value : Float, valueUnit : EMeasurementUnit, optional key : String); // Internal_AddMeasurement
+	import function Internal_AddNCGameTime(valueSeconds : Int32, optional key : String); // Internal_AddNCGameTime
+	import function Internal_AddString(value : String, optional key : String); // Internal_AddString
+	import function Internal_AddTime(valueSeconds : Int32, optional key : String); // Internal_AddTime
+	import function Internal_SetAsyncFormat(value : Bool); // Internal_SetAsyncFormat
+	import function Internal_UpdateCurrentDate(index : Int32); // Internal_UpdateCurrentDate
+	import function Internal_UpdateCurrentDateKey(key : String); // Internal_UpdateCurrentDateKey
+	import function Internal_UpdateFloat(index : Int32, value : Float); // Internal_UpdateFloat
+	import function Internal_UpdateFloatKey(key : String, value : Float); // Internal_UpdateFloatKey
+	import function Internal_UpdateInteger(index : Int32, value : Int32); // Internal_UpdateInteger
+	import function Internal_UpdateIntegerKey(key : String, value : Int32); // Internal_UpdateIntegerKey
+	import function Internal_UpdateLocalizedName(index : Int32, valueLocKey : CName); // Internal_UpdateLocalizedName
+	import function Internal_UpdateLocalizedNameKey(key : String, valueLocKey : CName); // Internal_UpdateLocalizedNameKey
+	import function Internal_UpdateLocalizedString(index : Int32, valueLocKey : String); // Internal_UpdateLocalizedString
+	import function Internal_UpdateLocalizedStringKey(key : String, valueLocKey : String); // Internal_UpdateLocalizedStringKey
+	import function Internal_UpdateMeasurement(index : Int32, value : Float, valueUnit : EMeasurementUnit); // Internal_UpdateMeasurement
+	import function Internal_UpdateMeasurementKey(key : String, value : Float, valueUnit : EMeasurementUnit); // Internal_UpdateMeasurementKey
+	import function Internal_UpdateString(index : Int32, value : String); // Internal_UpdateString
+	import function Internal_UpdateStringKey(key : String, value : String); // Internal_UpdateStringKey
+	import function Internal_UpdateTime(index : Int32, valueSeconds : Int32); // Internal_UpdateTime
+	import function Internal_UpdateTimeKey(key : String, valueSeconds : Int32); // Internal_UpdateTimeKey
+
+	function AddCurrentDate(); // AddCurrentDate;
+	function AddCurrentDate(key : script_ref:String); // AddCurrentDate;script_ref<String>
+	function AddLocalizedName(key : script_ref:String, valueLocKey : CName); // AddLocalizedName;script_ref<String>CName
+	function AddLocalizedName(valueLocKey : CName); // AddLocalizedName;CName
+	function AddLocalizedString(valueLocKey : script_ref:String); // AddLocalizedString;script_ref<String>
+	function AddLocalizedString(key : script_ref:String, valueLocKey : script_ref:String); // AddLocalizedString;script_ref<String>script_ref<String>
+	function AddMeasurement(value : Float, valueUnit : EMeasurementUnit); // AddMeasurement;FloatEMeasurementUnit
+	function AddMeasurement(key : script_ref:String, value : Float, valueUnit : EMeasurementUnit); // AddMeasurement;script_ref<String>FloatEMeasurementUnit
+	function AddNCGameTime(value : GameTime); // AddNCGameTime;GameTime
+	function AddNCGameTime(key : script_ref:String, value : GameTime); // AddNCGameTime;script_ref<String>GameTime
+	function AddNumber(value : Int32); // AddNumber;Int32
+	function AddNumber(key : script_ref:String, value : Int32); // AddNumber;script_ref<String>Int32
+	function AddNumber(value : Float); // AddNumber;Float
+	function AddNumber(key : script_ref:String, value : Float); // AddNumber;script_ref<String>Float
+	function AddString(value : script_ref:String); // AddString;script_ref<String>
+	function AddString(key : script_ref:String, value : script_ref:String); // AddString;script_ref<String>script_ref<String>
+	function AddTime(valueSeconds : Int32); // AddTime;Int32
+	function AddTime(value : GameTime); // AddTime;GameTime
+	function AddTime(key : script_ref:String, valueSeconds : Int32); // AddTime;script_ref<String>Int32
+	function AddTime(key : script_ref:String, value : GameTime); // AddTime;script_ref<String>GameTime
+	function SetAsyncFormat(value : Bool); // SetAsyncFormat;Bool
+	function UpdateCurrentDate(index : Int32); // UpdateCurrentDate;Int32
+	function UpdateCurrentDate(key : script_ref:String); // UpdateCurrentDate;script_ref<String>
+	function UpdateLocalizedName(index : Int32, valueLocKey : CName); // UpdateLocalizedName;Int32CName
+	function UpdateLocalizedName(key : script_ref:String, valueLocKey : CName); // UpdateLocalizedName;script_ref<String>CName
+	function UpdateLocalizedString(key : script_ref:String, valueLocKey : script_ref:String); // UpdateLocalizedString;script_ref<String>script_ref<String>
+	function UpdateLocalizedString(index : Int32, valueLocKey : script_ref:String); // UpdateLocalizedString;Int32script_ref<String>
+	function UpdateMeasurement(index : Int32, value : Float, valueUnit : EMeasurementUnit); // UpdateMeasurement;Int32FloatEMeasurementUnit
+	function UpdateMeasurement(key : script_ref:String, value : Float, valueUnit : EMeasurementUnit); // UpdateMeasurement;script_ref<String>FloatEMeasurementUnit
+	function UpdateNumber(index : Int32, value : Int32); // UpdateNumber;Int32Int32
+	function UpdateNumber(key : script_ref:String, value : Int32); // UpdateNumber;script_ref<String>Int32
+	function UpdateNumber(index : Int32, value : Float); // UpdateNumber;Int32Float
+	function UpdateNumber(key : script_ref:String, value : Float); // UpdateNumber;script_ref<String>Float
+	function UpdateString(key : script_ref:String, value : script_ref:String); // UpdateString;script_ref<String>script_ref<String>
+	function UpdateString(index : Int32, value : script_ref:String); // UpdateString;Int32script_ref<String>
+	function UpdateTime(index : Int32, valueSeconds : Int32); // UpdateTime;Int32Int32
+	function UpdateTime(index : Int32, value : GameTime); // UpdateTime;Int32GameTime
+	function UpdateTime(key : script_ref:String, value : GameTime); // UpdateTime;script_ref<String>GameTime
+	function UpdateTime(key : script_ref:String, valueSeconds : Int32); // UpdateTime;script_ref<String>Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

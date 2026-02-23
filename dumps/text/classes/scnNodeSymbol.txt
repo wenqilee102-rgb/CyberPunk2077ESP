@@ -1,0 +1,6 @@
+import struct scnNodeSymbol
+{
+	var nodeId : scnNodeId;
+	var editorNodeId : scnNodeId;
+	var editorEventId : Uint64;
+}

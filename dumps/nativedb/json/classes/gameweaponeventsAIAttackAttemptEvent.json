@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameweaponeventsAIAttackAttemptEvent","c":"AIAttackAttemptEvent","d":8,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"instigator","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"target","c":128},{"a":{"a":1},"b":"isWindUp","c":128},{"a":{"b":"gameEContinuousMode"},"b":"continuousMode","c":128},{"a":{"a":10},"b":"minimumOpacity","c":128}]}

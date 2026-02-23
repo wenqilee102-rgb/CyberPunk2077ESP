@@ -1,0 +1,37 @@
+import class inkSaveMetadataInfo extends IScriptable
+{
+	var saveIndex : Int32;
+	var saveID : Uint32;
+	var internalName : String;
+	var locationName : String;
+	var trackedQuest : String;
+	var lifePath : inkLifePath;
+	var saveType : inkSaveType;
+	var saveStatus : inkSaveStatus;
+	var timestamp : Uint64;
+	var playTime : Double;
+	var playthroughTime : Double;
+	var initialLoadingScreenID : Uint64;
+	var level : Double;
+	var gameVersion : String;
+	var isValid : Bool;
+	var isModded : Bool;
+	var platform : String;
+	var additionalContentIds : array:CName;
+
+	function IsEp1Save() : Bool; // IsEp1Save;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

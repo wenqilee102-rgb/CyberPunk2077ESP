@@ -1,0 +1,27 @@
+import class questSetCyberspacePostFX_NodeType extends questIRenderFxManagerNodeType
+{
+	var enabled : Bool;
+	var fullScreen : Bool;
+	var vfx : Bool;
+	var initialDatamosh : Float;
+	var targetDatamosh : Float;
+	var initialTreshold : Float;
+	var targetTreshold : Float;
+	var timeBlend : Float;
+}
+
+import class abstract questIRenderFxManagerNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,21 @@
+import class audioVehicleGridDestruction extends audioAudioMetadata
+{
+	var minGridCellRawChangeThreshold : Float;
+	var specificGridCellImpactCooldown : Float;
+	var minGridCellValueToPlayDetailedEvent : Float;
+	var bottomLayer : audioVehicleDestructionGridLayer;
+	var upperLayer : audioVehicleDestructionGridLayer;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

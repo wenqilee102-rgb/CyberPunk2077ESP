@@ -1,0 +1,40 @@
+class UIInventoryItemInternalData extends IScriptable
+{
+	public    var Name : String;
+	public    var Quality : gamedataQuality;
+	public    var ItemType : gamedataItemType;
+	public    var Quantity : Int32;
+	public    var Description : String;
+	public    var IconPath : String;
+	public    var IsQuestItem : Bool;
+	public    var IsRecipeItem : Bool;
+	public    var IsIconicItem : Bool;
+	public    var EquipmentArea : gamedataEquipmentArea;
+	public    var FilterCategory : ItemFilterCategory;
+	public    var PrimaryStat : handle:UIInventoryItemStat;
+	public    var ItemTypeOrder : Int32;
+	public    var Weight : Float;
+	public    var ItemPlus : Float;
+	public    var StatsManager : handle:UIInventoryItemStatsManager;
+	public    var ModsManager : handle:UIInventoryItemModsManager;
+	public    var RequirementsManager : handle:UIInventoryItemRequirementsManager;
+	public    var UIItemCategory : UIItemCategory;
+	public    var ComparisonQuality : Float;
+	public    var QualityText : String;
+	public    var IsSellable : Bool;
+	public    var IsBroken : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

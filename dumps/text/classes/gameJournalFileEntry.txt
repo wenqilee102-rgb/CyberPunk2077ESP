@@ -1,0 +1,33 @@
+import class abstract gameJournalFileEntry extends gameJournalContainerEntry
+{
+}
+
+import class abstract gameJournalContainerEntry extends gameJournalEntry
+{
+	var entries : array:handle:gameJournalEntry;
+}
+
+import class abstract gameJournalEntry extends IScriptable
+{
+	var id : String;
+	var journalEntryOverrideDataList : array:gameJournalEntryOverrideData;
+
+	import function GetEditorName() : String; // GetEditorName
+	import function GetId() : String; // GetId
+	import function GetJournalEntryOverrideDataList(out journalEntryOverrideDataList : array:handle:gameJournalEntryOverrideData); // GetJournalEntryOverrideDataList
+	import function GetJournalEntryOverrideDataListCount() : Int32; // GetJournalEntryOverrideDataListCount
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,88 @@
+class CityLightSystem extends gameScriptableSystem
+{
+	private   var timeSystemCallbacks : array:handle:TimetableCallbackData;
+	private   var fuses : array:FuseData;
+	private   var state : ECLSForcedState;
+	private   var forcedStateSource : CName;
+	private   var forcedStatesStack : array:ForcedStateData;
+	private   var weatherListener : handle:CLSWeatherListener;
+	private   var turnOffLisenerID : CName;
+	private   var turnOnLisenerID : CName;
+	private   var resetLisenerID : CName;
+	private   var weatherCallbackId : Uint32;
+
+	static function GetMaxNotificationsPerFrame() : Int32; // CityLightSystem::GetMaxNotificationsPerFrame;
+
+	function AddForcedStateRequest(state : ECLSForcedState, sourceName : CName, priority : EPriority, savable : Bool) : Bool; // AddForcedStateRequest;ECLSForcedStateCNameEPriorityBool
+	function AddFuse(requesterData : PSOwnerData, timeTable : script_ref:array:SDeviceTimetableEntry, optional lights : Int32) : Int32; // AddFuse;PSOwnerDatascript_ref<array<SDeviceTimetableEntry>>Int32
+	function AddTimeTableCallbacks(requesterData : PSOwnerData, timeTable : script_ref:array:SDeviceTimetableEntry, optional lights : Int32); // AddTimeTableCallbacks;PSOwnerDatascript_ref<array<SDeviceTimetableEntry>>Int32
+	function EvaluateForcedStatesStack(); // EvaluateForcedStatesStack;
+	function GetActiveTimeTableEntry(fuse : script_ref:FuseData, out entry : SDeviceTimetableEntry) : Bool; // GetActiveTimeTableEntry;script_ref<FuseData>SDeviceTimetableEntry
+	function GetActiveTimeTableEntryID(fuse : script_ref:FuseData) : Int32; // GetActiveTimeTableEntryID;script_ref<FuseData>
+	function GetCallbacks() : array:handle:TimetableCallbackData; // GetCallbacks;
+	function GetCurrentTime() : GameTime; // GetCurrentTime;
+	function GetFuse(fuseID : Int32, fuseData : script_ref:FuseData) : Bool; // GetFuse;Int32script_ref<FuseData>
+	function GetFuseID(id : gamePersistentID) : Int32; // GetFuseID;PersistentID
+	function GetFuseID(requesterData : PSOwnerData) : Int32; // GetFuseID;PSOwnerData
+	function GetFuseStateByID(id : gamePersistentID) : EDeviceStatus; // GetFuseStateByID;PersistentID
+	function GetFusesCount() : Int32; // GetFusesCount;
+	function GetLightsCount() : Int32; // GetLightsCount;
+	function GetState() : ECLSForcedState; // GetState;
+	function GetTimeTableCallback(time : SSimpleGameTime) : handle:TimetableCallbackData; // GetTimeTableCallback;SSimpleGameTime
+	function HasFuse(requesterData : PSOwnerData, out id : Int32) : Bool; // HasFuse;PSOwnerDataInt32
+	function InitializeDebugButtons(); // InitializeDebugButtons;
+	function IsForcedRequestSavable(data : ForcedStateData) : Bool; // IsForcedRequestSavable;ForcedStateData
+	function IsTimeTheSame(time1 : SSimpleGameTime, time2 : SSimpleGameTime) : Bool; // IsTimeTheSame;SSimpleGameTimeSSimpleGameTime
+	function NotifyRecipients(callbackData : handle:TimetableCallbackData); // NotifyRecipients;TimetableCallbackData
+	function NotifyRecipientsOnRegistration(callbackData : handle:TimetableCallbackData); // NotifyRecipientsOnRegistration;TimetableCallbackData
+	function OnAttach(); // OnAttach;
+	function OnDebugButtonClicked(request : handle:gameSDOClickedRequest); // OnDebugButtonClicked;SDOClickedRequest
+	function OnDetach(); // OnDetach;
+	function OnForceCLSStateRequest(request : handle:ForceCLSStateRequest); // OnForceCLSStateRequest;ForceCLSStateRequest
+	function OnNotifyRecipientsrequest(request : handle:NotifyRecipientsRequest); // OnNotifyRecipientsrequest;NotifyRecipientsRequest
+	function OnRegisterTimetableRequest(request : handle:RegisterTimetableRequest); // OnRegisterTimetableRequest;RegisterTimetableRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnTimeTableCallbackRequest(request : handle:TimeTableCallbackRequest); // OnTimeTableCallbackRequest;TimeTableCallbackRequest
+	function RegisterTimetableCallback(callbackData : handle:TimetableCallbackData); // RegisterTimetableCallback;TimetableCallbackData
+	function RemoveForcedStateRequestForSource(sourceName : CName) : Bool; // RemoveForcedStateRequestForSource;CName
+	function ResolveForcedStatesStackOnLoad(); // ResolveForcedStatesStackOnLoad;
+	function SendDeviceTimetableEvent(data : RecipientData); // SendDeviceTimetableEvent;RecipientData
+	function SendForceStateDeviceTimetableEvent(fuse : script_ref:FuseData, state : ECLSForcedState); // SendForceStateDeviceTimetableEvent;script_ref<FuseData>ECLSForcedState
+	function SendNotificationByRequest(recipients : script_ref:array:RecipientData, time : GameTime); // SendNotificationByRequest;script_ref<array<RecipientData>>GameTime
+	function SendNotificationToRecipients(recipients : script_ref:array:RecipientData, time : GameTime); // SendNotificationToRecipients;script_ref<array<RecipientData>>GameTime
+	function ShouldNotifyRecipient(recipient : RecipientData, callbackTime : GameTime) : Bool; // ShouldNotifyRecipient;RecipientDataGameTime
+	function ShowDebug_fuses(fuses : script_ref:array:FuseData); // ShowDebug_fuses;script_ref<array<FuseData>>
+	function ShowDebug_state(); // ShowDebug_state;
+	function UninitializeDebugButtons(); // UninitializeDebugButtons;
+	function UpdateCLSForcedState(); // UpdateCLSForcedState;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataTrap_Record","c":"Trap_Record","d":24,"f":[{"a":"Name","c":{"a":12},"d":4},{"a":"Probability","c":{"a":10},"d":4},{"a":"Type","c":{"a":27,"c":{"b":"gamedataTrapType_Record"}},"d":4},{"a":"TypeHandle","c":{"a":26,"c":{"b":"gamedataTrapType_Record"}},"d":4}]}

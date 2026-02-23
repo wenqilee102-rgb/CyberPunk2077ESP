@@ -1,0 +1,6 @@
+enum gameuiCharacterCustomizationEditTag
+{
+	NewGame = 0,
+	HairDresser = 1,
+	Ripperdoc = 2
+}

@@ -1,0 +1,1 @@
+{"b":"MaterialTechnique","d":8,"g":true,"e":[{"a":{"a":31,"c":{"b":"MaterialPass"}},"b":"passes","c":128},{"a":{"b":"FeatureFlagsMask"},"b":"featureFlagsEnabledMask","c":128},{"a":{"a":7},"b":"streamsToBind","c":128}]}

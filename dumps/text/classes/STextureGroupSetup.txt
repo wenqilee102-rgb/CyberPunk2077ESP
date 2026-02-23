@@ -1,0 +1,12 @@
+import struct STextureGroupSetup
+{
+	var group : GpuWrapApieTextureGroup;
+	var rawFormat : ETextureRawFormat;
+	var compression : ETextureCompression;
+	var isStreamable : Bool;
+	var hasMipchain : Bool;
+	var isGamma : Bool;
+	var platformMipBiasPC : Uint8;
+	var platformMipBiasConsole : Uint8;
+	var allowTextureDowngrade : Bool;
+}

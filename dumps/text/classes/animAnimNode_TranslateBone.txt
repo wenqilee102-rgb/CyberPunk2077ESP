@@ -1,0 +1,19 @@
+import class animAnimNode_TranslateBone extends animAnimNode_Base
+{
+	var inputNode : animPoseLink;
+	var inputTranslation : animVectorLink;
+	var scale : Vector4;
+	var biasValue : Vector4;
+	var bone : animTransformIndex;
+	var useIncrementalMode : Bool;
+	var resetOnActivation : Bool;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

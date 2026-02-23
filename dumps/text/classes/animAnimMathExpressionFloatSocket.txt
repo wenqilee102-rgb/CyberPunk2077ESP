@@ -1,0 +1,6 @@
+import struct animAnimMathExpressionFloatSocket
+{
+	var link : animFloatLink;
+	var expressionVarId : Uint16;
+	var inputFloatTrack : animNamedTrackIndex;
+}

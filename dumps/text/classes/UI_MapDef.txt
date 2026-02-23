@@ -1,0 +1,28 @@
+class UI_MapDef extends gamebbScriptDefinition
+{
+	public    var currentLocation : gamebbScriptID_String;
+	public    var currentLocationEnumName : gamebbScriptID_String;
+	public    var newLocationDiscovered : gamebbScriptID_Bool;
+	public    var currentState : gamebbScriptID_String;
+	public    var minimapLayerHighlightRequest : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

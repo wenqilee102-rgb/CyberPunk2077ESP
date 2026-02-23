@@ -1,0 +1,42 @@
+import class gamedataAIVehicleCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function ActivePassangers() : Vector2; // ActivePassangers
+	import function CurrentSpeed() : Vector2; // CurrentSpeed
+	import function DriverCheck() : Int32; // DriverCheck
+	import function FreeSlots(out outList : array:whandle:gamedataVehicleSeat_Record); // FreeSlots
+	import function FreeSlotsContains(item : whandle:gamedataVehicleSeat_Record) : Bool; // FreeSlotsContains
+	import function GetFreeSlotsCount() : Int32; // GetFreeSlotsCount
+	import function GetFreeSlotsItem(index : Int32) : whandle:gamedataVehicleSeat_Record; // GetFreeSlotsItem
+	import function GetFreeSlotsItemHandle(index : Int32) : handle:gamedataVehicleSeat_Record; // GetFreeSlotsItemHandle
+	import function GetHasTagsCount() : Int32; // GetHasTagsCount
+	import function GetHasTagsItem(index : Int32) : CName; // GetHasTagsItem
+	import function HasTags() : array:CName; // HasTags
+	import function HasTagsContains(item : CName) : Bool; // HasTagsContains
+	import function Vehicle() : whandle:gamedataAIActionTarget_Record; // Vehicle
+	import function VehicleHandle() : handle:gamedataAIActionTarget_Record; // VehicleHandle
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

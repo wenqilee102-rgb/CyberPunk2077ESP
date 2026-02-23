@@ -1,0 +1,5 @@
+import struct AISharedVarDefinition
+{
+	var type : AIESharedVarDefinitionType;
+	var name : LibTreeSharedVarRegistrationName;
+}

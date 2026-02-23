@@ -1,0 +1,4 @@
+import struct toolsJiraFixVersion
+{
+	var id : String;
+}

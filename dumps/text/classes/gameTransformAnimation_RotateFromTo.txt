@@ -1,0 +1,14 @@
+import class gameTransformAnimation_RotateFromTo extends gameTransformAnimationTrackItemImpl
+{
+	var startRotationEvaluator : handle:gameTransformAnimation_Rotation;
+	var targetRotationEvaluator : handle:gameTransformAnimation_Rotation;
+	var movement : handle:gameTransformAnimation_Movement;
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

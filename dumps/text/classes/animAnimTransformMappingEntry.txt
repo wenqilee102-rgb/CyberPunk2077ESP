@@ -1,0 +1,5 @@
+import struct animAnimTransformMappingEntry
+{
+	var from : CName;
+	var to : CName;
+}

@@ -1,0 +1,10 @@
+import class scnChoiceNodeNsTimedParams extends ISerializable
+{
+	var action : scnChoiceNodeNsTimedAction;
+	var timeLimitedFinish : Bool;
+	var duration : scnSceneTime;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct inkGridItemTemplate
+{
+	var sizeX : Uint32;
+	var sizeY : Uint32;
+	var widget : inkWidgetLibraryReference;
+}

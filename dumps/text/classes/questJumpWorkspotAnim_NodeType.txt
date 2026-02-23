@@ -1,0 +1,22 @@
+import class questJumpWorkspotAnim_NodeType extends questIBehaviourManager_NodeType
+{
+	var allowCurrAnimToFinish : Bool;
+	var entryIdToJumpTo : Int32;
+}
+
+import class abstract questIBehaviourManager_NodeType extends questIRetNodeType
+{
+	var puppetRef : gameEntityReference;
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

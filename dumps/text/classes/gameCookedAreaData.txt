@@ -1,0 +1,7 @@
+import struct gameCookedAreaData
+{
+	var entityID : entEntityID;
+	var position : Vector3;
+	var radius : Float;
+	var volume : handle:gamemappinsIMappinVolume;
+}

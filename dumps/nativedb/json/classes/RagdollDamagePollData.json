@@ -1,0 +1,1 @@
+{"b":"RagdollDamagePollData","d":0,"g":true,"e":[{"a":{"b":"WorldPosition"},"b":"worldPosition","c":128},{"a":{"b":"Vector4"},"b":"worldNormal","c":128},{"a":{"a":10},"b":"maxForceMagnitude","c":128},{"a":{"a":10},"b":"maxImpulseMagnitude","c":128},{"a":{"a":10},"b":"maxVelocityChange","c":128},{"a":{"a":10},"b":"maxZDiff","c":128}]}

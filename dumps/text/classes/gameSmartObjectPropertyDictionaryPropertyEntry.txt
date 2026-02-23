@@ -1,0 +1,13 @@
+import struct gameSmartObjectPropertyDictionaryPropertyEntry
+{
+	var id : Uint16;
+	var usage : Uint32;
+	var animationName : CName;
+	var sourceAnimset : Uint64;
+	var type : gameSmartObjectPointType;
+	var movementType : moveMovementType;
+	var movementOrientation : moveMovementOrientationType;
+	var isOnNavmesh : Bool;
+	var isReachable : Bool;
+	var overObstacle : Bool;
+}

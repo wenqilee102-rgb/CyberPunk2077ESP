@@ -1,0 +1,13 @@
+import class AIBoolArgumentInstancePS extends AIArgumentInstancePS
+{
+	var value : Bool;
+}
+
+import class abstract AIArgumentInstancePS extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

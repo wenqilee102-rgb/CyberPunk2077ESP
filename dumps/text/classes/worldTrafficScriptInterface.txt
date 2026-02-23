@@ -1,0 +1,19 @@
+import class worldTrafficScriptInterface extends IScriptable
+{
+	import function FindEntitiesNearPlane(queryEntity : handle:entEntity, queryBoxPoints : array:Vector4, planePoint : Vector4, planeNormal : Vector4, planeDistanceMax : Float, maxEntityCount : Uint32, entityIDs : array:whandle:entEntity) : Uint32; // FindEntitiesNearPlane
+	import function IsPathIntersectingWithTraffic(path : array:Vector4, distanceFromTraffic : Float, out intersection : Vector4) : Bool; // IsPathIntersectingWithTraffic
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

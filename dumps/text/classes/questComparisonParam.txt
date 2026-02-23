@@ -1,0 +1,10 @@
+import class questComparisonParam extends ISerializable
+{
+	var entireCommunity : Bool;
+	var count : Uint32;
+	var comparisonType : EComparisonType;
+}
+
+import class abstract ISerializable
+{
+}

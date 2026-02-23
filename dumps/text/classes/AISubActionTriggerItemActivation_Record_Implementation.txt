@@ -1,0 +1,21 @@
+class abstract AISubActionTriggerItemActivation_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionTriggerItemActivation_Record); // AISubActionTriggerItemActivation_Record_Implementation::Activate;ScriptExecutionContextAISubActionTriggerItemActivation_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionTriggerItemActivation_Record, duration : Float, interrupted : Bool); // AISubActionTriggerItemActivation_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionTriggerItemActivation_RecordFloatBool
+	static function TriggerActivation(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionTriggerItemActivation_Record); // AISubActionTriggerItemActivation_Record_Implementation::TriggerActivation;ScriptExecutionContextAISubActionTriggerItemActivation_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionTriggerItemActivation_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionTriggerItemActivation_Record_Implementation::Update;ScriptExecutionContextAISubActionTriggerItemActivation_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

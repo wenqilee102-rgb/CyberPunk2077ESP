@@ -1,0 +1,6 @@
+import struct appearanceAlternateAppearanceEntry
+{
+	var Original : CName;
+	var Alternate : CName;
+	var AlternateAppearanceIndex : Uint8;
+}

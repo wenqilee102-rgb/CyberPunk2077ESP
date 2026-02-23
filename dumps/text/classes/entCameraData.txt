@@ -1,0 +1,4 @@
+import struct entCameraData
+{
+	var rotation : Quaternion;
+}

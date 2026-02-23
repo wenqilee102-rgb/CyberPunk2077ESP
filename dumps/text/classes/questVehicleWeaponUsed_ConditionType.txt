@@ -1,0 +1,17 @@
+import class questVehicleWeaponUsed_ConditionType extends questIVehicleConditionType
+{
+	var vehicleRef : gameEntityReference;
+	var weapon : questVehicleWeaponQuestID;
+}
+
+import class abstract questIVehicleConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

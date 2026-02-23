@@ -1,0 +1,37 @@
+class AimAssist extends ModuleInstance
+{
+}
+
+class ModuleInstance extends IScriptable
+{
+	public    var isLookedAt : Bool;
+	public    var isRevealed : Bool;
+	public    var wasProcessed : Bool;
+	protected var entityID : entEntityID;
+	protected var state : InstanceState;
+	protected var previousInstance : handle:ModuleInstance;
+
+	static function Construct(self : handle:ModuleInstance, id : entEntityID); // ModuleInstance::Construct;ModuleInstanceEntityID
+
+	function GetEntityID() : entEntityID; // GetEntityID;
+	function GetState() : InstanceState; // GetState;
+	function IsLookedAt() : Bool; // IsLookedAt;
+	function IsRevealed() : Bool; // IsRevealed;
+	function SetContext(_isLookedAt : Bool, _isRevealed : Bool); // SetContext;BoolBool
+	function SetState(newState : InstanceState, _previousInstance : handle:ModuleInstance); // SetState;InstanceStateModuleInstance
+	function WasProcessed() : Bool; // WasProcessed;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,13 @@
+import class gameAppearanceNameVisualTagsPreset_Entity extends ISerializable
+{
+	var entityPathHash : Uint64;
+	var debugEntityPath : CName;
+	var entityRigPathHash : Uint64;
+	var debugEntityRigPath : CName;
+	var commonVisualTags : redTagList;
+	var appearancesToTags : array:gameAppearanceNameVisualTagsPreset_AppearanceTags;
+}
+
+import class abstract ISerializable
+{
+}

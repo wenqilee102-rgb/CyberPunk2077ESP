@@ -1,0 +1,5 @@
+import struct physicsDestructionLevelData
+{
+	var filterData : handle:physicsFilterData;
+	var fracturingEffect : raRef:worldEffect;
+}

@@ -1,0 +1,32 @@
+import class gamedataLCDScreen_Record extends gamedataBaseSign_Record
+{
+	import function Message() : whandle:gamedataScreenMessageData_Record; // Message
+	import function MessageHandle() : handle:gamedataScreenMessageData_Record; // MessageHandle
+}
+
+import class gamedataBaseSign_Record extends gamedataTweakDBRecord
+{
+	import function IsUnique() : Bool; // IsUnique
+	import function Resource() : redResourceReferenceScriptToken; // Resource
+	import function StyleStateName() : CName; // StyleStateName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

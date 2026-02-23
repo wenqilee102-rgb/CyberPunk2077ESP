@@ -1,0 +1,5 @@
+import struct gameCookedMultiMappinData
+{
+	var journalPathHash : Uint32;
+	var positions : array:Vector3;
+}

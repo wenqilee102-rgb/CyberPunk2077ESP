@@ -1,0 +1,10 @@
+import struct scnAnimationRid
+{
+	var tag : scnRidTag;
+	var animation : handle:animAnimation;
+	var events : handle:animEventsContainer;
+	var motionExtracted : Bool;
+	var offset : Transform;
+	var bonesCount : Uint32;
+	var trajectoryBoneIndex : Int32;
+}

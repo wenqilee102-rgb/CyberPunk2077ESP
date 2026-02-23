@@ -1,0 +1,5 @@
+import struct gamestateMachineActionParameterIScriptable
+{
+	var name : CName;
+	var value : handle:IScriptable;
+}

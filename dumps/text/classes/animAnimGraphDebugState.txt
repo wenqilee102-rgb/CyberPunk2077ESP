@@ -1,0 +1,8 @@
+import class animAnimGraphDebugState extends ISerializable
+{
+	var nodes : array:animAnimNodeDebugState;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class animRigSharedData extends CResource
+{
+	var parts : array:animRigPart;
+	var ikSetups : array:handle:animIRigIkSetup;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

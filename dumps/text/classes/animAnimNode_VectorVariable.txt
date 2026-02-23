@@ -1,0 +1,17 @@
+import class animAnimNode_VectorVariable extends animAnimNode_VectorValue
+{
+	var variableName : CName;
+}
+
+import class abstract animAnimNode_VectorValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

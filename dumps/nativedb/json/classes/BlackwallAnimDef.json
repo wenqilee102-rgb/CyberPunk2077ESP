@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"BlackwallAnimDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Int32"},"b":"deathAnimNumber","c":128},{"a":{"b":"gamebbScriptID_Int32"},"b":"handGestureAnimNumber","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

@@ -1,0 +1,14 @@
+import class meshMeshParamWaterPatchData extends meshMeshParameter
+{
+	var animLoop : Bool;
+	var animLength : Float;
+	var nodes : static:4096,static:16,Float;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,31 @@
+import class SSAOAreaSettings extends IAreaSettings
+{
+	var noiseFilterTolerance : curveData:Float;
+	var blurTolerance : curveData:Float;
+	var upsampleTolerance : curveData:Float;
+	var rejectionFalloff : curveData:Float;
+	var combineResolutionsBeforeBlur : Bool;
+	var combineResolutionsWithMul : Bool;
+	var normalsEnable : Bool;
+	var hierarchyDepth : Int32;
+	var normalAOMultiply : curveData:Float;
+	var normalBackProjectTolerance : curveData:Float;
+	var qualityLevel : ESSAOQualityLevel;
+	var coneAoDiffuseStrength : curveData:Float;
+	var coneAoSpecularStrength : curveData:Float;
+	var coneAoSpecularTreshold : curveData:Float;
+	var lightAoDiffuseStrength : curveData:Float;
+	var lightAoSpecularStrength : curveData:Float;
+	var foliageDimDiffuse : curveData:Float;
+	var foliageDimSpecular : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

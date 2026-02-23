@@ -1,0 +1,42 @@
+import class scnChoiceNode extends scnSceneGraphNode
+{
+	var displayNameOverride : String;
+	var localizedDisplayNameOverride : LocalizationString;
+	var options : array:scnChoiceNodeOption;
+	var mode : scnChoiceNodeNsOperationMode;
+	var persistentLineEvents : array:scnSceneEventId;
+	var customPersistentLine : scnscreenplayItemId;
+	var timedParams : handle:scnChoiceNodeNsTimedParams;
+	var reminderParams : handle:scnChoiceNodeNsActorReminderParams;
+	var shapeParams : handle:scnInteractionShapeParams;
+	var lookAtParams : handle:scnChoiceNodeNsLookAtParams;
+	var forceAttachToScreenCondition : handle:questIBaseCondition;
+	var choiceGroup : CName;
+	var cpoHoldInputActionSection : Bool;
+	var doNotTurnOffPreventionSystem : Bool;
+	var ataParams : scnChoiceNodeNsAttachToActorParams;
+	var atpParams : scnChoiceNodeNsAttachToPropParams;
+	var atgoParams : scnChoiceNodeNsAttachToGameObjectParams;
+	var atsParams : scnChoiceNodeNsAttachToScreenParams;
+	var atwParams : scnChoiceNodeNsAttachToWorldParams;
+	var choicePriority : Uint8;
+	var hubPriority : Uint8;
+	var mappinParams : handle:scnChoiceNodeNsMappinParams;
+	var interruptCapability : scnInterruptCapability;
+	var interruptionSpeakerOverride : scnActorId;
+	var choiceFlags : scnChoiceNodeNsChoiceNodeBitFlags;
+	var alwaysUseBrainGender : Bool;
+	var timedSectionCondition : handle:scnTimedCondition;
+	var reminderCondition : handle:scnReminderCondition;
+}
+
+import class abstract scnSceneGraphNode extends ISerializable
+{
+	var nodeId : scnNodeId;
+	var ffStrategy : scnFastForwardStrategy;
+	var outputSockets : array:scnOutputSocket;
+}
+
+import class abstract ISerializable
+{
+}

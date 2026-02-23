@@ -1,0 +1,17 @@
+import class animAnimNode_FloatConstant extends animAnimNode_FloatValue
+{
+	var value : Float;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

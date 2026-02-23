@@ -1,0 +1,8 @@
+import struct physicsclothState
+{
+	var verticalPhaseData : physicsclothPhaseConfig;
+	var horizontalPhaseData : physicsclothPhaseConfig;
+	var bendPhaseData : physicsclothPhaseConfig;
+	var shearPhaseData : physicsclothPhaseConfig;
+	var runtimeInfo : physicsclothRuntimeInfo;
+}

@@ -1,0 +1,41 @@
+import class gamedataBaseDrivingParameters_Record extends gamedataTweakDBRecord
+{
+	import function Accel() : whandle:gamedataVehiclePIDSettings_Record; // Accel
+	import function AccelHandle() : handle:gamedataVehiclePIDSettings_Record; // AccelHandle
+	import function BoostStats() : whandle:gamedataVehicleAIBoostSettings_Record; // BoostStats
+	import function BoostStatsHandle() : handle:gamedataVehicleAIBoostSettings_Record; // BoostStatsHandle
+	import function Brake() : whandle:gamedataVehiclePIDSettings_Record; // Brake
+	import function BrakeHandle() : handle:gamedataVehiclePIDSettings_Record; // BrakeHandle
+	import function Panic() : whandle:gamedataVehicleAIPanicDrivingSettings_Record; // Panic
+	import function PanicHandle() : handle:gamedataVehicleAIPanicDrivingSettings_Record; // PanicHandle
+	import function Steering() : whandle:gamedataVehicleSteeringSettings_Record; // Steering
+	import function SteeringHandle() : handle:gamedataVehicleSteeringSettings_Record; // SteeringHandle
+	import function SteeringReverse() : whandle:gamedataVehicleSteeringSettings_Record; // SteeringReverse
+	import function SteeringReverseHandle() : handle:gamedataVehicleSteeringSettings_Record; // SteeringReverseHandle
+	import function Stopping() : whandle:gamedataVehicleStoppingSettings_Record; // Stopping
+	import function StoppingHandle() : handle:gamedataVehicleStoppingSettings_Record; // StoppingHandle
+	import function Traction() : whandle:gamedataVehicleAITractionEstimation_Record; // Traction
+	import function TractionHandle() : handle:gamedataVehicleAITractionEstimation_Record; // TractionHandle
+	import function Vision() : whandle:gamedataVehicleAIVisionSettings_Record; // Vision
+	import function VisionHandle() : handle:gamedataVehicleAIVisionSettings_Record; // VisionHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

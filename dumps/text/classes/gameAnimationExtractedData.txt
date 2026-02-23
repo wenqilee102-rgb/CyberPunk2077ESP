@@ -1,0 +1,6 @@
+import struct gameAnimationExtractedData
+{
+	var animationName : CName;
+	var animsetsExtractedTransforms : array:gameAnimationTransforms;
+	var smartObjectPointType : gameSmartObjectPointType;
+}

@@ -1,0 +1,5 @@
+import struct scnlocLocStoreEmbedded
+{
+	var vdEntries : array:scnlocLocStoreEmbeddedVariantDescriptorEntry;
+	var vpEntries : array:scnlocLocStoreEmbeddedVariantPayloadEntry;
+}

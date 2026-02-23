@@ -1,0 +1,18 @@
+import class questLanguage_ConditionType extends questISystemConditionType
+{
+	var mode : questLanguageMode;
+	var languageCode : String;
+	var inverted : Bool;
+}
+
+import class abstract questISystemConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,194 @@
+class ComputerMainLayoutWidgetController extends inkWidgetLogicController
+{
+	protected var screenSaverSlot : inkWidgetReference;
+	protected var wallpaperSlot : inkWidgetReference;
+	protected var menuButtonList : inkWidgetReference;
+	protected var menuContainer : inkWidgetReference;
+	protected var internetContainer : inkWidgetReference;
+	protected var offButton : inkWidgetReference;
+	protected var windowCloseButton : inkWidgetReference;
+	protected var windowContainer : inkWidgetReference;
+	protected var windowHeader : inkTextWidgetReference;
+	protected var menuMailsID : TweakDBID;
+	protected var menuFilesID : TweakDBID;
+	protected var menuNewsFeedID : TweakDBID;
+	protected var menuMainID : TweakDBID;
+	protected var internetBrowserID : TweakDBID;
+	protected var screenSaverID : TweakDBID;
+	protected var wallpaperID : TweakDBID;
+	protected var windowCloseAanimation : CName;
+	protected var windowOpenAanimation : CName;
+	protected var currentScreenSaverLibraryID : CName;
+	protected var currentWallpaperLibraryID : CName;
+	private   var computerMenuButtonWidgetsData : array:SComputerMenuButtonWidgetPackage;
+	protected var mailsMenu : whandle:inkWidget;
+	protected var filesMenu : whandle:inkWidget;
+	protected var devicesMenu : whandle:inkWidget;
+	protected var newsFeedMenu : whandle:inkWidget;
+	protected var internetData : whandle:inkWidget;
+	protected var mainMenu : whandle:inkWidget;
+	protected var screenSaver : whandle:inkWidget;
+	protected var wallpaper : whandle:inkWidget;
+	protected var isInitialized : Bool;
+	private   var devicesMenuInitialized : Bool;
+	private   var isWindowOpened : Bool;
+	private   var activeWindowID : String;
+	private   var menuToOpen : EComputerMenuType;
+
+	event OnFilesMenuSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnFilesMenuSpawned
+	event OnInternetMenuSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnInternetMenuSpawned
+	event OnMailsMenuSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnMailsMenuSpawned
+	event OnMainMenuSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnMainMenuSpawned
+	event OnMenuButtonWidgetSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnMenuButtonWidgetSpawned
+	event OnNewsFeedMenuSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNewsFeedMenuSpawned
+	event OnScreenSaverSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnScreenSaverSpawned
+	event OnWallpaperSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnWallpaperSpawned
+	event OnWindowClosed(e : handle:inkanimProxy) : Bool; // OnWindowClosed
+	event OnWindowOpened(e : handle:inkanimProxy) : Bool; // OnWindowOpened
+
+	function AddMenuButtonWidget(widget : handle:inkWidget, widgetData : SComputerMenuButtonWidgetPackage, gameController : handle:ComputerInkGameController) : whandle:inkWidget; // AddMenuButtonWidget;inkWidgetSComputerMenuButtonWidgetPackageComputerInkGameController
+	function AddMenuButtonWidgetData(widgetData : SComputerMenuButtonWidgetPackage, gameController : handle:ComputerInkGameController); // AddMenuButtonWidgetData;SComputerMenuButtonWidgetPackageComputerInkGameController
+	function CreateMenuButtonWidget(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget, widgetData : SComputerMenuButtonWidgetPackage) : whandle:inkWidget; // CreateMenuButtonWidget;ComputerInkGameControllerinkWidgetSComputerMenuButtonWidgetPackage
+	function CreateMenuButtonWidgetAsync(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget, widgetData : SComputerMenuButtonWidgetPackage); // CreateMenuButtonWidgetAsync;ComputerInkGameControllerinkWidgetSComputerMenuButtonWidgetPackage
+	function DeselectAllManuButtons(); // DeselectAllManuButtons;
+	function GetDevicesMenuContainer() : whandle:inkWidget; // GetDevicesMenuContainer;
+	function GetFileMenuController() : handle:ComputerMenuWidgetController; // GetFileMenuController;
+	function GetFileThumbnailController(adress : SDocumentAdress) : handle:ComputerDocumentThumbnailWidgetController; // GetFileThumbnailController;SDocumentAdress
+	function GetFilesMenuContainer() : whandle:inkWidget; // GetFilesMenuContainer;
+	function GetInternetController() : handle:BrowserController; // GetInternetController;
+	function GetMailMenuController() : handle:ComputerMenuWidgetController; // GetMailMenuController;
+	function GetMailThumbnailController(adress : SDocumentAdress) : handle:ComputerDocumentThumbnailWidgetController; // GetMailThumbnailController;SDocumentAdress
+	function GetMailsMenuContainer() : whandle:inkWidget; // GetMailsMenuContainer;
+	function GetMainMenuController() : handle:ComputerMainMenuWidgetController; // GetMainMenuController;
+	function GetMenuButtonWidget(widgetData : SComputerMenuButtonWidgetPackage, gameController : handle:ComputerInkGameController) : whandle:inkWidget; // GetMenuButtonWidget;SComputerMenuButtonWidgetPackageComputerInkGameController
+	function GetMenuButtonWidgetDataIndex(widgetData : SComputerMenuButtonWidgetPackage, gameController : handle:ComputerInkGameController) : Int32; // GetMenuButtonWidgetDataIndex;SComputerMenuButtonWidgetPackageComputerInkGameController
+	function GetMenuContainer() : whandle:inkWidget; // GetMenuContainer;
+	function GetNewsFeedController() : handle:NewsFeedMenuWidgetController; // GetNewsFeedController;
+	function GetNewsfeedMenuContainer() : whandle:inkWidget; // GetNewsfeedMenuContainer;
+	function GetOffButton() : whandle:inkWidget; // GetOffButton;
+	function GetWindow() : whandle:inkWidget; // GetWindow;
+	function GetWindowCloseButton() : whandle:inkWidget; // GetWindowCloseButton;
+	function GetWindowContainer() : whandle:inkWidget; // GetWindowContainer;
+	function GetWindowHeader() : whandle:inkTextWidget; // GetWindowHeader;
+	function HasMenuButtonWidgetData(widgetData : SComputerMenuButtonWidgetPackage, gameController : handle:ComputerInkGameController) : Bool; // HasMenuButtonWidgetData;SComputerMenuButtonWidgetPackageComputerInkGameController
+	function HideBanners(); // HideBanners;
+	function HideDevices(); // HideDevices;
+	function HideFiles(); // HideFiles;
+	function HideFullBanner(); // HideFullBanner;
+	function HideInternet(); // HideInternet;
+	function HideMails(); // HideMails;
+	function HideMainMenu(); // HideMainMenu;
+	function HideMenuButtonWidgets(); // HideMenuButtonWidgets;
+	function HideNewsFeed(); // HideNewsFeed;
+	function HideScreenSaver(); // HideScreenSaver;
+	function HideWallpaper(); // HideWallpaper;
+	function HideWindow(); // HideWindow;
+	function Initialize(gameController : handle:ComputerInkGameController); // Initialize;ComputerInkGameController
+	function InitializeBanners(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SBannerWidgetPackage); // InitializeBanners;ComputerInkGameControllerscript_ref<array<SBannerWidgetPackage>>
+	function InitializeFiles(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SDocumentWidgetPackage); // InitializeFiles;ComputerInkGameControllerscript_ref<array<SDocumentWidgetPackage>>
+	function InitializeFilesThumbnails(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SDocumentThumbnailWidgetPackage); // InitializeFilesThumbnails;ComputerInkGameControllerscript_ref<array<SDocumentThumbnailWidgetPackage>>
+	function InitializeMails(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SDocumentWidgetPackage); // InitializeMails;ComputerInkGameControllerscript_ref<array<SDocumentWidgetPackage>>
+	function InitializeMailsThumbnails(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SDocumentThumbnailWidgetPackage); // InitializeMailsThumbnails;ComputerInkGameControllerscript_ref<array<SDocumentThumbnailWidgetPackage>>
+	function InitializeMainMenuButtons(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SComputerMenuButtonWidgetPackage); // InitializeMainMenuButtons;ComputerInkGameControllerscript_ref<array<SComputerMenuButtonWidgetPackage>>
+	function InitializeMenuButtonWidget(gameController : handle:ComputerInkGameController, widget : handle:inkWidget, widgetData : SComputerMenuButtonWidgetPackage); // InitializeMenuButtonWidget;ComputerInkGameControllerinkWidgetSComputerMenuButtonWidgetPackage
+	function InitializeMenuButtons(gameController : handle:ComputerInkGameController, widgetsData : script_ref:array:SComputerMenuButtonWidgetPackage); // InitializeMenuButtons;ComputerInkGameControllerscript_ref<array<SComputerMenuButtonWidgetPackage>>
+	function MarkFileThumbnailAsSelected(controller : handle:ComputerDocumentThumbnailWidgetController); // MarkFileThumbnailAsSelected;ComputerDocumentThumbnailWidgetController
+	function MarkMailThumbnailAsSelected(controller : handle:ComputerDocumentThumbnailWidgetController); // MarkMailThumbnailAsSelected;ComputerDocumentThumbnailWidgetController
+	function MarkMailThumbnailAsSelected(adress : SDocumentAdress); // MarkMailThumbnailAsSelected;SDocumentAdress
+	function MarkManuButtonAsSelected(menuID : script_ref:String); // MarkManuButtonAsSelected;script_ref<String>
+	function MarkManuButtonAsSelected(controller : handle:ComputerMenuButtonController); // MarkManuButtonAsSelected;ComputerMenuButtonController
+	function ResolveWindowClose(); // ResolveWindowClose;
+	function SetDevicesMenu(widget : handle:inkWidget); // SetDevicesMenu;inkWidget
+	function SetFilesMenu(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget); // SetFilesMenu;ComputerInkGameControllerinkWidget
+	function SetInternetMenu(gameController : handle:ComputerInkGameController); // SetInternetMenu;ComputerInkGameController
+	function SetMailsMenu(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget); // SetMailsMenu;ComputerInkGameControllerinkWidget
+	function SetMainMenu(gameController : handle:ComputerInkGameController); // SetMainMenu;ComputerInkGameController
+	function SetNewsFeedMenu(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget); // SetNewsFeedMenu;ComputerInkGameControllerinkWidget
+	function SetScreenSaver(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget); // SetScreenSaver;ComputerInkGameControllerinkWidget
+	function SetTopNavigationBarHidden(isHidden : Bool); // SetTopNavigationBarHidden;Bool
+	function SetWallpaper(gameController : handle:ComputerInkGameController, parentWidget : whandle:inkWidget); // SetWallpaper;ComputerInkGameControllerinkWidget
+	function ShowDevices(); // ShowDevices;
+	function ShowFiles(); // ShowFiles;
+	function ShowFullBanner(gameController : handle:ComputerInkGameController, widgetData : script_ref:SBannerWidgetPackage); // ShowFullBanner;ComputerInkGameControllerscript_ref<SBannerWidgetPackage>
+	function ShowInternet(startingPage : script_ref:String); // ShowInternet;script_ref<String>
+	function ShowMails(); // ShowMails;
+	function ShowMainMenu(); // ShowMainMenu;
+	function ShowNewsfeed(); // ShowNewsfeed;
+	function ShowScreenSaver(); // ShowScreenSaver;
+	function ShowWallpaper(); // ShowWallpaper;
+	function ShowWindow(header : script_ref:String, menuType : EComputerMenuType); // ShowWindow;script_ref<String>EComputerMenuType
+	function UpdateMenuButtonWidgetData(widgetData : SComputerMenuButtonWidgetPackage, index : Int32); // UpdateMenuButtonWidgetData;SComputerMenuButtonWidgetPackageInt32
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

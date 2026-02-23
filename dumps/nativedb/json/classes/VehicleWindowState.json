@@ -1,0 +1,1 @@
+{"a":"ChangeStanceStateAbstract","b":"VehicleWindowState","d":0,"f":[{"a":"GetDesiredStanceState;ScriptExecutionContext","b":"GetDesiredStanceState","c":{"b":"gamedataNPCStanceState"},"d":33,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

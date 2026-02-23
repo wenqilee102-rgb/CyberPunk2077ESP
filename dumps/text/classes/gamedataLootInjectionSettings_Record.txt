@@ -1,0 +1,36 @@
+import class gamedataLootInjectionSettings_Record extends gamedataTweakDBRecord
+{
+	import function BrokenChance() : Float; // BrokenChance
+	import function BrokenOverrideChance() : Float; // BrokenOverrideChance
+	import function GetStatsExlcudingBrokenCount() : Int32; // GetStatsExlcudingBrokenCount
+	import function GetStatsExlcudingBrokenItem(index : Int32) : whandle:gamedataStat_Record; // GetStatsExlcudingBrokenItem
+	import function GetStatsExlcudingBrokenItemHandle(index : Int32) : handle:gamedataStat_Record; // GetStatsExlcudingBrokenItemHandle
+	import function GetTagsExcludingBrokenCount() : Int32; // GetTagsExcludingBrokenCount
+	import function GetTagsExcludingBrokenItem(index : Int32) : CName; // GetTagsExcludingBrokenItem
+	import function InjectedLoot() : whandle:gamedataLootTable_Record; // InjectedLoot
+	import function InjectedLootHandle() : handle:gamedataLootTable_Record; // InjectedLootHandle
+	import function StatsExlcudingBroken(out outList : array:whandle:gamedataStat_Record); // StatsExlcudingBroken
+	import function StatsExlcudingBrokenContains(item : whandle:gamedataStat_Record) : Bool; // StatsExlcudingBrokenContains
+	import function TagsExcludingBroken() : array:CName; // TagsExcludingBroken
+	import function TagsExcludingBrokenContains(item : CName) : Bool; // TagsExcludingBrokenContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

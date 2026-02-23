@@ -1,0 +1,9 @@
+import struct inkGameScreenshotInfo
+{
+	var path : String;
+	var creationDate : Uint64;
+	var aspectRatioType : Uint32;
+	var pathHash : Uint32;
+	var screenshotIndex : Int32;
+	var canBeDeleted : Bool;
+}

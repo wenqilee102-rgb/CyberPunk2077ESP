@@ -1,0 +1,5 @@
+import struct inkStyleOverride
+{
+	var overrideType : inkStyleOverrideType;
+	var styleResource : rRef:inkStyleResource;
+}

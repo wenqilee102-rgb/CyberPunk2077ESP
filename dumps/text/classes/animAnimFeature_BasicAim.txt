@@ -1,0 +1,26 @@
+import class animAnimFeature_BasicAim extends animAnimFeature
+{
+	var aimState : Int32;
+	var zoomState : Int32;
+
+	import function SetAimState(aimState : animAimState); // SetAimState
+	import function SetZoomState(zoomState : animAimState); // SetZoomState
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,4 @@
+import struct entEntityParametersBuffer
+{
+	var parameterBuffers : array:serializationDeferredDataBuffer;
+}

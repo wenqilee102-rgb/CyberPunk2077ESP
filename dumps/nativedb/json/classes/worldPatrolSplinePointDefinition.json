@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"worldPatrolSplinePointDefinition","d":8,"e":[{"a":{"b":"worldPatrolSplinePointTypes"},"b":"pointType","c":128},{"a":{"a":16},"b":"node","c":128},{"a":{"b":"gameEntityReference"},"b":"target","c":128}]}

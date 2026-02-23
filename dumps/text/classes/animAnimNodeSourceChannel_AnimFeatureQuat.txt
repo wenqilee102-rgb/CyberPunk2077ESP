@@ -1,0 +1,11 @@
+import class animAnimNodeSourceChannel_AnimFeatureQuat extends animIAnimNodeSourceChannel_Quat
+{
+}
+
+import class abstract animIAnimNodeSourceChannel_Quat extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

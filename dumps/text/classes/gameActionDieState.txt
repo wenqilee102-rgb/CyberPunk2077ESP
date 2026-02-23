@@ -1,0 +1,16 @@
+import struct gameActionDieState extends gameActionReplicatedState
+{
+	var owner : whandle:gameObject;
+	var movingAgent : whandle:moveComponent;
+	var ragdollComponent : whandle:entRagdollComponent;
+	var slotComponent : whandle:entSlotComponent;
+}
+
+import struct gameActionReplicatedState
+{
+	var replicationId : Uint32;
+	var type : Uint16;
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var updateBucket : Uint8;
+}

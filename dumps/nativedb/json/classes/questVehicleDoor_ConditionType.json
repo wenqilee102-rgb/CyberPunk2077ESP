@@ -1,0 +1,1 @@
+{"a":"questIVehicleConditionType","b":"questVehicleDoor_ConditionType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"vehicleRef","c":128},{"a":{"b":"vehicleEVehicleDoor"},"b":"door","c":128},{"a":{"b":"vehicleVehicleDoorState"},"b":"state","c":128}]}

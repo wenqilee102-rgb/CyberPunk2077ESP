@@ -1,0 +1,25 @@
+import class CParticleSystem extends resStreamedResource
+{
+	var visibleThroughWalls : Bool;
+	var prewarmingTime : Float;
+	var emitters : array:handle:CParticleEmitter;
+	var boundingBox : Box;
+	var autoHideDistance : Float;
+	var autoHideRange : Float;
+	var lastLODFadeoutRange : Float;
+	var renderingPlane : ERenderingPlane;
+	var particleDamage : handle:ParticleDamage;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

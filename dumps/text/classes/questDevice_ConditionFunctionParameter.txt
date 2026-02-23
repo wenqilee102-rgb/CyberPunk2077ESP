@@ -1,0 +1,5 @@
+import struct questDevice_ConditionFunctionParameter
+{
+	var name : CName;
+	var value : Variant;
+}

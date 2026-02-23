@@ -1,0 +1,4 @@
+import struct entEntityRequestComponentsInterface
+{
+	import static function RequestComponent(self : entEntityRequestComponentsInterface, componentName : CName, componentType : CName, mandatory : Bool); // RequestComponent
+}

@@ -1,0 +1,7 @@
+import struct gsmStateObserver_SessionAutomation extends gsmIStateObserver
+{
+}
+
+import struct abstract gsmIStateObserver
+{
+}

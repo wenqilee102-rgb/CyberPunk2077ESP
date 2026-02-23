@@ -1,0 +1,5 @@
+import struct gameuiarcadeShooterExplodingPlatformsImageWidgetDetail
+{
+	var platformName : CName;
+	var platformImageDetails : array:gameuiarcadeShooterPlatformImageDetail;
+}

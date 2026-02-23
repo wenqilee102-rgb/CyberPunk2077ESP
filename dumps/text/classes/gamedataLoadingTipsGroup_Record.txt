@@ -1,0 +1,28 @@
+import class gamedataLoadingTipsGroup_Record extends gamedataTweakDBRecord
+{
+	import function GetHintLocalizationKeysCount() : Int32; // GetHintLocalizationKeysCount
+	import function GetHintLocalizationKeysItem(index : Int32) : CName; // GetHintLocalizationKeysItem
+	import function HintLocalizationKeys() : array:CName; // HintLocalizationKeys
+	import function HintLocalizationKeysContains(item : CName) : Bool; // HintLocalizationKeysContains
+	import function UnlockingFact() : CName; // UnlockingFact
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

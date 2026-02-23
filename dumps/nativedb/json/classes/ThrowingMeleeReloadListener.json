@@ -1,0 +1,1 @@
+{"a":"gameScriptStatPoolsListener","b":"ThrowingMeleeReloadListener","d":0,"e":[{"a":{"a":27,"c":{"b":"MeleeProjectile"}},"b":"melee","c":129}],"f":[{"a":"OnStatPoolMaxValueReached","c":{"a":1},"d":98,"e":[{"a":{"a":10},"b":"value","c":0}]},{"a":"Bind;MeleeProjectile","b":"Bind","d":48,"e":[{"a":{"a":27,"c":{"b":"MeleeProjectile"}},"b":"melee","c":0}]}]}

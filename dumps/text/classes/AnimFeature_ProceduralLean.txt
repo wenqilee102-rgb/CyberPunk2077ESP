@@ -1,0 +1,33 @@
+class AnimFeature_ProceduralLean extends animAnimFeature
+{
+	public    var angle_threshold : Float;
+	public    var max_turn_angle : Float;
+	public    var hips_shift_side : Float;
+	public    var hips_shift_down : Float;
+	public    var hips_tilt : Float;
+	public    var hips_turn : Float;
+	public    var spine_tilt : Float;
+	public    var spine_turn : Float;
+	public    var arms_counter_turn : Float;
+	public    var transform_multiplyer : Float;
+	public    var damp_value_walk : Float;
+	public    var damp_value_sprint : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class gameTelemetryPostMortemContainer extends ISerializable
+{
+	var postMortem : gameTelemetryPostMortem;
+}
+
+import class abstract ISerializable
+{
+}

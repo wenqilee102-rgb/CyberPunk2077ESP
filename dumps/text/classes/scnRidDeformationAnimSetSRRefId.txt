@@ -1,0 +1,4 @@
+import struct scnRidDeformationAnimSetSRRefId
+{
+	var id : Uint32;
+}

@@ -1,0 +1,5 @@
+struct VendingMachineSFX
+{
+	public    var glitchingStart : CName;
+	public    var glitchingStop : CName;
+}

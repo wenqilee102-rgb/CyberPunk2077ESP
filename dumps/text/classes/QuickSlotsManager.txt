@@ -1,0 +1,167 @@
+class QuickSlotsManager extends gameScriptableComponent
+{
+	private   var Player : whandle:PlayerPuppet;
+	private   var QuickSlotsBB : whandle:gameIBlackboard;
+	private   var IsPlayerInCar : Bool;
+	private   var PlayerVehicleID : entEntityID;
+	private   var QuickDpadCommands : array:QuickSlotCommand;
+	private   var QuickDpadCommands_Vehicle : array:QuickSlotCommand;
+	private   var DefaultHoldCommands : array:QuickSlotCommand;
+	private   var DefaultHoldCommands_Vehicle : array:QuickSlotCommand;
+	private   var NumberOfItemsPerWheel : Int32;
+	private   var QuickKeyboardCommands : array:QuickSlotCommand;
+	private   var QuickKeyboardCommands_Vehicle : array:QuickSlotCommand;
+	private   var lastPressAndHoldBtn : handle:QuickSlotButtonHoldEndEvent;
+	private   var WheelList_Vehicles : array:QuickSlotCommand;
+	private   var currentWheelItem : QuickSlotCommand;
+	private   var currentWeaponWheelItem : QuickSlotCommand;
+	private   var currentGadgetWheelConsumable : QuickSlotCommand;
+	private   var currentGadgetWheelGadget : QuickSlotCommand;
+	private   var currentVehicleWheelItem : QuickSlotCommand;
+	private   var currentGadgetWheelItem : QuickSlotCommand;
+	private   var currentInteractionWheelItem : QuickSlotCommand;
+	private   var OnVehPlayerStateDataChangedCallback : handle:redCallbackObject;
+
+	static function CreateBlankWheelCommand() : QuickSlotCommand; // QuickSlotsManager::CreateBlankWheelCommand;
+	static function GetMaxKeyboardItems() : Int32; // QuickSlotsManager::GetMaxKeyboardItems;
+
+	event OnCallAction(evt : handle:CallAction) : Bool; // OnCallAction
+	event OnQuickSlotButtonHoldStartEvent(evt : handle:QuickSlotButtonHoldStartEvent) : Bool; // OnQuickSlotButtonHoldStartEvent
+	event OnQuickSlotButtonTap(evt : handle:QuickSlotButtonTap) : Bool; // OnQuickSlotButtonTap
+	event OnQuickSlotKeyboardTap(evt : handle:QuickSlotKeyboardTap) : Bool; // OnQuickSlotKeyboardTap
+
+	function ApplyQuickHack(command : script_ref:QuickSlotCommand); // ApplyQuickHack;script_ref<QuickSlotCommand>
+	function AssignItem(itemId : gameItemID); // AssignItem;ItemID
+	function AssignItemToCyberwareSlot(itemId : gameItemID, slotIndex : Int32); // AssignItemToCyberwareSlot;ItemIDInt32
+	function ChooseWeaponsWheel(out weaponsWheel : array:QuickSlotCommand); // ChooseWeaponsWheel;array<QuickSlotCommand>
+	function ChooseWheelItem(direction : EDPadSlot, wheelItem : script_ref:QuickSlotCommand) : Bool; // ChooseWheelItem;EDPadSlotscript_ref<QuickSlotCommand>
+	function CreateEmptyQuickSlotCommand() : QuickSlotCommand; // CreateEmptyQuickSlotCommand;
+	function CreateQuickSlotCommand(actionType : QuickSlotActionType, imageAtlasPath : CName, actionName : CName, maxTier : Int32, vehicleState : Int32, isLocked : Bool, isSlotUnlocked : Bool, optional intData : Int32, optional argTitle : String, optional argType : String) : QuickSlotCommand; // CreateQuickSlotCommand;QuickSlotActionTypeCNameCNameInt32Int32BoolBoolInt32StringString
+	function CreateQuickSlotItemCommand(itemID : gameItemID, argActionType : QuickSlotActionType, argIcon : CName, argTitle : script_ref:String, argType : script_ref:String, argDesc : script_ref:String) : QuickSlotCommand; // CreateQuickSlotItemCommand;ItemIDQuickSlotActionTypeCNamescript_ref<String>script_ref<String>script_ref<String>
+	function ExecuteCommand(command : script_ref:QuickSlotCommand); // ExecuteCommand;script_ref<QuickSlotCommand>
+	function FindTempVehicleIcon(vehicle : vehiclePlayerVehicle) : CName; // FindTempVehicleIcon;PlayerVehicle
+	function GetActionData() : QuickSlotCommand; // GetActionData;
+	function GetActiveVehicleType() : gamedataVehicleType; // GetActiveVehicleType;
+	function GetAssignedItemIDByType(itemType : QuickSlotItemType) : gameItemID; // GetAssignedItemIDByType;QuickSlotItemType
+	function GetAssignedQuickSlotCommand(itemType : QuickSlotItemType) : QuickSlotCommand; // GetAssignedQuickSlotCommand;QuickSlotItemType
+	function GetConsumablesWheel(wheel : script_ref:array:QuickSlotCommand); // GetConsumablesWheel;script_ref<array<QuickSlotCommand>>
+	function GetCyberwareWheel(wheel : script_ref:array:QuickSlotCommand); // GetCyberwareWheel;script_ref<array<QuickSlotCommand>>
+	function GetDPadCommandAtSlot(argIndex : Int32) : QuickSlotCommand; // GetDPadCommandAtSlot;Int32
+	function GetDPadIndex(direction : EDPadSlot) : Int32; // GetDPadIndex;EDPadSlot
+	function GetDriverCombatBikeOnlyWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetDriverCombatBikeOnlyWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetDriverCombatOnlyWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetDriverCombatOnlyWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetEmptyWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetEmptyWheel;script_ref<array<QuickSlotCommand>>
+	function GetEquipAreaCommands(equipArea : gamedataEquipmentArea, optional allowedItemTypes : array:gamedataItemType, optional allowedTag : CName) : array:QuickSlotCommand; // GetEquipAreaCommands;gamedataEquipmentAreaarray<gamedataItemType>CName
+	function GetFirearmsOnlyWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetFirearmsOnlyWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetFistFightOnlyWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetFistFightOnlyWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetGadgetsWheel(wheel : script_ref:array:QuickSlotCommand); // GetGadgetsWheel;script_ref<array<QuickSlotCommand>>
+	function GetGamedataEquipmentAreaFromItemType(itemType : QuickSlotItemType) : gamedataEquipmentArea; // GetGamedataEquipmentAreaFromItemType;QuickSlotItemType
+	function GetKeyboardCommandAtSlot(argIndex : Int32) : QuickSlotCommand; // GetKeyboardCommandAtSlot;Int32
+	function GetLauncher(wheel : script_ref:array:QuickSlotCommand); // GetLauncher;script_ref<array<QuickSlotCommand>>
+	function GetMeleeOnlyWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetMeleeOnlyWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetNoArmsCWWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetNoArmsCWWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetNumberOfItemsPerWheel() : Int32; // GetNumberOfItemsPerWheel;
+	function GetOneHandedOnlyOnlyWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetOneHandedOnlyOnlyWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetPS() : handle:QuickSlotsManagerPS; // GetPS
+	function GetQuickSlotCommandByDpadSlot(wheelType : EDPadSlot) : QuickSlotCommand; // GetQuickSlotCommandByDpadSlot;EDPadSlot
+	function GetQuickSlotItemTypeByEquipArea(eqArea : gamedataEquipmentArea) : QuickSlotItemType; // GetQuickSlotItemTypeByEquipArea;gamedataEquipmentArea
+	function GetQuickWheel(wheel : script_ref:array:QuickSlotCommand); // GetQuickWheel;script_ref<array<QuickSlotCommand>>
+	function GetRPGWheel(rpgWheel : script_ref:array:QuickSlotCommand); // GetRPGWheel;script_ref<array<QuickSlotCommand>>
+	function GetRegularWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand); // GetRegularWeaponsWheel;script_ref<array<QuickSlotCommand>>
+	function GetVehicleInsideWheel(wheel : script_ref:array:QuickSlotCommand); // GetVehicleInsideWheel;script_ref<array<QuickSlotCommand>>
+	function GetVehicleObject() : handle:vehicleBaseObject; // GetVehicleObject;
+	function GetVehicleWheel(vehicleWheel : script_ref:array:QuickSlotCommand); // GetVehicleWheel;script_ref<array<QuickSlotCommand>>
+	function GetVehicleWheelCommands(direction : EDPadSlot) : array:QuickSlotCommand; // GetVehicleWheelCommands;EDPadSlot
+	function GetWeaponsWheel(weaponsWheel : script_ref:array:QuickSlotCommand, optional allowedItemTypes : array:gamedataItemType, optional allowedTag : CName); // GetWeaponsWheel;script_ref<array<QuickSlotCommand>>array<gamedataItemType>CName
+	function GetWheelCommands(direction : EDPadSlot) : array:QuickSlotCommand; // GetWheelCommands;EDPadSlot
+	function GetWheelItem(currentWheelItem : script_ref:QuickSlotCommand) : QuickSlotCommand; // GetWheelItem;script_ref<QuickSlotCommand>
+	function HideWeapon(); // HideWeapon;
+	function InitializeCommandsData(); // InitializeCommandsData;
+	function IsDPadActionAvaliable(actionIndex : Int32) : Bool; // IsDPadActionAvaliable;Int32
+	function IsDPadActionAvaliable(direction : EDPadSlot) : Bool; // IsDPadActionAvaliable;EDPadSlot
+	function IsKeyboardActionAvaliable(actionIndex : Int32) : Bool; // IsKeyboardActionAvaliable;Int32
+	function IsPhoneAvailable() : Bool; // IsPhoneAvailable;
+	function IsSelectingCombatGadgetPrevented() : Bool; // IsSelectingCombatGadgetPrevented;
+	function IsSelectingCombatItemPrevented() : Bool; // IsSelectingCombatItemPrevented;
+	function OnGameAttach(); // OnGameAttach;
+	function OnVehPlayerStateDataChanged(vehPlayerStateData : Variant); // OnVehPlayerStateDataChanged;Variant
+	function PushBackCommands(area : gamedataEquipmentArea, commandList : script_ref:array:QuickSlotCommand, optional allowedItemTypes : array:gamedataItemType, optional allowedTag : CName); // PushBackCommands;gamedataEquipmentAreascript_ref<array<QuickSlotCommand>>array<gamedataItemType>CName
+	function RequestEquipFists(); // RequestEquipFists;
+	function RequestWeaponEquip(itemId : gameItemID); // RequestWeaponEquip;ItemID
+	function SelectItem(command : script_ref:QuickSlotCommand); // SelectItem;script_ref<QuickSlotCommand>
+	function SendRadioEvent(toggle : Bool, setStation : Bool, stationIndex : Int32); // SendRadioEvent;BoolBoolInt32
+	function SetActiveVehicle(vehicleData : vehiclePlayerVehicle); // SetActiveVehicle;PlayerVehicle
+	function SetWheelItem(currentWheelItem : script_ref:QuickSlotCommand); // SetWheelItem;script_ref<QuickSlotCommand>
+	function SummonActiveVehicle(force : Bool); // SummonActiveVehicle;Bool
+	function SummonVehicle(force : Bool, type : gamedataVehicleType, vehicle : TweakDBID, spawnOnlyOnValidRoad : Bool); // SummonVehicle;BoolgamedataVehicleTypeTweakDBIDBool
+	function ToggleFireMode(); // ToggleFireMode;
+	function ToggleSummonMode(); // ToggleSummonMode;
+	function TryExecuteCommand(currentCommand : script_ref:QuickSlotCommand) : Bool; // TryExecuteCommand;script_ref<QuickSlotCommand>
+	function UsePhone(); // UsePhone;
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

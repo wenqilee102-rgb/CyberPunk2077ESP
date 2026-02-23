@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorVectorFieldAttractor","d":8,"e":[{"a":{"a":1},"b":"inheritVelocity","c":128},{"a":{"a":1},"b":"attract","c":128},{"a":{"a":1},"b":"drag","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"restitution","c":128}]}

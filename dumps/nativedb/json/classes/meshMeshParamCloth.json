@@ -1,0 +1,1 @@
+{"a":"meshMeshParameter","b":"meshMeshParamCloth","d":8,"e":[{"a":{"a":31,"c":{"a":31,"c":{"a":5}}},"b":"lodChunkIndices","c":128},{"a":{"a":31,"c":{"b":"meshPhxClothChunkData"}},"b":"chunks","c":128},{"a":{"a":31,"c":{"a":31,"c":{"a":5}}},"b":"drivers","c":128},{"a":{"a":26,"c":{"b":"physicsclothClothCapsuleExportData"}},"b":"capsules","c":128}]}

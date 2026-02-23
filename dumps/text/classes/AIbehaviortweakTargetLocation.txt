@@ -1,0 +1,9 @@
+import struct AIbehaviortweakTargetLocation
+{
+	var object : whandle:gameObject;
+	var position : Vector3;
+	var speed : Vector3;
+	var coverId : AIObjectId;
+	var hasPosition : Bool;
+	var hasSpeed : Bool;
+}

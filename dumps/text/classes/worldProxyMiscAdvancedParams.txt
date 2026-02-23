@@ -1,0 +1,29 @@
+import struct worldProxyMiscAdvancedParams
+{
+	var useLod1 : Bool;
+	var smoothVolume : Bool;
+	var blurCutout : Uint8;
+	var occlusionRatio : Uint8;
+	var capTop : Bool;
+	var capBottom : Bool;
+	var fillHolesBeforeReduceRatio : Float;
+	var fillHolesAfterReduceRatio : Float;
+	var rsSweepOrder : Int32;
+	var rsDetailDrop : Float;
+	var rsAxisPrecision : Vector3;
+	var rsAxisExpand : Vector3;
+	var rsAliasingReduction : Float;
+	var bcMergeRange : Float;
+	var bcSizeCutoff : Float;
+	var bcIterations : Float;
+	var bcMaxSize : Float;
+	var bcMinSize : Float;
+	var bcMergeSensitivity : Float;
+	var bcMinScale : Float;
+	var bcGridSize : Float;
+	var bcFilterSensitivity : Float;
+	var bcBoundsRatioLimit : Float;
+	var useClosestPointOnMesh : Bool;
+	var removeIslands : Bool;
+	var backgroundColor : Color;
+}

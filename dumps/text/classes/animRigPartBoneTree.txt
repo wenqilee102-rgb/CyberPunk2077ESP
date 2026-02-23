@@ -1,0 +1,6 @@
+import struct animRigPartBoneTree
+{
+	var rootBone : CName;
+	var weight : Float;
+	var subtreesToChange : array:animRigPartBoneTree;
+}

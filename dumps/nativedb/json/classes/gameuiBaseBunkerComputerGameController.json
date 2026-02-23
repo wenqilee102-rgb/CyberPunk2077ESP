@@ -1,0 +1,1 @@
+{"a":"gameuiWidgetGameController","b":"gameuiBaseBunkerComputerGameController","d":8,"f":[{"a":"AddTimer","d":4,"e":[{"a":{"a":14},"b":"timerName","c":0},{"a":{"a":10},"b":"time","c":0}]},{"a":"ListenToFact","d":4,"e":[{"a":{"a":14},"b":"fact","c":0}]},{"a":"ResetTimer","d":4,"e":[{"a":{"a":14},"b":"timerName","c":0}]}]}

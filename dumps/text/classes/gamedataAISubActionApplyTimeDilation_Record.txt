@@ -1,0 +1,36 @@
+import class gamedataAISubActionApplyTimeDilation_Record extends gamedataAISubAction_Record
+{
+	import function Condition() : whandle:gamedataAIActionCondition_Record; // Condition
+	import function ConditionHandle() : handle:gamedataAIActionCondition_Record; // ConditionHandle
+	import function Duration() : Float; // Duration
+	import function EaseIn() : CName; // EaseIn
+	import function EaseOut() : CName; // EaseOut
+	import function Multiplier() : Float; // Multiplier
+	import function OverrideMultiplerWhenPlayerInTimeDilation() : Float; // OverrideMultiplerWhenPlayerInTimeDilation
+	import function Reason() : CName; // Reason
+	import function UseRealTime() : Bool; // UseRealTime
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

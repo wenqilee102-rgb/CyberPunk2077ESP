@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"NonStealthQuickHackVictimEvent","d":0,"e":[{"a":{"b":"entEntityID"},"b":"instigatorID","c":128}],"f":[{"a":"NonStealthQuickHackVictimEvent::Create;EntityID","b":"Create","c":{"a":26,"c":{"b":"NonStealthQuickHackVictimEvent"}},"d":56,"e":[{"a":{"b":"entEntityID"},"b":"instigatorID","c":0}]}]}

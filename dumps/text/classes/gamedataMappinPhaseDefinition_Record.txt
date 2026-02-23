@@ -1,0 +1,27 @@
+import class gamedataMappinPhaseDefinition_Record extends gamedataTweakDBRecord
+{
+	import function Phase() : whandle:gamedataMappinPhase_Record; // Phase
+	import function PhaseHandle() : handle:gamedataMappinPhase_Record; // PhaseHandle
+	import function Variant() : whandle:gamedataMappinVariant_Record; // Variant
+	import function VariantHandle() : handle:gamedataMappinVariant_Record; // VariantHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

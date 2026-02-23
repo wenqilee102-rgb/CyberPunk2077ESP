@@ -1,0 +1,17 @@
+import class abstract entSimpleSkinningAttachment extends entISkinningAttachment
+{
+}
+
+import class abstract entISkinningAttachment extends entIAttachment
+{
+}
+
+import class entIAttachment extends ISerializable
+{
+	var source : whandle:entIComponent;
+	var destination : whandle:entIComponent;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct rendOpacityMicromapDatabase
+{
+	var ommChunks : array:rendOpacityMicromapChunk;
+	var dataBuffer : array:Uint8;
+}

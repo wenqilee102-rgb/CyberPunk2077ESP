@@ -1,0 +1,9 @@
+import struct rendRenderTextureBlobTextureInfo
+{
+	var type : GpuWrapApieTextureType;
+	var textureDataSize : Uint32;
+	var sliceSize : Uint32;
+	var dataAlignment : Uint32;
+	var sliceCount : Uint16;
+	var mipCount : Uint8;
+}

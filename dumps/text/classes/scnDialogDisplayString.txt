@@ -1,0 +1,8 @@
+import struct scnDialogDisplayString
+{
+	var text : String;
+	var translation : String;
+	var preTranslatedText : String;
+	var postTranslatedText : String;
+	var language : scnDialogLineLanguage;
+}

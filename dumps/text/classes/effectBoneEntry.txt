@@ -1,0 +1,6 @@
+import struct effectBoneEntry
+{
+	var boneName : CName;
+	var relativePosition : Vector3;
+	var relativeRotation : Quaternion;
+}

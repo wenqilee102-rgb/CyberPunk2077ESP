@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"RevealQuestTargetEvent","d":0,"e":[{"a":{"a":14},"b":"sourceName","c":128},{"a":{"b":"ERevealDurationType"},"b":"durationType","c":128},{"a":{"a":1},"b":"reveal","c":128},{"a":{"a":10},"b":"timeout","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

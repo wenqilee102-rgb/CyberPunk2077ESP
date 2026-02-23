@@ -1,0 +1,14 @@
+import class worldStreamingBlock extends CResource
+{
+	var descriptors : array:worldStreamingSectorDescriptor;
+	var index : worldStreamingBlockIndex;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,43 @@
+class UIInventoryItemModsManager extends IScriptable
+{
+	private   var emptySlots : array:TweakDBID;
+	private   var usedSlots : array:TweakDBID;
+	private   var mods : array:handle:UIInventoryItemMod;
+	private   var attachments : array:handle:UIInventoryItemModAttachment;
+	private   var dedicatedMod : handle:UIInventoryItemModAttachment;
+	private   var transactionSystem : handle:gameTransactionSystem;
+
+	static function Make(inventoryItem : whandle:UIInventoryItem, transactionSystem : handle:gameTransactionSystem) : handle:UIInventoryItemModsManager; // UIInventoryItemModsManager::Make;UIInventoryItemTransactionSystem
+
+	function EmptySlotsContains(slotName : TweakDBID) : Bool; // EmptySlotsContains;TweakDBID
+	function FetchModsDataPackages(inventoryItem : whandle:UIInventoryItem); // FetchModsDataPackages;UIInventoryItem
+	function FillSpecialAbilities(itemRecord : handle:gamedataItem_Record, abilities : script_ref:array:gameInventoryItemAbility, optional itemData : whandle:gameItemData, optional partItemData : gameInnerItemData); // FillSpecialAbilities;Item_Recordscript_ref<array<InventoryItemAbility>>gameItemDataInnerItemData
+	function FilterNanoWireSlot(inventoryItem : whandle:UIInventoryItem); // FilterNanoWireSlot;UIInventoryItem
+	function FilterProgramSlots(); // FilterProgramSlots;
+	function GetAllSlotsSize() : Int32; // GetAllSlotsSize;
+	function GetAttachements(owner : whandle:gameObject, inventoryItem : whandle:UIInventoryItem); // GetAttachements;GameObjectUIInventoryItem
+	function GetAttachment(index : Int32) : handle:UIInventoryItemModAttachment; // GetAttachment;Int32
+	function GetAttachmentsSize() : Int32; // GetAttachmentsSize;
+	function GetDedicatedMod() : handle:UIInventoryItemModAttachment; // GetDedicatedMod;
+	function GetEmptySlot(index : Int32) : TweakDBID; // GetEmptySlot;Int32
+	function GetEmptySlotsSize() : Int32; // GetEmptySlotsSize;
+	function GetMod(index : Int32) : handle:UIInventoryItemMod; // GetMod;Int32
+	function GetModsSize() : Int32; // GetModsSize;
+	function GetUsedSlot(index : Int32) : TweakDBID; // GetUsedSlot;Int32
+	function GetUsedSlotsSize() : Int32; // GetUsedSlotsSize;
+	function UsedSlotsContains(slotName : TweakDBID) : Bool; // UsedSlotsContains;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

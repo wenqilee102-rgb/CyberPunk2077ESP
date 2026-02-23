@@ -1,0 +1,30 @@
+import class worldOffMeshConnectionNode extends worldSplineNode
+{
+	var isBidirectional : Bool;
+	var radius : Float;
+	var type : worldOffMeshConnectionType;
+	var tags : array:CName;
+}
+
+import class worldSplineNode extends worldSocketNode
+{
+	var splineData : handle:Spline;
+	var destSnapedNode : NodeRef;
+	var destSnapedSocketName : CName;
+	var entrySnapedNode : NodeRef;
+	var entrySnapedSocketName : CName;
+}
+
+import class abstract worldSocketNode extends worldNode
+{
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

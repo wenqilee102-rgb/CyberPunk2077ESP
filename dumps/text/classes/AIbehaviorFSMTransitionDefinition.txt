@@ -1,0 +1,18 @@
+import class AIbehaviorFSMTransitionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var inState : Uint16;
+	var outState : Uint16;
+	var evaluationOrder : Int32;
+	var instantConditions : array:handle:AIbehaviorInstantConditionDefinition;
+	var monitorConditions : array:handle:AIbehaviorMonitorConditionDefinition;
+	var eventConditions : array:handle:AIbehaviorEventConditionDefinition;
+	var passiveConditions : array:handle:AIbehaviorExpressionSocket;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

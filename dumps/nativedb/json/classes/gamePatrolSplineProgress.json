@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamePatrolSplineProgress","c":"PatrolSplineProgress","d":8,"e":[{"a":{"a":31,"c":{"b":"gamePatrolSplineControlPoint"}},"b":"currentControlPoints","c":128},{"a":{"a":10},"b":"entrySplineParam","c":128},{"a":{"a":7},"b":"controlPointIndex","c":128}],"f":[{"a":"IsControlPointIndexValid","c":{"a":1},"d":4}]}

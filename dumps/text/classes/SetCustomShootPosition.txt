@@ -1,0 +1,75 @@
+class SetCustomShootPosition extends AIbehaviortaskScript
+{
+	private   var offset : Vector3;
+	private   var fxOffset : Vector3;
+	private   var lockTimer : Float;
+	private   var landIndicatorFX : gameFxResource;
+	private   var keepsAcquiring : Bool;
+	private   var shootToTheGround : Bool;
+	private   var predictionTime : Float;
+	private   var waypointTag : CName;
+	private   var refOwner : whandle:gamedataAIActionTarget_Record;
+	private   var refAIActionTarget : whandle:gamedataAIActionTarget_Record;
+	private   var refCustomWorldPositionTarget : whandle:gamedataAIActionTarget_Record;
+	private   var ownerPosition : Vector4;
+	private   var targetPosition : Vector4;
+	private   var direction : Vector4;
+	private   var fxPosition : Vector4;
+	private   var target : whandle:gameObject;
+	private   var owner : whandle:gameObject;
+	private   var fxInstance : handle:gameFxInstance;
+	private   var targetAcquired : Bool;
+	private   var startTime : Float;
+	private   var shootPointPosition : Vector4;
+	private   var targetsPosition : array:Vector4;
+
+	static function ApplyTargetOffset(out targetPosition : Vector4, ownerPosition : Vector4, offset : Vector3, shootToTheGround : Bool); // SetCustomShootPosition::ApplyTargetOffset;Vector4Vector4Vector3Bool
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function CreateFxInstance(context : AIbehaviorScriptExecutionContext, resource : gameFxResource, transform : WorldTransform) : handle:gameFxInstance; // CreateFxInstance;ScriptExecutionContextFxResourceWorldTransform
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+	function SpawnLandVFXs(context : AIbehaviorScriptExecutionContext, fx : gameFxResource, fxposition : Vector4); // SpawnLandVFXs;ScriptExecutionContextFxResourceVector4
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+}
+
+import class AIbehaviortaskScript extends AIbehaviorScriptBase
+{
+	import function CutSelector(context : AIbehaviorScriptExecutionContext); // CutSelector
+	import function SetUpdateInterval(context : AIbehaviorScriptExecutionContext, interval : Float) : Bool; // SetUpdateInterval
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function ChildCompleted(context : AIbehaviorScriptExecutionContext, status : AIbehaviorCompletionStatus); // ChildCompleted;ScriptExecutionContextAIbehaviorCompletionStatus
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBase extends IScriptable
+{
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AIbehaviorScriptBase::GetAIComponent;ScriptExecutionContext
+	static function GetCombatTarget(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCombatTarget;ScriptExecutionContext
+	static function GetCompanion(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCompanion;ScriptExecutionContext
+	static function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // AIbehaviorScriptBase::GetGame;ScriptExecutionContext
+	static function GetHitReactionComponent(context : AIbehaviorScriptExecutionContext) : handle:HitReactionComponent; // AIbehaviorScriptBase::GetHitReactionComponent;ScriptExecutionContext
+	static function GetNPCPuppet(context : AIbehaviorScriptExecutionContext) : handle:NPCPuppet; // AIbehaviorScriptBase::GetNPCPuppet;ScriptExecutionContext
+	static function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // AIbehaviorScriptBase::GetPuppet;ScriptExecutionContext
+	static function GetStatPoolPercentage(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolPercentage;ScriptExecutionContextgamedataStatPoolType
+	static function GetStatPoolValue(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolValue;ScriptExecutionContextgamedataStatPoolType
+	static function GetUpperBodyState(context : AIbehaviorScriptExecutionContext) : gamedataNPCUpperBodyState; // AIbehaviorScriptBase::GetUpperBodyState;ScriptExecutionContext
+	static function RandomizeOffsetForUpdateInterval(interval : Float) : Float; // AIbehaviorScriptBase::RandomizeOffsetForUpdateInterval;Float
+
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

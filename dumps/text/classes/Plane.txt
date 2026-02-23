@@ -1,0 +1,4 @@
+import struct Plane
+{
+	var NormalDistance : Vector4;
+}

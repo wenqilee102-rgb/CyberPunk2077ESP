@@ -1,0 +1,12 @@
+import class questForceTokenActivation_NodeSubType extends questIContentTokenManager_NodeSubType
+{
+	var forceCreatingToken : Bool;
+}
+
+import class abstract questIContentTokenManager_NodeSubType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,25 @@
+import class animAnimNode_FloatComparator extends animAnimNode_FloatValue
+{
+	var firstValue : Float;
+	var secondValue : Float;
+	var trueValue : Float;
+	var falseValue : Float;
+	var operation : animEAnimGraphCompareFunc;
+	var firstInputLink : animFloatLink;
+	var secondInputLink : animFloatLink;
+	var trueInputLink : animFloatLink;
+	var falseInputLink : animFloatLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

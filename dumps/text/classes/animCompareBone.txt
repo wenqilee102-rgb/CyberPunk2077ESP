@@ -1,0 +1,5 @@
+import struct animCompareBone
+{
+	var boneName : CName;
+	var boneRotationLs : Quaternion;
+}

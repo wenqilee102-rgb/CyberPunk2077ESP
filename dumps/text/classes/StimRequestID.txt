@@ -1,0 +1,8 @@
+struct StimRequestID
+{
+	public    var ID : Uint32;
+	public    var isValid : Bool;
+
+	static function GetID(self : StimRequestID) : Uint32; // StimRequestID::GetID;StimRequestID
+	static function IsValid(self : StimRequestID) : Bool; // StimRequestID::IsValid;StimRequestID
+}

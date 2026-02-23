@@ -1,0 +1,43 @@
+import class audioVehicleMetadata extends audioCustomEmitterMetadata
+{
+	var generalData : audioVehicleGeneralData;
+	var mechanicalData : audioVehicleMechanicalData;
+	var wheelData : audioVehicleWheelData;
+	var emitterPositionData : audioVehicleEmitterPositionData;
+	var minRpm : Float;
+	var maxRpm : Float;
+	var vehicleCollisionSettings : CName;
+	var vehicleGridDestructionSettings : CName;
+	var vehiclePartSettings : CName;
+	var collisionCooldown : Float;
+	var maxPlayingDistance : Float;
+	var dopplerFactor : Float;
+	var suspensionSqueekTimeout : Float;
+	var exitDelay : Float;
+	var gearSweeteners : array:CName;
+	var testWheelMaterial : Bool;
+	var hasRadioReceiver : Bool;
+	var usesPoliceRadioStation : Bool;
+	var acousticIsolationFactor : Float;
+	var trafficEmitterMetadata : CName;
+	var radioReceiverType : CName;
+	var matchingStartupRadioStations : array:CName;
+	var radioPlaysWhenEngineStartsProbability : Float;
+}
+
+import class abstract audioCustomEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

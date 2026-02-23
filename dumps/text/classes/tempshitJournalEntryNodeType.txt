@@ -1,0 +1,11 @@
+import class tempshitJournalEntryNodeType extends tempshitIJournalNodeType
+{
+}
+
+import class abstract tempshitIJournalNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

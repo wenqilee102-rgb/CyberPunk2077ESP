@@ -1,0 +1,18 @@
+import class questCharacterAttack_ConditionType extends questICharacterConditionType
+{
+	var attackerRef : gameEntityReference;
+	var targetRef : gameEntityReference;
+	var isTargetPlayer : Bool;
+}
+
+import class abstract questICharacterConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

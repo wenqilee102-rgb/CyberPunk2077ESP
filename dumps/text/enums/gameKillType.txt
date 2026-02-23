@@ -1,0 +1,5 @@
+enum gameKillType
+{
+	Normal = 0,
+	Defeat = 1
+}

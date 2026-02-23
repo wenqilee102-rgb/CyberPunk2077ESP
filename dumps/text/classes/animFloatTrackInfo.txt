@@ -1,0 +1,5 @@
+import struct animFloatTrackInfo
+{
+	var name : CName;
+	var referenceValue : Float;
+}

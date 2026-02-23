@@ -1,0 +1,6 @@
+import struct audioAudioSceneStateOverride
+{
+	var templateStateName : CName;
+	var enterEventOverride : CName;
+	var exitEventOverride : CName;
+}

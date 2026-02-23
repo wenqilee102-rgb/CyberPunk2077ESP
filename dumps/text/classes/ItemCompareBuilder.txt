@@ -1,0 +1,50 @@
+class ItemCompareBuilder extends IScriptable
+{
+	private   var sortData1 : gameInventoryItemSortData;
+	private   var sortData2 : gameInventoryItemSortData;
+	private   var compareBuilder : handle:CompareBuilder;
+
+	static function BuildInventoryItemSortData(item : script_ref:gameInventoryItemData, uiScriptableSystem : handle:UIScriptableSystem) : gameInventoryItemSortData; // ItemCompareBuilder::BuildInventoryItemSortData;script_ref<InventoryItemData>UIScriptableSystem
+	static function GetDPS(item : script_ref:gameInventoryItemData) : Int32; // ItemCompareBuilder::GetDPS;script_ref<InventoryItemData>
+	static function GetEquipmentAreaIndex(equipmentArea : gamedataEquipmentArea) : Int32; // ItemCompareBuilder::GetEquipmentAreaIndex;gamedataEquipmentArea
+	static function GetItemTypeIndex(itemType : gamedataItemType) : Int32; // ItemCompareBuilder::GetItemTypeIndex;gamedataItemType
+	static function GetItemTypeInnerIndex(itemType : gamedataItemType, itemData : whandle:gameItemData) : Int32; // ItemCompareBuilder::GetItemTypeInnerIndex;gamedataItemTypegameItemData
+	static function GetItemTypeOrder(itemData : whandle:gameItemData, equipmentArea : gamedataEquipmentArea, itemType : gamedataItemType) : Int32; // ItemCompareBuilder::GetItemTypeOrder;gameItemDatagamedataEquipmentAreagamedataItemType
+	static function GetItemTypeOrder(item : script_ref:gameInventoryItemData) : Int32; // ItemCompareBuilder::GetItemTypeOrder;script_ref<InventoryItemData>
+	static function GetTypeSortValue(item : script_ref:gameInventoryItemData) : Int32; // ItemCompareBuilder::GetTypeSortValue;script_ref<InventoryItemData>
+	static function HasItemTypeInnerIndex(itemType : gamedataItemType) : Bool; // ItemCompareBuilder::HasItemTypeInnerIndex;gamedataItemType
+	static function Make(sortData1 : script_ref:gameInventoryItemSortData, sortData2 : script_ref:gameInventoryItemSortData) : handle:ItemCompareBuilder; // ItemCompareBuilder::Make;script_ref<InventoryItemSortData>script_ref<InventoryItemSortData>
+
+	function ChimeraMod() : handle:ItemCompareBuilder; // ChimeraMod;
+	function DLCAddedItem() : handle:ItemCompareBuilder; // DLCAddedItem;
+	function DPSAsc() : handle:ItemCompareBuilder; // DPSAsc;
+	function DPSDesc() : handle:ItemCompareBuilder; // DPSDesc;
+	function FavouriteItem() : handle:ItemCompareBuilder; // FavouriteItem;
+	function Get() : Int32; // Get;
+	function GetBool() : Bool; // GetBool;
+	function ItemType() : handle:ItemCompareBuilder; // ItemType;
+	function NameAsc() : handle:ItemCompareBuilder; // NameAsc;
+	function NameDesc() : handle:ItemCompareBuilder; // NameDesc;
+	function NewItem(uiScriptableSystem : handle:UIScriptableSystem) : handle:ItemCompareBuilder; // NewItem;UIScriptableSystem
+	function PriceAsc() : handle:ItemCompareBuilder; // PriceAsc;
+	function PriceDesc() : handle:ItemCompareBuilder; // PriceDesc;
+	function QualityAsc() : handle:ItemCompareBuilder; // QualityAsc;
+	function QualityDesc() : handle:ItemCompareBuilder; // QualityDesc;
+	function QuestItem() : handle:ItemCompareBuilder; // QuestItem;
+	function WeightAsc() : handle:ItemCompareBuilder; // WeightAsc;
+	function WeightDesc() : handle:ItemCompareBuilder; // WeightDesc;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

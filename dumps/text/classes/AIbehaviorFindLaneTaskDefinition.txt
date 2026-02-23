@@ -1,0 +1,14 @@
+import class AIbehaviorFindLaneTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var pointOnLane : handle:AIArgumentMapping;
+	var filter : worldFindLaneFilter;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"b":"PSODescStencilFuncDesc","d":8,"g":true,"e":[{"a":{"b":"PSODescDepthStencilModeStencilOpMode"},"b":"stencilPassOp","c":128},{"a":{"b":"PSODescDepthStencilModeComparisonMode"},"b":"stencilFunc","c":128}]}

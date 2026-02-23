@@ -1,0 +1,42 @@
+import class gamedataAISquadFurthestToSectorCheck_Record extends gamedataAISquadDistanceRelationToSectorCheck_Record
+{
+}
+
+import class gamedataAISquadDistanceRelationToSectorCheck_Record extends gamedataAITicketCheck_Record
+{
+	import function GetSectorsCount() : Int32; // GetSectorsCount
+	import function GetSectorsItem(index : Int32) : whandle:gamedataAISectorType_Record; // GetSectorsItem
+	import function GetSectorsItemHandle(index : Int32) : handle:gamedataAISectorType_Record; // GetSectorsItemHandle
+	import function Sectors(out outList : array:whandle:gamedataAISectorType_Record); // Sectors
+	import function SectorsContains(item : whandle:gamedataAISectorType_Record) : Bool; // SectorsContains
+}
+
+import class gamedataAITicketCheck_Record extends gamedataAITicketCondition_Record
+{
+	import function OptionalFastExit() : Bool; // OptionalFastExit
+}
+
+import class gamedataAITicketCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

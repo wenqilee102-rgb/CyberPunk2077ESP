@@ -1,0 +1,30 @@
+import class gamedataMovementParam_Record extends gamedataTweakDBRecord
+{
+	import function Acceleration() : Float; // Acceleration
+	import function Deceleration() : Float; // Deceleration
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function MaxSpeed() : Float; // MaxSpeed
+	import function RotationSpeed() : Float; // RotationSpeed
+	import function Type() : gamedataMovementType; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

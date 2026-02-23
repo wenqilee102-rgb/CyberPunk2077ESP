@@ -1,0 +1,4 @@
+import struct AISharedVarTableDefinition
+{
+	var table : array:AISharedVarDefinition;
+}

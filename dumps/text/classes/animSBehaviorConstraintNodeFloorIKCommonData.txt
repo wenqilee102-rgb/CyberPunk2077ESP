@@ -1,0 +1,8 @@
+import struct animSBehaviorConstraintNodeFloorIKCommonData
+{
+	var gravityCentreBone : animTransformIndex;
+	var rootRotationBlendTime : Float;
+	var verticalVelocityOffsetUpBlendTime : Float;
+	var verticalVelocityOffsetDownBlendTime : Float;
+	var slidingOnSlopeBlendTime : Float;
+}

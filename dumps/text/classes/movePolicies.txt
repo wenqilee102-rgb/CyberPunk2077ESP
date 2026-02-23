@@ -1,0 +1,103 @@
+import class movePolicies extends IScriptable
+{
+	var destination : Vector3;
+	var destinationTangent : Vector3;
+	var startTangent : Vector3;
+	var targetSmartObject : AIObjectId;
+	var targetWorkspot : handle:gameSetupWorkspotActionEvent;
+	var targetSmartObjectHash : Uint64;
+	var targetObject : whandle:gameObject;
+	var strafingTarget : moveStrafingTarget;
+	var useFollowSlots : Bool;
+	var followSlotOverrides : static:4,Vector3;
+	var hasLocalTargetOffset : Bool;
+	var localTargetOffset : Vector3;
+	var desiredDistance : Float;
+	var toleranceRadius : Float;
+	var minMovementDistance : Float;
+	var strafingRotationOffset : Float;
+	var minFollowerDistance : Float;
+	var maxFollowerDistance : Float;
+	var movementType : moveMovementType;
+	var circlingDirection : moveCirclingDirection;
+	var stopOnObstacle : Bool;
+	var avoidObstacleWithinTolerance : Bool;
+	var useCollisionAvoidance : Bool;
+	var useDestReservation : Bool;
+	var inRestrictedArea : Bool;
+	var isSpline : Bool;
+	var startFromClosestPoint : Bool;
+	var ignoreNavigation : Bool;
+	var useStart : Bool;
+	var useStop : Bool;
+	var isEvaluated : Bool;
+	var useOffMeshAllowedTags : Bool;
+	var useOffMeshBlockedTags : Bool;
+
+	import static function GetInvalidPos() : Vector4; // GetInvalidPos
+
+	import function AddAllowedTag(tag : CName); // AddAllowedTag
+	import function AddBlockedTag(tag : CName); // AddBlockedTag
+	import function GetIdleTurnsDeadZoneAngle() : Float; // GetIdleTurnsDeadZoneAngle
+	import function GetMaxPathLength() : Float; // GetMaxPathLength
+	import function GetMaxPathLengthToDirectDistanceRatioCurve() : CName; // GetMaxPathLengthToDirectDistanceRatioCurve
+	import function GetMovementType() : moveMovementType; // GetMovementType
+	import function SetAvoidObstacleWithinTolerance(avoidWiyhinTolerance : Bool); // SetAvoidObstacleWithinTolerance
+	import function SetAvoidPreventionFreeAreas(inRestrictedArea : Bool); // SetAvoidPreventionFreeAreas
+	import function SetAvoidSafeArea(inRestrictedArea : Bool); // SetAvoidSafeArea
+	import function SetAvoidThreat(avoidThreat : Bool); // SetAvoidThreat
+	import function SetAvoidThreatIgnoringDirection(ignoreDirection : Bool); // SetAvoidThreatIgnoringDirection
+	import function SetCalculateStartTangent(calculateTangent : Bool); // SetCalculateStartTangent
+	import function SetCirclingPolicy(direction : moveCirclingDirection); // SetCirclingPolicy
+	import function SetCollisionAvoidancePolicy(avoidance : Bool, reservation : Bool); // SetCollisionAvoidancePolicy
+	import function SetCostModCircle(costModCircle : handle:worldNavigationScriptCostModCircle); // SetCostModCircle
+	import function SetDebugName(debugName : CName); // SetDebugName
+	import function SetDestinationCover(cover : Uint64); // SetDestinationCover
+	import function SetDestinationObject(object : handle:gameObject); // SetDestinationObject
+	import function SetDestinationOrientation(oreiantation : Quaternion); // SetDestinationOrientation
+	import function SetDestinationPosition(position : Vector4); // SetDestinationPosition
+	import function SetDistancePolicy(distance : Float, tolerance : Float); // SetDistancePolicy
+	import function SetDynamicTargetUpdateTimer(updateTimer : Float, distance : Float); // SetDynamicTargetUpdateTimer
+	import function SetGetOutOfWay(getOutOfWay : Bool); // SetGetOutOfWay
+	import function SetIdleTurnsDeadZoneAngle(angle : Float); // SetIdleTurnsDeadZoneAngle
+	import function SetIgnoreNavigation(ignore : Bool); // SetIgnoreNavigation
+	import function SetInRestrictedArea(inRestrictedArea : Bool); // SetInRestrictedArea
+	import function SetInvalidDestinationPosition(); // SetInvalidDestinationPosition
+	import function SetKeepLineOfSight(los : moveLineOfSight); // SetKeepLineOfSight
+	import function SetLineOfSightPointPreference(preference : moveLineOfSightPointPreference); // SetLineOfSightPointPreference
+	import function SetLocalTargetOffset(position : Vector4); // SetLocalTargetOffset
+	import function SetMaxPathLength(length : Float); // SetMaxPathLength
+	import function SetMaxPathLengthToDirectDistanceRatioCurve(curveName : CName); // SetMaxPathLengthToDirectDistanceRatioCurve
+	import function SetMaxZDiff(zDiff : Float); // SetMaxZDiff
+	import function SetMinDistancePolicy(minDistance : Float); // SetMinDistancePolicy
+	import function SetMovementType(movementType : moveMovementType); // SetMovementType
+	import function SetPositionProvider(provider : handle:entIPositionProvider); // SetPositionProvider
+	import function SetSquadInfo(squadIndex : Uint32, squadSize : Uint32); // SetSquadInfo
+	import function SetStopOnObstacle(stopOnObstacle : Bool); // SetStopOnObstacle
+	import function SetStrafingPosition(position : Vector4); // SetStrafingPosition
+	import function SetStrafingPositionProvider(provider : handle:entIPositionProvider); // SetStrafingPositionProvider
+	import function SetStrafingPredictionTime(strafingPredictionTime : Float, strafingPredictionVelocityMax : Float); // SetStrafingPredictionTime
+	import function SetStrafingRotationOffset(angle : Float); // SetStrafingRotationOffset
+	import function SetStrafingTarget(object : handle:gameObject); // SetStrafingTarget
+	import function SetTweakDBID(id : TweakDBID); // SetTweakDBID
+	import function SetUseFollowSlots(use : Bool); // SetUseFollowSlots
+	import function SetUseLineOfSitePrecheck(precheck : Bool); // SetUseLineOfSitePrecheck
+	import function SetUseOffMeshAllowedTags(useOffMeshBlockedTags : Bool); // SetUseOffMeshAllowedTags
+	import function SetUseOffMeshBlockedTags(useOffMeshAllowedTags : Bool); // SetUseOffMeshBlockedTags
+	import function SetUseStartStop(useStart : Bool, useStop : Bool); // SetUseStartStop
+	import function SetUseSymmetricAnglesScores(use : Bool); // SetUseSymmetricAnglesScores
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

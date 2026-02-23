@@ -1,0 +1,7 @@
+import struct animPoseCorrection
+{
+	var rbfCoefficient : Float;
+	var rbfPowValue : Float;
+	var compareBones : static:4,animCompareBone;
+	var boneCorrections : static:4,animBoneCorrection;
+}

@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"SetGameplayObjectiveStateRequest","d":0,"e":[{"a":{"a":26,"c":{"b":"GemplayObjectiveData"}},"b":"objectiveData","c":128},{"a":{"b":"gameJournalEntryState"},"b":"objectiveState","c":128}]}

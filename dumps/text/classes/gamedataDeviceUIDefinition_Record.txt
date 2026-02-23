@@ -1,0 +1,27 @@
+import class gamedataDeviceUIDefinition_Record extends gamedataTweakDBRecord
+{
+	import function ComputerScreenType() : whandle:gamedataComputerScreenType_Record; // ComputerScreenType
+	import function ComputerScreenTypeHandle() : handle:gamedataComputerScreenType_Record; // ComputerScreenTypeHandle
+	import function TerminalScreenType() : whandle:gamedataTerminalScreenType_Record; // TerminalScreenType
+	import function TerminalScreenTypeHandle() : handle:gamedataTerminalScreenType_Record; // TerminalScreenTypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

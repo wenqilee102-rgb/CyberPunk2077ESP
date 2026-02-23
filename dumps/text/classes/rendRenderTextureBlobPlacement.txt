@@ -1,0 +1,5 @@
+import struct rendRenderTextureBlobPlacement
+{
+	var offset : Uint32;
+	var size : Uint32;
+}

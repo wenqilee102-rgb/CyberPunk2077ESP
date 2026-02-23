@@ -1,0 +1,37 @@
+class ProficiencyDisplayData extends IDisplayData
+{
+	public    var attributeId : TweakDBID;
+	public    var proficiency : gamedataProficiencyType;
+	public    var index : Int32;
+	public    var areas : array:handle:AreaDisplayData;
+	public    var passiveBonusesData : array:handle:LevelRewardDisplayData;
+	public    var traitData : handle:TraitDisplayData;
+	public    var localizedName : String;
+	public    var localizedDescription : String;
+	public    var level : Int32;
+	public    var maxLevel : Int32;
+	public    var expPoints : Int32;
+	public    var maxExpPoints : Int32;
+	public    var unlockedLevel : Int32;
+
+	function CreateTooltipData(manager : handle:PlayerDevelopmentDataManager) : handle:BasePerksMenuTooltipData; // CreateTooltipData;PlayerDevelopmentDataManager
+}
+
+class IDisplayData extends IScriptable
+{
+	function CreateTooltipData(manager : handle:PlayerDevelopmentDataManager) : handle:BasePerksMenuTooltipData; // CreateTooltipData;PlayerDevelopmentDataManager
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

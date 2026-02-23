@@ -1,0 +1,11 @@
+import class questAudioFocusNodeType extends questIAudioNodeType
+{
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

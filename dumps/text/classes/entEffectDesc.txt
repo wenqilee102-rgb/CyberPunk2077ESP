@@ -1,0 +1,14 @@
+import class entEffectDesc extends ISerializable
+{
+	var id : CRUID;
+	var effectName : CName;
+	var effect : raRef:worldEffect;
+	var compiledEffectInfo : worldCompiledEffectInfo;
+	var autoSpawnTag : CName;
+	var isAutoSpawn : Bool;
+	var randomWeight : Uint8;
+}
+
+import class abstract ISerializable
+{
+}

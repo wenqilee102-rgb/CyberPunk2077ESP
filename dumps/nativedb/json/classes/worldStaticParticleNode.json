@@ -1,0 +1,1 @@
+{"a":"worldNode","b":"worldStaticParticleNode","d":8,"e":[{"a":{"a":10},"b":"emissionRate","c":128},{"a":{"a":30,"c":{"b":"CParticleSystem"}},"b":"particleSystem","c":128},{"a":{"a":10},"b":"forcedAutoHideDistance","c":128},{"a":{"a":10},"b":"forcedAutoHideRange","c":128}]}

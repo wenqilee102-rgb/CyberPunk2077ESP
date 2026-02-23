@@ -1,0 +1,5 @@
+struct InstanceDataMappedToReferenceName
+{
+	public    var itemHandlingFeatureName : CName;
+	public    var attachmentSlot : String;
+}

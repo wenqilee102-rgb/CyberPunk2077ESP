@@ -1,0 +1,16 @@
+struct SWidgetPackageBase
+{
+	public    var libraryPath : redResourceReferenceScriptToken;
+	public    var libraryID : CName;
+	public    var widgetTweakDBID : TweakDBID;
+	public    var widget : whandle:inkWidget;
+	public    var widgetName : String;
+	public    var placement : EWidgetPlacementType;
+	public    var orientation : inkEOrientation;
+	public    var isValid : Bool;
+
+	static function GetLibraryID(widgetDef : handle:gamedataWidgetDefinition_Record, screenTypeDef : handle:gamedataDeviceScreenType_Record, styleDef : handle:gamedataWidgetStyle_Record) : String; // SWidgetPackageBase::GetLibraryID;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_Record
+	static function GetLibraryIDPackage(widgetDef : handle:gamedataWidgetDefinition_Record, screenTypeDef : handle:gamedataDeviceScreenType_Record, styleDef : handle:gamedataWidgetStyle_Record) : array:String; // SWidgetPackageBase::GetLibraryIDPackage;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_Record
+	static function GetLibraryPath(widgetDef : handle:gamedataWidgetDefinition_Record) : redResourceReferenceScriptToken; // SWidgetPackageBase::GetLibraryPath;WidgetDefinition_Record
+	static function ResolveWidgetTweakDBData(widgetTweakDBID : TweakDBID, out id : CName, out path : redResourceReferenceScriptToken) : Bool; // SWidgetPackageBase::ResolveWidgetTweakDBData;TweakDBIDCNameResRef
+}

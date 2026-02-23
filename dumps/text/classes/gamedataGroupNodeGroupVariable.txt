@@ -1,0 +1,7 @@
+import struct gamedataGroupNodeGroupVariable
+{
+	var node : handle:gamedataVariableNode;
+	var deriveInfo : gamedataGroupNodeGroupVariableDeriveInfo;
+	var flattened : Bool;
+	var flatId : TweakDBID;
+}

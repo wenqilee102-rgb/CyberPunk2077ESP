@@ -1,0 +1,7 @@
+import struct inkPermanentLayerDefinitionCollection
+{
+	var loadingLayer : inkLoadingLayerDefinition;
+	var watermarksLayer : inkWatermarksLayerDefinition;
+	var sysNotificationsLayer : inkSystemNotificationsLayerDefinition;
+	var waitingSignLayerDefinition : inkWaitingSignLayerDefinition;
+}

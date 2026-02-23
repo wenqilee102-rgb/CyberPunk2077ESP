@@ -1,0 +1,67 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class physicsCollisionPresetDefinition : ISerializable
+	{
+		private CName _name;
+		private CString _description;
+		private CBool _forceEnableCollisionCallbacks;
+		private CArray<CName> _collisionType;
+		private CArray<CName> _collisionMask;
+		private CArray<CName> _queryDetect;
+
+		[Ordinal(0)] 
+		[RED("Name")] 
+		public CName Name
+		{
+			get => GetProperty(ref _name);
+			set => SetProperty(ref _name, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("Description")] 
+		public CString Description
+		{
+			get => GetProperty(ref _description);
+			set => SetProperty(ref _description, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("ForceEnableCollisionCallbacks")] 
+		public CBool ForceEnableCollisionCallbacks
+		{
+			get => GetProperty(ref _forceEnableCollisionCallbacks);
+			set => SetProperty(ref _forceEnableCollisionCallbacks, value);
+		}
+
+		[Ordinal(3)] 
+		[RED("CollisionType")] 
+		public CArray<CName> CollisionType
+		{
+			get => GetProperty(ref _collisionType);
+			set => SetProperty(ref _collisionType, value);
+		}
+
+		[Ordinal(4)] 
+		[RED("CollisionMask")] 
+		public CArray<CName> CollisionMask
+		{
+			get => GetProperty(ref _collisionMask);
+			set => SetProperty(ref _collisionMask, value);
+		}
+
+		[Ordinal(5)] 
+		[RED("QueryDetect")] 
+		public CArray<CName> QueryDetect
+		{
+			get => GetProperty(ref _queryDetect);
+			set => SetProperty(ref _queryDetect, value);
+		}
+
+		public physicsCollisionPresetDefinition(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

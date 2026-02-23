@@ -1,0 +1,8 @@
+struct VehicleActionsContext
+{
+	public    var requestorID : entEntityID;
+	public    var requestType : gamedeviceRequestType;
+	public    var interactionLayerTag : CName;
+	public    var processInitiatorObject : whandle:gameObject;
+	public    var eventType : gameinteractionsEInteractionEventType;
+}

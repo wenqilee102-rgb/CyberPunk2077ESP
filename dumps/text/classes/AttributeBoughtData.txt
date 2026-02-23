@@ -1,0 +1,5 @@
+struct AttributeBoughtData
+{
+	public    var attribute : gamedataStatType;
+	public    var value : Int32;
+}

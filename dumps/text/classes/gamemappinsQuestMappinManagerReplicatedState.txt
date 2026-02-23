@@ -1,0 +1,4 @@
+import struct gamemappinsQuestMappinManagerReplicatedState
+{
+	var dynamicQuestMappinRepInfo : array:gamemappinsDynamicQuestMappinRepInfo;
+}

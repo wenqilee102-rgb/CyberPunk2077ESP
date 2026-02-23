@@ -1,0 +1,19 @@
+struct CinematicCameraData
+{
+	public    var cameraComponent : handle:vehicleCinematicCameraComponent;
+	public    var currentShot : handle:vehicleCinematicCameraShot;
+	public    var shotInitialTransform : WorldTransform;
+	public    var vehicleInitialTransform : WorldTransform;
+	public    var referenceLocalBoundingBox : Box;
+	public    var currentLocalBoundingBox : Box;
+	public    var shotStartTime : Float;
+	public    var shotRootTransform : WorldTransform;
+	public    var shotSpaceTransform : WorldTransform;
+	public    var vehicleTransform : WorldTransform;
+	public    var vehicleSpeed : Float;
+	public    var currentTime : Float;
+	public    var deltaTime : Float;
+
+	static function GetShotScaleRatios(data : CinematicCameraData) : Vector4; // CinematicCameraData::GetShotScaleRatios;CinematicCameraData
+	static function ScaleTransformForVehicle(data : CinematicCameraData, transform : Transform) : Transform; // CinematicCameraData::ScaleTransformForVehicle;CinematicCameraDataTransform
+}

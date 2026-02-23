@@ -1,0 +1,4 @@
+import struct scnPerformerId
+{
+	var id : Uint32;
+}

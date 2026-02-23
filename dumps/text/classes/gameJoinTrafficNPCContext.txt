@@ -1,0 +1,8 @@
+import struct gameJoinTrafficNPCContext
+{
+	var startPosition : Vector3;
+	var threatPosition : Vector3;
+	var threatRadius : Float;
+	var checkRoadIntersection : Bool;
+	var usePreviousPosition : Bool;
+}

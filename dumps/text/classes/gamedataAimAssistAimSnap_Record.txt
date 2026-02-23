@@ -1,0 +1,53 @@
+import class gamedataAimAssistAimSnap_Record extends gamedataTweakDBRecord
+{
+	import function AdjustPitch() : Bool; // AdjustPitch
+	import function AdjustYaw() : Bool; // AdjustYaw
+	import function AffectedByRecoil() : Bool; // AffectedByRecoil
+	import function BodyPartsTracking() : Bool; // BodyPartsTracking
+	import function BptMaxDot() : Float; // BptMaxDot
+	import function BptMaxSwitches() : Float; // BptMaxSwitches
+	import function BptMinInputMag() : Float; // BptMinInputMag
+	import function BptMinMouseInputMag() : Float; // BptMinMouseInputMag
+	import function BptMinResetInputMag() : Float; // BptMinResetInputMag
+	import function BreakOnDistance() : Bool; // BreakOnDistance
+	import function CameraInputMagToBreak() : Float; // CameraInputMagToBreak
+	import function CameraMouseInputMagToBreak() : Float; // CameraMouseInputMagToBreak
+	import function CancelWithRecoil() : Bool; // CancelWithRecoil
+	import function CheckRange() : Bool; // CheckRange
+	import function Duration() : Float; // Duration
+	import function EaseIn() : Bool; // EaseIn
+	import function EaseOut() : Bool; // EaseOut
+	import function EndOnAimingStopped() : Bool; // EndOnAimingStopped
+	import function EndOnCameraInputApplied() : Bool; // EndOnCameraInputApplied
+	import function EndOnTargetReached() : Bool; // EndOnTargetReached
+	import function EndOnTimeExceeded() : Bool; // EndOnTimeExceeded
+	import function EvaluateTargets() : Bool; // EvaluateTargets
+	import function IgnoreInputType() : Bool; // IgnoreInputType
+	import function IsEnabled() : Bool; // IsEnabled
+	import function MaxDistance() : Float; // MaxDistance
+	import function MaxDuration() : Float; // MaxDuration
+	import function MinDistance() : Float; // MinDistance
+	import function Precision() : Float; // Precision
+	import function TargetAngleDistanceFactor() : Float; // TargetAngleDistanceFactor
+	import function TargetCycling() : Bool; // TargetCycling
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"PoliceChaseParamsDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Float"},"b":"SearchAreaRadius","c":128},{"a":{"b":"gamebbScriptID_Float"},"b":"ChasePlayerDistance","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

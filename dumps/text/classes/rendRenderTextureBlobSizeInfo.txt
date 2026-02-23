@@ -1,0 +1,6 @@
+import struct rendRenderTextureBlobSizeInfo
+{
+	var width : Uint16;
+	var height : Uint16;
+	var depth : Uint16;
+}

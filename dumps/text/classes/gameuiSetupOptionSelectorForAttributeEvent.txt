@@ -1,0 +1,25 @@
+import class gameuiSetupOptionSelectorForAttributeEvent extends redEvent
+{
+	var attribute : Uint32;
+	var values : array:gameuiPhotoModeOptionSelectorData;
+	var startDataValue : Int32;
+	var doApply : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

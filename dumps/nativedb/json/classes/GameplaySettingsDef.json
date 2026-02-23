@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"GameplaySettingsDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"DisableAutomaticSwitchToVehicleTPP","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"EnableVehicleToggleSummonMode","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

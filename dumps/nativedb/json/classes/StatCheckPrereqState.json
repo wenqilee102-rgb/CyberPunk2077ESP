@@ -1,0 +1,1 @@
+{"a":"gamePrereqState","b":"StatCheckPrereqState","d":0,"f":[{"a":"GetStatToCheck;","b":"GetStatToCheck","c":{"b":"gamedataStatType"},"d":176},{"a":"UpdateStatCheckPrereqData;GameObjectFloat","b":"UpdateStatCheckPrereqData","d":48,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"obj","c":0},{"a":{"a":10},"b":"newValue","c":0}]}]}

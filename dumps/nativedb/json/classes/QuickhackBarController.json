@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"QuickhackBarController","d":0,"e":[{"a":{"b":"inkWidgetReference"},"b":"emptyMask","c":129},{"a":{"b":"inkWidgetReference"},"b":"empty","c":129},{"a":{"b":"inkWidgetReference"},"b":"full","c":129}],"f":[{"a":"SetStatus;Float","b":"SetStatus","d":48,"e":[{"a":{"a":10},"b":"value","c":0}]}]}

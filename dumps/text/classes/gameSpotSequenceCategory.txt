@@ -1,0 +1,5 @@
+import struct gameSpotSequenceCategory
+{
+	var type : gamedataWorkspotCategory;
+	var probability : Float;
+}

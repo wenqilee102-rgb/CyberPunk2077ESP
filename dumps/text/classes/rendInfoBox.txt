@@ -1,0 +1,27 @@
+import class rendInfoBox extends IScriptable
+{
+	import function AddBoolValue(name : String, value : Bool); // AddBoolValue
+	import function AddCategory(category : String, optional color : Color); // AddCategory
+	import function AddColorValue(name : String, value : Color, optional coloredValue : Bool); // AddColorValue
+	import function AddFloatValue(name : String, value : Float); // AddFloatValue
+	import function AddIntValue(name : String, value : Int32); // AddIntValue
+	import function AddQuatValue(name : String, value : Quaternion); // AddQuatValue
+	import function AddStringValue(name : String, value : String); // AddStringValue
+	import function AddUintValue(name : String, value : Uint32); // AddUintValue
+	import function AddVector2Value(name : String, value : Vector2); // AddVector2Value
+	import function AddVector4Value(name : String, value : Vector4); // AddVector4Value
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

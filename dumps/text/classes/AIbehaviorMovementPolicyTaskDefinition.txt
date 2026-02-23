@@ -1,0 +1,16 @@
+import class AIbehaviorMovementPolicyTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var useCurrentPolicy : Bool;
+	var waitForPolicy : Bool;
+	var stopWhenDestinationReached : handle:AIArgumentMapping;
+	var policies : array:handle:AIbehaviorMovementPolicyTaskItemDefinition;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

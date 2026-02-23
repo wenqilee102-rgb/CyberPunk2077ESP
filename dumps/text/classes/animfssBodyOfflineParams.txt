@@ -1,0 +1,10 @@
+import struct animfssBodyOfflineParams
+{
+	var HipsTilt : Float;
+	var HipsShift : Float;
+	var LegsPullFactorMin : Float;
+	var LegsPullFactorMax : Float;
+	var LegLengthAdjustment : Float;
+	var LegMaxStretchOffset : Float;
+	var LegMaxStretchAdjustment : Float;
+}

@@ -1,0 +1,8 @@
+import struct questChangeVoicesetState_NodeTypeParams
+{
+	var puppetRef : gameEntityReference;
+	var isPlayer : Bool;
+	var enableVoicesetLines : Bool;
+	var enableVoicesetGrunts : Bool;
+	var inputsToBlock : array:entVoicesetInputToBlock;
+}

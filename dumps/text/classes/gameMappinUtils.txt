@@ -1,0 +1,11 @@
+import struct gameMappinUtils
+{
+	import static function GetDistrictRecord(districtType : gamedataDistrict) : whandle:gamedataDistrict_Record; // GetDistrictRecord
+	import static function GetFilterGroupFromFilter(filter : gamedataWorldMapFilter) : whandle:gamedataMappinUIFilterGroup_Record; // GetFilterGroupFromFilter
+	import static function GetFilterGroupFromVariant(mappinVariant : gamedataMappinVariant) : whandle:gamedataMappinUIFilterGroup_Record; // GetFilterGroupFromVariant
+	import static function GetGlobalProfile() : handle:gamedataMappinUIGlobalProfile_Record; // GetGlobalProfile
+	import static function GetMappinsGroup(mappinVariant : gamedataMappinVariant) : whandle:gamedataMappinsGroup_Record; // GetMappinsGroup
+
+	static function GetFilterGroup(filter : gamedataWorldMapFilter) : whandle:gamedataMappinUIFilterGroup_Record; // gameMappinUtils::GetFilterGroup;gamedataWorldMapFilter
+	static function GetFilterGroup(mappinVariant : gamedataMappinVariant) : whandle:gamedataMappinUIFilterGroup_Record; // gameMappinUtils::GetFilterGroup;gamedataMappinVariant
+}

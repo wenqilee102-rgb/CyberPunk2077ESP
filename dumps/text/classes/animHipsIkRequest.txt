@@ -1,0 +1,8 @@
+import struct animHipsIkRequest
+{
+	var leftLegIkChain : CName;
+	var rightLegIkChain : CName;
+	var hipsTransformIndex : animTransformIndex;
+	var leftFootTransformIndex : animTransformIndex;
+	var rightFootTransformIndex : animTransformIndex;
+}

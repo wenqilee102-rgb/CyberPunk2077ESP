@@ -1,0 +1,36 @@
+class AIPatrolDef extends AIBlackboardDef
+{
+	public    var patrolPathOverride : gamebbScriptID_Variant;
+	public    var patrolWithWeapon : gamebbScriptID_Bool;
+	public    var forceAlerted : gamebbScriptID_Bool;
+	public    var sprint : gamebbScriptID_Bool;
+	public    var selectedPath : gamebbScriptID_Variant;
+	public    var closestPathPoint : gamebbScriptID_Vector4;
+	public    var workspotData : gamebbScriptID_Variant;
+	public    var workspotEntryPosition : gamebbScriptID_Vector4;
+	public    var workspotExitPosition : gamebbScriptID_Vector4;
+	public    var patrolAction : gamebbScriptID_Variant;
+	public    var patrolInProgress : gamebbScriptID_Bool;
+}
+
+class abstract AIBlackboardDef extends gamebbScriptDefinition
+{
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

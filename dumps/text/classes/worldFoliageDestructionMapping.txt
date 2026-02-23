@@ -1,0 +1,9 @@
+import class worldFoliageDestructionMapping extends ISerializable
+{
+	var baseMesh : raRef:CMesh;
+	var destructibleMesh : raRef:CMesh;
+}
+
+import class abstract ISerializable
+{
+}

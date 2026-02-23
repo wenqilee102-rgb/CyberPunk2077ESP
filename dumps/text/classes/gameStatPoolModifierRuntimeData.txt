@@ -1,0 +1,7 @@
+import struct gameStatPoolModifierRuntimeData
+{
+	var modifier : gameStatPoolModifier;
+	var modificationDelay : Float;
+	var inRange : Bool;
+	var recordID : TweakDBID;
+}

@@ -1,0 +1,31 @@
+import class abstract gameuiCharacterCustomizationInfo extends IScriptable
+{
+	var name : CName;
+	var uiSlot : CName;
+	var localizedName : String;
+	var defaultIndex : Int32;
+	var index : Int32;
+	var hidden : Bool;
+	var enabled : Bool;
+	var link : CName;
+	var linkController : Bool;
+	var editTags : array:gameuiCharacterCustomizationEditTag;
+	var censorFlag : CensorshipFlags;
+	var censorFlagAction : gameuiCharacterCustomizationActionType;
+	var onDeactivateActions : array:gameuiCharacterCustomizationAction;
+	var randomizeCategory : gamedataCharacterRandomizationCategory;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

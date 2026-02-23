@@ -1,0 +1,5 @@
+struct CooldownPackageDelayIDs
+{
+	public    var packageID : CooldownStorageID;
+	public    var delayIDs : array:gameDelayID;
+}

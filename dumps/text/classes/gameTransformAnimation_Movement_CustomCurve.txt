@@ -1,0 +1,12 @@
+import class gameTransformAnimation_Movement_CustomCurve extends gameTransformAnimation_Movement
+{
+	var curve : curveData:Float;
+}
+
+import class abstract gameTransformAnimation_Movement extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

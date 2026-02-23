@@ -1,0 +1,16 @@
+import class worldFoliageCompiledResource extends CResource
+{
+	var version : Uint32;
+	var populationCount : Uint32;
+	var bucketCount : Uint32;
+	var dataBuffer : DataBuffer;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

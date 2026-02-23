@@ -1,0 +1,36 @@
+import class gamedataTankGameplay_Record extends gamedataArcadeGameplay_Record
+{
+	import function BackgroundTDBID() : CName; // BackgroundTDBID
+	import function EnemySpawnerTDBID() : CName; // EnemySpawnerTDBID
+	import function GameplayData() : whandle:gamedataTankGameplayData_Record; // GameplayData
+	import function GameplayDataHandle() : handle:gamedataTankGameplayData_Record; // GameplayDataHandle
+	import function ObstacleSpawnerTDBID() : CName; // ObstacleSpawnerTDBID
+	import function PickupSpawnerTDBID() : CName; // PickupSpawnerTDBID
+	import function PlayerTDBID() : CName; // PlayerTDBID
+}
+
+import class gamedataArcadeGameplay_Record extends gamedataTweakDBRecord
+{
+	import function ArcadeGameplayPausedSFX() : CName; // ArcadeGameplayPausedSFX
+	import function ArcadeGameplaySilentBackgroundMusic() : CName; // ArcadeGameplaySilentBackgroundMusic
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

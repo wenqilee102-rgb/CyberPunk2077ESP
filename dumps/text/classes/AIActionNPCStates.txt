@@ -1,0 +1,9 @@
+struct AIActionNPCStates
+{
+	public    var highLevelStates : array:gamedataNPCHighLevelState;
+	public    var upperBodyStates : array:gamedataNPCUpperBodyState;
+	public    var stanceStates : array:gamedataNPCStanceState;
+	public    var behaviorStates : array:gamedataNPCBehaviorState;
+	public    var defenseMode : array:gamedataDefenseMode;
+	public    var locomotionMode : array:gamedataLocomotionMode;
+}

@@ -1,0 +1,22 @@
+import struct questWithCompanionMoveOnSplineParams
+{
+	var movementType : AIMovementTypeSpec;
+	var facingTargetRef : handle:questUniversalRef;
+	var rotateEntityTowardsFacingTarget : Bool;
+	var snapToTerrain : Bool;
+	var shootingTargetRef : handle:questUniversalRef;
+	var companionRef : handle:questUniversalRef;
+	var companionDistancePreset : gamedataCompanionDistancePreset;
+	var companionPosition : questCompanionPositions;
+	var catchUpWithCompanion : Bool;
+	var teleportToCompanion : Bool;
+	var useMatchForSpeedForPlayer : Bool;
+	var ignoreNavigation : Bool;
+	var ignoreLineOfSightCheck : Bool;
+	var useOffMeshLinkReservation : Bool;
+	var lookAtTargetRef : handle:questUniversalRef;
+	var minSearchAngle : Float;
+	var maxSearchAngle : Float;
+	var interruptCapability : scnInterruptCapability;
+	var maxCompanionDistanceOnSpline : Float;
+}

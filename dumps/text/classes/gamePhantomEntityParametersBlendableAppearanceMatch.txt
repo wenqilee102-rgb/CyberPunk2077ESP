@@ -1,0 +1,5 @@
+import struct gamePhantomEntityParametersBlendableAppearanceMatch
+{
+	var blendable : CName;
+	var notBlendable : CName;
+}

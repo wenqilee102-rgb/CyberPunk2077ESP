@@ -1,0 +1,1 @@
+{"b":"scneventsSpawnEntityEventParams","d":8,"g":true,"e":[{"a":{"b":"scnPerformerId"},"b":"performer","c":128},{"a":{"b":"scnPerformerId"},"b":"referencePerformer","c":128},{"a":{"a":15},"b":"referencePerformerSlotId","c":128},{"a":{"a":15},"b":"referencePerformerItemId","c":128},{"a":{"a":31,"c":{"b":"scneventsSpawnEntityEventFallbackData"}},"b":"fallbackData","c":128}]}

@@ -1,0 +1,16 @@
+import class worldInteriorMapNode extends worldNode
+{
+	var version : Uint32;
+	var coords : Uint64;
+	var buffer : serializationDeferredDataBuffer;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

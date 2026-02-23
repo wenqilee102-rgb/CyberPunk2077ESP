@@ -1,0 +1,20 @@
+import class questContentCondition extends questTypedCondition
+{
+	var type : handle:questIContentConditionType;
+}
+
+import class abstract questTypedCondition extends questIBaseCondition
+{
+}
+
+import class abstract questIBaseCondition extends graphIGraphNodeCondition
+{
+}
+
+import class abstract graphIGraphNodeCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

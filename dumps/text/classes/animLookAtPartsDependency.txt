@@ -1,0 +1,15 @@
+import struct animLookAtPartsDependency
+{
+	var masterPart : CName;
+	var slavePart : CName;
+	var angle : Float;
+	var speedToTargetFactor : Float;
+	var speedToTargetByAngleCurve : curveData:Float;
+	var verticalPullSpeedFactor : Float;
+	var verticalPullSpeedByAngleCurve : curveData:Float;
+	var horizontalPullSpeedFactor : Float;
+	var horizontalPullSpeedByAngleCurve : curveData:Float;
+	var pullScaleBySquareSizeFactor : Float;
+	var pullScaleBySquareSizeCurve : curveData:Float;
+	var innerSquareScale : Float;
+}

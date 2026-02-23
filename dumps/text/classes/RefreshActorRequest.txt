@@ -1,0 +1,36 @@
+class RefreshActorRequest extends HUDManagerRequest
+{
+	private   var actorUpdateData : handle:HUDActorUpdateData;
+	private   var requestedModules : array:whandle:HUDModule;
+
+	static function Construct(requesterID : entEntityID, optional updateData : handle:HUDActorUpdateData, optional suggestedModules : array:whandle:HUDModule) : handle:RefreshActorRequest; // RefreshActorRequest::Construct;EntityIDHUDActorUpdateDataarray<HUDModule>
+
+	function GetActorUpdateData() : handle:HUDActorUpdateData; // GetActorUpdateData;
+	function GetRequestedModules() : array:whandle:HUDModule; // GetRequestedModules;
+}
+
+class HUDManagerRequest extends gameScriptableSystemRequest
+{
+	public    var ownerID : entEntityID;
+
+	function IsValid() : Bool; // IsValid;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

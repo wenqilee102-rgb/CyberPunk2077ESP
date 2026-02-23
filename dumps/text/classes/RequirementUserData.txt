@@ -1,0 +1,22 @@
+class RequirementUserData extends IScriptable
+{
+	public    var skillName : String;
+	public    var requiredSkill : Int32;
+	public    var skillCheck : EDeviceChallengeSkill;
+	public    var isPassed : Bool;
+	public    var asyncSpawnRequest : whandle:inkAsyncSpawnRequest;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

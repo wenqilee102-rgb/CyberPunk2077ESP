@@ -1,0 +1,7 @@
+import struct gameShapeData
+{
+	var result : gameHitResult;
+	var userData : handle:gameHitShapeUserData;
+	var physicsMaterial : CName;
+	var hitShapeName : CName;
+}

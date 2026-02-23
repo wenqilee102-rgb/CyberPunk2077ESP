@@ -1,0 +1,8 @@
+import struct physicsTraceResult
+{
+	var position : Vector3;
+	var normal : Vector3;
+	var material : CName;
+
+	import static function IsValid(self : physicsTraceResult) : Bool; // IsValid
+}

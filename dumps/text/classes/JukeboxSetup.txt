@@ -1,0 +1,7 @@
+struct JukeboxSetup
+{
+	public    var randomizeStartingStation : Bool;
+	public    var startingStation : ERadioStationList;
+	public    var glitchSFX : CName;
+	public    var paymentRecordID : TweakDBID;
+}

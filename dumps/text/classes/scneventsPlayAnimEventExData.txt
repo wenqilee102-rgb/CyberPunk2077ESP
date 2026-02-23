@@ -1,0 +1,6 @@
+import struct scneventsPlayAnimEventExData
+{
+	var basic : scneventsPlayAnimEventData;
+	var weight : Float;
+	var bodyPartMask : CName;
+}

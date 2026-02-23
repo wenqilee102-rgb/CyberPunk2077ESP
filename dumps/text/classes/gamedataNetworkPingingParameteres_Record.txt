@@ -1,0 +1,47 @@
+import class gamedataNetworkPingingParameteres_Record extends gamedataTweakDBRecord
+{
+	import function AllowSimultanousPinging() : Bool; // AllowSimultanousPinging
+	import function AmmountOfIntervals() : Int32; // AmmountOfIntervals
+	import function DirectPingDuration() : Float; // DirectPingDuration
+	import function ForceInstantBeamKill() : Bool; // ForceInstantBeamKill
+	import function MaxFreePingLinks() : Int32; // MaxFreePingLinks
+	import function NetworkRevealDuration() : Float; // NetworkRevealDuration
+	import function PingRange() : Float; // PingRange
+	import function PulseRange() : Float; // PulseRange
+	import function PulseRealObjects() : Bool; // PulseRealObjects
+	import function QuickHacksExposedByDefaul() : Bool; // QuickHacksExposedByDefaul
+	import function ReavealNetworkOnMaster() : Bool; // ReavealNetworkOnMaster
+	import function RevealLinksAfterLeavingFocusDuration() : Float; // RevealLinksAfterLeavingFocusDuration
+	import function RevealMaster() : Bool; // RevealMaster
+	import function RevealMasterAfterLeavingFocusDuration() : Float; // RevealMasterAfterLeavingFocusDuration
+	import function RevealSlave() : Bool; // RevealSlave
+	import function ShouldNetworkElementsPersistAfterFocus() : Bool; // ShouldNetworkElementsPersistAfterFocus
+	import function ShouldRevealNetworkAfterPulse() : Bool; // ShouldRevealNetworkAfterPulse
+	import function ShowOnlyTargetQuickHacks() : Bool; // ShowOnlyTargetQuickHacks
+	import function SpacePingAppearModifier() : Float; // SpacePingAppearModifier
+	import function SpacePingDuration() : Float; // SpacePingDuration
+	import function SuppressPingIfBackdoorsFound() : Bool; // SuppressPingIfBackdoorsFound
+	import function UsePulse() : Bool; // UsePulse
+	import function VirtualNetwork() : whandle:gamedataVirtualNetwork_Record; // VirtualNetwork
+	import function VirtualNetworkHandle() : handle:gamedataVirtualNetwork_Record; // VirtualNetworkHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

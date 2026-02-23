@@ -1,0 +1,1 @@
+{"a":"AIbehaviorconditionScript","b":"HasPositionFarFromThreat","d":0,"e":[{"a":{"a":10},"b":"desiredDistance","c":128},{"a":{"a":10},"b":"minDistance","c":128},{"a":{"a":10},"b":"minPathLength","c":128}],"f":[{"a":"Check;ScriptExecutionContext","b":"Check","c":{"b":"AIbehaviorConditionOutcomes"},"d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

@@ -1,0 +1,96 @@
+class AIActionHelper extends IScriptable
+{
+	static function ActionDebugHelper(entity : whandle:entEntity, actionName : script_ref:String) : Bool; // AIActionHelper::ActionDebugHelper;Entityscript_ref<String>
+	static function ActionDebugHelper(actionNameCheck : script_ref:String, actionName : script_ref:String) : Bool; // AIActionHelper::ActionDebugHelper;script_ref<String>script_ref<String>
+	static function ActionDebugHelper(actionNameCheck : script_ref:String, entity : whandle:entEntity, actionName : script_ref:String) : Bool; // AIActionHelper::ActionDebugHelper;script_ref<String>Entityscript_ref<String>
+	static function AnimationsLoadedSignal(ownerPuppet : whandle:ScriptedPuppet); // AIActionHelper::AnimationsLoadedSignal;ScriptedPuppet
+	static function BreakWeaponEffectLoop(weapon : handle:gameweaponObject, effectName : CName); // AIActionHelper::BreakWeaponEffectLoop;WeaponObjectCName
+	static function ChangeAttitudeToFriendlyAllSquad(owner : whandle:gameObject, squadMembers : script_ref:array:entEntityID); // AIActionHelper::ChangeAttitudeToFriendlyAllSquad;GameObjectscript_ref<array<EntityID>>
+	static function CheckAbility(object : whandle:gameObject, ability : whandle:gamedataGameplayAbility_Record) : Bool; // AIActionHelper::CheckAbility;GameObjectGameplayAbility_Record
+	static function CheckFlatheadStatPoolRequirements(game : ScriptGameInstance, actionName : script_ref:String) : Bool; // AIActionHelper::CheckFlatheadStatPoolRequirements;GameInstancescript_ref<String>
+	static function ClearCommandCombatTarget(context : AIbehaviorScriptExecutionContext, persistenceSource : Uint32, optional ignoreCombatTargetCommand : Bool); // AIActionHelper::ClearCommandCombatTarget;ScriptExecutionContextUint32Bool
+	static function ClearItemsForceUnequipped(puppet : whandle:ScriptedPuppet); // AIActionHelper::ClearItemsForceUnequipped;ScriptedPuppet
+	static function ClearItemsToEquip(puppet : whandle:ScriptedPuppet); // AIActionHelper::ClearItemsToEquip;ScriptedPuppet
+	static function ClearItemsToUnequip(puppet : whandle:ScriptedPuppet); // AIActionHelper::ClearItemsToUnequip;ScriptedPuppet
+	static function ClearItemsUnequipped(puppet : whandle:ScriptedPuppet); // AIActionHelper::ClearItemsUnequipped;ScriptedPuppet
+	static function ClearWorkspotCommand(puppet : whandle:ScriptedPuppet, optional doNotRepeat : Bool) : Bool; // AIActionHelper::ClearWorkspotCommand;ScriptedPuppetBool
+	static function CombatQueriesInit(ownerPuppet : whandle:ScriptedPuppet); // AIActionHelper::CombatQueriesInit;ScriptedPuppet
+	static function GetActionBlackboard(owner : handle:ScriptedPuppet) : handle:gameIBlackboard; // AIActionHelper::GetActionBlackboard;ScriptedPuppet
+	static function GetActiveTopHostilePuppetThreat(puppet : handle:ScriptedPuppet, threat : script_ref:AITrackedLocation) : Bool; // AIActionHelper::GetActiveTopHostilePuppetThreat;ScriptedPuppetscript_ref<TrackedLocation>
+	static function GetAdditionalTraceTypeValueFromTweakEnum(value : gamedataAIAdditionalTraceType) : senseAdditionalTraceType; // AIActionHelper::GetAdditionalTraceTypeValueFromTweakEnum;gamedataAIAdditionalTraceType
+	static function GetAnimWrapperNameBasedOnItemID(itemID : gameItemID) : CName; // AIActionHelper::GetAnimWrapperNameBasedOnItemID;ItemID
+	static function GetAnimWrapperNameBasedOnItemTag(itemID : gameItemID) : CName; // AIActionHelper::GetAnimWrapperNameBasedOnItemTag;ItemID
+	static function GetBaseShootingPatternPackages(patternPackages : script_ref:array:whandle:gamedataAIPatternsPackage_Record) : Bool; // AIActionHelper::GetBaseShootingPatternPackages;script_ref<array<AIPatternsPackage_Record>>
+	static function GetCallingAlliesToCombatDelay(postCombatStart : Bool) : Float; // AIActionHelper::GetCallingAlliesToCombatDelay;Bool
+	static function GetCurrentStrongArmsTrailEffect(weapon : handle:gameItemObject) : CName; // AIActionHelper::GetCurrentStrongArmsTrailEffect;ItemObject
+	static function GetDistanceAndToleranceFromRingType(record : whandle:gamedataMovementPolicy_Record, out distance : Float, out tolerance : Float) : Bool; // AIActionHelper::GetDistanceAndToleranceFromRingType;MovementPolicy_RecordFloatFloat
+	static function GetDistanceRangeFromRingType(ringRecord : whandle:gamedataAIRingType_Record, condition : whandle:gamedataMovementPolicy_Record, out distanceRange : Vector2) : Bool; // AIActionHelper::GetDistanceRangeFromRingType;AIRingType_RecordMovementPolicy_RecordVector2
+	static function GetDistanceRangeFromRingType(ringRecord : whandle:gamedataAIRingType_Record, condition : whandle:gamedataAIOptimalDistanceCond_Record, out distanceRange : Vector2) : Bool; // AIActionHelper::GetDistanceRangeFromRingType;AIRingType_RecordAIOptimalDistanceCond_RecordVector2
+	static function GetDistanceRangeFromRingType(ringRecord : whandle:gamedataAIRingType_Record, out distanceRange : Vector2) : Bool; // AIActionHelper::GetDistanceRangeFromRingType;AIRingType_RecordVector2
+	static function GetItemsFromWeaponSlots(owner : whandle:gameObject, items : script_ref:array:whandle:gameItemObject) : Bool; // AIActionHelper::GetItemsFromWeaponSlots;GameObjectscript_ref<array<ItemObject>>
+	static function GetLastRequestedTriggerMode(weapon : whandle:gameweaponObject) : gamedataTriggerMode; // AIActionHelper::GetLastRequestedTriggerMode;WeaponObject
+	static function GetLatestActiveRingTypeRecord(puppet : whandle:ScriptedPuppet) : handle:gamedataAIRingType_Record; // AIActionHelper::GetLatestActiveRingTypeRecord;ScriptedPuppet
+	static function GetLatestActiveRingTypeRecordHelper(object : handle:gameObject) : handle:gamedataAIRingType_Record; // AIActionHelper::GetLatestActiveRingTypeRecordHelper;GameObject
+	static function GetReactionPresetGroup(puppet : whandle:ScriptedPuppet) : String; // AIActionHelper::GetReactionPresetGroup;ScriptedPuppet
+	static function GetShootingBlackboard(owner : handle:ScriptedPuppet) : handle:gameIBlackboard; // AIActionHelper::GetShootingBlackboard;ScriptedPuppet
+	static function GetTargetPositionFromPast(target : whandle:gameObject, delay : Float, out position : Vector4) : Bool; // AIActionHelper::GetTargetPositionFromPast;GameObjectFloatVector4
+	static function GetTargetSlotPosition(target : whandle:gameObject, slotName : CName, out slotPosition : Vector4) : Bool; // AIActionHelper::GetTargetSlotPosition;GameObjectCNameVector4
+	static function GetTargetSlotTransform(target : whandle:gameObject, slotName : CName, out slotTransform : WorldTransform) : Bool; // AIActionHelper::GetTargetSlotTransform;GameObjectCNameWorldTransform
+	static function HasCombatAICommand(owner : whandle:ScriptedPuppet) : Bool; // AIActionHelper::HasCombatAICommand;ScriptedPuppet
+	static function HasEquippedWeaponWithTag(owner : whandle:gameObject, tag : CName) : Bool; // AIActionHelper::HasEquippedWeaponWithTag;GameObjectCName
+	static function HasFollowerCombatAICommand(owner : whandle:ScriptedPuppet) : Bool; // AIActionHelper::HasFollowerCombatAICommand;ScriptedPuppet
+	static function HasLostTarget(owner : handle:ScriptedPuppet, target : handle:gameObject) : Bool; // AIActionHelper::HasLostTarget;ScriptedPuppetGameObject
+	static function HasWorkspotAICommand(owner : whandle:ScriptedPuppet) : Bool; // AIActionHelper::HasWorkspotAICommand;ScriptedPuppet
+	static function IsCommandCombatTargetValid(context : AIbehaviorScriptExecutionContext, commandName : CName) : Bool; // AIActionHelper::IsCommandCombatTargetValid;ScriptExecutionContextCName
+	static function IsCooldownActive(self : handle:gameObject, record : whandle:gamedataAIActionCooldown_Record) : Bool; // AIActionHelper::IsCooldownActive;GameObjectAIActionCooldown_Record
+	static function IsCurrentlyCrouching(puppet : handle:ScriptedPuppet) : Bool; // AIActionHelper::IsCurrentlyCrouching;ScriptedPuppet
+	static function IsCurrentlyExposedInCover(puppet : handle:ScriptedPuppet) : Bool; // AIActionHelper::IsCurrentlyExposedInCover;ScriptedPuppet
+	static function IsCurrentlyInCoverAttackAction(puppet : handle:ScriptedPuppet) : Bool; // AIActionHelper::IsCurrentlyInCoverAttackAction;ScriptedPuppet
+	static function IsInWorkspot(owner : whandle:gameObject) : Bool; // AIActionHelper::IsInWorkspot;GameObject
+	static function IsMoveCommand(commandName : CName) : Bool; // AIActionHelper::IsMoveCommand;CName
+	static function IsPointInRMA(ownerPuppet : whandle:ScriptedPuppet, point : Vector4) : Bool; // AIActionHelper::IsPointInRMA;ScriptedPuppetVector4
+	static function IsPointInRestrictedMovementArea(ownerPuppet : whandle:ScriptedPuppet, point : Vector4) : Bool; // AIActionHelper::IsPointInRestrictedMovementArea;ScriptedPuppetVector4
+	static function KillWeaponEffect(weapon : handle:gameweaponObject, effectName : CName); // AIActionHelper::KillWeaponEffect;WeaponObjectCName
+	static function PlayWeaponEffect(weapon : handle:gameweaponObject, effectName : CName); // AIActionHelper::PlayWeaponEffect;WeaponObjectCName
+	static function PreloadAllBaseAnimations(puppet : whandle:ScriptedPuppet); // AIActionHelper::PreloadAllBaseAnimations;ScriptedPuppet
+	static function PreloadAnimations(puppet : whandle:ScriptedPuppet, streamingContextName : CName, highPriority : Bool) : Bool; // AIActionHelper::PreloadAnimations;ScriptedPuppetCNameBool
+	static function PreloadBaseAnimations(puppet : whandle:ScriptedPuppet, optional melee : Bool) : Bool; // AIActionHelper::PreloadBaseAnimations;ScriptedPuppetBool
+	static function PreloadCoreAnimations(puppet : whandle:ScriptedPuppet, optional melee : Bool) : Bool; // AIActionHelper::PreloadCoreAnimations;ScriptedPuppetBool
+	static function QueueNearbyCombatNotification(owner : whandle:gameObject) : gameDelayID; // AIActionHelper::QueueNearbyCombatNotification;GameObject
+	static function QueuePreloadBaseAnimationsEvent(puppet : whandle:ScriptedPuppet); // AIActionHelper::QueuePreloadBaseAnimationsEvent;ScriptedPuppet
+	static function QueuePreloadCoreAnimationsEvent(puppet : whandle:ScriptedPuppet); // AIActionHelper::QueuePreloadCoreAnimationsEvent;ScriptedPuppet
+	static function QueuePullSquadSync(owner : whandle:gameObject, optional postCombatStart : Bool) : gameDelayID; // AIActionHelper::QueuePullSquadSync;GameObjectBool
+	static function QueueSecuritySystemCombatNotification(owner : whandle:gameObject, optional postCombatStart : Bool); // AIActionHelper::QueueSecuritySystemCombatNotification;GameObjectBool
+	static function SendItemHandling(owner : whandle:gameObject, itemRecord : whandle:gamedataItem_Record, animFeatureName : CName, equipped : Bool); // AIActionHelper::SendItemHandling;GameObjectItem_RecordCNameBool
+	static function SetActionExclusivity(owner : handle:gameObject, active : Bool); // AIActionHelper::SetActionExclusivity;GameObjectBool
+	static function SetCommandCombatTarget(context : AIbehaviorScriptExecutionContext, target : whandle:gameObject, isPersistant : Bool, persistenceSource : Uint32) : Bool; // AIActionHelper::SetCommandCombatTarget;ScriptExecutionContextGameObjectBoolUint32
+	static function SetFriendlyTargetAllSquadMembers(owner : whandle:gameObject); // AIActionHelper::SetFriendlyTargetAllSquadMembers;GameObject
+	static function SetItemsEquipData(puppet : whandle:ScriptedPuppet, itemsToEquip : array:NPCItemToEquip); // AIActionHelper::SetItemsEquipData;ScriptedPuppetarray<NPCItemToEquip>
+	static function SetItemsUnequipData(puppet : whandle:ScriptedPuppet, itemsToUnequip : array:NPCItemToEquip, dropItem : Bool); // AIActionHelper::SetItemsUnequipData;ScriptedPuppetarray<NPCItemToEquip>Bool
+	static function ShouldShootDirectlyAtTarget(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, targetPosition : Vector4) : Bool; // AIActionHelper::ShouldShootDirectlyAtTarget;GameObjectWeaponObjectVector4
+	static function StartCooldown(self : handle:gameObject, cooldownName : CName, duration : Float) : Int32; // AIActionHelper::StartCooldown;GameObjectCNameFloat
+	static function StartCooldown(self : handle:gameObject, record : whandle:gamedataAIActionCooldown_Record) : Int32; // AIActionHelper::StartCooldown;GameObjectAIActionCooldown_Record
+	static function TargetAllSquadMembers(owner : whandle:gameObject); // AIActionHelper::TargetAllSquadMembers;GameObject
+	static function TryChangingAttitudeToHostile(owner : handle:ScriptedPuppet, target : handle:gameObject) : Bool; // AIActionHelper::TryChangingAttitudeToHostile;ScriptedPuppetGameObject
+	static function TryStartCombatWithTarget(owner : handle:ScriptedPuppet, target : handle:gameObject) : Bool; // AIActionHelper::TryStartCombatWithTarget;ScriptedPuppetGameObject
+	static function UpdateLinkedStatusEffects(owner : whandle:gameObject, linkedStatusEffect : script_ref:LinkedStatusEffect); // AIActionHelper::UpdateLinkedStatusEffects;GameObjectscript_ref<LinkedStatusEffect>
+	static function WeaponHasTriggerMode(weapon : whandle:gameweaponObject, triggerMode : gamedataTriggerMode) : Bool; // AIActionHelper::WeaponHasTriggerMode;WeaponObjectgamedataTriggerMode
+	static function WeaponHasTriggerMode(weapon : whandle:gameweaponObject, weaponRecord : whandle:gamedataWeaponItem_Record, triggerMode : gamedataTriggerMode) : Bool; // AIActionHelper::WeaponHasTriggerMode;WeaponObjectWeaponItem_RecordgamedataTriggerMode
+	static function WeaponHasTriggerMode(weapon : whandle:gameweaponObject, weaponRecord : whandle:gamedataWeaponItem_Record, triggerMode : whandle:gamedataTriggerMode_Record) : Bool; // AIActionHelper::WeaponHasTriggerMode;WeaponObjectWeaponItem_RecordTriggerMode_Record
+	static function WeaponHasTriggerMode(weapon : whandle:gameweaponObject, triggerMode : whandle:gamedataTriggerMode_Record) : Bool; // AIActionHelper::WeaponHasTriggerMode;WeaponObjectTriggerMode_Record
+	static function WeaponHasTriggerModes(weapon : whandle:gameweaponObject, weaponRecord : whandle:gamedataWeaponItem_Record, triggerModes : script_ref:array:whandle:gamedataTriggerMode_Record) : Bool; // AIActionHelper::WeaponHasTriggerModes;WeaponObjectWeaponItem_Recordscript_ref<array<TriggerMode_Record>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

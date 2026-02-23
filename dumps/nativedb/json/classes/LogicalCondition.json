@@ -1,0 +1,1 @@
+{"a":"workIScriptedCondition","b":"LogicalCondition","d":0,"e":[{"a":{"b":"WorkspotConditionOperators"},"b":"operation","c":130},{"a":{"a":31,"c":{"a":26,"c":{"b":"workIScriptedCondition"}}},"b":"conditions","c":130}],"f":[{"a":"CheckCondition;Entity","b":"CheckCondition","c":{"a":1},"d":160,"e":[{"a":{"a":26,"c":{"b":"entEntity"}},"b":"ent","c":0}]}]}

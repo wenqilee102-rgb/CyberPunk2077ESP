@@ -1,0 +1,8 @@
+import class localizationPersistenceOnScreenEntries extends ISerializable
+{
+	var entries : array:localizationPersistenceOnScreenEntry;
+}
+
+import class abstract ISerializable
+{
+}

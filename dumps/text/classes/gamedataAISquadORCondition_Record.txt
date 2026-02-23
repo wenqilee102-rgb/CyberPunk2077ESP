@@ -1,0 +1,38 @@
+import class gamedataAISquadORCondition_Record extends gamedataAITicketCheck_Record
+{
+	import function GetORCount() : Int32; // GetORCount
+	import function GetORItem(index : Int32) : whandle:gamedataAITicketCheck_Record; // GetORItem
+	import function GetORItemHandle(index : Int32) : handle:gamedataAITicketCheck_Record; // GetORItemHandle
+	import function OR(out outList : array:whandle:gamedataAITicketCheck_Record); // OR
+	import function ORContains(item : whandle:gamedataAITicketCheck_Record) : Bool; // ORContains
+}
+
+import class gamedataAITicketCheck_Record extends gamedataAITicketCondition_Record
+{
+	import function OptionalFastExit() : Bool; // OptionalFastExit
+}
+
+import class gamedataAITicketCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

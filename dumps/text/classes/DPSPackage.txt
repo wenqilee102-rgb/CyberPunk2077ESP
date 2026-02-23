@@ -1,0 +1,5 @@
+struct DPSPackage
+{
+	public    var value : Float;
+	public    var type : gamedataDamageType;
+}

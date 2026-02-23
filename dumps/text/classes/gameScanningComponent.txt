@@ -1,0 +1,178 @@
+import class gameScanningComponent extends gameComponent
+{
+	var scannableData : array:gameScanningTooltipElementDef;
+	var timeNeeded : Float;
+	var autoGenerateBoundingSphere : Bool;
+	var boundingSphere : Sphere;
+	var ignoresScanningDistanceLimit : Bool;
+	var cpoEnableMultiplePlayersScanningModifier : Bool;
+	private   var isBraindanceClue : Bool;
+	private   var BraindanceLayer : braindanceVisionMode;
+	private   var isBraindanceBlocked : Bool;
+	private   var isBraindanceLayerUnlocked : Bool;
+	private   var isBraindanceTimelineUnlocked : Bool;
+	private   var isBraindanceActive : Bool;
+	private   var currentBraindanceLayer : Int32;
+	private   var clues : array:FocusClueDefinition;
+	private   var objectDescription : handle:ObjectScanningDescription;
+	private   var scanningBarText : TweakDBID;
+	private   var isFocusModeActive : Bool;
+	private   var currentHighlight : handle:FocusForcedHighlightData;
+	private   var isHudManagerInitialized : Bool;
+	private   var isBeingScanned : Bool;
+	private   var isScanningCluesBlocked : Bool;
+	private   var isEntityVisible : Bool;
+	private   var OnBraindanceVisionModeChangeCallback : handle:redCallbackObject;
+	private   var OnBraindanceFppChangeCallback : handle:redCallbackObject;
+
+	import function GetBoundingSphere() : Sphere; // GetBoundingSphere
+	import function GetScanningProgress() : Float; // GetScanningProgress
+	import function GetScanningState() : gameScanningState; // GetScanningState
+	import function GetTimeNeeded() : Float; // GetTimeNeeded
+	import function IsBlocked() : Bool; // IsBlocked
+	import function IsScanned() : Bool; // IsScanned
+	import function IsScanning() : Bool; // IsScanning
+	import function SetBlocked(isBlocked : Bool); // SetBlocked
+	import function SetIsScanned_Event(val : Bool); // SetIsScanned_Event
+	import function SetScannableThroughWalls(isScannableThroughWalls : Bool); // SetScannableThroughWalls
+	import function UpdateTooltipData(); // UpdateTooltipData
+
+	event OnActivateConclusionFactChanged(evt : handle:gameFactChangedEvent) : Bool; // OnActivateConclusionFactChanged
+	event OnBraindanceFppChange(fppToggle : Bool) : Bool; // OnBraindanceFppChange
+	event OnBraindanceVisionModeChange(value : Int32) : Bool; // OnBraindanceVisionModeChange
+	event OnClearCustomObjectDescription(evt : handle:ClearCustomObjectDescriptionEvent) : Bool; // OnClearCustomObjectDescription
+	event OnClueLockedByScene(evt : handle:gameSetExclusiveFocusClueEntityEvent) : Bool; // OnClueLockedByScene
+	event OnClueStateChanged(evt : handle:gameFocusClueStateChangeEvent) : Bool; // OnClueStateChanged
+	event OnDisableObjectDescription(evt : handle:DisableObjectDescriptionEvent) : Bool; // OnDisableObjectDescription
+	event OnDisableScanner(evt : handle:DisableScannerEvent) : Bool; // OnDisableScanner
+	event OnEnteventsSetVisibility(evt : handle:enteventsSetVisibility) : Bool; // OnEnteventsSetVisibility
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnLinkedClueUpdateEvent(evt : handle:linkedClueUpdateEvent) : Bool; // OnLinkedClueUpdateEvent
+	event OnQuestToggleClueConclusion(evt : handle:ToggleClueConclusionEvent) : Bool; // OnQuestToggleClueConclusion
+	event OnRevealStateChanged(evt : handle:RevealStateChangedEvent) : Bool; // OnRevealStateChanged
+	event OnScannableBraindanceClueDisabledEvent(evt : handle:gameOnScannableBraindanceClueDisabledEvent) : Bool; // OnScannableBraindanceClueDisabledEvent
+	event OnScannableBraindanceClueEnabledEvent(evt : handle:gameOnScannableBraindanceClueEnabledEvent) : Bool; // OnScannableBraindanceClueEnabledEvent
+	event OnScanningEvent(evt : handle:gameScanningEvent) : Bool; // OnScanningEvent
+	event OnScanningLookedAt(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookedAt
+	event OnSetCurrentGameplayRole(evt : handle:SetCurrentGameplayRoleEvent) : Bool; // OnSetCurrentGameplayRole
+	event OnSetCustomObjectDescription(evt : handle:SetCustomObjectDescriptionEvent) : Bool; // OnSetCustomObjectDescription
+	event OnSetGameplayRole(evt : handle:SetGameplayRoleEvent) : Bool; // OnSetGameplayRole
+	event OnToggleFocusClue(evt : handle:ToggleFocusClueEvent) : Bool; // OnToggleFocusClue
+
+	function CancelForcedVisionAppearance(data : handle:FocusForcedHighlightData, optional fast : Bool, optional ignoreStackEvaluation : Bool); // CancelForcedVisionAppearance;FocusForcedHighlightDataBoolBool
+	function EvaluateBraindanceClueState(); // EvaluateBraindanceClueState;
+	function ForceReEvaluateGameplayRole(); // ForceReEvaluateGameplayRole;
+	function ForceVisionAppearance(data : handle:FocusForcedHighlightData); // ForceVisionAppearance;FocusForcedHighlightData
+	function GetAllClues() : array:FocusClueDefinition; // GetAllClues;
+	function GetAvailableClueIndex() : Int32; // GetAvailableClueIndex;
+	function GetBraindanceLayer() : braindanceVisionMode; // GetBraindanceLayer;
+	function GetClueByIndex(index : Int32) : FocusClueDefinition; // GetClueByIndex;Int32
+	function GetClueCount() : Int32; // GetClueCount;
+	function GetClueGroupID(index : Int32) : CName; // GetClueGroupID;Int32
+	function GetClueHighlight(highlightInstructions : handle:HighlightInstance) : handle:FocusForcedHighlightData; // GetClueHighlight;HighlightInstance
+	function GetClueHighlightData(highlightInstructions : handle:HighlightInstance) : handle:FocusForcedHighlightData; // GetClueHighlightData;HighlightInstance
+	function GetDefaultHighlight(highlightInstructions : handle:HighlightInstance) : handle:FocusForcedHighlightData; // GetDefaultHighlight;HighlightInstance
+	function GetExtendedClueRecords(clueIndex : Int32) : array:ClueRecordData; // GetExtendedClueRecords;Int32
+	function GetFocusClueSystem() : handle:FocusCluesSystem; // GetFocusClueSystem;
+	function GetLinkedClueData(clueIndex : Int32, linkedClueData : script_ref:LinkedFocusClueData) : Bool; // GetLinkedClueData;Int32script_ref<LinkedFocusClueData>
+	function GetMyPS() : handle:gameScanningComponentPS; // GetMyPS;
+	function GetObjectDescription() : handle:ObjectScanningDescription; // GetObjectDescription;
+	function GetOwner() : handle:gameObject; // GetOwner;
+	function GetQuestHighlight(highlightInstructions : handle:HighlightInstance) : handle:FocusForcedHighlightData; // GetQuestHighlight;HighlightInstance
+	function GetScannableDataForSingleClueByIndex(index : Int32, out conclusionData : gameScanningTooltipElementDef) : array:gameScanningTooltipElementDef; // GetScannableDataForSingleClueByIndex;Int32ScanningTooltipElementDef
+	function GetScannableObjects(out arr : array:gameScanningTooltipElementDef); // GetScannableObjects;array<ScanningTooltipElementDef>
+	function GetScanningBarTextTweak() : TweakDBID; // GetScanningBarTextTweak;
+	function HasAnyClue() : Bool; // HasAnyClue;
+	function HasAnyStoredClues() : Bool; // HasAnyStoredClues;
+	function HasClueWithID(clueID : Int32) : Bool; // HasClueWithID;Int32
+	function HasValidObjectDescription() : Bool; // HasValidObjectDescription;
+	function HideMappins(value : Bool); // HideMappins;Bool
+	function HighLightWeakspots(); // HighLightWeakspots;
+	function InitializeQuestDBCallbacks(); // InitializeQuestDBCallbacks;
+	function IsActiveClueLinked() : Bool; // IsActiveClueLinked;
+	function IsActiveClueUsingAutoInspect() : Bool; // IsActiveClueUsingAutoInspect;
+	function IsAnyClueEnabled() : Bool; // IsAnyClueEnabled;
+	function IsAnyClueValid() : Bool; // IsAnyClueValid;
+	function IsBraindanceBlocked() : Bool; // IsBraindanceBlocked;
+	function IsBraindanceClue() : Bool; // IsBraindanceClue;
+	function IsClueInspected() : Bool; // IsClueInspected;
+	function IsClueLinked(index : Int32) : Bool; // IsClueLinked;Int32
+	function IsClueProgressing() : Bool; // IsClueProgressing;
+	function IsClueUsingAutoInspect(index : Int32) : Bool; // IsClueUsingAutoInspect;Int32
+	function IsConclusionActive(clueIndex : Int32) : Bool; // IsConclusionActive;Int32
+	function IsObjectDescriptionEnabled() : Bool; // IsObjectDescriptionEnabled;
+	function IsPhotoModeBlocked() : Bool; // IsPhotoModeBlocked;
+	function IsScanningCluesBlocked() : Bool; // IsScanningCluesBlocked;
+	function NotifyClueStateChanged(clueIndex : Int32, ignorePS : Bool, updateFocusClueSystem : Bool); // NotifyClueStateChanged;Int32BoolBool
+	function NotifyHudManager(isClue : Bool); // NotifyHudManager;Bool
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameDetach(); // OnGameDetach;
+	function ProcessBraindanceHudInstruction(instruction : handle:BraindanceInstance); // ProcessBraindanceHudInstruction;BraindanceInstance
+	function ProcessHighlightHudInstruction(instruction : handle:HighlightInstance); // ProcessHighlightHudInstruction;HighlightInstance
+	function ProcessScannerHudInstruction(instruction : handle:ScanInstance); // ProcessScannerHudInstruction;ScanInstance
+	function ReEvaluateGrouppedCluesState() : Bool; // ReEvaluateGrouppedCluesState;
+	function RegisterGrouppedClue(clueIndex : Int32) : Bool; // RegisterGrouppedClue;Int32
+	function RequestFocusClueSystemUpdate(clueIndex : Int32); // RequestFocusClueSystemUpdate;Int32
+	function RequestHUDRefresh(); // RequestHUDRefresh;
+	function ResolveFocusClueOnScannCompleted(); // ResolveFocusClueOnScannCompleted;
+	function ResolveScannerAvailability(); // ResolveScannerAvailability;
+	function RestoreClueState(); // RestoreClueState;
+	function Script_IsScanningStateTransitionAllowed(currentState : gameScanningState, newState : gameScanningState) : Bool; // Script_IsScanningStateTransitionAllowed;gameScanningStategameScanningState
+	function SendHighlightEventToWeakspot(object : handle:gameObject); // SendHighlightEventToWeakspot;GameObject
+	function SetClueExtendedDescriptionAsInspected(clueIndex : Int32, descriptionIndex : Int32); // SetClueExtendedDescriptionAsInspected;Int32Int32
+	function SetClueState(clueIndex : Int32, isEnabled : Bool, updateFocusClueSystem : Bool, ignorePS : Bool); // SetClueState;Int32BoolBoolBool
+	function SetClueState(clueIndex : Int32, isEnabled : Bool, isInspected : Bool, updateFocusClueSystem : Bool, ignorePS : Bool); // SetClueState;Int32BoolBoolBoolBool
+	function SetConclusionAsShown(clueID : Int32); // SetConclusionAsShown;Int32
+	function SetConclusionState(clueID : Int32, state : EConclusionQuestState); // SetConclusionState;Int32EConclusionQuestState
+	function SetScannableThroughWallsIfPossible(); // SetScannableThroughWallsIfPossible;
+	function SignalScannablesBlackboard(); // SignalScannablesBlackboard;
+	function StartBraindanceClueEffect(); // StartBraindanceClueEffect;
+	function StopBraindanceClueEffect(); // StopBraindanceClueEffect;
+	function ToggleBraindance(value : Bool); // ToggleBraindance;Bool
+	function ToggleBraindanceScanning(value : Bool); // ToggleBraindanceScanning;Bool
+	function ToggleHighlight(toggle : Bool, highlightInstructions : handle:HighlightInstance); // ToggleHighlight;BoolHighlightInstance
+	function ToggleScanningBlocked(isBlocked : Bool); // ToggleScanningBlocked;Bool
+	function UnInitializeQuestDBCallbacks(); // UnInitializeQuestDBCallbacks;
+	function UpdateDefaultHighlight(); // UpdateDefaultHighlight;
+	function UpdateLinkedClues(linkedCluekData : script_ref:LinkedFocusClueData, updatePS : Bool); // UpdateLinkedClues;script_ref<LinkedFocusClueData>Bool
+	function WasConclusionShown(clueID : Int32) : Bool; // WasConclusionShown;Int32
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

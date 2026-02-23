@@ -1,0 +1,6 @@
+import struct grsHeistState
+{
+	var time : netTime;
+	var status : grsHeistStatus;
+	var playersInfo : static:7,grsHeistPlayerGameInfo;
+}

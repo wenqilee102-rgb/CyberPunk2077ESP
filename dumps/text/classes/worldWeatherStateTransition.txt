@@ -1,0 +1,11 @@
+import class worldWeatherStateTransition extends ISerializable
+{
+	var probability : curveData:Float;
+	var transitionDuration : curveData:Float;
+	var sourceWeatherState : handle:worldWeatherState;
+	var targetWeatherState : handle:worldWeatherState;
+}
+
+import class abstract ISerializable
+{
+}

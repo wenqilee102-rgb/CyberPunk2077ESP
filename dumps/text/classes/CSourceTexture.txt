@@ -1,0 +1,12 @@
+import class CSourceTexture extends ISerializable
+{
+	var width : Uint32;
+	var height : Uint32;
+	var depth : Uint32;
+	var pitch : Uint32;
+	var format : ETextureRawFormat;
+}
+
+import class abstract ISerializable
+{
+}

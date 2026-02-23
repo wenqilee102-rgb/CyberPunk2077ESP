@@ -1,0 +1,5 @@
+import struct worldTrafficPersistentData
+{
+	var lanes : array:worldTrafficLanePersistent;
+	var neighborGroups : array:array:Uint16;
+}

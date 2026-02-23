@@ -1,0 +1,1 @@
+{"a":"entLightComponent","b":"cpGameplayLightComponent","d":8,"e":[{"a":{"a":1},"b":"reactToTime","c":128},{"a":{"b":"GameTime"},"b":"begin","c":128},{"a":{"b":"GameTime"},"b":"end","c":128},{"a":{"a":10},"b":"probability","c":128},{"a":{"b":"GameTime"},"b":"delayRange","c":128}]}

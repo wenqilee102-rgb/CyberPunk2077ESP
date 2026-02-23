@@ -1,0 +1,55 @@
+class UI_ScannerModulesDef extends gamebbScriptDefinition
+{
+	public    var ScannerName : gamebbScriptID_Variant;
+	public    var ScannerHealth : gamebbScriptID_Variant;
+	public    var ScannerLevel : gamebbScriptID_Variant;
+	public    var ScannerAuthorization : gamebbScriptID_Variant;
+	public    var ScannerRarity : gamebbScriptID_Variant;
+	public    var ScannerArchetype : gamebbScriptID_Variant;
+	public    var ScannerFaction : gamebbScriptID_Variant;
+	public    var ScannerWeaponBasic : gamebbScriptID_Variant;
+	public    var ScannerWeaponDetailed : gamebbScriptID_Variant;
+	public    var ScannerVulnerabilities : gamebbScriptID_Variant;
+	public    var ScannerSquadInfo : gamebbScriptID_Variant;
+	public    var ScannerResistances : gamebbScriptID_Variant;
+	public    var ScannerAbilities : gamebbScriptID_Variant;
+	public    var ScannerAttitude : gamebbScriptID_Variant;
+	public    var ScannerBountySystem : gamebbScriptID_Variant;
+	public    var ScannerDeviceStatus : gamebbScriptID_Variant;
+	public    var ScannerNetworkLevel : gamebbScriptID_Variant;
+	public    var ScannerNetworkStatus : gamebbScriptID_Variant;
+	public    var ScannerConnections : gamebbScriptID_Variant;
+	public    var ScannerDescription : gamebbScriptID_Variant;
+	public    var ScannerSkillChecks : gamebbScriptID_Variant;
+	public    var ScannerVehicleName : gamebbScriptID_Variant;
+	public    var ScannerVehicleManufacturer : gamebbScriptID_Variant;
+	public    var ScannerVehicleProductionYears : gamebbScriptID_Variant;
+	public    var ScannerVehicleDriveLayout : gamebbScriptID_Variant;
+	public    var ScannerVehicleHorsepower : gamebbScriptID_Variant;
+	public    var ScannerVehicleMass : gamebbScriptID_Variant;
+	public    var ScannerVehicleState : gamebbScriptID_Variant;
+	public    var ScannerVehicleInfo : gamebbScriptID_Variant;
+	public    var ScannerQuickHackDescription : gamebbScriptID_Variant;
+	public    var ScannerVehicleCustomization : gamebbScriptID_Variant;
+	public    var ObjectType : gamebbScriptID_Int32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

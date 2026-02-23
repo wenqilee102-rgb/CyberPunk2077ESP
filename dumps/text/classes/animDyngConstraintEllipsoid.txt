@@ -1,0 +1,16 @@
+import class animDyngConstraintEllipsoid extends animIDyngConstraint
+{
+	var bone : animTransformIndex;
+	var ellipsoidTransformLS : QsTransform;
+	var constraintRadius : Float;
+	var constraintScale1 : Float;
+	var constraintScale2 : Float;
+}
+
+import class abstract animIDyngConstraint extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

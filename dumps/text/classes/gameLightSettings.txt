@@ -1,0 +1,9 @@
+import struct gameLightSettings
+{
+	var strength : Float;
+	var intensity : Float;
+	var radius : Float;
+	var color : Color;
+	var innerAngle : Float;
+	var outerAngle : Float;
+}

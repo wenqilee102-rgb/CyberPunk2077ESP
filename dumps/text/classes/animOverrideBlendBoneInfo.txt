@@ -1,0 +1,5 @@
+import struct animOverrideBlendBoneInfo
+{
+	var transformIndex : animTransformIndex;
+	var weight : Float;
+}

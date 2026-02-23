@@ -1,0 +1,25 @@
+import struct scnActorDef
+{
+	var actorId : scnActorId;
+	var voicetagId : scnVoicetagId;
+	var acquisitionPlan : scnEntityAcquisitionPlan;
+	var findActorInContextParams : scnFindEntityInContextParams;
+	var findActorInWorldParams : scnFindEntityInWorldParams;
+	var spawnDespawnParams : scnSpawnDespawnEntityParams;
+	var spawnSetParams : scnSpawnSetParams;
+	var communityParams : scnCommunityParams;
+	var spawnerParams : scnSpawnerParams;
+	var animSets : array:scnSRRefId;
+	var lipsyncAnimSet : scnLipsyncAnimSetSRRefId;
+	var facialAnimSets : array:scnRidFacialAnimSetSRRefId;
+	var cyberwareAnimSets : array:scnRidCyberwareAnimSetSRRefId;
+	var deformationAnimSets : array:scnRidDeformationAnimSetSRRefId;
+	var bodyCinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var facialCinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var cyberwareCinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var dynamicAnimSets : array:scnDynamicAnimSetSRRefId;
+	var holocallInitScn : raRef:CResource;
+	var actorName : String;
+	var specCharacterRecordId : TweakDBID;
+	var specAppearance : CName;
+}

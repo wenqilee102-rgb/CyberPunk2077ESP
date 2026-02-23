@@ -1,0 +1,7 @@
+import struct worldRaceSplineNodeOffset
+{
+	var from : Float;
+	var to : Float;
+	var left : Float;
+	var right : Float;
+}

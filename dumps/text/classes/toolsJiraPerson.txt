@@ -1,0 +1,6 @@
+import struct toolsJiraPerson
+{
+	var name : String;
+	var key : String;
+	var displayName : String;
+}

@@ -1,0 +1,13 @@
+import class scnOverrideInterruptionScenario_InterruptionOperation extends scnIInterruptionOperation
+{
+	var scenarioId : scnInterruptionScenarioId;
+	var scenarioOperations : array:handle:scnIInterruptionScenarioOperation;
+}
+
+import class abstract scnIInterruptionOperation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_Variant
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+
+	import static function Get(ctx : gameEffectInputParameter_Variant, bb : handle:gameIBlackboard) : Variant; // Get
+}

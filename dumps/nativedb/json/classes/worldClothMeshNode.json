@@ -1,0 +1,1 @@
+{"a":"worldMeshNode","b":"worldClothMeshNode","d":8,"e":[{"a":{"a":1},"b":"affectedByWind","c":128},{"a":{"b":"physicsEClothCollisionMaskEnum"},"b":"collisionMask","c":128}]}

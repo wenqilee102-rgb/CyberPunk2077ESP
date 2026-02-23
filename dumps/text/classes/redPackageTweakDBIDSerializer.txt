@@ -1,0 +1,7 @@
+import struct redPackageTweakDBIDSerializer extends redPackageCustomTypeSerializer
+{
+}
+
+import struct abstract redPackageCustomTypeSerializer
+{
+}

@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"ScoreboardEntityLogicController","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"label","c":129}],"f":[{"a":"SetText;script_ref<String>","b":"SetText","d":48,"e":[{"a":{"a":28,"c":{"a":12}},"b":"text","c":0}]}]}

@@ -1,0 +1,6 @@
+import struct gameCoveringArc
+{
+	var leftAngle : Float;
+	var rightAngle : Float;
+	var verticalAngle : Float;
+}

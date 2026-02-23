@@ -1,0 +1,8 @@
+import struct workSetSequenceCategoriesCommandData extends workIWorkspotCommandData
+{
+	var sequenceCategories : gameCategorySelectionProbability;
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

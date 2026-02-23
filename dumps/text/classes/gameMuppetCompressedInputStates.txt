@@ -1,0 +1,7 @@
+import struct gameMuppetCompressedInputStates
+{
+	var usesCompression : Bool;
+	var compressedInputStates : array:Uint8;
+	var firstFrameId : Uint32;
+	var replicationTime : netTime;
+}

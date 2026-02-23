@@ -1,0 +1,5 @@
+struct PlayerListEntryData
+{
+	public    var playerObject : whandle:gameObject;
+	public    var playerListEntry : whandle:inkWidget;
+}

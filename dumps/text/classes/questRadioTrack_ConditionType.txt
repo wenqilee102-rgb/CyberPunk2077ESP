@@ -1,0 +1,17 @@
+import class questRadioTrack_ConditionType extends questISystemConditionType
+{
+	var radioTrack : CName;
+	var inverted : Bool;
+}
+
+import class abstract questISystemConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

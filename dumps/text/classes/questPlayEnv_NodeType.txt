@@ -1,0 +1,24 @@
+import class questPlayEnv_NodeType extends questIEnvironmentManagerNodeType
+{
+	var params : questPlayEnv_NodeTypeParams;
+}
+
+import class abstract questIEnvironmentManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

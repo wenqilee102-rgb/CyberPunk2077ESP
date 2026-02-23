@@ -1,0 +1,19 @@
+class RadialMenuHelper extends IScriptable
+{
+	static function IsCombatGadgetsBlocked(target : whandle:gameObject) : Bool; // RadialMenuHelper::IsCombatGadgetsBlocked;GameObject
+	static function IsWeaponsBlocked(target : whandle:gameObject) : Bool; // RadialMenuHelper::IsWeaponsBlocked;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

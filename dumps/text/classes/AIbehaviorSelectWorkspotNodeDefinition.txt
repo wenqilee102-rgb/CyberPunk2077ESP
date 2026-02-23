@@ -1,0 +1,25 @@
+import class AIbehaviorSelectWorkspotNodeDefinition extends AIbehaviorDecoratorNodeDefinition
+{
+	var spotInstance : handle:AIArgumentMapping;
+	var workspotData : handle:AIArgumentMapping;
+	var dependentWorkspotData : handle:AIArgumentMapping;
+	var repeatChild : Bool;
+	var fastForwardAfterTeleport : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDecoratorNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var child : handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct scnCheckTriggerInterruptConditionParams
+{
+	var inside : Bool;
+	var triggerArea : NodeRef;
+}

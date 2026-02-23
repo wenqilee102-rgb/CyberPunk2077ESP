@@ -1,0 +1,31 @@
+import class scnSceneSystem extends scnISceneSystem
+{
+}
+
+import class abstract scnISceneSystem extends gameISceneSystem
+{
+	import function GetPeerIdDialogChoiceFactName() : String; // GetPeerIdDialogChoiceFactName
+	import function GetScriptInterface() : handle:scnScriptInterface; // GetScriptInterface
+}
+
+import class abstract gameISceneSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

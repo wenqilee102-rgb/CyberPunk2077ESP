@@ -1,0 +1,1 @@
+{"a":"AICombatRelatedCommand","b":"AIUseCoverCommand","d":8,"e":[{"a":{"a":16},"b":"coverNodeRef","c":128},{"a":{"a":1},"b":"oneTimeSelection","c":128},{"a":{"a":14},"b":"forcedEntryAnimation","c":128},{"a":{"a":31,"c":{"b":"AICoverExposureMethod"}},"b":"exposureMethods","c":128},{"a":{"a":26,"c":{"b":"CoverCommandParams"}},"b":"limitToTheseExposureMethods","c":128}]}

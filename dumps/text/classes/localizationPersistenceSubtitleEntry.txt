@@ -1,0 +1,6 @@
+import struct localizationPersistenceSubtitleEntry
+{
+	var stringId : CRUID;
+	var femaleVariant : String;
+	var maleVariant : String;
+}

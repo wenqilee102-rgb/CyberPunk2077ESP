@@ -1,0 +1,26 @@
+import class TestStep extends IScriptable
+{
+	var stepName : CName;
+	var scriptId : Uint16;
+	var reproStep : String;
+	var args : array:Variant;
+	var stepTimeout : Float;
+	var stopTestOnFailure : Bool;
+
+	import function Param(); // Param
+	import function SetStepLogic(); // SetStepLogic
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

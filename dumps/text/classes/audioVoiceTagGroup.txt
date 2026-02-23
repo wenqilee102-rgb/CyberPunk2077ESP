@@ -1,0 +1,17 @@
+import class audioVoiceTagGroup extends audioAudioMetadata
+{
+	var voiceTags : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

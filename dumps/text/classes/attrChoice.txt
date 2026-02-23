@@ -1,0 +1,12 @@
+import class attrChoice extends attrAttribute
+{
+	var tions : array:String;
+}
+
+import class attrAttribute extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

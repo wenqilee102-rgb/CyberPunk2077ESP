@@ -1,0 +1,4 @@
+import struct senseShapes
+{
+	var shapes : array:handle:senseIShape;
+}

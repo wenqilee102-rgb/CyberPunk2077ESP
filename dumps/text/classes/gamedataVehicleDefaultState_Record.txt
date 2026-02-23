@@ -1,0 +1,49 @@
+import class gamedataVehicleDefaultState_Record extends gamedataTweakDBRecord
+{
+	import function CloseAll() : Bool; // CloseAll
+	import function DefaultLightToggle() : Bool; // DefaultLightToggle
+	import function DisableAllInteractions() : Bool; // DisableAllInteractions
+	import function GetLightToggleComponentsCount() : Int32; // GetLightToggleComponentsCount
+	import function GetLightToggleComponentsItem(index : Int32) : Int32; // GetLightToggleComponentsItem
+	import function Hood() : whandle:gamedataSeatState_Record; // Hood
+	import function HoodHandle() : handle:gamedataSeatState_Record; // HoodHandle
+	import function LightToggleComponents() : array:Int32; // LightToggleComponents
+	import function LightToggleComponentsContains(item : Int32) : Bool; // LightToggleComponentsContains
+	import function LockAll() : Bool; // LockAll
+	import function OpenAll() : Bool; // OpenAll
+	import function QuestLockAll() : Bool; // QuestLockAll
+	import function Seat_back_left() : whandle:gamedataSeatState_Record; // Seat_back_left
+	import function Seat_back_leftHandle() : handle:gamedataSeatState_Record; // Seat_back_leftHandle
+	import function Seat_back_right() : whandle:gamedataSeatState_Record; // Seat_back_right
+	import function Seat_back_rightHandle() : handle:gamedataSeatState_Record; // Seat_back_rightHandle
+	import function Seat_front_left() : whandle:gamedataSeatState_Record; // Seat_front_left
+	import function Seat_front_leftHandle() : handle:gamedataSeatState_Record; // Seat_front_leftHandle
+	import function Seat_front_right() : whandle:gamedataSeatState_Record; // Seat_front_right
+	import function Seat_front_rightHandle() : handle:gamedataSeatState_Record; // Seat_front_rightHandle
+	import function SirenLight() : Bool; // SirenLight
+	import function SirenSounds() : Bool; // SirenSounds
+	import function SpawnDestroyed() : Bool; // SpawnDestroyed
+	import function Thrusters() : Bool; // Thrusters
+	import function Trunk() : whandle:gamedataSeatState_Record; // Trunk
+	import function TrunkHandle() : handle:gamedataSeatState_Record; // TrunkHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

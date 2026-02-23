@@ -1,0 +1,9 @@
+import class physicsQueryPresetDefinition extends ISerializable
+{
+	var name : CName;
+	var queryGroups : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+class NewPerkLevelData_Records extends BasePerkLevelData_Records
+{
+	private   var perkRecord : whandle:gamedataNewPerk_Record;
+	private   var arr : array:whandle:gamedataNewPerkLevelData_Record;
+
+	function GetItemAt(index : Int32) : whandle:gamedataNewPerkLevelData_Record; // GetItemAt;Int32
+	function GetNewPerkRecord() : whandle:gamedataNewPerk_Record; // GetNewPerkRecord;
+	function Initialize(perkRecord : script_ref:whandle:gamedataNewPerk_Record); // Initialize;script_ref<NewPerk_Record>
+	function Size() : Int32; // Size;
+}
+
+class abstract BasePerkLevelData_Records extends IScriptable
+{
+	function GetItemAt(index : Int32) : whandle:gamedataTweakDBRecord; // GetItemAt;Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

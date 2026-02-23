@@ -1,0 +1,4 @@
+import struct scnscreenplayItemId
+{
+	var id : Uint32;
+}

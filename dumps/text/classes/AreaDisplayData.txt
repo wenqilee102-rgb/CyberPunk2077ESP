@@ -1,0 +1,27 @@
+class AreaDisplayData extends IDisplayData
+{
+	public    var attributeId : TweakDBID;
+	public    var perks : array:handle:PerkDisplayData;
+	public    var locked : Bool;
+	public    var proficency : gamedataProficiencyType;
+	public    var area : gamedataPerkArea;
+}
+
+class IDisplayData extends IScriptable
+{
+	function CreateTooltipData(manager : handle:PlayerDevelopmentDataManager) : handle:BasePerksMenuTooltipData; // CreateTooltipData;PlayerDevelopmentDataManager
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

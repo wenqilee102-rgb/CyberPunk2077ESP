@@ -1,0 +1,40 @@
+import class userSettingsUserSettings extends IScriptable
+{
+	import function ConfirmChanges(); // ConfirmChanges
+	import function GetGroup(groupPath : CName) : handle:userSettingsGroup; // GetGroup
+	import function GetMenuIndex() : Int32; // GetMenuIndex
+	import function GetRootGroup() : handle:userSettingsGroup; // GetRootGroup
+	import function GetUserSettingsLoadStatus() : InGameConfigUserSettingsLoadStatus; // GetUserSettingsLoadStatus
+	import function GetVar(groupPath : CName, varName : CName) : handle:userSettingsVar; // GetVar
+	import function HasGroup(groupPath : CName) : Bool; // HasGroup
+	import function HasVar(groupPath : CName, varName : CName) : Bool; // HasVar
+	import function NeedsConfirmation() : Bool; // NeedsConfirmation
+	import function NeedsLoadLastCheckpoint() : Bool; // NeedsLoadLastCheckpoint
+	import function NeedsRestartToApply() : Bool; // NeedsRestartToApply
+	import function RejectChanges(); // RejectChanges
+	import function RejectLoadLastCheckpointChanges(); // RejectLoadLastCheckpointChanges
+	import function RejectRestartToApply(); // RejectRestartToApply
+	import function RequestConfirmationDialog(); // RequestConfirmationDialog
+	import function RequestLoadLastCheckpointDialog(); // RequestLoadLastCheckpointDialog
+	import function RequestNeedsRestartDialog(); // RequestNeedsRestartDialog
+	import function RequestRejectConfirmationDialog(); // RequestRejectConfirmationDialog
+	import function RequestRestoreDefaultDialog(isPreGame : Bool, onlyVisible : Bool, optional groupPath : CName); // RequestRestoreDefaultDialog
+	import function RequestStartReplayTutorialDialog(settingsMain : handle:IScriptable); // RequestStartReplayTutorialDialog
+	import function RestoreVarToDefault(groupPath : CName, varName : CName); // RestoreVarToDefault
+	import function SetMenuIndex(index : Int32); // SetMenuIndex
+	import function WasModifiedSinceLastSave() : Bool; // WasModifiedSinceLastSave
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,15 @@
+import class worldCompiledCommunityAreaNode extends worldNode
+{
+	var area : handle:communityArea;
+	var sourceObjectId : entEntityID;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

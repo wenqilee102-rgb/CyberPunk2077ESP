@@ -1,0 +1,61 @@
+import class gamedataTPPCameraSetup_Record extends gamedataTweakDBRecord
+{
+	import function Auto_center_speed_threshold() : Float; // Auto_center_speed_threshold
+	import function Boom_length_acc_mod_multiplier() : Float; // Boom_length_acc_mod_multiplier
+	import function Boom_length_acc_mod_reaction_speed() : Float; // Boom_length_acc_mod_reaction_speed
+	import function Boom_length_base() : Float; // Boom_length_base
+	import function Boom_length_dec_mod_reaction_speed() : Float; // Boom_length_dec_mod_reaction_speed
+	import function Boom_length_lerp_speed() : Float; // Boom_length_lerp_speed
+	import function Boom_length_min_value() : Float; // Boom_length_min_value
+	import function Boom_length_no_accumulated_acc_impulses() : Int32; // Boom_length_no_accumulated_acc_impulses
+	import function Boom_pitch_lerp_speed() : Float; // Boom_pitch_lerp_speed
+	import function Boom_yaw_lerp_speed() : Float; // Boom_yaw_lerp_speed
+	import function Camera_centric_vertical_offset() : Float; // Camera_centric_vertical_offset
+	import function Camera_collision_sweep_big_sphere_radius() : Float; // Camera_collision_sweep_big_sphere_radius
+	import function Camera_collision_sweep_small_sphere_radius() : Float; // Camera_collision_sweep_small_sphere_radius
+	import function Camera_transition_min_boom_length() : Float; // Camera_transition_min_boom_length
+	import function Camera_transition_time_activation() : Float; // Camera_transition_time_activation
+	import function Camera_transition_time_deactivation() : Float; // Camera_transition_time_deactivation
+	import function Camera_transition_time_deactivation_quick() : Float; // Camera_transition_time_deactivation_quick
+	import function CurvesPath() : redResourceReferenceScriptToken; // CurvesPath
+	import function Debug_boom_length() : Float; // Debug_boom_length
+	import function Debug_boom_pitch() : Float; // Debug_boom_pitch
+	import function Debug_boom_roll() : Float; // Debug_boom_roll
+	import function Debug_boom_yaw() : Float; // Debug_boom_yaw
+	import function Debug_fov() : Float; // Debug_fov
+	import function Debug_static_camera() : Bool; // Debug_static_camera
+	import function Enable_camera_auto_center() : Bool; // Enable_camera_auto_center
+	import function Fov_lerp_speed() : Float; // Fov_lerp_speed
+	import function Gear_changing_boom_modifier() : Float; // Gear_changing_boom_modifier
+	import function Gear_changing_fov_modifier() : Float; // Gear_changing_fov_modifier
+	import function Gear_changing_pitch_modifier() : Float; // Gear_changing_pitch_modifier
+	import function Manual_control_reset_timeout() : Float; // Manual_control_reset_timeout
+	import function Pivot() : Vector3; // Pivot
+	import function Pivot_x_offset_lerp_speed() : Float; // Pivot_x_offset_lerp_speed
+	import function Pivot_z_offset_lerp_speed() : Float; // Pivot_z_offset_lerp_speed
+	import function Reverse_camera_speed_threshold() : Float; // Reverse_camera_speed_threshold
+	import function Shake_frequency() : Float; // Shake_frequency
+	import function Shake_max_pitch() : Float; // Shake_max_pitch
+	import function Shake_max_roll() : Float; // Shake_max_roll
+	import function Shake_max_yaw() : Float; // Shake_max_yaw
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

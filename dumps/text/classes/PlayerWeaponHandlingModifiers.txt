@@ -1,0 +1,32 @@
+class PlayerWeaponHandlingModifiers extends IScriptable
+{
+	private   var player : whandle:PlayerPuppet;
+	public    var opSymbol : CName;
+	public    var recoilGroup : array:handle:gameConstantStatModifierData_Deprecated;
+	public    var timeOutGroup : array:handle:gameConstantStatModifierData_Deprecated;
+	public    var multSwayGroup : array:handle:gameConstantStatModifierData_Deprecated;
+	public    var addSwayGroup : array:handle:gameConstantStatModifierData_Deprecated;
+	public    var spreadGroup : array:handle:gameConstantStatModifierData_Deprecated;
+
+	static function Create(player : whandle:PlayerPuppet) : handle:PlayerWeaponHandlingModifiers; // PlayerWeaponHandlingModifiers::Create;PlayerPuppet
+
+	function ModifyCurveValue(value : Float) : Float; // ModifyCurveValue;Float
+	function ModifyOpSymbol(symbol : CName); // ModifyOpSymbol;CName
+	function OnAttach(); // OnAttach;
+	function RemoveHandlingModifiersFromWeapon(equippedRightHandWeapon : whandle:gameweaponObject); // RemoveHandlingModifiersFromWeapon;WeaponObject
+	function UpdateEquippedWeaponsHandling(evt : handle:UpdateEquippedWeaponsHandlingEvent, equippedRightHandWeapon : whandle:gameweaponObject); // UpdateEquippedWeaponsHandling;UpdateEquippedWeaponsHandlingEventWeaponObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

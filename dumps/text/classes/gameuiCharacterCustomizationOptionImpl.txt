@@ -1,0 +1,28 @@
+import class gameuiCharacterCustomizationOptionImpl extends gameuiCharacterCustomizationOption
+{
+}
+
+import class abstract gameuiCharacterCustomizationOption extends IScriptable
+{
+	var info : handle:gameuiCharacterCustomizationInfo;
+	var bodyPart : gameuiCharacterCustomizationPart;
+	var prevIndex : Uint32;
+	var currIndex : Uint32;
+	var isActive : Bool;
+	var isCensored : Bool;
+	var isEditable : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

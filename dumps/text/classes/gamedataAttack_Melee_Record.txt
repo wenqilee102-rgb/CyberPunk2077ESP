@@ -1,0 +1,110 @@
+import class gamedataAttack_Melee_Record extends gamedataAttack_GameEffect_Record
+{
+	import function ActiveDuration() : Float; // ActiveDuration
+	import function ActiveHitDuration() : Float; // ActiveHitDuration
+	import function AttackDirection() : whandle:gamedataAttackDirection_Record; // AttackDirection
+	import function AttackDirectionHandle() : handle:gamedataAttackDirection_Record; // AttackDirectionHandle
+	import function AttackEffectDelay() : Float; // AttackEffectDelay
+	import function AttackEffectDuration() : Float; // AttackEffectDuration
+	import function AttackSubtype() : whandle:gamedataAttackSubtype_Record; // AttackSubtype
+	import function AttackSubtypeHandle() : handle:gamedataAttackSubtype_Record; // AttackSubtypeHandle
+	import function AttackWindowClosed() : Float; // AttackWindowClosed
+	import function AttackWindowOpen() : Float; // AttackWindowOpen
+	import function BlockCostFactor() : Float; // BlockCostFactor
+	import function BlockTransitionTime() : Float; // BlockTransitionTime
+	import function CameraSpaceImpulse() : Float; // CameraSpaceImpulse
+	import function CanSkipBlock() : Bool; // CanSkipBlock
+	import function DontScaleWithAttackSpeed() : Bool; // DontScaleWithAttackSpeed
+	import function Duration() : Float; // Duration
+	import function EnableAdjustingPlayerPositionToTarget() : Bool; // EnableAdjustingPlayerPositionToTarget
+	import function ForwardImpulse() : Float; // ForwardImpulse
+	import function HasDeflectAnim() : Bool; // HasDeflectAnim
+	import function HasHitAnim() : Bool; // HasHitAnim
+	import function HoldTransitionTime() : Float; // HoldTransitionTime
+	import function IdleTransitionTime() : Float; // IdleTransitionTime
+	import function IkOffset() : Vector3; // IkOffset
+	import function ImpactFxSlot() : CName; // ImpactFxSlot
+	import function ImpulseDelay() : Float; // ImpulseDelay
+	import function IncrementsCombo() : Bool; // IncrementsCombo
+	import function Radius() : Float; // Radius
+	import function RecoverDuration() : Float; // RecoverDuration
+	import function RecoverHitDuration() : Float; // RecoverHitDuration
+	import function SpawnDistance() : Float; // SpawnDistance
+	import function StandUpDelay() : Float; // StandUpDelay
+	import function StartupDuration() : Float; // StartupDuration
+	import function TrailAttackSide() : String; // TrailAttackSide
+	import function TrailStartDelay() : Float; // TrailStartDelay
+	import function TrailStopDelay() : Float; // TrailStopDelay
+	import function UpImpulse() : Float; // UpImpulse
+	import function UseAdjustmentInsteadOfImpulse() : Bool; // UseAdjustmentInsteadOfImpulse
+	import function VfxName() : CName; // VfxName
+	import function WeaponChargeCost() : Float; // WeaponChargeCost
+}
+
+import class gamedataAttack_GameEffect_Record extends gamedataAttack_Record
+{
+	import function AttackTag() : CName; // AttackTag
+	import function AudioAttackIndex() : Float; // AudioAttackIndex
+	import function AudioTag() : CName; // AudioTag
+	import function EffectName() : CName; // EffectName
+	import function EffectTag() : CName; // EffectTag
+	import function ExplosionAttack() : whandle:gamedataAttack_GameEffect_Record; // ExplosionAttack
+	import function ExplosionAttackHandle() : handle:gamedataAttack_GameEffect_Record; // ExplosionAttackHandle
+}
+
+import class gamedataAttack_Record extends gamedataTweakDBRecord
+{
+	import function AttackName() : CName; // AttackName
+	import function AttackType() : whandle:gamedataAttackType_Record; // AttackType
+	import function AttackTypeHandle() : handle:gamedataAttackType_Record; // AttackTypeHandle
+	import function ClassName() : CName; // ClassName
+	import function DamageType() : whandle:gamedataDamageType_Record; // DamageType
+	import function DamageTypeHandle() : handle:gamedataDamageType_Record; // DamageTypeHandle
+	import function ExplosionDamageVSVehicles() : Float; // ExplosionDamageVSVehicles
+	import function GetHitFlagsCount() : Int32; // GetHitFlagsCount
+	import function GetHitFlagsItem(index : Int32) : String; // GetHitFlagsItem
+	import function GetStaminaCostCount() : Int32; // GetStaminaCostCount
+	import function GetStaminaCostItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStaminaCostItem
+	import function GetStaminaCostItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStaminaCostItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function GetStatusEffectsCount() : Int32; // GetStatusEffectsCount
+	import function GetStatusEffectsItem(index : Int32) : whandle:gamedataStatusEffectAttackData_Record; // GetStatusEffectsItem
+	import function GetStatusEffectsItemHandle(index : Int32) : handle:gamedataStatusEffectAttackData_Record; // GetStatusEffectsItemHandle
+	import function HitFlags() : array:String; // HitFlags
+	import function HitFlagsContains(item : String) : Bool; // HitFlagsContains
+	import function HitReactionSeverityMax() : Int32; // HitReactionSeverityMax
+	import function HitReactionSeverityMin() : Int32; // HitReactionSeverityMin
+	import function PlayerIncomingDamageMultiplier() : Float; // PlayerIncomingDamageMultiplier
+	import function Range() : Float; // Range
+	import function StaminaCost(out outList : array:whandle:gamedataStatModifier_Record); // StaminaCost
+	import function StaminaCostContains(item : whandle:gamedataStatModifier_Record) : Bool; // StaminaCostContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function StatusEffects(out outList : array:whandle:gamedataStatusEffectAttackData_Record); // StatusEffects
+	import function StatusEffectsContains(item : whandle:gamedataStatusEffectAttackData_Record) : Bool; // StatusEffectsContains
+	import function UseDefaultAimData() : Bool; // UseDefaultAimData
+	import function UserDataPath() : String; // UserDataPath
+	import function Velocity() : Float; // Velocity
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

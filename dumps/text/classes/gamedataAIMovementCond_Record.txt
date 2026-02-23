@@ -1,0 +1,45 @@
+import class gamedataAIMovementCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function ConstrainedByRestrictedArea() : Int32; // ConstrainedByRestrictedArea
+	import function Destination() : whandle:gamedataAIActionTarget_Record; // Destination
+	import function DestinationHandle() : handle:gamedataAIActionTarget_Record; // DestinationHandle
+	import function DistanceToDestination() : Vector2; // DistanceToDestination
+	import function IsDestinationCalculated() : Int32; // IsDestinationCalculated
+	import function IsDestinationChanged() : Int32; // IsDestinationChanged
+	import function IsEvaluated() : Int32; // IsEvaluated
+	import function IsMoving() : Int32; // IsMoving
+	import function IsPauseByDynamicCollision() : Int32; // IsPauseByDynamicCollision
+	import function IsUsingOffMeshLink() : Int32; // IsUsingOffMeshLink
+	import function LineOfSightFailed() : Int32; // LineOfSightFailed
+	import function MoveLocomotionAction() : CName; // MoveLocomotionAction
+	import function MovementType() : CName; // MovementType
+	import function OffMeshLinkType() : CName; // OffMeshLinkType
+	import function PathFindingFailed() : Int32; // PathFindingFailed
+	import function Slope() : Vector2; // Slope
+	import function SpatialHintMults() : Vector3; // SpatialHintMults
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

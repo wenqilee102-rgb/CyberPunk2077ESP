@@ -1,0 +1,15 @@
+import class AIbehaviorAgentInfoDebuggerCommand extends AIbehaviorIDebuggerCommand
+{
+	var entityId : entEntityID;
+	var agentName : String;
+	var isSelected : Bool;
+	var entries : array:AIbehaviorAgentInfoDebuggerCommandEntry;
+}
+
+import class abstract AIbehaviorIDebuggerCommand extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

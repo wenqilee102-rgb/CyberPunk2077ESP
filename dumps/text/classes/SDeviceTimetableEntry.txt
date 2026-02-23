@@ -1,0 +1,6 @@
+struct SDeviceTimetableEntry
+{
+	public    var time : SSimpleGameTime;
+	public    var state : EDeviceStatus;
+	public    var entryID : Uint32;
+}

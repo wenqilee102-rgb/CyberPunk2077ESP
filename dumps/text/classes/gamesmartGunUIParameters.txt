@@ -1,0 +1,26 @@
+import class gamesmartGunUIParameters extends IScriptable
+{
+	var targets : array:gamesmartGunUITargetParameters;
+	var sight : gamesmartGunUISightParameters;
+	var crosshairPos : Vector2;
+	var hasRequiredCyberware : Bool;
+	var timeToRemoveOccludedTarget : Float;
+	var timeToLock : Float;
+	var timeToUnlock : Float;
+	var smartAudioEvents : array:CName;
+	var smartAudioEventsDelays : array:Float;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"questInjectLoot_NodeTypeParams_OperationData","d":8,"e":[{"a":{"b":"questInjectLootOperationType"},"b":"operationType","c":128},{"a":{"a":15},"b":"itemTDBID","c":128},{"a":{"a":6},"b":"quantity","c":128}]}

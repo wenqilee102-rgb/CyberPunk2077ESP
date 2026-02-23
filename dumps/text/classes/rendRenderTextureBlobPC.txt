@@ -1,0 +1,17 @@
+import class rendRenderTextureBlobPC extends rendIRenderTextureBlob
+{
+}
+
+import class rendIRenderTextureBlob extends IRenderResourceBlob
+{
+	var header : rendRenderTextureBlobHeader;
+	var textureData : serializationDeferredDataBuffer;
+}
+
+import class abstract IRenderResourceBlob extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

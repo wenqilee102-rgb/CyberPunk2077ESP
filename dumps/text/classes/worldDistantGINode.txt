@@ -1,0 +1,17 @@
+import class worldDistantGINode extends worldNode
+{
+	var dataAlbedo : raRef:CBitmapTexture;
+	var dataNormal : raRef:CBitmapTexture;
+	var dataHeight : raRef:CBitmapTexture;
+	var sectorSpan : Vector4;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

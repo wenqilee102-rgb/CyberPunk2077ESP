@@ -1,0 +1,6 @@
+import struct AICombatSquadTacticRatio
+{
+	var ratioSum : Float;
+	var reachSum : Float;
+	var area : Float;
+}

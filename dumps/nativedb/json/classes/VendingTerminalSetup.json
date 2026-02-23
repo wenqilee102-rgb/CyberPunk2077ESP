@@ -1,0 +1,1 @@
+{"b":"VendingTerminalSetup","d":0,"g":true,"e":[{"a":{"a":15},"b":"vendorTweakID","c":128},{"a":{"a":31,"c":{"b":"EVendorMode"}},"b":"vendingBlacklist","c":128},{"a":{"a":10},"b":"timeToCompletePurchase","c":128}]}

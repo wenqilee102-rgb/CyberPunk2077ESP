@@ -1,0 +1,6 @@
+import struct questPlayEnv_NodeTypeParams
+{
+	var enable : Bool;
+	var envParams : rRef:worldEnvironmentAreaParameters;
+	var blendTime : Float;
+}

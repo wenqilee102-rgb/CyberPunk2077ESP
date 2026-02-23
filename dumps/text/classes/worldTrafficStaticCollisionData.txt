@@ -1,0 +1,8 @@
+import class worldTrafficStaticCollisionData extends ISerializable
+{
+	var laneCollisions : array:worldStaticLaneCollisions;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+struct SSubCharacter
+{
+	public    var persistentID : gamePersistentID;
+	public    var subCharType : gamedataSubCharacter;
+	public    var equipmentData : handle:EquipmentSystemPlayerData;
+}

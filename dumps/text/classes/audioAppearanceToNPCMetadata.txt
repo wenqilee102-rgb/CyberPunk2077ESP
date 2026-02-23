@@ -1,0 +1,5 @@
+import struct audioAppearanceToNPCMetadata
+{
+	var appearances : array:CName;
+	var foleyNPCMetadata : CName;
+}

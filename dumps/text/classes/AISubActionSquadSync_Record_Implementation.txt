@@ -1,0 +1,21 @@
+class abstract AISubActionSquadSync_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSquadSync_Record); // AISubActionSquadSync_Record_Implementation::Activate;ScriptExecutionContextAISubActionSquadSync_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSquadSync_Record, duration : Float, interrupted : Bool); // AISubActionSquadSync_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionSquadSync_RecordFloatBool
+	static function SquadSync(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSquadSync_Record); // AISubActionSquadSync_Record_Implementation::SquadSync;ScriptExecutionContextAISubActionSquadSync_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSquadSync_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionSquadSync_Record_Implementation::Update;ScriptExecutionContextAISubActionSquadSync_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

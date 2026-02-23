@@ -1,0 +1,6 @@
+import struct gameTelemetryEnemyDown
+{
+	var enemy : gameTelemetryEnemy;
+	var situation : gameTelemetryDamageSituation;
+	var killType : gameKillType;
+}

@@ -1,0 +1,48 @@
+import class gameStatusEffect extends gameStatusEffectBase
+{
+	var durationID : Uint32;
+	var duration : Float;
+	var remainingDuration : Float;
+	var maxStacks : Uint32;
+	var sourcesData : array:gameSourceData;
+	var initialApplicationTimestamp : Float;
+	var lastApplicationTimestamp : Float;
+	var ownerEntityID : entEntityID;
+	var instigatorRecordID : TweakDBID;
+	var instigatorEntityID : entEntityID;
+	var proxyEntityID : entEntityID;
+	var direction : Vector4;
+	var removeAllStacksWhenDurationEnds : Bool;
+	var applicationSource : CName;
+
+	import function GetDirection() : Vector4; // GetDirection
+	import function GetInitialApplicationSimTimestamp() : EngineTime; // GetInitialApplicationSimTimestamp
+	import function GetInstigatorEntityID() : entEntityID; // GetInstigatorEntityID
+	import function GetInstigatorStaticDataID() : TweakDBID; // GetInstigatorStaticDataID
+	import function GetLastApplicationSimTimestamp() : EngineTime; // GetLastApplicationSimTimestamp
+	import function GetMaxStacks() : Uint32; // GetMaxStacks
+	import function GetProxyEntityID() : entEntityID; // GetProxyEntityID
+	import function GetRecord() : whandle:gamedataStatusEffect_Record; // GetRecord
+	import function GetRemainingDuration() : Float; // GetRemainingDuration
+	import function GetStackCount() : Uint32; // GetStackCount
+	import function GetTotalDuration() : Float; // GetTotalDuration
+}
+
+import class abstract gameStatusEffectBase extends IScriptable
+{
+	var statusEffectRecordID : TweakDBID;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

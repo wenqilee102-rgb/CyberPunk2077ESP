@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"UIGenderHelper","d":4,"f":[{"a":"UIGenderHelper::GetIconGender;PlayerPuppet","b":"GetIconGender","c":{"b":"gameItemIconGender"},"d":56,"e":[{"a":{"a":27,"c":{"b":"PlayerPuppet"}},"b":"playerPuppet","c":0}]}]}

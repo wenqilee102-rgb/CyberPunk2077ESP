@@ -1,0 +1,39 @@
+import class questMoveToParams extends questAICommandParams
+{
+	var movementTargetRef : handle:questUniversalRef;
+	var facingTargetRef : handle:questUniversalRef;
+	var rotateEntityTowardsFacingTarget : Bool;
+	var movementType : moveMovementType;
+	var ignoreNavigation : Bool;
+	var useStart : Bool;
+	var useStop : Bool;
+	var desiredDistanceFromTarget : Float;
+	var finishWhenDestinationReached : Bool;
+	var repeatCommandOnInterrupt : Bool;
+	var executeWhileDespawned : Bool;
+	var removeAfterCombat : Bool;
+	var ignoreInCombat : Bool;
+	var alwaysUseStealth : Bool;
+}
+
+import class abstract questAICommandParams extends scnAICommandFactory
+{
+}
+
+import class abstract scnAICommandFactory extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

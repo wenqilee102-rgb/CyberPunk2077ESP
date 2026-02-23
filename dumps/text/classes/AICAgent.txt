@@ -1,0 +1,83 @@
+import class AICAgent extends gameComponent
+{
+	static function CancelCommand(obj : whandle:ScriptedPuppet, cmd : handle:AICommand); // AICAgent::CancelCommand;ScriptedPuppetAICommand
+	static function DebugLogEnabled(puppet : whandle:ScriptedPuppet) : Bool; // AICAgent::DebugLogEnabled;ScriptedPuppet
+	static function InvokeBehaviorCallback(obj : whandle:ScriptedPuppet, cbName : CName); // AICAgent::InvokeBehaviorCallback;ScriptedPuppetCName
+	static function SendCommand(obj : whandle:ScriptedPuppet, cmd : handle:AICommand); // AICAgent::SendCommand;ScriptedPuppetAICommand
+
+	import function CancelCommand(cmd : handle:AICommand) : Bool; // CancelCommand
+	import function CancelCommandById(cmdId : Uint32, optional doNotRepeat : Bool) : Bool; // CancelCommandById
+	import function CancelOrInterruptCommand(commandName : CName, useInheritance : Bool, success : Bool) : Bool; // CancelOrInterruptCommand
+	import function DebugLog(category : CName, message : String); // DebugLog
+	import function DebugLogEnabled() : Bool; // DebugLogEnabled
+	import function DisableCollider(); // DisableCollider
+	import function EnableCollider(); // EnableCollider
+	import function ForceTickNextFrame(); // ForceTickNextFrame
+	import function GetAIRole() : handle:AIRole; // GetAIRole
+	import function GetBehaviorArgument(n : CName) : Variant; // GetBehaviorArgument
+	import function GetCombatMode() : AIbehaviorCombatModes; // GetCombatMode
+	import function GetCombatSpaceSize() : AICombatSpaceSize; // GetCombatSpaceSize
+	import function GetCombatSpaceSizeMultiplier() : Float; // GetCombatSpaceSizeMultiplier
+	import function GetCommandState(cmd : handle:AICommand) : AICommandState; // GetCommandState
+	import function GetEnqueuedOrExecutingCommand(commandName : CName, useInheritance : Bool) : handle:AICommand; // GetEnqueuedOrExecutingCommand
+	import function GetFriendlyFireSystem() : handle:gameIFriendlyFireSystem; // GetFriendlyFireSystem
+	import function GetHighLevelState() : gamedataNPCHighLevelState; // GetHighLevelState
+	import function GetLOD() : Int32; // GetLOD
+	import function GetLoSFinderSystem() : handle:gameLoSIFinderSystem; // GetLoSFinderSystem
+	import function GetOrCreateBlackboard(definition : handle:gamebbScriptDefinition, cache : script_ref:whandle:gameIBlackboard) : handle:gameIBlackboard; // GetOrCreateBlackboard
+	import function GetSignals() : handle:gameBoolSignalTable; // GetSignals
+	import function GetStoryTier() : gameStoryTier; // GetStoryTier
+	import function GetUpdateTickCount() : Uint32; // GetUpdateTickCount
+	import function InvokeBehaviorCallback(cbName : CName); // InvokeBehaviorCallback
+	import function IsCommandExecuting(commandName : CName, useInheritance : Bool) : Bool; // IsCommandExecuting
+	import function IsCommandWaiting(commandName : CName, useInheritance : Bool) : Bool; // IsCommandWaiting
+	import function SendCommand(cmd : handle:AICommand) : Bool; // SendCommand
+	import function SetAIRole(role : handle:AIRole); // SetAIRole
+	import function SetBehaviorArgument(n : CName, nv : Variant); // SetBehaviorArgument
+	import function SetCombatSpaceSize(combatSpaceSize : AICombatSpaceSize); // SetCombatSpaceSize
+	import function SetCombatSpaceSizeMultiplier(multiplier : Float); // SetCombatSpaceSizeMultiplier
+	import function StartExecutingCommand(cmd : handle:AICommand) : Bool; // StartExecutingCommand
+	import function StopExecutingCommand(cmd : handle:AICommand, success : Bool) : Bool; // StopExecutingCommand
+	import function StopExecutingCommandById(cmdId : Uint32, success : Bool) : Bool; // StopExecutingCommandById
+
+	function GetCurrentReactionPreset() : whandle:gamedataReactionPreset_Record; // GetCurrentReactionPreset;
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

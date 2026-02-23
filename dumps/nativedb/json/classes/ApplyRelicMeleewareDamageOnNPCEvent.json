@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"ApplyRelicMeleewareDamageOnNPCEvent","d":0,"e":[{"a":{"a":26,"c":{"b":"gameeventsHitEvent"}},"b":"newHitEvent","c":128},{"a":{"b":"Vector4"},"b":"hitPosition","c":128},{"a":{"a":27,"c":{"b":"NPCPuppet"}},"b":"target","c":128},{"a":{"a":27,"c":{"b":"gameweaponObject"}},"b":"weapon","c":128},{"a":{"b":"gamedataItemType"},"b":"weaponType","c":128}]}

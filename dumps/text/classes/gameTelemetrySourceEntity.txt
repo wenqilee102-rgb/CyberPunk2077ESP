@@ -1,0 +1,5 @@
+import struct gameTelemetrySourceEntity
+{
+	var className : String;
+	var sourceEntityRecord : TweakDBID;
+}

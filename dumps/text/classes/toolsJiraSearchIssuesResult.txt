@@ -1,0 +1,13 @@
+import class toolsJiraSearchIssuesResult extends ISerializable
+{
+	var startAt : Uint32;
+	var maxResults : Uint32;
+	var total : Uint32;
+	var issues : array:toolsJiraIssue;
+	var errorMessages : array:String;
+	var warningMessages : array:String;
+}
+
+import class abstract ISerializable
+{
+}

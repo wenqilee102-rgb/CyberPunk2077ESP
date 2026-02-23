@@ -1,0 +1,23 @@
+class abstract AISubActionSetWorldPosition_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetWorldPosition_Record); // AISubActionSetWorldPosition_Record_Implementation::Activate;ScriptExecutionContextAISubActionSetWorldPosition_Record
+	static function CalculateWorldPosition(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetWorldPosition_Record) : Vector4; // AISubActionSetWorldPosition_Record_Implementation::CalculateWorldPosition;ScriptExecutionContextAISubActionSetWorldPosition_Record
+	static function GetNavmeshPosition(context : AIbehaviorScriptExecutionContext, out checkPosition : Vector4) : Bool; // AISubActionSetWorldPosition_Record_Implementation::GetNavmeshPosition;ScriptExecutionContextVector4
+	static function GetRandomOffset(minOffset : Vector3, maxOffset : Vector3) : Vector3; // AISubActionSetWorldPosition_Record_Implementation::GetRandomOffset;Vector3Vector3
+	static function GetWorldPositionWithOffset(context : AIbehaviorScriptExecutionContext, referenceTarget : handle:gamedataAIActionTarget_Record, offset : Vector3, useLocalSpace : Bool) : Vector4; // AISubActionSetWorldPosition_Record_Implementation::GetWorldPositionWithOffset;ScriptExecutionContextAIActionTarget_RecordVector3Bool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetWorldPosition_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionSetWorldPosition_Record_Implementation::Update;ScriptExecutionContextAISubActionSetWorldPosition_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

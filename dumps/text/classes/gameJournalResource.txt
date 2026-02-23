@@ -1,0 +1,17 @@
+import class gameJournalResource extends gameJournalBaseResource
+{
+	var entry : handle:gameJournalEntry;
+}
+
+import class abstract gameJournalBaseResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

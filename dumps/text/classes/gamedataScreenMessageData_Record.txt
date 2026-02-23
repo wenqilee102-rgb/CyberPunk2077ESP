@@ -1,0 +1,50 @@
+import class gamedataScreenMessageData_Record extends gamedataTweakDBRecord
+{
+	import function AutoScroll() : Bool; // AutoScroll
+	import function BackgroundColor() : array:Int32; // BackgroundColor
+	import function BackgroundColorContains(item : Int32) : Bool; // BackgroundColorContains
+	import function BackgroundOpacity() : Float; // BackgroundOpacity
+	import function BackgroundTextureID() : whandle:gamedataUIIcon_Record; // BackgroundTextureID
+	import function BackgroundTextureIDHandle() : handle:gamedataUIIcon_Record; // BackgroundTextureIDHandle
+	import function BottomMargin() : Float; // BottomMargin
+	import function FontPath() : String; // FontPath
+	import function FontSize() : Int32; // FontSize
+	import function FontStyle() : CName; // FontStyle
+	import function FriendlyName() : String; // FriendlyName
+	import function GetBackgroundColorCount() : Int32; // GetBackgroundColorCount
+	import function GetBackgroundColorItem(index : Int32) : Int32; // GetBackgroundColorItem
+	import function GetTextColorCount() : Int32; // GetTextColorCount
+	import function GetTextColorItem(index : Int32) : Int32; // GetTextColorItem
+	import function LeftMargin() : Float; // LeftMargin
+	import function LocalizedDescription() : CName; // LocalizedDescription
+	import function LocalizedName() : CName; // LocalizedName
+	import function MessageGroup() : whandle:gamedataScreenMessagesList_Record; // MessageGroup
+	import function MessageGroupHandle() : handle:gamedataScreenMessagesList_Record; // MessageGroupHandle
+	import function RightMargin() : Float; // RightMargin
+	import function ScrollSpeed() : Float; // ScrollSpeed
+	import function TextColor() : array:Int32; // TextColor
+	import function TextColorContains(item : Int32) : Bool; // TextColorContains
+	import function TextHorizontalAlignment() : CName; // TextHorizontalAlignment
+	import function TextVerticalAlignment() : CName; // TextVerticalAlignment
+	import function TopMargin() : Float; // TopMargin
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

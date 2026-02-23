@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"WorldMapGangItemController","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"factionNameText","c":129},{"a":{"b":"inkImageWidgetReference"},"b":"factionIconImage","c":129}],"f":[{"a":"SetData;Affiliation_Record","b":"SetData","d":48,"e":[{"a":{"a":27,"c":{"b":"gamedataAffiliation_Record"}},"b":"affiliationRecord","c":0}]}]}

@@ -1,0 +1,7 @@
+import struct workShadowDebugger extends workDebuggingTool
+{
+}
+
+import struct abstract workDebuggingTool
+{
+}

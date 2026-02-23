@@ -1,0 +1,26 @@
+class StatusEffectSignalEvent extends redEvent
+{
+	public    var statusEffectID : TweakDBID;
+	public    var priority : Float;
+	public    var tags : array:CName;
+	public    var flags : array:EAIGateSignalFlags;
+	public    var repeatSignalDelay : Float;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

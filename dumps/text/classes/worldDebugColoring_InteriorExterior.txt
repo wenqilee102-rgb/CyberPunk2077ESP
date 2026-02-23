@@ -1,0 +1,14 @@
+import class worldDebugColoring_InteriorExterior extends worldEditorDebugColoringSettings
+{
+	var interiorColor : Color;
+	var openInteriorColor : Color;
+	var exteriorColor : Color;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

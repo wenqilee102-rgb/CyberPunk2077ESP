@@ -1,0 +1,11 @@
+import struct gameAttachmentSlotsReplicatedState extends netIComponentState
+{
+	var stateVersion : Uint32;
+	var slots : array:gameAttachmentSlotReplicatedState;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

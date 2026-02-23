@@ -1,0 +1,7 @@
+import struct gameinteractionsvisLootVisualizerFamily extends gameinteractionsvisFamilyBase
+{
+}
+
+import struct abstract gameinteractionsvisFamilyBase
+{
+}

@@ -1,0 +1,31 @@
+import class AnimFeature_Zoom extends animAnimFeature
+{
+	var finalZoomLevel : Float;
+	var weaponZoomLevel : Float;
+	var weaponAimFOV : Float;
+	var worldFOV : Float;
+	var zoomLevelNum : Int32;
+	var noWeaponAimInTime : Float;
+	var noWeaponAimOutTime : Float;
+	var shouldUseWeaponZoomStats : Bool;
+	var focusModeActive : Bool;
+	public    var weaponScopeFov : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

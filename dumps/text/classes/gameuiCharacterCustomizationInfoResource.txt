@@ -1,0 +1,23 @@
+import class gameuiCharacterCustomizationInfoResource extends CResource
+{
+	var version : Uint32;
+	var headCustomizationOptions : array:handle:gameuiCharacterCustomizationInfo;
+	var bodyCustomizationOptions : array:handle:gameuiCharacterCustomizationInfo;
+	var armsCustomizationOptions : array:handle:gameuiCharacterCustomizationInfo;
+	var armsGroups : array:gameuiOptionsGroup;
+	var headGroups : array:gameuiOptionsGroup;
+	var bodyGroups : array:gameuiOptionsGroup;
+	var perspectiveInfo : array:gameuiPerspectiveInfo;
+	var uiPresets : array:gameuiCharacterCustomizationUiPresetInfo;
+	var excludedFromRandomize : array:CName;
+	var versionUpdateInfo : array:gameuiCharacterCustomizationVersionUpdateInfo;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

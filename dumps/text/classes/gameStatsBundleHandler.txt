@@ -1,0 +1,23 @@
+import class gameStatsBundleHandler extends IScriptable
+{
+	import function AddModifier(modifierData : handle:gameStatModifierData_Deprecated) : Bool; // AddModifier
+	import function GetStatBoolValue(statType : gamedataStatType) : Bool; // GetStatBoolValue
+	import function GetStatDetails() : array:gameStatDetailedData; // GetStatDetails
+	import function GetStatValue(statType : gamedataStatType) : Float; // GetStatValue
+	import function RemoveAllModifiers(statType : gamedataStatType); // RemoveAllModifiers
+	import function RemoveModifier(modifierData : handle:gameStatModifierData_Deprecated); // RemoveModifier
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

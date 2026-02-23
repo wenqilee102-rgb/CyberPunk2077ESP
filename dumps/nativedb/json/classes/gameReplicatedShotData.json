@@ -1,0 +1,1 @@
+{"b":"gameReplicatedShotData","d":8,"g":true,"e":[{"a":{"b":"netTime"},"b":"timeStamp","c":128},{"a":{"a":15},"b":"attackId","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"target","c":128},{"a":{"b":"Vector3"},"b":"targetLocalOffset","c":128}]}

@@ -1,0 +1,23 @@
+import class scnSceneTimeProvider extends gameinteractionsvisIVisualizerTimeProvider
+{
+}
+
+import class abstract gameinteractionsvisIVisualizerTimeProvider extends IScriptable
+{
+	import function GetCurrentProgress() : Float; // GetCurrentProgress
+	import function GetDuration() : Float; // GetDuration
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

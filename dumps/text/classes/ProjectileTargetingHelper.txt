@@ -1,0 +1,20 @@
+class ProjectileTargetingHelper extends IScriptable
+{
+	static function GetObjectCurrentPosition(obj : whandle:gameObject) : Vector4; // ProjectileTargetingHelper::GetObjectCurrentPosition;GameObject
+	static function GetTargetingComponentsWorldPosition(targetComponent : handle:entIPlacedComponent) : Vector4; // ProjectileTargetingHelper::GetTargetingComponentsWorldPosition;IPlacedComponent
+	static function GetTargetsTargetingComponent(ownerObject : whandle:gameObject, filterBy : gameTargetSearchQuery, out angleDist : EulerAngles) : handle:entIPlacedComponent; // ProjectileTargetingHelper::GetTargetsTargetingComponent;GameObjectTargetSearchQueryEulerAngles
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,21 @@
+import class questEntityManagerAddDevelopmentPoint_NodeType extends questIEntityManager_NodeType
+{
+	var value : Int32;
+	var type : gamedataDevelopmentPointType;
+}
+
+import class abstract questIEntityManager_NodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

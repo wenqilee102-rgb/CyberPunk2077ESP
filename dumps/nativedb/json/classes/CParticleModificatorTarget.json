@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorTarget","d":8,"e":[{"a":{"a":26,"c":{"b":"IEvaluatorVector"}},"b":"position","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"forceScale","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"killRadius","c":128},{"a":{"a":10},"b":"maxForce","c":128}]}

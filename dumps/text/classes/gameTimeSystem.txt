@@ -1,0 +1,51 @@
+import class gameTimeSystem extends gameITimeSystem
+{
+	import function GetActiveTimeDilation(optional reason : CName, optional ignoreCurves : Bool) : Float; // GetActiveTimeDilation
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetGameTimeStamp() : Float; // GetGameTimeStamp
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function IsPausedState() : Bool; // IsPausedState
+	import function IsTimeDilationActive(optional reason : CName) : Bool; // IsTimeDilationActive
+	import function RealTimeSecondsToGameTime(seconds : Float) : GameTime; // RealTimeSecondsToGameTime
+	import function RegisterDelayedListener(entity : whandle:entEntity, eventToDelay : handle:redEvent, delay : GameTime, repeat : Int32, optional sendOldNoifications : Bool) : Uint32; // RegisterDelayedListener
+	import function RegisterIntervalListener(entity : whandle:entEntity, eventToDelay : handle:redEvent, expectedHour : GameTime, timeout : GameTime, optional repeat : Int32) : Uint32; // RegisterIntervalListener
+	import function RegisterListener(entity : whandle:entEntity, eventToDelay : handle:redEvent, expectedTime : GameTime, repeat : Int32, optional sendOldNoifications : Bool) : Uint32; // RegisterListener
+	import function RegisterScriptableSystemIntervalListener(systemName : CName, requestToDelay : handle:gameScriptableSystemRequest, expectedHour : GameTime, timeout : GameTime, optional repeat : Int32) : Uint32; // RegisterScriptableSystemIntervalListener
+	import function RestorePreviousIgnoreTimeDilationOnLocalPlayerZero(); // RestorePreviousIgnoreTimeDilationOnLocalPlayerZero
+	import function SetGameTime(); // SetGameTime
+	import function SetGameTimeByHMS(hours : Int32, minutes : Int32, seconds : Int32, optional reason : CName); // SetGameTimeByHMS
+	import function SetGameTimeBySeconds(seconds : Int32); // SetGameTimeBySeconds
+	import function SetIgnoreTimeDilationOnLocalPlayerZero(ignore : Bool); // SetIgnoreTimeDilationOnLocalPlayerZero
+	import function SetPausedState(paused : Bool, source : CName); // SetPausedState
+	import function SetTimeDilation(reason : CName, dilation : Float, optional duration : Float, optional easeInCurve : CName, optional easeOutCurve : CName, optional listener : handle:tickScriptTimeDilationListener); // SetTimeDilation
+	import function SetTimeDilationOnLocalPlayerZero(reason : CName, dilation : Float, optional duration : Float, optional easeInCurve : CName, optional easeOutCurve : CName); // SetTimeDilationOnLocalPlayerZero
+	import function UnregisterListener(listenerID : Uint32); // UnregisterListener
+	import function UnsetTimeDilation(reason : CName, optional easeOutCurve : CName); // UnsetTimeDilation
+	import function UnsetTimeDilationOnLocalPlayerZero(reason : CName, optional easeOutCurve : CName); // UnsetTimeDilationOnLocalPlayerZero
+}
+
+import class abstract gameITimeSystem extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,15 @@
+import class scnChoiceNodeNsActorReminderParams extends ISerializable
+{
+	var useCustomReminder : Bool;
+	var reminderActor : scnActorId;
+	var waitTimeForReminderA : scnSceneTime;
+	var waitTimeForReminderB : scnSceneTime;
+	var waitTimeForReminderC : scnSceneTime;
+	var waitTimeForLooping : scnSceneTime;
+	var cutReminderEnabled : Bool;
+	var waitTimeToCutReminder : Float;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,34 @@
+import class questPlayerLookAt_NodeType extends questISceneManagerNodeType
+{
+	var useOffsetToPlayer : Bool;
+	var objectRef : gameEntityReference;
+	var slotName : CName;
+	var offsetPos : Vector3;
+	var duration : Float;
+	var adjustPitch : Bool;
+	var adjustYaw : Bool;
+	var endOnTargetReached : Bool;
+	var endOnCameraInputApplied : Bool;
+	var endOnTimeExceeded : Bool;
+	var cameraInputMagToBreak : Float;
+	var precision : Float;
+	var maxDuration : Float;
+	var easeIn : Bool;
+	var easeOut : Bool;
+}
+
+import class abstract questISceneManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

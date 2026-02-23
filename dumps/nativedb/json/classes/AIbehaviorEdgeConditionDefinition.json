@@ -1,0 +1,1 @@
+{"a":"AIbehaviorUnaryConditionDefinition","b":"AIbehaviorEdgeConditionDefinition","d":8,"e":[{"a":{"b":"AIbehaviorEdgeConditionAction"},"b":"risingEdgeAction","c":128},{"a":{"b":"AIbehaviorEdgeConditionAction"},"b":"fallingEdgeAction","c":128},{"a":{"a":1},"b":"initialValue","c":128}]}

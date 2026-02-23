@@ -1,0 +1,12 @@
+import class questRadioSongNodeType extends questIAudioNodeType
+{
+	var radioStationEvents : array:audioRadioStationSongEventStruct;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

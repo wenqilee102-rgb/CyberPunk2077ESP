@@ -1,0 +1,5 @@
+import struct gamedataVariableNodeVariableValue
+{
+	var node : handle:gamedataValueNode;
+	var deriveInfo : gamedataVariableNodeVariableValueDeriveInfo;
+}

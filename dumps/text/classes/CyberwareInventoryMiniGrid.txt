@@ -1,0 +1,150 @@
+class CyberwareInventoryMiniGrid extends inkWidgetLogicController
+{
+	private   var isLeftAligned : Bool;
+	private   var gridContainer : inkUniformGridWidgetReference;
+	private   var label : inkTextWidgetReference;
+	private   var isNew : inkWidgetReference;
+	private   var selectedSlotIndex : Int32;
+	public    var equipArea : gamedataEquipmentArea;
+	private   var parentObject : handle:IScriptable;
+	private   var onRealeaseCallbackName : CName;
+	private   var opacityAnimation : handle:inkanimProxy;
+	private   var marginAnimation : handle:inkanimProxy;
+	private   var labelAnimation : handle:inkanimProxy;
+	private   var labelPulse : handle:PulseAnimation;
+	private   var margin : inkMargin;
+	private   var targetMargin : inkMargin;
+	private   var parent : inkCompoundWidgetReference;
+	private   var player : whandle:PlayerPuppet;
+	private   var minigridAnimation : handle:inkanimProxy;
+	private   var screen : CyberwareScreenType;
+	private   var displayContext : handle:ItemDisplayContextData;
+	private   var gridData : array:whandle:InventoryItemDisplayController;
+	private   var root : whandle:inkWidget;
+
+	event OnHoverOutCategory(e : handle:inkPointerEvent) : Bool; // OnHoverOutCategory
+	event OnHoverOutCategoryLabel(e : handle:inkPointerEvent) : Bool; // OnHoverOutCategoryLabel
+	event OnHoverOverCategory(e : handle:inkPointerEvent) : Bool; // OnHoverOverCategory
+	event OnHoverOverCategoryLabel(e : handle:inkPointerEvent) : Bool; // OnHoverOverCategoryLabel
+	event OnInitialize() : Bool; // OnInitialize
+	event OnSlotSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnSlotSpawned
+	event OnStateChanged(widget : whandle:inkWidget, oldState : CName, newState : CName) : Bool; // OnStateChanged
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function AnimateLabel(hide : Bool); // AnimateLabel;Bool
+	function GetAreaHeader(area : gamedataEquipmentArea) : String; // GetAreaHeader;gamedataEquipmentArea
+	function GetEquipmentArea() : gamedataEquipmentArea; // GetEquipmentArea;
+	function GetEquippedData(itemID : gameItemID) : whandle:UIInventoryItem; // GetEquippedData;ItemID
+	function GetFirstSlot() : whandle:inkWidget; // GetFirstSlot;
+	function GetInventoryItemDisplays() : array:whandle:InventoryItemDisplayController; // GetInventoryItemDisplays;
+	function GetLastSlot() : whandle:inkWidget; // GetLastSlot;
+	function GetSelectedSlotData() : whandle:UIInventoryItem; // GetSelectedSlotData;
+	function GetSelectedSlotIndex() : Int32; // GetSelectedSlotIndex;
+	function GetSlotData(slotIndex : Int32) : whandle:UIInventoryItem; // GetSlotData;Int32
+	function GetSlotIndex(slot : whandle:InventoryItemDisplayController) : Int32; // GetSlotIndex;InventoryItemDisplayController
+	function GetSlotToEquipe(itemID : gameItemID) : Int32; // GetSlotToEquipe;ItemID
+	function HighlightSelectedSlot(); // HighlightSelectedSlot;
+	function HighlightSlot(index : Int32, optional animatedHighlight : Bool); // HighlightSlot;Int32Bool
+	function HoveredAttribute(player : handle:PlayerPuppet, attribute : gamedataStatType); // HoveredAttribute;PlayerPuppetgamedataStatType
+	function IsEquipmentAreaRequiringPerk(equipmentArea : gamedataEquipmentArea) : Bool; // IsEquipmentAreaRequiringPerk;gamedataEquipmentArea
+	function IsLeftSide() : Bool; // IsLeftSide;
+	function OpacityFullHide(); // OpacityFullHide;
+	function OpacityFullShow(); // OpacityFullShow;
+	function OpacityHide(optional shouldDim : Bool); // OpacityHide;Bool
+	function OpacityShow(optional delay : Float); // OpacityShow;Float
+	function PlayEquipAnimation(index : Int32); // PlayEquipAnimation;Int32
+	function PlayIntroAnimation(duration : Float, interpolationMode : inkanimInterpolationMode, interpolationType : inkanimInterpolationType); // PlayIntroAnimation;FloatinkanimInterpolationModeinkanimInterpolationType
+	function PlayMinigridAnim(playReverse : Bool); // PlayMinigridAnim;Bool
+	function RefreshisNewPreview(hasNew : Bool); // RefreshisNewPreview;Bool
+	function RemoveElements(limit : Int32); // RemoveElements;Int32
+	function ResetPosition(optional immediate : Bool, optional duration : Float); // ResetPosition;BoolFloat
+	function SelectSlot(index : Int32); // SelectSlot;Int32
+	function SetInteractive(interactive : Bool); // SetInteractive;Bool
+	function SetLabelImmediate(show : Bool); // SetLabelImmediate;Bool
+	function SetOpacityDumb(hide : Bool, shouldDim : Bool, duration : Float, delay : Float); // SetOpacityDumb;BoolBoolFloatFloat
+	function SetOrientation(orientation : inkEOrientation); // SetOrientation;inkEOrientation
+	function SetPosition(margin : inkMargin, duration : Float); // SetPosition;inkMarginFloat
+	function SetPositionImmediate(margin : inkMargin); // SetPositionImmediate;inkMargin
+	function SetPosition_Animation(margin : inkMargin, duration : Float, optional isReversed : Bool, optional customOffset : Float, optional interpolationMode : inkanimInterpolationMode, optional interpolationType : inkanimInterpolationType); // SetPosition_Animation;inkMarginFloatBoolFloatinkanimInterpolationModeinkanimInterpolationType
+	function SetTargetMargin(margin : inkMargin, parent : inkCompoundWidgetReference); // SetTargetMargin;inkMargininkCompoundRef
+	function SetupData(equipArea : gamedataEquipmentArea, playerEquipAreaInventory : script_ref:array:whandle:UIInventoryItem, parent : handle:IScriptable, onRealeaseCallbackName : CName, screen : CyberwareScreenType, hasMods : Bool, displayContext : handle:ItemDisplayContextData, optional inventoryManager : handle:InventoryDataManagerV2, optional player : handle:PlayerPuppet); // SetupData;gamedataEquipmentAreascript_ref<array<UIInventoryItem>>IScriptableCNameCyberwareScreenTypeBoolItemDisplayContextDataInventoryDataManagerV2PlayerPuppet
+	function UnhighlightAllSlots(); // UnhighlightAllSlots;
+	function UnhighlightSelectedSlot(); // UnhighlightSelectedSlot;
+	function UnhighlightSlot(index : Int32); // UnhighlightSlot;Int32
+	function UnselectSlot(); // UnselectSlot;
+	function UpdateData(equipArea : gamedataEquipmentArea, playerEquipAreaInventory : script_ref:array:whandle:UIInventoryItem, optional screen : CyberwareScreenType); // UpdateData;gamedataEquipmentAreascript_ref<array<UIInventoryItem>>CyberwareScreenType
+	function UpdateTitle(label : script_ref:String); // UpdateTitle;script_ref<String>
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

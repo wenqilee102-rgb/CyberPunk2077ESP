@@ -1,0 +1,5 @@
+import struct Multilayer_LayerTemplateOverridesColor
+{
+	var n : CName;
+	var v : [3]Float;
+}

@@ -1,0 +1,29 @@
+import class abstract gameIOnlineSystem extends gameIGameSystem
+{
+	import function FindRewardRecordByRewardToken(token : Uint64) : whandle:gamedataGOGReward_Record; // FindRewardRecordByRewardToken
+	import function GetError() : gameOnlineSystemErrors; // GetError
+	import function GetRegistrationUrl() : String; // GetRegistrationUrl
+	import function GetStatus() : gameOnlineSystemStatus; // GetStatus
+	import function GetUnlockedRewardPacks() : array:gameRewardPack; // GetUnlockedRewardPacks
+	import function IsRewardUnlocked(rewardRecord : handle:gamedataGOGReward_Record) : Bool; // IsRewardUnlocked
+	import function RequestInitialStatus(); // RequestInitialStatus
+	import function SignOut(); // SignOut
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

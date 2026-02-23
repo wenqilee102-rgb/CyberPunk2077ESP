@@ -1,0 +1,1 @@
+{"b":"worldTrafficNullAreaDynamicBlockade","d":8,"g":true,"e":[{"a":{"a":9},"b":"areaID","c":128},{"a":{"a":31,"c":{"a":9}},"b":"offmeshLinks","c":128},{"a":{"a":31,"c":{"b":"worldTrafficLaneUID"}},"b":"affectedTrafficLanes","c":128},{"a":{"a":1},"b":"permanentlyEnabledByDefault","c":128}]}

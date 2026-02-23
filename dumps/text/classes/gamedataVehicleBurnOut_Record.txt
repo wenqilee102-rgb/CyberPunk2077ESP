@@ -1,0 +1,38 @@
+import class gamedataVehicleBurnOut_Record extends gamedataTweakDBRecord
+{
+	import function BurnOutGripBonus() : Float; // BurnOutGripBonus
+	import function GripBonusMaxLaunchSpeed() : Float; // GripBonusMaxLaunchSpeed
+	import function GripBonusMaxSpeedMultiplier() : Float; // GripBonusMaxSpeedMultiplier
+	import function LateralAccelForwardSpeedMaxDecimation() : Float; // LateralAccelForwardSpeedMaxDecimation
+	import function LateralForceMaxAcceleration() : Float; // LateralForceMaxAcceleration
+	import function LateralForceMaxSpeed() : Float; // LateralForceMaxSpeed
+	import function LateralSlipRatioInfluence() : Float; // LateralSlipRatioInfluence
+	import function MaxBrakeForceModifier() : Float; // MaxBrakeForceModifier
+	import function MaxDriveWheelSlipRatio() : Float; // MaxDriveWheelSlipRatio
+	import function MaxLateralAccelSlipRatioMultipler() : Float; // MaxLateralAccelSlipRatioMultipler
+	import function MaxLongFrictionSlipRatioMultipler() : Float; // MaxLongFrictionSlipRatioMultipler
+	import function MaxSpeedToInitiateBurnOut() : Float; // MaxSpeedToInitiateBurnOut
+	import function MinBrakeForceModifier() : Float; // MinBrakeForceModifier
+	import function MinLongFrictionCoeff() : Float; // MinLongFrictionCoeff
+	import function MinLongFrictionSlipRatioScaled() : Float; // MinLongFrictionSlipRatioScaled
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

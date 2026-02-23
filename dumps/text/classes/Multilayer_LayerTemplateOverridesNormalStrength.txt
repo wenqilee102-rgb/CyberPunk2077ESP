@@ -1,0 +1,5 @@
+import struct Multilayer_LayerTemplateOverridesNormalStrength
+{
+	var n : CName;
+	var v : Float;
+}

@@ -1,0 +1,36 @@
+import class worldgeometryDescriptionQuery extends IScriptable
+{
+	var refPosition : Vector4;
+	var refDirection : Vector4;
+	var refUp : Vector4;
+	var primitiveDimension : Vector4;
+	var primitiveRotation : Quaternion;
+	var maxDistance : Float;
+	var maxExtent : Float;
+	var raycastStartDistance : Float;
+	var probingPrecision : Float;
+	var probingMaxDistanceDiff : Float;
+	var probingMaxHeight : Float;
+	var maxProbes : Uint32;
+	var probeDimensions : Vector4;
+	var filter : physicsQueryFilter;
+	var flags : Uint32;
+
+	function AddFlag(flag : worldgeometryDescriptionQueryFlags); // AddFlag;worldgeometryDescriptionQueryFlags
+	function RemoveFlag(flag : worldgeometryDescriptionQueryFlags); // RemoveFlag;worldgeometryDescriptionQueryFlags
+	function TestFlag(flag : worldgeometryDescriptionQueryFlags) : Bool; // TestFlag;worldgeometryDescriptionQueryFlags
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

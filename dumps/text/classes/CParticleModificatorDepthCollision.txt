@@ -1,0 +1,28 @@
+import class CParticleModificatorDepthCollision extends IParticleModificator
+{
+	var maxCollisions : Uint32;
+	var restitution : Float;
+	var friction : Float;
+	var radius : Float;
+	var collisionEffect : EDepthCollisionEffect;
+}
+
+import class abstract IParticleModificator extends IParticleInitializer
+{
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

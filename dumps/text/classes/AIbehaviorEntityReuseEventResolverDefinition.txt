@@ -1,0 +1,13 @@
+import class AIbehaviorEntityReuseEventResolverDefinition extends AIbehaviorEventResolverDefinition
+{
+	var destination : handle:AIArgumentMapping;
+	var fastForwardAfterTeleport : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorEventResolverDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

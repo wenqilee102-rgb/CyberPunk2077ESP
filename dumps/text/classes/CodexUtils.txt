@@ -1,0 +1,31 @@
+class CodexUtils extends IScriptable
+{
+	static function AppendTutorialEntries(journal : handle:gameJournalManager, path : script_ref:String, output : script_ref:array:whandle:gameJournalEntry) : Bool; // CodexUtils::AppendTutorialEntries;JournalManagerscript_ref<String>script_ref<array<JournalEntry>>
+	static function ConvertToCodexData(journal : handle:gameJournalManager, journalCodexEntry : whandle:gameJournalCodexEntry, currentCategoryIndex : Int32, stateFilter : gameJournalRequestStateFilter, newEntries : script_ref:array:Int32, optional activeDataSync : whandle:CodexListSyncData, optional useFallbackImages : Bool) : handle:CodexEntryData; // CodexUtils::ConvertToCodexData;JournalManagerJournalCodexEntryInt32JournalRequestStateFilterscript_ref<array<Int32>>CodexListSyncDataBool
+	static function GetCategoryTypeFromId(id : script_ref:String) : CodexCategoryType; // CodexUtils::GetCategoryTypeFromId;script_ref<String>
+	static function GetCodexDataArray(journal : handle:gameJournalManager, activeDataSync : whandle:CodexListSyncData, optional useFallbackImages : Bool) : array:handle:VirutalNestedListData; // CodexUtils::GetCodexDataArray;JournalManagerCodexListSyncDataBool
+	static function GetCodexFilterIcon(category : CodexCategoryType) : String; // CodexUtils::GetCodexFilterIcon;CodexCategoryType
+	static function GetCodexReplacementRecord(journal : handle:gameJournalManager, currentEntry : whandle:gameJournalEntry) : whandle:gameJournalCodexEntry; // CodexUtils::GetCodexReplacementRecord;JournalManagerJournalEntry
+	static function GetGroupData(currentGroup : whandle:gameJournalCodexGroup, out groupsMap : array:handle:VirutalNestedListData) : whandle:VirutalNestedListData; // CodexUtils::GetGroupData;JournalCodexGrouparray<VirutalNestedListData>
+	static function GetLocalizedTag(tag : CName) : String; // CodexUtils::GetLocalizedTag;CName
+	static function GetShardTextString(isCrypted : Bool, textString : script_ref:String) : String; // CodexUtils::GetShardTextString;Boolscript_ref<String>
+	static function GetShardTitleString(isCrypted : Bool, titleString : script_ref:String) : String; // CodexUtils::GetShardTitleString;Boolscript_ref<String>
+	static function GetShardsDataArray(journal : handle:gameJournalManager, activeDataSync : whandle:CodexListSyncData) : array:handle:VirutalNestedListData; // CodexUtils::GetShardsDataArray;JournalManagerCodexListSyncData
+	static function GetTutorialsData(journal : handle:gameJournalManager, activeDataSync : whandle:CodexListSyncData, offset : Int32) : array:handle:VirutalNestedListData; // CodexUtils::GetTutorialsData;JournalManagerCodexListSyncDataInt32
+	static function IsImageValid(imageId : TweakDBID) : Bool; // CodexUtils::IsImageValid;TweakDBID
+	static function JournalToRepresentationArray(journal : handle:gameJournalManager, entries : script_ref:array:whandle:gameJournalEntry) : array:handle:JournalRepresentationData; // CodexUtils::JournalToRepresentationArray;JournalManagerscript_ref<array<JournalEntry>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

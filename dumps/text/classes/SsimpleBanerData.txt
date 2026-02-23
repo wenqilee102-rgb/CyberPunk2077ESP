@@ -1,0 +1,6 @@
+struct SsimpleBanerData
+{
+	public    var title : String;
+	public    var description : String;
+	public    var content : redResourceReferenceScriptToken;
+}

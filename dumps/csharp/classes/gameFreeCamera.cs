@@ -1,0 +1,67 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class gameFreeCamera : gameObject
+	{
+		private CFloat _baseSpeed;
+		private CFloat _analogTurnRate;
+		private CFloat _mouseTurnRate;
+		private CFloat _activationBlendTime;
+		private CFloat _deactivationBlendTime;
+		private CBool _usePhysicalCollision;
+
+		[Ordinal(36)] 
+		[RED("baseSpeed")] 
+		public CFloat BaseSpeed
+		{
+			get => GetProperty(ref _baseSpeed);
+			set => SetProperty(ref _baseSpeed, value);
+		}
+
+		[Ordinal(37)] 
+		[RED("analogTurnRate")] 
+		public CFloat AnalogTurnRate
+		{
+			get => GetProperty(ref _analogTurnRate);
+			set => SetProperty(ref _analogTurnRate, value);
+		}
+
+		[Ordinal(38)] 
+		[RED("mouseTurnRate")] 
+		public CFloat MouseTurnRate
+		{
+			get => GetProperty(ref _mouseTurnRate);
+			set => SetProperty(ref _mouseTurnRate, value);
+		}
+
+		[Ordinal(39)] 
+		[RED("activationBlendTime")] 
+		public CFloat ActivationBlendTime
+		{
+			get => GetProperty(ref _activationBlendTime);
+			set => SetProperty(ref _activationBlendTime, value);
+		}
+
+		[Ordinal(40)] 
+		[RED("deactivationBlendTime")] 
+		public CFloat DeactivationBlendTime
+		{
+			get => GetProperty(ref _deactivationBlendTime);
+			set => SetProperty(ref _deactivationBlendTime, value);
+		}
+
+		[Ordinal(41)] 
+		[RED("usePhysicalCollision")] 
+		public CBool UsePhysicalCollision
+		{
+			get => GetProperty(ref _usePhysicalCollision);
+			set => SetProperty(ref _usePhysicalCollision, value);
+		}
+
+		public gameFreeCamera(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

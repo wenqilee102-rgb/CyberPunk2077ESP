@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"VehicleDoorInteraction","d":0,"e":[{"a":{"a":14},"b":"slotID","c":128},{"a":{"a":1},"b":"isInteractionSource","c":128}],"f":[{"a":"SetProperties;script_ref<String>BoolBool","b":"SetProperties","d":48,"e":[{"a":{"a":28,"c":{"a":12}},"b":"slotString","c":0},{"a":{"a":1},"b":"source","c":4},{"a":{"a":1},"b":"locked","c":4}]}]}

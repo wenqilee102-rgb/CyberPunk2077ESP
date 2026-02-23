@@ -1,0 +1,1 @@
+{"a":"entIPlacedComponent","b":"senseVisibleObjectComponent","c":"VisibleObjectComponent","d":8,"e":[{"a":{"a":26,"c":{"b":"senseVisibleObject"}},"b":"visibleObject","c":128}],"f":[{"a":"GetDetectionMultiplier","c":{"a":10},"d":4},{"a":"SetVisibleObjectTypeInvalid","d":4}]}

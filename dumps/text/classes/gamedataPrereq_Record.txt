@@ -1,0 +1,31 @@
+import class gamedataPrereq_Record extends gamedataTweakDBRecord
+{
+	import function AndValues() : Bool; // AndValues
+	import function Checks(out outList : array:whandle:gamedataPrereqCheck_Record); // Checks
+	import function ChecksContains(item : whandle:gamedataPrereqCheck_Record) : Bool; // ChecksContains
+	import function DevNotes() : String; // DevNotes
+	import function GetChecksCount() : Int32; // GetChecksCount
+	import function GetChecksItem(index : Int32) : whandle:gamedataPrereqCheck_Record; // GetChecksItem
+	import function GetChecksItemHandle(index : Int32) : handle:gamedataPrereqCheck_Record; // GetChecksItemHandle
+	import function Name() : String; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

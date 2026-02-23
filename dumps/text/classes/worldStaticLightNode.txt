@@ -1,0 +1,65 @@
+import class worldStaticLightNode extends worldNode
+{
+	var type : ELightType;
+	var color : Color;
+	var radius : Float;
+	var unit : ELightUnit;
+	var intensity : Float;
+	var EV : Float;
+	var temperature : Float;
+	var lightChannel : rendLightChannel;
+	var sceneDiffuse : Bool;
+	var sceneSpecularScale : Uint8;
+	var directional : Bool;
+	var roughnessBias : Int8;
+	var scaleGI : Uint8;
+	var scaleEnvProbes : Uint8;
+	var useInTransparents : Bool;
+	var scaleVolFog : Uint8;
+	var useInParticles : Bool;
+	var attenuation : rendLightAttenuation;
+	var clampAttenuation : Bool;
+	var group : rendLightGroup;
+	var areaShape : EAreaLightShape;
+	var areaTwoSided : Bool;
+	var spotCapsule : Bool;
+	var sourceRadius : Float;
+	var capsuleLength : Float;
+	var areaRectSideA : Float;
+	var areaRectSideB : Float;
+	var innerAngle : Float;
+	var outerAngle : Float;
+	var softness : Float;
+	var enableLocalShadows : Bool;
+	var enableLocalShadowsForceStaticsOnly : Bool;
+	var contactShadows : rendContactShadowReciever;
+	var shadowAngle : Float;
+	var shadowRadius : Float;
+	var shadowFadeDistance : Float;
+	var shadowFadeRange : Float;
+	var shadowSoftnessMode : ELightShadowSoftnessMode;
+	var rayTracedShadowsPlatform : rendRayTracedShadowsPlatform;
+	var rayTracingLightSourceRadius : Float;
+	var rayTracingContactShadowRange : Float;
+	var iesProfile : raRef:CIESDataResource;
+	var flicker : rendSLightFlickering;
+	var envColorGroup : EEnvColorGroup;
+	var colorGroupSaturation : Uint8;
+	var portalAngleCutoff : Uint8;
+	var allowDistantLight : Bool;
+	var rayTracingIntensityScale : Float;
+	var pathTracingLightUsage : rendEPathTracingLightUsage;
+	var pathTracingOverrideScaleGI : Bool;
+	var rtxdiShadowStartingDistance : Float;
+	var autoHideDistance : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

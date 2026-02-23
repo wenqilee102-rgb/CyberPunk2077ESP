@@ -1,0 +1,32 @@
+class TransmogMessageTooltipData extends MessageTooltipData
+{
+	public    var TransmogItem : gameItemID;
+	public    var IconPath : CName;
+	public    var NoIcon : Bool;
+}
+
+class MessageTooltipData extends ATooltipData
+{
+	public    var Title : String;
+	public    var Description : String;
+	public    var TitleLocalizationPackage : handle:gameUILocalizationDataPackage;
+	public    var DescriptionLocalizationPackage : handle:gameUILocalizationDataPackage;
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

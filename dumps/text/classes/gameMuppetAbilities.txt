@@ -1,0 +1,11 @@
+import struct gameMuppetAbilities
+{
+	var canLook : gameMuppetAbility;
+	var canMove : gameMuppetAbility;
+	var canCrouch : gameMuppetAbility;
+	var canSprint : gameMuppetAbility;
+	var canSwitchWeapon : gameMuppetAbility;
+	var canHoldWeapon : gameMuppetAbility;
+	var canShoot : gameMuppetAbility;
+	var canAimDownSight : gameMuppetAbility;
+}

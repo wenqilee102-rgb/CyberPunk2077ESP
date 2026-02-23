@@ -1,0 +1,29 @@
+import struct audioGeneralVoiceGruntSettings
+{
+	var variationsCount : Uint32;
+	var painLong : CName;
+	var agressionShort : CName;
+	var agressionLong : CName;
+	var longFall : CName;
+	var death : CName;
+	var silentDeath : CName;
+	var grapple : CName;
+	var grappleMovement : CName;
+	var environmentalKnockdown : CName;
+	var bump : CName;
+	var curious : CName;
+	var fear : CName;
+	var jump : CName;
+	var effortLong : CName;
+	var deathShort : CName;
+	var greet : CName;
+	var laughHard : CName;
+	var laughSoft : CName;
+	var phone : CName;
+	var braindanceExcited : CName;
+	var braindanceFearful : CName;
+	var braindanceNeutral : CName;
+	var braindanceSexual : CName;
+	var contextualVoiceGruntSettings : audioContextualVoiceGruntSettings;
+	var gruntVariations : audioVoiceGruntVariations;
+}

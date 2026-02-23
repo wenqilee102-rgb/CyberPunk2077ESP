@@ -1,0 +1,6 @@
+import struct rendOpacityMicromapUsageCounts
+{
+	var bdivisionLevel : Uint32;
+	var rmat : Uint32;
+	var unt : Uint32;
+}

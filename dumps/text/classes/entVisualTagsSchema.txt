@@ -1,0 +1,9 @@
+import class entVisualTagsSchema extends ISerializable
+{
+	var visualTags : redTagList;
+	var schema : CName;
+}
+
+import class abstract ISerializable
+{
+}

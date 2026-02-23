@@ -1,0 +1,4 @@
+import struct gameCommunitySpawnSetNameToID
+{
+	var entries : array:gameCommunitySpawnSetNameToIDEntry;
+}

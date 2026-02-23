@@ -1,0 +1,4 @@
+import struct rendRenderMultilayerMaskResource
+{
+	var renderResourceBlobPC : handle:IRenderResourceBlob;
+}

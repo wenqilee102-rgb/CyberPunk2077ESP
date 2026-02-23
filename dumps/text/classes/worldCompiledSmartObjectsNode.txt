@@ -1,0 +1,14 @@
+import class worldCompiledSmartObjectsNode extends worldNode
+{
+	var resource : raRef:gameSmartObjectsCompiledResource;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

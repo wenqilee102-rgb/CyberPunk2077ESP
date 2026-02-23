@@ -1,0 +1,1 @@
+{"b":"worldStaticLaneCollisions","d":8,"g":true,"e":[{"a":{"b":"worldTrafficLaneUID"},"b":"lane","c":128},{"a":{"a":31,"c":{"b":"worldTrafficStaticCollisionSphere"}},"b":"collisions","c":128},{"a":{"a":10},"b":"deadEndStart","c":128}]}

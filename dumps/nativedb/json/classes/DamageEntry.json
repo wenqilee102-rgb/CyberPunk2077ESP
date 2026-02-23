@@ -1,0 +1,1 @@
+{"b":"DamageEntry","d":0,"g":true,"e":[{"a":{"b":"gameuiDamageInfo"},"b":"damageInfo","c":128},{"a":{"b":"gameuiDamageInfo"},"b":"damageOverTimeInfo","c":128},{"a":{"a":1},"b":"hasDamageInfo","c":128},{"a":{"a":1},"b":"hasDamageOverTimeInfo","c":128},{"a":{"a":1},"b":"oneInstance","c":128},{"a":{"a":1},"b":"oneDotInstance","c":128},{"a":{"a":1},"b":"hasDotAccumulator","c":128}]}

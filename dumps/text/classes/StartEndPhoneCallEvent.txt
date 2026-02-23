@@ -1,0 +1,26 @@
+class StartEndPhoneCallEvent extends redEvent
+{
+	public    var callDuration : Float;
+	public    var startCall : Bool;
+	public    var statType : gamedataStatType;
+	public    var statPoolType : gamedataStatPoolType;
+	public    var statPoolName : String;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

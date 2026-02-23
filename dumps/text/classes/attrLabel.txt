@@ -1,0 +1,12 @@
+import class attrLabel extends attrAttribute
+{
+	var xt : String;
+}
+
+import class attrAttribute extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

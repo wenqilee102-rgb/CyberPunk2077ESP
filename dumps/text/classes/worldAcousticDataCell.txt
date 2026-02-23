@@ -1,0 +1,5 @@
+import struct worldAcousticDataCell
+{
+	var nodes : serializationDeferredDataBuffer;
+	var sectorId : Uint32;
+}

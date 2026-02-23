@@ -1,0 +1,1 @@
+{"a":"gameScriptStatsListener","b":"PuppetMortalityListener","d":0,"e":[{"a":{"a":26,"c":{"b":"PuppetMortalPrereqState"}},"b":"state","c":128}],"f":[{"a":"OnGodModeChanged;EntityIDgameGodModeType","b":"OnGodModeChanged","d":32,"e":[{"a":{"b":"entEntityID"},"b":"ownerID","c":0},{"a":{"b":"gameGodModeType"},"b":"newType","c":0}]}]}

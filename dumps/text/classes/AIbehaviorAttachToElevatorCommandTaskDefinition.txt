@@ -1,0 +1,13 @@
+import class AIbehaviorAttachToElevatorCommandTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

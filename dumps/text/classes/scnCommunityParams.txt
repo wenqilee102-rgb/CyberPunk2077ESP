@@ -1,0 +1,6 @@
+import struct scnCommunityParams
+{
+	var reference : NodeRef;
+	var entryName : CName;
+	var forceMaxVisibility : Bool;
+}

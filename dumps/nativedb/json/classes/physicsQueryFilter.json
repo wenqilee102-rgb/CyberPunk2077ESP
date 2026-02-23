@@ -1,0 +1,1 @@
+{"b":"physicsQueryFilter","c":"QueryFilter","d":8,"g":true,"e":[{"a":{"a":9},"b":"mask1","c":128},{"a":{"a":9},"b":"mask2","c":128}],"f":[{"a":"ALL","c":{"b":"physicsQueryFilter"},"d":12},{"a":"AddGroup","d":12,"e":[{"a":{"b":"physicsQueryFilter"},"b":"filter","c":2},{"a":{"a":14},"b":"group","c":0}]},{"a":"ZERO","c":{"b":"physicsQueryFilter"},"d":12}]}

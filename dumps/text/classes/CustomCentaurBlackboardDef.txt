@@ -1,0 +1,31 @@
+class CustomCentaurBlackboardDef extends CustomBlackboardDef
+{
+	public    var ShieldState : gamebbScriptID_Int32;
+	public    var WeakSpotHitTimeStamp : gamebbScriptID_Float;
+	public    var ShieldTarget : gamebbScriptID_EntityID;
+	public    var WoundedStateHPThreshold : gamebbScriptID_Float;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+class abstract CustomBlackboardDef extends gamebbScriptDefinition
+{
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

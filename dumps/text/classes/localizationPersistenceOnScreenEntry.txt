@@ -1,0 +1,7 @@
+import struct localizationPersistenceOnScreenEntry
+{
+	var primaryKey : Uint64;
+	var secondaryKey : String;
+	var femaleVariant : String;
+	var maleVariant : String;
+}

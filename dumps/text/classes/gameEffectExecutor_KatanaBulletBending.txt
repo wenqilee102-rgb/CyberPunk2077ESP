@@ -1,0 +1,38 @@
+import class gameEffectExecutor_KatanaBulletBending extends gameEffectExecutor_Scripted
+{
+	var effects : array:gameEffectExecutor_KatanaBulletBendingEffectEntry;
+
+	import function SpawnFX(tag : CName, object : handle:gameObject, from : Vector4, to : Vector4, attachSlotName : CName); // SpawnFX
+
+	function Process(ctx : gameEffectScriptContext, target : handle:entEntity, hitPosition : Vector4); // Process;EffectScriptContextEntityVector4
+	function SpawnBeamSpark(katana : handle:Katana, bladeTransform : Transform, hitPosition : Vector4, slotName : CName); // SpawnBeamSpark;KatanaTransformVector4CName
+	function SpawnRicochet(katana : handle:Katana, out hitPosition : Vector4, hitDirection : Vector4); // SpawnRicochet;KatanaVector4Vector4
+	function SpawnRicochetFx(katana : handle:Katana, position : Vector4, direction : Vector4, slotName : CName); // SpawnRicochetFx;KatanaVector4Vector4CName
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

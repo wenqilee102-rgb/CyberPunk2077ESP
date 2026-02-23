@@ -1,0 +1,23 @@
+import class abstract gameIDebugDrawHistorySystem extends gameIGameSystem
+{
+	import function DrawArrow(position : Vector4, direction : Vector4, optional color : Color, tag : String); // DrawArrow
+	import function DrawWireSphere(position : Vector4, radius : Float, optional color : Color, tag : String); // DrawWireSphere
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

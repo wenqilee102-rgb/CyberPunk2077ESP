@@ -1,0 +1,12 @@
+import class gameGodModeSharedState extends gameIGameSystemReplicatedState
+{
+	var datas : array:gameGodModeSharedStateData;
+}
+
+import class abstract gameIGameSystemReplicatedState extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

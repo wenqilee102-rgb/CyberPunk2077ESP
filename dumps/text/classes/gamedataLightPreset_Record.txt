@@ -1,0 +1,39 @@
+import class gamedataLightPreset_Record extends gamedataTweakDBRecord
+{
+	import function ColorMax() : array:Int32; // ColorMax
+	import function ColorMaxContains(item : Int32) : Bool; // ColorMaxContains
+	import function ColorMin() : array:Int32; // ColorMin
+	import function ColorMinContains(item : Int32) : Bool; // ColorMinContains
+	import function Curve() : CName; // Curve
+	import function Duration() : Float; // Duration
+	import function Force() : Bool; // Force
+	import function GetColorMaxCount() : Int32; // GetColorMaxCount
+	import function GetColorMaxItem(index : Int32) : Int32; // GetColorMaxItem
+	import function GetColorMinCount() : Int32; // GetColorMinCount
+	import function GetColorMinItem(index : Int32) : Int32; // GetColorMinItem
+	import function Loop() : Bool; // Loop
+	import function On() : Bool; // On
+	import function OverrideColorMin() : Bool; // OverrideColorMin
+	import function Strength() : Float; // Strength
+	import function Time() : Float; // Time
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

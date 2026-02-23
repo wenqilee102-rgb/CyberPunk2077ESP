@@ -1,0 +1,1 @@
+{"a":"questISystemConditionType","b":"questPrereq_ConditionType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"objectRef","c":128},{"a":{"a":1},"b":"isObjectPlayer","c":128},{"a":{"a":26,"c":{"b":"gameIPrereq"}},"b":"prereq","c":128}]}

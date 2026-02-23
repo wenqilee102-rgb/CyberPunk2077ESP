@@ -1,0 +1,12 @@
+import struct gamesmartGunUITargetParameters
+{
+	var pos : Vector2;
+	var state : gamesmartGunTargetState;
+	var distance : Float;
+	var accuracy : Float;
+	var isLocked : Bool;
+	var timeLocking : Float;
+	var timeUnlocking : Float;
+	var entityID : entEntityID;
+	var attachedBoneName : CName;
+}

@@ -1,0 +1,5 @@
+import struct audioAudSimpleParameter
+{
+	var name : CName;
+	var value : Float;
+}

@@ -1,0 +1,32 @@
+import class questShowPopup_NodeSubType extends questITutorial_NodeSubType
+{
+	var path : handle:gameJournalPath;
+	var open : Bool;
+	var closeAtInput : Bool;
+	var pauseGame : Bool;
+	var hideInMenu : Bool;
+	var margin : inkMargin;
+	var screenMode : questTutorialScreenMode;
+	var position : gamePopupPosition;
+	var lockPlayerMovement : Bool;
+	var closeCurrentPopup : Bool;
+	var videoType : gameVideoType;
+	var video : raRef:Bink;
+	var ignoreDisabledTutorials : Bool;
+}
+
+import class abstract questITutorial_NodeSubType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

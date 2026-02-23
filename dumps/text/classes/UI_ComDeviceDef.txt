@@ -1,0 +1,39 @@
+class UI_ComDeviceDef extends gamebbScriptDefinition
+{
+	public    var comDeviceSetStatusText : gamebbScriptID_CName;
+	public    var openMessageRequest : gamebbScriptID_Uint32;
+	public    var closeMessageRequest : gamebbScriptID_Int32;
+	public    var showingMessage : gamebbScriptID_Int32;
+	public    var PhoneCallInformation : gamebbScriptID_Variant;
+	public    var PhoneStyle_PlacidePhone : gamebbScriptID_Bool;
+	public    var PhoneStyle_VideoCallInterupt : gamebbScriptID_Bool;
+	public    var PhoneStyle_Minimized : gamebbScriptID_Bool;
+	public    var isDisplayingMessage : gamebbScriptID_Bool;
+	public    var ContactsActive : gamebbScriptID_Bool;
+	public    var SmsMessengerActive : gamebbScriptID_Bool;
+	public    var MessageToOpenId : gamebbScriptID_CName;
+	public    var PhoneEnabled : gamebbScriptID_Bool;
+	public    var PhoneVisibility : gamebbScriptID_Variant;
+	public    var ActivatePhoneElements : gamebbScriptID_Uint32;
+	public    var MessageToOpenHash : gamebbScriptID_Int32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

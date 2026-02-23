@@ -1,0 +1,6 @@
+enum QuestListSortType
+{
+	Updated = 0,
+	Distance = 1,
+	Size = 2
+}

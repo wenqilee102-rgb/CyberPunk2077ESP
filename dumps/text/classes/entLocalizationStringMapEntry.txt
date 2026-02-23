@@ -1,0 +1,5 @@
+import struct entLocalizationStringMapEntry
+{
+	var key : CName;
+	var string : LocalizationString;
+}

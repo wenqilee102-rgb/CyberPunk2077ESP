@@ -1,0 +1,30 @@
+import class gamedataAIExposureMethodType_Record extends gamedataTweakDBRecord
+{
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetPriorityCount() : Int32; // GetPriorityCount
+	import function GetPriorityItem(index : Int32) : Int32; // GetPriorityItem
+	import function Priority() : array:Int32; // Priority
+	import function PriorityContains(item : Int32) : Bool; // PriorityContains
+	import function Type() : gamedataAIExposureMethodType; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

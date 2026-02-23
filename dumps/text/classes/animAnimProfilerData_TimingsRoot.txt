@@ -1,0 +1,8 @@
+import class animAnimProfilerData_TimingsRoot extends ISerializable
+{
+	var timings : array:animAnimProfilerData_Timings;
+}
+
+import class abstract ISerializable
+{
+}

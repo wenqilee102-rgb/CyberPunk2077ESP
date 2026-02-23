@@ -1,0 +1,15 @@
+import class LibTreeDefTreeVariableInt32 extends LibTreeDefTreeVariable
+{
+	var exportAsProperty : Bool;
+	var defaultValue : Int32;
+}
+
+import class abstract LibTreeDefTreeVariable extends ISerializable
+{
+	var id : Uint16;
+	var readableName : CName;
+}
+
+import class abstract ISerializable
+{
+}

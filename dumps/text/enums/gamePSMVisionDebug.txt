@@ -1,0 +1,5 @@
+enum gamePSMVisionDebug
+{
+	Default = 0,
+	VisionToggle = 1
+}

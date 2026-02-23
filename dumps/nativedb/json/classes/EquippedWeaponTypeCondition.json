@@ -1,0 +1,1 @@
+{"a":"workIScriptedCondition","b":"EquippedWeaponTypeCondition","d":0,"e":[{"a":{"b":"WorkspotWeaponConditionEnum"},"b":"weaponType","c":130}],"f":[{"a":"CheckCondition;Entity","b":"CheckCondition","c":{"a":1},"d":162,"e":[{"a":{"a":26,"c":{"b":"entEntity"}},"b":"ent","c":0}]}]}

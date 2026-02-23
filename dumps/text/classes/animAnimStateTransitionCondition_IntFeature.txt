@@ -1,0 +1,15 @@
+import class animAnimStateTransitionCondition_IntFeature extends animIAnimStateTransitionCondition
+{
+	var compareValue : Int32;
+	var featureName : CName;
+	var featurePropertyName : CName;
+	var compareFunc : animCompareFunc;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

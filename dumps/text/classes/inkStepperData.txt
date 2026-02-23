@@ -1,0 +1,5 @@
+import struct inkStepperData
+{
+	var label : String;
+	var data : whandle:IScriptable;
+}

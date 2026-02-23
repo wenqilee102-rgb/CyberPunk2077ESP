@@ -1,0 +1,24 @@
+import class workExitAnim extends workIEntry
+{
+	var animName : CName;
+	var disableAutoTransition : Bool;
+	var idleAnim : CName;
+	var movementType : moveMovementType;
+	var isSynchronized : Bool;
+	var stayOnNavmesh : Bool;
+	var snapZToNavmesh : Bool;
+	var forceNoZSnap : Bool;
+	var slotName : CName;
+	var syncOffset : Transform;
+	var disableRandomExit : Bool;
+}
+
+import class abstract workIEntry extends ISerializable
+{
+	var id : workWorkEntryId;
+	var flags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

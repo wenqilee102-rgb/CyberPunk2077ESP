@@ -1,0 +1,13 @@
+import class gameEffectTriggerEffectDesc extends ISerializable
+{
+	var effect : raRef:worldEffect;
+	var positionType : gameEffectTriggerPositioningType;
+	var rotationType : gameEffectTriggerRotationType;
+	var offset : Vector3;
+	var playFromHour : Uint32;
+	var playTillHour : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct moveMovePoliciesComponentReplicatedState extends netIComponentState
+{
+	var movePolicies : moveReplicatedMovePoliciesState;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

@@ -1,0 +1,38 @@
+import class gamedataStatsFolder_Record extends gamedataTweakDBRecord
+{
+	import function Arrays(out outList : array:whandle:gamedataStatsArray_Record); // Arrays
+	import function ArraysContains(item : whandle:gamedataStatsArray_Record) : Bool; // ArraysContains
+	import function Folders(out outList : array:whandle:gamedataStatsFolder_Record); // Folders
+	import function FoldersContains(item : whandle:gamedataStatsFolder_Record) : Bool; // FoldersContains
+	import function GetArraysCount() : Int32; // GetArraysCount
+	import function GetArraysItem(index : Int32) : whandle:gamedataStatsArray_Record; // GetArraysItem
+	import function GetArraysItemHandle(index : Int32) : handle:gamedataStatsArray_Record; // GetArraysItemHandle
+	import function GetFoldersCount() : Int32; // GetFoldersCount
+	import function GetFoldersItem(index : Int32) : whandle:gamedataStatsFolder_Record; // GetFoldersItem
+	import function GetFoldersItemHandle(index : Int32) : handle:gamedataStatsFolder_Record; // GetFoldersItemHandle
+	import function GetStatsCount() : Int32; // GetStatsCount
+	import function GetStatsItem(index : Int32) : whandle:gamedataStat_Record; // GetStatsItem
+	import function GetStatsItemHandle(index : Int32) : handle:gamedataStat_Record; // GetStatsItemHandle
+	import function Stats(out outList : array:whandle:gamedataStat_Record); // Stats
+	import function StatsContains(item : whandle:gamedataStat_Record) : Bool; // StatsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

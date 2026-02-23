@@ -1,0 +1,11 @@
+import struct gameinteractionsvisListChoiceHubData
+{
+	var id : Int32;
+	var activityState : gameinteractionsvisEVisualizerActivityState;
+	var flags : gameinteractionsvisEVisualizerDefinitionFlags;
+	var isPhoneLockActive : Bool;
+	var title : String;
+	var choices : array:gameinteractionsvisListChoiceData;
+	var timeProvider : whandle:gameinteractionsvisIVisualizerTimeProvider;
+	var hubPriority : Uint8;
+}

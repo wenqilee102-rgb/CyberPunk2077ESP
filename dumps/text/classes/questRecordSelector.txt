@@ -1,0 +1,13 @@
+import class questRecordSelector extends ISerializable
+{
+	var isCharacter : Bool;
+	var characterRecordID : TweakDBID;
+	var isDevice : Bool;
+	var deviceRecordID : TweakDBID;
+	var isItem : Bool;
+	var itemRecordID : TweakDBID;
+}
+
+import class abstract ISerializable
+{
+}

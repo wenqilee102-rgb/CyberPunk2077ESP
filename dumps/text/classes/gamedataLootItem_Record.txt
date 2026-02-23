@@ -1,0 +1,49 @@
+import class gamedataLootItem_Record extends gamedataLootTableElement_Record
+{
+	import function ItemID() : whandle:gamedataItem_Record; // ItemID
+	import function ItemIDHandle() : handle:gamedataItem_Record; // ItemIDHandle
+}
+
+import class gamedataLootTableElement_Record extends gamedataTweakDBRecord
+{
+	import function DropChance() : Float; // DropChance
+	import function DropChanceModifiers(out outList : array:whandle:gamedataStatModifier_Record); // DropChanceModifiers
+	import function DropChanceModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // DropChanceModifiersContains
+	import function DropCountMax() : Int32; // DropCountMax
+	import function DropCountMin() : Int32; // DropCountMin
+	import function GetDropChanceModifiersCount() : Int32; // GetDropChanceModifiersCount
+	import function GetDropChanceModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetDropChanceModifiersItem
+	import function GetDropChanceModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetDropChanceModifiersItemHandle
+	import function GetQuantityModifiersCount() : Int32; // GetQuantityModifiersCount
+	import function GetQuantityModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetQuantityModifiersItem
+	import function GetQuantityModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetQuantityModifiersItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function PlayerPrereqID() : whandle:gamedataIPrereq_Record; // PlayerPrereqID
+	import function PlayerPrereqIDHandle() : handle:gamedataIPrereq_Record; // PlayerPrereqIDHandle
+	import function QuantityModifiers(out outList : array:whandle:gamedataStatModifier_Record); // QuantityModifiers
+	import function QuantityModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // QuantityModifiersContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class gameTransformAnimation_Movement_PredefinedFunction extends gameTransformAnimation_Movement
+{
+	var function : EasingFunction;
+}
+
+import class abstract gameTransformAnimation_Movement extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

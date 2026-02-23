@@ -1,0 +1,1 @@
+{"b":"gameuiBinkResource","c":"BinkResource","d":24,"g":true,"e":[{"a":{"a":30,"c":{"b":"Bink"}},"b":"video","c":128}],"f":[{"a":"GetPath","c":{"b":"redResourceReferenceScriptToken"},"d":12,"e":[{"a":{"b":"gameuiBinkResource"},"b":"self","c":0}]},{"a":"IsValid","c":{"a":1},"d":12,"e":[{"a":{"b":"gameuiBinkResource"},"b":"self","c":0}]}]}

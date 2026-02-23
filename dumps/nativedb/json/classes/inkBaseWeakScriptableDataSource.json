@@ -1,0 +1,1 @@
+{"a":"inkAbstractDataSourceWrapper","b":"inkBaseWeakScriptableDataSource","c":"BaseWeakScriptableDataSource","d":8,"f":[{"a":"GetItem","c":{"a":27,"c":{"b":"IScriptable"}},"d":4,"e":[{"a":{"a":7},"b":"index","c":0}]},{"a":"HasItem","c":{"a":1},"d":4,"e":[{"a":{"a":27,"c":{"b":"IScriptable"}},"b":"data","c":0}]}]}

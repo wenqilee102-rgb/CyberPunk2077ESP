@@ -1,0 +1,5 @@
+import struct entTemplateComponentBackendDataOverrideInfo
+{
+	var componentName : CName;
+	var offset : Vector2;
+}

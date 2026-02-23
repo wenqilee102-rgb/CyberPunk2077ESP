@@ -1,0 +1,5 @@
+enum animCoverState
+{
+	LowCover = 1,
+	HighCover = 2
+}

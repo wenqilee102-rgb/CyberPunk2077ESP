@@ -1,0 +1,6 @@
+import struct animSermoPoseInfo
+{
+	var lod : Uint8;
+	var type : Uint8;
+	var trackIndex : Uint16;
+}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"EquipmentAreaDisplays","d":0,"e":[{"a":{"a":31,"c":{"b":"gamedataEquipmentArea"}},"b":"equipmentAreas","c":128},{"a":{"a":27,"c":{"b":"inkWidget"}},"b":"displaysRoot","c":128},{"a":{"a":31,"c":{"a":27,"c":{"b":"InventoryItemDisplayController"}}},"b":"displayControllers","c":128}]}

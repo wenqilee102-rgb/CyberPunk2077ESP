@@ -1,0 +1,25 @@
+import class entRagdollBodyPartWaterImpactEvent extends redEvent
+{
+	var worldPosition : Vector4;
+	var linearVelocity : Vector4;
+	var depthBelowSurface : Float;
+	var isTorso : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

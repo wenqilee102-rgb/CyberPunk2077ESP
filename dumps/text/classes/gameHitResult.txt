@@ -1,0 +1,6 @@
+import struct gameHitResult
+{
+	var hitPositionEnter : Vector4;
+	var hitPositionExit : Vector4;
+	var enterDistanceFromOriginSq : Float;
+}

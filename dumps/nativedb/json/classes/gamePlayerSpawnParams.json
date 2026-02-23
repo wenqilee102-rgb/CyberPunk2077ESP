@@ -1,0 +1,1 @@
+{"b":"gamePlayerSpawnParams","d":8,"g":true,"e":[{"a":{"a":1},"b":"isSpectator","c":128},{"a":{"b":"Transform"},"b":"spawnPoint","c":128},{"a":{"a":15},"b":"recordId","c":128},{"a":{"a":14},"b":"gender","c":128},{"a":{"a":1},"b":"useSpecifiedStartPoint","c":128},{"a":{"b":"redTagList"},"b":"spawnTags","c":128},{"a":{"a":12},"b":"nickname","c":128}]}

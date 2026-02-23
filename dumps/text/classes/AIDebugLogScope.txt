@@ -1,0 +1,5 @@
+import struct AIDebugLogScope
+{
+	var index : Uint32;
+	var id : Uint32;
+}

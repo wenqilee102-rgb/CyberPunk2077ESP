@@ -1,0 +1,5 @@
+import struct questSetIdleRazerAnimation_NodeTypeParams
+{
+	var animationName : CName;
+	var use : Bool;
+}

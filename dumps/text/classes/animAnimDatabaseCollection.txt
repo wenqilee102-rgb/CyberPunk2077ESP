@@ -1,0 +1,4 @@
+import struct animAnimDatabaseCollection
+{
+	var animDatabases : array:animAnimDatabaseCollectionEntry;
+}

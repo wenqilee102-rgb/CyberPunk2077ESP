@@ -1,0 +1,3 @@
+import struct questTriggerCondition_FulfillInfo
+{
+}

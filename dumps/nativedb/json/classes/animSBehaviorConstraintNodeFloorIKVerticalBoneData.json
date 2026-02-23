@@ -1,0 +1,1 @@
+{"b":"animSBehaviorConstraintNodeFloorIKVerticalBoneData","d":8,"g":true,"e":[{"a":{"b":"animTransformIndex"},"b":"bone","c":128},{"a":{"a":10},"b":"Min offset","c":128},{"a":{"a":10},"b":"Max offset","c":128},{"a":{"a":10},"b":"offsetToDesiredBlendTime","c":128},{"a":{"a":10},"b":"verticalOffsetBlendTime","c":128},{"a":{"a":10},"b":"stiffness","c":128}]}

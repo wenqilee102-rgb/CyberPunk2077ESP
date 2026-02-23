@@ -1,0 +1,5 @@
+import struct inkShapePreset
+{
+	var name : CName;
+	var points : array:Vector2;
+}

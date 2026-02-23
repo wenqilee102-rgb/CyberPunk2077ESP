@@ -1,0 +1,22 @@
+import class worldCollisionAreaNode extends worldAreaShapeNode
+{
+	var material : CName;
+	var navigationSetting : NavGenNavigationSetting;
+	var filterData : handle:physicsFilterData;
+}
+
+import class worldAreaShapeNode extends worldNode
+{
+	var color : Color;
+	var outline : handle:AreaShapeOutline;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

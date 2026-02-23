@@ -1,0 +1,5 @@
+struct SCachedStat
+{
+	public    var stat : gamedataStatType;
+	public    var value : Float;
+}

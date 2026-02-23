@@ -1,0 +1,46 @@
+class TestBehaviorDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	public    var integer : Int32;
+	public    var floatValue : Float;
+	public    var names : array:CName;
+	public    var command : handle:AICommand;
+	public    var newProperty2 : Bool;
+	public    var newProperty : Bool;
+	public    var newProperty3 : Bool;
+	public    var newProperty4 : Bool;
+	public    var nodeRef : NodeRef;
+
+	function GetGetterValue() : CName; // GetGetterValue;
+	function GetSomethingElse() : NodeRef; // GetSomethingElse;
+	function IsSomething() : Bool; // IsSomething;
+	function TaskBar() : Bool; // TaskBar;
+	function TaskFoo(context : AIbehaviorScriptExecutionContext); // TaskFoo;ScriptExecutionContext
+	function TestTask(context : AIbehaviorScriptExecutionContext); // TestTask;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

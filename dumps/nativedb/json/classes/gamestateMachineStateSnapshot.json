@@ -1,0 +1,1 @@
+{"b":"gamestateMachineStateSnapshot","c":"StateSnapshot","d":8,"g":true,"e":[{"a":{"a":14},"b":"stateMachineName","c":128},{"a":{"a":14},"b":"stateName","c":128},{"a":{"b":"gamestateMachineStateMachineInstanceData"},"b":"instanceData","c":128},{"a":{"a":1},"b":"running","c":128},{"a":{"a":1},"b":"logicalOwnerIsAWeapon","c":128},{"a":{"a":1},"b":"transitionJustHappened","c":128}]}

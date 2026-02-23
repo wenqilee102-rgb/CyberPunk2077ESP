@@ -1,0 +1,8 @@
+import struct gameInnerItemData
+{
+	import static function GetItemID(innerItemData : gameInnerItemData) : gameItemID; // GetItemID
+	import static function GetSlotID(innerItemData : gameInnerItemData) : TweakDBID; // GetSlotID
+	import static function GetStatValueByType(innerItemData : gameInnerItemData, type : gamedataStatType) : Float; // GetStatValueByType
+	import static function GetStaticData(innerItemData : gameInnerItemData) : handle:gamedataItem_Record; // GetStaticData
+	import static function HasStatData(innerItemData : gameInnerItemData, type : gamedataStatType) : Bool; // HasStatData
+}

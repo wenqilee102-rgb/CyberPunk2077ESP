@@ -1,0 +1,49 @@
+import class gamePuppetPS extends gameObjectPS
+{
+	var gender : CName;
+	var wasQuickHacked : Bool;
+	var hasQuickHackBegunUpload : Bool;
+	var hasAlternativeName : Bool;
+	var isCrouch : Bool;
+	var allowVehicleCollisionRagdoll : Bool;
+
+	import function GetGender() : CName; // GetGender
+	import function GetTpp() : Bool; // GetTpp
+	import function HasAlternativeName() : Bool; // HasAlternativeName
+	import function HasNPCTriggeredCombatInSecuritySystem() : Bool; // HasNPCTriggeredCombatInSecuritySystem
+	import function HasQuickHackBegunUpload() : Bool; // HasQuickHackBegunUpload
+	import function IsCrouch() : Bool; // IsCrouch
+	import function SetCrouch(set : Bool); // SetCrouch
+	import function SetHasNPCTriggeredCombatInSecuritySystem(set : Bool); // SetHasNPCTriggeredCombatInSecuritySystem
+	import function SetHasQuickHackBegunUpload(newValue : Bool); // SetHasQuickHackBegunUpload
+	import function SetWasQuickHacked(newValue : Bool); // SetWasQuickHacked
+	import function WasQuickHacked() : Bool; // WasQuickHacked
+
+	function OnNotifiedSecSysAboutCombat(evt : handle:NotifiedSecSysAboutCombat) : EntityNotificationType; // OnNotifiedSecSysAboutCombat;NotifiedSecSysAboutCombat
+}
+
+import class gameObjectPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

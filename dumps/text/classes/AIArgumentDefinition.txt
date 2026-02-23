@@ -1,0 +1,10 @@
+import class abstract AIArgumentDefinition extends ISerializable
+{
+	var name : CName;
+	var isPersistent : Bool;
+	var behaviorCallbackName : CName;
+}
+
+import class abstract ISerializable
+{
+}

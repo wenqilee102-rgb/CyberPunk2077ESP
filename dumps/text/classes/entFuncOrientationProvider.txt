@@ -1,0 +1,23 @@
+import class entFuncOrientationProvider extends entIOrientationProvider
+{
+}
+
+import class abstract entIOrientationProvider extends IScriptable
+{
+	import static function CreateEntityOrientationProvider(slotComponent : whandle:entSlotComponent, slotName : CName, entity : whandle:entEntity, optional orientationEntitySpace : Quaternion) : handle:entIOrientationProvider; // CreateEntityOrientationProvider
+	import static function CreateStaticOrientationProvider(orientation : Quaternion) : handle:entIOrientationProvider; // CreateStaticOrientationProvider
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

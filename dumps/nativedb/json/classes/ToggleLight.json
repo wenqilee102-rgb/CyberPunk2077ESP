@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"ToggleLight","d":0,"f":[{"a":"SetProperties;worldTrafficLightColor","b":"SetProperties","d":48,"e":[{"a":{"b":"worldTrafficLightColor"},"b":"status","c":0}]}]}

@@ -1,0 +1,29 @@
+import class gamedataStatusEffectAttackData_Record extends gamedataTweakDBRecord
+{
+	import function ApplyImmediately() : Bool; // ApplyImmediately
+	import function ResistPool() : whandle:gamedataStatPool_Record; // ResistPool
+	import function ResistPoolHandle() : handle:gamedataStatPool_Record; // ResistPoolHandle
+	import function StacksToApply() : Float; // StacksToApply
+	import function StatusEffect() : whandle:gamedataStatusEffect_Record; // StatusEffect
+	import function StatusEffectHandle() : handle:gamedataStatusEffect_Record; // StatusEffectHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

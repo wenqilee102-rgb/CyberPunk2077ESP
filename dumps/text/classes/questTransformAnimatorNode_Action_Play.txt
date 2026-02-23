@@ -1,0 +1,19 @@
+import class questTransformAnimatorNode_Action_Play extends questTransformAnimatorNode_ActionType
+{
+	var timesPlayed : Int32;
+	var timeScale : Float;
+	var reverse : Bool;
+	var useEntitySetup : Bool;
+}
+
+import class abstract questTransformAnimatorNode_ActionType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

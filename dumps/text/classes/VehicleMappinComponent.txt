@@ -1,0 +1,42 @@
+class VehicleMappinComponent extends IScriptable
+{
+	private   var questMappinController : whandle:QuestMappinController;
+	private   var vehicleMappin : whandle:gamemappinsVehicleMappin;
+	private   var vehicle : whandle:vehicleBaseObject;
+	private   var vehicleEntityID : entEntityID;
+	private   var playerMounted : Bool;
+	private   var vehicleEnRoute : Bool;
+	private   var scheduleDiscreteModeDelayID : gameDelayID;
+	private   var invalidDelayID : gameDelayID;
+	private   var init : Bool;
+	private   var vehicleSummonDataDef : handle:VehicleSummonDataDef;
+	private   var vehicleSummonDataBB : whandle:gameIBlackboard;
+	private   var vehicleSummonStateCallback : handle:redCallbackObject;
+	private   var uiActiveVehicleDataDef : handle:UI_ActiveVehicleDataDef;
+	private   var uiActiveVehicleDataBB : whandle:gameIBlackboard;
+	private   var vehPlayerStateDataCallback : handle:redCallbackObject;
+
+	event OnActiveVechicleDataChanged(vehPlayerStateData : Variant) : Bool; // OnActiveVechicleDataChanged
+	event OnVehicleSummonStateChanged(value : Uint32) : Bool; // OnVehicleSummonStateChanged
+
+	function OnInitialize(questMappinController : whandle:QuestMappinController, vehicleMappin : whandle:gamemappinsVehicleMappin); // OnInitialize;QuestMappinControllerVehicleMappin
+	function OnUnitialize(); // OnUnitialize;
+	function SetActive(active : Bool); // SetActive;Bool
+	function SetDiscreteMode(discrete : Bool); // SetDiscreteMode;Bool
+	function TryScheduleDiscreteMode(); // TryScheduleDiscreteMode;
+	function VehicleIsLatestSummoned() : Bool; // VehicleIsLatestSummoned;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,18 @@
+import class audioLocomotionCustomActionEventDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioLocomotionCustomActionEventDictionaryItem;
+	var entryType : handle:audioLocomotionCustomActionEventDictionaryItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

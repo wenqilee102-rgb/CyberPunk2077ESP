@@ -1,0 +1,5 @@
+import struct gameMuppetControllerSnapshot
+{
+	var controllerId : CName;
+	var isActive : Bool;
+}

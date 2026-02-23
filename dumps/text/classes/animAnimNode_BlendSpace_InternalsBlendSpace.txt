@@ -1,0 +1,16 @@
+import struct animAnimNode_BlendSpace_InternalsBlendSpace
+{
+	var spaceDimension : Uint32;
+	var coordinatesDescriptions : array:animAnimNode_BlendSpace_InternalsBlendSpaceCoordinateDescription;
+	var spacePoints : array:animAnimNode_BlendSpace_InternalsBlendSpacePoint;
+	var boundaryPointsCount : Uint32;
+	var fireAnimEndEvent : Bool;
+	var animEndEventName : CName;
+	var isLooped : Bool;
+	var needsRuntimeTriangulation : Bool;
+	var wasRuntimeTriangulationResaveDone : Bool;
+	var cachedSpacePoints_coordinates : array:Float;
+	var cachedSpaceSimplexes_pointsIndices : array:Uint32;
+	var cachedSamplesForGridPoints_simplexIndex : array:Int32;
+	var cachedSamplesForGridPoints_weightsForPoints : array:Float;
+}

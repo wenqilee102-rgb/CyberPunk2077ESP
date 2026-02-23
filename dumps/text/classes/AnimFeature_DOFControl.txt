@@ -1,0 +1,28 @@
+class AnimFeature_DOFControl extends animAnimFeature
+{
+	public    var dofIntensity : Float;
+	public    var dofNearBlur : Float;
+	public    var dofNearFocus : Float;
+	public    var dofFarBlur : Float;
+	public    var dofFarFocus : Float;
+	public    var dofBlendInTime : Float;
+	public    var dofBlendOutTime : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

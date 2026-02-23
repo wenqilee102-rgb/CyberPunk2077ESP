@@ -1,0 +1,32 @@
+import class gameEffectExecutor_GroundSlamEffects extends gameEffectExecutor
+{
+	var groundEffect : raRef:worldEffect;
+	var waterEffect : raRef:worldEffect;
+	var earthquakeLevel1 : raRef:worldEffect;
+	var earthquakeLevel2 : raRef:worldEffect;
+	var earthquakeLevel1ChargeThreshold : Float;
+	var earthquakeLevel2ChargeThreshold : Float;
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

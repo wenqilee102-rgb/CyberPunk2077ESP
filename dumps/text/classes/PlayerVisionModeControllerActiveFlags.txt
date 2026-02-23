@@ -1,0 +1,16 @@
+struct PlayerVisionModeControllerActiveFlags
+{
+	public    var kerenzikov : Bool;
+	public    var restrictedScene : Bool;
+	public    var dead : Bool;
+	public    var takedown : Bool;
+	public    var deviceTakeover : Bool;
+	public    var braindanceFPP : Bool;
+	public    var braindanceActive : Bool;
+	public    var veryHardLanding : Bool;
+	public    var noScanningRestriction : Bool;
+	public    var hasNotCybereye : Bool;
+	public    var isPhotoMode : Bool;
+	public    var isBriefingActive : Bool;
+	public    var twintoneOverrideShown : Bool;
+}

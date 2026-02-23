@@ -1,0 +1,7 @@
+struct MediaDeviceData
+{
+	public    var initialStation : Int32;
+	public    var amountOfStations : Int32;
+	public    var activeChannelName : String;
+	public    var isInteractive : Bool;
+}

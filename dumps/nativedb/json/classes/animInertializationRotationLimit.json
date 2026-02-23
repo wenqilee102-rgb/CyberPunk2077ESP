@@ -1,0 +1,1 @@
+{"b":"animInertializationRotationLimit","d":8,"g":true,"e":[{"a":{"b":"animTransformIndex"},"b":"constrainedTransform","c":128},{"a":{"b":"animInertializationFloatClamp"},"b":"limitOnX","c":128},{"a":{"b":"animInertializationFloatClamp"},"b":"limitOnY","c":128},{"a":{"b":"animInertializationFloatClamp"},"b":"limitOnZ","c":128}]}

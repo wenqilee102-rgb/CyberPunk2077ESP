@@ -1,0 +1,1 @@
+{"a":"questIJournal_NodeType","b":"questJournalQuestEntry_NodeType","d":8,"e":[{"a":{"a":26,"c":{"b":"gameJournalPath"}},"b":"path","c":128},{"a":{"a":1},"b":"sendNotification","c":128},{"a":{"a":1},"b":"trackQuest","c":128},{"a":{"a":1},"b":"optional","c":128},{"a":{"b":"questJournalQuestEntry_NodeTypeNodeVersion"},"b":"version","c":128}]}

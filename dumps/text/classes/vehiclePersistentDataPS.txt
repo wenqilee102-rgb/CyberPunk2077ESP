@@ -1,0 +1,37 @@
+import class vehiclePersistentDataPS extends gameComponentPS
+{
+	var flags : Uint32;
+	var autopilotPos : Float;
+	var autopilotCurrentSpeed : Float;
+	var isHackable : Bool;
+	var wheelRuntimeData : static:4,vehicleWheelRuntimePSData;
+	var questEnforcedTransform : Transform;
+	var destruction : vehicleDestructionPSData;
+	var audio : vehicleAudioPSData;
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

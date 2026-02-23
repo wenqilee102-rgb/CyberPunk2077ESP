@@ -1,0 +1,18 @@
+import class gameinteractionsvisDeviceVisualizerDefinition extends gameinteractionsvisIVisualizerDefinition
+{
+	var interactionType : gameinteractionsvisInteractionType;
+	var displayNameOverride : String;
+	var useDefaultActionMapping : Bool;
+	var createMappin : Bool;
+	var isDynamic : Bool;
+	var timeProvider : handle:gameinteractionsvisIVisualizerTimeProvider;
+}
+
+import class abstract gameinteractionsvisIVisualizerDefinition extends ISerializable
+{
+	var flags : gameinteractionsvisEVisualizerDefinitionFlags;
+}
+
+import class abstract ISerializable
+{
+}

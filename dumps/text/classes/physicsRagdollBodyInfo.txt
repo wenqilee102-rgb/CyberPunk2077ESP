@@ -1,0 +1,19 @@
+import struct physicsRagdollBodyInfo
+{
+	var ParentAnimIndex : Int32;
+	var ChildAnimIndex : Int32;
+	var ParentBodyIndex : Int32;
+	var BodyPart : physicsRagdollBodyPartE;
+	var ShapeType : physicsRagdollShapeType;
+	var ShapeRadius : Float;
+	var HalfHeight : Float;
+	var ShapeLocalTranslation : Vector3;
+	var ShapeLocalRotation : Quaternion;
+	var IsRootDisplacementPart : Bool;
+	var SwingAnglesY : [2]Float;
+	var SwingAnglesZ : [2]Float;
+	var TwistAngles : [2]Float;
+	var IsStiff : Bool;
+	var ExcludeFromEarlyCollision : Bool;
+	var FilterDataOverride : CName;
+}

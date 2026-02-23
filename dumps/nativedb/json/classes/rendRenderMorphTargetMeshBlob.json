@@ -1,0 +1,1 @@
+{"a":"IRenderResourceBlob","b":"rendRenderMorphTargetMeshBlob","d":8,"e":[{"a":{"b":"rendRenderMorphTargetMeshBlobHeader"},"b":"header","c":128},{"a":{"a":17},"b":"diffsBuffer","c":128},{"a":{"a":17},"b":"mappingBuffer","c":128},{"a":{"a":18},"b":"textureDiffsBuffer","c":128},{"a":{"a":26,"c":{"b":"IRenderResourceBlob"}},"b":"baseBlob","c":128}]}

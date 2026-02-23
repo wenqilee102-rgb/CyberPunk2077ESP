@@ -1,0 +1,44 @@
+import class gameAttack_GameEffect extends gameIAttack
+{
+	import static function SpawnExplosionAttack(attackIniattackRecord : handle:gamedataAttack_Record, weapon : whandle:gameweaponObject, instigator : whandle:gameObject, source : whandle:gameObject, position : Vector4, optional duration : Float) : handle:gamedataAttack_GameEffect_Record; // SpawnExplosionAttack
+
+	import function OverrideTimeDilationDriver(timeDilatable : whandle:gameTimeDilatable) : Bool; // OverrideTimeDilationDriver
+	import function PrepareAttack(instigator : whandle:gameObject) : handle:gameEffectInstance; // PrepareAttack
+	import function ResetTimeDilationDriver() : Bool; // ResetTimeDilationDriver
+	import function SetAttackPosition(pos : Vector4); // SetAttackPosition
+	import function StartAttackContinous(); // StartAttackContinous
+	import function StopAttack() : Bool; // StopAttack
+}
+
+import class abstract gameIAttack extends IScriptable
+{
+	import static function Create(context : gameAttackInitContext) : handle:gameIAttack; // Create
+	import static function GetExplosiveHitAttack(attackRecord : handle:gamedataAttack_Record) : handle:gamedataAttack_GameEffect_Record; // GetExplosiveHitAttack
+
+	import function AddStatModifier(modifierData : handle:gameStatModifierData_Deprecated) : Bool; // AddStatModifier
+	import function GetDebugData() : gameAttackDebugData; // GetDebugData
+	import function GetParameterBool(parameterName : CName, optional defaultValue : Bool) : Bool; // GetParameterBool
+	import function GetParameterFloat(parameterName : CName, optional defaultValue : Float) : Float; // GetParameterFloat
+	import function GetParameterInt(parameterName : CName, optional defaultValue : Int32) : Int32; // GetParameterInt
+	import function GetParameterName(parameterName : CName, optional defaultValue : CName) : CName; // GetParameterName
+	import function GetRecord() : whandle:gamedataAttack_Record; // GetRecord
+	import function GetStatModList(statModList : array:handle:gameStatModifierData_Deprecated); // GetStatModList
+	import function SetDamageProjectionActive(active : Bool); // SetDamageProjectionActive
+	import function SetPreviewActive(previewActive : Bool); // SetPreviewActive
+	import function SetVehicleWeaponPreviewActive(previewActive : Bool, positionProvider : handle:entIPositionProvider, forwardProvider : handle:entIOrientationProvider, range : Float, angle : Float, weaponIndex : Uint32, inTPP : Bool, tppScale : Float); // SetVehicleWeaponPreviewActive
+	import function StartAttack() : Bool; // StartAttack
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"ScannerSkillCheckConditionDescriptionLogicController","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"NameRef","c":129},{"a":{"a":14},"b":"PassedStateName","c":129},{"a":{"a":14},"b":"FailedStateName","c":129}],"f":[{"a":"Setup;script_ref<Condition>","b":"Setup","d":48,"e":[{"a":{"a":28,"c":{"b":"Condition"}},"b":"condition","c":0}]}]}

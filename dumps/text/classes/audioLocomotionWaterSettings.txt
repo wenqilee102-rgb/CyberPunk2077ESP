@@ -1,0 +1,33 @@
+import class audioLocomotionWaterSettings extends audioAudioMetadata
+{
+	var defaultLegVfx : raRef:CResource;
+	var locomotionStatesLegVfx : handle:audioLocomotionStateVfxDictionary;
+	var customActionLegVfx : handle:audioLocomotionCustomActionVfxDictionary;
+	var minSpeedToApplyImpulses : Float;
+	var minHeelDepthToApplyImpulses : Float;
+	var shallowWaterDepth : Float;
+	var intermediateWaterDepth : Float;
+	var shallowSettings : audioLocomotionWaterContextSettings;
+	var intermediateSettings : audioLocomotionWaterContextSettings;
+	var deepSettings : audioLocomotionWaterContextSettings;
+	var minHeelDepthToSpawnFallFx : Float;
+	var minDownwardSpeedForRegularFall : Float;
+	var minDownwardSpeedForFastFall : Float;
+	var regularFallVfx : raRef:CResource;
+	var regularFallEvent : CName;
+	var fastFallVfx : raRef:CResource;
+	var fastFallEvent : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

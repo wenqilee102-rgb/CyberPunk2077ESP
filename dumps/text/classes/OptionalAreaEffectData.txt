@@ -1,0 +1,22 @@
+class OptionalAreaEffectData extends IScriptable
+{
+	private   var includeInAoeData : Bool;
+	private   var aoeData : handle:AreaEffectData;
+
+	function GetAoeData() : handle:AreaEffectData; // GetAoeData;
+	function ShouldIncludeInAoeData() : Bool; // ShouldIncludeInAoeData;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

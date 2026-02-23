@@ -1,0 +1,55 @@
+import class entGameEntity extends entEntity
+{
+}
+
+import class entEntity extends IScriptable
+{
+	var customCameraTarget : ECustomCameraTarget;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+
+	import function CanServiceEvent(evtName : CName) : Bool; // CanServiceEvent
+	import function Dispose(); // Dispose
+	import function FindComponentByName(componentName : CName) : handle:entIComponent; // FindComponentByName
+	import function GetControllingPeerID() : Uint32; // GetControllingPeerID
+	import function GetCurrentAppearanceName() : CName; // GetCurrentAppearanceName
+	import function GetCurrentColorVariantName() : CName; // GetCurrentColorVariantName
+	import function GetEntity() : entEntityGameInterface; // GetEntity
+	import function GetEntityID() : entEntityID; // GetEntityID
+	import function GetWorldForward() : Vector4; // GetWorldForward
+	import function GetWorldOrientation() : Quaternion; // GetWorldOrientation
+	import function GetWorldPosition() : Vector4; // GetWorldPosition
+	import function GetWorldRight() : Vector4; // GetWorldRight
+	import function GetWorldUp() : Vector4; // GetWorldUp
+	import function GetWorldYaw() : Float; // GetWorldYaw
+	import function IsAttached() : Bool; // IsAttached
+	import function IsControlledByAnotherClient() : Bool; // IsControlledByAnotherClient
+	import function IsControlledByAnyPeer() : Bool; // IsControlledByAnyPeer
+	import function IsControlledByLocalPeer() : Bool; // IsControlledByLocalPeer
+	import function IsReplicated() : Bool; // IsReplicated
+	import function MatchVisualTag(visualTag : CName) : Bool; // MatchVisualTag
+	import function MatchVisualTags(visualTags : array:CName) : Bool; // MatchVisualTags
+	import function PrefetchAppearanceChange(newAppearanceName : CName); // PrefetchAppearanceChange
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function QueueEventForEntityID(entityID : entEntityID, evt : handle:redEvent) : Bool; // QueueEventForEntityID
+	import function QueueEventForNodeID(nodeID : worldGlobalNodeRef, evt : handle:redEvent) : Bool; // QueueEventForNodeID
+	import function ScheduleAppearanceChange(newAppearanceName : CName); // ScheduleAppearanceChange
+
+	event OnSetGlitchOnUIEvent(evt : handle:SetGlitchOnUIEvent) : Bool; // OnSetGlitchOnUIEvent
+
+	function GetWorldTransform() : WorldTransform; // GetWorldTransform;
+	function OnInspectorDebugDraw(out box : handle:rendInfoBox); // OnInspectorDebugDraw;InfoBox
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

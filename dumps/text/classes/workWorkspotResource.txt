@@ -1,0 +1,32 @@
+import class workWorkspotResource extends animAnimGraph
+{
+	var workspotTree : handle:workWorkspotTree;
+}
+
+import class animAnimGraph extends CResource
+{
+	var rootNode : handle:animAnimNode_Root;
+	var variables : handle:animAnimVariableContainer;
+	var animFeatures : array:animAnimFeatureEntry;
+	var timeDeltaMultiplier : Float;
+	var isPaused : Bool;
+	var oneFrameToggle : Bool;
+	var hasMixerSlot : Bool;
+	var additionalAnimDatabases : array:animAnimDatabaseCollectionEntry;
+	var nodesToInit : array:handle:animAnimNode_Base;
+	var useLunaticMode : Bool;
+	var useAnimCommands : Bool;
+	var useAnimCommandsForCrowd : Bool;
+	var useAnimStaticCommands : Bool;
+	var staticCommandsRig : rRef:animRig;
+	var hackAlwaysSample : Bool;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

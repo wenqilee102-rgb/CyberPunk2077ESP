@@ -1,0 +1,41 @@
+import class gamedataVehicleVisualCustomizationPreviewSetup_Record extends gamedataTweakDBRecord
+{
+	import function BackgroundImage() : whandle:gamedataUIIcon_Record; // BackgroundImage
+	import function BackgroundImageHandle() : handle:gamedataUIIcon_Record; // BackgroundImageHandle
+	import function LeftLightHeight() : Float; // LeftLightHeight
+	import function LeftLightMarginRight() : Float; // LeftLightMarginRight
+	import function LeftLightMarginTop() : Float; // LeftLightMarginTop
+	import function LeftLightWidth() : Float; // LeftLightWidth
+	import function LightsImage() : whandle:gamedataUIIcon_Record; // LightsImage
+	import function LightsImageHandle() : handle:gamedataUIIcon_Record; // LightsImageHandle
+	import function PreviewLeftLight() : Bool; // PreviewLeftLight
+	import function PreviewRightLight() : Bool; // PreviewRightLight
+	import function PrimaryImage() : whandle:gamedataUIIcon_Record; // PrimaryImage
+	import function PrimaryImageHandle() : handle:gamedataUIIcon_Record; // PrimaryImageHandle
+	import function RightLightHeight() : Float; // RightLightHeight
+	import function RightLightMarginRight() : Float; // RightLightMarginRight
+	import function RightLightMarginTop() : Float; // RightLightMarginTop
+	import function RightLightWidth() : Float; // RightLightWidth
+	import function SecondaryImage() : whandle:gamedataUIIcon_Record; // SecondaryImage
+	import function SecondaryImageHandle() : handle:gamedataUIIcon_Record; // SecondaryImageHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

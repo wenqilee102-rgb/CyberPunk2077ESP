@@ -1,0 +1,46 @@
+import class AIVehicleToNodeCommand extends AIVehicleCommand
+{
+	var nodeRef : NodeRef;
+	var stopAtPathEnd : Bool;
+	var secureTimeOut : Float;
+	var isPlayer : Bool;
+	var useTraffic : Bool;
+	var speedInTraffic : Float;
+	var forceGreenLights : Bool;
+	var portals : handle:vehiclePortalsList;
+	var trafficTryNeighborsForStart : Bool;
+	var trafficTryNeighborsForEnd : Bool;
+	var ignoreNoAIDrivingLanes : Bool;
+}
+
+import class abstract AIVehicleCommand extends AICommand
+{
+	var useKinematic : Bool;
+	var needDriver : Bool;
+}
+
+import class AICommand extends IScriptable
+{
+	var id : Uint32;
+	var state : AICommandState;
+	var questBlockId : Uint64;
+	var category : CName;
+
+	import function Copy() : handle:AICommand; // Copy
+	import function GetCategory() : CName; // GetCategory
+	import function SetCategory(value : CName); // SetCategory
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

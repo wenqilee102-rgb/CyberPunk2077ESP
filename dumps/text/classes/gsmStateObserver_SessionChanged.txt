@@ -1,0 +1,7 @@
+import struct gsmStateObserver_SessionChanged extends gsmIStateObserver
+{
+}
+
+import struct abstract gsmIStateObserver
+{
+}

@@ -1,0 +1,54 @@
+class DefaultActionsParametersHolder extends IScriptable
+{
+	static function GetAuthorizeUserClearance() : Int32; // DefaultActionsParametersHolder::GetAuthorizeUserClearance;
+	static function GetControlPanelCompatibleClearance() : Int32; // DefaultActionsParametersHolder::GetControlPanelCompatibleClearance;
+	static function GetCrackDeviceProtectionClearance() : Int32; // DefaultActionsParametersHolder::GetCrackDeviceProtectionClearance;
+	static function GetDefaultPuppetActionClearance() : Int32; // DefaultActionsParametersHolder::GetDefaultPuppetActionClearance;
+	static function GetDisassembleClearance() : Int32; // DefaultActionsParametersHolder::GetDisassembleClearance;
+	static function GetFixingClearance() : Int32; // DefaultActionsParametersHolder::GetFixingClearance;
+	static function GetForceAirlockDecompressionClearance() : Int32; // DefaultActionsParametersHolder::GetForceAirlockDecompressionClearance;
+	static function GetForceDecompressionClearance() : Int32; // DefaultActionsParametersHolder::GetForceDecompressionClearance;
+	static function GetForceOpenClearance() : Int32; // DefaultActionsParametersHolder::GetForceOpenClearance;
+	static function GetForceSafetyShuttersClearance() : Int32; // DefaultActionsParametersHolder::GetForceSafetyShuttersClearance;
+	static function GetHackDecompressionClearance() : Int32; // DefaultActionsParametersHolder::GetHackDecompressionClearance;
+	static function GetHackSafetyShuttersClearance() : Int32; // DefaultActionsParametersHolder::GetHackSafetyShuttersClearance;
+	static function GetInteractiveClearance() : Int32; // DefaultActionsParametersHolder::GetInteractiveClearance;
+	static function GetOpenSecretClearance() : Int32; // DefaultActionsParametersHolder::GetOpenSecretClearance;
+	static function GetQuestClearance() : Int32; // DefaultActionsParametersHolder::GetQuestClearance;
+	static function GetRewireSmashRoverLiftClearance() : Int32; // DefaultActionsParametersHolder::GetRewireSmashRoverLiftClearance;
+	static function GetRewireToggleRoverLiftClearance() : Int32; // DefaultActionsParametersHolder::GetRewireToggleRoverLiftClearance;
+	static function GetSetOnSetOffActions() : Int32; // DefaultActionsParametersHolder::GetSetOnSetOffActions;
+	static function GetSmashRoverLiftClearance() : Int32; // DefaultActionsParametersHolder::GetSmashRoverLiftClearance;
+	static function GetSpiderbotClearance() : Int32; // DefaultActionsParametersHolder::GetSpiderbotClearance;
+	static function GetStatusClearance() : Int32; // DefaultActionsParametersHolder::GetStatusClearance;
+	static function GetSystemCompatibleClearance() : Int32; // DefaultActionsParametersHolder::GetSystemCompatibleClearance;
+	static function GetTakeOverControl() : Int32; // DefaultActionsParametersHolder::GetTakeOverControl;
+	static function GetTerminalCompatibleClearance() : Int32; // DefaultActionsParametersHolder::GetTerminalCompatibleClearance;
+	static function GetToggleActivationClearance() : Int32; // DefaultActionsParametersHolder::GetToggleActivationClearance;
+	static function GetToggleAlarmClearance() : Int32; // DefaultActionsParametersHolder::GetToggleAlarmClearance;
+	static function GetToggleAuthorizationClearance() : Int32; // DefaultActionsParametersHolder::GetToggleAuthorizationClearance;
+	static function GetToggleCycleAirLockClearance() : Int32; // DefaultActionsParametersHolder::GetToggleCycleAirLockClearance;
+	static function GetToggleLockClearance() : Int32; // DefaultActionsParametersHolder::GetToggleLockClearance;
+	static function GetToggleOnClearance() : Int32; // DefaultActionsParametersHolder::GetToggleOnClearance;
+	static function GetToggleOpenBlindersClearance() : Int32; // DefaultActionsParametersHolder::GetToggleOpenBlindersClearance;
+	static function GetToggleOpenClearance() : Int32; // DefaultActionsParametersHolder::GetToggleOpenClearance;
+	static function GetTogglePowerClearance() : Int32; // DefaultActionsParametersHolder::GetTogglePowerClearance;
+	static function GetToggleRoverLiftClearance() : Int32; // DefaultActionsParametersHolder::GetToggleRoverLiftClearance;
+	static function GetToggleSealClearance() : Int32; // DefaultActionsParametersHolder::GetToggleSealClearance;
+	static function GetToggleSecureScreenClearance() : Int32; // DefaultActionsParametersHolder::GetToggleSecureScreenClearance;
+	static function GetToggleStreamFeedClearance() : Int32; // DefaultActionsParametersHolder::GetToggleStreamFeedClearance;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

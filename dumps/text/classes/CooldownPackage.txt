@@ -1,0 +1,31 @@
+class CooldownPackage extends IScriptable
+{
+	private   var actionID : TweakDBID;
+	private   var addressees : array:PSOwnerData;
+	private   var initialCooldown : Float;
+	private   var label : CooldownStorageID;
+	private   var packageStatus : PackageStatus;
+
+	function GetActionID() : TweakDBID; // GetActionID;
+	function GetAddressees() : array:PSOwnerData; // GetAddressees;
+	function GetInitialCooldown() : Float; // GetInitialCooldown;
+	function GetLabel() : CooldownStorageID; // GetLabel;
+	function GetPackageStatus() : PackageStatus; // GetPackageStatus;
+	function InitializePackage(request : handle:CooldownRequest, label : CooldownStorageID); // InitializePackage;CooldownRequestCooldownStorageID
+	function SetUpInitialPackageStatus(requestType : RequestType); // SetUpInitialPackageStatus;RequestType
+	function UpdatePackageStatus(newStatus : PackageStatus); // UpdatePackageStatus;PackageStatus
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

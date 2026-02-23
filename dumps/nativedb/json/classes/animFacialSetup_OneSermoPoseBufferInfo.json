@@ -1,0 +1,1 @@
+{"b":"animFacialSetup_OneSermoPoseBufferInfo","d":8,"g":true,"e":[{"a":{"a":5},"b":"numMainPoses","c":128},{"a":{"a":5},"b":"numCorrectivePoses","c":128},{"a":{"a":7},"b":"numMainTransforms","c":128},{"a":{"a":7},"b":"numMainScales","c":128},{"a":{"a":7},"b":"numCorrectiveTransforms","c":128},{"a":{"a":7},"b":"numCorrectiveScales","c":128}]}

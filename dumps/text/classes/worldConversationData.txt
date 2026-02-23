@@ -1,0 +1,12 @@
+import class worldConversationData extends ISerializable
+{
+	var sceneFilename : raRef:scnSceneResource;
+	var condition : handle:questIBaseCondition;
+	var interruptionOperations : array:handle:scnIInterruptionOperation;
+	var ignoreLocalLimit : Bool;
+	var ignoreGlobalLimit : Bool;
+}
+
+import class abstract ISerializable
+{
+}

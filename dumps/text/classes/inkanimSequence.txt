@@ -1,0 +1,20 @@
+import class inkanimSequence extends IScriptable
+{
+	var name : CName;
+	var definitions : array:handle:inkanimDefinition;
+	var targets : array:handle:inkanimSequenceTargetInfo;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

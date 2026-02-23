@@ -1,0 +1,12 @@
+import class scnCheckPlayerCombatReturnCondition extends scnIReturnCondition
+{
+	var params : scnCheckPlayerCombatReturnConditionParams;
+}
+
+import class abstract scnIReturnCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

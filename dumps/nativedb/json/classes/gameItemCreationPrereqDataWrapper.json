@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gameItemCreationPrereqDataWrapper","c":"ItemCreationPrereqDataWrapper","d":8,"f":[{"a":"GetItemData","c":{"a":26,"c":{"b":"gameItemData"}},"d":4},{"a":"GetOwner","c":{"a":26,"c":{"b":"IScriptable"}},"d":4},{"a":"IsCreatedOnLevel","c":{"a":1},"d":4},{"a":"IsCreatedOnNPC","c":{"a":1},"d":4},{"a":"IsCreatedOnPlayer","c":{"a":1},"d":4}]}

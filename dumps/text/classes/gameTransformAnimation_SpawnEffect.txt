@@ -1,0 +1,18 @@
+import class gameTransformAnimation_SpawnEffect extends gameTransformAnimation_Effects
+{
+	var effectName : CName;
+	var effectTag : CName;
+	var persistOnDetach : Bool;
+}
+
+import class abstract gameTransformAnimation_Effects extends gameTransformAnimationTrackItemImpl
+{
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

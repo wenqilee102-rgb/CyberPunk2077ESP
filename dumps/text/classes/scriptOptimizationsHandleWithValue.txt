@@ -1,0 +1,5 @@
+import struct scriptOptimizationsHandleWithValue
+{
+	var value : Float;
+	var handle : handle:IScriptable;
+}

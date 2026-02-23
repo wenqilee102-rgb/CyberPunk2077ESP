@@ -1,0 +1,25 @@
+import class AICTreeNodeParallelDefinition extends AICTreeNodeChildrenListDefinition
+{
+	var forwardChildrenCompleteness : Bool;
+}
+
+import class AICTreeNodeChildrenListDefinition extends AICTreeNodeCompositeDefinition
+{
+	var children : array:handle:LibTreeINodeDefinition;
+}
+
+import class abstract AICTreeNodeCompositeDefinition extends AICTreeNodeDefinition
+{
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

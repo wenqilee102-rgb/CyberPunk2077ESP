@@ -1,0 +1,5 @@
+struct SDoorStateOperationData
+{
+	public    var state : EDoorStatus;
+	public    var operation : SBaseDeviceOperationData;
+}

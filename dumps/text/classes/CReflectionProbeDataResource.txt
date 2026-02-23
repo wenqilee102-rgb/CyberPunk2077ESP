@@ -1,0 +1,21 @@
+import class CReflectionProbeDataResource extends resStreamedResource
+{
+	var data : DataBuffer;
+	var textureData : rendRenderTextureResource;
+	var dataHash : Uint64;
+	var haveSkyData : Bool;
+	var faceDepth : [6]Float;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

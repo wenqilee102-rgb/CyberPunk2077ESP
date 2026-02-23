@@ -1,0 +1,1 @@
+{"a":"IRenderResourceBlob","b":"rendRenderParticleBlob","d":8,"e":[{"a":{"b":"rendRenderParticleBlobHeader"},"b":"header","c":128},{"a":{"b":"rendRenderParticleUpdaterData"},"b":"updaterData","c":128},{"a":{"b":"rendEmitterSimulationShaders"},"b":"gpuSimShaders","c":128}]}

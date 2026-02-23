@@ -1,0 +1,27 @@
+class CachedCraftingMaterial extends IScriptable
+{
+	public    var itemID : gameItemID;
+	public    var displayName : String;
+	public    var iconPath : String;
+	public    var quantity : Int32;
+
+	static function Make(tweakID : TweakDBID) : handle:CachedCraftingMaterial; // CachedCraftingMaterial::Make;TweakDBID
+	static function Make(itemID : gameItemID) : handle:CachedCraftingMaterial; // CachedCraftingMaterial::Make;ItemID
+
+	function UpdateQuantity(owner : whandle:gameObject); // UpdateQuantity;GameObject
+	function UpdateQuantity(quantity : Int32); // UpdateQuantity;Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

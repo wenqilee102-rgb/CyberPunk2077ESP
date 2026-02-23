@@ -1,0 +1,6 @@
+enum TweakWeaponPose
+{
+	Nothing = 0,
+	Position = 1,
+	Rotation = 2
+}

@@ -1,0 +1,28 @@
+class OpenPhoneMessageAction extends GenericNotificationBaseAction
+{
+	public    var phoneSystem : whandle:PhoneSystem;
+	public    var journalEntry : whandle:gameJournalEntry;
+
+	function Execute(data : handle:IScriptable) : Bool; // Execute;IScriptable
+	function GetLabel() : String; // GetLabel;
+}
+
+class GenericNotificationBaseAction extends IScriptable
+{
+	function Execute(data : handle:IScriptable) : Bool; // Execute;IScriptable
+	function GetLabel() : String; // GetLabel;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

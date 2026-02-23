@@ -1,0 +1,24 @@
+class GogRewardEntryData extends IScriptable
+{
+	public    var title : String;
+	public    var description : String;
+	public    var icon : CName;
+	public    var group : CName;
+	public    var slotType : CName;
+	public    var isUnlocked : Bool;
+	public    var record : whandle:gamedataGOGReward_Record;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

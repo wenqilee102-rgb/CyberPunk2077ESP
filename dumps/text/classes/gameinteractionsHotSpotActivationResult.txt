@@ -1,0 +1,4 @@
+import struct gameinteractionsHotSpotActivationResult
+{
+	var priority : Float;
+}

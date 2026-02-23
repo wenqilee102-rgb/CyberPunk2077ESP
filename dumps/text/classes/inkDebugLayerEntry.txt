@@ -1,0 +1,6 @@
+import struct inkDebugLayerEntry
+{
+	var widgetResource : raRef:inkWidgetLibraryResource;
+	var anchorPlace : inkEAnchor;
+	var anchorPoint : Vector2;
+}

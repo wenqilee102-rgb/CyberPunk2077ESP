@@ -1,0 +1,5 @@
+enum ETooltipsStyle
+{
+	Menus = 0,
+	HUD = 1
+}

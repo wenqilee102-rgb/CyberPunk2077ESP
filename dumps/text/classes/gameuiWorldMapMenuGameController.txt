@@ -1,0 +1,367 @@
+import class gameuiWorldMapMenuGameController extends gameuiMappinsContainerController
+{
+	var settingsRecordID : TweakDBID;
+	var selectedMappin : whandle:gameuiBaseWorldMapMappinController;
+	var playerOnTop : Bool;
+	var entityPreviewLibraryID : CName;
+	var entityPreviewSpawnContainer : inkCompoundWidgetReference;
+	var floorPlanSpawnContainer : inkCompoundWidgetReference;
+	var compassWidget : inkWidgetReference;
+	var districtsContainer : inkCompoundWidgetReference;
+	var subdistrictsContainer : inkCompoundWidgetReference;
+	var mappinOutlinesContainer : inkCompoundWidgetReference;
+	var groupOutlinesContainer : inkCompoundWidgetReference;
+	var tooltipContainer : inkCompoundWidgetReference;
+	var tooltipOffset : inkMargin;
+	var tooltipDistrictOffset : inkMargin;
+	var districtView : gameuiEWorldMapDistrictView;
+	var hoveredDistrict : gamedataDistrict;
+	var hoveredSubDistrict : gamedataDistrict;
+	var selectedDistrict : gamedataDistrict;
+	var canChangeCustomFilter : Bool;
+	var isZoomToMappinEnabled : Bool;
+	var delamainTaxiMappinID : gameNewMappinID;
+	private   var preloaderWidget : inkWidgetReference;
+	private   var gameTimeText : inkTextWidgetReference;
+	private   var fastTravelInstructions : inkWidgetReference;
+	private   var delamainTaxiInstructions : inkWidgetReference;
+	private   var filterSelector : inkWidgetReference;
+	private   var filterSelectorWarning : inkWidgetReference;
+	private   var filterText : inkTextWidgetReference;
+	private   var districtIconImageContainer : inkWidgetReference;
+	private   var districtIconImage : inkImageWidgetReference;
+	private   var districtNameText : inkTextWidgetReference;
+	private   var subdistrictNameText : inkTextWidgetReference;
+	private   var locationAndGangsContainer : inkWidgetReference;
+	private   var gangsInfoContainer : inkWidgetReference;
+	private   var gangsList : inkCompoundWidgetReference;
+	private   var questContainer : inkWidgetReference;
+	private   var questName : inkTextWidgetReference;
+	private   var openInJournalButton : inkWidgetReference;
+	private   var objectiveName : inkTextWidgetReference;
+	private   var objectiveBackground : inkWidgetReference;
+	private   var objectiveFrame : inkWidgetReference;
+	private   var topShadow : inkWidgetReference;
+	private   var rightAxisZoomThreshold : Float;
+	private   var customFilters : inkWidgetReference;
+	private   var filtersList : inkVerticalPanelWidgetReference;
+	private   var filterLeftArrow : inkWidgetReference;
+	private   var filterRightArrow : inkWidgetReference;
+	private   var quickFilterIndicators : array:inkWidgetReference;
+	private   var customFiltersListAnimationDelay : Float;
+	private   var cameraMode : gameuiEWorldMapCameraMode;
+	private   var menuEventDispatcher : whandle:inkMenuEventDispatcher;
+	private   var tooltipController : whandle:WorldMapTooltipContainer;
+	private   var gameTimeTextParams : handle:textTextParameterSet;
+	private   var previousHoveredDistrict : gamedataDistrict;
+	private   var currentHoveredDistrict : gamedataDistrict;
+	private   var showedSubdistrictGangs : Bool;
+	private   var player : whandle:gameObject;
+	private   var audioSystem : whandle:gameGameAudioSystem;
+	private   var journalManager : whandle:gameJournalManager;
+	private   var mappinSystem : whandle:gamemappinsMappinSystem;
+	private   var mapBlackboard : whandle:gameIBlackboard;
+	private   var mapDefinition : handle:UI_MapDef;
+	private   var trackedObjective : whandle:gameJournalQuestObjectiveBase;
+	private   var trackedQuest : whandle:gameJournalQuest;
+	private   var mappinsPositions : array:Vector3;
+	private   var lastRightAxisYAmount : Float;
+	private   var justOpenedQuestJournal : Bool;
+	public    var initMappinFocus : handle:MapMenuUserData;
+	private   var currentQuickFilterIndex : Int32;
+	private   var currentCustomFilterIndex : Int32;
+	private   var spawnedCustomFilterIndex : Int32;
+	private   var gangsAsyncSpawnRequests : array:whandle:inkAsyncSpawnRequest;
+	private   var customFiltersList : array:whandle:WorldMapFiltersListItem;
+	private   var animationProxy : handle:inkanimProxy;
+	private   var entityAttached : Bool;
+	private   var readyToZoom : Bool;
+	private   var isHoveringOverFilters : Bool;
+	private   var isPanning : Bool;
+	private   var isZooming : Bool;
+	private   var pressedRMB : Bool;
+	private   var startedFastTraveling : Bool;
+
+	import function AreDistrictsVisible() : Bool; // AreDistrictsVisible
+	import function CanDebugTeleport() : Bool; // CanDebugTeleport
+	import function CancelDelamainTaxiMappinPosition(); // CancelDelamainTaxiMappinPosition
+	import function ClearCustomFilter(filter : gamedataWorldMapFilter); // ClearCustomFilter
+	import function ConfirmDelamainTaxiMappinPosition(); // ConfirmDelamainTaxiMappinPosition
+	import function FrameMappinPath(hash : Uint32, transitionTime : Float, optional margin : inkMargin); // FrameMappinPath
+	import function GetCurrentZoom() : Float; // GetCurrentZoom
+	import function GetCustomFilters() : Uint32; // GetCustomFilters
+	import function GetEntityPreview() : whandle:gameuiWorldMapPreviewGameController; // GetEntityPreview
+	import function GetQuickFilter() : gamedataWorldMapFilter; // GetQuickFilter
+	import function GetSettings() : handle:gamedataWorldMapSettings_Record; // GetSettings
+	import function GetTravelDistance() : Float; // GetTravelDistance
+	import function HasCustomFilter(filter : gamedataWorldMapFilter) : Bool; // HasCustomFilter
+	import function IsEntityAttachedAndSetup() : Bool; // IsEntityAttachedAndSetup
+	import function IsEntitySetup() : Bool; // IsEntitySetup
+	import function MoveToPlayer(); // MoveToPlayer
+	import function SaveFilters(); // SaveFilters
+	import function SetCustomFilter(filter : gamedataWorldMapFilter); // SetCustomFilter
+	import function SetFloorPlanVisible(); // SetFloorPlanVisible
+	import function SetMapCursorEnabled(enabled : Bool); // SetMapCursorEnabled
+	import function SetMappinVisited(mappinController : handle:gameuiBaseWorldMapMappinController); // SetMappinVisited
+	import function SetMousePanEnabled(enabled : Bool); // SetMousePanEnabled
+	import function SetMouseRotateEnabled(enabled : Bool); // SetMouseRotateEnabled
+	import function SetQuickFilter(filter : gamedataWorldMapFilter); // SetQuickFilter
+	import function SetQuickFilterFromRecord(filterGroup : whandle:gamedataMappinUIFilterGroup_Record); // SetQuickFilterFromRecord
+	import function SetSelectedMappin(mappinController : handle:gameuiBaseWorldMapMappinController); // SetSelectedMappin
+	import function TrackCustomPositionMappin(); // TrackCustomPositionMappin
+	import function TrackDelamainTaxiMappin(); // TrackDelamainTaxiMappin
+	import function TrackMappin(mappinController : handle:gameuiMappinBaseController); // TrackMappin
+	import function UntrackCustomPositionMappin(); // UntrackCustomPositionMappin
+	import function UntrackDelamainTaxiMappin(); // UntrackDelamainTaxiMappin
+	import function UntrackMappin(); // UntrackMappin
+	import function ZoomToMappin(mappinController : handle:gameuiBaseWorldMapMappinController); // ZoomToMappin
+	import function ZoomWithMouse(zoomIn : Bool); // ZoomWithMouse
+
+	event OnAxisInput(e : handle:inkPointerEvent) : Bool; // OnAxisInput
+	event OnBack(userData : handle:IScriptable) : Bool; // OnBack
+	event OnCanChangeCustomFilterChanged(flag : Bool) : Bool; // OnCanChangeCustomFilterChanged
+	event OnCustomFilterChanged() : Bool; // OnCustomFilterChanged
+	event OnDistrictViewChanged(oldView : gameuiEWorldMapDistrictView, newView : gameuiEWorldMapDistrictView) : Bool; // OnDistrictViewChanged
+	event OnEntityAttached() : Bool; // OnEntityAttached
+	event OnEntityDetached() : Bool; // OnEntityDetached
+	event OnFilterArrowHoverOut(e : handle:inkPointerEvent) : Bool; // OnFilterArrowHoverOut
+	event OnFilterArrowHoverOver(e : handle:inkPointerEvent) : Bool; // OnFilterArrowHoverOver
+	event OnFilterLeftArrowClicked(evt : handle:inkPointerEvent) : Bool; // OnFilterLeftArrowClicked
+	event OnFilterListItemSpawned(filterWidget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnFilterListItemSpawned
+	event OnFilterRightArrowClicked(evt : handle:inkPointerEvent) : Bool; // OnFilterRightArrowClicked
+	event OnFilterSwitched(evt : handle:inkPointerEvent) : Bool; // OnFilterSwitched
+	event OnGangListItemSpawned(gangWidget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnGangListItemSpawned
+	event OnHoldInput(e : handle:inkPointerEvent) : Bool; // OnHoldInput
+	event OnHoverOutMappin(e : handle:inkPointerEvent) : Bool; // OnHoverOutMappin
+	event OnHoverOverMappin(e : handle:inkPointerEvent) : Bool; // OnHoverOverMappin
+	event OnInitialize() : Bool; // OnInitialize
+	event OnMapNavigationDelay(evt : handle:MapNavigationDelay) : Bool; // OnMapNavigationDelay
+	event OnPressInput(e : handle:inkPointerEvent) : Bool; // OnPressInput
+	event OnQuickFilterChanged(filterGroup : whandle:gamedataMappinUIFilterGroup_Record) : Bool; // OnQuickFilterChanged
+	event OnReleaseInput(e : handle:inkPointerEvent) : Bool; // OnReleaseInput
+	event OnRemovePreloader(widget : whandle:inkWidget) : Bool; // OnRemovePreloader
+	event OnSelectedMappinChanged(oldController : handle:gameuiBaseWorldMapMappinController, newController : handle:gameuiBaseWorldMapMappinController) : Bool; // OnSelectedMappinChanged
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnSetUserData(userData : handle:IScriptable) : Bool; // OnSetUserData
+	event OnSetZoomLevelEvent(eventData : handle:SetZoomLevelEvent) : Bool; // OnSetZoomLevelEvent
+	event OnShowSpinner() : Bool; // OnShowSpinner
+	event OnTrackedEntryChanges(hash : Uint32, className : CName, notifyOption : gameJournalNotifyOption, changeType : gameJournalChangeType) : Bool; // OnTrackedEntryChanges
+	event OnUninitialize() : Bool; // OnUninitialize
+	event OnUpdateHoveredDistricts(district : gamedataDistrict, subdistrict : gamedataDistrict) : Bool; // OnUpdateHoveredDistricts
+	event OnZoomLevelChanged(oldLevel : Int32, newLevel : Int32) : Bool; // OnZoomLevelChanged
+	event OnZoomToMappinEnabledChanged(flag : Bool) : Bool; // OnZoomToMappinEnabledChanged
+	event OnZoomTransitionFinished() : Bool; // OnZoomTransitionFinished
+
+	function AddInputHintUpdate(out evt : handle:gameuiUpdateInputHintMultipleEvent, show : Bool, action : CName, locKey : script_ref:String, out priority : Int32); // AddInputHintUpdate;UpdateInputHintMultipleEventBoolCNamescript_ref<String>Int32
+	function CanOpenCodexPopup(mappin : whandle:gamemappinsIMappin) : Bool; // CanOpenCodexPopup;IMappin
+	function CanOpenJournalForMappin(mappin : whandle:gamemappinsIMappin) : Bool; // CanOpenJournalForMappin;IMappin
+	function CanPay() : Bool; // CanPay;
+	function CanPlayerTrackMappin(mappin : whandle:gamemappinsIMappin) : Bool; // CanPlayerTrackMappin;IMappin
+	function CanPlayerTrackMappin(controller : whandle:gameuiBaseWorldMapMappinController) : Bool; // CanPlayerTrackMappin;BaseWorldMapMappinController
+	function CanQuestTrackMappin(mappin : whandle:gamemappinsIMappin) : Bool; // CanQuestTrackMappin;IMappin
+	function CanQuestTrackMappin(controller : whandle:gameuiBaseWorldMapMappinController) : Bool; // CanQuestTrackMappin;BaseWorldMapMappinController
+	function CanZoomToMappin(controller : whandle:gameuiBaseWorldMapMappinController) : Bool; // CanZoomToMappin;BaseWorldMapMappinController
+	function ClearAllAsyncSpawnRequests(); // ClearAllAsyncSpawnRequests;
+	function CreateMappinUIProfile(mappin : whandle:gamemappinsIMappin, mappinVariant : gamedataMappinVariant, customData : handle:gameuiMappinControllerCustomData) : gameuiMappinUIProfile; // CreateMappinUIProfile;IMappingamedataMappinVariantMappinControllerCustomData
+	function CycleQuickFilterNext(); // CycleQuickFilterNext;
+	function CycleQuickFilterPrev(); // CycleQuickFilterPrev;
+	function CycleWorldMapFilter(cycleNext : Bool); // CycleWorldMapFilter;Bool
+	function DEBUG_Teleport(); // DEBUG_Teleport;
+	function FastTravel(); // FastTravel;
+	function GetCodexEntryForMappin(mappin : whandle:gamemappinsIMappin) : whandle:gameJournalEntry; // GetCodexEntryForMappin;IMappin
+	function GetDelamainTaxiSystem() : handle:DelamainTaxiSystem; // GetDelamainTaxiSystem;
+	function GetDistrictAnimation(view : gameuiEWorldMapDistrictView, show : Bool) : CName; // GetDistrictAnimation;gameuiEWorldMapDistrictViewBool
+	function GetFastTravelSystem() : handle:FastTravelSystem; // GetFastTravelSystem;
+	function GetJournalManager() : whandle:gameJournalManager; // GetJournalManager;
+	function GetMappinJournalEntry(mappin : handle:gamemappinsIMappin) : handle:gameJournalEntry; // GetMappinJournalEntry;IMappin
+	function GetMappinJournalPathHash(mappin : handle:gamemappinsIMappin) : Uint32; // GetMappinJournalPathHash;IMappin
+	function GetOwner() : handle:gameObject; // GetOwner;
+	function GetPlayer() : whandle:gameObject; // GetPlayer;
+	function GetTooltipType(mappinVariant : gamedataMappinVariant) : WorldMapTooltipType; // GetTooltipType;gamedataMappinVariant
+	function GetTotalZoomLevels() : Int32; // GetTotalZoomLevels;
+	function GetTravelCost() : Int32; // GetTravelCost;
+	function HandleAxisInput(e : handle:inkPointerEvent); // HandleAxisInput;inkPointerEvent
+	function HandleHoldInput(e : handle:inkPointerEvent); // HandleHoldInput;inkPointerEvent
+	function HandlePressInput(e : handle:inkPointerEvent); // HandlePressInput;inkPointerEvent
+	function HandleReleaseInput(e : handle:inkPointerEvent); // HandleReleaseInput;inkPointerEvent
+	function HasSelectedDelamainTaxiMappin() : Bool; // HasSelectedDelamainTaxiMappin;
+	function HasSelectedMappin() : Bool; // HasSelectedMappin;
+	function HideAllTooltips(); // HideAllTooltips;
+	function HideMappinTooltip(controller : whandle:gameuiBaseWorldMapMappinController); // HideMappinTooltip;BaseWorldMapMappinController
+	function InitializeCustomFiltersList(); // InitializeCustomFiltersList;
+	function InitializeQuickFiltersList(); // InitializeQuickFiltersList;
+	function IsDelamainTaxiEnabled() : Bool; // IsDelamainTaxiEnabled;
+	function IsFastTravelEnabled() : Bool; // IsFastTravelEnabled;
+	function IsMappinQuestTracked(controller : whandle:gameuiBaseWorldMapMappinController) : Bool; // IsMappinQuestTracked;BaseWorldMapMappinController
+	function IsMappinQuestTracked(mappin : whandle:gamemappinsIMappin) : Bool; // IsMappinQuestTracked;IMappin
+	function IsPoliceTooltip(mappinVariant : gamedataMappinVariant) : Bool; // IsPoliceTooltip;gamedataMappinVariant
+	function NavigateCustomFilters(option : ECustomFilterDPadNavigationOption); // NavigateCustomFilters;ECustomFilterDPadNavigationOption
+	function OpenCodexPopup(jurnalEntry : whandle:gameJournalEntry); // OpenCodexPopup;JournalEntry
+	function OpenQuestInJournal(questEntry : whandle:gameJournalEntry); // OpenQuestInJournal;JournalEntry
+	function OpenSelectedQuest(); // OpenSelectedQuest;
+	function OpenTrackedQuest(); // OpenTrackedQuest;
+	function PlayCustomFiltersAnimations(); // PlayCustomFiltersAnimations;
+	function PrepFastTravel(); // PrepFastTravel;
+	function RefreshInputHints(); // RefreshInputHints;
+	function SetMappinIconsVisible(visible : Bool); // SetMappinIconsVisible;Bool
+	function SetQuickFilterIndicator(index : Int32); // SetQuickFilterIndicator;Int32
+	function ShouldDisplayInHud(mappinVariant : gamedataMappinVariant) : Bool; // ShouldDisplayInHud;gamedataMappinVariant
+	function ShowGangsInfo(district : gamedataDistrict, sub : gamedataDistrict); // ShowGangsInfo;gamedataDistrictgamedataDistrict
+	function ShowMappinTooltip(controller : whandle:gameuiBaseWorldMapMappinController); // ShowMappinTooltip;BaseWorldMapMappinController
+	function ToggleQuickFilterIndicatorsVsibility(toggle : Bool); // ToggleQuickFilterIndicatorsVsibility;Bool
+	function TrackQuestMappin(controller : handle:gameuiMappinBaseController); // TrackQuestMappin;BaseMappinBaseController
+	function TryConfirmDelamainTaxi() : Bool; // TryConfirmDelamainTaxi;
+	function TryFastTravel(); // TryFastTravel;
+	function TryTrackQuestOrSetWaypoint(); // TryTrackQuestOrSetWaypoint;
+	function UninitializeCustomFiltersList(); // UninitializeCustomFiltersList;
+	function UpdateCustomFilter(filter : gamedataWorldMapFilter, enable : Bool); // UpdateCustomFilter;gamedataWorldMapFilterBool
+	function UpdateDelamainTaxiVisiblity(delamainTaxiEnabled : Bool); // UpdateDelamainTaxiVisiblity;Bool
+	function UpdateFastTravelVisiblity(fastTravelEnabled : Bool); // UpdateFastTravelVisiblity;Bool
+	function UpdateGameTime(); // UpdateGameTime;
+	function UpdateSelectedMappinTooltip(); // UpdateSelectedMappinTooltip;
+	function UpdateTooltip(tooltipType : WorldMapTooltipType, controller : whandle:gameuiBaseWorldMapMappinController); // UpdateTooltip;WorldMapTooltipTypeBaseWorldMapMappinController
+	function UpdateTrackedQuest(); // UpdateTrackedQuest;
+	function UpdateTravelDestination(); // UpdateTravelDestination;
+}
+
+import class gameuiMappinsContainerController extends gameuiProjectedHUDGameController
+{
+	var psmVision : gamePSMVision;
+	var psmCombat : gamePSMCombat;
+	var psmZone : gamePSMZones;
+	var tier : GameplayTier;
+	var spawnContainerPath : inkWidgetPath;
+	var gpsQuestPathWidget : inkLinePatternWidgetReference;
+	var gpsPlayerTrackedPathWidget : inkLinePatternWidgetReference;
+	var gpsDelamainPathWidget : inkLinePatternWidgetReference;
+	var autodrivePathWidget : inkLinePatternWidgetReference;
+
+	import function GetSpawnContainer() : whandle:inkCompoundWidget; // GetSpawnContainer
+
+	function CreateMappinUIProfile(mappin : whandle:gamemappinsIMappin, mappinVariant : gamedataMappinVariant, customData : handle:gameuiMappinControllerCustomData) : gameuiMappinUIProfile; // CreateMappinUIProfile;IMappingamedataMappinVariantMappinControllerCustomData
+}
+
+import class gameuiProjectedHUDGameController extends gameuiHUDGameController
+{
+	import function ApplyProjectionMarginOnWidget(widget : whandle:inkWidget, margin : inkMargin); // ApplyProjectionMarginOnWidget
+	import function EnableSleeping(enabled : Bool); // EnableSleeping
+	import function RegisterScreenProjection(projectionData : inkScreenProjectionData) : handle:inkScreenProjection; // RegisterScreenProjection
+	import function SetShouldNotifyProjections(shouldNotify : Bool); // SetShouldNotifyProjections
+	import function UnregisterScreenProjection(projection : handle:inkScreenProjection); // UnregisterScreenProjection
+	import function WakeUp(); // WakeUp
+}
+
+import class gameuiHUDGameController extends gameuiWidgetGameController
+{
+	protected var showAnimDef : handle:inkanimDefinition;
+	protected var hideAnimDef : handle:inkanimDefinition;
+	private   var showAnimationName : CName;
+	private   var hideAnimationName : CName;
+	private   var moduleShown : Bool;
+	private   var showAnimProxy : handle:inkanimProxy;
+	private   var hideAnimProxy : handle:inkanimProxy;
+
+	import function ToggleVisibility(value : Bool, isSkippingInOutAnimation : Bool); // ToggleVisibility
+
+	event OnHideAnimationFinished(anim : handle:inkanimProxy) : Bool; // OnHideAnimationFinished
+	event OnPlayInitFoldingAnimFinished(anim : handle:inkanimProxy) : Bool; // OnPlayInitFoldingAnimFinished
+
+	function CreateContextChangeAnimations(); // CreateContextChangeAnimations;
+	function GetIntroAnimation() : handle:inkanimDefinition; // GetIntroAnimation;
+	function GetOutroAnimation() : handle:inkanimDefinition; // GetOutroAnimation;
+	function HideRequest(); // HideRequest;
+	function IsPlayingMultiplayer() : Bool; // IsPlayingMultiplayer;
+	function PlayInitFoldingAnim(); // PlayInitFoldingAnim;
+	function ShowRequest(); // ShowRequest;
+	function UpdateRequired(); // UpdateRequired;
+}
+
+import class gameuiWidgetGameController extends worlduiIWidgetGameController
+{
+	import function GetBlackboardSystem() : handle:gameBlackboardSystem; // GetBlackboardSystem
+	import function GetOwnerEntity() : handle:entEntity; // GetOwnerEntity
+	import function GetPSMBlackboard(playerPuppet : handle:gameObject) : handle:gameIBlackboard; // GetPSMBlackboard
+	import function GetPlayerControlledObject() : handle:gameObject; // GetPlayerControlledObject
+	import function GetUIBlackboard() : handle:gameIBlackboard; // GetUIBlackboard
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function RegisterDebugCommand(debugFunctionName : CName); // RegisterDebugCommand
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float, optional forceSnapping : Bool); // SetCursorOverWidget
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+}
+
+import class abstract worlduiIWidgetGameController extends inkIWidgetController
+{
+	var elementRecordID : TweakDBID;
+
+	import function ProjectWorldToScreen(worldPosition : Vector4) : Vector2; // ProjectWorldToScreen
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+}
+
+import class abstract inkIWidgetController extends IScriptable
+{
+	var audioMetadataName : CName;
+
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function IsKeyboardConnected() : Bool; // IsKeyboardConnected
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function RequestProcessFitToViewport(); // RequestProcessFitToViewport
+	import function RequestSetFocus(widget : whandle:inkWidget); // RequestSetFocus
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : whandle:inkAsyncSpawnRequest; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindLibraryID(widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : CName; // FindLibraryID;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function ReadUICondition(condition : gamedataUICondition) : Bool; // ReadUICondition;gamedataUICondition
+	function RequestWidgetFromLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : CName; // RequestWidgetFromLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRefAsyncSpawnData
+	function RequestWidgetFromLibraryById(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryById;inkWidgetCNameResRefAsyncSpawnDatainkAsyncSpawnRequest
+	function RequestWidgetFromLibraryByRecord(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryByRecord;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordAsyncSpawnDatainkAsyncSpawnRequest
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

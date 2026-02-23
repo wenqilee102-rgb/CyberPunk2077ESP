@@ -1,0 +1,24 @@
+struct QuickSlotCommand
+{
+	public    var ActionType : QuickSlotActionType;
+	public    var IsSlotUnlocked : Bool;
+	public    var IsLocked : Bool;
+	public    var AtlasPath : CName;
+	public    var IconName : CName;
+	public    var MaxTier : Int32;
+	public    var VehicleState : Int32;
+	public    var ItemId : gameItemID;
+	public    var Title : String;
+	public    var Type : String;
+	public    var Description : String;
+	public    var IsEquipped : Bool;
+	public    var intData : Int32;
+	public    var playerVehicleData : vehiclePlayerVehicle;
+	public    var itemType : QuickSlotItemType;
+	public    var equipType : gamedataEquipmentArea;
+	public    var slotIndex : Int32;
+	public    var interactiveAction : handle:gamedeviceAction;
+	public    var interactiveActionOwner : entEntityID;
+
+	static function IsEmpty(self : script_ref:QuickSlotCommand) : Bool; // QuickSlotCommand::IsEmpty;script_ref<QuickSlotCommand>
+}

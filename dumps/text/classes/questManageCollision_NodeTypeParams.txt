@@ -1,0 +1,7 @@
+import struct questManageCollision_NodeTypeParams
+{
+	var objectRef : NodeRef;
+	var enableCollision : Bool;
+	var enableQueries : Bool;
+	var components : array:CName;
+}

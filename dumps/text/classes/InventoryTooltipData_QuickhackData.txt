@@ -1,0 +1,12 @@
+struct InventoryTooltipData_QuickhackData
+{
+	public    var memorycost : Int32;
+	public    var baseCost : Int32;
+	public    var uploadTime : Float;
+	public    var duration : Float;
+	public    var cooldown : Float;
+	public    var attackEffects : array:handle:DamageEffectUIEntry;
+	public    var uploadTimeDiff : Float;
+	public    var durationDiff : Float;
+	public    var cooldownDiff : Float;
+}

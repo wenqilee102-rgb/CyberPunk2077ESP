@@ -1,0 +1,6 @@
+import struct minimapLayerHighlightRequestData
+{
+	var highlightColor : HDRColor;
+	var highlightDuration : Float;
+	var blinkCount : Float;
+}

@@ -1,0 +1,1 @@
+{"a":"questAICommandNodeBase","b":"questTeleportPuppetNodeDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"questUniversalRef"}},"b":"entityReference","c":128},{"a":{"a":26,"c":{"b":"questTeleportPuppetParamsV1"}},"b":"params","c":128},{"a":{"b":"questLookAtAction"},"b":"lookAtAction","c":128},{"a":{"a":26,"c":{"b":"questPlayerLookAtParams"}},"b":"playerLookAt","c":128}]}

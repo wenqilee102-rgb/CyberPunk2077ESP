@@ -1,0 +1,4 @@
+struct PlayerCombatControllerBlackboardListenersFunctions
+{
+	public    var crouchActive : CName;
+}

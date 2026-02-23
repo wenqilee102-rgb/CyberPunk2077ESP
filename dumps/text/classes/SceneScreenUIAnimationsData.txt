@@ -1,0 +1,21 @@
+class SceneScreenUIAnimationsData extends IScriptable
+{
+	public    var customAnimations : handle:WidgetAnimationManager;
+	public    var onSpawnAnimations : array:CName;
+	public    var defaultLibraryItemName : CName;
+	public    var defaultLibraryItemAnchor : inkEAnchor;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

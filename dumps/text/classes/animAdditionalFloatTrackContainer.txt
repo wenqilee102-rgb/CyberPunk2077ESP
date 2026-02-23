@@ -1,0 +1,5 @@
+import struct animAdditionalFloatTrackContainer
+{
+	var entries : array:animAdditionalFloatTrackEntry;
+	var overwriteExistingValues : Bool;
+}

@@ -1,0 +1,32 @@
+class PreventionDamage extends gameScriptableSystemRequest
+{
+	public    var target : whandle:gameObject;
+	public    var attackTime : Float;
+	public    var attackType : gamedataAttackType;
+	public    var damageDealtPercent : Float;
+	public    var isTargetKilled : Bool;
+
+	static function GetTargetTelemetryDescription(target : handle:gameObject) : String; // PreventionDamage::GetTargetTelemetryDescription;GameObject
+	static function GetTelemetryDescription(target : handle:gameObject, isTargetKilled : Bool) : String; // PreventionDamage::GetTelemetryDescription;GameObjectBool
+
+	function GetTelemetryDescription() : String; // GetTelemetryDescription;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

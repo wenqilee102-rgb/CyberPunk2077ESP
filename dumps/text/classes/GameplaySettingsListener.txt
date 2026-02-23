@@ -1,0 +1,54 @@
+class GameplaySettingsListener extends userSettingsVarListener
+{
+	private   var player : whandle:PlayerPuppet;
+	private   var userSettings : handle:userSettingsUserSettings;
+	private   var diffSettingsGroup : handle:userSettingsGroup;
+	private   var miscSettingsGroup : handle:userSettingsGroup;
+	private   var controlsGroup : handle:userSettingsGroup;
+	private   var vehicleControlsGroup : handle:userSettingsGroup;
+	private   var hudGroup : handle:userSettingsGroup;
+	public    var additiveCameraMovements : Float;
+	public    var isFastForwardByLine : Bool;
+	public    var InputHintsEnabled : Bool;
+	public    var movementDodgeEnabled : Bool;
+	public    var vehicleCombatHoldToShootEnabled : Bool;
+	private   var difficultyPath : CName;
+	private   var miscPath : CName;
+	private   var controlsPath : CName;
+	private   var vehicleControlsPath : CName;
+	private   var hudPath : CName;
+	private   var additiveCameraOptionName : CName;
+	private   var fastForwardOptionName : CName;
+	private   var inputHintsOptionName : CName;
+	private   var movementDodgeOptionName : CName;
+	private   var vehicleCombatHoldToShootOptionName : CName;
+
+	function Initialize(player : whandle:PlayerPuppet); // Initialize;PlayerPuppet
+	function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+	function RefreshAdditiveCameraMovementsSetting(); // RefreshAdditiveCameraMovementsSetting;
+	function RestoreJohnnyRelatedState(); // RestoreJohnnyRelatedState;
+	function UpdateFFSetting(); // UpdateFFSetting;
+	function UpdateInputHintsEnabled(); // UpdateInputHintsEnabled;
+	function UpdateMovementDodgeSettings(); // UpdateMovementDodgeSettings;
+	function UpdateVehicleCombatHoldToShootSettings(); // UpdateVehicleCombatHoldToShootSettings;
+}
+
+import class userSettingsVarListener extends IScriptable
+{
+	import function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+	import function Register(groupPath : CName) : Bool; // Register
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

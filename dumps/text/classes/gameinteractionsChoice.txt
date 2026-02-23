@@ -1,0 +1,9 @@
+import struct gameinteractionsChoice
+{
+	var caption : String;
+	var captionParts : gameinteractionsChoiceCaption;
+	var data : array:Variant;
+	var choiceMetaData : gameinteractionsChoiceMetaData;
+	var lookAtDescriptor : gameinteractionsChoiceLookAtDescriptor;
+	var doNotTurnOffPreventionSystem : Bool;
+}

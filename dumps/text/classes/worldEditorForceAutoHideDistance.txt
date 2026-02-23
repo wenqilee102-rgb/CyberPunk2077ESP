@@ -1,0 +1,9 @@
+import class worldEditorForceAutoHideDistance extends ISerializable
+{
+	var minAutoHideDistance : Float;
+	var multiplier : Float;
+}
+
+import class abstract ISerializable
+{
+}

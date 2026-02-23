@@ -1,0 +1,27 @@
+import class abstract gameIMovingPlatformMovementPointToPoint extends gameIMovingPlatformMovement
+{
+	import function SetDestinationLocalPosition(endPointLocal : Vector4); // SetDestinationLocalPosition
+	import function SetDestinationNode(endNode : NodeRef); // SetDestinationNode
+}
+
+import class abstract gameIMovingPlatformMovement extends IScriptable
+{
+	var initData : gameIMovingPlatformMovementInitData;
+	var endNode : NodeRef;
+
+	import function SetInitData(type : gameMovingPlatformMovementInitializationType, value : Float); // SetInitData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,32 @@
+class UI_ActiveVehicleDataDef extends gamebbScriptDefinition
+{
+	public    var VehPlayerStateData : gamebbScriptID_Variant;
+	public    var IsPlayerMounted : gamebbScriptID_Bool;
+	public    var IsTPPCameraOn : gamebbScriptID_Bool;
+	public    var PositionInRace : gamebbScriptID_Int32;
+	public    var IsFPPRearviewCameraActivated : gamebbScriptID_Bool;
+	public    var RemoteControlledVehicleData : gamebbScriptID_Variant;
+	public    var MountedWeaponsTargets : gamebbScriptID_Variant;
+	public    var MountedMissileLauncherAmmo : gamebbScriptID_Uint32;
+	public    var MountedPowerWeaponAmmo : gamebbScriptID_Uint32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

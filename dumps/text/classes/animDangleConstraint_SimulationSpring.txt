@@ -1,0 +1,43 @@
+import class animDangleConstraint_SimulationSpring extends animDangleConstraint_SimulationSingleBone
+{
+	var constraintSphereRadius : Float;
+	var constraintScale1 : Float;
+	var constraintScale2 : Float;
+	var mass : Float;
+	var damping : Float;
+	var pullForceFactor : Float;
+	var externalForceWS : Vector3;
+	var externalForceWsLink : animVectorLink;
+	var collisionSphereRadius : Float;
+	var invertedMass : Float;
+	var simulationFps : Float;
+	var gravityWS : Float;
+	var pullForceOriginLS : Vector3;
+	var projectionType : animSpringProjectionType;
+	var constraintOrientation : Vector2;
+	var cosOfHalfXAngle : Float;
+	var cosOfHalfYAngle : Float;
+	var sinOfHalfXAngle : Float;
+	var sinOfHalfYAngle : Float;
+}
+
+import class abstract animDangleConstraint_SimulationSingleBone extends animDangleConstraint_Simulation
+{
+	var dangleBone : animTransformIndex;
+}
+
+import class abstract animDangleConstraint_Simulation extends ISerializable
+{
+	var collisionRoundedShapes : array:animCollisionRoundedShape;
+	var jsonCollisionShapes : rRef:JsonResource;
+	var jsonCollisionShapesLoadedSuccessfully : Bool;
+	var alpha : Float;
+	var rotateParentToLookAtDangle : Bool;
+	var parentRotationAltersTransformsOfDangleAndItsChildren : Bool;
+	var parentRotationAltersTransformsOfNonDanglesAndItsChildren : Bool;
+	var dangleAltersTransformsOfItsChildren : Bool;
+}
+
+import class abstract ISerializable
+{
+}

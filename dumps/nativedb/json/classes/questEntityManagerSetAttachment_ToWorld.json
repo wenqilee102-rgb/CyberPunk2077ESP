@@ -1,0 +1,1 @@
+{"a":"questIEntityManagerSetAttachment_NodeSubType","b":"questEntityManagerSetAttachment_ToWorld","d":8,"e":[{"a":{"a":16},"b":"attachmentRef","c":128},{"a":{"b":"questAttachmentOffsetMode"},"b":"offsetMode","c":128},{"a":{"b":"Vector3"},"b":"customOffsetPos","c":128},{"a":{"b":"Quaternion"},"b":"customOffsetRot","c":128}]}

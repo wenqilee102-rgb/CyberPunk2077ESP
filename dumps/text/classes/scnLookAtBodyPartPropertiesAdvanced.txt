@@ -1,0 +1,4 @@
+import struct scnLookAtBodyPartPropertiesAdvanced
+{
+	var bodyPartName : CName;
+}

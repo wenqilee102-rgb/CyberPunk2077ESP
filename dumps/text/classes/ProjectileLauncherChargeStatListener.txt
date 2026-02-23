@@ -1,0 +1,54 @@
+class ProjectileLauncherChargeStatListener extends BaseChargesStatListener
+{
+	function GetRechargeDuration() : Int32; // GetRechargeDuration;
+	function Init(player : whandle:PlayerPuppet); // Init;PlayerPuppet
+	function Recharged(); // Recharged;
+}
+
+class BaseChargesStatListener extends gameCustomValueStatPoolsListener
+{
+	public    var player : whandle:PlayerPuppet;
+	public    var playedCueAlready : Bool;
+	public    var currentCharges : Int32;
+	public    var currentStatPoolValue : Int32;
+	public    var rechargeSoundCue : CName;
+	public    var statSystem : handle:gameStatsSystem;
+	public    var finalString : String;
+
+	function GetActiveItem(hotkey : gameEHotkey) : handle:gamedataItem_Record; // GetActiveItem;EHotkey
+	function GetCharges() : Int32; // GetCharges;
+	function GetRechargeDuration() : Int32; // GetRechargeDuration;
+	function Init(player : whandle:PlayerPuppet); // Init;PlayerPuppet
+	function MaxStatPoolValue() : Int32; // MaxStatPoolValue;
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+	function PlayRechagedSoundEvent(); // PlayRechagedSoundEvent;
+	function Recharged(); // Recharged;
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

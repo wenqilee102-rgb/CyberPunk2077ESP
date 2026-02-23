@@ -1,0 +1,6 @@
+struct LinkedStatusEffect
+{
+	public    var netrunnerIDs : array:entEntityID;
+	public    var targetID : entEntityID;
+	public    var statusEffectList : array:TweakDBID;
+}

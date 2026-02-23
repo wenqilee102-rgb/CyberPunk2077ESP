@@ -1,0 +1,8 @@
+import struct animSimpleBounceTransformOutput
+{
+	var targetTransform : animTransformIndex;
+	var parentTransform : animTransformIndex;
+	var targetTransformChannel : animTransformChannel;
+	var multiplier : Float;
+	var channelEntries : array:animSimpleBounceTransformOutput_ChannelEntry;
+}

@@ -1,0 +1,4 @@
+import struct gameCompressedSmartObjectPointProperties
+{
+	var propertyId : Uint16;
+}

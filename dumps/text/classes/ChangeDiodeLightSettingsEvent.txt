@@ -1,0 +1,26 @@
+class ChangeDiodeLightSettingsEvent extends redEvent
+{
+	public    var colorValues : array:Int32;
+	public    var strength : Float;
+	public    var time : Float;
+	public    var curve : CName;
+	public    var loop : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

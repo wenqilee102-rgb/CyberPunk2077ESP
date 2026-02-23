@@ -1,0 +1,6 @@
+struct ScriptHitData
+{
+	public    var animVariation : Int32;
+	public    var attackDirection : Int32;
+	public    var hitBodyPart : Int32;
+}

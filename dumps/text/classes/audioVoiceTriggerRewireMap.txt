@@ -1,0 +1,18 @@
+import class audioVoiceTriggerRewireMap extends audioAudioMetadata
+{
+	var includes : array:CName;
+	var items : array:audioVoiceTriggerRewireMapItem;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

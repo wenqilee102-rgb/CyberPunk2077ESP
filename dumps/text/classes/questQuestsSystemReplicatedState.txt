@@ -1,0 +1,12 @@
+import class questQuestsSystemReplicatedState extends gameIGameSystemReplicatedState
+{
+	var replicatedQuestPrefabs : array:questQuestPrefabsEntry;
+}
+
+import class abstract gameIGameSystemReplicatedState extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

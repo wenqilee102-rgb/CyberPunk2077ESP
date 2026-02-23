@@ -1,0 +1,14 @@
+import class questDynamicSpawnSystemEnemyDistance extends questIDistance
+{
+	var waveTag : CName;
+	var checkAllEnemies : Bool;
+	var distanceType : questDistanceType;
+}
+
+import class abstract questIDistance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

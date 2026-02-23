@@ -1,0 +1,23 @@
+class abstract AISubActionCustomEffectors_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCustomEffectors_Record); // AISubActionCustomEffectors_Record_Implementation::Activate;ScriptExecutionContextAISubActionCustomEffectors_Record
+	static function ApplyEffectors(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCustomEffectors_Record); // AISubActionCustomEffectors_Record_Implementation::ApplyEffectors;ScriptExecutionContextAISubActionCustomEffectors_Record
+	static function ApplyRemoveEffectors(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCustomEffectors_Record); // AISubActionCustomEffectors_Record_Implementation::ApplyRemoveEffectors;ScriptExecutionContextAISubActionCustomEffectors_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCustomEffectors_Record, duration : Float, interrupted : Bool); // AISubActionCustomEffectors_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionCustomEffectors_RecordFloatBool
+	static function RemoveEffectors(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCustomEffectors_Record); // AISubActionCustomEffectors_Record_Implementation::RemoveEffectors;ScriptExecutionContextAISubActionCustomEffectors_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCustomEffectors_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionCustomEffectors_Record_Implementation::Update;ScriptExecutionContextAISubActionCustomEffectors_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

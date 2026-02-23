@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"ForceDisableCarAlarm","d":0,"f":[{"a":"GetTweakDBChoiceRecord;","b":"GetTweakDBChoiceRecord","c":{"a":12},"d":32},{"a":"SetProperties;Bool","b":"SetProperties","d":48,"e":[{"a":{"a":1},"b":"isAlarmTriggered","c":0}]}]}

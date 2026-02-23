@@ -1,0 +1,5 @@
+import struct scnSectionInternalsActorBehavior
+{
+	var actorId : scnActorId;
+	var behaviorMode : scnSectionInternalsActorBehaviorMode;
+}

@@ -1,0 +1,10 @@
+import struct appearancePartComponentOverrides
+{
+	var componentName : CName;
+	var meshAppearance : CName;
+	var chunkMask : Uint64;
+	var useCustomTransform : Bool;
+	var initialTransform : Transform;
+	var visualScale : Vector3;
+	var acceptDismemberment : Bool;
+}

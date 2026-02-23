@@ -1,0 +1,5 @@
+import struct scnCheckDistractedReturnConditionParams
+{
+	var distracted : Bool;
+	var target : scnDistractedConditionTarget;
+}

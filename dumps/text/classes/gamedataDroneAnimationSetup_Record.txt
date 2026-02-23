@@ -1,0 +1,35 @@
+import class gamedataDroneAnimationSetup_Record extends gamedataTweakDBRecord
+{
+	import function Mass() : Float; // Mass
+	import function MassNormalizedCoefficient() : Float; // MassNormalizedCoefficient
+	import function PseudoAcceleration() : Float; // PseudoAcceleration
+	import function SizeBack() : Float; // SizeBack
+	import function SizeFront() : Float; // SizeFront
+	import function SizeLeft() : Float; // SizeLeft
+	import function SizeRight() : Float; // SizeRight
+	import function SpeedIdleThreshold() : Float; // SpeedIdleThreshold
+	import function StartingRecoveryBalance() : Float; // StartingRecoveryBalance
+	import function TiltAngleOnSpeed() : Float; // TiltAngleOnSpeed
+	import function TurnInertiaDamping() : Float; // TurnInertiaDamping
+	import function WalkTiltCoefficient() : Float; // WalkTiltCoefficient
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

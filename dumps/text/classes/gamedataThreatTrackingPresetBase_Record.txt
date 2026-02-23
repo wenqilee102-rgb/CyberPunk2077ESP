@@ -1,0 +1,34 @@
+import class gamedataThreatTrackingPresetBase_Record extends gamedataTweakDBRecord
+{
+	import function BaseAccuracy() : whandle:gamedataAccuracy_Record; // BaseAccuracy
+	import function BaseAccuracyHandle() : handle:gamedataAccuracy_Record; // BaseAccuracyHandle
+	import function BaseDroppingThreatCooldown() : Float; // BaseDroppingThreatCooldown
+	import function BeliefAccuracy() : whandle:gamedataAccuracy_Record; // BeliefAccuracy
+	import function BeliefAccuracyHandle() : handle:gamedataAccuracy_Record; // BeliefAccuracyHandle
+	import function DroppingCooldownPerHit() : Float; // DroppingCooldownPerHit
+	import function DroppingCooldownPerSecondWhileVisible() : Float; // DroppingCooldownPerSecondWhileVisible
+	import function MaximumDroppingCooldownValue() : Float; // MaximumDroppingCooldownValue
+	import function MountedHysteresisThreatDrop() : Vector2; // MountedHysteresisThreatDrop
+	import function MoveBeliefOnlyIfVisible() : Bool; // MoveBeliefOnlyIfVisible
+	import function VisibleBeliefSpeedMultiplier() : Float; // VisibleBeliefSpeedMultiplier
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

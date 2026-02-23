@@ -1,0 +1,5 @@
+import struct gameAnimationOverrideDefinition
+{
+	var animset : raRef:animAnimSet;
+	var variables : array:CName;
+}

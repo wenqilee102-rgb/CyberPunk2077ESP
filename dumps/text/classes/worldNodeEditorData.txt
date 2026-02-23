@@ -1,0 +1,28 @@
+import class worldNodeEditorData extends ISerializable
+{
+	var id : Uint64;
+	var name : CName;
+	var globalName : String;
+	var alternativeGlobalName : String;
+	var isGlobalNameLocked : Bool;
+	var isAlternativeGlobalNameLocked : Bool;
+	var isDestructibleNode : Bool;
+	var shouldSkipStreamingInEditor : Bool;
+	var excludeOnConsole : Bool;
+	var excludeOnNextGenConsoles : Bool;
+	var proxyMeshDependency : worldProxyMeshDependencyMode;
+	var transform : worldNodeTransform;
+	var pivotTransform : Transform;
+	var variantId : Uint32;
+	var questPrefabRefHash : Uint64;
+	var isInterior : Bool;
+	var isDiscarded : Bool;
+	var isSnapTarget : Bool;
+	var isSnapSource : Bool;
+	var maxStreamingDistance : Float;
+	var initialGlobalNameHash : String;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+class BlacklistEntry extends IScriptable
+{
+	private   var entryID : entEntityID;
+	private   var entryReason : BlacklistReason;
+	private   var warningsCount : Int32;
+	private   var reprimandID : Int32;
+
+	function AddWarning(); // AddWarning;
+	function ForgetReason(); // ForgetReason;
+	function GetEntityID() : entEntityID; // GetEntityID;
+	function GetReason() : BlacklistReason; // GetReason;
+	function GetWarningsCount() : Int32; // GetWarningsCount;
+	function Initialize(entityID : entEntityID, reason : BlacklistReason, id : Int32); // Initialize;EntityIDBlacklistReasonInt32
+	function ResetWarnings(); // ResetWarnings;
+	function UpdateBlacklistEntry(reason : BlacklistReason, id : Int32) : Bool; // UpdateBlacklistEntry;BlacklistReasonInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

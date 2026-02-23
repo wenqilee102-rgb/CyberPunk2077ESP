@@ -1,0 +1,4 @@
+import struct scnEffectId
+{
+	var id : Uint32;
+}

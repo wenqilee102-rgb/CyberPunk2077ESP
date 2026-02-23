@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"TechQA_ImageSwappingButtonController","d":0,"e":[{"a":{"a":14},"b":"textWidgetPath","c":128},{"a":{"a":27,"c":{"b":"inkTextWidget"}},"b":"textWidget","c":128}],"f":[{"a":"OnInitialize","c":{"a":1},"d":98},{"a":"SetDescription;script_ref<String>","b":"SetDescription","d":48,"e":[{"a":{"a":28,"c":{"a":12}},"b":"newDescription","c":0}]}]}

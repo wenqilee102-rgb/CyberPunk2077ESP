@@ -1,0 +1,12 @@
+struct UniqueTemplateData
+{
+	public    var recordId : TweakDBID;
+	public    var twintoneModelName : CName;
+	public    var customIcon : handle:gamedataUIIcon_Record;
+	public    var customMultilayers : array:vehicleVehicleCustomMultilayer;
+	public    var customDecals : array:vehicleVehicleDecalAttachmentData;
+	public    var globalClearCoatOverrides : vehicleVehicleClearCoatOverrides;
+	public    var partsClearCoatOverrides : array:vehicleVehiclePartsClearCoatOverrides;
+
+	static function Equals(dataA : UniqueTemplateData, dataB : UniqueTemplateData) : Bool; // UniqueTemplateData::Equals;UniqueTemplateDataUniqueTemplateData
+}

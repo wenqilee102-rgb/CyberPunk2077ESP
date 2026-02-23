@@ -1,0 +1,18 @@
+import class inkColorFillEffect extends inkIEffect
+{
+	var colorR : Float;
+	var colorG : Float;
+	var colorB : Float;
+	var colorA : Float;
+	var saturation : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

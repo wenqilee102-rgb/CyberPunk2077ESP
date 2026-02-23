@@ -1,0 +1,6 @@
+import struct inkInputIconMappingJSON
+{
+	var id : CName;
+	var part : CName;
+	var hold : Bool;
+}

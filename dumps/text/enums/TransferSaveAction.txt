@@ -1,0 +1,5 @@
+enum TransferSaveAction
+{
+	Export = 0,
+	Import = 1
+}

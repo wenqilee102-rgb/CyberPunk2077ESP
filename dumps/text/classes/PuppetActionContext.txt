@@ -1,0 +1,5 @@
+struct PuppetActionContext
+{
+	public    var requesterID : entEntityID;
+	public    var requestType : gamedeviceRequestType;
+}

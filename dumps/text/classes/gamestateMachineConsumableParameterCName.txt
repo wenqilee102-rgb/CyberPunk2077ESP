@@ -1,0 +1,10 @@
+import struct gamestateMachineConsumableParameterCName extends gamestateMachineActionParameterCName
+{
+	var consumed : Bool;
+}
+
+import struct gamestateMachineActionParameterCName
+{
+	var name : CName;
+	var value : CName;
+}

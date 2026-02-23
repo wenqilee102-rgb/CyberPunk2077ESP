@@ -1,0 +1,277 @@
+class gameuiInventoryGameController extends gameuiMenuGameController
+{
+	private   var TooltipsManagerRef : inkWidgetReference;
+	private   var buttonHintsManagerRef : inkWidgetReference;
+	private   var itemModeControllerRef : inkWidgetReference;
+	private   var defaultWrapper : inkWidgetReference;
+	private   var itemWrapper : inkWidgetReference;
+	private   var cyberwareSlotRootRefs : inkCompoundWidgetReference;
+	private   var cyberwareHolder : inkWidgetReference;
+	private   var cyberdeckInventoryStatsContainer : inkCompoundWidgetReference;
+	private   var paperDollWidget : inkWidgetReference;
+	private   var sortingButton : inkWidgetReference;
+	private   var sortingDropdown : inkWidgetReference;
+	private   var notificationRoot : inkWidgetReference;
+	private   var playerStatsWidget : inkWidgetReference;
+	private   var btnBackpack : inkWidgetReference;
+	private   var btnCyberware : inkWidgetReference;
+	private   var btnCrafting : inkWidgetReference;
+	private   var btnStats : inkWidgetReference;
+	private   var btnSets : inkWidgetReference;
+	private   var itemNotificationRoot : inkWidgetReference;
+	private   var TooltipsManager : whandle:gameuiTooltipsManager;
+	private   var menuEventDispatcher : whandle:inkMenuEventDispatcher;
+	private   var buttonHintsController : whandle:ButtonHints;
+	private   var player : whandle:PlayerPuppet;
+	private   var mode : InventoryModes;
+	private   var itemViewMode : ItemViewModes;
+	private   var itemModeLogicController : whandle:InventoryItemModeLogicController;
+	private   var animationProxy : handle:inkanimProxy;
+	private   var animDef : handle:inkanimDefinition;
+	private   var itemModeProxy : handle:inkanimProxy;
+	private   var itemModeOutroProxy : handle:inkanimProxy;
+	private   var paperDollProxy : handle:inkanimProxy;
+	private   var targetPaperDollVisibility : Bool;
+	private   var refreshUIRequested : Bool;
+	private   var InventoryList : array:whandle:InventoryItemDisplay;
+	private   var WeaponsList : array:whandle:InventoryItemDisplayController;
+	private   var EquipmentList : array:whandle:InventoryItemDisplayController;
+	private   var CyberwareList : array:whandle:InventoryItemDisplayController;
+	private   var PocketList : array:whandle:InventoryItemDisplayController;
+	private   var ConsumablesList : array:whandle:InventoryItemDisplayController;
+	private   var animationList : array:whandle:InventoryItemDisplayController;
+	private   var InventoryManager : handle:InventoryDataManagerV2;
+	private   var uiScriptableSystem : whandle:UIScriptableSystem;
+	private   var comparisonResolver : handle:ItemPreferredComparisonResolver;
+	private   var equipmentSystem : whandle:EquipmentSystem;
+	private   var EquipAreas : array:gamedataEquipmentArea;
+	private   var CyberwareAreas : array:gamedataEquipmentArea;
+	private   var WeaponAreas : array:gamedataItemType;
+	private   var PocketAreas : array:gamedataEquipmentArea;
+	private   var ConsumablesAreas : array:gamedataEquipmentArea;
+	protected var UIBBEquipment : handle:UI_EquipmentDef;
+	protected var UIBBItemMod : handle:UI_ItemModSystemDef;
+	private   var DisassembleCallback : handle:UI_CraftingDef;
+	protected var UIBBEquipmentBlackboard : whandle:gameIBlackboard;
+	protected var UIBBItemModBlackbord : whandle:gameIBlackboard;
+	private   var DisassembleBlackboard : whandle:gameIBlackboard;
+	private   var InventoryBBID : handle:redCallbackObject;
+	private   var EquipmentBBID : handle:redCallbackObject;
+	private   var SubEquipmentBBID : handle:redCallbackObject;
+	private   var ItemModBBID : handle:redCallbackObject;
+	private   var DisassembleBBID : handle:redCallbackObject;
+	private   var isE3Demo : Bool;
+	private   var inventoryStatsListener : handle:InventoryStatsListener;
+	private   var quantityPickerPopupToken : handle:inkGameNotificationToken;
+	private   var psmBlackboard : whandle:gameIBlackboard;
+	private   var cyberdeckInventoryStatsController : whandle:CyberdeckInventoryStatsController;
+	private   var equipmentAreaCategoryEventQueue : array:handle:EquipmentAreaCategoryCreated;
+	private   var cyberwareItems : array:gameInventoryItemData;
+	private   var equipmentAreaCategories : array:handle:EquipmentAreaCategory;
+	private   var wardrobeOutfitAreas : array:gamedataEquipmentArea;
+	private   var lastClothingSetIndex : Int32;
+	private   var telemetrySystem : whandle:gameTelemetryTelemetrySystem;
+	private   var CyberwareScreenUserData : handle:CyberwareDisplayWrapper;
+	private   var openItemMode : Bool;
+
+	event OnBack(userData : handle:IScriptable) : Bool; // OnBack
+	event OnCloseMenu(userData : handle:IScriptable) : Bool; // OnCloseMenu
+	event OnDefaultModeFadeInComplete(anim : handle:inkanimProxy) : Bool; // OnDefaultModeFadeInComplete
+	event OnDefaultModeFadeOutComplete(anim : handle:inkanimProxy) : Bool; // OnDefaultModeFadeOutComplete
+	event OnDefaultToItemModeComplete(anim : handle:inkanimProxy) : Bool; // OnDefaultToItemModeComplete
+	event OnDelayedRefreshUI(evt : handle:DelayedRefreshUI) : Bool; // OnDelayedRefreshUI
+	event OnDelayedSetItemModeShown(evt : handle:DelayedSetItemModeShown) : Bool; // OnDelayedSetItemModeShown
+	event OnDisassembleComplete(value : Variant) : Bool; // OnDisassembleComplete
+	event OnDropdownItemClickedEvent(evt : handle:DropdownItemClickedEvent) : Bool; // OnDropdownItemClickedEvent
+	event OnEquipmentAreaCategoryCreated(e : handle:EquipmentAreaCategoryCreated) : Bool; // OnEquipmentAreaCategoryCreated
+	event OnEquipmentClick(evt : handle:ItemDisplayClickEvent) : Bool; // OnEquipmentClick
+	event OnInitialize() : Bool; // OnInitialize
+	event OnInventoryHold(evt : handle:inkPointerEvent) : Bool; // OnInventoryHold
+	event OnItemChooserItemChanged(e : handle:ItemChooserItemChanged) : Bool; // OnItemChooserItemChanged
+	event OnItemModeFadeInComplete(anim : handle:inkanimProxy) : Bool; // OnItemModeFadeInComplete
+	event OnItemModeFadeOutComplete(anim : handle:inkanimProxy) : Bool; // OnItemModeFadeOutComplete
+	event OnItemModeItemChanged(e : handle:ItemModeItemChanged) : Bool; // OnItemModeItemChanged
+	event OnItemtoDefaultModeComplete(anim : handle:inkanimProxy) : Bool; // OnItemtoDefaultModeComplete
+	event OnLocalQuantityPickerPopupClosed(data : handle:inkGameNotificationData) : Bool; // OnLocalQuantityPickerPopupClosed
+	event OnOpenInventoryQuantityPickerRequest(request : handle:OpenInventoryQuantityPickerRequest) : Bool; // OnOpenInventoryQuantityPickerRequest
+	event OnQuantityPickerPopupClosed(data : handle:inkGameNotificationData) : Bool; // OnQuantityPickerPopupClosed
+	event OnRefreshUI(value : Variant) : Bool; // OnRefreshUI
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnSetUserData(userData : handle:IScriptable) : Bool; // OnSetUserData
+	event OnSlotSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnSlotSpawned
+	event OnSortingButtonClicked(evt : handle:inkPointerEvent) : Bool; // OnSortingButtonClicked
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function CountNewItems(items : script_ref:array:gameItemID) : Int32; // CountNewItems;script_ref<array<ItemID>>
+	function EquipItem(itemData : script_ref:gameInventoryItemData); // EquipItem;script_ref<InventoryItemData>
+	function GetAssociatedCategory(controller : handle:InventoryItemDisplayController) : array:whandle:InventoryItemDisplayController; // GetAssociatedCategory;InventoryItemDisplayController
+	function GetAttachmentDataForCustomizeFromInventory(inspectedItemData : script_ref:gameInventoryItemData, equipmentData : script_ref:array:gameInventoryItemData, boxData : script_ref:array:InventoryComboBoxData); // GetAttachmentDataForCustomizeFromInventory;script_ref<InventoryItemData>script_ref<array<InventoryItemData>>script_ref<array<InventoryComboBoxData>>
+	function GetAttachmentDataForInventoryItem(itemData : script_ref:gameInventoryItemData, boxData : script_ref:array:InventoryComboBoxData, allowUnequip : Bool); // GetAttachmentDataForInventoryItem;script_ref<InventoryItemData>script_ref<array<InventoryComboBoxData>>Bool
+	function GetCategoryHeader(displayData : InventoryItemDisplayData) : String; // GetCategoryHeader;InventoryItemDisplayData
+	function GetEquipementAreaDisplays(equipmentArea : gamedataEquipmentArea) : handle:EquipmentAreaDisplays; // GetEquipementAreaDisplays;gamedataEquipmentArea
+	function GetEquipmentAreaDisplaysFromCategory(equipmentAreas : script_ref:array:gamedataEquipmentArea, categoryArea : handle:EquipmentAreaCategory) : handle:EquipmentAreaDisplays; // GetEquipmentAreaDisplaysFromCategory;script_ref<array<gamedataEquipmentArea>>EquipmentAreaCategory
+	function GetEquipmentAreaPaperdollLocation(equipmentArea : gamedataEquipmentArea) : PaperdollPositionAnimation; // GetEquipmentAreaPaperdollLocation;gamedataEquipmentArea
+	function GetEquipmentAreas(iw : whandle:inkCompoundWidget, levels : Int32) : array:whandle:inkCompoundWidget; // GetEquipmentAreas;inkCompoundWidgetInt32
+	function GetEquipmentCategory(equipmentCategory : handle:InventoryItemDisplayCategoryArea) : handle:EquipmentAreaCategory; // GetEquipmentCategory;InventoryItemDisplayCategoryArea
+	function GetEquipmentCategoryByArea(equipmentArea : gamedataEquipmentArea) : handle:EquipmentAreaCategory; // GetEquipmentCategoryByArea;gamedataEquipmentArea
+	function GetEquipmentSlotControllerFromTarget(evt : handle:inkPointerEvent) : handle:InventoryItemDisplayController; // GetEquipmentSlotControllerFromTarget;inkPointerEvent
+	function GetFirstAvailableWeaponSlot() : Int32; // GetFirstAvailableWeaponSlot;
+	function GetInventoryItemControllerFromTarget(evt : handle:inkPointerEvent) : handle:InventoryItemDisplay; // GetInventoryItemControllerFromTarget;inkPointerEvent
+	function GetSide(controller : handle:InventoryItemDisplayController) : Bool; // GetSide;InventoryItemDisplayController
+	function GetSlotNameFromEqArea(area : gamedataEquipmentArea) : String; // GetSlotNameFromEqArea;gamedataEquipmentArea
+	function GetSlotType(areaTypes : script_ref:array:gamedataEquipmentArea) : CName; // GetSlotType;script_ref<array<gamedataEquipmentArea>>
+	function GetTooltipPlacement(controller : handle:InventoryItemDisplayController) : gameuiETooltipPlacement; // GetTooltipPlacement;InventoryItemDisplayController
+	function GetVisibleAdditionalWidgets() : array:whandle:inkWidget; // GetVisibleAdditionalWidgets;
+	function GetVisibleSlots(optional slotToSkip : handle:InventoryItemDisplayController) : array:handle:InventoryItemDisplayController; // GetVisibleSlots;InventoryItemDisplayController
+	function GetZoomArea(equipmentArea : gamedataEquipmentArea) : InventoryPaperdollZoomArea; // GetZoomArea;gamedataEquipmentArea
+	function HandlePostInitializeQueue(); // HandlePostInitializeQueue;
+	function HideTooltips(); // HideTooltips;
+	function InvlidateAllClothes(); // InvlidateAllClothes;
+	function IsAnEquipmentArea(equipmentArea : gamedataEquipmentArea) : Bool; // IsAnEquipmentArea;gamedataEquipmentArea
+	function IsAreaLockedByOutfit(equipmentArea : gamedataEquipmentArea) : Bool; // IsAreaLockedByOutfit;gamedataEquipmentArea
+	function IsEquipmentAreaCyberware(itemData : script_ref:gameInventoryItemData) : Bool; // IsEquipmentAreaCyberware;script_ref<InventoryItemData>
+	function IsItemACyberdeck(displayData : InventoryItemDisplayData) : Bool; // IsItemACyberdeck;InventoryItemDisplayData
+	function IsUnequipBlocked(itemID : gameItemID) : Bool; // IsUnequipBlocked;ItemID
+	function NotifyItemUpdate(optional equipmentArea : gamedataEquipmentArea, optional slotIndex : Int32, optional hotkey : gameEHotkey); // NotifyItemUpdate;gamedataEquipmentAreaInt32EHotkey
+	function OnInventoryItemHoverOver(itemData : script_ref:gameInventoryItemData, target : whandle:inkWidget); // OnInventoryItemHoverOver;script_ref<InventoryItemData>inkWidget
+	function OnQuantityPickerDisassembly(data : handle:QuantityPickerPopupCloseData); // OnQuantityPickerDisassembly;QuantityPickerPopupCloseData
+	function OpenCyberwareMenu(); // OpenCyberwareMenu;
+	function OpenCyberwareModificationScreen(displayData : InventoryItemDisplayData); // OpenCyberwareModificationScreen;InventoryItemDisplayData
+	function OpenDefaultMode(optional openingMenu : Bool); // OpenDefaultMode;Bool
+	function OpenItemMode(displayData : InventoryItemDisplayData); // OpenItemMode;InventoryItemDisplayData
+	function OpenQuantityPicker(itemData : script_ref:gameInventoryItemData, actionType : QuantityPickerActionType, optional local : Bool); // OpenQuantityPicker;script_ref<InventoryItemData>QuantityPickerActionTypeBool
+	function PlayGearToItemModeAnimation(moveAnimation : CName, hideAnimation : CName, target : handle:InventoryItemDisplayController, itemToHide : script_ref:array:handle:InventoryItemDisplayController); // PlayGearToItemModeAnimation;CNameCNameInventoryItemDisplayControllerscript_ref<array<InventoryItemDisplayController>>
+	function PlayMoveAnimation(target : handle:InventoryItemDisplayController); // PlayMoveAnimation;InventoryItemDisplayController
+	function PlayShowHideItemChooserAnimation(visible : Bool); // PlayShowHideItemChooserAnimation;Bool
+	function PlaySlidePaperdollAnimation(position : PaperdollPositionAnimation, optional hide : Bool); // PlaySlidePaperdollAnimation;PaperdollPositionAnimationBool
+	function PopulateArea(targetRoot : whandle:inkCompoundWidget, container : handle:EquipmentAreaDisplays, numberOfSlots : Int32, equipmentAreas : script_ref:array:gamedataEquipmentArea); // PopulateArea;inkCompoundWidgetEquipmentAreaDisplaysInt32script_ref<array<gamedataEquipmentArea>>
+	function ReadUICondition(condition : gamedataUICondition) : Bool; // ReadUICondition;gamedataUICondition
+	function RefreshEquippedWardrobeItems(); // RefreshEquippedWardrobeItems;
+	function RefreshPlayerCyberware(); // RefreshPlayerCyberware;
+	function RefreshUI(); // RefreshUI;
+	function RefreshedEquippedItemData(equippedItem : gameInventoryItemData); // RefreshedEquippedItemData;InventoryItemData
+	function RegisterToBB(); // RegisterToBB;
+	function SetInventoryItemButtonHintsHoverOut(); // SetInventoryItemButtonHintsHoverOut;
+	function SetInventoryItemButtonHintsHoverOver(displayingData : script_ref:gameInventoryItemData); // SetInventoryItemButtonHintsHoverOver;script_ref<InventoryItemData>
+	function SetupPlayerStats(player : whandle:PlayerPuppet, game : ScriptGameInstance); // SetupPlayerStats;PlayerPuppetGameInstance
+	function SetupSetButton(); // SetupSetButton;
+	function ShowNotification(gameInstance : ScriptGameInstance, type : UIMenuNotificationType); // ShowNotification;GameInstanceUIMenuNotificationType
+	function ShowTooltipsForItemData(equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, target : whandle:inkWidget); // ShowTooltipsForItemData;script_ref<InventoryItemData>script_ref<InventoryItemData>inkWidget
+	function StartModeTransitionAnimation(optional displayData : InventoryItemDisplayData); // StartModeTransitionAnimation;InventoryItemDisplayData
+	function SwapMode(mode : InventoryModes); // SwapMode;InventoryModes
+	function UnequipItem(controller : handle:InventoryItemDisplayController, itemData : script_ref:gameInventoryItemData); // UnequipItem;InventoryItemDisplayControllerscript_ref<InventoryItemData>
+	function UnregisterFromBB(); // UnregisterFromBB;
+	function UpdateDropdownContext(context : DropdownDisplayContext); // UpdateDropdownContext;DropdownDisplayContext
+	function UpdateNewItemsIndicators(); // UpdateNewItemsIndicators;
+	function WardrobeOutfitUnequipSet(); // WardrobeOutfitUnequipSet;
+	function ZoomCamera(target : Int32); // ZoomCamera;Int32
+}
+
+import class gameuiMenuGameController extends gameuiWidgetGameController
+{
+	private   var baseEventDispatcher : whandle:inkMenuEventDispatcher;
+
+	import function GetTelemetrySystem() : handle:gameITelemetrySystem; // GetTelemetrySystem
+	import function IsAnyActionWithoutAssignedKey() : Bool; // IsAnyActionWithoutAssignedKey
+	import function PushNotification(notificationTitle : CName, noticationDescription : CName); // PushNotification
+	import function RefreshInputIcons(); // RefreshInputIcons
+	import function RegisterToGlobalInputCallback(); // RegisterToGlobalInputCallback
+	import function UnregisterFromGlobalInputCallback(); // UnregisterFromGlobalInputCallback
+
+	event OnBack(userData : handle:IScriptable) : Bool; // OnBack
+	event OnInitialize() : Bool; // OnInitialize
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function ForceResetCursorType(); // ForceResetCursorType;
+}
+
+import class gameuiWidgetGameController extends worlduiIWidgetGameController
+{
+	import function GetBlackboardSystem() : handle:gameBlackboardSystem; // GetBlackboardSystem
+	import function GetOwnerEntity() : handle:entEntity; // GetOwnerEntity
+	import function GetPSMBlackboard(playerPuppet : handle:gameObject) : handle:gameIBlackboard; // GetPSMBlackboard
+	import function GetPlayerControlledObject() : handle:gameObject; // GetPlayerControlledObject
+	import function GetUIBlackboard() : handle:gameIBlackboard; // GetUIBlackboard
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function RegisterDebugCommand(debugFunctionName : CName); // RegisterDebugCommand
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float, optional forceSnapping : Bool); // SetCursorOverWidget
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+}
+
+import class abstract worlduiIWidgetGameController extends inkIWidgetController
+{
+	var elementRecordID : TweakDBID;
+
+	import function ProjectWorldToScreen(worldPosition : Vector4) : Vector2; // ProjectWorldToScreen
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+}
+
+import class abstract inkIWidgetController extends IScriptable
+{
+	var audioMetadataName : CName;
+
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function IsKeyboardConnected() : Bool; // IsKeyboardConnected
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function RequestProcessFitToViewport(); // RequestProcessFitToViewport
+	import function RequestSetFocus(widget : whandle:inkWidget); // RequestSetFocus
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : whandle:inkAsyncSpawnRequest; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindLibraryID(widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : CName; // FindLibraryID;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function ReadUICondition(condition : gamedataUICondition) : Bool; // ReadUICondition;gamedataUICondition
+	function RequestWidgetFromLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : CName; // RequestWidgetFromLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRefAsyncSpawnData
+	function RequestWidgetFromLibraryById(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryById;inkWidgetCNameResRefAsyncSpawnDatainkAsyncSpawnRequest
+	function RequestWidgetFromLibraryByRecord(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryByRecord;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordAsyncSpawnDatainkAsyncSpawnRequest
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

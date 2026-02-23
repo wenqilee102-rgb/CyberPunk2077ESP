@@ -1,0 +1,5 @@
+import struct gameMuppetInventoryState
+{
+	var slots : array:gameMuppetInventorySlotInfo;
+	var activeSlot : Int32;
+}

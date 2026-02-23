@@ -1,0 +1,8 @@
+import struct gameEffectNearlyHitAgentData
+{
+	var hitPosition : Vector4;
+	var hitDirection : Vector4;
+	var entity : whandle:entEntity;
+	var isPlayer : Bool;
+	var wasHit : Bool;
+}

@@ -1,0 +1,6 @@
+struct CyberwareUpgradeCostData
+{
+	public    var materialRecordID : TweakDBID;
+	public    var materialCount : Int32;
+	public    var moneyRequired : Int32;
+}

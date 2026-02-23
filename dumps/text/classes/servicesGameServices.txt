@@ -1,0 +1,7 @@
+import struct abstract servicesGameServices extends servicesGameServicesGalaxy
+{
+}
+
+import struct servicesGameServicesGalaxy
+{
+}

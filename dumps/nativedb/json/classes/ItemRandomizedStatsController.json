@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"ItemRandomizedStatsController","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"statName","c":130}],"f":[{"a":"SetData;script_ref<array<InventoryTooltipData_StatData>>","b":"SetData","d":48,"e":[{"a":{"a":28,"c":{"a":31,"c":{"b":"InventoryTooltipData_StatData"}}},"b":"data","c":0}]}]}

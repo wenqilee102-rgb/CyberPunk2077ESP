@@ -1,0 +1,17 @@
+import class visOccluderMeshResource extends visIOccluderResource
+{
+	var resourceVersion : Uint32;
+	var vertices : DataBuffer;
+	var indices : DataBuffer;
+	var boundingBox : Box;
+	var twoSided : Bool;
+}
+
+import class abstract visIOccluderResource extends ISerializable
+{
+	var resourceHash : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

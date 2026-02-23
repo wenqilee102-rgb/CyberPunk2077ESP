@@ -1,0 +1,12 @@
+import class toolsMessageLocation_EditorObject extends toolsIMessageLocation
+{
+	var path : toolsEditorObjectIDPath;
+}
+
+import class abstract toolsIMessageLocation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

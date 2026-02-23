@@ -1,0 +1,8 @@
+struct SSensesOperationData
+{
+	public    var isActivatorPlayer : Bool;
+	public    var isActivatorNPC : Bool;
+	public    var attitudeGroup : CName;
+	public    var operationType : ETriggerOperationType;
+	public    var operation : SBaseDeviceOperationData;
+}

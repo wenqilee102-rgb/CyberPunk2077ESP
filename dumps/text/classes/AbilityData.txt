@@ -1,0 +1,13 @@
+struct AbilityData
+{
+	public    var Empty : Bool;
+	public    var ID : gameItemID;
+	public    var Name : String;
+	public    var IconPath : String;
+	public    var CategoryName : String;
+	public    var Description : String;
+	public    var EquipmentArea : gamedataEquipmentArea;
+	public    var IsEquipped : Bool;
+	public    var GameItemData : handle:gameItemData;
+	public    var AssignedIndex : Int32;
+}

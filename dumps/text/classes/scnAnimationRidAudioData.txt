@@ -1,0 +1,8 @@
+import class scnAnimationRidAudioData extends ISerializable
+{
+	var events : array:handle:animAnimEvent;
+}
+
+import class abstract ISerializable
+{
+}

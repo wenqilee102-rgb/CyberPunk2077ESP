@@ -1,0 +1,5 @@
+struct GrenadePotentialHomingTarget
+{
+	public    var entity : whandle:ScriptedPuppet;
+	public    var targetSlot : CName;
+}

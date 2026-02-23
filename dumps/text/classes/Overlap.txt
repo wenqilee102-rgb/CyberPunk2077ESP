@@ -1,0 +1,7 @@
+struct Overlap
+{
+	public    var instructionNumber : Int32;
+	public    var otherInstruction : Int32;
+	public    var atStart : Bool;
+	public    var rarity : Int32;
+}

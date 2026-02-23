@@ -1,0 +1,5 @@
+import struct meshDestructionBond
+{
+	var bondIndex : Uint16;
+	var bondHealth : Uint8;
+}

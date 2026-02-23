@@ -1,0 +1,26 @@
+import class AIbehaviorSelectCoverTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var cover : handle:AIArgumentMapping;
+	var coverID : handle:AIArgumentMapping;
+	var multiCoverID : handle:AIArgumentMapping;
+	var combatTarget : handle:AIArgumentMapping;
+	var friendlyTarget : handle:AIArgumentMapping;
+	var combatZone : handle:AIArgumentMapping;
+	var sectorSelection : CName;
+	var ignoreRestrictMovementArea : handle:AIArgumentMapping;
+	var selectionPreset : handle:AIArgumentMapping;
+	var onActivationSelectionPreset : handle:AIArgumentMapping;
+	var secondStagePreset : handle:AIArgumentMapping;
+	var coverChangeThreshold : handle:AIArgumentMapping;
+	var coverGatheringCenterObject : handle:AIArgumentMapping;
+	var coverDisablingDuration : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

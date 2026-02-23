@@ -1,0 +1,6 @@
+struct SAttribute
+{
+	public    var attributeName : gamedataStatType;
+	public    var value : Int32;
+	public    var id : TweakDBID;
+}

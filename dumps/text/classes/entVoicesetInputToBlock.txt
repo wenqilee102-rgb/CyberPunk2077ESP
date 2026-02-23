@@ -1,0 +1,6 @@
+import struct entVoicesetInputToBlock
+{
+	var input : CName;
+	var blockSpecificVariation : Bool;
+	var variationNumber : Uint32;
+}

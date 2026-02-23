@@ -1,0 +1,7 @@
+import struct AIbehaviorNodeStatusDebuggerCommandEntry
+{
+	var nodeId : CGUID;
+	var status : AIbehaviorDebugNodeStatus;
+	var generation : Uint32;
+	var failure : handle:gamedebugFailure;
+}

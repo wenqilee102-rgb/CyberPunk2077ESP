@@ -1,0 +1,7 @@
+import struct animFloatClamp
+{
+	var useMin : Bool;
+	var min : Float;
+	var useMax : Bool;
+	var max : Float;
+}

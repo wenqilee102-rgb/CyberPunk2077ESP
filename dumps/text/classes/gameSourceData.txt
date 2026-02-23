@@ -1,0 +1,9 @@
+import class gameSourceData extends ISerializable
+{
+	var name : CName;
+	var savable : Bool;
+}
+
+import class abstract ISerializable
+{
+}

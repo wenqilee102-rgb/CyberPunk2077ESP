@@ -1,0 +1,21 @@
+class abstract AIActionMovePolicy extends IScriptable
+{
+	static function Add(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataMovementPolicy_Record, out policy : handle:movePolicies); // AIActionMovePolicy::Add;ScriptExecutionContextMovementPolicy_RecordMovePolicies
+	static function CheckCondition(context : AIbehaviorScriptExecutionContext, condition : handle:gamedataAIActionCondition_Record) : Bool; // AIActionMovePolicy::CheckCondition;ScriptExecutionContextAIActionCondition_Record
+	static function GetTargetPositionProvider(owner : handle:ScriptedPuppet, target : whandle:gameObject, trackingMode : gamedataTrackingMode) : handle:entIPositionProvider; // AIActionMovePolicy::GetTargetPositionProvider;ScriptedPuppetGameObjectgamedataTrackingMode
+	static function Pop(context : AIbehaviorScriptExecutionContext, out policy : handle:movePolicies); // AIActionMovePolicy::Pop;ScriptExecutionContextMovePolicies
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

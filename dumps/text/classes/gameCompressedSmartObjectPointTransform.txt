@@ -1,0 +1,4 @@
+import struct gameCompressedSmartObjectPointTransform
+{
+	var transformId : Uint16;
+}

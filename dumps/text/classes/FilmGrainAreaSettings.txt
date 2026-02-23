@@ -1,0 +1,17 @@
+import class FilmGrainAreaSettings extends IAreaSettings
+{
+	var strength : curveData:Vector4;
+	var luminanceBias : curveData:Float;
+	var grainSize : Vector3;
+	var applyAfterUpsampling : Bool;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

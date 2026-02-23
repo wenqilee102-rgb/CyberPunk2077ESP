@@ -1,0 +1,4 @@
+import struct GeometryShapeFace
+{
+	var indices : array:Uint32;
+}

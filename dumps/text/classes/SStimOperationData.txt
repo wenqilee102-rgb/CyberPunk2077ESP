@@ -1,0 +1,8 @@
+struct SStimOperationData
+{
+	public    var stimType : DeviceStimType;
+	public    var lifeTime : Float;
+	public    var radius : Float;
+	public    var operationType : EEffectOperationType;
+	public    var nodeRef : NodeRef;
+}

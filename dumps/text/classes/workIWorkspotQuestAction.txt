@@ -1,0 +1,7 @@
+import class abstract workIWorkspotQuestAction extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

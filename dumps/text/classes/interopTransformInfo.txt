@@ -1,0 +1,5 @@
+import struct interopTransformInfo
+{
+	var translation : Vector3;
+	var rotation : EulerAngles;
+}

@@ -1,0 +1,30 @@
+import class gameGameplayLogicPackageSystem extends gameIGameplayLogicPackageSystem
+{
+	import function ApplyPackage(object : whandle:gameObject, instigator : whandle:gameObject, packageID : TweakDBID); // ApplyPackage
+	import function ApplyPackages(object : whandle:gameObject, instigator : whandle:gameObject, packageID : TweakDBID, applyCount : Uint32); // ApplyPackages
+	import function GetAppliedPackages(object : whandle:gameObject, out outPackageIDs : array:TweakDBID); // GetAppliedPackages
+	import function RemovePackage(object : whandle:gameObject, packageID : TweakDBID); // RemovePackage
+	import function RemovePackages(object : whandle:gameObject, packageID : TweakDBID, removeCount : Uint32); // RemovePackages
+}
+
+import class abstract gameIGameplayLogicPackageSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

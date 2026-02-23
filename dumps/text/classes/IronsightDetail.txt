@@ -1,0 +1,23 @@
+class IronsightDetail extends IScriptable
+{
+	static function Fmodf(a : Float, b : Float) : Float; // IronsightDetail::Fmodf;FloatFloat
+	static function Pitch(forward : Vector4) : Float; // IronsightDetail::Pitch;Vector4
+	static function PlaybackCycleInfinite() : inkanimPlaybackOptions; // IronsightDetail::PlaybackCycleInfinite;
+	static function PlaybackCycleOnce() : inkanimPlaybackOptions; // IronsightDetail::PlaybackCycleOnce;
+	static function PlaybackWithTimeDilation(timeDilation : Float) : inkanimPlaybackOptions; // IronsightDetail::PlaybackWithTimeDilation;Float
+	static function SetSlide(widget : inkWidgetReference, startPosition : Vector2, horizontal : Float, vertical : Float); // IronsightDetail::SetSlide;inkWidgetRefVector2FloatFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import struct gameSlotWeaponData
+{
+	var weaponID : gameItemID;
+	var ammoCurrent : Int32;
+	var magazineCap : Int32;
+	var ammoId : gameItemID;
+	var triggerModeCurrent : gamedataTriggerMode;
+	var triggerModeList : array:gamedataTriggerMode;
+	var evolution : gamedataWeaponEvolution;
+	var isActive : Bool;
+	var isFirstEquip : Bool;
+}

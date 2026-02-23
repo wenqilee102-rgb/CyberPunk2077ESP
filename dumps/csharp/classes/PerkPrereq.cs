@@ -1,0 +1,31 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class PerkPrereq : gameIScriptablePrereq
+	{
+		private CBool _invert;
+		private CEnum<gamedataPerkType> _perk;
+
+		[Ordinal(0)] 
+		[RED("invert")] 
+		public CBool Invert
+		{
+			get => GetProperty(ref _invert);
+			set => SetProperty(ref _invert, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("perk")] 
+		public CEnum<gamedataPerkType> Perk
+		{
+			get => GetProperty(ref _perk);
+			set => SetProperty(ref _perk, value);
+		}
+
+		public PerkPrereq(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamePuppetBlackboardUpdater","c":"PuppetBlackboardUpdater","d":8,"f":[{"a":"AddDamageInfo","d":4,"e":[{"a":{"b":"gameuiDamageInfo"},"b":"damageInfo","c":0}]},{"a":"AddKillInfo","d":4,"e":[{"a":{"b":"gameuiKillInfo"},"b":"killInfo","c":0}]}]}

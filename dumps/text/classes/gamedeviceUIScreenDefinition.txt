@@ -1,0 +1,4 @@
+import struct gamedeviceUIScreenDefinition
+{
+	var screenType : TweakDBID;
+}

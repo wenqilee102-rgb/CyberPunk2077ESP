@@ -1,0 +1,1 @@
+{"a":"entIPlacedComponent","b":"gameNavmeshDetector","d":8,"f":[{"a":"OnNavmeshStateChanged;BoolFloatBool","b":"OnNavmeshStateChanged","d":50,"e":[{"a":{"a":1},"b":"onNavmesh","c":0},{"a":{"a":10},"b":"navmeshDistance","c":0},{"a":{"a":1},"b":"overlapGeometry","c":0}]}]}

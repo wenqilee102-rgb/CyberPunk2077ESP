@@ -1,0 +1,20 @@
+import class animAnimNode_GraphSlotConditions extends animAnimNode_GraphSlot
+{
+	var conditions : array:animGraphSlotCondition;
+}
+
+import class animAnimNode_GraphSlot extends animAnimNode_Base
+{
+	var name : CName;
+	var dontDeactivateInput : Bool;
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

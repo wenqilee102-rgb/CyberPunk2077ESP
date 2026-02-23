@@ -1,0 +1,1 @@
+{"a":"animAnimNode_QuaternionValue","b":"animAnimNode_DampQuaternion","d":8,"e":[{"a":{"a":10},"b":"defaultRotationSpeed","c":128},{"a":{"b":"EulerAngles"},"b":"defaultInitialValue","c":128},{"a":{"b":"animQuaternionLink"},"b":"inputNode","c":128},{"a":{"b":"animQuaternionLink"},"b":"initialValueNode","c":128},{"a":{"b":"animFloatLink"},"b":"rotationSpeedNode","c":128}]}

@@ -1,0 +1,37 @@
+import class scnSceneResource extends CResource
+{
+	var entryPoints : array:scnEntryPoint;
+	var exitPoints : array:scnExitPoint;
+	var notablePoints : array:scnNotablePoint;
+	var executionTagEntries : array:scnExecutionTagEntry;
+	var actors : array:scnActorDef;
+	var playerActors : array:scnPlayerActorDef;
+	var sceneGraph : handle:scnSceneGraph;
+	var localMarkers : array:scnLocalMarker;
+	var props : array:scnPropDef;
+	var ridResources : array:scnRidResourceHandler;
+	var workspots : array:handle:scnWorkspotData;
+	var workspotInstances : array:scnWorkspotInstance;
+	var resouresReferences : scnSRRefCollection;
+	var screenplayStore : scnscreenplayStore;
+	var locStore : scnlocLocStoreEmbedded;
+	var version : Uint32;
+	var voInfo : array:scnSceneVOInfo;
+	var effectDefinitions : array:scnEffectDef;
+	var effectInstances : array:scnEffectInstance;
+	var executionTags : array:scnExecutionTag;
+	var referencePoints : array:scnReferencePointDef;
+	var interruptionScenarios : array:scnInterruptionScenario;
+	var sceneSolutionHash : scnSceneSolutionHash;
+	var sceneCategoryTag : scnSceneCategoryTag;
+	var debugSymbols : scnDebugSymbols;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

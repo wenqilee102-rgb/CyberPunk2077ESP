@@ -1,0 +1,4 @@
+import struct toolsEditorObjectIDPath
+{
+	var elements : array:EditorObjectID;
+}

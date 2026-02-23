@@ -1,0 +1,16 @@
+import struct CEnvDisplaySettingsParams
+{
+	var enableInstantAdaptation : Bool;
+	var enableGlobalLightingTrajectory : Bool;
+	var enableEnvProbeInstantUpdate : Bool;
+	var allowEnvProbeUpdate : Bool;
+	var allowBloom : Bool;
+	var allowColorMod : Bool;
+	var allowAntialiasing : Bool;
+	var allowGlobalFog : Bool;
+	var allowDOF : Bool;
+	var allowSSAO : Bool;
+	var allowCloudsShadow : Bool;
+	var allowWaterShader : Bool;
+	var gamma : Float;
+}

@@ -1,0 +1,5 @@
+import struct FixedCapsule
+{
+	var PointRadius : Vector4;
+	var Height : Float;
+}

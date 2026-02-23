@@ -1,0 +1,7 @@
+import struct CameraCustomData_Persistent extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

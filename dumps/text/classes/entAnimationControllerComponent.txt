@@ -1,0 +1,68 @@
+import class entAnimationControllerComponent extends entIComponent
+{
+	var actionAnimDatabaseRef : rRef:animActionAnimDatabase;
+	var animDatabaseCollection : animAnimDatabaseCollection;
+	var controlBinding : handle:entAnimationControlBinding;
+
+	static function ApplyFeature(obj : handle:gameObject, inputName : CName, value : handle:animAnimFeature, optional delay : Float); // entAnimationControllerComponent::ApplyFeature;GameObjectCNameAnimFeatureFloat
+	static function ApplyFeatureToReplicate(obj : handle:gameObject, inputName : CName, value : handle:animAnimFeature, optional delay : Float); // entAnimationControllerComponent::ApplyFeatureToReplicate;GameObjectCNameAnimFeatureFloat
+	static function ApplyFeatureToReplicateOnHeldItems(obj : handle:gameObject, inputName : CName, value : handle:animAnimFeature, optional delay : Float); // entAnimationControllerComponent::ApplyFeatureToReplicateOnHeldItems;GameObjectCNameAnimFeatureFloat
+	static function PushEvent(obj : handle:gameObject, eventName : CName); // entAnimationControllerComponent::PushEvent;GameObjectCName
+	static function PushEventToObjAndHeldItems(obj : handle:gameObject, eventName : CName); // entAnimationControllerComponent::PushEventToObjAndHeldItems;GameObjectCName
+	static function PushEventToReplicate(obj : handle:gameObject, eventName : CName); // entAnimationControllerComponent::PushEventToReplicate;GameObjectCName
+	static function SetAnimWrapperWeight(obj : handle:gameObject, key : CName, value : Float); // entAnimationControllerComponent::SetAnimWrapperWeight;GameObjectCNameFloat
+	static function SetAnimWrapperWeightOnOwnerAndItems(owner : handle:gameObject, key : CName, value : Float); // entAnimationControllerComponent::SetAnimWrapperWeightOnOwnerAndItems;GameObjectCNameFloat
+	static function SetInputBool(obj : handle:gameObject, inputName : CName, value : Bool); // entAnimationControllerComponent::SetInputBool;GameObjectCNameBool
+	static function SetInputBoolToReplicate(obj : handle:gameObject, inputName : CName, value : Bool); // entAnimationControllerComponent::SetInputBoolToReplicate;GameObjectCNameBool
+	static function SetInputFloat(obj : handle:gameObject, inputName : CName, value : Float); // entAnimationControllerComponent::SetInputFloat;GameObjectCNameFloat
+	static function SetInputFloatToReplicate(obj : handle:gameObject, inputName : CName, value : Float); // entAnimationControllerComponent::SetInputFloatToReplicate;GameObjectCNameFloat
+	static function SetInputInt(obj : handle:gameObject, inputName : CName, value : Int32); // entAnimationControllerComponent::SetInputInt;GameObjectCNameInt32
+	static function SetInputIntToReplicate(obj : handle:gameObject, inputName : CName, value : Int32); // entAnimationControllerComponent::SetInputIntToReplicate;GameObjectCNameInt32
+	static function SetInputVector(obj : handle:gameObject, inputName : CName, value : Vector4); // entAnimationControllerComponent::SetInputVector;GameObjectCNameVector4
+	static function SetInputVectorToReplicate(obj : handle:gameObject, inputName : CName, value : Vector4); // entAnimationControllerComponent::SetInputVectorToReplicate;GameObjectCNameVector4
+	static function SetUsesSleepMode(obj : handle:gameObject, state : Bool); // entAnimationControllerComponent::SetUsesSleepMode;GameObjectBool
+
+	import function ApplyFeature(inputName : CName, value : handle:animAnimFeature); // ApplyFeature
+	import function GetAnimationDuration(animationName : CName) : Float; // GetAnimationDuration
+	import function PreloadAnimations(streamingContextName : CName, highPriority : Bool) : Bool; // PreloadAnimations
+	import function PushEvent(eventName : CName); // PushEvent
+	import function ScheduleFastForward(); // ScheduleFastForward
+	import function SetInputBool(inputName : CName, value : Bool); // SetInputBool
+	import function SetInputFloat(inputName : CName, value : Float); // SetInputFloat
+	import function SetInputInt(inputName : CName, value : Int32); // SetInputInt
+	import function SetInputQuaternion(inputName : CName, value : Quaternion); // SetInputQuaternion
+	import function SetInputVector(inputName : CName, value : Vector4); // SetInputVector
+	import function SetUsesSleepMode(allowSleepState : Bool); // SetUsesSleepMode
+
+	event OnSetInputVectorEvent(evt : handle:entAnimInputSetterVector) : Bool; // OnSetInputVectorEvent
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

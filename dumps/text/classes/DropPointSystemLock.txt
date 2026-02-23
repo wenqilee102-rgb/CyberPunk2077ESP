@@ -1,0 +1,4 @@
+struct DropPointSystemLock
+{
+	public    var lockReason : CName;
+}

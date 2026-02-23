@@ -1,0 +1,6 @@
+import struct AIArgumentOverrideWrapper
+{
+	var name : CName;
+	var type : AIArgumentType;
+	var definition : handle:AIArgumentDefinition;
+}

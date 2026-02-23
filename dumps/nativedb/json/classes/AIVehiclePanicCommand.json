@@ -1,0 +1,1 @@
+{"a":"AIVehicleCommand","b":"AIVehiclePanicCommand","d":8,"e":[{"a":{"a":1},"b":"allowSimplifiedMovement","c":128},{"a":{"a":1},"b":"ignoreTickets","c":128},{"a":{"a":1},"b":"disableStuckDetection","c":128},{"a":{"a":1},"b":"useSpeedBasedLookupRange","c":128},{"a":{"a":1},"b":"tryDriveAwayFromPlayer","c":128}]}

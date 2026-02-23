@@ -1,0 +1,22 @@
+class abstract AISubActionForceHitReaction_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceHitReaction_Record); // AISubActionForceHitReaction_Record_Implementation::Activate;ScriptExecutionContextAISubActionForceHitReaction_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceHitReaction_Record, duration : Float, interrupted : Bool); // AISubActionForceHitReaction_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionForceHitReaction_RecordFloatBool
+	static function SendForcedHitDataToAIBehavior(target : handle:gameObject, hitDirection : Int32, hitIntensity : Int32, hitType : Int32, hitBodyPart : Int32, stance : Int32, animVariation : Int32, hitSource : Int32); // AISubActionForceHitReaction_Record_Implementation::SendForcedHitDataToAIBehavior;GameObjectInt32Int32Int32Int32Int32Int32Int32
+	static function SendForcedTwitchDataToAnimationGraph(target : handle:gameObject, hitDirection : Int32, hitIntensity : Int32, hitType : Int32, hitBodyPart : Int32, stance : Int32, animVariation : Int32, hitSource : Int32); // AISubActionForceHitReaction_Record_Implementation::SendForcedTwitchDataToAnimationGraph;GameObjectInt32Int32Int32Int32Int32Int32Int32
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceHitReaction_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionForceHitReaction_Record_Implementation::Update;ScriptExecutionContextAISubActionForceHitReaction_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

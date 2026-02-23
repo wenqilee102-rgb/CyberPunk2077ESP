@@ -1,0 +1,4 @@
+import struct animTransformLink
+{
+	var node : whandle:animAnimNode_TransformValue;
+}

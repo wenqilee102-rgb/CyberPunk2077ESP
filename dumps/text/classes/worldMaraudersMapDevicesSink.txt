@@ -1,0 +1,28 @@
+import class worldMaraudersMapDevicesSink extends IScriptable
+{
+	import function BeginCategory(name : String); // BeginCategory
+	import function EndCategory(); // EndCategory
+	import function PushBool(key : String, value : Bool); // PushBool
+	import function PushFloat(key : String, value : Float); // PushFloat
+	import function PushInt32(key : String, value : Int32); // PushInt32
+	import function PushName(key : CName, value : CName); // PushName
+	import function PushQuaternion(key : String, value : Quaternion); // PushQuaternion
+	import function PushString(key : String, value : String); // PushString
+	import function PushUint32(key : String, value : Uint32); // PushUint32
+	import function PushVector2(key : String, value : Vector2); // PushVector2
+	import function PushVector4(key : String, value : Vector4); // PushVector4
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

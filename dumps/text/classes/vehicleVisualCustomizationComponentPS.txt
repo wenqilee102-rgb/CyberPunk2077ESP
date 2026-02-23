@@ -1,0 +1,47 @@
+class vehicleVisualCustomizationComponentPS extends gameComponentPS
+{
+	private   var storedAppliedVisualCustomization : array:VehicleCustomTemplatePersistentData;
+	private   var storedGenericVisualCustomizationTemplates : array:GenericTemplatePersistentData;
+	private   var storedUniqueVisualCustomizationTemplates : array:VehicleUniqueTemplatePersistentData;
+	private   var storedVisualCustomizationData : array:vehicleVisualCustomizationPersistentData;
+
+	function CanStoreVisualCustomizationTemplateType(type : VehicleVisualCustomizationType, optional modelName : CName) : Bool; // CanStoreVisualCustomizationTemplateType;VehicleVisualCustomizationTypeCName
+	function DeleteLegacyVisualCustomizationData(); // DeleteLegacyVisualCustomizationData;
+	function DeleteVisualCustomizationTemplate(template : VehicleVisualCustomizationTemplate, optional modelName : CName); // DeleteVisualCustomizationTemplate;VehicleVisualCustomizationTemplateCName
+	function GetAppliedCustomizationDataForVehicle(vehicleID : TweakDBID, out template : VehicleVisualCustomizationTemplate) : Bool; // GetAppliedCustomizationDataForVehicle;TweakDBIDVehicleVisualCustomizationTemplate
+	function GetLegacyVisualCustomizationData() : array:vehicleVisualCustomizationPersistentData; // GetLegacyVisualCustomizationData;
+	function GetMaxNumberOfVisualCustomizationTemplates(type : VehicleVisualCustomizationType) : Int32; // GetMaxNumberOfVisualCustomizationTemplates;VehicleVisualCustomizationType
+	function GetNumberOfStoredVisualCustomizationTemplates(type : VehicleVisualCustomizationType, optional modelName : CName) : Int32; // GetNumberOfStoredVisualCustomizationTemplates;VehicleVisualCustomizationTypeCName
+	function GetStoredUniqueTemplatesIndexForVehicle(modelName : CName) : Int32; // GetStoredUniqueTemplatesIndexForVehicle;CName
+	function GetStoredVisualCustomizationTemplate(type : VehicleVisualCustomizationType, index : Int32, optional modelName : CName) : VehicleVisualCustomizationTemplate; // GetStoredVisualCustomizationTemplate;VehicleVisualCustomizationTypeInt32CName
+	function HasVisualCustomizationTemplateStored(template : VehicleVisualCustomizationTemplate, optional modelName : CName) : Bool; // HasVisualCustomizationTemplateStored;VehicleVisualCustomizationTemplateCName
+	function RemoveCorruptedTemplates(); // RemoveCorruptedTemplates;
+	function StoreAppliedCustomizationDataForVehicle(vehicleID : TweakDBID, template : VehicleVisualCustomizationTemplate); // StoreAppliedCustomizationDataForVehicle;TweakDBIDVehicleVisualCustomizationTemplate
+	function StoreVisualCustomizationTemplate(template : VehicleVisualCustomizationTemplate, optional modelName : CName); // StoreVisualCustomizationTemplate;VehicleVisualCustomizationTemplateCName
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

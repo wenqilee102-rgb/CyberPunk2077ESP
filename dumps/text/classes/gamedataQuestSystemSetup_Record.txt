@@ -1,0 +1,31 @@
+import class gamedataQuestSystemSetup_Record extends gamedataTweakDBRecord
+{
+	import function ContentTokenMinimalCooldownWhenBlocking() : Float; // ContentTokenMinimalCooldownWhenBlocking
+	import function ContentTokenSpawnMaxCooldown() : Float; // ContentTokenSpawnMaxCooldown
+	import function ContentTokenSpawnMinCooldown() : Float; // ContentTokenSpawnMinCooldown
+	import function ContentTokenStackMaxSize() : Int32; // ContentTokenStackMaxSize
+	import function CustomTooltipActions() : array:String; // CustomTooltipActions
+	import function CustomTooltipActionsContains(item : String) : Bool; // CustomTooltipActionsContains
+	import function GetCustomTooltipActionsCount() : Int32; // GetCustomTooltipActionsCount
+	import function GetCustomTooltipActionsItem(index : Int32) : String; // GetCustomTooltipActionsItem
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

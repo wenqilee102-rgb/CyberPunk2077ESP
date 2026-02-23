@@ -1,0 +1,15 @@
+import class workEquipInventoryWeaponAction extends workIWorkspotItemAction
+{
+	var weaponType : workWeaponType;
+	var keepEquippedAfterExit : Bool;
+	var fallbackItem : TweakDBID;
+	var fallbackSlot : TweakDBID;
+}
+
+import class abstract workIWorkspotItemAction extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

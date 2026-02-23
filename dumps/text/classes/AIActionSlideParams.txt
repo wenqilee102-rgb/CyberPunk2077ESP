@@ -1,0 +1,9 @@
+struct AIActionSlideParams
+{
+	public    var distance : Float;
+	public    var directionAngle : Float;
+	public    var duration : Float;
+	public    var offset : Float;
+	public    var slideToTarget : Bool;
+	public    var debugDrawSlideLines : Bool;
+}

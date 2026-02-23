@@ -1,0 +1,16 @@
+import class entdismembermentEffectResource extends ISerializable
+{
+	var Name : CName;
+	var AppearanceNames : array:CName;
+	var BodyPartMask : physicsRagdollBodyPartE;
+	var Offset : Transform;
+	var Placement : entdismembermentPlacementE;
+	var ResourceSets : entdismembermentResourceSetMask;
+	var WoundType : entdismembermentWoundTypeE;
+	var Effect : raRef:worldEffect;
+	var MatchToWoundByName : Bool;
+}
+
+import class abstract ISerializable
+{
+}

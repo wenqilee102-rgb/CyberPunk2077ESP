@@ -1,0 +1,5 @@
+import struct questMultiplayerChoiceTokenParams
+{
+	var timeout : Uint32;
+	var compatibleDeviceName : CName;
+}

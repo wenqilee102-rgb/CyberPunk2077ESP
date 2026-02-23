@@ -1,0 +1,23 @@
+import class audioFootstepsMetadata extends audioAudioMetadata
+{
+	var defaultFootwearMetadata : CName;
+	var footwearMetadataArray : array:CName;
+	var slideEvent : CName;
+	var onEnterSound : CName;
+	var onExitSound : CName;
+	var defaultFootwearVfxMetadata : CName;
+	var footwearVfxMetadataArray : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

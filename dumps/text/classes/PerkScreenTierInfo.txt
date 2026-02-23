@@ -1,0 +1,9 @@
+struct PerkScreenTierInfo
+{
+	public    var wrapper : inkWidgetReference;
+	public    var requirementText : inkTextWidgetReference;
+	public    var attributeLevelWrapper : inkWidgetReference;
+	public    var highlightWidget : inkWidgetReference;
+	public    var unlocked : Bool;
+	public    var hovered : Bool;
+}

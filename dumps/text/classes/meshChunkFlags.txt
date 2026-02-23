@@ -1,0 +1,9 @@
+import struct meshChunkFlags
+{
+	var renderInScene : Bool;
+	var renderInShadows : Bool;
+	var isTwoSided : Bool;
+	var isRayTracedEmissive : Bool;
+	var isConsoleLOD0 : Bool;
+	var skipDynamicDecalGeneration : Bool;
+}

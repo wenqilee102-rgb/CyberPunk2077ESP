@@ -1,0 +1,6 @@
+struct Time
+{
+	public    var days : Int32;
+	public    var hours : Int32;
+	public    var minutes : Int32;
+}

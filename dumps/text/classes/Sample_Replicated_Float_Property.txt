@@ -1,0 +1,4 @@
+import struct Sample_Replicated_Float_Property
+{
+	var property : Float;
+}

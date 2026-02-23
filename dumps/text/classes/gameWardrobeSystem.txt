@@ -1,0 +1,44 @@
+import class gameWardrobeSystem extends gameIWardrobeSystem
+{
+	static function NumberToWardrobeClothingSetIndex(number : Int32) : gameWardrobeClothingSetIndex; // gameWardrobeSystem::NumberToWardrobeClothingSetIndex;Int32
+	static function SendWardrobeAddItemRequest(gameInstance : ScriptGameInstance, itemID : gameItemID); // gameWardrobeSystem::SendWardrobeAddItemRequest;GameInstanceItemID
+	static function SendWardrobeInspectItemRequest(gameInstance : ScriptGameInstance, itemID : gameItemID); // gameWardrobeSystem::SendWardrobeInspectItemRequest;GameInstanceItemID
+	static function WardrobeClothingSetIndexToNumber(slotIndex : gameWardrobeClothingSetIndex) : Int32; // gameWardrobeSystem::WardrobeClothingSetIndexToNumber;gameWardrobeClothingSetIndex
+
+	import function DeleteClothingSet(setIndex : gameWardrobeClothingSetIndex); // DeleteClothingSet
+	import function GetActiveClothingSet() : handle:gameClothingSet; // GetActiveClothingSet
+	import function GetActiveClothingSetIndex() : gameWardrobeClothingSetIndex; // GetActiveClothingSetIndex
+	import function GetClothingSets() : array:handle:gameClothingSet; // GetClothingSets
+	import function GetFilteredInventoryItemsData(equipmentArea : gamedataEquipmentArea, inventoryItemDataV2 : handle:IScriptable) : array:gameInventoryItemData; // GetFilteredInventoryItemsData
+	import function GetFilteredStoredItemIDs(equipmentArea : gamedataEquipmentArea) : array:gameItemID; // GetFilteredStoredItemIDs
+	import function GetStoredItemID(item : TweakDBID) : gameItemID; // GetStoredItemID
+	import function GetStoredItemIDs() : array:gameItemID; // GetStoredItemIDs
+	import function IsItemBlacklisted(itemID : gameItemID) : Bool; // IsItemBlacklisted
+	import function PushBackClothingSet(clothingSet : handle:gameClothingSet); // PushBackClothingSet
+	import function SetActiveClothingSetIndex(slotIndex : gameWardrobeClothingSetIndex); // SetActiveClothingSetIndex
+	import function StoreUniqueItemID(itemID : gameItemID) : Bool; // StoreUniqueItemID
+
+	function StoreUniqueItemIDAndMarkNew(gameInstance : ScriptGameInstance, itemID : gameItemID) : Bool; // StoreUniqueItemIDAndMarkNew;GameInstanceItemID
+}
+
+import class abstract gameIWardrobeSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

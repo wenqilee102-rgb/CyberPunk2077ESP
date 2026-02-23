@@ -1,0 +1,15 @@
+import class worldAcousticPortalNode extends worldNode
+{
+	var radius : Uint8;
+	var nominalRadius : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

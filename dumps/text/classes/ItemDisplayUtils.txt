@@ -1,0 +1,29 @@
+class ItemDisplayUtils extends IScriptable
+{
+	static function AsyncSpawnCommonSlot(gameController : handle:inkIWidgetController, parent : handle:inkWidget, slotName : CName, optional callBack : CName, optional userData : handle:IScriptable); // ItemDisplayUtils::AsyncSpawnCommonSlot;inkIGameControllerinkWidgetCNameCNameIScriptable
+	static function AsyncSpawnCommonSlotController(logicController : handle:inkWidgetLogicController, parent : handle:inkWidget, slotName : CName, callbackName : CName, optional userData : handle:IScriptable); // ItemDisplayUtils::AsyncSpawnCommonSlotController;inkLogicControllerinkWidgetCNameCNameIScriptable
+	static function SpawnCommonSlot(gameController : handle:inkIWidgetController, parent : handle:inkWidget, slotName : CName) : whandle:inkWidget; // ItemDisplayUtils::SpawnCommonSlot;inkIGameControllerinkWidgetCName
+	static function SpawnCommonSlot(logicController : handle:inkWidgetLogicController, parent : inkWidgetReference, slotName : CName) : whandle:inkWidget; // ItemDisplayUtils::SpawnCommonSlot;inkLogicControllerinkWidgetRefCName
+	static function SpawnCommonSlot(gameController : handle:inkIWidgetController, parent : inkWidgetReference, slotName : CName) : whandle:inkWidget; // ItemDisplayUtils::SpawnCommonSlot;inkIGameControllerinkWidgetRefCName
+	static function SpawnCommonSlot(logicController : handle:inkWidgetLogicController, parent : handle:inkWidget, slotName : CName) : whandle:inkWidget; // ItemDisplayUtils::SpawnCommonSlot;inkLogicControllerinkWidgetCName
+	static function SpawnCommonSlotAsync(logicController : handle:inkWidgetLogicController, parent : inkWidgetReference, slotName : CName, optional callBack : CName, optional userData : handle:IScriptable); // ItemDisplayUtils::SpawnCommonSlotAsync;inkLogicControllerinkWidgetRefCNameCNameIScriptable
+	static function SpawnCommonSlotAsync(gameController : handle:inkIWidgetController, parent : inkWidgetReference, slotName : CName, optional callBack : CName, optional userData : handle:IScriptable); // ItemDisplayUtils::SpawnCommonSlotAsync;inkIGameControllerinkWidgetRefCNameCNameIScriptable
+	static function SpawnCommonSlotController(gameController : handle:inkIWidgetController, parent : inkWidgetReference, slotName : CName) : whandle:inkWidgetLogicController; // ItemDisplayUtils::SpawnCommonSlotController;inkIGameControllerinkWidgetRefCName
+	static function SpawnCommonSlotController(logicController : handle:inkWidgetLogicController, parent : inkWidgetReference, slotName : CName) : whandle:inkWidgetLogicController; // ItemDisplayUtils::SpawnCommonSlotController;inkLogicControllerinkWidgetRefCName
+	static function SpawnCommonSlotController(logicController : handle:inkWidgetLogicController, parent : handle:inkWidget, slotName : CName) : whandle:inkWidgetLogicController; // ItemDisplayUtils::SpawnCommonSlotController;inkLogicControllerinkWidgetCName
+	static function SpawnCommonSlotController(gameController : handle:inkIWidgetController, parent : handle:inkWidget, slotName : CName) : whandle:inkWidgetLogicController; // ItemDisplayUtils::SpawnCommonSlotController;inkIGameControllerinkWidgetCName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

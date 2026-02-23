@@ -1,0 +1,12 @@
+struct MetaQuestStatus
+{
+	public    var MetaQuest1Hidden : Bool;
+	public    var MetaQuest1Value : Int32;
+	public    var MetaQuest1Description : String;
+	public    var MetaQuest2Hidden : Bool;
+	public    var MetaQuest2Description : String;
+	public    var MetaQuest2Value : Int32;
+	public    var MetaQuest3Hidden : Bool;
+	public    var MetaQuest3Description : String;
+	public    var MetaQuest3Value : Int32;
+}

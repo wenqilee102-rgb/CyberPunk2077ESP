@@ -1,0 +1,15 @@
+import class AIbehaviorPredictTargetMovementDefinition extends AIbehaviorTaskDefinition
+{
+	var target : handle:AIArgumentMapping;
+	var timeInterval : handle:AIArgumentMapping;
+	var result : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

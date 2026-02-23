@@ -1,0 +1,5 @@
+import struct toolsJiraProject
+{
+	var key : String;
+	var name : String;
+}

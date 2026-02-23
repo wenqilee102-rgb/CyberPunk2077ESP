@@ -1,0 +1,29 @@
+class abstract AISubActionSetTargetByTag_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetTargetByTag_Record); // AISubActionSetTargetByTag_Record_Implementation::Activate;ScriptExecutionContextAISubActionSetTargetByTag_Record
+	static function CheckPath(context : AIbehaviorScriptExecutionContext, startPosition : Vector4, endPosition : Vector4, optional offMeshTags : array:CName) : Bool; // AISubActionSetTargetByTag_Record_Implementation::CheckPath;ScriptExecutionContextVector4Vector4array<CName>
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetTargetByTag_Record, duration : Float, interrupted : Bool); // AISubActionSetTargetByTag_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionSetTargetByTag_RecordFloatBool
+	static function GetClosestIndexInRange(context : AIbehaviorScriptExecutionContext, minOwnerDistance : Float, maxOwnerDistance : Float, ownerDistances : script_ref:array:Float, minDistanceObj : Float, maxDistanceObj : Float, distancesObj : script_ref:array:Float, targetsPosition : array:Vector4, allowedOffMeshTags : script_ref:array:CName, lineOfSightTarget : Vector4, blockLoSByNonPenetrableObj : Bool) : Int32; // AISubActionSetTargetByTag_Record_Implementation::GetClosestIndexInRange;ScriptExecutionContextFloatFloatscript_ref<array<Float>>FloatFloatscript_ref<array<Float>>array<Vector4>script_ref<array<CName>>Vector4Bool
+	static function GetDistancesFromEntity(context : AIbehaviorScriptExecutionContext, targets : script_ref:array:handle:entEntity, distances : script_ref:array:Float) : Bool; // AISubActionSetTargetByTag_Record_Implementation::GetDistancesFromEntity;ScriptExecutionContextscript_ref<array<Entity>>script_ref<array<Float>>
+	static function GetDistancesFromTargetToPositions(context : AIbehaviorScriptExecutionContext, target : Vector4, positions : script_ref:array:Vector4, outDistances : script_ref:array:Float) : Bool; // AISubActionSetTargetByTag_Record_Implementation::GetDistancesFromTargetToPositions;ScriptExecutionContextVector4script_ref<array<Vector4>>script_ref<array<Float>>
+	static function GetFarthestIndexInRange(context : AIbehaviorScriptExecutionContext, minOwnerDistance : Float, maxOwnerDistance : Float, ownerDistances : script_ref:array:Float, minDistanceObj : Float, maxDistanceObj : Float, distancesObj : script_ref:array:Float, targetsPosition : array:Vector4, allowedOffMeshTags : script_ref:array:CName, lineOfSightTarget : Vector4, blockLoSByNonPenetrableObj : Bool) : Int32; // AISubActionSetTargetByTag_Record_Implementation::GetFarthestIndexInRange;ScriptExecutionContextFloatFloatscript_ref<array<Float>>FloatFloatscript_ref<array<Float>>array<Vector4>script_ref<array<CName>>Vector4Bool
+	static function GetPositionsFromEntity(context : AIbehaviorScriptExecutionContext, targets : script_ref:array:handle:entEntity, positions : script_ref:array:Vector4) : Bool; // AISubActionSetTargetByTag_Record_Implementation::GetPositionsFromEntity;ScriptExecutionContextscript_ref<array<Entity>>script_ref<array<Vector4>>
+	static function GetRandomIndexInRange(context : AIbehaviorScriptExecutionContext, minOwnerDistance : Float, maxOwnerDistance : Float, ownerDistances : script_ref:array:Float, minDistanceObj : Float, maxDistanceObj : Float, distancesObj : script_ref:array:Float, allowedOffMeshTags : script_ref:array:CName, optional targetsPosition : array:Vector4, lineOfSightTarget : Vector4, blockLoSByNonPenetrableObj : Bool) : Int32; // AISubActionSetTargetByTag_Record_Implementation::GetRandomIndexInRange;ScriptExecutionContextFloatFloatscript_ref<array<Float>>FloatFloatscript_ref<array<Float>>script_ref<array<CName>>array<Vector4>Vector4Bool
+	static function SelectIndex(context : AIbehaviorScriptExecutionContext, selectionPreference : CName, minDistance : Float, maxDistance : Float, distances : script_ref:array:Float, minDistanceObj : Float, maxDistanceObj : Float, distancesObj : script_ref:array:Float, optional targetsPosition : array:Vector4, allowedOffMeshTags : script_ref:array:CName, lineOfSightTarget : Vector4, blockLoSByNonPenetrableObj : Bool) : Int32; // AISubActionSetTargetByTag_Record_Implementation::SelectIndex;ScriptExecutionContextCNameFloatFloatscript_ref<array<Float>>FloatFloatscript_ref<array<Float>>array<Vector4>script_ref<array<CName>>Vector4Bool
+	static function SetTargetByTag(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetTargetByTag_Record) : Bool; // AISubActionSetTargetByTag_Record_Implementation::SetTargetByTag;ScriptExecutionContextAISubActionSetTargetByTag_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetTargetByTag_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionSetTargetByTag_Record_Implementation::Update;ScriptExecutionContextAISubActionSetTargetByTag_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

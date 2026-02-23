@@ -1,0 +1,12 @@
+import struct animSAnimationBufferBitwiseCompressionSettings
+{
+	var translationTolerance : Float;
+	var translationSkipFrameTolerance : Float;
+	var orientationTolerance : Float;
+	var orientationCompressionMethod : SAnimationBufferOrientationCompressionMethod;
+	var orientationSkipFrameTolerance : Float;
+	var scaleTolerance : Float;
+	var scaleSkipFrameTolerance : Float;
+	var trackTolerance : Float;
+	var trackSkipFrameTolerance : Float;
+}

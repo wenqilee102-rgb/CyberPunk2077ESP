@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"ForceIgnoreTargets","d":0,"e":[{"a":{"a":1},"b":"Repeat","c":128},{"a":{"b":"EAIAttitude"},"b":"Attitude","c":128}],"f":[{"a":"GetBaseCost;","b":"GetBaseCost","c":{"a":6},"d":32},{"a":"SetProperties;","b":"SetProperties","d":48}]}

@@ -1,0 +1,99 @@
+class AutoDriveSystem extends gameNativeAutodriveSystem
+{
+	private   var player : whandle:PlayerPuppet;
+	private   var playerVehicleStateCallbackHandle : handle:redCallbackObject;
+	private   var playerCombatStateCallbackHandle : handle:redCallbackObject;
+	private   var playerWeaponStateCallbackHandle : handle:redCallbackObject;
+	private   var playerMeleeWeaponStateCallbackHandle : handle:redCallbackObject;
+	private   var playerAttachedCallbackID : Uint32;
+	private   var playerDetachedCallbackID : Uint32;
+	private   var vehicleHealthListener : handle:AutodriveHealthChangeListener;
+	private   var autodriveQuestContentLockListener : handle:AutodriveQuestContentLockListener;
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnReachedWorldBoundary() : Bool; // OnReachedWorldBoundary
+
+	function GetActiveVehicleDataBB() : handle:gameIBlackboard; // GetActiveVehicleDataBB;
+	function GetActiveVehicleDataBBDef() : handle:UI_ActiveVehicleDataDef; // GetActiveVehicleDataBBDef;
+	function GetAutodriveAvailable() : Bool; // GetAutodriveAvailable;
+	function GetAutodriveDataBB() : handle:gameIBlackboard; // GetAutodriveDataBB;
+	function GetAutodriveDataBBDef() : handle:UI_AutodriveDataDef; // GetAutodriveDataBBDef;
+	function GetDistanceToCurrentDestination() : Float; // GetDistanceToCurrentDestination;
+	function GetEstimatedTimeToArrival() : Float; // GetEstimatedTimeToArrival;
+	function GetMapBB() : handle:gameIBlackboard; // GetMapBB;
+	function GetMapBBDef() : handle:UI_MapDef; // GetMapBBDef;
+	function HighlightValidRoadsOnMinimap(); // HighlightValidRoadsOnMinimap;
+	function OnAttach(); // OnAttach;
+	function OnAutoDriveHitRequest(request : handle:AutoDriveHitRequest); // OnAutoDriveHitRequest;AutoDriveHitRequest
+	function OnAutodriveToggled(enabled : Bool, isDelamain : Bool); // OnAutodriveToggled;BoolBool
+	function OnDetach(); // OnDetach;
+	function OnDisableAutoDriveRequest(request : handle:DisableAutoDriveRequest); // OnDisableAutoDriveRequest;DisableAutoDriveRequest
+	function OnEnableAutoDriveRequest(request : handle:EnableAutoDriveRequest); // OnEnableAutoDriveRequest;EnableAutoDriveRequest
+	function OnMeleeWeaponStateChange(value : Int32); // OnMeleeWeaponStateChange;Int32
+	function OnPlayerAttachedCallback(playerPuppet : handle:gameObject); // OnPlayerAttachedCallback;GameObject
+	function OnPlayerDetachedCallback(playerPuppet : handle:gameObject); // OnPlayerDetachedCallback;GameObject
+	function OnPlayerStateChange(value : Int32); // OnPlayerStateChange;Int32
+	function OnPlayerVehicleChange(data : Variant); // OnPlayerVehicleChange;Variant
+	function OnSendAutoDriveNotificationRequest(request : handle:gameSendAutoDriveNotificationRequest); // OnSendAutoDriveNotificationRequest;SendAutoDriveNotificationRequest
+	function OnStopAutoDriveOnDestinationReachedRequest(request : handle:gameStopAutoDriveOnDestinationReachedRequest); // OnStopAutoDriveOnDestinationReachedRequest;StopAutoDriveOnDestinationReachedRequest
+	function OnStopAutoDriveOnTeleportRequest(request : handle:StopAutoDriveOnTeleportRequest); // OnStopAutoDriveOnTeleportRequest;StopAutoDriveOnTeleportRequest
+	function OnStopAutoDriveRequest(request : handle:gameStopAutoDriveRequest); // OnStopAutoDriveRequest;StopAutoDriveRequest
+	function OnToggleFreeRoamRequest(request : handle:ToggleFreeRoamRequest); // OnToggleFreeRoamRequest;ToggleFreeRoamRequest
+	function OnUpdateAutoDriveAvailabilityRequest(request : handle:UpdateAutoDriveAvailabilityRequest); // OnUpdateAutoDriveAvailabilityRequest;UpdateAutoDriveAvailabilityRequest
+	function OnUpdateAutodriveOnDestinationChangeRequest(request : handle:UpdateAutodriveOnDestinationChangeRequest); // OnUpdateAutodriveOnDestinationChangeRequest;UpdateAutodriveOnDestinationChangeRequest
+	function OnUpdateAutodriveStateAfterQuestLockChange(request : handle:UpdateAutodriveStateAfterQuestLockChange); // OnUpdateAutodriveStateAfterQuestLockChange;UpdateAutodriveStateAfterQuestLockChange
+	function OnUpdateAutodriveStateAfterVehicleHealthChangeRequest(request : handle:UpdateAutodriveStateAfterVehicleHealthChange); // OnUpdateAutodriveStateAfterVehicleHealthChangeRequest;UpdateAutodriveStateAfterVehicleHealthChange
+	function OnUpdateAutodriveStateOnVehicleForceBrakeEnd(request : handle:UpdateAutodriveStateOnVehicleForceBrakeEnd); // OnUpdateAutodriveStateOnVehicleForceBrakeEnd;UpdateAutodriveStateOnVehicleForceBrakeEnd
+	function OnUpdateAutodriveStateOnVehicleQuickHackChange(request : handle:UpdateAutodriveStateOnVehicleQuickHackChange); // OnUpdateAutodriveStateOnVehicleQuickHackChange;UpdateAutodriveStateOnVehicleQuickHackChange
+	function OnWeaponStateChange(value : Int32); // OnWeaponStateChange;Int32
+	function SendNotification(message : String, type : gameSimpleMessageType); // SendNotification;StringSimpleMessageType
+	function SignalAutodriveAvailable(); // SignalAutodriveAvailable;
+	function StartListeningForPlayerMoveInputs(); // StartListeningForPlayerMoveInputs;
+	function StopAutodriveIfNecessary(stopVehicleIfDeactivated : Bool); // StopAutodriveIfNecessary;Bool
+	function StopListeningForPlayerMoveInputs(); // StopListeningForPlayerMoveInputs;
+	function StopPlayerVehicle(); // StopPlayerVehicle;
+}
+
+import class gameNativeAutodriveSystem extends gameScriptableSystem
+{
+	import function CheckCurrentLaneValidity() : gameAutodriveLaneValidityResult; // CheckCurrentLaneValidity
+	import function GetAutodriveDestination() : Vector3; // GetAutodriveDestination
+	import function GetAutodriveDestinationMappinID() : gameNewMappinID; // GetAutodriveDestinationMappinID
+	import function GetAutodriveDestinationType() : gameAutodriveDestinationType; // GetAutodriveDestinationType
+	import function GetAutodriveEnabled() : Bool; // GetAutodriveEnabled
+	import function GetAutodriveIsDelamain() : Bool; // GetAutodriveIsDelamain
+	import function GetAutodriveVehicle() : handle:vehicleBaseObject; // GetAutodriveVehicle
+	import function GetFreeRoamEnabled() : Bool; // GetFreeRoamEnabled
+	import function SetAutodriveEnabled(enabled : Bool, optional isDelamain : Bool) : Bool; // SetAutodriveEnabled
+	import function SetFreeRoamEnabled(enabled : Bool); // SetFreeRoamEnabled
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

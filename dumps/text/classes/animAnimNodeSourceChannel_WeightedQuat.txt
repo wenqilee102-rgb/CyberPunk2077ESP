@@ -1,0 +1,11 @@
+import class animAnimNodeSourceChannel_WeightedQuat extends ISerializable
+{
+	var channel : handle:animIAnimNodeSourceChannel_Quat;
+	var weight : Float;
+	var weightLink : animFloatLink;
+	var weightFloatTrack : animNamedTrackIndex;
+}
+
+import class abstract ISerializable
+{
+}

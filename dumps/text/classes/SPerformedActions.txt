@@ -1,0 +1,8 @@
+struct SPerformedActions
+{
+	public    var ID : CName;
+	public    var ActionContext : array:EActionContext;
+
+	static function ContainsActionContext(self : script_ref:SPerformedActions, actionContext : EActionContext) : Bool; // SPerformedActions::ContainsActionContext;script_ref<SPerformedActions>EActionContext
+	static function GetContextFromAction(selfPSID : gamePersistentID, actionToResolve : handle:ScriptableDeviceAction) : EActionContext; // SPerformedActions::GetContextFromAction;PersistentIDScriptableDeviceAction
+}

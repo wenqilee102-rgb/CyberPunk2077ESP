@@ -1,0 +1,39 @@
+import class gamedataComputerStyleUIDefinition_Record extends gamedataTweakDBRecord
+{
+	import function BannerWidget() : whandle:gamedataWidgetDefinition_Record; // BannerWidget
+	import function BannerWidgetHandle() : handle:gamedataWidgetDefinition_Record; // BannerWidgetHandle
+	import function FileThumbnailWidget() : whandle:gamedataWidgetDefinition_Record; // FileThumbnailWidget
+	import function FileThumbnailWidgetHandle() : handle:gamedataWidgetDefinition_Record; // FileThumbnailWidgetHandle
+	import function FileWidget() : whandle:gamedataWidgetDefinition_Record; // FileWidget
+	import function FileWidgetHandle() : handle:gamedataWidgetDefinition_Record; // FileWidgetHandle
+	import function KeypadWidget() : whandle:gamedataWidgetDefinition_Record; // KeypadWidget
+	import function KeypadWidgetHandle() : handle:gamedataWidgetDefinition_Record; // KeypadWidgetHandle
+	import function MailThumbnailWidget() : whandle:gamedataWidgetDefinition_Record; // MailThumbnailWidget
+	import function MailThumbnailWidgetHandle() : handle:gamedataWidgetDefinition_Record; // MailThumbnailWidgetHandle
+	import function MailWidget() : whandle:gamedataWidgetDefinition_Record; // MailWidget
+	import function MailWidgetHandle() : handle:gamedataWidgetDefinition_Record; // MailWidgetHandle
+	import function MainMenuButtonWidget() : whandle:gamedataWidgetDefinition_Record; // MainMenuButtonWidget
+	import function MainMenuButtonWidgetHandle() : handle:gamedataWidgetDefinition_Record; // MainMenuButtonWidgetHandle
+	import function MenuButtonWidget() : whandle:gamedataWidgetDefinition_Record; // MenuButtonWidget
+	import function MenuButtonWidgetHandle() : handle:gamedataWidgetDefinition_Record; // MenuButtonWidgetHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

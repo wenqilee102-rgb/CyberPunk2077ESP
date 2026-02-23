@@ -1,0 +1,15 @@
+import class worldEffectNode extends worldNode
+{
+	var effect : raRef:worldEffect;
+	var streamingDistanceOverride : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

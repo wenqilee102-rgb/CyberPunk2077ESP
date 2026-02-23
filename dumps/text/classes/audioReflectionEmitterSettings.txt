@@ -1,0 +1,32 @@
+import class audioReflectionEmitterSettings extends audioAudioMetadata
+{
+	var reflectionEvent : CName;
+	var fadeout : Float;
+	var reflectionDeltaThreshold : Float;
+	var maxConcurrentReflections : Uint32;
+	var broadcastChannel : Uint32;
+	var listenerRelativePosition : Bool;
+	var upReflectionEnabled : Bool;
+	var shortReflectionIndoors : Bool;
+	var reflectionVariant : audioReflectionVariant;
+	var backReflectionCutoffSpread : Float;
+	var backReflectionCutoffStrength : Float;
+	var backReflectionCutoffSoftness : Float;
+	var farReflectionDistance : Float;
+	var nearReflectionDistance : Float;
+	var minimumFaceAlignement : Float;
+	var fixedRaycastPitch : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

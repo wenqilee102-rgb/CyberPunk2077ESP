@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"FastTravelPrefetchRequest","d":0,"e":[{"a":{"a":16},"b":"destinationRef","c":128}],"f":[{"a":"GetDestinationRef;","b":"GetDestinationRef","c":{"a":16},"d":48},{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

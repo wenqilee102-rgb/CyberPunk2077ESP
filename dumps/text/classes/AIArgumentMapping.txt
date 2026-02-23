@@ -1,0 +1,26 @@
+import class AIArgumentMapping extends IScriptable
+{
+	var type : AIArgumentType;
+	var parameterizationType : AIParameterizationType;
+	var defaultValue : Variant;
+	var prefixValue : handle:AIArgumentMapping;
+	var customTypeName : CName;
+
+	import function GetArgumentName() : CName; // GetArgumentName
+	import function GetArgumentType() : AIArgumentType; // GetArgumentType
+	import function GetParameterizationType() : AIParameterizationType; // GetParameterizationType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

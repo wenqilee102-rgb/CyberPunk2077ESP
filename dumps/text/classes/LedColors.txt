@@ -1,0 +1,6 @@
+struct LedColors
+{
+	public    var off : ScriptLightSettings;
+	public    var red : ScriptLightSettings;
+	public    var green : ScriptLightSettings;
+}

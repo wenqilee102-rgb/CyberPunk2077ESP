@@ -1,0 +1,19 @@
+import class vehicleCinematicCameraShotStopCondition extends IScriptable
+{
+	function Evaluate(data : CinematicCameraData, finalTransform : WorldTransform) : Bool; // Evaluate;CinematicCameraDataWorldTransform
+	function Reset(); // Reset;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

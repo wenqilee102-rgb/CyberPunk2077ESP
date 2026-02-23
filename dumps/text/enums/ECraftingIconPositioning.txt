@@ -1,0 +1,6 @@
+enum ECraftingIconPositioning
+{
+	generic = 0,
+	weaponBig = 1,
+	weaponSmall = 2
+}

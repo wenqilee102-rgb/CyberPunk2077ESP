@@ -1,0 +1,22 @@
+class abstract AISubActionEquipOnSlot_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionEquipOnSlot_Record); // AISubActionEquipOnSlot_Record_Implementation::Activate;ScriptExecutionContextAISubActionEquipOnSlot_Record
+	static function ApplyAnimFeature(context : AIbehaviorScriptExecutionContext, itemsToEquip : script_ref:array:NPCItemToEquip, sendAnimFeature : Bool); // AISubActionEquipOnSlot_Record_Implementation::ApplyAnimFeature;ScriptExecutionContextscript_ref<array<NPCItemToEquip>>Bool
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionEquipOnSlot_Record, duration : Float, interrupted : Bool); // AISubActionEquipOnSlot_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionEquipOnSlot_RecordFloatBool
+	static function Equip(context : AIbehaviorScriptExecutionContext, itemsToEquip : script_ref:array:NPCItemToEquip, cacheEquipped : Bool) : Bool; // AISubActionEquipOnSlot_Record_Implementation::Equip;ScriptExecutionContextscript_ref<array<NPCItemToEquip>>Bool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionEquipOnSlot_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionEquipOnSlot_Record_Implementation::Update;ScriptExecutionContextAISubActionEquipOnSlot_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

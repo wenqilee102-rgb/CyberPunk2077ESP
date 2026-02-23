@@ -1,0 +1,23 @@
+import class gameEffectAction_KillFX extends gameEffectAction
+{
+	var action : gameEffectAction_KillFXAction;
+	var effectTag : CName;
+}
+
+import class abstract gameEffectAction extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

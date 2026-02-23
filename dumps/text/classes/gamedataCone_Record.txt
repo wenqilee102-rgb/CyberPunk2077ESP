@@ -1,0 +1,33 @@
+import class gamedataCone_Record extends gamedataSenseShape_Record
+{
+	import function Position1() : Vector3; // Position1
+	import function Position2() : Vector3; // Position2
+	import function Radius1() : Float; // Radius1
+	import function Radius2() : Float; // Radius2
+}
+
+import class gamedataSenseShape_Record extends gamedataTweakDBRecord
+{
+	import function DetectionMultiplier() : Float; // DetectionMultiplier
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

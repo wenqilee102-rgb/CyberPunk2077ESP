@@ -1,0 +1,6 @@
+import struct worldGlobalNodeRef
+{
+	var hash : Uint64;
+
+	import static function IsDefined(id : worldGlobalNodeRef) : Bool; // IsDefined
+}

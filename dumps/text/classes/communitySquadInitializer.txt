@@ -1,0 +1,12 @@
+import class communitySquadInitializer extends communitySpawnInitializer
+{
+	var entries : array:communitySquadInitializerEntry;
+}
+
+import class abstract communitySpawnInitializer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+struct BeamData
+{
+	public    var startDirection : Vector4;
+	public    var endDirection : Vector4;
+	public    var effect : handle:gameEffectInstance;
+	public    var target : whandle:gameObject;
+}

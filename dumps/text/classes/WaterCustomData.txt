@@ -1,0 +1,7 @@
+import struct WaterCustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

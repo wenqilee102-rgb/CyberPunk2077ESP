@@ -1,0 +1,15 @@
+import class inkGameNotificationsLayer extends inkFullScreenLayer
+{
+}
+
+import class abstract inkFullScreenLayer extends inkLayer
+{
+}
+
+import class abstract inkLayer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

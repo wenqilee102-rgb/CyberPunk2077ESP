@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_Vector
+{
+	var evaluator : handle:gameIEffectParameter_VectorEvaluator;
+
+	import static function Get(ctx : gameEffectInputParameter_Vector, bb : handle:gameIBlackboard) : Vector4; // Get
+}

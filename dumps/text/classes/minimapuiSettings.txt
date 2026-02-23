@@ -1,0 +1,5 @@
+import struct minimapuiSettings
+{
+	var showTime : Float;
+	var hideTime : Float;
+}

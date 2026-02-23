@@ -1,0 +1,8 @@
+import struct gameuiRoadEditorSegment
+{
+	var length : Uint32;
+	var curve : Float;
+	var hasCheckpoint : Bool;
+	var obstacleSettings : array:gameuiRoadEditorObstacleSettings;
+	var decorationSettings : array:gameuiRoadEditorDecorationSettings;
+}

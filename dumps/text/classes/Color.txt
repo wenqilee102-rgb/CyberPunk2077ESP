@@ -1,0 +1,14 @@
+import struct Color
+{
+	var Red : Uint8;
+	var Green : Uint8;
+	var Blue : Uint8;
+	var Alpha : Uint8;
+
+	static function ColorToHSB(color : Color) : HSBColor; // Color::ColorToHSB;Color
+	static function Equals(colorA : Color, colorB : Color, optional tolerance : Int32) : Bool; // Color::Equals;ColorColorInt32
+	static function HSBToColor(hue : Float, onlyHue : Bool, optional saturation : Float, optional brightness : Float) : Color; // Color::HSBToColor;FloatBoolFloatFloat
+	static function ToHDRColorDirect(color : Color) : HDRColor; // Color::ToHDRColorDirect;Color
+	static function ToLinear(sRGBColor : Color) : Color; // Color::ToLinear;Color
+	static function ToSRGB(linearColor : Color) : Color; // Color::ToSRGB;Color
+}

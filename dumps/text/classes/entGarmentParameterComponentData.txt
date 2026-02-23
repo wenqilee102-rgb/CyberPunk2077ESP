@@ -1,0 +1,24 @@
+import struct entGarmentParameterComponentData
+{
+	var compiledTriangleIndsData : DataBuffer;
+	var compiledVertexTbnData : DataBuffer;
+	var componentID : CRUID;
+	var meshGeometryHash : Uint64;
+	var visibleTrangleIndexBufferHash : Uint64;
+	var chunks : array:entGarmentParameterChunkData;
+	var chunksCount : Uint32;
+	var hideComponent : Bool;
+	var bendPowerMultiplier : Float;
+	var bendPowerOffset : Float;
+	var smoothingStrength : Float;
+	var smoothingThreshold : Float;
+	var smoothingExponent : Float;
+	var smoothNormalsEnabled : Bool;
+	var smoothingNumNeighbours : Uint32;
+	var garmentBorderThreshold : Float;
+	var removeHiddenTriangles : Bool;
+	var disableGarment : Bool;
+	var mergeWithInnerLayer : Bool;
+	var numIndices : Uint32;
+	var numOffsets : Uint32;
+}

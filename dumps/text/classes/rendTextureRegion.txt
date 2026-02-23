@@ -1,0 +1,10 @@
+import class rendTextureRegion extends ISerializable
+{
+	var name : CName;
+	var isStretch : Bool;
+	var regionParts : array:rendTextureRegionPart;
+}
+
+import class abstract ISerializable
+{
+}

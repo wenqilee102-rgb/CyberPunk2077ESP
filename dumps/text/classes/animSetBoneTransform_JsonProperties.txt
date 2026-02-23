@@ -1,0 +1,8 @@
+import class animSetBoneTransform_JsonProperties extends ISerializable
+{
+	var entries : array:animSetBoneTransform_JsonEntry;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct LibTreeDefEnum
+{
+	var variableId : Uint16;
+	var treeVariable : CName;
+	var v : Int64;
+}

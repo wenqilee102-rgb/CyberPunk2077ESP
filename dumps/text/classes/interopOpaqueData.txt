@@ -1,0 +1,6 @@
+import struct interopOpaqueData
+{
+	var description : String;
+	var payload : String;
+	var version : Int32;
+}

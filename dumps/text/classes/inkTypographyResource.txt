@@ -1,0 +1,13 @@
+import class inkTypographyResource extends CResource
+{
+	var languages : array:inkLanguageDefinition;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

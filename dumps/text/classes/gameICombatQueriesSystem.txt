@@ -1,0 +1,26 @@
+import class abstract gameICombatQueriesSystem extends gameIGameSystem
+{
+	import function CheckGrenadeThrowQuery(requester : handle:gameObject, refQueryId : Int32, outTargetPosition : Vector4, outThrowAngleDegrees : Float, outStartPos : gameGrenadeThrowStartType) : Bool; // CheckGrenadeThrowQuery
+	import function StartGrenadeThrowQuery(queryParams : gameGrenadeThrowQueryParams) : Int32; // StartGrenadeThrowQuery
+	import function StopAllGrenadeThrowQueries(); // StopAllGrenadeThrowQueries
+	import function StopGrenadeThrowQueries(requester : handle:gameObject); // StopGrenadeThrowQueries
+	import function StopGrenadeThrowQuery(requester : handle:gameObject, queryId : Int32); // StopGrenadeThrowQuery
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

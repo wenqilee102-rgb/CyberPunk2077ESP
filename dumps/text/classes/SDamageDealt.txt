@@ -1,0 +1,6 @@
+struct SDamageDealt
+{
+	public    var type : gamedataDamageType;
+	public    var value : Float;
+	public    var affectedStatPool : gamedataStatPoolType;
+}

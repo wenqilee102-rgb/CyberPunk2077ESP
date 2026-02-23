@@ -1,0 +1,26 @@
+import class animAnimNode_SpringDamp extends animAnimNode_FloatValue
+{
+	var massFactor : Float;
+	var springFactor : Float;
+	var dampFactor : Float;
+	var startFromDefaultValue : Bool;
+	var defaultInitialValue : Float;
+	var wrapAroundRange : Bool;
+	var rangeMin : Float;
+	var rangeMax : Float;
+	var timeStep : Float;
+	var inputNode : animFloatLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

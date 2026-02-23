@@ -1,0 +1,4 @@
+import struct worldWaterPatchNodeType
+{
+	var typeName : CName;
+}

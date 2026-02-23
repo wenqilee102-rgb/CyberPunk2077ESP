@@ -1,0 +1,5 @@
+struct VentilationAreaSetup
+{
+	public    var areaEffect : ETrapEffects;
+	public    var actionName : CName;
+}

@@ -1,0 +1,23 @@
+class ProgramEntry extends IScriptable
+{
+	public    var itemID : gameItemID;
+	public    var equippedItem : whandle:gamedataItem_Record;
+	public    var abilities : array:gameInventoryItemAbility;
+
+	static function GetSpecialAbilities(equippedItem : whandle:gamedataItem_Record) : array:gameInventoryItemAbility; // ProgramEntry::GetSpecialAbilities;Item_Record
+	static function Make(itemID : gameItemID, equippedItem : whandle:gamedataItem_Record) : handle:ProgramEntry; // ProgramEntry::Make;ItemIDItem_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+enum entAttachmentTarget
+{
+	Transform = 0,
+	TargetPosition = 1
+}

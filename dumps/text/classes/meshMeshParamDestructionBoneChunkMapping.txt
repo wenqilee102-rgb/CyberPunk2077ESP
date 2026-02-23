@@ -1,0 +1,12 @@
+import class meshMeshParamDestructionBoneChunkMapping extends meshMeshParameter
+{
+	var boneChunkMasks : array:Uint64;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

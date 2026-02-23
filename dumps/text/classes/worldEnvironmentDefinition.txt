@@ -1,0 +1,20 @@
+import class worldEnvironmentDefinition extends CResource
+{
+	var worldRenderSettings : WorldRenderAreaSettings;
+	var worldShadowConfig : WorldShadowConfig;
+	var worldLightingConfig : WorldLightingConfig;
+	var renderSettingFactors : RenderSettingFactors;
+	var weatherStates : array:handle:worldWeatherState;
+	var weatherStateTransitions : array:handle:worldWeatherStateTransition;
+	var areaEnvironmentParameterLayers : array:rRef:worldEnvironmentAreaParameters;
+	var resourceVersion : Uint8;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

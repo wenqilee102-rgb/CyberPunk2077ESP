@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"PhotoModeDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"IsActive","c":128},{"a":{"b":"gamebbScriptID_Uint32"},"b":"PlayerHealthState","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

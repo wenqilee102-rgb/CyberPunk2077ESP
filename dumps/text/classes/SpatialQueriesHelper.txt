@@ -1,0 +1,21 @@
+class SpatialQueriesHelper extends IScriptable
+{
+	static function GetFloorAngle(sourceObject : whandle:gameObject, out floorAngle : Float) : Bool; // SpatialQueriesHelper::GetFloorAngle;GameObjectFloat
+	static function HasSpaceInFront(sourceObject : whandle:gameObject, queryDirection : Vector4, groundClearance : Float, areaWidth : Float, areaLength : Float, areaHeight : Float) : Bool; // SpatialQueriesHelper::HasSpaceInFront;GameObjectVector4FloatFloatFloatFloat
+	static function HasSpaceInFront(sourceObject : whandle:gameObject, groundClearance : Float, areaWidth : Float, areaLength : Float, areaHeight : Float) : Bool; // SpatialQueriesHelper::HasSpaceInFront;GameObjectFloatFloatFloatFloat
+	static function IsTargetReachable(owner : handle:gameObject, target : handle:gameObject, targetPos : Vector4, depthTestForObstacle : Bool, out isObstacleVaultable : Bool) : Bool; // SpatialQueriesHelper::IsTargetReachable;GameObjectGameObjectVector4BoolBool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

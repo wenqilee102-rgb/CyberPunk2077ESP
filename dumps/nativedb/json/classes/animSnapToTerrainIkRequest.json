@@ -1,0 +1,1 @@
+{"b":"animSnapToTerrainIkRequest","d":8,"g":true,"e":[{"a":{"a":14},"b":"ikChain","c":128},{"a":{"b":"animTransformIndex"},"b":"footTransformIndex","c":128},{"a":{"b":"animTransformIndex"},"b":"poleVectorRefTransformIndex","c":128},{"a":{"b":"animNamedTrackIndex"},"b":"enableFootLockFloatTrack","c":128}]}

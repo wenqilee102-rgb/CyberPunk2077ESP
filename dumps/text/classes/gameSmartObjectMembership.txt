@@ -1,0 +1,8 @@
+import class gameSmartObjectMembership extends ISerializable
+{
+	var members : array:gameSmartObjectMembershipMemberShip;
+}
+
+import class abstract ISerializable
+{
+}

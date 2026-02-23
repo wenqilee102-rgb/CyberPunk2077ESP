@@ -1,0 +1,11 @@
+import struct inkLayerDefinitionCollection
+{
+	var menuLayer : inkMenuLayerDefinition;
+	var menuLayerMP : inkMenuLayerDefinition;
+	var hudLayer : inkHUDLayerDefinition;
+	var videoLayer : inkVideoLayerDefinition;
+	var offscreenLayer : inkOffscreenLayerDefinition;
+	var gameNotificationsLayer : inkGameNotificationsLayerDefinition;
+	var photoModeLayer : inkPhotoModeLayerDefinition;
+	var debugLayer : inkDebugLayerDefinition;
+}

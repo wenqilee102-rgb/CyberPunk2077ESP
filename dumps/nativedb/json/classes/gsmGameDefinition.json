@@ -1,0 +1,1 @@
+{"a":"CResource","b":"gsmGameDefinition","d":8,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"gsmMainQuest"}}},"b":"mainQuests","c":128},{"a":{"a":30,"c":{"b":"worldWorld"}},"b":"world","c":128},{"a":{"a":30,"c":{"b":"CResource"}},"b":"streamingWorld","c":128},{"a":{"a":12},"b":"worldName","c":128},{"a":{"b":"redTagList"},"b":"spawnPointTags","c":128}]}

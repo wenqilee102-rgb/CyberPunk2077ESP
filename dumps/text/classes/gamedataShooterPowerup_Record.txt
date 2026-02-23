@@ -1,0 +1,43 @@
+import class gamedataShooterPowerup_Record extends gamedataShooterObject_Record
+{
+	import function LibraryWidget() : String; // LibraryWidget
+	import function Scale() : Float; // Scale
+	import function SfxPick() : CName; // SfxPick
+	import function Value() : Float; // Value
+}
+
+import class gamedataShooterObject_Record extends gamedataArcadeObject_Record
+{
+	import function Gravity() : Float; // Gravity
+	import function Max_gravity() : Float; // Max_gravity
+	import function Score() : Float; // Score
+}
+
+import class gamedataArcadeObject_Record extends gamedataTweakDBRecord
+{
+	import function Animation() : CName; // Animation
+	import function ImageAnchorPoint() : Vector2; // ImageAnchorPoint
+	import function ImageTextureAtlas() : redResourceReferenceScriptToken; // ImageTextureAtlas
+	import function ImageTexturePart() : CName; // ImageTexturePart
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

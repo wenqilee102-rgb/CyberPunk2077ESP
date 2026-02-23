@@ -1,0 +1,21 @@
+class abstract AISubActionSetEquipSecondaryWeapons_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetEquipSecondaryWeapons_Record); // AISubActionSetEquipSecondaryWeapons_Record_Implementation::Activate;ScriptExecutionContextAISubActionSetEquipSecondaryWeapons_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetEquipSecondaryWeapons_Record, duration : Float, interrupted : Bool); // AISubActionSetEquipSecondaryWeapons_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionSetEquipSecondaryWeapons_RecordFloatBool
+	static function GetItemsToEquip(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCharacterRecordEquip_Record, itemsToEquip : script_ref:array:NPCItemToEquip) : Bool; // AISubActionSetEquipSecondaryWeapons_Record_Implementation::GetItemsToEquip;ScriptExecutionContextAISubActionCharacterRecordEquip_Recordscript_ref<array<NPCItemToEquip>>
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionSetEquipSecondaryWeapons_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionSetEquipSecondaryWeapons_Record_Implementation::Update;ScriptExecutionContextAISubActionSetEquipSecondaryWeapons_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

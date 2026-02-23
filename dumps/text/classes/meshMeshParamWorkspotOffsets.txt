@@ -1,0 +1,13 @@
+import class meshMeshParamWorkspotOffsets extends meshMeshParameter
+{
+	var names : array:CName;
+	var offsets : array:Matrix;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

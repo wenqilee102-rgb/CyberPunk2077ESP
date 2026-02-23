@@ -1,0 +1,14 @@
+import class workCoverTypeCondition extends workIWorkspotCondition
+{
+	var isHighCover : Bool;
+}
+
+import class abstract workIWorkspotCondition extends ISerializable
+{
+	var expectedResult : workWorkspotLogic;
+	var equals : Bool;
+}
+
+import class abstract ISerializable
+{
+}

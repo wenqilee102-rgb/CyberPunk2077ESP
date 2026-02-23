@@ -1,0 +1,5 @@
+struct SSFXOperationData
+{
+	public    var sfxName : CName;
+	public    var operationType : EEffectOperationType;
+}

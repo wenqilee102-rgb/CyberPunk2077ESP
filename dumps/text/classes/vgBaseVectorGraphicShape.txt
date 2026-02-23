@@ -1,0 +1,9 @@
+import class abstract vgBaseVectorGraphicShape extends ISerializable
+{
+	var calTransform : Matrix;
+	var yle : handle:vgVectorGraphicStyle;
+}
+
+import class abstract ISerializable
+{
+}

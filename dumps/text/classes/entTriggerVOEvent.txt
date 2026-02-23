@@ -1,0 +1,32 @@
+import class entTriggerVOEvent extends redEvent
+{
+	var triggerBaseName : CName;
+	var triggerVariationIndex : Uint32;
+	var triggerVariationNumber : Uint32;
+	var debugInitialContext : CName;
+	var answeringEntityIDHash : Uint64;
+	var ignoreGlobalVoLimitCheck : Bool;
+	var overridingVoContext : locVoiceoverContext;
+	var overridingVoiceoverExpression : locVoiceoverExpression;
+	var overrideVoiceoverExpression : Bool;
+	var overridingVisualStyleValue : Uint8;
+	var overrideVisualStyle : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,26 @@
+class BakcpackImmediateNotificationListener extends ImmediateNotificationListener
+{
+	private   var backpackInstance : whandle:gameuiBackpackMainGameController;
+
+	function Notify(message : Int32, id : Uint64, optional data : whandle:IScriptable); // Notify;Int32Uint64IScriptable
+	function SetBackpackInstance(instance : whandle:gameuiBackpackMainGameController); // SetBackpackInstance;BackpackMainGameController
+}
+
+class abstract ImmediateNotificationListener extends IScriptable
+{
+	function Notify(message : Int32, id : Uint64, optional data : whandle:IScriptable); // Notify;Int32Uint64IScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

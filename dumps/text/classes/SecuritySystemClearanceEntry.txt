@@ -1,0 +1,5 @@
+struct SecuritySystemClearanceEntry
+{
+	public    var user : entEntityID;
+	public    var level : ESecurityAccessLevel;
+}

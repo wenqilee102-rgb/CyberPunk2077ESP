@@ -1,0 +1,8 @@
+import struct gamebbScriptID_Vector2 extends gamebbScriptID
+{
+}
+
+import struct gamebbScriptID
+{
+	var None : gamebbID;
+}

@@ -1,0 +1,9 @@
+import struct worldStreamingSectorVariant
+{
+	var nodeRef : NodeRef;
+	var variantId : Uint32;
+	var parentVariantID : Uint32;
+	var name : CName;
+	var rangeIndex : Uint32;
+	var enabledByDefault : Bool;
+}

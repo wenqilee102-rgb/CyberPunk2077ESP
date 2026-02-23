@@ -1,0 +1,39 @@
+import class audioDroneMetadata extends audioCustomEmitterMetadata
+{
+	var boneName : CName;
+	var engineStart : CName;
+	var engineStop : CName;
+	var combatEnter : CName;
+	var combatExit : CName;
+	var targetLost : CName;
+	var idle : CName;
+	var initialReaction : CName;
+	var investigationIgnore : CName;
+	var noClearShot : CName;
+	var targetComplies : CName;
+	var lookForIntruder : CName;
+	var droneDestroyed : CName;
+	var droneDefeated : CName;
+	var commandHolsterWeapon : CName;
+	var commandLeaveArea : CName;
+	var finalWarning : CName;
+	var playDistance : Float;
+	var decorators : array:CName;
+}
+
+import class abstract audioCustomEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

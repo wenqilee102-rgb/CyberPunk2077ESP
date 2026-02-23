@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"gamedebugFailure","d":8,"e":[{"a":{"b":"gamedebugFailureId"},"b":"id","c":128},{"a":{"a":10},"b":"time","c":128},{"a":{"a":12},"b":"message","c":128},{"a":{"b":"gameDebugPath"},"b":"path","c":128},{"a":{"a":26,"c":{"b":"gamedebugFailure"}},"b":"previous","c":128},{"a":{"a":26,"c":{"b":"gamedebugFailure"}},"b":"cause","c":128}]}

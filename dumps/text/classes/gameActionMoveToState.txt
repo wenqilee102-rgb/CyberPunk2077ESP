@@ -1,0 +1,16 @@
+import struct gameActionMoveToState extends gameActionReplicatedState
+{
+	var targetPos : Vector3;
+	var toleranceRadius : Float;
+	var rotateEntity : Bool;
+	var moveStyle : Uint32;
+}
+
+import struct gameActionReplicatedState
+{
+	var replicationId : Uint32;
+	var type : Uint16;
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var updateBucket : Uint8;
+}

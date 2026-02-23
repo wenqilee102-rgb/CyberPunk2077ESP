@@ -1,0 +1,7 @@
+import struct gameMuppetComparisonReportItem
+{
+	var type : gameMuppetComparisonReportItemType;
+	var propertyName : String;
+	var serverValue : String;
+	var clientValue : String;
+}

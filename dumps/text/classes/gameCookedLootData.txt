@@ -1,0 +1,9 @@
+import class gameCookedLootData extends ISerializable
+{
+	var lootTables : array:TweakDBID;
+	var contentAssignment : TweakDBID;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+struct SPerk
+{
+	public    var type : gamedataPerkType;
+	public    var currLevel : Int32;
+}

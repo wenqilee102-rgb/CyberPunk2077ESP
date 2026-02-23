@@ -1,0 +1,8 @@
+import struct garmentHiddenTrianglesRemovalParams
+{
+	var garmentBorderThreshold : Float;
+	var removeHiddenTriangles : Bool;
+	var removeHiddenTrianglesRasterization : Bool;
+	var rayLengthInCM : Float;
+	var rayLengthMorphOffsetFactor : Float;
+}

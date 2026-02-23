@@ -1,0 +1,6 @@
+import struct questHUDEntryAnimationFinished
+{
+	var hudEntry : CName;
+	var animationName : CName;
+	var finished : Bool;
+}

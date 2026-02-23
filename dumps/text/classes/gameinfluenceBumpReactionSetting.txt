@@ -1,0 +1,9 @@
+import class gameinfluenceBumpReactionSetting extends ISerializable
+{
+	var reaction : gameinteractionsBumpIntensity;
+	var maxVelocity : Float;
+}
+
+import class abstract ISerializable
+{
+}

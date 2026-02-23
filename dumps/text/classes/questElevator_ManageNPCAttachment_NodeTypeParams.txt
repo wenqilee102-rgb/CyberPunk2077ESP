@@ -1,0 +1,6 @@
+import struct questElevator_ManageNPCAttachment_NodeTypeParams
+{
+	var elevatorRef : NodeRef;
+	var npcRef : gameEntityReference;
+	var action : questElevator_ManageNPCAttachment_NodeTypeParamsAction;
+}

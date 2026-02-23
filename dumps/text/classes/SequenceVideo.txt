@@ -1,0 +1,6 @@
+struct SequenceVideo
+{
+	public    var videoPath : redResourceReferenceScriptToken;
+	public    var audioEvent : CName;
+	public    var looped : Bool;
+}

@@ -1,0 +1,13 @@
+import class CurveSet extends CResource
+{
+	var curves : array:CurveSetEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"AIbehaviorDecoratorNodeDefinition","b":"AIbehaviorLimiterNodeDefinition","d":8,"e":[{"a":{"a":7},"b":"activationLimitPerFrame","c":128},{"a":{"a":1},"b":"delayChildActivation","c":128},{"a":{"a":1},"b":"delayChildActivationIfAttaching","c":128}]}

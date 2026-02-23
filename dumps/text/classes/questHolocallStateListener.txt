@@ -1,0 +1,11 @@
+import class abstract questHolocallStateListener extends worldIQuestPrefabStateListener
+{
+}
+
+import class abstract worldIQuestPrefabStateListener extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

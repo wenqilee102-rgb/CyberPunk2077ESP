@@ -1,0 +1,21 @@
+class HubMenuInitData extends IScriptable
+{
+	public    var menuName : CName;
+	public    var submenuName : CName;
+	public    var combatRestriction : Bool;
+	public    var userData : handle:IScriptable;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

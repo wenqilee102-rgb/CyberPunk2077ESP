@@ -1,0 +1,24 @@
+import class scneventsVFXDurationEvent extends scnSceneEvent
+{
+	var effectEntry : scnEffectEntry;
+	var startAction : scneventsVFXActionType;
+	var endAction : scneventsVFXActionType;
+	var sequenceShift : Uint32;
+	var performerId : scnPerformerId;
+	var nodeRef : NodeRef;
+	var muteSound : Bool;
+}
+
+import class abstract scnSceneEvent extends ISerializable
+{
+	var id : scnSceneEventId;
+	var type : scnEventType;
+	var startTime : Uint32;
+	var duration : Uint32;
+	var executionTagFlags : Uint8;
+	var scalingData : handle:scnIScalingData;
+}
+
+import class abstract ISerializable
+{
+}

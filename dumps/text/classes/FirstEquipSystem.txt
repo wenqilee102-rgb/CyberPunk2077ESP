@@ -1,0 +1,39 @@
+class FirstEquipSystem extends gameScriptableSystem
+{
+	protected var equipDataArray : array:EFirstEquipData;
+
+	static function GetInstance(owner : handle:gameObject) : handle:FirstEquipSystem; // FirstEquipSystem::GetInstance;GameObject
+
+	function HasPlayedFirstEquip(weaponID : TweakDBID) : Bool; // HasPlayedFirstEquip;TweakDBID
+	function OnCompletionOfFirstEquip(request : handle:CompletionOfFirstEquipRequest); // OnCompletionOfFirstEquip;CompletionOfFirstEquipRequest
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

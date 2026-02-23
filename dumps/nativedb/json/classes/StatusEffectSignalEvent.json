@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"StatusEffectSignalEvent","d":0,"e":[{"a":{"a":15},"b":"statusEffectID","c":128},{"a":{"a":10},"b":"priority","c":128},{"a":{"a":31,"c":{"a":14}},"b":"tags","c":128},{"a":{"a":31,"c":{"b":"EAIGateSignalFlags"}},"b":"flags","c":128},{"a":{"a":10},"b":"repeatSignalDelay","c":128}]}

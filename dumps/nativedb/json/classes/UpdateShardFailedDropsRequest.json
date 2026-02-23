@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"UpdateShardFailedDropsRequest","d":0,"e":[{"a":{"a":1},"b":"resetCounter","c":128},{"a":{"a":10},"b":"newFailedAttempts","c":128}]}

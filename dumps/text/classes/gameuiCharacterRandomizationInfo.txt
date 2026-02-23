@@ -1,0 +1,5 @@
+import struct gameuiCharacterRandomizationInfo
+{
+	var minRating : Uint32;
+	var maxRating : Uint32;
+}

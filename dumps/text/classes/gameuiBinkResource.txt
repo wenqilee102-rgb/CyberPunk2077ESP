@@ -1,0 +1,7 @@
+import struct gameuiBinkResource
+{
+	var video : raRef:Bink;
+
+	import static function GetPath(self : gameuiBinkResource) : redResourceReferenceScriptToken; // GetPath
+	import static function IsValid(self : gameuiBinkResource) : Bool; // IsValid
+}

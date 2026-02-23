@@ -1,0 +1,5 @@
+struct SGenericDevicePersistentData
+{
+	public    var genericActions : SGenericDeviceActionsData;
+	public    var customActions : SCustomDeviceActionsData;
+}

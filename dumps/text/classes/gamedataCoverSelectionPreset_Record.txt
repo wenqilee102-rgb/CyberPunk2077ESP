@@ -1,0 +1,40 @@
+import class gamedataCoverSelectionPreset_Record extends gamedataTweakDBRecord
+{
+	import function CombatRing() : whandle:gamedataAIRingType_Record; // CombatRing
+	import function CombatRingHandle() : handle:gamedataAIRingType_Record; // CombatRingHandle
+	import function DismissedCoverTimer() : Float; // DismissedCoverTimer
+	import function Filtering() : array:String; // Filtering
+	import function FilteringContains(item : String) : Bool; // FilteringContains
+	import function GatherRadius() : Float; // GatherRadius
+	import function GetFilteringCount() : Int32; // GetFilteringCount
+	import function GetFilteringItem(index : Int32) : String; // GetFilteringItem
+	import function GetPostFilteringCount() : Int32; // GetPostFilteringCount
+	import function GetPostFilteringItem(index : Int32) : String; // GetPostFilteringItem
+	import function GetScoringCount() : Int32; // GetScoringCount
+	import function GetScoringItem(index : Int32) : String; // GetScoringItem
+	import function PostFiltering() : array:String; // PostFiltering
+	import function PostFilteringContains(item : String) : Bool; // PostFilteringContains
+	import function Scoring() : array:String; // Scoring
+	import function ScoringContains(item : String) : Bool; // ScoringContains
+	import function UsesLineOfSight() : Bool; // UsesLineOfSight
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+struct WeakspotRecordData
+{
+	public    var isInvulnerable : Bool;
+	public    var slotID : TweakDBID;
+	public    var reducedMeleeDamage : Bool;
+}

@@ -1,0 +1,41 @@
+class PipelineProcessedCallback extends HitCallback
+{
+	function OnHitReceived(hitEvent : handle:gameeventsHitEvent); // OnHitReceived;gameHitEvent
+	function OnHitTriggered(hitEvent : handle:gameeventsHitEvent); // OnHitTriggered;gameHitEvent
+	function OnPipelineProcessed(hitEvent : handle:gameeventsHitEvent); // OnPipelineProcessed;gameHitEvent
+}
+
+class HitCallback extends gameScriptedDamageSystemListener
+{
+	protected var state : whandle:GenericHitPrereqState;
+
+	function OnMissTriggered(missEvent : handle:gameeventsMissEvent); // OnMissTriggered;gameMissEvent
+	function RegisterState(state : handle:gamePrereqState); // RegisterState;PrereqState
+	function UpdateState(hitEvent : handle:gameeventsHitEvent); // UpdateState;gameHitEvent
+}
+
+import class gameScriptedDamageSystemListener extends gameIDamageSystemListener
+{
+	function OnHitReceived(hitEvent : handle:gameeventsHitEvent); // OnHitReceived;gameHitEvent
+	function OnHitTriggered(hitEvent : handle:gameeventsHitEvent); // OnHitTriggered;gameHitEvent
+	function OnMissTriggered(missEvent : handle:gameeventsMissEvent); // OnMissTriggered;gameMissEvent
+	function OnPipelineProcessed(hitEvent : handle:gameeventsHitEvent); // OnPipelineProcessed;gameHitEvent
+}
+
+import class abstract gameIDamageSystemListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

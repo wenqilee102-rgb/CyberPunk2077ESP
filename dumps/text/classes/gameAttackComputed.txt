@@ -1,0 +1,27 @@
+import class gameAttackComputed extends IScriptable
+{
+	import function AddAttackValue(value : Float, optional damageType : gamedataDamageType); // AddAttackValue
+	import function GetAttackValue(damageType : gamedataDamageType) : Float; // GetAttackValue
+	import function GetAttackValues() : array:Float; // GetAttackValues
+	import function GetOriginalAttackValues() : array:Float; // GetOriginalAttackValues
+	import function GetTotalAttackValue(statPoolType : gamedataStatPoolType) : Float; // GetTotalAttackValue
+	import function MultAttackValue(value : Float, optional damageType : gamedataDamageType); // MultAttackValue
+	import function SetAttackValue(value : Float, optional damageType : gamedataDamageType); // SetAttackValue
+	import function SetAttackValues(attackValues : array:Float); // SetAttackValues
+
+	function GetDominatingDamageType() : gamedataDamageType; // GetDominatingDamageType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

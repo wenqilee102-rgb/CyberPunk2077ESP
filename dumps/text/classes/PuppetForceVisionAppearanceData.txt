@@ -1,0 +1,27 @@
+class PuppetForceVisionAppearanceData extends IScriptable
+{
+	public    var highlightType : EFocusForcedHighlightType;
+	public    var outlineType : EFocusOutlineType;
+	public    var stimRecord : whandle:gamedataStim_Record;
+	public    var transitionTime : Float;
+	public    var priority : EPriority;
+	public    var targets : array:whandle:ScriptedPuppet;
+	public    var highlightedTargets : array:whandle:ScriptedPuppet;
+	public    var investigationSlots : Int32;
+	public    var sourceHighlighted : Bool;
+	public    var effectName : String;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

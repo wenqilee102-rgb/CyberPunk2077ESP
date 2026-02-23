@@ -1,0 +1,1 @@
+{"b":"ncartLineListDef","d":0,"g":true,"e":[{"a":{"a":7},"b":"lineNumber","c":128},{"a":{"b":"Color"},"b":"lineColor","c":128},{"a":{"a":31,"c":{"b":"ncartStationListDef"}},"b":"stationsList","c":128},{"a":{"b":"inkWidgetReference"},"b":"lineSymbolWidget","c":128},{"a":{"a":1},"b":"lineIsLooped","c":128}]}

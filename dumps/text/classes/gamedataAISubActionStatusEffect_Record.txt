@@ -1,0 +1,39 @@
+import class gamedataAISubActionStatusEffect_Record extends gamedataAISubAction_Record
+{
+	import function Apply() : Bool; // Apply
+	import function Condition() : whandle:gamedataAIActionCondition_Record; // Condition
+	import function ConditionHandle() : handle:gamedataAIActionCondition_Record; // ConditionHandle
+	import function Delay() : Float; // Delay
+	import function GetStatusEffectsCount() : Int32; // GetStatusEffectsCount
+	import function GetStatusEffectsItem(index : Int32) : whandle:gamedataStatusEffect_Record; // GetStatusEffectsItem
+	import function GetStatusEffectsItemHandle(index : Int32) : handle:gamedataStatusEffect_Record; // GetStatusEffectsItemHandle
+	import function Remove() : Bool; // Remove
+	import function StatusEffects(out outList : array:whandle:gamedataStatusEffect_Record); // StatusEffects
+	import function StatusEffectsContains(item : whandle:gamedataStatusEffect_Record) : Bool; // StatusEffectsContains
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

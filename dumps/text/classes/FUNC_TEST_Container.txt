@@ -1,0 +1,7 @@
+struct FUNC_TEST_Container
+{
+	public    var BasePanel : inkBasePanelWidgetReference;
+	public    var Compound : inkCompoundWidgetReference;
+	public    var Leaf : inkLeafWidgetReference;
+	public    var Widget : inkWidgetReference;
+}

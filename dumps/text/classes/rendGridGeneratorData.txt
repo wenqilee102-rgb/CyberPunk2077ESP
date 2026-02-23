@@ -1,0 +1,11 @@
+import struct rendGridGeneratorData
+{
+	var startingPosition : Vector3;
+	var rotation : EulerAngles;
+	var xStep : Float;
+	var yStep : Float;
+	var numberOfXSteps : Uint32;
+	var numberOfYSteps : Uint32;
+	var orbitDistance : Float;
+	var zoom : Float;
+}

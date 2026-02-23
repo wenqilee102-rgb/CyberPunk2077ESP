@@ -1,0 +1,36 @@
+import struct interopReExportOptions
+{
+	var occlusionExportOptNames : array:CName;
+	var occlusionExportOptValues : array:Bool;
+	var typeExportOptions : array:Bool;
+	var filePath : String;
+	var runDispatcher : Bool;
+	var files : array:String;
+	var depotPath : String;
+	var maskDumpFilePath : AbsolutePathSerializable;
+	var exportMaterials : Bool;
+	var hjobToken : String;
+	var hjobParams : String;
+	var hjobParamsOutput : String;
+	var assetName : String;
+	var rigs : String;
+	var hjobTemplate : String;
+	var bodyType : String;
+	var baseType : String;
+	var exportBounds : Box;
+	var referencePoint : Vector3;
+	var assetPaths : array:String;
+	var jsonFile : AbsolutePathSerializable;
+	var prefabType : Uint8;
+	var proxyFromProxy : Bool;
+	var onlyProxy : Bool;
+	var exportTextures : Bool;
+	var minBBoxDiag : Double;
+	var asBBoxThreshold : Double;
+	var asBBoxPrefabsThreshold : Double;
+	var asBBoxPrefabsSubdivide : Double;
+	var asBBoxPrefabsForceLast : Bool;
+	var skipCollisions : Bool;
+	var preferSmallProxiesTreshold : Float;
+	var generatePlayerBlockingCollision : Bool;
+}

@@ -1,0 +1,15 @@
+import class gamestateMachineplayeractionsActionProjectileDetach extends gamestateMachineStateActionDefinition
+{
+}
+
+import class gamestateMachineStateActionDefinition extends gamestateMachineIStateActionDefinition
+{
+}
+
+import class abstract gamestateMachineIStateActionDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class animAnimStateTransitionCondition_BoolFeature extends animIAnimStateTransitionCondition
+{
+	var compareValue : Bool;
+	var featureName : CName;
+	var featurePropertyName : CName;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

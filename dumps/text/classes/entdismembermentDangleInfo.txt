@@ -1,0 +1,8 @@
+import struct entdismembermentDangleInfo
+{
+	var DangleSegmentLenght : Float;
+	var DangleVelocityDamping : Float;
+	var DangleBendStiffness : Float;
+	var DangleSegmentStiffness : Float;
+	var DangleCollisionSphereRadius : Float;
+}

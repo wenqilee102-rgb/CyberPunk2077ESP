@@ -1,0 +1,1 @@
+{"a":"senseIVisionBlockerShape","b":"senseVisionBlockerShape_BasicHemisphere","c":"VisionBlockerShape_BasicHemisphere","d":24,"f":[{"a":"Create","c":{"a":26,"c":{"b":"senseVisionBlockerShape_BasicHemisphere"}},"d":12,"e":[{"a":{"b":"Vector4"},"b":"position","c":0},{"a":{"a":10},"b":"radius","c":0}]}]}

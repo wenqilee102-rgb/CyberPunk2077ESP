@@ -1,0 +1,25 @@
+import class senseSimpleBox extends senseIShape
+{
+	var box : Box;
+}
+
+import class abstract senseIShape extends IScriptable
+{
+	var id : TweakDBID;
+
+	import function GetType() : senseEShapeType; // GetType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

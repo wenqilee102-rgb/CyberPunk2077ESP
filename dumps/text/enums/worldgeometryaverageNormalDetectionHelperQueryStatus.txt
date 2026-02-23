@@ -1,0 +1,5 @@
+enum worldgeometryaverageNormalDetectionHelperQueryStatus
+{
+	Finished = 0,
+	NoGeometry = 1
+}

@@ -1,0 +1,1 @@
+{"b":"AIBackgroundCombatStep","d":0,"g":true,"e":[{"a":{"a":10},"b":"timeMin","c":128},{"a":{"a":10},"b":"timeMax","c":128},{"a":{"b":"EAIBackgroundCombatStep"},"b":"type","c":128},{"a":{"b":"gameEntityReference"},"b":"argument","c":128},{"a":{"b":"AICoverExposureMethod"},"b":"exposureMethod","c":128}]}

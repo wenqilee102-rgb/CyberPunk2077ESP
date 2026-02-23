@@ -1,0 +1,5 @@
+import struct GameplayFunctionalTestReturnValue
+{
+	var value : String;
+	var errorInfo : String;
+}

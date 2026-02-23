@@ -1,0 +1,5 @@
+import struct audioVehicleWheelMaterialsMapItem
+{
+	var name : CName;
+	var audioMaterialCoeff : Float;
+}

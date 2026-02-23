@@ -1,0 +1,6 @@
+struct SWeakPoints
+{
+	public    var weakPointName : CName;
+	public    var loc_name_key : String;
+	public    var loc_desc_key : String;
+}

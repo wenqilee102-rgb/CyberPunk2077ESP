@@ -1,0 +1,22 @@
+struct SNetworkLinkData
+{
+	public    var beam : handle:gameFxInstance;
+	public    var fxResource : gameFxResource;
+	public    var slaveID : entEntityID;
+	public    var masterID : entEntityID;
+	public    var slavePos : Vector4;
+	public    var masterPos : Vector4;
+	public    var drawLink : Bool;
+	public    var isActive : Bool;
+	public    var isDynamic : Bool;
+	public    var revealMaster : Bool;
+	public    var revealSlave : Bool;
+	public    var permanent : Bool;
+	public    var isPing : Bool;
+	public    var isNetrunner : Bool;
+	public    var linkType : ELinkType;
+	public    var priority : EPriority;
+	public    var lifetime : Float;
+	public    var delayID : gameDelayID;
+	public    var weakLink : Bool;
+}

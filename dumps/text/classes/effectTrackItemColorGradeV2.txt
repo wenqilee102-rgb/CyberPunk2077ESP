@@ -1,0 +1,32 @@
+import class effectTrackItemColorGradeV2 extends effectTrackItem
+{
+	var contrast : effectEffectParameterEvaluatorFloat;
+	var contrastPivot : effectEffectParameterEvaluatorFloat;
+	var saturation : effectEffectParameterEvaluatorFloat;
+	var hue : effectEffectParameterEvaluatorFloat;
+	var brightness : effectEffectParameterEvaluatorFloat;
+	var lowRange : effectEffectParameterEvaluatorFloat;
+	var highRange : effectEffectParameterEvaluatorFloat;
+	var lift : effectEffectParameterEvaluatorVector;
+	var gamma : effectEffectParameterEvaluatorVector;
+	var gain : effectEffectParameterEvaluatorVector;
+	var offset : effectEffectParameterEvaluatorVector;
+	var shadow : effectEffectParameterEvaluatorVector;
+	var midtone : effectEffectParameterEvaluatorVector;
+	var highlight : effectEffectParameterEvaluatorVector;
+}
+
+import class abstract effectTrackItem extends effectBaseItem
+{
+	var timeBegin : Float;
+	var timeDuration : Float;
+	var ruid : CRUID;
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

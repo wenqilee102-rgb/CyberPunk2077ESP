@@ -1,0 +1,12 @@
+struct SecurityAreaData
+{
+	public    var securityArea : whandle:SecurityAreaControllerPS;
+	public    var securityAreaType : ESecurityAreaType;
+	public    var accessLevel : ESecurityAccessLevel;
+	public    var zoneName : String;
+	public    var entered : Bool;
+	public    var id : gamePersistentID;
+	public    var incomingFilters : EFilterType;
+	public    var outgoingFilters : EFilterType;
+	public    var shouldHideOnMinimap : Bool;
+}

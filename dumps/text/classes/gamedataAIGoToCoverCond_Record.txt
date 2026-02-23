@@ -1,0 +1,37 @@
+import class gamedataAIGoToCoverCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function Cover() : whandle:gamedataAIActionTarget_Record; // Cover
+	import function CoverHandle() : handle:gamedataAIActionTarget_Record; // CoverHandle
+	import function DesiredCover() : whandle:gamedataAIActionTarget_Record; // DesiredCover
+	import function DesiredCoverChanged() : Int32; // DesiredCoverChanged
+	import function DesiredCoverHandle() : handle:gamedataAIActionTarget_Record; // DesiredCoverHandle
+	import function IsCoverSelected() : Int32; // IsCoverSelected
+	import function IsEnteringOrLeavingCover() : Int32; // IsEnteringOrLeavingCover
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

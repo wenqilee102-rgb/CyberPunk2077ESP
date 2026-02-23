@@ -1,0 +1,5 @@
+import struct animLookAtRef
+{
+	var id : Int32;
+	var part : CName;
+}

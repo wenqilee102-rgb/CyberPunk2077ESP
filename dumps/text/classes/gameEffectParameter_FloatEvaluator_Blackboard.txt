@@ -1,0 +1,12 @@
+import class gameEffectParameter_FloatEvaluator_Blackboard extends gameIEffectParameter_FloatEvaluator
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+}
+
+import class abstract gameIEffectParameter_FloatEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

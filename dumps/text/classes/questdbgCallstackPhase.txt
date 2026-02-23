@@ -1,0 +1,11 @@
+import struct questdbgCallstackPhase extends questdbgCallstackBlock
+{
+	var phases : array:Uint64;
+	var blocks : array:Uint64;
+}
+
+import struct questdbgCallstackBlock
+{
+	var id : Uint64;
+	var parentId : Uint64;
+}

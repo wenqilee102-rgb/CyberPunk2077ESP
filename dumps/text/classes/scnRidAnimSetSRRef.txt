@@ -1,0 +1,4 @@
+import struct scnRidAnimSetSRRef
+{
+	var animations : array:scnSRRefId;
+}

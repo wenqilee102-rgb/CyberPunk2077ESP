@@ -1,0 +1,28 @@
+import class gamedataMovementParams_Record extends gamedataTweakDBRecord
+{
+	import function GetParamsCount() : Int32; // GetParamsCount
+	import function GetParamsItem(index : Int32) : whandle:gamedataMovementParam_Record; // GetParamsItem
+	import function GetParamsItemHandle(index : Int32) : handle:gamedataMovementParam_Record; // GetParamsItemHandle
+	import function Params(out outList : array:whandle:gamedataMovementParam_Record); // Params
+	import function ParamsContains(item : whandle:gamedataMovementParam_Record) : Bool; // ParamsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

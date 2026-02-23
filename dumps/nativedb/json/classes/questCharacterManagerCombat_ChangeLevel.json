@@ -1,0 +1,1 @@
+{"a":"questICharacterManagerCombat_NodeSubType","b":"questCharacterManagerCombat_ChangeLevel","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"puppetRef","c":128},{"a":{"b":"questInt32ValueWrapper"},"b":"level","c":128},{"a":{"a":1},"b":"setExactLevel","c":128}]}

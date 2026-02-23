@@ -1,0 +1,21 @@
+import class worldLightChannelShapeNode extends worldGeometryShapeNode
+{
+	var channels : rendLightChannel;
+	var streamingDistanceFactor : Float;
+}
+
+import class worldGeometryShapeNode extends worldNode
+{
+	var color : Color;
+	var shape : handle:GeometryShape;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

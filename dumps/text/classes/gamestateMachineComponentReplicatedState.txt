@@ -1,0 +1,15 @@
+import struct gamestateMachineComponentReplicatedState extends netIComponentState
+{
+	var stateContext : gamestateMachineStateContext;
+	var enterLadderParameter : handle:gamestateMachineparameterTypeLadderDescription;
+	var exitLadderParameter : Bool;
+
+	import function MP.RequestItem(slotID : TweakDBID, activeItemID : gameItemID); // MP.RequestItem
+	import function MP.RequestReload(slotID : TweakDBID, activeItemID : gameItemID); // MP.RequestReload
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

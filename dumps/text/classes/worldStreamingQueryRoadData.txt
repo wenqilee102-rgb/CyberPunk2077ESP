@@ -1,0 +1,9 @@
+import struct worldStreamingQueryRoadData
+{
+	var transform : Transform;
+	var splineData : handle:Spline;
+	var roadGlobalNodeId : worldGlobalNodeID;
+	var totalRoadWidth : Float;
+	var connectedRoadsStartIndex : Uint16;
+	var connectedRoadsCount : Uint16;
+}

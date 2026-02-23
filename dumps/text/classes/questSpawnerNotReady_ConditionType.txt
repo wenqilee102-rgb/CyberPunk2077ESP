@@ -1,0 +1,17 @@
+import class questSpawnerNotReady_ConditionType extends questISpawnerConditionType
+{
+	var spawnerReference : NodeRef;
+	var communityEntryNames : array:CName;
+}
+
+import class abstract questISpawnerConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import class worldPatrolSplinePointDefinition extends ISerializable
+{
+	var pointType : worldPatrolSplinePointTypes;
+	var node : NodeRef;
+	var target : gameEntityReference;
+}
+
+import class abstract ISerializable
+{
+}

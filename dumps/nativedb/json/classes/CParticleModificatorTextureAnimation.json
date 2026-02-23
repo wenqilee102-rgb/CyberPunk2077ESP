@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorTextureAnimation","d":8,"e":[{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"initialFrame","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"animationSpeed","c":128},{"a":{"b":"ETextureAnimationMode"},"b":"animationMode","c":128}]}

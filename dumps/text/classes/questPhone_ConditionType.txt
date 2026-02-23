@@ -1,0 +1,18 @@
+import class questPhone_ConditionType extends questISystemConditionType
+{
+	var caller : handle:gameJournalPath;
+	var addressee : handle:gameJournalPath;
+	var callPhase : questPhoneCallPhase;
+}
+
+import class abstract questISystemConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

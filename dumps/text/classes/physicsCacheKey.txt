@@ -1,0 +1,5 @@
+import struct physicsCacheKey
+{
+	var key : physicsGeometryKey;
+	var entryIndex : Uint32;
+}

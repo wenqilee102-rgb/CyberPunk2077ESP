@@ -1,0 +1,8 @@
+import struct physicsMaterialTags
+{
+	var aiVisibility : physicsMaterialTagVisibility;
+	var playerVisibility : physicsMaterialTagVisibility;
+	var projectilePenetration : physicsMaterialTagProjectilePenetration;
+	var projectileRicochet : physicsMaterialTagProjectileRicochet;
+	var vehicleTraction : physicsMaterialTagVehicleTraction;
+}

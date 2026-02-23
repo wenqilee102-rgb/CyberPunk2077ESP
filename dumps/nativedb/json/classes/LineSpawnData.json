@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"LineSpawnData","d":0,"e":[{"a":{"b":"scnDialogLineData"},"b":"lineData","c":128}],"f":[{"a":"Initialize;script_ref<scnDialogLineData>","b":"Initialize","d":48,"e":[{"a":{"a":28,"c":{"b":"scnDialogLineData"}},"b":"lineData","c":0}]}]}

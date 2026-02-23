@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"vehicleVehicleSlotsState","c":"VehicleSlotsState","d":8,"e":[{"a":{"b":"vehicleVehicleDoorState"},"b":"vehicleDoorState","c":132},{"a":{"b":"vehicleEVehicleWindowState"},"b":"vehicleWindowState","c":132},{"a":{"b":"vehicleVehicleDoorInteractionState"},"b":"vehicleInteractionState","c":132}]}

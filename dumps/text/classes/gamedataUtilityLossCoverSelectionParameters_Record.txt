@@ -1,0 +1,36 @@
+import class gamedataUtilityLossCoverSelectionParameters_Record extends gamedataCoverSelectionParameters_Record
+{
+	import function HitsTakenToClearScoreCover() : Int32; // HitsTakenToClearScoreCover
+	import function HitsTakenToClearScoreInIdle() : Int32; // HitsTakenToClearScoreInIdle
+	import function HitsTakenToClearScoreShootingSpot() : Int32; // HitsTakenToClearScoreShootingSpot
+	import function UtilityLossMultiplier() : Float; // UtilityLossMultiplier
+	import function UtilityLossTimeoutCover() : Float; // UtilityLossTimeoutCover
+	import function UtilityLossTimeoutInIdle() : Float; // UtilityLossTimeoutInIdle
+	import function UtilityLossTimeoutShootingSpot() : Float; // UtilityLossTimeoutShootingSpot
+}
+
+import class gamedataCoverSelectionParameters_Record extends gamedataTweakDBRecord
+{
+	import function ScoreOnlyForCombatTarget() : Bool; // ScoreOnlyForCombatTarget
+	import function VaidateOnlyForCombatTarget() : Bool; // VaidateOnlyForCombatTarget
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+struct StimEventData
+{
+	public    var source : whandle:gameObject;
+	public    var stimType : gamedataStimType;
+}

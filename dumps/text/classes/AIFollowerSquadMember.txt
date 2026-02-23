@@ -1,0 +1,15 @@
+import class AIFollowerSquadMember extends AISquadNPCMember
+{
+}
+
+import class AISquadNPCMember extends AISquadMemberBase
+{
+}
+
+import class abstract AISquadMemberBase extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

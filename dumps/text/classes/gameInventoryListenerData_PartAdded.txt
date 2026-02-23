@@ -1,0 +1,7 @@
+import struct gameInventoryListenerData_PartAdded extends gameInventoryListenerData_Base
+{
+}
+
+import struct gameInventoryListenerData_Base
+{
+}

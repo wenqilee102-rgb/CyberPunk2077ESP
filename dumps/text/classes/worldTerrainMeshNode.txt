@@ -1,0 +1,15 @@
+import class worldTerrainMeshNode extends worldNode
+{
+	var mesh : handle:CMesh;
+	var meshRef : raRef:CMesh;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

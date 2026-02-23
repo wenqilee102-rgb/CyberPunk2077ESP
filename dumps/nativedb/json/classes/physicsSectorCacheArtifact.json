@@ -1,0 +1,1 @@
+{"a":"CResource","b":"physicsSectorCacheArtifact","d":8,"e":[{"a":{"a":31,"c":{"b":"physicsGeometryKey"}},"b":"sectorGeometryKeys","c":128},{"a":{"a":26,"c":{"b":"physicsGeometryCacheArtifact"}},"b":"sectorInPlaceGeometry","c":128},{"a":{"b":"Box"},"b":"sectorBounds","c":128}]}

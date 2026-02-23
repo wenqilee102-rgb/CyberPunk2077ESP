@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"GameplayCameraData","d":0,"e":[{"a":{"a":10},"b":"is_forward_offset","c":128},{"a":{"a":10},"b":"upperbody_pitch_weight","c":128},{"a":{"a":10},"b":"forward_offset_value","c":128},{"a":{"a":10},"b":"upperbody_yaw_weight","c":128},{"a":{"a":10},"b":"is_pitch_off","c":128},{"a":{"a":10},"b":"is_yaw_off","c":128}]}

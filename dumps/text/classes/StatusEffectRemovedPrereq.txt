@@ -1,0 +1,55 @@
+class StatusEffectRemovedPrereq extends StatusEffectPrereq
+{
+	function Evaluate(statusEffect : whandle:gamedataStatusEffect_Record) : Bool; // Evaluate;StatusEffect_Record
+	function Initialize(recordID : TweakDBID); // Initialize;TweakDBID
+}
+
+class StatusEffectPrereq extends gameIScriptablePrereq
+{
+	public    var statusEffectRecordID : TweakDBID;
+	public    var tag : CName;
+	public    var checkType : gamedataCheckType;
+	public    var invert : Bool;
+	public    var fireAndForget : Bool;
+	public    var objectToCheck : CName;
+	public    var evaluateOnRegister : Bool;
+
+	function Evaluate(statusEffect : whandle:gamedataStatusEffect_Record) : Bool; // Evaluate;StatusEffect_Record
+	function GetObjectToCheck(game : ScriptGameInstance, context : handle:IScriptable) : handle:gameObject; // GetObjectToCheck;GameInstanceIScriptable
+	function Initialize(recordID : TweakDBID); // Initialize;TweakDBID
+	function IsFulfilled(game : ScriptGameInstance, context : handle:IScriptable) : Bool; // IsFulfilled
+	function OnApplied(state : handle:gamePrereqState, game : ScriptGameInstance, context : handle:IScriptable); // OnApplied;PrereqStateGameInstanceIScriptable
+	function OnRegister(state : handle:gamePrereqState, game : ScriptGameInstance, context : handle:IScriptable) : Bool; // OnRegister;PrereqStateGameInstanceIScriptable
+	function OnUnregister(state : handle:gamePrereqState, game : ScriptGameInstance, context : handle:IScriptable); // OnUnregister;PrereqStateGameInstanceIScriptable
+}
+
+import class gameIScriptablePrereq extends gameIPrereq
+{
+	function Initialize(record : TweakDBID); // Initialize;TweakDBID
+	function IsOnRegisterSupported() : Bool; // IsOnRegisterSupported;
+	function OnApplied(state : handle:gamePrereqState, game : ScriptGameInstance, context : handle:IScriptable); // OnApplied;PrereqStateGameInstanceIScriptable
+	function OnRegister(state : handle:gamePrereqState, game : ScriptGameInstance, context : handle:IScriptable) : Bool; // OnRegister;PrereqStateGameInstanceIScriptable
+	function OnUnregister(state : handle:gamePrereqState, game : ScriptGameInstance, context : handle:IScriptable); // OnUnregister;PrereqStateGameInstanceIScriptable
+}
+
+import class abstract gameIPrereq extends IScriptable
+{
+	import static function CreatePrereq(id : TweakDBID) : handle:gameIPrereq; // CreatePrereq
+
+	import function IsFulfilled(game : ScriptGameInstance, context : handle:IScriptable) : Bool; // IsFulfilled
+	import function RegisterEntity(game : ScriptGameInstance, entityId : entEntityID) : handle:gamePrereqState; // RegisterEntity
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

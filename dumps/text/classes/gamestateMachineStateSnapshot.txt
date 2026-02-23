@@ -1,0 +1,9 @@
+import struct gamestateMachineStateSnapshot
+{
+	var stateMachineName : CName;
+	var stateName : CName;
+	var instanceData : gamestateMachineStateMachineInstanceData;
+	var running : Bool;
+	var logicalOwnerIsAWeapon : Bool;
+	var transitionJustHappened : Bool;
+}

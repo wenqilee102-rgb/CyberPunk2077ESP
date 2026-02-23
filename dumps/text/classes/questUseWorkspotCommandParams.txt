@@ -1,0 +1,28 @@
+import class questUseWorkspotCommandParams extends questAICommandParams
+{
+	var workspotNode : NodeRef;
+	var moveToWorkspot : Bool;
+	var forceEntryAnimName : CName;
+}
+
+import class abstract questAICommandParams extends scnAICommandFactory
+{
+}
+
+import class abstract scnAICommandFactory extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

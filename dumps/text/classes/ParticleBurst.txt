@@ -1,0 +1,7 @@
+import struct ParticleBurst
+{
+	var burstTime : Float;
+	var spawnCount : Uint32;
+	var spawnTimeRange : Float;
+	var repeatTime : Float;
+}

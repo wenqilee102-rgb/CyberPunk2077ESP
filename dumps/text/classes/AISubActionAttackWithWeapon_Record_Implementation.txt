@@ -1,0 +1,27 @@
+class abstract AISubActionAttackWithWeapon_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionAttackWithWeapon_Record); // AISubActionAttackWithWeapon_Record_Implementation::Activate;ScriptExecutionContextAISubActionAttackWithWeapon_Record
+	static function AttackWithWeapon(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionAttackWithWeapon_Record) : AIbehaviorUpdateOutcome; // AISubActionAttackWithWeapon_Record_Implementation::AttackWithWeapon;ScriptExecutionContextAISubActionAttackWithWeapon_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionAttackWithWeapon_Record, duration : Float, interrupted : Bool); // AISubActionAttackWithWeapon_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionAttackWithWeapon_RecordFloatBool
+	static function FillEffectData(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionAttackWithWeapon_Record, attack : whandle:gameAttack_GameEffect, effect : whandle:gameEffectInstance); // AISubActionAttackWithWeapon_Record_Implementation::FillEffectData;ScriptExecutionContextAISubActionAttackWithWeapon_RecordAttack_GameEffectEffectInstance
+	static function GetWeapon(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionAttackWithWeapon_Record, out weapon : whandle:gameweaponObject) : Bool; // AISubActionAttackWithWeapon_Record_Implementation::GetWeapon;ScriptExecutionContextAISubActionAttackWithWeapon_RecordWeaponObject
+	static function PrepareContinuousAttack(weapon : whandle:gameweaponObject); // AISubActionAttackWithWeapon_Record_Implementation::PrepareContinuousAttack;WeaponObject
+	static function SetAttackNameInBlackBoard(context : AIbehaviorScriptExecutionContext, attackName : CName); // AISubActionAttackWithWeapon_Record_Implementation::SetAttackNameInBlackBoard;ScriptExecutionContextCName
+	static function StartContinuousAttack(context : AIbehaviorScriptExecutionContext, weapon : whandle:gameweaponObject); // AISubActionAttackWithWeapon_Record_Implementation::StartContinuousAttack;ScriptExecutionContextWeaponObject
+	static function StartPreparedContinuousAttack(context : AIbehaviorScriptExecutionContext, weapon : whandle:gameweaponObject); // AISubActionAttackWithWeapon_Record_Implementation::StartPreparedContinuousAttack;ScriptExecutionContextWeaponObject
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionAttackWithWeapon_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionAttackWithWeapon_Record_Implementation::Update;ScriptExecutionContextAISubActionAttackWithWeapon_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

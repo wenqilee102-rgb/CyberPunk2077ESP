@@ -1,0 +1,19 @@
+import class worldDebugColoring_NavigationImpact extends worldEditorDebugColoringSettings
+{
+	var walkable : Color;
+	var ignored : Color;
+	var blocking : Color;
+	var road : Color;
+	var stairs walkable : Color;
+	var drones : Color;
+	var terrain : Color;
+	var everything else : Color;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

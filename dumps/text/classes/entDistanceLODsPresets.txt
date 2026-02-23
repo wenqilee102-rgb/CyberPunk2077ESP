@@ -1,0 +1,8 @@
+import class entDistanceLODsPresets extends ISerializable
+{
+	var definitions : static:4,entLODDefinition;
+}
+
+import class abstract ISerializable
+{
+}

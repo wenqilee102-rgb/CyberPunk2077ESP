@@ -1,0 +1,15 @@
+import class inkMenuResource extends CResource
+{
+	var menusEntries : array:inkMenuEntry;
+	var scenariosNames : array:CName;
+	var initialScenarioName : CName;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct gameEffectExecutor_KatanaBulletBendingEffectEntry
+{
+	var tag : CName;
+	var effect : raRef:worldEffect;
+	var attach : Bool;
+}

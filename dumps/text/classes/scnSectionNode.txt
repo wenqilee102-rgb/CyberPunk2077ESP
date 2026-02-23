@@ -1,0 +1,18 @@
+import class scnSectionNode extends scnSceneGraphNode
+{
+	var events : array:handle:scnSceneEvent;
+	var sectionDuration : scnSceneTime;
+	var actorBehaviors : array:scnSectionInternalsActorBehavior;
+	var isFocusClue : Bool;
+}
+
+import class abstract scnSceneGraphNode extends ISerializable
+{
+	var nodeId : scnNodeId;
+	var ffStrategy : scnFastForwardStrategy;
+	var outputSockets : array:scnOutputSocket;
+}
+
+import class abstract ISerializable
+{
+}

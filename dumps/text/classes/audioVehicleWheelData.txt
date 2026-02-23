@@ -1,0 +1,13 @@
+import struct audioVehicleWheelData
+{
+	var wheelStartEvents : array:CName;
+	var wheelStopEvents : array:CName;
+	var wheelRegularSuspensionImpacts : array:CName;
+	var wheelLandingSuspensionImpacts : array:CName;
+	var suspensionPressureMultiplier : Float;
+	var landingSuspensionPressureMultiplier : Float;
+	var suspensionPressureLimit : Float;
+	var minSuspensionPressureThreshold : Float;
+	var suspensionImpactCooldown : Float;
+	var minWheelTimeInAirBeforeLanding : Float;
+}

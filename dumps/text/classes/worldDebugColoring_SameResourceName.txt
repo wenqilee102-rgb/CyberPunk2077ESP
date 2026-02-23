@@ -1,0 +1,12 @@
+import class worldDebugColoring_SameResourceName extends worldEditorDebugColoringSettings
+{
+	var alpha : Uint8;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

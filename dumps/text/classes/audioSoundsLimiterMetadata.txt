@@ -1,0 +1,20 @@
+import class audioSoundsLimiterMetadata extends audioAudioMetadata
+{
+	var tooManyPlayingGruntsAndVOsLimitation : array:audioLimitedSound;
+	var gunsAreLoudAndMusicIsActiveLimitation : array:audioLimitedSound;
+	var gunsAreLoudLimitation : array:audioLimitedSound;
+	var tooManyPlayingSoundsLimitation : array:audioLimitedSound;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

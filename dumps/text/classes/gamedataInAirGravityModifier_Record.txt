@@ -1,0 +1,36 @@
+import class gamedataInAirGravityModifier_Record extends gamedataDriveHelper_Record
+{
+	import function BaseAddedGravity() : Float; // BaseAddedGravity
+	import function DriveSpeedAddedGravity() : Float; // DriveSpeedAddedGravity
+	import function MaxDriveSpeed() : Float; // MaxDriveSpeed
+	import function MinDriveSpeed() : Float; // MinDriveSpeed
+	import function SmoothingFactor() : Float; // SmoothingFactor
+	import function ZVelReductionEnd() : Float; // ZVelReductionEnd
+	import function ZVelReductionStart() : Float; // ZVelReductionStart
+}
+
+import class gamedataDriveHelper_Record extends gamedataTweakDBRecord
+{
+	import function Type() : whandle:gamedataDriveHelperType_Record; // Type
+	import function TypeHandle() : handle:gamedataDriveHelperType_Record; // TypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

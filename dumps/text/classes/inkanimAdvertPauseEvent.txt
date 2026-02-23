@@ -1,0 +1,25 @@
+import class inkanimAdvertPauseEvent extends inkanimEvent
+{
+}
+
+import class abstract inkanimEvent extends IScriptable
+{
+	var startTime : Float;
+
+	import function GetStartTime() : Float; // GetStartTime
+	import function SetStartTime(startTime : Float); // SetStartTime
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct grsDeathmatchState
+{
+	var time : netTime;
+	var status : grsDeathmatchStatus;
+	var sessionLength : netTime;
+	var playersInfo : static:7,grsDeathmatchPlayerGameInfo;
+}

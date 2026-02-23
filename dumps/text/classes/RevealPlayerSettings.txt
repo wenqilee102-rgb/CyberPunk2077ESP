@@ -1,0 +1,5 @@
+struct RevealPlayerSettings
+{
+	public    var revealPlayer : ERevealPlayerType;
+	public    var revealPlayerOutsideSecurityPerimeter : Bool;
+}

@@ -1,0 +1,67 @@
+class AISpiderbotCheckIfFriendlyMoved extends AIAutonomousConditions
+{
+	public    var maxAllowedDelta : handle:AIArgumentMapping;
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function Check(context : AIbehaviorScriptExecutionContext) : AIbehaviorConditionOutcomes; // Check;ScriptExecutionContext
+}
+
+class abstract AIAutonomousConditions extends AIbehaviorconditionScript
+{
+	static function AlertedCondition(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::AlertedCondition;ScriptExecutionContext
+	static function CombatCondition(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::CombatCondition;ScriptExecutionContext
+	static function CrowdCombatConditions(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::CrowdCombatConditions;ScriptExecutionContext
+	static function HasCombatAICommand(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::HasCombatAICommand;ScriptExecutionContext
+	static function HasHostileThreats(context : AIbehaviorScriptExecutionContext, optional onlyEntities : Bool) : Bool; // AIAutonomousConditions::HasHostileThreats;ScriptExecutionContextBool
+	static function HasWeaponInInventory(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::HasWeaponInInventory;ScriptExecutionContext
+	static function IsPlayerInCombat(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::IsPlayerInCombat;ScriptExecutionContext
+	static function IsPlayerRecentlyDroppedThreat(owner : whandle:gameObject) : Bool; // AIAutonomousConditions::IsPlayerRecentlyDroppedThreat;GameObject
+	static function NoWeaponCombatConditions(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::NoWeaponCombatConditions;ScriptExecutionContext
+	static function SchedulePassiveConditionEvaluation(puppet : whandle:ScriptedPuppet, delay : Float); // AIAutonomousConditions::SchedulePassiveConditionEvaluation;ScriptedPuppetFloat
+	static function WaitForAnimationToFinish(context : AIbehaviorScriptExecutionContext) : Bool; // AIAutonomousConditions::WaitForAnimationToFinish;ScriptExecutionContext
+
+	function HasUnknownThreats(context : AIbehaviorScriptExecutionContext) : Bool; // HasUnknownThreats;ScriptExecutionContext
+}
+
+import class AIbehaviorconditionScript extends AIbehaviorScriptBase
+{
+	import function ListenToSignal(context : AIbehaviorScriptExecutionContext, signalName : CName) : Uint16; // ListenToSignal
+	import function SetUpdateInterval(context : AIbehaviorScriptExecutionContext, interval : Float) : Bool; // SetUpdateInterval
+	import function StopListeningToSignal(context : AIbehaviorScriptExecutionContext, signalName : CName, callbackId : Uint16); // StopListeningToSignal
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function Check(context : AIbehaviorScriptExecutionContext) : AIbehaviorConditionOutcomes; // Check;ScriptExecutionContext
+	function CheckOnEvent(context : AIbehaviorScriptExecutionContext, behaviorEvent : handle:AIAIEvent) : AIbehaviorConditionOutcomes; // CheckOnEvent;ScriptExecutionContextAIEvent
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBase extends IScriptable
+{
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AIbehaviorScriptBase::GetAIComponent;ScriptExecutionContext
+	static function GetCombatTarget(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCombatTarget;ScriptExecutionContext
+	static function GetCompanion(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCompanion;ScriptExecutionContext
+	static function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // AIbehaviorScriptBase::GetGame;ScriptExecutionContext
+	static function GetHitReactionComponent(context : AIbehaviorScriptExecutionContext) : handle:HitReactionComponent; // AIbehaviorScriptBase::GetHitReactionComponent;ScriptExecutionContext
+	static function GetNPCPuppet(context : AIbehaviorScriptExecutionContext) : handle:NPCPuppet; // AIbehaviorScriptBase::GetNPCPuppet;ScriptExecutionContext
+	static function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // AIbehaviorScriptBase::GetPuppet;ScriptExecutionContext
+	static function GetStatPoolPercentage(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolPercentage;ScriptExecutionContextgamedataStatPoolType
+	static function GetStatPoolValue(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolValue;ScriptExecutionContextgamedataStatPoolType
+	static function GetUpperBodyState(context : AIbehaviorScriptExecutionContext) : gamedataNPCUpperBodyState; // AIbehaviorScriptBase::GetUpperBodyState;ScriptExecutionContext
+	static function RandomizeOffsetForUpdateInterval(interval : Float) : Float; // AIbehaviorScriptBase::RandomizeOffsetForUpdateInterval;Float
+
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class toolsJiraCommentIssueBody extends ISerializable
+{
+	var body : String;
+}
+
+import class abstract ISerializable
+{
+}

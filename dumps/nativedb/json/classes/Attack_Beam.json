@@ -1,0 +1,1 @@
+{"a":"gameAttack_Continuous","b":"Attack_Beam","d":0,"f":[{"a":"OnTick;WeaponObject","b":"OnTick","d":32,"e":[{"a":{"a":26,"c":{"b":"gameweaponObject"}},"b":"weapon","c":0}]}]}

@@ -1,0 +1,5 @@
+import struct questdbgCallstackBlock
+{
+	var id : Uint64;
+	var parentId : Uint64;
+}

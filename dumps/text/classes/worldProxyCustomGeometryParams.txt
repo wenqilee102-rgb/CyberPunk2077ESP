@@ -1,0 +1,5 @@
+import struct worldProxyCustomGeometryParams
+{
+	var useLimiterHelper : Bool;
+	var uvType : worldProxyMeshUVType;
+}

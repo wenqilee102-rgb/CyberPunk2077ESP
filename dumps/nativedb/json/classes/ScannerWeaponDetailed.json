@@ -1,0 +1,1 @@
+{"a":"ScannerWeaponBasic","b":"ScannerWeaponDetailed","d":0,"e":[{"a":{"a":14},"b":"damage","c":129}],"f":[{"a":"GetDamage;","b":"GetDamage","c":{"a":14},"d":176},{"a":"GetType;","b":"GetType","c":{"b":"ScannerDataType"},"d":32},{"a":"Set;CNameCName","b":"Set","d":48,"e":[{"a":{"a":14},"b":"displayName","c":0},{"a":{"a":14},"b":"displayDamage","c":0}]}]}

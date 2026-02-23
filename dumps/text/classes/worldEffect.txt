@@ -1,0 +1,22 @@
+import class worldEffect extends resStreamedResource
+{
+	var name : CName;
+	var length : Float;
+	var inputParameterNames : array:CName;
+	var trackRoot : handle:effectTrackGroup;
+	var events : array:handle:effectTrackItem;
+	var effectLoops : array:effectLoopData;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,19 @@
+import class CEvaluatorVectorCurve extends IEvaluatorVector
+{
+	var curves : curveData:Vector4;
+	var numberOfCurveSamples : Uint32;
+}
+
+import class abstract IEvaluatorVector extends IEvaluator
+{
+	var freeAxes : EFreeVectorAxes;
+	var spill : Bool;
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,33 @@
+class VehicleQuestVisualDestructionEvent extends redEvent
+{
+	public    var accumulate : Bool;
+	public    var frontLeft : Float;
+	public    var frontRight : Float;
+	public    var front : Float;
+	public    var right : Float;
+	public    var left : Float;
+	public    var backLeft : Float;
+	public    var backRight : Float;
+	public    var back : Float;
+	public    var roof : Float;
+
+	function GetFriendlyDescription() : String; // GetFriendlyDescription;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

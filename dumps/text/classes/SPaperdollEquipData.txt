@@ -1,0 +1,7 @@
+struct SPaperdollEquipData
+{
+	public    var equipArea : gameSEquipArea;
+	public    var slotIndex : Int32;
+	public    var placementSlot : TweakDBID;
+	public    var equipped : Bool;
+}

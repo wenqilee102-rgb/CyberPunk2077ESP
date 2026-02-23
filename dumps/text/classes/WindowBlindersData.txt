@@ -1,0 +1,7 @@
+struct WindowBlindersData
+{
+	public    var windowBlindersState : EWindowBlindersStates;
+	public    var hasOpenInteraction : Bool;
+	public    var hasTiltInteraction : Bool;
+	public    var hasQuickHack : Bool;
+}

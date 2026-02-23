@@ -1,0 +1,85 @@
+class PreventionSystemHackerLoop extends gameScriptableSystem
+{
+	private   var firstVehicle : whandle:vehicleBaseObject;
+	private   var state : EPreventionHackLoopState;
+	private   var shouldHackLoopBeEnabledOnThisStar : Bool;
+	private   var showingHackingPopUp : Bool;
+	private   var currentVehicle : whandle:vehicleBaseObject;
+	private   var previousVehicle : whandle:vehicleBaseObject;
+	private   var curentHackDelayId : gameDelayID;
+	private   var futureDelayedUpdateDelayId : gameDelayID;
+	private   var hackedVehicles : array:handle:VehiclePreventionHackState;
+	private   var otherProgressBar : whandle:UploadFromNPCToPlayerListener;
+	private   var waitingForUpdate : Bool;
+
+	static function AVCanBeSpawned(game : ScriptGameInstance) : Bool; // PreventionSystemHackerLoop::AVCanBeSpawned;GameInstance
+	static function ForceCarToStop(game : ScriptGameInstance); // PreventionSystemHackerLoop::ForceCarToStop;GameInstance
+	static function GetCurrentStarState(game : ScriptGameInstance) : EStarState; // PreventionSystemHackerLoop::GetCurrentStarState;GameInstance
+	static function GetInstance(game : ScriptGameInstance) : handle:PreventionSystemHackerLoop; // PreventionSystemHackerLoop::GetInstance;GameInstance
+	static function GetProgressBarForcedValue(game : ScriptGameInstance) : Float; // PreventionSystemHackerLoop::GetProgressBarForcedValue;GameInstance
+	static function GetSystemName() : CName; // PreventionSystemHackerLoop::GetSystemName;
+	static function KeepProgressBarAliveAfterCompletion(game : ScriptGameInstance) : Bool; // PreventionSystemHackerLoop::KeepProgressBarAliveAfterCompletion;GameInstance
+	static function ShouldForceUpdateProgressBar(game : ScriptGameInstance) : Bool; // PreventionSystemHackerLoop::ShouldForceUpdateProgressBar;GameInstance
+	static function UpdateHackLoopProgressBarValue(game : ScriptGameInstance, newValue : Float, progressbar : handle:UploadFromNPCToPlayerListener); // PreventionSystemHackerLoop::UpdateHackLoopProgressBarValue;GameInstanceFloatUploadFromNPCToPlayerListener
+	static function UpdateHeatLevel(game : ScriptGameInstance, shouldHackLoopBeEnabledOnThisStar : Bool); // PreventionSystemHackerLoop::UpdateHeatLevel;GameInstanceBool
+	static function UpdateOtherProgressBarReference(game : ScriptGameInstance, progressbar : handle:UploadFromNPCToPlayerListener); // PreventionSystemHackerLoop::UpdateOtherProgressBarReference;GameInstanceUploadFromNPCToPlayerListener
+	static function UpdatePlayerVehicle(game : ScriptGameInstance, currentVehicle : whandle:vehicleBaseObject); // PreventionSystemHackerLoop::UpdatePlayerVehicle;GameInstanceVehicleObject
+	static function UpdateStarStateUI(game : ScriptGameInstance); // PreventionSystemHackerLoop::UpdateStarStateUI;GameInstance
+
+	function AbortHacks(); // AbortHacks;
+	function BroadcastPlayerLocationUntilVehicleExit(request : handle:HackLoopReportPlayerLocationRequest, delay : Float); // BroadcastPlayerLocationUntilVehicleExit;HackLoopReportPlayerLocationRequestFloat
+	function DelayForceAboutToExplodeState(state : handle:VehiclePreventionHackState, delay : Float); // DelayForceAboutToExplodeState;VehiclePreventionHackStateFloat
+	function FindVehicleState(vehicle : whandle:vehicleBaseObject) : handle:VehiclePreventionHackState; // FindVehicleState;VehicleObject
+	function ForceCloseProgressBar(vehicle : handle:vehicleBaseObject) : Bool; // ForceCloseProgressBar;VehicleObject
+	function HackLoop(); // HackLoop;
+	function HackTimerCallback(data : handle:VehiclePreventionHackState, delay : Float); // HackTimerCallback;VehiclePreventionHackStateFloat
+	function Idle(); // Idle;
+	function InterruptHackingPopUp(); // InterruptHackingPopUp;
+	function IntroRadio(); // IntroRadio;
+	function IsFirstVehicle(vehicle : whandle:vehicleBaseObject) : Bool; // IsFirstVehicle;VehicleObject
+	function IsNearMaxtac() : Bool; // IsNearMaxtac;
+	function LaunchDelayedStateUpdate(delay : Float); // LaunchDelayedStateUpdate;Float
+	function OnDelayedForceAboutToExplodeState(request : handle:DelayedForceAboutToExplodeStateRequest); // OnDelayedForceAboutToExplodeState;DelayedForceAboutToExplodeStateRequest
+	function OnDelayedStopVehicle(request : handle:DelayedStopVehicle); // OnDelayedStopVehicle;DelayedStopVehicle
+	function OnHackLoopReportPlayerLocationRequest(request : handle:HackLoopReportPlayerLocationRequest); // OnHackLoopReportPlayerLocationRequest;HackLoopReportPlayerLocationRequest
+	function OnPreventionSystemPlayerCarHackFinishedEvent(request : handle:PreventionSystemPlayerCarHackFinishedEvent); // OnPreventionSystemPlayerCarHackFinishedEvent;PreventionSystemPlayerCarHackFinishedEvent
+	function OnPreventionSystemPlayerCarHackTimeOutEvent(request : handle:PreventionSystemPlayerCarHackTimeOutEvent); // OnPreventionSystemPlayerCarHackTimeOutEvent;PreventionSystemPlayerCarHackTimeOutEvent
+	function OnPreventionSystemUpdateHackLoopStateEvent(request : handle:PreventionSystemUpdateHackLoopStateEvent); // OnPreventionSystemUpdateHackLoopStateEvent;PreventionSystemUpdateHackLoopStateEvent
+	function PauseHack(newHack : handle:VehiclePreventionHackState); // PauseHack;VehiclePreventionHackState
+	function StartBigHackingPopUp(data : handle:VehiclePreventionHackState); // StartBigHackingPopUp;VehiclePreventionHackState
+	function StartHackTimer(data : handle:VehiclePreventionHackState); // StartHackTimer;VehiclePreventionHackState
+	function StopVehicle(state : handle:VehiclePreventionHackState, delay : Float); // StopVehicle;VehiclePreventionHackStateFloat
+	function StopVehicle_Internal(game : ScriptGameInstance, data : handle:VehiclePreventionHackState); // StopVehicle_Internal;GameInstanceVehiclePreventionHackState
+	function UnpauseHack(newHack : handle:VehiclePreventionHackState); // UnpauseHack;VehiclePreventionHackState
+	function UpdateState(); // UpdateState;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class inkWidgetLibraryUnpackedView extends ISerializable
+{
+	var libraryItems : array:handle:inkWidgetLibraryItemUnpackedView;
+	var externalLibraries : array:rRef:inkWidgetLibraryResource;
+}
+
+import class abstract ISerializable
+{
+}

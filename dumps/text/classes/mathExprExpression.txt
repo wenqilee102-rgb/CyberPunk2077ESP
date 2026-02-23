@@ -1,0 +1,10 @@
+import class mathExprExpression extends ISerializable
+{
+	var tokenData : array:Uint32;
+	var valuesData : array:Float;
+	var returnVarType : Uint16;
+}
+
+import class abstract ISerializable
+{
+}

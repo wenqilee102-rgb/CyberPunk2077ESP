@@ -1,0 +1,4 @@
+import struct scnRidResourceId
+{
+	var id : Uint32;
+}

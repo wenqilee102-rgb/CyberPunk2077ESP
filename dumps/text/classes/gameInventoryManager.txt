@@ -1,0 +1,31 @@
+import class gameInventoryManager extends gameIInventoryManager
+{
+	import function AddEquipmentStateFlag(equipmentFlag : gameEEquipmentManagerState); // AddEquipmentStateFlag
+	import function CreateBasicItemData(itemID : gameItemID, owner : whandle:gameObject) : handle:gameItemData; // CreateBasicItemData
+	import function GetCyberwareUpgradeSeed() : Uint32; // GetCyberwareUpgradeSeed
+	import function HasEquipmentStateFlag(equipmentFlag : gameEEquipmentManagerState) : Bool; // HasEquipmentStateFlag
+	import function IncrementCyberwareUpgradeSeed(amount : Uint32); // IncrementCyberwareUpgradeSeed
+	import function RemoveEquipmentStateFlag(equipmentFlag : gameEEquipmentManagerState); // RemoveEquipmentStateFlag
+}
+
+import class abstract gameIInventoryManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

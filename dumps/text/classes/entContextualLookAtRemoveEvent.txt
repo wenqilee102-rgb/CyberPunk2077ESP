@@ -1,0 +1,32 @@
+import class entContextualLookAtRemoveEvent extends entLookAtRemoveEvent
+{
+	var contextName : CName;
+}
+
+import class entLookAtRemoveEvent extends redEvent
+{
+	var lookAtRef : animLookAtRef;
+	var hasOutTransition : Bool;
+	var outTransitionSpeed : Float;
+
+	static function QueueDelayedRemoveLookatEvent(context : AIbehaviorScriptExecutionContext, addedBeforeEvent : handle:entLookAtAddEvent, lookAtDeactivationDelay : Float); // entLookAtRemoveEvent::QueueDelayedRemoveLookatEvent;ScriptExecutionContextLookAtAddEventFloat
+	static function QueueRemoveLookatEvent(owner : handle:gameObject, addedBeforeEvent : handle:entLookAtAddEvent); // entLookAtRemoveEvent::QueueRemoveLookatEvent;GameObjectLookAtAddEvent
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import struct gameOccupantSlotData
+{
+	var slotName : CName;
+	var syncAnimationTag : CName;
+	var workSpotResource : rRef:workWorkspotResource;
+	var exitOffsetFromSlot : Vector4;
+	var role : gameMountingSlotRole;
+}

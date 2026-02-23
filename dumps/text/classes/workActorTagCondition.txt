@@ -1,0 +1,14 @@
+import class workActorTagCondition extends workIWorkspotCondition
+{
+	var tag : CName;
+}
+
+import class abstract workIWorkspotCondition extends ISerializable
+{
+	var expectedResult : workWorkspotLogic;
+	var equals : Bool;
+}
+
+import class abstract ISerializable
+{
+}

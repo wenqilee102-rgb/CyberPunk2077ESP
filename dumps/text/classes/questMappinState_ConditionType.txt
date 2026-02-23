@@ -1,0 +1,17 @@
+import class questMappinState_ConditionType extends questIJournalConditionType
+{
+	var mappinPath : handle:gameJournalPath;
+	var active : Bool;
+}
+
+import class abstract questIJournalConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

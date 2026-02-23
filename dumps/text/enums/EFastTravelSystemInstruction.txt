@@ -1,0 +1,5 @@
+enum EFastTravelSystemInstruction
+{
+	Forward = 0,
+	Previous = 1
+}

@@ -1,0 +1,7 @@
+import struct gamemappinsInteractionMappinUpdateData extends gamemappinsIMappinUpdateData
+{
+}
+
+import struct abstract gamemappinsIMappinUpdateData
+{
+}

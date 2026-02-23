@@ -1,0 +1,49 @@
+import class gamedataVehicleProceduralFPPCameraParams_Record extends gamedataTweakDBRecord
+{
+	import function DirectionFollowMaxVelocity() : Float; // DirectionFollowMaxVelocity
+	import function DisplacementThresholdForward() : Float; // DisplacementThresholdForward
+	import function ForwardDampFactor() : Float; // ForwardDampFactor
+	import function HeightDampFactor() : Float; // HeightDampFactor
+	import function ImpactBlendSpeed() : Float; // ImpactBlendSpeed
+	import function ImpactDamperDampFactor() : Float; // ImpactDamperDampFactor
+	import function ImpactStrengthCoef() : Float; // ImpactStrengthCoef
+	import function ImpactThreshold() : Float; // ImpactThreshold
+	import function MaxAccelerationTiltAngle() : Float; // MaxAccelerationTiltAngle
+	import function MaxDisplacementBackward() : Float; // MaxDisplacementBackward
+	import function MaxDisplacementDown() : Float; // MaxDisplacementDown
+	import function MaxDisplacementForward() : Float; // MaxDisplacementForward
+	import function MaxDisplacementLeft() : Float; // MaxDisplacementLeft
+	import function MaxDisplacementRight() : Float; // MaxDisplacementRight
+	import function MaxDisplacementUp() : Float; // MaxDisplacementUp
+	import function MaxPitchCorrectionDown() : Float; // MaxPitchCorrectionDown
+	import function MaxPitchCorrectionUP() : Float; // MaxPitchCorrectionUP
+	import function MaxRollCorrection() : Float; // MaxRollCorrection
+	import function MaxSlowdownTiltAngle() : Float; // MaxSlowdownTiltAngle
+	import function PitchCorrectionDampFactor() : Float; // PitchCorrectionDampFactor
+	import function RollCorrectionDampFactor() : Float; // RollCorrectionDampFactor
+	import function SideDampFactor() : Float; // SideDampFactor
+	import function SmoothSpeedDampFactor() : Float; // SmoothSpeedDampFactor
+	import function SteeringAngleLeft() : Float; // SteeringAngleLeft
+	import function SteeringAngleRight() : Float; // SteeringAngleRight
+	import function SteeringDampFactor() : Float; // SteeringDampFactor
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamedataAISubAction_Record","b":"gamedataAISubActionUseSensePreset_Record","c":"AISubActionUseSensePreset_Record","d":24,"f":[{"a":"Delay","c":{"a":10},"d":4},{"a":"SensePreset","c":{"a":27,"c":{"b":"gamedataSensePreset_Record"}},"d":4},{"a":"SensePresetHandle","c":{"a":26,"c":{"b":"gamedataSensePreset_Record"}},"d":4}]}

@@ -1,0 +1,24 @@
+import class animFacialCustomizationSet extends CResource
+{
+	var baseSetup : rRef:animFacialSetup;
+	var targetSetups : array:raRef:animFacialSetup;
+	var targetSetupsTemp : array:animFacialCustomizationTargetEntryTemp;
+	var numTargets : Uint32;
+	var posesInfo : animFacialSetup_PosesBufferInfo;
+	var jointRegions : array:Uint8;
+	var mainPosesData : DataBuffer;
+	var usedTransformIndices : array:Uint16;
+	var correctivePosesData : DataBuffer;
+	var numJoints : Uint32;
+	var rigReferencePosesData : DataBuffer;
+	var isCooked : Bool;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

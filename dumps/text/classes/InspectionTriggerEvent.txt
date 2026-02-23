@@ -1,0 +1,26 @@
+class InspectionTriggerEvent extends redEvent
+{
+	public    var item : String;
+	public    var offset : Float;
+	public    var adsOffset : Float;
+	public    var timeToScan : Float;
+	public    var inspectedObjID : entEntityID;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

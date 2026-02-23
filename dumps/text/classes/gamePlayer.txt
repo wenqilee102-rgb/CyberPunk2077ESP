@@ -1,0 +1,5 @@
+import struct abstract gamePlayer
+{
+	var peerID : netPeerID;
+	var nickname : String;
+}

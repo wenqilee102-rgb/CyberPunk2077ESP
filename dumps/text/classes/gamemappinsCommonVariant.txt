@@ -1,0 +1,12 @@
+import class gamemappinsCommonVariant extends gamemappinsIPointOfInterestVariant
+{
+	var variant : gamedataMappinVariant;
+}
+
+import class abstract gamemappinsIPointOfInterestVariant extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

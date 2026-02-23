@@ -1,0 +1,7 @@
+import struct gameStreamingSmartObjectsDataExtractor extends resIStreamedResourceDataExtractor
+{
+}
+
+import struct abstract resIStreamedResourceDataExtractor
+{
+}

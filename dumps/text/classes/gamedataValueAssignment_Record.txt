@@ -1,0 +1,32 @@
+import class gamedataValueAssignment_Record extends gamedataContentAssignment_Record
+{
+	import function OverrideValue() : Int32; // OverrideValue
+}
+
+import class gamedataContentAssignment_Record extends gamedataTweakDBRecord
+{
+	import function PowerLevelMod() : whandle:gamedataStatModifier_Record; // PowerLevelMod
+	import function PowerLevelModHandle() : handle:gamedataStatModifier_Record; // PowerLevelModHandle
+	import function QuestType() : whandle:gamedataNPCQuestAffiliation_Record; // QuestType
+	import function QuestTypeHandle() : handle:gamedataNPCQuestAffiliation_Record; // QuestTypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

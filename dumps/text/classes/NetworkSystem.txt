@@ -1,0 +1,261 @@
+class NetworkSystem extends gameScriptableSystem
+{
+	private   var networkLinks : array:SNetworkLinkData;
+	private   var networkRevealTargets : array:entEntityID;
+	private   var networkRevealTargetsLastSession : array:entEntityID;
+	private   var sessionStarted : Bool;
+	private   var visionModeChangedCallback : handle:redCallbackObject;
+	private   var focusModeToggleCallback : handle:redCallbackObject;
+	private   var playerSpawnCallback : Uint32;
+	private   var currentPlayerTargetCallbackID : handle:redCallbackObject;
+	private   var lastTargetSlaveID : entEntityID;
+	private   var lastTargetMasterID : entEntityID;
+	private   var unregisterLinksRequestDelay : gameDelayID;
+	private   var focusModeActive : Bool;
+	private   var lastBeamResource : gameFxResource;
+	private   var pingNetworkEffect : handle:gameEffectInstance;
+	private   var pingCachedData : handle:PingCachedData;
+	private   var lastPingSourceID : entEntityID;
+	private   var activePings : array:handle:PingCachedData;
+	private   var pingedSquads : array:CName;
+	private   var pingLinksCounter : Int32;
+	private   var networkPresetTBDID : TweakDBID;
+	private   var networkPresetRecord : whandle:gamedataNetworkPingingParameteres_Record;
+	private   var backdoors : array:gamePersistentID;
+	private   var revealedBackdoorsCount : Int32;
+	private   var debugCashedPingFxResource : gameFxResource;
+	private   var debugQueryNumber : Int32;
+	private   var activateLinksDelayID : gameDelayID;
+	private   var deactivateLinksDelayID : gameDelayID;
+
+	static function GetMaxAmountOfVirtualLinkForks() : Int32; // NetworkSystem::GetMaxAmountOfVirtualLinkForks;
+	static function GetMaxLinksDeactivatedAtOnce() : Int32; // NetworkSystem::GetMaxLinksDeactivatedAtOnce;
+	static function GetMaxLinksDrawnAtOnce() : Int32; // NetworkSystem::GetMaxLinksDrawnAtOnce;
+	static function GetMaxLinksDrawnInTotal() : Int32; // NetworkSystem::GetMaxLinksDrawnInTotal;
+	static function GetMaxLinksRegisteredAtOnce() : Int32; // NetworkSystem::GetMaxLinksRegisteredAtOnce;
+	static function GetMaximumNumberOfActivePings() : Int32; // NetworkSystem::GetMaximumNumberOfActivePings;
+	static function GetMaximumNumberOfFreeLinksPerTarget() : Int32; // NetworkSystem::GetMaximumNumberOfFreeLinksPerTarget;
+	static function GetNumberOfVirtualLinksPerObject() : Int32; // NetworkSystem::GetNumberOfVirtualLinksPerObject;
+	static function GetVirtualLinkDepth() : Int32; // NetworkSystem::GetVirtualLinkDepth;
+	static function GetVirtualLinksSphereRadius() : Float; // NetworkSystem::GetVirtualLinksSphereRadius;
+	static function QuickHacksExposedByDefault(game : ScriptGameInstance) : Bool; // NetworkSystem::QuickHacksExposedByDefault;GameInstance
+	static function SendEvaluateVisionModeRequest(instance : ScriptGameInstance, mode : gameVisionModeType); // NetworkSystem::SendEvaluateVisionModeRequest;GameInstancegameVisionModeType
+	static function ShouldShowOnlyTargetQuickHacks(game : ScriptGameInstance) : Bool; // NetworkSystem::ShouldShowOnlyTargetQuickHacks;GameInstance
+
+	event OnFocusModeToggle(value : Bool) : Bool; // OnFocusModeToggle
+	event OnPlayerTargetChanged(value : entEntityID) : Bool; // OnPlayerTargetChanged
+	event OnVisionModeChanged(value : Int32) : Bool; // OnVisionModeChanged
+
+	function ActivateNetworkLinkByIndex(linkIndex : Int32); // ActivateNetworkLinkByIndex;Int32
+	function ActivateNetworkLinkByTask(linkIndex : Int32); // ActivateNetworkLinkByTask;Int32
+	function ActivateNetworkLinkTask(data : handle:gameScriptTaskData); // ActivateNetworkLinkTask;ScriptTaskData
+	function ActivateNetworkLinks(toActivate : script_ref:array:Int32); // ActivateNetworkLinks;script_ref<array<Int32>>
+	function AddActivePing(source : handle:gameObject, pingType : EPingType, duration : Float, linkType : ELinkType, revealNetworkAtEnd : Bool, fxResource : gameFxResource, virtualNetworkShapeID : TweakDBID); // AddActivePing;GameObjectEPingTypeFloatELinkTypeBoolFxResourceTweakDBID
+	function AddNetworkLink(linkData : SNetworkLinkData); // AddNetworkLink;SNetworkLinkData
+	function AddNetworkRevealTarget(target : entEntityID); // AddNetworkRevealTarget;EntityID
+	function AddPingedSquad(squadName : CName); // AddPingedSquad;CName
+	function AllowSimultanousPinging() : Bool; // AllowSimultanousPinging;
+	function CancelNetworkLinkDelay(linkData : script_ref:SNetworkLinkData); // CancelNetworkLinkDelay;script_ref<SNetworkLinkData>
+	function CleanNetwork(); // CleanNetwork;
+	function ClearPingedSquads(); // ClearPingedSquads;
+	function CompareLinks(linkData1 : script_ref:SNetworkLinkData, linkData2 : script_ref:SNetworkLinkData) : Bool; // CompareLinks;script_ref<SNetworkLinkData>script_ref<SNetworkLinkData>
+	function CompareLinksData(linkData1 : script_ref:SNetworkLinkData, linkData2 : script_ref:SNetworkLinkData) : Bool; // CompareLinksData;script_ref<SNetworkLinkData>script_ref<SNetworkLinkData>
+	function CreateForksForVirtualLink(linkData : SNetworkLinkData, ping : handle:PingCachedData, sphereCentre : Vector4, radius : Float, slice : Int32); // CreateForksForVirtualLink;SNetworkLinkDataPingCachedDataVector4FloatInt32
+	function CreateForksForVirtualLink1(linkData : SNetworkLinkData, ping : handle:PingCachedData, sphereCentre : Vector4, radius : Float, direction : Vector4, connectionPoint : Vector4); // CreateForksForVirtualLink1;SNetworkLinkDataPingCachedDataVector4FloatVector4Vector4
+	function CreateForksForVirtualLink1(linkData : SNetworkLinkData, ping : handle:PingCachedData, sphereCentre : Vector4, radius : Float, direction : Vector4, vertices : script_ref:array:Vector4); // CreateForksForVirtualLink1;SNetworkLinkDataPingCachedDataVector4FloatVector4script_ref<array<Vector4>>
+	function CreateVirtualLinksForPing(ping : handle:PingCachedData); // CreateVirtualLinksForPing;PingCachedData
+	function CreateVirtualLinksForPing1(ping : handle:PingCachedData); // CreateVirtualLinksForPing1;PingCachedData
+	function CreateVirtualNetwork(sourcePing : handle:PingCachedData); // CreateVirtualNetwork;PingCachedData
+	function DeactivateNetworkLinkByTask(linkIndex : Int32, instant : Bool); // DeactivateNetworkLinkByTask;Int32Bool
+	function DeactivateNetworkLinkTask(data : handle:gameScriptTaskData); // DeactivateNetworkLinkTask;ScriptTaskData
+	function DeactivateNetworkLinks(toDeactivate : script_ref:array:Int32, hasContext : Bool); // DeactivateNetworkLinks;script_ref<array<Int32>>Bool
+	function DecreasePingLinbksCounter(); // DecreasePingLinbksCounter;
+	function DeterminNetworkLinkPriority(linkData : script_ref:SNetworkLinkData) : EPriority; // DeterminNetworkLinkPriority;script_ref<SNetworkLinkData>
+	function DeterminNetworkLinkVisibility(linkIndex : Int32) : Bool; // DeterminNetworkLinkVisibility;Int32
+	function DrawNetworkBeamByIndex(linkIndex : Int32) : Bool; // DrawNetworkBeamByIndex;Int32
+	function EvaluateLastMasterTarget(slaveID : entEntityID); // EvaluateLastMasterTarget;EntityID
+	function EvaluateLastSlaveTarget(masterID : entEntityID); // EvaluateLastSlaveTarget;EntityID
+	function EvaluateVisionMode(visionType : gameVisionModeType); // EvaluateVisionMode;gameVisionModeType
+	function EvaluatelastTargets(newTarget : entEntityID) : Bool; // EvaluatelastTargets;EntityID
+	function FindBestMatchingVertice(point : Vector4, direction : Vector4, angle : Float, radius : Float, excludeVertice : Vector4, vertices : script_ref:array:Vector4) : Vector4; // FindBestMatchingVertice;Vector4Vector4FloatFloatVector4script_ref<array<Vector4>>
+	function GetActivePing(sourceID : entEntityID) : handle:PingCachedData; // GetActivePing;EntityID
+	function GetAllMastersOfSlave(slaveID : entEntityID) : array:entEntityID; // GetAllMastersOfSlave;EntityID
+	function GetAllSlavesOfMaster(masterID : entEntityID) : array:entEntityID; // GetAllSlavesOfMaster;EntityID
+	function GetAmmountOfPingDurationIntervals() : Int32; // GetAmmountOfPingDurationIntervals;
+	function GetCurrentTarget() : whandle:gameObject; // GetCurrentTarget;
+	function GetCurrentTargetID() : entEntityID; // GetCurrentTargetID;
+	function GetHudManager() : handle:HUDManager; // GetHudManager;
+	function GetInitialPingSource() : whandle:gameObject; // GetInitialPingSource;
+	function GetInitialPingSourceID() : entEntityID; // GetInitialPingSourceID;
+	function GetLastActivePingWithRevealNetwork() : handle:PingCachedData; // GetLastActivePingWithRevealNetwork;
+	function GetLastPingSourceID() : entEntityID; // GetLastPingSourceID;
+	function GetMaxFreePingLinks() : Int32; // GetMaxFreePingLinks;
+	function GetMaxNumberOfSegmentsForVirtualNetwork(virtualNetworkRecord : whandle:gamedataVirtualNetwork_Record) : Int32; // GetMaxNumberOfSegmentsForVirtualNetwork;VirtualNetwork_Record
+	function GetNetworkBeam(linkData : script_ref:SNetworkLinkData) : handle:gameFxInstance; // GetNetworkBeam;script_ref<SNetworkLinkData>
+	function GetNetworkReavealDuration() : Float; // GetNetworkReavealDuration;
+	function GetNetworkRelation(sourceID : entEntityID, targetID : entEntityID) : ENetworkRelation; // GetNetworkRelation;EntityIDEntityID
+	function GetObjectFromID(entityID : entEntityID) : whandle:gameObject; // GetObjectFromID;EntityID
+	function GetPingPresetRecord() : whandle:gamedataNetworkPingingParameteres_Record; // GetPingPresetRecord;
+	function GetPingRange() : Float; // GetPingRange;
+	function GetPingRevealDuration() : Float; // GetPingRevealDuration;
+	function GetPingType(sourceID : entEntityID) : EPingType; // GetPingType;EntityID
+	function GetPlayerStateMachineBlackboard(playerPuppet : whandle:gameObject) : handle:gameIBlackboard; // GetPlayerStateMachineBlackboard;GameObject
+	function GetPulseRange() : Float; // GetPulseRange;
+	function GetRandomPoint(direction : Vector4, radius : Float, angle : Float) : Vector4; // GetRandomPoint;Vector4FloatFloat
+	function GetRandomPointOnSphere(sphereCentre : Vector4, radius : Float, slice : Int32) : Vector4; // GetRandomPointOnSphere;Vector4FloatInt32
+	function GetRandomPointOnSphere(sphereCentre : Vector4, radius : Float) : Vector4; // GetRandomPointOnSphere;Vector4Float
+	function GetRandomPointOnSphereInFacingQuadrant(sphereCenter : Vector4, radius : Float, facePoint : Vector4) : Vector4; // GetRandomPointOnSphereInFacingQuadrant;Vector4FloatVector4
+	function GetRandomPointOnSphereQuadrant0() : Vector4; // GetRandomPointOnSphereQuadrant0;
+	function GetRevealLinksAfterLeavingFocusDuration() : Float; // GetRevealLinksAfterLeavingFocusDuration;
+	function GetRevealMasterAfterLeavingFocusDuration() : Float; // GetRevealMasterAfterLeavingFocusDuration;
+	function GetSpacePingAppearModifier() : Float; // GetSpacePingAppearModifier;
+	function GetSpacePingDuration() : Float; // GetSpacePingDuration;
+	function GetVirtualLinkAngleTollerance() : Float; // GetVirtualLinkAngleTollerance;
+	function GetVirtualLinkForkAngleTollerance() : Float; // GetVirtualLinkForkAngleTollerance;
+	function GetVirtualNetworkRecord() : whandle:gamedataVirtualNetwork_Record; // GetVirtualNetworkRecord;
+	function GetVirtualNetworkSegmentMarker(virtualNetworkRecord : whandle:gamedataVirtualNetwork_Record) : Vector4; // GetVirtualNetworkSegmentMarker;VirtualNetwork_Record
+	function HasActivePing(sourceID : entEntityID) : Bool; // HasActivePing;EntityID
+	function HasActivePingWithRevealNetwork(sourceID : entEntityID) : Bool; // HasActivePingWithRevealNetwork;EntityID
+	function HasAnyActiveNetworkLink(ID : entEntityID) : Bool; // HasAnyActiveNetworkLink;EntityID
+	function HasAnyActivePing() : Bool; // HasAnyActivePing;
+	function HasAnyActivePingWithRevealNetwork() : Bool; // HasAnyActivePingWithRevealNetwork;
+	function HasDiffrentChildrenThanTargets(sourceID : entEntityID, targets : script_ref:array:entEntityID) : Bool; // HasDiffrentChildrenThanTargets;EntityIDscript_ref<array<EntityID>>
+	function HasDiffrentParentsThanTargets(sourceID : entEntityID, targets : script_ref:array:entEntityID) : Bool; // HasDiffrentParentsThanTargets;EntityIDscript_ref<array<EntityID>>
+	function HasNetworkLink(linkData : script_ref:SNetworkLinkData, out index : Int32) : Bool; // HasNetworkLink;script_ref<SNetworkLinkData>Int32
+	function HasNetworkLink(masterID : entEntityID, slaveID : entEntityID, linkType : ELinkType) : Bool; // HasNetworkLink;EntityIDEntityIDELinkType
+	function HasNetworkLink(ID : entEntityID, ignorePingLinks : Bool) : Bool; // HasNetworkLink;EntityIDBool
+	function HasNetworkLink(ID : entEntityID) : Bool; // HasNetworkLink;EntityID
+	function HasNetworkLink(linkData : script_ref:SNetworkLinkData) : Bool; // HasNetworkLink;script_ref<SNetworkLinkData>
+	function HasNetworkLinkWithHigherPriority(linkData : script_ref:SNetworkLinkData) : Bool; // HasNetworkLinkWithHigherPriority;script_ref<SNetworkLinkData>
+	function IncreasePingLinbksCounter(); // IncreasePingLinbksCounter;
+	function IsActivePingsLimitReached() : Bool; // IsActivePingsLimitReached;
+	function IsCurrentTarget(entityID : entEntityID) : Bool; // IsCurrentTarget;EntityID
+	function IsCurrentTargetValid() : Bool; // IsCurrentTargetValid;
+	function IsCurrentTargetValidInNetwork() : Bool; // IsCurrentTargetValidInNetwork;
+	function IsFreeLinkLimitReached(linkData : script_ref:SNetworkLinkData) : Bool; // IsFreeLinkLimitReached;script_ref<SNetworkLinkData>
+	function IsIdValid(id : entEntityID) : Bool; // IsIdValid;EntityID
+	function IsInNetwork(id : entEntityID) : Bool; // IsInNetwork;EntityID
+	function IsLastMasterTarget(entityID : entEntityID) : Bool; // IsLastMasterTarget;EntityID
+	function IsLastSlaveTarget(entityID : entEntityID) : Bool; // IsLastSlaveTarget;EntityID
+	function IsMaster(targetEntityID : entEntityID) : Bool; // IsMaster;EntityID
+	function IsMasterInNetwork(id : entEntityID) : Bool; // IsMasterInNetwork;EntityID
+	function IsPingLinksLimitReached() : Bool; // IsPingLinksLimitReached;
+	function IsSlaveInNetwork(id : entEntityID) : Bool; // IsSlaveInNetwork;EntityID
+	function IsSquadMarkedWithPing(squadName : CName) : Bool; // IsSquadMarkedWithPing;CName
+	function IsTagged(id : entEntityID) : Bool; // IsTagged;EntityID
+	function IsVirtualNetworkWithinDistanceLimit(sourcePing : handle:PingCachedData) : Bool; // IsVirtualNetworkWithinDistanceLimit;PingCachedData
+	function KillAllNetworkBeams(); // KillAllNetworkBeams;
+	function KillNetworkBeam(index : Int32, instant : Bool); // KillNetworkBeam;Int32Bool
+	function KillNetworkBeamByData(linkData : script_ref:SNetworkLinkData); // KillNetworkBeamByData;script_ref<SNetworkLinkData>
+	function KillNetworkBeamByIndex(index : Int32); // KillNetworkBeamByIndex;Int32
+	function KillNetworkBeamsByID(slaveID : entEntityID, masterID : entEntityID); // KillNetworkBeamsByID;EntityIDEntityID
+	function KillNetworkBeamsByID(ID : entEntityID); // KillNetworkBeamsByID;EntityID
+	function KillSingleOldestFreeLink(); // KillSingleOldestFreeLink;
+	function KillSingleOldestFreeLinkWitoutRevealPing(); // KillSingleOldestFreeLinkWitoutRevealPing;
+	function OnActivateNetworkLinksRequest(request : handle:ActivateLinksRequest); // OnActivateNetworkLinksRequest;ActivateLinksRequest
+	function OnAddPingedSquadRequest(request : handle:AddPingedSquadRequest); // OnAddPingedSquadRequest;AddPingedSquadRequest
+	function OnAttach(); // OnAttach;
+	function OnClearPingedSquadRequest(request : handle:ClearPingedSquadRequest); // OnClearPingedSquadRequest;ClearPingedSquadRequest
+	function OnDeactivateAllNetworkLinksRequest(request : handle:DeactivateAllNetworkLinksRequest); // OnDeactivateAllNetworkLinksRequest;DeactivateAllNetworkLinksRequest
+	function OnDeactivateLinksRequest(request : handle:DeactivateLinksRequest); // OnDeactivateLinksRequest;DeactivateLinksRequest
+	function OnDetach(); // OnDetach;
+	function OnEvaluateVisionModeRequest(request : handle:EvaluateVisionModeRequest); // OnEvaluateVisionModeRequest;EvaluateVisionModeRequest
+	function OnMarkBackdoorAsRevealedRequest(request : handle:MarkBackdoorAsRevealedRequest); // OnMarkBackdoorAsRevealedRequest;MarkBackdoorAsRevealedRequest
+	function OnNewBackdoorDeviceRequest(request : handle:NewBackdoorDeviceRequest); // OnNewBackdoorDeviceRequest;NewBackdoorDeviceRequest
+	function OnPlayerSpawnedCallback(playerPuppet : handle:gameObject); // OnPlayerSpawnedCallback;GameObject
+	function OnRegisterNetworkLinkRequest(request : handle:RegisterNetworkLinkRequest); // OnRegisterNetworkLinkRequest;RegisterNetworkLinkRequest
+	function OnRegisterPingLinkRequest(request : handle:RegisterPingNetworkLinkRequest); // OnRegisterPingLinkRequest;RegisterPingNetworkLinkRequest
+	function OnRemovePingedSquadRequest(request : handle:RemovePingedSquadRequest); // OnRemovePingedSquadRequest;RemovePingedSquadRequest
+	function OnRevealNetworkRequestRequest(request : handle:RevealNetworkRequestRequest); // OnRevealNetworkRequestRequest;RevealNetworkRequestRequest
+	function OnStartPingingNetworkRequest(request : handle:StartPingingNetworkRequest); // OnStartPingingNetworkRequest;StartPingingNetworkRequest
+	function OnStopingingNetworkRequest(request : handle:StopPingingNetworkRequest); // OnStopingingNetworkRequest;StopPingingNetworkRequest
+	function OnUnregisterAllNetworkLinksRequest(request : handle:UnregisterAllNetworkLinksRequest); // OnUnregisterAllNetworkLinksRequest;UnregisterAllNetworkLinksRequest
+	function OnUnregisterNetworkLinkBetweenTwoEntitiesRequest(request : handle:UnregisterNetworkLinkBetweenTwoEntitiesRequest); // OnUnregisterNetworkLinkBetweenTwoEntitiesRequest;UnregisterNetworkLinkBetweenTwoEntitiesRequest
+	function OnUnregisterNetworkLinkRequest(request : handle:UnregisterNetworkLinkRequest); // OnUnregisterNetworkLinkRequest;UnregisterNetworkLinkRequest
+	function OnUnregisterNetworkLinksByIDRequest(request : handle:UnregisterNetworkLinksByIDRequest); // OnUnregisterNetworkLinksByIDRequest;UnregisterNetworkLinksByIDRequest
+	function OnUnregisterNetworkLinksByIdAndTypeRequest(request : handle:UnregisterNetworkLinksByIdAndTypeRequest); // OnUnregisterNetworkLinksByIdAndTypeRequest;UnregisterNetworkLinksByIdAndTypeRequest
+	function OnUpdateNetworkVisualisationRequest(request : handle:UpdateNetworkVisualisationRequest); // OnUpdateNetworkVisualisationRequest;UpdateNetworkVisualisationRequest
+	function QuickHacksExposedByDefault() : Bool; // QuickHacksExposedByDefault;
+	function RegisterFocusModeCallback(); // RegisterFocusModeCallback;
+	function RegisterNetworkLink(linkData : SNetworkLinkData); // RegisterNetworkLink;SNetworkLinkData
+	function RegisterNetworkLinkWithDelay(linkData : script_ref:SNetworkLinkData, delay : Float); // RegisterNetworkLinkWithDelay;script_ref<SNetworkLinkData>Float
+	function RegisterPlayerSpawnedCallback(); // RegisterPlayerSpawnedCallback;
+	function RegisterPlayerTargetCallback(); // RegisterPlayerTargetCallback;
+	function RegisterVisionModeCallback(player : handle:gameObject); // RegisterVisionModeCallback;GameObject
+	function RemoveActivePing(index : Int32); // RemoveActivePing;Int32
+	function RemoveActivePingBySource(sourceID : entEntityID); // RemoveActivePingBySource;EntityID
+	function RemoveActivePingBySourceAndType(sourceID : entEntityID, pingType : EPingType); // RemoveActivePingBySourceAndType;EntityIDEPingType
+	function RemoveAllActiveFakePings(); // RemoveAllActiveFakePings;
+	function RemoveAllActivePings(); // RemoveAllActivePings;
+	function RemoveAllNetworkLinks(); // RemoveAllNetworkLinks;
+	function RemoveAllPingLinks(); // RemoveAllPingLinks;
+	function RemoveAllPingLinksByType(linkType : ELinkType); // RemoveAllPingLinksByType;ELinkType
+	function RemoveNetworkLink(index : Int32, instant : Bool); // RemoveNetworkLink;Int32Bool
+	function RemoveNetworkLinkByData(linkData : script_ref:SNetworkLinkData); // RemoveNetworkLinkByData;script_ref<SNetworkLinkData>
+	function RemoveNetworkLinkByIdAndType(linkType : ELinkType, ID : entEntityID); // RemoveNetworkLinkByIdAndType;ELinkTypeEntityID
+	function RemoveNetworkLinkByType(linkType : ELinkType); // RemoveNetworkLinkByType;ELinkType
+	function RemoveNetworkLinksBetweenTwoEntitities(firstID : entEntityID, secondID : entEntityID, onlyRemoveWeakLink : Bool); // RemoveNetworkLinksBetweenTwoEntitities;EntityIDEntityIDBool
+	function RemoveNetworkLinksByID(ID : entEntityID); // RemoveNetworkLinksByID;EntityID
+	function RemoveNetworkRevealTarget(index : Int32); // RemoveNetworkRevealTarget;Int32
+	function RemovePingLinksByFxResource(fxResource : gameFxResource, intant : Bool); // RemovePingLinksByFxResource;FxResourceBool
+	function RemovePingLinksBySource(sourceID : entEntityID, intant : Bool); // RemovePingLinksBySource;EntityIDBool
+	function RemovePingLinksBySourceAndFxResource(sourceID : entEntityID, fxResource : gameFxResource, intant : Bool); // RemovePingLinksBySourceAndFxResource;EntityIDFxResourceBool
+	function RemovePingLinksBySourceAndType(linkType : ELinkType, sourceID : entEntityID); // RemovePingLinksBySourceAndType;ELinkTypeEntityID
+	function RemovePingedSquad(squadName : CName); // RemovePingedSquad;CName
+	function ResolveConnectionHighlight(enable : Bool, linkData : script_ref:SNetworkLinkData); // ResolveConnectionHighlight;Boolscript_ref<SNetworkLinkData>
+	function ResolveNetworkRevealTarget(linkData : script_ref:SNetworkLinkData); // ResolveNetworkRevealTarget;script_ref<SNetworkLinkData>
+	function ResolveNetworkSystemCleanupDelay(); // ResolveNetworkSystemCleanupDelay;
+	function RevealEntireNetworkOnTarget(target : entEntityID); // RevealEntireNetworkOnTarget;EntityID
+	function RevealNetworkOnCachedTarget(targets : script_ref:array:entEntityID); // RevealNetworkOnCachedTarget;script_ref<array<EntityID>>
+	function SendConnectionHighlightEvent(enable : Bool, target : entEntityID, source : entEntityID, linkData : script_ref:SNetworkLinkData); // SendConnectionHighlightEvent;BoolEntityIDEntityIDscript_ref<SNetworkLinkData>
+	function SendRevealNetworkEvent(target : entEntityID, optional delay : Float); // SendRevealNetworkEvent;EntityIDFloat
+	function SendRevealNetworkGridRequest(target : entEntityID); // SendRevealNetworkGridRequest;EntityID
+	function SetupPingPresetRecord(); // SetupPingPresetRecord;
+	function ShouldForceInstantBeamKill() : Bool; // ShouldForceInstantBeamKill;
+	function ShouldNetworkElementsPersistAfterFocus() : Bool; // ShouldNetworkElementsPersistAfterFocus;
+	function ShouldPulsRealObject() : Bool; // ShouldPulsRealObject;
+	function ShouldRevealMasterOnPulse() : Bool; // ShouldRevealMasterOnPulse;
+	function ShouldRevealNetworkAfterPulse() : Bool; // ShouldRevealNetworkAfterPulse;
+	function ShouldRevealSlaveOnPulse() : Bool; // ShouldRevealSlaveOnPulse;
+	function ShouldShowLinksOnMaster() : Bool; // ShouldShowLinksOnMaster;
+	function ShouldShowOnlyTargetQuickHacks() : Bool; // ShouldShowOnlyTargetQuickHacks;
+	function ShouldUsePulseOnPing() : Bool; // ShouldUsePulseOnPing;
+	function SuppressPingIfBackdoorsFound() : Bool; // SuppressPingIfBackdoorsFound;
+	function UnregisterFocusModeCallback(); // UnregisterFocusModeCallback;
+	function UnregisterNetworkLinkWithDelay(linkData : script_ref:SNetworkLinkData) : gameDelayID; // UnregisterNetworkLinkWithDelay;script_ref<SNetworkLinkData>
+	function UnregisterPlayerSpawnedCallback(); // UnregisterPlayerSpawnedCallback;
+	function UnregisterPlayerTargetCallback(); // UnregisterPlayerTargetCallback;
+	function UnregisterVisionModeCallback(); // UnregisterVisionModeCallback;
+	function UpdateNetworkLinkData(linkData : SNetworkLinkData, indexToUpdate : Int32); // UpdateNetworkLinkData;SNetworkLinkDataInt32
+	function UpdateNetworkVisualisation(); // UpdateNetworkVisualisation;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

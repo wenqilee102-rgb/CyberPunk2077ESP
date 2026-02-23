@@ -1,0 +1,7 @@
+import struct gameMuppetInputActionUseConsumable extends gameIMuppetInputAction
+{
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

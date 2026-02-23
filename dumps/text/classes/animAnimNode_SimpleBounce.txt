@@ -1,0 +1,29 @@
+import class animAnimNode_SimpleBounce extends animAnimNode_OnePoseInput
+{
+	var areChannelsResaved : Bool;
+	var outputDriverTrack : animNamedTrackIndex;
+	var debug : Bool;
+	var startTransform : animTransformIndex;
+	var endTransform : animTransformIndex;
+	var multiplier : Float;
+	var negativeMultiplier : Float;
+	var smoothStep : Float;
+	var offset : Float;
+	var delay : Float;
+	var transformOutputs : array:animSimpleBounceTransformOutput;
+	var trackOutputs : array:animSimpleBounceTrackOutput;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

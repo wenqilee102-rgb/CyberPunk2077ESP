@@ -1,0 +1,1 @@
+{"a":"animAnimNode_OnePoseInput","b":"animAnimNode_Inertialization","d":8,"e":[{"a":{"a":1},"b":"safeMode","c":128},{"a":{"a":7},"b":"transformsCountUpperBound","c":128},{"a":{"a":7},"b":"tracksCountUpperBound","c":128},{"a":{"a":31,"c":{"b":"animInertializationRotationLimit"}},"b":"rotationLimits","c":128}]}

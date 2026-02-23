@@ -1,0 +1,18 @@
+class abstract AISubActionHitData_Record_Implementation extends IScriptable
+{
+	static function GetAnimVariation(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionHitData_Record) : Int32; // AISubActionHitData_Record_Implementation::GetAnimVariation;ScriptExecutionContextAISubActionHitData_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class animCAnimationBufferUncompressed extends animIAnimationBuffer
+{
+	var transforms : array:array:QsTransform;
+	var tracks : array:array:Float;
+	var duration : Float;
+}
+
+import class abstract animIAnimationBuffer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

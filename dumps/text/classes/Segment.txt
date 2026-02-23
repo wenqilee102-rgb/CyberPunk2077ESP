@@ -1,0 +1,5 @@
+import struct Segment
+{
+	var origin : Vector4;
+	var direction : Vector4;
+}

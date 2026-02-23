@@ -1,0 +1,8 @@
+import class scnAnimName extends ISerializable
+{
+	var type : scnAnimNameType;
+}
+
+import class abstract ISerializable
+{
+}

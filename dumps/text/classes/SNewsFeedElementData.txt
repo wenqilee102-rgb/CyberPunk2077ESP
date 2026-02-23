@@ -1,0 +1,5 @@
+struct SNewsFeedElementData
+{
+	public    var banners : array:SsimpleBanerData;
+	public    var currentBanner : Int32;
+}

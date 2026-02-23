@@ -1,0 +1,53 @@
+class abstract AIWeapon extends IScriptable
+{
+	static function CanWeaponOverheat(gameObject : whandle:gameweaponObject) : Bool; // AIWeapon::CanWeaponOverheat;WeaponObject
+	static function CompareAIPatternRecordArrays(arr1 : script_ref:array:whandle:gamedataAIPattern_Record, arr2 : script_ref:array:whandle:gamedataAIPattern_Record) : Bool; // AIWeapon::CompareAIPatternRecordArrays;script_ref<array<AIPattern_Record>>script_ref<array<AIPattern_Record>>
+	static function Fire(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, timeStamp : Float, tbhCoefficient : Float, requestedTriggerMode : gamedataTriggerMode, optional targetPosition : Vector4, optional target : handle:gameObject, optional rangedAttack : TweakDBID, optional maxSpreadOverride : Float, optional aimingDelay : Float, optional offset : Vector4, optional shouldTrackTarget : Bool, optional predictionTime : Float, optional posProviderOverride : handle:entIPositionProvider, optional muzzleOffset : Vector4, optional weaponCustomEvent : CName); // AIWeapon::Fire;GameObjectWeaponObjectFloatFloatgamedataTriggerModeVector4GameObjectTweakDBIDFloatFloatVector4BoolFloatIPositionProviderVector4CName
+	static function ForceWeaponOverheat(weapon : whandle:gameweaponObject, weaponOwner : whandle:gameObject); // AIWeapon::ForceWeaponOverheat;WeaponObjectGameObject
+	static function GetChargeLevel(weapon : whandle:gameweaponObject, actionDuration : Float, out chargeLevel : Float) : Bool; // AIWeapon::GetChargeLevel;WeaponObjectFloatFloat
+	static function GetDesiredNumberOfShots(weapon : whandle:gameweaponObject) : Int32; // AIWeapon::GetDesiredNumberOfShots;WeaponObject
+	static function GetIsFullyCharged(weapon : whandle:gameweaponObject) : Bool; // AIWeapon::GetIsFullyCharged;WeaponObject
+	static function GetNextShotTimeStamp(weapon : whandle:gameweaponObject) : Float; // AIWeapon::GetNextShotTimeStamp;WeaponObject
+	static function GetPatternPackagesMeetingConditionChecks(weaponOwner : whandle:gameObject, records : script_ref:array:whandle:gamedataAIPatternsPackage_Record, out package : whandle:gamedataAIPatternsPackage_Record) : Bool; // AIWeapon::GetPatternPackagesMeetingConditionChecks;GameObjectscript_ref<array<AIPatternsPackage_Record>>AIPatternsPackage_Record
+	static function GetPatternRange(weapon : whandle:gameweaponObject) : array:whandle:gamedataAIPattern_Record; // AIWeapon::GetPatternRange;WeaponObject
+	static function GetShootingPattern(weapon : whandle:gameweaponObject) : whandle:gamedataAIPattern_Record; // AIWeapon::GetShootingPattern;WeaponObject
+	static function GetShootingPatternDelayBetweenShots(totalShotsFired : Int32, pattern : whandle:gamedataAIPattern_Record) : Float; // AIWeapon::GetShootingPatternDelayBetweenShots;Int32AIPattern_Record
+	static function GetShootingPatternPackage(weapon : whandle:gameweaponObject) : whandle:gamedataAIPatternsPackage_Record; // AIWeapon::GetShootingPatternPackage;WeaponObject
+	static function GetShootingPatternsList(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, chosenPackage : whandle:gamedataAIPatternsPackage_Record, patternsList : script_ref:array:whandle:gamedataAIPattern_Record) : Bool; // AIWeapon::GetShootingPatternsList;GameObjectWeaponObjectAIPatternsPackage_Recordscript_ref<array<AIPattern_Record>>
+	static function GetShotTimeStamp(weapon : whandle:gameweaponObject) : Float; // AIWeapon::GetShotTimeStamp;WeaponObject
+	static function GetTotalNumberOfShots(weapon : whandle:gameweaponObject) : Int32; // AIWeapon::GetTotalNumberOfShots;WeaponObject
+	static function GetWeaponOverheatBB(weapon : whandle:gameweaponObject) : Bool; // AIWeapon::GetWeaponOverheatBB;WeaponObject
+	static function GetWeaponOverheatStatPool(gameObject : whandle:gameweaponObject) : Float; // AIWeapon::GetWeaponOverheatStatPool;WeaponObject
+	static function HasExceededDesiredNumberOfShots(weapon : whandle:gameweaponObject) : Bool; // AIWeapon::HasExceededDesiredNumberOfShots;WeaponObject
+	static function OnFullyCharged(weapon : whandle:gameweaponObject); // AIWeapon::OnFullyCharged;WeaponObject
+	static function OnShotFired(weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, timeStamp : Float); // AIWeapon::OnShotFired;WeaponObjectgamedataTriggerModeFloat
+	static function OnStartShooting(weapon : whandle:gameweaponObject, optional desiredNumberOfShots : Int32); // AIWeapon::OnStartShooting;WeaponObjectInt32
+	static function OnStopShooting(weapon : whandle:gameweaponObject, actionDuration : Float); // AIWeapon::OnStopShooting;WeaponObjectFloat
+	static function ProcessWeaponOverheatStatPool(gameObject : whandle:gameweaponObject, weaponOwner : whandle:gameObject, optional forceOverheat : Bool); // AIWeapon::ProcessWeaponOverheatStatPool;WeaponObjectGameObjectBool
+	static function QueueNextShot(weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, timeStamp : Float, optional delayForNextShot : Float); // AIWeapon::QueueNextShot;WeaponObjectgamedataTriggerModeFloatFloat
+	static function SelectShootingPattern(record : whandle:gamedataAISubActionShootWithWeapon_Record, weapon : whandle:gameweaponObject, weaponOwner : whandle:gameObject, optional forceReselection : Bool); // AIWeapon::SelectShootingPattern;AISubActionShootWithWeapon_RecordWeaponObjectGameObjectBool
+	static function SelectShootingPatternFromList(weapon : whandle:gameweaponObject, patternsList : script_ref:array:whandle:gamedataAIPattern_Record, out selectedPattern : whandle:gamedataAIPattern_Record); // AIWeapon::SelectShootingPatternFromList;WeaponObjectscript_ref<array<AIPattern_Record>>AIPattern_Record
+	static function SelectShootingPatternPackage(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, optional records : array:whandle:gamedataAIPatternsPackage_Record) : whandle:gamedataAIPatternsPackage_Record; // AIWeapon::SelectShootingPatternPackage;GameObjectWeaponObjectarray<AIPatternsPackage_Record>
+	static function SetAttackBasedOnTimeDilation(owner : whandle:gameObject, weapon : whandle:gameweaponObject, optional overrideRangedAttack : TweakDBID); // AIWeapon::SetAttackBasedOnTimeDilation;GameObjectWeaponObjectTweakDBID
+	static function SetPatternRange(weapon : whandle:gameweaponObject, patternList : array:whandle:gamedataAIPattern_Record); // AIWeapon::SetPatternRange;WeaponObjectarray<AIPattern_Record>
+	static function SetShootingPattern(weapon : whandle:gameweaponObject, pattern : whandle:gamedataAIPattern_Record); // AIWeapon::SetShootingPattern;WeaponObjectAIPattern_Record
+	static function SetShootingPatternPackage(weapon : whandle:gameweaponObject, patternPackage : whandle:gamedataAIPatternsPackage_Record); // AIWeapon::SetShootingPatternPackage;WeaponObjectAIPatternsPackage_Record
+	static function UpdateCharging(weapon : whandle:gameweaponObject, timeStamp : Float, weaponOwner : whandle:gameObject, out chargeLevel : Float) : Bool; // AIWeapon::UpdateCharging;WeaponObjectFloatGameObjectFloat
+	static function UpdateSniperEffect(weapon : handle:gameweaponObject, duration : Float) : Bool; // AIWeapon::UpdateSniperEffect;WeaponObjectFloat
+	static function WeaponCooledDownFromOverheat(weapon : whandle:gameweaponObject); // AIWeapon::WeaponCooledDownFromOverheat;WeaponObject
+	static function WeaponOverheated(weapon : whandle:gameweaponObject); // AIWeapon::WeaponOverheated;WeaponObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

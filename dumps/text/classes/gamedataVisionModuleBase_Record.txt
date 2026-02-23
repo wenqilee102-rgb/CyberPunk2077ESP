@@ -1,0 +1,49 @@
+import class gamedataVisionModuleBase_Record extends gamedataTweakDBRecord
+{
+	import function Default_color() : Int32; // Default_color
+	import function Default_cue() : CName; // Default_cue
+	import function Default_seeThroughWalls() : Bool; // Default_seeThroughWalls
+	import function Focus_color() : Int32; // Focus_color
+	import function Focus_cue() : CName; // Focus_cue
+	import function Focus_seeThroughWalls() : Bool; // Focus_seeThroughWalls
+	import function Group() : whandle:gamedataVisionGroup_Record; // Group
+	import function GroupHandle() : handle:gamedataVisionGroup_Record; // GroupHandle
+	import function Heavy_act_delay() : Float; // Heavy_act_delay
+	import function Heavy_act_duration() : Float; // Heavy_act_duration
+	import function Heavy_act_mode() : CName; // Heavy_act_mode
+	import function Heavy_act_type() : CName; // Heavy_act_type
+	import function Heavy_deact_delay() : Float; // Heavy_deact_delay
+	import function Heavy_deact_duration() : Float; // Heavy_deact_duration
+	import function Heavy_deact_mode() : CName; // Heavy_deact_mode
+	import function Heavy_deact_type() : CName; // Heavy_deact_type
+	import function Light_act_delay() : Float; // Light_act_delay
+	import function Light_act_duration() : Float; // Light_act_duration
+	import function Light_act_mode() : CName; // Light_act_mode
+	import function Light_act_type() : CName; // Light_act_type
+	import function Light_deact_delay() : Float; // Light_deact_delay
+	import function Light_deact_duration() : Float; // Light_deact_duration
+	import function Light_deact_mode() : CName; // Light_deact_mode
+	import function Light_deact_type() : CName; // Light_deact_type
+	import function ObjectPrereq() : CName; // ObjectPrereq
+	import function Prereq() : CName; // Prereq
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

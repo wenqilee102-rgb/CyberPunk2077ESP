@@ -1,0 +1,4 @@
+import struct audioMeleeSound
+{
+	var events : array:audioMeleeEvent;
+}

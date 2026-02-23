@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"DamageTypeIndicator","d":0,"e":[{"a":{"b":"inkImageWidgetReference"},"b":"DamageIconRef","c":129},{"a":{"b":"inkTextWidgetReference"},"b":"DamageTypeLabelRef","c":129}],"f":[{"a":"Setup;gamedataDamageType","b":"Setup","d":48,"e":[{"a":{"b":"gamedataDamageType"},"b":"damageType","c":0}]}]}

@@ -1,0 +1,6 @@
+import struct gameuiNarrativePlateData
+{
+	var text : String;
+	var caption : String;
+	var entity : whandle:gameObject;
+}

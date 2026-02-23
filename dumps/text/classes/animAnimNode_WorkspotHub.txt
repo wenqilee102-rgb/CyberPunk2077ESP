@@ -1,0 +1,24 @@
+import class animAnimNode_WorkspotHub extends animAnimNode_Base
+{
+	var additionalLinkIds : array:workWorkEntryId;
+	var additionalLinks : array:animPoseLink;
+	var animLoopEventName : CName;
+	var isCoverHubHack : Bool;
+	var eventFilterType : animEventFilterType;
+	var mainEmotionalState : CName;
+	var emotionalExpression : CName;
+	var facialKeyWeight : Float;
+	var facialIdleMaleAnimation : CName;
+	var facialIdleKey_MaleAnimation : CName;
+	var facialIdleFemaleAnimation : CName;
+	var facialIdleKey_FemaleAnimation : CName;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

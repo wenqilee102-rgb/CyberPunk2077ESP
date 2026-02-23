@@ -1,0 +1,41 @@
+import class gamedataAISubActionCreateGameEffect_Record extends gamedataAISubAction_Record
+{
+	import function ColliderBoxSize() : Vector3; // ColliderBoxSize
+	import function Delay() : Float; // Delay
+	import function Duration() : Float; // Duration
+	import function EffectName() : CName; // EffectName
+	import function EffectTag() : CName; // EffectTag
+	import function PositionObj() : whandle:gamedataAIActionTarget_Record; // PositionObj
+	import function PositionObjHandle() : handle:gamedataAIActionTarget_Record; // PositionObjHandle
+	import function Range() : Float; // Range
+	import function RotationObj() : whandle:gamedataAIActionTarget_Record; // RotationObj
+	import function RotationObjHandle() : handle:gamedataAIActionTarget_Record; // RotationObjHandle
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function TargetPositionObj() : whandle:gamedataAIActionTarget_Record; // TargetPositionObj
+	import function TargetPositionObjHandle() : handle:gamedataAIActionTarget_Record; // TargetPositionObjHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,16 @@
+import class inkScanlineWipeEffect extends inkIEffect
+{
+	var angle : Float;
+	var transition : Float;
+	var width : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,4 @@
+import struct physicsDestructionHierarchyOffset
+{
+	var combined : Uint32;
+}

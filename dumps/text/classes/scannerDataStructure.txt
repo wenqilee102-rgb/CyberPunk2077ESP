@@ -1,0 +1,8 @@
+struct scannerDataStructure
+{
+	public    var entityName : String;
+	public    var quickHackName : String;
+	public    var quickHackDesc : String;
+	public    var questEntries : array:scannerQuestEntry;
+	public    var empty : Bool;
+}

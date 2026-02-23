@@ -1,0 +1,69 @@
+class SubCharacterSystem extends gameScriptableSystem
+{
+	private   var uniqueSubCharacters : array:SSubCharacter;
+	private   var scriptSpawnedFlathead : Bool;
+	private   var isDespawningFlathead : Bool;
+
+	static function CancelDespawnRequest(gameInstance : ScriptGameInstance, optional characterID : TweakDBID) : Bool; // SubCharacterSystem::CancelDespawnRequest;GameInstanceTweakDBID
+	static function DespawnRequest(gameInstance : ScriptGameInstance, optional characterID : TweakDBID) : Bool; // SubCharacterSystem::DespawnRequest;GameInstanceTweakDBID
+	static function GetInstance(gameInstance : ScriptGameInstance) : handle:SubCharacterSystem; // SubCharacterSystem::GetInstance;GameInstance
+	static function IsFlathead(object : whandle:gameObject) : Bool; // SubCharacterSystem::IsFlathead;GameObject
+	static function IsSubCharacterSpawned(gameInstance : ScriptGameInstance, optional characterID : TweakDBID) : Bool; // SubCharacterSystem::IsSubCharacterSpawned;GameInstanceTweakDBID
+
+	function AddFlathead(); // AddFlathead;
+	function AddSubCharacter(character : handle:ScriptedPuppet); // AddSubCharacter;ScriptedPuppet
+	function GetAllSubCharacters() : array:SSubCharacter; // GetAllSubCharacters;
+	function GetFlathead() : whandle:ScriptedPuppet; // GetFlathead;
+	function GetFlatheadEquipment() : whandle:EquipmentSystemPlayerData; // GetFlatheadEquipment;
+	function GetFlatheadPersistentID() : gamePersistentID; // GetFlatheadPersistentID;
+	function GetSubCharacterEquipment(subCharType : gamedataSubCharacter) : handle:EquipmentSystemPlayerData; // GetSubCharacterEquipment;gamedataSubCharacter
+	function GetSubCharacterIndex(subCharType : gamedataSubCharacter) : Int32; // GetSubCharacterIndex;gamedataSubCharacter
+	function GetSubCharacterPersistentID(subCharType : gamedataSubCharacter) : gamePersistentID; // GetSubCharacterPersistentID;gamedataSubCharacter
+	function GetSubCharacterPuppet(subCharType : gamedataSubCharacter) : whandle:ScriptedPuppet; // GetSubCharacterPuppet;gamedataSubCharacter
+	function IsFlatheadFollowing() : Bool; // IsFlatheadFollowing;
+	function OnAddSubCharacterRequest(request : handle:AddSubCharacterRequest); // OnAddSubCharacterRequest;AddSubCharacterRequest
+	function OnAttach(); // OnAttach;
+	function OnDespawnSubCharacterRequest(request : handle:DespawnSubCharacterRequest); // OnDespawnSubCharacterRequest;DespawnSubCharacterRequest
+	function OnDespawnUniqueSubCharacterRequest(request : handle:DespawnUniqueSubCharacterRequest); // OnDespawnUniqueSubCharacterRequest;DespawnUniqueSubCharacterRequest
+	function OnRemoveSubCharacterRequest(request : handle:RemoveSubCharacterRequest); // OnRemoveSubCharacterRequest;RemoveSubCharacterRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSpawnSubCharacterRequest(request : handle:SpawnSubCharacterRequest); // OnSpawnSubCharacterRequest;SpawnSubCharacterRequest
+	function OnSpawnUniquePursuitSubCharacterRequest(request : handle:SpawnUniquePursuitSubCharacterRequest); // OnSpawnUniquePursuitSubCharacterRequest;SpawnUniquePursuitSubCharacterRequest
+	function OnSpawnUniqueSubCharacterRequest(request : handle:SpawnUniqueSubCharacterRequest); // OnSpawnUniqueSubCharacterRequest;SpawnUniqueSubCharacterRequest
+	function OnSubCharEquipRequest(request : handle:SubCharEquipRequest); // OnSubCharEquipRequest;SubCharEquipRequest
+	function OnSubCharEquipRequest(request : handle:SubCharUnequipRequest); // OnSubCharEquipRequest;SubCharUnequipRequest
+	function RemoveFlathead(); // RemoveFlathead;
+	function RemoveSubCharacter(subCharType : gamedataSubCharacter); // RemoveSubCharacter;gamedataSubCharacter
+	function ShowFlatheadUI(value : Bool); // ShowFlatheadUI;Bool
+	function SubCharacterExists(subCharType : gamedataSubCharacter) : Bool; // SubCharacterExists;gamedataSubCharacter
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

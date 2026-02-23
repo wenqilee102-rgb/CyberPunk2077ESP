@@ -1,0 +1,35 @@
+class FilterStimTargets extends gameEffectObjectSingleFilter_Scripted
+{
+	function EvaluateTarget(puppet : handle:NPCPuppet, targets : script_ref:array:gameNPCstubData) : Bool; // EvaluateTarget;NPCPuppetscript_ref<array<NPCstubData>>
+	function Process(ctx : gameEffectScriptContext, filterCtx : gameEffectSingleFilterScriptContext) : Bool; // Process;EffectScriptContextEffectSingleFilterScriptContext
+}
+
+import class gameEffectObjectSingleFilter_Scripted extends gameEffectObjectSingleFilter
+{
+}
+
+import class abstract gameEffectObjectSingleFilter extends gameEffectObjectFilter
+{
+}
+
+import class abstract gameEffectObjectFilter extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

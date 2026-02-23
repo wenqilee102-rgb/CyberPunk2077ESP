@@ -1,0 +1,73 @@
+class PlayerDevelopmentDataManager extends IScriptable
+{
+	private   var player : whandle:PlayerPuppet;
+	private   var playerDevSystem : handle:PlayerDevelopmentSystem;
+	private   var parentGameCtrl : whandle:gameuiWidgetGameController;
+
+	static function PerkUtilityToString(utility : gamedataPerkUtility) : String; // PlayerDevelopmentDataManager::PerkUtilityToString;gamedataPerkUtility
+
+	function CheckRespecCost() : Bool; // CheckRespecCost;
+	function FillAttributeData(attribute : SAttribute, out outData : handle:AttributeData); // FillAttributeData;SAttributeAttributeData
+	function GetAreaDisplayData(perkArea : gamedataPerkArea, proficiency : gamedataProficiencyType, attributeRecord : handle:gamedataAttribute_Record, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:AreaDisplayData; // GetAreaDisplayData;gamedataPerkAreagamedataProficiencyTypeAttribute_RecordPlayerDevelopmentData
+	function GetAreaDisplayData(perkArea : gamedataPerkArea, proficiency : gamedataProficiencyType, attributeId : TweakDBID, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:AreaDisplayData; // GetAreaDisplayData;gamedataPerkAreagamedataProficiencyTypeTweakDBIDPlayerDevelopmentData
+	function GetAttribute(attributeID : TweakDBID) : handle:AttributeData; // GetAttribute;TweakDBID
+	function GetAttributeData(attributeId : TweakDBID) : handle:AttributeDisplayData; // GetAttributeData;TweakDBID
+	function GetAttributeEnumFromRecordID(recordID : TweakDBID) : PerkMenuAttribute; // GetAttributeEnumFromRecordID;TweakDBID
+	function GetAttributeFromType(attributeType : gamedataStatType) : handle:AttributeData; // GetAttributeFromType;gamedataStatType
+	function GetAttributeLevel(attribute : PerkMenuAttribute) : Int32; // GetAttributeLevel;PerkMenuAttribute
+	function GetAttributePoints() : Int32; // GetAttributePoints;
+	function GetAttributeRecordFromProficiency(proficiency : gamedataProficiencyType) : whandle:gamedataAttribute_Record; // GetAttributeRecordFromProficiency;gamedataProficiencyType
+	function GetAttributeRecordIDFromEnum(attribute : PerkMenuAttribute) : TweakDBID; // GetAttributeRecordIDFromEnum;PerkMenuAttribute
+	function GetAttributes() : array:handle:AttributeData; // GetAttributes;
+	function GetNewPerkDisplayData(perkType : gamedataNewPerkType, perkArea : gamedataNewPerkSlotType, proficiency : gamedataProficiencyType, attributeId : TweakDBID, isRipperdoc : Bool, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:NewPerkDisplayData; // GetNewPerkDisplayData;gamedataNewPerkTypegamedataNewPerkSlotTypegamedataProficiencyTypeTweakDBIDBoolPlayerDevelopmentData
+	function GetNewPerkDisplayData(perkType : gamedataNewPerkType, perkArea : gamedataNewPerkSlotType, proficiency : gamedataProficiencyType, attributeRecord : handle:gamedataAttribute_Record, isRipperdoc : Bool, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:NewPerkDisplayData; // GetNewPerkDisplayData;gamedataNewPerkTypegamedataNewPerkSlotTypegamedataProficiencyTypeAttribute_RecordBoolPlayerDevelopmentData
+	function GetPassiveBonusDisplayData(proficiencyRecord : handle:gamedataProficiency_Record) : array:handle:LevelRewardDisplayData; // GetPassiveBonusDisplayData;Proficiency_Record
+	function GetPerkDisplayData(perkType : gamedataPerkType, perkArea : gamedataPerkArea, proficiency : gamedataProficiencyType, attributeId : TweakDBID, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:PerkDisplayData; // GetPerkDisplayData;gamedataPerkTypegamedataPerkAreagamedataProficiencyTypeTweakDBIDPlayerDevelopmentData
+	function GetPerkDisplayData(perkType : gamedataPerkType, perkArea : gamedataPerkArea, proficiency : gamedataProficiencyType, attributeRecord : handle:gamedataAttribute_Record, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:PerkDisplayData; // GetPerkDisplayData;gamedataPerkTypegamedataPerkAreagamedataProficiencyTypeAttribute_RecordPlayerDevelopmentData
+	function GetPerkLevel(type : gamedataPerkType) : Int32; // GetPerkLevel;gamedataPerkType
+	function GetPerkPoints() : Int32; // GetPerkPoints;
+	function GetPlayer() : whandle:PlayerPuppet; // GetPlayer;
+	function GetPlayerDevelopmentData() : whandle:PlayerDevelopmentData; // GetPlayerDevelopmentData;
+	function GetPlayerDevelopmentSystem() : whandle:PlayerDevelopmentSystem; // GetPlayerDevelopmentSystem;
+	function GetProficiencyDisplayData(proficiency : gamedataProficiencyType) : handle:ProficiencyDisplayData; // GetProficiencyDisplayData;gamedataProficiencyType
+	function GetProficiencyDisplayData(proficiency : gamedataProficiencyType, attributeId : TweakDBID) : handle:ProficiencyDisplayData; // GetProficiencyDisplayData;gamedataProficiencyTypeTweakDBID
+	function GetProficiencyDisplayData(proficiency : gamedataProficiencyType, attributeRecord : handle:gamedataAttribute_Record) : handle:ProficiencyDisplayData; // GetProficiencyDisplayData;gamedataProficiencyTypeAttribute_Record
+	function GetProficiencyDisplayData(proficiencyRecord : handle:gamedataProficiency_Record, attributeRecord : handle:gamedataAttribute_Record) : handle:ProficiencyDisplayData; // GetProficiencyDisplayData;Proficiency_RecordAttribute_Record
+	function GetProficiencyRecord(proficiency : gamedataProficiencyType) : whandle:gamedataProficiency_Record; // GetProficiencyRecord;gamedataProficiencyType
+	function GetProficiencyRecord(attributeRecord : whandle:gamedataAttribute_Record, proficiency : gamedataProficiencyType) : whandle:gamedataProficiency_Record; // GetProficiencyRecord;Attribute_RecordgamedataProficiencyType
+	function GetProficiencyWithData(proficiency : gamedataProficiencyType) : handle:ProficiencyDisplayData; // GetProficiencyWithData;gamedataProficiencyType
+	function GetSpentPerkPoints() : Int32; // GetSpentPerkPoints;
+	function GetSpentTraitPoints() : Int32; // GetSpentTraitPoints;
+	function GetSpyPerkPoints() : Int32; // GetSpyPerkPoints;
+	function GetTotalRespecCost() : Int32; // GetTotalRespecCost;
+	function GetTraitDisplayData(traitRecordId : TweakDBID, attributeId : TweakDBID, proficiency : gamedataProficiencyType, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:TraitDisplayData; // GetTraitDisplayData;TweakDBIDTweakDBIDgamedataProficiencyTypePlayerDevelopmentData
+	function GetTraitDisplayData(traitType : gamedataTraitType, attributeId : TweakDBID, proficiency : gamedataProficiencyType, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:TraitDisplayData; // GetTraitDisplayData;gamedataTraitTypeTweakDBIDgamedataProficiencyTypePlayerDevelopmentData
+	function GetTraitDisplayData(traitRecord : whandle:gamedataTrait_Record, attributeRecord : handle:gamedataAttribute_Record, proficiency : gamedataProficiencyType, optional playerDevelopmentData : whandle:PlayerDevelopmentData) : handle:TraitDisplayData; // GetTraitDisplayData;Trait_RecordAttribute_RecordgamedataProficiencyTypePlayerDevelopmentData
+	function HasAvailableAttributePoints(optional showNotification : Bool) : Bool; // HasAvailableAttributePoints;Bool
+	function Initialize(player : handle:PlayerPuppet, parentGameCtrl : handle:gameuiWidgetGameController); // Initialize;PlayerPuppetinkGameController
+	function IsAttributeUpgradeable(attribute : PerkMenuAttribute) : Bool; // IsAttributeUpgradeable;PerkMenuAttribute
+	function IsEspionageMilestonePerk(perkType : gamedataNewPerkType) : Bool; // IsEspionageMilestonePerk;gamedataNewPerkType
+	function IsEspionagePerk(perkType : gamedataNewPerkType) : Bool; // IsEspionagePerk;gamedataNewPerkType
+	function IsNewPerkRefundable(data : handle:NewPerkDisplayData) : Bool; // IsNewPerkRefundable;NewPerkDisplayData
+	function IsPerkUpgradeable(data : handle:BasePerkDisplayData, optional showNotification : Bool) : Bool; // IsPerkUpgradeable;BasePerkDisplayDataBool
+	function NotifyAttributeUpdate(attributeId : TweakDBID); // NotifyAttributeUpdate;TweakDBID
+	function UpdateData(); // UpdateData;
+	function UpgradeAttribute(data : handle:AttributeData); // UpgradeAttribute;AttributeData
+	function UpgradeAttribute(type : gamedataStatType); // UpgradeAttribute;gamedataStatType
+	function UpgradePerk(data : handle:PerkDisplayData); // UpgradePerk;PerkDisplayData
+	function UpgradeTrait(data : handle:TraitDisplayData); // UpgradeTrait;TraitDisplayData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

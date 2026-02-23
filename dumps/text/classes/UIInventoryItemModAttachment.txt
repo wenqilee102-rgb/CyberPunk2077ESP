@@ -1,0 +1,26 @@
+class UIInventoryItemModAttachment extends UIInventoryItemMod
+{
+	public    var IsEmpty : Bool;
+	public    var SlotName : String;
+	public    var Quality : gamedataQuality;
+	public    var AbilitiesSize : Int32;
+	public    var Abilities : array:gameInventoryItemAbility;
+}
+
+class UIInventoryItemMod extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

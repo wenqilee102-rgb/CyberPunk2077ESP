@@ -1,0 +1,8 @@
+import class abstract ITonemappingMode extends ISerializable
+{
+	var colorPreservation : curveData:Float;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,11 @@
+import class VelocitySpreadEvaluator extends PhysicsParticleInitializer
+{
+}
+
+import class abstract PhysicsParticleInitializer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

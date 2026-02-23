@@ -1,0 +1,10 @@
+import struct gameuiWeaponRosterInfo
+{
+	var ammoCurrent : Int32;
+	var ammoMagazine : Int32;
+	var ammoAvailable : Int32;
+	var fireModeCurrent : Int32;
+	var fileModeList : array:CName;
+	var damageTypeList : array:gamedataDamageType;
+	var weaponId : Int32;
+}

@@ -1,0 +1,5 @@
+import struct audioContextualVoiceGruntSettings
+{
+	var painShort : audioContextualVoiceGrunt;
+	var effort : audioContextualVoiceGrunt;
+}

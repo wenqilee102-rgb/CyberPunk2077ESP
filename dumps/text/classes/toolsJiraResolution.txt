@@ -1,0 +1,5 @@
+import struct toolsJiraResolution
+{
+	var name : String;
+	var id : String;
+}

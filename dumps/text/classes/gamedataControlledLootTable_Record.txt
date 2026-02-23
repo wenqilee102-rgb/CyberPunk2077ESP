@@ -1,0 +1,29 @@
+import class gamedataControlledLootTable_Record extends gamedataTweakDBRecord
+{
+	import function ControlledLootSets(out outList : array:whandle:gamedataControlledLootSet_Record); // ControlledLootSets
+	import function ControlledLootSetsContains(item : whandle:gamedataControlledLootSet_Record) : Bool; // ControlledLootSetsContains
+	import function GetControlledLootSetsCount() : Int32; // GetControlledLootSetsCount
+	import function GetControlledLootSetsItem(index : Int32) : whandle:gamedataControlledLootSet_Record; // GetControlledLootSetsItem
+	import function GetControlledLootSetsItemHandle(index : Int32) : handle:gamedataControlledLootSet_Record; // GetControlledLootSetsItemHandle
+	import function MaxDropsPerAttempt() : Int32; // MaxDropsPerAttempt
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

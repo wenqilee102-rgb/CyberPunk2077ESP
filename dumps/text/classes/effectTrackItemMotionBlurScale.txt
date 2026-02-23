@@ -1,0 +1,19 @@
+import class effectTrackItemMotionBlurScale extends effectTrackItem
+{
+	var scale : effectEffectParameterEvaluatorFloat;
+}
+
+import class abstract effectTrackItem extends effectBaseItem
+{
+	var timeBegin : Float;
+	var timeDuration : Float;
+	var ruid : CRUID;
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

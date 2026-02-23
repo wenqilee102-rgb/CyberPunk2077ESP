@@ -1,0 +1,5 @@
+import struct audioFootstepDecalMaterialEntry
+{
+	var materialTag : CName;
+	var eventsByLocomotionState : handle:audioLocomotionStateEventDictionary;
+}

@@ -1,0 +1,12 @@
+import class FunctionalTestsDataMemoryPoolStaticData extends ISerializable
+{
+	var poolName : String;
+	var budget : Int64;
+	var childrenBudget : Int64;
+	var children : array:String;
+	var parent : String;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,37 @@
+import class gamedataInitLoadingScreen_Record extends gamedataTweakDBRecord
+{
+	import function FirstAnimLibraryName() : CName; // FirstAnimLibraryName
+	import function FirstAnimName() : CName; // FirstAnimName
+	import function IsBase() : Bool; // IsBase
+	import function LoadingScreenResource() : redResourceReferenceScriptToken; // LoadingScreenResource
+	import function LoopAnimName() : CName; // LoopAnimName
+	import function MainMenuAnimName() : CName; // MainMenuAnimName
+	import function MainMenuLibraryName() : CName; // MainMenuLibraryName
+	import function MainMenuLoopAnimName() : CName; // MainMenuLoopAnimName
+	import function MainMenuResource() : redResourceReferenceScriptToken; // MainMenuResource
+	import function SecondAnimLibraryName() : CName; // SecondAnimLibraryName
+	import function SecondAnimName() : CName; // SecondAnimName
+	import function ThirdAnimLibraryName() : CName; // ThirdAnimLibraryName
+	import function ThirdAnimName() : CName; // ThirdAnimName
+	import function VoTrackAnimName() : CName; // VoTrackAnimName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

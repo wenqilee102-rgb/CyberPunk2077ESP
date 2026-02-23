@@ -1,0 +1,1 @@
+{"a":"gamePrereqState","b":"ArmsCWInSlotPrereqState","d":0,"e":[{"a":{"a":26,"c":{"b":"ArmsCWInSlotCallback"}},"b":"listener","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"owner","c":128}],"f":[{"a":"AreaChanged;ItemID","b":"AreaChanged","d":48,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":0}]}]}

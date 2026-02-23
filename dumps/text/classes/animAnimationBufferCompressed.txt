@@ -1,0 +1,29 @@
+import class animAnimationBufferCompressed extends animIAnimationBuffer
+{
+	var duration : Float;
+	var numFrames : Uint32;
+	var numExtraJoints : Uint8;
+	var numExtraTracks : Uint8;
+	var numJoints : Uint16;
+	var numTracks : Uint16;
+	var numAnimKeys : Uint32;
+	var numAnimKeysRaw : Uint32;
+	var numConstAnimKeys : Uint32;
+	var numTrackKeys : Uint32;
+	var numConstTrackKeys : Uint32;
+	var isScaleConstant : Bool;
+	var hasRawRotations : Bool;
+	var fallbackFrameIndices : array:Uint16;
+	var defferedBuffer : serializationDeferredDataBuffer;
+	var dataAddress : animAnimDataAddress;
+	var extraDataNames : array:CName;
+	var inplaceCompressedBuffer : DataBuffer;
+}
+
+import class abstract animIAnimationBuffer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

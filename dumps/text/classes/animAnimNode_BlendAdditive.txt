@@ -1,0 +1,25 @@
+import class animAnimNode_BlendAdditive extends animAnimNode_Base
+{
+	var biasValue : Float;
+	var scaleValue : Float;
+	var additiveType : animEAnimGraphAdditiveType;
+	var timeWarpingEnabled : Bool;
+	var blendTracks : animEBlendTracksMode;
+	var syncMethod : handle:animISyncMethod;
+	var inputNode : animPoseLink;
+	var addedInputNode : animPoseLink;
+	var weightNode : animFloatLink;
+	var postProcess : handle:animIAnimNode_PostProcess;
+	var weightPreviousFrameFloatTrack : animNamedTrackIndex;
+	var weightPreviousFrameFloatTrackDefaultValue : Float;
+	var maskName : CName;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

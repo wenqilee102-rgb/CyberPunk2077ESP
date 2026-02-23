@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"inkScriptFIFOQueue","c":"inkFIFOQueue","d":8,"f":[{"a":"Dequeue","c":{"a":27,"c":{"b":"IScriptable"}},"d":4},{"a":"Enqueue","d":4},{"a":"Init","d":4,"e":[{"a":{"a":31,"c":{"a":27,"c":{"b":"IScriptable"}}},"b":"objects","c":0}]}]}

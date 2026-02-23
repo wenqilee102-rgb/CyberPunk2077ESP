@@ -1,0 +1,4 @@
+import struct worldTrafficLaneCrowdCreationInfo
+{
+	var connectedFragments : array:worldTrafficLaneCrowdFragment;
+}

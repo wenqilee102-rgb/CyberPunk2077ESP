@@ -1,0 +1,6 @@
+import struct physicsTriggerShape
+{
+	var shapeType : physicsShapeType;
+	var shapeSize : Vector3;
+	var shapeLocalPose : Transform;
+}

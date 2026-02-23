@@ -1,0 +1,37 @@
+import class gamedataAchievement_Record extends gamedataTweakDBRecord
+{
+	import function DisplayName() : CName; // DisplayName
+	import function EnumName() : CName; // EnumName
+	import function GOGKey() : String; // GOGKey
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function LocalizedDescription() : String; // LocalizedDescription
+	import function PS4Key() : Int32; // PS4Key
+	import function PlaythroughSpecific() : Bool; // PlaythroughSpecific
+	import function SteamKey() : String; // SteamKey
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+	import function ThresholdValue() : Int32; // ThresholdValue
+	import function Type() : gamedataAchievement; // Type
+	import function XB1Key() : String; // XB1Key
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

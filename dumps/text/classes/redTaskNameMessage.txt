@@ -1,0 +1,7 @@
+import struct redTaskNameMessage
+{
+	var id : Uint32;
+	var parent : Uint32;
+	var title : String;
+	var uniqueName : CName;
+}

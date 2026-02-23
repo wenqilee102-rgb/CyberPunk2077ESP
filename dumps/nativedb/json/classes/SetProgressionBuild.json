@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"SetProgressionBuild","d":0,"e":[{"a":{"b":"gamedataBuildType"},"b":"buildType","c":128},{"a":{"a":1},"b":"isDebug","c":128}],"f":[{"a":"Set;GameObjectgamedataBuildType","b":"Set","d":48,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"_owner","c":0},{"a":{"b":"gamedataBuildType"},"b":"build","c":0}]}]}

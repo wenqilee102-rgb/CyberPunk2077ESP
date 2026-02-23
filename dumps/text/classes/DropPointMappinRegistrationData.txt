@@ -1,0 +1,29 @@
+class DropPointMappinRegistrationData extends IScriptable
+{
+	private   var ownerID : entEntityID;
+	private   var position : Vector4;
+	private   var mapinID : gameNewMappinID;
+	private   var trackingAlternativeMappinID : gameNewMappinID;
+
+	function GetMappinID() : gameNewMappinID; // GetMappinID;
+	function GetOwnerID() : entEntityID; // GetOwnerID;
+	function GetPosition() : Vector4; // GetPosition;
+	function GetTrackingAlternativeMappinID() : gameNewMappinID; // GetTrackingAlternativeMappinID;
+	function Initalize(ownerID : entEntityID, position : Vector4); // Initalize;EntityIDVector4
+	function SetMappinID(id : gameNewMappinID); // SetMappinID;NewMappinID
+	function SetTrackingAlternativeMappinID(id : gameNewMappinID); // SetTrackingAlternativeMappinID;NewMappinID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

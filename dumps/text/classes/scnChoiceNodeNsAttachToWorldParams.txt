@@ -1,0 +1,7 @@
+import struct scnChoiceNodeNsAttachToWorldParams
+{
+	var entityPosition : Vector3;
+	var entityOrientation : Quaternion;
+	var customEntityRadius : Float;
+	var visualizerStyle : scnChoiceNodeNsVisualizerStyle;
+}

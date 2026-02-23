@@ -1,0 +1,11 @@
+import class animAnimNodeSourceChannel_SocketQsTransform extends animIAnimNodeSourceChannel_QsTransform
+{
+}
+
+import class abstract animIAnimNodeSourceChannel_QsTransform extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

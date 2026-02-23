@@ -1,0 +1,13 @@
+import struct rendChunk
+{
+	var chunkVertices : rendVertexBufferChunk;
+	var chunkIndices : rendIndexBufferChunk;
+	var numVertices : Uint16;
+	var numIndices : Uint32;
+	var materialId : array:CName;
+	var vertexFactory : Uint8;
+	var baseRenderMask : Uint16;
+	var mergedRenderMask : Uint16;
+	var renderMask : EMeshChunkFlags;
+	var lodMask : Uint8;
+}

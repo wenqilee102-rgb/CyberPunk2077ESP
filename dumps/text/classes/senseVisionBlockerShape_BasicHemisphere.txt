@@ -1,0 +1,22 @@
+import class senseVisionBlockerShape_BasicHemisphere extends senseIVisionBlockerShape
+{
+	import static function Create(position : Vector4, radius : Float) : handle:senseVisionBlockerShape_BasicHemisphere; // Create
+}
+
+import class abstract senseIVisionBlockerShape extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

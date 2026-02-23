@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_CName
+{
+	var evaluator : handle:gameIEffectParameter_CNameEvaluator;
+
+	import static function Get(ctx : gameEffectInputParameter_CName, bb : handle:gameIBlackboard) : CName; // Get
+}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"physicsFilterData","d":8,"e":[{"a":{"b":"physicsSimulationFilter"},"b":"simulationFilter","c":128},{"a":{"b":"physicsQueryFilter"},"b":"queryFilter","c":128},{"a":{"a":14},"b":"preset","c":128},{"a":{"a":26,"c":{"b":"physicsCustomFilterData"}},"b":"customFilterData","c":128}]}

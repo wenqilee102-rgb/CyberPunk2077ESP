@@ -1,0 +1,5 @@
+struct ItemQuantityChangedData
+{
+	public    var itemID : gameItemID;
+	public    var isBackpackItem : Bool;
+}

@@ -1,0 +1,1 @@
+{"a":"gameIAutoSaveSystem","b":"gameAutoSaveSystem","d":8,"f":[{"a":"InvalidateAutoSaveRequests","d":4},{"a":"RequestCheckpoint","c":{"a":1},"d":4},{"a":"RequestForcedCheckpoint","c":{"a":1},"d":4}]}

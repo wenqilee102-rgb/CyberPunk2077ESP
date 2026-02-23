@@ -1,0 +1,9 @@
+import class gameFuncCallEntry extends ISerializable
+{
+	var callTime : EngineTime;
+	var callId : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

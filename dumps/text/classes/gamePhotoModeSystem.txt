@@ -1,0 +1,30 @@
+import class gamePhotoModeSystem extends gameIPhotoModeSystem
+{
+	import function CanPhotoModeBeEnabled() : Bool; // CanPhotoModeBeEnabled
+	import function GetCameraLocation(location : WorldPosition); // GetCameraLocation
+	import function IsExitLocked() : Bool; // IsExitLocked
+	import function IsPhotoModeActive() : Bool; // IsPhotoModeActive
+	import function UnlockPhotoModeItem(stickerID : TweakDBID) : Bool; // UnlockPhotoModeItem
+}
+
+import class abstract gameIPhotoModeSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

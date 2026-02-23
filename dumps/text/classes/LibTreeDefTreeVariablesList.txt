@@ -1,0 +1,4 @@
+import struct LibTreeDefTreeVariablesList
+{
+	var list : array:handle:LibTreeDefTreeVariable;
+}

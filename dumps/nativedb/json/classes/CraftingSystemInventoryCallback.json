@@ -1,0 +1,1 @@
+{"a":"gameInventoryScriptCallback","b":"CraftingSystemInventoryCallback","d":0,"e":[{"a":{"a":27,"c":{"b":"PlayerPuppet"}},"b":"player","c":128}],"f":[{"a":"OnItemAdded;ItemIDgameItemDataBool","b":"OnItemAdded","d":32,"e":[{"a":{"b":"gameItemID"},"b":"item","c":0},{"a":{"a":27,"c":{"b":"gameItemData"}},"b":"itemData","c":0},{"a":{"a":1},"b":"flaggedAsSilent","c":0}]}]}

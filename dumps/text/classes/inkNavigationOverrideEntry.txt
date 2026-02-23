@@ -1,0 +1,6 @@
+import struct inkNavigationOverrideEntry
+{
+	var from : inkWidgetReference;
+	var direction : inkDiscreteNavigationDirection;
+	var to : inkWidgetReference;
+}

@@ -1,0 +1,23 @@
+class abstract SortingDropdownData extends IScriptable
+{
+	static function GeVisualsDropdownOptions() : array:handle:DropdownItemData; // SortingDropdownData::GeVisualsDropdownOptions;
+	static function GetContextDropdownOptions(context : DropdownDisplayContext) : array:handle:DropdownItemData; // SortingDropdownData::GetContextDropdownOptions;DropdownDisplayContext
+	static function GetDefaultDropdownOptions() : array:handle:DropdownItemData; // SortingDropdownData::GetDefaultDropdownOptions;
+	static function GetDropdownItemData(identifier : Variant, labelKey : CName, direction : DropdownItemDirection) : handle:DropdownItemData; // SortingDropdownData::GetDropdownItemData;VariantCNameDropdownItemDirection
+	static function GetDropdownOption(options : script_ref:array:handle:DropdownItemData, identifier : ItemSortMode) : handle:DropdownItemData; // SortingDropdownData::GetDropdownOption;script_ref<array<DropdownItemData>>ItemSortMode
+	static function GetItemChooserWeaponDropdownOptions() : array:handle:DropdownItemData; // SortingDropdownData::GetItemChooserWeaponDropdownOptions;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

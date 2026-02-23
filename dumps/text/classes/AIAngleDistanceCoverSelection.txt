@@ -1,0 +1,7 @@
+import struct AIAngleDistanceCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

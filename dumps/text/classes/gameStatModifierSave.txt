@@ -1,0 +1,7 @@
+import struct gameStatModifierSave
+{
+	var statModifierUnions : array:handle:gameStatModifierData_Deprecated;
+	var statsObjectID : gameStatsObjectID;
+	var recordID : TweakDBID;
+	var seed : Uint32;
+}

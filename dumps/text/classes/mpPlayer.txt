@@ -1,0 +1,9 @@
+import struct abstract mpPlayer extends gamePlayer
+{
+}
+
+import struct abstract gamePlayer
+{
+	var peerID : netPeerID;
+	var nickname : String;
+}

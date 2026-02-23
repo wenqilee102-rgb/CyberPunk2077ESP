@@ -1,0 +1,12 @@
+import class scnCheckPlayerCombatInterruptCondition extends scnIInterruptCondition
+{
+	var params : scnCheckPlayerCombatInterruptConditionParams;
+}
+
+import class abstract scnIInterruptCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

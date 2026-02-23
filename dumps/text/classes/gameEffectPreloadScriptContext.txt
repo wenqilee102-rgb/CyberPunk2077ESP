@@ -1,0 +1,4 @@
+import struct gameEffectPreloadScriptContext
+{
+	import static function PreloadFxResource(ctx : gameEffectPreloadScriptContext, resource : gameFxResource); // PreloadFxResource
+}

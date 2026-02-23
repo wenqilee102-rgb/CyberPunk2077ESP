@@ -1,0 +1,19 @@
+import class questAICommandNodeFunctionProvider extends IScriptable
+{
+	static function Add(functions : script_ref:array:questAICommandNodeFunction, nodeType : CName, category : CName, friendlyName : script_ref:String, paramsType : CName, color : Color); // questAICommandNodeFunctionProvider::Add;script_ref<array<AICommandNodeFunction>>CNameCNamescript_ref<String>CNameColor
+	static function CollectFunctions() : array:questAICommandNodeFunction; // questAICommandNodeFunctionProvider::CollectFunctions;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

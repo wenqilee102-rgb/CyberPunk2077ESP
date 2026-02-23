@@ -1,0 +1,16 @@
+import class workFastExit extends workIEntry
+{
+	var animName : CName;
+	var forcedBlendIn : Float;
+	var movementType : moveMovementType;
+}
+
+import class abstract workIEntry extends ISerializable
+{
+	var id : workWorkEntryId;
+	var flags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

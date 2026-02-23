@@ -1,0 +1,5 @@
+import struct gameinteractionsvisVisualizersInfo
+{
+	var activeVisId : Int32;
+	var visIds : array:Int32;
+}

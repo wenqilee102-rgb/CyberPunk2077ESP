@@ -1,0 +1,8 @@
+import class communityRole extends ISerializable
+{
+	var roleName : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct scneventsPlayAnimEventData
+{
+	var blendIn : Float;
+	var blendOut : Float;
+	var clipFront : Float;
+	var clipEnd : Float;
+	var stretch : Float;
+	var blendInCurve : scnEasingType;
+	var blendOutCurve : scnEasingType;
+}

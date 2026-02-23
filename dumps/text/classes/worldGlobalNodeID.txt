@@ -1,0 +1,7 @@
+import struct worldGlobalNodeID
+{
+	var hash : Uint64;
+
+	import static function GetRoot() : worldGlobalNodeID; // GetRoot
+	import static function IsDefined(id : worldGlobalNodeID) : Bool; // IsDefined
+}

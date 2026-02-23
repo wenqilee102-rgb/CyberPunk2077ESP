@@ -1,0 +1,44 @@
+import class gamedataAIActionSmartComposite_Record extends gamedataAIRecord_Record
+{
+	import function ConditionSuccessDuration() : Float; // ConditionSuccessDuration
+	import function DisableActionsLimit() : Bool; // DisableActionsLimit
+	import function FailOnNodeActivationConditionFailure() : Bool; // FailOnNodeActivationConditionFailure
+	import function GetGracefulInterruptionConditionCount() : Int32; // GetGracefulInterruptionConditionCount
+	import function GetGracefulInterruptionConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetGracefulInterruptionConditionItem
+	import function GetGracefulInterruptionConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetGracefulInterruptionConditionItemHandle
+	import function GetNodesCount() : Int32; // GetNodesCount
+	import function GetNodesItem(index : Int32) : whandle:gamedataAINode_Record; // GetNodesItem
+	import function GetNodesItemHandle(index : Int32) : handle:gamedataAINode_Record; // GetNodesItemHandle
+	import function GracefulInterruptionCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // GracefulInterruptionCondition
+	import function GracefulInterruptionConditionCheckInterval() : Float; // GracefulInterruptionConditionCheckInterval
+	import function GracefulInterruptionConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // GracefulInterruptionConditionContains
+	import function Nodes(out outList : array:whandle:gamedataAINode_Record); // Nodes
+	import function NodesContains(item : whandle:gamedataAINode_Record) : Bool; // NodesContains
+	import function Repeat() : Int32; // Repeat
+	import function Type() : whandle:gamedataAISmartCompositeType_Record; // Type
+	import function TypeHandle() : handle:gamedataAISmartCompositeType_Record; // TypeHandle
+}
+
+import class gamedataAIRecord_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

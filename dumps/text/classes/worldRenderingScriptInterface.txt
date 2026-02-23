@@ -1,0 +1,18 @@
+import class worldRenderingScriptInterface extends IScriptable
+{
+	import static function AddWaterImpulse(position : Vector4, radius : Float, strength : Float); // AddWaterImpulse
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

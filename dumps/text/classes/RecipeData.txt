@@ -1,0 +1,30 @@
+class RecipeData extends IScriptable
+{
+	public    var label : String;
+	public    var ingredients : array:IngredientData;
+	public    var icon : String;
+	public    var iconGender : gameItemIconGender;
+	public    var description : String;
+	public    var type : String;
+	public    var id : handle:gamedataItem_Record;
+	public    var isCraftable : Bool;
+	public    var inventoryItem : gameInventoryItemData;
+	public    var amount : Int32;
+	public    var isNew : Bool;
+	public    var isSelected : Bool;
+	public    var quality : gamedataQuality;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

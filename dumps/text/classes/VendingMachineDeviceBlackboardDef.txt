@@ -1,0 +1,36 @@
+class VendingMachineDeviceBlackboardDef extends DeviceBaseBlackboardDef
+{
+	public    var ActionStatus : gamebbScriptID_Variant;
+	public    var SoldOut : gamebbScriptID_Bool;
+}
+
+class DeviceBaseBlackboardDef extends gamebbScriptDefinition
+{
+	public    var ActionWidgetsData : gamebbScriptID_Variant;
+	public    var DeviceWidgetsData : gamebbScriptID_Variant;
+	public    var UIupdate : gamebbScriptID_Bool;
+	public    var BreadCrumbElement : gamebbScriptID_Variant;
+	public    var GlitchData : gamebbScriptID_Variant;
+	public    var UI_InteractivityBlocked : gamebbScriptID_Bool;
+	public    var IsInvestigated : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

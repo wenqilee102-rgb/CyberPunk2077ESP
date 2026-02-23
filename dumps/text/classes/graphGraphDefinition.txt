@@ -1,0 +1,12 @@
+import class abstract graphGraphDefinition extends graphIGraphObjectDefinition
+{
+	var nodes : array:handle:graphGraphNodeDefinition;
+}
+
+import class abstract graphIGraphObjectDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+class DistrictManager extends IScriptable
+{
+	private   var system : whandle:PreventionSystem;
+	private   var stack : array:handle:District;
+	private   var visitedDistricts : array:TweakDBID;
+
+	function GetCurrentDistrict() : whandle:District; // GetCurrentDistrict;
+	function Initialize(system : handle:PreventionSystem); // Initialize;PreventionSystem
+	function ManageDistrictStack(request : handle:gamemappinsDistrictEnteredEvent); // ManageDistrictStack;DistrictEnteredEvent
+	function NotifySystem(); // NotifySystem;
+	function PopDistrict(request : handle:gamemappinsDistrictEnteredEvent); // PopDistrict;DistrictEnteredEvent
+	function PushDistrict(request : handle:gamemappinsDistrictEnteredEvent); // PushDistrict;DistrictEnteredEvent
+	function Refresh(); // Refresh;
+	function Update(evt : handle:gamemappinsDistrictEnteredEvent); // Update;DistrictEnteredEvent
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

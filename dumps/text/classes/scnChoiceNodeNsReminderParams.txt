@@ -1,0 +1,10 @@
+import struct scnChoiceNodeNsReminderParams
+{
+	var reminderEnabled : Bool;
+	var useCustomReminder : Bool;
+	var reminderActor : scnActorId;
+	var waitTimeForReminderA : scnSceneTime;
+	var waitTimeForReminderB : scnSceneTime;
+	var waitTimeForReminderC : scnSceneTime;
+	var waitTimeForLooping : scnSceneTime;
+}

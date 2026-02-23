@@ -1,0 +1,1 @@
+{"a":"entIVisualComponent","b":"entFogVolumeComponent","d":8,"e":[{"a":{"a":10},"b":"densityFalloff","c":128},{"a":{"a":10},"b":"blendFalloff","c":128},{"a":{"a":10},"b":"densityFactor","c":128},{"a":{"b":"Color"},"b":"color","c":128},{"a":{"a":10},"b":"absorption","c":128},{"a":{"b":"Vector3"},"b":"size","c":128},{"a":{"a":1},"b":"isEnabled","c":128}]}

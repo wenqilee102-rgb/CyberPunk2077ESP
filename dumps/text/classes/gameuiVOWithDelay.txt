@@ -1,0 +1,5 @@
+import struct gameuiVOWithDelay
+{
+	var playDelay : Float;
+	var voHexID : String;
+}

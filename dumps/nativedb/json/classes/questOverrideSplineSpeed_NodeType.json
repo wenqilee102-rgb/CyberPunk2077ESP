@@ -1,0 +1,1 @@
+{"a":"questIVehicleManagerNodeType","b":"questOverrideSplineSpeed_NodeType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"vehicleRef","c":128},{"a":{"a":10},"b":"speed","c":128},{"a":{"a":10},"b":"adjustTime","c":128}]}

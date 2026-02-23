@@ -1,0 +1,36 @@
+import class gamedataDamageType_Record extends gamedataTweakDBRecord
+{
+	import function AssociatedStat() : whandle:gamedataStat_Record; // AssociatedStat
+	import function AssociatedStatHandle() : handle:gamedataStat_Record; // AssociatedStatHandle
+	import function DamageType() : gamedataDamageType; // DamageType
+	import function EnumName() : String; // EnumName
+	import function GetResistancesCount() : Int32; // GetResistancesCount
+	import function GetResistancesItem(index : Int32) : whandle:gamedataStatDistributionData_Record; // GetResistancesItem
+	import function GetResistancesItemHandle(index : Int32) : handle:gamedataStatDistributionData_Record; // GetResistancesItemHandle
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function Resistances(out outList : array:whandle:gamedataStatDistributionData_Record); // Resistances
+	import function ResistancesContains(item : whandle:gamedataStatDistributionData_Record) : Bool; // ResistancesContains
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

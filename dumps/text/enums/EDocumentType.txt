@@ -1,0 +1,6 @@
+enum EDocumentType
+{
+	FILE = 0,
+	MAIL = 1,
+	Invalid = 2
+}

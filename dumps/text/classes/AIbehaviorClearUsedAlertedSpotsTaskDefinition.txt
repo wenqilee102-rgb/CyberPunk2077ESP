@@ -1,0 +1,13 @@
+import class AIbehaviorClearUsedAlertedSpotsTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var usedTokens : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

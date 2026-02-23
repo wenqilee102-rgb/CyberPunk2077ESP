@@ -1,0 +1,40 @@
+class AimAssistSettingsListener extends userSettingsVarListener
+{
+	private   var ctrl : whandle:PlayerPuppet;
+	private   var settings : handle:userSettingsUserSettings;
+	private   var settingsGroup : handle:userSettingsGroup;
+	private   var aimAssistLevel : EAimAssistLevel;
+	private   var aimAssistMeleeLevel : EAimAssistLevel;
+	private   var aimAssistDriverCombatEnabled : Bool;
+	private   var aimAssistSnapEnabled : Bool;
+	private   var difficultySettingsPath : CName;
+	public    var currentConfig : AimAssistSettingConfig;
+	public    var settingsRecords : array:whandle:gamedataAimAssistSettings_Record;
+
+	function GetAimAssistDriverCombatEnabled() : Bool; // GetAimAssistDriverCombatEnabled;
+	function GetAimAssistLevel() : EAimAssistLevel; // GetAimAssistLevel;
+	function GetAimAssistMeleeLevel() : EAimAssistLevel; // GetAimAssistMeleeLevel;
+	function GetAimSnapEnabled() : Bool; // GetAimSnapEnabled;
+	function Initialize(ctrl : whandle:PlayerPuppet); // Initialize;PlayerPuppet
+	function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+}
+
+import class userSettingsVarListener extends IScriptable
+{
+	import function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+	import function Register(groupPath : CName) : Bool; // Register
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

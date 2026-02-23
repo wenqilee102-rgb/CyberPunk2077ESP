@@ -1,0 +1,6 @@
+import struct entVisualControllerDependency
+{
+	var mesh : raRef:CMesh;
+	var appearanceName : CName;
+	var componentName : CName;
+}

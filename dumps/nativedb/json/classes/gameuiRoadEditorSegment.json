@@ -1,0 +1,1 @@
+{"b":"gameuiRoadEditorSegment","d":8,"g":true,"e":[{"a":{"a":7},"b":"length","c":128},{"a":{"a":10},"b":"curve","c":128},{"a":{"a":1},"b":"hasCheckpoint","c":128},{"a":{"a":31,"c":{"b":"gameuiRoadEditorObstacleSettings"}},"b":"obstacleSettings","c":128},{"a":{"a":31,"c":{"b":"gameuiRoadEditorDecorationSettings"}},"b":"decorationSettings","c":128}]}

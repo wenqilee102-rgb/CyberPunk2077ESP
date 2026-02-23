@@ -1,0 +1,8 @@
+import class animAnimGraphExternalEvent extends ISerializable
+{
+	var eventName : CName;
+}
+
+import class abstract ISerializable
+{
+}

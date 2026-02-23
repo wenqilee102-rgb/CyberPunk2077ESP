@@ -1,0 +1,1 @@
+{"a":"animDangleConstraint_Simulation","b":"animDangleConstraint_SimulationDyng","d":8,"e":[{"a":{"a":1},"b":"HACK_checkDangleTeleport","c":128},{"a":{"a":10},"b":"substepTime","c":128},{"a":{"a":7},"b":"solverIterations","c":128},{"a":{"b":"animDyngParticlesContainer"},"b":"particlesContainer","c":128},{"a":{"a":26,"c":{"b":"animIDyngConstraint"}},"b":"dyngConstraint","c":128}]}

@@ -1,0 +1,5 @@
+import struct animTransformMask
+{
+	var index : Int32;
+	var weight : Float;
+}

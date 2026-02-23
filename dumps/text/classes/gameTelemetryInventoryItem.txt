@@ -1,0 +1,11 @@
+import struct gameTelemetryInventoryItem
+{
+	var friendlyName : String;
+	var localizedName : String;
+	var itemID : gameItemID;
+	var quality : gamedataQuality;
+	var itemType : gamedataItemType;
+	var iconic : Bool;
+	var itemLevel : Int32;
+	var isSilenced : Bool;
+}

@@ -1,0 +1,33 @@
+import class gamedataSearchFilterMaskTypeValue_Record extends gamedataSearchFilterMaskTypeCondition_Record
+{
+	import function GetValuesCount() : Int32; // GetValuesCount
+	import function GetValuesItem(index : Int32) : whandle:gamedataSearchFilterMaskType_Record; // GetValuesItem
+	import function GetValuesItemHandle(index : Int32) : handle:gamedataSearchFilterMaskType_Record; // GetValuesItemHandle
+	import function OpType() : CName; // OpType
+	import function Values(out outList : array:whandle:gamedataSearchFilterMaskType_Record); // Values
+	import function ValuesContains(item : whandle:gamedataSearchFilterMaskType_Record) : Bool; // ValuesContains
+}
+
+import class gamedataSearchFilterMaskTypeCondition_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,4 @@
+import struct gameMuppetControllersSnapshot
+{
+	var controllers : array:gameMuppetControllerSnapshot;
+}

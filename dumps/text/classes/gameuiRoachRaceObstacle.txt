@@ -1,0 +1,5 @@
+import struct gameuiRoachRaceObstacle
+{
+	var interval : Float;
+	var dynObjectType : CName;
+}

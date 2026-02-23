@@ -1,0 +1,32 @@
+import class gameSceneAnimationMotionActionParams extends IScriptable
+{
+	var motionType : gameSceneAnimationMotionActionParamsMotionType;
+	var placementTransform : WorldTransform;
+	var motionBlendInTime : Float;
+	var poseBlendInTime : Float;
+	var blendInCurve : gameSceneAnimationMotionActionParamsEasingType;
+	var animationName : CName;
+	var placementMode : gameSceneAnimationMotionActionParamsPlacementMode;
+	var startTime : Float;
+	var endTime : Float;
+	var initialDt : Float;
+	var globalTimeToAnimTime : Float;
+	var mountDescriptor : gameMountDescriptor;
+	var playerParams : gameScenePlayerAnimationParams;
+	var trajectoryLOD : array:scnAnimationMotionSample;
+	var dynamicAnimSetupHash : Uint64;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

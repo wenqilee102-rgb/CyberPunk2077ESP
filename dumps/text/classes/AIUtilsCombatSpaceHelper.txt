@@ -1,0 +1,4 @@
+import struct AIUtilsCombatSpaceHelper
+{
+	import static function GetDistanceMultiplier(owner : handle:gameObject, multipliers : Vector3) : Float; // GetDistanceMultiplier
+}

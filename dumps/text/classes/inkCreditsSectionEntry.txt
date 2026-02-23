@@ -1,0 +1,6 @@
+import struct inkCreditsSectionEntry
+{
+	var sectionTitle : String;
+	var names : array:String;
+	var displayMode : inkDisplayMode;
+}

@@ -1,0 +1,31 @@
+class RipperdocBarTooltipTooltipData extends ATooltipData
+{
+	public    var barType : BarType;
+	public    var totalValue : Int32;
+	public    var maxValue : Int32;
+	public    var maxDamageReduction : Float;
+	public    var capacityPerk1Bought : Bool;
+	public    var capacityPerk2Bought : Bool;
+	public    var armorPerk1Bought : Bool;
+	public    var statsData : array:gameStatViewData;
+	public    var statValue : Int32;
+	public    var health : Float;
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

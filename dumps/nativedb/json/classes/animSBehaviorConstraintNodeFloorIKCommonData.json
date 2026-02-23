@@ -1,0 +1,1 @@
+{"b":"animSBehaviorConstraintNodeFloorIKCommonData","d":8,"g":true,"e":[{"a":{"b":"animTransformIndex"},"b":"gravityCentreBone","c":128},{"a":{"a":10},"b":"rootRotationBlendTime","c":128},{"a":{"a":10},"b":"verticalVelocityOffsetUpBlendTime","c":128},{"a":{"a":10},"b":"verticalVelocityOffsetDownBlendTime","c":128},{"a":{"a":10},"b":"slidingOnSlopeBlendTime","c":128}]}

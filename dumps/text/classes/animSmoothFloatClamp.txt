@@ -1,0 +1,6 @@
+import struct animSmoothFloatClamp
+{
+	var min : Float;
+	var max : Float;
+	var marginEaseOutCurve : curveData:Float;
+}

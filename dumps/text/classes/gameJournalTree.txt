@@ -1,0 +1,8 @@
+import class gameJournalTree extends ISerializable
+{
+	var rootEntries : array:handle:gameJournalRootFolderEntry;
+}
+
+import class abstract ISerializable
+{
+}

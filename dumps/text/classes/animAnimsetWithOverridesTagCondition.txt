@@ -1,0 +1,12 @@
+import class animAnimsetWithOverridesTagCondition extends animIRuntimeCondition
+{
+	var animsetTags : redTagList;
+}
+
+import class abstract animIRuntimeCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

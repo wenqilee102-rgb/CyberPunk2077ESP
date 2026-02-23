@@ -1,0 +1,6 @@
+import struct animAnimProfilerData_SectionTimings
+{
+	var sectionName : CName;
+	var updateTimeMS : Float;
+	var sampleTimeMS : Float;
+}

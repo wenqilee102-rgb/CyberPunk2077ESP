@@ -1,0 +1,12 @@
+import class worldSpawnPointMarker extends worldIMarker
+{
+	var type : Uint32;
+}
+
+import class abstract worldIMarker extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

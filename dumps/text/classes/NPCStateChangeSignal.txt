@@ -1,0 +1,45 @@
+class NPCStateChangeSignal extends gameTaggedSignalUserData
+{
+	public    var highLevelState : gamedataNPCHighLevelState;
+	public    var highLevelStateValid : Bool;
+	public    var upperBodyState : gamedataNPCUpperBodyState;
+	public    var upperBodyStateValid : Bool;
+	public    var stanceState : gamedataNPCStanceState;
+	public    var stanceStateValid : Bool;
+	public    var hitReactionModeState : EHitReactionMode;
+	public    var hitReactionModeStateValid : Bool;
+	public    var defenseMode : gamedataDefenseMode;
+	public    var defenseModeValid : Bool;
+	public    var locomotionMode : gamedataLocomotionMode;
+	public    var locomotionModeValid : Bool;
+	public    var behaviorState : gamedataNPCBehaviorState;
+	public    var behaviorStateValid : Bool;
+	public    var phaseState : ENPCPhaseState;
+	public    var phaseStateValid : Bool;
+}
+
+import class gameTaggedSignalUserData extends gameSignalUserData
+{
+	var tags : array:CName;
+
+	import function AddTag(tag : CName); // AddTag
+}
+
+import class gameSignalUserData extends IScriptable
+{
+	import function HasTag(tag : CName) : Bool; // HasTag
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

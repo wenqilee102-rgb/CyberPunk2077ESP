@@ -1,0 +1,14 @@
+import class questParamRubberbanding extends ISerializable
+{
+	var targetRef : handle:questUniversalRef;
+	var targetForwardOffset : Float;
+	var minDistance : Float;
+	var maxDistance : Float;
+	var stopAndWait : Bool;
+	var teleportToCatchUp : Bool;
+	var stayInFront : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import class gameSimpleSpecificStatListener extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

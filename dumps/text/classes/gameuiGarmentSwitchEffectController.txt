@@ -1,0 +1,7 @@
+import struct gameuiGarmentSwitchEffectController
+{
+	var sceneName : CName;
+	var effectName : CName;
+	var switchTime : Float;
+	var hideTime : Float;
+}

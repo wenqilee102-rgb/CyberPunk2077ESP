@@ -1,0 +1,1 @@
+{"a":"gamedataShooterObject_Record","b":"gamedataShooterBullet_Record","c":"ShooterBullet_Record","d":24,"f":[{"a":"Damage","c":{"a":10},"d":4},{"a":"ExplosionRange","c":{"a":10},"d":4},{"a":"LibraryWidget","c":{"a":12},"d":4},{"a":"Scale","c":{"a":10},"d":4},{"a":"SpecialValue","c":{"a":10},"d":4},{"a":"Speed","c":{"a":10},"d":4},{"a":"Value","c":{"a":10},"d":4}]}

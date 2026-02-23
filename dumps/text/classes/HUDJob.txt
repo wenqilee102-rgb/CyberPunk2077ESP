@@ -1,0 +1,5 @@
+struct HUDJob
+{
+	public    var actor : whandle:gameHudActor;
+	public    var instruction : handle:HUDInstruction;
+}

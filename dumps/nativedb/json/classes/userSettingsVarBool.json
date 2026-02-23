@@ -1,0 +1,1 @@
+{"a":"userSettingsVar","b":"userSettingsVarBool","c":"ConfigVarBool","d":8,"f":[{"a":"GetDefaultValue","c":{"a":1},"d":4},{"a":"GetValue","c":{"a":1},"d":4},{"a":"SetValue","d":4,"e":[{"a":{"a":1},"b":"value","c":0}]},{"a":"Toggle;","b":"Toggle","d":48}]}

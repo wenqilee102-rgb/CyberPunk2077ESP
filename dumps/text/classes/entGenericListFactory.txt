@@ -1,0 +1,11 @@
+import class entGenericListFactory extends entFactory
+{
+}
+
+import class abstract entFactory extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

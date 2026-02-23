@@ -1,0 +1,14 @@
+import class CMaterialParameterFoliageParameters extends CMaterialParameter
+{
+	var foliageProfile : rRef:CFoliageProfile;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

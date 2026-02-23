@@ -1,0 +1,6 @@
+import struct gameStatsSeedKey
+{
+	var entityID : entEntityID;
+	var recordID : TweakDBID;
+	var seed : Uint32;
+}

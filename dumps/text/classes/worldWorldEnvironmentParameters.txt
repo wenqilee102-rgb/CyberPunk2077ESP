@@ -1,0 +1,4 @@
+import struct worldWorldEnvironmentParameters
+{
+	var globalLightingTrajectory : GlobalLightingTrajectory;
+}

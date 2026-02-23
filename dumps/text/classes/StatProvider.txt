@@ -1,0 +1,28 @@
+class StatProvider extends IScriptable
+{
+	private   var GameItemData : whandle:gameItemData;
+	private   var PartData : gameInnerItemData;
+	private   var InventoryItemData : gameInventoryItemData;
+	private   var dataSource : gameEStatProviderDataSource;
+
+	function GetStatValueByType(type : gamedataStatType) : Int32; // GetStatValueByType;gamedataStatType
+	function GetStatValueFByType(type : gamedataStatType) : Float; // GetStatValueFByType;gamedataStatType
+	function HasStatData(type : gamedataStatType) : Bool; // HasStatData;gamedataStatType
+	function Setup(gameItemData : whandle:gameItemData); // Setup;gameItemData
+	function Setup(inventoryItemData : script_ref:gameInventoryItemData); // Setup;script_ref<InventoryItemData>
+	function Setup(partData : gameInnerItemData); // Setup;InnerItemData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

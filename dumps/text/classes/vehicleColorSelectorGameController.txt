@@ -1,0 +1,347 @@
+class vehicleColorSelectorGameController extends gameuiWidgetGameController
+{
+	private   var CursorRootContainerRef : inkWidgetReference;
+	private   var CursorRootOffsetPoint : inkWidgetReference;
+	private   var colorPaletteRef : inkWidgetReference;
+	private   var stickerPaletteRef : inkWidgetReference;
+	private   var currentTemplateParentRef : inkWidgetReference;
+	private   var windowTitle : inkTextWidgetReference;
+	private   var classicBackgrounds : array:inkWidgetReference;
+	private   var mordredBackgrounds : array:inkWidgetReference;
+	public    var colorWheelColorA : inkWidgetReference;
+	public    var colorWheelColorB : inkWidgetReference;
+	public    var colorWheelColorLights : inkWidgetReference;
+	public    var colorWheelColorLightsCircle : inkWidgetReference;
+	public    var colorWheelColorLightsFixedCircleContainer : inkWidgetReference;
+	public    var colorWheelColorLightsFixedCircle : inkWidgetReference;
+	private   var colorPickerA : vehicleColorSelectorPointerDef;
+	private   var selectedColorPointerA : vehicleColorSelectorPointerDef;
+	private   var colorPickerB : vehicleColorSelectorPointerDef;
+	private   var selectedColorPointerB : vehicleColorSelectorPointerDef;
+	private   var colorPickerLights : vehicleColorSelectorPointerDef;
+	private   var selectedColorPointerLights : vehicleColorSelectorPointerDef;
+	private   var swapColorHint : inkWidgetReference;
+	private   var changeSliderHint : inkWidgetReference;
+	private   var twintoneApplyHintText : inkTextWidgetReference;
+	private   var changeTabRightHint : inkWidgetReference;
+	private   var changeTabLeftHint : inkWidgetReference;
+	private   var mouseHitColor1Ref : inkWidgetReference;
+	private   var mouseHitColor2Ref : inkWidgetReference;
+	private   var mouseHitLightsRef : inkWidgetReference;
+	private   var vehiclePreviewColorA : inkImageWidgetReference;
+	private   var vehiclePreviewColorB : inkImageWidgetReference;
+	private   var vehiclePreviewLightsCar : inkImageWidgetReference;
+	private   var vehiclePreviewLightsBike : inkImageWidgetReference;
+	private   var vehiclePreviewBackground : inkImageWidgetReference;
+	private   var vehiclePreviewForeground : inkImageWidgetReference;
+	private   var vehiclePreviewGlowBackground : inkImageWidgetReference;
+	private   var vehiclePreviewGlowA : inkImageWidgetReference;
+	private   var vehiclePreviewGlowB : inkImageWidgetReference;
+	private   var vehiclePreviewGlowLights : inkImageWidgetReference;
+	private   var vehiclePreviewScalingCanvas : inkWidgetReference;
+	private   var lightsPreviewBeamA : inkImageWidgetReference;
+	private   var lightsPreviewBeamB : inkImageWidgetReference;
+	private   var lightsPreviewBeamBike : inkImageWidgetReference;
+	private   var lightErrorMessage : inkTextWidgetReference;
+	protected var timeDilationProfile : String;
+	private   var introAnimation : CName;
+	private   var cancelAnimation : CName;
+	private   var applyAnimation : CName;
+	private   var titleTextMain : inkTextWidgetReference;
+	private   var titleTextNumber : inkTextWidgetReference;
+	private   var colorHints : inkWidgetReference;
+	private   var mouseHitSaturationBar : inkWidgetReference;
+	private   var saturationBarFill : inkWidgetReference;
+	private   var saturationPointer : inkWidgetReference;
+	private   var saturationBarHighlight : inkImageWidgetReference;
+	private   var saturationBarHint : inkWidgetReference;
+	private   var brightnessBarHighlight : inkImageWidgetReference;
+	private   var brightnessBarHint : inkWidgetReference;
+	private   var headlightsIcon : inkWidgetReference;
+	private   var mouseHitBrightnessBar : inkWidgetReference;
+	private   var brightnessPointer : inkWidgetReference;
+	private   var modeChangeBack : inkWidgetReference;
+	private   var modeChangeNext : inkWidgetReference;
+	private   var applyContainerWidget : inkWidgetReference;
+	private   var resetContainerWidget : inkWidgetReference;
+	private   var vehicleUnknownPane : inkWidgetReference;
+	private   var vehicleBrandIcon : inkImageWidgetReference;
+	private   var crackedCarGlitchMinimumInterval : Float;
+	private   var crackedCarGlitchMaximumInterval : Float;
+	private   var vehicleNameText : inkTextWidgetReference;
+	private   var templatePreviewLibraryRef : inkWidgetLibraryReference;
+	private   var uniqueColorPanel : inkWidgetReference;
+	private   var uniqueColorErrorPanel : inkWidgetReference;
+	private   var genericPatternsGrid : inkVirtualCompoundWidgetReference;
+	private   var uniquePatternsGrid : inkVirtualCompoundWidgetReference;
+	private   var saveProfileHint : inkWidgetReference;
+	private   var deleteProfileHint : inkWidgetReference;
+	protected var popupData : handle:inkGameNotificationData;
+	private   var systemRequestsHandler : whandle:inkISystemRequestsHandler;
+	private   var player : whandle:PlayerPuppet;
+	private   var gameInstance : ScriptGameInstance;
+	private   var timeSystem : handle:gameTimeSystem;
+	private   var vehicle : whandle:vehicleBaseObject;
+	private   var animProxy : handle:inkanimProxy;
+	private   var fakeUpdateProxy : handle:inkanimProxy;
+	private   var sbBarsProxy : handle:inkanimProxy;
+	private   var LightsFocusProxy : handle:inkanimProxy;
+	private   var stickersPage : whandle:inkWidget;
+	private   var isInMenuCallbackID : handle:redCallbackObject;
+	private   var activeMode : vehicleColorSelectorActiveMode;
+	private   var previousMode : vehicleColorSelectorActiveMode;
+	private   var activeInputMode : vehicleColorSelectorActiveInputMode;
+	private   var currentAngle : Float;
+	private   var colorADefined : Bool;
+	private   var colorBDefined : Bool;
+	private   var lightsDefined : Bool;
+	private   var targetColorAngleA : Float;
+	private   var targetColorAngleB : Float;
+	private   var targetColorAngleLights : Float;
+	private   var targetColorASaturation : Float;
+	private   var targetColorBSaturation : Float;
+	private   var targetColorABrightness : Float;
+	private   var targetColorBBrightness : Float;
+	private   var axisInputCache : Vector2;
+	private   var inputEnabled : Bool;
+	private   var sbBarsShown : Bool;
+	private   var sbBarsLength : Float;
+	private   var axisInputThreshold : Float;
+	private   var saturationPointerPosition : Float;
+	private   var brightnessPointerPosition : Float;
+	private   var mouseInputEnabled : Bool;
+	private   var lightsEditingEnabled : Bool;
+	private   var hasCustomRims : Bool;
+	private   var hasUniquePaintjobs : Bool;
+	private   var saturationSliderHolded : Bool;
+	private   var brightnessSliderHolded : Bool;
+	private   var ChromaSliderStepPad : Float;
+	private   var ChromaSliderStepMouse : Float;
+	private   var sliderHoldGamepad : Bool;
+	private   var sliderHoldGamepadDamp : Int32;
+	private   var sliderPadHoldAccelerationTreshhold : Int32;
+	private   var storedSelectedColorID : Int32;
+	private   var cachedNewColorA : Color;
+	private   var cachedNewColorB : Color;
+	private   var cachedNewColorLights : Color;
+	private   var CloseReason : vehicleColorSelectorMenuCloseReason;
+	private   var unsupportedVehicle : Bool;
+	private   var previewDataMissing : Bool;
+	private   var virtualGenericTemplateGridController : whandle:TwintoneTemplateGridController;
+	private   var virtualUniqueTemplateGridController : whandle:TwintoneTemplateGridController;
+	private   var genericGridInitialized : Bool;
+	private   var uniqueGridInitialized : Bool;
+	private   var currentTemplate : VehicleVisualCustomizationTemplate;
+	private   var toggledTemplate : VehicleVisualCustomizationTemplate;
+	private   var currentTemplatePreview : whandle:ColorTemplatePreviewDisplayController;
+	private   var activePanel : vehicleColorSelectorActiveTab;
+	private   var activeSBBar : vehicleColorSelectorSBBar;
+	private   var mainPanelAnimProxy : handle:inkanimProxy;
+	private   var twintonePanelAnimProxy : handle:inkanimProxy;
+	private   var carGlitchProxy : handle:inkanimProxy;
+	private   var crackedAnimProxy : handle:inkanimProxy;
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnAllGenericElementsSpawned() : Bool; // OnAllGenericElementsSpawned
+	event OnAllUniqueElementsSpawned() : Bool; // OnAllUniqueElementsSpawned
+	event OnBrightnessBarPressed(evt : handle:inkPointerEvent) : Bool; // OnBrightnessBarPressed
+	event OnCarGlitchFinish(proxy : handle:inkanimProxy) : Bool; // OnCarGlitchFinish
+	event OnCrackedAnimIntroEnd(proxy : handle:inkanimProxy) : Bool; // OnCrackedAnimIntroEnd
+	event OnFakeUpdate(proxy : handle:inkanimProxy) : Bool; // OnFakeUpdate
+	event OnFinalAnimationFinished(proxy : handle:inkanimProxy) : Bool; // OnFinalAnimationFinished
+	event OnGenericControllerSelected(widget : whandle:inkWidget) : Bool; // OnGenericControllerSelected
+	event OnGenericTemplateToggled(widget : whandle:inkWidget) : Bool; // OnGenericTemplateToggled
+	event OnGlobalAxisInput(e : handle:inkPointerEvent) : Bool; // OnGlobalAxisInput
+	event OnGlobalInputHold(evt : handle:inkPointerEvent) : Bool; // OnGlobalInputHold
+	event OnGlobalInputReleased(e : handle:inkPointerEvent) : Bool; // OnGlobalInputReleased
+	event OnGlobalPressInput(e : handle:inkPointerEvent) : Bool; // OnGlobalPressInput
+	event OnHoverOutColorWheel1(evt : handle:inkPointerEvent) : Bool; // OnHoverOutColorWheel1
+	event OnHoverOutColorWheel2(evt : handle:inkPointerEvent) : Bool; // OnHoverOutColorWheel2
+	event OnHoverOutColorWheelLights(evt : handle:inkPointerEvent) : Bool; // OnHoverOutColorWheelLights
+	event OnHoverOverBrightnessBar(evt : handle:inkPointerEvent) : Bool; // OnHoverOverBrightnessBar
+	event OnHoverOverColorWheel1(evt : handle:inkPointerEvent) : Bool; // OnHoverOverColorWheel1
+	event OnHoverOverColorWheel2(evt : handle:inkPointerEvent) : Bool; // OnHoverOverColorWheel2
+	event OnHoverOverColorWheelLights(evt : handle:inkPointerEvent) : Bool; // OnHoverOverColorWheelLights
+	event OnHoverOverSaturationBar(evt : handle:inkPointerEvent) : Bool; // OnHoverOverSaturationBar
+	event OnInitialize() : Bool; // OnInitialize
+	event OnIntroFinished(proxy : handle:inkanimProxy) : Bool; // OnIntroFinished
+	event OnIsInMenuChanged(param : Bool) : Bool; // OnIsInMenuChanged
+	event OnMouseInput(e : handle:inkPointerEvent) : Bool; // OnMouseInput
+	event OnSaturationBarPressed(evt : handle:inkPointerEvent) : Bool; // OnSaturationBarPressed
+	event OnShowSBBarsAnimFinished(proxy : handle:inkanimProxy) : Bool; // OnShowSBBarsAnimFinished
+	event OnUninitialize() : Bool; // OnUninitialize
+	event OnUniqueControllerSelected(widget : whandle:inkWidget) : Bool; // OnUniqueControllerSelected
+	event OnUniqueTemplateToggled(widget : whandle:inkWidget) : Bool; // OnUniqueTemplateToggled
+	event OnVehicleColorSelectionSliderHoldEvent(evt : handle:VehicleColorSelectionSliderHoldEvent) : Bool; // OnVehicleColorSelectionSliderHoldEvent
+
+	function Apply() : Bool; // Apply;
+	function CalculateNewColorAngle(angle : Float) : Float; // CalculateNewColorAngle;Float
+	function CanDeleteProfile() : Bool; // CanDeleteProfile;
+	function Cancel(); // Cancel;
+	function DeleteProfile() : Bool; // DeleteProfile;
+	function FinishMQ058IfNecessary(); // FinishMQ058IfNecessary;
+	function GetActiveInputMode() : vehicleColorSelectorActiveInputMode; // GetActiveInputMode;
+	function GetColorPickerForActiveColor() : vehicleColorSelectorPointerDef; // GetColorPickerForActiveColor;
+	function GetMouseLocationRelativeToActiveColorPicker(mousePos : Vector2) : Vector2; // GetMouseLocationRelativeToActiveColorPicker;Vector2
+	function GetNavigationEnabledInGrids() : Bool; // GetNavigationEnabledInGrids;
+	function GetNextValidMode(currentMode : vehicleColorSelectorActiveMode, optional direction : Int32) : vehicleColorSelectorActiveMode; // GetNextValidMode;vehicleColorSelectorActiveModeInt32
+	function GetSliderStepForControlDevice() : Float; // GetSliderStepForControlDevice;
+	function HandleClickReleased(e : handle:inkPointerEvent); // HandleClickReleased;inkPointerEvent
+	function HandleNavigation(e : handle:inkPointerEvent); // HandleNavigation;inkPointerEvent
+	function InitializeMQ058(); // InitializeMQ058;
+	function LoadTemplateData(template : VehicleVisualCustomizationTemplate); // LoadTemplateData;VehicleVisualCustomizationTemplate
+	function MoveCurrentSlider(direction : Int32); // MoveCurrentSlider;Int32
+	function MoveNavigation(direction : inkDiscreteNavigationDirection); // MoveNavigation;inkDiscreteNavigationDirection
+	function NormalizeAngle(angle : Float) : Float; // NormalizeAngle;Float
+	function OnBothGridInitialized(); // OnBothGridInitialized;
+	function PackCurrentConfigurationToTemplate() : VehicleVisualCustomizationTemplate; // PackCurrentConfigurationToTemplate;
+	function PlayAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions); // PlayAnimation;CNameinkAnimOptions
+	function PlayCarGlitchEffect(); // PlayCarGlitchEffect;
+	function PlayFailSound(); // PlayFailSound;
+	function PlayLightsFocusAnimation(val : Bool); // PlayLightsFocusAnimation;Bool
+	function ProccessSwapColorHintVisibility(); // ProccessSwapColorHintVisibility;
+	function ProcessApplyHintVisiblity(); // ProcessApplyHintVisiblity;
+	function ProcessCurrentSliderChange(change : Int32); // ProcessCurrentSliderChange;Int32
+	function ProcessDeleteProfileHintVisibility(); // ProcessDeleteProfileHintVisibility;
+	function ProcessFakeUpdate(on : Bool); // ProcessFakeUpdate;Bool
+	function ProcessMouseInput(mousePos : Vector2); // ProcessMouseInput;Vector2
+	function ProcessPointerClick(e : handle:inkPointerEvent); // ProcessPointerClick;inkPointerEvent
+	function ProcessPointerMovement(angle : Float, pointer : vehicleColorSelectorPointerDef); // ProcessPointerMovement;FloatvehicleColorSelectorPointerDef
+	function ProcessPreviousCustomizationState(); // ProcessPreviousCustomizationState;
+	function ProcessResetHintVisiblity(); // ProcessResetHintVisiblity;
+	function ProcessSaveProfileHintVisibility(); // ProcessSaveProfileHintVisibility;
+	function ReadSBBarsValues(); // ReadSBBarsValues;
+	function Reset() : Bool; // Reset;
+	function ResetCustomizationToVehicle(); // ResetCustomizationToVehicle;
+	function ResetSliderControls(); // ResetSliderControls;
+	function SaveProfile() : Bool; // SaveProfile;
+	function SelectActivePanel(nextPanel : vehicleColorSelectorActiveTab); // SelectActivePanel;vehicleColorSelectorActiveTab
+	function SelectDefaultTemplateInGrids(); // SelectDefaultTemplateInGrids;
+	function SelectSBBar(bar : vehicleColorSelectorSBBar); // SelectSBBar;vehicleColorSelectorSBBar
+	function SendCustomizationToVehicle(); // SendCustomizationToVehicle;
+	function SetClassicBackgroundVisibility(visible : Bool); // SetClassicBackgroundVisibility;Bool
+	function SetCursorVisibility(visible : Bool); // SetCursorVisibility;Bool
+	function SetHeadlightsFixedColor(record : whandle:gamedataVehicle_Record); // SetHeadlightsFixedColor;Vehicle_Record
+	function SetInputEnabled(enabled : Bool); // SetInputEnabled;Bool
+	function SetMordredBackgroundVisibility(visible : Bool); // SetMordredBackgroundVisibility;Bool
+	function SetNavigationEnabledInGrids(enabled : Bool); // SetNavigationEnabledInGrids;Bool
+	function SetSliderPosition(bar : vehicleColorSelectorSBBar, newPosition : Float); // SetSliderPosition;vehicleColorSelectorSBBarFloat
+	function SetTimeDilatation(enable : Bool); // SetTimeDilatation;Bool
+	function ShouldProcessMouseInputForActiveColorPicker(mousePos : Vector2) : Bool; // ShouldProcessMouseInputForActiveColorPicker;Vector2
+	function ShowSBBars(val : Bool); // ShowSBBars;Bool
+	function SignalUICallBack(); // SignalUICallBack;
+	function StartCrackedAnimations(); // StartCrackedAnimations;
+	function SwapColors() : Bool; // SwapColors;
+	function SwitchActiveMode(optional direction : Int32, optional switchTo : vehicleColorSelectorActiveMode); // SwitchActiveMode;Int32vehicleColorSelectorActiveMode
+	function UnitializeTwintone(); // UnitializeTwintone;
+	function UnlockSemimaruUniqueTemplate(tweakDBID : TweakDBID); // UnlockSemimaruUniqueTemplate;TweakDBID
+	function Update(); // Update;
+	function UpdateActiveSBBar(); // UpdateActiveSBBar;
+	function UpdateColor(colorAngle : Float, selectedMode : vehicleColorSelectorActiveMode); // UpdateColor;FloatvehicleColorSelectorActiveMode
+	function UpdateControlsState(); // UpdateControlsState;
+	function UpdateCurrentTemplate(newTemplate : VehicleVisualCustomizationTemplate); // UpdateCurrentTemplate;VehicleVisualCustomizationTemplate
+	function UpdateLightsPreviewWidgets(optional reset : Bool); // UpdateLightsPreviewWidgets;Bool
+	function UpdateNavigationOverride(); // UpdateNavigationOverride;
+	function UpdateNavigationState(); // UpdateNavigationState;
+	function UpdatePointerPosition(colorAngle : Float, pointer : vehicleColorSelectorPointerDef, rotate : Bool); // UpdatePointerPosition;FloatvehicleColorSelectorPointerDefBool
+	function UpdatePointerVisiblity(pointer : vehicleColorSelectorPointerDef, set : Bool); // UpdatePointerVisiblity;vehicleColorSelectorPointerDefBool
+	function UpdateSBBarsForActiveColor(); // UpdateSBBarsForActiveColor;
+	function UpdateSliderFromScreenPosition(slider : vehicleColorSelectorSBBar, position : Vector2); // UpdateSliderFromScreenPosition;vehicleColorSelectorSBBarVector2
+	function UpdateSlidersPosition(); // UpdateSlidersPosition;
+	function UpdateTintedPartsForMode(mode : vehicleColorSelectorActiveMode); // UpdateTintedPartsForMode;vehicleColorSelectorActiveMode
+	function UpdateTwintonePanel(); // UpdateTwintonePanel;
+	function UpdateVehicleManufacturer(); // UpdateVehicleManufacturer;
+	function UpdateVehiclePreview(); // UpdateVehiclePreview;
+	function UpdateWidgetsForNewMode(currentMode : vehicleColorSelectorActiveMode, previousMode : vehicleColorSelectorActiveMode); // UpdateWidgetsForNewMode;vehicleColorSelectorActiveModevehicleColorSelectorActiveMode
+	function VerifyVehicleValidity() : Bool; // VerifyVehicleValidity;
+}
+
+import class gameuiWidgetGameController extends worlduiIWidgetGameController
+{
+	import function GetBlackboardSystem() : handle:gameBlackboardSystem; // GetBlackboardSystem
+	import function GetOwnerEntity() : handle:entEntity; // GetOwnerEntity
+	import function GetPSMBlackboard(playerPuppet : handle:gameObject) : handle:gameIBlackboard; // GetPSMBlackboard
+	import function GetPlayerControlledObject() : handle:gameObject; // GetPlayerControlledObject
+	import function GetUIBlackboard() : handle:gameIBlackboard; // GetUIBlackboard
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function RegisterDebugCommand(debugFunctionName : CName); // RegisterDebugCommand
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float, optional forceSnapping : Bool); // SetCursorOverWidget
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+}
+
+import class abstract worlduiIWidgetGameController extends inkIWidgetController
+{
+	var elementRecordID : TweakDBID;
+
+	import function ProjectWorldToScreen(worldPosition : Vector4) : Vector2; // ProjectWorldToScreen
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+}
+
+import class abstract inkIWidgetController extends IScriptable
+{
+	var audioMetadataName : CName;
+
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function IsKeyboardConnected() : Bool; // IsKeyboardConnected
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function RequestProcessFitToViewport(); // RequestProcessFitToViewport
+	import function RequestSetFocus(widget : whandle:inkWidget); // RequestSetFocus
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : whandle:inkAsyncSpawnRequest; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindLibraryID(widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : CName; // FindLibraryID;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function ReadUICondition(condition : gamedataUICondition) : Bool; // ReadUICondition;gamedataUICondition
+	function RequestWidgetFromLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : CName; // RequestWidgetFromLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRefAsyncSpawnData
+	function RequestWidgetFromLibraryById(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryById;inkWidgetCNameResRefAsyncSpawnDatainkAsyncSpawnRequest
+	function RequestWidgetFromLibraryByRecord(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryByRecord;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordAsyncSpawnDatainkAsyncSpawnRequest
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

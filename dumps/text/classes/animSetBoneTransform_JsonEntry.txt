@@ -1,0 +1,10 @@
+import struct animSetBoneTransform_JsonEntry
+{
+	var transformToChange : CName;
+	var setMethod : animSetBoneTransformEntry_SetMethod;
+	var snapToReference : Bool;
+	var sourceBone : CName;
+	var offsetToReference : Bool;
+	var offsetSpaceBone : CName;
+	var offset : QsTransform;
+}

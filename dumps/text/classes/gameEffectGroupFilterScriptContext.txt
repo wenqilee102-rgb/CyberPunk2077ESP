@@ -1,0 +1,10 @@
+import struct gameEffectGroupFilterScriptContext
+{
+	var resultIndices : array:Int32;
+
+	import static function GetEntity(filterCtx : gameEffectGroupFilterScriptContext, index : Int32) : handle:entEntity; // GetEntity
+	import static function GetHitNormal(filterCtx : gameEffectGroupFilterScriptContext, index : Int32) : Vector4; // GetHitNormal
+	import static function GetHitPosition(filterCtx : gameEffectGroupFilterScriptContext, index : Int32) : Vector4; // GetHitPosition
+	import static function GetNumAgents(filterCtx : gameEffectGroupFilterScriptContext) : Int32; // GetNumAgents
+	import static function GetTimeDelta(filterCtx : gameEffectGroupFilterScriptContext) : Float; // GetTimeDelta
+}

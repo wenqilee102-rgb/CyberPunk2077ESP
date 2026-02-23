@@ -1,0 +1,28 @@
+import class gameContainerManager extends gameIContainerManager
+{
+	import function InjectLoot(id : entEntityID, itemID : gameItemID, quantity : Uint32, optional dynamicTags : array:CName); // InjectLoot
+	import function InjectLootModParams(id : entEntityID, params : gameItemModParams); // InjectLootModParams
+	import function ReinitializeContainerLoot(); // ReinitializeContainerLoot
+}
+
+import class abstract gameIContainerManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+import class gamedataUIElement_Record extends gamedataTweakDBRecord
+{
+	import function CustomConditions(out outList : array:whandle:gamedataUICondition_Record); // CustomConditions
+	import function CustomConditionsContains(item : whandle:gamedataUICondition_Record) : Bool; // CustomConditionsContains
+	import function GetCustomConditionsCount() : Int32; // GetCustomConditionsCount
+	import function GetCustomConditionsItem(index : Int32) : whandle:gamedataUICondition_Record; // GetCustomConditionsItem
+	import function GetCustomConditionsItemHandle(index : Int32) : handle:gamedataUICondition_Record; // GetCustomConditionsItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

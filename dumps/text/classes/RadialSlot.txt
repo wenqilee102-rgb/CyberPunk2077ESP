@@ -1,0 +1,37 @@
+class RadialSlot extends IScriptable
+{
+	public    var slotAnchorRef : inkWidgetReference;
+	public    var libraryRef : inkWidgetLibraryReference;
+	public    var slotType : SlotType;
+	protected var animData : RadialAnimData;
+	private   var widget : whandle:inkWidget;
+	private   var targetAngle : Float;
+	private   var active : String;
+	private   var inactive : String;
+	private   var blocked : String;
+
+	function Activate(); // Activate;
+	function Activate(shouldActivate : Bool); // Activate;Bool
+	function CanCycle() : Bool; // CanCycle;
+	function Construct(w : whandle:inkWidget); // Construct;inkWidget
+	function Deactivate(); // Deactivate;
+	function GetAngle() : Float; // GetAngle;
+	function GetDebugInfo(out info : array:String); // GetDebugInfo;array<String>
+	function GetWidget() : whandle:inkWidget; // GetWidget;
+	function IsCyclable() : Bool; // IsCyclable;
+	function SetTargetAngle(precalculatedAngle : Float); // SetTargetAngle;Float
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

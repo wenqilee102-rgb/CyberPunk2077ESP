@@ -1,0 +1,21 @@
+import class inkTextureAtlas extends CResource
+{
+	var activeTexture : inkTextureType;
+	var textureResolution : inkETextureResolution;
+	var texture : raRef:CBitmapTexture;
+	var dynamicTexture : raRef:DynamicTexture;
+	var parts : array:inkTextureAtlasMapper;
+	var slices : array:inkTextureAtlasSlice;
+	var slots : [3]inkTextureSlot;
+	var dynamicTextureSlot : inkDynamicTextureSlot;
+	var isSingleTextureMode : Bool;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

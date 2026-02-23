@@ -1,0 +1,7 @@
+import struct animCorrectivePoseEntry
+{
+	var comparePose : CName;
+	var correctivePose : CName;
+	var jointsToCompare : array:CName;
+	var enabled : Bool;
+}

@@ -1,0 +1,5 @@
+import struct gameuiCensorshipInfo
+{
+	var censorFlag : CensorshipFlags;
+	var censorFlagAction : gameuiCharacterCustomizationActionType;
+}

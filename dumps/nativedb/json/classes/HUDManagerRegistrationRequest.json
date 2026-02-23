@@ -1,0 +1,1 @@
+{"a":"HUDManagerRequest","b":"HUDManagerRegistrationRequest","d":0,"e":[{"a":{"a":1},"b":"isRegistering","c":128},{"a":{"b":"HUDActorType"},"b":"type","c":128}],"f":[{"a":"SetProperties;GameObjectBool","b":"SetProperties","d":48,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"owner","c":0},{"a":{"a":1},"b":"shouldRegister","c":0}]}]}

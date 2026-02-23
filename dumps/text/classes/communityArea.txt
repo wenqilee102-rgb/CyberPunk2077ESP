@@ -1,0 +1,8 @@
+import class communityArea extends ISerializable
+{
+	var entriesData : array:communityCommunityEntrySpotsData;
+}
+
+import class abstract ISerializable
+{
+}

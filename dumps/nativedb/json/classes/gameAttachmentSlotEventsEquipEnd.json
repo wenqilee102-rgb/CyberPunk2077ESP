@@ -1,0 +1,1 @@
+{"a":"gameAttachmentSlotEventsAttachmentSlotEvent","b":"gameAttachmentSlotEventsEquipEnd","c":"EquipEnd","d":24,"f":[{"a":"GetItemID","c":{"b":"gameItemID"},"d":4},{"a":"SetItemID","d":4,"e":[{"a":{"b":"gameItemID"},"b":"itemId","c":0}]}]}

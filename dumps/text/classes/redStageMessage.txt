@@ -1,0 +1,7 @@
+import struct redStageMessage
+{
+	var parent : Uint32;
+	var reset : Bool;
+	var names : array:String;
+	var ids : array:Uint32;
+}

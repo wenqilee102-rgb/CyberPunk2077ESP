@@ -1,0 +1,6 @@
+import struct entdismembermentAppearanceMatch
+{
+	var Character : CName;
+	var Mesh : CName;
+	var SetByUser : Bool;
+}

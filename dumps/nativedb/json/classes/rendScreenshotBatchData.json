@@ -1,0 +1,1 @@
+{"b":"rendScreenshotBatchData","d":8,"g":true,"e":[{"a":{"b":"AbsolutePathSerializable"},"b":"batchPositionsPath","c":128},{"a":{"a":10},"b":"delayTime","c":128},{"a":{"a":7},"b":"numberOfCoordinatesToDump","c":128},{"a":{"a":1},"b":"mergeScreenshots","c":128},{"a":{"b":"rendEStreamingObserverMode"},"b":"streamingObserverMode","c":128}]}

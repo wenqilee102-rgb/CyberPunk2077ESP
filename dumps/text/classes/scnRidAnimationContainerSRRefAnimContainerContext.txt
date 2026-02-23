@@ -1,0 +1,4 @@
+import struct scnRidAnimationContainerSRRefAnimContainerContext
+{
+	var genderMask : scnGenderMask;
+}

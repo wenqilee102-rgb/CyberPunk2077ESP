@@ -1,0 +1,1 @@
+{"a":"AIbehaviorDecoratorNodeDefinition","b":"AIbehaviorPassiveConditionNodeDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIbehaviorPassiveConditionDefinition"}},"b":"condition","c":128},{"a":{"b":"AIbehaviorCompletionStatus"},"b":"resultIfFailed","c":128}]}

@@ -1,0 +1,19 @@
+import class questPrepareBlendCamera_NodeType extends questISceneManagerNodeType
+{
+}
+
+import class abstract questISceneManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

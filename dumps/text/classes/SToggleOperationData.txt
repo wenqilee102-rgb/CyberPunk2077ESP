@@ -1,0 +1,6 @@
+struct SToggleOperationData
+{
+	public    var index : Int32;
+	public    var enable : Bool;
+	public    var classType : EOperationClassType;
+}

@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_Bool
+{
+	var evaluator : handle:gameIEffectParameter_BoolEvaluator;
+
+	import static function Get(ctx : gameEffectInputParameter_Bool, bb : handle:gameIBlackboard) : Bool; // Get
+}

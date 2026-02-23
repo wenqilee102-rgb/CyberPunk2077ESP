@@ -1,0 +1,26 @@
+import struct AIbehaviorScriptUtils
+{
+	import static function ArePositionsEqual(a : Vector4, b : Vector4) : Bool; // ArePositionsEqual
+	import static function CalculateDistanceToEndFrom(game : ScriptGameInstance, splineRef : NodeRef, refPoint : Vector4, out endDistance : Float) : Bool; // CalculateDistanceToEndFrom
+	import static function CallActivateSubAction(context : AIbehaviorScriptExecutionContext, subAction : handle:gamedataAISubAction_Record); // CallActivateSubAction
+	import static function CallCheckSubCondition(context : AIbehaviorScriptExecutionContext, check : handle:gamedataAIActionSubCondition_Record) : Bool; // CallCheckSubCondition
+	import static function CallDeactivateSubAction(context : AIbehaviorScriptExecutionContext, subAction : handle:gamedataAISubAction_Record, duration : Float, interrupted : Bool); // CallDeactivateSubAction
+	import static function CallGetAnimVariation(context : AIbehaviorScriptExecutionContext, subActionRecord : handle:gamedataAISubAction_Record) : Int32; // CallGetAnimVariation
+	import static function CallGetPhaseDuration(context : AIbehaviorScriptExecutionContext, subActionRecord : handle:gamedataAISubAction_Record, actionPhase : Int32, baseDuration : Float) : Float; // CallGetPhaseDuration
+	import static function CallUpdateSubAction(context : AIbehaviorScriptExecutionContext, subAction : handle:gamedataAISubAction_Record, duration : Float) : AIbehaviorUpdateOutcome; // CallUpdateSubAction
+	import static function CheckActionCondition(ctx : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // CheckActionCondition
+	import static function CheckActionCooldowns(context : AIbehaviorScriptExecutionContext, check : handle:gamedataAIAction_Record) : Bool; // CheckActionCooldowns
+	import static function CheckAnimation(context : script_ref:AIbehaviorScriptExecutionContext, animFeatureName : CName, animVariation : Int32, animState : Int32, triggerPreload : Bool) : Bool; // CheckAnimation
+	import static function CheckCooldownConditions(context : AIbehaviorScriptExecutionContext, check : handle:gamedataAICooldownCond_Record) : Bool; // CheckCooldownConditions
+	import static function DebugLog(entityId : entEntityID, category : CName, message : String); // DebugLog
+	import static function GetActionNameFromRecord(recordId : TweakDBID, out actionName : TweakDBID) : Bool; // GetActionNameFromRecord
+	import static function GetActionTarget(context : AIbehaviorScriptExecutionContext, target : handle:gamedataAIActionTarget_Record, out object : handle:gameObject) : Bool; // GetActionTarget
+	import static function GetActionTarget2(context : AIbehaviorScriptExecutionContext, targetId : TweakDBID, predictionTime : Float, out object : handle:gameObject, out position : Vector4, out coverId : Uint64) : Bool; // GetActionTarget2
+	import static function GetClosestPointOnSpline(game : ScriptGameInstance, splineRef : NodeRef, refPoint : Vector4, out closestPoint : Vector4) : Bool; // GetClosestPointOnSpline
+	import static function GetEndPointOfSpline(game : ScriptGameInstance, splineRef : NodeRef, out endPoint : Vector4) : Bool; // GetEndPointOfSpline
+	import static function GetStartPointOfSpline(game : ScriptGameInstance, splineRef : NodeRef, out startPoint : Vector4) : Bool; // GetStartPointOfSpline
+	import static function GetTicketType(ticketName : CName, puppet : handle:gamePuppet, fallbackSquad : handle:gamedataAISquadParams_Record, out outTicket : handle:gamedataAITicket_Record, out outSquadRecord : handle:gamedataAISquadParams_Record) : Bool; // GetTicketType
+	import static function GetWaterLevel(game : ScriptGameInstance, position : Vector3, out outWaterLevel : Float) : Bool; // GetWaterLevel
+	import static function IsArchetypeAction(recordId : TweakDBID) : Bool; // IsArchetypeAction
+	import static function IsSplineStartRecalculated(context : AIbehaviorScriptExecutionContext, splineRef : NodeRef, splineRecalculation : Bool) : Bool; // IsSplineStartRecalculated
+}

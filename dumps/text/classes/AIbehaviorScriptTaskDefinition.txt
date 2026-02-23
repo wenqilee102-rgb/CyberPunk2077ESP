@@ -1,0 +1,14 @@
+import class AIbehaviorScriptTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var script : handle:AIbehaviortaskScript;
+	var disableLazyInitialization : Bool;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,33 @@
+class UIInventoryWeaponInternalData extends IScriptable
+{
+	public    var fetchedFlags : Int32;
+	public    var WeaponType : WeaponType;
+	public    var Evolution : gamedataWeaponEvolution;
+	public    var PerkGroup : gamedataPerkWeaponGroupType;
+	public    var GameplayDescription : String;
+	public    var EmptySlots : array:TweakDBID;
+	public    var UsedSlots : array:TweakDBID;
+	public    var HasSilencerSlot : Bool;
+	public    var HasScopeSlot : Bool;
+	public    var HasSilencerInstalled : Bool;
+	public    var HasScopeInstalled : Bool;
+	public    var DamageMin : Float;
+	public    var DamageMax : Float;
+	public    var AttackSpeed : Float;
+	public    var NumberOfPellets : Int32;
+	public    var Ammo : Int32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+import class questCallContact_NodeType extends questIPhoneManagerNodeType
+{
+	var caller : handle:gameJournalPath;
+	var addressee : handle:gameJournalPath;
+	var phase : questPhoneCallPhase;
+	var mode : questPhoneCallMode;
+	var prefabNodeRef : NodeRef;
+	var applyPhoneRestriction : Bool;
+	var isRejectable : Bool;
+	var showAvatar : Bool;
+	var visuals : questPhoneCallVisuals;
+}
+
+import class abstract questIPhoneManagerNodeType extends questIRetOutputNodeType
+{
+}
+
+import class abstract questIRetOutputNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

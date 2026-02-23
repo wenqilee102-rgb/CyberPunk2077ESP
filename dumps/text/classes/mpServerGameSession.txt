@@ -1,0 +1,11 @@
+import struct mpServerGameSession extends mpGameSession
+{
+}
+
+import struct mpGameSession extends gameBaseGameSession
+{
+}
+
+import struct abstract gameBaseGameSession
+{
+}

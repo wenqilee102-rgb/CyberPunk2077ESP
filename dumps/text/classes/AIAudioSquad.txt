@@ -1,0 +1,11 @@
+import class AIAudioSquad extends AISquadBase
+{
+}
+
+import class AISquadBase extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

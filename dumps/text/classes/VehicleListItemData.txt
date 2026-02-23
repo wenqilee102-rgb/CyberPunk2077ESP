@@ -1,0 +1,22 @@
+class VehicleListItemData extends IScriptable
+{
+	public    var displayName : CName;
+	public    var data : vehiclePlayerVehicle;
+	public    var icon : whandle:gamedataUIIcon_Record;
+	public    var repairTimeRemaining : Float;
+	public    var canBeActive : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

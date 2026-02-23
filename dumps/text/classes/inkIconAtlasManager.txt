@@ -1,0 +1,7 @@
+import struct inkIconAtlasManager extends inkIIconAtlasManager
+{
+}
+
+import struct abstract inkIIconAtlasManager
+{
+}

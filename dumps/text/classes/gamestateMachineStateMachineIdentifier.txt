@@ -1,0 +1,5 @@
+import struct gamestateMachineStateMachineIdentifier
+{
+	var definitionName : CName;
+	var referenceName : CName;
+}

@@ -1,0 +1,78 @@
+import class worldBenchmarkSummary extends IScriptable
+{
+	var gameVersion : String;
+	var benchmarkName : String;
+	var gpuName : String;
+	var gpuMemory : Uint64;
+	var gpuDriverVersion : String;
+	var cpuName : String;
+	var systemMemory : Uint64;
+	var osName : String;
+	var osVersion : String;
+	var presetName : String;
+	var presetLocalizedName : CName;
+	var textureQualityPresetLocalizedName : CName;
+	var renderWidth : Uint32;
+	var renderHeight : Uint32;
+	var windowMode : Uint8;
+	var verticalSync : Bool;
+	var fpsClamp : Int32;
+	var averageFps : Float;
+	var minFps : Float;
+	var maxFps : Float;
+	var time : Float;
+	var frameNumber : Uint32;
+	var upscalingType : Uint8;
+	var frameGenerationType : Uint8;
+	var DLAAEnabled : Bool;
+	var DLAASharpness : Float;
+	var DLSSEnabled : Bool;
+	var DLSSPreset : Int32;
+	var DLSSDEnabled : Bool;
+	var DLSSQuality : Int32;
+	var DLSSSharpness : Float;
+	var DLSSFrameGenEnabled : Bool;
+	var DLSSMultiFrameGenEnabled : Bool;
+	var DLSSMultiFrameGenFrameToGenerate : Int32;
+	var FSR2Enabled : Bool;
+	var FSR2Quality : Int32;
+	var FSR2Sharpness : Float;
+	var FSR3Enabled : Bool;
+	var FSR3Quality : Int32;
+	var FSR3Sharpness : Float;
+	var FSR3FrameGenEnabled : Bool;
+	var FSR4Enabled : Bool;
+	var FSR4Quality : Int32;
+	var FSR4Sharpness : Float;
+	var XeSSEnabled : Bool;
+	var XeSSQuality : Int32;
+	var XeSSSharpness : Float;
+	var XeSSFrameGenEnabled : Bool;
+	var DRSEnabled : Bool;
+	var DRSTargetFPS : Uint32;
+	var DRSMinimalResolutionPercentage : Uint32;
+	var DRSMaximalResolutionPercentage : Uint32;
+	var CASSharpeningEnabled : Bool;
+	var FSREnabled : Bool;
+	var FSRQuality : Int32;
+	var rayTracingEnabled : Bool;
+	var rayTracedReflections : Bool;
+	var rayTracedSunShadows : Bool;
+	var rayTracedLocalShadows : Bool;
+	var rayTracedLightingQuality : Int32;
+	var rayTracedPathTracingEnabled : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

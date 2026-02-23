@@ -1,0 +1,6 @@
+struct NewPerksGaugePointDetails
+{
+	public    var level : Int32;
+	public    var height : Float;
+	public    var widget : inkWidgetReference;
+}

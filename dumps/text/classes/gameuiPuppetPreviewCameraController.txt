@@ -1,0 +1,6 @@
+import struct gameuiPuppetPreviewCameraController
+{
+	var cameraSetup : array:gameuiPuppetPreviewCameraSetup;
+	var activeSetup : Uint32;
+	var transitionDelay : Float;
+}

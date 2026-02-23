@@ -1,0 +1,5 @@
+import struct SMeshTopology
+{
+	var data : DataBuffer;
+	var metadata : DataBuffer;
+}

@@ -1,0 +1,5 @@
+import struct gameuiCharacterCustomizationBrokenNoseControllerBrokenNoseAppearance
+{
+	var resource : raRef:appearanceAppearanceResource;
+	var definition : CName;
+}

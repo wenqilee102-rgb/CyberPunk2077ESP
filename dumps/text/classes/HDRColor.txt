@@ -1,0 +1,7 @@
+import struct HDRColor
+{
+	var Red : Float;
+	var Green : Float;
+	var Blue : Float;
+	var Alpha : Float;
+}

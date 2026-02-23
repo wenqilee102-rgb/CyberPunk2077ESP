@@ -1,0 +1,47 @@
+import class gamedataVehicleWheelDrivingPreset_Record extends gamedataTweakDBRecord
+{
+	import function ExtremeCompressionEventScalor() : Float; // ExtremeCompressionEventScalor
+	import function FrictionMulLateral() : Float; // FrictionMulLateral
+	import function FrictionMulLongitudinal() : Float; // FrictionMulLongitudinal
+	import function LogicalSuspensionCompressionLength() : Float; // LogicalSuspensionCompressionLength
+	import function Mass() : Float; // Mass
+	import function MaxBrakingTorque() : Float; // MaxBrakingTorque
+	import function SpringBoundDampingLowRate() : Float; // SpringBoundDampingLowRate
+	import function SpringDamping() : Float; // SpringDamping
+	import function SpringDampingHighRateCompression() : Float; // SpringDampingHighRateCompression
+	import function SpringDampingLowRateCompression() : Float; // SpringDampingLowRateCompression
+	import function SpringReboundDamping() : Float; // SpringReboundDamping
+	import function SpringReboundDampingLowRate() : Float; // SpringReboundDampingLowRate
+	import function SpringStiffness() : Float; // SpringStiffness
+	import function SwaybarDisplacementLimit() : Float; // SwaybarDisplacementLimit
+	import function SwaybarLengthScalar() : Float; // SwaybarLengthScalar
+	import function SwaybarStiffness() : Float; // SwaybarStiffness
+	import function TenderSpringLength() : Float; // TenderSpringLength
+	import function TireFrictionCoef() : Float; // TireFrictionCoef
+	import function TireLateralSlipEffectsMul() : Float; // TireLateralSlipEffectsMul
+	import function TireLongitudinalSlipEffectsMul() : Float; // TireLongitudinalSlipEffectsMul
+	import function TireRollingResistanceCoef() : Float; // TireRollingResistanceCoef
+	import function VisualSuspensionCompressionLength() : Float; // VisualSuspensionCompressionLength
+	import function VisualSuspensionDroop() : Float; // VisualSuspensionDroop
+	import function WheelsVerticalOffset() : Float; // WheelsVerticalOffset
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

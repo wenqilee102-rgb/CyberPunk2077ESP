@@ -1,0 +1,5 @@
+import struct animAnimWrapperVariableDescription
+{
+	var variableName : CName;
+	var defaultValue : Float;
+}

@@ -1,0 +1,13 @@
+struct DiodeLightPreset
+{
+	public    var state : Bool;
+	public    var colorMax : array:Int32;
+	public    var colorMin : array:Int32;
+	public    var overrideColorMin : Bool;
+	public    var strength : Float;
+	public    var curve : CName;
+	public    var time : Float;
+	public    var loop : Bool;
+	public    var duration : Float;
+	public    var force : Bool;
+}

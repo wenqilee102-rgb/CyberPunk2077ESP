@@ -1,0 +1,18 @@
+import class inkGlitchEffect extends inkIEffect
+{
+	var intensity : Float;
+	var offsetX : Float;
+	var offsetY : Float;
+	var sizeX : Float;
+	var sizeY : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

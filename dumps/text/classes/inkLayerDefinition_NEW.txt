@@ -1,0 +1,13 @@
+import struct inkLayerDefinition_NEW
+{
+	var name : CName;
+	var layerType : inkELayerType;
+	var drawingPolicy : inkLayerDrawingPolicy;
+	var loadPriority : inkELayerLoadPriority;
+	var enabled : Bool;
+	var isPermanent : Bool;
+	var useGlobalStyleTheme : Bool;
+	var isAffectedByFadeout : Bool;
+	var useGameInput : Bool;
+	var inputContext : CName;
+}

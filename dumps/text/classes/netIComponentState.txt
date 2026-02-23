@@ -1,0 +1,5 @@
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

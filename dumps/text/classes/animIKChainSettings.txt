@@ -1,0 +1,7 @@
+import struct animIKChainSettings
+{
+	var chainName : CName;
+	var enableFloatTrack : CName;
+	var ikEndPointOffset : Vector3;
+	var ikEndRotationOffset : Quaternion;
+}

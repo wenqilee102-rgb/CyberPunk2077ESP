@@ -1,0 +1,60 @@
+class PocketRadio extends IScriptable
+{
+	private   var player : whandle:PlayerPuppet;
+	private   var station : Int32;
+	private   var selectedStation : Int32;
+	private   var toggledStation : Int32;
+	private   var restrictions : array:Bool;
+	private   var isConditionRestricted : Bool;
+	private   var isUnlockDelayRestricted : Bool;
+	private   var isRestrictionOverwritten : Bool;
+	private   var isOn : Bool;
+	private   var questContentLockListener : handle:PocketRadioQuestContentLockListener;
+	private   var radioPressTime : Float;
+	private   var isInMetro : Bool;
+	private   var settings : handle:RadioportSettingsListener;
+
+	static function ConfigEnablePocketRadio() : Bool; // PocketRadio::ConfigEnablePocketRadio;
+
+	function GetStation() : Int32; // GetStation;
+	function GetStationName() : CName; // GetStationName;
+	function GetTrackName() : CName; // GetTrackName;
+	function HandleInputAction(action : gameinputScriptListenerAction); // HandleInputAction;ListenerAction
+	function HandleRadioToggleEvent(evt : handle:RadioToggleEvent); // HandleRadioToggleEvent;RadioToggleEvent
+	function HandleRestriction(restriction : PocketRadioRestrictions, restricted : Bool); // HandleRestriction;PocketRadioRestrictionsBool
+	function HandleRestrictionStateChanged(); // HandleRestrictionStateChanged;
+	function HandleStatusEffectApplied(gameplayTags : script_ref:array:CName, tag : CName, type : PocketRadioRestrictions); // HandleStatusEffectApplied;script_ref<array<CName>>CNamePocketRadioRestrictions
+	function HandleStatusEffectRemoved(gameplayTags : script_ref:array:CName, tag : CName, type : PocketRadioRestrictions); // HandleStatusEffectRemoved;script_ref<array<CName>>CNamePocketRadioRestrictions
+	function HandleUIUpdate(); // HandleUIUpdate;
+	function HandleVehicleMounted(vehicle : whandle:vehicleBaseObject); // HandleVehicleMounted;VehicleObject
+	function HandleVehicleRadioEvent(evt : handle:VehicleRadioEvent); // HandleVehicleRadioEvent;VehicleRadioEvent
+	function HandleVehicleRadioStationChanged(evt : handle:vehicleRadioStationChanged); // HandleVehicleRadioStationChanged;VehicleRadioStationChanged
+	function HandleVehicleUnmounted(vehicle : whandle:vehicleBaseObject); // HandleVehicleUnmounted;VehicleObject
+	function InitializeRestrictions(); // InitializeRestrictions;
+	function IsActive() : Bool; // IsActive;
+	function IsMutedByVolumeSetting() : Bool; // IsMutedByVolumeSetting;
+	function IsRestricted() : Bool; // IsRestricted;
+	function IsRestrictionOverwritten() : Bool; // IsRestrictionOverwritten;
+	function OnPlayerAttach(player : handle:PlayerPuppet); // OnPlayerAttach;PlayerPuppet
+	function OnPlayerDetach(player : handle:PlayerPuppet); // OnPlayerDetach;PlayerPuppet
+	function OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent, gameplayTags : script_ref:array:CName); // OnStatusEffectApplied;ApplyStatusEffectEventscript_ref<array<CName>>
+	function OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect, gameplayTags : script_ref:array:CName); // OnStatusEffectRemoved;RemoveStatusEffectscript_ref<array<CName>>
+	function ShouldIgnoreEvents() : Bool; // ShouldIgnoreEvents;
+	function TurnOff(playSFX : Bool); // TurnOff;Bool
+	function TurnOn(playSFX : Bool); // TurnOn;Bool
+	function UpdateConditionRestricted(); // UpdateConditionRestricted;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

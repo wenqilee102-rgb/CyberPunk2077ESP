@@ -1,0 +1,19 @@
+class abstract AIBehaviorScript extends IScriptable
+{
+	function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // GetGame;ScriptExecutionContext
+	function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // GetPuppet;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

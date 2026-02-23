@@ -1,0 +1,6 @@
+import struct entTemplateComponentResolveSettings
+{
+	var componentName : CName;
+	var nameParam : CName;
+	var mode : entTemplateComponentResolveMode;
+}

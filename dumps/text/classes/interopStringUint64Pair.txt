@@ -1,0 +1,5 @@
+import struct interopStringUint64Pair
+{
+	var string : String;
+	var number : Uint64;
+}

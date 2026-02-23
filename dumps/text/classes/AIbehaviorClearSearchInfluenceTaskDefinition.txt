@@ -1,0 +1,15 @@
+import class AIbehaviorClearSearchInfluenceTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var clearedAreaRadius : handle:AIArgumentMapping;
+	var clearedAreaDistance : handle:AIArgumentMapping;
+	var clearedAreaAngle : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

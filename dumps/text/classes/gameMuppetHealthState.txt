@@ -1,0 +1,4 @@
+import struct gameMuppetHealthState
+{
+	var health : Float;
+}

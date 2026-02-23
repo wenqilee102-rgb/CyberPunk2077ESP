@@ -1,0 +1,1 @@
+{"b":"gameinteractionsInteractionDefinitionOverrider","d":8,"g":true,"e":[{"a":{"a":14},"b":"tag","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gameinteractionsIShapeDefinition"}}},"b":"shapes","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gameinteractionsIShapeDefinition"}}},"b":"negativeShapes","c":128},{"a":{"a":10},"b":"priorityMultiplier","c":128}]}

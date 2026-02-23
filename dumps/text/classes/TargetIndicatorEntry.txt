@@ -1,0 +1,5 @@
+struct TargetIndicatorEntry
+{
+	public    var targetID : entEntityID;
+	public    var indicator : whandle:inkWidget;
+}

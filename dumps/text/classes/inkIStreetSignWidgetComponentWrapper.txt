@@ -1,0 +1,7 @@
+import struct abstract inkIStreetSignWidgetComponentWrapper extends inkIWorldWidgetComponentWrapper
+{
+}
+
+import struct abstract inkIWorldWidgetComponentWrapper
+{
+}

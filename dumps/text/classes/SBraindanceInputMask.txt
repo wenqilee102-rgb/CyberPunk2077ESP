@@ -1,0 +1,9 @@
+struct SBraindanceInputMask
+{
+	public    var pauseAction : Bool;
+	public    var playForwardAction : Bool;
+	public    var playBackwardAction : Bool;
+	public    var restartAction : Bool;
+	public    var switchLayerAction : Bool;
+	public    var cameraToggleAction : Bool;
+}

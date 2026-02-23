@@ -1,0 +1,28 @@
+import class gamedataUpgradingData_Record extends gamedataTweakDBRecord
+{
+	import function GetIngredientsCount() : Int32; // GetIngredientsCount
+	import function GetIngredientsItem(index : Int32) : whandle:gamedataRecipeElement_Record; // GetIngredientsItem
+	import function GetIngredientsItemHandle(index : Int32) : handle:gamedataRecipeElement_Record; // GetIngredientsItemHandle
+	import function Ingredients(out outList : array:whandle:gamedataRecipeElement_Record); // Ingredients
+	import function IngredientsContains(item : whandle:gamedataRecipeElement_Record) : Bool; // IngredientsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

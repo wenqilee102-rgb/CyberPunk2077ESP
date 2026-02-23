@@ -1,0 +1,34 @@
+import class audioPhysicalMaterialSettings extends audioAudioMetadata
+{
+	var softImpact : CName;
+	var solidImpact : CName;
+	var hardImpact : CName;
+	var useFoliageSystem : Bool;
+	var enableRollingOrScraping : Bool;
+	var scrape : CName;
+	var roll : CName;
+	var materialHardnessOverride : audioMaterialHardnessOverride;
+	var collideOnlyOnce : Bool;
+	var bulletImpact : CName;
+	var bulletImpactSniper : CName;
+	var bulletImpactShotgun : CName;
+	var bulletImpactRail : CName;
+	var bulletImpactNpc : CName;
+	var bulletImpactNpcSniper : CName;
+	var bulletImpactNpcAuto : CName;
+	var bulletImpactNpcShotgun : CName;
+	var bulletImpactNpcRail : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

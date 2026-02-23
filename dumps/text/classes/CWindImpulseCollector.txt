@@ -1,0 +1,7 @@
+import struct CWindImpulseCollector extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

@@ -1,0 +1,4 @@
+import struct worldStaticCollisionShapeCategories_CollisionNode
+{
+	var arr : [5][6]Uint16;
+}

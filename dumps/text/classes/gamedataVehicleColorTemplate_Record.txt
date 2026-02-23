@@ -1,0 +1,60 @@
+import class gamedataVehicleColorTemplate_Record extends gamedataTweakDBRecord
+{
+	import function CustomDecals(out outList : array:whandle:gamedataVehicleDecalAttachment_Record); // CustomDecals
+	import function CustomDecalsContains(item : whandle:gamedataVehicleDecalAttachment_Record) : Bool; // CustomDecalsContains
+	import function CustomIcon() : whandle:gamedataUIIcon_Record; // CustomIcon
+	import function CustomIconHandle() : handle:gamedataUIIcon_Record; // CustomIconHandle
+	import function CustomMultilayers(out outList : array:whandle:gamedataVehicleCustomMultilayer_Record); // CustomMultilayers
+	import function CustomMultilayersContains(item : whandle:gamedataVehicleCustomMultilayer_Record) : Bool; // CustomMultilayersContains
+	import function GetCustomDecalsCount() : Int32; // GetCustomDecalsCount
+	import function GetCustomDecalsItem(index : Int32) : whandle:gamedataVehicleDecalAttachment_Record; // GetCustomDecalsItem
+	import function GetCustomDecalsItemHandle(index : Int32) : handle:gamedataVehicleDecalAttachment_Record; // GetCustomDecalsItemHandle
+	import function GetCustomMultilayersCount() : Int32; // GetCustomMultilayersCount
+	import function GetCustomMultilayersItem(index : Int32) : whandle:gamedataVehicleCustomMultilayer_Record; // GetCustomMultilayersItem
+	import function GetCustomMultilayersItemHandle(index : Int32) : handle:gamedataVehicleCustomMultilayer_Record; // GetCustomMultilayersItemHandle
+	import function GetMainColorCount() : Int32; // GetMainColorCount
+	import function GetMainColorItem(index : Int32) : Int32; // GetMainColorItem
+	import function GetMatchingAppearancesCount() : Int32; // GetMatchingAppearancesCount
+	import function GetMatchingAppearancesItem(index : Int32) : CName; // GetMatchingAppearancesItem
+	import function GetMatchingColorVariantCount() : Int32; // GetMatchingColorVariantCount
+	import function GetMatchingColorVariantItem(index : Int32) : CName; // GetMatchingColorVariantItem
+	import function GetPartsClearCoatOverridesCount() : Int32; // GetPartsClearCoatOverridesCount
+	import function GetPartsClearCoatOverridesItem(index : Int32) : whandle:gamedataVehiclePartsClearCoatOverrides_Record; // GetPartsClearCoatOverridesItem
+	import function GetPartsClearCoatOverridesItemHandle(index : Int32) : handle:gamedataVehiclePartsClearCoatOverrides_Record; // GetPartsClearCoatOverridesItemHandle
+	import function GetSecondaryColorCount() : Int32; // GetSecondaryColorCount
+	import function GetSecondaryColorItem(index : Int32) : Int32; // GetSecondaryColorItem
+	import function GlobalClearCoatOverrides() : whandle:gamedataVehicleClearCoatOverrides_Record; // GlobalClearCoatOverrides
+	import function GlobalClearCoatOverridesHandle() : handle:gamedataVehicleClearCoatOverrides_Record; // GlobalClearCoatOverridesHandle
+	import function HasCustomPattern() : Bool; // HasCustomPattern
+	import function LightsHue() : Float; // LightsHue
+	import function MainColor() : array:Int32; // MainColor
+	import function MainColorContains(item : Int32) : Bool; // MainColorContains
+	import function MatchingAppearances() : array:CName; // MatchingAppearances
+	import function MatchingAppearancesContains(item : CName) : Bool; // MatchingAppearancesContains
+	import function MatchingColorVariant() : array:CName; // MatchingColorVariant
+	import function MatchingColorVariantContains(item : CName) : Bool; // MatchingColorVariantContains
+	import function PartsClearCoatOverrides(out outList : array:whandle:gamedataVehiclePartsClearCoatOverrides_Record); // PartsClearCoatOverrides
+	import function PartsClearCoatOverridesContains(item : whandle:gamedataVehiclePartsClearCoatOverrides_Record) : Bool; // PartsClearCoatOverridesContains
+	import function SecondaryColor() : array:Int32; // SecondaryColor
+	import function SecondaryColorContains(item : Int32) : Bool; // SecondaryColorContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

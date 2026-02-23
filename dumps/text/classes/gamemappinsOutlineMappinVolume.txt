@@ -1,0 +1,13 @@
+import class gamemappinsOutlineMappinVolume extends gamemappinsIMappinVolume
+{
+	var height : Float;
+	var outlinePoints : array:Vector2;
+}
+
+import class abstract gamemappinsIMappinVolume extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

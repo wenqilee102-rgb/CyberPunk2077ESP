@@ -1,0 +1,1 @@
+{"a":"gameEffectObjectGroupFilter_Scripted","b":"IsSourceDeviceActveFilter","d":0,"f":[{"a":"Process;EffectScriptContextEffectGroupFilterScriptContext","b":"Process","c":{"a":1},"d":48,"e":[{"a":{"b":"gameEffectScriptContext"},"b":"ctx","c":0},{"a":{"b":"gameEffectGroupFilterScriptContext"},"b":"filterCtx","c":2}]}]}

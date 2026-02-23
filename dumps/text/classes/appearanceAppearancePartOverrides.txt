@@ -1,0 +1,5 @@
+import struct appearanceAppearancePartOverrides
+{
+	var partResource : raRef:entEntityTemplate;
+	var componentsOverrides : array:appearancePartComponentOverrides;
+}

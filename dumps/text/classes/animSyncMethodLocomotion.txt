@@ -1,0 +1,13 @@
+import class animSyncMethodLocomotion extends animISyncMethod
+{
+	var locomotionFeatureName : CName;
+	var accelStopTimeEvent : CName;
+}
+
+import class abstract animISyncMethod extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameuiCharacterCustomizationAction
+{
+	var type : gameuiCharacterCustomizationActionType;
+	var params : String;
+	var applyToUISlot : Bool;
+	var applyImmediately : Bool;
+}

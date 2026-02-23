@@ -1,0 +1,5 @@
+struct CooldownStorageID
+{
+	public    var ID : Uint32;
+	public    var isValid : EBOOL;
+}

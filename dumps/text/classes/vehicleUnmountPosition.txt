@@ -1,0 +1,5 @@
+import struct vehicleUnmountPosition
+{
+	var direction : vehicleExitDirection;
+	var position : WorldPosition;
+}

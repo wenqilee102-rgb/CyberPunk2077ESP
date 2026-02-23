@@ -1,0 +1,28 @@
+import class worldAISpotNode extends worldSocketNode
+{
+	var spot : handle:AISpot;
+	var isWorkspotInfinite : Bool;
+	var isWorkspotStatic : Bool;
+	var markings : array:CName;
+	var spotDef : handle:worldTrafficSpotDefinition;
+	var disableBumps : Bool;
+	var lookAtTarget : NodeRef;
+	var useCrowdWhitelist : Bool;
+	var useCrowdBlacklist : Bool;
+	var crowdWhitelist : redTagList;
+	var crowdBlacklist : redTagList;
+}
+
+import class abstract worldSocketNode extends worldNode
+{
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

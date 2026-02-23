@@ -1,0 +1,12 @@
+import class scnOverrideReturnConditions_InterruptionScenarioOperation extends scnIInterruptionScenarioOperation
+{
+	var returnConditions : array:handle:scnIReturnCondition;
+}
+
+import class abstract scnIInterruptionScenarioOperation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

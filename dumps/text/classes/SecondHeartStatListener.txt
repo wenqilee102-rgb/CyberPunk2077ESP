@@ -1,0 +1,32 @@
+class SecondHeartStatListener extends gameScriptStatsListener
+{
+	public    var player : whandle:PlayerPuppet;
+
+	function OnStatChanged(ownerID : gameStatsObjectID, statType : gamedataStatType, diff : Float, total : Float); // OnStatChanged;StatsObjectIDgamedataStatTypeFloatFloat
+}
+
+import class gameScriptStatsListener extends gameIStatsListener
+{
+	import function SetStatType(statType : gamedataStatType); // SetStatType
+
+	function OnGodModeChanged(ownerID : entEntityID, newType : gameGodModeType); // OnGodModeChanged;EntityIDgameGodModeType
+	function OnStatChanged(ownerID : gameStatsObjectID, statType : gamedataStatType, diff : Float, total : Float); // OnStatChanged;StatsObjectIDgamedataStatTypeFloatFloat
+}
+
+import class abstract gameIStatsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

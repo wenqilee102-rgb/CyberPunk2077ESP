@@ -1,0 +1,28 @@
+import class gamedataFastTravelBinksGroup_Record extends gamedataTweakDBRecord
+{
+	import function BinksData(out outList : array:whandle:gamedataFastTravelBinkData_Record); // BinksData
+	import function BinksDataContains(item : whandle:gamedataFastTravelBinkData_Record) : Bool; // BinksDataContains
+	import function GetBinksDataCount() : Int32; // GetBinksDataCount
+	import function GetBinksDataItem(index : Int32) : whandle:gamedataFastTravelBinkData_Record; // GetBinksDataItem
+	import function GetBinksDataItemHandle(index : Int32) : handle:gamedataFastTravelBinkData_Record; // GetBinksDataItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

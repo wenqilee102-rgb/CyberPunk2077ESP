@@ -1,0 +1,5 @@
+import struct entReplicatedItem
+{
+	var entity : whandle:entEntity;
+	var netTime : netTime;
+}

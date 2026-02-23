@@ -1,0 +1,8 @@
+struct EntityAttachementData
+{
+	public    var slotName : CName;
+	public    var slotComponentName : CName;
+	public    var nodeRef : NodeRef;
+	public    var attachementComponentName : CName;
+	public    var ownerID : entEntityID;
+}

@@ -1,0 +1,1 @@
+{"a":"questIFXManagerNodeType","b":"questRazerAnimation_NodeType","d":8,"e":[{"a":{"a":31,"c":{"b":"questPlayRazerAnimation_NodeTypeParams"}},"b":"playParams","c":128},{"a":{"a":31,"c":{"b":"questStopRazerAnimation_NodeTypeParams"}},"b":"stopParams","c":128},{"a":{"a":31,"c":{"b":"questSetIdleRazerAnimation_NodeTypeParams"}},"b":"idleParams","c":128}]}

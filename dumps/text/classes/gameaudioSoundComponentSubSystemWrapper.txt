@@ -1,0 +1,8 @@
+import class gameaudioSoundComponentSubSystemWrapper extends ISerializable
+{
+	var type : handle:gameaudioISoundComponentSubSystem;
+}
+
+import class abstract ISerializable
+{
+}

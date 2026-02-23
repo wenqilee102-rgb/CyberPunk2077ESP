@@ -1,0 +1,19 @@
+import class gamedataFileNode extends gamedataDataNode
+{
+	var packageName : String;
+	var packageDependencies : static:16,whandle:gamedataPackageNode;
+	var package : whandle:gamedataPackageNode;
+	var variables : array:handle:gamedataVariableNode;
+	var groups : array:handle:gamedataGroupNode;
+}
+
+import class abstract gamedataDataNode extends ISerializable
+{
+	var nodeType : gamedataDataNodeType;
+	var fileName : String;
+	var parent : whandle:gamedataDataNode;
+}
+
+import class abstract ISerializable
+{
+}

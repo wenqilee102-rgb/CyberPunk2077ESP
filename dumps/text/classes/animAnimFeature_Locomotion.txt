@@ -1,0 +1,33 @@
+import class animAnimFeature_Locomotion extends animAnimFeature
+{
+	var action : Int32;
+	var style : Int32;
+	var pathCurvature : Float;
+	var inclineAngle : Float;
+	var groundAngle : Float;
+	var animDeltaZ : Float;
+	var animationPlaybackTime : Float;
+	var footScaleFactor : Float;
+	var directionalStartAngle : Float;
+	var speedProgress : Float;
+	var isOnStairs : Bool;
+	var areAnimWrappersUnlocked : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

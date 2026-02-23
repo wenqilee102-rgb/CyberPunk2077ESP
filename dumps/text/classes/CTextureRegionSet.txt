@@ -1,0 +1,13 @@
+import class CTextureRegionSet extends CResource
+{
+	var regions : array:rendTextureRegion;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

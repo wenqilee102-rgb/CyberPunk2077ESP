@@ -1,0 +1,181 @@
+class GameplayRoleComponent extends gameScriptableComponent
+{
+	private   var gameplayRole : EGameplayRole;
+	private   var autoDeterminGameplayRole : Bool;
+	private   var mappinsDisplayMode : EMappinDisplayMode;
+	private   var displayAllRolesAsGeneric : Bool;
+	private   var alwaysCreateMappinAsDynamic : Bool;
+	private   var forcedMappinVisualState : EMappinVisualState;
+	private   var mappins : array:SDeviceMappinData;
+	private   var offsetValue : Float;
+	private   var isBeingScanned : Bool;
+	private   var isCurrentTarget : Bool;
+	private   var isShowingMappins : Bool;
+	private   var canShowMappinsByTask : Bool;
+	private   var canHideMappinsByTask : Bool;
+	private   var isHighlightedInFocusMode : Bool;
+	private   var currentGameplayRole : EGameplayRole;
+	private   var isGameplayRoleInitialized : Bool;
+	private   var isForceHidden : Bool;
+	private   var isForcedVisibleThroughWalls : Bool;
+	private   var enabledMinimapMappins : array:gamedataMappinVariant;
+
+	event OnDeactivateQuickHackIndicator(evt : handle:DeactivateQuickHackIndicatorEvent) : Bool; // OnDeactivateQuickHackIndicator
+	event OnEvaluateMappinVisualStateEvent(evt : handle:EvaluateMappinsVisualStateEvent) : Bool; // OnEvaluateMappinVisualStateEvent
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnHideSingleMappin(evt : handle:HideSingleMappinEvent) : Bool; // OnHideSingleMappin
+	event OnLogicReady(evt : handle:SetLogicReadyEvent) : Bool; // OnLogicReady
+	event OnLookedAtEvent(evt : handle:LookedAtEvent) : Bool; // OnLookedAtEvent
+	event OnPerformedAction(evt : handle:PerformedAction) : Bool; // OnPerformedAction
+	event OnPostInitialize(evt : handle:entPostInitializeEvent) : Bool; // OnPostInitialize
+	event OnPreUninitialize(evt : handle:entPreUninitializeEvent) : Bool; // OnPreUninitialize
+	event OnReEvaluateGameplayRole(evt : handle:EvaluateGameplayRoleEvent) : Bool; // OnReEvaluateGameplayRole
+	event OnScanningLookedAt(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookedAt
+	event OnSetCurrentGameplayRole(evt : handle:SetCurrentGameplayRoleEvent) : Bool; // OnSetCurrentGameplayRole
+	event OnSetGameplayRole(evt : handle:SetGameplayRoleEvent) : Bool; // OnSetGameplayRole
+	event OnShowSingleMappin(evt : handle:ShowSingleMappinEvent) : Bool; // OnShowSingleMappin
+	event OnToggleGameplayMappinVisibilityEvent(evt : handle:ToggleGameplayMappinVisibilityEvent) : Bool; // OnToggleGameplayMappinVisibilityEvent
+	event OnUnregisterAllMappinsEvent(evt : handle:UnregisterAllMappinsEvent) : Bool; // OnUnregisterAllMappinsEvent
+	event OnUploadProgressStateChanged(evt : handle:UploadProgramProgressEvent) : Bool; // OnUploadProgressStateChanged
+
+	function ActivatePhoneCallIndicator(visualData : handle:GameplayRoleMappinData); // ActivatePhoneCallIndicator;GameplayRoleMappinData
+	function ActivateQuickHackDurationIndicator(visualData : handle:GameplayRoleMappinData); // ActivateQuickHackDurationIndicator;GameplayRoleMappinData
+	function ActivateQuickHackIndicator(visualData : handle:GameplayRoleMappinData); // ActivateQuickHackIndicator;GameplayRoleMappinData
+	function ActivateSingleMappin(index : Int32); // ActivateSingleMappin;Int32
+	function AddMappin(data : script_ref:SDeviceMappinData) : Bool; // AddMappin;script_ref<SDeviceMappinData>
+	function AddQuickhackMappinToQueue(visualData : handle:GameplayRoleMappinData); // AddQuickhackMappinToQueue;GameplayRoleMappinData
+	function ClearAllRoleMappins(); // ClearAllRoleMappins;
+	function ClearAllRoleMappinsByTask(); // ClearAllRoleMappinsByTask;
+	function ClearAllRoleMappinsTask(data : handle:gameScriptTaskData); // ClearAllRoleMappinsTask;ScriptTaskData
+	function CompareRoleMappinsData(data1 : handle:GameplayRoleMappinData, data2 : handle:GameplayRoleMappinData) : Bool; // CompareRoleMappinsData;GameplayRoleMappinDataGameplayRoleMappinData
+	function CreateRoleMappinData(data : script_ref:SDeviceMappinData) : handle:GameplayRoleMappinData; // CreateRoleMappinData;script_ref<SDeviceMappinData>
+	function DeactivatePhoneCallIndicator(); // DeactivatePhoneCallIndicator;
+	function DeactivateQuickHackDurationIndicator(); // DeactivateQuickHackDurationIndicator;
+	function DeactivateQuickHackIndicator(); // DeactivateQuickHackIndicator;
+	function DeactivateSingleMappin(index : Int32); // DeactivateSingleMappin;Int32
+	function DeterminGamplayRole(); // DeterminGamplayRole;
+	function DeterminGamplayRoleByTask(); // DeterminGamplayRoleByTask;
+	function DeterminGamplayRoleTask(data : handle:gameScriptTaskData); // DeterminGamplayRoleTask;ScriptTaskData
+	function EnableMappinVariantOnMinimap(mappinVariant : gamedataMappinVariant); // EnableMappinVariantOnMinimap;gamedataMappinVariant
+	function EvaluateMappins(); // EvaluateMappins;
+	function EvaluatePositions(); // EvaluatePositions;
+	function GetCurrentGameplayRole() : EGameplayRole; // GetCurrentGameplayRole;
+	function GetCurrentMappinVariant(role : EGameplayRole) : gamedataMappinVariant; // GetCurrentMappinVariant;EGameplayRole
+	function GetForcedMappinVisualState() : EMappinVisualState; // GetForcedMappinVisualState;
+	function GetIconIdForMappinVariant(mappinVariant : gamedataMappinVariant) : TweakDBID; // GetIconIdForMappinVariant;gamedataMappinVariant
+	function GetMappinDataForGamepleyRole(role : EGameplayRole) : SDeviceMappinData; // GetMappinDataForGamepleyRole;EGameplayRole
+	function GetMappinSystem() : handle:gamemappinsMappinSystem; // GetMappinSystem;
+	function GetMinimalisticMappinVariant() : gamedataMappinVariant; // GetMinimalisticMappinVariant;
+	function GetNextAxis(currentAxis : EAxisType) : EAxisType; // GetNextAxis;EAxisType
+	function GetPlaystyleMappinVariant() : gamedataMappinVariant; // GetPlaystyleMappinVariant;
+	function GetQuickHackQueueSize() : Int32; // GetQuickHackQueueSize;
+	function GetRoleMappinVariant(role : EGameplayRole) : gamedataMappinVariant; // GetRoleMappinVariant;EGameplayRole
+	function GetUISystem() : handle:gameuiGameSystemUI; // GetUISystem;
+	function HasActiveMappin(mappinVariant : gamedataMappinVariant) : Bool; // HasActiveMappin;gamedataMappinVariant
+	function HasMappin(data : script_ref:SDeviceMappinData) : Bool; // HasMappin;script_ref<SDeviceMappinData>
+	function HasMappin(gameplayRole : EGameplayRole) : Bool; // HasMappin;EGameplayRole
+	function HasMappin(mappinVariant : gamedataMappinVariant) : Bool; // HasMappin;gamedataMappinVariant
+	function HasOffscreenArrow() : Bool; // HasOffscreenArrow;
+	function HideRoleMappins(); // HideRoleMappins;
+	function HideRoleMappinsByTask(); // HideRoleMappinsByTask;
+	function HideRoleMappinsTask(data : handle:gameScriptTaskData); // HideRoleMappinsTask;ScriptTaskData
+	function HideSingleMappin(index : Int32); // HideSingleMappin;Int32
+	function HideSingleMappin_Event(index : Int32); // HideSingleMappin_Event;Int32
+	function InitializeGamepleyRoleMappin(); // InitializeGamepleyRoleMappin;
+	function InitializePhoneCallIndicator(); // InitializePhoneCallIndicator;
+	function InitializeQuickHackIndicator(); // InitializeQuickHackIndicator;
+	function IsCurrentTarget() : Bool; // IsCurrentTarget;
+	function IsForceHidden() : Bool; // IsForceHidden;
+	function IsGameplayRoleStatic() : Bool; // IsGameplayRoleStatic;
+	function IsHighlightedInFocusMode() : Bool; // IsHighlightedInFocusMode;
+	function IsMappinDataValid(mappinData : script_ref:SDeviceMappinData) : Bool; // IsMappinDataValid;script_ref<SDeviceMappinData>
+	function IsMappinDynamic() : Bool; // IsMappinDynamic;
+	function IsShardRead() : Bool; // IsShardRead;
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameDetach(); // OnGameDetach;
+	function ReEvaluateGameplayRole(); // ReEvaluateGameplayRole;
+	function RemoveQuickhackMappinFromQueue(); // RemoveQuickhackMappinFromQueue;
+	function RequestHUDRefresh(); // RequestHUDRefresh;
+	function SetCurrentGameplayRoleWithNotification(role : EGameplayRole); // SetCurrentGameplayRoleWithNotification;EGameplayRole
+	function SetForceHidden(isHidden : Bool); // SetForceHidden;Bool
+	function ShowRoleMappins(); // ShowRoleMappins;
+	function ShowRoleMappinsByTask(); // ShowRoleMappinsByTask;
+	function ShowRoleMappinsTask(data : handle:gameScriptTaskData); // ShowRoleMappinsTask;ScriptTaskData
+	function ShowSingleMappin(index : Int32); // ShowSingleMappin;Int32
+	function ShowSingleMappin(index : Int32, visualData : handle:GameplayRoleMappinData, optional bindPositionToSlotName : CName); // ShowSingleMappin;Int32GameplayRoleMappinDataCName
+	function ShowSingleMappin_Event(index : Int32); // ShowSingleMappin_Event;Int32
+	function ToggleMappin(mappinIndex : Int32, enable : Bool); // ToggleMappin;Int32Bool
+	function ToggleMappin(mappinVariant : gamedataMappinVariant, enable : Bool, show : Bool, visualData : handle:GameplayRoleMappinData, optional bindPositionToSlotName : CName); // ToggleMappin;gamedataMappinVariantBoolBoolGameplayRoleMappinDataCName
+	function ToggleMappin(mappinVariant : gamedataMappinVariant, enable : Bool, show : Bool); // ToggleMappin;gamedataMappinVariantBoolBool
+	function ToggleMappin(mappinVariant : gamedataMappinVariant, enable : Bool); // ToggleMappin;gamedataMappinVariantBool
+	function UnregisterAllMappins(); // UnregisterAllMappins;
+	function UnregisterAllRoleMappins(); // UnregisterAllRoleMappins;
+	function UpdateDefaultHighlight(); // UpdateDefaultHighlight;
+	function UpdateSingleMappinData(index : Int32, visualData : handle:GameplayRoleMappinData, shouldUpdateVariant : Bool); // UpdateSingleMappinData;Int32GameplayRoleMappinDataBool
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

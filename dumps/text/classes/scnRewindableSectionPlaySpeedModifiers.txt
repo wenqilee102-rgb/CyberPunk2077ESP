@@ -1,0 +1,9 @@
+import struct scnRewindableSectionPlaySpeedModifiers
+{
+	var forwardVeryFast : Float;
+	var forwardFast : Float;
+	var forwardSlow : Float;
+	var backwardVeryFast : Float;
+	var backwardFast : Float;
+	var backwardSlow : Float;
+}

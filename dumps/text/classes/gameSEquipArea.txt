@@ -1,0 +1,6 @@
+import struct gameSEquipArea
+{
+	var areaType : gamedataEquipmentArea;
+	var equipSlots : array:gameSEquipSlot;
+	var activeIndex : Int32;
+}

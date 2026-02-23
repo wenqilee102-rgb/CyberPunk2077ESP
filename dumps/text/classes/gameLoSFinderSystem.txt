@@ -1,0 +1,30 @@
+import class gameLoSFinderSystem extends gameLoSIFinderSystem
+{
+}
+
+import class abstract gameLoSIFinderSystem extends gameIGameSystem
+{
+	import function GetLoSMode(entityId : entEntityID) : gameLoSMode; // GetLoSMode
+	import function GetLoSPosition(entityId : entEntityID, position : script_ref:Vector3, currentSearchTime : script_ref:Float) : Bool; // GetLoSPosition
+	import function StartChecking(params : handle:gameLoSFinderParams) : Uint32; // StartChecking
+	import function StopChecking(id : Uint32) : Bool; // StopChecking
+	import function UpdateParams(id : Uint32, params : handle:gameLoSFinderParams) : Bool; // UpdateParams
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

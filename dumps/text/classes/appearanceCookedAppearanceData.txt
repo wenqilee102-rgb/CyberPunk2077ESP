@@ -1,0 +1,14 @@
+import class appearanceCookedAppearanceData extends CResource
+{
+	var dependencies : array:rRef:CResource;
+	var totalSizeOnDisk : Uint32;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

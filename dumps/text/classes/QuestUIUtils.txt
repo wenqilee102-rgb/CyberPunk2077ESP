@@ -1,0 +1,6 @@
+struct QuestUIUtils
+{
+	static function GetEntryTypeFromName(entryTypeName : CName) : UIObjectiveEntryType; // QuestUIUtils::GetEntryTypeFromName;CName
+	static function GetJournalStateName(state : gameJournalEntryState, isTracked : Bool) : CName; // QuestUIUtils::GetJournalStateName;gameJournalEntryStateBool
+	static function GetLibraryIDForEntryType(entryType : UIObjectiveEntryType) : CName; // QuestUIUtils::GetLibraryIDForEntryType;UIObjectiveEntryType
+}

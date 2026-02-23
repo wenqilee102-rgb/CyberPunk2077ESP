@@ -1,0 +1,6 @@
+import struct animGenericAnimDatabase_AnimationData
+{
+	var animationName : CName;
+	var fallbackAnimationName : CName;
+	var streamingContext : CName;
+}

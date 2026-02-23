@@ -1,0 +1,31 @@
+import class gamedataAIActionLookAtData_Record extends gamedataTweakDBRecord
+{
+	import function ActivationCondition() : whandle:gamedataAIActionCondition_Record; // ActivationCondition
+	import function ActivationConditionHandle() : handle:gamedataAIActionCondition_Record; // ActivationConditionHandle
+	import function Offset() : Vector3; // Offset
+	import function Preset() : whandle:gamedataLookAtPreset_Record; // Preset
+	import function PresetHandle() : handle:gamedataLookAtPreset_Record; // PresetHandle
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function TimeDelay() : Float; // TimeDelay
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

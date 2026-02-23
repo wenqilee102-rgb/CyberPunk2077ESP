@@ -1,0 +1,19 @@
+import struct interopTerrainImportParams
+{
+	var cellRes : Uint32;
+	var cellSize : Uint32;
+	var scale : Vector3;
+	var position : Vector3;
+	var extraOffset : Vector2;
+	var tileWidth : Uint32;
+	var tileHeight : Uint32;
+	var prefabPlacementInterval : Uint32;
+	var importHeightMaps : Bool;
+	var importColorMaps : Bool;
+	var importControlMaps : Bool;
+	var overwriteTransformsOfExistingNodes : Bool;
+	var nodesNamingPattern : String;
+	var prefabsNamingPattern : String;
+	var prefabsDestinationPath : String;
+	var dstPrefabNodePath : toolsEditorObjectIDPath;
+}

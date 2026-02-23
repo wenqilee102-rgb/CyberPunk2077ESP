@@ -1,0 +1,18 @@
+import class animAnimNode_CurveVectorValue extends animAnimNode_VectorValue
+{
+	var curveData : curveData:Vector4;
+	var argument : animFloatLink;
+}
+
+import class abstract animAnimNode_VectorValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

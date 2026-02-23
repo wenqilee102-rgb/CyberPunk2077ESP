@@ -1,0 +1,38 @@
+class DeviceActionQueue extends IScriptable
+{
+	private   var actionsInQueue : array:handle:gamedeviceAction;
+	private   var maxQueueSize : Int32;
+	private   var locked : Bool;
+
+	static function GetAllDisallowedActionNames(out actionNames : array:CName); // DeviceActionQueue::GetAllDisallowedActionNames;array<CName>
+
+	function CanNewActionBeQueued() : Bool; // CanNewActionBeQueued;
+	function DecreaseUploadTime(deviceAction : handle:ScriptableDeviceAction, decreaseQhUploadTimeVal : Float); // DecreaseUploadTime;ScriptableDeviceActionFloat
+	function GetAllQueuedActionNames(out actionNames : array:CName) : Bool; // GetAllQueuedActionNames;array<CName>
+	function GetAllQueuedActionObjectRecords(out objectActionRecords : array:handle:gamedataObjectAction_Record) : Bool; // GetAllQueuedActionObjectRecords;array<ObjectAction_Record>
+	function GetMaxQueueSize() : Int32; // GetMaxQueueSize;
+	function GetQueueSize() : Int32; // GetQueueSize;
+	function GetQueuedActionsTotalCost() : Int32; // GetQueuedActionsTotalCost;
+	function HasActionInQueue() : Bool; // HasActionInQueue;
+	function IsActionQueueFull() : Bool; // IsActionQueueFull;
+	function IsQhQueueUploadInProgress() : Bool; // IsQhQueueUploadInProgress;
+	function LockQueue(); // LockQueue;
+	function PopActionInQueue() : handle:gamedeviceAction; // PopActionInQueue;
+	function PutActionInQueue(deviceAction : handle:ScriptableDeviceAction, decreaseQhUploadTimeVal : Float) : Bool; // PutActionInQueue;ScriptableDeviceActionFloat
+	function SetMaxQueueSize(maxQueueSize : Int32); // SetMaxQueueSize;Int32
+	function UnlockQueue(); // UnlockQueue;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

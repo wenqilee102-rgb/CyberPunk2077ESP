@@ -1,0 +1,6 @@
+import struct gameBodyTypeAnimationDefinition
+{
+	var rig : raRef:animRig;
+	var animsets : array:raRef:animAnimSet;
+	var overrides : array:gameAnimationOverrideDefinition;
+}

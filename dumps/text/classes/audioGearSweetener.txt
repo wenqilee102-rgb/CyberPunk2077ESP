@@ -1,0 +1,21 @@
+import class audioGearSweetener extends audioAudioMetadata
+{
+	var gear : Uint32;
+	var rpmThreshold : Float;
+	var cooldown : Float;
+	var soundEvent : CName;
+	var burnoutFactor : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

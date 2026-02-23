@@ -1,0 +1,38 @@
+import class entIKTargetAddEvent extends entAnimTargetAddEvent
+{
+	var outIKTargetRef : animIKTargetRef;
+	var orientationProvider : handle:entIOrientationProvider;
+	var request : animIKTargetRequest;
+
+	import function SetEntityOrientationTarget(targetEntity : whandle:entEntity, slotTargetName : CName, orientationOffsetEntitySpace : Quaternion); // SetEntityOrientationTarget
+	import function SetStaticOrientationTarget(staticOrientationWs : Quaternion); // SetStaticOrientationTarget
+}
+
+import class abstract entAnimTargetAddEvent extends redEvent
+{
+	var targetPositionProvider : handle:entIPositionProvider;
+	var bodyPart : CName;
+
+	import function SetEntityTarget(targetEntity : whandle:entEntity, slotTargetName : CName, targetOffsetEntity : Vector4); // SetEntityTarget
+	import function SetEntityTargetFromPast(transformHistoryComponent : whandle:entTransformHistoryComponent, timeDelay : Float, targetOffsetEntity : Vector4); // SetEntityTargetFromPast
+	import function SetPositionProvider(provider : handle:entIPositionProvider); // SetPositionProvider
+	import function SetStaticTarget(staticTargetPositionWs : Vector4); // SetStaticTarget
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

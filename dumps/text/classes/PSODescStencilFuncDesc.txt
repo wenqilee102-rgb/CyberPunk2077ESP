@@ -1,0 +1,5 @@
+import struct PSODescStencilFuncDesc
+{
+	var stencilPassOp : PSODescDepthStencilModeStencilOpMode;
+	var stencilFunc : PSODescDepthStencilModeComparisonMode;
+}

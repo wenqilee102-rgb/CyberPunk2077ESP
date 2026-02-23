@@ -1,0 +1,13 @@
+import struct questPlayVoiceset_NodeTypeParams
+{
+	var puppetRef : gameEntityReference;
+	var isPlayer : Bool;
+	var voicesetName : CName;
+	var useVoicesetSystem : Bool;
+	var playOnlyGrunt : Bool;
+	var overridingVoiceoverContext : locVoiceoverContext;
+	var overrideVoiceoverExpression : Bool;
+	var overridingVoiceoverExpression : locVoiceoverExpression;
+	var overrideVisualStyle : Bool;
+	var overridingVisualStyle : scnDialogLineVisualStyle;
+}

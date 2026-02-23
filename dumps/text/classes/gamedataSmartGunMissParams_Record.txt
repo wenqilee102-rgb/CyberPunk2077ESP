@@ -1,0 +1,38 @@
+import class gamedataSmartGunMissParams_Record extends gamedataTweakDBRecord
+{
+	import function AreaToIgnoreHalfYaw() : Float; // AreaToIgnoreHalfYaw
+	import function Gravity() : Float; // Gravity
+	import function MaxMissAnglePitch() : Float; // MaxMissAnglePitch
+	import function MaxMissAngleYaw() : Float; // MaxMissAngleYaw
+	import function MinMissAnglePitch() : Float; // MinMissAnglePitch
+	import function MinMissAngleYaw() : Float; // MinMissAngleYaw
+	import function SpiralCycleTimeMax() : Float; // SpiralCycleTimeMax
+	import function SpiralCycleTimeMin() : Float; // SpiralCycleTimeMin
+	import function SpiralRadius() : Float; // SpiralRadius
+	import function SpiralRampDownDistanceEnd() : Float; // SpiralRampDownDistanceEnd
+	import function SpiralRampDownDistanceStart() : Float; // SpiralRampDownDistanceStart
+	import function SpiralRampDownFactor() : Float; // SpiralRampDownFactor
+	import function SpiralRampUpDistanceEnd() : Float; // SpiralRampUpDistanceEnd
+	import function SpiralRampUpDistanceStart() : Float; // SpiralRampUpDistanceStart
+	import function SpiralRandomizePhase() : Bool; // SpiralRandomizePhase
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

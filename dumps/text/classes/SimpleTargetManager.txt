@@ -1,0 +1,82 @@
+class SimpleTargetManager extends gameScriptableComponent
+{
+	static function AddTarget(targetsList : script_ref:array:handle:Target, goTarget : whandle:gameObject, isInteresting : Bool, isVisible : Bool); // SimpleTargetManager::AddTarget;script_ref<array<Target>>GameObjectBoolBool
+	static function GetFirstInterestingTarget(targetsList : script_ref:array:handle:Target) : handle:Target; // SimpleTargetManager::GetFirstInterestingTarget;script_ref<array<Target>>
+	static function GetFirstInterestingTargetObject(targetsList : script_ref:array:handle:Target) : whandle:gameObject; // SimpleTargetManager::GetFirstInterestingTargetObject;script_ref<array<Target>>
+	static function GetSpecificTarget(targetsList : script_ref:array:handle:Target, target : whandle:gameObject) : handle:Target; // SimpleTargetManager::GetSpecificTarget;script_ref<array<Target>>GameObject
+	static function GetSpecificTarget(targetsList : script_ref:array:handle:Target, targetID : entEntityID) : handle:Target; // SimpleTargetManager::GetSpecificTarget;script_ref<array<Target>>EntityID
+	static function GetSpecificTarget(targetsList : script_ref:array:handle:Target, index : Int32) : handle:Target; // SimpleTargetManager::GetSpecificTarget;script_ref<array<Target>>Int32
+	static function HasInterestingTargets(targetsList : script_ref:array:handle:Target) : Bool; // SimpleTargetManager::HasInterestingTargets;script_ref<array<Target>>
+	static function IsTargetAlreadyAdded(targetsList : script_ref:array:handle:Target, gameObject : whandle:gameObject) : Int32; // SimpleTargetManager::IsTargetAlreadyAdded;script_ref<array<Target>>GameObject
+	static function IsTargetAlreadyAdded(targets : script_ref:array:handle:Target, targetToCheck : handle:Target) : Int32; // SimpleTargetManager::IsTargetAlreadyAdded;script_ref<array<Target>>Target
+	static function IsTargetVisible(targetsList : script_ref:array:handle:Target, gameObject : whandle:gameObject) : Bool; // SimpleTargetManager::IsTargetVisible;script_ref<array<Target>>GameObject
+	static function RemoveAllTargets(targetsList : script_ref:array:handle:Target); // SimpleTargetManager::RemoveAllTargets;script_ref<array<Target>>
+	static function RemoveTarget(targetsList : script_ref:array:handle:Target, targetToRemove : whandle:gameObject) : Bool; // SimpleTargetManager::RemoveTarget;script_ref<array<Target>>GameObject
+	static function SetTargetVisible(targetsList : script_ref:array:handle:Target, targetToRemove : whandle:gameObject, isVisible : Bool) : Bool; // SimpleTargetManager::SetTargetVisible;script_ref<array<Target>>GameObjectBool
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import struct gameMuppetInputActionSelectWeapon extends gameIMuppetInputAction
+{
+	var wantedWeapon : gameItemID;
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

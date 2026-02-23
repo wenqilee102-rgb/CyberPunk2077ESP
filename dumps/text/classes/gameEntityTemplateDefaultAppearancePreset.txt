@@ -1,0 +1,8 @@
+import class gameEntityTemplateDefaultAppearancePreset extends ISerializable
+{
+	var defaultAppearancePresets : array:gameDefaultAppearancePreset_Entity;
+}
+
+import class abstract ISerializable
+{
+}

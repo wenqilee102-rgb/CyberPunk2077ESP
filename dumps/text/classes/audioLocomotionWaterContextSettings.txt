@@ -1,0 +1,7 @@
+import struct audioLocomotionWaterContextSettings
+{
+	var minDistanceBetweenImpulsesSquared : Float;
+	var impulseStrength : Float;
+	var impulseMinRadius : Float;
+	var impulseMaxRadius : Float;
+}

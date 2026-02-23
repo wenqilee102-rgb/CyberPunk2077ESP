@@ -1,0 +1,19 @@
+import class questRealtimeDelay_ConditionType extends questITimeConditionType
+{
+	var hours : Uint32;
+	var minutes : Uint32;
+	var seconds : Uint32;
+	var miliseconds : Uint32;
+}
+
+import class abstract questITimeConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

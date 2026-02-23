@@ -1,0 +1,14 @@
+import class animAnimEvent_SafeCut extends animAnimEvent
+{
+}
+
+import class abstract animAnimEvent extends ISerializable
+{
+	var startFrame : Uint32;
+	var durationInFrames : Uint32;
+	var eventName : CName;
+}
+
+import class abstract ISerializable
+{
+}

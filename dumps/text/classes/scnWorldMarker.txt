@@ -1,0 +1,6 @@
+import struct scnWorldMarker
+{
+	var type : scnWorldMarkerType;
+	var tag : CName;
+	var nodeRef : NodeRef;
+}

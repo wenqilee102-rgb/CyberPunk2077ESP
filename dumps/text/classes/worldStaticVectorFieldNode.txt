@@ -1,0 +1,15 @@
+import class worldStaticVectorFieldNode extends worldNode
+{
+	var direction : Vector3;
+	var autoHideDistance : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

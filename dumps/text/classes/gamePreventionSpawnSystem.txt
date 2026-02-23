@@ -1,0 +1,76 @@
+import class gamePreventionSpawnSystem extends gameIPreventionSpawnSystem
+{
+	import function CancelAllSpawnRequests(); // CancelAllSpawnRequests
+	import function CancelSpawnRequest(requestID : Uint32); // CancelSpawnRequest
+	import function ClearStrategyPreCheckRequests(); // ClearStrategyPreCheckRequests
+	import function DebugTryOverrideWithForcedStrategy(out strategy : vehiclePoliceStrategy); // DebugTryOverrideWithForcedStrategy
+	import function FindPursuitPointsRangeAsync(spawnOriginPositions : array:Vector4, radiusMin : Float, radiusMax : Float, unitCount : Uint32, characterRecords : array:TweakDBID, navVisCheck : Bool, agentSize : NavGenAgentSize, scriptable : whandle:IScriptable, functionName : String); // FindPursuitPointsRangeAsync
+	import function GetAvailableStrategies(out strategies : array:vehiclePoliceStrategy) : Bool; // GetAvailableStrategies
+	import function GetIntersectionInFrontOfPlayerPos() : Vector4; // GetIntersectionInFrontOfPlayerPos
+	import function GetNearestRoadFromPlayerInfo(out info : gameNearestRoadFromPlayerInfo); // GetNearestRoadFromPlayerInfo
+	import function GetNumberOfSpawnedPreventionUnits() : Int32; // GetNumberOfSpawnedPreventionUnits
+	import function GetPreventionSystemCanSpawnInCrowd() : Bool; // GetPreventionSystemCanSpawnInCrowd
+	import function GetRandomAvailableStrategy(wantedStrategies : array:vehiclePoliceStrategy) : vehiclePoliceStrategy; // GetRandomAvailableStrategy
+	import function GetRandomAvailableStrategyInRange(minStrat : Uint8, maxStrat : Uint8) : vehiclePoliceStrategy; // GetRandomAvailableStrategyInRange
+	import function InterruptAllActionAndCommands(veh : whandle:vehicleBaseObject); // InterruptAllActionAndCommands
+	import function IsAnyStrategyAvailable() : Bool; // IsAnyStrategyAvailable
+	import function IsEntityRegistered(id : entEntityID) : Bool; // IsEntityRegistered
+	import function IsInUnmountingRange(position : Vector3) : Bool; // IsInUnmountingRange
+	import function IsPlayerInDogTown() : Bool; // IsPlayerInDogTown
+	import function IsPlayerInSoftDeescalationTrigger() : Bool; // IsPlayerInSoftDeescalationTrigger
+	import function IsPlayerOnHighway() : Bool; // IsPlayerOnHighway
+	import function IsPointInPreventionFreeArea(point : Vector4) : Bool; // IsPointInPreventionFreeArea
+	import function IsPreventionVehicleEnabled() : Bool; // IsPreventionVehicleEnabled
+	import function IsStrategyAvailable(strategy : vehiclePoliceStrategy) : Bool; // IsStrategyAvailable
+	import function MarkAsDead(entityID : entEntityID); // MarkAsDead
+	import function NotifyPlayerMounted(isPlayerMounted : Bool); // NotifyPlayerMounted
+	import function RegisterEntityDeathCallback(scriptable : whandle:IScriptable, functionName : String, entityID : entEntityID); // RegisterEntityDeathCallback
+	import function ReinitAll(); // ReinitAll
+	import function RequestAVSpawn(recordID : TweakDBID, spawnDistanceRange : Vector2, useOffTrafficPoints : Bool) : Uint32; // RequestAVSpawn
+	import function RequestAVSpawnAtLocation(recordID : TweakDBID, location : Vector3) : Uint32; // RequestAVSpawnAtLocation
+	import function RequestAVSpawnPoints(scriptable : whandle:IScriptable, functionName : String, spawnDistanceRange : Vector2, maxSpawnPoints : Uint32, useOffTrafficPoints : Bool) : Uint32; // RequestAVSpawnPoints
+	import function RequestChaseVehicle(vehicleRecordID : TweakDBID, passengersRecordIDs : array:TweakDBID, strategy : handle:vehicleBaseStrategyRequest) : Uint32; // RequestChaseVehicle
+	import function RequestDespawn(entityID : entEntityID); // RequestDespawn
+	import function RequestDespawnAll(shouldUseAggressiveDespawn : Bool); // RequestDespawnAll
+	import function RequestDespawnVehicleAndPassengers(vehicle : whandle:vehicleBaseObject); // RequestDespawnVehicleAndPassengers
+	import function RequestRoadBlockadeSpawn(vehiclessRecordIDs : array:TweakDBID, spawnDistanceRange : Vector2, numberNPCsPerCar : Uint32) : Uint32; // RequestRoadBlockadeSpawn
+	import function RequestUnitSpawn(recordID : TweakDBID, spawnTransform : WorldTransform) : Uint32; // RequestUnitSpawn
+	import function SetStrategyPreCheckRequests(preCheckRequests : array:handle:vehicleBaseStrategyRequest); // SetStrategyPreCheckRequests
+	import function ToggleFreeArea(areaReference : NodeRef, enable : Bool); // ToggleFreeArea
+	import function TogglePreventionActive(isActive : Bool); // TogglePreventionActive
+	import function TogglePreventionCrowdSpawns(toggle : Bool); // TogglePreventionCrowdSpawns
+	import function TogglePreventionQuestTrigger(areaReference : NodeRef, enable : Bool); // TogglePreventionQuestTrigger
+	import function TryGetVehicleType(id : entEntityID, out vehicleType : gameDynamicVehicleType) : Bool; // TryGetVehicleType
+	import function UnregisterEntityDeathCallback(scriptable : whandle:IScriptable, functionName : String, entityID : entEntityID); // UnregisterEntityDeathCallback
+
+	function Debug_EmulateDamageDealt(damageAmount : Float); // Debug_EmulateDamageDealt;Float
+	function DespawnCallback(entityID : entEntityID); // DespawnCallback;EntityID
+	function OnEnterPreventionQuestTrigger(disablePreventionSystem : Bool); // OnEnterPreventionQuestTrigger;Bool
+	function RoadblockadeNPCEarlyInit(puppet : handle:gamePuppet); // RoadblockadeNPCEarlyInit;gamePuppet
+	function SetIfAvailable(value : vehiclePoliceStrategy) : vehiclePoliceStrategy; // SetIfAvailable;vehiclePoliceStrategy
+	function SpawnRequestFinished(requestResult : gameSpawnRequestResult); // SpawnRequestFinished;SpawnRequestResult
+	function TryFillPreventionSystemDebugData(out dataToFill : gamePreventionSystemDebugData) : Bool; // TryFillPreventionSystemDebugData;PreventionSystemDebugData
+	function VehicleEarlyInit(vehicleObject : handle:vehicleWheeledBaseObject); // VehicleEarlyInit;WheeledObject
+}
+
+import class abstract gameIPreventionSpawnSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

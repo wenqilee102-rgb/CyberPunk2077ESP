@@ -1,0 +1,6 @@
+import struct questEntityManagerManageBinkComponent_NodeTypeParams
+{
+	var objectRef : gameEntityReference;
+	var videoPath : String;
+	var action : gameBinkVideoAction;
+}

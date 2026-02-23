@@ -1,0 +1,7 @@
+import struct audioVoiceTriggerData
+{
+	var name : CName;
+	var variationIndex : Uint32;
+	var variationNumber : Uint32;
+	var overridingVoContext : locVoiceoverContext;
+}

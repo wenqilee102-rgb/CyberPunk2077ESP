@@ -1,0 +1,7 @@
+import struct animAnimDebuggerCommand_HooksRegistered extends animIAnimDebuggerCommand
+{
+}
+
+import struct abstract animIAnimDebuggerCommand
+{
+}

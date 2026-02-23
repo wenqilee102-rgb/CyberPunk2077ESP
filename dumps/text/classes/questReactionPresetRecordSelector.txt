@@ -1,0 +1,20 @@
+import class questReactionPresetRecordSelector extends ISerializable
+{
+	var setDefault : Bool;
+	var isGanger : Bool;
+	var gangerRecordID : TweakDBID;
+	var isCivilian : Bool;
+	var civilianRecordID : TweakDBID;
+	var isCorpo : Bool;
+	var corpoRecordID : TweakDBID;
+	var isPolice : Bool;
+	var policeRecordID : TweakDBID;
+	var isMechanical : Bool;
+	var mechanicalRecordID : TweakDBID;
+	var isNoReaction : Bool;
+	var noReactionRecordID : TweakDBID;
+}
+
+import class abstract ISerializable
+{
+}

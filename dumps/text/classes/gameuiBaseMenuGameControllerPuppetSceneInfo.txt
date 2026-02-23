@@ -1,0 +1,9 @@
+import struct gameuiBaseMenuGameControllerPuppetSceneInfo
+{
+	var sceneName : CName;
+	var markerRef : NodeRef;
+	var prefabRef : NodeRef;
+	var entityTemplate : raRef:entEntityTemplate;
+	var puppetRecordId : TweakDBID;
+	var gender : gameuiBaseMenuGameControllerPuppetGenderInfo;
+}

@@ -1,0 +1,38 @@
+import class gamedataVehicleClearCoatOverrides_Record extends gamedataTweakDBRecord
+{
+	import function CoatFresnelBias() : Float; // CoatFresnelBias
+	import function CoatSpecularColor() : array:Int32; // CoatSpecularColor
+	import function CoatSpecularColorContains(item : Int32) : Bool; // CoatSpecularColorContains
+	import function CoatTintFresnelBias() : Float; // CoatTintFresnelBias
+	import function CoatTintFwd() : array:Int32; // CoatTintFwd
+	import function CoatTintFwdContains(item : Int32) : Bool; // CoatTintFwdContains
+	import function CoatTintSide() : array:Int32; // CoatTintSide
+	import function CoatTintSideContains(item : Int32) : Bool; // CoatTintSideContains
+	import function GetCoatSpecularColorCount() : Int32; // GetCoatSpecularColorCount
+	import function GetCoatSpecularColorItem(index : Int32) : Int32; // GetCoatSpecularColorItem
+	import function GetCoatTintFwdCount() : Int32; // GetCoatTintFwdCount
+	import function GetCoatTintFwdItem(index : Int32) : Int32; // GetCoatTintFwdItem
+	import function GetCoatTintSideCount() : Int32; // GetCoatTintSideCount
+	import function GetCoatTintSideItem(index : Int32) : Int32; // GetCoatTintSideItem
+	import function Opacity() : Float; // Opacity
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

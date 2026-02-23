@@ -1,0 +1,4 @@
+import struct gameJournalChoiceEntryData
+{
+	var entryPath : handle:gameJournalPath;
+}

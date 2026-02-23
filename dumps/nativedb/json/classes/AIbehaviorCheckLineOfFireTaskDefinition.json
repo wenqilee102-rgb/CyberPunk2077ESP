@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorCheckLineOfFireTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"slotName","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"attachmentName","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"spread","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"maxRange","c":128}]}

@@ -1,0 +1,1 @@
+{"b":"grsDeathmatchPlayerGameInfo","d":8,"g":true,"e":[{"a":{"b":"netPeerID"},"b":"peerID","c":128},{"a":{"a":1},"b":"isInGame","c":128},{"a":{"a":1},"b":"isDead","c":128},{"a":{"b":"netTime"},"b":"spawnTime","c":128},{"a":{"a":7},"b":"killCount","c":128},{"a":{"a":7},"b":"deathCount","c":128},{"a":{"b":"netPeerID"},"b":"lastShooter","c":128}]}

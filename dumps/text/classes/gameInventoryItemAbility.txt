@@ -1,0 +1,7 @@
+import struct gameInventoryItemAbility
+{
+	var IconPath : CName;
+	var Title : String;
+	var Description : String;
+	var LocalizationDataPackage : handle:gameUILocalizationDataPackage;
+}

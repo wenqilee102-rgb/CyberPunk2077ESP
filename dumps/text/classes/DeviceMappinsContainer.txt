@@ -1,0 +1,33 @@
+class DeviceMappinsContainer extends IScriptable
+{
+	public    var mappins : array:SDeviceMappinData;
+	public    var newNewFocusMappin : SDeviceMappinData;
+	public    var useNewFocusMappin : Bool;
+	private   var offsetValue : Float;
+
+	function AddMappin(data : script_ref:SDeviceMappinData); // AddMappin;script_ref<SDeviceMappinData>
+	function EvaluatePositions(owner : handle:gameObject); // EvaluatePositions;GameObject
+	function GetNextAxis(currentAxis : EAxisType) : EAxisType; // GetNextAxis;EAxisType
+	function HasMappin(mappinVariant : gamedataMappinVariant) : Bool; // HasMappin;gamedataMappinVariant
+	function HasMappin(data : script_ref:SDeviceMappinData) : Bool; // HasMappin;script_ref<SDeviceMappinData>
+	function HasNewFocusMappin() : Bool; // HasNewFocusMappin;
+	function HideMappins(owner : handle:gameObject); // HideMappins;GameObject
+	function HideSingleMappin(index : Int32, owner : handle:gameObject); // HideSingleMappin;Int32GameObject
+	function Initialize(); // Initialize;
+	function ShowMappins(owner : handle:gameObject); // ShowMappins;GameObject
+	function ToggleMappin(owner : handle:gameObject, mappinVariant : gamedataMappinVariant, enable : Bool); // ToggleMappin;GameObjectgamedataMappinVariantBool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

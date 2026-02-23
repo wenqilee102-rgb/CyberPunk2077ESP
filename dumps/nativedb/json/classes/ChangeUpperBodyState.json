@@ -1,0 +1,1 @@
+{"a":"ChangeUpperBodyStateAbstract","b":"ChangeUpperBodyState","d":0,"e":[{"a":{"b":"gamedataNPCUpperBodyState"},"b":"newState","c":128}],"f":[{"a":"GetDesiredUpperBodyState;ScriptExecutionContext","b":"GetDesiredUpperBodyState","c":{"b":"gamedataNPCUpperBodyState"},"d":33,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

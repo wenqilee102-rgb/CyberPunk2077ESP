@@ -1,0 +1,27 @@
+class AITweakParams extends IScriptable
+{
+	static function GetBoolFromTweak(actionID : TweakDBID, paramName : script_ref:String, optional defaultValue : Bool) : Bool; // AITweakParams::GetBoolFromTweak;TweakDBIDscript_ref<String>Bool
+	static function GetCNameArrayFromTweak(actionID : TweakDBID, paramName : script_ref:String) : array:CName; // AITweakParams::GetCNameArrayFromTweak;TweakDBIDscript_ref<String>
+	static function GetCNameFromTweak(actionID : TweakDBID, paramName : script_ref:String) : CName; // AITweakParams::GetCNameFromTweak;TweakDBIDscript_ref<String>
+	static function GetFloatArrayFromTweak(actionID : TweakDBID, paramName : script_ref:String) : array:Float; // AITweakParams::GetFloatArrayFromTweak;TweakDBIDscript_ref<String>
+	static function GetFloatFromTweak(actionID : TweakDBID, paramName : script_ref:String) : Float; // AITweakParams::GetFloatFromTweak;TweakDBIDscript_ref<String>
+	static function GetIntArrayFromTweak(actionID : TweakDBID, paramName : script_ref:String) : array:Int32; // AITweakParams::GetIntArrayFromTweak;TweakDBIDscript_ref<String>
+	static function GetIntFromTweak(actionID : TweakDBID, paramName : script_ref:String) : Int32; // AITweakParams::GetIntFromTweak;TweakDBIDscript_ref<String>
+	static function GetStringArrayFromTweak(actionID : TweakDBID, paramName : script_ref:String) : array:String; // AITweakParams::GetStringArrayFromTweak;TweakDBIDscript_ref<String>
+	static function GetStringFromTweak(actionID : TweakDBID, paramName : script_ref:String) : String; // AITweakParams::GetStringFromTweak;TweakDBIDscript_ref<String>
+	static function GetVectorFromTweak(actionID : TweakDBID, paramName : script_ref:String) : Vector3; // AITweakParams::GetVectorFromTweak;TweakDBIDscript_ref<String>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"b":"ItemAttachments","d":0,"g":true,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"a":15},"b":"attachmentSlotID","c":128}],"f":[{"a":"ItemAttachments::Create;ItemIDTweakDBID","b":"Create","c":{"b":"ItemAttachments"},"d":56,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":0},{"a":{"a":15},"b":"attachmentSlotID","c":0}]}]}

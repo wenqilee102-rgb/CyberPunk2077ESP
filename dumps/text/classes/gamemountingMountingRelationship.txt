@@ -1,0 +1,8 @@
+import struct gamemountingMountingRelationship
+{
+	var otherMountableType : gameMountingObjectType;
+	var otherMountableSubType : gameMountingObjectSubType;
+	var otherObject : whandle:gameObject;
+	var relationshipType : gameMountingRelationshipType;
+	var slotId : gamemountingMountingSlotId;
+}

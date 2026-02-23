@@ -1,0 +1,14 @@
+struct UIInteractionSkillCheck
+{
+	public    var isValid : Bool;
+	public    var skillCheck : EDeviceChallengeSkill;
+	public    var skillName : String;
+	public    var requiredSkill : Int32;
+	public    var playerSkill : Int32;
+	public    var actionDisplayName : String;
+	public    var hasAdditionalRequirements : Bool;
+	public    var additionalReqOperator : ELogicOperator;
+	public    var additionalRequirements : array:ConditionData;
+	public    var isPassed : Bool;
+	public    var ownerID : entEntityID;
+}

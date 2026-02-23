@@ -1,0 +1,36 @@
+import class inkanimProxy extends IScriptable
+{
+	import function Continue(playbackOptions : inkanimPlaybackOptions) : Bool; // Continue
+	import function GetProgression() : Float; // GetProgression
+	import function GetTargets() : array:whandle:inkWidget; // GetTargets
+	import function GetTime() : Float; // GetTime
+	import function GotoEndAndStop(optional silently : Bool); // GotoEndAndStop
+	import function GotoStartAndStop(optional silently : Bool); // GotoStartAndStop
+	import function IsFinished() : Bool; // IsFinished
+	import function IsLoading() : Bool; // IsLoading
+	import function IsLoadingFailed() : Bool; // IsLoadingFailed
+	import function IsPaused() : Bool; // IsPaused
+	import function IsPlaying() : Bool; // IsPlaying
+	import function IsValid() : Bool; // IsValid
+	import function Pause(); // Pause
+	import function RegisterToCallback(eventType : inkanimEventType, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function Resume(); // Resume
+	import function SetNormalizedPosition(progress : Float, isPlaying : Bool); // SetNormalizedPosition
+	import function Stop(optional silently : Bool); // Stop
+	import function UnregisterFromAllCallbacks(eventType : inkanimEventType); // UnregisterFromAllCallbacks
+	import function UnregisterFromCallback(eventType : inkanimEventType, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

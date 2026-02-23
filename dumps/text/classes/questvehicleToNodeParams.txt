@@ -1,0 +1,24 @@
+import class questvehicleToNodeParams extends questVehicleSpecificCommandParams
+{
+	var stopAtEnd : Bool;
+	var nodeRef : NodeRef;
+	var isPlayer : Bool;
+	var useTraffic : Bool;
+	var speedInTraffic : Float;
+	var forceGreenLights : Bool;
+	var portals : handle:vehiclePortalsList;
+	var trafficTryNeighborsForStart : Bool;
+	var trafficTryNeighborsForEnd : Bool;
+	var ignoreNoAIDrivingLanes : Bool;
+}
+
+import class abstract questVehicleSpecificCommandParams extends ISerializable
+{
+	var pushOtherVehiclesAside : Bool;
+	var needDriver : Bool;
+	var secureTimeOut : Float;
+}
+
+import class abstract ISerializable
+{
+}

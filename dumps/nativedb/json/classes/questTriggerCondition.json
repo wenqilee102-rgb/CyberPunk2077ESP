@@ -1,0 +1,1 @@
+{"a":"questCondition","b":"questTriggerCondition","d":8,"e":[{"a":{"b":"questTriggerConditionType"},"b":"type","c":128},{"a":{"a":16},"b":"triggerAreaRef","c":128},{"a":{"b":"gameEntityReference"},"b":"activatorRef","c":128},{"a":{"a":1},"b":"isPlayerActivator","c":128}]}

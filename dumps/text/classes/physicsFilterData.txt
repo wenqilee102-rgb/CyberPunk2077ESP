@@ -1,0 +1,11 @@
+import class physicsFilterData extends ISerializable
+{
+	var simulationFilter : physicsSimulationFilter;
+	var queryFilter : physicsQueryFilter;
+	var preset : CName;
+	var customFilterData : handle:physicsCustomFilterData;
+}
+
+import class abstract ISerializable
+{
+}

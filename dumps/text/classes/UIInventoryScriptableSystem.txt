@@ -1,0 +1,109 @@
+class UIInventoryScriptableSystem extends gameScriptableSystem
+{
+	private   var attachedPlayer : whandle:PlayerPuppet;
+	private   var inventoryListenerCallback : handle:UIInventoryScriptableInventoryListenerCallback;
+	private   var inventoryListener : handle:gameInventoryScriptListener;
+	private   var equipmentListener : handle:UIInventoryScriptableEquipmentListener;
+	private   var playerStatsListener : handle:UIInventoryScriptableStatsListener;
+	private   var uiSystem : handle:gameuiGameSystemUI;
+	private   var playerItems : handle:inkScriptHashMap;
+	private   var transactionSystem : handle:gameTransactionSystem;
+	private   var uiScriptableSystem : handle:UIScriptableSystem;
+	private   var inventoryItemsManager : handle:UIInventoryItemsManager;
+	private   var blacklistedTags : array:CName;
+	private   var cachedNonInventoryItems : handle:inkScriptHashMap;
+	private   var statsDependantItems : handle:inkScriptWeakHashMap;
+	private   var InventoryBlackboard : whandle:gameIBlackboard;
+	private   var CraftingBlackboardDefinition : handle:UI_CraftingDef;
+	private   var LevelUpDef : handle:UI_LevelUpDef;
+	private   var AttributeBoughtDef : handle:UI_AttributeBoughtDef;
+	private   var Blackboard : whandle:gameIBlackboard;
+	private   var BlackboardAttributeBought : whandle:gameIBlackboard;
+	private   var BlackboardLevelUp : whandle:gameIBlackboard;
+	private   var UpgradeBlackboardCallback : handle:redCallbackObject;
+	private   var CharacterLevelBlackboardCallback : handle:redCallbackObject;
+	private   var OnAttributesChangeCallback : handle:redCallbackObject;
+	private   var TEMP_questSystem : handle:questQuestsSystem;
+	private   var TEMP_cuverBarsListener : Uint32;
+	private   var TEMP_separatorBarsListener : Uint32;
+	private   var itemsRestored : Bool;
+
+	static function GetInstance(gameInstance : ScriptGameInstance) : handle:UIInventoryScriptableSystem; // UIInventoryScriptableSystem::GetInstance;GameInstance
+	static function NumberOfWeaponSlots() : Int32; // UIInventoryScriptableSystem::NumberOfWeaponSlots;
+
+	event OnCharacterAttributeUpdated(value : Variant) : Bool; // OnCharacterAttributeUpdated
+	event OnCharacterLevelUpdated(value : Variant) : Bool; // OnCharacterLevelUpdated
+	event OnUpgradeItem(value : Variant) : Bool; // OnUpgradeItem
+
+	function DisableCurveBarsChanged(value : Int32); // DisableCurveBarsChanged;Int32
+	function DisableSeparatorBarsChanged(value : Int32); // DisableSeparatorBarsChanged;Int32
+	function FlushCraftingResults(); // FlushCraftingResults;
+	function FlushCyberwareStats(); // FlushCyberwareStats;
+	function FlushFullscreenCache(); // FlushFullscreenCache;
+	function FlushNanoWiresMods(); // FlushNanoWiresMods;
+	function FlushStatsDependantItems(); // FlushStatsDependantItems;
+	function FlushTempData(); // FlushTempData;
+	function GetInventoryItemsManager() : whandle:UIInventoryItemsManager; // GetInventoryItemsManager;
+	function GetNonInventoryItem(itemID : gameItemID) : whandle:UIInventoryItem; // GetNonInventoryItem;ItemID
+	function GetNonInventoryQueryIDs(query : gameItemID) : array:gameItemID; // GetNonInventoryQueryIDs;ItemID
+	function GetPlayerAreaItem(equipmentArea : gamedataEquipmentArea, optional slotIndex : Int32) : whandle:UIInventoryItem; // GetPlayerAreaItem;gamedataEquipmentAreaInt32
+	function GetPlayerAreaItems(equipmentArea : gamedataEquipmentArea) : array:whandle:UIInventoryItem; // GetPlayerAreaItems;gamedataEquipmentArea
+	function GetPlayerHealingItems() : array:whandle:UIInventoryItem; // GetPlayerHealingItems;
+	function GetPlayerItem(itemID : gameItemID) : whandle:UIInventoryItem; // GetPlayerItem;ItemID
+	function GetPlayerItem(hash : Uint64) : whandle:UIInventoryItem; // GetPlayerItem;Uint64
+	function GetPlayerItemFromAnySource(itemData : whandle:gameItemData) : whandle:UIInventoryItem; // GetPlayerItemFromAnySource;gameItemData
+	function GetPlayerItemsMap() : handle:inkScriptHashMap; // GetPlayerItemsMap;
+	function GetQueryIDs(query : gameItemID) : array:gameItemID; // GetQueryIDs;ItemID
+	function InsertPlayerItem(hash : Uint64, itemData : handle:UIInventoryItem); // InsertPlayerItem;Uint64UIInventoryItem
+	function InternalRemovePlayerItems(hash : Uint64, itemID : gameItemID) : Bool; // InternalRemovePlayerItems;Uint64ItemID
+	function Internal_FetchNonInventoryItem(hash : Uint64, itemData : whandle:gameItemData) : Bool; // Internal_FetchNonInventoryItem;Uint64gameItemData
+	function IsPreview(itemID : gameItemID) : Bool; // IsPreview;ItemID
+	function IsStatDependantItem(tweakDBID : TweakDBID) : Bool; // IsStatDependantItem;TweakDBID
+	function NotifyItemAdded(itemID : gameItemID, hash : Uint64); // NotifyItemAdded;ItemIDUint64
+	function NotifyItemRemoved(itemID : gameItemID, hash : Uint64); // NotifyItemRemoved;ItemIDUint64
+	function OnBuyNewPerk(request : handle:BuyNewPerk); // OnBuyNewPerk;BuyNewPerk
+	function OnDetach(); // OnDetach;
+	function OnInventoryItemAdded(request : handle:UIInventoryScriptableSystemInventoryAddItem); // OnInventoryItemAdded;UIInventoryScriptableSystemInventoryAddItem
+	function OnInventoryItemQuantityChanged(request : handle:UIInventoryScriptableSystemInventoryQuantityChanged); // OnInventoryItemQuantityChanged;UIInventoryScriptableSystemInventoryQuantityChanged
+	function OnInventoryItemRemoved(request : handle:UIInventoryScriptableSystemInventoryRemoveItem); // OnInventoryItemRemoved;UIInventoryScriptableSystemInventoryRemoveItem
+	function OnPartInstallRequest(request : handle:PartInstallRequest); // OnPartInstallRequest;PartInstallRequest
+	function OnPartUninstallRequest(request : handle:PartUninstallRequest); // OnPartUninstallRequest;PartUninstallRequest
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnSellNewPerk(request : handle:SellNewPerk); // OnSellNewPerk;SellNewPerk
+	function QueryNonInventoryItem(tweakID : TweakDBID) : whandle:UIInventoryItem; // QueryNonInventoryItem;TweakDBID
+	function QueryPlayerItem(tweakID : TweakDBID) : whandle:UIInventoryItem; // QueryPlayerItem;TweakDBID
+	function RefreshItem(itemID : gameItemID); // RefreshItem;ItemID
+	function RemovePlayerItem(hash : Uint64, itemID : gameItemID) : Bool; // RemovePlayerItem;Uint64ItemID
+	function SetupInstance(); // SetupInstance;
+	function UpdateNewPerk(perkType : gamedataNewPerkType); // UpdateNewPerk;gamedataNewPerkType
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

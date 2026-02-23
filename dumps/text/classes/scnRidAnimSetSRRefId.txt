@@ -1,0 +1,4 @@
+import struct scnRidAnimSetSRRefId
+{
+	var id : Uint32;
+}

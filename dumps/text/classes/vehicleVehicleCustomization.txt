@@ -1,0 +1,41 @@
+import class vehicleVehicleCustomization extends entIComponent
+{
+	var defaultDecalsPerAppearance : array:vehicleVehicleAppearanceToDecalsName;
+
+	import function HideUniqueCustomizationDecalsWithDisolve(); // HideUniqueCustomizationDecalsWithDisolve
+	import function SetComponentExcludedFromCustomization(componentsExcludedFromCustomization : array:CName); // SetComponentExcludedFromCustomization
+	import function SetDefaultDecalsEnabled(enabled : Bool); // SetDefaultDecalsEnabled
+	import function SetupGenericCustomization(componentsExcludedFromMask : array:CName, mask : redResourceReferenceScriptToken, packedColorA : Float, packedColorB : Float, isInstant : Bool, affectRims : Bool); // SetupGenericCustomization
+	import function SetupUniqueCustomization(customMultilayers : array:vehicleVehicleCustomMultilayer, globalClearCoatOverrides : vehicleVehicleClearCoatOverrides, partsClearCoatOverrides : array:vehicleVehiclePartsClearCoatOverrides, isInstant : Bool); // SetupUniqueCustomization
+	import function ShowUniqueCustomizationDecalsWithDisolve(decals : array:vehicleVehicleDecalAttachmentData); // ShowUniqueCustomizationDecalsWithDisolve
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

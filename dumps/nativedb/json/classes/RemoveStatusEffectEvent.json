@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"RemoveStatusEffectEvent","d":0,"e":[{"a":{"a":15},"b":"effectID","c":128},{"a":{"a":7},"b":"removeCount","c":128}],"f":[{"a":"SetEffectID;script_ref<String>","b":"SetEffectID","d":48,"e":[{"a":{"a":28,"c":{"a":12}},"b":"effectName","c":0}]}]}

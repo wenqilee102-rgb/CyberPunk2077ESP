@@ -1,0 +1,33 @@
+import class questVehicleCommandParams extends questAICommandParams
+{
+	var type : questVehicleCommandType;
+	var additionalParamsOnSpline : handle:questvehicleOnSplineParams;
+	var additionalParamsFollow : handle:questvehicleFollowParams;
+	var additionalParamsToNode : handle:questvehicleToNodeParams;
+	var additionalParamsRacing : handle:questvehicleRacingParams;
+	var additionalParamsJoinTraffic : handle:questvehicleJoinTrafficParams;
+	var additionalParamsPanic : handle:questvehiclePanicParams;
+	var additionalParamsChase : handle:questvehicleChaseParams;
+}
+
+import class abstract questAICommandParams extends scnAICommandFactory
+{
+}
+
+import class abstract scnAICommandFactory extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

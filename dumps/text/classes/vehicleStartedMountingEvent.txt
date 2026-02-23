@@ -1,0 +1,27 @@
+import class vehicleStartedMountingEvent extends redEvent
+{
+	var slotID : CName;
+	var animationSlotName : CName;
+	var isMounting : Bool;
+	var character : whandle:gameObject;
+	var instant : Bool;
+	var silent : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

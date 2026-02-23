@@ -1,0 +1,7 @@
+struct SecurityLockerProperties
+{
+	public    var securityLevelAccessGranted : ESecurityAccessLevel;
+	public    var disableCyberware : Bool;
+	public    var storeWeaponSFX : CName;
+	public    var pickUpWeaponSFX : CName;
+}

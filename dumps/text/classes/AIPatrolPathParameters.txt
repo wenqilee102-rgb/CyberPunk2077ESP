@@ -1,0 +1,27 @@
+import class AIPatrolPathParameters extends IScriptable
+{
+	var path : NodeRef;
+	var movementType : moveMovementType;
+	var continuationPolicy : AIPatrolContinuationPolicy;
+	var startFromClosestPoint : Bool;
+	var patrolWithWeapon : Bool;
+	var isBackAndForth : Bool;
+	var isInfinite : Bool;
+	var numberOfLoops : Uint32;
+	var sortPatrolPoints : Bool;
+	public    var patrolAction : TweakDBID;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

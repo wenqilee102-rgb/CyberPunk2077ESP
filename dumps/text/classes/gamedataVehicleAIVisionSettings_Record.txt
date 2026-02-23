@@ -1,0 +1,35 @@
+import class gamedataVehicleAIVisionSettings_Record extends gamedataTweakDBRecord
+{
+	import function MaxDistance() : Float; // MaxDistance
+	import function MaxStraightPathExtension() : Float; // MaxStraightPathExtension
+	import function MinDistance() : Float; // MinDistance
+	import function NumSweeps() : Int32; // NumSweeps
+	import function OffsetSmoothingFastChangeSpeed() : Float; // OffsetSmoothingFastChangeSpeed
+	import function OffsetSmoothingReturnToNeutralSpeed() : Float; // OffsetSmoothingReturnToNeutralSpeed
+	import function SideOverlapForwardOffset() : Float; // SideOverlapForwardOffset
+	import function SideOverlapLateralScale() : Float; // SideOverlapLateralScale
+	import function SideOverlapLongitudinalScale() : Float; // SideOverlapLongitudinalScale
+	import function SpeedLimitDeceleration() : Float; // SpeedLimitDeceleration
+	import function SpeedLimitSafetyMargin() : Float; // SpeedLimitSafetyMargin
+	import function UseSpeedLimit() : Bool; // UseSpeedLimit
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+enum gameuiEClueDescriptorMode
+{
+	Invalid = 0,
+	Add = 1,
+	Finish = 2
+}

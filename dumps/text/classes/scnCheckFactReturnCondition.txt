@@ -1,0 +1,12 @@
+import class scnCheckFactReturnCondition extends scnIReturnCondition
+{
+	var params : scnCheckFactReturnConditionParams;
+}
+
+import class abstract scnIReturnCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

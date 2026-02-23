@@ -1,0 +1,30 @@
+import class gameEffectSystem extends gameIEffectSystem
+{
+	import function CreateEffect(definition : gameEffectRef, instigator : handle:entEntity, optional weapon : handle:entEntity) : handle:gameEffectInstance; // CreateEffect
+	import function CreateEffectStatic(effectName : CName, effectTag : CName, instigator : handle:entEntity, optional weapon : handle:entEntity) : handle:gameEffectInstance; // CreateEffectStatic
+	import function HasEffect(effectName : CName, effectTag : CName) : Bool; // HasEffect
+	import function PreloadStaticEffectResources(effectName : CName, effectTag : CName); // PreloadStaticEffectResources
+	import function ReleaseStaticEffectResources(effectName : CName, effectTag : CName); // ReleaseStaticEffectResources
+}
+
+import class abstract gameIEffectSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

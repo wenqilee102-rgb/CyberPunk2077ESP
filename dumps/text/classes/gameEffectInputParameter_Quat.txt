@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_Quat
+{
+	var evaluator : handle:gameIEffectParameter_QuatEvaluator;
+
+	import static function Get(ctx : gameEffectInputParameter_Quat, bb : handle:gameIBlackboard) : Quaternion; // Get
+}

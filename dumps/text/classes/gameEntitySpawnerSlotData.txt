@@ -1,0 +1,5 @@
+import struct gameEntitySpawnerSlotData
+{
+	var slotName : CName;
+	var spawnableObject : TweakDBID;
+}

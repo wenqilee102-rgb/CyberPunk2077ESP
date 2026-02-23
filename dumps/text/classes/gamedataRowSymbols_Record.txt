@@ -1,0 +1,27 @@
+import class gamedataRowSymbols_Record extends gamedataTweakDBRecord
+{
+	import function GetSymbolsCount() : Int32; // GetSymbolsCount
+	import function GetSymbolsItem(index : Int32) : Int32; // GetSymbolsItem
+	import function Symbols() : array:Int32; // Symbols
+	import function SymbolsContains(item : Int32) : Bool; // SymbolsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

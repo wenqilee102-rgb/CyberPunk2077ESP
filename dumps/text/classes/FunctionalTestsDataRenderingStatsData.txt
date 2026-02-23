@@ -1,0 +1,14 @@
+import class FunctionalTestsDataRenderingStatsData extends ISerializable
+{
+	var engineTick : Uint64;
+	var rawLocalTime : Uint64;
+	var meshChunkCount : Uint32;
+	var cameraTriangleCount : Uint32;
+	var shadowTriangleCount : Uint32;
+	var playerPosition : String;
+	var playerOrientation : String;
+}
+
+import class abstract ISerializable
+{
+}

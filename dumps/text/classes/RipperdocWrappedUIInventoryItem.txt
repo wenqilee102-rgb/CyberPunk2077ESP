@@ -1,0 +1,28 @@
+class RipperdocWrappedUIInventoryItem extends IScriptable
+{
+	public    var InventoryItem : whandle:UIInventoryItem;
+	public    var Delay : Float;
+	public    var DisplayContext : handle:ItemDisplayContextData;
+	public    var IsEnoughMoney : Bool;
+	public    var IsNew : Bool;
+	public    var IsEquippable : Bool;
+	public    var ItemPrice : Float;
+	public    var IsBuybackStack : Bool;
+	public    var AdditionalData : handle:IScriptable;
+
+	static function Make(item : whandle:UIInventoryItem, displayContext : handle:ItemDisplayContextData, optional additionalData : handle:IScriptable) : handle:RipperdocWrappedUIInventoryItem; // RipperdocWrappedUIInventoryItem::Make;UIInventoryItemItemDisplayContextDataIScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

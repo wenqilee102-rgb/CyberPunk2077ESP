@@ -1,0 +1,1 @@
+{"a":"questIVehicleManagerNodeType","b":"questFollowObject_NodeType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"vehicleRef","c":128},{"a":{"b":"gameEntityReference"},"b":"followObjectRef","c":128},{"a":{"b":"Vector3"},"b":"offset","c":128},{"a":{"a":10},"b":"positionLerpSpeed","c":128},{"a":{"a":10},"b":"rotationLerpSpeed","c":128}]}

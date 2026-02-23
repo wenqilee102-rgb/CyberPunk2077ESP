@@ -1,0 +1,16 @@
+import class worldFoliagePhysicalDestructionMapping extends worldFoliageDestructionMapping
+{
+	var audioMetadata : CName;
+	var destructionParams : physicsDestructionParams;
+	var destructionLevelData : array:physicsDestructionLevelData;
+}
+
+import class worldFoliageDestructionMapping extends ISerializable
+{
+	var baseMesh : raRef:CMesh;
+	var destructibleMesh : raRef:CMesh;
+}
+
+import class abstract ISerializable
+{
+}

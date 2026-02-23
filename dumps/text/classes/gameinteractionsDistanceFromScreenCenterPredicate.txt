@@ -1,0 +1,15 @@
+import class gameinteractionsDistanceFromScreenCenterPredicate extends gameinteractionsIPredicateType
+{
+	var height : Float;
+	var width : Float;
+	var curvature : Float;
+	var maxPriorityBoundsFactor : Float;
+}
+
+import class abstract gameinteractionsIPredicateType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

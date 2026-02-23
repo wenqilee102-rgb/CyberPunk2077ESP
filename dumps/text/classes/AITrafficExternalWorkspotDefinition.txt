@@ -1,0 +1,15 @@
+import class AITrafficExternalWorkspotDefinition extends worldTrafficSpotDefinition
+{
+	var nearestPointEntry : Bool;
+	var globalWorkspotNodeRef : NodeRef;
+}
+
+import class abstract worldTrafficSpotDefinition extends ISerializable
+{
+	var length : Float;
+	var direction : worldTrafficSpotDirection;
+}
+
+import class abstract ISerializable
+{
+}

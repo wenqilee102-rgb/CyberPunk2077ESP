@@ -1,0 +1,8 @@
+struct BaseDeviceData
+{
+	public    var deviceState : EDeviceStatus;
+	public    var durabilityType : EDeviceDurabilityType;
+	public    var deviceName : String;
+	public    var debugName : CName;
+	public    var hackOwner : whandle:gameObject;
+}

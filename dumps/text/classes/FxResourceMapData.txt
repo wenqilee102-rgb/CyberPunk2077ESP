@@ -1,0 +1,5 @@
+struct FxResourceMapData
+{
+	public    var key : CName;
+	public    var resource : gameFxResource;
+}

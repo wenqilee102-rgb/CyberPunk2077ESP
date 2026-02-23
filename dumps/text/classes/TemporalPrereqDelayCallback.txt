@@ -1,0 +1,26 @@
+class TemporalPrereqDelayCallback extends gameDelaySystemScriptedDelayCallbackWrapper
+{
+	protected var state : whandle:TemporalPrereqState;
+
+	function Call(); // Call;
+	function RegisterState(state : handle:gamePrereqState); // RegisterState;PrereqState
+}
+
+import class gameDelaySystemScriptedDelayCallbackWrapper extends IScriptable
+{
+	function Call(); // Call;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

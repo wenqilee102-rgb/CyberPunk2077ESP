@@ -1,0 +1,21 @@
+import struct gameItemID
+{
+	var id : TweakDBID;
+	var rngSeed : Uint32;
+	var uniqueCounter : Uint16;
+	var flags : Uint8;
+
+	import static function CreateFromSeedWithOffset(newItemTDBID : TweakDBID, seed : Uint32, offset : Int32) : gameItemID; // CreateFromSeedWithOffset
+	import static function CreateQuery(tdbID : TweakDBID) : gameItemID; // CreateQuery
+	import static function DuplicateRandomSeedWithOffset(referenceItemID : gameItemID, newItemTDBID : TweakDBID, offset : Int32) : gameItemID; // DuplicateRandomSeedWithOffset
+	import static function FromTDBID(tdbID : TweakDBID) : gameItemID; // FromTDBID
+	import static function GetCombinedHash(itemID : gameItemID) : Uint64; // GetCombinedHash
+	import static function GetRngSeed(itemID : gameItemID) : Uint32; // GetRngSeed
+	import static function GetStructure(itemID : gameItemID) : gamedataItemStructure; // GetStructure
+	import static function GetTDBID(itemID : gameItemID) : TweakDBID; // GetTDBID
+	import static function HasFlag(itemID : gameItemID, flag : gameEItemIDFlag) : Bool; // HasFlag
+	import static function IsOfTDBID(itemID : gameItemID, tdbID : TweakDBID) : Bool; // IsOfTDBID
+	import static function IsQuery(itemID : gameItemID) : Bool; // IsQuery
+	import static function IsValid(itemID : gameItemID) : Bool; // IsValid
+	import static function None() : gameItemID; // None
+}

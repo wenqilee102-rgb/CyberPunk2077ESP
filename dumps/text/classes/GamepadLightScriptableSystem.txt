@@ -1,0 +1,57 @@
+class GamepadLightScriptableSystem extends gameScriptableSystem
+{
+	private   var controllerCurrentColor : Vector3;
+	private   var controllerStartColor : Vector3;
+	private   var controllerTargetColor : Vector3;
+	private   var currentProgress : Float;
+	private   var useExponentialCurve : Bool;
+	private   var prevTime : Float;
+	private   var currentState : ELightState;
+	private   var prevState : ELightState;
+	private   var timeLimit : Float;
+	private   var currrentId : gameDelayID;
+
+	static function TriggerVehicleExplosionWarningSiren(gi : ScriptGameInstance); // GamepadLightScriptableSystem::TriggerVehicleExplosionWarningSiren;GameInstance
+	static function UpdatePoliceSiren(gi : ScriptGameInstance, heatStage : EPreventionHeatStage); // GamepadLightScriptableSystem::UpdatePoliceSiren;GameInstanceEPreventionHeatStage
+
+	function ChangeState(newState : ELightState) : Bool; // ChangeState;ELightState
+	function ExponentialEaseInAndOut(x : Float) : Float; // ExponentialEaseInAndOut;Float
+	function OnColorLerpTickRequest(evt : handle:ColorLerpTickRequest); // OnColorLerpTickRequest;ColorLerpTickRequest
+	function OnLerpToColorControllerLightRequest(evt : handle:LerpToColorControllerLightRequest); // OnLerpToColorControllerLightRequest;LerpToColorControllerLightRequest
+	function OnLerpToDefaultControllerLightColorRequest(evt : handle:LerpToDefaultControllerLightColorRequest); // OnLerpToDefaultControllerLightColorRequest;LerpToDefaultControllerLightColorRequest
+	function OnPoliceSirenTimerRequest(siren : handle:PoliceSirenTimerRequest); // OnPoliceSirenTimerRequest;PoliceSirenTimerRequest
+	function OnResetControllerLightColorRequest(evt : handle:ResetControllerLightColorRequest); // OnResetControllerLightColorRequest;ResetControllerLightColorRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSetControllerLightColorRequest(evt : handle:SetControllerLightColorRequest); // OnSetControllerLightColorRequest;SetControllerLightColorRequest
+	function OnVehicleAboutToExplodeTimerRequest(eminentExplosion : handle:VehicleAboutToExplodeTimerRequest); // OnVehicleAboutToExplodeTimerRequest;VehicleAboutToExplodeTimerRequest
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

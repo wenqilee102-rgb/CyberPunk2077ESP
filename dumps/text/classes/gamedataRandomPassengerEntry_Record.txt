@@ -1,0 +1,34 @@
+import class gamedataRandomPassengerEntry_Record extends gamedataTweakDBRecord
+{
+	import function CharacterRecords(out outList : array:whandle:gamedataWeightedCharacter_Record); // CharacterRecords
+	import function CharacterRecordsContains(item : whandle:gamedataWeightedCharacter_Record) : Bool; // CharacterRecordsContains
+	import function GetCharacterRecordsCount() : Int32; // GetCharacterRecordsCount
+	import function GetCharacterRecordsItem(index : Int32) : whandle:gamedataWeightedCharacter_Record; // GetCharacterRecordsItem
+	import function GetCharacterRecordsItemHandle(index : Int32) : handle:gamedataWeightedCharacter_Record; // GetCharacterRecordsItemHandle
+	import function GetValidSlotNamesCount() : Int32; // GetValidSlotNamesCount
+	import function GetValidSlotNamesItem(index : Int32) : CName; // GetValidSlotNamesItem
+	import function Probability() : Float; // Probability
+	import function Role() : CName; // Role
+	import function ValidSlotNames() : array:CName; // ValidSlotNames
+	import function ValidSlotNamesContains(item : CName) : Bool; // ValidSlotNamesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

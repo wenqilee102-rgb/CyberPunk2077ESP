@@ -1,0 +1,7 @@
+import struct gameInputTriggerState
+{
+	import static function GetPressRaw(state : gameInputTriggerState) : Bool; // GetPressRaw
+	import static function GetPressedRaw(state : gameInputTriggerState) : Bool; // GetPressedRaw
+	import static function GetReleaseRaw(state : gameInputTriggerState) : Bool; // GetReleaseRaw
+	import static function GetValueRaw(state : gameInputTriggerState) : Float; // GetValueRaw
+}

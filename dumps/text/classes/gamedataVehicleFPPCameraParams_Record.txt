@@ -1,0 +1,44 @@
+import class gamedataVehicleFPPCameraParams_Record extends gamedataTweakDBRecord
+{
+	import function Enable_rear_view() : Bool; // Enable_rear_view
+	import function Forward_offset_value() : Float; // Forward_offset_value
+	import function Is_forward_offset() : Float; // Is_forward_offset
+	import function Is_paralax() : Float; // Is_paralax
+	import function Is_pitch_off() : Float; // Is_pitch_off
+	import function Is_yaw_off() : Float; // Is_yaw_off
+	import function Lookat_offset_vertical() : Float; // Lookat_offset_vertical
+	import function Lookat_pitch_forward_down_ratio() : Float; // Lookat_pitch_forward_down_ratio
+	import function Lookat_pitch_forward_offset() : Float; // Lookat_pitch_forward_offset
+	import function Lookat_yaw_left_offset() : Float; // Lookat_yaw_left_offset
+	import function Lookat_yaw_left_up_offset() : Float; // Lookat_yaw_left_up_offset
+	import function Lookat_yaw_offset_active_angle() : Float; // Lookat_yaw_offset_active_angle
+	import function Lookat_yaw_right_offset() : Float; // Lookat_yaw_right_offset
+	import function Lookat_yaw_right_up_offset() : Float; // Lookat_yaw_right_up_offset
+	import function Paralax_forward_offset() : Float; // Paralax_forward_offset
+	import function Paralax_radius() : Float; // Paralax_radius
+	import function Rear_view_offset() : Vector3; // Rear_view_offset
+	import function Rear_view_pitch_threshold() : Float; // Rear_view_pitch_threshold
+	import function Rear_view_yaw_threshold() : Float; // Rear_view_yaw_threshold
+	import function Upperbody_pitch_weight() : Float; // Upperbody_pitch_weight
+	import function Upperbody_yaw_weight() : Float; // Upperbody_yaw_weight
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

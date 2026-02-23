@@ -1,0 +1,6 @@
+import struct inkInputKeyData
+{
+	import static function SetInputCustomKey(self : inkInputKeyData, inputKey : EInputCustomKey); // SetInputCustomKey
+	import static function SetInputKey(self : inkInputKeyData, inputKey : EInputKey); // SetInputKey
+	import static function SetIsHoldInput(self : inkInputKeyData, isHoldInput : Bool); // SetIsHoldInput
+}

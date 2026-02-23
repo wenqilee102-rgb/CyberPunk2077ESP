@@ -1,0 +1,9 @@
+import struct gameuiSwitcherOption
+{
+	var index : Int32;
+	var names : array:CName;
+	var localizedName : String;
+	var actions : array:gameuiCharacterCustomizationAction;
+	var tags : redTagList;
+	var randomizationInfo : gameuiCharacterRandomizationInfo;
+}

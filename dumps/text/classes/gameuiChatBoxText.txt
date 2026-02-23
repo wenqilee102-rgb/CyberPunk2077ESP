@@ -1,0 +1,6 @@
+import struct gameuiChatBoxText
+{
+	var text : String;
+	var id : Int32;
+	var color : Color;
+}

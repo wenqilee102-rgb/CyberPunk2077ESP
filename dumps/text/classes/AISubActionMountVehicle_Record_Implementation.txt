@@ -1,0 +1,22 @@
+class abstract AISubActionMountVehicle_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMountVehicle_Record); // AISubActionMountVehicle_Record_Implementation::Activate;ScriptExecutionContextAISubActionMountVehicle_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMountVehicle_Record, duration : Float, interrupted : Bool); // AISubActionMountVehicle_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionMountVehicle_RecordFloatBool
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AISubActionMountVehicle_Record_Implementation::GetAIComponent;ScriptExecutionContext
+	static function MountVehicle(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMountVehicle_Record) : Bool; // AISubActionMountVehicle_Record_Implementation::MountVehicle;ScriptExecutionContextAISubActionMountVehicle_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMountVehicle_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionMountVehicle_Record_Implementation::Update;ScriptExecutionContextAISubActionMountVehicle_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

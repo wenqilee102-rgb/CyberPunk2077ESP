@@ -1,0 +1,20 @@
+class HubMenuUtility extends IScriptable
+{
+	static function CreateMenuData(player : whandle:PlayerPuppet) : handle:MenuDataBuilder; // HubMenuUtility::CreateMenuData;PlayerPuppet
+	static function IsCraftingAvailable(player : whandle:PlayerPuppet) : Bool; // HubMenuUtility::IsCraftingAvailable;PlayerPuppet
+	static function IsPlayerHardwareDisabled(player : whandle:gameObject) : Bool; // HubMenuUtility::IsPlayerHardwareDisabled;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

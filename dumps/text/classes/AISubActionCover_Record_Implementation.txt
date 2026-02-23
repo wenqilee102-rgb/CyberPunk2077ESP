@@ -1,0 +1,30 @@
+class abstract AISubActionCover_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCover_Record); // AISubActionCover_Record_Implementation::Activate;ScriptExecutionContextAISubActionCover_Record
+	static function CalculateCoverExposureMethod(puppet : whandle:ScriptedPuppet, coverID : Uint64, record : whandle:gamedataAISubActionCover_Record, target : whandle:gameObject, lineOfSightTolerance : Float, trackedLocation : script_ref:AITrackedLocation, exposureMethods : script_ref:array:AICoverExposureMethod) : AICoverExposureMethod; // AISubActionCover_Record_Implementation::CalculateCoverExposureMethod;ScriptedPuppetUint64AISubActionCover_RecordGameObjectFloatscript_ref<TrackedLocation>script_ref<array<AICoverExposureMethod>>
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCover_Record, duration : Float, interrupted : Bool); // AISubActionCover_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionCover_RecordFloatBool
+	static function EvaluateShootingSpot(puppet : whandle:ScriptedPuppet, target : whandle:gameObject, cm : whandle:AISmartCoverManager, consideredCoverID : Uint64) : Bool; // AISubActionCover_Record_Implementation::EvaluateShootingSpot;ScriptedPuppetGameObjectCoverManagerUint64
+	static function GetAnimVariation(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCover_Record) : Int32; // AISubActionCover_Record_Implementation::GetAnimVariation;ScriptExecutionContextAISubActionCover_Record
+	static function GetInvalidCoverID() : Uint64; // AISubActionCover_Record_Implementation::GetInvalidCoverID;
+	static function SelectCover(context : AIbehaviorScriptExecutionContext, cooldown : handle:gamedataAIActionCooldown_Record, consideredCoverID : Uint64, consideredRing : gamedataAIRingType, currentRing : gamedataAIRingType, compareRings : Bool) : Bool; // AISubActionCover_Record_Implementation::SelectCover;ScriptExecutionContextAIActionCooldown_RecordUint64gamedataAIRingTypegamedataAIRingTypeBool
+	static function SetCoverData(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCover_Record); // AISubActionCover_Record_Implementation::SetCoverData;ScriptExecutionContextAISubActionCover_Record
+	static function SetCoverExposureAnim(context : AIbehaviorScriptExecutionContext, puppet : whandle:ScriptedPuppet, coverID : Uint64, record : whandle:gamedataAISubActionCover_Record, target : whandle:gameObject, lineOfSightTolerance : Float); // AISubActionCover_Record_Implementation::SetCoverExposureAnim;ScriptExecutionContextScriptedPuppetUint64AISubActionCover_RecordGameObjectFloat
+	static function SetCurrentCover(context : AIbehaviorScriptExecutionContext); // AISubActionCover_Record_Implementation::SetCurrentCover;ScriptExecutionContext
+	static function SetDesiredCover(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCover_Record); // AISubActionCover_Record_Implementation::SetDesiredCover;ScriptExecutionContextAISubActionCover_Record
+	static function SetInitialCoverData(puppet : whandle:ScriptedPuppet, coverID : Uint64); // AISubActionCover_Record_Implementation::SetInitialCoverData;ScriptedPuppetUint64
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCover_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionCover_Record_Implementation::Update;ScriptExecutionContextAISubActionCover_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

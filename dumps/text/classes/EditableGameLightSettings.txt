@@ -1,0 +1,16 @@
+struct EditableGameLightSettings
+{
+	public    var componentName : CName;
+	public    var strength : Float;
+	public    var modifyStrength : Bool;
+	public    var intensity : Float;
+	public    var modifyIntensity : Bool;
+	public    var radius : Float;
+	public    var modifyRadius : Bool;
+	public    var color : Color;
+	public    var modifyColor : Bool;
+	public    var innerAngle : Float;
+	public    var modifyInnerAngle : Bool;
+	public    var outerAngle : Float;
+	public    var modifyOuterAngle : Bool;
+}

@@ -1,0 +1,14 @@
+import struct interopMaterialListDescriptor
+{
+	var chunksInfo : String;
+	var chunksLODInfo : String;
+	var numLayers : Uint32;
+	var isForward : Bool;
+	var isMultilayer : Bool;
+	var isLocalInstance : Bool;
+	var isTemplate : Bool;
+	var itemMaterialIndex : Uint32;
+	var materialName : String;
+	var appearanceName : String;
+	var availableMaterials : array:String;
+}

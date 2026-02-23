@@ -1,0 +1,1 @@
+{"b":"VirtualComponentBinder","d":0,"g":true,"f":[{"a":"VirtualComponentBinder::Bind;GameInstanceEntityIDCNameCName","b":"Bind","c":{"a":26,"c":{"b":"gamePersistentState"}},"d":56,"e":[{"a":{"b":"ScriptGameInstance"},"b":"game","c":0},{"a":{"b":"entEntityID"},"b":"entityID","c":0},{"a":{"a":14},"b":"componentName","c":0},{"a":{"a":14},"b":"psClassName","c":0}]}]}

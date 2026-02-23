@@ -1,0 +1,31 @@
+class OpticalCamoListener extends gameScriptStatusEffectListener
+{
+	private   var controller : whandle:gameuiCrosshairBaseGameController;
+
+	static function Create(controlller : whandle:gameuiCrosshairBaseGameController) : handle:OpticalCamoListener; // OpticalCamoListener::Create;gameuiCrosshairBaseGameController
+
+	function OnStatusEffectApplied(statusEffect : whandle:gamedataStatusEffect_Record); // OnStatusEffectApplied;StatusEffect_Record
+	function OnStatusEffectRemoved(statusEffect : whandle:gamedataStatusEffect_Record); // OnStatusEffectRemoved;StatusEffect_Record
+}
+
+import class gameScriptStatusEffectListener extends gameIStatusEffectListener
+{
+}
+
+import class abstract gameIStatusEffectListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

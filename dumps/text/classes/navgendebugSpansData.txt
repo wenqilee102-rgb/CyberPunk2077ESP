@@ -1,0 +1,6 @@
+import struct navgendebugSpansData
+{
+	var spans : array:navgendebugCompactSpan;
+	var areas : array:Uint8;
+	var filteredAreas : array:Uint8;
+}

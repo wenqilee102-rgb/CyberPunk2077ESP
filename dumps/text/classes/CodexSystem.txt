@@ -1,0 +1,53 @@
+class CodexSystem extends gameScriptableSystem
+{
+	private   var codex : array:SCodexRecord;
+	private   var blackboard : whandle:gameIBlackboard;
+
+	function AddCodexRecord(record : handle:gamedataCodexRecord_Record); // AddCodexRecord;CodexRecord_Record
+	function GetCodex() : array:SCodexRecord; // GetCodex;
+	function GetCodexRecordIndex(recordTweak : TweakDBID) : Int32; // GetCodexRecordIndex;TweakDBID
+	function GetCodexRecordPartContent(recordID : TweakDBID, partName : CName) : String; // GetCodexRecordPartContent;TweakDBIDCName
+	function GetCodexRecordParts(recordTweak : TweakDBID) : array:SCodexRecordPart; // GetCodexRecordParts;TweakDBID
+	function IsRecordLocked(recordID : TweakDBID) : Bool; // IsRecordLocked;TweakDBID
+	function IsRecordPartLocked(recordID : TweakDBID, partName : CName) : Bool; // IsRecordPartLocked;TweakDBIDCName
+	function LockRecord(recordTweak : TweakDBID); // LockRecord;TweakDBID
+	function OnAddCodexRecordRequest(request : handle:CodexAddRecordRequest); // OnAddCodexRecordRequest;CodexAddRecordRequest
+	function OnAttach(); // OnAttach;
+	function OnCodexLockRecordRequest(request : handle:CodexLockRecordRequest); // OnCodexLockRecordRequest;CodexLockRecordRequest
+	function OnCodexUnlockRecordRequest(request : handle:CodexUnlockRecordRequest); // OnCodexUnlockRecordRequest;CodexUnlockRecordRequest
+	function OnUnlockCodexPartRequest(request : handle:UnlockCodexPartRequest); // OnUnlockCodexPartRequest;UnlockCodexPartRequest
+	function SendCallback(); // SendCallback;
+	function UnlockCodexPart(recordTweak : TweakDBID, partName : CName); // UnlockCodexPart;TweakDBIDCName
+	function UnlockRecord(recordTweak : TweakDBID); // UnlockRecord;TweakDBID
+	function codexInit(); // codexInit;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

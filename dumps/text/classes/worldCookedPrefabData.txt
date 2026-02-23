@@ -1,0 +1,14 @@
+import class worldCookedPrefabData extends CResource
+{
+	var precookedDependencies : array:raRef:CResource;
+	var dependencies : array:rRef:CResource;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

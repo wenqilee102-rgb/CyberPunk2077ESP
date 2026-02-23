@@ -1,0 +1,7 @@
+struct PerkHoverEventTooltipData
+{
+	public    var widget : whandle:inkWidget;
+	public    var data : handle:IDisplayData;
+	public    var placement : gameuiETooltipPlacement;
+	public    var isShown : Bool;
+}

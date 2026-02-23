@@ -1,0 +1,34 @@
+import class gamedataFriendlyTargetAngleDistanceCoverSelectionParameters_Record extends gamedataCoverSelectionParameters_Record
+{
+	import function AngleDistanceScore() : Float; // AngleDistanceScore
+	import function CoverProtectionAngleMul() : Float; // CoverProtectionAngleMul
+	import function MaxScoreIfInRange() : Bool; // MaxScoreIfInRange
+	import function MinDot() : Float; // MinDot
+	import function PositionChangeThreshold() : Float; // PositionChangeThreshold
+}
+
+import class gamedataCoverSelectionParameters_Record extends gamedataTweakDBRecord
+{
+	import function ScoreOnlyForCombatTarget() : Bool; // ScoreOnlyForCombatTarget
+	import function VaidateOnlyForCombatTarget() : Bool; // VaidateOnlyForCombatTarget
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+struct ncartDoorScreenLineDataDef
+{
+	public    var lineNumber : Uint32;
+	public    var lineColor : Color;
+	public    var lineSymbolWidget : inkWidgetReference;
+}

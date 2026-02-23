@@ -1,0 +1,6 @@
+import struct gamemountingMountingInfo
+{
+	var childId : entEntityID;
+	var parentId : entEntityID;
+	var slotId : gamemountingMountingSlotId;
+}

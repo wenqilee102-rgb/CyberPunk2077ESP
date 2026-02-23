@@ -1,0 +1,5 @@
+import struct worldRelativeNodePathElement
+{
+	var prefab : String;
+	var nodeID : Uint64;
+}

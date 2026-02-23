@@ -1,0 +1,11 @@
+import struct entReplicatedLookAtRemove extends entReplicatedLookAtData
+{
+	var ref : animLookAtRef;
+	var hasOutTransition : Float;
+	var outTransitionSpeed : Float;
+}
+
+import struct entReplicatedLookAtData
+{
+	var creationNetTime : netTime;
+}

@@ -1,0 +1,22 @@
+import class GlobalIlluminationSettings extends IAreaSettings
+{
+	var multiBouceScale : curveData:Float;
+	var multiBouceSaturation : curveData:Float;
+	var emissiveScale : curveData:Float;
+	var diffuseScale : curveData:Float;
+	var localLightsScale : curveData:Float;
+	var lightScaleCompenensation : curveData:Float;
+	var reflectionCompensation : curveData:Float;
+	var ambientBase : curveData:HDRColor;
+	var rayTracedSkyRadianceScale : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

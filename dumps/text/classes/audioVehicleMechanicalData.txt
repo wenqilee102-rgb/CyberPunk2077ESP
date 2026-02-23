@@ -1,0 +1,22 @@
+import struct audioVehicleMechanicalData
+{
+	var engineStartEvent : CName;
+	var engineStopEvent : CName;
+	var gearUpBeginEvent : CName;
+	var gearUpEndEvent : CName;
+	var gearDownBeginEvent : CName;
+	var gearDownEndEvent : CName;
+	var throttleOnEvent : CName;
+	var throttleOffEvent : CName;
+	var suspensionSqueekEvent : CName;
+	var fullThrottleAppliedEvent : CName;
+	var acelleration : CName;
+	var speed : CName;
+	var gear : CName;
+	var brake : CName;
+	var rpm : CName;
+	var throttle : CName;
+	var sidewaysThrottle : CName;
+	var thrust : CName;
+	var temperature : CName;
+}

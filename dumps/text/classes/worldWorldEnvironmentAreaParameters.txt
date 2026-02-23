@@ -1,0 +1,5 @@
+import struct worldWorldEnvironmentAreaParameters
+{
+	var enable : Bool;
+	var globalLight : worldWorldGlobalLightParameters;
+}

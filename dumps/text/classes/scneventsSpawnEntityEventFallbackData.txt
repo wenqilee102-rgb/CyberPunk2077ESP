@@ -1,0 +1,8 @@
+import struct scneventsSpawnEntityEventFallbackData
+{
+	var owner : scnPerformerId;
+	var fallbackCachedBones : static:2,scneventsSpawnEntityEventCachedFallbackBone;
+	var fallbackAnimset : rRef:animAnimSet;
+	var fallbackAnimationName : CName;
+	var fallbackAnimTime : Float;
+}

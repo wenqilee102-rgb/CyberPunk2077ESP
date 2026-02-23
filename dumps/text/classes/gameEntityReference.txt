@@ -1,0 +1,9 @@
+import struct gameEntityReference
+{
+	var type : gameEntityReferenceType;
+	var reference : NodeRef;
+	var names : array:CName;
+	var slotName : CName;
+	var sceneActorContextName : CName;
+	var dynamicEntityUniqueName : CName;
+}

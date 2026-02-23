@@ -1,0 +1,11 @@
+import struct gameTelemetryDamage
+{
+	var attackType : gamedataAttackType;
+	var attackRecord : TweakDBID;
+	var damageAmount : Float;
+	var weapon : gameTelemetryInventoryItem;
+	var sourceEntity : gameTelemetrySourceEntity;
+	var hitCount : Uint32;
+	var distance : Float;
+	var time : Float;
+}

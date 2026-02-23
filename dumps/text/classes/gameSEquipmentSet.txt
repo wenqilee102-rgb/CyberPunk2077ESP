@@ -1,0 +1,6 @@
+import struct gameSEquipmentSet
+{
+	var setItems : array:gameSItemInfo;
+	var setName : CName;
+	var setType : gameEquipmentSetType;
+}

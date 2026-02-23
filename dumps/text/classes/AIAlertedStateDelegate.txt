@@ -1,0 +1,37 @@
+class AIAlertedStateDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	public    var attackInstigatorPosition : Vector4;
+
+	function DoLowerWeapon(context : AIbehaviorScriptExecutionContext) : Bool; // DoLowerWeapon;ScriptExecutionContext
+	function DoSetExplosionInstigatorPositionAsStimSource(context : AIbehaviorScriptExecutionContext) : Bool; // DoSetExplosionInstigatorPositionAsStimSource;ScriptExecutionContext
+	function DoSetRandomAimPointLeft(context : AIbehaviorScriptExecutionContext) : Bool; // DoSetRandomAimPointLeft;ScriptExecutionContext
+	function DoSetRandomAimPointRight(context : AIbehaviorScriptExecutionContext) : Bool; // DoSetRandomAimPointRight;ScriptExecutionContext
+	function GetPositionAroundInstigator(context : AIbehaviorScriptExecutionContext, xOffset : Float, yOffset : Float, zOffset : Float) : Vector4; // GetPositionAroundInstigator;ScriptExecutionContextFloatFloatFloat
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+class NewPerksRequirementsLinksManager extends IScriptable
+{
+	public    var cache : array:handle:NewPerksRequirementsLinks;
+
+	function Clear(); // Clear;
+	function Get(perk : gamedataNewPerkType) : handle:NewPerksRequirementsLinks; // Get;gamedataNewPerkType
+	function Push(perk : gamedataNewPerkType, link : gamedataNewPerkType); // Push;gamedataNewPerkTypegamedataNewPerkType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

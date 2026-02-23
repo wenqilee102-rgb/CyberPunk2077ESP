@@ -1,0 +1,13 @@
+import class workEquipItemToSlotAction extends workIWorkspotItemAction
+{
+	var item : TweakDBID;
+	var itemSlot : TweakDBID;
+}
+
+import class abstract workIWorkspotItemAction extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

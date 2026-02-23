@@ -1,0 +1,30 @@
+import class gamedataShooterBackground_Record extends gamedataTweakDBRecord
+{
+	import function GetLayerListCount() : Int32; // GetLayerListCount
+	import function GetLayerListItem(index : Int32) : whandle:gamedataShooterLayerInfo_Record; // GetLayerListItem
+	import function GetLayerListItemHandle(index : Int32) : handle:gamedataShooterLayerInfo_Record; // GetLayerListItemHandle
+	import function LayerList(out outList : array:whandle:gamedataShooterLayerInfo_Record); // LayerList
+	import function LayerListContains(item : whandle:gamedataShooterLayerInfo_Record) : Bool; // LayerListContains
+	import function StartSFX() : CName; // StartSFX
+	import function StopSFX() : CName; // StopSFX
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

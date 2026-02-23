@@ -1,0 +1,28 @@
+import class worldWeatherAreaNotifier extends worldITriggerAreaNotifer
+{
+	var horizontalFadeDistance : Float;
+	var verticalFadeDistance : Float;
+	var weatherStateNames : array:CName;
+	var weatherStateValues : array:Float;
+}
+
+import class abstract worldITriggerAreaNotifer extends IScriptable
+{
+	var isEnabled : Bool;
+	var includeChannels : TriggerChannel;
+	var excludeChannels : Uint32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

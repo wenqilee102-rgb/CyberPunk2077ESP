@@ -1,0 +1,6 @@
+import struct gameuiPerspectiveInfo
+{
+	var name : CName;
+	var fpp : CName;
+	var tpp : CName;
+}

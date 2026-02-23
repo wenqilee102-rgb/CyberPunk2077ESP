@@ -1,0 +1,4 @@
+struct ScrollingText
+{
+	public    var textArray : array:String;
+}

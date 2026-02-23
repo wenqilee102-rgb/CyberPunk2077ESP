@@ -1,0 +1,28 @@
+import class senseSimpleCone extends senseIShape
+{
+	var position1 : Vector4;
+	var position2 : Vector4;
+	var radius1 : Float;
+	var radius2 : Float;
+}
+
+import class abstract senseIShape extends IScriptable
+{
+	var id : TweakDBID;
+
+	import function GetType() : senseEShapeType; // GetType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

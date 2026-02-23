@@ -1,0 +1,1 @@
+{"a":"ScannerChunk","b":"ScannerVehicleHorsepower","d":0,"e":[{"a":{"a":6},"b":"horsepower","c":129}],"f":[{"a":"GetHorsepower;","b":"GetHorsepower","c":{"a":6},"d":176},{"a":"GetType;","b":"GetType","c":{"b":"ScannerDataType"},"d":32},{"a":"IsValid;","b":"IsValid","c":{"a":1},"d":160},{"a":"Set;Int32","b":"Set","d":48,"e":[{"a":{"a":6},"b":"hp","c":0}]}]}

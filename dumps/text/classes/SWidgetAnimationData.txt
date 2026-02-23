@@ -1,0 +1,13 @@
+struct SWidgetAnimationData
+{
+	public    var animationName : CName;
+	public    var playbackOptions : inkanimPlaybackOptions;
+	public    var lockWhenActive : Bool;
+	public    var animProxy : handle:inkanimProxy;
+	public    var onFinish : CName;
+	public    var onStart : CName;
+	public    var onPasue : CName;
+	public    var onResume : CName;
+	public    var onStartLoop : CName;
+	public    var onEndLoop : CName;
+}

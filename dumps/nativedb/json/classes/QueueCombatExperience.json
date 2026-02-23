@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"QueueCombatExperience","d":0,"e":[{"a":{"a":10},"b":"amount","c":128},{"a":{"b":"gamedataProficiencyType"},"b":"experienceType","c":128},{"a":{"b":"entEntityID"},"b":"entity","c":128}]}

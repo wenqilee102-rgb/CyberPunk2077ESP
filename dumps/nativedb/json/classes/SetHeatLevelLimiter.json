@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"SetHeatLevelLimiter","d":0,"e":[{"a":{"a":6},"b":"HeatLevelMin","c":128},{"a":{"a":6},"b":"HeatLevelMax","c":128},{"a":{"a":1},"b":"HeatLevelReset","c":128},{"a":{"a":14},"b":"source","c":128}],"f":[{"a":"GetFriendlyDesctiption;","b":"GetFriendlyDesctiption","c":{"a":12},"d":48}]}

@@ -1,0 +1,6 @@
+import struct entMarketingAnimationEntry
+{
+	var animationName : CName;
+	var time : Float;
+	var frame : Float;
+}

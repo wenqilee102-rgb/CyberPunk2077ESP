@@ -1,0 +1,6 @@
+enum AIbehaviorCombatModes
+{
+	Default = 0,
+	LowFPS = 1,
+	Background = 2
+}

@@ -1,0 +1,15 @@
+import class effectPointLightPlayData extends effectPlacedTrackItemPlayData
+{
+}
+
+import class abstract effectPlacedTrackItemPlayData extends effectTrackItemPlayData
+{
+}
+
+import class abstract effectTrackItemPlayData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamestateMachineparameterTypeClimbParametersBase","b":"gamestateMachineparameterTypeVaultParameters","c":"VaultParameters","d":8,"f":[{"a":"SetMinSpeed","d":4,"e":[{"a":{"a":10},"b":"val","c":0}]},{"a":"SetObstacleDepth","d":4,"e":[{"a":{"a":10},"b":"val","c":0}]},{"a":"SetObstacleDestination","d":4,"e":[{"a":{"b":"Vector4"},"b":"val","c":0}]}]}

@@ -1,0 +1,13 @@
+struct AOEAreaSetup
+{
+	public    var areaEffect : TweakDBID;
+	public    var actionName : TweakDBID;
+	public    var blocksVisibility : Bool;
+	public    var isDangerous : Bool;
+	public    var activateOnStartup : Bool;
+	public    var effectsOnlyActiveInArea : Bool;
+	public    var duration : Float;
+	public    var actionWidgetRecord : TweakDBID;
+	public    var deviceWidgetRecord : TweakDBID;
+	public    var thumbnailWidgetRecord : TweakDBID;
+}

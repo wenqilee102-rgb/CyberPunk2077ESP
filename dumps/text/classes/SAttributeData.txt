@@ -1,0 +1,5 @@
+struct SAttributeData
+{
+	public    var type : gamedataAttributeDataType;
+	public    var unlockedPerks : array:SNewPerk;
+}

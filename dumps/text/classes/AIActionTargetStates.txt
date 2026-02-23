@@ -1,0 +1,5 @@
+struct AIActionTargetStates
+{
+	public    var npcStates : AIActionNPCStates;
+	public    var playerStates : AIActionPlayerStates;
+}

@@ -1,0 +1,10 @@
+import class meshMeshAppearance extends ISerializable
+{
+	var name : CName;
+	var chunkMaterials : array:CName;
+	var tags : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

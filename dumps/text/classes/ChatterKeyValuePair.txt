@@ -1,0 +1,6 @@
+struct ChatterKeyValuePair
+{
+	public    var Key : CRUID;
+	public    var Value : whandle:ChatterLineLogicController;
+	public    var Owner : whandle:gameObject;
+}

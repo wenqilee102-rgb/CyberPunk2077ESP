@@ -1,0 +1,8 @@
+import class abstract animIAnimNode_PostProcess extends ISerializable
+{
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

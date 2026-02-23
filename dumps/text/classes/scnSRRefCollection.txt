@@ -1,0 +1,17 @@
+import struct scnSRRefCollection
+{
+	var ridAnimations : array:scnRidAnimationSRRef;
+	var ridAnimSets : array:scnRidAnimSetSRRef;
+	var ridFacialAnimSets : array:scnRidAnimSetSRRef;
+	var ridCyberwareAnimSets : array:scnRidAnimSetSRRef;
+	var ridDeformationAnimSets : array:scnRidAnimSetSRRef;
+	var lipsyncAnimSets : array:scnLipsyncAnimSetSRRef;
+	var ridCameraAnimations : array:scnRidCameraAnimationSRRef;
+	var cinematicAnimSets : array:scnCinematicAnimSetSRRef;
+	var gameplayAnimSets : array:scnGameplayAnimSetSRRef;
+	var dynamicAnimSets : array:scnDynamicAnimSetSRRef;
+	var cinematicAnimNames : array:scnAnimSetAnimNames;
+	var gameplayAnimNames : array:scnAnimSetAnimNames;
+	var dynamicAnimNames : array:scnAnimSetDynAnimNames;
+	var ridAnimationContainers : array:scnRidAnimationContainerSRRef;
+}

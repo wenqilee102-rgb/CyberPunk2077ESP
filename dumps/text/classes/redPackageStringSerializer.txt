@@ -1,0 +1,7 @@
+import struct redPackageStringSerializer extends redPackageCustomTypeSerializer
+{
+}
+
+import struct abstract redPackageCustomTypeSerializer
+{
+}

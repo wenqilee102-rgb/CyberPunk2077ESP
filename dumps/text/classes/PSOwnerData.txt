@@ -1,0 +1,5 @@
+struct PSOwnerData
+{
+	public    var id : gamePersistentID;
+	public    var className : CName;
+}

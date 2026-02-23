@@ -1,0 +1,1 @@
+{"a":"gamedataEffector_Record","b":"gamedataForceDismembermentEffector_Record","c":"ForceDismembermentEffector_Record","d":24,"f":[{"a":"BodyPart","c":{"a":12},"d":4},{"a":"DismembermentChance","c":{"a":10},"d":4},{"a":"IsCritical","c":{"a":1},"d":4},{"a":"ShouldKillNPC","c":{"a":1},"d":4},{"a":"SkipDeathAnim","c":{"a":1},"d":4},{"a":"WoundType","c":{"a":12},"d":4}]}

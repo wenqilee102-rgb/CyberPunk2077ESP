@@ -1,0 +1,25 @@
+class UIInventoryItemStat extends IScriptable
+{
+	public    var Type : gamedataStatType;
+	public    var Value : Float;
+	public    var PropertiesProvider : handle:IUIInventoryItemStatsProvider;
+	private   var properties : handle:UIItemStatProperties;
+	private   var propertiesFetched : Bool;
+
+	function GetProperties() : whandle:UIItemStatProperties; // GetProperties;
+	function SetProperties(properties : handle:UIItemStatProperties); // SetProperties;UIItemStatProperties
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

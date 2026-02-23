@@ -1,0 +1,6 @@
+import struct worldDesiredSlotsCountInfo
+{
+	var siredSlotsCount : Float;
+	var nCoeff : Float;
+	var nCoeffWhenMounted : Float;
+}

@@ -1,0 +1,24 @@
+class abstract AISubActionGeneratePointOfInterestTarget_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record); // AISubActionGeneratePointOfInterestTarget_Record_Implementation::Activate;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record, duration : Float, interrupted : Bool); // AISubActionGeneratePointOfInterestTarget_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_RecordFloatBool
+	static function GetClosestThreat(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record) : handle:gameObject; // AISubActionGeneratePointOfInterestTarget_Record_Implementation::GetClosestThreat;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_Record
+	static function GetFriendlyTarget(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record) : handle:gameObject; // AISubActionGeneratePointOfInterestTarget_Record_Implementation::GetFriendlyTarget;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_Record
+	static function GetSquadMate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record) : handle:gameObject; // AISubActionGeneratePointOfInterestTarget_Record_Implementation::GetSquadMate;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_Record
+	static function SetPointOfInterest(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record); // AISubActionGeneratePointOfInterestTarget_Record_Implementation::SetPointOfInterest;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionGeneratePointOfInterestTarget_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionGeneratePointOfInterestTarget_Record_Implementation::Update;ScriptExecutionContextAISubActionGeneratePointOfInterestTarget_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

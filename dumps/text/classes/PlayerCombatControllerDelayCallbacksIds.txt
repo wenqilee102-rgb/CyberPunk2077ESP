@@ -1,0 +1,4 @@
+struct PlayerCombatControllerDelayCallbacksIds
+{
+	public    var crouch : gameDelayID;
+}

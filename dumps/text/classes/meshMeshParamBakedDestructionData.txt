@@ -1,0 +1,13 @@
+import class meshMeshParamBakedDestructionData extends meshMeshParameter
+{
+	var regionData : array:meshRegionData;
+	var indices : array:DataBuffer;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

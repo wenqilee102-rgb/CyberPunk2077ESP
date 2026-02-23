@@ -1,0 +1,7 @@
+import class abstract effectIPlacementEntries extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

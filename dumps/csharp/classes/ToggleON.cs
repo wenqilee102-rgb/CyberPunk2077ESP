@@ -1,0 +1,31 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class ToggleON : ActionBool
+	{
+		private CString _trueRecordName;
+		private CString _falseRecordName;
+
+		[Ordinal(39)] 
+		[RED("TrueRecordName")] 
+		public CString TrueRecordName
+		{
+			get => GetProperty(ref _trueRecordName);
+			set => SetProperty(ref _trueRecordName, value);
+		}
+
+		[Ordinal(40)] 
+		[RED("FalseRecordName")] 
+		public CString FalseRecordName
+		{
+			get => GetProperty(ref _falseRecordName);
+			set => SetProperty(ref _falseRecordName, value);
+		}
+
+		public ToggleON(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

@@ -1,0 +1,8 @@
+import struct inkVideoSequenceEntry
+{
+	var videoResource : raRef:Bink;
+	var audioEvent : CName;
+	var syncToAudio : Bool;
+	var retriggerAudioOnLoop : Bool;
+	var loop : Bool;
+}

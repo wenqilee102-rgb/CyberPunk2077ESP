@@ -1,0 +1,9 @@
+import struct gamePopupSettings
+{
+	var closeAtInput : Bool;
+	var pauseGame : Bool;
+	var position : gamePopupPosition;
+	var fullscreen : Bool;
+	var hideInMenu : Bool;
+	var margin : inkMargin;
+}

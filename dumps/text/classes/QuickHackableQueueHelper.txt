@@ -1,0 +1,31 @@
+class QuickHackableQueueHelper extends IScriptable
+{
+	static function BumpQuickHackUploadStatPoolValue(action : handle:ScriptableDeviceAction, player : handle:gameObject, gameInstance : ScriptGameInstance); // QuickHackableQueueHelper::BumpQuickHackUploadStatPoolValue;ScriptableDeviceActionGameObjectGameInstance
+	static function CanNewActionBeQueued(currentlyUploadingAction : handle:ScriptableDeviceAction) : Bool; // QuickHackableQueueHelper::CanNewActionBeQueued;ScriptableDeviceAction
+	static function CheckAndSetInactivityReasonForVehicleActions(actions : array:handle:gamedeviceAction, scriptableDeviceAction : handle:ScriptableDeviceAction) : Bool; // QuickHackableQueueHelper::CheckAndSetInactivityReasonForVehicleActions;array<DeviceAction>ScriptableDeviceAction
+	static function DecreaseQuickHackQueueCount(player : handle:PlayerPuppet); // QuickHackableQueueHelper::DecreaseQuickHackQueueCount;PlayerPuppet
+	static function GetFinisherHealthThresholdIncreaseForQueue(player : handle:gameObject, target : handle:gameObject) : Float; // QuickHackableQueueHelper::GetFinisherHealthThresholdIncreaseForQueue;GameObjectGameObject
+	static function IsActionQueueEnabled(currentlyUploadingAction : handle:ScriptableDeviceAction, playerPuppet : handle:PlayerPuppet) : Bool; // QuickHackableQueueHelper::IsActionQueueEnabled;ScriptableDeviceActionPlayerPuppet
+	static function IsActionQueueFull(currentlyUploadingAction : handle:ScriptableDeviceAction) : Bool; // QuickHackableQueueHelper::IsActionQueueFull;ScriptableDeviceAction
+	static function IsAwarenessBumpingAllowed(target : handle:ScriptedPuppet) : Bool; // QuickHackableQueueHelper::IsAwarenessBumpingAllowed;ScriptedPuppet
+	static function IsQueuePerkBought(playerPuppet : handle:PlayerPuppet) : Bool; // QuickHackableQueueHelper::IsQueuePerkBought;PlayerPuppet
+	static function IsStatusEffectStackable(statusEffectRecord : handle:gamedataStatusEffect_Record) : Bool; // QuickHackableQueueHelper::IsStatusEffectStackable;StatusEffect_Record
+	static function PopFromQuickHackQueue(evt : handle:UploadProgramProgressEvent, gameplayRoleComponent : handle:GameplayRoleComponent) : handle:QuickSlotCommandUsed; // QuickHackableQueueHelper::PopFromQuickHackQueue;UploadProgramProgressEventGameplayRoleComponent
+	static function PutActionInQuickhackQueue(action : handle:ScriptableDeviceAction, gameplayRoleComponent : handle:GameplayRoleComponent, gameInstance : ScriptGameInstance, qhIndicatorSlotName : CName, requesterObject : handle:gameObject) : Bool; // QuickHackableQueueHelper::PutActionInQuickhackQueue;ScriptableDeviceActionGameplayRoleComponentGameInstanceCNameGameObject
+	static function RemoveQuickhackQueue(gameplayRoleComponent : handle:GameplayRoleComponent, currentlyUploadingAction : handle:ScriptableDeviceAction); // QuickHackableQueueHelper::RemoveQuickhackQueue;GameplayRoleComponentScriptableDeviceAction
+	static function SetInactivityReasonForAction(scriptableDeviceAction : handle:ScriptableDeviceAction, actionName : CName, currentlyUploadingAction : handle:ScriptableDeviceAction, failureExplanation : String) : Bool; // QuickHackableQueueHelper::SetInactivityReasonForAction;ScriptableDeviceActionCNameScriptableDeviceActionString
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

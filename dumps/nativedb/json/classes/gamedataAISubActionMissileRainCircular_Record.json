@@ -1,0 +1,1 @@
+{"a":"gamedataAISubActionShootWithWeapon_Record","b":"gamedataAISubActionMissileRainCircular_Record","c":"AISubActionMissileRainCircular_Record","d":24,"f":[{"a":"MaxRadius","c":{"a":10},"d":4},{"a":"MinRadius","c":{"a":10},"d":4},{"a":"MissilesPerLaunch","c":{"a":6},"d":4}]}

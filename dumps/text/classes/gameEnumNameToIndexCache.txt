@@ -1,0 +1,5 @@
+import struct gameEnumNameToIndexCache
+{
+	import static function GetIndex(cache : script_ref:gameEnumNameToIndexCache, enumValueName : CName, out index : Int32) : Bool; // GetIndex
+	import static function Rebuild(cache : script_ref:gameEnumNameToIndexCache, enumTypeName : CName) : Bool; // Rebuild
+}

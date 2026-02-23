@@ -1,0 +1,26 @@
+class GameplayConditionContainer extends IScriptable
+{
+	protected var logicOperator : ELogicOperator;
+	protected var conditionGroups : array:ConditionGroupData;
+
+	function CreateDescription(obj : handle:gameObject, entID : entEntityID) : array:ConditionData; // CreateDescription;GameObjectEntityID
+	function Evaluate(requester : handle:gameObject) : Bool; // Evaluate;GameObject
+	function Evaluate(requester : handle:gameObject, group : script_ref:ConditionGroupData) : Bool; // Evaluate;GameObjectscript_ref<ConditionGroupData>
+	function GetGroupsAmount() : Int32; // GetGroupsAmount;
+	function GetOperator() : ELogicOperator; // GetOperator;
+	function HasAdditionalRequirements() : Bool; // HasAdditionalRequirements;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

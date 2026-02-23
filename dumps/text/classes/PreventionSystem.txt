@@ -1,0 +1,465 @@
+class PreventionSystem extends gameScriptableSystem
+{
+	private   var districtManager : handle:DistrictManager;
+	private   var agentRegistry : handle:PoliceAgentRegistry;
+	private   var ignoreSecurityAreasByQuest : Bool;
+	private   var forceEternalGreyStars : Bool;
+	private   var blockOnFootSpawnByQuest : Bool;
+	private   var blockVehicleSpawnByQuest : Bool;
+	private   var blockReconDroneSpawnByQuest : Bool;
+	private   var crimeScoreMultiplierByQuest : Float;
+	private   var preventionQuestEventSources : array:CName;
+	private   var systemLockSources : array:CName;
+	private   var systemEnabled : Bool;
+	private   var player : whandle:PlayerPuppet;
+	private   var preventionPreset : whandle:gamedataDistrictPreventionData_Record;
+	private   var preventionDataMatrix : whandle:gamedataPreventionHeatDataMatrix_Record;
+	private   var preventionDataTable : whandle:gamedataPreventionHeatTable_Record;
+	private   var systemLocked : Bool;
+	private   var nodeEventSources : array:CName;
+	private   var heatStage : EPreventionHeatStage;
+	private   var heatChangeReason : String;
+	private   var ignoreSecurityAreas : Bool;
+	private   var playerIsInSecurityArea : array:gamePersistentID;
+	private   var playerIsInPreventionFreeArea : Bool;
+	private   var policeSecuritySystems : array:gamePersistentID;
+	private   var agentGroupsList : array:handle:PreventionAgents;
+	private   var lastKnownPosition : Vector4;
+	private   var lastKnownVehicle : whandle:vehicleBaseObject;
+	private   var districtMultiplier : Float;
+	private   var shouldForceStarStateUIToActive : Bool;
+	private   var lastAttackTime : Float;
+	private   var lastAttackTargetIDs : array:entEntityID;
+	private   var viewers : array:whandle:gameObject;
+	private   var hasViewers : Bool;
+	private   var starState : EStarState;
+	private   var starStateUIChanged : Bool;
+	private   var isPlayerMounted : Bool;
+	private   var policeKnowsPlayerLocation : Bool;
+	private   var isInitialSearchState : Bool;
+	private   var heatLevelChanged : Bool;
+	private   var playerCrossedBufferDistance : Bool;
+	private   var crimescoreTimerDelayID : gameDelayID;
+	private   var starStateBufferTimerDelayID : gameDelayID;
+	private   var beliefAccuracyTimerDelayID : gameDelayID;
+	private   var blinkingStatusDelayID : gameDelayID;
+	private   var searchingStatusDelayID : gameDelayID;
+	private   var transitionToGreyStateDelayID : gameDelayID;
+	private   var policemenSpawnDelayID : gameDelayID;
+	private   var securityAreaResetDelayID : gameDelayID;
+	private   var inputlockDelayID : gameDelayID;
+	private   var freeAreaResetDelayID : gameDelayID;
+	private   var securityAreaResetCheck : Bool;
+	private   var hadOngoingSpawnRequest : Bool;
+	private   var totalCrimeScore : Float;
+	private   var canSpawnFallbackEarly : Bool;
+	private   var failsafePoliceRecordT1 : TweakDBID;
+	private   var failsafePoliceRecordT2 : TweakDBID;
+	private   var failsafePoliceRecordT3 : TweakDBID;
+	private   var blinkReasonsStack : array:CName;
+	private   var wantedBarBlackboard : whandle:gameIBlackboard;
+	private   var onPlayerChoiceCallID : handle:redCallbackObject;
+	private   var playerAttachedCallbackID : Uint32;
+	private   var playerDetachedCallbackID : Uint32;
+	private   var playerHLSID : handle:redCallbackObject;
+	private   var playerVehicleStateID : handle:redCallbackObject;
+	private   var playerHLS : gamePSMHighLevel;
+	private   var playerVehicleState : gamePSMVehicle;
+	private   var unhandledInputsReceived : Int32;
+	private   var preventionUnitKilledDuringLock : Bool;
+	private   var previousHitTargetID : entEntityID;
+	private   var previousHitAttackTime : Float;
+	private   var reconPhaseEnabled : Bool;
+	private   var reconDeployed : Bool;
+	private   var reconDestroyed : Bool;
+	private   var minHeatLevel : EPreventionHeatStage;
+	private   var maxHeatLevel : EPreventionHeatStage;
+	private   var defaultHeatLevels : Bool;
+	private   var vehicleSpawnBlockSide : EVehicleSpawnBlockSide;
+	private   var damageToPlayerMultiplier : Float;
+	private   var chaseMultiplier : Float;
+	private   var policeChaseBlackboard : whandle:gameIBlackboard;
+	private   var blockShootingFromVehicle : Bool;
+	private   var Debug_ProcessReason : EPreventionDebugProcessReason;
+	private   var Debug_LastAttackType : gamedataAttackType;
+	private   var Debug_LastDamageDealt : Float;
+	private   var Debug_LastCrimeDistance : Float;
+	private   var Debug_lastAVRequestedSpawnPosition : Vector3;
+	private   var temp_const_false : Bool;
+	private   var preventionTickCaller : handle:IntervalCaller;
+	private   var roadblockadeRespawnTickCaller : handle:IntervalCaller;
+	private   var maxtacTicketID : Uint32;
+	private   var avSpawnPointList : array:Vector3;
+	private   var maxAllowedDistanceToPlayer : Float;
+	private   var lastAVRequestedSpawnPositionsArray : array:Vector4;
+	private   var shouldPreventionUnitsStartRetreating : Bool;
+	private   var numberOfMaxtacSquadsSpawned : Int32;
+	private   var maxtacTroopBeingAliveTimeStamp : Float;
+	private   var civilianVehicleDestructionCount : Int32;
+	private   var lastCivilianVehicleDestructionTimeStamp : Float;
+	private   var civilianVehicleDestructionThreshold : Int32;
+	private   var civilianVehicleDestructionTimeout : Float;
+	private   var vehicleSpawnTickCaller : handle:IntervalCaller;
+	private   var ressuplyVehicleTicketCaller : handle:IntervalCaller;
+	private   var isVehicleDelayOver : Bool;
+	private   var currentVehicleTicketCount : Int32;
+	private   var failedVehicleSpawnAttempts : Int32;
+	private   var codeRedReinforcement : Bool;
+	private   var lastStarChangeTimeStamp : Float;
+	private   var firstStarTimeStamp : Float;
+	private   var setCallRejectionIncrement : Bool;
+
+	static function CanPreventionReact(game : ScriptGameInstance) : Bool; // PreventionSystem::CanPreventionReact;GameInstance
+	static function ChasePlayer(vehicle : whandle:vehicleWheeledBaseObject); // PreventionSystem::ChasePlayer;WheeledObject
+	static function CheckNPCSpawnedType(game : ScriptGameInstance, entityID : entEntityID, spawnedTypeToCheck : gameDynamicVehicleType) : Bool; // PreventionSystem::CheckNPCSpawnedType;GameInstanceEntityIDDynamicVehicleType
+	static function CombatStartedRequestToPreventionSystem(context : ScriptGameInstance, requester : whandle:gameObject); // PreventionSystem::CombatStartedRequestToPreventionSystem;GameInstanceGameObject
+	static function CreateNewDamageRequest(context : ScriptGameInstance, target : handle:gameObject, attackType : gamedataAttackType, damageDealt : Float, optional isTargetKilled : Bool); // PreventionSystem::CreateNewDamageRequest;GameInstanceGameObjectgamedataAttackTypeFloatBool
+	static function CreateNewPreventionDamageRequest(context : ScriptGameInstance, target : handle:gameObject, attackTime : Float, attackType : gamedataAttackType, damageDealt : Float, isTargetKilled : Bool); // PreventionSystem::CreateNewPreventionDamageRequest;GameInstanceGameObjectFloatgamedataAttackTypeFloatBool
+	static function CrimeWitnessRequestToPreventionSystem(context : ScriptGameInstance, criminalPosition : Vector4); // PreventionSystem::CrimeWitnessRequestToPreventionSystem;GameInstanceVector4
+	static function ForceStarStateToActive(context : ScriptGameInstance, value : Bool); // PreventionSystem::ForceStarStateToActive;GameInstanceBool
+	static function GetAgentRegistry(context : ScriptGameInstance) : handle:PoliceAgentRegistry; // PreventionSystem::GetAgentRegistry;GameInstance
+	static function GetDamageReactionThreshold() : Float; // PreventionSystem::GetDamageReactionThreshold;
+	static function GetDamageToPlayerMultiplier(game : ScriptGameInstance) : Float; // PreventionSystem::GetDamageToPlayerMultiplier;GameInstance
+	static function GetLastKnownPlayerVehicle(context : ScriptGameInstance) : handle:vehicleBaseObject; // PreventionSystem::GetLastKnownPlayerVehicle;GameInstance
+	static function GetPreventionHeatTableRecord(game : ScriptGameInstance) : whandle:gamedataPreventionHeatTable_Record; // PreventionSystem::GetPreventionHeatTableRecord;GameInstance
+	static function GetPreventionQuestDisabledFactName() : CName; // PreventionSystem::GetPreventionQuestDisabledFactName;
+	static function GetPreventionQuestDisabledGenericQuestReason() : CName; // PreventionSystem::GetPreventionQuestDisabledGenericQuestReason;
+	static function GetPreventionQuestDisabledTweakContentTag() : CName; // PreventionSystem::GetPreventionQuestDisabledTweakContentTag;
+	static function GetSystemName() : CName; // PreventionSystem::GetSystemName;
+	static function IsChasingPlayer(game : ScriptGameInstance) : Bool; // PreventionSystem::IsChasingPlayer;GameInstance
+	static function IsPlayerInAPoliceCarChase(gameInstance : ScriptGameInstance) : Bool; // PreventionSystem::IsPlayerInAPoliceCarChase;GameInstance
+	static function IsPreventionMaxTac(context : ScriptGameInstance, owner : handle:gamePuppet) : Bool; // PreventionSystem::IsPreventionMaxTac;GameInstancegamePuppet
+	static function LogChaseVehicleInitBehaviorError(wheeledVehicleObject : whandle:vehicleWheeledBaseObject, strat : vehiclePoliceStrategy); // PreventionSystem::LogChaseVehicleInitBehaviorError;WheeledObjectvehiclePoliceStrategy
+	static function NotifyPolice(owner : handle:gameObject); // PreventionSystem::NotifyPolice;GameObject
+	static function NotifyVehicleExplosion(veh : handle:vehicleBaseObject); // PreventionSystem::NotifyVehicleExplosion;VehicleObject
+	static function PreventionPoliceSecuritySystemRequest(context : ScriptGameInstance, securitySystemID : gamePersistentID); // PreventionSystem::PreventionPoliceSecuritySystemRequest;GameInstancePersistentID
+	static function PreventionSecurityAreaEnterRequest(context : ScriptGameInstance, playerIsIn : Bool, areaID : gamePersistentID); // PreventionSystem::PreventionSecurityAreaEnterRequest;GameInstanceBoolPersistentID
+	static function QueueRequest(context : ScriptGameInstance, request : handle:gameScriptableSystemRequest, optional delay : Float) : Bool; // PreventionSystem::QueueRequest;GameInstanceScriptableSystemRequestFloat
+	static function RegisterAsViewerToPreventionSystem(context : ScriptGameInstance, requester : handle:gameObject); // PreventionSystem::RegisterAsViewerToPreventionSystem;GameInstanceGameObject
+	static function RegisterToPreventionSystem(context : ScriptGameInstance, requester : handle:Device); // PreventionSystem::RegisterToPreventionSystem;GameInstanceDevice
+	static function SetLastKnownPlayerPosition(context : ScriptGameInstance, value : Vector4); // PreventionSystem::SetLastKnownPlayerPosition;GameInstanceVector4
+	static function SetLastKnownPlayerVehicle(context : ScriptGameInstance, value : whandle:vehicleBaseObject); // PreventionSystem::SetLastKnownPlayerVehicle;GameInstanceVehicleObject
+	static function SetPlayerMounted(context : ScriptGameInstance, value : Bool); // PreventionSystem::SetPlayerMounted;GameInstanceBool
+	static function SetSpawnCodeRedReinforcement(game : ScriptGameInstance, shouldSpawnReinforcement : Bool); // PreventionSystem::SetSpawnCodeRedReinforcement;GameInstanceBool
+	static function ShouldPreventionSystemReactToAttack(target : whandle:gameObject, attackTime : Float, istargetDefeated : Bool) : Bool; // PreventionSystem::ShouldPreventionSystemReactToAttack;GameObjectFloatBool
+	static function ShouldPreventionSystemReactToCombat(puppet : whandle:ScriptedPuppet) : Bool; // PreventionSystem::ShouldPreventionSystemReactToCombat;ScriptedPuppet
+	static function ShouldPreventionSystemReactToDamageDealt(puppet : whandle:ScriptedPuppet) : Bool; // PreventionSystem::ShouldPreventionSystemReactToDamageDealt;ScriptedPuppet
+	static function ShouldReactionBeAgressive(game : ScriptGameInstance) : Bool; // PreventionSystem::ShouldReactionBeAgressive;GameInstance
+	static function ShowMessage(gameInstance : ScriptGameInstance, message : script_ref:String, time : Float); // PreventionSystem::ShowMessage;GameInstancescript_ref<String>Float
+	static function StartActiveVehicleBehaviour(context : ScriptGameInstance, wheeledVehicleObject : whandle:vehicleWheeledBaseObject); // PreventionSystem::StartActiveVehicleBehaviour;GameInstanceWheeledObject
+	static function StartDriveToPoint(vehicle : whandle:vehicleWheeledBaseObject) : Bool; // PreventionSystem::StartDriveToPoint;WheeledObject
+	static function StartPatrol(vehicle : whandle:vehicleWheeledBaseObject, ps : handle:PreventionSystem); // PreventionSystem::StartPatrol;WheeledObjectPreventionSystem
+	static function StartRoadblockNPCAgentBehaviour(unit : whandle:ScriptedPuppet); // PreventionSystem::StartRoadblockNPCAgentBehaviour;ScriptedPuppet
+	static function UnRegisterAsViewerToPreventionSystem(context : ScriptGameInstance, requester : handle:gameObject); // PreventionSystem::UnRegisterAsViewerToPreventionSystem;GameInstanceGameObject
+	static function UnRegisterToPreventionSystem(context : ScriptGameInstance, requester : handle:Device); // PreventionSystem::UnRegisterToPreventionSystem;GameInstanceDevice
+	static function UseCWMask(game : ScriptGameInstance); // PreventionSystem::UseCWMask;GameInstance
+	static function VehicleRegistered(vehicle : whandle:vehicleBaseObject) : Bool; // PreventionSystem::VehicleRegistered;VehicleObject
+
+	event OnPlayerChoice(value : Variant) : Bool; // OnPlayerChoice
+	event OnPlayerHLSChange(value : Int32) : Bool; // OnPlayerHLSChange
+	event OnPlayerVehicleStateChange(value : Int32) : Bool; // OnPlayerVehicleStateChange
+
+	function AreTurretsActive() : Bool; // AreTurretsActive;
+	function CalculateCrimeScoreForNPC(request : handle:PreventionDamageRequest); // CalculateCrimeScoreForNPC;PreventionDamageRequest
+	function CalculateCrimeScoreForVehicle(request : handle:PreventionDamageRequest); // CalculateCrimeScoreForVehicle;PreventionDamageRequest
+	function CanPreventionReactToInput() : Bool; // CanPreventionReactToInput;
+	function CanRequestAVSpawn() : Bool; // CanRequestAVSpawn;
+	function CanSpawnAvAtPosition(playerPosition : Vector4, position : Vector4) : Bool; // CanSpawnAvAtPosition;Vector4Vector4
+	function CancelAllDelayedEvents(); // CancelAllDelayedEvents;
+	function CancelAllIntervalCallers(); // CancelAllIntervalCallers;
+	function CancelBlinkingTimerRequest(); // CancelBlinkingTimerRequest;
+	function CancelCrimescoreDropTimerRequest(); // CancelCrimescoreDropTimerRequest;
+	function CancelNPCSpawnDelay() : Bool; // CancelNPCSpawnDelay;
+	function CancelSearchingTimerRequest(); // CancelSearchingTimerRequest;
+	function CancelSecurityAreaResetRequest(); // CancelSecurityAreaResetRequest;
+	function CancelStateBufferTimerRequest(); // CancelStateBufferTimerRequest;
+	function CancelTransitiontoGreyStateTimerRequest(); // CancelTransitiontoGreyStateTimerRequest;
+	function ChangeAgentsAttitude(desiredAffiliation : EAIAttitude); // ChangeAgentsAttitude;EAIAttitude
+	function ChangeAttitude(owner : whandle:gameObject, target : whandle:gameObject, desiredAttitude : EAIAttitude); // ChangeAttitude;GameObjectGameObjectEAIAttitude
+	function ChangeHeatStage(newHeatStage : EPreventionHeatStage, heatChangeReason : String); // ChangeHeatStage;EPreventionHeatStageString
+	function CheckLastMaxTacAlone(); // CheckLastMaxTacAlone;
+	function CheckPlayerDistanceToLKP(); // CheckPlayerDistanceToLKP;
+	function CheckPossibleSpawnPosAndRequestAVSpawn(); // CheckPossibleSpawnPosAndRequestAVSpawn;
+	function ClearLastAttackTargetIDs(); // ClearLastAttackTargetIDs;
+	function ComputeTotalCrimeScoreForTelemetry(newHeatStageEnum : EPreventionHeatStage) : Uint32; // ComputeTotalCrimeScoreForTelemetry;EPreventionHeatStage
+	function CreateStrategyRequest(strategy : vehiclePoliceStrategy) : handle:vehicleBaseStrategyRequest; // CreateStrategyRequest;vehiclePoliceStrategy
+	function DamageChange(); // DamageChange;
+	function DebugGetCivilianDestroyedVehicleCount() : Int32; // DebugGetCivilianDestroyedVehicleCount;
+	function DespawnAllPolice(useAggressiveDespawn : Bool); // DespawnAllPolice;Bool
+	function FillPreventionSystemDebugData(out dataToFill : gamePreventionSystemDebugData); // FillPreventionSystemDebugData;PreventionSystemDebugData
+	function GetAgentRegistry() : handle:PoliceAgentRegistry; // GetAgentRegistry;
+	function GetCharacterRecordFromPool(pool : script_ref:array:whandle:gamedataPreventionUnitPoolData_Record, out recordID : TweakDBID) : Bool; // GetCharacterRecordFromPool;script_ref<array<PreventionUnitPoolData_Record>>TweakDBID
+	function GetCharacterRecordsFromPool(recordsCount : Int32, pool : script_ref:array:whandle:gamedataPreventionUnitPoolData_Record, recordIDs : script_ref:array:TweakDBID) : Bool; // GetCharacterRecordsFromPool;Int32script_ref<array<PreventionUnitPoolData_Record>>script_ref<array<TweakDBID>>
+	function GetCurrentDistrict() : whandle:District; // GetCurrentDistrict;
+	function GetDamageToPlayerMultiplier() : Float; // GetDamageToPlayerMultiplier;
+	function GetDataTableForCurrentHeat(heatStage : EPreventionHeatStage, characterRecords : script_ref:array:TweakDBID, out spawnRange : Vector2, out unitsCount : Uint32, out spawnInterval : Float, out hasRecon : Bool) : Bool; // GetDataTableForCurrentHeat;EPreventionHeatStagescript_ref<array<TweakDBID>>Vector2Uint32FloatBool
+	function GetDataTableForCurrentHeat(); // GetDataTableForCurrentHeat;
+	function GetDataTableForHeat(heatStage : EPreventionHeatStage) : handle:gamedataPreventionHeatTable_Record; // GetDataTableForHeat;EPreventionHeatStage
+	function GetDistrictMultiplier() : Float; // GetDistrictMultiplier;
+	function GetFindSpawnPointsOrigin(out pos : Vector4, out dir : Vector4); // GetFindSpawnPointsOrigin;Vector4Vector4
+	function GetFindSpawnPointsOriginsData(spawnOriginsPositions : script_ref:array:Vector4); // GetFindSpawnPointsOriginsData;script_ref<array<Vector4>>
+	function GetFirstStarTimeStamp() : Float; // GetFirstStarTimeStamp;
+	function GetGame() : ScriptGameInstance; // GetGame;
+	function GetHeatData() : whandle:gamedataPreventionHeatData_Record; // GetHeatData;
+	function GetHeatStage() : EPreventionHeatStage; // GetHeatStage;
+	function GetHeatStageAsInt() : Uint32; // GetHeatStageAsInt;
+	function GetInputLockOverrideThreshold() : Int32; // GetInputLockOverrideThreshold;
+	function GetLastAttackTargetIDs() : array:entEntityID; // GetLastAttackTargetIDs;
+	function GetLastAttackTime() : Float; // GetLastAttackTime;
+	function GetLastKnownPlayerPosition() : Vector4; // GetLastKnownPlayerPosition;
+	function GetLastKnownPlayerVehicle() : whandle:vehicleBaseObject; // GetLastKnownPlayerVehicle;
+	function GetLastStarChangeStartTimeStamp() : Float; // GetLastStarChangeStartTimeStamp;
+	function GetNewBatchMaxTacSpawnPositions(); // GetNewBatchMaxTacSpawnPositions;
+	function GetPlayer() : whandle:PlayerPuppet; // GetPlayer;
+	function GetPreventionDataForCurrentDistrict(district : whandle:District); // GetPreventionDataForCurrentDistrict;District
+	function GetPreventionInputLockTime() : Float; // GetPreventionInputLockTime;
+	function GetPreventionMatrixPresetForCurrentDistrict(district : whandle:District); // GetPreventionMatrixPresetForCurrentDistrict;District
+	function GetSoftDeescalationBlinkingStarsDuration() : Float; // GetSoftDeescalationBlinkingStarsDuration;
+	function GetSoftDeescalationGreyStarsDuration() : Float; // GetSoftDeescalationGreyStarsDuration;
+	function GetSpawnOriginMaxDistance() : Float; // GetSpawnOriginMaxDistance;
+	function GetStarState() : EStarState; // GetStarState;
+	function GetVehicleRecordFromPool(pool : script_ref:array:whandle:gamedataPreventionVehiclePoolData_Record, out outVehicleRecord : whandle:gamedataVehicle_Record) : Bool; // GetVehicleRecordFromPool;script_ref<array<PreventionVehiclePoolData_Record>>Vehicle_Record
+	function GetWantedLevelFact() : Int32; // GetWantedLevelFact;
+	function HandleDebugEventSourceTracking(sourceName : CName, tryRemoveLock : Bool); // HandleDebugEventSourceTracking;CNameBool
+	function HandleRoadblockadeUnitSpawned(spawnedObject : handle:gameObject); // HandleRoadblockadeUnitSpawned;GameObject
+	function HandleSpawnRequestFailure(result : gameSpawnRequestResult, ticketData : TicketData); // HandleSpawnRequestFailure;SpawnRequestResultTicketData
+	function HandleSpawnRequestSuccess(result : gameSpawnRequestResult, ticketData : TicketData); // HandleSpawnRequestSuccess;SpawnRequestResultTicketData
+	function HasViewersChanged(currentViewerState : Bool); // HasViewersChanged;Bool
+	function HeatPipeline(heatChangeReason : String); // HeatPipeline;String
+	function IsAnyVehicleChasingTarget() : Bool; // IsAnyVehicleChasingTarget;
+	function IsChasingPlayer() : Bool; // IsChasingPlayer;
+	function IsDistanceRangeValid(range : Vector2) : Bool; // IsDistanceRangeValid;Vector2
+	function IsMaxTacDefeated() : Bool; // IsMaxTacDefeated;
+	function IsNPCValid(puppet : whandle:ScriptedPuppet) : Bool; // IsNPCValid;ScriptedPuppet
+	function IsPlayerCloseToLastCrimePosition() : Bool; // IsPlayerCloseToLastCrimePosition;
+	function IsPlayerInQuestArea() : Bool; // IsPlayerInQuestArea;
+	function IsPlayerMounted() : Bool; // IsPlayerMounted;
+	function IsPoliceUnawareOfThePlayerExactLocation() : Bool; // IsPoliceUnawareOfThePlayerExactLocation;
+	function IsPreventionGlobalQuestObjectiveEnabled() : Bool; // IsPreventionGlobalQuestObjectiveEnabled;
+	function IsPreventionInputLocked() : Bool; // IsPreventionInputLocked;
+	function IsPursuedVehicleFast() : Bool; // IsPursuedVehicleFast;
+	function IsRegistered(entityID : entEntityID) : Bool; // IsRegistered;EntityID
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function IsShootingFromVehicleBlocked() : Bool; // IsShootingFromVehicleBlocked;
+	function IsStrategyAvailable(strategy : vehiclePoliceStrategy) : Bool; // IsStrategyAvailable;vehiclePoliceStrategy
+	function IsSystemEnabled() : Bool; // IsSystemEnabled;
+	function IsSystemLocked() : Bool; // IsSystemLocked;
+	function IsVehicleValid(vehicle : whandle:vehicleBaseObject) : Bool; // IsVehicleValid;VehicleObject
+	function OnAttach(); // OnAttach;
+	function OnClearPreventionSystemLocks(evt : handle:ClearPreventionSystemLocks); // OnClearPreventionSystemLocks;ClearPreventionSystemLocks
+	function OnCombatStartedRequest(request : handle:PreventionCombatStartedRequest); // OnCombatStartedRequest;PreventionCombatStartedRequest
+	function OnCrimeWitnessRequest(request : handle:PreventionCrimeWitnessRequest); // OnCrimeWitnessRequest;PreventionCrimeWitnessRequest
+	function OnDamageInput(request : handle:PreventionDamageRequest); // OnDamageInput;PreventionDamageRequest
+	function OnDetach(); // OnDetach;
+	function OnDistrictAreaEntered(request : handle:gamemappinsDistrictEnteredEvent); // OnDistrictAreaEntered;DistrictEnteredEvent
+	function OnHeatChanged(previousHeat : EPreventionHeatStage); // OnHeatChanged;EPreventionHeatStage
+	function OnPreventionBlinkingStatusRequest(evt : handle:PreventionBlinkingStatusRequest); // OnPreventionBlinkingStatusRequest;PreventionBlinkingStatusRequest
+	function OnPreventionConsoleInstructionRequest(request : handle:PreventionConsoleInstructionRequest); // OnPreventionConsoleInstructionRequest;PreventionConsoleInstructionRequest
+	function OnPreventionConsoleLockRequest(request : handle:PreventionConsoleLockRequest); // OnPreventionConsoleLockRequest;PreventionConsoleLockRequest
+	function OnPreventionCrimeScoreZeroRequest(request : handle:PreventionCrimeScoreZeroRequest); // OnPreventionCrimeScoreZeroRequest;PreventionCrimeScoreZeroRequest
+	function OnPreventionDamage(evt : handle:PreventionDamage); // OnPreventionDamage;PreventionDamage
+	function OnPreventionEntityDestroyed(destroyedEntityID : entEntityID); // OnPreventionEntityDestroyed;EntityID
+	function OnPreventionForceDeescalateRequest(evt : handle:PreventionForceDeescalateRequest); // OnPreventionForceDeescalateRequest;PreventionForceDeescalateRequest
+	function OnPreventionMinMaxHeatLevels(request : handle:PreventionMinMaxHeatLevels); // OnPreventionMinMaxHeatLevels;PreventionMinMaxHeatLevels
+	function OnPreventionPoliceSecuritySystemRequest(request : handle:PreventionPoliceSecuritySystemRequest); // OnPreventionPoliceSecuritySystemRequest;PreventionPoliceSecuritySystemRequest
+	function OnPreventionSearchingStatusRequest(evt : handle:PreventionSearchingStatusRequest); // OnPreventionSearchingStatusRequest;PreventionSearchingStatusRequest
+	function OnPreventionSecurityAreaRequest(request : handle:PreventionSecurityAreaRequest); // OnPreventionSecurityAreaRequest;PreventionSecurityAreaRequest
+	function OnPreventionStarStateBufferTimerRequest(evt : handle:PreventionStarStateBufferTimerRequest); // OnPreventionStarStateBufferTimerRequest;PreventionStarStateBufferTimerRequest
+	function OnPreventionTickRequest(request : handle:PreventionTickRequest); // OnPreventionTickRequest;PreventionTickRequest
+	function OnPreventionTransitionToGreyStateTimerRequest(evt : handle:PreventionTransitionToGreyStateTimerRequest); // OnPreventionTransitionToGreyStateTimerRequest;PreventionTransitionToGreyStateTimerRequest
+	function OnPreventionUnitDespawnedRequest(request : handle:PreventionUnitDespawnedRequest); // OnPreventionUnitDespawnedRequest;PreventionUnitDespawnedRequest
+	function OnPreventionUnitSpawnedRequest(request : handle:PreventionUnitSpawnedRequest); // OnPreventionUnitSpawnedRequest;PreventionUnitSpawnedRequest
+	function OnRefreshDeescalationTimers(evt : handle:RefreshDeescalationTimers); // OnRefreshDeescalationTimers;RefreshDeescalationTimers
+	function OnRefreshDistrict(request : handle:RefreshDistrictRequest); // OnRefreshDistrict;RefreshDistrictRequest
+	function OnRegisterNPC(request : handle:RegisterNPCRequest); // OnRegisterNPC;RegisterNPCRequest
+	function OnRegisterRequest(request : handle:PreventionRegisterRequest); // OnRegisterRequest;PreventionRegisterRequest
+	function OnRemoveRecentAvSpawnLocationFromCacheRequest(req : handle:RemoveRecentAvSpawnLocationFromCacheRequest); // OnRemoveRecentAvSpawnLocationFromCacheRequest;RemoveRecentAvSpawnLocationFromCacheRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnResupplyVehicleTicketsRequest(evt : handle:ResupplyVehicleTicketsRequest); // OnResupplyVehicleTicketsRequest;ResupplyVehicleTicketsRequest
+	function OnSecurityAreaResetRequest(request : handle:SecurityAreaResetRequest); // OnSecurityAreaResetRequest;SecurityAreaResetRequest
+	function OnSetBlockShootingFromVehicle(evt : handle:SetBlockShootingFromVehicle); // OnSetBlockShootingFromVehicle;SetBlockShootingFromVehicle
+	function OnSetHeatCounterMultiplier(evt : handle:SetHeatCounterMultiplier); // OnSetHeatCounterMultiplier;SetHeatCounterMultiplier
+	function OnSetHeatLevelLimiter(evt : handle:SetHeatLevelLimiter); // OnSetHeatLevelLimiter;SetHeatLevelLimiter
+	function OnSetPoliceForcesPool(evt : handle:SetPoliceForcesPool); // OnSetPoliceForcesPool;SetPoliceForcesPool
+	function OnSetPoliceSearchArea(evt : handle:SetPoliceSearchArea); // OnSetPoliceSearchArea;SetPoliceSearchArea
+	function OnSetPreventionDifficulty(evt : handle:SetPreventionDifficulty); // OnSetPreventionDifficulty;SetPreventionDifficulty
+	function OnSetPreventionPath(evt : handle:SetPreventionPath); // OnSetPreventionPath;SetPreventionPath
+	function OnSetWantedLevel(evt : handle:SetWantedLevel); // OnSetWantedLevel;SetWantedLevel
+	function OnSpawnPoliceVehicleRequest(evt : handle:SpawnPoliceVehicleWithDelayRequest); // OnSpawnPoliceVehicleRequest;SpawnPoliceVehicleWithDelayRequest
+	function OnSpawnRoadblockRequest(evt : handle:SpawnRoadblockadeWithDelayRequest); // OnSpawnRoadblockRequest;SpawnRoadblockadeWithDelayRequest
+	function OnToggleBlockSceneInteractions(evt : handle:ToggleBlockSceneInteractions); // OnToggleBlockSceneInteractions;ToggleBlockSceneInteractions
+	function OnTogglePreventionCrowdSpawns(evt : handle:TogglePreventionCrowdSpawns); // OnTogglePreventionCrowdSpawns;TogglePreventionCrowdSpawns
+	function OnTogglePreventionFreeArea(evt : handle:TogglePreventionFreeArea); // OnTogglePreventionFreeArea;TogglePreventionFreeArea
+	function OnTogglePreventionGlobalQuestObjective(evt : handle:TogglePreventionGlobalQuestObjective); // OnTogglePreventionGlobalQuestObjective;TogglePreventionGlobalQuestObjective
+	function OnTogglePreventionSystem(evt : handle:TogglePreventionSystem); // OnTogglePreventionSystem;TogglePreventionSystem
+	function OnToggleQuestPreventionTrigger(evt : handle:ToggleQuestPreventionTrigger); // OnToggleQuestPreventionTrigger;ToggleQuestPreventionTrigger
+	function OnTryResetPreventionFreeArea(request : handle:TryResetPreventionFreeArea); // OnTryResetPreventionFreeArea;TryResetPreventionFreeArea
+	function OnUnlockPreventionInputRequest(request : handle:UnlockPreventionInputRequest); // OnUnlockPreventionInputRequest;UnlockPreventionInputRequest
+	function OnVehicleExplosion(); // OnVehicleExplosion;
+	function OnVehicleStolenRequest(request : handle:PreventionVehicleStolenRequest); // OnVehicleStolenRequest;PreventionVehicleStolenRequest
+	function OnViewerRequest(request : handle:PreventionVisibilityRequest); // OnViewerRequest;PreventionVisibilityRequest
+	function OnViewersStateChanged(); // OnViewersStateChanged;
+	function PlayerAttachedCallback(playerPuppet : handle:gameObject); // PlayerAttachedCallback;GameObject
+	function PlayerDetachedCallback(playerPuppet : handle:gameObject); // PlayerDetachedCallback;GameObject
+	function PoliceLostPlayer(); // PoliceLostPlayer;
+	function PostDamageChange(request : handle:PreventionDamageRequest); // PostDamageChange;PreventionDamageRequest
+	function PreDamageChange(); // PreDamageChange;
+	function PreventionInputLockRequest(); // PreventionInputLockRequest;
+	function PreventionMinimapOverride(); // PreventionMinimapOverride;
+	function ProcessDogtownLawAchievement(); // ProcessDogtownLawAchievement;
+	function ProcessPreventionDamageRequest(request : handle:PreventionDamageRequest); // ProcessPreventionDamageRequest;PreventionDamageRequest
+	function ReachedEngagedVehiclesLimit() : Bool; // ReachedEngagedVehiclesLimit;
+	function ReachedRoadblockLimit() : Bool; // ReachedRoadblockLimit;
+	function ReachedSupportVehiclesLimit() : Bool; // ReachedSupportVehiclesLimit;
+	function ReachedTotalVehiclesLimit() : Bool; // ReachedTotalVehiclesLimit;
+	function ReevaluateSecurityAreaReset(); // ReevaluateSecurityAreaReset;
+	function ReevaluttatePreventionLockSources(); // ReevaluttatePreventionLockSources;
+	function RefreshDebug(); // RefreshDebug;
+	function RefreshDebugDistrictInfo(); // RefreshDebugDistrictInfo;
+	function RefreshDebugEventSources(); // RefreshDebugEventSources;
+	function RefreshDebugEvents(); // RefreshDebugEvents;
+	function RefreshDebugLockSources(); // RefreshDebugLockSources;
+	function RefreshDebugProcessInfo(); // RefreshDebugProcessInfo;
+	function RefreshDebugRemoveAllLockSources(); // RefreshDebugRemoveAllLockSources;
+	function RefreshDebugSecAreaInfo(); // RefreshDebugSecAreaInfo;
+	function Register(attitudeGroup : CName, ps : whandle:gamePersistentState); // Register;CNamePersistentState
+	function RegisterPreventionUnit(preventionUnit : handle:gameObject, vehicleType : gameDynamicVehicleType, overrideExisting : Bool, optional strategy : vehiclePoliceStrategy, optional isFallback : Bool) : Bool; // RegisterPreventionUnit;GameObjectDynamicVehicleTypeBoolvehiclePoliceStrategyBool
+	function RegisterToBBCalls(); // RegisterToBBCalls;
+	function ReinitAll(); // ReinitAll;
+	function RemovePlayerFromSecuritySystemBlacklist(); // RemovePlayerFromSecuritySystemBlacklist;
+	function RemovePreventionInputLockRequest(); // RemovePreventionInputLockRequest;
+	function RequestAVSpawnAtPosition(position : Vector3); // RequestAVSpawnAtPosition;Vector3
+	function RequestUnitSpawn(recordID : TweakDBID, spawnTransform : WorldTransform); // RequestUnitSpawn;TweakDBIDWorldTransform
+	function ResetBlinkingTimerRequest(); // ResetBlinkingTimerRequest;
+	function ResetCrimescoreDropTimerRequest(); // ResetCrimescoreDropTimerRequest;
+	function ResetSearchingTimerRequest(); // ResetSearchingTimerRequest;
+	function ResetStateBufferTimerRequest(); // ResetStateBufferTimerRequest;
+	function ResetTransitiontoGreyStateTimerRequest(); // ResetTransitiontoGreyStateTimerRequest;
+	function RestoreDefaultConfig(); // RestoreDefaultConfig;
+	function RestoreDefaultPreset(); // RestoreDefaultPreset;
+	function RestoreDefaultPreventionMatrixPreset(); // RestoreDefaultPreventionMatrixPreset;
+	function RestoreMinimapToDefault(); // RestoreMinimapToDefault;
+	function SelectRange(strategyDataRec : whandle:gamedataStrategyData_Record) : Vector2; // SelectRange;StrategyData_Record
+	function SendDropPointLockRequest(isEnabled : Bool); // SendDropPointLockRequest;Bool
+	function SendInternalSystem(damageDealt : Float, optional heatStage : EPreventionHeatStage); // SendInternalSystem;FloatEPreventionHeatStage
+	function SetAgentsSupport(hasSupport : Bool); // SetAgentsSupport;Bool
+	function SetBlockOnFootSpawn(value : Bool); // SetBlockOnFootSpawn;Bool
+	function SetBlockReconDroneSpawn(value : Bool); // SetBlockReconDroneSpawn;Bool
+	function SetBlockShootingFromVehicle(value : Bool); // SetBlockShootingFromVehicle;Bool
+	function SetBlockVehicleSpawn(value : Bool); // SetBlockVehicleSpawn;Bool
+	function SetChaseMultiplier(value : Float); // SetChaseMultiplier;Float
+	function SetCrimeScoreMultiplier(value : Float); // SetCrimeScoreMultiplier;Float
+	function SetDamageToPlayerMultiplier(value : Float); // SetDamageToPlayerMultiplier;Float
+	function SetIsPlayerMounted(isPlayerMounted : Bool); // SetIsPlayerMounted;Bool
+	function SetLastAttackTime(value : Float); // SetLastAttackTime;Float
+	function SetLastKnownPlayerPosition(value : Vector4); // SetLastKnownPlayerPosition;Vector4
+	function SetMinMaxResetHeatLevels(MinLevel : Int32, MaxLevel : Int32, isDefault : Bool); // SetMinMaxResetHeatLevels;Int32Int32Bool
+	function SetSingleAgentSupport(ps : whandle:gamePersistentState, hasSupport : Bool); // SetSingleAgentSupport;PersistentStateBool
+	function SetStarStateUI(newState : EStarState); // SetStarStateUI;EStarState
+	function SetSystemLock(value : Bool); // SetSystemLock;Bool
+	function SetVehicleSpawnBlockSide(value : EVehicleSpawnBlockSide); // SetVehicleSpawnBlockSide;EVehicleSpawnBlockSide
+	function SetWantedLevelFact(level : Int32); // SetWantedLevelFact;Int32
+	function SetWantedStateFact(state : EStarState); // SetWantedStateFact;EStarState
+	function ShouldPreventionUnitsRetreat() : Bool; // ShouldPreventionUnitsRetreat;
+	function ShouldReactionBeAggressive() : Bool; // ShouldReactionBeAggressive;
+	function ShouldSpawnPatrolVehicleWhenInSearch() : Bool; // ShouldSpawnPatrolVehicleWhenInSearch;
+	function ShouldSpawnRoadblockade() : Bool; // ShouldSpawnRoadblockade;
+	function ShouldWorkSpotPoliceJoinChase(puppet : handle:ScriptedPuppet) : Bool; // ShouldWorkSpotPoliceJoinChase;ScriptedPuppet
+	function SpawnFallbackUnits(spawnPoints : array:Vector3, characterRecords : array:TweakDBID, unitCount : Uint32) : Int32; // SpawnFallbackUnits;array<Vector3>array<TweakDBID>Uint32
+	function SpawnPipeline(); // SpawnPipeline;
+	function SpawnPoliceVehicle() : Uint32; // SpawnPoliceVehicle;
+	function SpawnRoadblockade(heatStage : EPreventionHeatStage); // SpawnRoadblockade;EPreventionHeatStage
+	function SpawnUnits(spawnPoints : script_ref:array:Vector3, characterRecords : script_ref:array:TweakDBID, unitCount : Uint32, out sentRequests : Int32) : Bool; // SpawnUnits;script_ref<array<Vector3>>script_ref<array<TweakDBID>>Uint32Int32
+	function StartBlinkingTimerRequest(); // StartBlinkingTimerRequest;
+	function StartBlinkingTimerRequest(duration : Float, lockWhileBlinking : Bool, telemetryInfo : String); // StartBlinkingTimerRequest;FloatBoolString
+	function StartCrimescoreDropTimerRequest(); // StartCrimescoreDropTimerRequest;
+	function StartPipeline(request : handle:PreventionDamageRequest); // StartPipeline;PreventionDamageRequest
+	function StartPreventionFreeAreaReset(); // StartPreventionFreeAreaReset;
+	function StartSearchingTimerRequest(); // StartSearchingTimerRequest;
+	function StartSecurityAreaResetRequest(optional resetDelay : Float); // StartSecurityAreaResetRequest;Float
+	function StartStateBufferTimerRequest(); // StartStateBufferTimerRequest;
+	function StartTransitiontoGreyStateTimerRequest(); // StartTransitiontoGreyStateTimerRequest;
+	function StartVehicleDeescalationBehavior(vehicle : whandle:vehicleBaseObject); // StartVehicleDeescalationBehavior;VehicleObject
+	function SyncTweakDistrictData(); // SyncTweakDistrictData;
+	function TogglePreventionGlobalQuestObjective_Internal(preventionGlobalQuestDisabled : Bool, eventSource : CName); // TogglePreventionGlobalQuestObjective_Internal;BoolCName
+	function TogglePreventionSystem(toggle : Bool); // TogglePreventionSystem;Bool
+	function TryGetAVSpawnPointsCallback(requestResult : gameAVSpawnPointsRequestResult); // TryGetAVSpawnPointsCallback;AVSpawnPointsRequestResult
+	function TryGetDistinctUnitDataFromHeatStage(recordIDs : script_ref:array:TweakDBID) : Bool; // TryGetDistinctUnitDataFromHeatStage;script_ref<array<TweakDBID>>
+	function TryGetNPCMarkedForDespawnAI(entityID : entEntityID, out markedForDespawn : Bool) : Bool; // TryGetNPCMarkedForDespawnAI;EntityIDBool
+	function TryGetRoadblockDataFromHeatStage(heatStage : EPreventionHeatStage, out outVehicleRecord : whandle:gamedataVehicle_Record, out spawnDistanceRange : Vector2) : Bool; // TryGetRoadblockDataFromHeatStage;EPreventionHeatStageVehicle_RecordVector2
+	function TryGetUnitDataFromHeatStage(heatStage : EPreventionHeatStage, recordsCount : Int32, recordIDs : script_ref:array:TweakDBID) : Bool; // TryGetUnitDataFromHeatStage;EPreventionHeatStageInt32script_ref<array<TweakDBID>>
+	function TryGetUnitDataFromVehicleRecord(vehicleRecord : whandle:gamedataVehicle_Record, recordsCount : Int32, recordIDs : script_ref:array:TweakDBID) : Bool; // TryGetUnitDataFromVehicleRecord;Vehicle_RecordInt32script_ref<array<TweakDBID>>
+	function TryGetVehicleDataFromHeatStage(heatStage : EPreventionHeatStage, out outVehicleRecord : whandle:gamedataVehicle_Record) : Bool; // TryGetVehicleDataFromHeatStage;EPreventionHeatStageVehicle_Record
+	function TryInitializePreventionTick(); // TryInitializePreventionTick;
+	function TryMarkAsAttackedByPlayer(targetId : entEntityID) : Bool; // TryMarkAsAttackedByPlayer;EntityID
+	function TryRequestVehicleSpawnWithStrategy() : Bool; // TryRequestVehicleSpawnWithStrategy;
+	function TryResolveIndefiniteStarState(); // TryResolveIndefiniteStarState;
+	function TryRessuplyVehicleTickets(); // TryRessuplyVehicleTickets;
+	function TryResupplyTicket(); // TryResupplyTicket;
+	function TrySetNPCMarkedForDespawnAI(entityID : entEntityID, markedForDespawn : Bool) : Bool; // TrySetNPCMarkedForDespawnAI;EntityIDBool
+	function TrySpawnOnFootFallbackBasedOnRoadInfo(system : handle:gamePreventionSpawnSystem) : Bool; // TrySpawnOnFootFallbackBasedOnRoadInfo;PreventionSpawnSystem
+	function TrySpawnPoliceOnFootFallback(); // TrySpawnPoliceOnFootFallback;
+	function TryStartRoadblockRespawn(); // TryStartRoadblockRespawn;
+	function TryStartVehicleRespawn(); // TryStartVehicleRespawn;
+	function TryUpdateStarState(); // TryUpdateStarState;
+	function TryUpdateWantedLevelFact(); // TryUpdateWantedLevelFact;
+	function TutorialAddPoliceSystemFact(); // TutorialAddPoliceSystemFact;
+	function UnRegister(attitudeGroup : CName, ps : whandle:gamePersistentState); // UnRegister;CNamePersistentState
+	function UnregisterBBCalls(); // UnregisterBBCalls;
+	function UnregisterPreventionUnit(entityID : entEntityID); // UnregisterPreventionUnit;EntityID
+	function UpdateDataMatrixOnDistrictChange(district : whandle:District); // UpdateDataMatrixOnDistrictChange;District
+	function UpdateLastAttackTargetIDs(value : entEntityID); // UpdateLastAttackTargetIDs;EntityID
+	function UpdateMaxTacUnits(); // UpdateMaxTacUnits;
+	function UpdateNPCs(); // UpdateNPCs;
+	function UpdatePreventionFreeAreas(isPlayerInFreeArea : Bool); // UpdatePreventionFreeAreas;Bool
+	function UpdateRoadblockadeUnits(); // UpdateRoadblockadeUnits;
+	function UpdateSearchingTimerRequest(); // UpdateSearchingTimerRequest;
+	function UpdateStarState(); // UpdateStarState;
+	function UpdateStarStateTimers(state : EStarState); // UpdateStarStateTimers;EStarState
+	function UpdateStarStateTo(state : EStarState); // UpdateStarStateTo;EStarState
+	function UpdateStateBufferTimerRequest(); // UpdateStateBufferTimerRequest;
+	function UpdateStrategyPreCheckRequests(); // UpdateStrategyPreCheckRequests;
+	function UpdateTotalCrimeScore(request : handle:PreventionDamageRequest); // UpdateTotalCrimeScore;PreventionDamageRequest
+	function UpdateVehiclePassengerCount(entityID : entEntityID, passengersCount : Int32); // UpdateVehiclePassengerCount;EntityIDInt32
+	function UpdateVehicles(); // UpdateVehicles;
+	function UpdateViewers() : Bool; // UpdateViewers;
+	function UseOffTrafficPoints() : Bool; // UseOffTrafficPoints;
+	function ViewerRegister(viewer : whandle:gameObject); // ViewerRegister;GameObject
+	function ViewerUnRegister(viewer : whandle:gameObject); // ViewerUnRegister;GameObject
+	function WakeUpAgent(ps : whandle:gamePersistentState, wakeUp : Bool); // WakeUpAgent;PersistentStateBool
+	function WakeUpAllAgents(wakeUp : Bool); // WakeUpAllAgents;Bool
+	function execInstructionActive(optional heatStage : EPreventionHeatStage); // execInstructionActive;EPreventionHeatStage
+	function execInstructionOff(); // execInstructionOff;
+	function execInstructionOn(); // execInstructionOn;
+	function execInstructionSafe(heatChangeReason : String); // execInstructionSafe;String
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,26 @@
+class IdentifiedWrappedTooltipData extends ATooltipData
+{
+	public    var identifier : CName;
+	public    var tooltipOwner : entEntityID;
+	public    var data : handle:ATooltipData;
+
+	static function Make(identifier : CName, optional data : handle:ATooltipData) : handle:IdentifiedWrappedTooltipData; // IdentifiedWrappedTooltipData::Make;CNameATooltipData
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

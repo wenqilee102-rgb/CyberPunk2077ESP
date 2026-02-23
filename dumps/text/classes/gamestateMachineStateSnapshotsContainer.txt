@@ -1,0 +1,6 @@
+import struct gamestateMachineStateSnapshotsContainer
+{
+	var snapshot : array:gamestateMachineStateSnapshot;
+
+	import static function GetSnapshot(self : gamestateMachineStateSnapshotsContainer, stateMachineIdentifier : gamestateMachineStateMachineIdentifier) : gamestateMachineSnapshotResult; // GetSnapshot
+}

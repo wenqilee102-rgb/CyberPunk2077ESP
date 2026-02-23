@@ -1,0 +1,13 @@
+import class gameEffectParameter_StringEvaluator_ValueOrBlackboard extends gameIEffectParameter_StringEvaluator
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+	var value : String;
+}
+
+import class abstract gameIEffectParameter_StringEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

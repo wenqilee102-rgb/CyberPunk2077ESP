@@ -1,0 +1,12 @@
+import class animAnimStateTransitionCondition_ExternalEvent extends animIAnimStateTransitionCondition
+{
+	var eventName : CName;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

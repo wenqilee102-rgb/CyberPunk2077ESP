@@ -1,0 +1,6 @@
+import struct worldNodeTransform
+{
+	var translation : Vector3;
+	var rotation : Quaternion;
+	var scale : Vector3;
+}

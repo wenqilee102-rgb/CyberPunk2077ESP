@@ -1,0 +1,11 @@
+import class gameFinalTimeState extends gameITimeState
+{
+}
+
+import class abstract gameITimeState extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

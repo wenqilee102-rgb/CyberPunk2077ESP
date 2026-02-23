@@ -1,0 +1,6 @@
+import struct worldTrafficLaneRef
+{
+	var nodeRef : NodeRef;
+	var laneNumber : Uint16;
+	var isReversed : Bool;
+}

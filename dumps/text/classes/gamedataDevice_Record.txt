@@ -1,0 +1,64 @@
+import class gamedataDevice_Record extends gamedataBaseObject_Record
+{
+	import function AudioResourceName() : CName; // AudioResourceName
+	import function GetRPGActionsCount() : Int32; // GetRPGActionsCount
+	import function GetRPGActionsItem(index : Int32) : whandle:gamedataRPGAction_Record; // GetRPGActionsItem
+	import function GetRPGActionsItemHandle(index : Int32) : handle:gamedataRPGAction_Record; // GetRPGActionsItemHandle
+	import function RPGActions(out outList : array:whandle:gamedataRPGAction_Record); // RPGActions
+	import function RPGActionsContains(item : whandle:gamedataRPGAction_Record) : Bool; // RPGActionsContains
+}
+
+import class gamedataBaseObject_Record extends gamedataTweakDBRecord
+{
+	import function Effectors(out outList : array:whandle:gamedataEffector_Record); // Effectors
+	import function EffectorsContains(item : whandle:gamedataEffector_Record) : Bool; // EffectorsContains
+	import function GetEffectorsCount() : Int32; // GetEffectorsCount
+	import function GetEffectorsItem(index : Int32) : whandle:gamedataEffector_Record; // GetEffectorsItem
+	import function GetEffectorsItemHandle(index : Int32) : handle:gamedataEffector_Record; // GetEffectorsItemHandle
+	import function GetObjectActionsCount() : Int32; // GetObjectActionsCount
+	import function GetObjectActionsItem(index : Int32) : whandle:gamedataObjectAction_Record; // GetObjectActionsItem
+	import function GetObjectActionsItemHandle(index : Int32) : handle:gamedataObjectAction_Record; // GetObjectActionsItemHandle
+	import function GetStatModifierGroupsCount() : Int32; // GetStatModifierGroupsCount
+	import function GetStatModifierGroupsItem(index : Int32) : whandle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItem
+	import function GetStatModifierGroupsItemHandle(index : Int32) : handle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function GetStatPoolsCount() : Int32; // GetStatPoolsCount
+	import function GetStatPoolsItem(index : Int32) : whandle:gamedataStatPool_Record; // GetStatPoolsItem
+	import function GetStatPoolsItemHandle(index : Int32) : handle:gamedataStatPool_Record; // GetStatPoolsItemHandle
+	import function GetWeakspotsCount() : Int32; // GetWeakspotsCount
+	import function GetWeakspotsItem(index : Int32) : whandle:gamedataWeakspot_Record; // GetWeakspotsItem
+	import function GetWeakspotsItemHandle(index : Int32) : handle:gamedataWeakspot_Record; // GetWeakspotsItemHandle
+	import function ObjectActions(out outList : array:whandle:gamedataObjectAction_Record); // ObjectActions
+	import function ObjectActionsContains(item : whandle:gamedataObjectAction_Record) : Bool; // ObjectActionsContains
+	import function Savable() : Bool; // Savable
+	import function StatModifierGroups(out outList : array:whandle:gamedataStatModifierGroup_Record); // StatModifierGroups
+	import function StatModifierGroupsContains(item : whandle:gamedataStatModifierGroup_Record) : Bool; // StatModifierGroupsContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function StatPools(out outList : array:whandle:gamedataStatPool_Record); // StatPools
+	import function StatPoolsContains(item : whandle:gamedataStatPool_Record) : Bool; // StatPoolsContains
+	import function Weakspots(out outList : array:whandle:gamedataWeakspot_Record); // Weakspots
+	import function WeakspotsContains(item : whandle:gamedataWeakspot_Record) : Bool; // WeakspotsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

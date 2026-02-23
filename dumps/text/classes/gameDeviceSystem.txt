@@ -1,0 +1,44 @@
+import class gameDeviceSystem extends gameIDeviceSystem
+{
+	import function AddDynamicConnection(deviceEntityID : gamePersistentID, deviceClassName : CName, parentEntityID : gamePersistentID, parentClassName : CName); // AddDynamicConnection
+	import function DEBUG_GetAncestorsData(entityID : entEntityID, out outDevicesData : array:worldDeviceRef); // DEBUG_GetAncestorsData
+	import function DEBUG_GetChildrenData(entityID : entEntityID, out outDevicesData : array:worldDeviceRef); // DEBUG_GetChildrenData
+	import function DEBUG_GetDescendantsData(entityID : entEntityID, out outDevicesData : array:worldDeviceRef); // DEBUG_GetDescendantsData
+	import function DEBUG_GetParentsData(entityID : entEntityID, out outDevicesData : array:worldDeviceRef); // DEBUG_GetParentsData
+	import function GetAllAncestors(entityID : entEntityID, out outDevices : array:handle:gameDeviceComponentPS); // GetAllAncestors
+	import function GetAllDescendants(entityID : entEntityID, out outDevices : array:handle:gameDeviceComponentPS); // GetAllDescendants
+	import function GetChildren(entityID : entEntityID, out outDevices : array:handle:gameDeviceComponentPS); // GetChildren
+	import function GetLazyAllAncestors(entityID : entEntityID, out outDevices : array:handle:gameLazyDevice); // GetLazyAllAncestors
+	import function GetLazyAllDescendants(entityID : entEntityID, out outDevices : array:handle:gameLazyDevice); // GetLazyAllDescendants
+	import function GetLazyChildren(entityID : entEntityID, out outDevices : array:handle:gameLazyDevice); // GetLazyChildren
+	import function GetLazyParents(entityID : entEntityID, out outDevices : array:handle:gameLazyDevice); // GetLazyParents
+	import function GetNodePosition(entityID : entEntityID, out position : Vector4) : Bool; // GetNodePosition
+	import function GetParents(entityID : entEntityID, out outDevices : array:handle:gameDeviceComponentPS); // GetParents
+	import function HasAnyAncestor(entityID : entEntityID) : Bool; // HasAnyAncestor
+	import function HasAnyChild(entityID : entEntityID) : Bool; // HasAnyChild
+	import function HasAnyDescendant(entityID : entEntityID) : Bool; // HasAnyDescendant
+	import function HasAnyParent(entityID : entEntityID) : Bool; // HasAnyParent
+	import function RemoveDynamicConnection(deviceEntityID : gamePersistentID, parentEntityID : gamePersistentID); // RemoveDynamicConnection
+}
+
+import class abstract gameIDeviceSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

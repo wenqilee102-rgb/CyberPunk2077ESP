@@ -1,0 +1,31 @@
+import class questAddDevelopmentPointsRequest extends gamePlayerScriptableSystemRequest
+{
+	var amountOfPoints : Int32;
+	var developmentPointType : gamedataDevelopmentPointType;
+
+	function Set(_owner : whandle:gameObject, amount : Int32, type : gamedataDevelopmentPointType); // Set;GameObjectInt32gamedataDevelopmentPointType
+}
+
+import class gamePlayerScriptableSystemRequest extends gameScriptableSystemRequest
+{
+	var owner : whandle:gameObject;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

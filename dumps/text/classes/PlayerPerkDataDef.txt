@@ -1,0 +1,32 @@
+class PlayerPerkDataDef extends gamebbScriptDefinition
+{
+	public    var WoundedInstigated : gamebbScriptID_Uint32;
+	public    var DismembermentInstigated : gamebbScriptID_Variant;
+	public    var EntityNoticedPlayer : gamebbScriptID_Uint32;
+	public    var CombatStateTime : gamebbScriptID_Float;
+	public    var LeapedDistance : gamebbScriptID_Float;
+	public    var LeapPosition : gamebbScriptID_Vector4;
+	public    var LeapTarget : gamebbScriptID_EntityID;
+	public    var UsedHealingItemOrCyberware : gamebbScriptID_Uint32;
+	public    var StartedUsingHealingItemOrCyberware : gamebbScriptID_Uint32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

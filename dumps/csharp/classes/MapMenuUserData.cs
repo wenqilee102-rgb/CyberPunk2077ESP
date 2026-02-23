@@ -1,0 +1,40 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class MapMenuUserData : IScriptable
+	{
+		private Vector3 _moveTo;
+		private CInt32 _hash;
+		private CBool _isTracked;
+
+		[Ordinal(0)] 
+		[RED("moveTo")] 
+		public Vector3 MoveTo
+		{
+			get => GetProperty(ref _moveTo);
+			set => SetProperty(ref _moveTo, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("hash")] 
+		public CInt32 Hash
+		{
+			get => GetProperty(ref _hash);
+			set => SetProperty(ref _hash, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("isTracked")] 
+		public CBool IsTracked
+		{
+			get => GetProperty(ref _isTracked);
+			set => SetProperty(ref _isTracked, value);
+		}
+
+		public MapMenuUserData(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

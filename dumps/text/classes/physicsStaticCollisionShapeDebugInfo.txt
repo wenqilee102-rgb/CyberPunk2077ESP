@@ -1,0 +1,6 @@
+import struct physicsStaticCollisionShapeDebugInfo
+{
+	var sourceMeshPathHash : Uint64;
+	var prefabPathHash : Uint64;
+	var nodeNameHash : Uint64;
+}

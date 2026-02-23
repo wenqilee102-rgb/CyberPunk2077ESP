@@ -1,0 +1,14 @@
+import class vgVectorGraphicShape_Circle extends vgBaseVectorGraphicShape
+{
+	var dius : Float;
+}
+
+import class abstract vgBaseVectorGraphicShape extends ISerializable
+{
+	var calTransform : Matrix;
+	var yle : handle:vgVectorGraphicStyle;
+}
+
+import class abstract ISerializable
+{
+}

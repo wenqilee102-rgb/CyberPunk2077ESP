@@ -1,0 +1,6 @@
+import struct gameFxResource
+{
+	var effect : raRef:worldEffect;
+
+	import static function IsValid(self : gameFxResource) : Bool; // IsValid
+}

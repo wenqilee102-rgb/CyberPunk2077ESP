@@ -1,0 +1,15 @@
+import class AIbehaviorGenerateSearchInfluenceTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var position : handle:AIArgumentMapping;
+	var path : handle:AIArgumentMapping;
+	var radius : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,24 @@
+import class audioAudioSceneData extends audioAudioMetadata
+{
+	var anyStateArray : [1]audioAudioStateData;
+	var states : array:audioAudioStateData;
+	var anyStateTransitionsTable : array:audioAnyStateTransitionEntry;
+	var voLineSignals : array:audioVoLineSignal;
+	var signalLeadingToShutdown : CName;
+	var templateScene : CName;
+	var templateSceneStateOverrides : array:audioAudioSceneStateOverride;
+	var templateSceneSignalOverrides : array:audioAudioSceneSignalOverride;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

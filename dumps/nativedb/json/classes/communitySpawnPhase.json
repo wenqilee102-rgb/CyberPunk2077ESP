@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"communitySpawnPhase","d":8,"e":[{"a":{"a":14},"b":"phaseName","c":128},{"a":{"a":31,"c":{"a":14}},"b":"appearances","c":128},{"a":{"a":31,"c":{"b":"communityPhaseTimePeriod"}},"b":"timePeriods","c":128},{"a":{"b":"gameAlwaysSpawnedState"},"b":"alwaysSpawned","c":128},{"a":{"a":1},"b":"prefetchAppearance","c":128}]}

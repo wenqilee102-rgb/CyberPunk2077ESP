@@ -1,0 +1,12 @@
+import struct gameJournalEntryStateChangeData
+{
+	var entryPath : handle:gameJournalPath;
+	var entryName : String;
+	var entryType : CName;
+	var isEntryTracked : Bool;
+	var isQuestEntryTracked : Bool;
+	var oldState : gameJournalEntryState;
+	var newState : gameJournalEntryState;
+	var notifyOption : gameJournalNotifyOption;
+	var changeType : gameJournalChangeType;
+}

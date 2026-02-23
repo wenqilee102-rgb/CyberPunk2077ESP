@@ -1,0 +1,34 @@
+import class gamedataTankObstacleSpawnerData_Record extends gamedataTweakDBRecord
+{
+	import function GetLevelListCount() : Int32; // GetLevelListCount
+	import function GetLevelListItem(index : Int32) : whandle:gamedataTankLevelObjectID_Record; // GetLevelListItem
+	import function GetLevelListItemHandle(index : Int32) : handle:gamedataTankLevelObjectID_Record; // GetLevelListItemHandle
+	import function GetObstacleListCount() : Int32; // GetObstacleListCount
+	import function GetObstacleListItem(index : Int32) : whandle:gamedataTankDestroyableObject_Record; // GetObstacleListItem
+	import function GetObstacleListItemHandle(index : Int32) : handle:gamedataTankDestroyableObject_Record; // GetObstacleListItemHandle
+	import function LevelList(out outList : array:whandle:gamedataTankLevelObjectID_Record); // LevelList
+	import function LevelListContains(item : whandle:gamedataTankLevelObjectID_Record) : Bool; // LevelListContains
+	import function ObstacleList(out outList : array:whandle:gamedataTankDestroyableObject_Record); // ObstacleList
+	import function ObstacleListContains(item : whandle:gamedataTankDestroyableObject_Record) : Bool; // ObstacleListContains
+	import function SpawnTime() : Float; // SpawnTime
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

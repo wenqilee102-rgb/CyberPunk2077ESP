@@ -1,0 +1,1 @@
+{"a":"questISystemConditionType","b":"questPhone_ConditionType","d":8,"e":[{"a":{"a":26,"c":{"b":"gameJournalPath"}},"b":"caller","c":128},{"a":{"a":26,"c":{"b":"gameJournalPath"}},"b":"addressee","c":128},{"a":{"b":"questPhoneCallPhase"},"b":"callPhase","c":128}]}

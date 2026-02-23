@@ -1,0 +1,22 @@
+import class audioTriggerEffectMetadata extends audioAudioMetadata
+{
+	var mode : audioTriggerEffectMode;
+	var target : audioTriggerEffectTarget;
+	var strength : Float;
+	var startPosition : Float;
+	var endPosition : Float;
+	var frequency : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

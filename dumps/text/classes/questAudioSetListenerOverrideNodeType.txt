@@ -1,0 +1,12 @@
+import class questAudioSetListenerOverrideNodeType extends questIAudioNodeType
+{
+	var enable : Bool;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

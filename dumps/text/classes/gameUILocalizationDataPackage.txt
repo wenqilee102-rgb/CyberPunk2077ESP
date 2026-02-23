@@ -1,0 +1,36 @@
+import class gameUILocalizationDataPackage extends IScriptable
+{
+	var floatValues : array:Float;
+	var intValues : array:Int32;
+	var nameValues : array:CName;
+	var statValues : array:Float;
+	var statNames : array:CName;
+	var paramsCount : Int32;
+	var textParams : handle:textTextParameterSet;
+	private   var notReplacedWorkaroundEnabled : Bool;
+
+	import static function FromLogicUIDataPackage(uiData : whandle:gamedataGameplayLogicPackageUIData_Record, optional item : whandle:gameItemData, optional partItemData : gameInnerItemData) : handle:gameUILocalizationDataPackage; // FromLogicUIDataPackage
+	import static function FromNewPerkUIDataPackage(uiData : whandle:gamedataNewPerkLevelUIData_Record) : handle:gameUILocalizationDataPackage; // FromNewPerkUIDataPackage
+	import static function FromPassiveUIDataPackage(uiData : whandle:gamedataPassiveProficiencyBonusUIData_Record) : handle:gameUILocalizationDataPackage; // FromPassiveUIDataPackage
+	import static function FromPerkUIDataPackage(uiData : whandle:gamedataPerkLevelUIData_Record) : handle:gameUILocalizationDataPackage; // FromPerkUIDataPackage
+
+	function EnableNotReplacedWorkaround(); // EnableNotReplacedWorkaround;
+	function GetParamsCount(optional countWorkaroud : Bool) : Int32; // GetParamsCount;Bool
+	function GetTextParams(optional countWorkaroud : Bool) : handle:textTextParameterSet; // GetTextParams;Bool
+	function InvalidateTextParams(optional countWorkaroud : Bool); // InvalidateTextParams;Bool
+	function IsStringFormatableWith(str : script_ref:String) : Bool; // IsStringFormatableWith;script_ref<String>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct scnAnimationMotionSample
+{
+	var time : Float;
+	var transform : Transform;
+}

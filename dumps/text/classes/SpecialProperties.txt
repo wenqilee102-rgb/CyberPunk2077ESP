@@ -1,0 +1,5 @@
+struct SpecialProperties
+{
+	public    var enemyMarker : Bool;
+	public    var traps : array:ETrap;
+}

@@ -1,0 +1,10 @@
+import struct gameReplicatedAnimEvent extends entReplicatedItem
+{
+	var name : CName;
+}
+
+import struct entReplicatedItem
+{
+	var entity : whandle:entEntity;
+	var netTime : netTime;
+}

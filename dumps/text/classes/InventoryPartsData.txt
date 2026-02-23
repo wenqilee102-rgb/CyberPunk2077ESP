@@ -1,0 +1,6 @@
+struct InventoryPartsData
+{
+	public    var SlotID : TweakDBID;
+	public    var ItemData : array:gameInventoryItemData;
+	public    var ToRebuild : Bool;
+}

@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"RegisterFastTravelPointsRequest","d":0,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"gameFastTravelPointData"}}},"b":"fastTravelNodes","c":128},{"a":{"a":1},"b":"register","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

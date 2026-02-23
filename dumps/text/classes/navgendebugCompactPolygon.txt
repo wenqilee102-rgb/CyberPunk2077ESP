@@ -1,0 +1,13 @@
+import class navgendebugCompactPolygon extends ISerializable
+{
+	var index : Uint16;
+	var indices : array:Uint16;
+	var neighbors : array:Uint16;
+	var area : Uint8;
+	var region : Uint16;
+	var flags : Uint16;
+}
+
+import class abstract ISerializable
+{
+}

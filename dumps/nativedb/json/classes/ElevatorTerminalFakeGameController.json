@@ -1,0 +1,1 @@
+{"a":"DeviceInkGameControllerBase","b":"ElevatorTerminalFakeGameController","d":0,"e":[{"a":{"b":"inkCanvasWidgetReference"},"b":"elevatorTerminalWidget","c":129}],"f":[{"a":"Refresh;EDeviceStatus","b":"Refresh","d":32,"e":[{"a":{"b":"EDeviceStatus"},"b":"state","c":0}]}]}

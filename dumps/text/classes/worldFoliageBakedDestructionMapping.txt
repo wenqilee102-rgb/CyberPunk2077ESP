@@ -1,0 +1,19 @@
+import class worldFoliageBakedDestructionMapping extends worldFoliageDestructionMapping
+{
+	var numFrames : Float;
+	var frameRate : Float;
+	var audioMetadata : CName;
+	var destructionEffect : raRef:worldEffect;
+	var filterDataSource : physicsFilterDataSource;
+	var filterData : handle:physicsFilterData;
+}
+
+import class worldFoliageDestructionMapping extends ISerializable
+{
+	var baseMesh : raRef:CMesh;
+	var destructibleMesh : raRef:CMesh;
+}
+
+import class abstract ISerializable
+{
+}

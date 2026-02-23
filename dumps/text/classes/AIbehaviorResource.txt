@@ -1,0 +1,16 @@
+import class AIbehaviorResource extends CResource
+{
+	var root : handle:AIbehaviorTreeNodeDefinition;
+	var arguments : AITreeArgumentsDefinition;
+	var delegate : handle:AIbehaviorBehaviorDelegate;
+	var initializationEvents : array:CName;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

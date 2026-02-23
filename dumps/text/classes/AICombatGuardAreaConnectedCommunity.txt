@@ -1,0 +1,5 @@
+import struct AICombatGuardAreaConnectedCommunity
+{
+	var communityArea : gameEntityReference;
+	var conditions : array:handle:AIICombatGuardAreaCondition;
+}

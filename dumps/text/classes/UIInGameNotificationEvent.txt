@@ -1,0 +1,27 @@
+class UIInGameNotificationEvent extends redEvent
+{
+	public    var notificationType : UIInGameNotificationType;
+	public    var animContainer : whandle:inGameMenuAnimContainer;
+	public    var title : String;
+	public    var overrideCurrentNotification : Bool;
+
+	static function CreateSavingLockedEvent(locks : script_ref:array:gameSaveLock) : handle:UIInGameNotificationEvent; // UIInGameNotificationEvent::CreateSavingLockedEvent;script_ref<array<gameSaveLock>>
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

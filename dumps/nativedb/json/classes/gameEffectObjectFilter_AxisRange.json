@@ -1,0 +1,1 @@
+{"a":"gameEffectObjectSingleFilter","b":"gameEffectObjectFilter_AxisRange","d":8,"e":[{"a":{"b":"gameEffectObjectFilter_AxisRangeAxis"},"b":"axis","c":128},{"a":{"b":"gameEffectInputParameter_Vector"},"b":"position","c":128},{"a":{"b":"gameEffectInputParameter_Vector"},"b":"constraints","c":128}]}

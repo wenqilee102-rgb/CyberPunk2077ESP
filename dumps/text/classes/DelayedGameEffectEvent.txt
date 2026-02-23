@@ -1,0 +1,26 @@
+class DelayedGameEffectEvent extends redEvent
+{
+	public    var activator : whandle:gameObject;
+	public    var target : whandle:gameObject;
+	public    var effectName : CName;
+	public    var effectTag : CName;
+	public    var statusEffect : String;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

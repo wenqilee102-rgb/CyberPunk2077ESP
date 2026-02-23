@@ -1,0 +1,26 @@
+import class animLookAtAdditionalPreset_FullControl extends animLookAtAdditionalPreset
+{
+	var useRightHand : Bool;
+	var attachHandToOtherOne : Bool;
+	var limits : animLookAtLimits;
+	var suppress : Float;
+	var mode : Int32;
+}
+
+import class abstract animLookAtAdditionalPreset extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

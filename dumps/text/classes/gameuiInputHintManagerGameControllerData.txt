@@ -1,0 +1,9 @@
+import struct gameuiInputHintManagerGameControllerData extends gameuiBaseUIData
+{
+	var inputHintsData : array:gameuiInputHintData;
+}
+
+import struct abstract gameuiBaseUIData
+{
+	var id : Int64;
+}

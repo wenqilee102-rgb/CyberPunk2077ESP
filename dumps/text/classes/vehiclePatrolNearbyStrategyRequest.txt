@@ -1,0 +1,30 @@
+import class vehiclePatrolNearbyStrategyRequest extends vehicleBaseStrategyRequest
+{
+	var angleRange : Vector2;
+
+	static function Create(spawnDistanceRange : Vector2, spawnAngleRange : Vector2) : handle:vehiclePatrolNearbyStrategyRequest; // vehiclePatrolNearbyStrategyRequest::Create;Vector2Vector2
+}
+
+import class vehicleBaseStrategyRequest extends IScriptable
+{
+	var strategy : vehiclePoliceStrategy;
+	var distanceRange : Vector2;
+	var minDirectDistance : Float;
+	var forceArriveFromBehind : Bool;
+
+	function GetStrategy() : vehiclePoliceStrategy; // GetStrategy;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

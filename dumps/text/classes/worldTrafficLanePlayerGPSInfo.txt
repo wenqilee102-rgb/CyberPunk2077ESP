@@ -1,0 +1,5 @@
+import struct worldTrafficLanePlayerGPSInfo
+{
+	var subGraphId : Uint16;
+	var stronglyConnectedComponentId : Uint16;
+}

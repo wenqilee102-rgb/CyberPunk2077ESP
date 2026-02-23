@@ -1,0 +1,14 @@
+import class worldBlockoutArea extends ISerializable
+{
+	var name : String;
+	var color : Color;
+	var parent : Uint32;
+	var children : array:Uint32;
+	var outlines : array:handle:worldBlockoutAreaOutline;
+	var isFree : Bool;
+	var increaseTerrainStreamingDistance : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,13 @@
+import struct communityPhaseTimePeriod extends communityTimePeriod
+{
+	var quantity : Uint16;
+	var markings : array:CName;
+	var spotNodeRefs : array:NodeRef;
+	var categories : array:gameSpotSequenceCategory;
+	var isSequence : Bool;
+}
+
+import struct communityTimePeriod
+{
+	var hour : communityECommunitySpawnTime;
+}

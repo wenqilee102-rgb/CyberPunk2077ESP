@@ -1,0 +1,7 @@
+import struct VolCloudsCustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

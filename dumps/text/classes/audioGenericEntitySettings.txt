@@ -1,0 +1,25 @@
+import class audioGenericEntitySettings extends audioEntitySettings
+{
+}
+
+import class abstract audioEntitySettings extends audioAudioMetadata
+{
+	var commonSettings : audioCommonEntitySettings;
+	var scanningSettings : audioScanningSettings;
+	var auxiliaryMetadata : audioAuxiliaryMetadata;
+	var emitterDecoratorMetadata : CName;
+	var preferSoundComponentPosition : Bool;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

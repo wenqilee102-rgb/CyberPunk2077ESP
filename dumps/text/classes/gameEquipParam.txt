@@ -1,0 +1,7 @@
+import struct gameEquipParam
+{
+	var slotID : TweakDBID;
+	var itemIDToEquip : gameItemID;
+	var forceFirstEquip : Bool;
+	var instant : Bool;
+}

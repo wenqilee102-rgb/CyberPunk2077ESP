@@ -1,0 +1,6 @@
+enum BusySwitchingReason
+{
+	AVAILABLE = 0,
+	RANDOMIZING = 1,
+	SWAPPING = 2
+}

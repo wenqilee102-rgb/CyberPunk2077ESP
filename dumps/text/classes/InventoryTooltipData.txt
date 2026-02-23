@@ -1,0 +1,94 @@
+class InventoryTooltipData extends ATooltipData
+{
+	public    var itemID : gameItemID;
+	public    var isEquipped : Bool;
+	public    var isLocked : Bool;
+	public    var isVendorItem : Bool;
+	public    var isCraftable : Bool;
+	public    var isPerkRequired : Bool;
+	public    var qualityStateName : CName;
+	public    var description : String;
+	public    var additionalDescription : String;
+	public    var gameplayDescription : String;
+	public    var category : String;
+	public    var quality : String;
+	public    var itemName : String;
+	public    var perkRequiredName : String;
+	public    var price : Float;
+	public    var buyPrice : Float;
+	public    var unlockProgress : Float;
+	public    var primaryStats : array:InventoryTooltipData_StatData;
+	public    var comparedStats : array:InventoryTooltipData_StatData;
+	public    var additionalStats : array:InventoryTooltipData_StatData;
+	public    var randomDamageTypes : array:InventoryTooltipData_StatData;
+	public    var recipeAdditionalStats : array:InventoryTooltipData_StatData;
+	public    var damageType : gamedataDamageType;
+	public    var isBroken : Bool;
+	public    var levelRequired : Int32;
+	public    var attachments : array:CName;
+	public    var specialAbilities : array:gameInventoryItemAbility;
+	public    var equipArea : gamedataEquipmentArea;
+	public    var showCyclingDots : Bool;
+	public    var numberOfCyclingDots : Int32;
+	public    var selectedCyclingDot : Int32;
+	public    var comparedQuality : gamedataQuality;
+	public    var qualityF : Float;
+	public    var comparisonQualityF : Float;
+	public    var showIcon : Bool;
+	public    var randomizedStatQuantity : Int32;
+	public    var itemType : gamedataItemType;
+	public    var HasPlayerSmartGunLink : Bool;
+	public    var PlayerLevel : Int32;
+	public    var PlayerStrenght : Int32;
+	public    var PlayerReflexes : Int32;
+	public    var PlayerStreetCred : Int32;
+	public    var itemAttachments : array:handle:gameInventoryItemAttachments;
+	public    var inventoryItemData : gameInventoryItemData;
+	public    var overrideRarity : Bool;
+	public    var quickhackData : InventoryTooltipData_QuickhackData;
+	public    var grenadeData : handle:InventoryTooltiData_GrenadeData;
+	public    var cyberdeckData : handle:InventoryTooltipData_CyberdeckData;
+	public    var cyberwareUpgradeData : handle:InventoryTooltiData_CyberwareUpgradeData;
+	public    var displayContext : InventoryTooltipDisplayContext;
+	public    var parentItemData : whandle:gameItemData;
+	public    var slotID : TweakDBID;
+	public    var transmogItem : gameItemID;
+	private   var managerRef : whandle:UIInventoryItemsManager;
+	private   var statsManager : handle:UIInventoryItemStatsManager;
+	private   var statsManagerFetched : Bool;
+	public    var DEBUG_iconErrorInfo : handle:DEBUG_IconErrorInfo;
+
+	static function FromInventoryItemData(itemData : script_ref:gameInventoryItemData) : handle:InventoryTooltipData; // InventoryTooltipData::FromInventoryItemData;script_ref<InventoryItemData>
+	static function FromItemViewData(itemViewData : script_ref:gameItemViewData) : handle:InventoryTooltipData; // InventoryTooltipData::FromItemViewData;script_ref<ItemViewData>
+	static function FromRecipeAndItemData(context : ScriptGameInstance, recipe : handle:RecipeData, itemData : script_ref:gameInventoryItemData, recipeOutcome : script_ref:gameInventoryItemData, recipeGameItemData : whandle:gameItemData) : handle:InventoryTooltipData; // InventoryTooltipData::FromRecipeAndItemData;GameInstanceRecipeDatascript_ref<InventoryItemData>script_ref<InventoryItemData>gameItemData
+
+	function FillDetailedStats(rawStats : script_ref:array:gameStatViewData, optional isIconicRecipe : Bool); // FillDetailedStats;script_ref<array<StatViewData>>Bool
+	function FillPrimaryStats(rawStats : script_ref:array:gameStatViewData); // FillPrimaryStats;script_ref<array<StatViewData>>
+	function FillRecipeDamageTypeData(gi : ScriptGameInstance, itemData : whandle:gameItemData); // FillRecipeDamageTypeData;GameInstancegameItemData
+	function FillRecipeStatsData(rawStats : script_ref:array:whandle:gamedataStat_Record); // FillRecipeStatsData;script_ref<array<Stat_Record>>
+	function GetManager() : whandle:UIInventoryItemsManager; // GetManager;
+	function GetStatsManager(optional refetch : Bool) : whandle:UIInventoryItemStatsManager; // GetStatsManager;Bool
+	function GetStatsManagerHandle(optional refetch : Bool) : handle:UIInventoryItemStatsManager; // GetStatsManagerHandle;Bool
+	function IsElementalDamageType(statType : gamedataStatType) : Bool; // IsElementalDamageType;gamedataStatType
+	function SetCyclingDots(selectedDot : Int32, numberOfDots : Int32); // SetCyclingDots;Int32Int32
+	function SetManager(manager : whandle:UIInventoryItemsManager); // SetManager;UIInventoryItemsManager
+	function ToCollapsedVersion(); // ToCollapsedVersion;
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

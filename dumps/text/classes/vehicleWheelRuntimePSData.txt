@@ -1,0 +1,8 @@
+import struct vehicleWheelRuntimePSData
+{
+	var previousTouchedMaterial : CName;
+	var previousVisualDisplacement : Float;
+	var previousLogicalSpringCompression : Float;
+	var previousSwaybarDisplacement : Float;
+	var previousDampedSpringForce : Float;
+}

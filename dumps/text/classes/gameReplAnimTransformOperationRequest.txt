@@ -1,0 +1,10 @@
+import struct gameReplAnimTransformOperationRequest extends gameReplAnimTransformRequestBase
+{
+	var animName : CName;
+	var operationType : Uint8;
+}
+
+import struct gameReplAnimTransformRequestBase
+{
+	var applyServerTime : netTime;
+}

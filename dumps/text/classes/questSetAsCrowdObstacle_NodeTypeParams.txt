@@ -1,0 +1,5 @@
+import struct questSetAsCrowdObstacle_NodeTypeParams
+{
+	var puppetRef : gameEntityReference;
+	var enable : Bool;
+}

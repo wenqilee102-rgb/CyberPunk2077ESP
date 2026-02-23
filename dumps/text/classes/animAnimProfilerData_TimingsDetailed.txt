@@ -1,0 +1,14 @@
+import struct animAnimProfilerData_TimingsDetailed
+{
+	var className : CName;
+	var avarageExclusiveUpdateTimeMS : Float;
+	var avarageInclusiveUpdateTimeMS : Float;
+	var avarageExclusiveSampleTimeMS : Float;
+	var avarageInclusiveSampleTimeMS : Float;
+	var totalExclusiveUpdateTimeMS : Float;
+	var totalInclusiveUpdateTimeMS : Float;
+	var totalExclusiveSampleTimeMS : Float;
+	var totalInclusiveSampleTimeMS : Float;
+	var updatesCount : Uint32;
+	var samplesCount : Uint32;
+}

@@ -1,0 +1,94 @@
+import class gamedataPreventionHeatTable_Record extends gamedataTweakDBRecord
+{
+	import function AvCooldown() : Float; // AvCooldown
+	import function AvMaxDistanceForNewRequest() : Float; // AvMaxDistanceForNewRequest
+	import function AvMinDistToSpawnedAV() : Float; // AvMinDistToSpawnedAV
+	import function AvSpawnPointsPerRequest() : Int32; // AvSpawnPointsPerRequest
+	import function AvSpawnRange() : Vector2; // AvSpawnRange
+	import function CivVehicleCrimeScoreMultiplier() : Float; // CivVehicleCrimeScoreMultiplier
+	import function CrimeAreaRadius() : Float; // CrimeAreaRadius
+	import function DisplayName() : String; // DisplayName
+	import function FallbackMaxDistanceForHeight() : Float; // FallbackMaxDistanceForHeight
+	import function FallbackMaxDistanceToRoad() : Float; // FallbackMaxDistanceToRoad
+	import function FallbackMaxHeightDifference() : Float; // FallbackMaxHeightDifference
+	import function FallbackVehicleSpawnFailedAttempts() : Int32; // FallbackVehicleSpawnFailedAttempts
+	import function HackLoopDurationInGoodSpot() : Float; // HackLoopDurationInGoodSpot
+	import function HackLoopHackDuration() : Float; // HackLoopHackDuration
+	import function HackLoopPlayerVehicleMaxtacDistance() : Float; // HackLoopPlayerVehicleMaxtacDistance
+	import function HackLoopTimeToHack() : Float; // HackLoopTimeToHack
+	import function HackLoopTimeToHack2() : Float; // HackLoopTimeToHack2
+	import function HackLoopTimeToHack3() : Float; // HackLoopTimeToHack3
+	import function HeatCrimeScoreResetTime() : Float; // HeatCrimeScoreResetTime
+	import function HeatExplosionCiv() : Float; // HeatExplosionCiv
+	import function HeatExplosionPolice() : Float; // HeatExplosionPolice
+	import function HeatHijackVehicle() : Float; // HeatHijackVehicle
+	import function HeatKillCiv() : Float; // HeatKillCiv
+	import function HeatKillMaxTac() : Float; // HeatKillMaxTac
+	import function HeatKillPolice() : Float; // HeatKillPolice
+	import function HeatMeleAttackCiv() : Float; // HeatMeleAttackCiv
+	import function HeatMeleAttackPolice() : Float; // HeatMeleAttackPolice
+	import function HeatQuickHackCiv() : Float; // HeatQuickHackCiv
+	import function HeatQuickHackPolice() : Float; // HeatQuickHackPolice
+	import function HeatRangeAttackCiv() : Float; // HeatRangeAttackCiv
+	import function HeatRangeAttackPolice() : Float; // HeatRangeAttackPolice
+	import function HeatShootMaxTac() : Float; // HeatShootMaxTac
+	import function HeatStealPoliceVehicle() : Float; // HeatStealPoliceVehicle
+	import function HeatThresholdCapacity() : Float; // HeatThresholdCapacity
+	import function IdleStateTransitionDelay() : Float; // IdleStateTransitionDelay
+	import function IntroRadioStateTransitionDelay() : Float; // IntroRadioStateTransitionDelay
+	import function IsVehicleHackingLoopEnabled() : Bool; // IsVehicleHackingLoopEnabled
+	import function MaxUnitCount() : Int32; // MaxUnitCount
+	import function MaxUnitFallbackCount() : Int32; // MaxUnitFallbackCount
+	import function PoliceVehicleCrimeScoreMultiplier() : Float; // PoliceVehicleCrimeScoreMultiplier
+	import function RoadblockT1Cooldown() : Float; // RoadblockT1Cooldown
+	import function RoadblockT1TicketAmount() : Int32; // RoadblockT1TicketAmount
+	import function RoadblockT2Cooldown() : Float; // RoadblockT2Cooldown
+	import function RoadblockT2TicketAmount() : Int32; // RoadblockT2TicketAmount
+	import function RoadblockT3Cooldown() : Float; // RoadblockT3Cooldown
+	import function RoadblockT3TicketAmount() : Int32; // RoadblockT3TicketAmount
+	import function SpawnedEngagedCars() : Int32; // SpawnedEngagedCars
+	import function SpawnedSupportCars() : Int32; // SpawnedSupportCars
+	import function StateBlinkingStarTime() : Float; // StateBlinkingStarTime
+	import function StateBufferTimer() : Float; // StateBufferTimer
+	import function StateGreyStarTime() : Float; // StateGreyStarTime
+	import function Strategy0() : whandle:gamedataStrategyData_Record; // Strategy0
+	import function Strategy0Handle() : handle:gamedataStrategyData_Record; // Strategy0Handle
+	import function Strategy1() : whandle:gamedataStrategyData_Record; // Strategy1
+	import function Strategy1Handle() : handle:gamedataStrategyData_Record; // Strategy1Handle
+	import function Strategy2() : whandle:gamedataStrategyData_Record; // Strategy2
+	import function Strategy2Handle() : handle:gamedataStrategyData_Record; // Strategy2Handle
+	import function Strategy3() : whandle:gamedataStrategyData_Record; // Strategy3
+	import function Strategy3Handle() : handle:gamedataStrategyData_Record; // Strategy3Handle
+	import function Strategy4() : whandle:gamedataStrategyData_Record; // Strategy4
+	import function Strategy4Handle() : handle:gamedataStrategyData_Record; // Strategy4Handle
+	import function Strategy5() : whandle:gamedataStrategyData_Record; // Strategy5
+	import function Strategy5Handle() : handle:gamedataStrategyData_Record; // Strategy5Handle
+	import function Strategy6() : whandle:gamedataStrategyData_Record; // Strategy6
+	import function Strategy6Handle() : handle:gamedataStrategyData_Record; // Strategy6Handle
+	import function Strategy7() : whandle:gamedataStrategyData_Record; // Strategy7
+	import function Strategy7Handle() : handle:gamedataStrategyData_Record; // Strategy7Handle
+	import function TimeBetweenAVSpawnsAfterEncounter() : Float; // TimeBetweenAVSpawnsAfterEncounter
+	import function VehicleSpawnCooldown() : Float; // VehicleSpawnCooldown
+	import function VehicleTicketCooldown() : Float; // VehicleTicketCooldown
+	import function VehicleTicketsAmount() : Int32; // VehicleTicketsAmount
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

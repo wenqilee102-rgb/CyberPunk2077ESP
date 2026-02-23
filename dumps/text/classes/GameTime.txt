@@ -1,0 +1,16 @@
+import struct GameTime
+{
+	var seconds : Int32;
+
+	import static function Day() : GameTime; // Day
+	import static function Days(self : GameTime) : Int32; // Days
+	import static function GetSeconds(self : GameTime) : Int32; // GetSeconds
+	import static function Hour() : GameTime; // Hour
+	import static function Hours(self : GameTime) : Int32; // Hours
+	import static function IsAfter(self : GameTime, other : GameTime) : Bool; // IsAfter
+	import static function MakeGameTime(days : Int32, hours : Int32, optional minutes : Int32, optional seconds : Int32) : GameTime; // MakeGameTime
+	import static function Minute() : GameTime; // Minute
+	import static function Minutes(self : GameTime) : Int32; // Minutes
+	import static function Seconds(self : GameTime) : Int32; // Seconds
+	import static function ToString(self : GameTime) : String; // ToString
+}

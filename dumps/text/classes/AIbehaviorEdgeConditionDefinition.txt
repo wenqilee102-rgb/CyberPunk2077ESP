@@ -1,0 +1,24 @@
+import class AIbehaviorEdgeConditionDefinition extends AIbehaviorUnaryConditionDefinition
+{
+	var risingEdgeAction : AIbehaviorEdgeConditionAction;
+	var fallingEdgeAction : AIbehaviorEdgeConditionAction;
+	var initialValue : Bool;
+}
+
+import class abstract AIbehaviorUnaryConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var child : handle:AIbehaviorConditionDefinition;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

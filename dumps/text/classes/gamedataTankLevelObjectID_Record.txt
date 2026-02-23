@@ -1,0 +1,28 @@
+import class gamedataTankLevelObjectID_Record extends gamedataTweakDBRecord
+{
+	import function GetObjectListCount() : Int32; // GetObjectListCount
+	import function GetObjectListItem(index : Int32) : whandle:gamedataArcadeSpawnableID_Record; // GetObjectListItem
+	import function GetObjectListItemHandle(index : Int32) : handle:gamedataArcadeSpawnableID_Record; // GetObjectListItemHandle
+	import function ObjectList(out outList : array:whandle:gamedataArcadeSpawnableID_Record); // ObjectList
+	import function ObjectListContains(item : whandle:gamedataArcadeSpawnableID_Record) : Bool; // ObjectListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

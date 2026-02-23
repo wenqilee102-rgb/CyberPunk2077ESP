@@ -1,0 +1,5 @@
+import struct entdismembermentDebrisResourceItem
+{
+	var rig : rRef:animRig;
+	var mesh : rRef:CMesh;
+}

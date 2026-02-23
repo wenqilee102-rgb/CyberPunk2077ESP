@@ -1,0 +1,161 @@
+class DamageDigitLogicController extends inkWidgetLogicController
+{
+	private   var critWidget : inkTextWidgetReference;
+	private   var headshotWidget : inkTextWidgetReference;
+	private   var wheelShotWidget : inkTextWidgetReference;
+	private   var executedWidget : inkTextWidgetReference;
+	private   var rootWidget : whandle:inkWidget;
+	private   var panelWidget : whandle:inkWidget;
+	private   var textWidget : whandle:inkTextWidget;
+	private   var gameController : whandle:DamageDigitsGameController;
+	private   var active : Bool;
+	private   var successful : Bool;
+	private   var successfulCritical : Bool;
+	private   var showingBothDigits : Bool;
+	private   var distanceModifier : Float;
+	private   var calculatedDistanceHeightBias : Float;
+	private   var stickingDistanceHeightBias : Float;
+	public    var stickToTarget : Bool;
+	private   var forceStickToTarget : Bool;
+	private   var projection : handle:inkScreenProjection;
+	private   var showPositiveAnimDef : handle:inkanimDefinition;
+	private   var showPositiveAnimFadeInInterpolator : handle:inkanimTransparencyInterpolator;
+	private   var showPositiveAnimFadeOutInterpolator : handle:inkanimTransparencyInterpolator;
+	private   var showPositiveAnimMarginInterpolator : handle:inkanimMarginInterpolator;
+	private   var showPositiveAnimScaleInterpolator : handle:inkanimScaleInterpolator;
+	private   var showNegativeAnimDef : handle:inkanimDefinition;
+	private   var showNegativeAnimFadeInInterpolator : handle:inkanimTransparencyInterpolator;
+	private   var showNegativeAnimFadeOutInterpolator : handle:inkanimTransparencyInterpolator;
+	private   var showNegativeAnimMarginInterpolator : handle:inkanimMarginInterpolator;
+	private   var showNegativeAnimScaleInterpolator : handle:inkanimScaleInterpolator;
+	private   var animStickTargetOffset : Vector4;
+	private   var animTimeFadeIn : Float;
+	private   var animTimeFadeOut : Float;
+	private   var animBothTimeFadeIn : Float;
+	private   var animBothTimeFadeOut : Float;
+	private   var animTimeDelay : Float;
+	private   var animTimeCritDelay : Float;
+	private   var animBothTimeDelay : Float;
+	private   var animBothTimeCritDelay : Float;
+	private   var animStartHeight : Float;
+	private   var animAngleMin1 : Float;
+	private   var animAngleMin2 : Float;
+	private   var animAngleMax1 : Float;
+	private   var animAngleMax2 : Float;
+	private   var animBothAngleMin1 : Float;
+	private   var animBothAngleMin2 : Float;
+	private   var animBothAngleMax1 : Float;
+	private   var animBothAngleMax2 : Float;
+	private   var animDistanceMin : Float;
+	private   var animDistanceMax : Float;
+	private   var animDistanceMin_Crit : Float;
+	private   var animDistanceMax_Crit : Float;
+	private   var animBothOffsetX : Float;
+	private   var animBothOffsetY : Float;
+	private   var animBothStickingOffsetY : Float;
+	private   var animStickTargetWorldZOffset : Float;
+	private   var animStickingOffsetY : Float;
+	private   var animDistanceModifierMinDistance : Float;
+	private   var animDistanceModifierMaxDistance : Float;
+	private   var animDistanceModifierMinValue : Float;
+	private   var animDistanceModifierMaxValue : Float;
+	private   var animDistanceHeightBias : Float;
+	private   var animStickingDistanceHeightBias : Float;
+	private   var animPositiveOpacity : Float;
+	private   var animNegativeOpacity : Float;
+	private   var animDynamicDuration : Float;
+	private   var animDynamicDelay : Float;
+	private   var animDynamicCritDuration : Float;
+	private   var animDynamicCritDelay : Float;
+
+	event OnHide(anim : handle:inkanimProxy) : Bool; // OnHide
+	event OnInitialize() : Bool; // OnInitialize
+	event OnScreenProjectionUpdate(projection : handle:inkScreenProjection) : Bool; // OnScreenProjectionUpdate
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function BuildStateName(damageType : gamedataDamageType, hitType : gameuiHitType, flags : array:SHitFlag) : CName; // BuildStateName;gamedataDamageTypegameuiHitTypearray<SHitFlag>
+	function CalculateDistanceModifier(fromVec : Vector4, toVec : Vector4); // CalculateDistanceModifier;Vector4Vector4
+	function CreateShowAnimation(); // CreateShowAnimation;
+	function GenerateRandomMarginInterpolator(positive : Bool, isCritical : Bool, showingBothDigits : Bool); // GenerateRandomMarginInterpolator;BoolBoolBool
+	function SetActive(active : Bool); // SetActive;Bool
+	function SetProjection(projection : handle:inkScreenProjection, gameController : whandle:DamageDigitsGameController); // SetProjection;inkScreenProjectionDamageDigitsGameController
+	function Show(damageInfo : script_ref:gameuiDamageInfo, showingBothDigits : Bool, forceStickToTarget : Bool); // Show;script_ref<DamageInfo>BoolBool
+	function ShowExecutedFloater(damageInfo : script_ref:gameuiDamageInfo); // ShowExecutedFloater;script_ref<DamageInfo>
+	function ShowPuncturedFloater(instigator : whandle:gameObject, vehicle : whandle:gameObject, puncturePosition : Vector4); // ShowPuncturedFloater;GameObjectGameObjectVector4
+	function ShowRammingFloater(damageInfo : script_ref:gameuiDamageInfo); // ShowRammingFloater;script_ref<DamageInfo>
+	function UpdateDuration(showingBothDigits : Bool); // UpdateDuration;Bool
+	function UpdatePositionAndScale(showingBothDigits : Bool); // UpdatePositionAndScale;Bool
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

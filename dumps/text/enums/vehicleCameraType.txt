@@ -1,0 +1,5 @@
+enum vehicleCameraType
+{
+	FPP = 0,
+	TPP = 1
+}

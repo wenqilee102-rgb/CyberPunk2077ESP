@@ -1,0 +1,6 @@
+struct FuseData
+{
+	public    var psOwnerData : PSOwnerData;
+	public    var timeTable : array:SDeviceTimetableEntry;
+	public    var lights : Int32;
+}

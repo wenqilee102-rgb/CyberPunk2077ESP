@@ -1,0 +1,1 @@
+{"a":"workIContainerEntry","b":"workRandomList","d":8,"e":[{"a":{"a":2},"b":"minClips","c":128},{"a":{"a":2},"b":"maxClips","c":128},{"a":{"a":10},"b":"pauseBetweenLength","c":128},{"a":{"a":10},"b":"pauseLengthDeviation","c":128},{"a":{"a":31,"c":{"a":10}},"b":"weights","c":128},{"a":{"a":10},"b":"pauseBlendOutTime","c":128},{"a":{"a":2},"b":"dontRepeatLastAnims","c":128}]}

@@ -1,0 +1,1 @@
+{"a":"gamedataEffector_Record","b":"gamedataApplyEffectorEffector_Record","c":"ApplyEffectorEffector_Record","d":24,"f":[{"a":"ApplicationTarget","c":{"a":14},"d":4},{"a":"EffectorToApply","c":{"a":27,"c":{"b":"gamedataEffector_Record"}},"d":4},{"a":"EffectorToApplyHandle","c":{"a":26,"c":{"b":"gamedataEffector_Record"}},"d":4}]}

@@ -1,0 +1,13 @@
+import class scnScalingData_KeepRelationWithOtherEvents extends scnIScalingData
+{
+	var groupRfrncNdspaceStarttime : scnSceneTime;
+	var groupRfrncNdspaceEndtime : scnSceneTime;
+}
+
+import class abstract scnIScalingData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

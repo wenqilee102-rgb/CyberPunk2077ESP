@@ -1,0 +1,14 @@
+import class worldDebugColoring_CollisionMeshes extends worldEditorDebugColoringSettings
+{
+	var defaultColor : Color;
+	var prefabColor : Color;
+	var collisionMeshColor : Color;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

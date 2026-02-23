@@ -1,0 +1,7 @@
+import struct workFastForwardData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gameIHitShape","b":"gameHitShapeBase","c":"HitShapeBase","d":28,"e":[{"a":{"b":"Vector3"},"b":"translation","c":128},{"a":{"b":"Quaternion"},"b":"rotation","c":128},{"a":{"b":"Matrix"},"b":"localTransform","c":128}]}

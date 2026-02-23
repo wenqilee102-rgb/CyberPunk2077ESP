@@ -1,0 +1,31 @@
+import class gamedataAimAssistSettings_Record extends gamedataTweakDBRecord
+{
+	import function Heavy() : whandle:gamedataAimAssistConfigPreset_Record; // Heavy
+	import function HeavyHandle() : handle:gamedataAimAssistConfigPreset_Record; // HeavyHandle
+	import function Light() : whandle:gamedataAimAssistConfigPreset_Record; // Light
+	import function LightHandle() : handle:gamedataAimAssistConfigPreset_Record; // LightHandle
+	import function Off() : whandle:gamedataAimAssistConfigPreset_Record; // Off
+	import function OffHandle() : handle:gamedataAimAssistConfigPreset_Record; // OffHandle
+	import function Standard() : whandle:gamedataAimAssistConfigPreset_Record; // Standard
+	import function StandardHandle() : handle:gamedataAimAssistConfigPreset_Record; // StandardHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

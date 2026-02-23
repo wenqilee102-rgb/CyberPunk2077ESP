@@ -1,0 +1,15 @@
+import class gameMappinResource extends CResource
+{
+	var cookedData : array:gameCookedMappinData;
+	var cookedMultiData : array:gameCookedMultiMappinData;
+	var cookedGpsData : array:gameCookedGpsMappinData;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

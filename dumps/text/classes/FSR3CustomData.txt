@@ -1,0 +1,7 @@
+import struct FSR3CustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

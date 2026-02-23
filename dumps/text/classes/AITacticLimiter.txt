@@ -1,0 +1,7 @@
+import struct AITacticLimiter extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

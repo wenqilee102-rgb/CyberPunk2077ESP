@@ -1,0 +1,5 @@
+import struct physicsCollisionPresetOverride
+{
+	var from : CName;
+	var to : CName;
+}

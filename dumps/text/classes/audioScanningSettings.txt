@@ -1,0 +1,7 @@
+import struct audioScanningSettings
+{
+	var scanningStartEvent : CName;
+	var scanningStopEvent : CName;
+	var scanningCompleteEvent : CName;
+	var scanningAvailableEvent : CName;
+}

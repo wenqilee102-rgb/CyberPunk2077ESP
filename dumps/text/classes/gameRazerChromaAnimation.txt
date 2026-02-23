@@ -1,0 +1,6 @@
+import struct gameRazerChromaAnimation
+{
+	var id : Int32;
+	var name : CName;
+	var buffer : DataBuffer;
+}

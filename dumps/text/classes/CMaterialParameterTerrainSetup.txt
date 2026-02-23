@@ -1,0 +1,14 @@
+import class CMaterialParameterTerrainSetup extends CMaterialParameter
+{
+	var setup : rRef:CTerrainSetup;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

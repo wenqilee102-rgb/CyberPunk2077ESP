@@ -1,0 +1,64 @@
+class DropPointSystem extends gameScriptableSystem
+{
+	private   var packages : array:handle:DropPointPackage;
+	private   var mappins : array:handle:DropPointMappinRegistrationData;
+	private   var isEnabled : Bool;
+	private   var dropPointSystemLocks : array:DropPointSystemLock;
+
+	function AddDropPointSystemLock(reason : CName); // AddDropPointSystemLock;CName
+	function CanDeposit(record : TweakDBID, dropPoint : gamePersistentID) : Bool; // CanDeposit;TweakDBIDPersistentID
+	function CreatePackage(request : handle:DropPointRequest); // CreatePackage;DropPointRequest
+	function GetMappinData(ownerID : entEntityID) : handle:DropPointMappinRegistrationData; // GetMappinData;EntityID
+	function GetMappinSystem() : handle:gamemappinsMappinSystem; // GetMappinSystem;
+	function HasItemsThatCanBeDeposited(user : handle:gameObject, dropPoint : gamePersistentID) : Bool; // HasItemsThatCanBeDeposited;GameObjectPersistentID
+	function HasMappin(ownerID : entEntityID) : Bool; // HasMappin;EntityID
+	function HasMeaningfulItems(items : script_ref:array:whandle:gameItemData, dropPoint : gamePersistentID) : Bool; // HasMeaningfulItems;script_ref<array<gameItemData>>PersistentID
+	function HideDropPointMappins(optional informDevice : Bool); // HideDropPointMappins;Bool
+	function Is(record : TweakDBID, status : DropPointPackageStatus) : Bool; // Is;TweakDBIDDropPointPackageStatus
+	function IsActive(record : TweakDBID) : Bool; // IsActive;TweakDBID
+	function IsCollected(record : TweakDBID) : Bool; // IsCollected;TweakDBID
+	function IsEnabled() : Bool; // IsEnabled;
+	function OnAttach(); // OnAttach;
+	function OnDropPointRequest(dropPointRequest : handle:DropPointRequest); // OnDropPointRequest;DropPointRequest
+	function OnRegisterDropPointMappinRequest(request : handle:RegisterDropPointMappinRequest); // OnRegisterDropPointMappinRequest;RegisterDropPointMappinRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnToggleDropPointSystemRequest(request : handle:ToggleDropPointSystemRequest); // OnToggleDropPointSystemRequest;ToggleDropPointSystemRequest
+	function OnUnregisterDropPointMappinRequest(request : handle:UnregisterDropPointMappinRequest); // OnUnregisterDropPointMappinRequest;UnregisterDropPointMappinRequest
+	function RegisterDropPointMappin(data : handle:DropPointMappinRegistrationData); // RegisterDropPointMappin;DropPointMappinRegistrationData
+	function RemoveDropPointSystemLock(reason : CName); // RemoveDropPointSystemLock;CName
+	function RemoveMappinData(ownerID : entEntityID); // RemoveMappinData;EntityID
+	function RestoreDropPointMappins(optional informDevice : Bool); // RestoreDropPointMappins;Bool
+	function UnregisterDropPointMappin(data : handle:DropPointMappinRegistrationData); // UnregisterDropPointMappin;DropPointMappinRegistrationData
+	function UpdatePackage(dropPointRequest : handle:DropPointRequest); // UpdatePackage;DropPointRequest
+	function UpdateRecord(package : handle:DropPointPackage, status : DropPointPackageStatus, holder : gamePersistentID); // UpdateRecord;DropPointPackageDropPointPackageStatusPersistentID
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

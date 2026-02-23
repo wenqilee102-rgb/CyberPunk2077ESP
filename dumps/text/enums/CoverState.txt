@@ -1,0 +1,5 @@
+enum CoverState
+{
+	Open = 0,
+	Closed = 1
+}

@@ -1,0 +1,28 @@
+import class gameScanningController extends IScriptable
+{
+	import function EnterMode(object : handle:gameObject, mode : gameScanningMode); // EnterMode
+	import function GetExclusiveFocusClueEntity() : entEntityID; // GetExclusiveFocusClueEntity
+	import function GetScanProgress(object : handle:gameObject) : Float; // GetScanProgress
+	import function ImmediateScan(object : handle:gameObject, range3D : Float, optional range2D : Vector4, optional startPosition : Vector4); // ImmediateScan
+	import function IsScanned(object : handle:gameObject) : Bool; // IsScanned
+	import function IsTagged(object : handle:gameObject) : Bool; // IsTagged
+	import function PulseScan(object : handle:gameObject, range3D : Float, optional range2D : Vector4, optional startPosition : Vector4); // PulseScan
+	import function SetIsScanned_Event(object : handle:gameObject, val : Bool) : Bool; // SetIsScanned_Event
+	import function TagObject(object : handle:gameObject); // TagObject
+	import function UntagAll(); // UntagAll
+	import function UntagObject(object : handle:gameObject) : Float; // UntagObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

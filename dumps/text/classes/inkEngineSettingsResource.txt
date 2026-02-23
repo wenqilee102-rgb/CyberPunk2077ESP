@@ -1,0 +1,28 @@
+import class inkEngineSettingsResource extends CResource
+{
+	var fallbackCompositionResource : rRef:inkFullscreenCompositionResource;
+	var fallbackShapeCollectionResource : rRef:inkShapeCollectionResource;
+	var fallbackIconAtlasResource : rRef:inkTextureAtlas;
+	var inputKeyIconsDefinitionResource : raRef:JsonResource;
+	var fallbackFontFamilyPath : rRef:inkFontFamilyResource;
+	var blackTexture : rRef:CBitmapTexture;
+	var advertMissingFormatTexture : rRef:CBitmapTexture;
+	var advertWrongResourceTexture : rRef:CBitmapTexture;
+	var fallbackTextureAtlas : rRef:inkTextureAtlas;
+	var imageTilingMaterial : rRef:IMaterial;
+	var imageNineSliceMaterial : rRef:IMaterial;
+	var depthMaterial : rRef:IMaterial;
+	var whiteMaskAtlas : rRef:inkTextureAtlas;
+	var defaultBinkMaterial : rRef:CMaterialTemplate;
+	var tooManyBinksTexture : rRef:CBitmapTexture;
+	var componentMissingTexture : rRef:CBitmapTexture;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"worldNavigationScriptFindWallResult","c":"NavigationFindWallResult","d":8,"e":[{"a":{"b":"worldNavigationRequestStatus"},"b":"status","c":128},{"a":{"a":1},"b":"isHit","c":128},{"a":{"b":"Vector4"},"b":"hitPosition","c":128}]}

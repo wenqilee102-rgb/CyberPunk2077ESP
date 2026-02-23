@@ -1,0 +1,32 @@
+import class gamedataEquipmentArea_Record extends gamedataTweakDBRecord
+{
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function EquipSlots(out outList : array:whandle:gamedataEquipSlot_Record); // EquipSlots
+	import function EquipSlotsContains(item : whandle:gamedataEquipSlot_Record) : Bool; // EquipSlotsContains
+	import function GetEquipSlotsCount() : Int32; // GetEquipSlotsCount
+	import function GetEquipSlotsItem(index : Int32) : whandle:gamedataEquipSlot_Record; // GetEquipSlotsItem
+	import function GetEquipSlotsItemHandle(index : Int32) : handle:gamedataEquipSlot_Record; // GetEquipSlotsItemHandle
+	import function LocalizedName() : String; // LocalizedName
+	import function Type() : gamedataEquipmentArea; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+struct FanResaveData
+{
+	public    var animationType : EAnimationType;
+	public    var rotateClockwise : Bool;
+	public    var randomizeBladesSpeed : Bool;
+	public    var maxRotationSpeed : Float;
+	public    var timeToMaxRotation : Float;
+}

@@ -1,0 +1,9 @@
+import struct gameReplAnimTransformSyncElem
+{
+	var definitionId : Int32;
+	var currentTime : Float;
+	var timeScale : Float;
+	var duration : Float;
+	var timesToPlay : Int32;
+	var playing : Bool;
+}

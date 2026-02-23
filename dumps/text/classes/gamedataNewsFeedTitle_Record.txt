@@ -1,0 +1,27 @@
+import class gamedataNewsFeedTitle_Record extends gamedataTweakDBRecord
+{
+	import function GetTitlesListCount() : Int32; // GetTitlesListCount
+	import function GetTitlesListItem(index : Int32) : CName; // GetTitlesListItem
+	import function TitlesList() : array:CName; // TitlesList
+	import function TitlesListContains(item : CName) : Bool; // TitlesListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

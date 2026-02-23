@@ -1,0 +1,4 @@
+import struct scnCheckFactReturnConditionParams
+{
+	var factCondition : handle:scnInterruptFactConditionType;
+}

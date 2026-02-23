@@ -1,0 +1,5 @@
+struct metroMapPlayerPositionReferences
+{
+	public    var lineNumber : Uint32;
+	public    var positionRefWidget : inkWidgetReference;
+}

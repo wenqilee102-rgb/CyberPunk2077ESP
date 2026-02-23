@@ -1,0 +1,7 @@
+import struct inkEditorModeState extends inkIStateMachineState
+{
+}
+
+import struct abstract inkIStateMachineState
+{
+}

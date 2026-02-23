@@ -1,0 +1,38 @@
+import class gamedataDistrictPreventionData_Record extends gamedataTweakDBRecord
+{
+	import function Heat1() : whandle:gamedataPreventionHeatData_Record; // Heat1
+	import function Heat1Handle() : handle:gamedataPreventionHeatData_Record; // Heat1Handle
+	import function Heat2() : whandle:gamedataPreventionHeatData_Record; // Heat2
+	import function Heat2Handle() : handle:gamedataPreventionHeatData_Record; // Heat2Handle
+	import function Heat3() : whandle:gamedataPreventionHeatData_Record; // Heat3
+	import function Heat3Handle() : handle:gamedataPreventionHeatData_Record; // Heat3Handle
+	import function Heat4() : whandle:gamedataPreventionHeatData_Record; // Heat4
+	import function Heat4Handle() : handle:gamedataPreventionHeatData_Record; // Heat4Handle
+	import function Heat5() : whandle:gamedataPreventionHeatData_Record; // Heat5
+	import function Heat5Handle() : handle:gamedataPreventionHeatData_Record; // Heat5Handle
+	import function InputLockOverrideThreshold() : Int32; // InputLockOverrideThreshold
+	import function InputLockTime() : Float; // InputLockTime
+	import function Recon() : whandle:gamedataPreventionHeatData_Record; // Recon
+	import function ReconHandle() : handle:gamedataPreventionHeatData_Record; // ReconHandle
+	import function SpawnOriginMaxDistance() : Float; // SpawnOriginMaxDistance
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

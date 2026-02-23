@@ -1,0 +1,6 @@
+enum moveSecureFootingFailureType
+{
+	Invalid = 0,
+	Edge = 1,
+	Slope = 2
+}

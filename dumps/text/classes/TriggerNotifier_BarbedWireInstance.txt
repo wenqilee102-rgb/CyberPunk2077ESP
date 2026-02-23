@@ -1,0 +1,31 @@
+class TriggerNotifier_BarbedWireInstance extends entTriggerNotifier_ScriptInstance
+{
+	event OnAreaEnter(evt : handle:entAreaEnteredEvent) : Bool; // OnAreaEnter
+	event OnAreaExit(evt : handle:entAreaExitedEvent) : Bool; // OnAreaExit
+
+	function CanAttackActivator(activator : whandle:gameObject) : Bool; // CanAttackActivator;GameObject
+	function DoAttack(attackRecord : TweakDBID, target : handle:gameObject); // DoAttack;TweakDBIDGameObject
+}
+
+import class entTriggerNotifier_ScriptInstance extends worldITriggerAreaNotiferInstance
+{
+	import function GetNotifier() : handle:entTriggerNotifier_Script; // GetNotifier
+}
+
+import class abstract worldITriggerAreaNotiferInstance extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

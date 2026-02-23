@@ -1,0 +1,8 @@
+import struct audioAmbientPaletteBrush
+{
+	var distributionBucketSize : Float;
+	var virtualHearingRadius : Float;
+	var hearingDistanceCooldown : Float;
+	var eventsPool : array:CName;
+	var radioStationMetadata : CName;
+}

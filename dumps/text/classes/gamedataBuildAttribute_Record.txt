@@ -1,0 +1,26 @@
+import class gamedataBuildAttribute_Record extends gamedataTweakDBRecord
+{
+	import function Attribute() : whandle:gamedataAttribute_Record; // Attribute
+	import function AttributeHandle() : handle:gamedataAttribute_Record; // AttributeHandle
+	import function Level() : Int32; // Level
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

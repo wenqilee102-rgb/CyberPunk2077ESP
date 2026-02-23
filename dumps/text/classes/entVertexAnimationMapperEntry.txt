@@ -1,0 +1,5 @@
+import struct entVertexAnimationMapperEntry
+{
+	var sources : static:4,entVertexAnimationMapperSource;
+	var destination : entVertexAnimationMapperDestination;
+}

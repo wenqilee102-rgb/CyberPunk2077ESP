@@ -1,0 +1,49 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class JukeboxSetup : CVariable
+	{
+		private CBool _randomizeStartingStation;
+		private CEnum<ERadioStationList> _startingStation;
+		private CName _glitchSFX;
+		private TweakDBID _paymentRecordID;
+
+		[Ordinal(0)] 
+		[RED("randomizeStartingStation")] 
+		public CBool RandomizeStartingStation
+		{
+			get => GetProperty(ref _randomizeStartingStation);
+			set => SetProperty(ref _randomizeStartingStation, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("startingStation")] 
+		public CEnum<ERadioStationList> StartingStation
+		{
+			get => GetProperty(ref _startingStation);
+			set => SetProperty(ref _startingStation, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("glitchSFX")] 
+		public CName GlitchSFX
+		{
+			get => GetProperty(ref _glitchSFX);
+			set => SetProperty(ref _glitchSFX, value);
+		}
+
+		[Ordinal(3)] 
+		[RED("paymentRecordID")] 
+		public TweakDBID PaymentRecordID
+		{
+			get => GetProperty(ref _paymentRecordID);
+			set => SetProperty(ref _paymentRecordID, value);
+		}
+
+		public JukeboxSetup(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

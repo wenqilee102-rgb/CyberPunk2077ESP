@@ -1,0 +1,7 @@
+import struct RenderSettingFactors
+{
+	var resolutionAberrationScale : curveData:Float;
+	var resolutionAberrationDispersal : curveData:Float;
+	var resolutionFilmGrainScale : curveData:Float;
+	var resolutionFilmGrainStrength : curveData:Float;
+}

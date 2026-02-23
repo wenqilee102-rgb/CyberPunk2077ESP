@@ -1,0 +1,16 @@
+import struct gameStatViewData
+{
+	var type : gamedataStatType;
+	var statName : String;
+	var value : Int32;
+	var diffValue : Int32;
+	var isMaxValue : Bool;
+	var valueF : Float;
+	var diffValueF : Float;
+	var statMinValueF : Float;
+	var statMaxValueF : Float;
+	var canBeCompared : Bool;
+	var isCompared : Bool;
+	var statMinValue : Int32;
+	var statMaxValue : Int32;
+}

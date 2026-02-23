@@ -1,0 +1,13 @@
+import struct gameuiHUDVideoStartEvent
+{
+	var videoPathHash : Uint64;
+	var playOnHud : Bool;
+	var fullScreen : Bool;
+	var useFullscreenVideoState : Bool;
+	var keepWidescreenAspectRatio : Bool;
+	var position : Vector2;
+	var size : Vector2;
+	var skippable : Bool;
+	var isLooped : Bool;
+	var forceVideoFrameRate : Bool;
+}

@@ -1,0 +1,5 @@
+import struct audioVoiceTriggerPerSquadOrderMapItem
+{
+	var name : CName;
+	var triggerName : CName;
+}

@@ -1,0 +1,38 @@
+import class gamedataAISquadParams_Record extends gamedataTweakDBRecord
+{
+	import function AllTickets(out outList : array:whandle:gamedataAITicket_Record); // AllTickets
+	import function AllTicketsContains(item : whandle:gamedataAITicket_Record) : Bool; // AllTicketsContains
+	import function GetAllTicketsCount() : Int32; // GetAllTicketsCount
+	import function GetAllTicketsItem(index : Int32) : whandle:gamedataAITicket_Record; // GetAllTicketsItem
+	import function GetAllTicketsItemHandle(index : Int32) : handle:gamedataAITicket_Record; // GetAllTicketsItemHandle
+	import function GetOverridenTicketsCount() : Int32; // GetOverridenTicketsCount
+	import function GetOverridenTicketsItem(index : Int32) : whandle:gamedataAITicket_Record; // GetOverridenTicketsItem
+	import function GetOverridenTicketsItemHandle(index : Int32) : handle:gamedataAITicket_Record; // GetOverridenTicketsItemHandle
+	import function GetProhibitedTicketsCount() : Int32; // GetProhibitedTicketsCount
+	import function GetProhibitedTicketsItem(index : Int32) : whandle:gamedataAITicketType_Record; // GetProhibitedTicketsItem
+	import function GetProhibitedTicketsItemHandle(index : Int32) : handle:gamedataAITicketType_Record; // GetProhibitedTicketsItemHandle
+	import function OverridenTickets(out outList : array:whandle:gamedataAITicket_Record); // OverridenTickets
+	import function OverridenTicketsContains(item : whandle:gamedataAITicket_Record) : Bool; // OverridenTicketsContains
+	import function ProhibitedTickets(out outList : array:whandle:gamedataAITicketType_Record); // ProhibitedTickets
+	import function ProhibitedTicketsContains(item : whandle:gamedataAITicketType_Record) : Bool; // ProhibitedTicketsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,17 @@
+import class CEvaluatorFloatStartEnd extends IEvaluatorFloat
+{
+	var start : Float;
+	var end : Float;
+}
+
+import class abstract IEvaluatorFloat extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,23 @@
+class HubMenuUtils extends IScriptable
+{
+	static function SetMenuData(menuButton : inkWidgetReference, data : script_ref:MenuData) : handle:MenuItemController; // HubMenuUtils::SetMenuData;inkWidgetRefscript_ref<MenuData>
+	static function SetMenuData(menuButton : inkWidgetReference, identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:MenuItemController; // HubMenuUtils::SetMenuData;inkWidgetRefHubMenuItemsHubMenuItemsCNameCNameCNameIScriptable
+	static function SetMenuHyperlinkData(menuButton : inkWidgetReference, identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:MenuItemController; // HubMenuUtils::SetMenuHyperlinkData;inkWidgetRefHubMenuItemsHubMenuItemsCNameCNameCNameIScriptable
+	static function SetRadialMenuData(menuButton : inkWidgetReference, data : script_ref:MenuData) : handle:RadialMenuItemController; // HubMenuUtils::SetRadialMenuData;inkWidgetRefscript_ref<MenuData>
+	static function SetRadialMenuData(menuButton : inkWidgetReference, identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:RadialMenuItemController; // HubMenuUtils::SetRadialMenuData;inkWidgetRefHubMenuItemsHubMenuItemsCNameCNameCNameIScriptable
+	static function SetRadialMenuHyperlinkData(menuButton : inkWidgetReference, identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:RadialMenuItemController; // HubMenuUtils::SetRadialMenuHyperlinkData;inkWidgetRefHubMenuItemsHubMenuItemsCNameCNameCNameIScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

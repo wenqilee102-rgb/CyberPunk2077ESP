@@ -1,0 +1,12 @@
+import struct audioDialogLineEventData
+{
+	var stringId : CRUID;
+	var context : locVoiceoverContext;
+	var expression : locVoiceoverExpression;
+	var isPlayer : Bool;
+	var isRewind : Bool;
+	var isHolocall : Bool;
+	var customVoEvent : CName;
+	var seekTime : Float;
+	var playbackSpeedParameter : Float;
+}

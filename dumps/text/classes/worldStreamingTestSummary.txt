@@ -1,0 +1,18 @@
+import class worldStreamingTestSummary extends ISerializable
+{
+	var gameDefinition : String;
+	var noCrowds : Bool;
+	var testDurationSeconds : Float;
+	var initialBytesRead : Uint64;
+	var bytesReadDuringTest : Uint64;
+	var bytesReadDuringDriving : Uint64;
+	var bytesReadDuringCooldown : Uint64;
+	var totalSeeksBytes : Uint64;
+	var minFps : Float;
+	var maxFps : Float;
+	var averageFps : Float;
+}
+
+import class abstract ISerializable
+{
+}

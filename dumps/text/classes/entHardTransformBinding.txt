@@ -1,0 +1,23 @@
+import class entHardTransformBinding extends entITransformBinding
+{
+	var slotName : CName;
+}
+
+import class abstract entITransformBinding extends entISourceBinding
+{
+}
+
+import class abstract entISourceBinding extends entIBinding
+{
+}
+
+import class abstract entIBinding extends ISerializable
+{
+	var enabled : Bool;
+	var enableMask : entTagMask;
+	var bindName : CName;
+}
+
+import class abstract ISerializable
+{
+}

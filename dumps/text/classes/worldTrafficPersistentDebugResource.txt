@@ -1,0 +1,18 @@
+import class worldTrafficPersistentDebugResource extends resStreamedResource
+{
+	var brokenUIDs : array:worldTrafficLaneUID;
+	var brokenUIDsDeadEnds : array:worldTrafficLaneUID;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

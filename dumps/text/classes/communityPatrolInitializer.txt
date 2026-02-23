@@ -1,0 +1,12 @@
+import class communityPatrolInitializer extends communitySpawnInitializer
+{
+	var patrolRole : handle:AIPatrolRole;
+}
+
+import class abstract communitySpawnInitializer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

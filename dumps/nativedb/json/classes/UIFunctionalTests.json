@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"UIFunctionalTests","d":8,"f":[{"a":"EnableExitGameAction","d":4},{"a":"GetPlaybackFailInfo","d":4},{"a":"GetPlaybackResult","d":4},{"a":"HideHUD","d":4},{"a":"IsInGameMenuVisible","d":4},{"a":"IsMessageBoxVisible","d":4},{"a":"IsPlaying","d":4},{"a":"LockGameStatesTransitions","d":4},{"a":"Play","d":4}]}

@@ -1,0 +1,5 @@
+import struct entVertexAnimationMapperSource
+{
+	var type : entVertexAnimationMapperSourceType;
+	var name : CName;
+}

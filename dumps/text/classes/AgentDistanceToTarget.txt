@@ -1,0 +1,5 @@
+struct AgentDistanceToTarget
+{
+	public    var distance : Float;
+	public    var index : Int32;
+}

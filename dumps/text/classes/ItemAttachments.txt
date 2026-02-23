@@ -1,0 +1,7 @@
+struct ItemAttachments
+{
+	public    var itemID : gameItemID;
+	public    var attachmentSlotID : TweakDBID;
+
+	static function Create(itemID : gameItemID, attachmentSlotID : TweakDBID) : ItemAttachments; // ItemAttachments::Create;ItemIDTweakDBID
+}

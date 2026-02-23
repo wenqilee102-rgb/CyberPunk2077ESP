@@ -1,0 +1,29 @@
+import class gamedataVehicleDoorDetachRule_Record extends gamedataTweakDBRecord
+{
+	import function ComponentToQuery() : CName; // ComponentToQuery
+	import function DoorEnumIndex() : Int32; // DoorEnumIndex
+	import function GetPartsToDetachCount() : Int32; // GetPartsToDetachCount
+	import function GetPartsToDetachItem(index : Int32) : CName; // GetPartsToDetachItem
+	import function PartsToDetach() : array:CName; // PartsToDetach
+	import function PartsToDetachContains(item : CName) : Bool; // PartsToDetachContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

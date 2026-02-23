@@ -1,0 +1,31 @@
+import class questMultiplayerGiveChoiceTokenEvent extends redEvent
+{
+	var compatibleDeviceName : CName;
+	var timeout : Uint32;
+	private   var tokenAlreadyGiven : Bool;
+
+	static function CreateDelayedEvent(player : handle:gameObject, compatibleDeviceName : CName, timeout : Uint32) : gameDelayID; // questMultiplayerGiveChoiceTokenEvent::CreateDelayedEvent;GameObjectCNameUint32
+	static function CreateEvent(compatibleDeviceName : CName, timeout : Uint32) : handle:questMultiplayerGiveChoiceTokenEvent; // questMultiplayerGiveChoiceTokenEvent::CreateEvent;CNameUint32
+
+	import function RandomizePlayer(player : handle:gameObject) : handle:gameObject; // RandomizePlayer
+
+	function GiveChoiceToken(player : handle:PlayerPuppet); // GiveChoiceToken;PlayerPuppet
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

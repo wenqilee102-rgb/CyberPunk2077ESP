@@ -1,0 +1,7 @@
+import struct gameWeaponReplicationHistory
+{
+	var weaponSlot : TweakDBID;
+	var shots : static:8,gameReplicatedShotData;
+	var latestShotId : Uint32;
+	var continuousAttack : gameReplicatedContinuousAttack;
+}

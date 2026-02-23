@@ -1,0 +1,60 @@
+class AgentRegistry extends IScriptable
+{
+	protected var isInitialized : Bool;
+	protected var agents : array:Agent;
+	public    var agentsLock : ScriptReentrantRWLock;
+	public    var maxReprimandsPerNPC : Int32;
+	public    var maxReprimandsPerDEVICE : Int32;
+
+	static function Construct() : handle:AgentRegistry; // AgentRegistry::Construct;
+
+	function AddArea(area : handle:SecurityAreaControllerPS, agents : script_ref:array:handle:gameDeviceComponentPS); // AddArea;SecurityAreaControllerPSscript_ref<array<DeviceComponentPS>>
+	function CleanUpOnNewAttitudeGroup(gameInstance : ScriptGameInstance, newGroup : CName); // CleanUpOnNewAttitudeGroup;GameInstanceCName
+	function ClearSupport(); // ClearSupport;
+	function GetAgent(id : gamePersistentID, recordCopy : script_ref:Agent) : Bool; // GetAgent;PersistentIDscript_ref<Agent>
+	function GetAgentAreas(id : gamePersistentID) : array:DeviceLink; // GetAgentAreas;PersistentID
+	function GetAgentIndex(id : gamePersistentID, out index : Int32) : Bool; // GetAgentIndex;PersistentIDInt32
+	function GetAgentIndex_NoLock(id : gamePersistentID, out index : Int32) : Bool; // GetAgentIndex_NoLock;PersistentIDInt32
+	function GetAgents() : array:Agent; // GetAgents;
+	function GetAgents(filter : script_ref:array:handle:SecurityAreaControllerPS) : array:Agent; // GetAgents;script_ref<array<SecurityAreaControllerPS>>
+	function GetAgentsIDs() : array:gamePersistentID; // GetAgentsIDs;
+	function GetAgentsIDs(filter : script_ref:array:handle:SecurityAreaControllerPS) : array:gamePersistentID; // GetAgentsIDs;script_ref<array<SecurityAreaControllerPS>>
+	function GetReprimandPerformer(target : entEntityID, agent : script_ref:Agent) : Bool; // GetReprimandPerformer;EntityIDscript_ref<Agent>
+	function GetReprimandReceiver(agentID : gamePersistentID) : entEntityID; // GetReprimandReceiver;PersistentID
+	function GetSensors() : array:Agent; // GetSensors;
+	function GetSupportedAgents() : array:Agent; // GetSupportedAgents;
+	function GetTurrets() : array:Agent; // GetTurrets;
+	function GetValidAgents(state : ESecuritySystemState, breachedAreas : script_ref:array:handle:SecurityAreaControllerPS) : array:SecuritySystemOutputData; // GetValidAgents;ESecuritySystemStatescript_ref<array<SecurityAreaControllerPS>>
+	function HasEntityBeenSpottedTooManyTimes(agent : gamePersistentID, target : entEntityID) : Bool; // HasEntityBeenSpottedTooManyTimes;PersistentIDEntityID
+	function HowManyTimesEntityReprimandedByThisAgentAlready(target : entEntityID, agentID : gamePersistentID) : Int32; // HowManyTimesEntityReprimandedByThisAgentAlready;EntityIDPersistentID
+	function HowManyTimesEntityReprimandedByThisAgentAlready(tresspasser : handle:gameObject, agent : gamePersistentID) : Int32; // HowManyTimesEntityReprimandedByThisAgentAlready;GameObjectPersistentID
+	function IsAgent(id : gamePersistentID) : Bool; // IsAgent;PersistentID
+	function IsIndexOutOfBound(index : Int32) : Bool; // IsIndexOutOfBound;Int32
+	function IsInitialized() : Bool; // IsInitialized;
+	function IsReady() : Bool; // IsReady;
+	function IsReprimandOngoing() : Bool; // IsReprimandOngoing;
+	function IsReprimandOngoingAgainst(suspect : entEntityID) : Bool; // IsReprimandOngoingAgainst;EntityID
+	function ProcessOnPlayerSpotted(evt : handle:PlayerSpotted, modifiedAgents : script_ref:array:Agent, out hasAnySupport : Bool) : Bool; // ProcessOnPlayerSpotted;PlayerSpottedscript_ref<array<Agent>>Bool
+	function RegisterAgent(agentPS : DeviceLink, areas : script_ref:array:handle:SecurityAreaControllerPS); // RegisterAgent;DeviceLinkscript_ref<array<SecurityAreaControllerPS>>
+	function ReleaseAllReprimands(agents : script_ref:array:Agent); // ReleaseAllReprimands;script_ref<array<Agent>>
+	function ReleaseFromReprimandAgainst(target : entEntityID, optional agent : gamePersistentID); // ReleaseFromReprimandAgainst;EntityIDPersistentID
+	function RemoveArea(data : script_ref:array:OnDisableAreaData); // RemoveArea;script_ref<array<OnDisableAreaData>>
+	function SaveAgent_NoLock(agent : script_ref:Agent); // SaveAgent_NoLock;script_ref<Agent>
+	function StoreReprimand(agentID : gamePersistentID, target : entEntityID, reprimandID : Int32, targetAttitude : CName); // StoreReprimand;PersistentIDEntityIDInt32CName
+	function UnregisterAgent(agentID : gamePersistentID); // UnregisterAgent;PersistentID
+	function WipeReprimandData(target : entEntityID); // WipeReprimandData;EntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"animAnimFeature_Climb","b":"animAnimFeature_Vault","c":"AnimFeature_Vault","d":8,"e":[{"a":{"b":"Vector4"},"b":"landPosition","c":128},{"a":{"a":10},"b":"travellingTime","c":128},{"a":{"a":10},"b":"obstacleDepth","c":128}],"f":[{"a":"SetObstacleDepth","d":4},{"a":"SetTravellingTime","d":4},{"a":"SetlandPosition","d":4}]}

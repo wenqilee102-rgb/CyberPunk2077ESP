@@ -1,0 +1,6 @@
+enum ESpaceFillMode
+{
+	JustifyLeft = 0,
+	JustifyRight = 1,
+	JustifyCenter = 2
+}

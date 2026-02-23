@@ -1,0 +1,36 @@
+import class gamedataAISubActionPlayVoiceOver_Record extends gamedataAISubAction_Record
+{
+	import function Condition() : whandle:gamedataAIActionCondition_Record; // Condition
+	import function ConditionHandle() : handle:gamedataAIActionCondition_Record; // ConditionHandle
+	import function Cooldown() : whandle:gamedataAIActionCooldown_Record; // Cooldown
+	import function CooldownHandle() : handle:gamedataAIActionCooldown_Record; // CooldownHandle
+	import function Delay() : Float; // Delay
+	import function Name() : CName; // Name
+	import function Repeat() : Bool; // Repeat
+	import function SendEventToSquadmates() : Bool; // SendEventToSquadmates
+	import function SetSelfAsAnsweringEntity() : Bool; // SetSelfAsAnsweringEntity
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

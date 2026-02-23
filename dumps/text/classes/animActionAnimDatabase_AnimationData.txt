@@ -1,0 +1,10 @@
+import struct animActionAnimDatabase_AnimationData
+{
+	var animationName : CName;
+	var fallbackAnimationName : CName;
+	var inTransitionDuration : Float;
+	var inCanRequestInertialization : Bool;
+	var outTransitionDuration : Float;
+	var outCanRequestInertialization : Bool;
+	var streamingContext : CName;
+}

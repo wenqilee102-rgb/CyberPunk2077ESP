@@ -1,0 +1,26 @@
+class MinimalItemTooltipModAttachmentData extends MinimalItemTooltipModData
+{
+	public    var isEmpty : Bool;
+	public    var slotName : String;
+	public    var qualityName : CName;
+	public    var abilitiesSize : Int32;
+	public    var abilities : array:gameInventoryItemAbility;
+}
+
+class MinimalItemTooltipModData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

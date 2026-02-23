@@ -1,0 +1,4 @@
+enum entVisibilityParamSource
+{
+	PhantomEntitySystem = 7
+}

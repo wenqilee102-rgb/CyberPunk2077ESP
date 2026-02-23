@@ -1,0 +1,8 @@
+import struct gameuiCharactersChain
+{
+	var rarities : array:Uint32;
+	var matchedValues : Uint32;
+	var ownerId : Int32;
+	var isFulfilled : Bool;
+	var isPossible : Bool;
+}

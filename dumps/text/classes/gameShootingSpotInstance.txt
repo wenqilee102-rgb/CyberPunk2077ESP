@@ -1,0 +1,11 @@
+import struct gameShootingSpotInstance extends gameCoverInstance
+{
+}
+
+import struct gameCoverInstance extends gameSmartObjectWorkspotInstance
+{
+}
+
+import struct gameSmartObjectWorkspotInstance
+{
+}

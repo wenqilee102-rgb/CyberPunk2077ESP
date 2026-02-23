@@ -1,0 +1,21 @@
+import class audioRadioStationMetadataMap extends audioAudioMetadata
+{
+	var radioStations : array:CName;
+	var switchStationEvent : CName;
+	var turnOnRadioEvent : CName;
+	var turnOffRadioEvent : CName;
+	var defaultBackgroundJingle : audioRadioStationJingleMetadata;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

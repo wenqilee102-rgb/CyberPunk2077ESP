@@ -1,0 +1,1 @@
+{"a":"gameActionReplicatedState","b":"gameActionDieState","d":8,"g":true,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"owner","c":128},{"a":{"a":27,"c":{"b":"moveComponent"}},"b":"movingAgent","c":128},{"a":{"a":27,"c":{"b":"entRagdollComponent"}},"b":"ragdollComponent","c":128},{"a":{"a":27,"c":{"b":"entSlotComponent"}},"b":"slotComponent","c":128}]}

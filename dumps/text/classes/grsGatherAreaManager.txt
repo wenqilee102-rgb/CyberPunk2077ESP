@@ -1,0 +1,4 @@
+import struct grsGatherAreaManager
+{
+	var activeGatherAreaRepInfo : grsGatherAreaReplicatedInfo;
+}

@@ -1,0 +1,21 @@
+import class questSendMessage_NodeType extends questIPhoneManagerNodeType
+{
+	var msg : handle:gameJournalPath;
+	var sendNotification : Bool;
+}
+
+import class abstract questIPhoneManagerNodeType extends questIRetOutputNodeType
+{
+}
+
+import class abstract questIRetOutputNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

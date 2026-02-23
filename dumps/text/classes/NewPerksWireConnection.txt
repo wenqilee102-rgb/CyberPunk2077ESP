@@ -1,0 +1,7 @@
+struct NewPerksWireConnection
+{
+	public    var targetSlot : gamedataNewPerkSlotType;
+	public    var dependanciesPresenceToggle : Bool;
+	public    var connectionDependancies : array:gamedataNewPerkSlotType;
+	public    var wires : array:inkWidgetReference;
+}

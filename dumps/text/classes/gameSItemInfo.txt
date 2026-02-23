@@ -1,0 +1,5 @@
+import struct gameSItemInfo
+{
+	var itemID : gameItemID;
+	var slotIndex : Int32;
+}

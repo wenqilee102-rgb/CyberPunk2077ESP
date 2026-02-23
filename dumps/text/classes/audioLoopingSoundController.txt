@@ -1,0 +1,6 @@
+import struct audioLoopingSoundController
+{
+	var playEvent : CName;
+	var preStopEvent : CName;
+	var stopEvent : CName;
+}

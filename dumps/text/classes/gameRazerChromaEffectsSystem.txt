@@ -1,0 +1,30 @@
+import class gameRazerChromaEffectsSystem extends gameIRazerChromaEffectsSystem
+{
+	import function IsRazerChromaAvailable() : Bool; // IsRazerChromaAvailable
+	import function PlayAnimation(animationName : CName, loop : Bool) : Bool; // PlayAnimation
+	import function SetHotKeysIdleAnimation(); // SetHotKeysIdleAnimation
+	import function SetIdleAnimation(animationName : CName, use : Bool) : Bool; // SetIdleAnimation
+	import function StopAnimation(animationName : CName) : Bool; // StopAnimation
+}
+
+import class abstract gameIRazerChromaEffectsSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

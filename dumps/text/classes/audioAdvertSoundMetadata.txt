@@ -1,0 +1,26 @@
+import class audioAdvertSoundMetadata extends audioAudioMetadata
+{
+	var audioEvent1 : CName;
+	var audioEvent2 : CName;
+	var audioEvent3 : CName;
+	var audioEvent4 : CName;
+	var useCustomDelays : Bool;
+	var speedOfSound : Float;
+	var soundDelay1 : Float;
+	var soundDelay2 : Float;
+	var soundDelay3 : Float;
+	var soundDelay4 : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

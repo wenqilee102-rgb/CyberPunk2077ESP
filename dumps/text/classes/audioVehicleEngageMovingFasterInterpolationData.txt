@@ -1,0 +1,7 @@
+import struct audioVehicleEngageMovingFasterInterpolationData
+{
+	var enterCurveType : audioESoundCurveType;
+	var enterCurveTime : Float;
+	var exitCurveType : audioESoundCurveType;
+	var exitCurveTime : Float;
+}

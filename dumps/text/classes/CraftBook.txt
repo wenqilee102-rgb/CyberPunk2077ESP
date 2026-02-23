@@ -1,0 +1,34 @@
+class CraftBook extends IScriptable
+{
+	protected var knownRecipes : array:ItemRecipe;
+	public    var newRecipes : array:TweakDBID;
+	public    var owner : whandle:gameObject;
+
+	function AddRecipe(targetItem : TweakDBID, optional hideOnItemsAdded : array:whandle:gamedataItem_Record, optional amount : Int32); // AddRecipe;TweakDBIDarray<Item_Record>Int32
+	function GetCraftableItems() : array:whandle:gamedataItem_Record; // GetCraftableItems;
+	function GetOwner() : whandle:gameObject; // GetOwner;
+	function GetRecipeData(Recipe : TweakDBID) : ItemRecipe; // GetRecipeData;TweakDBID
+	function GetRecipeIndex(recipe : TweakDBID) : Int32; // GetRecipeIndex;TweakDBID
+	function HideRecipe(recipe : TweakDBID, shouldHide : Bool) : Bool; // HideRecipe;TweakDBIDBool
+	function HideRecipesForOwnedItems(); // HideRecipesForOwnedItems;
+	function InitializeCraftBook(owner : whandle:gameObject, recipes : whandle:gamedataCraftable_Record); // InitializeCraftBook;GameObjectCraftable_Record
+	function InitializeCraftBookOwner(owner : whandle:gameObject); // InitializeCraftBookOwner;GameObject
+	function IsRecipeNew(itemID : TweakDBID) : Bool; // IsRecipeNew;TweakDBID
+	function KnowsRecipe(recipe : TweakDBID) : Bool; // KnowsRecipe;TweakDBID
+	function ResetRecipeCraftedAmount(); // ResetRecipeCraftedAmount;
+	function SetRecipeInspected(itemID : TweakDBID); // SetRecipeInspected;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,38 @@
+import class gamedataGameplayAbility_Record extends gamedataTweakDBRecord
+{
+	import function AbilityPackage() : whandle:gamedataGameplayLogicPackage_Record; // AbilityPackage
+	import function AbilityPackageHandle() : handle:gamedataGameplayLogicPackage_Record; // AbilityPackageHandle
+	import function GetPrereqsForUIValidationCount() : Int32; // GetPrereqsForUIValidationCount
+	import function GetPrereqsForUIValidationItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetPrereqsForUIValidationItem
+	import function GetPrereqsForUIValidationItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetPrereqsForUIValidationItemHandle
+	import function GetPrereqsForUseCount() : Int32; // GetPrereqsForUseCount
+	import function GetPrereqsForUseItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetPrereqsForUseItem
+	import function GetPrereqsForUseItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetPrereqsForUseItemHandle
+	import function Loc_key_desc() : CName; // Loc_key_desc
+	import function Loc_key_name() : CName; // Loc_key_name
+	import function PrereqsForUIValidation(out outList : array:whandle:gamedataIPrereq_Record); // PrereqsForUIValidation
+	import function PrereqsForUIValidationContains(item : whandle:gamedataIPrereq_Record) : Bool; // PrereqsForUIValidationContains
+	import function PrereqsForUse(out outList : array:whandle:gamedataIPrereq_Record); // PrereqsForUse
+	import function PrereqsForUseContains(item : whandle:gamedataIPrereq_Record) : Bool; // PrereqsForUseContains
+	import function ShowInCodex() : Bool; // ShowInCodex
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

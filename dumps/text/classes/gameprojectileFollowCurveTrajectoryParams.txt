@@ -1,0 +1,44 @@
+import class gameprojectileFollowCurveTrajectoryParams extends gameprojectileTrajectoryParams
+{
+	var target : whandle:gameObject;
+	var componentName : CName;
+	var targetComponent : whandle:entIPlacedComponent;
+	var targetSlotName : CName;
+	var targetPosition : Vector4;
+	var startVelocity : Float;
+	var linearTimeRatio : Float;
+	var interpolationTimeRatio : Float;
+	var returnTimeMargin : Float;
+	var bendTimeRatio : Float;
+	var bendFactor : Float;
+	var angleInHitPlane : Float;
+	var angleInVerticalPlane : Float;
+	var shouldRotate : Bool;
+	var halfLeanAngle : Float;
+	var endLeanAngle : Float;
+	var angleInterpolationDuration : Float;
+	var snapRadius : Float;
+	var accuracy : Float;
+	var offset : Vector4;
+	var offsetInPlane : Vector3;
+	var sendFollowEvent : Bool;
+	var startVelocityDirectionCheck : Bool;
+}
+
+import class abstract gameprojectileTrajectoryParams extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

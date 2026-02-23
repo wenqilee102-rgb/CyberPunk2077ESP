@@ -1,0 +1,28 @@
+import class inkMenusState extends IScriptable
+{
+	import function CloseAllMenus(); // CloseAllMenus
+	import function CloseMenu(menuName : CName); // CloseMenu
+	import function DispatchEvent(menuName : CName, eventName : CName, optional userData : handle:IScriptable) : Bool; // DispatchEvent
+	import function GetControllerMenuName() : CName; // GetControllerMenuName
+	import function GetMenu(menuName : CName) : whandle:inkWidget; // GetMenu
+	import function IsHubMenuBlocked() : Bool; // IsHubMenuBlocked
+	import function IsMenuOpened(menuName : CName) : Bool; // IsMenuOpened
+	import function IsMenusVisible() : Bool; // IsMenusVisible
+	import function OpenMenu(menuName : CName, optional userData : handle:IScriptable) : whandle:inkWidget; // OpenMenu
+	import function SetHubMenuBlocked(blocked : Bool); // SetHubMenuBlocked
+	import function ShowMenus(vakue : Bool); // ShowMenus
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

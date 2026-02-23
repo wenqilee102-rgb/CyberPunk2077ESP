@@ -1,0 +1,8 @@
+import class worldFoliageRawData extends ISerializable
+{
+	var items : array:handle:worldFoliageRawItem;
+}
+
+import class abstract ISerializable
+{
+}

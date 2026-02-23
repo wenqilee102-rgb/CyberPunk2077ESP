@@ -1,0 +1,7 @@
+import class abstract animIPoseBlendMethod extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

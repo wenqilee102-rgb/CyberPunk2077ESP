@@ -1,0 +1,8 @@
+import class physicsCollisionPresetsOverridesResource extends ISerializable
+{
+	var overrides : array:physicsCollisionPresetOverride;
+}
+
+import class abstract ISerializable
+{
+}

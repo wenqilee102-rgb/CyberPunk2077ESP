@@ -1,0 +1,18 @@
+class abstract BasePerkLevelData_Records extends IScriptable
+{
+	function GetItemAt(index : Int32) : whandle:gamedataTweakDBRecord; // GetItemAt;Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

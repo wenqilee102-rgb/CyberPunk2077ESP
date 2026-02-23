@@ -1,0 +1,21 @@
+import class worldAnimationSystemScriptInterface extends IScriptable
+{
+	import function EnterCombatMode(entityId : entEntityID); // EnterCombatMode
+	import function ExitCombatMode(entityId : entEntityID); // ExitCombatMode
+	import function SetForcedVisible(entityId : entEntityID, value : Bool); // SetForcedVisible
+	import function SetForcedVisibleOnlyInFrustum(entityId : entEntityID, value : Bool); // SetForcedVisibleOnlyInFrustum
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

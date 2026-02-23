@@ -1,0 +1,17 @@
+import class animAnimNode_IntToFloatConverter extends animAnimNode_FloatValue
+{
+	var inputNode : animIntLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

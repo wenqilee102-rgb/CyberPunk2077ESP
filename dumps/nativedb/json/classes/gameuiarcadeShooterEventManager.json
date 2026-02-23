@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"gameuiarcadeShooterEventManager","d":8,"e":[{"a":{"b":"Vector2"},"b":"nextLevelThreshold","c":128},{"a":{"a":10},"b":"levelEndCheckDelay","c":128},{"a":{"a":10},"b":"eventFinishDelay","c":128},{"a":{"a":6},"b":"eventId","c":128},{"a":{"a":31,"c":{"b":"gameuiarcadeShooterEventData"}},"b":"eventList","c":128}]}

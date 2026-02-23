@@ -1,0 +1,8 @@
+struct AIBackgroundCombatStep
+{
+	public    var timeMin : Float;
+	public    var timeMax : Float;
+	public    var type : EAIBackgroundCombatStep;
+	public    var argument : gameEntityReference;
+	public    var exposureMethod : AICoverExposureMethod;
+}

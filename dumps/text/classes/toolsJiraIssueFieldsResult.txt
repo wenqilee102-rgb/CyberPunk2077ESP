@@ -1,0 +1,38 @@
+import struct toolsJiraIssueFieldsResult
+{
+	var project : String;
+	var summary : String;
+	var issuetype : String;
+	var priority : String;
+	var labels : String;
+	var assignee : String;
+	var description : String;
+	var versions : String;
+	var fixVersions : String;
+	var flagPosition : String;
+	var components : String;
+	var attachments : array:toolsJiraAttachment;
+	var customfield_17400 : String;
+	var customfield_18373 : String;
+	var customfield_34100 : String;
+	var customfield_15306 : String;
+	var customfield_13009 : String;
+	var customfield_10013 : String;
+	var customfield_10503 : String;
+	var customfield_10502 : String;
+	var customfield_34718 : String;
+	var customfield_36106 : String;
+	var customfield_10006 : String;
+	var customfield_10505 : String;
+	var customfield_10603 : String;
+	var customfield_24700 : String;
+	var customfield_34706 : String;
+	var customfield_25500 : String;
+	var customfield_15808 : String;
+	var customfield_33701 : String;
+	var customfield_18006 : String;
+	var customfield_29900 : String;
+	var customfield_10005 : String;
+	var customfield_10606 : String;
+	var customfield_10002 : String;
+}

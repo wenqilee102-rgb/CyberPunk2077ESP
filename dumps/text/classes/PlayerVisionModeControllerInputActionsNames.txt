@@ -1,0 +1,7 @@
+struct PlayerVisionModeControllerInputActionsNames
+{
+	public    var buttonHold : CName;
+	public    var buttonToggle : CName;
+	public    var driverCombatButtonHold : CName;
+	public    var driverCombatButtonActivate : CName;
+}

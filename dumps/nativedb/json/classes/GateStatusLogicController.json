@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"GateStatusLogicController","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"textStatus","c":128}],"f":[{"a":"PrepareToOpen;","b":"PrepareToOpen","d":48},{"a":"SetGateState;BoolBool","b":"SetGateState","d":48,"e":[{"a":{"a":1},"b":"unlocked","c":0},{"a":{"a":1},"b":"showState","c":0}]}]}

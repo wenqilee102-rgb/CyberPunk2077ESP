@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"PhotoModeCameraLocation","d":0,"e":[{"a":{"b":"inkWidgetReference"},"b":"textWidget","c":128}],"f":[{"a":"OnHide;","b":"OnHide","d":48},{"a":"RefreshValue;PhotoModeSystem","b":"RefreshValue","d":48,"e":[{"a":{"a":26,"c":{"b":"gamePhotoModeSystem"}},"b":"photoModeSystem","c":0}]}]}

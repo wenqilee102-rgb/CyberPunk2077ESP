@@ -1,0 +1,7 @@
+import struct gameinteractionsInteractionDefinitionOverrider
+{
+	var tag : CName;
+	var shapes : array:handle:gameinteractionsIShapeDefinition;
+	var negativeShapes : array:handle:gameinteractionsIShapeDefinition;
+	var priorityMultiplier : Float;
+}

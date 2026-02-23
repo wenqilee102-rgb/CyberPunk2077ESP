@@ -1,0 +1,14 @@
+import struct gamemappinsPointOfInterestMappinData extends gamemappinsIMappinData
+{
+	var typedVariant : handle:gamemappinsIPointOfInterestVariant;
+	var active : Bool;
+	var slotName : CName;
+	var slotOffset : Vector3;
+	var dynamicMappinRadius : Float;
+	var staticMappinDef : TweakDBID;
+	var dynamicMappinDef : TweakDBID;
+}
+
+import struct gamemappinsIMappinData
+{
+}

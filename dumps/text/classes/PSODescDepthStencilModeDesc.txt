@@ -1,0 +1,10 @@
+import struct PSODescDepthStencilModeDesc
+{
+	var depthTestEnable : Bool;
+	var depthWriteEnable : Bool;
+	var depthFunc : PSODescDepthStencilModeComparisonMode;
+	var stencilEnable : Bool;
+	var stencilReadMask : Bool;
+	var stencilWriteMask : Bool;
+	var frontFace : PSODescStencilFuncDesc;
+}

@@ -1,0 +1,7 @@
+struct ProgramProgressData
+{
+	public    var id : String;
+	public    var completionProgress : array:Int32;
+	public    var isComplete : Bool;
+	public    var revealLocalizedName : Bool;
+}

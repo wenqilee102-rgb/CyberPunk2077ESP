@@ -1,0 +1,55 @@
+import class gamedataAISlotCond_Record extends gamedataAIItemCond_Record
+{
+	import function CheckIfEmptySlotIsSpawningItem() : Int32; // CheckIfEmptySlotIsSpawningItem
+	import function RequestedTriggerModes() : whandle:gamedataTriggerMode_Record; // RequestedTriggerModes
+	import function RequestedTriggerModesHandle() : handle:gamedataTriggerMode_Record; // RequestedTriggerModesHandle
+	import function Slot() : whandle:gamedataAttachmentSlot_Record; // Slot
+	import function SlotHandle() : handle:gamedataAttachmentSlot_Record; // SlotHandle
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAIItemCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function CheckAllItemsInEquipmentGroup() : Bool; // CheckAllItemsInEquipmentGroup
+	import function EquipmentGroup() : CName; // EquipmentGroup
+	import function Evolution() : whandle:gamedataWeaponEvolution_Record; // Evolution
+	import function EvolutionHandle() : handle:gamedataWeaponEvolution_Record; // EvolutionHandle
+	import function GetTriggerModesCount() : Int32; // GetTriggerModesCount
+	import function GetTriggerModesItem(index : Int32) : whandle:gamedataTriggerMode_Record; // GetTriggerModesItem
+	import function GetTriggerModesItemHandle(index : Int32) : handle:gamedataTriggerMode_Record; // GetTriggerModesItemHandle
+	import function ItemCategory() : whandle:gamedataItemCategory_Record; // ItemCategory
+	import function ItemCategoryHandle() : handle:gamedataItemCategory_Record; // ItemCategoryHandle
+	import function ItemID() : whandle:gamedataItem_Record; // ItemID
+	import function ItemIDHandle() : handle:gamedataItem_Record; // ItemIDHandle
+	import function ItemTag() : CName; // ItemTag
+	import function ItemType() : whandle:gamedataItemType_Record; // ItemType
+	import function ItemTypeHandle() : handle:gamedataItemType_Record; // ItemTypeHandle
+	import function TriggerModes(out outList : array:whandle:gamedataTriggerMode_Record); // TriggerModes
+	import function TriggerModesContains(item : whandle:gamedataTriggerMode_Record) : Bool; // TriggerModesContains
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

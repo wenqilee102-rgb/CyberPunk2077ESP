@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"inkanimEvent","c":"inkAnimEvent","d":12,"e":[{"a":{"a":10},"b":"startTime","c":128}],"f":[{"a":"GetStartTime","c":{"a":10},"d":4},{"a":"SetStartTime","d":4,"e":[{"a":{"a":10},"b":"startTime","c":0}]}]}

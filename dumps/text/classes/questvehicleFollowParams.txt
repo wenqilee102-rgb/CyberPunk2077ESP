@@ -1,0 +1,22 @@
+import class questvehicleFollowParams extends questVehicleSpecificCommandParams
+{
+	var targetEntRef : gameEntityReference;
+	var distanceMin : Float;
+	var distanceMax : Float;
+	var isPlayer : Bool;
+	var stopWhenTargetReached : Bool;
+	var useTraffic : Bool;
+	var trafficTryNeighborsForStart : Bool;
+	var trafficTryNeighborsForEnd : Bool;
+}
+
+import class abstract questVehicleSpecificCommandParams extends ISerializable
+{
+	var pushOtherVehiclesAside : Bool;
+	var needDriver : Bool;
+	var secureTimeOut : Float;
+}
+
+import class abstract ISerializable
+{
+}

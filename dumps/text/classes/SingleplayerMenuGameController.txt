@@ -1,0 +1,290 @@
+class SingleplayerMenuGameController extends gameuiMainMenuGameController
+{
+	private   var baseLogoContainer : inkCompoundWidgetReference;
+	private   var ep1LogoContainer : inkCompoundWidgetReference;
+	private   var gogButtonWidgetRef : inkWidgetReference;
+	private   var accountSelector : inkCompoundWidgetReference;
+	private   var gameVersionButton : inkCompoundWidgetReference;
+	private   var patch2Notification : inkCompoundWidgetReference;
+	private   var patch2NotificationDelay : Float;
+	private   var expansionBanner : inkCompoundWidgetReference;
+	private   var ep1IdName : CName;
+	private   var buttonHintsManagerRef : inkWidgetReference;
+	private   var continuetooltipContainer : inkCompoundWidgetReference;
+	private   var tooltipsManagerRef : inkWidgetReference;
+	private   var versionTextRef : inkTextWidgetReference;
+	private   var eulaWidget : inkWidgetReference;
+	private   var quitGameWidget : inkWidgetReference;
+	private   var sliderWidget : inkWidgetReference;
+	private   var declineButtonWidget : inkWidgetReference;
+	private   var acceptButtonWidget : inkWidgetReference;
+	private   var declineButtonText : inkTextWidgetReference;
+	private   var acceptButtonText : inkTextWidgetReference;
+	private   var onlineSystem : whandle:gameIOnlineSystem;
+	private   var requestHandler : whandle:inkISystemRequestsHandler;
+	private   var buttonHintsController : whandle:ButtonHints;
+	private   var continueGameTooltipController : whandle:ContinueGameTooltip;
+	private   var expansionHintController : whandle:inkWidgetLogicController;
+	private   var expansionBannerController : whandle:ExpansionBannerController;
+	private   var accountSelectorController : whandle:inkMenuAccountLogicController;
+	private   var textAnimController : whandle:inkTextReplaceAnimationController;
+	private   var tooltipsManager : whandle:gameuiTooltipsManager;
+	private   var uiSystem : handle:gameuiGameSystemUI;
+	private   var patchNotesCheckData : handle:PatchNotesCheckData;
+	private   var dataSyncStatus : servicesCloudSavesQueryStatus;
+	private   var savesCount : Int32;
+	private   var savesReady : Bool;
+	private   var isOffline : Bool;
+	private   var isModded : Bool;
+	private   var isExpansionHintShown : Bool;
+	private   var isMainMenuShownFirstTime : Bool;
+	private   var isPatch2NotificationShown : Bool;
+	private   var isReloadPopupShown : Bool;
+	private   var isEp1Enabled : Bool;
+	private   var gameVersion : String;
+	private   var patch2NotificationIntroName : CName;
+	private   var patch2NotificationOutroName : CName;
+	private   var patch2NotificationAnimProxy : handle:inkanimProxy;
+	private   var gameVersionAnim : handle:inkanimProxy;
+	private   var eulaIsAccepted : Bool;
+	private   var isEulaWindowOpened : Bool;
+	private   var eulaRead : Bool;
+	private   var sliderController : whandle:inkSliderController;
+	private   var declineButtonController : whandle:inkButtonController;
+	private   var acceptButtonController : whandle:inkButtonController;
+	private   var eulaAnimationProxy : handle:inkanimProxy;
+
+	event OnAcceptButtonClick(controller : whandle:inkButtonController) : Bool; // OnAcceptButtonClick
+	event OnAcceptButtonStateChanged(controller : whandle:inkButtonController, oldState : inkEButtonState, newState : inkEButtonState) : Bool; // OnAcceptButtonStateChanged
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnButtonPress(evt : handle:inkPointerEvent) : Bool; // OnButtonPress
+	event OnCheckPatchNotes(userData : handle:IScriptable) : Bool; // OnCheckPatchNotes
+	event OnCloseExpansionPopup(userData : handle:IScriptable) : Bool; // OnCloseExpansionPopup
+	event OnClosePatchNotes(userData : handle:IScriptable) : Bool; // OnClosePatchNotes
+	event OnCloudSavesQueryStatusChanged(status : servicesCloudSavesQueryStatus) : Bool; // OnCloudSavesQueryStatusChanged
+	event OnContinueButtonEnter(evt : handle:inkPointerEvent) : Bool; // OnContinueButtonEnter
+	event OnContinueButtonLeave(evt : handle:inkPointerEvent) : Bool; // OnContinueButtonLeave
+	event OnDeclineButtonClick(controller : whandle:inkButtonController) : Bool; // OnDeclineButtonClick
+	event OnDeclineButtonStateChanged(controller : whandle:inkButtonController, oldState : inkEButtonState, newState : inkEButtonState) : Bool; // OnDeclineButtonStateChanged
+	event OnEulaDeclined(e : handle:inkanimProxy) : Bool; // OnEulaDeclined
+	event OnEulaIsAccepted(e : handle:inkanimProxy) : Bool; // OnEulaIsAccepted
+	event OnEulaReopen(e : handle:inkanimProxy) : Bool; // OnEulaReopen
+	event OnEulaScrollbarValueChanged(sliderController : whandle:inkSliderController, progress : Float, value : Float) : Bool; // OnEulaScrollbarValueChanged
+	event OnExpansionBannerPressed(evt : handle:inkPointerEvent) : Bool; // OnExpansionBannerPressed
+	event OnExpansionHintSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnExpansionHintSpawned
+	event OnGameVersionHoverOut(evt : handle:inkPointerEvent) : Bool; // OnGameVersionHoverOut
+	event OnGameVersionHoverOver(evt : handle:inkPointerEvent) : Bool; // OnGameVersionHoverOver
+	event OnGameVersionPress(evt : handle:inkPointerEvent) : Bool; // OnGameVersionPress
+	event OnGlobalRelease(e : handle:inkPointerEvent) : Bool; // OnGlobalRelease
+	event OnGogPressed(evt : handle:inkPointerEvent) : Bool; // OnGogPressed
+	event OnHideMainMenuTooltip(userData : handle:IScriptable) : Bool; // OnHideMainMenuTooltip
+	event OnInitialize() : Bool; // OnInitialize
+	event OnListRelease(e : handle:inkPointerEvent) : Bool; // OnListRelease
+	event OnMarketingConsentPopupTypeResult(resultType : inkMarketingConsentPopupType) : Bool; // OnMarketingConsentPopupTypeResult
+	event OnOnlineStatusChanged(value : gameOnlineSystemStatus) : Bool; // OnOnlineStatusChanged
+	event OnOpenPatchNotes(userData : handle:IScriptable) : Bool; // OnOpenPatchNotes
+	event OnPatch2NotificationIntroFinished(anim : handle:inkanimProxy) : Bool; // OnPatch2NotificationIntroFinished
+	event OnPatch2NotificationOutroFinished(anim : handle:inkanimProxy) : Bool; // OnPatch2NotificationOutroFinished
+	event OnPurchaseDisabledError(userData : handle:IScriptable) : Bool; // OnPurchaseDisabledError
+	event OnRedrawRequested() : Bool; // OnRedrawRequested
+	event OnRetrySaveDataRequestDelay(evt : handle:RetrySaveDataRequestDelay) : Bool; // OnRetrySaveDataRequestDelay
+	event OnSaveMetadataReady(info : handle:inkSaveMetadataInfo) : Bool; // OnSaveMetadataReady
+	event OnSavesForLoadReady(saves : array:String) : Bool; // OnSavesForLoadReady
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnSetUserData(userData : handle:IScriptable) : Bool; // OnSetUserData
+	event OnShowMainMenuTooltip(userData : handle:IScriptable) : Bool; // OnShowMainMenuTooltip
+	event OnShowOneTimeMessages(userData : handle:IScriptable) : Bool; // OnShowOneTimeMessages
+	event OnTooltipContainerSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnTooltipContainerSpawned
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function CheckPatchNotes(); // CheckPatchNotes;
+	function DBG_ShowAccountButton(); // DBG_ShowAccountButton;
+	function ExpansionBannerInteracted(); // ExpansionBannerInteracted;
+	function FinishMenuInitialization(); // FinishMenuInitialization;
+	function HandleMenuItemActivate(data : handle:PauseMenuListItemData) : Bool; // HandleMenuItemActivate;PauseMenuListItemData
+	function InitializeAndShowEula(); // InitializeAndShowEula;
+	function OnAcceptButtonPressed(); // OnAcceptButtonPressed;
+	function OnAdditionalContentDataReloadProgress_MainMenu(progress : Float); // OnAdditionalContentDataReloadProgress_MainMenu;Float
+	function OnAdditionalContentInstallationRequestResult_MainMenu(id : CName, success : Bool); // OnAdditionalContentInstallationRequestResult_MainMenu;CNameBool
+	function OnAdditionalContentInstallationResult_MainMenu(id : CName, success : Bool); // OnAdditionalContentInstallationResult_MainMenu;CNameBool
+	function OnAdditionalContentPurchaseResult_MainMenu(id : CName, success : Bool); // OnAdditionalContentPurchaseResult_MainMenu;CNameBool
+	function OnAdditionalContentStatusUpdateResult_MainMenu(id : CName, success : Bool); // OnAdditionalContentStatusUpdateResult_MainMenu;CNameBool
+	function OnDeclineButtonPressed(); // OnDeclineButtonPressed;
+	function OnFirstTimeMainMenu(); // OnFirstTimeMainMenu;
+	function OpenExpansionInfoPopup(type : ExpansionPopupType, forcibly : Bool); // OpenExpansionInfoPopup;ExpansionPopupTypeBool
+	function OpenPatchNotesPopup(mode : Bool); // OpenPatchNotesPopup;Bool
+	function PopulateMenuItemList(); // PopulateMenuItemList;
+	function PushErrorPopup(title : CName, description : CName, optional errorCode : Uint32); // PushErrorPopup;CNameCNameUint32
+	function SetButtonsVisible(visible : Bool); // SetButtonsVisible;Bool
+	function SetControlsVisible(visible : Bool); // SetControlsVisible;Bool
+	function ShowActionsList(); // ShowActionsList;
+	function ShowAdditionalDataInvalidError(validationResult : Uint32); // ShowAdditionalDataInvalidError;Uint32
+	function ShowExpansionError(error : ExpansionErrorType); // ShowExpansionError;ExpansionErrorType
+	function ShowMarketingConsentPopup(type : inkMarketingConsentPopupType); // ShowMarketingConsentPopup;inkMarketingConsentPopupType
+	function ShowPatch2Notification(); // ShowPatch2Notification;
+	function ShowRussianLanguageDisclaimer(); // ShowRussianLanguageDisclaimer;
+	function ShowSignInPopup(); // ShowSignInPopup;
+	function SpawnExpansionHint(); // SpawnExpansionHint;
+	function SwitchGameLogo(isEP1Installed : Bool); // SwitchGameLogo;Bool
+	function UninitializeEula(); // UninitializeEula;
+	function UpdateExpansionBannerState(); // UpdateExpansionBannerState;
+}
+
+import class gameuiMainMenuGameController extends gameuiMenuItemListGameController
+{
+	var backgroundContainer : inkCompoundWidgetReference;
+
+	import function LoadBackgroundWidget(dataID : Uint64); // LoadBackgroundWidget
+}
+
+import class gameuiMenuItemListGameController extends gameuiSaveHandlingController
+{
+	protected var menuList : inkCompoundWidgetReference;
+	protected var menuEventDispatcher : whandle:inkMenuEventDispatcher;
+	protected var menuListController : whandle:inkListController;
+
+	import function CanExitGame() : Bool; // CanExitGame
+	import function ExitGame(); // ExitGame
+	import function GotoMainMenu(); // GotoMainMenu
+
+	event OnInitialize() : Bool; // OnInitialize
+	event OnMenuItemActivated(index : Int32, target : handle:inkListItemController) : Bool; // OnMenuItemActivated
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function AddMenuItem(label : script_ref:String, spawnEvent : CName); // AddMenuItem;script_ref<String>CName
+	function AddMenuItem(label : script_ref:String, action : PauseMenuAction); // AddMenuItem;script_ref<String>PauseMenuAction
+	function Clear(); // Clear;
+	function HandleMenuItemActivate(data : handle:PauseMenuListItemData) : Bool; // HandleMenuItemActivate;PauseMenuListItemData
+	function PopulateMenuItemList(); // PopulateMenuItemList;
+	function ShouldAllowExitGameMenuItem() : Bool; // ShouldAllowExitGameMenuItem;
+	function ShowActionsList(); // ShowActionsList;
+}
+
+import class gameuiSaveHandlingController extends gameuiMenuGameController
+{
+	import function DeleteSavedGame(saveId : Int32); // DeleteSavedGame
+	import function IsGameSavedNotificationActive() : Bool; // IsGameSavedNotificationActive
+	import function IsSaveFailedNotificationActive() : Bool; // IsSaveFailedNotificationActive
+	import function IsTransferSavedExportSupported() : Bool; // IsTransferSavedExportSupported
+	import function IsTransferSavedImportSupported() : Bool; // IsTransferSavedImportSupported
+	import function LoadModdedSave(saveId : Int32); // LoadModdedSave
+	import function LoadSaveInGame(saveId : Int32); // LoadSaveInGame
+	import function OverrideSavedGame(saveId : Int32, optional showXbCompatWarn : Bool); // OverrideSavedGame
+	import function PreSpawnInitialLoadingScreen(tweakID : Uint64); // PreSpawnInitialLoadingScreen
+	import function RequestGameSavedNotification(); // RequestGameSavedNotification
+	import function RequestSaveFailedNotification(); // RequestSaveFailedNotification
+	import function SetNextInitialLoadingScreen(tweakID : Uint64); // SetNextInitialLoadingScreen
+	import function TransferSavedGame(scriptableData : handle:IScriptable); // TransferSavedGame
+
+	function ShowSavingLockedNotification(locks : script_ref:array:gameSaveLock); // ShowSavingLockedNotification;script_ref<array<gameSaveLock>>
+}
+
+import class gameuiMenuGameController extends gameuiWidgetGameController
+{
+	private   var baseEventDispatcher : whandle:inkMenuEventDispatcher;
+
+	import function GetTelemetrySystem() : handle:gameITelemetrySystem; // GetTelemetrySystem
+	import function IsAnyActionWithoutAssignedKey() : Bool; // IsAnyActionWithoutAssignedKey
+	import function PushNotification(notificationTitle : CName, noticationDescription : CName); // PushNotification
+	import function RefreshInputIcons(); // RefreshInputIcons
+	import function RegisterToGlobalInputCallback(); // RegisterToGlobalInputCallback
+	import function UnregisterFromGlobalInputCallback(); // UnregisterFromGlobalInputCallback
+
+	event OnBack(userData : handle:IScriptable) : Bool; // OnBack
+	event OnInitialize() : Bool; // OnInitialize
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function ForceResetCursorType(); // ForceResetCursorType;
+}
+
+import class gameuiWidgetGameController extends worlduiIWidgetGameController
+{
+	import function GetBlackboardSystem() : handle:gameBlackboardSystem; // GetBlackboardSystem
+	import function GetOwnerEntity() : handle:entEntity; // GetOwnerEntity
+	import function GetPSMBlackboard(playerPuppet : handle:gameObject) : handle:gameIBlackboard; // GetPSMBlackboard
+	import function GetPlayerControlledObject() : handle:gameObject; // GetPlayerControlledObject
+	import function GetUIBlackboard() : handle:gameIBlackboard; // GetUIBlackboard
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function RegisterDebugCommand(debugFunctionName : CName); // RegisterDebugCommand
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float, optional forceSnapping : Bool); // SetCursorOverWidget
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+}
+
+import class abstract worlduiIWidgetGameController extends inkIWidgetController
+{
+	var elementRecordID : TweakDBID;
+
+	import function ProjectWorldToScreen(worldPosition : Vector4) : Vector2; // ProjectWorldToScreen
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+}
+
+import class abstract inkIWidgetController extends IScriptable
+{
+	var audioMetadataName : CName;
+
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function IsKeyboardConnected() : Bool; // IsKeyboardConnected
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function RequestProcessFitToViewport(); // RequestProcessFitToViewport
+	import function RequestSetFocus(widget : whandle:inkWidget); // RequestSetFocus
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : whandle:inkAsyncSpawnRequest; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindLibraryID(widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : CName; // FindLibraryID;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function ReadUICondition(condition : gamedataUICondition) : Bool; // ReadUICondition;gamedataUICondition
+	function RequestWidgetFromLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : CName; // RequestWidgetFromLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRefAsyncSpawnData
+	function RequestWidgetFromLibraryById(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryById;inkWidgetCNameResRefAsyncSpawnDatainkAsyncSpawnRequest
+	function RequestWidgetFromLibraryByRecord(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryByRecord;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordAsyncSpawnDatainkAsyncSpawnRequest
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

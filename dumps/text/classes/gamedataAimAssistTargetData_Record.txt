@@ -1,0 +1,36 @@
+import class gamedataAimAssistTargetData_Record extends gamedataTweakDBRecord
+{
+	import function AimSnapAngle() : Float; // AimSnapAngle
+	import function AimSnapPriorityWeight() : Float; // AimSnapPriorityWeight
+	import function Filters(out outList : array:whandle:gamedataAimAssistType_Record); // Filters
+	import function FiltersContains(item : whandle:gamedataAimAssistType_Record) : Bool; // FiltersContains
+	import function GetFiltersCount() : Int32; // GetFiltersCount
+	import function GetFiltersItem(index : Int32) : whandle:gamedataAimAssistType_Record; // GetFiltersItem
+	import function GetFiltersItemHandle(index : Int32) : handle:gamedataAimAssistType_Record; // GetFiltersItemHandle
+	import function HeightDown() : Float; // HeightDown
+	import function HeightUp() : Float; // HeightUp
+	import function IsForAimMagnetisim() : Bool; // IsForAimMagnetisim
+	import function IsForAimSnap() : Bool; // IsForAimSnap
+	import function MagnetismPriorityWeight() : Float; // MagnetismPriorityWeight
+	import function Width() : Float; // Width
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

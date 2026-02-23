@@ -1,0 +1,5 @@
+enum gametargetingSystemETargetFilterStatus
+{
+	Stop = 0,
+	Continue = 1
+}

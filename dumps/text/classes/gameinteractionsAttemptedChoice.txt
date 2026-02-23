@@ -1,0 +1,7 @@
+import struct gameinteractionsAttemptedChoice
+{
+	var choiceIdx : Int32;
+	var visualizerType : gameinteractionsvisEVisualizerType;
+	var isSuccess : Bool;
+	var choice : gameinteractionsChoice;
+}

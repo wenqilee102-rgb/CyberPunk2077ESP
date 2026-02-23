@@ -1,0 +1,7 @@
+import struct gameJournalRequestStateFilter
+{
+	var inactive : Bool;
+	var active : Bool;
+	var succeeded : Bool;
+	var failed : Bool;
+}

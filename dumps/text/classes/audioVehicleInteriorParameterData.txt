@@ -1,0 +1,9 @@
+import struct audioVehicleInteriorParameterData
+{
+	var enterCurveType : audioESoundCurveType;
+	var enterCurveTime : Float;
+	var enterDelayTime : Float;
+	var exitCurveType : audioESoundCurveType;
+	var exitCurveTime : Float;
+	var exitDelayTime : Float;
+}

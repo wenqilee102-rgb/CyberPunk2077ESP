@@ -1,0 +1,5 @@
+import struct gameEffectProviderScriptContext
+{
+	import static function AddTarget(ctx : gameEffectScriptContext, providerCtx : gameEffectProviderScriptContext, optional target : handle:entEntity); // AddTarget
+	import static function GetTimeDelta(providerCtx : gameEffectProviderScriptContext) : Float; // GetTimeDelta
+}

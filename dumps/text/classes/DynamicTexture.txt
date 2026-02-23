@@ -1,0 +1,23 @@
+import class DynamicTexture extends ITexture
+{
+	var width : Uint32;
+	var height : Uint32;
+	var scaleToViewport : Bool;
+	var mipChain : Bool;
+	var samplesCount : Uint8;
+	var dataFormat : DynamicTextureDataFormat;
+	var generator : handle:IDynamicTextureGenerator;
+}
+
+import class abstract ITexture extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+import class gamedataAISubActionUseSensePreset_Record extends gamedataAISubAction_Record
+{
+	import function Delay() : Float; // Delay
+	import function SensePreset() : whandle:gamedataSensePreset_Record; // SensePreset
+	import function SensePresetHandle() : handle:gamedataSensePreset_Record; // SensePresetHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

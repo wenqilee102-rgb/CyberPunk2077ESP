@@ -1,0 +1,6 @@
+enum ExtraEffect
+{
+	AccuracyVirus = 0,
+	PeernoidVirus = 1,
+	None = 2
+}

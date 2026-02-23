@@ -1,0 +1,12 @@
+import struct gamePopupData
+{
+	var title : String;
+	var message : String;
+	var messageOverrideDataList : array:handle:gameJournalEntryOverrideData;
+	var iconID : TweakDBID;
+	var isModal : Bool;
+	var videoType : gameVideoType;
+	var video : raRef:Bink;
+
+	import static function GetVideo(self : gamePopupData) : redResourceReferenceScriptToken; // GetVideo
+}

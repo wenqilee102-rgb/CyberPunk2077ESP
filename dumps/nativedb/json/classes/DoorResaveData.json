@@ -1,0 +1,1 @@
+{"b":"DoorResaveData","d":0,"g":true,"e":[{"a":{"b":"EDoorType"},"b":"doorType","c":128},{"a":{"a":1},"b":"canPlayerToggleLockState","c":128},{"a":{"a":1},"b":"canPlayerToggleSealState","c":128},{"a":{"b":"EDoorStatus"},"b":"initialStatus","c":128},{"a":{"a":15},"b":"keycardName","c":128},{"a":{"a":14},"b":"passcode","c":128}]}

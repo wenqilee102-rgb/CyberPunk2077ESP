@@ -1,0 +1,6 @@
+import struct animTransformInfo
+{
+	var name : CName;
+	var parentName : CName;
+	var referenceTransformLs : QsTransform;
+}

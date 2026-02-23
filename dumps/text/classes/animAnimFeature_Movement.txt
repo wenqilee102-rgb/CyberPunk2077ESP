@@ -1,0 +1,33 @@
+import class animAnimFeature_Movement extends animAnimFeature
+{
+	var movementDirection : Vector4;
+	var speed : Float;
+	var desiredSpeed : Float;
+	var stabilizedSpeed : Float;
+	var acceleration : Float;
+	var timeToChangeLocomotion : Float;
+	var strafeYaw : Float;
+	var yawSpeed : Float;
+	var locomotionState : Int32;
+
+	import function SetAcceleration(); // SetAcceleration
+	import function SetSpeed(speed : Float); // SetSpeed
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

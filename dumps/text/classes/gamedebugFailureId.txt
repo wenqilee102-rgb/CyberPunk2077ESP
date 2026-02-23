@@ -1,0 +1,5 @@
+import struct gamedebugFailureId
+{
+	var threadId : Uint32;
+	var unsignedId : Uint32;
+}

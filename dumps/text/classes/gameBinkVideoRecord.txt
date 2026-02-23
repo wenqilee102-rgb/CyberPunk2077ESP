@@ -1,0 +1,9 @@
+import class gameBinkVideoRecord extends ISerializable
+{
+	var resourceHash : Uint64;
+	var binkDuration : Float;
+}
+
+import class abstract ISerializable
+{
+}

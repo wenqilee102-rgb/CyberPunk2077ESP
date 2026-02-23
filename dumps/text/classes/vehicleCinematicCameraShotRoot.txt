@@ -1,0 +1,20 @@
+import class vehicleCinematicCameraShotRoot extends IScriptable
+{
+	function GetRootTransform(data : CinematicCameraData) : WorldTransform; // GetRootTransform;CinematicCameraData
+	function GetShotSpaceTransform(data : CinematicCameraData) : WorldTransform; // GetShotSpaceTransform;CinematicCameraData
+	function Reset(); // Reset;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct moveStrafingTarget
+{
+	var position : Vector3;
+	var object : whandle:gameObject;
+}

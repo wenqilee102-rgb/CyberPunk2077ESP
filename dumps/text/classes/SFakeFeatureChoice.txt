@@ -1,0 +1,11 @@
+struct SFakeFeatureChoice
+{
+	public    var choiceID : String;
+	public    var isEnabled : Bool;
+	public    var disableOnUse : Bool;
+	public    var factToEnableName : CName;
+	public    var factOnUse : SFactOperationData;
+	public    var factsOnUse : array:SFactOperationData;
+	public    var affectedComponents : array:SComponentOperationData;
+	public    var callbackID : Uint32;
+}

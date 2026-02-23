@@ -1,0 +1,10 @@
+import class GeometryShape extends ISerializable
+{
+	var vertices : array:Vector3;
+	var indices : array:Uint16;
+	var faces : array:GeometryShapeFace;
+}
+
+import class abstract ISerializable
+{
+}

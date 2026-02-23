@@ -1,0 +1,1 @@
+{"b":"gameTelemetryEnemy","c":"TelemetryEnemy","d":8,"g":true,"e":[{"a":{"a":15},"b":"characterRecord","c":128},{"a":{"a":12},"b":"enemyAffiliation","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"enemy","c":128},{"a":{"b":"entEntityID"},"b":"enemyEntityID","c":128},{"a":{"b":"gamedataArchetypeType"},"b":"archetype","c":128},{"a":{"a":6},"b":"level","c":128}]}

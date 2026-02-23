@@ -1,0 +1,11 @@
+import class AIbehaviorClearActiveNodesDebuggerCommand extends AIbehaviorIDebuggerCommand
+{
+}
+
+import class abstract AIbehaviorIDebuggerCommand extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

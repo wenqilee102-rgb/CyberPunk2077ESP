@@ -1,0 +1,28 @@
+import class gamePlayerObstacleSystem extends IScriptable
+{
+	import function DisableQueriesForOwner(instigator : handle:gameObject, queryToDisable_1 : gamePlayerObstacleSystemQueryType, optional queryToDisable_2 : gamePlayerObstacleSystemQueryType, optional queryToDisable_3 : gamePlayerObstacleSystemQueryType); // DisableQueriesForOwner
+	import function EnableQueriesForOwner(instigator : handle:gameObject, queryToEnable_1 : gamePlayerObstacleSystemQueryType, optional queryToEnable_2 : gamePlayerObstacleSystemQueryType, optional queryToEnable_3 : gamePlayerObstacleSystemQueryType); // EnableQueriesForOwner
+	import function GetCoverDirection(instigator : handle:gameObject) : gamePlayerCoverDirection; // GetCoverDirection
+	import function GetCurrentClimbInfo(instigator : handle:gameObject) : handle:gamePlayerClimbInfo; // GetCurrentClimbInfo
+	import function GetSlopeInfo(instigator : handle:gameObject) : handle:worldgeometryaverageNormalDetectionHelperResult; // GetSlopeInfo
+	import function ManualLeanLeft(instigator : handle:gameObject); // ManualLeanLeft
+	import function ManualLeanRight(instigator : handle:gameObject); // ManualLeanRight
+	import function OnAutoCoverActivation(instigator : handle:gameObject); // OnAutoCoverActivation
+	import function OnCoverDeactivation(instigator : handle:gameObject); // OnCoverDeactivation
+	import function OnEnterCrouch(instigator : handle:gameObject); // OnEnterCrouch
+	import function SetIsSwimming(isSwimming : Bool, instigator : handle:gameObject); // SetIsSwimming
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

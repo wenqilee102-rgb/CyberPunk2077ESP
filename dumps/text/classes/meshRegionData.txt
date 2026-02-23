@@ -1,0 +1,8 @@
+import struct meshRegionData
+{
+	var chunkDataIntact : array:meshChunkOffset;
+	var chunkDataFractured : array:meshChunkOffset;
+	var chunkMaskIntact : Uint64;
+	var chunkMaskFractured : Uint64;
+	var isStaticRemains : Bool;
+}

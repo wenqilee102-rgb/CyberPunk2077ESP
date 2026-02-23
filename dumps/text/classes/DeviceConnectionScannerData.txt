@@ -1,0 +1,6 @@
+struct DeviceConnectionScannerData
+{
+	public    var connectionType : String;
+	public    var icon : CName;
+	public    var amount : Int32;
+}

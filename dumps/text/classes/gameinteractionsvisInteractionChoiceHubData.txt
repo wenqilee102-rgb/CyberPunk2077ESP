@@ -1,0 +1,9 @@
+import struct gameinteractionsvisInteractionChoiceHubData
+{
+	var id : Int32;
+	var flags : gameinteractionsvisEVisualizerDefinitionFlags;
+	var active : Bool;
+	var title : String;
+	var choices : array:gameinteractionsvisInteractionChoiceData;
+	var timeProvider : whandle:gameinteractionsvisIVisualizerTimeProvider;
+}

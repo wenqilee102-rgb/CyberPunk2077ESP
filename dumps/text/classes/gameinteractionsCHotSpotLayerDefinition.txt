@@ -1,0 +1,27 @@
+import class gameinteractionsCHotSpotLayerDefinition extends gameinteractionsNodeDefinition
+{
+	var enabled : Bool;
+	var tag : CName;
+	var group : gameinteractionsEGroupType;
+	var priorityMultiplier : Float;
+	var areaFilterDefinition : handle:gameinteractionsCHotSpotAreaFilterDefinition;
+	var gameLogicFilterDefinition : handle:gameinteractionsCHotSpotGameLogicFilterDefinition;
+}
+
+import class abstract gameinteractionsNodeDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

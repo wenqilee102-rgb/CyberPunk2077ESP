@@ -1,0 +1,7 @@
+import class worldOffMeshUserData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

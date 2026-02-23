@@ -1,0 +1,30 @@
+import class animAnimFeature_PlayerSpatialAwareness extends animAnimFeature
+{
+	var leftClosestVector : Vector4;
+	var rightClosestVector : Vector4;
+	var upHitPosition : Vector4;
+	var forwardDistance : Float;
+
+	import function SetForwardDistance(); // SetForwardDistance
+	import function SetLeftClosestVector(); // SetLeftClosestVector
+	import function SetRightClosestVector(); // SetRightClosestVector
+	import function SetSetUpHitPosition(); // SetSetUpHitPosition
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

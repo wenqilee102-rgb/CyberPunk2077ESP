@@ -1,0 +1,8 @@
+import class abstract visIOccluderResource extends ISerializable
+{
+	var resourceHash : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

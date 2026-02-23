@@ -1,0 +1,17 @@
+import struct gameMuppetReplicatedState extends netIEntityState
+{
+	var state : gameMuppetState;
+	var initialOrientation : EulerAngles;
+	var initialLocation : Vector3;
+	var health : Float;
+	var armor : Float;
+
+	import function Muppet.ReplicateInputStates(compressedInputStates : gameMuppetCompressedInputStates); // Muppet.ReplicateInputStates
+	import function Muppet.UseLoadout(loadoutTBID : TweakDBID); // Muppet.UseLoadout
+}
+
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

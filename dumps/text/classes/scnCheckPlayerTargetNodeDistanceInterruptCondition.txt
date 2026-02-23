@@ -1,0 +1,12 @@
+import class scnCheckPlayerTargetNodeDistanceInterruptCondition extends scnIInterruptCondition
+{
+	var params : scnCheckPlayerTargetNodeDistanceInterruptConditionParams;
+}
+
+import class abstract scnIInterruptCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

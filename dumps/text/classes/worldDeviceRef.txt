@@ -1,0 +1,6 @@
+import struct worldDeviceRef
+{
+	var nodeRef : NodeRef;
+	var componentName : CName;
+	var deviceClassName : CName;
+}

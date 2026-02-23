@@ -1,0 +1,14 @@
+import class questSetVar_NodeType extends questIFactsDBManagerNodeType
+{
+	var factName : String;
+	var value : Int32;
+	var setExactValue : Bool;
+}
+
+import class abstract questIFactsDBManagerNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

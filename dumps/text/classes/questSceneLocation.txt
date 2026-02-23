@@ -1,0 +1,4 @@
+import struct questSceneLocation
+{
+	var sceneWorldMarkerTag : CName;
+}

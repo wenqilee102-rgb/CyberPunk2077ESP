@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"ProjectileHitHelper","d":0,"f":[{"a":"ProjectileHitHelper::GetHitObject;script_ref<gameprojectileHitInstance>","b":"GetHitObject","c":{"a":27,"c":{"b":"gameObject"}},"d":56,"e":[{"a":{"a":28,"c":{"b":"gameprojectileHitInstance"}},"b":"hitInstance","c":0}]}]}

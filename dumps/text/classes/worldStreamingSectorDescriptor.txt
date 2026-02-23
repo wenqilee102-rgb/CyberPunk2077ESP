@@ -1,0 +1,11 @@
+import struct worldStreamingSectorDescriptor
+{
+	var data : raRef:worldStreamingSector;
+	var streamingBox : Box;
+	var questPrefabNodeRef : NodeRef;
+	var numNodeRanges : Uint32;
+	var variants : array:worldStreamingSectorVariant;
+	var blockIndex : worldStreamingBlockIndex;
+	var level : Uint8;
+	var category : worldStreamingSectorCategory;
+}

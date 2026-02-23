@@ -1,0 +1,6 @@
+enum navNaviPositionType
+{
+	None = 0,
+	Normal = 1,
+	Projected = 2
+}

@@ -1,0 +1,6 @@
+enum gamePSMVision
+{
+	Any = -1,
+	Default = 0,
+	Focus = 1
+}

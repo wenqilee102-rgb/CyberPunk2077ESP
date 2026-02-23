@@ -1,0 +1,20 @@
+import class questAudioCharacterSystemsManager_NodeType extends questIAudioCharacterManager_NodeType
+{
+	var subType : handle:questIAudioCharacterManager_NodeSubType;
+}
+
+import class abstract questIAudioCharacterManager_NodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+class ScannerAbilities extends ScannerChunk
+{
+	public    var abilities : array:whandle:gamedataGameplayAbility_Record;
+
+	function GetAbilities() : array:whandle:gamedataGameplayAbility_Record; // GetAbilities;
+	function GetType() : ScannerDataType; // GetType;
+	function Set(a : script_ref:array:whandle:gamedataGameplayAbility_Record); // Set;script_ref<array<GameplayAbility_Record>>
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

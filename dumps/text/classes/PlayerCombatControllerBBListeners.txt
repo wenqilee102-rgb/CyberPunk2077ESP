@@ -1,0 +1,4 @@
+struct PlayerCombatControllerBBListeners
+{
+	public    var crouchActive : handle:redCallbackObject;
+}

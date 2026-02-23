@@ -1,0 +1,5 @@
+import struct scnEffectEntry
+{
+	var effectInstanceId : scnEffectInstanceId;
+	var effectName : CName;
+}

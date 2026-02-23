@@ -1,0 +1,5 @@
+import struct gametargetingTargetPartInfo
+{
+	import static function GetComponent(self : gametargetingTargetPartInfo) : whandle:gameTargetingComponent; // GetComponent
+	import static function GetPlayerAngleDistance(self : gametargetingTargetPartInfo) : EulerAngles; // GetPlayerAngleDistance
+}

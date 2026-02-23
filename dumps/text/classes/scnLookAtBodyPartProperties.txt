@@ -1,0 +1,6 @@
+import struct scnLookAtBodyPartProperties
+{
+	var enableFactor : Float;
+	var override : Float;
+	var mode : Int32;
+}

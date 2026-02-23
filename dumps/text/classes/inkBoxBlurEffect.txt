@@ -1,0 +1,16 @@
+import class inkBoxBlurEffect extends inkIEffect
+{
+	var samples : Uint8;
+	var intensity : Float;
+	var blurDimension : inkEBlurDimension;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

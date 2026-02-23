@@ -1,0 +1,15 @@
+import class gameinteractionsvisDialogVisualizerLogic extends gameinteractionsvisIGroupedVisualizerLogic
+{
+}
+
+import class abstract gameinteractionsvisIGroupedVisualizerLogic extends gameinteractionsvisIVisualizerLogicInterface
+{
+}
+
+import class abstract gameinteractionsvisIVisualizerLogicInterface extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

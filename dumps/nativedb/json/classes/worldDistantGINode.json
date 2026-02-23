@@ -1,0 +1,1 @@
+{"a":"worldNode","b":"worldDistantGINode","d":8,"e":[{"a":{"a":30,"c":{"b":"CBitmapTexture"}},"b":"dataAlbedo","c":128},{"a":{"a":30,"c":{"b":"CBitmapTexture"}},"b":"dataNormal","c":128},{"a":{"a":30,"c":{"b":"CBitmapTexture"}},"b":"dataHeight","c":128},{"a":{"b":"Vector4"},"b":"sectorSpan","c":128}]}

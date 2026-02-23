@@ -1,0 +1,6 @@
+import struct scnCinematicAnimSetSRRef
+{
+	var asyncAnimSet : raRef:animAnimSet;
+	var priority : Uint8;
+	var isOverride : Bool;
+}

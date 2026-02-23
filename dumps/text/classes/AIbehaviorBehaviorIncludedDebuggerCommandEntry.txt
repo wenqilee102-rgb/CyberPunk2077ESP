@@ -1,0 +1,5 @@
+import struct AIbehaviorBehaviorIncludedDebuggerCommandEntry
+{
+	var nodeId : CGUID;
+	var includedBehaviorResourcePath : String;
+}

@@ -1,0 +1,5 @@
+enum inkInputHintKeyCombinationType
+{
+	Or = 0,
+	And = 1
+}

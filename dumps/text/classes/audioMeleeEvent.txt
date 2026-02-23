@@ -1,0 +1,5 @@
+import struct audioMeleeEvent
+{
+	var event : CName;
+	var params : array:audioAudSimpleParameter;
+}

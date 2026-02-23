@@ -1,0 +1,5 @@
+struct SComponentOperationData
+{
+	public    var componentName : CName;
+	public    var operationType : EComponentOperation;
+}

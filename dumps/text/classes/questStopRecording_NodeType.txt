@@ -1,0 +1,19 @@
+import class questStopRecording_NodeType extends questIRecordingNodeType
+{
+}
+
+import class abstract questIRecordingNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

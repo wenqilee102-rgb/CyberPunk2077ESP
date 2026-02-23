@@ -1,0 +1,28 @@
+class ScannerWeaponBasic extends ScannerChunk
+{
+	protected var weapon : CName;
+
+	function GetType() : ScannerDataType; // GetType;
+	function GetWeapon() : CName; // GetWeapon;
+	function Set(displayName : CName); // Set;CName
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

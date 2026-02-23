@@ -1,0 +1,6 @@
+import struct worldTransformBuffer
+{
+	var sharedDataBuffer : handle:worldSharedDataBuffer;
+	var startIndex : Uint32;
+	var numElements : Uint32;
+}

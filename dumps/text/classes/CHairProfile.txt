@@ -1,0 +1,15 @@
+import class CHairProfile extends CResource
+{
+	var sampleCount : Uint16;
+	var gradientEntriesID : array:rendGradientEntry;
+	var gradientEntriesRootToTip : array:rendGradientEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

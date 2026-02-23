@@ -1,0 +1,26 @@
+import class audioAcousticZoneMetadata extends audioAudioMetadata
+{
+	var priority : Int32;
+	var bleadingDistance : Float;
+	var eventsOnEnter : array:CName;
+	var eventsOnExit : array:CName;
+	var eventsOnActive : array:CName;
+	var soundBanks : array:CName;
+	var parameters : array:audioAcousticZoneParameterMapItem;
+	var reverbSettings : CName;
+	var voReverbSettings : CName;
+	var footstepMaterialOverride : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

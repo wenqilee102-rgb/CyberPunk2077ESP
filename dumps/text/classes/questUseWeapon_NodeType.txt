@@ -1,0 +1,28 @@
+import class questUseWeapon_NodeType extends questIItemManagerNodeType
+{
+	var usageType : questWeaponUsageType;
+	var objectRef : handle:questUniversalRef;
+	var overrideShootEffect : CName;
+	var weaponSlotName : CName;
+	var attackTDBID : TweakDBID;
+}
+
+import class abstract questIItemManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

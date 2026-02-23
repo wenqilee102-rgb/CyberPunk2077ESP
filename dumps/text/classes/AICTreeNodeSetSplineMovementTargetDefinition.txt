@@ -1,0 +1,22 @@
+import class AICTreeNodeSetSplineMovementTargetDefinition extends AICTreeNodeDecoratorDefinition
+{
+	var splineNode : LibTreeSharedVarReferenceName;
+	var movementTarget : LibTreeSharedVarRegistrationName;
+}
+
+import class abstract AICTreeNodeDecoratorDefinition extends AICTreeNodeDefinition
+{
+	var child : handle:LibTreeINodeDefinition;
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

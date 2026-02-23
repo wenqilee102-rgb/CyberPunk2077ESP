@@ -1,0 +1,173 @@
+import class inkVirtualWindow extends inkWindow
+{
+}
+
+import class inkWindow extends inkCanvasWidget
+{
+}
+
+import class inkCanvasWidget extends inkCompoundWidget
+{
+}
+
+import class inkCompoundWidget extends inkWidget
+{
+	var childOrder : inkEChildOrder;
+	var children : handle:inkMultiChildren;
+	var childMargin : inkMargin;
+
+	import function AddChild(widgetTypeName : CName) : whandle:inkWidget; // AddChild
+	import function AddChildWidget(widget : whandle:inkWidget); // AddChildWidget
+	import function GetChildMargin() : inkMargin; // GetChildMargin
+	import function GetChildOrder() : inkEChildOrder; // GetChildOrder
+	import function GetChildPosition(widget : whandle:inkWidget) : Vector2; // GetChildPosition
+	import function GetChildSize(widget : whandle:inkWidget) : Vector2; // GetChildSize
+	import function GetNumChildren() : Int32; // GetNumChildren
+	import function GetWidgetByIndex(index : Int32) : whandle:inkWidget; // GetWidgetByIndex
+	import function GetWidgetByPath(path : inkWidgetPath) : whandle:inkWidget; // GetWidgetByPath
+	import function GetWidgetByPathName(widgetNamePath : CName) : whandle:inkWidget; // GetWidgetByPathName
+	import function RemoveAllChildren(); // RemoveAllChildren
+	import function RemoveChild(childWidget : whandle:inkWidget); // RemoveChild
+	import function RemoveChildByIndex(index : Int32); // RemoveChildByIndex
+	import function RemoveChildByName(widgetName : CName); // RemoveChildByName
+	import function ReorderChild(childWidget : whandle:inkWidget, newIndex : Int32); // ReorderChild
+	import function SetChildMargin(newMargin : inkMargin); // SetChildMargin
+	import function SetChildOrder(newOrder : inkEChildOrder); // SetChildOrder
+
+	function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget;inkWidgetPath
+	function GetWidget(index : Int32) : whandle:inkWidget; // GetWidget;Int32
+	function GetWidget(path : CName) : whandle:inkWidget; // GetWidget;CName
+}
+
+import class inkWidget extends IScriptable
+{
+	var logicController : handle:inkWidgetLogicController;
+	var secondaryControllers : array:handle:inkWidgetLogicController;
+	var userData : array:handle:inkUserData;
+	var name : CName;
+	var state : CName;
+	var visible : Bool;
+	var affectsLayoutWhenHidden : Bool;
+	var isInteractive : Bool;
+	var canSupportFocus : Bool;
+	var style : handle:inkStyleResourceWrapper;
+	var parentWidget : whandle:inkWidget;
+	var propertyManager : handle:inkPropertyManager;
+	var fitToContent : Bool;
+	var layout : inkWidgetLayout;
+	var opacity : Float;
+	var tintColor : HDRColor;
+	var size : Vector2;
+	var renderTransformPivot : Vector2;
+	var renderTransform : inkUITransform;
+	var effects : array:handle:inkIEffect;
+
+	static function DefaultState() : CName; // inkWidget::DefaultState;
+
+	import function BindProperty(propertyName : CName, stylePath : CName) : Bool; // BindProperty
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function ChangeTranslation(translationVector : Vector2); // ChangeTranslation
+	import function DisableAllEffectsByType(effectType : inkEffectType); // DisableAllEffectsByType
+	import function FlagForVisualInvalidation(); // FlagForVisualInvalidation
+	import function GatherUserData(userDataTypeName : CName, userDataCollection : array:handle:inkUserData); // GatherUserData
+	import function GetAffectsLayoutWhenHidden() : Bool; // GetAffectsLayoutWhenHidden
+	import function GetAnchor() : inkEAnchor; // GetAnchor
+	import function GetAnchorPoint() : Vector2; // GetAnchorPoint
+	import function GetController() : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers() : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetDesiredSize() : Vector2; // GetDesiredSize
+	import function GetEffectEnabled(effectType : inkEffectType, effectName : CName) : Bool; // GetEffectEnabled
+	import function GetEffectParamValue(effectType : inkEffectType, effectName : CName, paramName : CName) : Float; // GetEffectParamValue
+	import function GetFitToContent() : Bool; // GetFitToContent
+	import function GetHAlign() : inkEHorizontalAlign; // GetHAlign
+	import function GetMargin() : inkMargin; // GetMargin
+	import function GetName() : CName; // GetName
+	import function GetNumControllers() : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName) : Int32; // GetNumControllersOfType
+	import function GetOpacity() : Float; // GetOpacity
+	import function GetPadding() : inkMargin; // GetPadding
+	import function GetRenderTransformPivot() : Vector2; // GetRenderTransformPivot
+	import function GetRotation() : Float; // GetRotation
+	import function GetScale() : Vector2; // GetScale
+	import function GetShear() : Vector2; // GetShear
+	import function GetSize() : Vector2; // GetSize
+	import function GetSizeCoefficient() : Float; // GetSizeCoefficient
+	import function GetSizeRule() : inkESizeRule; // GetSizeRule
+	import function GetState() : CName; // GetState
+	import function GetStylePath() : redResourceReferenceScriptToken; // GetStylePath
+	import function GetTintColor() : HDRColor; // GetTintColor
+	import function GetTranslation() : Vector2; // GetTranslation
+	import function GetUserData(userDataTypeName : CName) : handle:inkUserData; // GetUserData
+	import function GetUserDataArray(userDataTypeName : CName) : array:handle:inkUserData; // GetUserDataArray
+	import function GetUserDataObjectCount(userDataTypeName : CName) : Uint32; // GetUserDataObjectCount
+	import function GetVAlign() : inkEVerticalAlign; // GetVAlign
+	import function HasUserDataObject(userDataTypeName : CName) : Bool; // HasUserDataObject
+	import function IsInteractive() : Bool; // IsInteractive
+	import function IsVisible() : Bool; // IsVisible
+	import function PlayAnimation(animationDefinition : handle:inkanimDefinition) : handle:inkanimProxy; // PlayAnimation
+	import function PlayAnimationWithOptions(animationDefinition : handle:inkanimDefinition, playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayAnimationWithOptions
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetAffectsLayoutWhenHidden(affectsLayoutWhenHidden : Bool); // SetAffectsLayoutWhenHidden
+	import function SetAnchor(anchor : inkEAnchor); // SetAnchor
+	import function SetAnchorPoint(anchorPoint : Vector2); // SetAnchorPoint
+	import function SetEffectEnabled(effectType : inkEffectType, effectName : CName, enabled : Bool); // SetEffectEnabled
+	import function SetEffectParamValue(effectType : inkEffectType, effectName : CName, paramName : CName, paramValue : Float) : Float; // SetEffectParamValue
+	import function SetFitToContent(fitToContent : Bool); // SetFitToContent
+	import function SetHAlign(hAlign : inkEHorizontalAlign); // SetHAlign
+	import function SetInteractive(value : Bool); // SetInteractive
+	import function SetLayout(layout : inkWidgetLayout); // SetLayout
+	import function SetMargin(margin : inkMargin); // SetMargin
+	import function SetName(widgetName : CName); // SetName
+	import function SetOpacity(opacity : Float); // SetOpacity
+	import function SetPadding(padding : inkMargin); // SetPadding
+	import function SetRenderTransformPivot(pivot : Vector2); // SetRenderTransformPivot
+	import function SetRotation(angleInDegrees : Float); // SetRotation
+	import function SetScale(scale : Vector2); // SetScale
+	import function SetShear(shear : Vector2); // SetShear
+	import function SetSize(size : Vector2); // SetSize
+	import function SetSizeCoefficient(sizeCoefficient : Float); // SetSizeCoefficient
+	import function SetSizeRule(sizeRule : inkESizeRule); // SetSizeRule
+	import function SetState(state : CName); // SetState
+	import function SetStyle(styleResPath : redResourceReferenceScriptToken); // SetStyle
+	import function SetTintColor(color : HDRColor); // SetTintColor
+	import function SetTranslation(translationVector : Vector2); // SetTranslation
+	import function SetVAlign(vAlign : inkEVerticalAlign); // SetVAlign
+	import function SetVisible(visible : Bool); // SetVisible
+	import function StopAllAnimations(); // StopAllAnimations
+	import function UnbindProperty(propertyName : CName) : Bool; // UnbindProperty
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+
+	function GetDesiredHeight() : Float; // GetDesiredHeight;
+	function GetDesiredWidth() : Float; // GetDesiredWidth;
+	function GetHeight() : Float; // GetHeight;
+	function GetWidth() : Float; // GetWidth;
+	function SetAnchorPoint(x : Float, y : Float); // SetAnchorPoint;FloatFloat
+	function SetHeight(height : Float); // SetHeight;Float
+	function SetMargin(left : Float, top : Float, right : Float, bottom : Float); // SetMargin;FloatFloatFloatFloat
+	function SetPadding(left : Float, top : Float, right : Float, bottom : Float); // SetPadding;FloatFloatFloatFloat
+	function SetRenderTransformPivot(x : Float, y : Float); // SetRenderTransformPivot;FloatFloat
+	function SetSize(width : Float, height : Float); // SetSize;FloatFloat
+	function SetTintColor(r : Uint8, g : Uint8, b : Uint8, a : Uint8); // SetTintColor;Uint8Uint8Uint8Uint8
+	function SetTintColor(color : Color); // SetTintColor;Color
+	function SetTranslation(x : Float, y : Float); // SetTranslation;FloatFloat
+	function SetWidth(width : Float); // SetWidth;Float
+	function UpdateMargin(left : Float, top : Float, right : Float, bottom : Float); // UpdateMargin;FloatFloatFloatFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

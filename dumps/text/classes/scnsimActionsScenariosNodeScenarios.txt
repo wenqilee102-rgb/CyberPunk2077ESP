@@ -1,0 +1,6 @@
+import struct scnsimActionsScenariosNodeScenarios
+{
+	var nodeId : scnNodeId;
+	var scenarios : array:handle:scnsimIActionScenario;
+	var fallback : handle:scnsimIActionScenario;
+}

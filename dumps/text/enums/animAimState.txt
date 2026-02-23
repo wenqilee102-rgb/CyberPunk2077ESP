@@ -1,0 +1,5 @@
+enum animAimState
+{
+	Unaimed = 0,
+	Aimed = 1
+}

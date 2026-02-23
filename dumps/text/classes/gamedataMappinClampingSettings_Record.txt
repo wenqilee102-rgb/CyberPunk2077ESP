@@ -1,0 +1,48 @@
+import class gamedataMappinClampingSettings_Record extends gamedataTweakDBRecord
+{
+	import function ClampSmoothing() : Float; // ClampSmoothing
+	import function ClampingRectangleLeftAndTop() : Vector2; // ClampingRectangleLeftAndTop
+	import function ClampingRectangleRightAndBottom() : Vector2; // ClampingRectangleRightAndBottom
+	import function CustomBottomLeftEllipse() : Bool; // CustomBottomLeftEllipse
+	import function CustomBottomLeftEllipseOffset() : Vector2; // CustomBottomLeftEllipseOffset
+	import function CustomBottomLeftEllipseSize() : Vector2; // CustomBottomLeftEllipseSize
+	import function CustomBottomRightEllipse() : Bool; // CustomBottomRightEllipse
+	import function CustomBottomRightEllipseOffset() : Vector2; // CustomBottomRightEllipseOffset
+	import function CustomBottomRightEllipseSize() : Vector2; // CustomBottomRightEllipseSize
+	import function CustomTopLeftEllipse() : Bool; // CustomTopLeftEllipse
+	import function CustomTopLeftEllipseOffset() : Vector2; // CustomTopLeftEllipseOffset
+	import function CustomTopLeftEllipseSize() : Vector2; // CustomTopLeftEllipseSize
+	import function CustomTopRightEllipse() : Bool; // CustomTopRightEllipse
+	import function CustomTopRightEllipseOffset() : Vector2; // CustomTopRightEllipseOffset
+	import function CustomTopRightEllipseSize() : Vector2; // CustomTopRightEllipseSize
+	import function DisableBottomLeftEllipse() : Bool; // DisableBottomLeftEllipse
+	import function DisableBottomRightEllipse() : Bool; // DisableBottomRightEllipse
+	import function DisableTopLeftEllipse() : Bool; // DisableTopLeftEllipse
+	import function DisableTopRightEllipse() : Bool; // DisableTopRightEllipse
+	import function EllipseOffset() : Vector2; // EllipseOffset
+	import function EllipseShapeSize() : Vector2; // EllipseShapeSize
+	import function EllipseSize() : Vector2; // EllipseSize
+	import function MinimumClampPercent() : Float; // MinimumClampPercent
+	import function UseEllipseShape() : Bool; // UseEllipseShape
+	import function UseSpecialShapeLogic() : Bool; // UseSpecialShapeLogic
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

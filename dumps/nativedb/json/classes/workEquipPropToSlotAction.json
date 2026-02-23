@@ -1,0 +1,1 @@
+{"a":"workIWorkspotItemAction","b":"workEquipPropToSlotAction","d":8,"e":[{"a":{"a":14},"b":"itemId","c":128},{"a":{"a":15},"b":"itemSlot","c":128},{"a":{"b":"workPropAttachMethod"},"b":"attachMethod","c":128},{"a":{"b":"Vector3"},"b":"customOffsetPos","c":128},{"a":{"b":"Quaternion"},"b":"customOffsetRot","c":128}]}

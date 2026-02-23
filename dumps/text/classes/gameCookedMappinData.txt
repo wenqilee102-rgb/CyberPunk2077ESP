@@ -1,0 +1,6 @@
+import struct gameCookedMappinData
+{
+	var journalPathHash : Uint32;
+	var position : Vector3;
+	var volume : handle:gamemappinsIMappinVolume;
+}

@@ -1,0 +1,4 @@
+import struct gameCommunityID
+{
+	var entityId : entEntityID;
+}

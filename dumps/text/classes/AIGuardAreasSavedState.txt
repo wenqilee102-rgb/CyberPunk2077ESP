@@ -1,0 +1,9 @@
+import class AIGuardAreasSavedState extends ISerializable
+{
+	var data : array:AIGuardAreaSavedData;
+	var cleared : array:entEntityID;
+}
+
+import class abstract ISerializable
+{
+}

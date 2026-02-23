@@ -1,0 +1,12 @@
+import class effectVisualComponentSpawner extends effectSpawner
+{
+	var componentName : array:CName;
+}
+
+import class effectSpawner extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

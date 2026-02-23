@@ -1,0 +1,18 @@
+import struct scnInterruptionScenario
+{
+	var id : scnInterruptionScenarioId;
+	var name : CName;
+	var queueName : CName;
+	var enabled : Bool;
+	var talkOnReturn : Bool;
+	var playInterruptLine : Bool;
+	var forcePlayReturnLine : Bool;
+	var interruptionSpammingSafeguard : Bool;
+	var playingLinesBehavior : scnInterruptReturnLinesBehavior;
+	var postInterruptSignalTimeDelay : Float;
+	var postReturnSignalTimeDelay : Float;
+	var postInterruptSignalFactCondition : handle:scnInterruptFactConditionType;
+	var postReturnSignalFactCondition : handle:scnInterruptFactConditionType;
+	var interruptConditions : array:handle:scnIInterruptCondition;
+	var returnConditions : array:handle:scnIReturnCondition;
+}

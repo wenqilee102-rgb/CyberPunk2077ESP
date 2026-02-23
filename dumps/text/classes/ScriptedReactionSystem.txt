@@ -1,0 +1,49 @@
+class ScriptedReactionSystem extends gameScriptableSystem
+{
+	private   var fleeingNPCs : Int32;
+	private   var runners : array:whandle:entEntity;
+	private   var registeredTimeout : Float;
+	private   var callInAction : Bool;
+	private   var policeCaller : whandle:entEntity;
+
+	function GetFleeingNPCsCount() : Int32; // GetFleeingNPCsCount;
+	function GetFleeingNPCsCountInDistance(position : Vector4, distance : Float) : Int32; // GetFleeingNPCsCountInDistance;Vector4Float
+	function GetRegisterTimeout() : Float; // GetRegisterTimeout;
+	function IsCaller(entity : handle:entEntity) : Bool; // IsCaller;Entity
+	function IsCallerCloser(newCaller : handle:entEntity, crimePosition : Vector4) : Bool; // IsCallerCloser;EntityVector4
+	function IsRegistered(runner : handle:entEntity) : Bool; // IsRegistered;Entity
+	function OnRegisterFleeingNPC(request : handle:RegisterFleeingNPC); // OnRegisterFleeingNPC;RegisterFleeingNPC
+	function OnRegisterPoliceCaller(request : handle:RegisterPoliceCaller); // OnRegisterPoliceCaller;RegisterPoliceCaller
+	function OnUnregisterFleeingNPC(request : handle:UnregisterFleeingNPC); // OnUnregisterFleeingNPC;UnregisterFleeingNPC
+	function OnUnregisterPoliceCaller(request : handle:UnregisterPoliceCaller); // OnUnregisterPoliceCaller;UnregisterPoliceCaller
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

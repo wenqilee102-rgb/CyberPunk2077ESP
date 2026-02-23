@@ -1,0 +1,7 @@
+struct ActionsSequence
+{
+	public    var sequenceInitiator : entEntityID;
+	public    var maxActionsInSequence : Int32;
+	public    var actionsTriggeredCount : Int32;
+	public    var delayIDs : array:gameDelayID;
+}

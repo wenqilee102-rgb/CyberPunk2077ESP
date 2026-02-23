@@ -1,0 +1,23 @@
+class RipperdocCyberwareEquipAnimationCategory extends IScriptable
+{
+	public    var factName : CName;
+	public    var equipAreas : array:gamedataEquipmentArea;
+	public    var weight : Float;
+	public    var equipCount : Int32;
+
+	function SetData(factName : CName, equipAreas : script_ref:array:gamedataEquipmentArea, weight : Float); // SetData;CNamescript_ref<array<gamedataEquipmentArea>>Float
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

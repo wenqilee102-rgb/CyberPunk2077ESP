@@ -1,0 +1,1 @@
+{"b":"DetectionParameters","d":0,"g":true,"e":[{"a":{"a":1},"b":"canDetectIntruders","c":128},{"a":{"a":10},"b":"timeToActionAfterSpot","c":128},{"a":{"a":10},"b":"overrideRootRotation","c":128},{"a":{"a":10},"b":"maxRotationAngle","c":128},{"a":{"a":10},"b":"pitchAngle","c":128},{"a":{"a":10},"b":"rotationSpeed","c":128}]}

@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataPoolValueModifier_Record","c":"PoolValueModifier_Record","d":24,"f":[{"a":"DelayOnChange","c":{"a":1},"d":4},{"a":"Enabled","c":{"a":1},"d":4},{"a":"RangeBegin","c":{"a":10},"d":4},{"a":"RangeEnd","c":{"a":10},"d":4},{"a":"StartDelay","c":{"a":10},"d":4},{"a":"UsingPointValues","c":{"a":1},"d":4},{"a":"ValuePerSec","c":{"a":10},"d":4}]}

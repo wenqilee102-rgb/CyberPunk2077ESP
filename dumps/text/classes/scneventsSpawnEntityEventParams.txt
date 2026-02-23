@@ -1,0 +1,8 @@
+import struct scneventsSpawnEntityEventParams
+{
+	var performer : scnPerformerId;
+	var referencePerformer : scnPerformerId;
+	var referencePerformerSlotId : TweakDBID;
+	var referencePerformerItemId : TweakDBID;
+	var fallbackData : array:scneventsSpawnEntityEventFallbackData;
+}

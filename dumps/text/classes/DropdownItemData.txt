@@ -1,0 +1,20 @@
+class DropdownItemData extends IScriptable
+{
+	public    var identifier : Variant;
+	public    var labelKey : CName;
+	public    var direction : DropdownItemDirection;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class localizationPersistenceSubtitleMap extends ISerializable
+{
+	var entries : array:localizationPersistenceSubtitleMapEntry;
+}
+
+import class abstract ISerializable
+{
+}

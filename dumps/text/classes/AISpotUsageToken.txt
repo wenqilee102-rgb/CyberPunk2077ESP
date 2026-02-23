@@ -1,0 +1,5 @@
+import struct AISpotUsageToken
+{
+	var usedSpotId : worldGlobalNodeID;
+	var spotUserId : entEntityID;
+}

@@ -1,0 +1,1 @@
+{"a":"gameDelaySystemScriptedDelayCallbackWrapper","b":"BloodswellCallback","d":0,"e":[{"a":{"a":26,"c":{"b":"BloodswellEffector"}},"b":"bloodswellEffector","c":129}],"f":[{"a":"BloodswellCallback::Construct;BloodswellEffector","b":"Construct","c":{"a":26,"c":{"b":"BloodswellCallback"}},"d":56,"e":[{"a":{"a":26,"c":{"b":"BloodswellEffector"}},"b":"eff","c":0}]}]}

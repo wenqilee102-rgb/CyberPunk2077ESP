@@ -1,0 +1,40 @@
+import class gamedataAICalculatePathCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function AllowedOffMeshTags() : array:CName; // AllowedOffMeshTags
+	import function AllowedOffMeshTagsContains(item : CName) : Bool; // AllowedOffMeshTagsContains
+	import function CheckDynamicObstacle() : Bool; // CheckDynamicObstacle
+	import function CheckStraightPath() : Bool; // CheckStraightPath
+	import function DirectionAngle() : Float; // DirectionAngle
+	import function Distance() : Float; // Distance
+	import function GetAllowedOffMeshTagsCount() : Int32; // GetAllowedOffMeshTagsCount
+	import function GetAllowedOffMeshTagsItem(index : Int32) : CName; // GetAllowedOffMeshTagsItem
+	import function StartPositionOffset() : Vector3; // StartPositionOffset
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function Tolerance() : Float; // Tolerance
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

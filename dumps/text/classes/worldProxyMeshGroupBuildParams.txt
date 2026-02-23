@@ -1,0 +1,5 @@
+import struct worldProxyMeshGroupBuildParams
+{
+	var overridePrefabBuildParams : Bool;
+	var buildParams : worldGroupProxyMeshBuildParams;
+}

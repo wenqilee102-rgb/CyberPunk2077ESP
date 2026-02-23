@@ -1,0 +1,19 @@
+import class animDyngConstraintCone extends animIDyngConstraint
+{
+	var constrainedBone : animTransformIndex;
+	var coneAttachmentBone : animTransformIndex;
+	var coneTransformLS : QsTransform;
+	var constraintType : animPendulumConstraintType;
+	var halfOfMaxApertureAngle : Float;
+	var projectionType : animPendulumProjectionType;
+	var collisionCapsuleRadius : Float;
+	var collisionCapsuleHeightExtent : Float;
+}
+
+import class abstract animIDyngConstraint extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

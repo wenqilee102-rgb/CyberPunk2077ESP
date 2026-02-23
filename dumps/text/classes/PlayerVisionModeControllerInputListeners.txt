@@ -1,0 +1,7 @@
+struct PlayerVisionModeControllerInputListeners
+{
+	public    var buttonHold : Uint32;
+	public    var buttonToggle : Uint32;
+	public    var driverCombatButtonHold : Uint32;
+	public    var driverCombatButtonActivate : Uint32;
+}

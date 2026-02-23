@@ -1,0 +1,46 @@
+class PoliceRadioScriptSystem extends gameScriptableSystem
+{
+	static function GetHeatStageRadioEntryName(instance : ScriptGameInstance, heatStage : EPreventionHeatStage, currentDistrict : whandle:District) : CName; // PoliceRadioScriptSystem::GetHeatStageRadioEntryName;GameInstanceEPreventionHeatStageDistrict
+	static function GetSystemName() : CName; // PoliceRadioScriptSystem::GetSystemName;
+	static function IsARecentEntry(instance : ScriptGameInstance, entryName : CName) : Bool; // PoliceRadioScriptSystem::IsARecentEntry;GameInstanceCName
+	static function IsHeat1Line(line : CName, currentDistrict : whandle:District) : Bool; // PoliceRadioScriptSystem::IsHeat1Line;CNameDistrict
+	static function IsPlayerInVehicle(instance : ScriptGameInstance) : Bool; // PoliceRadioScriptSystem::IsPlayerInVehicle;GameInstance
+	static function PlayRadio(instance : ScriptGameInstance, entryName : CName); // PoliceRadioScriptSystem::PlayRadio;GameInstanceCName
+	static function PlayRadio(args : handle:PlayRadioArgs); // PoliceRadioScriptSystem::PlayRadio;PlayRadioArgs
+	static function UpdatePoliceRadioOnDistrictChange(instance : ScriptGameInstance, currentDistrict : whandle:District, heatStage : EPreventionHeatStage); // PoliceRadioScriptSystem::UpdatePoliceRadioOnDistrictChange;GameInstanceDistrictEPreventionHeatStage
+	static function UpdatePoliceRadioOnHeatChange(instance : ScriptGameInstance, heatStage : EPreventionHeatStage, currentDistrict : whandle:District); // PoliceRadioScriptSystem::UpdatePoliceRadioOnHeatChange;GameInstanceEPreventionHeatStageDistrict
+	static function UpdatePoliceRadioOnPlayerVisibilityChanged(instance : ScriptGameInstance, lastStarChangeStartTimeStamp : Float, currentHeatState : EPreventionHeatStage, currentVisibilityState : EStarState, futureVisibilityState : EStarState); // PoliceRadioScriptSystem::UpdatePoliceRadioOnPlayerVisibilityChanged;GameInstanceFloatEPreventionHeatStageEStarStateEStarState
+	static function UpdatePoliceRadioOnVehicleEntrance(instance : ScriptGameInstance); // PoliceRadioScriptSystem::UpdatePoliceRadioOnVehicleEntrance;GameInstance
+
+	function OnRadioDelayedRequest(request : handle:RadioDelayedRequest); // OnRadioDelayedRequest;RadioDelayedRequest
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

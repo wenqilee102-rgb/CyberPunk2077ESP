@@ -1,0 +1,5 @@
+import struct gamestateMachineStateContext
+{
+	var snapshot : gamestateMachineStateSnapshotsContainer;
+	var permanentParameters : gamestateMachineStateContextParameters;
+}

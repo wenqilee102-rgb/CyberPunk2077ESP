@@ -1,0 +1,37 @@
+import class gameuiMainProgramGenRule extends gameuiMinigameGenerationRule
+{
+}
+
+import class gameuiMinigameGenerationRule extends IScriptable
+{
+	var minigameController : whandle:gameuiHackingMinigameGameController;
+	public    var blackboardSystem : handle:gameBlackboardSystem;
+	public    var entity : whandle:entEntity;
+	public    var player : whandle:PlayerPuppet;
+	public    var minigameRecord : whandle:gamedataMinigame_Def_Record;
+	public    var bufferSize : Int32;
+	public    var isItemBreach : Bool;
+
+	function IntToTrap(i : Int32) : handle:gamedataMiniGame_Trap_Record; // IntToTrap;Int32
+	function OnProcessRule(size : Uint32, out grid : array:array:gameuiGridCell) : Bool; // OnProcessRule;Uint32array<array<GridCell>>
+	function SetBlackboard(b : handle:gameBlackboardSystem); // SetBlackboard;BlackboardSystem
+	function SetBufferSize(buffer : Int32); // SetBufferSize;Int32
+	function SetEntity(entity : handle:entEntity); // SetEntity;Entity
+	function SetIsItemBreach(itemBreach : Bool); // SetIsItemBreach;Bool
+	function SetPlayer(player : handle:PlayerPuppet); // SetPlayer;PlayerPuppet
+	function SetRecord(rec : handle:gamedataMinigame_Def_Record); // SetRecord;Minigame_Def_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

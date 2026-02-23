@@ -1,0 +1,12 @@
+import class gameEffectParameter_BoolEvaluator_Blackboard extends gameIEffectParameter_BoolEvaluator
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+}
+
+import class abstract gameIEffectParameter_BoolEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

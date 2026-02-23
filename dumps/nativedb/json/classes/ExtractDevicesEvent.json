@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"ExtractDevicesEvent","d":0,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"gameLazyDevice"}}},"b":"lazyDevices","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gameDeviceComponentPS"}}},"b":"devices","c":128},{"a":{"a":26,"c":{"b":"ProcessDevicesEvent"}},"b":"eventToSendOnCompleted","c":128},{"a":{"a":6},"b":"lastExtractedIndex","c":128}]}

@@ -1,0 +1,13 @@
+import class scnSceneMarker extends worldIMarker
+{
+	var markers : array:scnSceneMarkerInternalsAnimEventEntry;
+	var workspotMarkers : array:scnSceneMarkerInternalsWorkspotEntry;
+}
+
+import class abstract worldIMarker extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

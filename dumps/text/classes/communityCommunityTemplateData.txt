@@ -1,0 +1,10 @@
+import class communityCommunityTemplateData extends ISerializable
+{
+	var entries : array:handle:communitySpawnEntry;
+	var crowdEntries : array:gameCrowdTemplateEntry;
+	var spawnSetReference : CName;
+}
+
+import class abstract ISerializable
+{
+}

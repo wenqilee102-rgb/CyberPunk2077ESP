@@ -1,0 +1,30 @@
+import struct gameMuppetUpperBodyState
+{
+	var currentWeapon : gameItemID;
+	var wantedWeapon : gameItemID;
+	var inProgressWeapon : gameItemID;
+	var logicWantedWeapon : gameItemID;
+	var equippingTransitionTime : Float;
+	var remainingShotTime : Float;
+	var timeTillNextShootSeconds : Float;
+	var isAimingDownSight : Bool;
+	var currentWeaponAmmo : Int32;
+	var currentWeaponAmmoCapacity : Int32;
+	var isShooting : Bool;
+	var weaponZoomLevel : Float;
+	var weaponAimFOV : Float;
+	var remainingReloadTime : Float;
+	var remainingReloadCooldownTime : Float;
+	var shotsMade : Uint32;
+	var isMeleeAttackInProgress : Bool;
+	var meleeAttacksMade : Uint32;
+	var meleeAttackIndex : Int32;
+	var remainingMeleeAttackDuration : Float;
+	var selectedConsumable : gameItemID;
+	var consumableInUse : Bool;
+	var consumableEffectApplied : Bool;
+	var consumableUseTimeStartup : Float;
+	var consumableUseTimeRecovery : Float;
+	var remainingQuickMeleeTime : Float;
+	var remainingQuickMeleeCooldownTime : Float;
+}

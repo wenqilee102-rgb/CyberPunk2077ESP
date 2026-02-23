@@ -1,0 +1,1 @@
+{"b":"cpConveyorLine","d":8,"g":true,"e":[{"a":{"a":16},"b":"spline","c":128},{"a":{"a":14},"b":"template","c":128},{"a":{"a":1},"b":"reverseDirection","c":128},{"a":{"a":31,"c":{"b":"Vector2"}},"b":"physicsValidRanges","c":128}]}

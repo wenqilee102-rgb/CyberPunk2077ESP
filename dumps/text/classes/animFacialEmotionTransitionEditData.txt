@@ -1,0 +1,12 @@
+import struct animFacialEmotionTransitionEditData
+{
+	var toIdleMale : CName;
+	var facialKeyMale : CName;
+	var toIdleFemale : CName;
+	var facialKeyFemale : CName;
+	var transitionType : animFacialEmotionTransitionType;
+	var toIdleWeight : Float;
+	var toIdleNeckWeight : Float;
+	var facialKeyWeight : Float;
+	var customTransitionAnim : CName;
+}

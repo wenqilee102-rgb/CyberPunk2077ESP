@@ -1,0 +1,16 @@
+import class AIbehaviorCheckLineOfFireTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var slotName : handle:AIArgumentMapping;
+	var attachmentName : handle:AIArgumentMapping;
+	var spread : handle:AIArgumentMapping;
+	var maxRange : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

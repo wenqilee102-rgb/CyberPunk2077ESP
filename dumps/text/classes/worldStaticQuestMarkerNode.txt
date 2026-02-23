@@ -1,0 +1,17 @@
+import class worldStaticQuestMarkerNode extends worldNode
+{
+	var questType : worldQuestType;
+	var questLabel : String;
+	var mapFilteringTag : CName;
+	var questMarkerHeight : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

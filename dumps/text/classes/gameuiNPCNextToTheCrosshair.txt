@@ -1,0 +1,17 @@
+import struct gameuiNPCNextToTheCrosshair
+{
+	var npc : whandle:gameObject;
+	var name : String;
+	var currentHealth : Int32;
+	var maximumHealth : Int32;
+	var currentCyberwarePct : Int32;
+	var level : Int32;
+	var quickHackUpload : Int32;
+	var attitude : EAIAttitude;
+	var scanningState : gameScanningState;
+	var isTagged : Bool;
+	var highLevelState : gamedataNPCHighLevelState;
+	var canSeePlayer : Bool;
+	var playerDetectionAboveZero : Bool;
+	var playerDetectionAtMax : Bool;
+}

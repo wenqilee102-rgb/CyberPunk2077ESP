@@ -1,0 +1,1 @@
+{"b":"gameuiHudScalingSensitiveWidget","d":8,"g":true,"e":[{"a":{"b":"inkWidgetReference"},"b":"widget","c":128},{"a":{"a":1},"b":"adjustScale","c":128},{"a":{"a":1},"b":"adjustTranslation","c":128},{"a":{"a":1},"b":"adjustMargin","c":128},{"a":{"b":"inkMargin"},"b":"targetMarginAtDoubleScale","c":128},{"a":{"b":"inkMargin"},"b":"marginToScalecorrectOverride","c":128}]}

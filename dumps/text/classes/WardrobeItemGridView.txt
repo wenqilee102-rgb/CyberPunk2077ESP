@@ -1,0 +1,58 @@
+class WardrobeItemGridView extends CommonItemsGridView
+{
+	function SortItem(left : handle:IScriptable, right : handle:IScriptable) : Bool; // SortItem;IScriptableIScriptable
+}
+
+class CommonItemsGridView extends inkScriptableDataViewWrapper
+{
+	protected var itemFilterType : ItemFilterCategory;
+	protected var itemSortMode : ItemSortMode;
+	protected var uiScriptableSystem : whandle:UIScriptableSystem;
+
+	function BindUIScriptableSystem(uiScriptableSystem : whandle:UIScriptableSystem); // BindUIScriptableSystem;UIScriptableSystem
+	function GetFilterType() : ItemFilterCategory; // GetFilterType;
+	function GetSortMode() : ItemSortMode; // GetSortMode;
+	function SetFilterType(type : ItemFilterCategory); // SetFilterType;ItemFilterCategory
+	function SetFilterTypeAndSortMode(type : ItemFilterCategory, mode : ItemSortMode); // SetFilterTypeAndSortMode;ItemFilterCategoryItemSortMode
+	function SetSortMode(mode : ItemSortMode); // SetSortMode;ItemSortMode
+}
+
+import class inkScriptableDataViewWrapper extends inkBaseScriptableDataSource
+{
+	import function DisableSorting(); // DisableSorting
+	import function EnableSorting(); // EnableSorting
+	import function Filter(); // Filter
+	import function IsSortingEnabled() : Bool; // IsSortingEnabled
+	import function SetSource(source : whandle:inkBaseScriptableDataSource); // SetSource
+	import function Sort(); // Sort
+
+	function FilterItem(data : handle:IScriptable) : Bool; // FilterItem;IScriptable
+	function SortItem(left : handle:IScriptable, right : handle:IScriptable) : Bool; // SortItem;IScriptableIScriptable
+}
+
+import class inkBaseScriptableDataSource extends inkAbstractDataSourceWrapper
+{
+	import function GetItem(index : Uint32) : handle:IScriptable; // GetItem
+	import function HasItem(data : handle:IScriptable) : Bool; // HasItem
+}
+
+import class inkAbstractDataSourceWrapper extends IScriptable
+{
+	import function GetItemAsVariant(index : Uint32) : Variant; // GetItemAsVariant
+	import function HasItemAsVariant(data : Variant) : Bool; // HasItemAsVariant
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

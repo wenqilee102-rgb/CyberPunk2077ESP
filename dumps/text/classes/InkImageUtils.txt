@@ -1,0 +1,31 @@
+class InkImageUtils extends IScriptable
+{
+	static function RequestAvatarOrUnknown(controller : handle:inkWidgetLogicController, target : inkImageWidgetReference, iconID : TweakDBID); // InkImageUtils::RequestAvatarOrUnknown;inkLogicControllerinkImageRefTweakDBID
+	static function RequestAvatarOrUnknown(controller : handle:inkIWidgetController, target : inkImageWidgetReference, iconID : TweakDBID); // InkImageUtils::RequestAvatarOrUnknown;inkIGameControllerinkImageRefTweakDBID
+	static function RequestSetImage(controller : handle:inkIWidgetController, target : whandle:inkImageWidget, iconID : TweakDBID, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkIGameControllerinkImageTweakDBIDCName
+	static function RequestSetImage(controller : handle:inkWidgetLogicController, target : whandle:inkImageWidget, iconID : TweakDBID, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkLogicControllerinkImageTweakDBIDCName
+	static function RequestSetImage(controller : handle:inkIWidgetController, target : inkImageWidgetReference, iconID : script_ref:String, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkIGameControllerinkImageRefscript_ref<String>CName
+	static function RequestSetImage(controller : handle:inkWidgetLogicController, target : inkImageWidgetReference, iconID : CName, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkLogicControllerinkImageRefCNameCName
+	static function RequestSetImage(controller : handle:inkIWidgetController, target : inkImageWidgetReference, iconID : CName, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkIGameControllerinkImageRefCNameCName
+	static function RequestSetImage(controller : handle:inkWidgetLogicController, target : whandle:inkImageWidget, iconID : script_ref:String, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkLogicControllerinkImagescript_ref<String>CName
+	static function RequestSetImage(controller : handle:inkIWidgetController, target : whandle:inkImageWidget, iconID : script_ref:String, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkIGameControllerinkImagescript_ref<String>CName
+	static function RequestSetImage(controller : handle:inkIWidgetController, target : inkImageWidgetReference, iconID : TweakDBID, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkIGameControllerinkImageRefTweakDBIDCName
+	static function RequestSetImage(controller : handle:inkWidgetLogicController, target : inkImageWidgetReference, iconID : TweakDBID, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkLogicControllerinkImageRefTweakDBIDCName
+	static function RequestSetImage(controller : handle:inkIWidgetController, target : whandle:inkImageWidget, iconID : CName, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkIGameControllerinkImageCNameCName
+	static function RequestSetImage(controller : handle:inkWidgetLogicController, target : inkImageWidgetReference, iconID : script_ref:String, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkLogicControllerinkImageRefscript_ref<String>CName
+	static function RequestSetImage(controller : handle:inkWidgetLogicController, target : whandle:inkImageWidget, iconID : CName, optional callbackFunction : CName); // InkImageUtils::RequestSetImage;inkLogicControllerinkImageCNameCName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

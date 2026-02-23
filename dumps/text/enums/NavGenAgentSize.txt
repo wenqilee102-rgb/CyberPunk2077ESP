@@ -1,0 +1,6 @@
+enum NavGenAgentSize
+{
+	Human = 0,
+	Vehicle = 1,
+	AgentSize_Count = 2
+}

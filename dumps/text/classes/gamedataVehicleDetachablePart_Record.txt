@@ -1,0 +1,34 @@
+import class gamedataVehicleDetachablePart_Record extends gamedataTweakDBRecord
+{
+	import function Components() : array:CName; // Components
+	import function ComponentsContains(item : CName) : Bool; // ComponentsContains
+	import function GetComponentsCount() : Int32; // GetComponentsCount
+	import function GetComponentsItem(index : Int32) : CName; // GetComponentsItem
+	import function GetGridCellsCount() : Int32; // GetGridCellsCount
+	import function GetGridCellsItem(index : Int32) : Int32; // GetGridCellsItem
+	import function GridCells() : array:Int32; // GridCells
+	import function GridCellsContains(item : Int32) : Bool; // GridCellsContains
+	import function Name() : CName; // Name
+	import function SpawnsExplosionEffect() : Bool; // SpawnsExplosionEffect
+	import function Threshold() : Float; // Threshold
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"EquipmentSystemWeaponManipulationRequest","d":0,"e":[{"a":{"b":"EquipmentManipulationAction"},"b":"requestType","c":128},{"a":{"b":"gameEquipAnimationType"},"b":"equipAnimType","c":128},{"a":{"a":1},"b":"removeItemFromEquipSlot","c":128}]}

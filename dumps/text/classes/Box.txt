@@ -1,0 +1,9 @@
+import struct Box
+{
+	var Min : Vector4;
+	var Max : Vector4;
+
+	static function GetExtents(box : Box) : Vector4; // Box::GetExtents;Box
+	static function GetRange(box : Box) : Float; // Box::GetRange;Box
+	static function GetSize(box : Box) : Vector4; // Box::GetSize;Box
+}

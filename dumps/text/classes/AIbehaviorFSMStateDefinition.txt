@@ -1,0 +1,19 @@
+import class AIbehaviorFSMStateDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var behaviorRoot : handle:AIbehaviorTreeNodeDefinition;
+	var isInitial : Bool;
+	var isExit : Bool;
+	var completionStatus : AIbehaviorStateCompletionStatus;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

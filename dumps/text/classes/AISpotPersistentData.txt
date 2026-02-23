@@ -1,0 +1,7 @@
+import struct AISpotPersistentData
+{
+	var worldPosition : WorldPosition;
+	var globalNodeId : worldGlobalNodeID;
+	var yaw : Float;
+	var isEnabled : Bool;
+}

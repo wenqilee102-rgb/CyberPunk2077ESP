@@ -1,0 +1,6 @@
+struct SExperiencePoints
+{
+	public    var amount : Float;
+	public    var forType : gamedataProficiencyType;
+	public    var entity : entEntityID;
+}

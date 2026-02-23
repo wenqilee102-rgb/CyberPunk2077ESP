@@ -1,0 +1,31 @@
+import class gameEffectObjectProvider_QueryCapsule_GrowOverTime extends gameEffectObjectProvider_QueryCapsule
+{
+}
+
+import class gameEffectObjectProvider_QueryCapsule extends gameEffectObjectProvider
+{
+	var gatherOnlyPuppets : Bool;
+	var queryPreset : physicsQueryPreset;
+}
+
+import class abstract gameEffectObjectProvider extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

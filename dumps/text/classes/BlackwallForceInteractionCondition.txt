@@ -1,0 +1,25 @@
+class BlackwallForceInteractionCondition extends gameinteractionsInteractionScriptedCondition
+{
+	function BlackwallForceEnabled(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // BlackwallForceEnabled;GameObjectGameObject
+	function CanUseBlackwall(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // CanUseBlackwall;GameObjectGameObject
+	function TargetMarkedByBlackwall(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // TargetMarkedByBlackwall;GameObjectGameObject
+	function Test(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // Test;GameObjectGameObject
+}
+
+import class gameinteractionsInteractionScriptedCondition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

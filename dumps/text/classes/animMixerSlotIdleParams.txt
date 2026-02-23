@@ -1,0 +1,7 @@
+import class animMixerSlotIdleParams extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

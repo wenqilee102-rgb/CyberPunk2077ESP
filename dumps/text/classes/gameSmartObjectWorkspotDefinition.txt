@@ -1,0 +1,17 @@
+import class gameSmartObjectWorkspotDefinition extends gameSmartObjectDefinition
+{
+	var workspotTemplate : rRef:workWorkspotResource;
+}
+
+import class gameSmartObjectDefinition extends ISerializable
+{
+	var resource : rRef:gameSmartObjectResource;
+	var actions : array:CName;
+	var motionActionDatabase : rRef:animActionAnimDatabase;
+	var enabled : Bool;
+	var overrideGeneratedParameters : Bool;
+}
+
+import class abstract ISerializable
+{
+}

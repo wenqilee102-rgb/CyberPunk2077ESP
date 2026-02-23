@@ -1,0 +1,1 @@
+{"a":"questIVehicleConditionType","b":"questVehicleSpeed_ConditionType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"vehicleRef","c":128},{"a":{"a":10},"b":"speed","c":128},{"a":{"b":"vehicleEVehicleSpeedConditionType"},"b":"comparisonType","c":128}]}

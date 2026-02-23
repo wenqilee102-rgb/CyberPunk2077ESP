@@ -1,0 +1,14 @@
+import class AIbehaviorRecalculateVehicleWorkspotPositionTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var mountData : handle:AIArgumentMapping;
+	var workspotData : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

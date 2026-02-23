@@ -1,0 +1,6 @@
+enum SignalType
+{
+	DEFAULT = 0,
+	REGISTRATION = 1,
+	UNREGISTRATION = 2
+}

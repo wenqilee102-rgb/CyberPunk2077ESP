@@ -1,0 +1,6 @@
+import struct worldWorldListResourceEntry
+{
+	var world : raRef:CResource;
+	var streamingWorld : raRef:CResource;
+	var worldName : String;
+}

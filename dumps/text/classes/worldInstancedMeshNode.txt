@@ -1,0 +1,22 @@
+import class worldInstancedMeshNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var occluderType : visWorldOccluderType;
+	var meshLODScales : Uint32;
+	var occluderAutohideDistanceScale : Uint8;
+	var worldTransformsBuffer : worldRenderProxyTransformBuffer;
+	var version : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

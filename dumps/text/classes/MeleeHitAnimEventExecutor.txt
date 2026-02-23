@@ -1,0 +1,39 @@
+class MeleeHitAnimEventExecutor extends gameEffectExecutor_Scripted
+{
+	private   var ignoreWaterImpacts : Bool;
+
+	function CanAttackGuardBreak(instigator : whandle:entEntity, target : whandle:entEntity, instigatorWeapon : whandle:gameweaponObject, targetWeapon : whandle:gameweaponObject, strongAttack : Bool) : Bool; // CanAttackGuardBreak;EntityEntityWeaponObjectWeaponObjectBool
+	function GetStimuliData(path : script_ref:String, out stimToProcess : handle:senseStimuliEvent); // GetStimuliData;script_ref<String>StimuliEvent
+	function GetTargetWeapon(target : whandle:ScriptedPuppet) : whandle:gameweaponObject; // GetTargetWeapon;ScriptedPuppet
+	function IsMuted(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // IsMuted;EffectScriptContextEffectExecutionScriptContext
+	function Process(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // Process;EffectScriptContextEffectExecutionScriptContext
+	function SpawnBlockEffects(instigatorWeapon : whandle:gameweaponObject, targetWeapon : whandle:gameweaponObject); // SpawnBlockEffects;WeaponObjectWeaponObject
+	function TriggerSingleStimuliOnHit(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext, stimToSend : gamedataStimType); // TriggerSingleStimuliOnHit;EffectScriptContextEffectExecutionScriptContextgamedataStimType
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class scnEventBlendWorkspotSetupParameters extends ISerializable
+{
+	var workspotId : scnSceneWorkspotInstanceId;
+	var sequenceEntryId : workWorkEntryId;
+	var idleOnlyMode : Bool;
+	var workExcludedGestures : array:workWorkEntryId;
+	var itemOverride : workWorkspotItemOverride;
+}
+
+import class abstract ISerializable
+{
+}

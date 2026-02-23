@@ -1,0 +1,9 @@
+import struct animCollisionRoundedShape
+{
+	var bone : animTransformIndex;
+	var transformLS : QsTransform;
+	var roundedCornerRadius : Float;
+	var xBoxExtent : Float;
+	var yBoxExtent : Float;
+	var zBoxExtent : Float;
+}

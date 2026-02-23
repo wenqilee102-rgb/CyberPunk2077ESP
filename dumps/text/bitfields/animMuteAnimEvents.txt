@@ -1,0 +1,5 @@
+bitfield animMuteAnimEvents
+{
+	STANDARD = 1 << 0,
+	FACE_ANIMS = 1 << 1
+}

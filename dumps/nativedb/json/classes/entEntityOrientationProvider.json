@@ -1,0 +1,1 @@
+{"a":"entIOrientationProvider","b":"entEntityOrientationProvider","d":8,"e":[{"a":{"a":27,"c":{"b":"entSlotComponent"}},"b":"slotComponent","c":128},{"a":{"a":6},"b":"slotId","c":128},{"a":{"a":27,"c":{"b":"entEntity"}},"b":"entity","c":128},{"a":{"b":"Quaternion"},"b":"orientationEntitySpace","c":128}]}

@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataSeatState_Record","c":"SeatState_Record","d":24,"f":[{"a":"DisableInteraction","c":{"a":1},"d":4},{"a":"EnableInteraction","c":{"a":1},"d":4},{"a":"ForceClose","c":{"a":1},"d":4},{"a":"ForceLock","c":{"a":1},"d":4},{"a":"ForceOpen","c":{"a":1},"d":4},{"a":"ForceUnlock","c":{"a":1},"d":4},{"a":"QuestLock","c":{"a":1},"d":4}]}

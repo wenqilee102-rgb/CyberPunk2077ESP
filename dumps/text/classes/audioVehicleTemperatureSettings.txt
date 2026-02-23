@@ -1,0 +1,6 @@
+import struct audioVehicleTemperatureSettings
+{
+	var rpmThreshold : Float;
+	var timeToActivateTemperature : Float;
+	var cooldownTime : Float;
+}

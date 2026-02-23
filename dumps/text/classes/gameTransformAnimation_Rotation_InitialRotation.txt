@@ -1,0 +1,11 @@
+import class gameTransformAnimation_Rotation_InitialRotation extends gameTransformAnimation_Rotation
+{
+}
+
+import class abstract gameTransformAnimation_Rotation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

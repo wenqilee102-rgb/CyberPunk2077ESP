@@ -1,0 +1,13 @@
+import struct gameItemViewData
+{
+	var id : gameItemID;
+	var itemName : String;
+	var categoryName : String;
+	var description : String;
+	var quality : String;
+	var price : Float;
+	var isBroken : Bool;
+	var primaryStats : array:gameStatViewData;
+	var secondaryStats : array:gameStatViewData;
+	var comparedQuality : gamedataQuality;
+}

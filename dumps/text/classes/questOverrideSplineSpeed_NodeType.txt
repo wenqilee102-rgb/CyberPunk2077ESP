@@ -1,0 +1,22 @@
+import class questOverrideSplineSpeed_NodeType extends questIVehicleManagerNodeType
+{
+	var vehicleRef : gameEntityReference;
+	var speed : Float;
+	var adjustTime : Float;
+}
+
+import class abstract questIVehicleManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

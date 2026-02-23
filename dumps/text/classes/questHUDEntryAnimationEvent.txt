@@ -1,0 +1,6 @@
+import struct questHUDEntryAnimationEvent
+{
+	var hudEntry : CName;
+	var animationName : CName;
+	var dependsOnTimeDilation : Bool;
+}

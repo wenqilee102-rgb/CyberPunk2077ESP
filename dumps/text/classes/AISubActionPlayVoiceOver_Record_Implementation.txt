@@ -1,0 +1,25 @@
+class abstract AISubActionPlayVoiceOver_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record); // AISubActionPlayVoiceOver_Record_Implementation::Activate;ScriptExecutionContextAISubActionPlayVoiceOver_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record, duration : Float, interrupted : Bool); // AISubActionPlayVoiceOver_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionPlayVoiceOver_RecordFloatBool
+	static function IsConditionFulfilled(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record) : Bool; // AISubActionPlayVoiceOver_Record_Implementation::IsConditionFulfilled;ScriptExecutionContextAISubActionPlayVoiceOver_Record
+	static function IsCooldownConditionFulfilled(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record) : Bool; // AISubActionPlayVoiceOver_Record_Implementation::IsCooldownConditionFulfilled;ScriptExecutionContextAISubActionPlayVoiceOver_Record
+	static function IsDelayConditionFulfilled(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record, duration : Float) : Bool; // AISubActionPlayVoiceOver_Record_Implementation::IsDelayConditionFulfilled;ScriptExecutionContextAISubActionPlayVoiceOver_RecordFloat
+	static function IsSquadmateConditionFulfilled(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record) : Bool; // AISubActionPlayVoiceOver_Record_Implementation::IsSquadmateConditionFulfilled;ScriptExecutionContextAISubActionPlayVoiceOver_Record
+	static function SendVoiceOverEvent(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record, debugInitContext : CName); // AISubActionPlayVoiceOver_Record_Implementation::SendVoiceOverEvent;ScriptExecutionContextAISubActionPlayVoiceOver_RecordCName
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionPlayVoiceOver_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionPlayVoiceOver_Record_Implementation::Update;ScriptExecutionContextAISubActionPlayVoiceOver_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+struct BraindanceClueData
+{
+	public    var id : CName;
+	public    var startTime : Float;
+	public    var duration : Float;
+	public    var state : ClueState;
+	public    var layer : gameuiEBraindanceLayer;
+}

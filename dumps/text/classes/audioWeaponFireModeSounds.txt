@@ -1,0 +1,8 @@
+import struct audioWeaponFireModeSounds
+{
+	var burst : CName;
+	var charge : CName;
+	var fullAuto : CName;
+	var semiAuto : CName;
+	var windup : CName;
+}

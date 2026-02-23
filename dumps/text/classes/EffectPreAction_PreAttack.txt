@@ -1,0 +1,33 @@
+class EffectPreAction_PreAttack extends gameEffectPreAction_Scripted
+{
+	protected var withFriendlyFire : Bool;
+	protected var withSelfDamage : Bool;
+
+	function Process(ctx : gameEffectScriptContext); // Process;EffectScriptContext
+}
+
+import class gameEffectPreAction_Scripted extends gameEffectPreAction
+{
+}
+
+import class abstract gameEffectPreAction extends gameEffectAction
+{
+}
+
+import class abstract gameEffectAction extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

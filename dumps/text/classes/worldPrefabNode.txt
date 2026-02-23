@@ -1,0 +1,30 @@
+import class worldPrefabNode extends worldNode
+{
+	var prefab : raRef:worldPrefab;
+	var instanceData : handle:worldPrefabInstanceData;
+	var enabledVariants : handle:worldPrefabVariantsList;
+	var canBeToggledInGame : Bool;
+	var noCollisions : Bool;
+	var enableRenderSceneLayerOverride : Bool;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+	var streamingImportance : worldPrefabStreamingImportance;
+	var streamingOcclusionOverride : worldPrefabStreamingOcclusion;
+	var interiorMapContribution : worldPrefabInteriorMapContribution;
+	var ignoreMeshEmbeddedOccluders : Bool;
+	var ignoreAllOccluders : Bool;
+	var occluderAutoHideDistanceScale : Uint8;
+	var proxyMeshOnly : worldPrefabProxyMeshOnly;
+	var proxyScaleOverride : Bool;
+	var proxyScale : Vector3;
+	var applyMaxStreamingDistance : Bool;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"netIEntityState","b":"gameweaponGrenadeReplicatedState","d":8,"g":true,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"instigator","c":128},{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"b":"WorldTransform"},"b":"currentTransform","c":128},{"a":{"a":1},"b":"exploded","c":128},{"a":{"a":1},"b":"launched","c":128}]}

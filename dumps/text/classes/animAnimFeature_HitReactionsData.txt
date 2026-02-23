@@ -1,0 +1,34 @@
+import class animAnimFeature_HitReactionsData extends animAnimFeature
+{
+	var hitIntensity : Int32;
+	var hitSource : Int32;
+	var hitType : Int32;
+	var hitBodyPart : Int32;
+	var npcMovementSpeed : Int32;
+	var hitDirection : Int32;
+	var npcMovementDirection : Int32;
+	var stance : Int32;
+	var animVariation : Int32;
+	var useInitialRotation : Bool;
+	var hitDirectionWs : Vector4;
+	var angleToAttack : Float;
+	var initialRotationDuration : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

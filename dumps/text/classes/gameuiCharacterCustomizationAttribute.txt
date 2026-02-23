@@ -1,0 +1,5 @@
+import struct gameuiCharacterCustomizationAttribute
+{
+	var type : gamedataStatType;
+	var value : Uint32;
+}

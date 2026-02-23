@@ -1,0 +1,7 @@
+import struct CRenderDistantIrradiancetData extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

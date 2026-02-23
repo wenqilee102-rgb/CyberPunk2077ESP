@@ -1,0 +1,33 @@
+import class AIEquipCommand extends AICommand
+{
+	var slotId : TweakDBID;
+	var itemId : TweakDBID;
+	var failIfItemNotFound : Bool;
+	var durationOverride : Float;
+}
+
+import class AICommand extends IScriptable
+{
+	var id : Uint32;
+	var state : AICommandState;
+	var questBlockId : Uint64;
+	var category : CName;
+
+	import function Copy() : handle:AICommand; // Copy
+	import function GetCategory() : CName; // GetCategory
+	import function SetCategory(value : CName); // SetCategory
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,24 @@
+import class ExpressionTreeCGeneralOrNodeDefinition extends ExpressionTreeCGeneralCompositeNodeDefinition
+{
+}
+
+import class ExpressionTreeCGeneralCompositeNodeDefinition extends ExpressionTreeCGeneralNodeDefinition
+{
+	var children : array:handle:LibTreeINodeDefinition;
+}
+
+import class abstract ExpressionTreeCGeneralNodeDefinition extends ExpressionTreeCNodeDefinition
+{
+}
+
+import class abstract ExpressionTreeCNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

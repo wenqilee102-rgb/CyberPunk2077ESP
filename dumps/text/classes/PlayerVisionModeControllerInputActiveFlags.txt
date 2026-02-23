@@ -1,0 +1,7 @@
+struct PlayerVisionModeControllerInputActiveFlags
+{
+	public    var buttonHold : Bool;
+	public    var buttonToggle : Bool;
+	public    var driverCombatButtonHold : Bool;
+	public    var driverCombatButtonActivate : Bool;
+}

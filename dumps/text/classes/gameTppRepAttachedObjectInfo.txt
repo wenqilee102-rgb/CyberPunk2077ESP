@@ -1,0 +1,5 @@
+import struct gameTppRepAttachedObjectInfo
+{
+	var slotID : TweakDBID;
+	var itemID : TweakDBID;
+}

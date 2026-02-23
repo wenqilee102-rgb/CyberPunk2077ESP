@@ -1,0 +1,29 @@
+import class vehicleGridDestructionEvent extends redEvent
+{
+	var state : [16]Float;
+	var rawChange : [16]Float;
+	var desiredChange : [16]Float;
+	var damageMultiplier : Float;
+	var impactPoint : Vector3;
+	var otherVehicle : whandle:gameObject;
+	var rammedOtherVehicle : Bool;
+	var otherVehicleRammed : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

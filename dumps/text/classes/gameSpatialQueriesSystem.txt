@@ -1,0 +1,34 @@
+import class gameSpatialQueriesSystem extends gameISpatialQueriesSystem
+{
+	import function GetDebugPreviewDuration() : Float; // GetDebugPreviewDuration
+	import function GetGeometryDescriptionSystem() : handle:gameGeometryDescriptionSystem; // GetGeometryDescriptionSystem
+	import function GetPlayerObstacleSystem() : handle:gamePlayerObstacleSystem; // GetPlayerObstacleSystem
+	import function Overlap(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, optional collisionGroup : CName, out result : physicsTraceResult) : Bool; // Overlap
+	import function OverlapByQueryFilter(primitiveDimension : Vector4, position : Vector4, rotation : Quaternion, queryFilter : physicsQueryFilter, out result : physicsTraceResult) : Bool; // OverlapByQueryFilter
+	import function SyncRaycastByCollisionGroup(start : Vector4, end : Vector4, optional collisionGroup : CName, out result : physicsTraceResult, optional staticOnly : Bool, optional dynamicOnly : Bool) : Bool; // SyncRaycastByCollisionGroup
+	import function SyncRaycastByCollisionPreset(start : Vector4, end : Vector4, optional collisionPreset : CName, out result : physicsTraceResult, optional staticOnly : Bool, optional dynamicOnly : Bool) : Bool; // SyncRaycastByCollisionPreset
+	import function SyncRaycastByQueryFilter(start : Vector4, end : Vector4, queryFilter : physicsQueryFilter, out result : physicsTraceResult, optional staticOnly : Bool, optional dynamicOnly : Bool) : Bool; // SyncRaycastByQueryFilter
+	import function SyncRaycastByQueryPreset(start : Vector4, end : Vector4, optional queryPreset : CName, out result : physicsTraceResult, optional staticOnly : Bool, optional dynamicOnly : Bool) : Bool; // SyncRaycastByQueryPreset
+}
+
+import class abstract gameISpatialQueriesSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

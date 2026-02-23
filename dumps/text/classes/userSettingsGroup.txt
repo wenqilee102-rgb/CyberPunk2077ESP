@@ -1,0 +1,29 @@
+import class userSettingsGroup extends IScriptable
+{
+	import function GetDisplayName() : CName; // GetDisplayName
+	import function GetGroups(isPreGame : Bool) : array:handle:userSettingsGroup; // GetGroups
+	import function GetName() : CName; // GetName
+	import function GetOrder() : Int32; // GetOrder
+	import function GetParentPath() : CName; // GetParentPath
+	import function GetPath() : CName; // GetPath
+	import function GetVar(varName : CName) : handle:userSettingsVar; // GetVar
+	import function GetVars(isPreGame : Bool) : array:handle:userSettingsVar; // GetVars
+	import function HasGroups() : Bool; // HasGroups
+	import function HasVar(varName : CName) : Bool; // HasVar
+	import function HasVars(isPreGame : Bool) : Bool; // HasVars
+	import function IsEmpty(isPreGame : Bool) : Bool; // IsEmpty
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

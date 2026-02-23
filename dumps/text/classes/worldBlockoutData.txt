@@ -1,0 +1,14 @@
+import class worldBlockoutData extends ISerializable
+{
+	var points : array:worldBlockoutPoint;
+	var edges : array:worldBlockoutEdge;
+	var areas : array:worldBlockoutArea;
+	var worldSize : Vector2;
+	var freePoints : array:Uint32;
+	var freeEdges : array:Uint32;
+	var freeAreas : array:Uint32;
+}
+
+import class abstract ISerializable
+{
+}

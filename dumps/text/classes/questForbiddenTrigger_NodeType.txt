@@ -1,0 +1,23 @@
+import class questForbiddenTrigger_NodeType extends questIVehicleManagerNodeType
+{
+	var triggerNodeRef : NodeRef;
+	var activate : Bool;
+	var dismount : Bool;
+	var blockCombat : Bool;
+}
+
+import class abstract questIVehicleManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

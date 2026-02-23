@@ -1,0 +1,6 @@
+import struct localizationPersistenceLocDataMapEntry
+{
+	var langCode : CName;
+	var onscreensPath : raRef:JsonResource;
+	var subtitlePath : raRef:JsonResource;
+}

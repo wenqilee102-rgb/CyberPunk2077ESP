@@ -1,0 +1,12 @@
+import class questTimeDilation_Stop extends questTimeDilation_Operation
+{
+	var easeOutCurve : CName;
+}
+
+import class questTimeDilation_Operation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"scnPlayAnimEvent","b":"scnChangeIdleAnimEvent","d":8,"e":[{"a":{"a":14},"b":"idleAnimName","c":128},{"a":{"a":14},"b":"addIdleAnimName","c":128},{"a":{"a":1},"b":"isEnabled","c":128},{"a":{"a":14},"b":"animName","c":128},{"a":{"b":"animFacialEmotionTransitionBaked"},"b":"bakedFacialTransition","c":128},{"a":{"a":1},"b":"facialInstantTransition","c":128}]}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"StatsManager","d":0,"e":[{"a":{"a":26,"c":{"b":"gameStatModifierData_Deprecated"}},"b":"playerGodModeModifierData","c":128}],"f":[{"a":"StatsManager::GetObjectDPS;GameObject","b":"GetObjectDPS","c":{"b":"DPSPackage"},"d":56,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"obj","c":0}]}]}

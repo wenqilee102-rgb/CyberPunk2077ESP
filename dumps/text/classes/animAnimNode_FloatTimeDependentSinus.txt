@@ -1,0 +1,20 @@
+import class animAnimNode_FloatTimeDependentSinus extends animAnimNode_FloatValue
+{
+	var min : Float;
+	var max : Float;
+	var frequencyFactor : Float;
+	var phaseFactor : Float;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}
