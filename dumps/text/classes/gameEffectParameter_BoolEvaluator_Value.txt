@@ -1,0 +1,12 @@
+import class gameEffectParameter_BoolEvaluator_Value extends gameIEffectParameter_BoolEvaluator
+{
+	var value : Bool;
+}
+
+import class abstract gameIEffectParameter_BoolEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

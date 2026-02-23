@@ -1,0 +1,35 @@
+class ReflexesMasterPerk1EffectorListener extends gameScriptedDamageSystemListener
+{
+	public    var owner : handle:ReflexesMasterPerk1Effector;
+
+	function OnHitReceived(hitEvent : handle:gameeventsHitEvent); // OnHitReceived;gameHitEvent
+	function OnHitTriggered(hitEvent : handle:gameeventsHitEvent); // OnHitTriggered;gameHitEvent
+	function OnMissTriggered(missEvent : handle:gameeventsMissEvent); // OnMissTriggered;gameMissEvent
+	function OnPipelineProcessed(hitEvent : handle:gameeventsHitEvent); // OnPipelineProcessed;gameHitEvent
+}
+
+import class gameScriptedDamageSystemListener extends gameIDamageSystemListener
+{
+	function OnHitReceived(hitEvent : handle:gameeventsHitEvent); // OnHitReceived;gameHitEvent
+	function OnHitTriggered(hitEvent : handle:gameeventsHitEvent); // OnHitTriggered;gameHitEvent
+	function OnMissTriggered(missEvent : handle:gameeventsMissEvent); // OnMissTriggered;gameMissEvent
+	function OnPipelineProcessed(hitEvent : handle:gameeventsHitEvent); // OnPipelineProcessed;gameHitEvent
+}
+
+import class abstract gameIDamageSystemListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

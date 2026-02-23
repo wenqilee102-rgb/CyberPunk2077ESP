@@ -1,0 +1,9 @@
+import struct gameRicochetData
+{
+	var count : Int32;
+	var range : Float;
+	var targetSearchAngle : Float;
+	var minAngle : Float;
+	var maxAngle : Float;
+	var chance : Float;
+}

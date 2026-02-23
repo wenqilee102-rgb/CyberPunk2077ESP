@@ -1,0 +1,5 @@
+import struct gameuiHUDVideoStopEvent
+{
+	var videoPathHash : Uint64;
+	var isSkip : Bool;
+}

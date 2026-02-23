@@ -1,0 +1,32 @@
+class abstract TweakAIActionRecord extends IScriptable
+{
+	static function GetActionRecord(context : AIbehaviorScriptExecutionContext, actionID : TweakDBID, actionDebugName : script_ref:String, out actionRecord : whandle:gamedataAIAction_Record) : Bool; // TweakAIActionRecord::GetActionRecord;ScriptExecutionContextTweakDBIDscript_ref<String>AIAction_Record
+	static function GetActionRecordFromSelector(context : AIbehaviorScriptExecutionContext, selectorRecord : whandle:gamedataAIActionSelector_Record, actionDebugName : script_ref:String, out actionRecord : whandle:gamedataAIAction_Record, out nodeIterator : Int32, out shouldCallAgain : Bool) : Bool; // TweakAIActionRecord::GetActionRecordFromSelector;ScriptExecutionContextAIActionSelector_Recordscript_ref<String>AIAction_RecordInt32Bool
+	static function GetActionRecordFromSequence(context : AIbehaviorScriptExecutionContext, sequenceRecord : whandle:gamedataAIActionSequence_Record, actionDebugName : script_ref:String, out actionRecord : whandle:gamedataAIAction_Record, out sequenceIterator : Int32, out shouldCallAgain : Bool) : Bool; // TweakAIActionRecord::GetActionRecordFromSequence;ScriptExecutionContextAIActionSequence_Recordscript_ref<String>AIAction_RecordInt32Bool
+	static function GetDebugActionNameFromRecord(record : TweakDBID, debugStringName : script_ref:String) : Bool; // TweakAIActionRecord::GetDebugActionNameFromRecord;TweakDBIDscript_ref<String>
+	static function GetFriendlyName(record : TweakDBID, nodeName : script_ref:String) : String; // TweakAIActionRecord::GetFriendlyName;TweakDBIDscript_ref<String>
+	static function GetHeldItemType(context : AIbehaviorScriptExecutionContext, out heldItemType : gamedataItemType) : Bool; // TweakAIActionRecord::GetHeldItemType;ScriptExecutionContextgamedataItemType
+	static function GetSelectorRecord(context : AIbehaviorScriptExecutionContext, selectorID : TweakDBID, selectorDebugName : script_ref:String, out selectorRecord : whandle:gamedataAIActionSelector_Record) : Bool; // TweakAIActionRecord::GetSelectorRecord;ScriptExecutionContextTweakDBIDscript_ref<String>AIActionSelector_Record
+	static function GetSequenceRecord(context : AIbehaviorScriptExecutionContext, sequenceID : TweakDBID, sequenceDebugName : script_ref:String, out sequenceRecord : whandle:gamedataAIActionSequence_Record) : Bool; // TweakAIActionRecord::GetSequenceRecord;ScriptExecutionContextTweakDBIDscript_ref<String>AIActionSequence_Record
+	static function GetSmartCompositeRecord(context : AIbehaviorScriptExecutionContext, smartCompositeID : TweakDBID, smartCompositeDebugName : script_ref:String, out smartCompositeRecord : whandle:gamedataAIActionSmartComposite_Record) : Bool; // TweakAIActionRecord::GetSmartCompositeRecord;ScriptExecutionContextTweakDBIDscript_ref<String>AIActionSmartComposite_Record
+	static function IsArchetypeAction(record : TweakDBID) : Bool; // TweakAIActionRecord::IsArchetypeAction;TweakDBID
+	static function IsSmartCompositeASelector(smartCompositeRecord : whandle:gamedataAIActionSmartComposite_Record) : Bool; // TweakAIActionRecord::IsSmartCompositeASelector;AIActionSmartComposite_Record
+	static function IsSmartCompositeASequence(smartCompositeRecord : whandle:gamedataAIActionSmartComposite_Record) : Bool; // TweakAIActionRecord::IsSmartCompositeASequence;AIActionSmartComposite_Record
+	static function IsThisLastActionInSelector(selectorRecord : whandle:gamedataAIActionSelector_Record, nodeIterator : Int32) : Bool; // TweakAIActionRecord::IsThisLastActionInSelector;AIActionSelector_RecordInt32
+	static function IsThisLastActionInSequence(sequenceRecord : whandle:gamedataAIActionSequence_Record, sequenceIterator : Int32) : Bool; // TweakAIActionRecord::IsThisLastActionInSequence;AIActionSequence_RecordInt32
+	static function IsThisLastActionInSmartComposite(smartCompositeRecord : whandle:gamedataAIActionSmartComposite_Record, iterator : Int32) : Bool; // TweakAIActionRecord::IsThisLastActionInSmartComposite;AIActionSmartComposite_RecordInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

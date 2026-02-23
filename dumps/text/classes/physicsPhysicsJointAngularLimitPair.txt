@@ -1,0 +1,15 @@
+import struct physicsPhysicsJointAngularLimitPair extends physicsPhysicsJointLimitBase
+{
+	var twist : physicsPhysicsJointMotion;
+	var upper : Float;
+	var lower : Float;
+}
+
+import struct physicsPhysicsJointLimitBase
+{
+	var restitution : Float;
+	var bounceThreshold : Float;
+	var stiffness : Float;
+	var damping : Float;
+	var contactDistance : Float;
+}

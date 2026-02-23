@@ -1,0 +1,47 @@
+import class gamedataAISubActionAttackWithWeapon_Record extends gamedataAISubAction_Record
+{
+	import function Attack() : whandle:gamedataAttack_Record; // Attack
+	import function AttackDuration() : Float; // AttackDuration
+	import function AttackHandle() : handle:gamedataAttack_Record; // AttackHandle
+	import function AttackInitRange() : Float; // AttackInitRange
+	import function AttackName() : CName; // AttackName
+	import function AttackRange() : Float; // AttackRange
+	import function AttackTime() : Float; // AttackTime
+	import function AttackWidth() : Float; // AttackWidth
+	import function AxisLowerMargin() : Float; // AxisLowerMargin
+	import function AxisUpperMargin() : Float; // AxisUpperMargin
+	import function ColliderBoxSize() : Vector3; // ColliderBoxSize
+	import function ConeDirection() : Vector3; // ConeDirection
+	import function ConeHalfAngle() : Float; // ConeHalfAngle
+	import function GetWeaponSlotsCount() : Int32; // GetWeaponSlotsCount
+	import function GetWeaponSlotsItem(index : Int32) : whandle:gamedataAttachmentSlot_Record; // GetWeaponSlotsItem
+	import function GetWeaponSlotsItemHandle(index : Int32) : handle:gamedataAttachmentSlot_Record; // GetWeaponSlotsItemHandle
+	import function PositionOffset() : Vector3; // PositionOffset
+	import function StopContinuousAttackOnDurationEnd() : Bool; // StopContinuousAttackOnDurationEnd
+	import function WeaponSlots(out outList : array:whandle:gamedataAttachmentSlot_Record); // WeaponSlots
+	import function WeaponSlotsContains(item : whandle:gamedataAttachmentSlot_Record) : Bool; // WeaponSlotsContains
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

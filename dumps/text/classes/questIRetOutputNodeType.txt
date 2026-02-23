@@ -1,0 +1,11 @@
+import class abstract questIRetOutputNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

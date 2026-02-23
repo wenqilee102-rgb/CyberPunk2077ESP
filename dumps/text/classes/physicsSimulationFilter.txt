@@ -1,0 +1,9 @@
+import struct physicsSimulationFilter
+{
+	var mask1 : Uint64;
+	var mask2 : Uint64;
+
+	import static function ALL() : physicsSimulationFilter; // ALL
+	import static function SimulationFilter_BuildFromPreset(out f : physicsSimulationFilter, preset : CName); // SimulationFilter_BuildFromPreset
+	import static function ZERO() : physicsSimulationFilter; // ZERO
+}

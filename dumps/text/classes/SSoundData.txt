@@ -1,0 +1,8 @@
+struct SSoundData
+{
+	public    var widgetAudioName : CName;
+	public    var onPressKey : CName;
+	public    var onReleaseKey : CName;
+	public    var onHoverOverKey : CName;
+	public    var onHoverOutKey : CName;
+}

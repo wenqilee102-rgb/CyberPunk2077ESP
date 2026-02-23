@@ -1,0 +1,14 @@
+import struct physicsSystemBodyParams
+{
+	var simulationType : physicsSimulationType;
+	var linearDamping : Float;
+	var angularDamping : Float;
+	var solverIterationsCountPosition : Uint32;
+	var solverIterationsCountVelocity : Uint32;
+	var maxDepenetrationVelocity : Float;
+	var maxAngularVelocity : Float;
+	var maxContactImpulse : Float;
+	var mass : Float;
+	var inertia : Vector3;
+	var comOffset : Transform;
+}

@@ -1,0 +1,25 @@
+class CombatGadgetDataDef extends gamebbScriptDefinition
+{
+	public    var throwUnequip : gamebbScriptID_Bool;
+	public    var lastThrowAngle : gamebbScriptID_Float;
+	public    var lastThrowPosition : gamebbScriptID_Vector4;
+	public    var lastThrowStartType : gamebbScriptID_Variant;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

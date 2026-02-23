@@ -1,0 +1,6 @@
+struct UnregisterResult
+{
+	public    var success : Bool;
+	public    var isVehicle : Bool;
+	public    var spawnedType : gameDynamicVehicleType;
+}

@@ -1,0 +1,11 @@
+import struct gameuiCustomizationMorph extends gameuiCensorshipInfo
+{
+	var regionName : CName;
+	var targetName : CName;
+}
+
+import struct gameuiCensorshipInfo
+{
+	var censorFlag : CensorshipFlags;
+	var censorFlagAction : gameuiCharacterCustomizationActionType;
+}

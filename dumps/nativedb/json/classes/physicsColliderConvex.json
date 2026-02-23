@@ -1,0 +1,1 @@
+{"a":"physicsICollider","b":"physicsColliderConvex","d":8,"e":[{"a":{"a":31,"c":{"b":"Vector3"}},"b":"vertices","c":128},{"a":{"a":31,"c":{"a":3}},"b":"indexBuffer","c":128},{"a":{"a":31,"c":{"a":5}},"b":"polygonVertices","c":128},{"a":{"a":17},"b":"compiledGeometryBuffer","c":128}]}

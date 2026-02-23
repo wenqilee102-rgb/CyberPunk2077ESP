@@ -1,0 +1,226 @@
+class HUDManager extends gameNativeHudManager
+{
+	private   var state : HUDState;
+	private   var activeMode : ActiveMode;
+	private   var instructionsDelayID : gameDelayID;
+	private   var isBraindanceActive : Bool;
+	private   var modulesArray : array:handle:HUDModule;
+	private   var scanner : handle:ScannerModule;
+	private   var braindanceModule : handle:BraindanceModule;
+	private   var highlightsModule : handle:HighlightModule;
+	private   var iconsModule : handle:IconsModule;
+	private   var crosshair : handle:CrosshairModule;
+	private   var aimAssist : handle:AimAssistModule;
+	private   var quickhackModule : handle:QuickhackModule;
+	private   var lastTarget : whandle:gameHudActor;
+	private   var currentTarget : whandle:gameHudActor;
+	private   var lookAtTarget : entEntityID;
+	private   var scannerTarget : entEntityID;
+	private   var nameplateTarget : entEntityID;
+	private   var quickHackTarget : entEntityID;
+	private   var lootedTarget : entEntityID;
+	private   var scannningController : whandle:gameScanningController;
+	private   var uiScannerVisible : Bool;
+	private   var uiQuickHackVisible : Bool;
+	private   var uiQuickHackKeepContext : Bool;
+	private   var quickHackDescriptionVisible : Bool;
+	private   var targetingSystem : whandle:gametargetingTargetingSystem;
+	private   var visionModeSystem : whandle:gameVisionModeSystem;
+	private   var isHackingMinigameActive : Bool;
+	private   var stickInputListener : handle:redCallbackObject;
+	private   var quickHackPanelListener : handle:redCallbackObject;
+	private   var carriedBodyListener : handle:redCallbackObject;
+	private   var grappleListener : handle:redCallbackObject;
+	private   var lookatRequest : gameaimAssistAimRequest;
+	private   var isQHackUIInputLocked : Bool;
+	private   var playerAttachedCallbackID : Uint32;
+	private   var playerDetachedCallbackID : Uint32;
+	private   var playerTargetCallbackID : handle:redCallbackObject;
+	private   var braindanceToggleCallbackID : handle:redCallbackObject;
+	private   var nameplateCallbackID : handle:redCallbackObject;
+	private   var visionModeChangedCallbackID : handle:redCallbackObject;
+	private   var scannerTargetCallbackID : handle:redCallbackObject;
+	private   var hackingMinigameCallbackID : handle:redCallbackObject;
+	private   var uiScannerVisibleCallbackID : handle:redCallbackObject;
+	private   var uiQuickHackVisibleCallbackID : handle:redCallbackObject;
+	private   var uiQuickhackKeepContextCallbackID : handle:redCallbackObject;
+	private   var lootDataCallbackID : handle:redCallbackObject;
+	private   var pulseDelayID : gameDelayID;
+	private   var previousStickInput : Vector4;
+
+	static function CanCurrentTargetRevealRemoteActionsWheel(context : ScriptGameInstance) : Bool; // HUDManager::CanCurrentTargetRevealRemoteActionsWheel;GameInstance
+	static function GetActiveMode(context : ScriptGameInstance) : ActiveMode; // HUDManager::GetActiveMode;GameInstance
+	static function GetCurrentTarget(context : ScriptGameInstance) : handle:gameHudActor; // HUDManager::GetCurrentTarget;GameInstance
+	static function GetMaxInstructionsPerFrame() : Int32; // HUDManager::GetMaxInstructionsPerFrame;
+	static function HasCurrentTarget(context : ScriptGameInstance) : Bool; // HUDManager::HasCurrentTarget;GameInstance
+	static function HideScannerHint(game : ScriptGameInstance); // HUDManager::HideScannerHint;GameInstance
+	static function IsQHackInputLocked(context : ScriptGameInstance) : Bool; // HUDManager::IsQHackInputLocked;GameInstance
+	static function IsQuickHackPanelOpen(context : ScriptGameInstance) : Bool; // HUDManager::IsQuickHackPanelOpen;GameInstance
+	static function LockQHackInput(context : ScriptGameInstance, isLocked : Bool); // HUDManager::LockQHackInput;GameInstanceBool
+	static function SetScannerHintMessege(game : ScriptGameInstance, text : script_ref:String); // HUDManager::SetScannerHintMessege;GameInstancescript_ref<String>
+	static function ShowScannerHint(game : ScriptGameInstance); // HUDManager::ShowScannerHint;GameInstance
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnBodyCarryStateChanged(value : Bool) : Bool; // OnBodyCarryStateChanged
+	event OnBraindanceToggle(value : Bool) : Bool; // OnBraindanceToggle
+	event OnBreachingNetwork(value : String) : Bool; // OnBreachingNetwork
+	event OnGrappleStateChanged(value : Int32) : Bool; // OnGrappleStateChanged
+	event OnLootDataChanged(value : Variant) : Bool; // OnLootDataChanged
+	event OnNameplateChanged(value : Variant) : Bool; // OnNameplateChanged
+	event OnPlayerTargetChanged(value : entEntityID) : Bool; // OnPlayerTargetChanged
+	event OnQuickHackPanelOpened(value : Bool) : Bool; // OnQuickHackPanelOpened
+	event OnQuickHackUIKeepContextChanged(visible : Bool) : Bool; // OnQuickHackUIKeepContextChanged
+	event OnQuickHackUIVisibleChanged(visible : Bool) : Bool; // OnQuickHackUIVisibleChanged
+	event OnScannerTargetChanged(value : entEntityID) : Bool; // OnScannerTargetChanged
+	event OnScannerUIVisibleChanged(visible : Bool) : Bool; // OnScannerUIVisibleChanged
+	event OnStickInputChanged(value : Vector4) : Bool; // OnStickInputChanged
+	event OnVisionModeChanged(value : Int32) : Bool; // OnVisionModeChanged
+
+	function CanActivateRemoteActionWheel() : Bool; // CanActivateRemoteActionWheel;
+	function CanPulse() : Bool; // CanPulse;
+	function CanShowHintMessage() : Bool; // CanShowHintMessage;
+	function ClearQuickHackTargetData(targetID : entEntityID); // ClearQuickHackTargetData;EntityID
+	function CloseQHackMenu(); // CloseQHackMenu;
+	function CreateJob(actor : handle:gameHudActor) : HUDJob; // CreateJob;HUDActor
+	function CreateJobs(actors : script_ref:array:handle:gameHudActor) : array:HUDJob; // CreateJobs;script_ref<array<HUDActor>>
+	function CreateJobsByActorType(actors : script_ref:array:handle:gameHudActor, type : HUDActorType) : array:HUDJob; // CreateJobsByActorType;script_ref<array<HUDActor>>HUDActorType
+	function CreateJobsForClueActors(actors : script_ref:array:handle:gameHudActor) : array:HUDJob; // CreateJobsForClueActors;script_ref<array<HUDActor>>
+	function DetermineActorVisibilityState(id : entEntityID) : ActorVisibilityStatus; // DetermineActorVisibilityState;EntityID
+	function FillLookAtRequestData(lookAtComponent : whandle:gameTargetingComponent) : gameaimAssistAimRequest; // FillLookAtRequestData;TargetingComponent
+	function ForceScannerModule(actor : whandle:gameHudActor, shouldForce : Bool); // ForceScannerModule;HUDActorBool
+	function GetActiveMode() : ActiveMode; // GetActiveMode;
+	function GetCurrentTarget() : handle:gameHudActor; // GetCurrentTarget;
+	function GetCurrentTargetID() : entEntityID; // GetCurrentTargetID;
+	function GetCurrentTargetObject() : handle:gameObject; // GetCurrentTargetObject;
+	function GetHUDState() : HUDState; // GetHUDState;
+	function GetIconsModule() : handle:IconsModule; // GetIconsModule;
+	function GetLastTarget() : handle:gameHudActor; // GetLastTarget;
+	function GetLastTargetID() : entEntityID; // GetLastTargetID;
+	function GetLockedClueID() : entEntityID; // GetLockedClueID;
+	function GetLootedTargetID() : entEntityID; // GetLootedTargetID;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetPlayer() : handle:gameObject; // GetPlayer;
+	function GetPlayerSMBlackboard() : handle:gameIBlackboard; // GetPlayerSMBlackboard;
+	function GetPlayerStateMachineBlackboard(playerPuppet : whandle:gameObject) : handle:gameIBlackboard; // GetPlayerStateMachineBlackboard;GameObject
+	function GetPulseDuration() : Float; // GetPulseDuration;
+	function GetQuickHackTargetID() : entEntityID; // GetQuickHackTargetID;
+	function GetUiScannerVisible() : Bool; // GetUiScannerVisible;
+	function HUDLog(message : script_ref:String); // HUDLog;script_ref<String>
+	function HasCurrentTarget() : Bool; // HasCurrentTarget;
+	function InitializeHUD(); // InitializeHUD;
+	function InitializeModules(); // InitializeModules;
+	function IsBraindanceActive() : Bool; // IsBraindanceActive;
+	function IsCyberdeckEquipped() : Bool; // IsCyberdeckEquipped;
+	function IsHackingMinigameActive() : Bool; // IsHackingMinigameActive;
+	function IsPulseActive() : Bool; // IsPulseActive;
+	function IsQHackInputLocked() : Bool; // IsQHackInputLocked;
+	function IsRegistered(id : entEntityID) : Bool; // IsRegistered;EntityID
+	function IsRequestLegal(requestToValidate : handle:HUDManagerRequest) : Bool; // IsRequestLegal;HUDManagerRequest
+	function IterateModules(job : HUDJob); // IterateModules;HUDJob
+	function IterateModules(jobs : array:HUDJob); // IterateModules;array<HUDJob>
+	function JumpToNextTarget(right : Bool); // JumpToNextTarget;Bool
+	function JumpToTarget(inputVector : Vector4, optional dotThreshold : Float); // JumpToTarget;Vector4Float
+	function LookAtNearestCroshairTarget(optional targetEntityID : entEntityID); // LookAtNearestCroshairTarget;EntityID
+	function LookAtNewTarget(lookAtComponent : whandle:gameTargetingComponent, vecToNextObject : Vector4); // LookAtNewTarget;TargetingComponentVector4
+	function OnAttach(); // OnAttach;
+	function OnClueActorNotification(request : handle:ClueStatusNotification); // OnClueActorNotification;ClueStatusNotification
+	function OnClueClueLockNotification(request : handle:ClueLockNotification); // OnClueClueLockNotification;ClueLockNotification
+	function OnDetach(); // OnDetach;
+	function OnInstructionRequest(request : handle:SendInstructionRequest); // OnInstructionRequest;SendInstructionRequest
+	function OnIterateModulesRequest(request : handle:IterateModulesRequest); // OnIterateModulesRequest;IterateModulesRequest
+	function OnLockQHackInput(request : handle:LockQHackInput); // OnLockQHackInput;LockQHackInput
+	function OnNemaplateChangedRequest(evt : handle:NemaplateChangedRequest); // OnNemaplateChangedRequest;NemaplateChangedRequest
+	function OnPingFinishedRequest(request : handle:PulseFinishedRequest); // OnPingFinishedRequest;PulseFinishedRequest
+	function OnPlayerTargetChangedRequest(evt : handle:PlayerTargetChangedRequest); // OnPlayerTargetChangedRequest;PlayerTargetChangedRequest
+	function OnRefreshSingleActor(request : handle:RefreshActorRequest); // OnRefreshSingleActor;RefreshActorRequest
+	function OnRegister(request : handle:HUDManagerRegistrationRequest); // OnRegister;HUDManagerRegistrationRequest
+	function OnRegisterAssociation(request : handle:HUDManagerAssociationRequest); // OnRegisterAssociation;HUDManagerAssociationRequest
+	function OnResolveRadial(request : handle:ResolveQuickHackRadialRequest); // OnResolveRadial;ResolveQuickHackRadialRequest
+	function OnRevealActorNotification(request : handle:RevealStatusNotification); // OnRevealActorNotification;RevealStatusNotification
+	function OnRevealQuickhackMenu(request : handle:RevealQuickhackMenu); // OnRevealQuickhackMenu;RevealQuickhackMenu
+	function OnScannerTargetChangedRequest(request : handle:ScannerTargetChangedRequest); // OnScannerTargetChangedRequest;ScannerTargetChangedRequest
+	function OnTagActorNotification(request : handle:TagStatusNotification); // OnTagActorNotification;TagStatusNotification
+	function OnVisionModeResetRequest(request : handle:VisionModeResetRequest); // OnVisionModeResetRequest;VisionModeResetRequest
+	function PlayerAttachedCallback(playerPuppet : handle:gameObject); // PlayerAttachedCallback;GameObject
+	function PlayerDetachedCallback(playerPuppet : handle:gameObject); // PlayerDetachedCallback;GameObject
+	function PostponeModuleIteration(remainingJobs : script_ref:array:HUDJob); // PostponeModuleIteration;script_ref<array<HUDJob>>
+	function ProcessAssociationRegistration(request : handle:HUDManagerAssociationRequest); // ProcessAssociationRegistration;HUDManagerAssociationRequest
+	function ProcessRegistration(request : handle:HUDManagerRegistrationRequest); // ProcessRegistration;HUDManagerRegistrationRequest
+	function QueueEntityEvent(entityID : entEntityID, evt : handle:redEvent); // QueueEntityEvent;EntityIDEvent
+	function ReactToTargetChanged(); // ReactToTargetChanged;
+	function RefreshDebug(); // RefreshDebug;
+	function RefreshHUD(); // RefreshHUD;
+	function RefreshHudForSingleActor(actor : handle:gameHudActor, optional targetModules : array:whandle:HUDModule); // RefreshHudForSingleActor;HUDActorarray<HUDModule>
+	function RegisterActor_Script(request : handle:HUDManagerRegistrationRequest); // RegisterActor_Script;HUDManagerRegistrationRequest
+	function RegisterAssociatedActor_Script(request : handle:HUDManagerAssociationRequest); // RegisterAssociatedActor_Script;HUDManagerAssociationRequest
+	function RegisterBraindanceToggleCallback(); // RegisterBraindanceToggleCallback;
+	function RegisterHackingMinigameCallback(); // RegisterHackingMinigameCallback;
+	function RegisterNameplateShownCallback(); // RegisterNameplateShownCallback;
+	function RegisterPlayerTargetCallback(); // RegisterPlayerTargetCallback;
+	function RegisterScannerTargetCallback(); // RegisterScannerTargetCallback;
+	function RegisterToInput(); // RegisterToInput;
+	function RegisterUICallbacks(); // RegisterUICallbacks;
+	function RegisterVisionModeCallback(player : handle:gameObject); // RegisterVisionModeCallback;GameObject
+	function RequestTimeDilation(eventId : CName, val : Bool); // RequestTimeDilation;CNameBool
+	function ResolveCurrentTarget() : Bool; // ResolveCurrentTarget;
+	function ResolveLookAtTarget(newTarget : entEntityID); // ResolveLookAtTarget;EntityID
+	function SendInstructions(jobs : script_ref:array:HUDJob); // SendInstructions;script_ref<array<HUDJob>>
+	function SendInstructionsByRequest(jobs : script_ref:array:HUDJob); // SendInstructionsByRequest;script_ref<array<HUDJob>>
+	function SendQuickHackPanelStateEvent(isOpened : Bool); // SendQuickHackPanelStateEvent;Bool
+	function SendScannerTabChangeEvent(); // SendScannerTabChangeEvent;
+	function SendSingleInstruction(entityID : entEntityID, evt : handle:redEvent); // SendSingleInstruction;EntityIDEvent
+	function SetNewTarget(newTarget : handle:gameHudActor) : Bool; // SetNewTarget;HUDActor
+	function StartPulse(); // StartPulse;
+	function StopPulse(); // StopPulse;
+	function SuppressActor(actor : handle:gameHudActor); // SuppressActor;HUDActor
+	function UnRegisterPlayerTargetCallback(); // UnRegisterPlayerTargetCallback;
+	function UninitializeHUD(); // UninitializeHUD;
+	function UnregisterActor_Script(request : handle:HUDManagerRegistrationRequest); // UnregisterActor_Script;HUDManagerRegistrationRequest
+	function UnregisterAssociatedActor_Script(request : handle:HUDManagerAssociationRequest); // UnregisterAssociatedActor_Script;HUDManagerAssociationRequest
+	function UnregisterHackingMinigameCallback(player : handle:gameObject); // UnregisterHackingMinigameCallback;GameObject
+	function UnregisterToInput(); // UnregisterToInput;
+	function UnregisterUICallbacks(); // UnregisterUICallbacks;
+	function UnregisterVisionModeCallback(player : handle:gameObject); // UnregisterVisionModeCallback;GameObject
+}
+
+import class gameNativeHudManager extends gameScriptableSystem
+{
+	import function GetActor(actorId : entEntityID) : handle:gameHudActor; // GetActor
+	import function GetAllActors() : array:handle:gameHudActor; // GetAllActors
+	import function IsQuickHackPanelOpened() : Bool; // IsQuickHackPanelOpened
+	import function RegisterActor(actorId : entEntityID) : handle:gameHudActor; // RegisterActor
+	import function RegisterAssociatedActor(actorId : entEntityID, associatedId : entEntityID); // RegisterAssociatedActor
+	import function SetIsQuickHackPanelOpened(isOpen : Bool); // SetIsQuickHackPanelOpened
+	import function UnregisterActor(actorId : entEntityID) : Bool; // UnregisterActor
+	import function UnregisterAssociatedActor(actorId : entEntityID); // UnregisterAssociatedActor
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

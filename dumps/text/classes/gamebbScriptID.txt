@@ -1,0 +1,4 @@
+import struct gamebbScriptID
+{
+	var None : gamebbID;
+}

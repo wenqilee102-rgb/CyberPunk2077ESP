@@ -1,0 +1,31 @@
+import class CParticleInitializerSpawnSphere extends IParticleInitializer
+{
+	var innerRadius : handle:IEvaluatorFloat;
+	var outerRadius : handle:IEvaluatorFloat;
+	var surfaceOnly : Bool;
+	var spawnPositiveX : Bool;
+	var spawnNegativeX : Bool;
+	var spawnPositiveY : Bool;
+	var spawnNegativeY : Bool;
+	var spawnPositiveZ : Bool;
+	var spawnNegativeZ : Bool;
+	var velocity : Bool;
+	var worldSpace : Bool;
+	var forceScale : handle:IEvaluatorFloat;
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

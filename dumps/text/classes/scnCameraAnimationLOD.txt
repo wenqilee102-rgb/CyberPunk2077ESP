@@ -1,0 +1,5 @@
+import struct scnCameraAnimationLOD
+{
+	var trajectory : static:3,scnAnimationMotionSample;
+	var tracks : static:3,static:7,Float;
+}

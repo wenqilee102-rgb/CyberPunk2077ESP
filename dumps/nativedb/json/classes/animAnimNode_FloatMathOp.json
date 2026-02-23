@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloatValue","b":"animAnimNode_FloatMathOp","d":8,"e":[{"a":{"b":"animEAnimGraphMathOp"},"b":"operationType","c":128},{"a":{"b":"animFloatLink"},"b":"firstInputNode","c":128},{"a":{"b":"animFloatLink"},"b":"secondInputNode","c":128}]}

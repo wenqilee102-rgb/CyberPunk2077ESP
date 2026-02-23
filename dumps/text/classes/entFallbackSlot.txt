@@ -1,0 +1,5 @@
+import struct entFallbackSlot
+{
+	var slotName : CName;
+	var boneName : CName;
+}

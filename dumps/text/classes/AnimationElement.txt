@@ -1,0 +1,5 @@
+struct AnimationElement
+{
+	public    var animation : CName;
+	public    var animOptions : inkanimPlaybackOptions;
+}

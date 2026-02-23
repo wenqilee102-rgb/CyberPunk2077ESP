@@ -1,0 +1,19 @@
+import class AIbehaviorPickSearchDestinationTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var destinationPosition : handle:AIArgumentMapping;
+	var desiredDistance : handle:AIArgumentMapping;
+	var maxDistance : handle:AIArgumentMapping;
+	var clearedAreaRadius : handle:AIArgumentMapping;
+	var clearedAreaDistance : handle:AIArgumentMapping;
+	var clearedAreaAngle : handle:AIArgumentMapping;
+	var ignoreRestrictMovementArea : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

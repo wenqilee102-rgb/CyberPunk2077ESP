@@ -1,0 +1,28 @@
+import class gamedataTankPlayerWeaponLevel_Record extends gamedataTweakDBRecord
+{
+	import function GetWeaponListCount() : Int32; // GetWeaponListCount
+	import function GetWeaponListItem(index : Int32) : whandle:gamedataTankWeapon_Record; // GetWeaponListItem
+	import function GetWeaponListItemHandle(index : Int32) : handle:gamedataTankWeapon_Record; // GetWeaponListItemHandle
+	import function WeaponList(out outList : array:whandle:gamedataTankWeapon_Record); // WeaponList
+	import function WeaponListContains(item : whandle:gamedataTankWeapon_Record) : Bool; // WeaponListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

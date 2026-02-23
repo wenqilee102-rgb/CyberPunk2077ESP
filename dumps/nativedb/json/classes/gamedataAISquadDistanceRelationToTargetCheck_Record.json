@@ -1,0 +1,1 @@
+{"a":"gamedataAITicketCheck_Record","b":"gamedataAISquadDistanceRelationToTargetCheck_Record","c":"AISquadDistanceRelationToTargetCheck_Record","d":24,"f":[{"a":"RingRadius","c":{"a":10},"d":4},{"a":"Target","c":{"a":27,"c":{"b":"gamedataAIActionTarget_Record"}},"d":4},{"a":"TargetHandle","c":{"a":26,"c":{"b":"gamedataAIActionTarget_Record"}},"d":4}]}

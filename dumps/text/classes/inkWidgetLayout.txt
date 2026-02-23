@@ -1,0 +1,11 @@
+import struct inkWidgetLayout
+{
+	var padding : inkMargin;
+	var margin : inkMargin;
+	var HAlign : inkEHorizontalAlign;
+	var VAlign : inkEVerticalAlign;
+	var anchor : inkEAnchor;
+	var anchorPoint : Vector2;
+	var sizeRule : inkESizeRule;
+	var sizeCoefficient : Float;
+}

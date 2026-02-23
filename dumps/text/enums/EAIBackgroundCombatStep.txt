@@ -1,0 +1,5 @@
+enum EAIBackgroundCombatStep
+{
+	ChangeCover = 0,
+	ChangeTarget = 1
+}

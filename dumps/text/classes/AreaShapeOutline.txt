@@ -1,0 +1,9 @@
+import class AreaShapeOutline extends ISerializable
+{
+	var points : array:Vector3;
+	var height : Float;
+}
+
+import class abstract ISerializable
+{
+}

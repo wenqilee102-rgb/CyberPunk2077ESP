@@ -1,0 +1,15 @@
+import struct animImportFacialSetupDesc
+{
+	var initialPose : array:animImportFacialInitialPoseEntryDesc;
+	var initialControls : animImportFacialInitialControlsDesc;
+	var mainPoses : array:animImportFacialMainPoseDesc;
+	var mainPosesInfo : array:animSermoPoseInfo;
+	var jawAreaTrackIndices : array:Int16;
+	var lipsAreaTrackIndices : array:Int16;
+	var eyesAreaTrackIndices : array:Int16;
+	var numCachedPoseTracks : Uint16;
+	var correctivePoses : array:animImportFacialCorrectivePoseDesc;
+	var globalPoseLimits : array:animPoseLimitWeights;
+	var wrinkleStartingIndex : Uint16;
+	var wrinkleMapping : array:Uint16;
+}

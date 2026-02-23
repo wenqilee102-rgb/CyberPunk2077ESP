@@ -1,0 +1,8 @@
+import class inkWidgetLibraryItemClipboardData extends ISerializable
+{
+	var libraryItem : handle:inkWidgetLibraryItemUnpackedView;
+}
+
+import class abstract ISerializable
+{
+}

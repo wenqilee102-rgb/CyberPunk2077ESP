@@ -1,0 +1,7 @@
+import struct worldTrafficLaneCrowdFragment
+{
+	var desiredSlotCountsPerTimePeriod : static:4,worldDesiredSlotsCountInfo;
+	var crowdCreationDataIndex : Uint32;
+	var laneX1 : Float;
+	var laneX2 : Float;
+}

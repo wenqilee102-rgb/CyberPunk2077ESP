@@ -1,0 +1,4 @@
+import struct scnSceneInstanceOwnerId
+{
+	var hash : Uint64;
+}

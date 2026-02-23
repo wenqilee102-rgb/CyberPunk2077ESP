@@ -1,0 +1,19 @@
+class GalleryUtils extends IScriptable
+{
+	static function FillScreenshotInPreview(screenshotSize : Vector2, previewSize : Vector2) : Vector2; // GalleryUtils::FillScreenshotInPreview;Vector2Vector2
+	static function FitScreenshotInPreview(screenshotSize : Vector2, previewSize : Vector2) : Vector2; // GalleryUtils::FitScreenshotInPreview;Vector2Vector2
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

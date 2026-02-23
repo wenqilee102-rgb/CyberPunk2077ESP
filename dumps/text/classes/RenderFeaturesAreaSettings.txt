@@ -1,0 +1,16 @@
+import class RenderFeaturesAreaSettings extends IAreaSettings
+{
+	var allowGlobalIllumination : Bool;
+	var allowScreenSpaceReflections : Bool;
+	var allowVolumetricFog : Bool;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

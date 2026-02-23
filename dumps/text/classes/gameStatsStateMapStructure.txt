@@ -1,0 +1,5 @@
+import struct gameStatsStateMapStructure
+{
+	var keys : array:gameStatsObjectID;
+	var values : array:gameSavedStatsData;
+}

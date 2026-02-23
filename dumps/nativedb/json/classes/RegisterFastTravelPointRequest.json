@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"RegisterFastTravelPointRequest","d":0,"e":[{"a":{"a":26,"c":{"b":"gameFastTravelPointData"}},"b":"pointData","c":128},{"a":{"b":"entEntityID"},"b":"requesterID","c":128}]}

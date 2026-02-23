@@ -1,0 +1,7 @@
+import struct animAnimDebuggerCommand_VectorOutputApplied extends animIAnimDebuggerCommand
+{
+}
+
+import struct abstract animIAnimDebuggerCommand
+{
+}

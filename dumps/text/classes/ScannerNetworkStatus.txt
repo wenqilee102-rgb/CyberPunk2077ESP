@@ -1,0 +1,28 @@
+class ScannerNetworkStatus extends ScannerChunk
+{
+	private   var networkStatus : ScannerNetworkState;
+
+	function GetNetworkStatus() : ScannerNetworkState; // GetNetworkStatus;
+	function GetType() : ScannerDataType; // GetType;
+	function Set(status : ScannerNetworkState); // Set;ScannerNetworkState
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

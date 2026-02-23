@@ -1,0 +1,29 @@
+import class animAnimNode_Drag extends animAnimNode_OnePoseInput
+{
+	var sourceBone : animTransformIndex;
+	var outTargetBone : animTransformIndex;
+	var simulationFps : Float;
+	var sourceSpeedMultiplier : Float;
+	var hasOvershoot : Bool;
+	var overshootDuration : Float;
+	var overshootDetectionMinSpeed : Float;
+	var overshootDetectionMaxSpeed : Float;
+	var useSteps : Bool;
+	var stepsTargetSpeedMultiplier : Float;
+	var timeBetweenSteps : Float;
+	var timeInStep : Float;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

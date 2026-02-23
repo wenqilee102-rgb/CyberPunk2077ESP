@@ -1,0 +1,12 @@
+import class animSyncMethodByEvent extends animISyncMethod
+{
+	var eventName : CName;
+}
+
+import class abstract animISyncMethod extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

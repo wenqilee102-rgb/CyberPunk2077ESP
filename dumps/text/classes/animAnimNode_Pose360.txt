@@ -1,0 +1,14 @@
+import class animAnimNode_Pose360 extends animAnimNode_Base
+{
+	var angle : animFloatLink;
+	var animation : CName;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

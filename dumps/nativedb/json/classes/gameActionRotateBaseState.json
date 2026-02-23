@@ -1,0 +1,1 @@
+{"a":"gameActionReplicatedState","b":"gameActionRotateBaseState","d":8,"g":true,"e":[{"a":{"a":10},"b":"angleOffset","c":128},{"a":{"a":10},"b":"angleTolerance","c":128},{"a":{"a":1},"b":"keepUpdatingTarget","c":128},{"a":{"a":1},"b":"useRotationTime","c":128},{"a":{"a":10},"b":"rotationSpeed","c":128},{"a":{"a":10},"b":"rotationTime","c":128}]}

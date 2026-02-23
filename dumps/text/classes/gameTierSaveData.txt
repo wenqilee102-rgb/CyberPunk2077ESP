@@ -1,0 +1,8 @@
+import class gameTierSaveData extends ISerializable
+{
+	var globalTiers : array:gameGlobalTierSaveData;
+}
+
+import class abstract ISerializable
+{
+}

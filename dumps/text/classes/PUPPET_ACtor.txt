@@ -1,0 +1,64 @@
+class PUPPET_ACtor extends gameHudActor
+{
+}
+
+import class gameHudActor extends IScriptable
+{
+	private   var entityID : entEntityID;
+	private   var type : HUDActorType;
+	private   var status : HUDActorStatus;
+	private   var visibility : ActorVisibilityStatus;
+	private   var activeModules : array:whandle:HUDModule;
+	private   var isRevealed : Bool;
+	private   var isTagged : Bool;
+	private   var clueData : HUDClueData;
+	private   var isRemotelyAccessed : Bool;
+	private   var canOpenScannerInfo : Bool;
+	private   var isInIconForcedVisibilityRange : Bool;
+	private   var isIconForcedVisibleThroughWalls : Bool;
+	private   var shouldRefreshQHack : Bool;
+
+	static function Construct(self : handle:gameHudActor, entityID : entEntityID, type : HUDActorType, status : HUDActorStatus, visibility : ActorVisibilityStatus); // gameHudActor::Construct;HUDActorEntityIDHUDActorTypeHUDActorStatusActorVisibilityStatus
+
+	function AddModule(module : handle:HUDModule); // AddModule;HUDModule
+	function CanOpenScannerInfo() : Bool; // CanOpenScannerInfo;
+	function GetActiveModules() : array:whandle:HUDModule; // GetActiveModules;
+	function GetEntityID() : entEntityID; // GetEntityID;
+	function GetShouldRefreshQHack() : Bool; // GetShouldRefreshQHack;
+	function GetStatus() : HUDActorStatus; // GetStatus;
+	function GetType() : HUDActorType; // GetType;
+	function GetVisibility() : ActorVisibilityStatus; // GetVisibility;
+	function IsClue() : Bool; // IsClue;
+	function IsGrouppedClue() : Bool; // IsGrouppedClue;
+	function IsIconForcedVisibileThroughWalls() : Bool; // IsIconForcedVisibileThroughWalls;
+	function IsInIconForcedVisibilityRange() : Bool; // IsInIconForcedVisibilityRange;
+	function IsRemotelyAccessed() : Bool; // IsRemotelyAccessed;
+	function IsRevealed() : Bool; // IsRevealed;
+	function IsTagged() : Bool; // IsTagged;
+	function RemoveModule(module : handle:HUDModule); // RemoveModule;HUDModule
+	function SetCanOpenScannerInfo(value : Bool); // SetCanOpenScannerInfo;Bool
+	function SetClue(value : Bool); // SetClue;Bool
+	function SetClueGroup(value : CName); // SetClueGroup;CName
+	function SetIsIconForcedVisibileThroughWalls(value : Bool); // SetIsIconForcedVisibileThroughWalls;Bool
+	function SetIsInIconForcedVisibilityRange(value : Bool); // SetIsInIconForcedVisibilityRange;Bool
+	function SetRemotelyAccessed(value : Bool); // SetRemotelyAccessed;Bool
+	function SetRevealed(value : Bool); // SetRevealed;Bool
+	function SetShouldRefreshQHack(value : Bool); // SetShouldRefreshQHack;Bool
+	function SetStatus(newStatus : HUDActorStatus); // SetStatus;HUDActorStatus
+	function SetTagged(value : Bool); // SetTagged;Bool
+	function UpdateActorData(updateData : handle:HUDActorUpdateData); // UpdateActorData;HUDActorUpdateData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

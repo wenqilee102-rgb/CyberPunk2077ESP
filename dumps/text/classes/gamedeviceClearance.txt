@@ -1,0 +1,25 @@
+import class gamedeviceClearance extends IScriptable
+{
+	var min : Int32;
+	var max : Int32;
+
+	import static function CreateClearance(optional min : Int32, optional max : Int32) : handle:gamedeviceClearance; // CreateClearance
+	import static function GetMaxClearanceLevel() : Int32; // GetMaxClearanceLevel
+	import static function GetMinClearanceLevel() : Int32; // GetMinClearanceLevel
+	import static function IsInRange(clearance : handle:gamedeviceClearance, clearanceLevel : Int32) : Bool; // IsInRange
+	import static function ReadValues(clearance : handle:gamedeviceClearance, out min : Int32, out max : Int32); // ReadValues
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

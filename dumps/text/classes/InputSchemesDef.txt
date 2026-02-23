@@ -1,0 +1,26 @@
+class InputSchemesDef extends gamebbScriptDefinition
+{
+	public    var Device : gamebbScriptID_Uint32;
+	public    var Scheme : gamebbScriptID_Uint32;
+	public    var InitializedInputHintManagerList : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

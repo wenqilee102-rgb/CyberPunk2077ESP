@@ -1,0 +1,1 @@
+{"b":"GpuWrapApiVertexLayoutDesc","d":8,"g":true,"e":[{"a":{"a":31,"c":{"b":"GpuWrapApiVertexPackingPackingElement"}},"b":"elements","c":128},{"a":{"a":31,"c":{"a":3}},"b":"slotStrides","c":128},{"a":{"a":7},"b":"slotMask","c":128},{"a":{"a":7},"b":"hash","c":128}]}

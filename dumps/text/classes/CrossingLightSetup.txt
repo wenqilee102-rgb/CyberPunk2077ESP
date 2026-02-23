@@ -1,0 +1,5 @@
+struct CrossingLightSetup
+{
+	public    var greenLightSFX : CName;
+	public    var redLightSFX : CName;
+}

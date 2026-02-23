@@ -1,0 +1,4 @@
+import struct gameSignalId
+{
+	var value : Uint16;
+}

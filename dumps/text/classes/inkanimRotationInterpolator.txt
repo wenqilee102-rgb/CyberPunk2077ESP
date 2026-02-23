@@ -1,0 +1,52 @@
+import class inkanimRotationInterpolator extends inkanimInterpolator
+{
+	var startValue : Float;
+	var endValue : Float;
+	var goShortPath : Bool;
+
+	import function GetEndRotation() : Float; // GetEndRotation
+	import function GetStartRotation() : Float; // GetStartRotation
+	import function SetEndRotation(endRotation : Float); // SetEndRotation
+	import function SetGoShortPath(goShortPath : Bool); // SetGoShortPath
+	import function SetStartRotation(startRotation : Float); // SetStartRotation
+}
+
+import class abstract inkanimInterpolator extends IScriptable
+{
+	var interpolationMode : inkanimInterpolationMode;
+	var interpolationType : inkanimInterpolationType;
+	var interpolationDirection : inkanimInterpolationDirection;
+	var duration : Float;
+	var startDelay : Float;
+	var useRelativeDuration : Bool;
+	var isAdditive : Bool;
+
+	import function GetDirection() : inkanimInterpolationDirection; // GetDirection
+	import function GetDuration() : Float; // GetDuration
+	import function GetIsAdditive() : Bool; // GetIsAdditive
+	import function GetMode() : inkanimInterpolationMode; // GetMode
+	import function GetStartDelay() : Float; // GetStartDelay
+	import function GetType() : inkanimInterpolationType; // GetType
+	import function GetUseRelativeDuration() : Bool; // GetUseRelativeDuration
+	import function SetDirection(direction : inkanimInterpolationDirection); // SetDirection
+	import function SetDuration(duration : Float); // SetDuration
+	import function SetIsAdditive(isAdditive : Bool); // SetIsAdditive
+	import function SetMode(mode : inkanimInterpolationMode); // SetMode
+	import function SetStartDelay(startDelay : Float); // SetStartDelay
+	import function SetType(type : inkanimInterpolationType); // SetType
+	import function SetUseRelativeDuration(useRelativeDuration : Bool); // SetUseRelativeDuration
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

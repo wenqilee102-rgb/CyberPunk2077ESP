@@ -1,0 +1,7 @@
+import struct animCurvePathControllersSetup
+{
+	var name : CName;
+	var startControllerName : CName;
+	var mainControllerName : CName;
+	var stopControllerName : CName;
+}

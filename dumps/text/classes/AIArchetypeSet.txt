@@ -1,0 +1,13 @@
+import class AIArchetypeSet extends CResource
+{
+	var archetypeResources : array:AIArchetypeSetEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

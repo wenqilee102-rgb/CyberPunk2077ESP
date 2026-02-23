@@ -1,0 +1,14 @@
+import class CParticleDrawerEmitterOrientation extends IParticleDrawer
+{
+	var coordinateSystem : EulerAngles;
+	var isGPUBased : Bool;
+}
+
+import class abstract IParticleDrawer extends ISerializable
+{
+	var pivotOffset : Float;
+}
+
+import class abstract ISerializable
+{
+}

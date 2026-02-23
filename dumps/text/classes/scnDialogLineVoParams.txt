@@ -1,0 +1,10 @@
+import struct scnDialogLineVoParams
+{
+	var voContext : locVoiceoverContext;
+	var voExpression : locVoiceoverExpression;
+	var customVoEvent : CName;
+	var disableHeadMovement : Bool;
+	var isHolocallSpeaker : Bool;
+	var ignoreSpeakerIncapacitation : Bool;
+	var alwaysUseBrainGender : Bool;
+}

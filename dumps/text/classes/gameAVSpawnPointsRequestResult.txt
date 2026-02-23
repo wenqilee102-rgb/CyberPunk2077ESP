@@ -1,0 +1,6 @@
+import struct gameAVSpawnPointsRequestResult
+{
+	var requestID : Uint32;
+	var success : Bool;
+	var spawnPoints : array:Vector3;
+}

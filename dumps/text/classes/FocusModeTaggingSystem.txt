@@ -1,0 +1,76 @@
+class FocusModeTaggingSystem extends gameScriptableSystem
+{
+	private   var playerAttachedCallbackID : Uint32;
+	private   var playerDetachedCallbackID : Uint32;
+
+	event OnActionWithOwner(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer, owner : whandle:gameObject) : Bool; // OnActionWithOwner
+
+	function CanTag() : Bool; // CanTag;
+	function CleanupTaggedObjects(listToClean : script_ref:array:whandle:gameObject); // CleanupTaggedObjects;script_ref<array<GameObject>>
+	function GetHudManager() : handle:HUDManager; // GetHudManager;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetPlayerStateMachineBlackboard(playerPuppet : whandle:gameObject) : handle:gameIBlackboard; // GetPlayerStateMachineBlackboard;GameObject
+	function GetScannerTargetID() : entEntityID; // GetScannerTargetID;
+	function GetTaggedObjectsList() : array:whandle:gameObject; // GetTaggedObjectsList;
+	function IsPlayerAiming(playerPuppet : whandle:gameObject) : Bool; // IsPlayerAiming;GameObject
+	function IsPlayerInFocusMode(playerPuppet : whandle:gameObject) : Bool; // IsPlayerInFocusMode;GameObject
+	function IsTagged(target : handle:gameObject) : Bool; // IsTagged;GameObject
+	function NotifyHudManager(isTagged : Bool, target : handle:gameObject); // NotifyHudManager;BoolGameObject
+	function NotifyNetworkSystem(); // NotifyNetworkSystem;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnPlayerAttachedCallback(playerPuppet : handle:gameObject); // OnPlayerAttachedCallback;GameObject
+	function OnPlayerDetachedCallback(playerPuppet : handle:gameObject); // OnPlayerDetachedCallback;GameObject
+	function OnRegisterInputListenerRequest(request : handle:RegisterInputListenerRequest); // OnRegisterInputListenerRequest;RegisterInputListenerRequest
+	function OnTagObjectRequest(request : handle:gameTagObjectRequest); // OnTagObjectRequest;TagObjectRequest
+	function OnUnRegisterInputListenerRequest(request : handle:UnRegisterInputListenerRequest); // OnUnRegisterInputListenerRequest;UnRegisterInputListenerRequest
+	function OnUnTagAllObjectRequest(request : handle:UnTagAllObjectRequest); // OnUnTagAllObjectRequest;UnTagAllObjectRequest
+	function OnUnTagObjectRequest(request : handle:gameUnTagObjectRequest); // OnUnTagObjectRequest;UnTagObjectRequest
+	function RefreshUI(target : handle:gameObject); // RefreshUI;GameObject
+	function Register(source : handle:gameObject); // Register;GameObject
+	function RegisterObjectToBlackboard(target : handle:gameObject); // RegisterObjectToBlackboard;GameObject
+	function RegisterPlayerAttachedCallback(); // RegisterPlayerAttachedCallback;
+	function RegisterPlayerDetachedCallback(); // RegisterPlayerDetachedCallback;
+	function RequestUntagAll(); // RequestUntagAll;
+	function ResolveFocusClues(tag : Bool, target : handle:gameObject); // ResolveFocusClues;BoolGameObject
+	function SendForceRevealObjectEvent(reveal : Bool, target : handle:gameObject); // SendForceRevealObjectEvent;BoolGameObject
+	function SendForceVisionApperaceEvent(enable : Bool, target : handle:gameObject, highlightType : EFocusForcedHighlightType); // SendForceVisionApperaceEvent;BoolGameObjectEFocusForcedHighlightType
+	function TagObject(target : handle:gameObject); // TagObject;GameObject
+	function UnRegisterAllObjectToBlackboard(); // UnRegisterAllObjectToBlackboard;
+	function UnRegisterObjectToBlackboard(target : handle:gameObject); // UnRegisterObjectToBlackboard;GameObject
+	function Unregister(source : handle:gameObject); // Unregister;GameObject
+	function UnregisterPlayerAttachedCallback(); // UnregisterPlayerAttachedCallback;
+	function UnregisterPlayerDetachedCallback(); // UnregisterPlayerDetachedCallback;
+	function UntagAll(); // UntagAll;
+	function UntagObject(target : handle:gameObject); // UntagObject;GameObject
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,42 @@
+import class animAnimFeatureUpdateWorkspot extends animAnimFeature
+{
+	var animName : CName;
+	var recordID : Int32;
+	var updateCounter : Int32;
+	var boolsAsFlags : Int32;
+	var animBlendTime : Float;
+	var forcedBlendIn : Float;
+	var forceAnimTime : Float;
+	var timeScale : Float;
+	var animationStartTime : Double;
+	var isPaused : Bool;
+	var isLooped : Bool;
+	var isExitAnim : Bool;
+	var enableMotion : Bool;
+	var isActive : Bool;
+	var isAnimValid : Bool;
+	var slotNameHash : Int32;
+	var facialKeyWeight : Float;
+	var facialIdleAnimation : CName;
+	var facialIdleKeyAnimation : CName;
+	var globalBlendDuration : Float;
+	var globalBlendIn : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct gameSSlotActiveItems
+{
+	var rightHandItem : gameItemID;
+	var leftHandItem : gameItemID;
+}

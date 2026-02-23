@@ -1,0 +1,10 @@
+import struct gameuiDamageInfo
+{
+	var hitPosition : Vector4;
+	var damageValue : Float;
+	var damageType : gamedataDamageType;
+	var hitType : gameuiHitType;
+	var entityHit : whandle:gameObject;
+	var instigator : whandle:gameObject;
+	var userData : handle:gameuiDamageInfoUserData;
+}

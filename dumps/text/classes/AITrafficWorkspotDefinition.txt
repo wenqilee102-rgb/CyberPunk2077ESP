@@ -1,0 +1,14 @@
+import class AITrafficWorkspotDefinition extends worldTrafficSpotDefinition
+{
+	var workspotResource : rRef:workWorkspotResource;
+}
+
+import class abstract worldTrafficSpotDefinition extends ISerializable
+{
+	var length : Float;
+	var direction : worldTrafficSpotDirection;
+}
+
+import class abstract ISerializable
+{
+}

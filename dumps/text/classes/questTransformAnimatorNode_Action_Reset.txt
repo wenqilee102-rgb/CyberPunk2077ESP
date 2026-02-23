@@ -1,0 +1,15 @@
+import class questTransformAnimatorNode_Action_Reset extends questTransformAnimatorNode_ActionType
+{
+}
+
+import class abstract questTransformAnimatorNode_ActionType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

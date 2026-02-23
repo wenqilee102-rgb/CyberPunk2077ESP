@@ -1,0 +1,6 @@
+import struct AIsquadsOrder
+{
+	var squadAction : CName;
+	var state : Uint32;
+	var id : Uint32;
+}

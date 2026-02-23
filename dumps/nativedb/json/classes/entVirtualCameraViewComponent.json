@@ -1,0 +1,1 @@
+{"a":"entIVisualComponent","b":"entVirtualCameraViewComponent","c":"VirtualCameraViewComponent","d":8,"e":[{"a":{"a":14},"b":"virtualCameraName","c":128},{"a":{"b":"Vector2"},"b":"targetPlaneSize","c":128}],"f":[{"a":"GetVirtualCameraName","c":{"a":14},"d":4},{"a":"SetVirtualCameraName","d":4,"e":[{"a":{"a":14},"b":"newName","c":0}]}]}

@@ -1,0 +1,4 @@
+import struct scnRidCameraAnimationSRRefId
+{
+	var id : Uint32;
+}

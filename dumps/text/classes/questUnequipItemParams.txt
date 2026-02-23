@@ -1,0 +1,5 @@
+import struct questUnequipItemParams
+{
+	var slotId : TweakDBID;
+	var unequipDurationOverride : Float;
+}

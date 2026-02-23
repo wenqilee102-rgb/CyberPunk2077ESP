@@ -1,0 +1,11 @@
+import class attrDynamicChoice extends attrAttribute
+{
+}
+
+import class attrAttribute extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

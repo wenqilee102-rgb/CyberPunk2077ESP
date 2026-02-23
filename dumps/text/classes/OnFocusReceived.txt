@@ -1,0 +1,37 @@
+import class OnFocusReceived extends inkFocusEvent
+{
+}
+
+import class inkFocusEvent extends inkEvent
+{
+	import function GetCause(); // GetCause
+}
+
+import class inkEvent extends redEvent
+{
+	import function Cancel(); // Cancel
+	import function GetCurrentTarget() : whandle:inkWidget; // GetCurrentTarget
+	import function GetDebugString() : String; // GetDebugString
+	import function GetTarget() : whandle:inkWidget; // GetTarget
+	import function Handle(); // Handle
+	import function IsCanceled() : Bool; // IsCanceled
+	import function IsHandled() : Bool; // IsHandled
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

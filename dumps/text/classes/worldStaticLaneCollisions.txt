@@ -1,0 +1,6 @@
+import struct worldStaticLaneCollisions
+{
+	var lane : worldTrafficLaneUID;
+	var collisions : array:worldTrafficStaticCollisionSphere;
+	var deadEndStart : Float;
+}

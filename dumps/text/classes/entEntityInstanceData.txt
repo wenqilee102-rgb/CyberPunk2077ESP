@@ -1,0 +1,8 @@
+import class entEntityInstanceData extends ISerializable
+{
+	var buffer : DataBuffer;
+}
+
+import class abstract ISerializable
+{
+}

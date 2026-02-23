@@ -1,0 +1,45 @@
+class RelicPerkSystem extends gameScriptableSystem
+{
+	private   var registeredPerkDevices : array:handle:PerkDeviceMappinData;
+
+	function CreatePerkDeviceMappinData(request : handle:RegisterPerkDeviceMappinRequest) : handle:PerkDeviceMappinData; // CreatePerkDeviceMappinData;RegisterPerkDeviceMappinRequest
+	function GetMappinData() : gamemappinsMappinData; // GetMappinData;
+	function IsMappinRegistered(perkDeviceMappinData : handle:PerkDeviceMappinData) : Bool; // IsMappinRegistered;PerkDeviceMappinData
+	function IsOwnerRegistered(ownerID : entEntityID) : Bool; // IsOwnerRegistered;EntityID
+	function OnRegisterPerkDeviceMappinRequest(request : handle:RegisterPerkDeviceMappinRequest); // OnRegisterPerkDeviceMappinRequest;RegisterPerkDeviceMappinRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSetPerkDeviceAsUsedRequest(request : handle:SetPerkDeviceAsUsedRequest); // OnSetPerkDeviceAsUsedRequest;SetPerkDeviceAsUsedRequest
+	function RegisterMappinInMappinSystem(perkDeviceMappinData : handle:PerkDeviceMappinData); // RegisterMappinInMappinSystem;PerkDeviceMappinData
+	function RegisterMappins(); // RegisterMappins;
+	function TryGetPerkDeviceMappinData(ownerID : entEntityID, out perkDeviceMappinData : handle:PerkDeviceMappinData) : Bool; // TryGetPerkDeviceMappinData;EntityIDPerkDeviceMappinData
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"physicsPhysicalJointPin","d":8,"e":[{"a":{"a":26,"c":{"b":"physicsISystemObject"}},"b":"object","c":128},{"a":{"a":6},"b":"featureIndex","c":128},{"a":{"b":"Vector3"},"b":"localPosition","c":128},{"a":{"b":"Quaternion"},"b":"localRotation","c":128}]}

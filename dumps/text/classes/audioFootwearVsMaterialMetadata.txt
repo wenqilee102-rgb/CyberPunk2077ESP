@@ -1,0 +1,21 @@
+import class audioFootwearVsMaterialMetadata extends audioAudioMetadata
+{
+	var footwearType : CName;
+	var skidEvent : CName;
+	var defaultFootstep : CName;
+	var locomotionStates : handle:audioLocomotionStateEventDictionary;
+	var customActionEvents : handle:audioLocomotionCustomActionEventDictionary;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

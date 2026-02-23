@@ -1,0 +1,42 @@
+import class gamedataVehicleOffer_Record extends gamedataPurchaseOffer_Record
+{
+	import function AvailabilityFact() : CName; // AvailabilityFact
+	import function BrandName() : CName; // BrandName
+	import function Description() : String; // Description
+	import function DiscountApplicable() : Bool; // DiscountApplicable
+	import function HasCustomization() : Bool; // HasCustomization
+	import function HasMachineGun() : Bool; // HasMachineGun
+	import function HasRocketLauncher() : Bool; // HasRocketLauncher
+	import function OwnershipFact() : CName; // OwnershipFact
+	import function UnlockType() : whandle:gamedataVehicleUnlockType_Record; // UnlockType
+	import function UnlockTypeHandle() : handle:gamedataVehicleUnlockType_Record; // UnlockTypeHandle
+}
+
+import class gamedataPurchaseOffer_Record extends gamedataTweakDBRecord
+{
+	import function Name() : String; // Name
+	import function PreviewImage() : whandle:gamedataJournalIcon_Record; // PreviewImage
+	import function PreviewImageHandle() : handle:gamedataJournalIcon_Record; // PreviewImageHandle
+	import function Price() : whandle:gamedataValueAssignment_Record; // Price
+	import function PriceHandle() : handle:gamedataValueAssignment_Record; // PriceHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

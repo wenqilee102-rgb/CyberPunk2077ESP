@@ -1,0 +1,8 @@
+import struct GlobalLightingTrajectoryOverride
+{
+	var overrideScale : Float;
+	var latitude : Float;
+	var sunRotationOffset : Float;
+	var moonRotationOffset : Float;
+	var timeOfYearSeason : ETimeOfYearSeason;
+}

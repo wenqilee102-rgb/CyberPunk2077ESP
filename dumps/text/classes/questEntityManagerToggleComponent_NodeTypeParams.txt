@@ -1,0 +1,7 @@
+import struct questEntityManagerToggleComponent_NodeTypeParams
+{
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+	var componentName : CName;
+	var enable : Bool;
+}

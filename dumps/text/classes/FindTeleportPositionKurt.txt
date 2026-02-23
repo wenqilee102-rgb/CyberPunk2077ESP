@@ -1,0 +1,62 @@
+class FindTeleportPositionKurt extends AIbehaviortaskScript
+{
+	public    var target : handle:AIArgumentMapping;
+	public    var extents : handle:AIArgumentMapping;
+	public    var extentsOffset : handle:AIArgumentMapping;
+	public    var workspotRotation : handle:AIArgumentMapping;
+	public    var workspotOffset : handle:AIArgumentMapping;
+	public    var outPositionArgument : handle:AIArgumentMapping;
+	public    var outRotationArgument : handle:AIArgumentMapping;
+	public    var outMaybeStairs : handle:AIArgumentMapping;
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function CheckForGround(context : AIbehaviorScriptExecutionContext, targetPosition : Vector4) : Bool; // CheckForGround;ScriptExecutionContextVector4
+	function CheckForOverlap(context : AIbehaviorScriptExecutionContext, targetPosition : Vector4, targetOffset : Vector4, queryDimensions : Vector4, queryOrientation : Quaternion, queryFilter : physicsQueryFilter) : Bool; // CheckForOverlap;ScriptExecutionContextVector4Vector4Vector4QuaternionQueryFilter
+	function CheckForOverlapAdvanced(context : AIbehaviorScriptExecutionContext, queryOffset : Vector4, queryExtents : Vector4, queryPosition : Vector4, out queryOrientation : Quaternion) : Bool; // CheckForOverlapAdvanced;ScriptExecutionContextVector4Vector4Vector4Quaternion
+	function CheckForStairs(context : AIbehaviorScriptExecutionContext, targetPosition : Vector4) : Bool; // CheckForStairs;ScriptExecutionContextVector4
+	function DrawDebugBox(context : AIbehaviorScriptExecutionContext, position : Vector4, extents : Vector4, orientation : Quaternion); // DrawDebugBox;ScriptExecutionContextVector4Vector4Quaternion
+	function GetNavmeshPointWithOffset(origin : whandle:entEntity, out point : Vector4, rotation : Quaternion, optional offset : Vector4) : Bool; // GetNavmeshPointWithOffset;EntityVector4QuaternionVector4
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+}
+
+import class AIbehaviortaskScript extends AIbehaviorScriptBase
+{
+	import function CutSelector(context : AIbehaviorScriptExecutionContext); // CutSelector
+	import function SetUpdateInterval(context : AIbehaviorScriptExecutionContext, interval : Float) : Bool; // SetUpdateInterval
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function ChildCompleted(context : AIbehaviorScriptExecutionContext, status : AIbehaviorCompletionStatus); // ChildCompleted;ScriptExecutionContextAIbehaviorCompletionStatus
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBase extends IScriptable
+{
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AIbehaviorScriptBase::GetAIComponent;ScriptExecutionContext
+	static function GetCombatTarget(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCombatTarget;ScriptExecutionContext
+	static function GetCompanion(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCompanion;ScriptExecutionContext
+	static function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // AIbehaviorScriptBase::GetGame;ScriptExecutionContext
+	static function GetHitReactionComponent(context : AIbehaviorScriptExecutionContext) : handle:HitReactionComponent; // AIbehaviorScriptBase::GetHitReactionComponent;ScriptExecutionContext
+	static function GetNPCPuppet(context : AIbehaviorScriptExecutionContext) : handle:NPCPuppet; // AIbehaviorScriptBase::GetNPCPuppet;ScriptExecutionContext
+	static function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // AIbehaviorScriptBase::GetPuppet;ScriptExecutionContext
+	static function GetStatPoolPercentage(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolPercentage;ScriptExecutionContextgamedataStatPoolType
+	static function GetStatPoolValue(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolValue;ScriptExecutionContextgamedataStatPoolType
+	static function GetUpperBodyState(context : AIbehaviorScriptExecutionContext) : gamedataNPCUpperBodyState; // AIbehaviorScriptBase::GetUpperBodyState;ScriptExecutionContext
+	static function RandomizeOffsetForUpdateInterval(interval : Float) : Float; // AIbehaviorScriptBase::RandomizeOffsetForUpdateInterval;Float
+
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

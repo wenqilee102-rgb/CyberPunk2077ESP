@@ -1,0 +1,26 @@
+class abstract AJournalEntryWrapper extends ABaseWrapper
+{
+	private   var UniqueId : Int32;
+
+	function GetUniqueId() : Int32; // GetUniqueId;
+	function SetUniqueId(uniqueId : Int32); // SetUniqueId;Int32
+}
+
+class abstract ABaseWrapper extends IScriptable
+{
+	function ToString() : String; // ToString;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

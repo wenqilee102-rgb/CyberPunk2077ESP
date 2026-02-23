@@ -1,0 +1,5 @@
+import struct AIbehaviorAssignTaskItem
+{
+	var leftHandSide : handle:AIArgumentMapping;
+	var rightHandSide : handle:AIArgumentMapping;
+}

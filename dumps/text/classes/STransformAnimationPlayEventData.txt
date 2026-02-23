@@ -1,0 +1,6 @@
+struct STransformAnimationPlayEventData
+{
+	public    var timeScale : Float;
+	public    var looping : Bool;
+	public    var timesPlayed : Uint32;
+}

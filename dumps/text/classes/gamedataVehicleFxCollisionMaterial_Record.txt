@@ -1,0 +1,29 @@
+import class gamedataVehicleFxCollisionMaterial_Record extends gamedataTweakDBRecord
+{
+	import function Impact_decal() : redResourceReferenceScriptToken; // Impact_decal
+	import function Impact_particles() : redResourceReferenceScriptToken; // Impact_particles
+	import function Material() : whandle:gamedataMaterial_Record; // Material
+	import function MaterialHandle() : handle:gamedataMaterial_Record; // MaterialHandle
+	import function Scratch_decal() : redResourceReferenceScriptToken; // Scratch_decal
+	import function Scratch_particles() : redResourceReferenceScriptToken; // Scratch_particles
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

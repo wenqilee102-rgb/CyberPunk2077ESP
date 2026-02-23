@@ -1,0 +1,5 @@
+import struct worldStreamingBlockIndex
+{
+	var rldGridCell : Uint32;
+	var oup : worldStreamingDataGroup;
+}

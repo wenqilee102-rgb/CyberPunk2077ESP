@@ -1,0 +1,6 @@
+import struct scnPerformerSymbol
+{
+	var performerId : scnPerformerId;
+	var entityRef : gameEntityReference;
+	var editorPerformerId : CRUID;
+}

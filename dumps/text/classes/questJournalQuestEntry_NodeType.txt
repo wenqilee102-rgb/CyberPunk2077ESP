@@ -1,0 +1,24 @@
+import class questJournalQuestEntry_NodeType extends questIJournal_NodeType
+{
+	var path : handle:gameJournalPath;
+	var sendNotification : Bool;
+	var trackQuest : Bool;
+	var optional : Bool;
+	var version : questJournalQuestEntry_NodeTypeNodeVersion;
+}
+
+import class abstract questIJournal_NodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,20 @@
+class abstract AISubActionInitialReactionParams_Record_Implementation extends IScriptable
+{
+	static function GetAnimDirection(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionInitialReaction_Record) : Float; // AISubActionInitialReactionParams_Record_Implementation::GetAnimDirection;ScriptExecutionContextAISubActionInitialReaction_Record
+	static function GetAnimVariation(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionInitialReaction_Record) : Int32; // AISubActionInitialReactionParams_Record_Implementation::GetAnimVariation;ScriptExecutionContextAISubActionInitialReaction_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionInitialReaction_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionInitialReactionParams_Record_Implementation::Update;ScriptExecutionContextAISubActionInitialReaction_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

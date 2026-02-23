@@ -1,0 +1,32 @@
+import class gamedataItemBlueprintElement_Record extends gamedataTweakDBRecord
+{
+	import function ChildElements(out outList : array:whandle:gamedataItemBlueprintElement_Record); // ChildElements
+	import function ChildElementsContains(item : whandle:gamedataItemBlueprintElement_Record) : Bool; // ChildElementsContains
+	import function GetChildElementsCount() : Int32; // GetChildElementsCount
+	import function GetChildElementsItem(index : Int32) : whandle:gamedataItemBlueprintElement_Record; // GetChildElementsItem
+	import function GetChildElementsItemHandle(index : Int32) : handle:gamedataItemBlueprintElement_Record; // GetChildElementsItemHandle
+	import function PrereqID() : whandle:gamedataIPrereq_Record; // PrereqID
+	import function PrereqIDHandle() : handle:gamedataIPrereq_Record; // PrereqIDHandle
+	import function Slot() : whandle:gamedataAttachmentSlot_Record; // Slot
+	import function SlotHandle() : handle:gamedataAttachmentSlot_Record; // SlotHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

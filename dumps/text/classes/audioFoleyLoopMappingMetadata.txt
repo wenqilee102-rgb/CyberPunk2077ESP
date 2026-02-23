@@ -1,0 +1,18 @@
+import class audioFoleyLoopMappingMetadata extends audioAudioMetadata
+{
+	var loopsPerAppearance : array:audioAppearanceToFoleyLoopMetadata;
+	var loopsPerVisualTag : array:audioVisualTagToFoleyLoopMetadata;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

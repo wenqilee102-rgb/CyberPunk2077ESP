@@ -1,0 +1,32 @@
+import class gamedataTankSpawnableArrangement_Record extends gamedataTweakDBRecord
+{
+	import function ColumnCount() : Int32; // ColumnCount
+	import function Displacement() : CName; // Displacement
+	import function GetObjectArrangementListCount() : Int32; // GetObjectArrangementListCount
+	import function GetObjectArrangementListItem(index : Int32) : whandle:gamedataTankArrangement_Record; // GetObjectArrangementListItem
+	import function GetObjectArrangementListItemHandle(index : Int32) : handle:gamedataTankArrangement_Record; // GetObjectArrangementListItemHandle
+	import function ObjectArrangementList(out outList : array:whandle:gamedataTankArrangement_Record); // ObjectArrangementList
+	import function ObjectArrangementListContains(item : whandle:gamedataTankArrangement_Record) : Bool; // ObjectArrangementListContains
+	import function Probability() : Float; // Probability
+	import function Slot() : Vector2; // Slot
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+import class PathTracingSettings extends IAreaSettings
+{
+	var albedoModulation : Float;
+	var diffuseGlobalScale : Float;
+	var diffuseSunScale : Float;
+	var diffuseSkyScale : Float;
+	var diffuseLocalLightsScale : Float;
+	var diffuseEmissiveScale : Float;
+	var specularGlobalScale : Float;
+	var specularSunScale : Float;
+	var specularSkyScale : Float;
+	var specularLocalLightsScale : Float;
+	var specularEmissiveScale : Float;
+	var maxIntensity : Float;
+	var GIOnlyLightScale : Float;
+	var rayNumber : Uint32;
+	var bounceNumber : Uint32;
+	var rayNumberScreenshot : Uint32;
+	var bounceNumberScreenshot : Uint32;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

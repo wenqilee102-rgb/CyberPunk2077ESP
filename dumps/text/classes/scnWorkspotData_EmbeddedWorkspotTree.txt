@@ -1,0 +1,13 @@
+import class scnWorkspotData_EmbeddedWorkspotTree extends scnWorkspotData
+{
+	var workspotTree : handle:workWorkspotTree;
+}
+
+import class abstract scnWorkspotData extends ISerializable
+{
+	var dataId : scnSceneWorkspotDataId;
+}
+
+import class abstract ISerializable
+{
+}

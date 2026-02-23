@@ -1,0 +1,8 @@
+import struct worldProxyMeshAdvancedBuildParams
+{
+	var boundingBoxSyncParams : worldProxyBoundingBoxSyncParams;
+	var surfaceFlattenParams : worldProxySurfaceFlattenParams;
+	var misc : worldProxyMiscAdvancedParams;
+	var rayBias : Float;
+	var rayMaxDistance : Float;
+}

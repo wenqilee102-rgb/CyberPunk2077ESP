@@ -1,0 +1,12 @@
+import class communitySpawnEntry extends ISerializable
+{
+	var entryName : CName;
+	var characterRecordId : TweakDBID;
+	var phases : array:handle:communitySpawnPhase;
+	var spawnInView : gameSpawnInViewState;
+	var initializers : array:handle:communitySpawnInitializer;
+}
+
+import class abstract ISerializable
+{
+}

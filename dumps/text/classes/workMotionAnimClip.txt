@@ -1,0 +1,19 @@
+import class workMotionAnimClip extends workAnimClip
+{
+}
+
+import class workAnimClip extends workIEntry
+{
+	var animName : CName;
+	var blendOutTime : Float;
+}
+
+import class abstract workIEntry extends ISerializable
+{
+	var id : workWorkEntryId;
+	var flags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

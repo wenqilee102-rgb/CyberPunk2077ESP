@@ -1,0 +1,11 @@
+import class questMoveOnSplineAdditionalParams extends ISerializable
+{
+	var type : questMoveOnSplineType;
+	var simpleParams : questSimpleMoveOnSplineParams;
+	var animParams : questAnimMoveOnSplineParams;
+	var withCompanionParams : questWithCompanionMoveOnSplineParams;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class scnInterestingConversationsGroup extends ISerializable
+{
+	var condition : handle:questIBaseCondition;
+	var conversations : array:handle:scnInterestingConversationData;
+}
+
+import class abstract ISerializable
+{
+}

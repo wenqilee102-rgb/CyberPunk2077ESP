@@ -1,0 +1,24 @@
+import class audioShockwaveMetadata extends audioEmitterMetadata
+{
+	var explosionMetadataName : CName;
+	var thumpMetadataName : CName;
+	var electroshockMetadataName : CName;
+	var revealMetadataName : CName;
+}
+
+import class abstract audioEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

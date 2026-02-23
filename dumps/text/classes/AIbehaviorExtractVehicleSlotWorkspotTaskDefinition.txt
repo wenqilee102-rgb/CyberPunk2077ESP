@@ -1,0 +1,13 @@
+import class AIbehaviorExtractVehicleSlotWorkspotTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var outWorkspotData : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

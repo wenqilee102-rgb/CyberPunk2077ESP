@@ -1,0 +1,90 @@
+import class gameJournalManager extends gameIJournalManager
+{
+	import function ChangeEntryState(uniquePath : String, className : String, state : gameJournalEntryState, notifyOption : gameJournalNotifyOption) : Bool; // ChangeEntryState
+	import function ChangeEntryStateByHash(hash : Uint32, state : gameJournalEntryState, notifyOption : gameJournalNotifyOption); // ChangeEntryStateByHash
+	import function DebugShowAllPoiMappins(); // DebugShowAllPoiMappins
+	import function GetBriefings(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetBriefings
+	import function GetChildren(parentEntry : whandle:gameJournalEntry, filter : gameJournalRequestStateFilter, out childEntries : array:whandle:gameJournalEntry); // GetChildren
+	import function GetCodexCategories(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetCodexCategories
+	import function GetContacts(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetContacts
+	import function GetConversations(contactEntry : whandle:gameJournalEntry, out conversations : array:whandle:gameJournalEntry); // GetConversations
+	import function GetDistanceToNearestMappin(entry : whandle:gameJournalQuestObjective, optional filter : gameJournalRequestStateFilter) : Float; // GetDistanceToNearestMappin
+	import function GetDistrict(entry : whandle:gameJournalEntry) : whandle:gamedataDistrict_Record; // GetDistrict
+	import function GetEntry(hash : Uint32) : whandle:gameJournalEntry; // GetEntry
+	import function GetEntryByString(uniquePath : String, className : String) : whandle:gameJournalEntry; // GetEntryByString
+	import function GetEntryHash(entry : whandle:gameJournalEntry) : Int32; // GetEntryHash
+	import function GetEntryState(entry : whandle:gameJournalEntry) : gameJournalEntryState; // GetEntryState
+	import function GetEntryTimestamp(entry : whandle:gameJournalEntry) : GameTime; // GetEntryTimestamp
+	import function GetFlattenedMessagesAndChoices(contactEntry : whandle:gameJournalEntry, out messages : array:whandle:gameJournalEntry, out choiceEntries : array:whandle:gameJournalEntry); // GetFlattenedMessagesAndChoices
+	import function GetInternetPages(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetInternetPages
+	import function GetInternetSites(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetInternetSites
+	import function GetIsObjectiveOptional(entry : whandle:gameJournalQuestObjectiveBase) : Bool; // GetIsObjectiveOptional
+	import function GetMainInternetPage(siteEntry : whandle:gameJournalInternetSite) : whandle:gameJournalInternetPage; // GetMainInternetPage
+	import function GetMessagesAndChoices(conversationEntry : whandle:gameJournalEntry, out messages : array:whandle:gameJournalEntry, out choiceEntries : array:whandle:gameJournalEntry); // GetMessagesAndChoices
+	import function GetMetaQuestData(metaQuestId : gamedataMetaQuest) : gameJournalMetaQuestScriptedData; // GetMetaQuestData
+	import function GetMetaQuests(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetMetaQuests
+	import function GetObjectiveCurrentCounter(entry : whandle:gameJournalQuestObjective) : Int32; // GetObjectiveCurrentCounter
+	import function GetObjectiveTotalCounter(entry : whandle:gameJournalQuestObjective) : Int32; // GetObjectiveTotalCounter
+	import function GetOnscreens(context : gameJournalRequestContext, out entries : array:handle:gameJournalOnscreensStructuredGroup, optional fallbackGroupName : CName); // GetOnscreens
+	import function GetParentEntry(childEntry : whandle:gameJournalEntry) : whandle:gameJournalEntry; // GetParentEntry
+	import function GetPointOfInterestMappinHashFromQuestHash(hash : Uint32) : Uint32; // GetPointOfInterestMappinHashFromQuestHash
+	import function GetQuestType(entry : whandle:gameJournalEntry) : gameJournalQuestType; // GetQuestType
+	import function GetQuests(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetQuests
+	import function GetRandomChildren(parentEntry : whandle:gameJournalEntry, filter : gameJournalRequestStateFilter, childCount : Int32, out childEntries : array:whandle:gameJournalEntry); // GetRandomChildren
+	import function GetRecommendedLevel(entry : whandle:gameJournalEntry) : Uint32; // GetRecommendedLevel
+	import function GetRecommendedLevelID(entry : whandle:gameJournalEntry) : TweakDBID; // GetRecommendedLevelID
+	import function GetTarots(context : gameJournalRequestContext, out entries : array:whandle:gameJournalEntry); // GetTarots
+	import function GetTrackedEntry() : whandle:gameJournalEntry; // GetTrackedEntry
+	import function HasAnyDelayedStateChanges() : Bool; // HasAnyDelayedStateChanges
+	import function IsEntryTracked(entry : whandle:gameJournalEntry) : Bool; // IsEntryTracked
+	import function IsEntryVisited(entry : whandle:gameJournalEntry) : Bool; // IsEntryVisited
+	import function IsEp1Entry(entry : whandle:gameJournalEntry) : Bool; // IsEp1Entry
+	import function RegisterScriptCallback(obj : handle:IScriptable, functionName : CName, type : gameJournalListenerType); // RegisterScriptCallback
+	import function SetEntryVisited(entry : whandle:gameJournalEntry, value : Bool); // SetEntryVisited
+	import function TrackEntry(entry : whandle:gameJournalEntry); // TrackEntry
+	import function TrackPrevNextEntry(next : Bool); // TrackPrevNextEntry
+	import function TryGetWebsiteData(address : String, context : gameJournalRequestContext) : whandle:gameJournalInternetPage; // TryGetWebsiteData
+	import function UnregisterScriptCallback(obj : handle:IScriptable, functionName : CName); // UnregisterScriptCallback
+	import function UntrackEntry(); // UntrackEntry
+
+	event OnQuestEntryTracked(entry : whandle:gameJournalEntry) : Bool; // OnQuestEntryTracked
+	event OnQuestEntryUntracked(entry : whandle:gameJournalEntry) : Bool; // OnQuestEntryUntracked
+
+	function CreateScriptedQuestFromTemplate(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String, title : script_ref:String) : Bool; // CreateScriptedQuestFromTemplate;script_ref<String>script_ref<String>script_ref<String>
+	function DeleteScriptedQuest(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String) : Bool; // DeleteScriptedQuest;script_ref<String>script_ref<String>
+	function GetContactByMessage(msg : handle:gameJournalPhoneMessage) : whandle:gameJournalContact; // GetContactByMessage;JournalPhoneMessage
+	function GetContactDataArray(includeUnknown : Bool, includeNonCallable : Bool) : array:handle:IScriptable; // GetContactDataArray;BoolBool
+	function IsAttachedToAnyActiveQuest(hash : Int32) : Bool; // IsAttachedToAnyActiveQuest;Int32
+	function IsAttachedToTrackedObjective(hash : Int32) : Bool; // IsAttachedToTrackedObjective;Int32
+	function SetScriptedQuestEntryState(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String, templatePhaseAndObjectivePath : script_ref:String, state : gameJournalEntryState, notifyOption : gameJournalNotifyOption, track : Bool); // SetScriptedQuestEntryState;script_ref<String>script_ref<String>script_ref<String>gameJournalEntryStateJournalNotifyOptionBool
+	function SetScriptedQuestMappinData(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String, templatePhaseObjectiveAndMappinPath : script_ref:String, mappinData : script_ref:gamemappinsMappinData) : Bool; // SetScriptedQuestMappinData;script_ref<String>script_ref<String>script_ref<String>script_ref<MappinData>
+	function SetScriptedQuestMappinEntityID(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String, templatePhaseObjectiveAndMappinPath : script_ref:String, entityID : entEntityID) : Bool; // SetScriptedQuestMappinEntityID;script_ref<String>script_ref<String>script_ref<String>EntityID
+	function SetScriptedQuestMappinSlotName(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String, templatePhaseObjectiveAndMappinPath : script_ref:String, recordID : TweakDBID) : Bool; // SetScriptedQuestMappinSlotName;script_ref<String>script_ref<String>script_ref<String>TweakDBID
+	function SetScriptedQuestObjectiveDescription(templateQuestEntryId : script_ref:String, uniqueId : script_ref:String, templatePhaseAndObjectivePath : script_ref:String, description : script_ref:String) : Bool; // SetScriptedQuestObjectiveDescription;script_ref<String>script_ref<String>script_ref<String>script_ref<String>
+}
+
+import class abstract gameIJournalManager extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

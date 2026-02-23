@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"DrawBetweenEntitiesEvent","d":0,"e":[{"a":{"a":1},"b":"shouldDraw","c":128},{"a":{"b":"gameFxResource"},"b":"fxResource","c":128},{"a":{"a":1},"b":"revealMaster","c":128},{"a":{"a":1},"b":"revealSlave","c":128},{"a":{"b":"entEntityID"},"b":"masterEntity","c":128},{"a":{"b":"entEntityID"},"b":"slaveEntity","c":128}]}

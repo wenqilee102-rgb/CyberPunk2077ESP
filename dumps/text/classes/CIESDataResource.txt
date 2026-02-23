@@ -1,0 +1,13 @@
+import class CIESDataResource extends CResource
+{
+	var samples : [128]Uint16;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

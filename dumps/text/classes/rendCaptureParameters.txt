@@ -1,0 +1,19 @@
+import struct rendCaptureParameters
+{
+	var enable : Bool;
+	var mode : rendScreenshotMode;
+	var videoRecordingMode : Bool;
+	var audioRecordingMode : Bool;
+	var emmModes : array:EEnvManagerModifier;
+	var initialFrameNumber : Uint32;
+	var outputDirectoryIndex : Uint32;
+	var outputDirectoryName : String;
+	var outputDirectoryNameSuffix : String;
+	var recordingFPS : Uint32;
+	var customResolution : Point;
+	var resolutionMultiplier : rendResolutionMultiplier;
+	var outputPath : AbsolutePathSerializable;
+	var fovMultiplier : Float;
+	var captureContextType : rendCaptureContextType;
+	var saveFormat : ESaveFormat;
+}

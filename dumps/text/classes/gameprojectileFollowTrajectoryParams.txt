@@ -1,0 +1,26 @@
+import class gameprojectileFollowTrajectoryParams extends gameprojectileTrajectoryParams
+{
+	var startVel : Float;
+	var target : whandle:gameObject;
+	var targetComponent : whandle:entIPlacedComponent;
+	var accuracy : Float;
+	var targetOffset : Vector4;
+}
+
+import class abstract gameprojectileTrajectoryParams extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

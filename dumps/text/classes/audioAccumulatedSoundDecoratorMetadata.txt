@@ -1,0 +1,28 @@
+import class audioAccumulatedSoundDecoratorMetadata extends audioEmitterMetadata
+{
+	var accumulatedSounds : array:CName;
+	var inSpammingMode : Bool;
+	var fadeParam : CName;
+	var soundTimeout : Float;
+	var loopStart : CName;
+	var loopEnd : CName;
+	var spammingSound : CName;
+	var spammingSoundInterval : Float;
+}
+
+import class abstract audioEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

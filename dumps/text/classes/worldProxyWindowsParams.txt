@@ -1,0 +1,12 @@
+import struct worldProxyWindowsParams
+{
+	var windowsType : worldProxWindowsType;
+	var distance : Float;
+	var distanceAboveProxy : Float;
+	var boolean : Bool;
+	var removeSmallerThan : Float;
+	var distantWindowsEmissive : Float;
+	var distantWindowsSize : Float;
+	var distantWindowsSaturation : Float;
+	var distantWindowsTurnedOf : Float;
+}

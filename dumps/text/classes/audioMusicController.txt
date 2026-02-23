@@ -1,0 +1,7 @@
+import struct audioMusicController
+{
+	var playEvent : CName;
+	var stopEvent : CName;
+	var muteEvent : CName;
+	var unmuteEvent : CName;
+}

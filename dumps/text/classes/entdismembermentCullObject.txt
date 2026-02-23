@@ -1,0 +1,11 @@
+import struct entdismembermentCullObject
+{
+	var Plane : Plane;
+	var Plane1 : Plane;
+	var CapsulePointA : Vector3;
+	var CapsulePointB : Vector3;
+	var CapsuleRadius : Float;
+	var NearestAnimBoneName : CName;
+	var NearestAnimIndex : Int16;
+	var RagdollBodyIndex : Uint16;
+}

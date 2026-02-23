@@ -1,0 +1,5 @@
+enum PhoneScreenType
+{
+	Unread = 0,
+	Contacts = 1
+}

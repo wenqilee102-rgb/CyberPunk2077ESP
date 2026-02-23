@@ -1,0 +1,7 @@
+import struct workWorkspotFunctionalTestsDebuggingTool extends workDebuggingTool
+{
+}
+
+import struct abstract workDebuggingTool
+{
+}

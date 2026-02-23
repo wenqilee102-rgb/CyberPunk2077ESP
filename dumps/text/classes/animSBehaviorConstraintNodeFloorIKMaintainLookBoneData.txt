@@ -1,0 +1,5 @@
+import struct animSBehaviorConstraintNodeFloorIKMaintainLookBoneData
+{
+	var bone : CName;
+	var amountOfRotation : Float;
+}

@@ -1,0 +1,7 @@
+import struct CRenderLightVolumeCollector extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

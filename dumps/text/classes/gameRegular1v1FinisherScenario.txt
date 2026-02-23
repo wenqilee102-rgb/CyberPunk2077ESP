@@ -1,0 +1,21 @@
+import class gameRegular1v1FinisherScenario extends gameIFinisherScenario
+{
+	var attackerWorkspot : raRef:workWorkspotResource;
+	var targetWorkspot : raRef:workWorkspotResource;
+	var syncData : array:gameFinisherSyncData;
+	var targetPlaybackDelay : Float;
+	var targetBlendTime : Float;
+	var attackerPlaybackDelay : Float;
+	var attackerBlendTime : Float;
+	var pivotSettings : gameRegular1v1FinisherScenarioPivotSetting;
+	var attackerIsMaster : Bool;
+	var targetSlotNameToAttachAttackerWeaponLeft : CName;
+}
+
+import class abstract gameIFinisherScenario extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct audioAudioSceneSignalOverride
+{
+	var templateSignal : CName;
+	var signalOverride : CName;
+}

@@ -1,0 +1,26 @@
+import class animAnimNode_EyesLookAt extends animAnimNode_OnePoseInput
+{
+	var targetALink : animVectorLink;
+	var weightALink : animFloatLink;
+	var targetBLink : animVectorLink;
+	var weightBLink : animFloatLink;
+	var transitionWeightLink : animFloatLink;
+	var leftEye : animTransformIndex;
+	var rightEye : animTransformIndex;
+	var head : animTransformIndex;
+	var forwardDirection : animAxis;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

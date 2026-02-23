@@ -1,0 +1,10 @@
+import struct AIFSMStateDefinition
+{
+	var onUpdateTransition : AIFSMTransitionListDefinition;
+	var onCompleteTransition : AIFSMTransitionListDefinition;
+	var onSuccessTransition : AIFSMTransitionListDefinition;
+	var onFailureTransition : AIFSMTransitionListDefinition;
+	var onInterruptionTransition : AIFSMTransitionListDefinition;
+	var onEventTransitions : AIFSMTransitionListDefinition;
+	var childNode : handle:AICTreeNodeDefinition;
+}

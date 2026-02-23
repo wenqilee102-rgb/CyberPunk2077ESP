@@ -1,0 +1,25 @@
+import class animCAnimationBufferBitwiseCompressed extends animIAnimationBuffer
+{
+	var version : Uint32;
+	var bones : array:animSAnimationBufferBitwiseCompressedBoneTrack;
+	var tracks : array:animSAnimationBufferBitwiseCompressedData;
+	var data : array:Int8;
+	var fallbackData : array:Int8;
+	var deferredData : serializationDeferredDataBuffer;
+	var orientationCompressionMethod : SAnimationBufferOrientationCompressionMethod;
+	var duration : Float;
+	var numFrames : Uint32;
+	var dt : Float;
+	var streamingOption : SAnimationBufferStreamingOption;
+	var nonStreamableBones : Uint32;
+	var extraDataNames : array:CName;
+	var numExtraBones : Uint32;
+}
+
+import class abstract animIAnimationBuffer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,23 @@
+import class inkScriptStringMap extends IScriptable
+{
+	import function Clear(); // Clear
+	import function Get(key : String) : Uint64; // Get
+	import function Insert(key : String, value : Uint64); // Insert
+	import function KeyExist(key : String) : Bool; // KeyExist
+	import function Set(key : String, value : Uint64); // Set
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,52 @@
+class PassiveCoverSelectionConditions extends PassiveAutonomousCondition
+{
+	private   var statsChangedCbId : Uint32;
+	private   var ability : whandle:gamedataGameplayAbility_Record;
+	private   var statListener : handle:AIStatListener;
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function CalculateValue(context : AIbehaviorScriptExecutionContext) : Variant; // CalculateValue;ScriptExecutionContext
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+}
+
+class abstract PassiveAutonomousCondition extends AIbehaviorexpressionScript
+{
+}
+
+import class AIbehaviorexpressionScript extends AIbehaviorScriptBase
+{
+	import function MarkDirty(context : script_ref:AIbehaviorScriptExecutionContext); // MarkDirty
+
+	function OnBehaviorCallback(cbName : CName, context : AIbehaviorScriptExecutionContext) : Bool; // OnBehaviorCallback;CNameScriptExecutionContext
+}
+
+import class AIbehaviorScriptBase extends IScriptable
+{
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AIbehaviorScriptBase::GetAIComponent;ScriptExecutionContext
+	static function GetCombatTarget(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCombatTarget;ScriptExecutionContext
+	static function GetCompanion(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCompanion;ScriptExecutionContext
+	static function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // AIbehaviorScriptBase::GetGame;ScriptExecutionContext
+	static function GetHitReactionComponent(context : AIbehaviorScriptExecutionContext) : handle:HitReactionComponent; // AIbehaviorScriptBase::GetHitReactionComponent;ScriptExecutionContext
+	static function GetNPCPuppet(context : AIbehaviorScriptExecutionContext) : handle:NPCPuppet; // AIbehaviorScriptBase::GetNPCPuppet;ScriptExecutionContext
+	static function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // AIbehaviorScriptBase::GetPuppet;ScriptExecutionContext
+	static function GetStatPoolPercentage(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolPercentage;ScriptExecutionContextgamedataStatPoolType
+	static function GetStatPoolValue(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolValue;ScriptExecutionContextgamedataStatPoolType
+	static function GetUpperBodyState(context : AIbehaviorScriptExecutionContext) : gamedataNPCUpperBodyState; // AIbehaviorScriptBase::GetUpperBodyState;ScriptExecutionContext
+	static function RandomizeOffsetForUpdateInterval(interval : Float) : Float; // AIbehaviorScriptBase::RandomizeOffsetForUpdateInterval;Float
+
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

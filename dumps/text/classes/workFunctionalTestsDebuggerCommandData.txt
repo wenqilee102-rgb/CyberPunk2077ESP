@@ -1,0 +1,11 @@
+import struct workFunctionalTestsDebuggerCommandData extends workDebuggerCommandData
+{
+}
+
+import struct workDebuggerCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

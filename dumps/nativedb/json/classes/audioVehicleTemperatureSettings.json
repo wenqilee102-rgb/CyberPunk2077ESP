@@ -1,0 +1,1 @@
+{"b":"audioVehicleTemperatureSettings","d":8,"g":true,"e":[{"a":{"a":10},"b":"rpmThreshold","c":128},{"a":{"a":10},"b":"timeToActivateTemperature","c":128},{"a":{"a":10},"b":"cooldownTime","c":128}]}

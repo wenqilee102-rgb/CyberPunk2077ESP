@@ -1,0 +1,34 @@
+import class audioAcousticConstantsPreset extends audioAudioMetadata
+{
+	var dopplerFactor : Float;
+	var speedOfSound : Float;
+	var wideInteriorLimit : Float;
+	var enclosedCeilingDistance : Float;
+	var urbanNarrowDistance : Float;
+	var urbanStreetDistance : Float;
+	var exteriorWideAltitude : Float;
+	var elevatedOpenDistance : Float;
+	var ambExteriorCeilingMinDistance : Float;
+	var ambExteriorCeilingMaxDistance : Float;
+	var badlandsWideRelativeAltitude : Float;
+	var repositioningStandardZoomFactor : Float;
+	var repositioningScanningZoomFactor : Float;
+	var repositioningVoStandardZoomFactor : Float;
+	var repositioningVoScanningZoomFactor : Float;
+	var groupingExcludedVisualTags : array:CName;
+	var windowEventName : CName;
+	var maxWindowOffset : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

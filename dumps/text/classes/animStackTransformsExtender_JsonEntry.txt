@@ -1,0 +1,12 @@
+import struct animStackTransformsExtender_JsonEntry
+{
+	var name : CName;
+	var parentName : CName;
+	var referenceTransformLs : QsTransform;
+	var snapMethod : animStackTransformsExtender_SnapToBoneMethod;
+	var snapToReference : Bool;
+	var snapTargetBone : CName;
+	var offsetToReference : Bool;
+	var offsetSpaceBone : CName;
+	var offset : QsTransform;
+}

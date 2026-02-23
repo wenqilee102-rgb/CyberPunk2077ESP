@@ -1,0 +1,12 @@
+struct PerkAttributeHelper
+{
+	static function BaseStatToAttribute(statType : gamedataStatType) : TweakDBID; // PerkAttributeHelper::BaseStatToAttribute;gamedataStatType
+	static function BaseStatToPerkMenuAttribute(statType : gamedataStatType) : PerkMenuAttribute; // PerkAttributeHelper::BaseStatToPerkMenuAttribute;gamedataStatType
+	static function GetBottomConnectionState(attribute : PerkMenuAttribute) : CName; // PerkAttributeHelper::GetBottomConnectionState;PerkMenuAttribute
+	static function GetIconAtlasPart(attribute : PerkMenuAttribute) : CName; // PerkAttributeHelper::GetIconAtlasPart;PerkMenuAttribute
+	static function GetName(attribute : PerkMenuAttribute) : String; // PerkAttributeHelper::GetName;PerkMenuAttribute
+	static function GetShortNameLocKey(attribute : PerkMenuAttribute) : String; // PerkAttributeHelper::GetShortNameLocKey;PerkMenuAttribute
+	static function GetTopConnectionState(attribute : PerkMenuAttribute) : CName; // PerkAttributeHelper::GetTopConnectionState;PerkMenuAttribute
+	static function PerkMenuAttributeToAttributeDataType(perkMenuAttribute : PerkMenuAttribute) : gamedataAttributeDataType; // PerkAttributeHelper::PerkMenuAttributeToAttributeDataType;PerkMenuAttribute
+	static function PerkMenuAttributeToStat(perkMenuAttribute : PerkMenuAttribute) : gamedataStatType; // PerkAttributeHelper::PerkMenuAttributeToStat;PerkMenuAttribute
+}

@@ -1,0 +1,5 @@
+enum HubVendorMenuItems
+{
+	Trade = 0,
+	Cyberware = 1
+}

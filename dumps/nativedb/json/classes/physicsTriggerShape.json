@@ -1,0 +1,1 @@
+{"b":"physicsTriggerShape","d":8,"g":true,"e":[{"a":{"b":"physicsShapeType"},"b":"shapeType","c":128},{"a":{"b":"Vector3"},"b":"shapeSize","c":128},{"a":{"b":"Transform"},"b":"shapeLocalPose","c":128}]}

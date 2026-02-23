@@ -1,0 +1,5 @@
+import struct physicsRagdollBodyNames
+{
+	var ParentAnimName : CName;
+	var ChildAnimName : CName;
+}

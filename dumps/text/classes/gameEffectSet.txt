@@ -1,0 +1,13 @@
+import class gameEffectSet extends CResource
+{
+	var effects : array:gameEffectDefinition;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

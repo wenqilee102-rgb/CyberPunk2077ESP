@@ -1,0 +1,42 @@
+import class userSettingsVar extends IScriptable
+{
+	import function GetDescription() : CName; // GetDescription
+	import function GetDisplayName() : CName; // GetDisplayName
+	import function GetDisplayNameKey(index : Int32) : CName; // GetDisplayNameKey
+	import function GetDisplayNameKeysSize() : Int32; // GetDisplayNameKeysSize
+	import function GetGroup() : handle:userSettingsGroup; // GetGroup
+	import function GetGroupPath() : CName; // GetGroupPath
+	import function GetName() : CName; // GetName
+	import function GetOrder() : Int32; // GetOrder
+	import function GetType() : InGameConfigVarType; // GetType
+	import function GetUpdatePolicy() : InGameConfigVarUpdatePolicy; // GetUpdatePolicy
+	import function GetWarning() : CName; // GetWarning
+	import function HasRequestedValue() : Bool; // HasRequestedValue
+	import function IsDisabled() : Bool; // IsDisabled
+	import function IsDynamic() : Bool; // IsDynamic
+	import function IsDynamicInitialized() : Bool; // IsDynamicInitialized
+	import function IsInGame() : Bool; // IsInGame
+	import function IsInPreGame() : Bool; // IsInPreGame
+	import function IsPlatformSpecific() : Bool; // IsPlatformSpecific
+	import function IsSubOption() : Bool; // IsSubOption
+	import function IsVisible() : Bool; // IsVisible
+	import function ListHasDisplayValues() : Bool; // ListHasDisplayValues
+	import function RestoreDefault() : Bool; // RestoreDefault
+	import function SetEnabled(isEnabled : Bool); // SetEnabled
+	import function SetVisible(isVisible : Bool); // SetVisible
+	import function WasModifiedSinceLastSave() : Bool; // WasModifiedSinceLastSave
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

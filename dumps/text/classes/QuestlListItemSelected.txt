@@ -1,0 +1,25 @@
+class QuestlListItemSelected extends redEvent
+{
+	public    var questData : whandle:gameJournalQuest;
+	public    var skipAnimation : Bool;
+	public    var hash : Int32;
+	public    var selectionIndex : Uint32;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

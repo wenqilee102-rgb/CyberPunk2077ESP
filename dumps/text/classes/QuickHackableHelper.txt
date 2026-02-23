@@ -1,0 +1,28 @@
+class QuickHackableHelper extends IScriptable
+{
+	static function CanActivateOverclockedState(player : handle:gameObject) : Bool; // QuickHackableHelper::CanActivateOverclockedState;GameObject
+	static function CanPayWithHealthInOverclockedState(player : handle:gameObject, memoryCost : Int32, out healthReduction : Float) : Bool; // QuickHackableHelper::CanPayWithHealthInOverclockedState;GameObjectInt32Float
+	static function GetICELevel(gameObject : handle:gameObject) : Float; // QuickHackableHelper::GetICELevel;GameObject
+	static function GetOverclockedStateTweakDBID() : TweakDBID; // QuickHackableHelper::GetOverclockedStateTweakDBID;
+	static function IsOverclockedStateActive(player : handle:gameObject) : Bool; // QuickHackableHelper::IsOverclockedStateActive;GameObject
+	static function PayWithHealthInOverclockedState(player : handle:gameObject, memoryCost : Int32) : Bool; // QuickHackableHelper::PayWithHealthInOverclockedState;GameObjectInt32
+	static function ShouldShowRevealInfo(playerRef : handle:PlayerPuppet, awarenessCost : Float) : Bool; // QuickHackableHelper::ShouldShowRevealInfo;PlayerPuppetFloat
+	static function ShouldShowRevealInfoWithTarget(playerRef : handle:PlayerPuppet, target : handle:ScriptedPuppet, awarenessCost : Float) : Bool; // QuickHackableHelper::ShouldShowRevealInfoWithTarget;PlayerPuppetScriptedPuppetFloat
+	static function TranslateActionsIntoQuickSlotCommands(actions : array:handle:gamedeviceAction, commands : script_ref:array:handle:QuickhackData, gameObject : handle:gameObject, scriptableComponentPS : handle:ScriptableDeviceComponentPS); // QuickHackableHelper::TranslateActionsIntoQuickSlotCommands;array<DeviceAction>script_ref<array<QuickhackData>>GameObjectScriptableDeviceComponentPS
+	static function TryToCycleOverclockedState(player : handle:gameObject) : Bool; // QuickHackableHelper::TryToCycleOverclockedState;GameObject
+	static function WillHackRevealPlayer(playerRef : handle:PlayerPuppet, targetRecordId : TweakDBID, action : handle:ScriptableDeviceAction, optional programItemID : gameItemID) : Bool; // QuickHackableHelper::WillHackRevealPlayer;PlayerPuppetTweakDBIDScriptableDeviceActionItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

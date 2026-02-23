@@ -1,0 +1,4 @@
+import struct scnFindNetworkPlayerParams
+{
+	var networkId : Uint32;
+}

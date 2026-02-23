@@ -1,0 +1,12 @@
+import struct animImportFacialInitialPoseEntryDesc
+{
+	var poseName : CName;
+	var id : Int16;
+	var weight : Float;
+	var type : Uint8;
+	var side : Uint8;
+	var isCachable : Bool;
+	var initAnimationPoseMid : Float;
+	var initAnimationPoseMin : Float;
+	var initAnimationPoseMax : Float;
+}

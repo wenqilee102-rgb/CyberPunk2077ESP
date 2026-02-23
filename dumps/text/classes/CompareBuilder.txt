@@ -1,0 +1,37 @@
+class CompareBuilder extends IScriptable
+{
+	private   var FLOAT_EQUAL_EPSILON : Float;
+	private   var value : Int32;
+
+	static function Make() : handle:CompareBuilder; // CompareBuilder::Make;
+
+	function BoolFalse(a : Bool, b : Bool) : handle:CompareBuilder; // BoolFalse;BoolBool
+	function BoolTrue(a : Bool, b : Bool) : handle:CompareBuilder; // BoolTrue;BoolBool
+	function FloatAsc(a : Float, b : Float) : handle:CompareBuilder; // FloatAsc;FloatFloat
+	function FloatDesc(a : Float, b : Float) : handle:CompareBuilder; // FloatDesc;FloatFloat
+	function GameTimeAsc(a : GameTime, b : GameTime) : handle:CompareBuilder; // GameTimeAsc;GameTimeGameTime
+	function GameTimeDesc(a : GameTime, b : GameTime) : handle:CompareBuilder; // GameTimeDesc;GameTimeGameTime
+	function Get() : Int32; // Get;
+	function GetBool() : Bool; // GetBool;
+	function IntAsc(a : Int32, b : Int32) : handle:CompareBuilder; // IntAsc;Int32Int32
+	function IntDesc(a : Int32, b : Int32) : handle:CompareBuilder; // IntDesc;Int32Int32
+	function Reset(); // Reset;
+	function StringAsc(a : script_ref:String, b : script_ref:String) : handle:CompareBuilder; // StringAsc;script_ref<String>script_ref<String>
+	function StringDesc(a : script_ref:String, b : script_ref:String) : handle:CompareBuilder; // StringDesc;script_ref<String>script_ref<String>
+	function UnicodeStringAsc(a : script_ref:String, b : script_ref:String) : handle:CompareBuilder; // UnicodeStringAsc;script_ref<String>script_ref<String>
+	function UnicodeStringDesc(a : script_ref:String, b : script_ref:String) : handle:CompareBuilder; // UnicodeStringDesc;script_ref<String>script_ref<String>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamedataStatModifier_Record","b":"gamedataCombinedStatModifier_Record","c":"CombinedStatModifier_Record","d":24,"f":[{"a":"OpSymbol","c":{"a":14},"d":4},{"a":"RefObject","c":{"a":14},"d":4},{"a":"RefStat","c":{"a":27,"c":{"b":"gamedataStat_Record"}},"d":4},{"a":"RefStatHandle","c":{"a":26,"c":{"b":"gamedataStat_Record"}},"d":4},{"a":"Value","c":{"a":10},"d":4}]}

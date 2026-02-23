@@ -1,0 +1,8 @@
+import class abstract gameEffectVectorEvaluator extends ISerializable
+{
+	var modifier : Float;
+}
+
+import class abstract ISerializable
+{
+}

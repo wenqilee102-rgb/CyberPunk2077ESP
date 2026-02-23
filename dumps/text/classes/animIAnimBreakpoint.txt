@@ -1,0 +1,4 @@
+import struct abstract animIAnimBreakpoint
+{
+	var enabled : Bool;
+}

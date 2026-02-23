@@ -1,0 +1,12 @@
+import class scnOverrideReturnConditions_Operation extends scnIInterruptManager_Operation
+{
+	var returnConditions : array:handle:scnIReturnCondition;
+}
+
+import class abstract scnIInterruptManager_Operation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

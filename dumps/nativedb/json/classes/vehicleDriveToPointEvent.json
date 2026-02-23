@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"vehicleDriveToPointEvent","d":8,"e":[{"a":{"b":"Vector3"},"b":"targetPos","c":128},{"a":{"a":1},"b":"useTraffic","c":128},{"a":{"a":10},"b":"speedInTraffic","c":128}]}

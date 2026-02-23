@@ -1,0 +1,12 @@
+struct VehicleVisualCustomizationTemplate
+{
+	public    var hasUniqueTemplate : Bool;
+	public    var genericData : GenericTemplatePersistentData;
+	public    var uniqueData : UniqueTemplateData;
+
+	static function Equals(templateA : VehicleVisualCustomizationTemplate, templateB : VehicleVisualCustomizationTemplate) : Bool; // VehicleVisualCustomizationTemplate::Equals;VehicleVisualCustomizationTemplateVehicleVisualCustomizationTemplate
+	static function FromRecord(templateRecord : handle:gamedataVehicleColorTemplate_Record, twintoneModelName : CName) : VehicleVisualCustomizationTemplate; // VehicleVisualCustomizationTemplate::FromRecord;VehicleColorTemplate_RecordCName
+	static function GetType(template : VehicleVisualCustomizationTemplate) : VehicleVisualCustomizationType; // VehicleVisualCustomizationTemplate::GetType;VehicleVisualCustomizationTemplate
+	static function IsLightsOnly(template : VehicleVisualCustomizationTemplate) : Bool; // VehicleVisualCustomizationTemplate::IsLightsOnly;VehicleVisualCustomizationTemplate
+	static function IsValid(template : VehicleVisualCustomizationTemplate) : Bool; // VehicleVisualCustomizationTemplate::IsValid;VehicleVisualCustomizationTemplate
+}

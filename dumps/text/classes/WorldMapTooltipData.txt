@@ -1,0 +1,13 @@
+struct WorldMapTooltipData
+{
+	public    var controller : whandle:gameuiBaseWorldMapMappinController;
+	public    var mappin : whandle:gamemappinsIMappin;
+	public    var journalEntry : whandle:gameJournalEntry;
+	public    var fastTravelEnabled : Bool;
+	public    var delamainTaxiEnabled : Bool;
+	public    var travelCost : Int32;
+	public    var playerMoney : Int32;
+	public    var readJournal : Bool;
+	public    var moreInfo : Bool;
+	public    var isCollection : Bool;
+}

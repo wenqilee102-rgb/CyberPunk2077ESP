@@ -1,0 +1,7 @@
+import struct gameMuppetInputActionJump extends gameIMuppetInputAction
+{
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

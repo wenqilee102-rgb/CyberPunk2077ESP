@@ -1,0 +1,15 @@
+import class RTXDIAreaSettings extends IAreaSettings
+{
+	var diffuseSkyScale : Float;
+	var specularSkyScale : Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

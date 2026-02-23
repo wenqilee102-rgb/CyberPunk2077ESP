@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"UIVendorItemsBoughtEvent","d":0,"e":[{"a":{"a":6},"b":"requestID","c":128},{"a":{"a":31,"c":{"b":"gameItemID"}},"b":"itemsID","c":128},{"a":{"a":31,"c":{"a":6}},"b":"quantity","c":128}]}

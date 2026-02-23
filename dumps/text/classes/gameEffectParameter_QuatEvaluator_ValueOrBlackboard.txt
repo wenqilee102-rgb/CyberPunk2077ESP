@@ -1,0 +1,13 @@
+import class gameEffectParameter_QuatEvaluator_ValueOrBlackboard extends gameIEffectParameter_QuatEvaluator
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+	var value : Quaternion;
+}
+
+import class abstract gameIEffectParameter_QuatEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

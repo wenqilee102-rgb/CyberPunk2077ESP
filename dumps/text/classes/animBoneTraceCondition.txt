@@ -1,0 +1,12 @@
+import class animBoneTraceCondition extends ISerializable
+{
+	var boneIndex : Int16;
+	var traceByRotation : Bool;
+	var rotationAngleTolerance : Float;
+	var traceByTranslation : Bool;
+	var translationTolerance : Float;
+}
+
+import class abstract ISerializable
+{
+}

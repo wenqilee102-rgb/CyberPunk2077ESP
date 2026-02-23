@@ -1,0 +1,1 @@
+{"a":"IAreaSettings","b":"ChromaticAberrationAreaSettings","d":8,"e":[{"a":{"a":1},"b":"chromaticAberrationEnabled","c":128},{"a":{"a":10},"b":"chromaticAberrationMargin","c":128},{"a":{"b":"Vector2"},"b":"chromaticAberrationSize","c":128},{"a":{"a":10},"b":"chromaticAberrationExp","c":128},{"a":{"a":10},"b":"subpixelDispersal","c":128}]}

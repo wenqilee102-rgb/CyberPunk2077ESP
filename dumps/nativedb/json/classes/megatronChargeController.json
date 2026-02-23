@@ -1,0 +1,1 @@
+{"a":"ChargeLogicController","b":"megatronChargeController","d":0,"e":[{"a":{"a":27,"c":{"b":"inkImageWidget"}},"b":"chargeBar","c":129}],"f":[{"a":"OnInitialize","c":{"a":1},"d":98},{"a":"OnChargeChanged;Float","b":"OnChargeChanged","d":32,"e":[{"a":{"a":10},"b":"value","c":0}]}]}

@@ -1,0 +1,12 @@
+import class scnCheckSpeakersDistanceReturnCondition extends scnIReturnCondition
+{
+	var params : scnCheckSpeakersDistanceReturnConditionParams;
+}
+
+import class abstract scnIReturnCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

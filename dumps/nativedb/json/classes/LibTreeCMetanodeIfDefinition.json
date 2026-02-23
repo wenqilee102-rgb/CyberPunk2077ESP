@@ -1,0 +1,1 @@
+{"a":"LibTreeCMetanodeDefinition","b":"LibTreeCMetanodeIfDefinition","d":8,"e":[{"a":{"b":"LibTreeDefBool"},"b":"ifCondition","c":128},{"a":{"a":26,"c":{"b":"LibTreeINodeDefinition"}},"b":"ifBranch","c":128},{"a":{"a":26,"c":{"b":"LibTreeINodeDefinition"}},"b":"elseBranch","c":128}]}

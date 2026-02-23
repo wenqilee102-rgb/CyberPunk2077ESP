@@ -1,0 +1,5 @@
+import struct animBoneCorrection
+{
+	var boneName : CName;
+	var additiveCorrection : Quaternion;
+}

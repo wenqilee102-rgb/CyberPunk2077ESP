@@ -1,0 +1,117 @@
+import class gamemappinsStealthMappin extends gamemappinsRuntimeMappin
+{
+	import function CanSeePlayer() : Bool; // CanSeePlayer
+	import function DetectionProgressDecreases() : Bool; // DetectionProgressDecreases
+	import function DetectionProgressIncreases() : Bool; // DetectionProgressIncreases
+	import function GetArchetype() : gamedataArchetypeType; // GetArchetype
+	import function GetAttitudeTowardsPlayer() : EAIAttitude; // GetAttitudeTowardsPlayer
+	import function GetDetectionProgress() : Float; // GetDetectionProgress
+	import function GetGameObject() : whandle:gameObject; // GetGameObject
+	import function GetHighLevelState() : gamedataNPCHighLevelState; // GetHighLevelState
+	import function GetHighestLootQuality() : Uint32; // GetHighestLootQuality
+	import function GetIsDetectionGrowing() : Bool; // GetIsDetectionGrowing
+	import function GetNPCLevel() : Uint32; // GetNPCLevel
+	import function GetNameplateEnabled() : Bool; // GetNameplateEnabled
+	import function GetNumberOfCombatants() : Uint32; // GetNumberOfCombatants
+	import function GetNumberOfShotAttempts() : Uint32; // GetNumberOfShotAttempts
+	import function GetObjectMarkersEnabled() : Bool; // GetObjectMarkersEnabled
+	import function GetPrevDetectionProgress(); // GetPrevDetectionProgress
+	import function GetPrevThreatAccuracy(); // GetPrevThreatAccuracy
+	import function GetRarity() : gamedataNPCRarity; // GetRarity
+	import function GetReprimandAnimationState() : gameReprimandMappinAnimationState; // GetReprimandAnimationState
+	import function GetSenseCone() : gamemappinsSenseCone; // GetSenseCone
+	import function GetSkipIntroAnim() : Bool; // GetSkipIntroAnim
+	import function GetStatusEffectCurrentPriority() : Float; // GetStatusEffectCurrentPriority
+	import function GetStatusEffectIconPath() : String; // GetStatusEffectIconPath
+	import function GetStatusEffectTimeRemaining() : Float; // GetStatusEffectTimeRemaining
+	import function GetStealthAwarenessState() : gameEnemyStealthAwarenessState; // GetStealthAwarenessState
+	import function GetThreatAccuracy() : Float; // GetThreatAccuracy
+	import function HasBeenSeen() : Bool; // HasBeenSeen
+	import function HasHackingStatusEffect() : Bool; // HasHackingStatusEffect
+	import function HasItems() : Bool; // HasItems
+	import function HasLootProcessed() : Bool; // HasLootProcessed
+	import function HideUIDetection() : Bool; // HideUIDetection
+	import function IsAggressive() : Bool; // IsAggressive
+	import function IsAlive() : Bool; // IsAlive
+	import function IsCombatNPC() : Bool; // IsCombatNPC
+	import function IsCrowdNPC() : Bool; // IsCrowdNPC
+	import function IsDevice() : Bool; // IsDevice
+	import function IsFriendlyFromHack() : Bool; // IsFriendlyFromHack
+	import function IsHiddenByQuestIn3D() : Bool; // IsHiddenByQuestIn3D
+	import function IsHiddenByQuestOnMinimap() : Bool; // IsHiddenByQuestOnMinimap
+	import function IsHighlighted() : Bool; // IsHighlighted
+	import function IsInCombat() : Bool; // IsInCombat
+	import function IsNetrunner() : Bool; // IsNetrunner
+	import function IsPlayerInHostileZone() : Bool; // IsPlayerInHostileZone
+	import function IsPlayerInterestingFromSecuritySystemPOV() : Bool; // IsPlayerInterestingFromSecuritySystemPOV
+	import function IsPlayerWanted() : Bool; // IsPlayerWanted
+	import function IsPrevention() : Bool; // IsPrevention
+	import function IsScanned() : Bool; // IsScanned
+	import function IsSquadInCombat() : Bool; // IsSquadInCombat
+	import function IsTagged() : Bool; // IsTagged
+	import function IsTarget() : Bool; // IsTarget
+	import function IsUsingSenseCone() : Bool; // IsUsingSenseCone
+	import function SetIsPulsing(isPulsing : Bool); // SetIsPulsing
+	import function SetStealthAwarenessState(state : gameEnemyStealthAwarenessState); // SetStealthAwarenessState
+	import function SetVisibleIn3D(isVisible : Bool); // SetVisibleIn3D
+	import function SetVisibleOnMinimap(isVisible : Bool); // SetVisibleOnMinimap
+	import function ThreatAccuracyDecreases() : Bool; // ThreatAccuracyDecreases
+	import function ThreatAccuracyIncreases() : Bool; // ThreatAccuracyIncreases
+	import function UnregisterMappin(); // UnregisterMappin
+	import function UpdateCombatToAwareThreshold(threshold : Float); // UpdateCombatToAwareThreshold
+	import function UpdateCombatantState(isCombatant : Bool); // UpdateCombatantState
+	import function UpdateObjectMarkerThreshold(threshold : Float); // UpdateObjectMarkerThreshold
+	import function UpdateObjectMarkerVisibility(canHaveObjectMarker : Bool, isVisible : Bool); // UpdateObjectMarkerVisibility
+	import function UpdateSenseCone(); // UpdateSenseCone
+	import function UpdateSenseConeAvailable(available : Bool); // UpdateSenseConeAvailable
+	import function WasDetectionAboveZero() : Bool; // WasDetectionAboveZero
+	import function WillReprimand() : Bool; // WillReprimand
+}
+
+import class gamemappinsRuntimeMappin extends gamemappinsIMappin
+{
+	import function EnableVisibilityThroughWalls(visible : Bool); // EnableVisibilityThroughWalls
+	import function GetOwnerObjectMarkerPossibility() : Bool; // GetOwnerObjectMarkerPossibility
+}
+
+import class abstract gamemappinsIMappin extends gamemappinsIVisualObject
+{
+	import function GetDisplayName() : String; // GetDisplayName
+	import function GetDistanceToPlayer() : Float; // GetDistanceToPlayer
+	import function GetEntityID() : entEntityID; // GetEntityID
+	import function GetNewMappinID() : gameNewMappinID; // GetNewMappinID
+	import function GetPhase() : gamedataMappinPhase; // GetPhase
+	import function GetScriptData() : whandle:gamemappinsMappinScriptData; // GetScriptData
+	import function GetVariant() : gamedataMappinVariant; // GetVariant
+	import function GetVerticalRelationToPlayer() : gamemappinsVerticalPositioning; // GetVerticalRelationToPlayer
+	import function GetWorldPosition() : Vector4; // GetWorldPosition
+	import function IsActive() : Bool; // IsActive
+	import function IsPlayerTracked() : Bool; // IsPlayerTracked
+	import function IsQuestAreaMappin() : Bool; // IsQuestAreaMappin
+	import function IsQuestEntityMappin() : Bool; // IsQuestEntityMappin
+	import function IsQuestImportant() : Bool; // IsQuestImportant
+	import function IsQuestMappin() : Bool; // IsQuestMappin
+	import function IsQuestNPCMappin() : Bool; // IsQuestNPCMappin
+	import function IsQuestPath() : Bool; // IsQuestPath
+	import function IsStatic() : Bool; // IsStatic
+	import function IsVisible() : Bool; // IsVisible
+	import function IsVisited() : Bool; // IsVisited
+}
+
+import class abstract gamemappinsIVisualObject extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

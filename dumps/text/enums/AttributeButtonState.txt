@@ -1,0 +1,5 @@
+enum AttributeButtonState
+{
+	Default = 0,
+	Hover = 1
+}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"gameTrafficWorkspotTransitionData","d":8,"e":[{"a":{"a":26,"c":{"b":"gameSetupWorkspotActionEvent"}},"b":"workspotData","c":128},{"a":{"a":26,"c":{"b":"worldTrafficGlobalPathPosition"}},"b":"returnPosition","c":128},{"a":{"b":"Vector3"},"b":"workspotExitTangent","c":128},{"a":{"b":"Vector3"},"b":"trafficLaneReturnTangent","c":128}]}

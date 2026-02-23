@@ -1,0 +1,14 @@
+import class AIbehaviorConvertCommandToDynamicWorkspotTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var command : handle:AIArgumentMapping;
+	var outWorkspotData : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

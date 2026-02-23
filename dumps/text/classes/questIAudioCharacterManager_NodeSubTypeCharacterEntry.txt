@@ -1,0 +1,6 @@
+import struct questIAudioCharacterManager_NodeSubTypeCharacterEntry
+{
+	var puppetRef : gameEntityReference;
+	var isPlayer : Bool;
+	var enableSubSystem : Bool;
+}

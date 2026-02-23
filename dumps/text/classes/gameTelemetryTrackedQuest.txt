@@ -1,0 +1,9 @@
+import struct gameTelemetryTrackedQuest
+{
+	var name : String;
+	var objectiveName : String;
+	var type : String;
+	var distance : Float;
+	var questName : String;
+	var questType : String;
+}

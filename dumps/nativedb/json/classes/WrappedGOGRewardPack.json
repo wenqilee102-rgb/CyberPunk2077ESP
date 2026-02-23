@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"WrappedGOGRewardPack","d":0,"e":[{"a":{"a":9},"b":"index","c":128},{"a":{"b":"gameRewardPack"},"b":"data","c":128}],"f":[{"a":"WrappedGOGRewardPack::Make;Uint64script_ref<GOGRewardPack>","b":"Make","c":{"a":26,"c":{"b":"WrappedGOGRewardPack"}},"d":56,"e":[{"a":{"a":9},"b":"index","c":0},{"a":{"a":28,"c":{"b":"gameRewardPack"}},"b":"data","c":0}]}]}

@@ -1,0 +1,11 @@
+import class CRenderTextureMaterial extends IDynamicTextureGenerator
+{
+}
+
+import class abstract IDynamicTextureGenerator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

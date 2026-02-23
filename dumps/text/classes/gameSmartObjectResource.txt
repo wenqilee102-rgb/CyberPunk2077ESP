@@ -1,0 +1,17 @@
+import class gameSmartObjectResource extends CResource
+{
+	var entryPoints : array:gameSmartObjectGate;
+	var exitPoints : array:gameSmartObjectGate;
+	var bodyTypes : array:gameBodyTypeAnimationDefinition;
+	var loopAnimations : array:gameSmartObjectGate;
+	var type : gameSmartObjectType;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

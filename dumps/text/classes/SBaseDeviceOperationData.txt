@@ -1,0 +1,24 @@
+struct SBaseDeviceOperationData
+{
+	public    var delay : Float;
+	public    var resetDelay : Bool;
+	public    var executeOnce : Bool;
+	public    var isEnabled : Bool;
+	public    var transformAnimations : array:STransformAnimationData;
+	public    var VFXs : array:SVFXOperationData;
+	public    var SFXs : array:SSFXOperationData;
+	public    var facts : array:SFactOperationData;
+	public    var components : array:SComponentOperationData;
+	public    var stims : array:SStimOperationData;
+	public    var statusEffects : array:SStatusEffectOperationData;
+	public    var damages : array:SDamageOperationData;
+	public    var items : array:SInventoryOperationData;
+	public    var teleport : STeleportOperationData;
+	public    var meshesAppearence : CName;
+	public    var playerWorkspot : SWorkspotData;
+	public    var disableDevice : Bool;
+	public    var toggleOperations : array:SToggleOperationData;
+	public    var id : Int32;
+	public    var delayID : gameDelayID;
+	public    var isDelayActive : Bool;
+}

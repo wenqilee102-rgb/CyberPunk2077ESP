@@ -1,0 +1,18 @@
+import class CGIDataResource extends resStreamedResource
+{
+	var data : serializationDeferredDataBuffer;
+	var sectorHash : Uint64;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

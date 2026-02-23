@@ -1,0 +1,31 @@
+class VehiclePreventionHackState extends IScriptable
+{
+	public    var vehicle : whandle:vehicleBaseObject;
+	public    var vehicleID : entEntityID;
+	public    var progressBarProgressSoFar : Float;
+	public    var progressBarProgressStart : Float;
+	public    var hacked : Bool;
+	public    var hackInProgress : Bool;
+	public    var stoppedVehicle : Bool;
+	public    var progressBar : whandle:UploadFromNPCToPlayerListener;
+	public    var appliedHackSpeed : EAppliedTriangulationHackSpeed;
+
+	function GetAppliedHackSpeedHack() : TweakDBID; // GetAppliedHackSpeedHack;
+	function GetTimeToHack(instance : ScriptGameInstance) : Float; // GetTimeToHack;GameInstance
+	function HasAppliedHackSpeed() : Bool; // HasAppliedHackSpeed;
+	function IncrementHackSpeed(); // IncrementHackSpeed;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

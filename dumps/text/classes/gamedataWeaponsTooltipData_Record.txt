@@ -1,0 +1,32 @@
+import class gamedataWeaponsTooltipData_Record extends gamedataTweakDBRecord
+{
+	import function GetMaxStatsValueCount() : Int32; // GetMaxStatsValueCount
+	import function GetMaxStatsValueItem(index : Int32) : Float; // GetMaxStatsValueItem
+	import function GetStatsToCompareCount() : Int32; // GetStatsToCompareCount
+	import function GetStatsToCompareItem(index : Int32) : whandle:gamedataStat_Record; // GetStatsToCompareItem
+	import function GetStatsToCompareItemHandle(index : Int32) : handle:gamedataStat_Record; // GetStatsToCompareItemHandle
+	import function MaxStatsValue() : array:Float; // MaxStatsValue
+	import function MaxStatsValueContains(item : Float) : Bool; // MaxStatsValueContains
+	import function StatsToCompare(out outList : array:whandle:gamedataStat_Record); // StatsToCompare
+	import function StatsToCompareContains(item : whandle:gamedataStat_Record) : Bool; // StatsToCompareContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

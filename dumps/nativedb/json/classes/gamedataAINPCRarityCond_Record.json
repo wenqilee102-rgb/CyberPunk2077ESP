@@ -1,0 +1,1 @@
+{"a":"gamedataAIActionSubCondition_Record","b":"gamedataAINPCRarityCond_Record","c":"AINPCRarityCond_Record","d":24,"f":[{"a":"Rarity","c":{"a":12},"d":4},{"a":"Target","c":{"a":27,"c":{"b":"gamedataAIActionTarget_Record"}},"d":4},{"a":"TargetHandle","c":{"a":26,"c":{"b":"gamedataAIActionTarget_Record"}},"d":4}]}

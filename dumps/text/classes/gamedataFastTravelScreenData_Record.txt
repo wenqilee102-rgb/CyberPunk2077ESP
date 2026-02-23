@@ -1,0 +1,32 @@
+import class gamedataFastTravelScreenData_Record extends gamedataTweakDBRecord
+{
+	import function District() : whandle:gamedataDistrict_Record; // District
+	import function DistrictHandle() : handle:gamedataDistrict_Record; // DistrictHandle
+	import function ExtendingResourcePath() : redResourceReferenceScriptToken; // ExtendingResourcePath
+	import function IsBase() : Bool; // IsBase
+	import function ResourcePath() : redResourceReferenceScriptToken; // ResourcePath
+	import function Time() : whandle:gamedataTime_Record; // Time
+	import function TimeHandle() : handle:gamedataTime_Record; // TimeHandle
+	import function Weather() : whandle:gamedataWeather_Record; // Weather
+	import function WeatherHandle() : handle:gamedataWeather_Record; // WeatherHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class gameHitRepresentationResource extends CResource
+{
+	var representations : array:gameHitShapeContainer;
+	var overrides : array:gameHitRepresentationVisualTaggedOverride;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

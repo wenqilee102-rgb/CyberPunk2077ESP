@@ -1,0 +1,24 @@
+import class worldGIShapeNode extends worldGeometryShapeNode
+{
+	var priority : Uint32;
+	var group : rendGIGroup;
+	var interior : Bool;
+	var runtime : Bool;
+	var updated : Bool;
+}
+
+import class worldGeometryShapeNode extends worldNode
+{
+	var color : Color;
+	var shape : handle:GeometryShape;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

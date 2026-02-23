@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"PlayerCoverHelper","d":0,"f":[{"a":"PlayerCoverHelper::BlockCoverVisibilityReduction;GameObject","b":"BlockCoverVisibilityReduction","d":56,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"owner","c":0}]},{"a":"PlayerCoverHelper::GetBlockCoverStatusEffectID;","b":"GetBlockCoverStatusEffectID","c":{"a":15},"d":56}]}

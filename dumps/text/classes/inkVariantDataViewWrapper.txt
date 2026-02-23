@@ -1,0 +1,39 @@
+import class inkVariantDataViewWrapper extends inkBaseVariantDataSource
+{
+	import function DisableSorting(); // DisableSorting
+	import function EnableSorting(); // EnableSorting
+	import function Filter(); // Filter
+	import function IsSortingEnabled() : Bool; // IsSortingEnabled
+	import function SetSource(source : whandle:inkBaseVariantDataSource); // SetSource
+	import function Sort(); // Sort
+
+	function FilterItem(data : Variant) : Bool; // FilterItem;Variant
+	function SortItem(left : Variant, right : Variant) : Bool; // SortItem;VariantVariant
+}
+
+import class inkBaseVariantDataSource extends inkAbstractDataSourceWrapper
+{
+	import function GetItem(index : Uint32) : Variant; // GetItem
+	import function HasItem(data : Variant) : Bool; // HasItem
+}
+
+import class inkAbstractDataSourceWrapper extends IScriptable
+{
+	import function GetItemAsVariant(index : Uint32) : Variant; // GetItemAsVariant
+	import function HasItemAsVariant(data : Variant) : Bool; // HasItemAsVariant
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

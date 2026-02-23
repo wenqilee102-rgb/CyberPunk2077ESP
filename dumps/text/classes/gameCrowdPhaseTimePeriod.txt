@@ -1,0 +1,16 @@
+import struct gameCrowdPhaseTimePeriod extends communityTimePeriod
+{
+	var mergeMode : gameCrowdCreationDataMergeMode;
+	var density : Float;
+	var Density : CName;
+	var workspotsUsage : Float;
+	var charactersData : array:gameCrowdTemplateCharacterData;
+	var reducedCharactersData : array:gameCrowdTemplateCharacterData;
+	var crowdType : gameCrowdEntryType;
+	var useDensityPreset : Bool;
+}
+
+import struct communityTimePeriod
+{
+	var hour : communityECommunitySpawnTime;
+}

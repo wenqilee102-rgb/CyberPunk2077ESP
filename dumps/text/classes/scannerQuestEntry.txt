@@ -1,0 +1,6 @@
+struct scannerQuestEntry
+{
+	public    var categoryName : CName;
+	public    var entryName : CName;
+	public    var recordID : TweakDBID;
+}

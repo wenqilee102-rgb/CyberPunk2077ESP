@@ -1,0 +1,6 @@
+struct SInventoryOperationData
+{
+	public    var itemName : TweakDBID;
+	public    var quantity : Int32;
+	public    var operationType : EItemOperationType;
+}

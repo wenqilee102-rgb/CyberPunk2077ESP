@@ -1,0 +1,17 @@
+import class questWeather_ConditionType extends questISystemConditionType
+{
+	var weather : CName;
+	var inverted : Bool;
+}
+
+import class abstract questISystemConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

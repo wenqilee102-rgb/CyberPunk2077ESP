@@ -1,0 +1,45 @@
+class AICoverDataDef extends AIBlackboardDef
+{
+	public    var exposureMethod : gamebbScriptID_CName;
+	public    var fallbackExposureMethod : gamebbScriptID_CName;
+	public    var lastAvailableMethods : gamebbScriptID_Uint32;
+	public    var currentlyExposed : gamebbScriptID_Bool;
+	public    var commandExposureMethods : gamebbScriptID_Variant;
+	public    var commandCoverOverride : gamebbScriptID_Bool;
+	public    var currentCoverStance : gamebbScriptID_CName;
+	public    var desiredCoverStance : gamebbScriptID_CName;
+	public    var lastCoverPreset : gamebbScriptID_CName;
+	public    var lastInitialCoverPreset : gamebbScriptID_CName;
+	public    var lastCoverChangeThreshold : gamebbScriptID_Float;
+	public    var lastVisibilityCheckTimestamp : gamebbScriptID_Float;
+	public    var currentRing : gamebbScriptID_Variant;
+	public    var lastCoverRing : gamebbScriptID_Variant;
+	public    var lastDebugCoverPreset : gamebbScriptID_Int32;
+	public    var firstCoverEvaluationDone : gamebbScriptID_Bool;
+	public    var startCoverEvaluationTimeStamp : gamebbScriptID_Float;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+	function Initialize(blackboard : handle:gameIBlackboard); // Initialize;IBlackboard
+}
+
+class abstract AIBlackboardDef extends gamebbScriptDefinition
+{
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

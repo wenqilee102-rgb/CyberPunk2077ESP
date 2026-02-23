@@ -1,0 +1,5 @@
+enum WorkspotConditionOperators
+{
+	OR = 0,
+	AND = 1
+}

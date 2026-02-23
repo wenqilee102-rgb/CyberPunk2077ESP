@@ -1,0 +1,1 @@
+{"b":"worldProxyBoundingBoxSyncParams","d":8,"g":true,"e":[{"a":{"b":"worldProxyBBoxSyncOptions"},"b":"positiveAxis","c":128},{"a":{"b":"worldProxyBBoxSyncOptions"},"b":"negativeAxis","c":128},{"a":{"a":10},"b":"pullRange","c":128},{"a":{"a":1},"b":"makeStackable","c":128},{"a":{"b":"Vector3"},"b":"stackOffset","c":128}]}

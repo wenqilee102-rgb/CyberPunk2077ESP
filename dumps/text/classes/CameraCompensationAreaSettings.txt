@@ -1,0 +1,7 @@
+import struct CameraCompensationAreaSettings
+{
+	var automated : Bool;
+	var ISO : Uint32;
+	var shutterTime : Float;
+	var fStop : Float;
+}

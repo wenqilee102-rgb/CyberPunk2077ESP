@@ -1,0 +1,21 @@
+class abstract AISubActionReloadWeapon_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionReloadWeapon_Record); // AISubActionReloadWeapon_Record_Implementation::Activate;ScriptExecutionContextAISubActionReloadWeapon_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionReloadWeapon_Record, duration : Float, interrupted : Bool); // AISubActionReloadWeapon_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionReloadWeapon_RecordFloatBool
+	static function GetWeapon(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionReloadWeapon_Record, out weapon : whandle:gameweaponObject) : Bool; // AISubActionReloadWeapon_Record_Implementation::GetWeapon;ScriptExecutionContextAISubActionReloadWeapon_RecordWeaponObject
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionReloadWeapon_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionReloadWeapon_Record_Implementation::Update;ScriptExecutionContextAISubActionReloadWeapon_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

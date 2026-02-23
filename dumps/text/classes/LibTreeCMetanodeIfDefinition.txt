@@ -1,0 +1,18 @@
+import class LibTreeCMetanodeIfDefinition extends LibTreeCMetanodeDefinition
+{
+	var ifCondition : LibTreeDefBool;
+	var ifBranch : handle:LibTreeINodeDefinition;
+	var elseBranch : handle:LibTreeINodeDefinition;
+}
+
+import class abstract LibTreeCMetanodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

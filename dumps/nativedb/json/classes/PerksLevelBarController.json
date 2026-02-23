@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"PerksLevelBarController","d":0,"e":[{"a":{"b":"inkWidgetReference"},"b":"foregroundImage","c":130},{"a":{"b":"inkWidgetReference"},"b":"backgroundImage","c":130}],"f":[{"a":"SetProgress;Float","b":"SetProgress","d":48,"e":[{"a":{"a":10},"b":"progress","c":0}]}]}

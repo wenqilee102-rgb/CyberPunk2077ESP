@@ -1,0 +1,7 @@
+import struct gameAudioSyncs
+{
+	var switchEvents : array:audioAudSwitch;
+	var playEvents : array:audioAudEventStruct;
+	var stopEvents : array:audioAudEventStruct;
+	var parameterEvents : array:audioAudParameter;
+}

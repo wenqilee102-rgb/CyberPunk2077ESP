@@ -1,0 +1,11 @@
+import struct worlduiAdvertisementWidgetComponentWrapper extends inkIAdvertisementWidgetComponentWrapper
+{
+}
+
+import struct abstract inkIAdvertisementWidgetComponentWrapper extends inkIWorldWidgetComponentWrapper
+{
+}
+
+import struct abstract inkIWorldWidgetComponentWrapper
+{
+}

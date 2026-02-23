@@ -1,0 +1,19 @@
+import class gamehelperStimBroadcasterComponentHelper extends IScriptable
+{
+	import static function CreateStimEvent(owner : handle:gameObject, stimType : gamedataStimType, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool) : handle:senseStimuliEvent; // CreateStimEvent
+	import static function ProcessSingleStimuliBroadcast(owner : handle:gameObject, stimuli : handle:senseStimuliEvent, isCrowd : Bool, isSurveillanceCamera : Bool, invalidDistraction : Bool, targets : array:gameNPCstubData) : Bool; // ProcessSingleStimuliBroadcast
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

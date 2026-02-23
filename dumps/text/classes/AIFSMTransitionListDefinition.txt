@@ -1,0 +1,5 @@
+import struct AIFSMTransitionListDefinition
+{
+	var firstTransitionIndex : Uint16;
+	var transitionsCount : Uint16;
+}

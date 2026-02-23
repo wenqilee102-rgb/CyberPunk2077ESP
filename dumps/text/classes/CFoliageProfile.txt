@@ -1,0 +1,24 @@
+import class CFoliageProfile extends CResource
+{
+	var cutoffAlphaMinMip : Float;
+	var cutoffAlphaMaxMip : Float;
+	var billboardCutoffAlpha : Float;
+	var aoScale : Float;
+	var terrainBlendScale : Float;
+	var terrainBlendBias : Float;
+	var billboardDepthScale : Float;
+	var billboardRoughnessBias : Float;
+	var colorGradient : rRef:CGradient;
+	var colorGradientWeight : Float;
+	var colorGradientDarkenWeight : Float;
+	var preserveOriginalColor : Float;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

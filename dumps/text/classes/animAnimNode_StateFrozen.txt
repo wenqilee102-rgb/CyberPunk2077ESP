@@ -1,0 +1,26 @@
+import class animAnimNode_StateFrozen extends animAnimNode_State
+{
+}
+
+import class animAnimNode_State extends animAnimNode_Container
+{
+	var name : CName;
+	var outTransitionIndices : array:Int16;
+	var preventTransitionsInActivationFrame : Bool;
+	var tags : array:CName;
+	var requiredQualityDistanceCategory : Uint32;
+}
+
+import class abstract animAnimNode_Container extends animAnimNode_Base
+{
+	var nodes : array:handle:animAnimNode_Base;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

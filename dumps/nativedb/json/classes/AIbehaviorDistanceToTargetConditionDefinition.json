@@ -1,0 +1,1 @@
+{"a":"AIbehaviorConditionDefinition","b":"AIbehaviorDistanceToTargetConditionDefinition","d":12,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"target","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"distance","c":128},{"a":{"b":"EComparisonType"},"b":"comparisonOperator","c":128}]}

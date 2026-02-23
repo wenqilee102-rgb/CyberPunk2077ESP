@@ -1,0 +1,9 @@
+struct SecurityAccessLevelEntry
+{
+	public    var keycard : TweakDBID;
+	public    var password : CName;
+
+	static function IsDataValid(self : SecurityAccessLevelEntry) : Bool; // SecurityAccessLevelEntry::IsDataValid;SecurityAccessLevelEntry
+	static function IsKeycardValid(self : SecurityAccessLevelEntry) : Bool; // SecurityAccessLevelEntry::IsKeycardValid;SecurityAccessLevelEntry
+	static function IsPasswordValid(self : SecurityAccessLevelEntry) : Bool; // SecurityAccessLevelEntry::IsPasswordValid;SecurityAccessLevelEntry
+}

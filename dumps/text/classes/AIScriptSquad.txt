@@ -1,0 +1,42 @@
+class abstract AIScriptSquad extends IScriptable
+{
+	static function CanPerformTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record) : Bool; // AIScriptSquad::CanPerformTicket;ScriptExecutionContextAITicketType_Record
+	static function CheckTickets(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record) : Bool; // AIScriptSquad::CheckTickets;ScriptExecutionContextAIAction_Record
+	static function CloseTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::CloseTicket;ScriptExecutionContextAITicketType_Record
+	static function CloseTickets(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record); // AIScriptSquad::CloseTickets;ScriptExecutionContextAIAction_Record
+	static function CommitToTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::CommitToTicket;ScriptExecutionContextAITicketType_Record
+	static function CommitToTickets(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record); // AIScriptSquad::CommitToTickets;ScriptExecutionContextAIAction_Record
+	static function CompleteTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::CompleteTicket;ScriptExecutionContextAITicketType_Record
+	static function CompleteTickets(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record, succeed : Bool); // AIScriptSquad::CompleteTickets;ScriptExecutionContextAIAction_RecordBool
+	static function EvaluateTicketActivation(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::EvaluateTicketActivation;ScriptExecutionContextAITicketType_Record
+	static function EvaluateTicketDeactivation(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::EvaluateTicketDeactivation;ScriptExecutionContextAITicketType_Record
+	static function EvaluateTicketsActivation(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record); // AIScriptSquad::EvaluateTicketsActivation;ScriptExecutionContextAIAction_Record
+	static function EvaluateTicketsDeactivation(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record); // AIScriptSquad::EvaluateTicketsDeactivation;ScriptExecutionContextAIAction_Record
+	static function FailTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::FailTicket;ScriptExecutionContextAITicketType_Record
+	static function GetBaseSquadRecord(out squadRecord : whandle:gamedataAISquadParams_Record) : Bool; // AIScriptSquad::GetBaseSquadRecord;AISquadParams_Record
+	static function GetSquadRecord(entity : whandle:entEntity, out squadRecord : whandle:gamedataAISquadParams_Record) : Bool; // AIScriptSquad::GetSquadRecord;EntityAISquadParams_Record
+	static function GetTicketRecord(ticketName : CName, squadRecord : whandle:gamedataAISquadParams_Record, out ticketRecord : whandle:gamedataAITicket_Record) : Bool; // AIScriptSquad::GetTicketRecord;CNameAISquadParams_RecordAITicket_Record
+	static function HasOrder(context : AIbehaviorScriptExecutionContext, ticketName : CName) : Bool; // AIScriptSquad::HasOrder;ScriptExecutionContextCName
+	static function HasOrder(puppet : whandle:ScriptedPuppet, ticketName : CName) : Bool; // AIScriptSquad::HasOrder;ScriptedPuppetCName
+	static function OpenTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::OpenTicket;ScriptExecutionContextAITicketType_Record
+	static function RequestTickets(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record); // AIScriptSquad::RequestTickets;ScriptExecutionContextAIAction_Record
+	static function RevokeTicket(context : AIbehaviorScriptExecutionContext, actionType : whandle:gamedataAITicketType_Record); // AIScriptSquad::RevokeTicket;ScriptExecutionContextAITicketType_Record
+	static function RevokeTickets(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record); // AIScriptSquad::RevokeTickets;ScriptExecutionContextAIAction_Record
+	static function SignalSquad(context : AIbehaviorScriptExecutionContext, actionName : CName, verb : EAISquadVerb); // AIScriptSquad::SignalSquad;ScriptExecutionContextCNameEAISquadVerb
+	static function TicketDebugHelper(ticketNameCheck : script_ref:String, entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record) : Bool; // AIScriptSquad::TicketDebugHelper;script_ref<String>EntityAITicket_Record
+	static function WaitForTicketsAcknowledgement(context : AIbehaviorScriptExecutionContext, actionRecord : whandle:gamedataAIAction_Record) : Bool; // AIScriptSquad::WaitForTicketsAcknowledgement;ScriptExecutionContextAIAction_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

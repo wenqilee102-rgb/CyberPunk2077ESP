@@ -1,0 +1,16 @@
+import class AIbehaviorFindAlertedWorkspotTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var usedTokens : handle:AIArgumentMapping;
+	var spots : handle:AIArgumentMapping;
+	var radius : handle:AIArgumentMapping;
+	var outWorkspotData : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

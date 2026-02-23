@@ -1,0 +1,7 @@
+import class gameCollidableEntityId extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

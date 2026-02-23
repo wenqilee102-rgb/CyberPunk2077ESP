@@ -1,0 +1,1 @@
+{"a":"physicsPhysicsJointLimitBase","b":"physicsPhysicsJointLimitConePair","d":8,"g":true,"e":[{"a":{"b":"physicsPhysicsJointMotion"},"b":"swingY","c":128},{"a":{"b":"physicsPhysicsJointMotion"},"b":"swingZ","c":128},{"a":{"a":10},"b":"yAngle","c":128},{"a":{"a":10},"b":"zAngle","c":128}]}

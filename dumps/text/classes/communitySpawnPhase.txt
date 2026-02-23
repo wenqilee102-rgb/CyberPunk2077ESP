@@ -1,0 +1,12 @@
+import class communitySpawnPhase extends ISerializable
+{
+	var phaseName : CName;
+	var appearances : array:CName;
+	var timePeriods : array:communityPhaseTimePeriod;
+	var alwaysSpawned : gameAlwaysSpawnedState;
+	var prefetchAppearance : Bool;
+}
+
+import class abstract ISerializable
+{
+}

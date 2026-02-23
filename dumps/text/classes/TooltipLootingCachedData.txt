@@ -1,0 +1,24 @@
+class TooltipLootingCachedData extends IScriptable
+{
+	public    var externalItemData : whandle:gameItemData;
+	public    var itemRecord : whandle:gamedataItem_Record;
+	public    var comparisonItemData : whandle:gameItemData;
+	public    var comparisonItemId : gameItemID;
+	public    var lootingData : handle:MinimalLootingListItemData;
+	public    var comparisonWeaponBars : handle:UIInventoryItemWeaponBars;
+	public    var comparisonQualityF : Float;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

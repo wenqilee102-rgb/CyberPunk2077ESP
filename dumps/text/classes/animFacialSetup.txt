@@ -1,0 +1,22 @@
+import class animFacialSetup extends CResource
+{
+	var rig : rRef:animRig;
+	var inputRig : rRef:animRig;
+	var info : animFacialSetup_BufferInfo;
+	var posesInfo : animFacialSetup_PosesBufferInfo;
+	var bakedData : DataBuffer;
+	var mainPosesData : DataBuffer;
+	var correctivePosesData : DataBuffer;
+	var usedTransformIndices : array:Uint16;
+	var useFemaleAnimSet : Bool;
+	var version : Uint32;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

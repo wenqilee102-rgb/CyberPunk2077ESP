@@ -1,0 +1,24 @@
+import class worldInteriorAreaNode extends worldTriggerAreaNode
+{
+}
+
+import class worldTriggerAreaNode extends worldAreaShapeNode
+{
+	var notifiers : array:handle:worldITriggerAreaNotifer;
+}
+
+import class worldAreaShapeNode extends worldNode
+{
+	var color : Color;
+	var outline : handle:AreaShapeOutline;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,32 @@
+import class gamedataVirtualNetwork_Record extends gamedataTweakDBRecord
+{
+	import function GetPathsCount() : Int32; // GetPathsCount
+	import function GetPathsItem(index : Int32) : whandle:gamedataVirtualNetworkPath_Record; // GetPathsItem
+	import function GetPathsItemHandle(index : Int32) : handle:gamedataVirtualNetworkPath_Record; // GetPathsItemHandle
+	import function MinDistanceToOther() : Float; // MinDistanceToOther
+	import function OffsetMultiplier() : Float; // OffsetMultiplier
+	import function Paths(out outList : array:whandle:gamedataVirtualNetworkPath_Record); // Paths
+	import function PathsContains(item : whandle:gamedataVirtualNetworkPath_Record) : Bool; // PathsContains
+	import function Scale() : Float; // Scale
+	import function SegmentMarker() : Vector3; // SegmentMarker
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

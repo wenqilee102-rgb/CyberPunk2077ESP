@@ -1,0 +1,1 @@
+{"a":"MasterDeviceBaseBlackboardDef","b":"BackDoorDeviceBlackboardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"isInDefaultState","c":128},{"a":{"b":"gamebbScriptID_Int32"},"b":"shutdownModule","c":128},{"a":{"b":"gamebbScriptID_Int32"},"b":"bootModule","c":128}]}

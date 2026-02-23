@@ -1,0 +1,51 @@
+import class CParticleEmitter extends IParticleModule
+{
+	var modules : array:handle:IParticleModule;
+	var positionX : Int32;
+	var positionY : Int32;
+	var material : rRef:IMaterial;
+	var localMaterialInstance : handle:IMaterial;
+	var maxParticles : Uint16;
+	var diffuseWrapFactor : Float;
+	var backLightingFactor : Float;
+	var lightingMipBias : Uint32;
+	var emitterLoops : Int8;
+	var particleDrawer : handle:IParticleDrawer;
+	var decalSpawner : handle:CDecalSpawner;
+	var maskInsideCar : Bool;
+	var maskInsideInterior : Bool;
+	var maskAboveWater : Bool;
+	var maskUnderWater : Bool;
+	var useSubFrameEmission : Bool;
+	var keepSimulationLocal : Bool;
+	var killOnCollision : Bool;
+	var initialParticleCount : Uint8;
+	var envColorGroup : EEnvColorGroup;
+	var emitterGroup : EEmitterGroup;
+	var renderObjectType : ERenderObjectType;
+	var windInfluence : Float;
+	var internalPriority : Uint8;
+	var lods : array:SParticleEmitterLODLevel;
+	var renderResourceBlob : handle:IRenderResourceBlob;
+	var Enabled : Bool;
+	var Relative : Bool;
+	var UseEnvironmentFogColor : Bool;
+	var Color : HDRColor;
+	var Size : Float;
+	var Density : Float;
+	var Falloff : Float;
+	var NoiseScale : Float;
+	var NoiseThreshold : Float;
+	var NoiseVelocity : Vector3;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

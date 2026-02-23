@@ -1,0 +1,32 @@
+import class AIbehaviorActionDroneMoveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+	var moveType : handle:AIArgumentMapping;
+	var target : handle:AIArgumentMapping;
+	var movementTarget : handle:AIArgumentMapping;
+	var toleranceRadius : handle:AIArgumentMapping;
+	var desiredDistanceFromTarget : handle:AIArgumentMapping;
+	var strafingTarget : handle:AIArgumentMapping;
+	var stopWhenDestinationReached : handle:AIArgumentMapping;
+	var rotateEntity : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gameComponentPS","b":"SampleComponentWithCounterPS","d":0,"e":[{"a":{"a":6},"b":"counter","c":134}],"f":[{"a":"BumpTheCounter;","b":"BumpTheCounter","c":{"a":6},"d":48},{"a":"ReadTheCounter;","b":"ReadTheCounter","c":{"a":6},"d":176}]}

@@ -1,0 +1,5 @@
+struct UnlockAnimData
+{
+	public    var levelFrom : Int32;
+	public    var levelTo : Int32;
+}

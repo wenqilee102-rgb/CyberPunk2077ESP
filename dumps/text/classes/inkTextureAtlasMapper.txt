@@ -1,0 +1,6 @@
+import struct inkTextureAtlasMapper
+{
+	var partName : CName;
+	var clippingRectInPixels : Rect;
+	var clippingRectInUVCoords : RectF;
+}

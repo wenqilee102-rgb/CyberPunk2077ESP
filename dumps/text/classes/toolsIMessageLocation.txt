@@ -1,0 +1,7 @@
+import class abstract toolsIMessageLocation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gameComponent","b":"vehicleCameraManagerComponent","c":"VehicleCameraManagerComponent","d":8,"e":[{"a":{"a":30,"c":{"b":"entEntityTemplate"}},"b":"cinematicCameraEntityTemplate","c":128}],"f":[{"a":"GetManagerHandle","c":{"a":26,"c":{"b":"vehicleCameraManager"}},"d":4}]}

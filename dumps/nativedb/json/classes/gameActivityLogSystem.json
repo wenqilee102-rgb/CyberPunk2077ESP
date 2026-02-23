@@ -1,0 +1,1 @@
+{"a":"gameIActivityLogSystem","b":"gameActivityLogSystem","c":"ActivityLogSystem","d":8,"f":[{"a":"AddLog","d":4,"e":[{"a":{"a":12},"b":"logEntry","c":0}]},{"a":"AddLogFromParts","d":4,"e":[{"a":{"a":12},"b":"textpart1","c":0},{"a":{"a":12},"b":"textpart2","c":4},{"a":{"a":12},"b":"textpart3","c":4},{"a":{"a":12},"b":"textpart4","c":4},{"a":{"a":12},"b":"textpart5","c":4}]}]}

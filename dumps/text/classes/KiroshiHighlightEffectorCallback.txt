@@ -1,0 +1,33 @@
+class KiroshiHighlightEffectorCallback extends gameAttachmentSlotsScriptCallback
+{
+	public    var effector : handle:KiroshiHighlightEffector;
+
+	function OnItemEquipped(slot : TweakDBID, item : gameItemID); // OnItemEquipped;TweakDBIDItemID
+	function OnItemUnequipped(slot : TweakDBID, item : gameItemID); // OnItemUnequipped;TweakDBIDItemID
+}
+
+import class gameAttachmentSlotsScriptCallback extends IScriptable
+{
+	var slotID : TweakDBID;
+	var itemID : gameItemID;
+
+	function OnAttachmentRefreshed(slot : TweakDBID, item : gameItemID); // OnAttachmentRefreshed;TweakDBIDItemID
+	function OnItemEquipped(slot : TweakDBID, item : gameItemID); // OnItemEquipped;TweakDBIDItemID
+	function OnItemEquippedVisual(slot : TweakDBID, item : gameItemID); // OnItemEquippedVisual;TweakDBIDItemID
+	function OnItemUnequipped(slot : TweakDBID, item : gameItemID); // OnItemUnequipped;TweakDBIDItemID
+	function OnItemUnequippedComplete(slot : TweakDBID, item : gameItemID); // OnItemUnequippedComplete;TweakDBIDItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

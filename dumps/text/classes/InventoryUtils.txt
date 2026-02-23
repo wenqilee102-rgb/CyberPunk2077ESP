@@ -1,0 +1,22 @@
+class InventoryUtils extends IScriptable
+{
+	static function GetInnerItemStatValueByType(item : handle:gameItemData, slot : TweakDBID, stat : gamedataStatType) : Float; // InventoryUtils::GetInnerItemStatValueByType;gameItemDataTweakDBIDgamedataStatType
+	static function GetMods(itemData : script_ref:gameInventoryItemData, optional onlyGeneric : Bool) : array:handle:gameInventoryItemAttachments; // InventoryUtils::GetMods;script_ref<InventoryItemData>Bool
+	static function GetPartType(attachmentData : handle:gameInventoryItemAttachments) : WeaponPartType; // InventoryUtils::GetPartType;InventoryItemAttachments
+	static function GetParts(itemData : script_ref:gameInventoryItemData) : array:handle:gameInventoryItemAttachments; // InventoryUtils::GetParts;script_ref<InventoryItemData>
+	static function IsPart(attachmentSlotID : TweakDBID) : Bool; // InventoryUtils::IsPart;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

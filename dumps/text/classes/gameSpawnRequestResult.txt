@@ -1,0 +1,8 @@
+import struct gameSpawnRequestResult
+{
+	var requestID : Uint32;
+	var policeStrategy : vehiclePoliceStrategy;
+	var vehicleType : gameDynamicVehicleType;
+	var spawnedObjects : array:whandle:gameObject;
+	var success : Bool;
+}

@@ -1,0 +1,24 @@
+class abstract AISubActionStatusEffect_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record); // AISubActionStatusEffect_Record_Implementation::Activate;ScriptExecutionContextAISubActionStatusEffect_Record
+	static function ApplyRemoveStatusEffect(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record); // AISubActionStatusEffect_Record_Implementation::ApplyRemoveStatusEffect;ScriptExecutionContextAISubActionStatusEffect_Record
+	static function ApplyStatusEffect(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record); // AISubActionStatusEffect_Record_Implementation::ApplyStatusEffect;ScriptExecutionContextAISubActionStatusEffect_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record, duration : Float, interrupted : Bool); // AISubActionStatusEffect_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionStatusEffect_RecordFloatBool
+	static function IsConditionFulfilled(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record) : Bool; // AISubActionStatusEffect_Record_Implementation::IsConditionFulfilled;ScriptExecutionContextAISubActionStatusEffect_Record
+	static function RemoveStatusEffect(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record); // AISubActionStatusEffect_Record_Implementation::RemoveStatusEffect;ScriptExecutionContextAISubActionStatusEffect_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionStatusEffect_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionStatusEffect_Record_Implementation::Update;ScriptExecutionContextAISubActionStatusEffect_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

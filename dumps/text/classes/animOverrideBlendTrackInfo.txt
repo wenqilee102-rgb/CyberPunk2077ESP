@@ -1,0 +1,5 @@
+import struct animOverrideBlendTrackInfo
+{
+	var track : animNamedTrackIndex;
+	var weight : Float;
+}

@@ -1,0 +1,17 @@
+import struct gameStatPoolData
+{
+	var ownerID : gameStatsObjectID;
+	var recordID : TweakDBID;
+	var type : gamedataStatPoolType;
+	var modifiers : [2]gameStatPoolModifier;
+	var alternativeModifierRecords : [2]TweakDBID;
+	var stat : gamedataStatType;
+	var maxValue : Float;
+	var customLimitValue : Float;
+	var changeMode : gameStatPoolDataValueChangeMode;
+	var bonus : Float;
+	var bonusType : gameStatPoolDataBonusType;
+	var currentValue : Float;
+	var modificationDelay : Float;
+	var modificationStatus : gameStatPoolDataStatPoolModificationStatus;
+}

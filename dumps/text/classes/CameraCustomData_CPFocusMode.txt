@@ -1,0 +1,7 @@
+import struct CameraCustomData_CPFocusMode extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

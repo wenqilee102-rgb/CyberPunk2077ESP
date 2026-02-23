@@ -1,0 +1,5 @@
+import struct AILocationInformation
+{
+	var position : Vector4;
+	var direction : Vector4;
+}

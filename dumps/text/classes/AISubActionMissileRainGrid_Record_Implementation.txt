@@ -1,0 +1,20 @@
+class abstract AISubActionMissileRainGrid_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMissileRainGrid_Record); // AISubActionMissileRainGrid_Record_Implementation::Activate;ScriptExecutionContextAISubActionMissileRainGrid_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMissileRainGrid_Record, duration : Float, interrupted : Bool); // AISubActionMissileRainGrid_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionMissileRainGrid_RecordFloatBool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMissileRainGrid_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionMissileRainGrid_Record_Implementation::Update;ScriptExecutionContextAISubActionMissileRainGrid_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

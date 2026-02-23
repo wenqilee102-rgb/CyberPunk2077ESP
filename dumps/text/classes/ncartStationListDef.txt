@@ -1,0 +1,4 @@
+struct ncartStationListDef
+{
+	public    var station : ENcartStations;
+}

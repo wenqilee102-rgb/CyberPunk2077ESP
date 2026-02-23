@@ -1,0 +1,5 @@
+struct HUDClueData
+{
+	public    var isClue : Bool;
+	public    var clueGroupID : CName;
+}

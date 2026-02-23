@@ -1,0 +1,22 @@
+import class AIbehaviorMaybeNodeDefinition extends AIbehaviorDecoratorNodeDefinition
+{
+	var onChildSuccess : AIbehaviorMaybeNodeAction;
+	var onChildFailure : AIbehaviorMaybeNodeAction;
+}
+
+import class abstract AIbehaviorDecoratorNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var child : handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

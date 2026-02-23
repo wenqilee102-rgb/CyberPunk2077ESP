@@ -1,0 +1,41 @@
+import class AIbehaviorDriveAvSimpleTreeNodeDefinition extends AIbehaviorDriveTreeNodeDefinition
+{
+	var timeToTravel : handle:AIArgumentMapping;
+	var distanceToTravel : handle:AIArgumentMapping;
+	var useEaseInFunction : handle:AIArgumentMapping;
+	var useEaseOutFunction : handle:AIArgumentMapping;
+	var movementDirection : handle:AIArgumentMapping;
+	var useForwardDirection : handle:AIArgumentMapping;
+	var easeBounceMultiplier : handle:AIArgumentMapping;
+	var despawnAtTheEnd : handle:AIArgumentMapping;
+	var disableVFXs : handle:AIArgumentMapping;
+	var facePlayer : handle:AIArgumentMapping;
+	var doLandingRotation : handle:AIArgumentMapping;
+	var interruptTaskOnLandingFound : handle:AIArgumentMapping;
+	var attemptToSendEarlyDismountCommand : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDriveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

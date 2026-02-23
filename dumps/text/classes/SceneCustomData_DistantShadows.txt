@@ -1,0 +1,11 @@
+import struct SceneCustomData_DistantShadows extends SceneCustomData_DistantShadowsCommon
+{
+}
+
+import struct abstract SceneCustomData_DistantShadowsCommon extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

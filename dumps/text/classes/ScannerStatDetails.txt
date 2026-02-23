@@ -1,0 +1,6 @@
+struct ScannerStatDetails
+{
+	public    var statType : gamedataStatType;
+	public    var value : Float;
+	public    var baseValue : Float;
+}

@@ -1,0 +1,28 @@
+import class gamedataVehicleSurfaceType_Record extends gamedataTweakDBRecord
+{
+	import function DisplayName() : String; // DisplayName
+	import function GetMaterialNamesCount() : Int32; // GetMaterialNamesCount
+	import function GetMaterialNamesItem(index : Int32) : CName; // GetMaterialNamesItem
+	import function MaterialNames() : array:CName; // MaterialNames
+	import function MaterialNamesContains(item : CName) : Bool; // MaterialNamesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

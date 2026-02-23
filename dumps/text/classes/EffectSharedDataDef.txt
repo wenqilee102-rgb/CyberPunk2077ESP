@@ -1,0 +1,88 @@
+class EffectSharedDataDef extends gamebbScriptDefinition
+{
+	public    var attackStatModList : gamebbScriptID_Variant;
+	public    var box : gamebbScriptID_Vector4;
+	public    var charge : gamebbScriptID_Float;
+	public    var duration : gamebbScriptID_Float;
+	public    var hitCooldown : gamebbScriptID_Float;
+	public    var effectName : gamebbScriptID_String;
+	public    var entity : gamebbScriptID_EntityPtr;
+	public    var forward : gamebbScriptID_Vector4;
+	public    var fxPackage : gamebbScriptID_Variant;
+	public    var attackData : gamebbScriptID_Variant;
+	public    var infiniteDuration : gamebbScriptID_Bool;
+	public    var playerOwnedWeapon : gamebbScriptID_Bool;
+	public    var position : gamebbScriptID_Vector4;
+	public    var muzzlePosition : gamebbScriptID_Vector4;
+	public    var projectileHitEvent : gamebbScriptID_Variant;
+	public    var radius : gamebbScriptID_Float;
+	public    var range : gamebbScriptID_Float;
+	public    var height : gamebbScriptID_Float;
+	public    var initRange : gamebbScriptID_Float;
+	public    var width : gamebbScriptID_Float;
+	public    var axisConstraints : gamebbScriptID_Vector4;
+	public    var renderMaterialOverride : gamebbScriptID_Bool;
+	public    var clearMaterialOverlayOnDetach : gamebbScriptID_Bool;
+	public    var rotation : gamebbScriptID_Quaternion;
+	public    var minRayAngleDiff : gamebbScriptID_Float;
+	public    var statType : gamebbScriptID_Int32;
+	public    var stimuliEvent : gamebbScriptID_Variant;
+	public    var stimuliRaycastTest : gamebbScriptID_Bool;
+	public    var stimType : gamebbScriptID_Int32;
+	public    var value : gamebbScriptID_Float;
+	public    var flags : gamebbScriptID_Variant;
+	public    var attack : gamebbScriptID_Variant;
+	public    var attackId : gamebbScriptID_Variant;
+	public    var attackNumber : gamebbScriptID_Int32;
+	public    var impactOrientationSlot : gamebbScriptID_CName;
+	public    var vfxOffset : gamebbScriptID_Vector4;
+	public    var disableVfx : gamebbScriptID_Bool;
+	public    var enableImpulseFalloff : gamebbScriptID_Bool;
+	public    var impulseFalloffFactor : gamebbScriptID_Float;
+	public    var statusEffect : gamebbScriptID_Variant;
+	public    var angle : gamebbScriptID_Float;
+	public    var fallback_weaponPierce : gamebbScriptID_Bool;
+	public    var fallback_weaponPierceChargeLevel : gamebbScriptID_Float;
+	public    var raycastEnd : gamebbScriptID_Vector4;
+	public    var maxPathLength : gamebbScriptID_Float;
+	public    var effectorRecordName : gamebbScriptID_String;
+	public    var targets : gamebbScriptID_Variant;
+	public    var highlightType : gamebbScriptID_Int32;
+	public    var outlineType : gamebbScriptID_Int32;
+	public    var highlightPriority : gamebbScriptID_Int32;
+	public    var fxResource : gamebbScriptID_Variant;
+	public    var dotCycleDuration : gamebbScriptID_Float;
+	public    var dotLastApplicationTime : gamebbScriptID_Float;
+	public    var enable : gamebbScriptID_Bool;
+	public    var slotName : gamebbScriptID_CName;
+	public    var targetComponent : gamebbScriptID_Variant;
+	public    var meleeCleave : gamebbScriptID_Bool;
+	public    var inTPP : gamebbScriptID_Bool;
+	public    var tppScale : gamebbScriptID_Float;
+	public    var highlightedTargets : gamebbScriptID_Variant;
+	public    var forceVisionAppearanceData : gamebbScriptID_Variant;
+	public    var tickRateOverride : gamebbScriptID_Float;
+	public    var randRoll : gamebbScriptID_Float;
+	public    var ignoreMountedVehicleCollision : gamebbScriptID_Bool;
+	public    var debugBool : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

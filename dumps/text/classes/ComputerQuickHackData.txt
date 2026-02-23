@@ -1,0 +1,7 @@
+struct ComputerQuickHackData
+{
+	public    var alternativeName : TweakDBID;
+	public    var factName : CName;
+	public    var factValue : Int32;
+	public    var operationType : EMathOperationType;
+}

@@ -1,0 +1,9 @@
+import class rendGradientEntry extends ISerializable
+{
+	var value : Float;
+	var color : Color;
+}
+
+import class abstract ISerializable
+{
+}

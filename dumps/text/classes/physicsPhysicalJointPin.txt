@@ -1,0 +1,11 @@
+import class physicsPhysicalJointPin extends ISerializable
+{
+	var object : handle:physicsISystemObject;
+	var featureIndex : Int32;
+	var localPosition : Vector3;
+	var localRotation : Quaternion;
+}
+
+import class abstract ISerializable
+{
+}

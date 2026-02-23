@@ -1,0 +1,5 @@
+import struct scneventsAttachPropToWorldCachedFallbackBone
+{
+	var boneName : CName;
+	var modelSpaceTransform : Transform;
+}

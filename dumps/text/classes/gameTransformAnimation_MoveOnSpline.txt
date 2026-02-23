@@ -1,0 +1,16 @@
+import class gameTransformAnimation_MoveOnSpline extends gameTransformAnimationTrackItemImpl
+{
+	var splineNode : NodeRef;
+	var from : Float;
+	var to : Float;
+	var rotationMode : gameTransformAnimation_MoveOnSplineRotationMode;
+	var movement : handle:gameTransformAnimation_Movement;
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

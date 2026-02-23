@@ -1,0 +1,12 @@
+import class animPoseBlendMethod_Mask extends animIPoseBlendMethod
+{
+	var maskName : CName;
+}
+
+import class abstract animIPoseBlendMethod extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

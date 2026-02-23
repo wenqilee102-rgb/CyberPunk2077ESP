@@ -1,0 +1,7 @@
+import struct gameuiRoadEditorObstacleSettings
+{
+	var libraryName : CName;
+	var offset : Float;
+	var speed : Float;
+	var segmentOffset : Uint32;
+}

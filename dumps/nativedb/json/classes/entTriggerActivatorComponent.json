@@ -1,0 +1,1 @@
+{"a":"entIPlacedComponent","b":"entTriggerActivatorComponent","d":8,"e":[{"a":{"a":10},"b":"radius","c":128},{"a":{"a":10},"b":"height","c":128},{"a":{"b":"TriggerChannel"},"b":"channels","c":128},{"a":{"a":10},"b":"maxContinousDistance","c":128},{"a":{"a":1},"b":"enableCCD","c":128},{"a":{"a":1},"b":"isEnabled","c":128}]}

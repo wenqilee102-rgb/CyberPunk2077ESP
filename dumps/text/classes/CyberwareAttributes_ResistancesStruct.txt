@@ -1,0 +1,9 @@
+struct CyberwareAttributes_ResistancesStruct
+{
+	public    var widgetHealth : inkFlexWidgetReference;
+	public    var widgetPhysical : inkFlexWidgetReference;
+	public    var widgetThermal : inkFlexWidgetReference;
+	public    var widgetEMP : inkFlexWidgetReference;
+	public    var widgetChemical : inkFlexWidgetReference;
+	public    var resistanceTooltip : inkFlexWidgetReference;
+}

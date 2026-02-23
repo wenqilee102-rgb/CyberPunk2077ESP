@@ -1,0 +1,9 @@
+struct UIObjectiveEntryData
+{
+	public    var name : String;
+	public    var counter : String;
+	public    var type : UIObjectiveEntryType;
+	public    var state : gameJournalEntryState;
+	public    var isTracked : Bool;
+	public    var isOptional : Bool;
+}

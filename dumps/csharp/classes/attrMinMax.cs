@@ -1,0 +1,31 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class attrMinMax : attrAttribute
+	{
+		private CFloat _n;
+		private CFloat _x;
+
+		[Ordinal(0)] 
+		[RED("n")] 
+		public CFloat N
+		{
+			get => GetProperty(ref _n);
+			set => SetProperty(ref _n, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("x")] 
+		public CFloat X
+		{
+			get => GetProperty(ref _x);
+			set => SetProperty(ref _x, value);
+		}
+
+		public attrMinMax(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

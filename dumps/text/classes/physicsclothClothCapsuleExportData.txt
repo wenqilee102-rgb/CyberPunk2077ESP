@@ -1,0 +1,8 @@
+import class physicsclothClothCapsuleExportData extends ISerializable
+{
+	var capsules : array:physicsclothExportedCapsule;
+}
+
+import class abstract ISerializable
+{
+}

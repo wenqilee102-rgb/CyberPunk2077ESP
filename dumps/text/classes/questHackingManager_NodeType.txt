@@ -1,0 +1,24 @@
+import class questHackingManager_NodeType extends questIInteractiveObjectManagerNodeType
+{
+	var params : array:questHackingManager_NodeTypeParams;
+}
+
+import class abstract questIInteractiveObjectManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

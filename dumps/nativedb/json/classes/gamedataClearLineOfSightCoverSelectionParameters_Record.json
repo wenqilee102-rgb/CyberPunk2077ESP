@@ -1,0 +1,1 @@
+{"a":"gamedataCoverSelectionParameters_Record","b":"gamedataClearLineOfSightCoverSelectionParameters_Record","c":"ClearLineOfSightCoverSelectionParameters_Record","d":24,"f":[{"a":"ClearLOSDistanceTolerance","c":{"a":10},"d":4},{"a":"Cooldown","c":{"a":10},"d":4},{"a":"Multiplier","c":{"a":10},"d":4},{"a":"PreferredActionCount","c":{"a":6},"d":4}]}

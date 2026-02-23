@@ -1,0 +1,6 @@
+import struct audioCombatVoTriggerVariationsMapItem
+{
+	var name : CName;
+	var numberOfVariations : Int32;
+	var shuffle : Bool;
+}

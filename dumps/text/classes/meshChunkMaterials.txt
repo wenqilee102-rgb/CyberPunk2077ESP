@@ -1,0 +1,4 @@
+import struct meshChunkMaterials
+{
+	var materialNames : array:CName;
+}

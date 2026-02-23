@@ -1,0 +1,6 @@
+import struct locVoLengthEntry
+{
+	var stringId : CRUID;
+	var femaleLength : Float;
+	var maleLength : Float;
+}

@@ -1,0 +1,1 @@
+{"a":"vehicleCameraManager","b":"vehicleCameraManagerFT","c":"VehicleCameraManagerFT","d":8,"f":[{"a":"FT_GetActiveCameraType","c":{"b":"vehicleCameraType"},"d":4},{"a":"FT_IsSceneModeActive","c":{"a":1},"d":4},{"a":"FT_RequestSceneMode","d":4,"e":[{"a":{"a":1},"b":"active","c":0}]}]}

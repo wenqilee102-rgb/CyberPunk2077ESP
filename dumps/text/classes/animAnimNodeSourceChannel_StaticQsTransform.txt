@@ -1,0 +1,12 @@
+import class animAnimNodeSourceChannel_StaticQsTransform extends animIAnimNodeSourceChannel_QsTransform
+{
+	var data : QsTransform;
+}
+
+import class abstract animIAnimNodeSourceChannel_QsTransform extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

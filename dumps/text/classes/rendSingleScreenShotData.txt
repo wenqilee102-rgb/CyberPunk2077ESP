@@ -1,0 +1,14 @@
+import class rendSingleScreenShotData extends ISerializable
+{
+	var mode : rendScreenshotMode;
+	var outputPath : AbsolutePathSerializable;
+	var resolution : renddimEPreset;
+	var resolutionMultiplier : rendResolutionMultiplier;
+	var emmModes : array:EEnvManagerModifier;
+	var forceLOD0 : Bool;
+	var saveFormat : ESaveFormat;
+}
+
+import class abstract ISerializable
+{
+}

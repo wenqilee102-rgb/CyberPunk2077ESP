@@ -1,0 +1,4 @@
+enum gameEItemIDFlag
+{
+	Preview = 1
+}

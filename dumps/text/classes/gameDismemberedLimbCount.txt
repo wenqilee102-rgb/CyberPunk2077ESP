@@ -1,0 +1,5 @@
+import struct gameDismemberedLimbCount
+{
+	var fleshDismemberments : Uint32;
+	var cyberDismemberments : Uint32;
+}

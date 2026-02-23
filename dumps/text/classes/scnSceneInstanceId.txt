@@ -1,0 +1,7 @@
+import struct scnSceneInstanceId
+{
+	var sceneId : scnSceneId;
+	var ownerId : scnSceneInstanceOwnerId;
+	var internalId : Uint8;
+	var hash : Uint64;
+}

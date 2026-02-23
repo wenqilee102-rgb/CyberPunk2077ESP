@@ -1,0 +1,43 @@
+import class gamedataVehicleFxWheelsDecals_Record extends gamedataTweakDBRecord
+{
+	import function GetMaterialsCount() : Int32; // GetMaterialsCount
+	import function GetMaterialsItem(index : Int32) : whandle:gamedataVehicleFxWheelsDecalsMaterial_Record; // GetMaterialsItem
+	import function GetMaterialsItemHandle(index : Int32) : handle:gamedataVehicleFxWheelsDecalsMaterial_Record; // GetMaterialsItemHandle
+	import function GetRain_material_overridesCount() : Int32; // GetRain_material_overridesCount
+	import function GetRain_material_overridesItem(index : Int32) : whandle:gamedataVehicleFxWheelsDecalsMaterial_Record; // GetRain_material_overridesItem
+	import function GetRain_material_overridesItemHandle(index : Int32) : handle:gamedataVehicleFxWheelsDecalsMaterial_Record; // GetRain_material_overridesItemHandle
+	import function GetSmear_materialsCount() : Int32; // GetSmear_materialsCount
+	import function GetSmear_materialsItem(index : Int32) : whandle:gamedataVehicleFxWheelsDecalsMaterialSmear_Record; // GetSmear_materialsItem
+	import function GetSmear_materialsItemHandle(index : Int32) : handle:gamedataVehicleFxWheelsDecalsMaterialSmear_Record; // GetSmear_materialsItemHandle
+	import function GetWet_material_overridesCount() : Int32; // GetWet_material_overridesCount
+	import function GetWet_material_overridesItem(index : Int32) : whandle:gamedataVehicleFxWheelsDecalsMaterial_Record; // GetWet_material_overridesItem
+	import function GetWet_material_overridesItemHandle(index : Int32) : handle:gamedataVehicleFxWheelsDecalsMaterial_Record; // GetWet_material_overridesItemHandle
+	import function Materials(out outList : array:whandle:gamedataVehicleFxWheelsDecalsMaterial_Record); // Materials
+	import function MaterialsContains(item : whandle:gamedataVehicleFxWheelsDecalsMaterial_Record) : Bool; // MaterialsContains
+	import function Rain_material_overrides(out outList : array:whandle:gamedataVehicleFxWheelsDecalsMaterial_Record); // Rain_material_overrides
+	import function Rain_material_overridesContains(item : whandle:gamedataVehicleFxWheelsDecalsMaterial_Record) : Bool; // Rain_material_overridesContains
+	import function Smear_materials(out outList : array:whandle:gamedataVehicleFxWheelsDecalsMaterialSmear_Record); // Smear_materials
+	import function Smear_materialsContains(item : whandle:gamedataVehicleFxWheelsDecalsMaterialSmear_Record) : Bool; // Smear_materialsContains
+	import function Wet_material_overrides(out outList : array:whandle:gamedataVehicleFxWheelsDecalsMaterial_Record); // Wet_material_overrides
+	import function Wet_material_overridesContains(item : whandle:gamedataVehicleFxWheelsDecalsMaterial_Record) : Bool; // Wet_material_overridesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

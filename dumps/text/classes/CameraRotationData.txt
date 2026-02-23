@@ -1,0 +1,9 @@
+struct CameraRotationData
+{
+	public    var pitch : Float;
+	public    var maxPitch : Float;
+	public    var minPitch : Float;
+	public    var yaw : Float;
+	public    var maxYaw : Float;
+	public    var minYaw : Float;
+}

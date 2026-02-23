@@ -1,0 +1,5 @@
+import struct gameuiCharacterCustomizationUiPresetInfo
+{
+	var name : CName;
+	var resource : raRef:gameuiCharacterCustomizationUiPreset;
+}

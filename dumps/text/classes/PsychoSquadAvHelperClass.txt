@@ -1,0 +1,41 @@
+class PsychoSquadAvHelperClass extends gameScriptableSystem
+{
+	static function GetOffAV(go : handle:gameObject); // PsychoSquadAvHelperClass::GetOffAV;GameObject
+	static function TurnOffPsychoSquadAvCammoEventDelayed(instance : ScriptGameInstance, go : handle:gameObject, delay : Float); // PsychoSquadAvHelperClass::TurnOffPsychoSquadAvCammoEventDelayed;GameInstanceGameObjectFloat
+	static function TurnOnPsychoSquadAvCammoEventDelayed(instance : ScriptGameInstance, go : handle:gameObject, delay : Float); // PsychoSquadAvHelperClass::TurnOnPsychoSquadAvCammoEventDelayed;GameInstanceGameObjectFloat
+
+	function OnMaxTacFearEventDelayed(evt : handle:MaxTacFearEvent); // OnMaxTacFearEventDelayed;MaxTacFearEvent
+	function OnPushAnimEventDelayed(evt : handle:PushAnimEventDelayed); // OnPushAnimEventDelayed;PushAnimEventDelayed
+	function OnTurnOffPsychoSquadAvCammoEventDelayed(evt : handle:TurnOffPsychoSquadAvCammoEvent); // OnTurnOffPsychoSquadAvCammoEventDelayed;TurnOffPsychoSquadAvCammoEvent
+	function OnTurnOnPsychoSquadAvCammoEventDelayed(evt : handle:TurnOnPsychoSquadAvCammoEvent); // OnTurnOnPsychoSquadAvCammoEventDelayed;TurnOnPsychoSquadAvCammoEvent
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

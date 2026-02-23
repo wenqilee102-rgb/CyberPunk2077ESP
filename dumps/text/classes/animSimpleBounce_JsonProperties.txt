@@ -1,0 +1,17 @@
+import class animSimpleBounce_JsonProperties extends ISerializable
+{
+	var multiplier : Float;
+	var negativeMultiplier : Float;
+	var smoothStep : Float;
+	var offset : Float;
+	var delay : Float;
+	var startTransform : animTransformIndex;
+	var endTransform : animTransformIndex;
+	var transformOutputs : array:animSimpleBounceTransformOutput;
+	var trackOutputs : array:animSimpleBounceTrackOutput;
+	var outputDriverTrack : animNamedTrackIndex;
+}
+
+import class abstract ISerializable
+{
+}

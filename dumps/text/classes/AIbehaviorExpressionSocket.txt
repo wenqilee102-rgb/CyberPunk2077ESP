@@ -1,0 +1,9 @@
+import class AIbehaviorExpressionSocket extends ISerializable
+{
+	var typeHint : AIbehaviorTypeRef;
+	var expression : handle:AIbehaviorPassiveExpressionDefinition;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,31 @@
+import class gameEffectorSystem extends gameIEffectorSystem
+{
+	import function ApplyEffector(objID : entEntityID, instigator : whandle:gameObject, recordID : TweakDBID, optional parentRecordID : TweakDBID, optional proxyEntityID : entEntityID); // ApplyEffector
+	import function GetEffectorsByID(objID : entEntityID, recordID : TweakDBID, outEffectors : array:whandle:gameEffector); // GetEffectorsByID
+	import function GetEffectorsList(objID : entEntityID, outEffectors : array:whandle:gameEffector); // GetEffectorsList
+	import function IsEffectorPresent(objID : entEntityID, recordID : TweakDBID) : Bool; // IsEffectorPresent
+	import function RemoveEffector(objID : entEntityID, recordID : TweakDBID); // RemoveEffector
+	import function RemoveEffectorsByID(objID : entEntityID, recordID : TweakDBID) : Bool; // RemoveEffectorsByID
+}
+
+import class abstract gameIEffectorSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

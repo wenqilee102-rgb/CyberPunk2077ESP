@@ -1,0 +1,15 @@
+import struct gameFPPCameraComponentReplicatedState extends netIComponentState
+{
+	var lookAtData.m_pitchInput : Float;
+	var lookAtData.m_pitchRef : Float;
+	var lookAtData.m_yawInput : Float;
+	var lookAtData.m_yawRef : Float;
+
+	import function ForceLookParamsOnServer(input : Vector2, ref : Vector2); // ForceLookParamsOnServer
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

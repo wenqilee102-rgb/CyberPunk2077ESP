@@ -1,0 +1,7 @@
+import struct gamemappinsRuntimeStubMappinData extends gamemappinsIRuntimeMappinData
+{
+}
+
+import struct abstract gamemappinsIRuntimeMappinData
+{
+}

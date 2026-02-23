@@ -1,0 +1,20 @@
+class abstract AIActionLookat extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionLookAtData_Record, out lookAtEvent : handle:entLookAtAddEvent); // AIActionLookat::Activate;ScriptExecutionContextAIActionLookAtData_RecordLookAtAddEvent
+	static function Deactivate(owner : whandle:gameObject, lookAtAddEvents : script_ref:array:handle:entLookAtAddEvent); // AIActionLookat::Deactivate;GameObjectscript_ref<array<LookAtAddEvent>>
+	static function GetLookatPartsRequests(lookatPresetRecord : whandle:gamedataLookAtPreset_Record, lookAtParts : script_ref:array:animLookAtPartRequest); // AIActionLookat::GetLookatPartsRequests;LookAtPreset_Recordscript_ref<array<LookAtPartRequest>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

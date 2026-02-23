@@ -1,0 +1,69 @@
+class SetDestinationWaypoint extends AIActionHelperTask
+{
+	public    var refTargetType : EAITargetType;
+	public    var findClosest : Bool;
+	public    var waypointsName : CName;
+	private   var destinations : array:Vector4;
+	private   var finalDestinations : array:Vector4;
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function GetDistances(refVector : Vector4) : array:Float; // GetDistances;Vector4
+	function GetFinalDestination(context : AIbehaviorScriptExecutionContext) : Vector4; // GetFinalDestination;ScriptExecutionContext
+	function GetLowestDistanceIndex(distances : script_ref:array:Float) : Int32; // GetLowestDistanceIndex;script_ref<array<Float>>
+}
+
+class abstract AIActionHelperTask extends AIbehaviortaskScript
+{
+	public    var actionTweakIDMapping : handle:AIArgumentMapping;
+	private   var actionStringName : String;
+	private   var initialized : Bool;
+	private   var actionName : CName;
+	private   var actionID : TweakDBID;
+
+	function GetActionID() : TweakDBID; // GetActionID;
+	function GetActionPackageType() : AIactionParamsPackageTypes; // GetActionPackageType;
+	function GetActionStringName(context : AIbehaviorScriptExecutionContext) : String; // GetActionStringName;ScriptExecutionContext
+	function Initialize(context : AIbehaviorScriptExecutionContext); // Initialize;ScriptExecutionContext
+}
+
+import class AIbehaviortaskScript extends AIbehaviorScriptBase
+{
+	import function CutSelector(context : AIbehaviorScriptExecutionContext); // CutSelector
+	import function SetUpdateInterval(context : AIbehaviorScriptExecutionContext, interval : Float) : Bool; // SetUpdateInterval
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function ChildCompleted(context : AIbehaviorScriptExecutionContext, status : AIbehaviorCompletionStatus); // ChildCompleted;ScriptExecutionContextAIbehaviorCompletionStatus
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBase extends IScriptable
+{
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AIbehaviorScriptBase::GetAIComponent;ScriptExecutionContext
+	static function GetCombatTarget(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCombatTarget;ScriptExecutionContext
+	static function GetCompanion(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCompanion;ScriptExecutionContext
+	static function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // AIbehaviorScriptBase::GetGame;ScriptExecutionContext
+	static function GetHitReactionComponent(context : AIbehaviorScriptExecutionContext) : handle:HitReactionComponent; // AIbehaviorScriptBase::GetHitReactionComponent;ScriptExecutionContext
+	static function GetNPCPuppet(context : AIbehaviorScriptExecutionContext) : handle:NPCPuppet; // AIbehaviorScriptBase::GetNPCPuppet;ScriptExecutionContext
+	static function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // AIbehaviorScriptBase::GetPuppet;ScriptExecutionContext
+	static function GetStatPoolPercentage(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolPercentage;ScriptExecutionContextgamedataStatPoolType
+	static function GetStatPoolValue(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolValue;ScriptExecutionContextgamedataStatPoolType
+	static function GetUpperBodyState(context : AIbehaviorScriptExecutionContext) : gamedataNPCUpperBodyState; // AIbehaviorScriptBase::GetUpperBodyState;ScriptExecutionContext
+	static function RandomizeOffsetForUpdateInterval(interval : Float) : Float; // AIbehaviorScriptBase::RandomizeOffsetForUpdateInterval;Float
+
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

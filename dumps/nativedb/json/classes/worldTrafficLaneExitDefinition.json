@@ -1,0 +1,1 @@
+{"b":"worldTrafficLaneExitDefinition","d":8,"g":true,"e":[{"a":{"a":16},"b":"outLaneRef","c":128},{"a":{"b":"Vector4"},"b":"exitPosition","c":128},{"a":{"a":10},"b":"exitProbability","c":128},{"a":{"a":1},"b":"endConnection","c":128},{"a":{"a":1},"b":"thisLaneReversed","c":128},{"a":{"a":1},"b":"outLaneReversed","c":128}]}

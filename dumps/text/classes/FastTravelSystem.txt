@@ -1,0 +1,100 @@
+class FastTravelSystem extends gameScriptableSystem
+{
+	private   var fastTravelNodes : array:handle:gameFastTravelPointData;
+	private   var isFastTravelEnabledOnMap : Bool;
+	private   var fastTravelPointsTotal : Int32;
+	private   var lastUpdatedAchievementCount : Int32;
+	private   var fastTravelLocks : array:FastTravelSystemLock;
+	private   var loadingScreenCallbackID : handle:redCallbackObject;
+	private   var requestAutoSafeAfterLoadingScreen : Bool;
+	private   var fastTravelSystemRecord : whandle:gamedataFastTravelSystem_Record;
+	private   var lockLisenerID : CName;
+	private   var unlockLisenerID : CName;
+	private   var removeAllLocksLisenerID : CName;
+
+	static function AddFastTravelLock(reason : CName, game : ScriptGameInstance, optional statusEffectID : TweakDBID); // FastTravelSystem::AddFastTravelLock;CNameGameInstanceTweakDBID
+	static function ManageFastTravelLock(enable : Bool, reason : CName, game : ScriptGameInstance, optional statusEffectID : TweakDBID); // FastTravelSystem::ManageFastTravelLock;BoolCNameGameInstanceTweakDBID
+	static function RemoveAllFastTravelLocks(game : ScriptGameInstance); // FastTravelSystem::RemoveAllFastTravelLocks;GameInstance
+	static function RemoveFastTravelLock(reason : CName, game : ScriptGameInstance, optional statusEffectID : TweakDBID); // FastTravelSystem::RemoveFastTravelLock;CNameGameInstanceTweakDBID
+
+	event OnLoadingScreenFinished(value : Bool) : Bool; // OnLoadingScreenFinished
+
+	function AddFastTravelLock(reason : CName, optional statusEffectID : TweakDBID); // AddFastTravelLock;CNameTweakDBID
+	function AddFastTravelPoint(nodeData : handle:gameFastTravelPointData); // AddFastTravelPoint;FastTravelPointData
+	function CheckForScottieAchievement(); // CheckForScottieAchievement;
+	function EvaluateFastTravelLocksOnRestore(); // EvaluateFastTravelLocksOnRestore;
+	function GetAmmountOfFastTravelPointsOnMap() : Int32; // GetAmmountOfFastTravelPointsOnMap;
+	function GetFastTravelPoint(nodeData : handle:gameFastTravelPointData) : handle:gameFastTravelPointData; // GetFastTravelPoint;FastTravelPointData
+	function GetFastTravelPoints() : array:handle:gameFastTravelPointData; // GetFastTravelPoints;
+	function HasFastTravelPoint(nodeData : handle:gameFastTravelPointData) : Bool; // HasFastTravelPoint;FastTravelPointData
+	function InitializeDebugButtons(); // InitializeDebugButtons;
+	function IsFastTravelEnabled() : Bool; // IsFastTravelEnabled;
+	function IsFastTravelEnabledOnMap() : Bool; // IsFastTravelEnabledOnMap;
+	function OnAttach(); // OnAttach;
+	function OnCloseLastVisitedFastTravelSubwayGate(request : handle:CloseLastVisitedFastTravelSubwayGate); // OnCloseLastVisitedFastTravelSubwayGate;CloseLastVisitedFastTravelSubwayGate
+	function OnDebugButtonClicked(request : handle:gameSDOClickedRequest); // OnDebugButtonClicked;SDOClickedRequest
+	function OnDetach(); // OnDetach;
+	function OnEnableFastTravelRequest(request : handle:EnableFastTravelRequest); // OnEnableFastTravelRequest;EnableFastTravelRequest
+	function OnFastTravelConsoleInstructionRequest(request : handle:FastTravelConsoleInstructionRequest); // OnFastTravelConsoleInstructionRequest;FastTravelConsoleInstructionRequest
+	function OnFastTravelPrefetchRequest(request : handle:FastTravelPrefetchRequest); // OnFastTravelPrefetchRequest;FastTravelPrefetchRequest
+	function OnOpenFastTravelMenuForLastVisitedSubwayGate(request : handle:OpenFastTravelMenuForLastVisitedSubwayGate); // OnOpenFastTravelMenuForLastVisitedSubwayGate;OpenFastTravelMenuForLastVisitedSubwayGate
+	function OnOpenLastVisitedFastTravelSubwayGate(request : handle:OpenLastVisitedFastTravelSubwayGate); // OnOpenLastVisitedFastTravelSubwayGate;OpenLastVisitedFastTravelSubwayGate
+	function OnPerformFastTravelRequest(request : handle:PerformFastTravelRequest); // OnPerformFastTravelRequest;PerformFastTravelRequest
+	function OnRegisterFastTravelPointRequest(request : handle:RegisterFastTravelPointRequest); // OnRegisterFastTravelPointRequest;RegisterFastTravelPointRequest
+	function OnRegisterFastTravelPointsRequest(request : handle:RegisterFastTravelPointsRequest); // OnRegisterFastTravelPointsRequest;RegisterFastTravelPointsRequest
+	function OnRemoveAllFastTravelLocksRequest(request : handle:RemoveAllFastTravelLocksRequest); // OnRemoveAllFastTravelLocksRequest;RemoveAllFastTravelLocksRequest
+	function OnRequestAutoSave(request : handle:AutoSaveRequest); // OnRequestAutoSave;AutoSaveRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnToggleFastTravelAvailabilityOnMapRequest(evt : handle:FastTravelMenuToggledEvent); // OnToggleFastTravelAvailabilityOnMapRequest;FastTravelMenuToggledEvent
+	function OnUnregisterFastTravelPointRequest(request : handle:UnregisterFastTravelPointRequest); // OnUnregisterFastTravelPointRequest;UnregisterFastTravelPointRequest
+	function OnUpdateFastTravelPointRecordRequest(evt : handle:UpdateFastTravelPointRecordRequest); // OnUpdateFastTravelPointRecordRequest;UpdateFastTravelPointRecordRequest
+	function PerformFastTravel(player : handle:gameObject, nodeData : handle:gameFastTravelPointData); // PerformFastTravel;GameObjectFastTravelPointData
+	function RefreshFastTravelNodes(); // RefreshFastTravelNodes;
+	function RegisterFastTravelPoint(pointData : handle:gameFastTravelPointData, requesterID : entEntityID); // RegisterFastTravelPoint;FastTravelPointDataEntityID
+	function RegisterLoadingScreenCallback(); // RegisterLoadingScreenCallback;
+	function RegisterMappin(nodeData : handle:gameFastTravelPointData); // RegisterMappin;FastTravelPointData
+	function RemoveFastTravelLock(reason : CName); // RemoveFastTravelLock;CName
+	function RemoveFastTravelPoint(nodeData : handle:gameFastTravelPointData); // RemoveFastTravelPoint;FastTravelPointData
+	function RequestAutoSave(); // RequestAutoSave;
+	function RequestAutoSaveWithDelay(); // RequestAutoSaveWithDelay;
+	function RestoreFastTravelMappins(); // RestoreFastTravelMappins;
+	function SetFastTravelStarted(); // SetFastTravelStarted;
+	function ShowDebug(); // ShowDebug;
+	function TutorialAddFastTravelFact(); // TutorialAddFastTravelFact;
+	function UninitializeDebugButtons(); // UninitializeDebugButtons;
+	function UnregisterFastTravelPoint(pointData : handle:gameFastTravelPointData, requesterID : entEntityID); // UnregisterFastTravelPoint;FastTravelPointDataEntityID
+	function UnregisterLoadingCallback(); // UnregisterLoadingCallback;
+	function UnregisterMappin(nodeData : handle:gameFastTravelPointData); // UnregisterMappin;FastTravelPointData
+	function execInstructionForward(magicFloat : Float); // execInstructionForward;Float
+	function execInstructionPrevious(); // execInstructionPrevious;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

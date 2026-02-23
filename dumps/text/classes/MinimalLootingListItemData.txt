@@ -1,0 +1,33 @@
+class MinimalLootingListItemData extends IScriptable
+{
+	public    var gameItemData : whandle:gameItemData;
+	public    var itemId : gameItemID;
+	public    var itemName : String;
+	public    var itemCategoryName : String;
+	public    var itemType : gamedataItemType;
+	public    var equipmentArea : gamedataEquipmentArea;
+	public    var quality : gamedataQuality;
+	public    var isIconic : Bool;
+	public    var quantity : Int32;
+	public    var lootItemType : gameLootItemType;
+	public    var isQuestContainer : Bool;
+	public    var tweakDBID : TweakDBID;
+	public    var dpsDiff : Float;
+	public    var armorDiff : Float;
+	public    var qualityF : Float;
+	public    var comparedQualityF : Float;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

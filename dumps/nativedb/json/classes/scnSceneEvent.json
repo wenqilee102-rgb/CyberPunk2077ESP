@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"scnSceneEvent","d":12,"e":[{"a":{"b":"scnSceneEventId"},"b":"id","c":128},{"a":{"b":"scnEventType"},"b":"type","c":128},{"a":{"a":7},"b":"startTime","c":128},{"a":{"a":7},"b":"duration","c":128},{"a":{"a":3},"b":"executionTagFlags","c":128},{"a":{"a":26,"c":{"b":"scnIScalingData"}},"b":"scalingData","c":128}]}

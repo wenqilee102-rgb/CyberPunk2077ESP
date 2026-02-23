@@ -1,0 +1,8 @@
+import struct gameSpreadingData
+{
+	var count : Uint32;
+	var targets : Uint32;
+	var damageMultiplier : Float;
+	var range : Float;
+	var coneAngle : Float;
+}

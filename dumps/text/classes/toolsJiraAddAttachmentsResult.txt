@@ -1,0 +1,8 @@
+import class toolsJiraAddAttachmentsResult extends ISerializable
+{
+	var array : array:toolsJiraAttachment;
+}
+
+import class abstract ISerializable
+{
+}

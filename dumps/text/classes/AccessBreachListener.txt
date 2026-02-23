@@ -1,0 +1,51 @@
+class AccessBreachListener extends QuickHackUploadListener
+{
+}
+
+class QuickHackUploadListener extends ActionUploadListener
+{
+	event OnStatPoolAdded() : Bool; // OnStatPoolAdded
+	event OnStatPoolMaxValueReached(value : Float) : Bool; // OnStatPoolMaxValueReached
+
+	function Initialize(); // Initialize;
+	function PlayQuickHackSound(eventName : CName); // PlayQuickHackSound;CName
+	function RemoveLink(owner : whandle:ScriptedPuppet); // RemoveLink;ScriptedPuppet
+	function RemoveLinkedStatusEffects(owner : whandle:ScriptedPuppet, optional ssAction : Bool); // RemoveLinkedStatusEffects;ScriptedPuppetBool
+	function SendUploadFinishedEvent(); // SendUploadFinishedEvent;
+	function SendUploadStartedEvent(action : handle:ScriptableDeviceAction); // SendUploadStartedEvent;ScriptableDeviceAction
+	function SetRegenBehavior(); // SetRegenBehavior;
+}
+
+class ActionUploadListener extends gameCustomValueStatPoolsListener
+{
+	public    var action : handle:ScriptableDeviceAction;
+	public    var gameInstance : ScriptGameInstance;
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

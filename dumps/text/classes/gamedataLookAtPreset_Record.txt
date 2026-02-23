@@ -1,0 +1,43 @@
+import class gamedataLookAtPreset_Record extends gamedataTweakDBRecord
+{
+	import function AttachLeftHandtoRightHand() : Bool; // AttachLeftHandtoRightHand
+	import function AttachRightHandtoLeftHand() : Bool; // AttachRightHandtoLeftHand
+	import function BackLimitDegrees() : Float; // BackLimitDegrees
+	import function BodyPart() : CName; // BodyPart
+	import function CalculatePositionInParentSpace() : Bool; // CalculatePositionInParentSpace
+	import function FollowingSpeedFactorOverride() : Float; // FollowingSpeedFactorOverride
+	import function GetLookAtPartsCount() : Int32; // GetLookAtPartsCount
+	import function GetLookAtPartsItem(index : Int32) : whandle:gamedataLookAtPart_Record; // GetLookAtPartsItem
+	import function GetLookAtPartsItemHandle(index : Int32) : handle:gamedataLookAtPart_Record; // GetLookAtPartsItemHandle
+	import function HardLimitDegrees() : Float; // HardLimitDegrees
+	import function HardLimitDistance() : Float; // HardLimitDistance
+	import function HasOutTransition() : Bool; // HasOutTransition
+	import function LookAtParts(out outList : array:whandle:gamedataLookAtPart_Record); // LookAtParts
+	import function LookAtPartsContains(item : whandle:gamedataLookAtPart_Record) : Bool; // LookAtPartsContains
+	import function Mode() : Int32; // Mode
+	import function OutTransitionSpeed() : Float; // OutTransitionSpeed
+	import function Priority() : Int32; // Priority
+	import function SoftLimitDegrees() : Float; // SoftLimitDegrees
+	import function Suppress() : Float; // Suppress
+	import function TransitionSpeed() : Float; // TransitionSpeed
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

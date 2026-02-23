@@ -1,0 +1,34 @@
+import class gameAttachmentSlotEventsEquipStart extends gameAttachmentSlotEventsAttachmentSlotEvent
+{
+	import function GetFirstEquip() : Bool; // GetFirstEquip
+	import function GetItemID() : gameItemID; // GetItemID
+	import function GetStartingRenderingPlane() : ERenderingPlane; // GetStartingRenderingPlane
+	import function SetFirstEquip(firstEquip : Bool); // SetFirstEquip
+	import function SetHighPriority(highPriority : Bool); // SetHighPriority
+	import function SetItemID(itemId : gameItemID); // SetItemID
+	import function SetStartingRenderingPlane(renderingPlane : ERenderingPlane); // SetStartingRenderingPlane
+}
+
+import class abstract gameAttachmentSlotEventsAttachmentSlotEvent extends redEvent
+{
+	import function GetSlotID() : TweakDBID; // GetSlotID
+	import function SetSlotID(slotId : TweakDBID); // SetSlotID
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,20 @@
+import class questSpawnerCondition extends questTypedCondition
+{
+	var type : handle:questISpawnerConditionType;
+}
+
+import class abstract questTypedCondition extends questIBaseCondition
+{
+}
+
+import class abstract questIBaseCondition extends graphIGraphNodeCondition
+{
+}
+
+import class abstract graphIGraphNodeCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

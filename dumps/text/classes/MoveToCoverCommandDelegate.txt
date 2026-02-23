@@ -1,0 +1,46 @@
+class MoveToCoverCommandDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	public    var inCommand : handle:AIArgumentMapping;
+	public    var releaseSignalOnCoverEnter : Bool;
+	public    var useSpecialAction : Bool;
+	public    var useHigh : Bool;
+	public    var useLeft : Bool;
+	public    var useRight : Bool;
+
+	static function ResetGracefulInterruptionSignal(context : AIbehaviorScriptExecutionContext); // MoveToCoverCommandDelegate::ResetGracefulInterruptionSignal;ScriptExecutionContext
+	static function SendGracefulInterruptionSignal(context : AIbehaviorScriptExecutionContext); // MoveToCoverCommandDelegate::SendGracefulInterruptionSignal;ScriptExecutionContext
+
+	function GetCoverHeight(context : AIbehaviorScriptExecutionContext) : gameCoverHeight; // GetCoverHeight;ScriptExecutionContext
+	function GracefulInterruption(context : AIbehaviorScriptExecutionContext) : Bool; // GracefulInterruption;ScriptExecutionContext
+	function OnActivate(context : AIbehaviorScriptExecutionContext) : Bool; // OnActivate;ScriptExecutionContext
+	function ResetGracefulInterruption(context : AIbehaviorScriptExecutionContext) : Bool; // ResetGracefulInterruption;ScriptExecutionContext
+	function ResetVariables(context : AIbehaviorScriptExecutionContext) : Bool; // ResetVariables;ScriptExecutionContext
+	function StopExecutingCommand(context : AIbehaviorScriptExecutionContext) : Bool; // StopExecutingCommand;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

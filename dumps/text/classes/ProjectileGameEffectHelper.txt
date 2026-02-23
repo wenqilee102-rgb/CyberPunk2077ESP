@@ -1,0 +1,20 @@
+class ProjectileGameEffectHelper extends IScriptable
+{
+	static function FillProjectileHitAoEData(aoeData : script_ref:ProjectileHitAoEData) : Bool; // ProjectileGameEffectHelper::FillProjectileHitAoEData;script_ref<ProjectileHitAoEData>
+	static function FillProjectileHitData(source : whandle:gameObject, user : whandle:gameObject, projectileComponent : handle:gameprojectileComponent, eventData : handle:gameprojectileHitEvent) : Bool; // ProjectileGameEffectHelper::FillProjectileHitData;GameObjectGameObjectProjectileComponentgameprojectileHitEvent
+	static function RunEffectFromAttack(instigator : whandle:gameObject, source : whandle:gameObject, weapon : whandle:gameweaponObject, attackRecord : handle:gamedataAttack_Record, eventData : handle:gameprojectileHitEvent) : Bool; // ProjectileGameEffectHelper::RunEffectFromAttack;GameObjectGameObjectWeaponObjectAttack_RecordgameprojectileHitEvent
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

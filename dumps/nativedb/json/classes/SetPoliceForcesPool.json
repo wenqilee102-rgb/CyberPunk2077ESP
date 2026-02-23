@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"SetPoliceForcesPool","d":0,"e":[{"a":{"a":1},"b":"disableOnFootSpawn","c":128},{"a":{"a":1},"b":"disableVehicleSpawn","c":128},{"a":{"a":1},"b":"disableDroneSpawn","c":128},{"a":{"a":1},"b":"resetToDefault","c":128},{"a":{"a":14},"b":"source","c":128}],"f":[{"a":"GetFriendlyDesctiption;","b":"GetFriendlyDesctiption","c":{"a":12},"d":48}]}

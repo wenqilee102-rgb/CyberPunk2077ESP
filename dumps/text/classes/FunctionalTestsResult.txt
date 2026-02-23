@@ -1,0 +1,10 @@
+import struct FunctionalTestsResult
+{
+	var code : FunctionalTestsResultCode;
+	var msg : String;
+
+	import static function IsValid(); // IsValid
+	import static function Make(); // Make
+	import static function MakeValid(); // MakeValid
+	import static function SetResult(); // SetResult
+}

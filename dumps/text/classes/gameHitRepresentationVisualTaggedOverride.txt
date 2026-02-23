@@ -1,0 +1,9 @@
+import class gameHitRepresentationVisualTaggedOverride extends ISerializable
+{
+	var visualTags : redTagList;
+	var represenationOverride : gameHitShapeContainer;
+}
+
+import class abstract ISerializable
+{
+}

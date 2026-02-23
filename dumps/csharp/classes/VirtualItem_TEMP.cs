@@ -1,0 +1,76 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class VirtualItem_TEMP : gameObject
+	{
+		private CString _item;
+		private CHandle<gameinteractionsComponent> _interaction;
+		private CHandle<entPhysicalMeshComponent> _mesh;
+		private CHandle<entPhysicalMeshComponent> _mesh1;
+		private CHandle<entPhysicalMeshComponent> _mesh2;
+		private CHandle<entPhysicalMeshComponent> _mesh3;
+		private CHandle<entPhysicalMeshComponent> _mesh4;
+
+		[Ordinal(36)] 
+		[RED("item")] 
+		public CString Item
+		{
+			get => GetProperty(ref _item);
+			set => SetProperty(ref _item, value);
+		}
+
+		[Ordinal(37)] 
+		[RED("interaction")] 
+		public CHandle<gameinteractionsComponent> Interaction
+		{
+			get => GetProperty(ref _interaction);
+			set => SetProperty(ref _interaction, value);
+		}
+
+		[Ordinal(38)] 
+		[RED("mesh")] 
+		public CHandle<entPhysicalMeshComponent> Mesh
+		{
+			get => GetProperty(ref _mesh);
+			set => SetProperty(ref _mesh, value);
+		}
+
+		[Ordinal(39)] 
+		[RED("mesh1")] 
+		public CHandle<entPhysicalMeshComponent> Mesh1
+		{
+			get => GetProperty(ref _mesh1);
+			set => SetProperty(ref _mesh1, value);
+		}
+
+		[Ordinal(40)] 
+		[RED("mesh2")] 
+		public CHandle<entPhysicalMeshComponent> Mesh2
+		{
+			get => GetProperty(ref _mesh2);
+			set => SetProperty(ref _mesh2, value);
+		}
+
+		[Ordinal(41)] 
+		[RED("mesh3")] 
+		public CHandle<entPhysicalMeshComponent> Mesh3
+		{
+			get => GetProperty(ref _mesh3);
+			set => SetProperty(ref _mesh3, value);
+		}
+
+		[Ordinal(42)] 
+		[RED("mesh4")] 
+		public CHandle<entPhysicalMeshComponent> Mesh4
+		{
+			get => GetProperty(ref _mesh4);
+			set => SetProperty(ref _mesh4, value);
+		}
+
+		public VirtualItem_TEMP(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

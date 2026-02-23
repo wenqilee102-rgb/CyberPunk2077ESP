@@ -1,0 +1,14 @@
+import class gameinteractionsLookAtPredicate extends gameinteractionsIPredicateType
+{
+	var testTarget : gameinteractionsELookAtTarget;
+	var testType : gameinteractionsELookAtTest;
+	var stopOnTransparent : Bool;
+}
+
+import class abstract gameinteractionsIPredicateType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

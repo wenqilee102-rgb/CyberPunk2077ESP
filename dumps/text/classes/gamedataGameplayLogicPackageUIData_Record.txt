@@ -1,0 +1,43 @@
+import class gamedataGameplayLogicPackageUIData_Record extends gamedataTweakDBRecord
+{
+	import function FloatValues() : array:Float; // FloatValues
+	import function FloatValuesContains(item : Float) : Bool; // FloatValuesContains
+	import function GetFloatValuesCount() : Int32; // GetFloatValuesCount
+	import function GetFloatValuesItem(index : Int32) : Float; // GetFloatValuesItem
+	import function GetIntValuesCount() : Int32; // GetIntValuesCount
+	import function GetIntValuesItem(index : Int32) : Int32; // GetIntValuesItem
+	import function GetNameValuesCount() : Int32; // GetNameValuesCount
+	import function GetNameValuesItem(index : Int32) : CName; // GetNameValuesItem
+	import function GetStatsCount() : Int32; // GetStatsCount
+	import function GetStatsItem(index : Int32) : whandle:gamedataStat_Record; // GetStatsItem
+	import function GetStatsItemHandle(index : Int32) : handle:gamedataStat_Record; // GetStatsItemHandle
+	import function IconPath() : CName; // IconPath
+	import function IntValues() : array:Int32; // IntValues
+	import function IntValuesContains(item : Int32) : Bool; // IntValuesContains
+	import function LocalizedDescription() : String; // LocalizedDescription
+	import function LocalizedName() : String; // LocalizedName
+	import function NameValues() : array:CName; // NameValues
+	import function NameValuesContains(item : CName) : Bool; // NameValuesContains
+	import function Stats(out outList : array:whandle:gamedataStat_Record); // Stats
+	import function StatsContains(item : whandle:gamedataStat_Record) : Bool; // StatsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

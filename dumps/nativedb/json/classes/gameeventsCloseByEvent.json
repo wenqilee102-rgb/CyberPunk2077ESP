@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameeventsCloseByEvent","c":"gameCloseByEvent","d":8,"e":[{"a":{"b":"Vector4"},"b":"position","c":128},{"a":{"b":"Vector4"},"b":"forward","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"instigator","c":128},{"a":{"a":26,"c":{"b":"gamedamageAttackData"}},"b":"attackData","c":128}]}

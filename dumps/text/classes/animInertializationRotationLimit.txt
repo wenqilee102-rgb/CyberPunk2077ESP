@@ -1,0 +1,7 @@
+import struct animInertializationRotationLimit
+{
+	var constrainedTransform : animTransformIndex;
+	var limitOnX : animInertializationFloatClamp;
+	var limitOnY : animInertializationFloatClamp;
+	var limitOnZ : animInertializationFloatClamp;
+}

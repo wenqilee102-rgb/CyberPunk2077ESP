@@ -1,0 +1,1 @@
+{"b":"AIbehaviortweakTargetLocation","d":8,"g":true,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"object","c":128},{"a":{"b":"Vector3"},"b":"position","c":128},{"a":{"b":"Vector3"},"b":"speed","c":128},{"a":{"b":"AIObjectId"},"b":"coverId","c":128},{"a":{"a":1},"b":"hasPosition","c":128},{"a":{"a":1},"b":"hasSpeed","c":128}]}

@@ -1,0 +1,5 @@
+import struct gameActionPrereqs
+{
+	var actionName : CName;
+	var prereqs : array:handle:gameIPrereq;
+}

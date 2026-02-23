@@ -1,0 +1,48 @@
+import class gamedataUIStatsMap_Record extends gamedataTweakDBRecord
+{
+	import function GetPrimaryStatsCount() : Int32; // GetPrimaryStatsCount
+	import function GetPrimaryStatsItem(index : Int32) : whandle:gamedataStat_Record; // GetPrimaryStatsItem
+	import function GetPrimaryStatsItemHandle(index : Int32) : handle:gamedataStat_Record; // GetPrimaryStatsItemHandle
+	import function GetSecondaryStatsCount() : Int32; // GetSecondaryStatsCount
+	import function GetSecondaryStatsItem(index : Int32) : whandle:gamedataStat_Record; // GetSecondaryStatsItem
+	import function GetSecondaryStatsItemHandle(index : Int32) : handle:gamedataStat_Record; // GetSecondaryStatsItemHandle
+	import function GetStatsToCompareCount() : Int32; // GetStatsToCompareCount
+	import function GetStatsToCompareItem(index : Int32) : whandle:gamedataStat_Record; // GetStatsToCompareItem
+	import function GetStatsToCompareItemHandle(index : Int32) : handle:gamedataStat_Record; // GetStatsToCompareItemHandle
+	import function GetTooltipStatsCount() : Int32; // GetTooltipStatsCount
+	import function GetTooltipStatsItem(index : Int32) : whandle:gamedataStat_Record; // GetTooltipStatsItem
+	import function GetTooltipStatsItemHandle(index : Int32) : handle:gamedataStat_Record; // GetTooltipStatsItemHandle
+	import function GetTypesToCompareWithCount() : Int32; // GetTypesToCompareWithCount
+	import function GetTypesToCompareWithItem(index : Int32) : whandle:gamedataItemType_Record; // GetTypesToCompareWithItem
+	import function GetTypesToCompareWithItemHandle(index : Int32) : handle:gamedataItemType_Record; // GetTypesToCompareWithItemHandle
+	import function PrimaryStats(out outList : array:whandle:gamedataStat_Record); // PrimaryStats
+	import function PrimaryStatsContains(item : whandle:gamedataStat_Record) : Bool; // PrimaryStatsContains
+	import function SecondaryStats(out outList : array:whandle:gamedataStat_Record); // SecondaryStats
+	import function SecondaryStatsContains(item : whandle:gamedataStat_Record) : Bool; // SecondaryStatsContains
+	import function StatsToCompare(out outList : array:whandle:gamedataStat_Record); // StatsToCompare
+	import function StatsToCompareContains(item : whandle:gamedataStat_Record) : Bool; // StatsToCompareContains
+	import function TooltipStats(out outList : array:whandle:gamedataStat_Record); // TooltipStats
+	import function TooltipStatsContains(item : whandle:gamedataStat_Record) : Bool; // TooltipStatsContains
+	import function TypesToCompareWith(out outList : array:whandle:gamedataItemType_Record); // TypesToCompareWith
+	import function TypesToCompareWithContains(item : whandle:gamedataItemType_Record) : Bool; // TypesToCompareWithContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

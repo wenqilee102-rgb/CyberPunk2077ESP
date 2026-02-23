@@ -1,0 +1,41 @@
+import class gamedataEthnicNames_Record extends gamedataTweakDBRecord
+{
+	import function DisplayName() : CName; // DisplayName
+	import function Ethnicity() : whandle:gamedataEthnicity_Record; // Ethnicity
+	import function EthnicityHandle() : handle:gamedataEthnicity_Record; // EthnicityHandle
+	import function Gender() : whandle:gamedataGender_Record; // Gender
+	import function GenderHandle() : handle:gamedataGender_Record; // GenderHandle
+	import function GetNamesCount() : Int32; // GetNamesCount
+	import function GetNamesItem(index : Int32) : CName; // GetNamesItem
+	import function GetSurnamesCount() : Int32; // GetSurnamesCount
+	import function GetSurnamesItem(index : Int32) : CName; // GetSurnamesItem
+	import function GetVisualTagsCount() : Int32; // GetVisualTagsCount
+	import function GetVisualTagsItem(index : Int32) : CName; // GetVisualTagsItem
+	import function NameOrderFormat() : CName; // NameOrderFormat
+	import function Names() : array:CName; // Names
+	import function NamesContains(item : CName) : Bool; // NamesContains
+	import function Surnames() : array:CName; // Surnames
+	import function SurnamesContains(item : CName) : Bool; // SurnamesContains
+	import function VisualTags() : array:CName; // VisualTags
+	import function VisualTagsContains(item : CName) : Bool; // VisualTagsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class gameVisualTagsAppearanceNamesPreset_TagsAppearances extends ISerializable
+{
+	var visualTagHash : CName;
+	var appearanceNames : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

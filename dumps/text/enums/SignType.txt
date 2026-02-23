@@ -1,0 +1,6 @@
+enum SignType
+{
+	INFORMATION = 0,
+	ATTENTION = 1,
+	WARNING = 2
+}

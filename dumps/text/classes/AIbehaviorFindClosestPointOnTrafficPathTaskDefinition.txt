@@ -1,0 +1,22 @@
+import class AIbehaviorFindClosestPointOnTrafficPathTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var enterClosest : handle:AIArgumentMapping;
+	var avoidedPosition : handle:AIArgumentMapping;
+	var useThreatPosAsAvoidedPos : handle:AIArgumentMapping;
+	var avoidedPositionDistance : handle:AIArgumentMapping;
+	var usePreviousPosition : handle:AIArgumentMapping;
+	var checkRoadIntersection : handle:AIArgumentMapping;
+	var workspotData : handle:AIArgumentMapping;
+	var positionOnPath : handle:AIArgumentMapping;
+	var pathDirection : handle:AIArgumentMapping;
+	var joinTrafficSettings : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

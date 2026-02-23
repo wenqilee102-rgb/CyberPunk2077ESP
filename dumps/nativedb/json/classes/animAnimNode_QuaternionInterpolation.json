@@ -1,0 +1,1 @@
+{"a":"animAnimNode_QuaternionValue","b":"animAnimNode_QuaternionInterpolation","d":8,"e":[{"a":{"b":"animQuaternionInterpolationType"},"b":"interpolationType","c":128},{"a":{"b":"animQuaternionLink"},"b":"firstInput","c":128},{"a":{"b":"animQuaternionLink"},"b":"secondInput","c":128},{"a":{"b":"animFloatLink"},"b":"weight","c":128}]}

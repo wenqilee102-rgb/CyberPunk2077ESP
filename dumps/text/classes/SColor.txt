@@ -1,0 +1,13 @@
+struct SColor
+{
+	static function Black(optional alpha : Uint8) : Color; // SColor::Black;Uint8
+	static function Blue(optional alpha : Uint8) : Color; // SColor::Blue;Uint8
+	static function Green(optional alpha : Uint8) : Color; // SColor::Green;Uint8
+	static function Grey(optional alpha : Uint8) : Color; // SColor::Grey;Uint8
+	static function Orange(optional alpha : Uint8) : Color; // SColor::Orange;Uint8
+	static function Pink(optional alpha : Uint8) : Color; // SColor::Pink;Uint8
+	static function Purple(optional alpha : Uint8) : Color; // SColor::Purple;Uint8
+	static function Red(optional alpha : Uint8) : Color; // SColor::Red;Uint8
+	static function White(optional alpha : Uint8) : Color; // SColor::White;Uint8
+	static function Yellow(optional alpha : Uint8) : Color; // SColor::Yellow;Uint8
+}

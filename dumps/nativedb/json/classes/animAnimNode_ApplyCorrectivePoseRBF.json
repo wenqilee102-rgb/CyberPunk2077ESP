@@ -1,0 +1,1 @@
+{"a":"animAnimNode_OnePoseInput","b":"animAnimNode_ApplyCorrectivePoseRBF","d":8,"e":[{"a":{"a":10},"b":"rbfCoefficient","c":128},{"a":{"a":10},"b":"rbfPowValue","c":128},{"a":{"a":10},"b":"correctiveFrame","c":128},{"a":{"a":31,"c":{"b":"animCorrectivePoseEntry"}},"b":"correctives","c":128}]}

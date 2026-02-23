@@ -1,0 +1,5 @@
+struct QuickSlotUIStructure
+{
+	public    var ItemIndex : Int32;
+	public    var OperationResult : Bool;
+}

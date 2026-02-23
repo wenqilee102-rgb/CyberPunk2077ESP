@@ -1,0 +1,30 @@
+import class animLookAtPreset_FullControl extends animLookAtPreset
+{
+	var limits : animLookAtLimits;
+	var eyesSuppress : Float;
+	var eyesMode : Int32;
+	var headSuppress : Float;
+	var headMode : Int32;
+	var headSquareScale : Float;
+	var chestSuppress : Float;
+	var chestMode : Int32;
+	var chestSquareScale : Float;
+}
+
+import class abstract animLookAtPreset extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

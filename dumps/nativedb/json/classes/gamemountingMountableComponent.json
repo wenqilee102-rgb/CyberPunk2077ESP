@@ -1,0 +1,1 @@
+{"a":"entIComponent","b":"gamemountingMountableComponent","c":"MountableComponent","d":12,"f":[{"a":"gamemountingMountableComponent::IsInteractionAcceptable;InteractionChoiceEvent","b":"IsInteractionAcceptable","c":{"a":1},"d":56,"e":[{"a":{"a":26,"c":{"b":"gameinteractionsChoiceEvent"}},"b":"choiceEvent","c":0}]}]}

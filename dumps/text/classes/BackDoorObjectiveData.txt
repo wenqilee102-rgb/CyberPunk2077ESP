@@ -1,0 +1,41 @@
+class BackDoorObjectiveData extends GemplayObjectiveData
+{
+}
+
+class GemplayObjectiveData extends IScriptable
+{
+	protected var questUniqueId : String;
+	protected var questTitle : String;
+	protected var objectiveDescription : String;
+	private   var uniqueId : String;
+	private   var ownerID : entEntityID;
+	private   var objectiveEntryID : String;
+	private   var uniqueIdPrefix : String;
+	private   var objectiveState : gameJournalEntryState;
+
+	function CreateUniqueID(entityID : entEntityID); // CreateUniqueID;EntityID
+	function GetObjectiveDescription() : String; // GetObjectiveDescription;
+	function GetObjectiveEntryID() : String; // GetObjectiveEntryID;
+	function GetObjectiveState() : gameJournalEntryState; // GetObjectiveState;
+	function GetOwnerID() : entEntityID; // GetOwnerID;
+	function GetQuestTitle() : String; // GetQuestTitle;
+	function GetUniqueID() : String; // GetUniqueID;
+	function IsCreated() : Bool; // IsCreated;
+	function SetObjectiveEntryID(objectiveEntryID : script_ref:String); // SetObjectiveEntryID;script_ref<String>
+	function SetObjectiveState(state : gameJournalEntryState); // SetObjectiveState;gameJournalEntryState
+	function SetOwnerID(requesterID : entEntityID); // SetOwnerID;EntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,40 @@
+class ItemCategoryFliterManager extends IScriptable
+{
+	private   var filtersToCheck : array:ItemFilterCategory;
+	private   var filters : array:ItemFilterCategory;
+	private   var sharedFiltersToCheck : array:ItemFilterCategory;
+	private   var isOrderDirty : Bool;
+
+	static function Make(optional skipDefaultFilters : Bool) : handle:ItemCategoryFliterManager; // ItemCategoryFliterManager::Make;Bool
+
+	function AddFilter(filter : ItemFilterCategory); // AddFilter;ItemFilterCategory
+	function AddFilterToCheck(filter : ItemFilterCategory); // AddFilterToCheck;ItemFilterCategory
+	function AddItem(itemData : whandle:gameItemData); // AddItem;gameItemData
+	function AddItem(itemCategory : ItemFilterCategory); // AddItem;ItemFilterCategory
+	function Clear(optional skipDefaultFilters : Bool); // Clear;Bool
+	function Contains(category : ItemFilterCategory) : Bool; // Contains;ItemFilterCategory
+	function GetAt(index : Int32) : ItemFilterCategory; // GetAt;Int32
+	function GetFiltersList() : array:ItemFilterCategory; // GetFiltersList;
+	function GetFiltersListSize() : Int32; // GetFiltersListSize;
+	function GetIntFiltersList() : array:Int32; // GetIntFiltersList;
+	function GetSortedFiltersList() : array:ItemFilterCategory; // GetSortedFiltersList;
+	function GetSortedIntFiltersList() : array:Int32; // GetSortedIntFiltersList;
+	function InsertFilter(position : Int32, filter : ItemFilterCategory); // InsertFilter;Int32ItemFilterCategory
+	function IsSharedFilter(filter : ItemFilterCategory) : Bool; // IsSharedFilter;ItemFilterCategory
+	function RemvoeFilterToCheck(filter : ItemFilterCategory); // RemvoeFilterToCheck;ItemFilterCategory
+	function SortFiltersList(); // SortFiltersList;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

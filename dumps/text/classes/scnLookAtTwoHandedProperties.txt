@@ -1,0 +1,6 @@
+import struct scnLookAtTwoHandedProperties
+{
+	var enableFactor : Float;
+	var override : Float;
+	var mode : Int32;
+}

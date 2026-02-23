@@ -1,0 +1,29 @@
+class AnimFeature_Carry extends animAnimFeature
+{
+	public    var state : Int32;
+	public    var pickupAnimation : Int32;
+	public    var useBothHands : Bool;
+	public    var instant : Bool;
+	public    var fastMode : Bool;
+	public    var isCarryActive : Bool;
+	public    var isFriendlyCarry : Bool;
+	public    var wasThrown : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

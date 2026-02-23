@@ -1,0 +1,67 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class SpiderbotHeavyProjectile : BaseProjectile
+	{
+		private CHandle<entIComponent> _meshComponent;
+		private gameEffectRef _effect;
+		private CFloat _startVelocity;
+		private CFloat _lifetime_444;
+		private CBool _alive;
+		private CBool _hit;
+
+		[Ordinal(48)] 
+		[RED("meshComponent")] 
+		public CHandle<entIComponent> MeshComponent
+		{
+			get => GetProperty(ref _meshComponent);
+			set => SetProperty(ref _meshComponent, value);
+		}
+
+		[Ordinal(49)] 
+		[RED("effect")] 
+		public gameEffectRef Effect
+		{
+			get => GetProperty(ref _effect);
+			set => SetProperty(ref _effect, value);
+		}
+
+		[Ordinal(50)] 
+		[RED("startVelocity")] 
+		public CFloat StartVelocity
+		{
+			get => GetProperty(ref _startVelocity);
+			set => SetProperty(ref _startVelocity, value);
+		}
+
+		[Ordinal(51)] 
+		[RED("lifetime")] 
+		public CFloat Lifetime_444
+		{
+			get => GetProperty(ref _lifetime_444);
+			set => SetProperty(ref _lifetime_444, value);
+		}
+
+		[Ordinal(52)] 
+		[RED("alive")] 
+		public CBool Alive
+		{
+			get => GetProperty(ref _alive);
+			set => SetProperty(ref _alive, value);
+		}
+
+		[Ordinal(53)] 
+		[RED("hit")] 
+		public CBool Hit
+		{
+			get => GetProperty(ref _hit);
+			set => SetProperty(ref _hit, value);
+		}
+
+		public SpiderbotHeavyProjectile(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

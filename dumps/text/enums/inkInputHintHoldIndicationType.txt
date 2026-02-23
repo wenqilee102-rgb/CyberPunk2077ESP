@@ -1,0 +1,6 @@
+enum inkInputHintHoldIndicationType
+{
+	FromInputConfig = 0,
+	Press = 1,
+	Hold = 2
+}

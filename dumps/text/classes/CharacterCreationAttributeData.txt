@@ -1,0 +1,30 @@
+class CharacterCreationAttributeData extends IScriptable
+{
+	public    var label : String;
+	public    var desc : String;
+	public    var value : Int32;
+	public    var attribute : gamedataStatType;
+	public    var icon : CName;
+	public    var maxValue : Int32;
+	public    var minValue : Int32;
+	public    var maxed : Bool;
+	public    var atMinimum : Bool;
+
+	function SetAtMinimum(val : Bool); // SetAtMinimum;Bool
+	function SetMaxed(val : Bool); // SetMaxed;Bool
+	function SetValue(val : Int32); // SetValue;Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

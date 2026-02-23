@@ -1,0 +1,51 @@
+import class gamedataAimAssistCommon_Record extends gamedataTweakDBRecord
+{
+	import function AimAssistType() : whandle:gamedataAimAssistType_Record; // AimAssistType
+	import function AimAssistTypeHandle() : handle:gamedataAimAssistType_Record; // AimAssistTypeHandle
+	import function AngleDistUnit() : Float; // AngleDistUnit
+	import function AngleDistUnitWeight() : Float; // AngleDistUnitWeight
+	import function AngleProximityBonus() : Float; // AngleProximityBonus
+	import function AngleProximityThreshold() : Float; // AngleProximityThreshold
+	import function FirstPassAngleRange() : EulerAngles; // FirstPassAngleRange
+	import function ForceSoftLockMinimumWeight() : Bool; // ForceSoftLockMinimumWeight
+	import function IsEnabled() : Bool; // IsEnabled
+	import function IsEnabledForMouse() : Bool; // IsEnabledForMouse
+	import function PastTargetWeight() : Float; // PastTargetWeight
+	import function PrimaryComponentsOnly() : Bool; // PrimaryComponentsOnly
+	import function RecentInputTime() : Float; // RecentInputTime
+	import function RotatingAwayFromPastTargetPenalty() : Float; // RotatingAwayFromPastTargetPenalty
+	import function SoftLockBrakeAngle() : EulerAngles; // SoftLockBrakeAngle
+	import function SoftLockTargetLostTimeOut() : Float; // SoftLockTargetLostTimeOut
+	import function SoftLockTargetWeight() : Float; // SoftLockTargetWeight
+	import function TargetAcquisitionDelayTime() : Float; // TargetAcquisitionDelayTime
+	import function TargetFilter() : whandle:gamedataSearchFilterMaskTypeCondition_Record; // TargetFilter
+	import function TargetFilterHandle() : handle:gamedataSearchFilterMaskTypeCondition_Record; // TargetFilterHandle
+	import function TargetFilterPriority() : whandle:gamedataSearchFilterMaskTypeCondition_Record; // TargetFilterPriority
+	import function TargetFilterPriorityBonus() : Float; // TargetFilterPriorityBonus
+	import function TargetFilterPriorityHandle() : handle:gamedataSearchFilterMaskTypeCondition_Record; // TargetFilterPriorityHandle
+	import function TargetLostTimeOut() : Float; // TargetLostTimeOut
+	import function WorldDistUnit() : Float; // WorldDistUnit
+	import function WorldDistUnitWeight() : Float; // WorldDistUnitWeight
+	import function WorldProximityBonus() : Float; // WorldProximityBonus
+	import function WorldProximityThreshold() : Float; // WorldProximityThreshold
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

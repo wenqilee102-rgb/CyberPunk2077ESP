@@ -1,0 +1,34 @@
+import class worldEnvAreaNotifier extends worldITriggerAreaNotifer
+{
+	var priority : Uint8;
+	var horizontalFadeDistance : Float;
+	var verticalFadeDistance : Float;
+	var blendTimeIn : Float;
+	var blendTimeOut : Float;
+	var env : rRef:worldEnvironmentAreaParameters;
+	var params : WorldRenderAreaSettings;
+	var weatherStateNames : array:CName;
+	var weatherStateValues : array:Bool;
+	var resourceVersion : Uint8;
+}
+
+import class abstract worldITriggerAreaNotifer extends IScriptable
+{
+	var isEnabled : Bool;
+	var includeChannels : TriggerChannel;
+	var excludeChannels : Uint32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

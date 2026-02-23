@@ -1,0 +1,6 @@
+import struct worldSpeedSplineNodeSpeedChangeSection
+{
+	var start : Float;
+	var end : Float;
+	var targetSpeed_M_P_S : Float;
+}

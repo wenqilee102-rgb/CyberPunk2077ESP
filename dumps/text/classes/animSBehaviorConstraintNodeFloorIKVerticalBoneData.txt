@@ -1,0 +1,9 @@
+import struct animSBehaviorConstraintNodeFloorIKVerticalBoneData
+{
+	var bone : animTransformIndex;
+	var Min offset : Float;
+	var Max offset : Float;
+	var offsetToDesiredBlendTime : Float;
+	var verticalOffsetBlendTime : Float;
+	var stiffness : Float;
+}

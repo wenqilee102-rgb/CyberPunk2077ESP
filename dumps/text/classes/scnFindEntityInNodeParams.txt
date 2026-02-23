@@ -1,0 +1,5 @@
+import struct scnFindEntityInNodeParams
+{
+	var nodeRef : NodeRef;
+	var forceMaxVisibility : Bool;
+}

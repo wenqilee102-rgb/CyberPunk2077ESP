@@ -1,0 +1,23 @@
+class EquippedQuickHackData extends IScriptable
+{
+	private   var programEntries : array:handle:ProgramEntry;
+
+	static function GetShardsQuickHacks(parts : array:gameSPartSlots) : array:handle:ProgramEntry; // EquippedQuickHackData::GetShardsQuickHacks;array<SPartSlots>
+	static function Make(player : whandle:PlayerPuppet) : handle:EquippedQuickHackData; // EquippedQuickHackData::Make;PlayerPuppet
+
+	function GetAbilitiesByItemID(itemID : gameItemID) : array:gameInventoryItemAbility; // GetAbilitiesByItemID;ItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

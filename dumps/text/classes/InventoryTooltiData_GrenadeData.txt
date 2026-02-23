@@ -1,0 +1,27 @@
+class InventoryTooltiData_GrenadeData extends IScriptable
+{
+	public    var type : GrenadeDamageType;
+	public    var range : Float;
+	public    var duration : Float;
+	public    var delay : Float;
+	public    var damagePerTick : Float;
+	public    var damageType : gamedataStatType;
+	public    var detonationTimer : Float;
+	public    var deliveryMethod : gamedataGrenadeDeliveryMethodType;
+	public    var totalDamage : Float;
+	public    var grenadeType : EGrenadeType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,34 @@
+import class animAnimNode_LocomotionMachine extends animAnimNode_StateMachine
+{
+	var usePlanner : Bool;
+	var group : CName;
+	var logic : CName;
+	var requestId : CName;
+	var distance : CName;
+	var duration : CName;
+	var motion : CName;
+	var state : CName;
+	var transitionTime : Float;
+	var numVariants : Uint32;
+}
+
+import class animAnimNode_StateMachine extends animAnimNode_Base
+{
+	var states : array:handle:animAnimNode_State;
+	var frozenState : handle:animAnimNode_StateFrozen;
+	var transitions : array:handle:animAnimStateTransitionDescription;
+	var conditionalEntries : array:handle:animAnimStateMachineConditionalEntry;
+	var globalTransitions : array:handle:animAnimStateTransitionDescription;
+	var anyStateInterpolator : handle:animIAnimStateTransitionInterpolator;
+	var defaultStateIndex : Uint32;
+	var notifyOnEnterState : Bool;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

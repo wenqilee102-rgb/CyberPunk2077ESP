@@ -1,0 +1,34 @@
+class WidgetAnimationManager extends IScriptable
+{
+	private   var animations : array:SWidgetAnimationData;
+
+	function CleanAllAnimationsChachedData(); // CleanAllAnimationsChachedData;
+	function CleanProxyData(animData : script_ref:SWidgetAnimationData); // CleanProxyData;script_ref<SWidgetAnimationData>
+	function GetAnimationCallbackName(animData : script_ref:SWidgetAnimationData, eventType : inkanimEventType) : CName; // GetAnimationCallbackName;script_ref<SWidgetAnimationData>inkanimEventType
+	function GetAnimations() : array:SWidgetAnimationData; // GetAnimations;
+	function HasAnimation(animName : CName) : Bool; // HasAnimation;CName
+	function Initialize(animations : script_ref:array:SWidgetAnimationData); // Initialize;script_ref<array<SWidgetAnimationData>>
+	function RegisterAllCallbacks(owner : handle:IScriptable, animData : script_ref:SWidgetAnimationData); // RegisterAllCallbacks;IScriptablescript_ref<SWidgetAnimationData>
+	function ResolveActiveAnimDataPlaybackState(animData : script_ref:SWidgetAnimationData, requestedState : EInkAnimationPlaybackOption); // ResolveActiveAnimDataPlaybackState;script_ref<SWidgetAnimationData>EInkAnimationPlaybackOption
+	function ResolveCallback(owner : handle:IScriptable, animProxy : handle:inkanimProxy, eventType : inkanimEventType); // ResolveCallback;IScriptableinkAnimProxyinkanimEventType
+	function TriggerAnimationByName(owner : handle:inkWidgetLogicController, animName : CName, playbackOption : EInkAnimationPlaybackOption, optional targetWidget : handle:inkWidget, optional playbackOptionsOverrideData : handle:PlaybackOptionsUpdateData); // TriggerAnimationByName;inkLogicControllerCNameEInkAnimationPlaybackOptioninkWidgetPlaybackOptionsUpdateData
+	function TriggerAnimationByName(owner : handle:gameuiWidgetGameController, animName : CName, playbackOption : EInkAnimationPlaybackOption, optional targetWidget : handle:inkWidget, optional playbackOptionsOverrideData : handle:PlaybackOptionsUpdateData); // TriggerAnimationByName;inkGameControllerCNameEInkAnimationPlaybackOptioninkWidgetPlaybackOptionsUpdateData
+	function TriggerAnimations(owner : handle:inkWidgetLogicController); // TriggerAnimations;inkLogicController
+	function TriggerAnimations(owner : handle:gameuiWidgetGameController); // TriggerAnimations;inkGameController
+	function UnregisterAllCallbacks(animData : script_ref:SWidgetAnimationData); // UnregisterAllCallbacks;script_ref<SWidgetAnimationData>
+	function UpdateAnimationsList(animName : CName, updateData : handle:PlaybackOptionsUpdateData); // UpdateAnimationsList;CNamePlaybackOptionsUpdateData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

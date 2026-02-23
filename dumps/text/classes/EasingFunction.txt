@@ -1,0 +1,5 @@
+import struct EasingFunction
+{
+	var transitionType : ETransitionType;
+	var easingType : EEasingType;
+}

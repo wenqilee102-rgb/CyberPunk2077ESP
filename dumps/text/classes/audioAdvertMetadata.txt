@@ -1,0 +1,25 @@
+import class audioAdvertMetadata extends audioEmitterMetadata
+{
+	var advertSoundNames : array:CName;
+	var minSilenceTime : Float;
+	var maxSilenceTime : Float;
+	var minDistance : Float;
+	var filter : audioAdvertIndoorFilter;
+}
+
+import class abstract audioEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

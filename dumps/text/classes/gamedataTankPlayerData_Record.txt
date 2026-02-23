@@ -1,0 +1,36 @@
+import class gamedataTankPlayerData_Record extends gamedataTweakDBRecord
+{
+	import function FlatlinedScorePenalty() : Float; // FlatlinedScorePenalty
+	import function GetWeaponLevelListCount() : Int32; // GetWeaponLevelListCount
+	import function GetWeaponLevelListItem(index : Int32) : whandle:gamedataTankPlayerWeaponLevel_Record; // GetWeaponLevelListItem
+	import function GetWeaponLevelListItemHandle(index : Int32) : handle:gamedataTankPlayerWeaponLevel_Record; // GetWeaponLevelListItemHandle
+	import function InvincibilityTime() : Float; // InvincibilityTime
+	import function MaxAEAMS() : Int32; // MaxAEAMS
+	import function MaxHealth() : Int32; // MaxHealth
+	import function MaxLives() : Int32; // MaxLives
+	import function ProjectileSpawnerTDBID() : CName; // ProjectileSpawnerTDBID
+	import function RammingDamage() : Int32; // RammingDamage
+	import function Velocity() : Vector2; // Velocity
+	import function WeaponLevelList(out outList : array:whandle:gamedataTankPlayerWeaponLevel_Record); // WeaponLevelList
+	import function WeaponLevelListContains(item : whandle:gamedataTankPlayerWeaponLevel_Record) : Bool; // WeaponLevelListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

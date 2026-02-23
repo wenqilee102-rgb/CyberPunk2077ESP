@@ -1,0 +1,6 @@
+import struct gameuiarcadeShooterTransporterSpawnData
+{
+	var aiType : gameuiarcadeShooterAIType;
+	var parameter : CName;
+	var count : Int32;
+}

@@ -1,0 +1,26 @@
+import class entRenderHighlightEvent extends redEvent
+{
+	var fillIndex : Uint8;
+	var outlineIndex : Uint8;
+	var seeThroughWalls : Bool;
+	var componentName : CName;
+	var opacity : Float;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

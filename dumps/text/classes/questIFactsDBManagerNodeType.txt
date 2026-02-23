@@ -1,0 +1,7 @@
+import class abstract questIFactsDBManagerNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

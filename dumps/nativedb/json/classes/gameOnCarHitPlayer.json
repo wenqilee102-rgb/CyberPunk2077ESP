@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameOnCarHitPlayer","c":"OnCarHitPlayer","d":8,"e":[{"a":{"b":"Vector4"},"b":"hitDirection","c":128},{"a":{"b":"Vector4"},"b":"seperationImpulse","c":128},{"a":{"b":"entEntityID"},"b":"carId","c":128}]}

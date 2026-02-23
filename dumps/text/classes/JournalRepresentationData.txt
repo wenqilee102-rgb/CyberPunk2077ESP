@@ -1,0 +1,26 @@
+class JournalRepresentationData extends ListItemData
+{
+	public    var Data : whandle:gameJournalEntry;
+	public    var OnscreenData : whandle:gameJournalOnscreensStructuredGroup;
+	public    var Reference : whandle:inkWidget;
+	public    var IsNew : Bool;
+}
+
+class ListItemData extends IScriptable
+{
+	public    var label : String;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

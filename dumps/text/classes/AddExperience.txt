@@ -1,0 +1,32 @@
+class AddExperience extends gamePlayerScriptableSystemRequest
+{
+	public    var amount : Int32;
+	public    var experienceType : gamedataProficiencyType;
+	public    var debug : Bool;
+
+	function Set(_owner : whandle:gameObject, expAmount : Int32, type : gamedataProficiencyType, isDebug : Bool); // Set;GameObjectInt32gamedataProficiencyTypeBool
+}
+
+import class gamePlayerScriptableSystemRequest extends gameScriptableSystemRequest
+{
+	var owner : whandle:gameObject;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

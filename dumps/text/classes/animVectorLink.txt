@@ -1,0 +1,4 @@
+import struct animVectorLink
+{
+	var node : whandle:animAnimNode_VectorValue;
+}

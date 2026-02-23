@@ -1,0 +1,6 @@
+import struct worldAutoFoliageMappingItem
+{
+	var Material : CName;
+	var LayerIndex : Uint32;
+	var FoliageBrush : raRef:worldFoliageBrush;
+}

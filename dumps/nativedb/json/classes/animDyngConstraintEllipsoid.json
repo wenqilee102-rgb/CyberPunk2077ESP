@@ -1,0 +1,1 @@
+{"a":"animIDyngConstraint","b":"animDyngConstraintEllipsoid","d":8,"e":[{"a":{"b":"animTransformIndex"},"b":"bone","c":128},{"a":{"b":"QsTransform"},"b":"ellipsoidTransformLS","c":128},{"a":{"a":10},"b":"constraintRadius","c":128},{"a":{"a":10},"b":"constraintScale1","c":128},{"a":{"a":10},"b":"constraintScale2","c":128}]}

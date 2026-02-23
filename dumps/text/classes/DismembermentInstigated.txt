@@ -1,0 +1,33 @@
+class DismembermentInstigated extends redEvent
+{
+	public    var target : whandle:gameObject;
+	public    var targetPosition : Vector4;
+	public    var attackPosition : Vector4;
+	public    var bodyPart : EHitReactionZone;
+	public    var weaponRecord : handle:gamedataWeaponItem_Record;
+	public    var attackType : gamedataAttackType;
+	public    var attackSubtype : gamedataAttackSubtype;
+	public    var timeSinceDeath : Float;
+	public    var timeSinceDefeat : Float;
+	public    var targetIsDead : Bool;
+	public    var targetIsDefeated : Bool;
+	public    var attackIsExplosion : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

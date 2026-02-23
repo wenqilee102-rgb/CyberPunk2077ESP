@@ -1,0 +1,15 @@
+import class inkWidgetBackendData extends IBackendData
+{
+	var owner : whandle:inkWidget;
+	var isHiddenInEditor : Bool;
+	var isLocked : Bool;
+	var boundLibraryItemName : CName;
+}
+
+import class abstract IBackendData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

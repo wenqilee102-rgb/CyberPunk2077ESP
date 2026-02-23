@@ -1,0 +1,5 @@
+import struct rendRenderTextureBlobMemoryLayout
+{
+	var rowPitch : Uint32;
+	var slicePitch : Uint32;
+}

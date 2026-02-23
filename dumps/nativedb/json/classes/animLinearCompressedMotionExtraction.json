@@ -1,0 +1,1 @@
+{"a":"animIMotionExtraction","b":"animLinearCompressedMotionExtraction","d":8,"e":[{"a":{"a":10},"b":"duration","c":128},{"a":{"a":31,"c":{"b":"Quaternion"}},"b":"rotFrames","c":128},{"a":{"a":31,"c":{"b":"Vector3"}},"b":"posFrames","c":128},{"a":{"a":31,"c":{"a":10}},"b":"rotTime","c":128},{"a":{"a":31,"c":{"a":10}},"b":"posTime","c":128}]}

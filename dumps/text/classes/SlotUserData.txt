@@ -1,0 +1,27 @@
+class SlotUserData extends IScriptable
+{
+	public    var item : whandle:UIInventoryItem;
+	public    var index : Int32;
+	public    var area : gamedataEquipmentArea;
+	public    var isLocked : Bool;
+	public    var visibleWhenLocked : Bool;
+	public    var screen : CyberwareScreenType;
+	public    var isPerkRequired : Bool;
+	public    var canUpgrade : Bool;
+	public    var upgradeItem : whandle:gamedataItem_Record;
+	public    var upgradeItemQuality : gamedataQuality;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+struct HUDProgressBarData
+{
+	public    var header : String;
+	public    var bottomText : String;
+	public    var completedText : String;
+	public    var failedText : String;
+	public    var active : Bool;
+	public    var progress : Float;
+	public    var type : gameSimpleMessageType;
+}

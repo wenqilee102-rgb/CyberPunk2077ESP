@@ -1,0 +1,6 @@
+struct BetData
+{
+	public    var chipsAmount : Uint32;
+	public    var betAmount : Uint32;
+	public    var betOn : CasinoTableBet;
+}

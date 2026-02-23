@@ -1,0 +1,7 @@
+import struct gameuiInGameMenuGameControllerItemSceneInfo
+{
+	var sceneName : CName;
+	var puppetSceneName : CName;
+	var prefabRef : NodeRef;
+	var markerRef : NodeRef;
+}

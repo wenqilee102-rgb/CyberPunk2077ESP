@@ -1,0 +1,17 @@
+import class effectTrackGroup extends effectTrackBase
+{
+	var tracks : array:handle:effectTrackBase;
+	var componentName : CName;
+}
+
+import class effectTrackBase extends effectBaseItem
+{
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

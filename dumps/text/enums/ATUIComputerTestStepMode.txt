@@ -1,0 +1,5 @@
+enum ATUIComputerTestStepMode
+{
+	SINGLE_ACTION = 0,
+	ROLLING = 1
+}

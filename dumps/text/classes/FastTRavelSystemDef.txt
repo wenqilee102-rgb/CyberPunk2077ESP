@@ -1,0 +1,29 @@
+class FastTRavelSystemDef extends gamebbScriptDefinition
+{
+	public    var DestinationPoint : gamebbScriptID_Variant;
+	public    var StartingPoint : gamebbScriptID_Variant;
+	public    var FastTravelStarted : gamebbScriptID_Bool;
+	public    var FastTravelLoadingScreenStarted : gamebbScriptID_Bool;
+	public    var FastTravelLoadingScreenFinished : gamebbScriptID_Bool;
+	public    var LastSubwayGateUsed : gamebbScriptID_EntityID;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

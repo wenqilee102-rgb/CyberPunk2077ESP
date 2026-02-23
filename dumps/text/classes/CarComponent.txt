@@ -1,0 +1,468 @@
+class CarComponent extends VehicleComponent
+{
+}
+
+class VehicleComponent extends ScriptableDeviceComponent
+{
+	public    var interaction : handle:gameinteractionsComponent;
+	public    var scanningComponent : handle:gameScanningComponent;
+	public    var customizationComponent : handle:vehicleVehicleCustomization;
+	public    var damageLevel : Int32;
+	public    var coolerDestro : Bool;
+	public    var bumperFrontState : Int32;
+	public    var bumperBackState : Int32;
+	public    var visualDestructionSet : Bool;
+	public    var immuneInDecay : Bool;
+	public    var healthDecayThreshold : Float;
+	public    var isBroadcastingHazardStims : Bool;
+	public    var healthStatPoolListener : handle:VehicleHealthStatPoolListener;
+	public    var vehicleBlackboard : whandle:gameIBlackboard;
+	public    var radioState : Bool;
+	public    var mounted : Bool;
+	public    var enterTime : Float;
+	public    var mappinID : gameNewMappinID;
+	public    var quickhackMappinID : gameNewMappinID;
+	public    var ignoreAutoDoorClose : Bool;
+	public    var mappinDestroyedBeforeCreation : Bool;
+	public    var timeSystemCallbackID : Uint32;
+	public    var vehicleTPPCallbackID : handle:redCallbackObject;
+	public    var vehicleSpeedCallbackID : handle:redCallbackObject;
+	public    var carAlarmCallbackID : handle:redCallbackObject;
+	public    var vehicleRPMCallbackID : handle:redCallbackObject;
+	public    var vehicleDisableAlarmDelayID : gameDelayID;
+	public    var vehicleExitDelayId : gameDelayID;
+	public    var broadcasting : Bool;
+	public    var hasSpoiler : Bool;
+	public    var spoilerUp : Float;
+	public    var spoilerDown : Float;
+	public    var spoilerDeployed : Bool;
+	public    var hasTurboCharger : Bool;
+	public    var overheatEffectBlackboard : handle:worldEffectBlackboard;
+	public    var overheatActive : Bool;
+	public    var hornOn : Bool;
+	public    var useAuxiliary : Bool;
+	public    var sirenPressTime : Float;
+	public    var radioPressTime : Float;
+	public    var raceClockTickID : gameDelayID;
+	public    var objectActionsCallbackCtrl : handle:gameObjectActionsCallbackController;
+	public    var trunkNpcBody : whandle:gameObject;
+	public    var mountedPlayer : whandle:PlayerPuppet;
+	public    var isIgnoredInTargetingSystem : Bool;
+	public    var arePlayerHitShapesEnabled : Bool;
+	public    var uiWantedBarBB : whandle:gameIBlackboard;
+	public    var currentWantedLevelCallback : handle:redCallbackObject;
+	public    var preventionPassengers : Int32;
+	public    var timeSinceLastHit : Float;
+	public    var dragTime : Float;
+	private   var vehicleController : handle:vehicleController;
+
+	static function CanBeDriven(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::CanBeDriven;GameInstanceVehicleObject
+	static function CanBeDriven(gi : ScriptGameInstance, ownerID : entEntityID) : Bool; // VehicleComponent::CanBeDriven;GameInstanceEntityID
+	static function CheckIfPassengersCanLeaveCar(gi : ScriptGameInstance, vehicleID : entEntityID, passengersCanLeaveCar : script_ref:array:whandle:gameObject, passengersCantLeaveCar : script_ref:array:whandle:gameObject); // VehicleComponent::CheckIfPassengersCanLeaveCar;GameInstanceEntityIDscript_ref<array<GameObject>>script_ref<array<GameObject>>
+	static function CheckVehicleDesiredTag(vehicle : whandle:vehicleBaseObject, desiredTag : CName) : Bool; // VehicleComponent::CheckVehicleDesiredTag;VehicleObjectCName
+	static function CheckVehicleDesiredTag(gi : ScriptGameInstance, owner : whandle:gameObject, desiredTag : CName) : Bool; // VehicleComponent::CheckVehicleDesiredTag;GameInstanceGameObjectCName
+	static function CloseDoor(vehicle : whandle:vehicleBaseObject, vehicleSlotID : gamemountingMountingSlotId) : Bool; // VehicleComponent::CloseDoor;VehicleObjectMountingSlotId
+	static function GetAllPassengers(gi : ScriptGameInstance, vehicleID : entEntityID, includeTrunkBody : Bool, passengers : script_ref:array:whandle:gameObject); // VehicleComponent::GetAllPassengers;GameInstanceEntityIDBoolscript_ref<array<GameObject>>
+	static function GetAttitudeOfPassenger(gi : ScriptGameInstance, ownerID : entEntityID, slotID : gamemountingMountingSlotId, out attitude : EAIAttitude) : Bool; // VehicleComponent::GetAttitudeOfPassenger;GameInstanceEntityIDMountingSlotIdEAIAttitude
+	static function GetBackLeftPassengerSlotID() : gamemountingMountingSlotId; // VehicleComponent::GetBackLeftPassengerSlotID;
+	static function GetBackLeftPassengerSlotName() : CName; // VehicleComponent::GetBackLeftPassengerSlotName;
+	static function GetBackRightPassengerSlotID() : gamemountingMountingSlotId; // VehicleComponent::GetBackRightPassengerSlotID;
+	static function GetBackRightPassengerSlotName() : CName; // VehicleComponent::GetBackRightPassengerSlotName;
+	static function GetDriver(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, vehicleID : entEntityID) : whandle:gameObject; // VehicleComponent::GetDriver;GameInstanceVehicleObjectEntityID
+	static function GetDriverMounted(gi : ScriptGameInstance, vehicleID : entEntityID) : whandle:gameObject; // VehicleComponent::GetDriverMounted;GameInstanceEntityID
+	static function GetDriverSlotID() : gamemountingMountingSlotId; // VehicleComponent::GetDriverSlotID;
+	static function GetDriverSlotName() : CName; // VehicleComponent::GetDriverSlotName;
+	static function GetFirstAvailableSlot(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, out slotName : CName) : Bool; // VehicleComponent::GetFirstAvailableSlot;GameInstanceVehicleObjectCName
+	static function GetFrontPassengerSlotID() : gamemountingMountingSlotId; // VehicleComponent::GetFrontPassengerSlotID;
+	static function GetFrontPassengerSlotName() : CName; // VehicleComponent::GetFrontPassengerSlotName;
+	static function GetImmobilizedName() : CName; // VehicleComponent::GetImmobilizedName;
+	static function GetMountedSlotName(gi : ScriptGameInstance, owner : whandle:gameObject, out slotName : CName) : Bool; // VehicleComponent::GetMountedSlotName;GameInstanceGameObjectCName
+	static function GetNumberOfActivePassengers(gi : ScriptGameInstance, vehicleID : entEntityID, out activePassangers : Int32) : Bool; // VehicleComponent::GetNumberOfActivePassengers;GameInstanceEntityIDInt32
+	static function GetNumberOfOccupiedSlots(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Int32; // VehicleComponent::GetNumberOfOccupiedSlots;GameInstanceVehicleObject
+	static function GetOwnerVehicleSpeed(gi : ScriptGameInstance, owner : whandle:gameObject) : Float; // VehicleComponent::GetOwnerVehicleSpeed;GameInstanceGameObject
+	static function GetPassengersSlotNames(slotNames : script_ref:array:CName); // VehicleComponent::GetPassengersSlotNames;script_ref<array<CName>>
+	static function GetSeats(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, out seats : array:whandle:gamedataVehicleSeat_Record) : Bool; // VehicleComponent::GetSeats;GameInstanceVehicleObjectarray<VehicleSeat_Record>
+	static function GetSeatsStatus(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, out totalSeatSlots : Int32, out occupiedSeatSlots : Int32, out reservedSlots : Int32); // VehicleComponent::GetSeatsStatus;GameInstanceVehicleObjectInt32Int32Int32
+	static function GetVehicle(gi : ScriptGameInstance, owner : whandle:gameObject, out vehicle : whandle:gameObject) : Bool; // VehicleComponent::GetVehicle;GameInstanceGameObjectGameObject
+	static function GetVehicle(gi : ScriptGameInstance, owner : whandle:gameObject, out vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::GetVehicle;GameInstanceGameObjectVehicleObject
+	static function GetVehicle(gi : ScriptGameInstance, ownerID : entEntityID, out vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::GetVehicle;GameInstanceEntityIDVehicleObject
+	static function GetVehicleAllowsCombat(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::GetVehicleAllowsCombat;GameInstanceVehicleObject
+	static function GetVehicleDataPackage(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, out vehDataPackage : whandle:gamedataVehicleDataPackage_Record) : Bool; // VehicleComponent::GetVehicleDataPackage;GameInstanceVehicleObjectVehicleDataPackage_Record
+	static function GetVehicleFromID(gi : ScriptGameInstance, vehicleID : entEntityID, out vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::GetVehicleFromID;GameInstanceEntityIDVehicleObject
+	static function GetVehicleID(gi : ScriptGameInstance, ownerID : entEntityID, out vehicleID : entEntityID) : Bool; // VehicleComponent::GetVehicleID;GameInstanceEntityIDEntityID
+	static function GetVehicleID(gi : ScriptGameInstance, owner : whandle:gameObject, out vehicleID : entEntityID) : Bool; // VehicleComponent::GetVehicleID;GameInstanceGameObjectEntityID
+	static function GetVehicleNPCData(gi : ScriptGameInstance, owner : handle:gameObject, out vehicleNPCData : handle:AnimFeature_VehicleNPCData) : Bool; // VehicleComponent::GetVehicleNPCData;GameInstanceGameObjectAnimFeature_VehicleNPCData
+	static function GetVehicleRecord(gi : ScriptGameInstance, ownerID : entEntityID, out vehicleRecord : handle:gamedataVehicle_Record) : Bool; // VehicleComponent::GetVehicleRecord;GameInstanceEntityIDVehicle_Record
+	static function GetVehicleRecord(vehicle : whandle:vehicleBaseObject, out vehicleRecord : handle:gamedataVehicle_Record) : Bool; // VehicleComponent::GetVehicleRecord;VehicleObjectVehicle_Record
+	static function GetVehicleRecord(gi : ScriptGameInstance, owner : whandle:gameObject, out vehicleRecord : handle:gamedataVehicle_Record) : Bool; // VehicleComponent::GetVehicleRecord;GameInstanceGameObjectVehicle_Record
+	static function GetVehicleRecordFromID(gi : ScriptGameInstance, vehicleID : entEntityID, out vehicleRecord : handle:gamedataVehicle_Record) : Bool; // VehicleComponent::GetVehicleRecordFromID;GameInstanceEntityIDVehicle_Record
+	static function GetVehicleType(gi : ScriptGameInstance, owner : whandle:gameObject, type : script_ref:String) : Bool; // VehicleComponent::GetVehicleType;GameInstanceGameObjectscript_ref<String>
+	static function HasActiveAutopilot(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::HasActiveAutopilot;GameInstanceVehicleObject
+	static function HasActiveAutopilot(gi : ScriptGameInstance, ownerID : entEntityID) : Bool; // VehicleComponent::HasActiveAutopilot;GameInstanceEntityID
+	static function HasActiveDriver(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, vehicleID : entEntityID) : Bool; // VehicleComponent::HasActiveDriver;GameInstanceVehicleObjectEntityID
+	static function HasActiveDriverMounted(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::HasActiveDriverMounted;GameInstanceEntityID
+	static function HasAnyActivePassengers(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::HasAnyActivePassengers;GameInstanceEntityID
+	static function HasAnyPreventionPassengers(vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::HasAnyPreventionPassengers;VehicleObject
+	static function HasFlatTire(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::HasFlatTire;GameInstanceEntityID
+	static function HasOnlyOneActivePassenger(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::HasOnlyOneActivePassenger;GameInstanceEntityID
+	static function HasPassengersWithThreatOnPlayer(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::HasPassengersWithThreatOnPlayer;GameInstanceEntityID
+	static function HasSlot(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, slotName : CName) : Bool; // VehicleComponent::HasSlot;GameInstanceVehicleObjectCName
+	static function IsAnyPassengerCrowd(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::IsAnyPassengerCrowd;GameInstanceVehicleObject
+	static function IsDestroyed(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::IsDestroyed;GameInstanceEntityID
+	static function IsDriver(gi : ScriptGameInstance, owner : whandle:gameObject) : Bool; // VehicleComponent::IsDriver;GameInstanceGameObject
+	static function IsDriver(gi : ScriptGameInstance, ownerID : entEntityID) : Bool; // VehicleComponent::IsDriver;GameInstanceEntityID
+	static function IsDriverSeatOccupiedByDeadNPC(gi : ScriptGameInstance, vehicleID : entEntityID) : Bool; // VehicleComponent::IsDriverSeatOccupiedByDeadNPC;GameInstanceEntityID
+	static function IsDriverSlot(slotId : CName) : Bool; // VehicleComponent::IsDriverSlot;CName
+	static function IsExecutingAnyCommand(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::IsExecutingAnyCommand;GameInstanceVehicleObject
+	static function IsMountedToProvidedVehicle(gi : ScriptGameInstance, ownerID : entEntityID, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::IsMountedToProvidedVehicle;GameInstanceEntityIDVehicleObject
+	static function IsMountedToVehicle(gi : ScriptGameInstance, owner : whandle:gameObject) : Bool; // VehicleComponent::IsMountedToVehicle;GameInstanceGameObject
+	static function IsMountedToVehicle(gi : ScriptGameInstance, ownerID : entEntityID) : Bool; // VehicleComponent::IsMountedToVehicle;GameInstanceEntityID
+	static function IsMountedToVehicleWithDriverSeatOccupiedByDeadNPC(gi : ScriptGameInstance, passengerID : entEntityID) : Bool; // VehicleComponent::IsMountedToVehicleWithDriverSeatOccupiedByDeadNPC;GameInstanceEntityID
+	static function IsSameSlot(slotId1 : CName, slotId2 : CName) : Bool; // VehicleComponent::IsSameSlot;CNameCName
+	static function IsSlotAvailable(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, slotName : CName) : Bool; // VehicleComponent::IsSlotAvailable;GameInstanceVehicleObjectCName
+	static function IsSlotOccupied(gi : ScriptGameInstance, vehicleID : entEntityID, vehicleSlotID : gamemountingMountingSlotId) : Bool; // VehicleComponent::IsSlotOccupied;GameInstanceEntityIDMountingSlotId
+	static function IsSlotOccupied(gi : ScriptGameInstance, vehicleID : entEntityID, slotName : CName) : Bool; // VehicleComponent::IsSlotOccupied;GameInstanceEntityIDCName
+	static function IsSlotOccupiedByActivePassenger(gi : ScriptGameInstance, vehicleID : entEntityID, slotName : CName) : Bool; // VehicleComponent::IsSlotOccupiedByActivePassenger;GameInstanceEntityIDCName
+	static function IsSlotOccupiedByActivePassenger(gi : ScriptGameInstance, vehicleID : entEntityID, vehicleSlotID : gamemountingMountingSlotId) : Bool; // VehicleComponent::IsSlotOccupiedByActivePassenger;GameInstanceEntityIDMountingSlotId
+	static function IsSlotOccupiedByOtherEntity(gi : ScriptGameInstance, vehicleID : entEntityID, vehicleSlotID : gamemountingMountingSlotId, expectedEntity : entEntityID) : Bool; // VehicleComponent::IsSlotOccupiedByOtherEntity;GameInstanceEntityIDMountingSlotIdEntityID
+	static function IsVehicleOccupied(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::IsVehicleOccupied;GameInstanceVehicleObject
+	static function IsVehicleOccupiedByHostile(vehicleID : entEntityID, passenger : whandle:gameObject) : Bool; // VehicleComponent::IsVehicleOccupiedByHostile;EntityIDGameObject
+	static function OnThreatInstantDrop(passenger : whandle:gameObject); // VehicleComponent::OnThreatInstantDrop;GameObject
+	static function OpenDoor(vehicle : whandle:vehicleBaseObject, vehicleSlotID : gamemountingMountingSlotId, optional delay : Float) : Bool; // VehicleComponent::OpenDoor;VehicleObjectMountingSlotIdFloat
+	static function PlayerPassengerHasGodModeFromCheatSystem(gi : ScriptGameInstance, vehicleID : entEntityID, gmType : gameGodModeType) : Bool; // VehicleComponent::PlayerPassengerHasGodModeFromCheatSystem;GameInstanceEntityIDgameGodModeType
+	static function PushVehicleNPCData(gi : ScriptGameInstance, passenger : whandle:gameObject); // VehicleComponent::PushVehicleNPCData;GameInstanceGameObject
+	static function QueueEventToAllNonFriendlyAggressivePassengers(gi : ScriptGameInstance, vehicleID : entEntityID, evt : handle:redEvent, optional delay : Float) : Bool; // VehicleComponent::QueueEventToAllNonFriendlyAggressivePassengers;GameInstanceEntityIDEventFloat
+	static function QueueEventToAllPassengers(gi : ScriptGameInstance, vehicleID : entEntityID, evt : handle:redEvent, optional delay : Float, optional randomDelay : Bool) : Bool; // VehicleComponent::QueueEventToAllPassengers;GameInstanceEntityIDEventFloatBool
+	static function QueueEventToAllPassengers(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, evt : handle:redEvent, optional delay : Float, optional randomDelay : Bool) : Bool; // VehicleComponent::QueueEventToAllPassengers;GameInstanceVehicleObjectEventFloatBool
+	static function QueueEventToAllPassengersRandomly(gi : ScriptGameInstance, id : entEntityID, evt : handle:redEvent, min : Float, max : Float) : Bool; // VehicleComponent::QueueEventToAllPassengersRandomly;GameInstanceEntityIDEventFloatFloat
+	static function QueueEventToPassenger(gi : ScriptGameInstance, vehicleID : entEntityID, slotID : gamemountingMountingSlotId, evt : handle:redEvent, optional delay : Float, optional randomDelay : Bool) : Bool; // VehicleComponent::QueueEventToPassenger;GameInstanceEntityIDMountingSlotIdEventFloatBool
+	static function QueueEventToPassenger(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, slotID : gamemountingMountingSlotId, evt : handle:redEvent, optional delay : Float, optional randomDelay : Bool) : Bool; // VehicleComponent::QueueEventToPassenger;GameInstanceVehicleObjectMountingSlotIdEventFloatBool
+	static function QueueEventToPassengers(gi : ScriptGameInstance, vehicleID : entEntityID, evt : handle:redEvent, passengers : script_ref:array:whandle:gameObject, optional delay : Bool, optional maxDelayAmount : Float) : Bool; // VehicleComponent::QueueEventToPassengers;GameInstanceEntityIDEventscript_ref<array<GameObject>>BoolFloat
+	static function QueueExitEventToAllNonFriendlyActivePassengers(gi : ScriptGameInstance, vehicleID : entEntityID, executionOwner : handle:gameObject, optional broadcastHijack : Bool, optional delay : Bool) : Bool; // VehicleComponent::QueueExitEventToAllNonFriendlyActivePassengers;GameInstanceEntityIDGameObjectBoolBool
+	static function QueueHijackExitEventToInactiveDriver(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject) : Bool; // VehicleComponent::QueueHijackExitEventToInactiveDriver;GameInstanceVehicleObject
+	static function SendPoliceJustLostPlayerSearchCommand(vehicle : whandle:vehicleWheeledBaseObject); // VehicleComponent::SendPoliceJustLostPlayerSearchCommand;WheeledObject
+	static function SetAnimsetOverrideForPassenger(passenger : whandle:gameObject, vehicleID : entEntityID, slotName : CName, value : Float) : array:CName; // VehicleComponent::SetAnimsetOverrideForPassenger;GameObjectEntityIDCNameFloat
+	static function SetAnimsetOverrideForPassenger(passenger : whandle:gameObject, value : Float) : array:CName; // VehicleComponent::SetAnimsetOverrideForPassenger;GameObjectFloat
+	static function ToggleVehicleWindow(gi : ScriptGameInstance, vehicle : whandle:vehicleBaseObject, slotID : gamemountingMountingSlotId, toggle : Bool, optional speed : CName) : Bool; // VehicleComponent::ToggleVehicleWindow;GameInstanceVehicleObjectMountingSlotIdBoolCName
+
+	event OnAIVehicleDisabledEvent(evt : handle:vehicleAIVehicleDisabledEvent) : Bool; // OnAIVehicleDisabledEvent
+	event OnAccelerateQuickhackEvent(evt : handle:vehicleAccelerateQuickhackEvent) : Bool; // OnAccelerateQuickhackEvent
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnActionDemolition(evt : handle:ActionDemolition) : Bool; // OnActionDemolition
+	event OnActionEngineering(evt : handle:ActionEngineering) : Bool; // OnActionEngineering
+	event OnCarAlarmHonk(UseCarAlarmStim : Bool) : Bool; // OnCarAlarmHonk
+	event OnChangeState(evt : handle:vehicleChangeStateEvent) : Bool; // OnChangeState
+	event OnCloseHood(evt : handle:VehicleCloseHood) : Bool; // OnCloseHood
+	event OnCloseTrunk(evt : handle:VehicleCloseTrunk) : Bool; // OnCloseTrunk
+	event OnCurrentWantedLevelChanged(value : Int32) : Bool; // OnCurrentWantedLevelChanged
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDelayedBikeKnockOffEvent(evt : handle:DelayedBikeKnockOffEvent) : Bool; // OnDelayedBikeKnockOffEvent
+	event OnDisableAlarm(evt : handle:DisableAlarmEvent) : Bool; // OnDisableAlarm
+	event OnDumpBodyWorkspotDelayEvent(evt : handle:DumpBodyWorkspotDelayEvent) : Bool; // OnDumpBodyWorkspotDelayEvent
+	event OnExecuteVehicleVisualCustomizationEvent(evt : handle:ExecuteVehicleVisualCustomizationEvent) : Bool; // OnExecuteVehicleVisualCustomizationEvent
+	event OnExplodeEvent(evt : handle:vehicleExplodeEvent) : Bool; // OnExplodeEvent
+	event OnFactChangedEvent(evt : handle:gameFactChangedEvent) : Bool; // OnFactChangedEvent
+	event OnForceBrakesQuickhackEvent(evt : handle:vehicleForceBrakesQuickhackEvent) : Bool; // OnForceBrakesQuickhackEvent
+	event OnForceCarAlarm(evt : handle:ForceCarAlarm) : Bool; // OnForceCarAlarm
+	event OnGridDestruction(evt : handle:vehicleGridDestructionEvent) : Bool; // OnGridDestruction
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnHasVehicleBeenFlippedOverForSomeTimeEvent(evt : handle:vehicleHasVehicleBeenFlippedOverForSomeTimeEvent) : Bool; // OnHasVehicleBeenFlippedOverForSomeTimeEvent
+	event OnInteractionActivated(evt : handle:gameinteractionsInteractionActivationEvent) : Bool; // OnInteractionActivated
+	event OnInteractionUsed(evt : handle:gameinteractionsChoiceEvent) : Bool; // OnInteractionUsed
+	event OnMinutePassedEvent(evt : handle:MinutePassedEvent) : Bool; // OnMinutePassedEvent
+	event OnMountingEvent(evt : handle:gamemountingMountingEvent) : Bool; // OnMountingEvent
+	event OnNewVehicleVisualCustomization(evt : handle:NewVehicleVisualCustomizationTemplateEvent) : Bool; // OnNewVehicleVisualCustomization
+	event OnObjectActionRefreshEvent(evt : handle:gameObjectActionRefreshEvent) : Bool; // OnObjectActionRefreshEvent
+	event OnOpenHood(evt : handle:VehicleOpenHood) : Bool; // OnOpenHood
+	event OnOpenTrunk(evt : handle:VehicleOpenTrunk) : Bool; // OnOpenTrunk
+	event OnPickupBodyWorkspotDelayEvent(evt : handle:PickupBodyWorkspotDelayEvent) : Bool; // OnPickupBodyWorkspotDelayEvent
+	event OnQuickSlotCommandUsed(evt : handle:QuickSlotCommandUsed) : Bool; // OnQuickSlotCommandUsed
+	event OnRadioToggleEvent(evt : handle:RadioToggleEvent) : Bool; // OnRadioToggleEvent
+	event OnRemoteControlCameraToggleEvent(evt : handle:vehicleRemoteControlCameraToggleEvent) : Bool; // OnRemoteControlCameraToggleEvent
+	event OnRemoteControlEvent(evt : handle:vehicleRemoteControlEvent) : Bool; // OnRemoteControlEvent
+	event OnRepeatDirectEnvironmentalHazardStimuli(evt : handle:RepeatDirectEnvironmentalHazardStimEvent) : Bool; // OnRepeatDirectEnvironmentalHazardStimuli
+	event OnSetIgnoreAutoDoorCloseEvent(evt : handle:SetIgnoreAutoDoorCloseEvent) : Bool; // OnSetIgnoreAutoDoorCloseEvent
+	event OnSummonFinishedEvent(evt : handle:vehicleSummonFinishedEvent) : Bool; // OnSummonFinishedEvent
+	event OnSummonStartedEvent(evt : handle:vehicleSummonStartedEvent) : Bool; // OnSummonStartedEvent
+	event OnToggleBrokenTireEvent(evt : handle:vehicleToggleBrokenTireEvent) : Bool; // OnToggleBrokenTireEvent
+	event OnToggleDoorInteractionEvent(evt : handle:ToggleDoorInteractionEvent) : Bool; // OnToggleDoorInteractionEvent
+	event OnTriggerVehicleRemoteControlEvent(evt : handle:TriggerVehicleRemoteControlEvent) : Bool; // OnTriggerVehicleRemoteControlEvent
+	event OnUnmountingEvent(evt : handle:gamemountingUnmountingEvent) : Bool; // OnUnmountingEvent
+	event OnUploadProgramProgress(evt : handle:UploadProgramProgressEvent) : Bool; // OnUploadProgramProgress
+	event OnVehicleBodyDisposalPerformedEvent(evt : handle:VehicleBodyDisposalPerformedEvent) : Bool; // OnVehicleBodyDisposalPerformedEvent
+	event OnVehicleChaseTargetEvent(evt : handle:vehicleChaseTargetEvent) : Bool; // OnVehicleChaseTargetEvent
+	event OnVehicleCrystalDomeMeshVisibilityDelayEvent(evt : handle:VehicleCrystalDomeMeshVisibilityDelayEvent) : Bool; // OnVehicleCrystalDomeMeshVisibilityDelayEvent
+	event OnVehicleCrystalDomeOffDelayEvent(evt : handle:VehicleCrystalDomeOffDelayEvent) : Bool; // OnVehicleCrystalDomeOffDelayEvent
+	event OnVehicleCrystalDomeOnDelayEvent(evt : handle:VehicleCrystalDomeOnDelayEvent) : Bool; // OnVehicleCrystalDomeOnDelayEvent
+	event OnVehicleCycleHeadLightsEvent(evt : handle:VehicleCycleLightsEvent) : Bool; // OnVehicleCycleHeadLightsEvent
+	event OnVehicleDamageStageTurnOffEvent(evt : handle:VehicleDamageStageTurnOffEvent) : Bool; // OnVehicleDamageStageTurnOffEvent
+	event OnVehicleDelayedQuestHornEvent(evt : handle:VehicleQuestDelayedHornEvent) : Bool; // OnVehicleDelayedQuestHornEvent
+	event OnVehicleDoorClose(evt : handle:VehicleDoorClose) : Bool; // OnVehicleDoorClose
+	event OnVehicleDoorInteraction(evt : handle:VehicleDoorInteraction) : Bool; // OnVehicleDoorInteraction
+	event OnVehicleDoorInteractionStateChange(evt : handle:VehicleDoorInteractionStateChange) : Bool; // OnVehicleDoorInteractionStateChange
+	event OnVehicleDoorOpen(evt : handle:VehicleDoorOpen) : Bool; // OnVehicleDoorOpen
+	event OnVehicleDumpBody(evt : handle:VehicleDumpBody) : Bool; // OnVehicleDumpBody
+	event OnVehicleDumpBodyCloseTrunkEvent(evt : handle:VehicleDumpBodyCloseTrunkEvent) : Bool; // OnVehicleDumpBodyCloseTrunkEvent
+	event OnVehicleExitDelayedEvent(evt : handle:VehicleExitDelayed) : Bool; // OnVehicleExitDelayedEvent
+	event OnVehicleExternalDoorRequestEvent(evt : handle:VehicleExternalDoorRequestEvent) : Bool; // OnVehicleExternalDoorRequestEvent
+	event OnVehicleExternalWindowRequestEvent(evt : handle:VehicleExternalWindowRequestEvent) : Bool; // OnVehicleExternalWindowRequestEvent
+	event OnVehicleFinishedMountingEvent(evt : handle:vehicleFinishedMountingEvent) : Bool; // OnVehicleFinishedMountingEvent
+	event OnVehicleFlippedOverEvent(evt : handle:vehicleFlippedOverEvent) : Bool; // OnVehicleFlippedOverEvent
+	event OnVehicleForceOccupantOut(evt : handle:VehicleForceOccupantOut) : Bool; // OnVehicleForceOccupantOut
+	event OnVehicleHornOffDelayEvent(evt : handle:VehicleHornOffDelayEvent) : Bool; // OnVehicleHornOffDelayEvent
+	event OnVehicleHornProbEvent(evt : handle:VehicleHornProbsEvent) : Bool; // OnVehicleHornProbEvent
+	event OnVehicleLightQuestChangeColorEvent(evt : handle:VehicleLightQuestChangeColorEvent) : Bool; // OnVehicleLightQuestChangeColorEvent
+	event OnVehicleLightQuestToggleEvent(evt : handle:VehicleLightQuestToggleEvent) : Bool; // OnVehicleLightQuestToggleEvent
+	event OnVehicleLightSetupEvent(evt : handle:VehicleLightSetupEvent) : Bool; // OnVehicleLightSetupEvent
+	event OnVehicleNotifyPassengersOfCollision(evt : handle:vehicleNotifyPassengersOfCollision) : Bool; // OnVehicleNotifyPassengersOfCollision
+	event OnVehicleOnPartDetached(evt : handle:vehicleOnPartDetachedEvent) : Bool; // OnVehicleOnPartDetached
+	event OnVehiclePlayerTrunk(evt : handle:VehiclePlayerTrunk) : Bool; // OnVehiclePlayerTrunk
+	event OnVehicleQuestAVThrusterEvent(evt : handle:VehicleQuestAVThrusterEvent) : Bool; // OnVehicleQuestAVThrusterEvent
+	event OnVehicleQuestCrystalDomeEvent(evt : handle:VehicleQuestCrystalDomeEvent) : Bool; // OnVehicleQuestCrystalDomeEvent
+	event OnVehicleQuestDoorLocked(evt : handle:VehicleQuestDoorLocked) : Bool; // OnVehicleQuestDoorLocked
+	event OnVehicleQuestHornEvent(evt : handle:VehicleQuestHornEvent) : Bool; // OnVehicleQuestHornEvent
+	event OnVehicleQuestNodeActivateRemoteVehicleControl(evt : handle:vehicleQuestNodeSetVehicleRemoteControlled) : Bool; // OnVehicleQuestNodeActivateRemoteVehicleControl
+	event OnVehicleQuestSirenEvent(evt : handle:VehicleQuestSirenEvent) : Bool; // OnVehicleQuestSirenEvent
+	event OnVehicleQuestToggleEngineEvent(evt : handle:VehicleQuestToggleEngineEvent) : Bool; // OnVehicleQuestToggleEngineEvent
+	event OnVehicleQuestVisualDestructionEvent(evt : handle:VehicleQuestVisualDestructionEvent) : Bool; // OnVehicleQuestVisualDestructionEvent
+	event OnVehicleQuestWindowDestructionEvent(evt : handle:VehicleQuestWindowDestructionEvent) : Bool; // OnVehicleQuestWindowDestructionEvent
+	event OnVehicleRaceClockUpdateEvent(evt : handle:VehicleRaceClockUpdateEvent) : Bool; // OnVehicleRaceClockUpdateEvent
+	event OnVehicleRaceQuestEvent(evt : handle:VehicleRaceQuestEvent) : Bool; // OnVehicleRaceQuestEvent
+	event OnVehicleRadioEvent(evt : handle:VehicleRadioEvent) : Bool; // OnVehicleRadioEvent
+	event OnVehicleRadioStationInitialized(evt : handle:vehicleRadioStationInitialized) : Bool; // OnVehicleRadioStationInitialized
+	event OnVehicleRadioTierEvent(evt : handle:VehicleRadioTierEvent) : Bool; // OnVehicleRadioTierEvent
+	event OnVehicleRepairEvent(re : handle:vehicleRepairEvent) : Bool; // OnVehicleRepairEvent
+	event OnVehicleSeatReservationEvent(evt : handle:VehicleSeatReservationEvent) : Bool; // OnVehicleSeatReservationEvent
+	event OnVehicleSirenDelayEvent(evt : handle:VehicleSirenDelayEvent) : Bool; // OnVehicleSirenDelayEvent
+	event OnVehicleStartedMountingEvent(evt : handle:vehicleStartedMountingEvent) : Bool; // OnVehicleStartedMountingEvent
+	event OnVehicleStartedUnmountingEvent(evt : handle:VehicleStartedUnmountingEvent) : Bool; // OnVehicleStartedUnmountingEvent
+	event OnVehicleTakeBody(evt : handle:VehicleTakeBody) : Bool; // OnVehicleTakeBody
+	event OnVehicleWaterEvent(evt : handle:vehicleWaterEvent) : Bool; // OnVehicleWaterEvent
+	event OnVehicleWindowClose(evt : handle:VehicleWindowClose) : Bool; // OnVehicleWindowClose
+	event OnVehicleWindowOpen(evt : handle:VehicleWindowOpen) : Bool; // OnVehicleWindowOpen
+	event OnWeaponShootEvent(evt : handle:vehicleMountedWeaponShootEvent) : Bool; // OnWeaponShootEvent
+
+	function ApplyVehicleDOT(optional type : CName); // ApplyVehicleDOT;CName
+	function ApplyVehicleVisualCustomizationTemplate(template : VehicleVisualCustomizationTemplate, isInstant : Bool); // ApplyVehicleVisualCustomizationTemplate;VehicleVisualCustomizationTemplateBool
+	function BreakAllDamageStageFX(optional auxillaryFX : Bool); // BreakAllDamageStageFX;Bool
+	function BroadcastEnvironmentalHazardStimuli(); // BroadcastEnvironmentalHazardStimuli;
+	function CanApplyTemplateOnVehicle(template : VehicleVisualCustomizationTemplate, optional ignoreAlreadyApplied : Bool) : Bool; // CanApplyTemplateOnVehicle;VehicleVisualCustomizationTemplateBool
+	function CanShowMappin() : Bool; // CanShowMappin;
+	function CancelVehicleExitDelayedEvent(); // CancelVehicleExitDelayedEvent;
+	function CheckAboutToExplodeStateOnFlip(); // CheckAboutToExplodeStateOnFlip;
+	function CheckForDrag(impactImpulse : Float); // CheckForDrag;Float
+	function CleanUpRace(); // CleanUpRace;
+	function ClearImmortalityMode(); // ClearImmortalityMode;
+	function CloseSelectedDoors(doors : script_ref:array:CName); // CloseSelectedDoors;script_ref<array<CName>>
+	function CreateAndSendDefaultStateEvent(door : vehicleEVehicleDoor, state : vehicleEQuestVehicleDoorState); // CreateAndSendDefaultStateEvent;EVehicleDoorEQuestVehicleDoorState
+	function CreateHitEventOnSelf(damageMultiplier : Float, impactPoint : Vector3, otherVehicle : whandle:gameObject, rammedOtherVehicle : Bool, otherVehicleRammed : Bool); // CreateHitEventOnSelf;FloatVector3GameObjectBoolBool
+	function CreateMappin(); // CreateMappin;
+	function CreateObjectActionsCallbackController(instigator : whandle:entEntity); // CreateObjectActionsCallbackController;Entity
+	function CreateQuickHackMappin(quickhackMappinScriptData : handle:GameplayRoleMappinData); // CreateQuickHackMappin;GameplayRoleMappinData
+	function DamagePassengerInCollision(passenger : whandle:gameObject, instigator : whandle:gameObject, hitDirection : Vector4); // DamagePassengerInCollision;GameObjectGameObjectVector4
+	function DestroyMappin(); // DestroyMappin;
+	function DestroyObjectActionsCallbackController(); // DestroyObjectActionsCallbackController;
+	function DestroyQuickHackMappin(); // DestroyQuickHackMappin;
+	function DestroyRandomWindow(); // DestroyRandomWindow;
+	function DetermineAdditionalEngineFX(gridID : Int32, gridState : Float); // DetermineAdditionalEngineFX;Int32Float
+	function DetermineInteractionState(); // DetermineInteractionState;
+	function DetermineInteractionState(layerName : CName); // DetermineInteractionState;CName
+	function DisableCurrentCustomization(); // DisableCurrentCustomization;
+	function DisableRadio(); // DisableRadio;
+	function DisableTargetingComponents(); // DisableTargetingComponents;
+	function DisableVehicle(); // DisableVehicle;
+	function DoPanzerCleanup(); // DoPanzerCleanup;
+	function DoPreventionVehicleCleanup(); // DoPreventionVehicleCleanup;
+	function DrivingStimuli(broadcast : Bool); // DrivingStimuli;Bool
+	function EnableCustomizableAppearance(val : Bool); // EnableCustomizableAppearance;Bool
+	function EnableRadio(); // EnableRadio;
+	function EnableTargetingComponents(); // EnableTargetingComponents;
+	function EvaluateDamageLevel(destruction : Float) : Int32; // EvaluateDamageLevel;Float
+	function EvaluateDoorReaction(doorID : CName, immediate : Bool, doorState : vehicleVehicleDoorState); // EvaluateDoorReaction;CNameBoolVehicleDoorState
+	function EvaluateDoorState(); // EvaluateDoorState;
+	function EvaluateHoodInteractions(); // EvaluateHoodInteractions;
+	function EvaluateInteractions(); // EvaluateInteractions;
+	function EvaluatePanzerInteractions(); // EvaluatePanzerInteractions;
+	function EvaluateTrunkAndHoodInteractions(); // EvaluateTrunkAndHoodInteractions;
+	function EvaluateTrunkInteractions(); // EvaluateTrunkInteractions;
+	function EvaluateWindowReaction(doorID : CName, speed : CName); // EvaluateWindowReaction;CNameCName
+	function EvaluateWindowState(); // EvaluateWindowState;
+	function ExecuteAction(action : handle:gamedeviceAction, optional executor : whandle:gameObject); // ExecuteAction;DeviceActionGameObject
+	function ExecuteAction(choice : script_ref:gameinteractionsChoice, executor : whandle:gameObject); // ExecuteAction;script_ref<InteractionChoice>GameObject
+	function ExecuteVehicleVisualCustomization(set : Bool, reset : Bool, instant : Bool); // ExecuteVehicleVisualCustomization;BoolBoolBool
+	function ExplodeVehicle(instigator : whandle:gameObject); // ExplodeVehicle;GameObject
+	function FinishTrunkBodyPickup(); // FinishTrunkBodyPickup;
+	function ForceAboutToExplodeState(); // ForceAboutToExplodeState;
+	function GetAnimEventName(doorState : vehicleVehicleDoorState, door : vehicleEVehicleDoor) : CName; // GetAnimEventName;VehicleDoorStateEVehicleDoor
+	function GetAnyDoorAvailable(optional checkOccupied : Bool) : Bool; // GetAnyDoorAvailable;Bool
+	function GetAnySlotAvailable(optional checkOccupied : Bool) : Bool; // GetAnySlotAvailable;Bool
+	function GetCurrentAppearanceColorTemplate() : VehicleVisualCustomizationTemplate; // GetCurrentAppearanceColorTemplate;
+	function GetIsMounted() : Bool; // GetIsMounted;
+	function GetIsVehicleVisualCustomizationEnabled() : Bool; // GetIsVehicleVisualCustomizationEnabled;
+	function GetIsVehicleVisualCustomizationTeaser() : Bool; // GetIsVehicleVisualCustomizationTeaser;
+	function GetMultilayersForCurrentVehicle(templateMultilayers : array:vehicleVehicleCustomMultilayer) : array:vehicleVehicleCustomMultilayer; // GetMultilayersForCurrentVehicle;array<VehicleCustomMultilayer>
+	function GetPS() : handle:VehicleComponentPS; // GetPS
+	function GetVehicle() : whandle:vehicleBaseObject; // GetVehicle;
+	function GetVehicleController() : handle:vehicleController; // GetVehicleController;
+	function GetVehicleControllerPS() : handle:vehicleControllerPS; // GetVehicleControllerPS;
+	function GetVehicleDecayThreshold() : Float; // GetVehicleDecayThreshold;
+	function GetVehicleDoorEnum(out door : vehicleEVehicleDoor, doorName : CName) : Bool; // GetVehicleDoorEnum;EVehicleDoorCName
+	function GetVehicleStateForScanner() : String; // GetVehicleStateForScanner;
+	function GetVisualCustomizationUpToDate() : Bool; // GetVisualCustomizationUpToDate;
+	function GetVisualCustomizationUpdateRequired() : Bool; // GetVisualCustomizationUpdateRequired;
+	function HandleBikeCollisionReaction(impactVelocityChange : Float, impactHitNormal : Vector4); // HandleBikeCollisionReaction;FloatVector4
+	function HasPreventionPassenger() : Bool; // HasPreventionPassenger;
+	function HonkAndFlash(); // HonkAndFlash;
+	function InitialVehcileSetup(); // InitialVehcileSetup;
+	function InjectThreat(instigator : whandle:gameObject); // InjectThreat;GameObject
+	function IsBeingDragged() : Bool; // IsBeingDragged;
+	function IsColorChangeLargeEnoughForPolice(colorA : Color, colorB : Color) : Bool; // IsColorChangeLargeEnoughForPolice;ColorColor
+	function IsPlayerVehicle(); // IsPlayerVehicle;
+	function IsRadioEnabled(game : ScriptGameInstance) : Bool; // IsRadioEnabled;GameInstance
+	function IsVehicleImmuneInDecay() : Bool; // IsVehicleImmuneInDecay;
+	function IsVehicleInDecay() : Bool; // IsVehicleInDecay;
+	function IsVehicleParked() : Bool; // IsVehicleParked;
+	function KillPassengers(instigator : whandle:gameObject); // KillPassengers;GameObject
+	function LoadExplodedState(); // LoadExplodedState;
+	function ManageAdditionalAnimFeatures(object : handle:gameObject, value : Bool); // ManageAdditionalAnimFeatures;GameObjectBool
+	function MountBodyToPlayer(npcBody : whandle:gameObject); // MountBodyToPlayer;GameObject
+	function MountEntityToSlot(parentID : entEntityID, childId : entEntityID, slot : CName); // MountEntityToSlot;EntityIDEntityIDCName
+	function MountNpcBodyToTrunk(); // MountNpcBodyToTrunk;
+	function NotifyAutodriveOfQuickhackChange(); // NotifyAutodriveOfQuickhackChange;
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameDetach(); // OnGameDetach;
+	function OnPreventionPassengerDeath(deadEntityID : entEntityID); // OnPreventionPassengerDeath;EntityID
+	function OnVehicleCameraChange(state : Bool); // OnVehicleCameraChange;Bool
+	function OnVehicleRPMChange(rpm : Float); // OnVehicleRPMChange;Float
+	function OnVehicleSpeedChange(speed : Float); // OnVehicleSpeedChange;Float
+	function PackColorForEffect(color : Color) : Float; // PackColorForEffect;Color
+	function PassGameTimeToVehBB(); // PassGameTimeToVehBB;
+	function PlayCrystalDomeGlitchEffect(); // PlayCrystalDomeGlitchEffect;
+	function PlayDelayedHonk(honkTime : Float, delayTime : Float); // PlayDelayedHonk;FloatFloat
+	function PlayHonkForDuration(honkTime : Float); // PlayHonkForDuration;Float
+	function PlaySummonArrivalSFX(); // PlaySummonArrivalSFX;
+	function PlayVehicleVisialCustomisationCollisionGlitch(); // PlayVehicleVisialCustomisationCollisionGlitch;
+	function PlayVehicleVisualCustomizationShader(play : Bool, optional instant : Bool, optional affectRims : Bool); // PlayVehicleVisualCustomizationShader;BoolBoolBool
+	function ProcessExplosionEffects(); // ProcessExplosionEffects;
+	function ProcessHeatLevelOnVisualCustomization(previousTemplate : VehicleVisualCustomizationTemplate, newTemplate : VehicleVisualCustomizationTemplate); // ProcessHeatLevelOnVisualCustomization;VehicleVisualCustomizationTemplateVehicleVisualCustomizationTemplate
+	function PushVehicleNPCDataToAllPassengers(gi : ScriptGameInstance, id : entEntityID); // PushVehicleNPCDataToAllPassengers;GameInstanceEntityID
+	function QueueLethalVehicleImpactToAllNonFriendlyAggressivePassengers(sourceName : CName) : Bool; // QueueLethalVehicleImpactToAllNonFriendlyAggressivePassengers;CName
+	function QueueVehicleImpactLethalHitEvent(target : whandle:gameObject, instigator : whandle:gameObject, sourceName : CName); // QueueVehicleImpactLethalHitEvent;GameObjectGameObjectCName
+	function ReactToHPChange(destruction : Float); // ReactToHPChange;Float
+	function RegisterInputListener(); // RegisterInputListener;
+	function RegisterToHUDManager(shouldRegister : Bool); // RegisterToHUDManager;Bool
+	function RegisterWantedLevelListener(); // RegisterWantedLevelListener;
+	function RemoveEnvironmentalHazardStimuli(); // RemoveEnvironmentalHazardStimuli;
+	function RemoveQuickhackQueue(); // RemoveQuickhackQueue;
+	function RemoveVehicleDOT(); // RemoveVehicleDOT;
+	function RepairVehicle(); // RepairVehicle;
+	function RequestHUDRefresh(); // RequestHUDRefresh;
+	function SendAIEvent(eventName : CName); // SendAIEvent;CName
+	function SendDestructionDataToGraph(gridID : Int32, gridState : Float); // SendDestructionDataToGraph;Int32Float
+	function SendDirectEnvironmentalHazardStimuli(target : handle:gameObject); // SendDirectEnvironmentalHazardStimuli;GameObject
+	function SendExplodedAIEvent(); // SendExplodedAIEvent;
+	function SendParkEvent(park : Bool); // SendParkEvent;Bool
+	function SendPoliceNotification(); // SendPoliceNotification;
+	function SendVehicleStartedUnmountingEventToPS(isMounting : Bool, slotID : CName, character : handle:gameObject); // SendVehicleStartedUnmountingEventToPS;BoolCNameGameObject
+	function SetDelayDisableCarAlarm(evtActivationTime : Float); // SetDelayDisableCarAlarm;Float
+	function SetDoorAnimFeatureData(door : vehicleEVehicleDoor, state : vehicleVehicleDoorState); // SetDoorAnimFeatureData;EVehicleDoorVehicleDoorState
+	function SetImmortalityMode(); // SetImmortalityMode;
+	function SetSteeringLimitAnimFeature(limit : Int32); // SetSteeringLimitAnimFeature;Int32
+	function SetVehicleScannerDirty(); // SetVehicleScannerDirty;
+	function SetWindowAnimFeatureData(door : vehicleEVehicleDoor, state : vehicleEVehicleWindowState); // SetWindowAnimFeatureData;EVehicleDoorEVehicleWindowState
+	function SetupAuxillary(); // SetupAuxillary;
+	function SetupCarAlarmHonkListener(); // SetupCarAlarmHonkListener;
+	function SetupCrystalDome(); // SetupCrystalDome;
+	function SetupGameTimeToBBListener(); // SetupGameTimeToBBListener;
+	function SetupListeners(); // SetupListeners;
+	function SetupThrusterFX(); // SetupThrusterFX;
+	function SetupVehicleRPMBBListener(); // SetupVehicleRPMBBListener;
+	function SetupVehicleSpeedBBListener(); // SetupVehicleSpeedBBListener;
+	function SetupVehicleTPPBBListener(); // SetupVehicleTPPBBListener;
+	function SetupWheels(); // SetupWheels;
+	function ShouldCycle() : Bool; // ShouldCycle;
+	function ShouldVisualDestructionBeSet(); // ShouldVisualDestructionBeSet;
+	function SignalDamageToVehicleVisualCustomization(); // SignalDamageToVehicleVisualCustomization;
+	function StartEffectEvent(self : handle:gameObject, effectName : CName, optional shouldPersist : Bool, optional blackboard : handle:worldEffectBlackboard); // StartEffectEvent;GameObjectCNameBoolworldEffectBlackboard
+	function StealVehicle(optional slotID : gamemountingMountingSlotId); // StealVehicle;MountingSlotId
+	function ToggleCrystalDome(toggle : Bool, optional force : Bool, optional instant : Bool, optional instantDelay : Float, optional meshVisibilityDelay : Float, optional fastStop : Bool); // ToggleCrystalDome;BoolBoolBoolFloatFloatBool
+	function ToggleInitialVehDoorInteractions(); // ToggleInitialVehDoorInteractions;
+	function ToggleInteraction(layer : CName, toggle : Bool); // ToggleInteraction;CNameBool
+	function ToggleLightsAndSirens(lights : Bool, sirens : Bool); // ToggleLightsAndSirens;BoolBool
+	function TogglePanzerShadowMeshes(toggle : Bool); // TogglePanzerShadowMeshes;Bool
+	function TogglePlayerHitShapesForPanzer(mountedPlayer : handle:PlayerPuppet, enable : Bool); // TogglePlayerHitShapesForPanzer;PlayerPuppetBool
+	function ToggleRaceClock(toggle : Bool); // ToggleRaceClock;Bool
+	function ToggleScanningComponent(toggle : Bool); // ToggleScanningComponent;Bool
+	function ToggleSiren(lights : Bool, sounds : Bool); // ToggleSiren;BoolBool
+	function ToggleTargetingComponents(on : Bool); // ToggleTargetingComponents;Bool
+	function ToggleTargetingSystemForPanzer(mountedPlayer : handle:PlayerPuppet, enable : Bool); // ToggleTargetingSystemForPanzer;PlayerPuppetBool
+	function ToggleVehReadyInteractions(toggle : Bool, optional layer : CName); // ToggleVehReadyInteractions;BoolCName
+	function ToggleVehicleHorn(state : Bool, optional isPolice : Bool); // ToggleVehicleHorn;BoolBool
+	function ToggleVehicleSystems(toggle : Bool, vehicle : Bool, engine : Bool, optional lockState : VehicleQuestEngineLockState); // ToggleVehicleSystems;BoolBoolBoolVehicleQuestEngineLockState
+	function TryToKnockDownBike(); // TryToKnockDownBike;
+	function TutorialCarDamageFact(); // TutorialCarDamageFact;
+	function UnmountTrunkBody(); // UnmountTrunkBody;
+	function UnregisterCarAlarmHonkListener(); // UnregisterCarAlarmHonkListener;
+	function UnregisterGameTimeToBBListener(); // UnregisterGameTimeToBBListener;
+	function UnregisterInputListener(); // UnregisterInputListener;
+	function UnregisterListeners(); // UnregisterListeners;
+	function UnregisterPreventionPassengerCallbacks(gi : ScriptGameInstance, vehicleID : entEntityID); // UnregisterPreventionPassengerCallbacks;GameInstanceEntityID
+	function UnregisterVehicleRPMBBListener(); // UnregisterVehicleRPMBBListener;
+	function UnregisterVehicleSpeedBBListener(); // UnregisterVehicleSpeedBBListener;
+	function UnregisterVehicleTPPBBListener(); // UnregisterVehicleTPPBBListener;
+	function UnregisterWantedLevelListener(); // UnregisterWantedLevelListener;
+	function UpdateDamageEngineEffects(); // UpdateDamageEngineEffects;
+	function VehicleDefaultStateSetup(); // VehicleDefaultStateSetup;
+	function VehicleVisualDestructionSetup(); // VehicleVisualDestructionSetup;
+	function VisualCustomizationBlockedNotification(message : String, optional messageType : gameSimpleMessageType); // VisualCustomizationBlockedNotification;StringSimpleMessageType
+}
+
+class ScriptableDeviceComponent extends gameDeviceComponent
+{
+	function GetPS() : handle:ScriptableDeviceComponentPS; // GetPS
+	function GetPSID() : gamePersistentID; // GetPSID;
+	function GetPSName() : CName; // GetPSName;
+}
+
+import class gameDeviceComponent extends gameComponent
+{
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

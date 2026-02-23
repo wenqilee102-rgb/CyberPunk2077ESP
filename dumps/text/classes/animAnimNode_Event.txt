@@ -1,0 +1,19 @@
+import class animAnimNode_Event extends animAnimNode_FloatValue
+{
+	var eventName : CName;
+	var defaultValue : Float;
+	var eventValue : Float;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,41 @@
+import class gamedataAINPCTypeCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function AllowedNPCTypes(out outList : array:whandle:gamedataNPCType_Record); // AllowedNPCTypes
+	import function AllowedNPCTypesContains(item : whandle:gamedataNPCType_Record) : Bool; // AllowedNPCTypesContains
+	import function DeviceState() : Int32; // DeviceState
+	import function GetAllowedNPCTypesCount() : Int32; // GetAllowedNPCTypesCount
+	import function GetAllowedNPCTypesItem(index : Int32) : whandle:gamedataNPCType_Record; // GetAllowedNPCTypesItem
+	import function GetAllowedNPCTypesItemHandle(index : Int32) : handle:gamedataNPCType_Record; // GetAllowedNPCTypesItemHandle
+	import function GetVisualTagsCount() : Int32; // GetVisualTagsCount
+	import function GetVisualTagsItem(index : Int32) : CName; // GetVisualTagsItem
+	import function IsFollower() : Int32; // IsFollower
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function VisualTags() : array:CName; // VisualTags
+	import function VisualTagsContains(item : CName) : Bool; // VisualTagsContains
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

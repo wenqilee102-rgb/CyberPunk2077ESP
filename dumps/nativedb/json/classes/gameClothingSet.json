@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gameClothingSet","c":"ClothingSet","d":24,"e":[{"a":{"b":"gameWardrobeClothingSetIndex"},"b":"setID","c":128},{"a":{"a":31,"c":{"b":"gameSSlotVisualInfo"}},"b":"clothingList","c":128},{"a":{"a":15},"b":"iconID","c":128}],"f":[{"a":"IsEmpty","c":{"a":1},"d":12,"e":[{"a":{"a":26,"c":{"b":"gameClothingSet"}},"b":"set","c":0}]}]}

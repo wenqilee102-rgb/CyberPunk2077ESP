@@ -1,0 +1,9 @@
+import struct animCurvePathPartInput
+{
+	var curveLengthStart : Float;
+	var curveLengthEnd : Float;
+	var controllerName : CName;
+	var eventNameStart : CName;
+	var eventNameEnd : CName;
+	var startBlendTime : Float;
+}

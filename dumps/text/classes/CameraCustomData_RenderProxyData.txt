@@ -1,0 +1,7 @@
+import struct CameraCustomData_RenderProxyData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

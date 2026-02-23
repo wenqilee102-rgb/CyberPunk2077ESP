@@ -1,0 +1,14 @@
+import class physicsMaterialLibraryResource extends CResource
+{
+	var defaultMaterial : handle:physicsMaterialResource;
+	var collectionData : DataBuffer;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

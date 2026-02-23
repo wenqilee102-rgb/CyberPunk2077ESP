@@ -1,0 +1,38 @@
+class UIInventoryItemGrenadeData extends IScriptable
+{
+	public    var Type : GrenadeDamageType;
+	public    var Range : Float;
+	public    var DeliveryMethod : gamedataGrenadeDeliveryMethodType;
+	public    var Duration : Float;
+	public    var Delay : Float;
+	public    var DetonationTimer : Float;
+	public    var DamagePerTick : Float;
+	public    var DamageType : gamedataStatType;
+	public    var GrenadeType : EGrenadeType;
+	public    var TotalDamage : Float;
+	public    var Player : whandle:PlayerPuppet;
+
+	static function GetGrenadeContinousEffector(attackRecord : whandle:gamedataAttack_Record) : whandle:gamedataContinuousAttackEffector_Record; // UIInventoryItemGrenadeData::GetGrenadeContinousEffector;Attack_Record
+	static function GetGrenadeDamageStats(itemData : whandle:gameItemData, outputArray : script_ref:array:handle:InventoryTooltiData_GrenadeDamageData); // UIInventoryItemGrenadeData::GetGrenadeDamageStats;gameItemDatascript_ref<array<InventoryTooltiData_GrenadeDamageData>>
+	static function GetGrenadeDelay(continuousAttackEffector : whandle:gamedataContinuousAttackEffector_Record) : Float; // UIInventoryItemGrenadeData::GetGrenadeDelay;ContinuousAttackEffector_Record
+	static function GetGrenadeDoTTickDamage(player : whandle:PlayerPuppet, continuousAttackEffector : whandle:gamedataContinuousAttackEffector_Record) : Float; // UIInventoryItemGrenadeData::GetGrenadeDoTTickDamage;PlayerPuppetContinuousAttackEffector_Record
+	static function GetGrenadeDuration(player : whandle:PlayerPuppet, attackRecord : whandle:gamedataAttack_Record) : Float; // UIInventoryItemGrenadeData::GetGrenadeDuration;PlayerPuppetAttack_Record
+	static function GetGrenadeRange(grenadeRecord : whandle:gamedataGrenade_Record, player : whandle:PlayerPuppet) : Float; // UIInventoryItemGrenadeData::GetGrenadeRange;Grenade_RecordPlayerPuppet
+	static function GetGrenadeTotalDamageFromStats(itemData : whandle:gameItemData) : Float; // UIInventoryItemGrenadeData::GetGrenadeTotalDamageFromStats;gameItemData
+	static function GetGrenadeType(grenadeRecord : whandle:gamedataGrenade_Record) : EGrenadeType; // UIInventoryItemGrenadeData::GetGrenadeType;Grenade_Record
+	static function Make(item : whandle:UIInventoryItem, player : whandle:PlayerPuppet) : handle:UIInventoryItemGrenadeData; // UIInventoryItemGrenadeData::Make;UIInventoryItemPlayerPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

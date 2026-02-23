@@ -1,0 +1,14 @@
+import class AIbehaviorInfluenceExcludeObstaclePointTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var workspotData : handle:AIArgumentMapping;
+	var mountData : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

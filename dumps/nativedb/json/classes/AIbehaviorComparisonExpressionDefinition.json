@@ -1,0 +1,1 @@
+{"a":"AIbehaviorPassiveExpressionDefinition","b":"AIbehaviorComparisonExpressionDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIbehaviorExpressionSocket"}},"b":"leftHandSide","c":128},{"a":{"b":"EComparisonType"},"b":"operator","c":128},{"a":{"a":26,"c":{"b":"AIbehaviorExpressionSocket"}},"b":"rightHandSide","c":128}]}

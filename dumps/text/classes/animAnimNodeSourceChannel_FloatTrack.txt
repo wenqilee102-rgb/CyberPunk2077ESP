@@ -1,0 +1,13 @@
+import class animAnimNodeSourceChannel_FloatTrack extends animIAnimNodeSourceChannel_Float
+{
+	var floatTrack : animNamedTrackIndex;
+	var useComplementValue : Bool;
+}
+
+import class abstract animIAnimNodeSourceChannel_Float extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

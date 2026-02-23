@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"AddItemToVendorRequest","d":0,"e":[{"a":{"a":15},"b":"vendorID","c":128},{"a":{"a":15},"b":"itemToAddID","c":128},{"a":{"a":6},"b":"quantity","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

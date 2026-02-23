@@ -1,0 +1,8 @@
+import class gameGodModeSaveData extends ISerializable
+{
+	var gods : array:gameGodModeSaveEntityData;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+import class resDlcManifest extends CResource
+{
+	var tweakBlob : raRef:CResource;
+	var quest : raRef:CResource;
+	var journal : raRef:CResource;
+	var factories : raRef:CResource;
+	var weaponAppearances : raRef:CResource;
+	var vehicleAppearances : raRef:CResource;
+	var communitySpawnsets : raRef:CResource;
+	var archetypeSet : raRef:CResource;
+	var vehicleCovers : raRef:CResource;
+	var cookedAudioMetadata : raRef:CResource;
+	var voiceTags : raRef:CResource;
+	var widgetsLibrariesOverrides : raRef:CResource;
+	var gameDefsList : raRef:CResource;
+	var cookedMultilayerSetup : raRef:CResource;
+	var visualTagsToAppearanceNames : raRef:CResource;
+	var appearanceNameToVisualTags : raRef:CResource;
+	var defaultAppearances : raRef:CResource;
+	var colorVariantsMap : raRef:CResource;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

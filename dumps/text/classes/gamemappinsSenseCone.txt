@@ -1,0 +1,8 @@
+import struct gamemappinsSenseCone
+{
+	var length : Float;
+	var width : Float;
+	var angleDegrees : Float;
+	var position1 : Vector4;
+	var position2 : Vector4;
+}

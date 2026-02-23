@@ -1,0 +1,6 @@
+import struct gameWeakspotPhysicalDestructionComponent
+{
+	var componentName : CName;
+	var useDefaultOwnerProperties : Bool;
+	var destructionProperties : gameWeakspotPhysicalDestructionProperties;
+}

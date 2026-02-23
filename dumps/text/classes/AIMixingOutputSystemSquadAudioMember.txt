@@ -1,0 +1,15 @@
+import class AIMixingOutputSystemSquadAudioMember extends AISquadAudioMemberBase
+{
+}
+
+import class AISquadAudioMemberBase extends AISquadMemberBase
+{
+}
+
+import class abstract AISquadMemberBase extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

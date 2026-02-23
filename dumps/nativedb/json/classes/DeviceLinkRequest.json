@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"DeviceLinkRequest","d":0,"e":[{"a":{"b":"DeviceLink"},"b":"deviceLink","c":129}],"f":[{"a":"DeviceLinkRequest::Construct;PersistentIDCName","b":"Construct","c":{"a":26,"c":{"b":"DeviceLinkRequest"}},"d":56,"e":[{"a":{"b":"gamePersistentID"},"b":"id","c":0},{"a":{"a":14},"b":"_className","c":0}]},{"a":"GetLink;","b":"GetLink","c":{"b":"DeviceLink"},"d":176}]}

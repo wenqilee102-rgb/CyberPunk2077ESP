@@ -1,0 +1,18 @@
+import class audioMaterialMeleeSoundDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioMaterialMeleeSoundDictionaryItem;
+	var entryType : handle:audioMaterialMeleeSoundDictionaryItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

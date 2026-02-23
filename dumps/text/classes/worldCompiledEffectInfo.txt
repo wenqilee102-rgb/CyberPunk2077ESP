@@ -1,0 +1,9 @@
+import struct worldCompiledEffectInfo
+{
+	var placementTags : array:CName;
+	var componentNames : array:CName;
+	var relativePositions : array:Vector3;
+	var relativeRotations : array:Quaternion;
+	var placementInfos : array:worldCompiledEffectPlacementInfo;
+	var eventsSortedByRUID : array:worldCompiledEffectEventInfo;
+}

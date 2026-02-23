@@ -1,0 +1,12 @@
+import class animAnimNodeSourceChannel_ReferenceTransformVector extends animIAnimNodeSourceChannel_Vector
+{
+	var transformIndex : animTransformIndex;
+}
+
+import class abstract animIAnimNodeSourceChannel_Vector extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

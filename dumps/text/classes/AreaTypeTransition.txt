@@ -1,0 +1,8 @@
+struct AreaTypeTransition
+{
+	public    var transitionTo : ESecurityAreaType;
+	public    var transitionHour : Int32;
+	public    var transitionMode : ETransitionMode;
+	public    var listenerID : Uint32;
+	public    var locked : Bool;
+}

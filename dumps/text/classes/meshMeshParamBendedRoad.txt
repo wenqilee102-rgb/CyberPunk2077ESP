@@ -1,0 +1,23 @@
+import class meshMeshParamBendedRoad extends meshMeshParameter
+{
+	var occInds : array:Uint16;
+	var occVerts : array:Vector4;
+	var occSkinWeights : array:Vector4;
+	var occSkinInds : array:Color;
+	var collInds : array:array:Uint16;
+	var collVerts : array:array:Vector3;
+	var collSkinWeights : array:array:Vector4;
+	var collSkinInds : array:array:Color;
+	var collMaterialName : array:String;
+	var collFilterPresetName : array:String;
+	var collFaceMatInds : array:array:Uint16;
+	var collFaceMaterialNames : array:array:String;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

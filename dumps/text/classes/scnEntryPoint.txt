@@ -1,0 +1,5 @@
+import struct scnEntryPoint
+{
+	var name : CName;
+	var nodeId : scnNodeId;
+}

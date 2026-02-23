@@ -1,0 +1,32 @@
+import class gamedataAIDirectorScheduleSpawningDesc_Record extends gamedataTweakDBRecord
+{
+	import function EnemiesAmount() : Int32; // EnemiesAmount
+	import function Entries(out outList : array:whandle:gamedataAIDirectorSchedulePlanEnemyEntry_Record); // Entries
+	import function EntriesContains(item : whandle:gamedataAIDirectorSchedulePlanEnemyEntry_Record) : Bool; // EntriesContains
+	import function GetEntriesCount() : Int32; // GetEntriesCount
+	import function GetEntriesItem(index : Int32) : whandle:gamedataAIDirectorSchedulePlanEnemyEntry_Record; // GetEntriesItem
+	import function GetEntriesItemHandle(index : Int32) : handle:gamedataAIDirectorSchedulePlanEnemyEntry_Record; // GetEntriesItemHandle
+	import function SpawningAngle() : Float; // SpawningAngle
+	import function SpawningBigDistance() : Float; // SpawningBigDistance
+	import function SpawningMinDistance() : Float; // SpawningMinDistance
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct gamestateMachineConsumableParameterTweakDBID extends gamestateMachineActionParameterTweakDBID
+{
+	var consumed : Bool;
+}
+
+import struct gamestateMachineActionParameterTweakDBID
+{
+	var name : CName;
+	var value : TweakDBID;
+}

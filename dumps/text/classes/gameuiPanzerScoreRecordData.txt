@@ -1,0 +1,5 @@
+import struct gameuiPanzerScoreRecordData
+{
+	var name : String;
+	var score : Uint32;
+}

@@ -1,0 +1,5 @@
+import struct gameJournalSharedStateData
+{
+	var pathHash : Uint32;
+	var entryState : gameJournalEntryState;
+}

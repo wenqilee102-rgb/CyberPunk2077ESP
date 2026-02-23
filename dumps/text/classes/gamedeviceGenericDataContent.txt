@@ -1,0 +1,5 @@
+import struct gamedeviceGenericDataContent
+{
+	var name : String;
+	var content : array:gamedeviceDataElement;
+}

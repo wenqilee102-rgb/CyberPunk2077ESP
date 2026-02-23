@@ -1,0 +1,1 @@
+{"b":"meshRegionData","d":8,"g":true,"e":[{"a":{"a":31,"c":{"b":"meshChunkOffset"}},"b":"chunkDataIntact","c":128},{"a":{"a":31,"c":{"b":"meshChunkOffset"}},"b":"chunkDataFractured","c":128},{"a":{"a":9},"b":"chunkMaskIntact","c":128},{"a":{"a":9},"b":"chunkMaskFractured","c":128},{"a":{"a":1},"b":"isStaticRemains","c":128}]}

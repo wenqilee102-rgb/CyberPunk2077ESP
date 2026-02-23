@@ -1,0 +1,1 @@
+{"a":"ScannerChunk","b":"ScannerVehicleInfo","d":0,"e":[{"a":{"a":12},"b":"vehicleInfo","c":129}],"f":[{"a":"GetType;","b":"GetType","c":{"b":"ScannerDataType"},"d":32},{"a":"GetVehicleInfo;","b":"GetVehicleInfo","c":{"a":12},"d":176},{"a":"Set;script_ref<String>","b":"Set","d":48,"e":[{"a":{"a":28,"c":{"a":12}},"b":"vehInfo","c":0}]}]}

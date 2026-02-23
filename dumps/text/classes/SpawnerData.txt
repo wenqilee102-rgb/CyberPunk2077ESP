@@ -1,0 +1,7 @@
+struct SpawnerData
+{
+	public    var spawnerID : entEntityID;
+	public    var entryNames : array:CName;
+
+	static function Construct(id : entEntityID, entry : CName) : SpawnerData; // SpawnerData::Construct;EntityIDCName
+}

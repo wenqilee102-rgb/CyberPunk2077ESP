@@ -1,0 +1,21 @@
+class abstract ItemFilterCategories extends IScriptable
+{
+	static function GetIcon(filterType : Int32) : String; // ItemFilterCategories::GetIcon;Int32
+	static function GetIcon(filterType : ItemFilterCategory) : String; // ItemFilterCategories::GetIcon;ItemFilterCategory
+	static function GetLabelKey(filterType : ItemFilterCategory) : CName; // ItemFilterCategories::GetLabelKey;ItemFilterCategory
+	static function GetLabelKey(filterType : Int32) : CName; // ItemFilterCategories::GetLabelKey;Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

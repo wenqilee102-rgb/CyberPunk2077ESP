@@ -1,0 +1,26 @@
+import class enteventsPhysicalImpulseEvent extends redEvent
+{
+	var bodyIndex : Uint32;
+	var worldImpulse : Vector3;
+	var worldPosition : Vector3;
+	var radius : Float;
+	var shapeIndex : Uint32;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,33 @@
+import class gamestateMachineparameterTypeAdjustTransformWithDurations extends gamestateMachineparameterTypeAdjustTransform
+{
+	import function SetCurve(value : CName); // SetCurve
+	import function SetDistanceRadius(value : Float); // SetDistanceRadius
+	import function SetGravity(value : Float); // SetGravity
+	import function SetRotationDuration(value : Float); // SetRotationDuration
+	import function SetSlideDuration(value : Float); // SetSlideDuration
+	import function SetTarget(value : whandle:gameObject); // SetTarget
+	import function SetUseParabolicMotion(value : Bool); // SetUseParabolicMotion
+}
+
+import class gamestateMachineparameterTypeAdjustTransform extends IScriptable
+{
+	var position : Vector4;
+	var rotation : Quaternion;
+
+	import function SetPosition(value : Vector4); // SetPosition
+	import function SetRotation(value : Quaternion); // SetRotation
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+struct SDebugChoice
+{
+	public    var choiceName : CName;
+	public    var factValue : Int32;
+	public    var factmode : EVarDBMode;
+}

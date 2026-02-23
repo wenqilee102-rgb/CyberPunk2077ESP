@@ -1,0 +1,8 @@
+import class physicsQueryPresetResource extends ISerializable
+{
+	var presets : array:physicsQueryPresetDefinition;
+}
+
+import class abstract ISerializable
+{
+}

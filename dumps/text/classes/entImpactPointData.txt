@@ -1,0 +1,9 @@
+import struct entImpactPointData
+{
+	var worldPosition : WorldPosition;
+	var worldNormal : Vector4;
+	var forceMagnitude : Float;
+	var impulseMagnitude : Float;
+	var maxForceMagnitude : Float;
+	var maxImpulseMagnitude : Float;
+}

@@ -1,0 +1,5 @@
+import struct vehicleVehicleAppearanceToDecalsName
+{
+	var appearanceName : CName;
+	var decalsName : array:CName;
+}

@@ -1,0 +1,4 @@
+import struct LibTreeSharedVarReferenceName
+{
+	var name : CName;
+}

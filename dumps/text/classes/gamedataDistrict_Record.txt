@@ -1,0 +1,43 @@
+import class gamedataDistrict_Record extends gamedataTweakDBRecord
+{
+	import function CrimeMultiplier() : Float; // CrimeMultiplier
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : String; // EnumName
+	import function ExplosiveDeviceStimRangeMultiplier() : Float; // ExplosiveDeviceStimRangeMultiplier
+	import function Gangs(out outList : array:whandle:gamedataAffiliation_Record); // Gangs
+	import function GangsContains(item : whandle:gamedataAffiliation_Record) : Bool; // GangsContains
+	import function GetGangsCount() : Int32; // GetGangsCount
+	import function GetGangsItem(index : Int32) : whandle:gamedataAffiliation_Record; // GetGangsItem
+	import function GetGangsItemHandle(index : Int32) : handle:gamedataAffiliation_Record; // GetGangsItemHandle
+	import function GunShotStimRange() : Float; // GunShotStimRange
+	import function IsQuestDistrict() : Bool; // IsQuestDistrict
+	import function LocalizedName() : String; // LocalizedName
+	import function ParentDistrict() : whandle:gamedataDistrict_Record; // ParentDistrict
+	import function ParentDistrictHandle() : handle:gamedataDistrict_Record; // ParentDistrictHandle
+	import function PoliceRadioSceneEntryPoint() : CName; // PoliceRadioSceneEntryPoint
+	import function PreventionPreset() : whandle:gamedataDistrictPreventionData_Record; // PreventionPreset
+	import function PreventionPresetHandle() : handle:gamedataDistrictPreventionData_Record; // PreventionPresetHandle
+	import function Type() : gamedataDistrict; // Type
+	import function UiIcon() : CName; // UiIcon
+	import function UiState() : CName; // UiState
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

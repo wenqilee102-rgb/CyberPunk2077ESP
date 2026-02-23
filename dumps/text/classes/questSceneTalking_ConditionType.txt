@@ -1,0 +1,21 @@
+import class questSceneTalking_ConditionType extends questISceneConditionType
+{
+	var GlobalEntityRef : gameEntityReference;
+	var sceneFile : raRef:scnSceneResource;
+	var SceneVersion : scnSceneVersionCheck;
+	var SectionName : CName;
+	var ActorName : String;
+	var isInverted : Bool;
+}
+
+import class abstract questISceneConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

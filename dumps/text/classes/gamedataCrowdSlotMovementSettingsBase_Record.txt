@@ -1,0 +1,73 @@
+import class gamedataCrowdSlotMovementSettingsBase_Record extends gamedataTweakDBRecord
+{
+	import function AbsoluteFrontClamp() : Float; // AbsoluteFrontClamp
+	import function Acceleration() : Float; // Acceleration
+	import function AccelerationFactor() : Float; // AccelerationFactor
+	import function AvoidanceReserve() : Float; // AvoidanceReserve
+	import function BaseRadius() : Float; // BaseRadius
+	import function BrakePressureFactor() : Float; // BrakePressureFactor
+	import function BumpTriggerMaxDistanceNPC() : Float; // BumpTriggerMaxDistanceNPC
+	import function BumpTriggerMaxDistancePlayer() : Float; // BumpTriggerMaxDistancePlayer
+	import function BumpTriggerMinSpeed() : Float; // BumpTriggerMinSpeed
+	import function BumpTriggerRadiusFactor() : Float; // BumpTriggerRadiusFactor
+	import function BumpTriggerSpeedFactor() : Float; // BumpTriggerSpeedFactor
+	import function CurveFactor() : Float; // CurveFactor
+	import function CurveLimit() : Float; // CurveLimit
+	import function Deceleration() : Float; // Deceleration
+	import function DirectionSmoothFactor() : Float; // DirectionSmoothFactor
+	import function DirectionStage() : Bool; // DirectionStage
+	import function DropItems() : Bool; // DropItems
+	import function FenceGapReserve() : Float; // FenceGapReserve
+	import function IgnoreCars() : Bool; // IgnoreCars
+	import function IgnoreLights() : Bool; // IgnoreLights
+	import function IgnorePedestrians() : Bool; // IgnorePedestrians
+	import function IgnorePlayer() : Bool; // IgnorePlayer
+	import function IgnoreRules() : Bool; // IgnoreRules
+	import function IgnoreSpeedLimitations() : Bool; // IgnoreSpeedLimitations
+	import function IgnoreStatics() : Bool; // IgnoreStatics
+	import function LaneObstacleBuffer() : Float; // LaneObstacleBuffer
+	import function Length() : Float; // Length
+	import function MaxAnimScale() : Float; // MaxAnimScale
+	import function MaxDeviationFromPath() : Float; // MaxDeviationFromPath
+	import function MaxLightDelay() : Float; // MaxLightDelay
+	import function MaxSpeed() : Float; // MaxSpeed
+	import function MaxSpeedTolerance() : Float; // MaxSpeedTolerance
+	import function MaxStopSpeed() : Float; // MaxStopSpeed
+	import function MinAnimScale() : Float; // MinAnimScale
+	import function MinLightDelay() : Float; // MinLightDelay
+	import function MinSpeed() : Float; // MinSpeed
+	import function MinStopSpeed() : Float; // MinStopSpeed
+	import function MoveSpeedType() : Int32; // MoveSpeedType
+	import function OverlapTolerance() : Float; // OverlapTolerance
+	import function PredictSpecialVehicles() : Bool; // PredictSpecialVehicles
+	import function RadiusBottomClamp() : Float; // RadiusBottomClamp
+	import function RadiusSmoothFactor() : Float; // RadiusSmoothFactor
+	import function RadiusTopClamp() : Float; // RadiusTopClamp
+	import function ReachFactor() : Float; // ReachFactor
+	import function RotationSpeed() : Float; // RotationSpeed
+	import function SoftAdheranceMax() : Float; // SoftAdheranceMax
+	import function SoftAdheranceMin() : Float; // SoftAdheranceMin
+	import function SpeedStage() : Bool; // SpeedStage
+	import function StopReserve() : Float; // StopReserve
+	import function SurroundDistance() : Float; // SurroundDistance
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

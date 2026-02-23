@@ -1,0 +1,5 @@
+import struct animAnimMathExpressionQuaternionSocket
+{
+	var link : animQuaternionLink;
+	var expressionVarId : Uint16;
+}

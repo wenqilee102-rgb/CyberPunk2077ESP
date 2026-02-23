@@ -1,0 +1,4 @@
+import struct questStopRazerAnimation_NodeTypeParams
+{
+	var animationName : CName;
+}

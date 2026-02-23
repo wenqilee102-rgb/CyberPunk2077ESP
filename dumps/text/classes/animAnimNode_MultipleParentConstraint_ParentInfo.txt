@@ -1,0 +1,10 @@
+import struct animAnimNode_MultipleParentConstraint_ParentInfo
+{
+	var parentTransform : animTransformIndex;
+	var parentWeightMode : animConstraintWeightMode;
+	var parentStaticWeight : Float;
+	var parentTrackWeight : animNamedTrackIndex;
+	var useComplementWeight : Bool;
+	var useOffset : Bool;
+	var offset : QsTransform;
+}

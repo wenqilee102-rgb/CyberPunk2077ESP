@@ -1,0 +1,6 @@
+import struct questDropItemFromSlot_NodeTypeParams
+{
+	var objectRef : gameEntityReference;
+	var slotId : TweakDBID;
+	var useGravity : Bool;
+}

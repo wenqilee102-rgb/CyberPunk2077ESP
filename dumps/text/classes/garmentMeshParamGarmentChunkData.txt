@@ -1,0 +1,11 @@
+import struct garmentMeshParamGarmentChunkData
+{
+	var numVertices : Uint32;
+	var lodMask : Uint8;
+	var isTwoSided : Bool;
+	var vertices : DataBuffer;
+	var indices : DataBuffer;
+	var morphOffsets : DataBuffer;
+	var garmentFlags : DataBuffer;
+	var uv : DataBuffer;
+}

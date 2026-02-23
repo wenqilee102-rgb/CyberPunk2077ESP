@@ -1,0 +1,26 @@
+class DelayedSelect extends gameDelaySystemScriptedDelayCallbackWrapper
+{
+	public    var controller : whandle:CraftingMainLogicController;
+	public    var index : Uint32;
+
+	function Call(); // Call;
+}
+
+import class gameDelaySystemScriptedDelayCallbackWrapper extends IScriptable
+{
+	function Call(); // Call;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

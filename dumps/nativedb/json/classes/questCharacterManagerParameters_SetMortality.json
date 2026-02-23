@@ -1,0 +1,1 @@
+{"a":"questICharacterManagerParameters_NodeSubType","b":"questCharacterManagerParameters_SetMortality","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"puppetRef","c":128},{"a":{"a":1},"b":"isPlayer","c":128},{"a":{"b":"gameGodModeType"},"b":"state","c":128},{"a":{"a":1},"b":"resetToDefault","c":128},{"a":{"a":14},"b":"source","c":128}]}

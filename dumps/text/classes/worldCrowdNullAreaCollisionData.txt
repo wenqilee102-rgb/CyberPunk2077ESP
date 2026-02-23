@@ -1,0 +1,5 @@
+import struct worldCrowdNullAreaCollisionData
+{
+	var areaID : Uint64;
+	var collisions : array:worldTrafficStaticCollisionSphere;
+}

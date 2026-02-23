@@ -1,0 +1,64 @@
+class SensesOperations extends DeviceOperations
+{
+	protected var sensesOperations : array:SSensesOperationData;
+
+	function ClearDelayIdOnOperation(operationID : Int32); // ClearDelayIdOnOperation;Int32
+	function ExecuteOperation(owner : whandle:gameObject, activator : whandle:gameObject, operationType : ETriggerOperationType); // ExecuteOperation;GameObjectGameObjectETriggerOperationType
+	function IsOperationEnabled(index : Int32) : Bool; // IsOperationEnabled;Int32
+	function RequestComponents(ri : entEntityRequestComponentsInterface); // RequestComponents;EntityRequestComponentsInterface
+	function RestoreOperation(owner : whandle:gameObject, activator : whandle:gameObject, operationType : ETriggerOperationType); // RestoreOperation;GameObjectGameObjectETriggerOperationType
+	function SetDelayIdOnOperation(delayId : gameDelayID, operationID : Int32); // SetDelayIdOnOperation;DelayIDInt32
+	function TakeControl(ri : entEntityResolveComponentsInterface); // TakeControl;EntityResolveComponentsInterface
+	function ToggleOperation(enable : Bool, index : Int32); // ToggleOperation;BoolInt32
+}
+
+class abstract DeviceOperations extends IScriptable
+{
+	protected var components : array:whandle:entIPlacedComponent;
+	protected var fxInstances : array:SVfxInstanceData;
+
+	function ClearDelayIdOnOperation(operationID : Int32); // ClearDelayIdOnOperation;Int32
+	function CreateFxInstance(owner : whandle:gameObject, id : CName, resource : gameFxResource, transform : WorldTransform) : handle:gameFxInstance; // CreateFxInstance;GameObjectCNameFxResourceWorldTransform
+	function DelayOperation(operation : script_ref:SBaseDeviceOperationData, owner : whandle:gameObject); // DelayOperation;script_ref<SBaseDeviceOperationData>GameObject
+	function EnterWorkspot(target : handle:Device, activator : handle:gameObject, optional freeCamera : Bool, optional componentName : CName); // EnterWorkspot;DeviceGameObjectBoolCName
+	function Execute(operation : script_ref:SBaseDeviceOperationData, owner : whandle:gameObject); // Execute;script_ref<SBaseDeviceOperationData>GameObject
+	function GetFxInstance(id : CName) : handle:gameFxInstance; // GetFxInstance;CName
+	function IsOperationEnabled(index : Int32) : Bool; // IsOperationEnabled;Int32
+	function LeaveWorkspot(activator : handle:gameObject); // LeaveWorkspot;GameObject
+	function RemoveFxInstance(id : CName); // RemoveFxInstance;CName
+	function RequestComponents(ri : entEntityRequestComponentsInterface); // RequestComponents;EntityRequestComponentsInterface
+	function ResolveComponents(componentsData : script_ref:array:SComponentOperationData); // ResolveComponents;script_ref<array<SComponentOperationData>>
+	function ResolveDamages(damages : script_ref:array:SDamageOperationData, owner : whandle:gameObject); // ResolveDamages;script_ref<array<SDamageOperationData>>GameObject
+	function ResolveDisable(disable : Bool, owner : whandle:gameObject); // ResolveDisable;BoolGameObject
+	function ResolveFacts(facts : script_ref:array:SFactOperationData, owner : whandle:gameObject); // ResolveFacts;script_ref<array<SFactOperationData>>GameObject
+	function ResolveItems(items : script_ref:array:SInventoryOperationData, owner : whandle:gameObject); // ResolveItems;script_ref<array<SInventoryOperationData>>GameObject
+	function ResolveMeshesAppearence(appearanceName : CName, owner : whandle:gameObject); // ResolveMeshesAppearence;CNameGameObject
+	function ResolveOperations(operations : script_ref:array:SToggleOperationData, owner : whandle:gameObject); // ResolveOperations;script_ref<array<SToggleOperationData>>GameObject
+	function ResolveSFXs(SFXs : script_ref:array:SSFXOperationData, owner : whandle:gameObject); // ResolveSFXs;script_ref<array<SSFXOperationData>>GameObject
+	function ResolveStatusEffects(statusEffects : array:SStatusEffectOperationData, owner : whandle:gameObject); // ResolveStatusEffects;array<SStatusEffectOperationData>GameObject
+	function ResolveStims(stims : script_ref:array:SStimOperationData, owner : whandle:gameObject); // ResolveStims;script_ref<array<SStimOperationData>>GameObject
+	function ResolveTeleport(teleport : STeleportOperationData, owner : whandle:gameObject); // ResolveTeleport;STeleportOperationDataGameObject
+	function ResolveTransformAnimations(animations : script_ref:array:STransformAnimationData, owner : whandle:gameObject); // ResolveTransformAnimations;script_ref<array<STransformAnimationData>>GameObject
+	function ResolveVFXs(VFXs : script_ref:array:SVFXOperationData, owner : whandle:gameObject); // ResolveVFXs;script_ref<array<SVFXOperationData>>GameObject
+	function ResolveWorkspots(workspot : SWorkspotData, owner : whandle:gameObject); // ResolveWorkspots;SWorkspotDataGameObject
+	function Restore(operation : script_ref:SBaseDeviceOperationData, owner : whandle:gameObject); // Restore;script_ref<SBaseDeviceOperationData>GameObject
+	function SendToggleOperataionEvent(enable : Bool, index : Int32, type : EOperationClassType, owner : whandle:gameObject); // SendToggleOperataionEvent;BoolInt32EOperationClassTypeGameObject
+	function SetDelayIdOnOperation(delayId : gameDelayID, operationID : Int32); // SetDelayIdOnOperation;DelayIDInt32
+	function StoreFxInstance(id : CName, fx : handle:gameFxInstance); // StoreFxInstance;CNameFxInstance
+	function TakeControl(ri : entEntityResolveComponentsInterface); // TakeControl;EntityResolveComponentsInterface
+	function ToggleOperation(enable : Bool, index : Int32); // ToggleOperation;BoolInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

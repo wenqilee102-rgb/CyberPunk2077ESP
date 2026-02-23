@@ -1,0 +1,32 @@
+class PlayerSpotted extends redEvent
+{
+	private   var comesFromNPC : Bool;
+	private   var ownerID : gamePersistentID;
+	private   var doesSee : Bool;
+	private   var agentAreas : array:handle:SecurityAreaControllerPS;
+
+	static function Construct(isReporterNPC : Bool, owner : gamePersistentID, doSee : Bool, areas : script_ref:array:handle:SecurityAreaControllerPS) : handle:PlayerSpotted; // PlayerSpotted::Construct;BoolPersistentIDBoolscript_ref<array<SecurityAreaControllerPS>>
+
+	function DoesSee() : Bool; // DoesSee;
+	function GetAgentAreas() : array:handle:SecurityAreaControllerPS; // GetAgentAreas;
+	function GetComesFromNPC() : Bool; // GetComesFromNPC;
+	function GetOwnerID() : gamePersistentID; // GetOwnerID;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

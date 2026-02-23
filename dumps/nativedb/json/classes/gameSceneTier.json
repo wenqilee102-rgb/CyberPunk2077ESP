@@ -1,0 +1,1 @@
+{"a":"senseStimuliData","b":"gameSceneTier","c":"SceneTier","d":8,"f":[{"a":"GetForceEmptyHands","c":{"a":1},"d":4},{"a":"GetTier","c":{"b":"GameplayTier"},"d":4},{"a":"GetTierData","c":{"a":26,"c":{"b":"gameSceneTierData"}},"d":4},{"a":"SetTierData","d":4,"e":[{"a":{"a":26,"c":{"b":"gameSceneTierData"}},"b":"tierData","c":0}]}]}

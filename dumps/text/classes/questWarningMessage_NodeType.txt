@@ -1,0 +1,25 @@
+import class questWarningMessage_NodeType extends questIUIManagerNodeType
+{
+	var message : String;
+	var localizedMessage : LocalizationString;
+	var duration : Float;
+	var show : Bool;
+	var instant : Bool;
+	var type : gameSimpleMessageType;
+}
+
+import class abstract questIUIManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

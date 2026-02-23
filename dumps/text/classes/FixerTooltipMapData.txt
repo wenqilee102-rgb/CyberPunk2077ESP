@@ -1,0 +1,11 @@
+struct FixerTooltipMapData
+{
+	public    var fixerLocKey : CName;
+	public    var fixerIcon : handle:gamedataUIIcon_Record;
+	public    var fixerDescription : CName;
+	public    var additionalDescriptionKey : CName;
+	public    var allQuestsAmount : Int32;
+	public    var generalQuestsProgress : Int32;
+	public    var allQuestsInCurrentPackage : Int32;
+	public    var currentPackageProgress : Int32;
+}

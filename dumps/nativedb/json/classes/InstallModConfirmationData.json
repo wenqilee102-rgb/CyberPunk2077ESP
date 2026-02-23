@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"InstallModConfirmationData","d":0,"e":[{"a":{"b":"gameItemID"},"b":"itemId","c":128},{"a":{"b":"gameItemID"},"b":"partId","c":128},{"a":{"a":15},"b":"slotID","c":128},{"a":{"b":"gameTelemetryInventoryItem"},"b":"telemetryItemData","c":128},{"a":{"b":"gameTelemetryInventoryItem"},"b":"telemetryPartData","c":128}]}

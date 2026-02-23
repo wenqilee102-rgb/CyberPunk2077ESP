@@ -1,0 +1,19 @@
+import class AICTreeNodeDoNothingDefinition extends AICTreeNodeAtomicDefinition
+{
+}
+
+import class abstract AICTreeNodeAtomicDefinition extends AICTreeNodeDefinition
+{
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

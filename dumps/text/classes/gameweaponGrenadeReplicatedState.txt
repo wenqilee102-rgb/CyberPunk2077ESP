@@ -1,0 +1,14 @@
+import struct gameweaponGrenadeReplicatedState extends netIEntityState
+{
+	var instigator : whandle:gameObject;
+	var itemID : gameItemID;
+	var currentTransform : WorldTransform;
+	var exploded : Bool;
+	var launched : Bool;
+}
+
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

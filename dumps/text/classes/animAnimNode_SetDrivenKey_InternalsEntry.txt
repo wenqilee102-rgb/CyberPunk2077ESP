@@ -1,0 +1,8 @@
+import struct animAnimNode_SetDrivenKey_InternalsEntry
+{
+	var curve : curveData:Float;
+	var inChannelName : CName;
+	var outChannelName : CName;
+	var inChanelType : animAnimNode_SetDrivenKey_InternalsEChannelType;
+	var outChanelType : animAnimNode_SetDrivenKey_InternalsEChannelType;
+}

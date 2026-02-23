@@ -1,0 +1,5 @@
+struct SecurityGateResponseProperties
+{
+	public    var securityGateResponseType : ESecurityGateResponseType;
+	public    var securityLevelAccessGranted : ESecurityAccessLevel;
+}

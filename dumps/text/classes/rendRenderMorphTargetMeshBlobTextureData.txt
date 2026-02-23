@@ -1,0 +1,9 @@
+import struct rendRenderMorphTargetMeshBlobTextureData
+{
+	var targetDiffScale : static:3,Vector4;
+	var targetDiffOffset : static:3,Vector4;
+	var targetDiffsDataOffset : static:3,Uint32;
+	var targetDiffsDataSize : static:3,Uint32;
+	var targetDiffsWidth : static:3,Uint16;
+	var targetDiffsMipLevelCounts : static:3,Uint8;
+}

@@ -1,0 +1,7 @@
+import struct vehicleGarageVehicleID
+{
+	var recordID : TweakDBID;
+	var name : CName;
+
+	import static function Resolve(vehicleID : String) : vehicleGarageVehicleID; // Resolve
+}

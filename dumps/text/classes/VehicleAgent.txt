@@ -1,0 +1,36 @@
+class VehicleAgent extends AgentBase
+{
+	public    var unit : whandle:vehicleBaseObject;
+	public    var passangers : Int32;
+	public    var slotsTotal : Int32;
+	public    var slotsReserved : Int32;
+	public    var slotsAvailable : Int32;
+	public    var everHadPassengers : Bool;
+	public    var distanceToPlayerSquared : Float;
+	public    var lifetimeStatus : LifetimeStatus;
+	public    var nearTimeStamp : Float;
+
+	function Disengage(); // Disengage;
+	function UpdateLifetimeStatus(playerPos : Vector4); // UpdateLifetimeStatus;Vector4
+}
+
+class AgentBase extends IScriptable
+{
+	public    var id : entEntityID;
+	public    var gameObject : whandle:gameObject;
+	public    var spawnedType : gameDynamicVehicleType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

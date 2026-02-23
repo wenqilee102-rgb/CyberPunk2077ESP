@@ -1,0 +1,11 @@
+import class gameinteractionsvisLootVisualizerLogic extends gameinteractionsvisIVisualizerLogicInterface
+{
+}
+
+import class abstract gameinteractionsvisIVisualizerLogicInterface extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

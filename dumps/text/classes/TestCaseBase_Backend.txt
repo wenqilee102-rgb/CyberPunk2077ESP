@@ -1,0 +1,27 @@
+import class TestCaseBase_Backend extends IScriptable
+{
+	import function AddStep(); // AddStep
+	import function CreateStep(); // CreateStep
+	import function EngineSetup(); // EngineSetup
+	import function GTFManager(); // GTFManager
+	import function GetGamedef(); // GetGamedef
+	import function GetVariantInfo(); // GetVariantInfo
+	import function PrepareTestSteps(); // PrepareTestSteps
+	import function TestBody(); // TestBody
+	import function TestSetup(); // TestSetup
+	import function TestWrapup(); // TestWrapup
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

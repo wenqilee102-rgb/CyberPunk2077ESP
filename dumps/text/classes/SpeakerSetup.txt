@@ -1,0 +1,8 @@
+struct SpeakerSetup
+{
+	public    var defaultMusic : ERadioStationList;
+	public    var distractionMusic : ERadioStationList;
+	public    var range : Float;
+	public    var glitchSFX : CName;
+	public    var useOnlyGlitchSFX : Bool;
+}

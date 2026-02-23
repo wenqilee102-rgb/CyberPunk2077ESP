@@ -1,0 +1,34 @@
+class GameplayFactCondition extends GameplayConditionBase
+{
+	public    var factName : CName;
+	public    var value : Int32;
+	public    var comparisonType : ECompareOp;
+	public    var description : String;
+
+	function Evaluate(requester : handle:gameObject) : Bool; // Evaluate;GameObject
+	function GetDescription(requester : handle:gameObject) : Condition; // GetDescription;GameObject
+}
+
+class abstract GameplayConditionBase extends IScriptable
+{
+	protected var entityID : entEntityID;
+
+	function Evaluate(requester : handle:gameObject) : Bool; // Evaluate;GameObject
+	function GetDescription(requester : handle:gameObject) : Condition; // GetDescription;GameObject
+	function GetPlayer(requester : handle:gameObject) : handle:gameObject; // GetPlayer;GameObject
+	function SetEntityID(id : entEntityID); // SetEntityID;EntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

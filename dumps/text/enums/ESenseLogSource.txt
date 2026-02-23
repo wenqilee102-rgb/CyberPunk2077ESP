@@ -1,0 +1,7 @@
+enum ESenseLogSource
+{
+	Undefined = 0,
+	AddToBlacklistEvent = 1,
+	RemoveFromBlacklistEvent = 2,
+	SecurityAreaCrossingPerimeter = 3
+}

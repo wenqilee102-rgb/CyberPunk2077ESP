@@ -1,0 +1,176 @@
+class ScriptedPuppetPS extends gamePuppetPS
+{
+	private   var deviceLink : whandle:PuppetDeviceLinkPS;
+	private   var cooldownStorage : handle:CooldownStorage;
+	private   var isInitialized : EBOOL;
+	private   var wasAttached : Bool;
+	protected var wasRevealedInNetworkPing : Bool;
+	private   var numberActions : Int32;
+	protected var wasQuickHackAttempt : Bool;
+	protected var hasDirectInteractionChoicesActive : Bool;
+	private   var wasIncapacitated : Bool;
+	private   var isBreached : Bool;
+	private   var isDead : Bool;
+	private   var isIncapacitated : Bool;
+	private   var isAndroidTurnedOff : Bool;
+	private   var isPreventionNotified : Bool;
+	private   var securitySystemData : SecuritySystemData;
+	private   var activeContexts : array:gamedeviceRequestType;
+	protected var lastInteractionLayerTag : CName;
+	private   var quickHacksExposed : Bool;
+	private   var currentCooldownID : Uint32;
+	private   var reactionPresetID : TweakDBID;
+	private   var isDefeatMechanicActive : Bool;
+	private   var leftHandLoadout : gameItemID;
+	private   var rightHandLoadout : gameItemID;
+	private   var customWeaponLoadout : array:CachedItemLoadout;
+	private   var genericMeleeLoadout : CachedItemLoadout;
+	private   var genericRangedLoadout : CachedItemLoadout;
+	private   var questForceScannerPreset : TweakDBID;
+	private   var bountyID : TweakDBID;
+	private   var transgressions : array:TweakDBID;
+
+	static function ActionSecurityBreachNotificationStatic(lastKnownPosition : Vector4, whoBreached : handle:gameObject, reporterHandle : whandle:gameObject, type : ESecurityNotificationType) : handle:SecuritySystemInput; // ScriptedPuppetPS::ActionSecurityBreachNotificationStatic;Vector4GameObjectGameObjectESecurityNotificationType
+	static function CanPerformReprimend() : Bool; // ScriptedPuppetPS::CanPerformReprimend;
+	static function GetNPCsConnectedToThisAPCount() : Int32; // ScriptedPuppetPS::GetNPCsConnectedToThisAPCount;
+	static function OnObjectAction(evt : handle:ScriptableDeviceAction) : EntityNotificationType; // ScriptedPuppetPS::OnObjectAction;ScriptableDeviceAction
+	static function OnTargetAssessmentRequest(evt : handle:TargetAssessmentRequest) : EntityNotificationType; // ScriptedPuppetPS::OnTargetAssessmentRequest;TargetAssessmentRequest
+	static function RemoveDuplicatedChoices(choices : script_ref:array:gameinteractionsChoice); // ScriptedPuppetPS::RemoveDuplicatedChoices;script_ref<array<InteractionChoice>>
+
+	event OnInstantiated() : Bool; // OnInstantiated
+
+	function ActionSetExposeQuickHacks() : handle:SetExposeQuickHacks; // ActionSetExposeQuickHacks;
+	function AddActiveContext(context : gamedeviceRequestType); // AddActiveContext;gamedeviceRequestType
+	function CheckFlatheadTakedownAvailability(context : script_ref:gameGetActionsContext) : Bool; // CheckFlatheadTakedownAvailability;script_ref<GetActionsContext>
+	function CheckMasterConnectedClassTypes() : ConnectedClassTypes; // CheckMasterConnectedClassTypes;
+	function CheckMasterRunnerAchievement(minigameProgramsCompleted : Int32); // CheckMasterRunnerAchievement;Int32
+	function DetermineInteractionState(interaction : handle:gameinteractionsComponent, context : gameGetActionsContext, objectActionsCallbackController : whandle:gameObjectActionsCallbackController); // DetermineInteractionState;InteractionComponentGetActionsContextgameObjectActionsCallbackController
+	function DetermineSecurityAreaTypeForEntityID(entityID : entEntityID) : ESecurityAreaType; // DetermineSecurityAreaTypeForEntityID;EntityID
+	function DrawBetweenEntities(shouldDraw : Bool, focusModeOnly : Bool, fxResource : gameFxResource, masterID : entEntityID, slaveID : entEntityID, revealMaster : Bool, revealSlave : Bool, optional onlyRemoveWeakLink : Bool, optional isEyeContact : Bool, optional isPermanent : Bool); // DrawBetweenEntities;BoolBoolFxResourceEntityIDEntityIDBoolBoolBoolBoolBool
+	function ExecutePSAction(action : handle:ScriptableDeviceAction, persistentState : handle:gamePersistentState); // ExecutePSAction;ScriptableDeviceActionPersistentState
+	function FilterRedundantPrograms(programs : script_ref:array:TweakDBID); // FilterRedundantPrograms;script_ref<array<TweakDBID>>
+	function ForceExposeQuickHack(shouldForce : Bool); // ForceExposeQuickHack;Bool
+	function GenerateContext(requestType : gamedeviceRequestType, providedClearance : handle:gamedeviceClearance, optional providedProcessInitiator : handle:gameObject, optional providedRequestor : entEntityID) : gameGetActionsContext; // GenerateContext;gamedeviceRequestTypeClearanceGameObjectEntityID
+	function GetAccessPoint() : handle:AccessPointControllerPS; // GetAccessPoint;
+	function GetAction(actionRecord : whandle:gamedataObjectAction_Record) : handle:PuppetAction; // GetAction;ObjectAction_Record
+	function GetActiveContexts() : array:gamedeviceRequestType; // GetActiveContexts;
+	function GetAllChoices(actions : script_ref:array:whandle:gamedataObjectAction_Record, context : script_ref:gameGetActionsContext, puppetActions : script_ref:array:handle:PuppetAction); // GetAllChoices;script_ref<array<ObjectAction_Record>>script_ref<GetActionsContext>script_ref<array<PuppetAction>>
+	function GetBountyID() : TweakDBID; // GetBountyID;
+	function GetCooldownStorage() : handle:CooldownStorage; // GetCooldownStorage;
+	function GetCustomWeaponLoadout() : array:CachedItemLoadout; // GetCustomWeaponLoadout;
+	function GetDeviceLink() : handle:PuppetDeviceLinkPS; // GetDeviceLink;
+	function GetForcedScannerPreset() : TweakDBID; // GetForcedScannerPreset;
+	function GetGenericMeleeLoadout() : CachedItemLoadout; // GetGenericMeleeLoadout;
+	function GetGenericRangedLoadout() : CachedItemLoadout; // GetGenericRangedLoadout;
+	function GetHudManager() : handle:HUDManager; // GetHudManager;
+	function GetIsAndroidTurnedOff() : Bool; // GetIsAndroidTurnedOff;
+	function GetIsDead() : Bool; // GetIsDead;
+	function GetIsIncapacitated() : Bool; // GetIsIncapacitated;
+	function GetLeftHandLoadout() : gameItemID; // GetLeftHandLoadout;
+	function GetMyEntityID() : entEntityID; // GetMyEntityID;
+	function GetNetworkName() : String; // GetNetworkName;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetNumberActions() : Int32; // GetNumberActions;
+	function GetOwnerEntity() : whandle:ScriptedPuppet; // GetOwnerEntity;
+	function GetOwnerEntityWeak() : whandle:entEntity; // GetOwnerEntityWeak;
+	function GetPlayerCooldownStorage() : handle:CooldownStorage; // GetPlayerCooldownStorage;
+	function GetPlayerMainObject() : handle:gameObject; // GetPlayerMainObject;
+	function GetReactionPresetID() : TweakDBID; // GetReactionPresetID;
+	function GetRightHandLoadout() : gameItemID; // GetRightHandLoadout;
+	function GetSecurityAreas(optional includeInactive : Bool, optional returnOnlyDirectlyConnected : Bool) : array:handle:SecurityAreaControllerPS; // GetSecurityAreas;BoolBool
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetTransgressions() : array:TweakDBID; // GetTransgressions;
+	function GetValidChoices(actions : script_ref:array:whandle:gamedataObjectAction_Record, context : script_ref:gameGetActionsContext, objectActionsCallbackController : whandle:gameObjectActionsCallbackController, checkPlayerQuickHackList : Bool, choices : script_ref:array:gameinteractionsChoice); // GetValidChoices;script_ref<array<ObjectAction_Record>>script_ref<GetActionsContext>gameObjectActionsCallbackControllerBoolscript_ref<array<InteractionChoice>>
+	function GetWasIncapacitated() : Bool; // GetWasIncapacitated;
+	function HasActiveContext(context : gamedeviceRequestType) : Bool; // HasActiveContext;gamedeviceRequestType
+	function HasDirectInteractionChoicesActive() : Bool; // HasDirectInteractionChoicesActive;
+	function Initialize(); // Initialize;
+	function InitializeCooldownStorage(); // InitializeCooldownStorage;
+	function IsActionReady(actionID : TweakDBID) : Bool; // IsActionReady;TweakDBID
+	function IsBreached() : Bool; // IsBreached;
+	function IsConnectedToAccessPoint() : Bool; // IsConnectedToAccessPoint;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsDefeatMechanicActive() : Bool; // IsDefeatMechanicActive;
+	function IsInitialized() : Bool; // IsInitialized;
+	function IsPreventionNotified() : Bool; // IsPreventionNotified;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function ManuallyTriggerActionCooldown(actionID : TweakDBID); // ManuallyTriggerActionCooldown;TweakDBID
+	function OnAcquireDeviceLink(evt : handle:AcquireDeviceLink) : EntityNotificationType; // OnAcquireDeviceLink;AcquireDeviceLink
+	function OnActionCooldownEvent(evt : handle:ActionCooldownEvent) : EntityNotificationType; // OnActionCooldownEvent;ActionCooldownEvent
+	function OnCacheLoadout(evt : handle:CacheItemEquippedToHandsEvent) : EntityNotificationType; // OnCacheLoadout;CacheItemEquippedToHandsEvent
+	function OnDeviceAttachment(evt : handle:DeviceLinkEstablished) : EntityNotificationType; // OnDeviceAttachment;DeviceLinkEstablished
+	function OnGameAttached(evt : handle:GameAttachedEvent) : EntityNotificationType; // OnGameAttached;GameAttachedEvent
+	function OnPingSquad(evt : handle:PingSquad) : EntityNotificationType; // OnPingSquad;PingSquad
+	function OnSecuritySystemOutput(evt : handle:SecuritySystemOutput) : EntityNotificationType; // OnSecuritySystemOutput;SecuritySystemOutput
+	function OnSetExposeQuickHacks(evt : handle:SetExposeQuickHacks) : EntityNotificationType; // OnSetExposeQuickHacks;SetExposeQuickHacks
+	function OnSetWasQuickHacked(evt : handle:SetQuickHackEvent) : EntityNotificationType; // OnSetWasQuickHacked;SetQuickHackEvent
+	function OnSetWasQuickHackedAtempt(evt : handle:SetQuickHackAttemptEvent) : EntityNotificationType; // OnSetWasQuickHackedAtempt;SetQuickHackAttemptEvent
+	function PushAerialTakedownActionEventToPSM(target : whandle:gameObject); // PushAerialTakedownActionEventToPSM;GameObject
+	function PushChoicesToInteractionComponent(interactionComponent : handle:gameinteractionsComponent, context : script_ref:gameGetActionsContext, choices : script_ref:array:gameinteractionsChoice); // PushChoicesToInteractionComponent;InteractionComponentscript_ref<GetActionsContext>script_ref<array<InteractionChoice>>
+	function RemoveActiveContext(context : gamedeviceRequestType); // RemoveActiveContext;gamedeviceRequestType
+	function SetForcedScannerPreset(preset : TweakDBID); // SetForcedScannerPreset;TweakDBID
+	function SetHasDirectInteractionChoicesActive(hasInteraction : Bool); // SetHasDirectInteractionChoicesActive;Bool
+	function SetIsAndroidTurnedOff(isAndroidTurnedOff : Bool); // SetIsAndroidTurnedOff;Bool
+	function SetIsBreached(isBreached : Bool); // SetIsBreached;Bool
+	function SetIsDead(isDead : Bool); // SetIsDead;Bool
+	function SetIsDefeatMechanicActive(isDefeatMechanicActive : Bool); // SetIsDefeatMechanicActive;Bool
+	function SetIsIncapacitated(isIncapacitated : Bool); // SetIsIncapacitated;Bool
+	function SetIsPreventionNotified(isPreventionNotified : Bool); // SetIsPreventionNotified;Bool
+	function SetReactionPresetID(presetID : TweakDBID); // SetReactionPresetID;TweakDBID
+	function SetRevealedInNetworkPing(wasRevealed : Bool); // SetRevealedInNetworkPing;Bool
+	function SetWasIncapacitated(wasIncapacitated : Bool); // SetWasIncapacitated;Bool
+	function StoreBountyData(bountyID : TweakDBID, transgressions : script_ref:array:TweakDBID); // StoreBountyData;TweakDBIDscript_ref<array<TweakDBID>>
+	function Sts_Ep1_12_ActiveForQHack_Hack() : Bool; // Sts_Ep1_12_ActiveForQHack_Hack;
+	function WasAttached() : Bool; // WasAttached;
+	function WasRevealedInNetworkPing() : Bool; // WasRevealedInNetworkPing;
+}
+
+import class gamePuppetPS extends gameObjectPS
+{
+	var gender : CName;
+	var wasQuickHacked : Bool;
+	var hasQuickHackBegunUpload : Bool;
+	var hasAlternativeName : Bool;
+	var isCrouch : Bool;
+	var allowVehicleCollisionRagdoll : Bool;
+
+	import function GetGender() : CName; // GetGender
+	import function GetTpp() : Bool; // GetTpp
+	import function HasAlternativeName() : Bool; // HasAlternativeName
+	import function HasNPCTriggeredCombatInSecuritySystem() : Bool; // HasNPCTriggeredCombatInSecuritySystem
+	import function HasQuickHackBegunUpload() : Bool; // HasQuickHackBegunUpload
+	import function IsCrouch() : Bool; // IsCrouch
+	import function SetCrouch(set : Bool); // SetCrouch
+	import function SetHasNPCTriggeredCombatInSecuritySystem(set : Bool); // SetHasNPCTriggeredCombatInSecuritySystem
+	import function SetHasQuickHackBegunUpload(newValue : Bool); // SetHasQuickHackBegunUpload
+	import function SetWasQuickHacked(newValue : Bool); // SetWasQuickHacked
+	import function WasQuickHacked() : Bool; // WasQuickHacked
+
+	function OnNotifiedSecSysAboutCombat(evt : handle:NotifiedSecSysAboutCombat) : EntityNotificationType; // OnNotifiedSecSysAboutCombat;NotifiedSecSysAboutCombat
+}
+
+import class gameObjectPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct gamePlayerSpawnParams
+{
+	var isSpectator : Bool;
+	var spawnPoint : Transform;
+	var recordId : TweakDBID;
+	var gender : CName;
+	var useSpecifiedStartPoint : Bool;
+	var spawnTags : redTagList;
+	var nickname : String;
+}

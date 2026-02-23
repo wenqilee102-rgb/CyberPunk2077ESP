@@ -1,0 +1,6 @@
+import struct audioAppearanceToPlayerMetadata
+{
+	var appearances : array:CName;
+	var foleyPlayerMetadata : CName;
+	var priority : audioFoleyItemPriority;
+}

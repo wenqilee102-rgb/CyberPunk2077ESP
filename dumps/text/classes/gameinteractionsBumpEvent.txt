@@ -1,0 +1,30 @@
+import class gameinteractionsBumpEvent extends redEvent
+{
+	var side : gameinteractionsBumpSide;
+	var sourceLocation : gameinteractionsBumpLocation;
+	var direction : Vector4;
+	var sourcePosition : Vector4;
+	var sourceSquaredDistance : Float;
+	var sourceSpeed : Float;
+	var sourceRadius : Float;
+	var isMounted : Bool;
+	var vehicleEntityID : entEntityID;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

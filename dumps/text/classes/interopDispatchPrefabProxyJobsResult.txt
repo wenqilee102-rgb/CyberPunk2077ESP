@@ -1,0 +1,6 @@
+import struct interopDispatchPrefabProxyJobsResult
+{
+	var numProxyJobsDispatched : Uint32;
+	var numProxyJobsSkipped : Uint32;
+	var numProxyJobsFailed : Uint32;
+}

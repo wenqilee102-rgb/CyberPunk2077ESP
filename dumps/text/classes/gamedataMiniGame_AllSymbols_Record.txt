@@ -1,0 +1,28 @@
+import class gamedataMiniGame_AllSymbols_Record extends gamedataTweakDBRecord
+{
+	import function GetSymbolsWithRarityCount() : Int32; // GetSymbolsWithRarityCount
+	import function GetSymbolsWithRarityItem(index : Int32) : whandle:gamedataMiniGame_SymbolsWithRarity_Record; // GetSymbolsWithRarityItem
+	import function GetSymbolsWithRarityItemHandle(index : Int32) : handle:gamedataMiniGame_SymbolsWithRarity_Record; // GetSymbolsWithRarityItemHandle
+	import function SymbolsWithRarity(out outList : array:whandle:gamedataMiniGame_SymbolsWithRarity_Record); // SymbolsWithRarity
+	import function SymbolsWithRarityContains(item : whandle:gamedataMiniGame_SymbolsWithRarity_Record) : Bool; // SymbolsWithRarityContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

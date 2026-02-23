@@ -1,0 +1,36 @@
+import class gamedataRoachRaceBackground_Record extends gamedataTweakDBRecord
+{
+	import function GetLayerListCount() : Int32; // GetLayerListCount
+	import function GetLayerListItem(index : Int32) : whandle:gamedataArcadeBackgroundLayer_Record; // GetLayerListItem
+	import function GetLayerListItemHandle(index : Int32) : handle:gamedataArcadeBackgroundLayer_Record; // GetLayerListItemHandle
+	import function GetObjectListCount() : Int32; // GetObjectListCount
+	import function GetObjectListItem(index : Int32) : whandle:gamedataRoachRaceBackgroundObject_Record; // GetObjectListItem
+	import function GetObjectListItemHandle(index : Int32) : handle:gamedataRoachRaceBackgroundObject_Record; // GetObjectListItemHandle
+	import function IsSunAndMoonVisible() : Bool; // IsSunAndMoonVisible
+	import function LayerList(out outList : array:whandle:gamedataArcadeBackgroundLayer_Record); // LayerList
+	import function LayerListContains(item : whandle:gamedataArcadeBackgroundLayer_Record) : Bool; // LayerListContains
+	import function ObjectList(out outList : array:whandle:gamedataRoachRaceBackgroundObject_Record); // ObjectList
+	import function ObjectListContains(item : whandle:gamedataRoachRaceBackgroundObject_Record) : Bool; // ObjectListContains
+	import function StartSFX() : CName; // StartSFX
+	import function StopSFX() : CName; // StopSFX
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

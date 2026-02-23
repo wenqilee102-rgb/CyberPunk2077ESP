@@ -1,0 +1,459 @@
+class MeleeBlockAttackEvents extends MeleeAttackGenericEvents
+{
+	function GetAttackType() : EMeleeAttackType; // GetAttackType;
+	function OnEnter(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnEnter;StateContextStateGameScriptInterface
+	function OnExit(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnExit;StateContextStateGameScriptInterface
+}
+
+class abstract MeleeAttackGenericEvents extends MeleeEventsTransition
+{
+	public    var effect : handle:gameEffectInstance;
+	public    var attackCreated : Bool;
+	public    var blockImpulseCreation : Bool;
+	public    var standUpSend : Bool;
+	public    var trailCreated : Bool;
+	public    var finisherTarget : whandle:ScriptedPuppet;
+	public    var finisherCameraRotReseted : Bool;
+	public    var textLayer : Uint32;
+	public    var rumblePlayed : Bool;
+	public    var shouldBlockImpulseUpdate : Bool;
+	public    var enteredFromMeleeLeap : Bool;
+	public    var effectPositionUpdated : Bool;
+	public    var tppYawOverride : Float;
+
+	function BroadcastStimuli(scriptInterface : handle:gamestateMachineGameScriptInterface, radius : Float); // BroadcastStimuli;StateGameScriptInterfaceFloat
+	function ClearLeapedDistanceBlackboardValue(scriptInterface : handle:gamestateMachineGameScriptInterface); // ClearLeapedDistanceBlackboardValue;StateGameScriptInterface
+	function ConsumeWeaponCharge(scriptInterface : handle:gamestateMachineGameScriptInterface, attackData : handle:gameMeleeAttackData); // ConsumeWeaponCharge;StateGameScriptInterfaceMeleeAttackData
+	function CreateMeleeAttack(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, attackData : handle:gameMeleeAttackData); // CreateMeleeAttack;StateContextStateGameScriptInterfaceMeleeAttackData
+	function CreateMeleeAttackForFinisher(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, out attackData : handle:gameMeleeAttackData) : Bool; // CreateMeleeAttackForFinisher;StateContextStateGameScriptInterfaceMeleeAttackData
+	function GetAttackData(stateContext : handle:gamestateMachineStateContextScript) : handle:gameMeleeAttackData; // GetAttackData;StateContext
+	function GetAttackType() : EMeleeAttackType; // GetAttackType;
+	function GetCameraTransformForMelee(scriptInterface : handle:gamestateMachineGameScriptInterface) : Transform; // GetCameraTransformForMelee;StateGameScriptInterface
+	function IsAttackWindowOpen(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsAttackWindowOpen;StateContextStateGameScriptInterface
+	function IsMountedTPPAttack() : Bool; // IsMountedTPPAttack;
+	function IsMoveToTargetEnabled(attackData : handle:gameMeleeAttackData, assistRecord : handle:gamedataAimAssistMelee_Record) : Bool; // IsMoveToTargetEnabled;MeleeAttackDataAimAssistMelee_Record
+	function OnEnter(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnEnter;StateContextStateGameScriptInterface
+	function OnExit(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnExit;StateContextStateGameScriptInterface
+	function OnForcedExit(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnForcedExit;StateContextStateGameScriptInterface
+	function OnUpdate(timeDelta : Float, stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnUpdate;FloatStateContextStateGameScriptInterface
+	function ResetCameraRotation(scriptInterface : handle:gamestateMachineGameScriptInterface); // ResetCameraRotation;StateGameScriptInterface
+	function RotateCameraToFinisherTarget(scriptInterface : handle:gamestateMachineGameScriptInterface, rotateDuration : Float); // RotateCameraToFinisherTarget;StateGameScriptInterfaceFloat
+	function SendAnimationSlotData(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, attackData : handle:gameMeleeAttackData) : Bool; // SendAnimationSlotData;StateContextStateGameScriptInterfaceMeleeAttackData
+	function SetTPPYawOverride(stateContext : handle:gamestateMachineStateContextScript); // SetTPPYawOverride;StateContext
+	function ShouldBlockMovementImpulseUpdate(timeDelta : Float, attackData : handle:gameMeleeAttackData, stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // ShouldBlockMovementImpulseUpdate;FloatMeleeAttackDataStateContextStateGameScriptInterface
+	function SpawnAttackGameEffect(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, startPosition : Vector4, middlePosition : Vector4, endPosition : Vector4, time : Float, colliderBox : Vector4, attackData : handle:gameMeleeAttackData) : Bool; // SpawnAttackGameEffect;StateContextStateGameScriptInterfaceVector4Vector4Vector4FloatVector4MeleeAttackData
+	function UpdateEffectPosition(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, attackData : handle:gameMeleeAttackData, duration : Float); // UpdateEffectPosition;StateContextStateGameScriptInterfaceMeleeAttackDataFloat
+	function UpdateIKData(scriptInterface : handle:gamestateMachineGameScriptInterface, attackData : handle:gameMeleeAttackData); // UpdateIKData;StateGameScriptInterfaceMeleeAttackData
+	function UpdateMovementImpulse(timeDelta : Float, attackData : handle:gameMeleeAttackData, stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // UpdateMovementImpulse;FloatMeleeAttackDataStateContextStateGameScriptInterface
+}
+
+class abstract MeleeEventsTransition extends MeleeTransition
+{
+	function CheckThrowableCooldown(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // CheckThrowableCooldown;StateContextStateGameScriptInterface
+	function MeleeTransitionRemoveTriggerEffects(audioSystem : handle:gameGameAudioSystem); // MeleeTransitionRemoveTriggerEffects;AudioSystem
+	function OnEnter(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnEnter;StateContextStateGameScriptInterface
+	function OnExit(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnExit;StateContextStateGameScriptInterface
+	function OnForcedExit(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnForcedExit;StateContextStateGameScriptInterface
+	function OnUpdate(timeDelta : Float, stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnUpdate;FloatStateContextStateGameScriptInterface
+	function TargetPrediction(targetPosition : Vector4, targetPuppet : handle:ScriptedPuppet, deltaTime : Float, effectStrength : Float) : Vector4; // TargetPrediction;Vector4ScriptedPuppetFloatFloat
+	function ToggleWireVisualEffect(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, effectName : CName, b : Bool); // ToggleWireVisualEffect;StateContextStateGameScriptInterfaceCNameBool
+}
+
+class abstract MeleeTransition extends DefaultTransition
+{
+	public    var stateNameString : String;
+	protected var driverCombatListener : handle:DriverCombatListener;
+
+	static function AnyMeleeAttack(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::AnyMeleeAttack;StateGameScriptInterface
+	static function AnyMeleeAttackPressed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::AnyMeleeAttackPressed;StateGameScriptInterface
+	static function CanThrowWeaponObject(owner : handle:gameObject, weapon : handle:gameweaponObject) : Bool; // MeleeTransition::CanThrowWeaponObject;GameObjectWeaponObject
+	static function CheckMeleeAttackPressCount(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::CheckMeleeAttackPressCount;StateContextStateGameScriptInterface
+	static function ClearInputBuffer(stateContext : handle:gamestateMachineStateContextScript); // MeleeTransition::ClearInputBuffer;StateContext
+	static function GetAimAssistMeleeRecord(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gamedataAimAssistMelee_Record; // MeleeTransition::GetAimAssistMeleeRecord;StateGameScriptInterface
+	static function GetGorillaArmsOnePunchNPCMarkStatusEffectID() : TweakDBID; // MeleeTransition::GetGorillaArmsOnePunchNPCMarkStatusEffectID;
+	static function GetGorillaArmsSpyTreeStatusEffectID() : TweakDBID; // MeleeTransition::GetGorillaArmsSpyTreeStatusEffectID;
+	static function GetHoldEnterDuration(scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // MeleeTransition::GetHoldEnterDuration;StateGameScriptInterface
+	static function GetMantisBladesInvulnerableLeapRelicBufffStatusEffectID() : TweakDBID; // MeleeTransition::GetMantisBladesInvulnerableLeapRelicBufffStatusEffectID;
+	static function GetMantisBladesLeapDismembermentSpyTreeDebuffStatusEffectID() : TweakDBID; // MeleeTransition::GetMantisBladesLeapDismembermentSpyTreeDebuffStatusEffectID;
+	static function GetMantisBladesSpecialAttackSpyTreeStatusEffectID() : TweakDBID; // MeleeTransition::GetMantisBladesSpecialAttackSpyTreeStatusEffectID;
+	static function GetMeleeAttackCooldownName() : CName; // MeleeTransition::GetMeleeAttackCooldownName;
+	static function GetWeaponObject(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gameweaponObject; // MeleeTransition::GetWeaponObject;StateGameScriptInterface
+	static function GetWeaponType(scriptInterface : handle:gamestateMachineGameScriptInterface) : gamedataItemType; // MeleeTransition::GetWeaponType;StateGameScriptInterface
+	static function HasGrandFinaleStatusEffect(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::HasGrandFinaleStatusEffect;StateGameScriptInterface
+	static function HasMonowireWithQuickhackSelected(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::HasMonowireWithQuickhackSelected;StateGameScriptInterface
+	static function HasNewSpyAttackStatFlag(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::HasNewSpyAttackStatFlag;StateGameScriptInterface
+	static function HasOnePunchManStatusEffect(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::HasOnePunchManStatusEffect;StateGameScriptInterface
+	static function IsPlayingSyncedAnimation(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::IsPlayingSyncedAnimation;StateGameScriptInterface
+	static function IsThrownWeaponReloading(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::IsThrownWeaponReloading;StateContextStateGameScriptInterface
+	static function LightMeleeAttackPressed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::LightMeleeAttackPressed;StateGameScriptInterface
+	static function MeleeAttackPressed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::MeleeAttackPressed;StateGameScriptInterface
+	static function MeleeAttackReleased(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::MeleeAttackReleased;StateGameScriptInterface
+	static function MeleeSprintStateCondition(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::MeleeSprintStateCondition;StateContextStateGameScriptInterface
+	static function MeleeUseExplorationCondition(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::MeleeUseExplorationCondition;StateContextStateGameScriptInterface
+	static function NoMeleeAttack(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::NoMeleeAttack;StateGameScriptInterface
+	static function PlayerLeapedToTargetCheck(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::PlayerLeapedToTargetCheck;StateGameScriptInterface
+	static function QuickMeleePressed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::QuickMeleePressed;StateGameScriptInterface
+	static function QuickMeleeReleased(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::QuickMeleeReleased;StateGameScriptInterface
+	static function QuickMeleeTapped(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::QuickMeleeTapped;StateGameScriptInterface
+	static function StrongMeleeAttackPressed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::StrongMeleeAttackPressed;StateGameScriptInterface
+	static function StrongMeleeAttackReleased(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::StrongMeleeAttackReleased;StateGameScriptInterface
+	static function UpdateMeleeInputBuffer(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, optional onlyLightMeleeAttack : Bool); // MeleeTransition::UpdateMeleeInputBuffer;StateContextStateGameScriptInterfaceBool
+	static function WantsToLightAttack(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::WantsToLightAttack;StateContextStateGameScriptInterface
+	static function WantsToQuickMelee(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::WantsToQuickMelee;StateContextStateGameScriptInterface
+	static function WantsToStrongAttack(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::WantsToStrongAttack;StateContextStateGameScriptInterface
+	static function WeaponIsCharged(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // MeleeTransition::WeaponIsCharged;StateGameScriptInterface
+
+	function AddAttackImpulse(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript, attackData : handle:gameMeleeAttackData); // AddAttackImpulse;StateGameScriptInterfaceStateContextMeleeAttackData
+	function AddCameraSpaceImpulse(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript, attackData : handle:gameMeleeAttackData) : Vector4; // AddCameraSpaceImpulse;StateGameScriptInterfaceStateContextMeleeAttackData
+	function AddForwardImpulse(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript, attackData : handle:gameMeleeAttackData) : Vector4; // AddForwardImpulse;StateGameScriptInterfaceStateContextMeleeAttackData
+	function AddUpImpulse(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript, attackData : handle:gameMeleeAttackData) : Vector4; // AddUpImpulse;StateGameScriptInterfaceStateContextMeleeAttackData
+	function AdjustAttackPosition(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript, attackData : handle:gameMeleeAttackData) : Bool; // AdjustAttackPosition;StateGameScriptInterfaceStateContextMeleeAttackData
+	function ApplyThrowAttackGameplayRestrictions(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // ApplyThrowAttackGameplayRestrictions;StateContextStateGameScriptInterface
+	function CanPerformRelicLeap(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CanPerformRelicLeap;StateGameScriptInterface
+	function CanThrowWeapon(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CanThrowWeapon;StateContextStateGameScriptInterface
+	function CanWeaponBlock(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CanWeaponBlock;StateContextStateGameScriptInterface
+	function CanWeaponDeflect(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CanWeaponDeflect;StateContextStateGameScriptInterface
+	function CheckIfFinalAttack(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript) : Bool; // CheckIfFinalAttack;StateGameScriptInterfaceStateContext
+	function CheckIfInfiniteCombo(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CheckIfInfiniteCombo;StateContextStateGameScriptInterface
+	function CheckItemType(scriptInterface : handle:gamestateMachineGameScriptInterface, itemType : gamedataItemType) : Bool; // CheckItemType;StateGameScriptInterfacegamedataItemType
+	function CheckLeapCollision(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CheckLeapCollision;StateContextStateGameScriptInterface
+	function ClearDebugText(scriptInterface : handle:gamestateMachineGameScriptInterface, textLayerId : Uint32); // ClearDebugText;StateGameScriptInterfaceUint32
+	function ClearMeleePressCount(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // ClearMeleePressCount;StateContextStateGameScriptInterface
+	function ConsumeStamina(scriptInterface : handle:gamestateMachineGameScriptInterface, attackData : handle:gameMeleeAttackData); // ConsumeStamina;StateGameScriptInterfaceMeleeAttackData
+	function DisableNanoWireIK(scriptInterface : handle:gamestateMachineGameScriptInterface); // DisableNanoWireIK;StateGameScriptInterface
+	function DrawDebugText(scriptInterface : handle:gamestateMachineGameScriptInterface, out textLayerId : Uint32, text : script_ref:String); // DrawDebugText;StateGameScriptInterfaceUint32script_ref<String>
+	function GetAttackDataFromCurrentState(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, attackNumber : Int32, out outgoingStruct : handle:gameMeleeAttackData) : Bool; // GetAttackDataFromCurrentState;StateContextStateGameScriptInterfaceInt32MeleeAttackData
+	function GetAttackDataFromState(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, stateName : String, attackNumber : Int32, out outgoingStruct : handle:gameMeleeAttackData) : Bool; // GetAttackDataFromState;StateContextStateGameScriptInterfaceStringInt32MeleeAttackData
+	function GetAttackRecord(scriptInterface : handle:gamestateMachineGameScriptInterface, stateName : String, attackNumber : Int32, out attackRecord : whandle:gamedataAttack_Melee_Record) : Bool; // GetAttackRecord;StateGameScriptInterfaceStringInt32Attack_Melee_Record
+	function GetBlockLookAtParams() : gameaimAssistAimRequest; // GetBlockLookAtParams;
+	function GetMeleeMovementDirection(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : meleeMoveDirection; // GetMeleeMovementDirection;StateContextStateGameScriptInterface
+	function GetMeleeWeaponFriendlyName(scriptInterface : handle:gamestateMachineGameScriptInterface) : CName; // GetMeleeWeaponFriendlyName;StateGameScriptInterface
+	function GetMovementInput(scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // GetMovementInput;StateGameScriptInterface
+	function GetNanoWireTargetObject(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gameObject; // GetNanoWireTargetObject;StateGameScriptInterface
+	function GetPerfectAimSnapParams() : gameaimAssistAimRequest; // GetPerfectAimSnapParams;
+	function GetPlayerAimingStatusEffectID() : TweakDBID; // GetPlayerAimingStatusEffectID;
+	function GetSlotTransformToTarget(scriptInterface : handle:gamestateMachineGameScriptInterface, target : handle:gameObject, leapDuration : Float, isTargetKnockedOver : Bool, out targetPos : Vector4); // GetSlotTransformToTarget;StateGameScriptInterfaceGameObjectFloatBoolVector4
+	function GetSlotTransformToTarget(scriptInterface : handle:gamestateMachineGameScriptInterface, target : handle:gameObject, leapDuration : Float, isTargetKnockedOver : Bool, out targetPos : Vector4, out rotationDuration : Float); // GetSlotTransformToTarget;StateGameScriptInterfaceGameObjectFloatBoolVector4Float
+	function HasAttackRecord(scriptInterface : handle:gamestateMachineGameScriptInterface, optional attackNumber : Int32) : Bool; // HasAttackRecord;StateGameScriptInterfaceInt32
+	function HasMeleeTargeting(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // HasMeleeTargeting;StateContextStateGameScriptInterface
+	function HasWeaponStatFlag(scriptInterface : handle:gamestateMachineGameScriptInterface, flag : gamedataStatType) : Bool; // HasWeaponStatFlag;StateGameScriptInterfacegamedataStatType
+	function IncrementAttackNumber(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript); // IncrementAttackNumber;StateGameScriptInterfaceStateContext
+	function IncrementTotalComboAttackNumber(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript); // IncrementTotalComboAttackNumber;StateGameScriptInterfaceStateContext
+	function IsAttackParried(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsAttackParried;StateContextStateGameScriptInterface
+	function IsBlockHeld(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsBlockHeld;StateContextStateGameScriptInterface
+	function IsBlockPressed(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsBlockPressed;StateContextStateGameScriptInterface
+	function IsChoice1Released(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsChoice1Released;StateGameScriptInterface
+	function IsCloseEnoughForOnePunch(scriptInterface : handle:gamestateMachineGameScriptInterface, target : whandle:gameObject) : Bool; // IsCloseEnoughForOnePunch;StateGameScriptInterfaceGameObject
+	function IsPlayerInputDirectedForward(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerInputDirectedForward;StateGameScriptInterface
+	function IsTargetAPuppet(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsTargetAPuppet;StateGameScriptInterface
+	function IsTargetOfficer(scriptInterface : handle:gamestateMachineGameScriptInterface, object : whandle:gameObject) : Bool; // IsTargetOfficer;StateGameScriptInterfaceGameObject
+	function IsWeaponReady(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsWeaponReady;StateContextStateGameScriptInterface
+	function LightMeleeAttackReleased(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // LightMeleeAttackReleased;StateGameScriptInterface
+	function NoStrongAttackPressed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // NoStrongAttackPressed;StateGameScriptInterface
+	function OnAttach(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnAttach;StateContextStateGameScriptInterface
+	function OnDetach(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // OnDetach;StateContextStateGameScriptInterface
+	function QuickMeleeHeld(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // QuickMeleeHeld;StateGameScriptInterface
+	function RemoveAllMeleeGameplayRestrictions(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // RemoveAllMeleeGameplayRestrictions;StateContextStateGameScriptInterface
+	function RemoveThrowAttackGameplayRestrictions(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // RemoveThrowAttackGameplayRestrictions;StateContextStateGameScriptInterface
+	function ResetAttackNumber(stateContext : handle:gamestateMachineStateContextScript); // ResetAttackNumber;StateContext
+	function ResetFlags(stateContext : handle:gamestateMachineStateContextScript); // ResetFlags;StateContext
+	function SendAnimFeatureData(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // SendAnimFeatureData;StateContextStateGameScriptInterface
+	function SetAttackNumber(stateContext : handle:gamestateMachineStateContextScript, value : Int32); // SetAttackNumber;StateContextInt32
+	function SetCanSprintWhileCharging(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetCanSprintWhileCharging;StateContextBool
+	function SetIsAttacking(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsAttacking;StateContextBool
+	function SetIsBlocking(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsBlocking;StateContextBool
+	function SetIsHolding(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsHolding;StateContextBool
+	function SetIsParried(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsParried;StateContextBool
+	function SetIsSafe(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsSafe;StateContextBool
+	function SetIsTargeting(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsTargeting;StateContextBool
+	function SetIsThrowReloading(stateContext : handle:gamestateMachineStateContextScript, value : Bool); // SetIsThrowReloading;StateContextBool
+	function SetMeleeAttackPressCount(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // SetMeleeAttackPressCount;StateContextStateGameScriptInterface
+	function SetThrowReloadTime(stateContext : handle:gamestateMachineStateContextScript, value : Float); // SetThrowReloadTime;StateContextFloat
+	function ShouldHold(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, optional skipDurationCheck : Bool, optional skipPressCount : Bool) : Bool; // ShouldHold;StateContextStateGameScriptInterfaceBoolBool
+	function ShouldInterruptHoldStates(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // ShouldInterruptHoldStates;StateContextStateGameScriptInterface
+	function SpawnMeleeWeaponProjectile(scriptInterface : handle:gamestateMachineGameScriptInterface); // SpawnMeleeWeaponProjectile;StateGameScriptInterface
+	function ToMeleeChargedHold(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // ToMeleeChargedHold;StateContextStateGameScriptInterface
+	function UpdateNanoWireEndPositionAnimFeature(scriptInterface : handle:gamestateMachineGameScriptInterface, animFeatureName : CName, enable : Bool, optional setPosition : Bool, optional slotPosition : Vector4); // UpdateNanoWireEndPositionAnimFeature;StateGameScriptInterfaceCNameBoolBoolVector4
+}
+
+class DefaultTransition extends gamestateMachineFunctor
+{
+	static function DEBUG_IsDivingForced(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::DEBUG_IsDivingForced;StateContextStateGameScriptInterface
+	static function DEBUG_IsSurfaceSwimmingForced(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::DEBUG_IsSurfaceSwimmingForced;StateContextStateGameScriptInterface
+	static function DEBUG_IsSwimmingForced(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::DEBUG_IsSwimmingForced;StateContextStateGameScriptInterface
+	static function Get2DLinearSpeed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // DefaultTransition::Get2DLinearSpeed;StateGameScriptInterface
+	static function GetActiveLeftHandItem(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gameItemObject; // DefaultTransition::GetActiveLeftHandItem;StateGameScriptInterface
+	static function GetActiveWeapon(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gameweaponObject; // DefaultTransition::GetActiveWeapon;StateGameScriptInterface
+	static function GetBlackboardIntVariable(executionOwner : handle:gameObject, id : gamebbScriptID_Int32) : Int32; // DefaultTransition::GetBlackboardIntVariable;GameObjectBlackboardID_Int
+	static function GetClosestWeakspot(scriptInterface : handle:gamestateMachineGameScriptInterface, targetObject : handle:ScriptedPuppet, withinDistance : Float) : handle:gameWeakspotObject; // DefaultTransition::GetClosestWeakspot;StateGameScriptInterfaceScriptedPuppetFloat
+	static function GetDistanceToGround(scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // DefaultTransition::GetDistanceToGround;StateGameScriptInterface
+	static function GetDistanceToTarget(scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // DefaultTransition::GetDistanceToTarget;StateGameScriptInterface
+	static function GetGroundPosition(scriptInterface : handle:gamestateMachineGameScriptInterface, inLenght : Float) : Vector4; // DefaultTransition::GetGroundPosition;StateGameScriptInterfaceFloat
+	static function GetLeapableObject(scriptInterface : handle:gamestateMachineGameScriptInterface, targetingSystem : handle:gametargetingTargetingSystem, withinDistance : Float, withinAngle : Float, out angleOut : EulerAngles) : handle:gameObject; // DefaultTransition::GetLeapableObject;StateGameScriptInterfaceTargetingSystemFloatFloatEulerAngles
+	static function GetLinearVelocity(scriptInterface : handle:gamestateMachineGameScriptInterface) : Vector4; // DefaultTransition::GetLinearVelocity;StateGameScriptInterface
+	static function GetMovementDirection(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : EPlayerMovementDirection; // DefaultTransition::GetMovementDirection;StateContextStateGameScriptInterface
+	static function GetMovementInputActionValue(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // DefaultTransition::GetMovementInputActionValue;StateContextStateGameScriptInterface
+	static function GetPlayerDistanceToGround(scriptInterface : handle:gamestateMachineGameScriptInterface, downwardRaycastLength : Float) : Float; // DefaultTransition::GetPlayerDistanceToGround;StateGameScriptInterfaceFloat
+	static function GetPlayerPosition(scriptInterface : handle:gamestateMachineGameScriptInterface) : Vector4; // DefaultTransition::GetPlayerPosition;StateGameScriptInterface
+	static function GetPlayerPuppet(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:PlayerPuppet; // DefaultTransition::GetPlayerPuppet;StateGameScriptInterface
+	static function GetTargetObject(scriptInterface : handle:gamestateMachineGameScriptInterface, optional withinDistance : Float, optional checkForLeapableObject : Bool, optional withinAngle : Float) : handle:gameObject; // DefaultTransition::GetTargetObject;StateGameScriptInterfaceFloatBoolFloat
+	static function GetTargetObject(scriptInterface : handle:gamestateMachineGameScriptInterface, searchQuery : gameTargetSearchQuery, optional withinDistance : Float, optional checkForLeapableObject : Bool, optional withinAngle : Float) : handle:gameObject; // DefaultTransition::GetTargetObject;StateGameScriptInterfaceTargetSearchQueryFloatBoolFloat
+	static function GetUpVector() : Vector4; // DefaultTransition::GetUpVector;
+	static function GetWeaponItemType(scriptInterface : handle:gamestateMachineGameScriptInterface, weapon : handle:gameweaponObject, out itemType : gamedataItemType) : Bool; // DefaultTransition::GetWeaponItemType;StateGameScriptInterfaceWeaponObjectgamedataItemType
+	static function GetYawMovementDirection(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // DefaultTransition::GetYawMovementDirection;StateContextStateGameScriptInterface
+	static function HasActiveInteraction(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::HasActiveInteraction;StateGameScriptInterface
+	static function HasMeleeWeaponEquipped(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::HasMeleeWeaponEquipped;StateGameScriptInterface
+	static function HasRightWeaponEquipped(scriptInterface : handle:gamestateMachineGameScriptInterface, optional checkForTag : Bool) : Bool; // DefaultTransition::HasRightWeaponEquipped;StateGameScriptInterfaceBool
+	static function IsAxisButtonHeldGreaterEqual(scriptInterface : handle:gamestateMachineGameScriptInterface, threshold : Float) : Bool; // DefaultTransition::IsAxisButtonHeldGreaterEqual;StateGameScriptInterfaceFloat
+	static function IsChargeRangedWeapon(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsChargeRangedWeapon;StateGameScriptInterface
+	static function IsChargingWeapon(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsChargingWeapon;StateGameScriptInterface
+	static function IsFastForwardByLine(owner : handle:gameObject) : Bool; // DefaultTransition::IsFastForwardByLine;GameObject
+	static function IsHeavyWeaponEquipped(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsHeavyWeaponEquipped;StateGameScriptInterface
+	static function IsInRpgContext(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsInRpgContext;StateGameScriptInterface
+	static function IsInWorkspot(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsInWorkspot;StateGameScriptInterface
+	static function IsInteractingWithTerminal(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsInteractingWithTerminal;StateGameScriptInterface
+	static function IsLeapableTargetValid(scriptInterface : handle:gamestateMachineGameScriptInterface, targetObject : handle:gameObject, optional withinDistance : Float) : Bool; // DefaultTransition::IsLeapableTargetValid;StateGameScriptInterfaceGameObjectFloat
+	static function IsRangedWeaponEquipped(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // DefaultTransition::IsRangedWeaponEquipped;StateGameScriptInterface
+	static function IsXYActionInputGreaterEqual(scriptInterface : handle:gamestateMachineGameScriptInterface, threshold : Float) : Bool; // DefaultTransition::IsXYActionInputGreaterEqual;StateGameScriptInterfaceFloat
+	static function PlayRumble(scriptInterface : handle:gamestateMachineGameScriptInterface, presetName : script_ref:String); // DefaultTransition::PlayRumble;StateGameScriptInterfacescript_ref<String>
+	static function PlayRumbleLoop(scriptInterface : handle:gamestateMachineGameScriptInterface, intensity : script_ref:String); // DefaultTransition::PlayRumbleLoop;StateGameScriptInterfacescript_ref<String>
+	static function RemoveAllBreathingEffects(scriptInterface : handle:gamestateMachineGameScriptInterface); // DefaultTransition::RemoveAllBreathingEffects;StateGameScriptInterface
+	static function ShouldCheckForLeapableTarget(scriptInterface : handle:gamestateMachineGameScriptInterface, weaponObject : handle:gameweaponObject) : Bool; // DefaultTransition::ShouldCheckForLeapableTarget;StateGameScriptInterfaceWeaponObject
+	static function StopRumbleLoop(scriptInterface : handle:gamestateMachineGameScriptInterface, intensity : script_ref:String); // DefaultTransition::StopRumbleLoop;StateGameScriptInterfacescript_ref<String>
+	static function UppercaseFirstChar(stringToChange : script_ref:String); // DefaultTransition::UppercaseFirstChar;script_ref<String>
+
+	function ActivateDamageProjection(newState : Bool, weapon : handle:gameweaponObject, scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript); // ActivateDamageProjection;BoolWeaponObjectStateGameScriptInterfaceStateContext
+	function AdjustPlayerPosition(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, target : handle:gameObject, duration : Float, distanceRadius : Float, rotationDuration : Float, optional curveName : CName, optional useParabolicMotion : Bool, optional targetPosition : Vector4) : Bool; // AdjustPlayerPosition;StateContextStateGameScriptInterfaceGameObjectFloatFloatFloatCNameBoolVector4
+	function AreChoiceHubsActive(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // AreChoiceHubsActive;StateGameScriptInterface
+	function BlockAimingForTime(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, blockAimingFor : Float); // BlockAimingForTime;StateContextStateGameScriptInterfaceFloat
+	function BreakEffectLoop(scriptInterface : handle:gamestateMachineGameScriptInterface, effectName : CName); // BreakEffectLoop;StateGameScriptInterfaceCName
+	function CanWeaponSilentKill(weapon : handle:gameweaponObject, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CanWeaponSilentKill;WeaponObjectStateGameScriptInterface
+	function ChangeStatPoolValue(scriptInterface : handle:gamestateMachineGameScriptInterface, entityID : entEntityID, statPoolType : gamedataStatPoolType, changeByValue : Float, optional asPercentage : Bool); // ChangeStatPoolValue;StateGameScriptInterfaceEntityIDgamedataStatPoolTypeFloatBool
+	function CheckActiveConsumable(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CheckActiveConsumable;StateGameScriptInterface
+	function CheckConsumableLootDataCondition(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CheckConsumableLootDataCondition;StateGameScriptInterface
+	function CheckEquipmentStateMachineState(stateContext : handle:gamestateMachineStateContextScript, SMSide : EEquipmentSide, compareToState : EEquipmentState) : Bool; // CheckEquipmentStateMachineState;StateContextEEquipmentSideEEquipmentState
+	function CheckGenericEquipItemConditions(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CheckGenericEquipItemConditions;StateContextStateGameScriptInterface
+	function CheckIsFastForwardByLine(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // CheckIsFastForwardByLine;StateGameScriptInterface
+	function CheckItemCategoryInQuickWheel(scriptInterface : handle:gamestateMachineGameScriptInterface, compareToType : gamedataItemCategory) : Bool; // CheckItemCategoryInQuickWheel;StateGameScriptInterfacegamedataItemCategory
+	function ClearItemIDWrapperPermanentParameter(stateContext : handle:gamestateMachineStateContextScript, parameterName : CName); // ClearItemIDWrapperPermanentParameter;StateContextCName
+	function CompareLocalBlackboardInt(scriptInterface : handle:gamestateMachineGameScriptInterface, blackboardID : gamebbScriptID_Int32, CompareTo : Int32) : Bool; // CompareLocalBlackboardInt;StateGameScriptInterfaceBlackboardID_IntInt32
+	function CompareSMState(smName : CName, smState : script_ref:array:CName, stateContext : handle:gamestateMachineStateContextScript) : Bool; // CompareSMState;CNamescript_ref<array<CName>>StateContext
+	function CompareSMState(smName : CName, smState : CName, stateContext : handle:gamestateMachineStateContextScript) : Bool; // CompareSMState;CNameCNameStateContext
+	function CompareSMStateWithIden(definitionName : CName, referenceName : CName, smState : CName, stateContext : handle:gamestateMachineStateContextScript) : Bool; // CompareSMStateWithIden;CNameCNameCNameStateContext
+	function CompensateTargetPos(adjustRequest : handle:gamestateMachineparameterTypeAdjustTransformWithDurations, target : handle:gameObject, targetPosition : Vector4, distanceRadius : Float, playerPosition : Vector4) : Vector4; // CompensateTargetPos;AdjustTransformWithDurationsGameObjectVector4FloatVector4
+	function DisableCameraBobbing(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, b : Bool); // DisableCameraBobbing;StateContextStateGameScriptInterfaceBool
+	function FillLookAtRequestData(lookAtTarget : Vector4, duration : Float, maxDuration : Float) : gameaimAssistAimRequest; // FillLookAtRequestData;Vector4FloatFloat
+	function ForceDisableRadialWheel(scriptInterface : handle:gamestateMachineGameScriptInterface); // ForceDisableRadialWheel;StateGameScriptInterface
+	function ForceDisableToggleWalk(stateContext : handle:gamestateMachineStateContextScript); // ForceDisableToggleWalk;StateContext
+	function ForceDisableVisionMode(stateContext : handle:gamestateMachineStateContextScript); // ForceDisableVisionMode;StateContext
+	function ForceDisableVisionModeWithInput(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // ForceDisableVisionModeWithInput;StateContextStateGameScriptInterface
+	function ForceFreeze(stateContext : handle:gamestateMachineStateContextScript); // ForceFreeze;StateContext
+	function ForceIdle(stateContext : handle:gamestateMachineStateContextScript); // ForceIdle;StateContext
+	function ForceIdleVehicle(stateContext : handle:gamestateMachineStateContextScript); // ForceIdleVehicle;StateContext
+	function GetActionHoldTime(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, actionName : CName) : Float; // GetActionHoldTime;StateContextStateGameScriptInterfaceCName
+	function GetBoolFromQuestDB(scriptInterface : handle:gamestateMachineGameScriptInterface, varName : CName) : Bool; // GetBoolFromQuestDB;StateGameScriptInterfaceCName
+	function GetBraindanceSystem(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:BraindanceSystem; // GetBraindanceSystem;StateGameScriptInterface
+	function GetCameraYaw(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // GetCameraYaw;StateContextStateGameScriptInterface
+	function GetCancelChargeButtonInput(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // GetCancelChargeButtonInput;StateGameScriptInterface
+	function GetClosestSlotTransform(scriptInterface : handle:gamestateMachineGameScriptInterface, isTargetKnockedOver : Bool, slotComponent : handle:entSlotComponent, out slotTransform : WorldTransform) : Bool; // GetClosestSlotTransform;StateGameScriptInterfaceBoolSlotComponentWorldTransform
+	function GetCurrentSceneTierData(stateContext : handle:gamestateMachineStateContextScript) : handle:gameSceneTierData; // GetCurrentSceneTierData;StateContext
+	function GetCurrentTier(stateContext : handle:gamestateMachineStateContextScript) : GameplayTier; // GetCurrentTier;StateContext
+	function GetFFParamsForCrouch(scriptInterface : handle:gamestateMachineGameScriptInterface) : CName; // GetFFParamsForCrouch;StateGameScriptInterface
+	function GetGameplayCameraParameters(out cameraParameters : handle:GameplayCameraData, tweakDBPath : script_ref:String); // GetGameplayCameraParameters;GameplayCameraDatascript_ref<String>
+	function GetHorizontalMovementDirection(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // GetHorizontalMovementDirection;StateContextStateGameScriptInterface
+	function GetHudManager(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:HUDManager; // GetHudManager;StateGameScriptInterface
+	function GetItemIDFromWrapperPermanentParameter(stateContext : handle:gamestateMachineStateContextScript, parameterName : CName) : gameItemID; // GetItemIDFromWrapperPermanentParameter;StateContextCName
+	function GetItemInLeftHandSlot(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gameItemObject; // GetItemInLeftHandSlot;StateGameScriptInterface
+	function GetItemInRightHandSlot(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:gameItemObject; // GetItemInRightHandSlot;StateGameScriptInterface
+	function GetLeftHandItemFromParam(stateContext : handle:gamestateMachineStateContextScript) : gameItemID; // GetLeftHandItemFromParam;StateContext
+	function GetLocomotionState(stateContext : handle:gamestateMachineStateContextScript) : CName; // GetLocomotionState;StateContext
+	function GetLootData(scriptInterface : handle:gamestateMachineGameScriptInterface) : gameinteractionsvisLootData; // GetLootData;StateGameScriptInterface
+	function GetQuickWheelItemName(scriptInterface : handle:gamestateMachineGameScriptInterface) : String; // GetQuickWheelItemName;StateGameScriptInterface
+	function GetReferenceNameFromEquipmentSide(side : EEquipmentSide) : CName; // GetReferenceNameFromEquipmentSide;EEquipmentSide
+	function GetRightHandItemFromParam(stateContext : handle:gamestateMachineStateContextScript) : gameItemID; // GetRightHandItemFromParam;StateContext
+	function GetSceneSystemInterface(scriptInterface : handle:gamestateMachineGameScriptInterface) : handle:scnScriptInterface; // GetSceneSystemInterface;StateGameScriptInterface
+	function GetSceneTier(scriptInterface : handle:gamestateMachineGameScriptInterface) : Int32; // GetSceneTier;StateGameScriptInterface
+	function GetStatFloatValue(scriptInterface : handle:gamestateMachineGameScriptInterface, statType : gamedataStatType, statSystem : handle:gameStatsSystem, optional object : handle:gameObject) : Float; // GetStatFloatValue;StateGameScriptInterfacegamedataStatTypeStatsSystemGameObject
+	function GetStatPoolValue(scriptInterface : handle:gamestateMachineGameScriptInterface, entityID : entEntityID, statPool : gamedataStatPoolType, optional asPrecentage : Bool) : Float; // GetStatPoolValue;StateGameScriptInterfaceEntityIDgamedataStatPoolTypeBool
+	function GetStateNameFromEquipmentState(equipmentState : EEquipmentState) : CName; // GetStateNameFromEquipmentState;EEquipmentState
+	function GetStatusEffectRecordData(stateContext : handle:gamestateMachineStateContextScript) : whandle:gamedataStatusEffectPlayerData_Record; // GetStatusEffectRecordData;StateContext
+	function GetTakedownAction(stateContext : handle:gamestateMachineStateContextScript) : ETakedownActionType; // GetTakedownAction;StateContext
+	function GetVerticalSpeed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Float; // GetVerticalSpeed;StateGameScriptInterface
+	function GetWeaponItemTag(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, tag : CName, optional itemID : gameItemID) : Bool; // GetWeaponItemTag;StateContextStateGameScriptInterfaceCNameItemID
+	function HandleDamagePreview(weapon : handle:gameweaponObject, scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript); // HandleDamagePreview;WeaponObjectStateGameScriptInterfaceStateContext
+	function HasActiveConsumable(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // HasActiveConsumable;StateGameScriptInterface
+	function HasAnyValidWeaponAvailable(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // HasAnyValidWeaponAvailable;StateGameScriptInterface
+	function HasStatPoolValueReachedMax(scriptInterface : handle:gamestateMachineGameScriptInterface, entityID : entEntityID, statPool : gamedataStatPoolType) : Bool; // HasStatPoolValueReachedMax;StateGameScriptInterfaceEntityIDgamedataStatPoolType
+	function HasTimeStampElapsed(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, timeStampName : CName) : Bool; // HasTimeStampElapsed;StateContextStateGameScriptInterfaceCName
+	function HoldAimingForTime(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, blockAimingFor : Float); // HoldAimingForTime;StateContextStateGameScriptInterfaceFloat
+	function IsActiveVehicleVisible(scriptInterface : handle:gamestateMachineGameScriptInterface, optional distance : Float) : Bool; // IsActiveVehicleVisible;StateGameScriptInterfaceFloat
+	function IsAimingBlockedForTime(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsAimingBlockedForTime;StateContextStateGameScriptInterface
+	function IsAimingHeldForTime(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsAimingHeldForTime;StateContextStateGameScriptInterface
+	function IsAimingSoftBlocked(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsAimingSoftBlocked;StateContextStateGameScriptInterface
+	function IsAnyEquipmentStateMachineActive(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsAnyEquipmentStateMachineActive;StateContext
+	function IsCameraPitchAcceptable(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, cameraPitchThreshold : Float) : Bool; // IsCameraPitchAcceptable;StateContextStateGameScriptInterfaceFloat
+	function IsCarryingBody(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsCarryingBody;StateGameScriptInterface
+	function IsCrouchForced(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsCrouchForced;StateGameScriptInterface
+	function IsDeepEnoughToSwim(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsDeepEnoughToSwim;StateGameScriptInterface
+	function IsDisplayingInputHintBlocked(scriptInterface : handle:gamestateMachineGameScriptInterface, actionName : CName) : Bool; // IsDisplayingInputHintBlocked;StateGameScriptInterfaceCName
+	function IsDoorInteractionActive(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsDoorInteractionActive;StateGameScriptInterface
+	function IsEmptyHandsForced(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsEmptyHandsForced;StateContextStateGameScriptInterface
+	function IsEnemyOrSensoryDeviceVisible(scriptInterface : handle:gamestateMachineGameScriptInterface, optional distance : Float) : Bool; // IsEnemyOrSensoryDeviceVisible;StateGameScriptInterfaceFloat
+	function IsEnemyVisible(scriptInterface : handle:gamestateMachineGameScriptInterface, optional distance : Float) : Bool; // IsEnemyVisible;StateGameScriptInterfaceFloat
+	function IsExaminingDevice(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsExaminingDevice;StateGameScriptInterface
+	function IsExitVehicleBlocked(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsExitVehicleBlocked;StateGameScriptInterface
+	function IsInEmptyHandsState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInEmptyHandsState;StateContext
+	function IsInFirstEquip(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInFirstEquip;StateContext
+	function IsInFocusMode(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInFocusMode;StateGameScriptInterface
+	function IsInHighLevelState(stateContext : handle:gamestateMachineStateContextScript, highLevelStateName : CName) : Bool; // IsInHighLevelState;StateContextCName
+	function IsInInputContextState(stateContext : handle:gamestateMachineStateContextScript, inputContextStateName : CName) : Bool; // IsInInputContextState;StateContextCName
+	function IsInItemWheelState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInItemWheelState;StateContext
+	function IsInLadderState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInLadderState;StateContext
+	function IsInLocomotionState(stateContext : handle:gamestateMachineStateContextScript, locomotionStateName : CName) : Bool; // IsInLocomotionState;StateContextCName
+	function IsInMeleeState(stateContext : handle:gamestateMachineStateContextScript, meleeStateName : CName) : Bool; // IsInMeleeState;StateContextCName
+	function IsInMinigame(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInMinigame;StateGameScriptInterface
+	function IsInPhotoMode(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInPhotoMode;StateGameScriptInterface
+	function IsInSafeSceneTier(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInSafeSceneTier;StateGameScriptInterface
+	function IsInSafeZone(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInSafeZone;StateGameScriptInterface
+	function IsInSlidingState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInSlidingState;StateContext
+	function IsInStealthLocomotion(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInStealthLocomotion;StateContext
+	function IsInTakedownState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsInTakedownState;StateContext
+	function IsInTier2Locomotion(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInTier2Locomotion;StateGameScriptInterface
+	function IsInUpperBodyState(stateContext : handle:gamestateMachineStateContextScript, upperBodyStateName : CName) : Bool; // IsInUpperBodyState;StateContextCName
+	function IsInVehicleState(stateContext : handle:gamestateMachineStateContextScript, vehicleStateName : CName) : Bool; // IsInVehicleState;StateContextCName
+	function IsInVisionModeActiveState(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInVisionModeActiveState;StateContextStateGameScriptInterface
+	function IsInWeaponReloadState(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsInWeaponReloadState;StateGameScriptInterface
+	function IsItemMeleeWeapon(item : gameItemID) : Bool; // IsItemMeleeWeapon;ItemID
+	function IsLeftHandInEquippedState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsLeftHandInEquippedState;StateContext
+	function IsLeftHandInUnequippedState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsLeftHandInUnequippedState;StateContext
+	function IsLeftHandInUnequippingState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsLeftHandInUnequippingState;StateContext
+	function IsLookingAtEnemyNPC(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsLookingAtEnemyNPC;StateGameScriptInterface
+	function IsLootDataActive(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsLootDataActive;StateGameScriptInterface
+	function IsMovementInput(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsMovementInput;StateContextStateGameScriptInterface
+	function IsNameplateVisible(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsNameplateVisible;StateGameScriptInterface
+	function IsNoCombatActionsForced(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsNoCombatActionsForced;StateGameScriptInterface
+	function IsPlayerExhausted(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerExhausted;StateGameScriptInterface
+	function IsPlayerInAnyMenu(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerInAnyMenu;StateGameScriptInterface
+	function IsPlayerInBraindance(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerInBraindance;StateGameScriptInterface
+	function IsPlayerInCombat(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerInCombat;StateGameScriptInterface
+	function IsPlayerInSecuritySystem(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerInSecuritySystem;StateGameScriptInterface
+	function IsPlayerMoving(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerMoving;StateContextStateGameScriptInterface
+	function IsPlayerMovingBackwards(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerMovingBackwards;StateContextStateGameScriptInterface
+	function IsPlayerMovingHorizontally(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerMovingHorizontally;StateContextStateGameScriptInterface
+	function IsPlayerMovingVertically(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerMovingVertically;StateContextStateGameScriptInterface
+	function IsPlayerTired(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayerTired;StateGameScriptInterface
+	function IsPlayingAsReplacer(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsPlayingAsReplacer;StateGameScriptInterface
+	function IsQuickHackPanelOpened(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsQuickHackPanelOpened;StateGameScriptInterface
+	function IsQuickWheelItemACyberdeck(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsQuickWheelItemACyberdeck;StateGameScriptInterface
+	function IsQuickWheelItemACyberware(scriptInterface : handle:gamestateMachineGameScriptInterface, cyberwareType : gamedataItemType) : Bool; // IsQuickWheelItemACyberware;StateGameScriptInterfacegamedataItemType
+	function IsRadialWheelOpen(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsRadialWheelOpen;StateGameScriptInterface
+	function IsRightHandChangingEquipState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsRightHandChangingEquipState;StateContext
+	function IsRightHandInEquippedState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsRightHandInEquippedState;StateContext
+	function IsRightHandInEquippingState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsRightHandInEquippingState;StateContext
+	function IsRightHandInUnequippedState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsRightHandInUnequippedState;StateContext
+	function IsRightHandInUnequippingState(stateContext : handle:gamestateMachineStateContextScript) : Bool; // IsRightHandInUnequippingState;StateContext
+	function IsSafeStateForced(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsSafeStateForced;StateContextStateGameScriptInterface
+	function IsTimeDilationActive(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, timeDilationReason : CName) : Bool; // IsTimeDilationActive;StateContextStateGameScriptInterfaceCName
+	function IsUploadingQuickHack(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsUploadingQuickHack;StateGameScriptInterface
+	function IsUsingConsumableRestricted(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsUsingConsumableRestricted;StateGameScriptInterface
+	function IsUsingFirearmsForced(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsUsingFirearmsForced;StateGameScriptInterface
+	function IsUsingFistsForced(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsUsingFistsForced;StateGameScriptInterface
+	function IsUsingLeftHandAllowed(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsUsingLeftHandAllowed;StateGameScriptInterface
+	function IsUsingMeleeForced(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsUsingMeleeForced;StateGameScriptInterface
+	function IsVaultingClimbingRestricted(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsVaultingClimbingRestricted;StateGameScriptInterface
+	function IsVehicleBlockingCombat(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsVehicleBlockingCombat;StateGameScriptInterface
+	function IsVehicleCameraChangeBlocked(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsVehicleCameraChangeBlocked;StateGameScriptInterface
+	function IsVehicleExitCombatModeBlocked(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsVehicleExitCombatModeBlocked;StateGameScriptInterface
+	function IsWeaponStateBlockingAiming(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsWeaponStateBlockingAiming;StateGameScriptInterface
+	function ItemsInLootData(scriptInterface : handle:gamestateMachineGameScriptInterface) : Int32; // ItemsInLootData;StateGameScriptInterface
+	function OnItemEquipped(slot : TweakDBID, item : gameItemID); // OnItemEquipped;TweakDBIDItemID
+	function OnItemUnequipped(slot : TweakDBID, item : gameItemID); // OnItemUnequipped;TweakDBIDItemID
+	function OnStatChanged(ownerID : gameStatsObjectID, statType : gamedataStatType, diff : Float, value : Float); // OnStatChanged;StatsObjectIDgamedataStatTypeFloatFloat
+	function OnStatusEffectApplied(statusEffect : whandle:gamedataStatusEffect_Record); // OnStatusEffectApplied;StatusEffect_Record
+	function OnStatusEffectRemoved(statusEffect : whandle:gamedataStatusEffect_Record); // OnStatusEffectRemoved;StatusEffect_Record
+	function PlaySound(soundName : CName, scriptInterface : handle:gamestateMachineGameScriptInterface); // PlaySound;CNameStateGameScriptInterface
+	function PlaySoundMetadataEvent(evtName : CName, scriptInterface : handle:gamestateMachineGameScriptInterface, evtParam : Float); // PlaySoundMetadataEvent;CNameStateGameScriptInterfaceFloat
+	function PlayerHasGrenadeCharges(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // PlayerHasGrenadeCharges;StateGameScriptInterface
+	function PrepareGameEffectAoEAttack(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, attackRecord : handle:gamedataAttack_Record) : Bool; // PrepareGameEffectAoEAttack;StateContextStateGameScriptInterfaceAttack_Record
+	function ProcessCombatGadgetActionInputCaching(scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript); // ProcessCombatGadgetActionInputCaching;StateGameScriptInterfaceStateContext
+	function ProcessPermanentBoolParameterToggle(parameterName : CName, state : Bool, stateContext : handle:gamestateMachineStateContextScript); // ProcessPermanentBoolParameterToggle;CNameBoolStateContext
+	function QueueSetCameraParamsEvent(cameraParams : CName, scriptInterface : handle:gamestateMachineGameScriptInterface); // QueueSetCameraParamsEvent;CNameStateGameScriptInterface
+	function QueueSetCameraParamsEvent_Tier3Scene(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // QueueSetCameraParamsEvent_Tier3Scene;StateContextStateGameScriptInterface
+	function RemoveInputHint(scriptInterface : handle:gamestateMachineGameScriptInterface, actionName : CName, source : CName); // RemoveInputHint;StateGameScriptInterfaceCNameCName
+	function RemoveInputHintsBySource(scriptInterface : handle:gamestateMachineGameScriptInterface, source : CName); // RemoveInputHintsBySource;StateGameScriptInterfaceCName
+	function RequestPlayerPositionAdjustment(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, target : handle:gameObject, slideTime : Float, distanceRadius : Float, rotationDuration : Float, adjustPosition : Vector4, optional useParabolicMotion : Bool) : Bool; // RequestPlayerPositionAdjustment;StateContextStateGameScriptInterfaceGameObjectFloatFloatFloatVector4Bool
+	function RequestPlayerPositionAdjustmentWithCurve(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, slideTime : Float, distanceRadius : Float, adjustPosition : Vector4, adjustCurveName : CName) : Bool; // RequestPlayerPositionAdjustmentWithCurve;StateContextStateGameScriptInterfaceFloatFloatVector4CName
+	function RequestVehicleCameraPerspective(scriptInterface : handle:gamestateMachineGameScriptInterface, requestedCameraPerspective : vehicleCameraPerspective); // RequestVehicleCameraPerspective;StateGameScriptInterfacevehicleCameraPerspective
+	function ResetForceFlags(stateContext : handle:gamestateMachineStateContextScript); // ResetForceFlags;StateContext
+	function ResetSoftBlockAiming(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // ResetSoftBlockAiming;StateContextStateGameScriptInterface
+	function SendDataTrackingRequest(scriptInterface : handle:gamestateMachineGameScriptInterface, telemetryData : ETelemetryData, modifyValue : Int32); // SendDataTrackingRequest;StateGameScriptInterfaceETelemetryDataInt32
+	function SendDrawItemRequest(scriptInterface : handle:gamestateMachineGameScriptInterface, item : gameItemID, optional equipAnimType : gameEquipAnimationType); // SendDrawItemRequest;StateGameScriptInterfaceItemIDgameEquipAnimationType
+	function SendEquipmentSystemWeaponManipulationRequest(scriptInterface : handle:gamestateMachineGameScriptInterface, requestType : EquipmentManipulationAction, optional equipAnimType : gameEquipAnimationType); // SendEquipmentSystemWeaponManipulationRequest;StateGameScriptInterfaceEquipmentManipulationActiongameEquipAnimationType
+	function SetAudioParameter(paramName : CName, paramValue : Float, scriptInterface : handle:gamestateMachineGameScriptInterface); // SetAudioParameter;CNameFloatStateGameScriptInterface
+	function SetBlackboardBoolVariable(scriptInterface : handle:gamestateMachineGameScriptInterface, id : gamebbScriptID_Bool, value : Bool); // SetBlackboardBoolVariable;StateGameScriptInterfaceBlackboardID_BoolBool
+	function SetBlackboardEntityID(scriptInterface : handle:gamestateMachineGameScriptInterface, id : gamebbScriptID_EntityID, value : entEntityID); // SetBlackboardEntityID;StateGameScriptInterfaceBlackboardID_EntityIDEntityID
+	function SetBlackboardFloatVariable(scriptInterface : handle:gamestateMachineGameScriptInterface, id : gamebbScriptID_Float, value : Float); // SetBlackboardFloatVariable;StateGameScriptInterfaceBlackboardID_FloatFloat
+	function SetBlackboardIntVariable(scriptInterface : handle:gamestateMachineGameScriptInterface, id : gamebbScriptID_Int32, value : Int32); // SetBlackboardIntVariable;StateGameScriptInterfaceBlackboardID_IntInt32
+	function SetGameplayCameraParameters(scriptInterface : handle:gamestateMachineGameScriptInterface, tweakDBPath : script_ref:String); // SetGameplayCameraParameters;StateGameScriptInterfacescript_ref<String>
+	function SetItemIDWrapperPermanentParameter(stateContext : handle:gamestateMachineStateContextScript, parameterName : CName, item : gameItemID); // SetItemIDWrapperPermanentParameter;StateContextCNameItemID
+	function SetSurfaceMaterialProbingDirection(direction : gameaudioeventsSurfaceDirection, scriptInterface : handle:gamestateMachineGameScriptInterface); // SetSurfaceMaterialProbingDirection;gameaudioeventsSurfaceDirectionStateGameScriptInterface
+	function SetVehicleCameraSceneMode(scriptInterface : handle:gamestateMachineGameScriptInterface, sceneMode : Bool); // SetVehicleCameraSceneMode;StateGameScriptInterfaceBool
+	function SetZoomStateAnimFeature(scriptInterface : handle:gamestateMachineGameScriptInterface, shouldAim : Bool); // SetZoomStateAnimFeature;StateGameScriptInterfaceBool
+	function ShouldEnterSafe(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, optional maxDistanceSquared : Float) : Bool; // ShouldEnterSafe;StateContextStateGameScriptInterfaceFloat
+	function ShouldIgnoreWeaponSafe(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // ShouldIgnoreWeaponSafe;StateGameScriptInterface
+	function ShowAttackPreview(showIfAiming : Bool, weaponObject : handle:gameweaponObject, scriptInterface : handle:gamestateMachineGameScriptInterface, stateContext : handle:gamestateMachineStateContextScript); // ShowAttackPreview;BoolWeaponObjectStateGameScriptInterfaceStateContext
+	function ShowInputHint(scriptInterface : handle:gamestateMachineGameScriptInterface, actionName : CName, source : CName, label : script_ref:String, optional holdIndicationType : inkInputHintHoldIndicationType, optional enableHoldAnimation : Bool, optional sortingPriority : Int32, optional inputHintKeyCombinationType : inkInputHintKeyCombinationType); // ShowInputHint;StateGameScriptInterfaceCNameCNamescript_ref<String>inkInputHintHoldIndicationTypeBoolInt32inkInputHintKeyCombinationType
+	function SoftBlockAimingForTime(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, blockAimingFor : Float); // SoftBlockAimingForTime;StateContextStateGameScriptInterfaceFloat
+	function StartEffect(scriptInterface : handle:gamestateMachineGameScriptInterface, effectName : CName, optional blackboard : handle:worldEffectBlackboard); // StartEffect;StateGameScriptInterfaceCNameworldEffectBlackboard
+	function StartPool(statPoolsSystem : handle:gameStatPoolsSystem, weaponEntityID : entEntityID, poolType : gamedataStatPoolType, optional rangeBegin : Float, optional rangeEnd : Float, optional valuePerSec : Float); // StartPool;StatPoolsSystemEntityIDgamedataStatPoolTypeFloatFloatFloat
+	function StartStatPoolDecay(scriptInterface : handle:gamestateMachineGameScriptInterface, statPoolType : gamedataStatPoolType); // StartStatPoolDecay;StateGameScriptInterfacegamedataStatPoolType
+	function StopEffect(scriptInterface : handle:gamestateMachineGameScriptInterface, effectName : CName); // StopEffect;StateGameScriptInterfaceCName
+	function StopPool(statPoolsSystem : handle:gameStatPoolsSystem, weaponEntityID : entEntityID, poolType : gamedataStatPoolType, startDecay : Bool, optional rangeBegin : Float, optional rangeEnd : Float); // StopPool;StatPoolsSystemEntityIDgamedataStatPoolTypeBoolFloatFloat
+	function StopStatPoolDecayAndRegenerate(scriptInterface : handle:gamestateMachineGameScriptInterface, statPoolType : gamedataStatPoolType); // StopStatPoolDecayAndRegenerate;StateGameScriptInterfacegamedataStatPoolType
+	function ThreatsOnPlayerThreatList(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // ThreatsOnPlayerThreatList;StateGameScriptInterface
+	function ToggleAudioAimDownSights(weapon : handle:gameweaponObject, toggleOn : Bool); // ToggleAudioAimDownSights;WeaponObjectBool
+	function TriggerNoiseStim(owner : whandle:gameObject, takedownActionType : ETakedownActionType); // TriggerNoiseStim;GameObjectETakedownActionType
+	function TutorialAddFact(scriptInterface : handle:gamestateMachineGameScriptInterface, factName : CName, add : Int32); // TutorialAddFact;StateGameScriptInterfaceCNameInt32
+	function TutorialSetFact(scriptInterface : handle:gamestateMachineGameScriptInterface, factName : CName); // TutorialSetFact;StateGameScriptInterfaceCName
+	function UpdateCameraParams(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface); // UpdateCameraParams;StateContextStateGameScriptInterface
+	function UsingJohnnyReplacer(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // UsingJohnnyReplacer;StateGameScriptInterface
+}
+
+import class gamestateMachineFunctor extends IScriptable
+{
+	import function EnableOnEnterCondition(enable : Bool); // EnableOnEnterCondition
+	import function GetInStateTime() : Float; // GetInStateTime
+	import function GetStateMachineName() : CName; // GetStateMachineName
+	import function GetStateName() : CName; // GetStateName
+	import function GetStaticBoolArrayParameter(parameterName : String) : array:Bool; // GetStaticBoolArrayParameter
+	import function GetStaticBoolParameter(parameterName : String) : gamestateMachineResultBool; // GetStaticBoolParameter
+	import function GetStaticBoolParameterDefault(parameterName : String, defaultVal : Bool) : Bool; // GetStaticBoolParameterDefault
+	import function GetStaticCNameArrayParameter(parameterName : String) : array:CName; // GetStaticCNameArrayParameter
+	import function GetStaticCNameParameter(parameterName : String) : gamestateMachineResultCName; // GetStaticCNameParameter
+	import function GetStaticCNameParameterDefault(parameterName : String, defaultVal : CName) : CName; // GetStaticCNameParameterDefault
+	import function GetStaticFloatArrayParameter(parameterName : String) : array:Float; // GetStaticFloatArrayParameter
+	import function GetStaticFloatParameter(parameterName : String) : gamestateMachineResultFloat; // GetStaticFloatParameter
+	import function GetStaticFloatParameterDefault(parameterName : String, defaultVal : Float) : Float; // GetStaticFloatParameterDefault
+	import function GetStaticIntArrayParameter(parameterName : String) : array:Int32; // GetStaticIntArrayParameter
+	import function GetStaticIntParameter(parameterName : String) : gamestateMachineResultInt; // GetStaticIntParameter
+	import function GetStaticIntParameterDefault(parameterName : String, defaultVal : Int32) : Int32; // GetStaticIntParameterDefault
+	import function GetStaticStringArrayParameter(parameterName : String) : array:String; // GetStaticStringArrayParameter
+	import function GetStaticStringParameter(parameterName : String) : gamestateMachineResultString; // GetStaticStringParameter
+	import function GetStaticStringParameterDefault(parameterName : String, defaultVal : String) : String; // GetStaticStringParameterDefault
+	import function IsOnEnterConditionEnabled() : Bool; // IsOnEnterConditionEnabled
+	import function SetFlavour(flavourName : CName); // SetFlavour
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

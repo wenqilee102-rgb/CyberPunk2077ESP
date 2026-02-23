@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorAlphaByDistance","d":8,"e":[{"a":{"b":"Vector2"},"b":"nearBlendDistance","c":128},{"a":{"b":"Vector2"},"b":"farBlendDistance","c":128}]}

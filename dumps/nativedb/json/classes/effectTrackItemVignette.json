@@ -1,0 +1,1 @@
+{"a":"effectTrackItem","b":"effectTrackItemVignette","d":8,"e":[{"a":{"a":1},"b":"overrideRadiusAndExp","c":128},{"a":{"a":1},"b":"overrideColor","c":128},{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"vignetteRadius","c":128},{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"vignetteExp","c":128},{"a":{"b":"effectEffectParameterEvaluatorColor"},"b":"color","c":128}]}

@@ -1,0 +1,49 @@
+class MenuScenario_DelamainTaxi extends MenuScenario_BaseMenu
+{
+	event OnCancel() : Bool; // OnCancel
+	event OnConfirm() : Bool; // OnConfirm
+	event OnEnterScenario(prevScenario : CName, userData : handle:IScriptable) : Bool; // OnEnterScenario
+}
+
+class MenuScenario_BaseMenu extends inkMenuScenario
+{
+	protected var currMenuName : CName;
+	protected var currUserData : handle:IScriptable;
+	protected var currSubMenuName : CName;
+	protected var prevMenuName : CName;
+
+	event OnBack() : Bool; // OnBack
+	event OnLeaveScenario(nextScenario : CName) : Bool; // OnLeaveScenario
+
+	function CloseMenu(); // CloseMenu;
+	function CloseSubMenu(); // CloseSubMenu;
+	function GotoIdleState(); // GotoIdleState;
+	function OpenMenu(menuName : CName, optional userData : handle:IScriptable, optional context : ScreenDisplayContext); // OpenMenu;CNameIScriptableScreenDisplayContext
+	function OpenSubMenu(menuName : CName, optional userData : handle:IScriptable); // OpenSubMenu;CNameIScriptable
+	function SetContext(context : ScreenDisplayContext); // SetContext;ScreenDisplayContext
+	function SetDisplayContext(context : ScreenDisplayContext); // SetDisplayContext;ScreenDisplayContext
+	function SwitchMenu(menuName : CName, optional userData : handle:IScriptable, optional context : ScreenDisplayContext); // SwitchMenu;CNameIScriptableScreenDisplayContext
+}
+
+import class inkMenuScenario extends IScriptable
+{
+	import function GetMenusState() : whandle:inkMenusState; // GetMenusState
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function SwitchToScenario(name : CName, optional userData : handle:IScriptable); // SwitchToScenario
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

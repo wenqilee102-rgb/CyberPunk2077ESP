@@ -1,0 +1,1 @@
+{"a":"gameEffectExecutor_Scripted","b":"EffectExecutor_Device","d":4,"e":[{"a":{"a":10},"b":"maxDelay","c":128}],"f":[{"a":"QueueEventOnDevice;InteractiveDeviceActionBool","b":"QueueEventOnDevice","d":50,"e":[{"a":{"a":27,"c":{"b":"InteractiveDevice"}},"b":"device","c":0},{"a":{"a":26,"c":{"b":"ActionBool"}},"b":"evt","c":0}]}]}

@@ -1,0 +1,27 @@
+import class gameinteractionsTargetFilter_Logical extends gametargetingSystemTargetFilter_Closest
+{
+}
+
+import class gametargetingSystemTargetFilter_Closest extends gametargetingSystemTargetFilter
+{
+}
+
+import class abstract gametargetingSystemTargetFilter extends IScriptable
+{
+	import function GetHitComponent() : whandle:entIComponent; // GetHitComponent
+	import function GetHitEntityID() : entEntityID; // GetHitEntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

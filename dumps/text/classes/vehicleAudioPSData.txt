@@ -1,0 +1,8 @@
+import struct vehicleAudioPSData
+{
+	var activeRadioStation : CName;
+	var acousticIsolationFactor : Float;
+	var glassAcousticIsolationFactor : Float;
+	var isPlayerVehicleSummoned : Bool;
+	var openedWindows : static:6,CName;
+}

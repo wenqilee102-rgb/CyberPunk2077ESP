@@ -1,0 +1,10 @@
+import struct gameCrowdTemplateEntryPhase
+{
+	var phaseName : CName;
+	var timePeriods : array:gameCrowdPhaseTimePeriod;
+	var density : Float;
+	var charactersData : array:gameCrowdTemplateCharacterData;
+	var legacy : Bool;
+	var legacyDensityInTimePeriods : Bool;
+	var legacyCharactersData : Bool;
+}

@@ -1,0 +1,4 @@
+import struct questSpawnManagerNodeActionEntry
+{
+	var type : handle:questSpawnManagerNodeType;
+}

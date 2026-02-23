@@ -1,0 +1,12 @@
+import struct workDynamicSyncBindAnimComponentCommandData extends workSyncBindBaseCommandData
+{
+	var slave : whandle:entAnimationControllerComponent;
+}
+
+import struct workSyncBindBaseCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

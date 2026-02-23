@@ -1,0 +1,36 @@
+import class gamedataAdvertisementGroup_Record extends gamedataTweakDBRecord
+{
+	import function AdvertTintColor() : Vector3; // AdvertTintColor
+	import function Advertisements(out outList : array:whandle:gamedataAdvertisement_Record); // Advertisements
+	import function AdvertisementsContains(item : whandle:gamedataAdvertisement_Record) : Bool; // AdvertisementsContains
+	import function FallbackAtlasResource() : redResourceReferenceScriptToken; // FallbackAtlasResource
+	import function GetAdvertisementsCount() : Int32; // GetAdvertisementsCount
+	import function GetAdvertisementsItem(index : Int32) : whandle:gamedataAdvertisement_Record; // GetAdvertisementsItem
+	import function GetAdvertisementsItemHandle(index : Int32) : handle:gamedataAdvertisement_Record; // GetAdvertisementsItemHandle
+	import function GetIncludedGroupsCount() : Int32; // GetIncludedGroupsCount
+	import function GetIncludedGroupsItem(index : Int32) : whandle:gamedataAdvertisementGroup_Record; // GetIncludedGroupsItem
+	import function GetIncludedGroupsItemHandle(index : Int32) : handle:gamedataAdvertisementGroup_Record; // GetIncludedGroupsItemHandle
+	import function IncludedGroups(out outList : array:whandle:gamedataAdvertisementGroup_Record); // IncludedGroups
+	import function IncludedGroupsContains(item : whandle:gamedataAdvertisementGroup_Record) : Bool; // IncludedGroupsContains
+	import function LightTintColor() : Vector3; // LightTintColor
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

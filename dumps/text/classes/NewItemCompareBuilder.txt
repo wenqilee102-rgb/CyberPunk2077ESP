@@ -1,0 +1,39 @@
+class NewItemCompareBuilder extends IScriptable
+{
+	private   var sortData1 : handle:UIInventoryItem;
+	private   var sortData2 : handle:UIInventoryItem;
+	private   var compareBuilder : handle:CompareBuilder;
+
+	static function Make(sortData1 : handle:UIInventoryItem, sortData2 : handle:UIInventoryItem) : handle:NewItemCompareBuilder; // NewItemCompareBuilder::Make;UIInventoryItemUIInventoryItem
+
+	function DPSAsc() : handle:NewItemCompareBuilder; // DPSAsc;
+	function DPSDesc() : handle:NewItemCompareBuilder; // DPSDesc;
+	function FavouriteItem() : handle:NewItemCompareBuilder; // FavouriteItem;
+	function Get() : Int32; // Get;
+	function GetBool() : Bool; // GetBool;
+	function ItemType() : handle:NewItemCompareBuilder; // ItemType;
+	function NameAsc() : handle:NewItemCompareBuilder; // NameAsc;
+	function NameDesc() : handle:NewItemCompareBuilder; // NameDesc;
+	function NewItem() : handle:NewItemCompareBuilder; // NewItem;
+	function PriceAsc() : handle:NewItemCompareBuilder; // PriceAsc;
+	function PriceDesc() : handle:NewItemCompareBuilder; // PriceDesc;
+	function QualityAsc() : handle:NewItemCompareBuilder; // QualityAsc;
+	function QualityDesc() : handle:NewItemCompareBuilder; // QualityDesc;
+	function QuestItem() : handle:NewItemCompareBuilder; // QuestItem;
+	function WeightAsc() : handle:NewItemCompareBuilder; // WeightAsc;
+	function WeightDesc() : handle:NewItemCompareBuilder; // WeightDesc;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,4 @@
+import struct gameHitDetectionDebugFrameDataShapeEntry
+{
+	var ansformWS : WorldTransform;
+}

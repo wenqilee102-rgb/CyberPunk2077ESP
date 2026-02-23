@@ -1,0 +1,6 @@
+import struct gamePrereqParams
+{
+	var objectID : gameStatsObjectID;
+	var otherObjectID : gameStatsObjectID;
+	var otherData : Variant;
+}

@@ -1,0 +1,24 @@
+import class ExposureAreaSettings extends IAreaSettings
+{
+	var exposureAdaptationSpeedUp : curveData:Float;
+	var exposureAdaptationSpeedDown : curveData:Float;
+	var exposurePercentageThresholdLow : curveData:Float;
+	var exposurePercentageThresholdHigh : curveData:Float;
+	var exposureCompensation : curveData:Float;
+	var exposureSkyImpact : curveData:Float;
+	var exposureMin : curveData:Float;
+	var exposureMax : curveData:Float;
+	var exposureCenterImportance : curveData:Float;
+	var cameraVelocityFaloff : Float;
+	var exposureCompensationOffset : Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

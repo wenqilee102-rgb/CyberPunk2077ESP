@@ -1,0 +1,5 @@
+import struct audioDynamicEventsWithInterval
+{
+	var events : array:CName;
+	var interval : Float;
+}

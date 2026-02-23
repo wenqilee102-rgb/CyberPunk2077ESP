@@ -1,0 +1,55 @@
+import class gamedataAISubActionCover_Record extends gamedataAISubAction_Record
+{
+	import function ClearLOSDistanceTolerance() : Float; // ClearLOSDistanceTolerance
+	import function CommandCoverConditions(out outList : array:whandle:gamedataAIActionCondition_Record); // CommandCoverConditions
+	import function CommandCoverConditionsContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // CommandCoverConditionsContains
+	import function CoverExposureMethods() : array:CName; // CoverExposureMethods
+	import function CoverExposureMethodsContains(item : CName) : Bool; // CoverExposureMethodsContains
+	import function DelayExposedInCoverReset() : Float; // DelayExposedInCoverReset
+	import function ExposedInCover() : Int32; // ExposedInCover
+	import function ExposureMethodPriority(out outList : array:whandle:gamedataAIExposureMethodType_Record); // ExposureMethodPriority
+	import function ExposureMethodPriorityContains(item : whandle:gamedataAIExposureMethodType_Record) : Bool; // ExposureMethodPriorityContains
+	import function GetCommandCoverConditionsCount() : Int32; // GetCommandCoverConditionsCount
+	import function GetCommandCoverConditionsItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetCommandCoverConditionsItem
+	import function GetCommandCoverConditionsItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetCommandCoverConditionsItemHandle
+	import function GetCoverExposureMethodsCount() : Int32; // GetCoverExposureMethodsCount
+	import function GetCoverExposureMethodsItem(index : Int32) : CName; // GetCoverExposureMethodsItem
+	import function GetExposureMethodPriorityCount() : Int32; // GetExposureMethodPriorityCount
+	import function GetExposureMethodPriorityItem(index : Int32) : whandle:gamedataAIExposureMethodType_Record; // GetExposureMethodPriorityItem
+	import function GetExposureMethodPriorityItemHandle(index : Int32) : handle:gamedataAIExposureMethodType_Record; // GetExposureMethodPriorityItemHandle
+	import function InsideCoverReselectionCooldown() : whandle:gamedataAIActionCooldown_Record; // InsideCoverReselectionCooldown
+	import function InsideCoverReselectionCooldownHandle() : handle:gamedataAIActionCooldown_Record; // InsideCoverReselectionCooldownHandle
+	import function PrioritizeBlindFireAfterHit() : Float; // PrioritizeBlindFireAfterHit
+	import function SetCoverExposureAnim() : Bool; // SetCoverExposureAnim
+	import function SetCurrentCover() : Bool; // SetCurrentCover
+	import function SetDesiredCover() : Int32; // SetDesiredCover
+	import function SetInitialCoverData() : Bool; // SetInitialCoverData
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function UseGrenadeThrowMethods() : Bool; // UseGrenadeThrowMethods
+	import function UseLastAvailableExposureMethodsIfNoneAvailable() : Bool; // UseLastAvailableExposureMethodsIfNoneAvailable
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

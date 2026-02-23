@@ -1,0 +1,35 @@
+import class AIbehaviortweakTweakActionSystem extends gameIGameSystem
+{
+	import function ActivationCheck(ctx : script_ref:AIbehaviorScriptExecutionContext, actionRecordId : TweakDBID) : Bool; // ActivationCheck
+	import function Debug_OnActionEnded(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID) : Uint32; // Debug_OnActionEnded
+	import function Debug_OnActionNextPhase(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID, phase : Uint32, value : Bool) : Uint32; // Debug_OnActionNextPhase
+	import function Debug_OnActionPhaseStarted(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID, phase : Uint32) : Uint32; // Debug_OnActionPhaseStarted
+	import function Debug_OnActionRepeatPhase(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID, phase : Uint32, value : Bool) : Uint32; // Debug_OnActionRepeatPhase
+	import function Debug_OnActionStarted(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID, baseId : TweakDBID, optional compositeId : TweakDBID) : Uint32; // Debug_OnActionStarted
+	import function EvaluateActionCondition(ctx : script_ref:AIbehaviorScriptExecutionContext, record : handle:gamedataAIActionCondition_Record) : Bool; // EvaluateActionCondition
+	import function EvaluateActionTargetAll(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID, predictionTime : Float, out object : handle:gameObject, out position : Vector4, out coverId : Uint64) : Bool; // EvaluateActionTargetAll
+	import function EvaluateActionTargetObject(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID, out object : handle:gameObject) : Bool; // EvaluateActionTargetObject
+	import function ForceDirty(ctx : script_ref:AIbehaviorScriptExecutionContext, recordId : TweakDBID) : Bool; // ForceDirty
+	import function GetTweakCompositeAlternativesLimit(ctx : script_ref:AIbehaviorScriptExecutionContext) : Uint32; // GetTweakCompositeAlternativesLimit
+	import function IsTweakCompositeAlternativesLimitEnabled(ctx : script_ref:AIbehaviorScriptExecutionContext, playerInCombat : Bool) : Bool; // IsTweakCompositeAlternativesLimitEnabled
+	import function NextPhaseCheck(ctx : script_ref:AIbehaviorScriptExecutionContext, actionRecordId : TweakDBID, phase : Uint32) : Bool; // NextPhaseCheck
+	import function RepeatPhaseCheck(ctx : script_ref:AIbehaviorScriptExecutionContext, actionRecordId : TweakDBID, phase : Uint32) : Bool; // RepeatPhaseCheck
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

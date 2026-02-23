@@ -1,0 +1,25 @@
+class SubmenuDataBuilder extends IScriptable
+{
+	private   var menuBuilder : handle:MenuDataBuilder;
+	private   var menuDataIndex : Int32;
+
+	static function Make(menuBuilder : handle:MenuDataBuilder, menuDataIndex : Int32) : handle:SubmenuDataBuilder; // SubmenuDataBuilder::Make;MenuDataBuilderInt32
+
+	function AddSubmenu(identifier : Int32, fullscreenName : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:SubmenuDataBuilder; // AddSubmenu;Int32CNameCNameIScriptable
+	function AddSubmenuIf(condition : Bool, identifier : Int32, fullscreenName : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:SubmenuDataBuilder; // AddSubmenuIf;BoolInt32CNameCNameIScriptable
+	function GetMenuBuilder() : handle:MenuDataBuilder; // GetMenuBuilder;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

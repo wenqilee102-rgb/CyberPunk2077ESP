@@ -1,0 +1,8 @@
+import struct gameMuppetInputActionLook extends gameIMuppetInputAction
+{
+	var rotation : Vector2;
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

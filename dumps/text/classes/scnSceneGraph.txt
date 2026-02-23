@@ -1,0 +1,10 @@
+import class scnSceneGraph extends ISerializable
+{
+	var graph : array:handle:scnSceneGraphNode;
+	var startNodes : array:scnNodeId;
+	var endNodes : array:scnNodeId;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+import class gamestateMachineparameterTypeAdjustTransform extends IScriptable
+{
+	var position : Vector4;
+	var rotation : Quaternion;
+
+	import function SetPosition(value : Vector4); // SetPosition
+	import function SetRotation(value : Quaternion); // SetRotation
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

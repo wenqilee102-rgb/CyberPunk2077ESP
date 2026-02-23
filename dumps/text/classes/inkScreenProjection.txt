@@ -1,0 +1,43 @@
+import class inkScreenProjection extends IScriptable
+{
+	var distanceToCamera : Float;
+	var previousPosition : Vector2;
+	var currentPosition : Vector2;
+	var uvPosition : Vector2;
+
+	import function GetEntity() : handle:entEntity; // GetEntity
+	import function GetFixedWorldOffset() : Vector4; // GetFixedWorldOffset
+	import function GetSlotComponentName() : CName; // GetSlotComponentName
+	import function GetSlotFallbackName() : CName; // GetSlotFallbackName
+	import function GetSlotName() : CName; // GetSlotName
+	import function GetStaticWorldPosition() : Vector4; // GetStaticWorldPosition
+	import function GetUserData() : handle:IScriptable; // GetUserData
+	import function IsInScreen() : Bool; // IsInScreen
+	import function RegisterListener(object : handle:IScriptable, functionName : CName); // RegisterListener
+	import function ResetEntity(); // ResetEntity
+	import function ResetFixedWorldOffset(); // ResetFixedWorldOffset
+	import function SetEnabled(enabled : Bool); // SetEnabled
+	import function SetEntity(entity : handle:entEntity); // SetEntity
+	import function SetFixedWorldOffset(offset : Vector4); // SetFixedWorldOffset
+	import function SetSlotComponentName(slotComponentName : CName); // SetSlotComponentName
+	import function SetSlotFallbackName(slotName : CName); // SetSlotFallbackName
+	import function SetSlotName(slotName : CName); // SetSlotName
+	import function SetStaticWorldPosition(position : Vector4); // SetStaticWorldPosition
+	import function SetUserData(userData : handle:IScriptable); // SetUserData
+	import function UnregisterListener(object : handle:IScriptable, functionName : CName); // UnregisterListener
+	import function VoIsPerceptible(entityId : entEntityID) : Bool; // VoIsPerceptible
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

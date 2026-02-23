@@ -1,0 +1,8 @@
+import struct gameAttachmentSlotData
+{
+	var slotID : TweakDBID;
+	var itemObject : handle:gameItemObject;
+	var activeItemID : gameItemID;
+	var prevItemID : gameItemID;
+	var appearanceItemID : gameItemID;
+}

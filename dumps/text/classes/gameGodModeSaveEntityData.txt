@@ -1,0 +1,5 @@
+import struct gameGodModeSaveEntityData
+{
+	var entityId : entEntityID;
+	var data : gameGodModeEntityData;
+}

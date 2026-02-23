@@ -1,0 +1,35 @@
+import class gamedataAIInTacticPositionCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function GetTacticsCount() : Int32; // GetTacticsCount
+	import function GetTacticsItem(index : Int32) : whandle:gamedataAITacticType_Record; // GetTacticsItem
+	import function GetTacticsItemHandle(index : Int32) : handle:gamedataAITacticType_Record; // GetTacticsItemHandle
+	import function Tactics(out outList : array:whandle:gamedataAITacticType_Record); // Tactics
+	import function TacticsContains(item : whandle:gamedataAITacticType_Record) : Bool; // TacticsContains
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class toolsJiraCommentIssueResult extends ISerializable
+{
+	var errorMessages : array:String;
+}
+
+import class abstract ISerializable
+{
+}

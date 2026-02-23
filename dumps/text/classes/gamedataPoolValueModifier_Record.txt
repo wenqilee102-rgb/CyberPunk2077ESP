@@ -1,0 +1,30 @@
+import class gamedataPoolValueModifier_Record extends gamedataTweakDBRecord
+{
+	import function DelayOnChange() : Bool; // DelayOnChange
+	import function Enabled() : Bool; // Enabled
+	import function RangeBegin() : Float; // RangeBegin
+	import function RangeEnd() : Float; // RangeEnd
+	import function StartDelay() : Float; // StartDelay
+	import function UsingPointValues() : Bool; // UsingPointValues
+	import function ValuePerSec() : Float; // ValuePerSec
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

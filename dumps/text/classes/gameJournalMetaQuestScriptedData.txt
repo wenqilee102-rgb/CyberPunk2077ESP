@@ -1,0 +1,6 @@
+import struct gameJournalMetaQuestScriptedData
+{
+	var percent : Uint32;
+	var hidden : Bool;
+	var text : String;
+}

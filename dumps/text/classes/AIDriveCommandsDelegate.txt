@@ -1,0 +1,122 @@
+class AIDriveCommandsDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	private   var useKinematic : Bool;
+	private   var needDriver : Bool;
+	private   var splineRef : NodeRef;
+	private   var secureTimeOut : Float;
+	private   var forcedStartSpeed : Float;
+	private   var stopAtPathEnd : Bool;
+	private   var driveBackwards : Bool;
+	private   var reverseSpline : Bool;
+	private   var startFromClosest : Bool;
+	private   var keepDistanceBool : Bool;
+	private   var keepDistanceCompanion : whandle:gameObject;
+	private   var keepDistanceDistance : Float;
+	private   var rubberBandingBool : Bool;
+	private   var rubberBandingTargetRef : whandle:gameObject;
+	private   var rubberBandingTargetForwardOffset : Float;
+	private   var rubberBandingMinDistance : Float;
+	private   var rubberBandingMaxDistance : Float;
+	private   var rubberBandingStopAndWait : Bool;
+	private   var rubberBandingTeleportToCatchUp : Bool;
+	private   var rubberBandingStayInFront : Bool;
+	private   var audioCurvesParam : handle:vehicleAudioCurvesParam;
+	private   var allowSimplifiedMovement : Bool;
+	private   var ignoreTickets : Bool;
+	private   var disabeStuckDetection : Bool;
+	private   var aggressiveRammingEnabled : Bool;
+	private   var useSpeedBasedLookupRange : Bool;
+	private   var tryDriveAwayFromPlayer : Bool;
+	private   var targetPosition : Vector3;
+	private   var maxSpeed : Float;
+	private   var minSpeed : Float;
+	private   var clearTrafficOnPath : Bool;
+	private   var minimumDistanceToTarget : Float;
+	private   var emergencyPatrol : Bool;
+	private   var numPatrolLoops : Uint32;
+	private   var driveDownTheRoadIndefinitely : Bool;
+	private   var ignoreChaseVehiclesLimit : Bool;
+	private   var boostDrivingStats : Bool;
+	private   var driveOnSplineCommand : handle:AIVehicleOnSplineCommand;
+	private   var useTraffic : Bool;
+	private   var speedInTraffic : Float;
+	private   var target : whandle:gameObject;
+	private   var distanceMin : Float;
+	private   var distanceMax : Float;
+	private   var stopWhenTargetReached : Bool;
+	private   var trafficTryNeighborsForStart : Bool;
+	private   var trafficTryNeighborsForEnd : Bool;
+	private   var ignoreNoAIDrivingLanes : Bool;
+	private   var driveFollowCommand : handle:AIVehicleFollowCommand;
+	private   var driveChaseCommand : handle:AIVehicleChaseCommand;
+	private   var drivePanicCommand : handle:AIVehiclePanicCommand;
+	private   var driveToPointAutonomousCommand : handle:AIVehicleDriveToPointAutonomousCommand;
+	private   var drivePatrolCommand : handle:AIVehicleDrivePatrolCommand;
+	private   var nodeRef : NodeRef;
+	private   var isPlayer : Bool;
+	private   var forceGreenLights : Bool;
+	private   var portals : handle:vehiclePortalsList;
+	private   var driveToNodeCommand : handle:AIVehicleToNodeCommand;
+	private   var driveRacingCommand : handle:AIVehicleRacingCommand;
+	private   var driveJoinTrafficCommand : handle:AIVehicleJoinTrafficCommand;
+
+	static function DoEndDriveChase(context : AIbehaviorScriptExecutionContext) : Bool; // AIDriveCommandsDelegate::DoEndDriveChase;ScriptExecutionContext
+	static function DoEndDrivePanic(context : AIbehaviorScriptExecutionContext) : Bool; // AIDriveCommandsDelegate::DoEndDrivePanic;ScriptExecutionContext
+	static function DoEndDrivePatrol(context : AIbehaviorScriptExecutionContext) : Bool; // AIDriveCommandsDelegate::DoEndDrivePatrol;ScriptExecutionContext
+	static function DoEndDriveToPointAutonomous(context : AIbehaviorScriptExecutionContext) : Bool; // AIDriveCommandsDelegate::DoEndDriveToPointAutonomous;ScriptExecutionContext
+
+	function DoEndDriveFollow(context : AIbehaviorScriptExecutionContext) : Bool; // DoEndDriveFollow;ScriptExecutionContext
+	function DoEndDriveJoinTraffic() : Bool; // DoEndDriveJoinTraffic;
+	function DoEndDriveOnSpline() : Bool; // DoEndDriveOnSpline;
+	function DoEndDriveRacing() : Bool; // DoEndDriveRacing;
+	function DoEndDriveToNode() : Bool; // DoEndDriveToNode;
+	function DoStartDriveChase(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveChase;ScriptExecutionContext
+	function DoStartDriveFollow(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveFollow;ScriptExecutionContext
+	function DoStartDriveJoinTraffic(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveJoinTraffic;ScriptExecutionContext
+	function DoStartDriveOnSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveOnSpline;ScriptExecutionContext
+	function DoStartDrivePanic(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDrivePanic;ScriptExecutionContext
+	function DoStartDrivePatrol(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDrivePatrol;ScriptExecutionContext
+	function DoStartDriveRacing(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveRacing;ScriptExecutionContext
+	function DoStartDriveToNode(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveToNode;ScriptExecutionContext
+	function DoStartDriveToPointAutonomous(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveToPointAutonomous;ScriptExecutionContext
+	function DoStartDriveToPointAutonomousAutodrive(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveToPointAutonomousAutodrive;ScriptExecutionContext
+	function DoStartDriveToPointAutonomousAutodriveInCombat(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartDriveToPointAutonomousAutodriveInCombat;ScriptExecutionContext
+	function DoStopDriveChase(context : AIbehaviorScriptExecutionContext) : Bool; // DoStopDriveChase;ScriptExecutionContext
+	function DoStopDriveFollow(context : AIbehaviorScriptExecutionContext) : Bool; // DoStopDriveFollow;ScriptExecutionContext
+	function DoStopDrivePanic(context : AIbehaviorScriptExecutionContext) : Bool; // DoStopDrivePanic;ScriptExecutionContext
+	function DoStopDrivePatrol(context : AIbehaviorScriptExecutionContext) : Bool; // DoStopDrivePatrol;ScriptExecutionContext
+	function DoStopDriveToPointAutonomous(context : AIbehaviorScriptExecutionContext) : Bool; // DoStopDriveToPointAutonomous;ScriptExecutionContext
+	function DoUpdateDriveChase(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDriveChase;ScriptExecutionContext
+	function DoUpdateDriveFollow(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDriveFollow;ScriptExecutionContext
+	function DoUpdateDrivePanic(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDrivePanic;ScriptExecutionContext
+	function DoUpdateDrivePatrol(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDrivePatrol;ScriptExecutionContext
+	function DoUpdateDriveToPointAutonomous(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDriveToPointAutonomous;ScriptExecutionContext
+	function DoUpdateDriveToPointAutonomousAutodrive(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDriveToPointAutonomousAutodrive;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

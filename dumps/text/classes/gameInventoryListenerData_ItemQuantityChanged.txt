@@ -1,0 +1,7 @@
+import struct gameInventoryListenerData_ItemQuantityChanged extends gameInventoryListenerData_Base
+{
+}
+
+import struct gameInventoryListenerData_Base
+{
+}

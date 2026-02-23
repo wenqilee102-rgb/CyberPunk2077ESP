@@ -1,0 +1,12 @@
+import class questRemoveToken_NodeSubType extends questIContentTokenManager_NodeSubType
+{
+	var removeAll : Bool;
+}
+
+import class abstract questIContentTokenManager_NodeSubType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

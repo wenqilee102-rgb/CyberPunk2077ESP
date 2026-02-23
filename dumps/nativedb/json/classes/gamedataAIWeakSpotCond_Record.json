@@ -1,0 +1,1 @@
+{"a":"gamedataAIActionSubCondition_Record","b":"gamedataAIWeakSpotCond_Record","c":"AIWeakSpotCond_Record","d":24,"f":[{"a":"IncludeDestroyed","c":{"a":1},"d":4},{"a":"Weakspot","c":{"a":27,"c":{"b":"gamedataWeakspot_Record"}},"d":4},{"a":"WeakspotHandle","c":{"a":26,"c":{"b":"gamedataWeakspot_Record"}},"d":4}]}

@@ -1,0 +1,16 @@
+import class animAnimVariableQuaternion extends animAnimVariable
+{
+	var roll : Float;
+	var pitch : Float;
+	var yaw : Float;
+	var default : Quaternion;
+}
+
+import class abstract animAnimVariable extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

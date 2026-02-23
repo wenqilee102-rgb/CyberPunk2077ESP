@@ -1,0 +1,43 @@
+class InventoryDataManager extends IScriptable
+{
+	private   var gameInstance : ScriptGameInstance;
+	private   var player : whandle:PlayerPuppet;
+	private   var transactionSystem : whandle:gameTransactionSystem;
+	private   var equipmentSystem : whandle:EquipmentSystem;
+	private   var statsSystem : whandle:gameStatsSystem;
+	private   var locMgr : handle:UILocalizationMap;
+
+	function CanCompareItems(itemId : gameItemID, compareItemId : gameItemID) : Bool; // CanCompareItems;ItemIDItemID
+	function FillStatsList(itemData : whandle:gameItemData, statRecords : script_ref:array:whandle:gamedataStat_Record, statList : script_ref:array:gameStatViewData, canCompare : Bool, compareStatRecords : script_ref:array:whandle:gamedataStat_Record, optional compareWithData : whandle:gameItemData); // FillStatsList;gameItemDatascript_ref<array<Stat_Record>>script_ref<array<StatViewData>>Boolscript_ref<array<Stat_Record>>gameItemData
+	function GetEquippedItemIdInArea(equipArea : gamedataEquipmentArea, optional slot : Int32) : gameItemID; // GetEquippedItemIdInArea;gamedataEquipmentAreaInt32
+	function GetExternalItemData(ownerId : entEntityID, externalItemId : gameItemID) : whandle:gameItemData; // GetExternalItemData;EntityIDItemID
+	function GetExternalItemStats(ownerId : entEntityID, externalItemId : gameItemID, optional compareItemId : gameItemID) : gameItemViewData; // GetExternalItemStats;EntityIDItemIDItemID
+	function GetItemEquipArea(itemId : gameItemID) : gamedataEquipmentArea; // GetItemEquipArea;ItemID
+	function GetItemStatsByData(itemData : whandle:gameItemData, optional compareWithData : whandle:gameItemData) : gameItemViewData; // GetItemStatsByData;gameItemDatagameItemData
+	function GetItemsList(out itemsList : array:whandle:gameItemData); // GetItemsList;array<gameItemData>
+	function GetItemsListByTag(tag : CName, out itemsList : array:whandle:gameItemData); // GetItemsListByTag;CNamearray<gameItemData>
+	function GetLastLootedItems(count : Int32, itemsList : script_ref:array:whandle:gameItemData); // GetLastLootedItems;Int32script_ref<array<gameItemData>>
+	function GetPlayer() : whandle:PlayerPuppet; // GetPlayer;
+	function GetPlayerItemData(externalItemId : gameItemID) : whandle:gameItemData; // GetPlayerItemData;ItemID
+	function GetPlayerItemStats(itemId : gameItemID, optional compareItemId : gameItemID) : gameItemViewData; // GetPlayerItemStats;ItemIDItemID
+	function GetPlayerStats(statsList : script_ref:array:gameStatViewData); // GetPlayerStats;script_ref<array<StatViewData>>
+	function GetStatsList(mapPath : TweakDBID, itemData : whandle:gameItemData, primeStatsList : script_ref:array:gameStatViewData, secondStatsList : script_ref:array:gameStatViewData, optional compareWithData : whandle:gameItemData); // GetStatsList;TweakDBIDgameItemDatascript_ref<array<StatViewData>>script_ref<array<StatViewData>>gameItemData
+	function GetStatsUIMapName(itemData : whandle:gameItemData) : String; // GetStatsUIMapName;gameItemData
+	function GetStatsUIMapName(itemId : gameItemID) : String; // GetStatsUIMapName;ItemID
+	function Initialize(player : handle:PlayerPuppet); // Initialize;PlayerPuppet
+	function QualityEnumToName(qualityStatValue : gamedataQuality) : String; // QualityEnumToName;gamedataQuality
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

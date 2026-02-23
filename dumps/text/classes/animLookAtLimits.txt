@@ -1,0 +1,7 @@
+import struct animLookAtLimits
+{
+	var softLimitDegrees : Float;
+	var hardLimitDegrees : Float;
+	var hardLimitDistance : Float;
+	var backLimitDegrees : Float;
+}

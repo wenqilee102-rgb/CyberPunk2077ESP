@@ -1,0 +1,30 @@
+import class gamedataAttackDirection_Record extends gamedataTweakDBRecord
+{
+	import function Direction() : whandle:gamedataMeleeAttackDirection_Record; // Direction
+	import function DirectionHandle() : handle:gamedataMeleeAttackDirection_Record; // DirectionHandle
+	import function EndPosition() : Vector3; // EndPosition
+	import function IsThrust() : Bool; // IsThrust
+	import function MiddlePosition() : Vector3; // MiddlePosition
+	import function StartPosition() : Vector3; // StartPosition
+	import function UseMiddlePosition() : Bool; // UseMiddlePosition
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

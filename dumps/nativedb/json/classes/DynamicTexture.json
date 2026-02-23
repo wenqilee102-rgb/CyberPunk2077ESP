@@ -1,0 +1,1 @@
+{"a":"ITexture","b":"DynamicTexture","d":8,"e":[{"a":{"a":7},"b":"width","c":128},{"a":{"a":7},"b":"height","c":128},{"a":{"a":1},"b":"scaleToViewport","c":128},{"a":{"a":1},"b":"mipChain","c":128},{"a":{"a":3},"b":"samplesCount","c":128},{"a":{"b":"DynamicTextureDataFormat"},"b":"dataFormat","c":128},{"a":{"a":26,"c":{"b":"IDynamicTextureGenerator"}},"b":"generator","c":128}]}

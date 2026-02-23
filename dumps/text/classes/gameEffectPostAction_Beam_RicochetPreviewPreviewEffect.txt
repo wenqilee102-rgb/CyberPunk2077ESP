@@ -1,0 +1,8 @@
+import struct gameEffectPostAction_Beam_RicochetPreviewPreviewEffect
+{
+	var effect : raRef:worldEffect;
+	var effectTag : CName;
+	var effectSnap : raRef:worldEffect;
+	var effectSnapTag : CName;
+	var forwardOffset : Float;
+}

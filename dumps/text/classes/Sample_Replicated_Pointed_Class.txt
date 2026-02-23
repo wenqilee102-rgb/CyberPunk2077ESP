@@ -1,0 +1,4 @@
+import struct Sample_Replicated_Pointed_Class
+{
+	var property : Bool;
+}

@@ -1,0 +1,8 @@
+import class AIbehaviorInstantConditionDefinition extends ISerializable
+{
+	var condition : handle:AIbehaviorConditionDefinition;
+}
+
+import class abstract ISerializable
+{
+}

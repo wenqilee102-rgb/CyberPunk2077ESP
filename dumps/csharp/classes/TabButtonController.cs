@@ -1,0 +1,58 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class TabButtonController : inkToggleController
+	{
+		private inkTextWidgetReference _label;
+		private inkImageWidgetReference _icon;
+		private CInt32 _data;
+		private CString _labelSet;
+		private CString _iconSet;
+
+		[Ordinal(16)] 
+		[RED("label")] 
+		public inkTextWidgetReference Label
+		{
+			get => GetProperty(ref _label);
+			set => SetProperty(ref _label, value);
+		}
+
+		[Ordinal(17)] 
+		[RED("icon")] 
+		public inkImageWidgetReference Icon
+		{
+			get => GetProperty(ref _icon);
+			set => SetProperty(ref _icon, value);
+		}
+
+		[Ordinal(18)] 
+		[RED("data")] 
+		public CInt32 Data
+		{
+			get => GetProperty(ref _data);
+			set => SetProperty(ref _data, value);
+		}
+
+		[Ordinal(19)] 
+		[RED("labelSet")] 
+		public CString LabelSet
+		{
+			get => GetProperty(ref _labelSet);
+			set => SetProperty(ref _labelSet, value);
+		}
+
+		[Ordinal(20)] 
+		[RED("iconSet")] 
+		public CString IconSet
+		{
+			get => GetProperty(ref _iconSet);
+			set => SetProperty(ref _iconSet, value);
+		}
+
+		public TabButtonController(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

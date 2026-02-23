@@ -1,0 +1,24 @@
+import class audioGroupingTagMetadata extends audioAudioMetadata
+{
+	var shape : CName;
+	var classificationMethod : audioClassificationMethod;
+	var inputEmitterName : CName;
+	var inputEventNames : array:CName;
+	var inputTags : array:CName;
+	var outputEventId : CName;
+	var minimalGroupCount : Float;
+	var fullGroupCount : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct animFacialSetup_PosesBufferInfo
+{
+	var face : animFacialSetup_OneSermoPoseBufferInfo;
+	var tongue : animFacialSetup_OneSermoPoseBufferInfo;
+	var eyes : animFacialSetup_OneSermoPoseBufferInfo;
+}

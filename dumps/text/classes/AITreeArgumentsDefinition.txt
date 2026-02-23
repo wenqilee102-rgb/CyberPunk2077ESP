@@ -1,0 +1,4 @@
+import struct AITreeArgumentsDefinition
+{
+	var args : array:handle:AIArgumentDefinition;
+}

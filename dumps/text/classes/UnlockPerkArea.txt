@@ -1,0 +1,30 @@
+class UnlockPerkArea extends gamePlayerScriptableSystemRequest
+{
+	public    var perkArea : gamedataPerkArea;
+
+	function Set(_owner : whandle:gameObject, areaType : gamedataPerkArea); // Set;GameObjectgamedataPerkArea
+}
+
+import class gamePlayerScriptableSystemRequest extends gameScriptableSystemRequest
+{
+	var owner : whandle:gameObject;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

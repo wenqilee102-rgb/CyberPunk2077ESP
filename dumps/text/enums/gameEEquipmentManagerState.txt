@@ -1,0 +1,4 @@
+enum gameEEquipmentManagerState
+{
+	InfiniteAmmo = 1
+}

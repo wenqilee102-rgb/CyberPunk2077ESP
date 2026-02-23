@@ -1,0 +1,44 @@
+class AnimationSystemForcedVisibilityEntityData extends IScriptable
+{
+	private   var owner : whandle:AnimationSystemForcedVisibilityManager;
+	private   var entityID : entEntityID;
+	private   var forcedVisibilityInAnimSystemRequests : array:handle:ForcedVisibilityInAnimSystemData;
+	private   var delayedForcedVisibilityInAnimSystemRequests : array:handle:ForcedVisibilityInAnimSystemData;
+	private   var hasVisibilityForcedInAnimSystem : Bool;
+	private   var hasVisibilityForcedOnlyInFrustumInAnimSystem : Bool;
+
+	function AddDelayedForcedVisiblityInAnimSystemRequest(data : handle:ForcedVisibilityInAnimSystemData); // AddDelayedForcedVisiblityInAnimSystemRequest;ForcedVisibilityInAnimSystemData
+	function AddForcedVisiblityInAnimSystemRequest(data : handle:ForcedVisibilityInAnimSystemData); // AddForcedVisiblityInAnimSystemRequest;ForcedVisibilityInAnimSystemData
+	function ClearAllRequests(); // ClearAllRequests;
+	function GetDelayedForcedVisiblityInAnimSystemRequest(sourceName : CName) : handle:ForcedVisibilityInAnimSystemData; // GetDelayedForcedVisiblityInAnimSystemRequest;CName
+	function GetEntityID() : entEntityID; // GetEntityID;
+	function GetForcedVisiblityInAnimSystemRequest(sourceName : CName) : handle:ForcedVisibilityInAnimSystemData; // GetForcedVisiblityInAnimSystemRequest;CName
+	function HasActiveRequestsForForcedVisibilityInAnimSystem() : Bool; // HasActiveRequestsForForcedVisibilityInAnimSystem;
+	function HasActiveRequestsForForcedVisibilityOnlyInFrustumInAnimSystem() : Bool; // HasActiveRequestsForForcedVisibilityOnlyInFrustumInAnimSystem;
+	function HasDelayedForcedVisiblityInAnimSystemRequest(data : handle:ForcedVisibilityInAnimSystemData) : Bool; // HasDelayedForcedVisiblityInAnimSystemRequest;ForcedVisibilityInAnimSystemData
+	function HasDelayedForcedVisiblityInAnimSystemRequest(sourceName : CName) : Bool; // HasDelayedForcedVisiblityInAnimSystemRequest;CName
+	function HasForcedVisiblityInAnimSystemRequest(data : handle:ForcedVisibilityInAnimSystemData) : Bool; // HasForcedVisiblityInAnimSystemRequest;ForcedVisibilityInAnimSystemData
+	function HasForcedVisiblityInAnimSystemRequest(sourceName : CName) : Bool; // HasForcedVisiblityInAnimSystemRequest;CName
+	function HasVisibilityForcedInAnimSystem() : Bool; // HasVisibilityForcedInAnimSystem;
+	function HasVisibilityForcedOnlyInFrustumInAnimSystem() : Bool; // HasVisibilityForcedOnlyInFrustumInAnimSystem;
+	function Initialize(entityID : entEntityID, owner : whandle:AnimationSystemForcedVisibilityManager); // Initialize;EntityIDAnimationSystemForcedVisibilityManager
+	function RemoveDelayedForcedVisiblityInAnimSystemRequest(data : handle:ForcedVisibilityInAnimSystemData); // RemoveDelayedForcedVisiblityInAnimSystemRequest;ForcedVisibilityInAnimSystemData
+	function RemoveForcedVisiblityInAnimSystemRequest(data : handle:ForcedVisibilityInAnimSystemData); // RemoveForcedVisiblityInAnimSystemRequest;ForcedVisibilityInAnimSystemData
+	function RemoveForcedVisiblityInAnimSystemRequest(sourceName : CName); // RemoveForcedVisiblityInAnimSystemRequest;CName
+	function SetHasVisibilityForcedInAnimSystem(isVisible : Bool); // SetHasVisibilityForcedInAnimSystem;Bool
+	function SetHasVisibilityForcedOnlyInFrustumInAnimSystem(isVisible : Bool); // SetHasVisibilityForcedOnlyInFrustumInAnimSystem;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

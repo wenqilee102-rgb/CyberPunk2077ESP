@@ -1,0 +1,10 @@
+import struct gameReplicatedEntityEvent extends entReplicatedItem
+{
+	var value : handle:redEvent;
+}
+
+import struct entReplicatedItem
+{
+	var entity : whandle:entEntity;
+	var netTime : netTime;
+}

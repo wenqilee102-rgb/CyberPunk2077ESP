@@ -1,0 +1,19 @@
+class abstract AICombatTargetHelper extends IScriptable
+{
+	static function SetCombatTargetChangeSignal(context : AIbehaviorScriptExecutionContext); // AICombatTargetHelper::SetCombatTargetChangeSignal;ScriptExecutionContext
+	static function SetNewCombatTarget(context : AIbehaviorScriptExecutionContext, target : handle:gameObject) : Bool; // AICombatTargetHelper::SetNewCombatTarget;ScriptExecutionContextGameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

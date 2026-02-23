@@ -1,0 +1,6 @@
+import struct gameSmartObjectTransformDictionaryTransformEntry
+{
+	var transform : Transform;
+	var usage : Uint32;
+	var id : Uint16;
+}

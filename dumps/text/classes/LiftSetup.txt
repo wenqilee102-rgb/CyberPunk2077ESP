@@ -1,0 +1,17 @@
+struct LiftSetup
+{
+	public    var startingFloorTerminal : Int32;
+	public    var liftSpeed : Float;
+	public    var liftStartingDelay : Float;
+	public    var liftTravelTimeOverride : Float;
+	public    var isLiftTravelTimeOverride : Bool;
+	public    var emptyLiftSpeedMultiplier : Float;
+	public    var radioStationNumer : Int32;
+	public    var speakerDestroyedQuestFact : CName;
+	public    var speakerDestroyedVFX : CName;
+	public    var authorizationTextOverride : String;
+	public    var movingCurve : CName;
+	public    var extraFX : EffectFiringData;
+	public    var useExtraVerification : Bool;
+	public    var errorMargin : Float;
+}

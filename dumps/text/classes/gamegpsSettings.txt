@@ -1,0 +1,10 @@
+import struct gamegpsSettings
+{
+	var lineEffectOnFoot : raRef:worldEffect;
+	var lineEffectVehicle : raRef:worldEffect;
+	var fixedPathOffset : Vector3;
+	var fixedPortalMappinOffset : Vector3;
+	var pathRefreshTimeInterval : Float;
+	var lastPlayerNavmeshPositionRefreshTimeIntervalSecs : Float;
+	var maxPathDisplayLength : Float;
+}

@@ -1,0 +1,26 @@
+import class gameBreachUIParameters extends IScriptable
+{
+	var trackingChange : gameBreachUITrackingChange;
+	var tracking : Bool;
+	var visible : Bool;
+	var almostTimeout : Bool;
+	var position : Vector2;
+	var radius : Float;
+	var distance : Float;
+	var health : Float;
+	var maxHealth : Float;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

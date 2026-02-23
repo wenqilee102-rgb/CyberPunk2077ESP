@@ -1,0 +1,29 @@
+class AnimFeature_CameraRecoil extends animAnimFeature
+{
+	public    var backward_offset : Float;
+	public    var side_offset : Float;
+	public    var tilt_angle : Float;
+	public    var yaw_angle : Float;
+	public    var pitch_angle : Float;
+	public    var translate_transform_speed : Float;
+	public    var rotate_transform_speed : Float;
+	public    var is_offset : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

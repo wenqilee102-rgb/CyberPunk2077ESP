@@ -1,0 +1,7 @@
+import struct questPreloadFX_NodeTypeParams
+{
+	var preload : Bool;
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+	var effectName : CName;
+}

@@ -1,0 +1,10 @@
+import struct gameuiForcePlayerCustomizationData
+{
+	var customizationPart : gameuiCharacterCustomizationPart;
+	var uiSlot : CName;
+	var index : Uint32;
+	var partUiSlot : CName;
+	var partIndex : Uint32;
+	var definitionUiSlot : CName;
+	var definition : CName;
+}

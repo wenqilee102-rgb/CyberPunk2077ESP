@@ -1,0 +1,1 @@
+{"a":"AIAIEvent","b":"AIAddedAsHostileThreat","c":"AddedAsHostileThreat","d":8,"e":[{"a":{"a":27,"c":{"b":"AITargetTrackerComponent"}},"b":"threateningEntity","c":128},{"a":{"a":1},"b":"threateningEntityCanTriggersCombat","c":128}]}

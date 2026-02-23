@@ -1,0 +1,5 @@
+import struct gameNearestRoadFromPlayerInfo
+{
+	var pathLength : Float;
+	var point : Vector4;
+}

@@ -1,0 +1,28 @@
+import class gamedataHandicapLootList_Record extends gamedataTweakDBRecord
+{
+	import function GetLootCount() : Int32; // GetLootCount
+	import function GetLootItem(index : Int32) : whandle:gamedataHandicapLootPreset_Record; // GetLootItem
+	import function GetLootItemHandle(index : Int32) : handle:gamedataHandicapLootPreset_Record; // GetLootItemHandle
+	import function Loot(out outList : array:whandle:gamedataHandicapLootPreset_Record); // Loot
+	import function LootContains(item : whandle:gamedataHandicapLootPreset_Record) : Bool; // LootContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

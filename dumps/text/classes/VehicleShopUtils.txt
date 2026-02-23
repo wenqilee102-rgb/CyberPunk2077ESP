@@ -1,0 +1,20 @@
+class VehicleShopUtils extends IScriptable
+{
+	static function BrandToLocKey(carBrand : CName) : String; // VehicleShopUtils::BrandToLocKey;CName
+	static function BrandToTexturePartString(carBrand : CName) : String; // VehicleShopUtils::BrandToTexturePartString;CName
+	static function GetDiscountedPrice(price : Int32, discount : Float) : Int32; // VehicleShopUtils::GetDiscountedPrice;Int32Float
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

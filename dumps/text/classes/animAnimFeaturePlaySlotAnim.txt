@@ -1,0 +1,32 @@
+import class animAnimFeaturePlaySlotAnim extends animAnimFeature
+{
+	var slotName : CName;
+	var animationName : CName;
+	var blendInTime : Float;
+	var blendOutTime : Float;
+	var speedMultiplier : Float;
+	var startOffsetRelative : Float;
+	var playAsAdditive : Bool;
+	var enableMotion : Bool;
+	var numberOfLoops : Int32;
+
+	import function SetSlotName(); // SetSlotName
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

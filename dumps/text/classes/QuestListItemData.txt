@@ -1,0 +1,40 @@
+class QuestListItemData extends IScriptable
+{
+	public    var questType : QuestListItemType;
+	public    var lastUpdateTimestamp : GameTime;
+	public    var isTrackedQuest : Bool;
+	public    var isOpenedQuest : Bool;
+	public    var questData : whandle:gameJournalQuest;
+	public    var journalManager : whandle:gameJournalManager;
+	public    var playerLevel : Int32;
+	public    var recommendedLevel : Int32;
+	public    var State : gameJournalEntryState;
+	public    var distance : Float;
+	private   var distancesFetched : Bool;
+	private   var objectivesDistances : array:handle:QuestListDistanceData;
+
+	function GetDistances() : array:handle:QuestListDistanceData; // GetDistances;
+	function GetEntryHash() : Int32; // GetEntryHash;
+	function GetFirstObjective() : whandle:gameJournalQuestObjective; // GetFirstObjective;
+	function GetNearestDistance() : handle:QuestListDistanceData; // GetNearestDistance;
+	function GetQuestType() : QuestListItemType; // GetQuestType;
+	function GetTrackedOrNearest() : handle:QuestListDistanceData; // GetTrackedOrNearest;
+	function QuestLastUpdateTime(); // QuestLastUpdateTime;
+	function SetVisited(); // SetVisited;
+	function isDone() : Bool; // isDone;
+	function isVisited() : Bool; // isVisited;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,25 @@
+class PuppetListener extends IScriptable
+{
+	public    var prereqOwner : handle:gamePrereqState;
+
+	function ModifyOwner(owner : handle:gamePrereqState); // ModifyOwner;PrereqState
+	function OnHitReactionSourceChanged(hitSource : Int32); // OnHitReactionSourceChanged;Int32
+	function OnHitReactionTypeChanged(hitType : Int32); // OnHitReactionTypeChanged;Int32
+	function OnIsTrackingPlayerChanged(isTrackingPlayer : Bool); // OnIsTrackingPlayerChanged;Bool
+	function OnRevealedStateChanged(isRevealed : Bool); // OnRevealedStateChanged;Bool
+	function RegisterOwner(owner : handle:gamePrereqState) : Bool; // RegisterOwner;PrereqState
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

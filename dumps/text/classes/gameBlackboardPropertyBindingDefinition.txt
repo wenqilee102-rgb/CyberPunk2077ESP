@@ -1,0 +1,6 @@
+import struct gameBlackboardPropertyBindingDefinition
+{
+	var serializableID : gameBlackboardSerializableID;
+	var propertyPath : array:CName;
+	var propertyType : CName;
+}

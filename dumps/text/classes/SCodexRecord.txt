@@ -1,0 +1,7 @@
+struct SCodexRecord
+{
+	public    var RecordID : TweakDBID;
+	public    var RecordContent : array:SCodexRecordPart;
+	public    var Tags : array:CName;
+	public    var Unlocked : Bool;
+}

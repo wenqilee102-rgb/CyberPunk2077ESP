@@ -1,0 +1,15 @@
+import class worldPhysicalFractureFieldNode extends worldNode
+{
+	var shape : physicsTriggerShape;
+	var fractureFieldParams : physicsFractureFieldParams;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"b":"gameinteractionsChoiceLookAtDescriptor","d":8,"g":true,"e":[{"a":{"b":"gameinteractionsChoiceLookAtType"},"b":"type","c":128},{"a":{"a":14},"b":"slotName","c":128},{"a":{"b":"Vector3"},"b":"offset","c":128},{"a":{"b":"gameinteractionsOrbID"},"b":"orbId","c":128}]}

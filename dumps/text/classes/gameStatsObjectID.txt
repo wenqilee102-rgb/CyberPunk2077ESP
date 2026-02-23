@@ -1,0 +1,10 @@
+import struct gameStatsObjectID
+{
+	var entityHash : Uint64;
+	var idType : gameStatIDType;
+
+	import static function ExtractEntityID(id : gameStatsObjectID) : entEntityID; // ExtractEntityID
+	import static function IsDefined(id : gameStatsObjectID) : Bool; // IsDefined
+	import static function IsDynamic(id : gameStatsObjectID) : Bool; // IsDynamic
+	import static function IsEntity(id : gameStatsObjectID) : Bool; // IsEntity
+}

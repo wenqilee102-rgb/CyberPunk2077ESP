@@ -1,0 +1,8 @@
+import struct EngineTime
+{
+	import static function FromFloat(value : Float) : EngineTime; // FromFloat
+	import static function IsValid(self : EngineTime) : Bool; // IsValid
+	import static function ToDouble(self : EngineTime) : Double; // ToDouble
+	import static function ToFloat(self : EngineTime) : Float; // ToFloat
+	import static function ToString(self : EngineTime) : String; // ToString
+}

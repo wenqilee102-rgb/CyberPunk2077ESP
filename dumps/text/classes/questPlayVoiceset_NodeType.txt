@@ -1,0 +1,24 @@
+import class questPlayVoiceset_NodeType extends questIVoicesetManager_NodeType
+{
+	var params : array:questPlayVoiceset_NodeTypeParams;
+}
+
+import class abstract questIVoicesetManager_NodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

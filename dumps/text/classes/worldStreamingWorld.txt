@@ -1,0 +1,37 @@
+import class worldStreamingWorld extends CResource
+{
+	var version : Uint32;
+	var blockRefs : array:rRef:worldStreamingBlock;
+	var environmentDefinition : rRef:worldEnvironmentDefinition;
+	var worldBoundingBox : Box;
+	var persistentStateData : rRef:CResource;
+	var deviceResource : rRef:CResource;
+	var deviceInitResource : rRef:CResource;
+	var mappinResource : rRef:CResource;
+	var poiMappinResource : rRef:CResource;
+	var areaResource : rRef:CResource;
+	var lootResource : rRef:CResource;
+	var locationResource : rRef:CResource;
+	var locomotionPathResource : raRef:CResource;
+	var autoFoliageMapping : raRef:worldAutoFoliageMapping;
+	var trafficPersistentResource : raRef:CResource;
+	var trafficLaneConnectivityResource : raRef:CResource;
+	var trafficLanePolygonsResource : raRef:CResource;
+	var trafficLaneSpotsResource : raRef:CResource;
+	var trafficSpatialRepresentationResource : raRef:CResource;
+	var trafficCollisionResource : raRef:CResource;
+	var trafficNullAreaCollisionResource : raRef:CResource;
+	var smartObjectCompiledRootResource : raRef:CResource;
+	var geometryCacheResource : rRef:CResource;
+	var wasBuiltForSceneRecording : Bool;
+	var streamingQueryDataResource : raRef:worldStreamingQueryDataResource;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

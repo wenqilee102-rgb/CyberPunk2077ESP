@@ -1,0 +1,30 @@
+import class gamedataRoachRaceMovement_Record extends gamedataTweakDBRecord
+{
+	import function GetRangeCount() : Int32; // GetRangeCount
+	import function GetRangeItem(index : Int32) : Float; // GetRangeItem
+	import function Name() : CName; // Name
+	import function Range() : array:Float; // Range
+	import function RangeContains(item : Float) : Bool; // RangeContains
+	import function UsingRange() : Bool; // UsingRange
+	import function Value() : Float; // Value
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

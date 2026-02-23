@@ -1,0 +1,10 @@
+import struct animAnimNode_FloatValueDebugProvider
+{
+	var isEnabled : Bool;
+	var min : Float;
+	var max : Float;
+	var progress : Float;
+	var auto : Bool;
+	var speed : Float;
+	var wrap : Bool;
+}

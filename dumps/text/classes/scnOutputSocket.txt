@@ -1,0 +1,5 @@
+import struct scnOutputSocket
+{
+	var stamp : scnOutputSocketStamp;
+	var destinations : array:scnInputSocketId;
+}

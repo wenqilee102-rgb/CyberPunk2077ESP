@@ -1,0 +1,7 @@
+import struct workInternalCached_StopCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

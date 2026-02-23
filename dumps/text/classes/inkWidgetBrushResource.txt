@@ -1,0 +1,13 @@
+import class inkWidgetBrushResource extends CResource
+{
+	var brush : handle:inkWidgetBrush;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

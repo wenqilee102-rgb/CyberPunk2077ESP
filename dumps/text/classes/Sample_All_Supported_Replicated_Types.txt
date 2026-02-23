@@ -1,0 +1,21 @@
+import struct Sample_All_Supported_Replicated_Types
+{
+	var bool : Bool;
+	var uint8 : Uint8;
+	var int8 : Int8;
+	var uint16 : Uint16;
+	var int16 : Int16;
+	var uint32 : Uint32;
+	var int32 : Int32;
+	var uint64 : Uint64;
+	var int64 : Int64;
+	var float : Float;
+	var double : Double;
+	var name : CName;
+	var string : String;
+	var enum : Sample_Replicated_Enum;
+	var struct : Sample_Replicated_Struct;
+	var dynamicArray : array:Sample_Replicated_Struct;
+	var staticArray : static:10,Sample_Replicated_Struct;
+	var THandle : handle:Sample_Replicated_Serializable;
+}

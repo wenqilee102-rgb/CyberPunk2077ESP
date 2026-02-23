@@ -1,0 +1,42 @@
+class UI_PlayerStatsDef extends gamebbScriptDefinition
+{
+	public    var MaxHealth : gamebbScriptID_Int32;
+	public    var CurrentHealth : gamebbScriptID_Int32;
+	public    var PhysicalResistance : gamebbScriptID_Int32;
+	public    var ThermalResistance : gamebbScriptID_Int32;
+	public    var EnergyResistance : gamebbScriptID_Int32;
+	public    var ChemicalResistance : gamebbScriptID_Int32;
+	public    var Level : gamebbScriptID_Int32;
+	public    var CurrentXP : gamebbScriptID_Int32;
+	public    var RequiredXP : gamebbScriptID_Int32;
+	public    var StreetCredLevel : gamebbScriptID_Int32;
+	public    var StreetCredPoints : gamebbScriptID_Int32;
+	public    var Attributes : gamebbScriptID_Variant;
+	public    var DevelopmentPoints : gamebbScriptID_Variant;
+	public    var Proficiency : gamebbScriptID_Variant;
+	public    var Perks : gamebbScriptID_Variant;
+	public    var ModifiedPerkArea : gamebbScriptID_Variant;
+	public    var weightMax : gamebbScriptID_Int32;
+	public    var currentInventoryWeight : gamebbScriptID_Float;
+	public    var isReplacer : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

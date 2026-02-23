@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"ForceVisionApperanceEvent","d":0,"e":[{"a":{"a":26,"c":{"b":"FocusForcedHighlightData"}},"b":"forcedHighlight","c":128},{"a":{"a":1},"b":"apply","c":128},{"a":{"a":1},"b":"forceCancel","c":128},{"a":{"a":1},"b":"ignoreStackEvaluation","c":128},{"a":{"a":26,"c":{"b":"IScriptable"}},"b":"responseData","c":128}]}

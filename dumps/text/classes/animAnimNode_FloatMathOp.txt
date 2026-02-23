@@ -1,0 +1,19 @@
+import class animAnimNode_FloatMathOp extends animAnimNode_FloatValue
+{
+	var operationType : animEAnimGraphMathOp;
+	var firstInputNode : animFloatLink;
+	var secondInputNode : animFloatLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

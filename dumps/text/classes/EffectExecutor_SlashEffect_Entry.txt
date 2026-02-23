@@ -1,0 +1,5 @@
+struct EffectExecutor_SlashEffect_Entry
+{
+	public    var attackNumber : Int32;
+	public    var effectNames : array:CName;
+}

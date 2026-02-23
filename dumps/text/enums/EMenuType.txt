@@ -1,0 +1,6 @@
+enum EMenuType
+{
+	Hub = 0,
+	Pause = 1,
+	All = 2
+}

@@ -1,0 +1,15 @@
+import class abstract worldDebugColoring_DistanceAbstractBase extends worldEditorDebugColoringSettings
+{
+	var maxColor : Color;
+	var minColor : Color;
+	var minDistance : Float;
+	var maxDistance : Float;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

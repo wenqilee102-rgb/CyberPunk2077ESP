@@ -1,0 +1,7 @@
+struct SPresetTimetableEntry
+{
+	public    var time : SSimpleGameTime;
+	public    var useTime : Bool;
+	public    var arrayPosition : Int32;
+	public    var entryID : Uint32;
+}

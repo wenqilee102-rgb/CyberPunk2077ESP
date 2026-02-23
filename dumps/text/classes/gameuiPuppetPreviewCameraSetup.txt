@@ -1,0 +1,6 @@
+import struct gameuiPuppetPreviewCameraSetup
+{
+	var slotName : CName;
+	var cameraZoom : Float;
+	var interpolationTime : Float;
+}

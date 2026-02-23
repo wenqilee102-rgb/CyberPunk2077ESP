@@ -1,0 +1,6 @@
+import struct LibTreeDefTreeList
+{
+	var variableId : Uint16;
+	var treeVariable : CName;
+	var v : array:handle:LibTreeCTreeReference;
+}

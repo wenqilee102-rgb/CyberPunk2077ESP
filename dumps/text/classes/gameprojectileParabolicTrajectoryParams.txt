@@ -1,0 +1,24 @@
+import class gameprojectileParabolicTrajectoryParams extends gameprojectileTrajectoryParams
+{
+	import static function GetAccelTargetAngleParabolicParams(accel : Vector4, target : Vector4, angle : Float, optional zVelocityClamp : Float) : handle:gameprojectileParabolicTrajectoryParams; // GetAccelTargetAngleParabolicParams
+	import static function GetAccelVelParabolicParams(accel : Vector4, vel : Float, optional zVelocityClamp : Float) : handle:gameprojectileParabolicTrajectoryParams; // GetAccelVelParabolicParams
+	import static function GetVelTargetParabolicParams(target : Vector4, vel : Float, optional zVelocityClamp : Float) : handle:gameprojectileParabolicTrajectoryParams; // GetVelTargetParabolicParams
+}
+
+import class abstract gameprojectileTrajectoryParams extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

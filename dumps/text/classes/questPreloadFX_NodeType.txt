@@ -1,0 +1,24 @@
+import class questPreloadFX_NodeType extends questIFXManagerNodeType
+{
+	var params : array:questPreloadFX_NodeTypeParams;
+}
+
+import class abstract questIFXManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

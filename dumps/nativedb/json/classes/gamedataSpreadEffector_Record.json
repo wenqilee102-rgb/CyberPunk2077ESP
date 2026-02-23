@@ -1,0 +1,1 @@
+{"a":"gamedataEffector_Record","b":"gamedataSpreadEffector_Record","c":"SpreadEffector_Record","d":24,"f":[{"a":"EffectTag","c":{"a":14},"d":4},{"a":"ObjectAction","c":{"a":27,"c":{"b":"gamedataObjectAction_Record"}},"d":4},{"a":"ObjectActionHandle","c":{"a":26,"c":{"b":"gamedataObjectAction_Record"}},"d":4},{"a":"SpreadToAllTargetsInTheArea","c":{"a":1},"d":4}]}

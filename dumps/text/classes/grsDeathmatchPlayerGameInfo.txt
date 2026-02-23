@@ -1,0 +1,10 @@
+import struct grsDeathmatchPlayerGameInfo
+{
+	var peerID : netPeerID;
+	var isInGame : Bool;
+	var isDead : Bool;
+	var spawnTime : netTime;
+	var killCount : Uint32;
+	var deathCount : Uint32;
+	var lastShooter : netPeerID;
+}

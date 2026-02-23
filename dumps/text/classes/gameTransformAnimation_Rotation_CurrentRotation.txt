@@ -1,0 +1,12 @@
+import class gameTransformAnimation_Rotation_CurrentRotation extends gameTransformAnimation_Rotation
+{
+	var offset : Quaternion;
+}
+
+import class abstract gameTransformAnimation_Rotation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

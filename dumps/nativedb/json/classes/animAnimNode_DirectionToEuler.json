@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloatValue","b":"animAnimNode_DirectionToEuler","d":8,"e":[{"a":{"b":"animVectorLink"},"b":"inputNode","c":128},{"a":{"b":"Vector4"},"b":"initialForwardVector","c":128},{"a":{"b":"animEDirectionToEuler"},"b":"conversionType","c":128}]}

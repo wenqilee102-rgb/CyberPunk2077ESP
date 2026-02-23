@@ -1,0 +1,18 @@
+class abstract AISubActionSetEquipWeaponsUtils extends IScriptable
+{
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCharacterRecordEquip_Record, itemsToEquip : script_ref:array:NPCItemToEquip, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionSetEquipWeaponsUtils::Update;ScriptExecutionContextAISubActionCharacterRecordEquip_Recordscript_ref<array<NPCItemToEquip>>Float
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

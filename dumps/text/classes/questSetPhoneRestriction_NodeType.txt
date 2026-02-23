@@ -1,0 +1,22 @@
+import class questSetPhoneRestriction_NodeType extends questIPhoneManagerNodeType
+{
+	var applyPhoneRestriction : Bool;
+	var forcedApply : Bool;
+	var forcedApplySource : CName;
+}
+
+import class abstract questIPhoneManagerNodeType extends questIRetOutputNodeType
+{
+}
+
+import class abstract questIRetOutputNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,20 @@
+import class animAnimNode_FrozenFrame extends animAnimNode_OnePoseInput
+{
+	var maxFramesFrozen : Int32;
+	var triggerEventName : CName;
+	var clearEventName : CName;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

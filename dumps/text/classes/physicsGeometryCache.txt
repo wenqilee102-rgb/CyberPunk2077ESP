@@ -1,0 +1,18 @@
+import class physicsGeometryCache extends CResource
+{
+	var bufferTableSectors : array:serializationDeferredDataBuffer;
+	var sectorEntries : array:physicsSectorEntry;
+	var sectorGeometries : array:physicsGeometryKey;
+	var sectorCacheEntries : array:physicsSectorCacheEntry;
+	var alwaysLoadedSector : physicsSectorEntry;
+	var alwaysLoadedSectorDDB : serializationDeferredDataBuffer;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

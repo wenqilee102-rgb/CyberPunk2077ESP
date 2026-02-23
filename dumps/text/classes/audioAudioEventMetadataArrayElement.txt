@@ -1,0 +1,15 @@
+import class audioAudioEventMetadataArrayElement extends ISerializable
+{
+	var redId : CName;
+	var wwiseId : Uint32;
+	var maxAttenuation : Float;
+	var minDuration : Float;
+	var maxDuration : Float;
+	var isLooping : Bool;
+	var stopActionEvents : array:CName;
+	var tags : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

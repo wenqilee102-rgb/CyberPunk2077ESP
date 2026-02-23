@@ -1,0 +1,13 @@
+import class CookedMultilayer_Setup extends CResource
+{
+	var dependencies : array:rRef:Multilayer_Setup;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

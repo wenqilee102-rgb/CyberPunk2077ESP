@@ -1,0 +1,29 @@
+class RadioStationDataProvider extends IScriptable
+{
+	static function GetChannelName(radioStationType : ERadioStationList) : String; // RadioStationDataProvider::GetChannelName;ERadioStationList
+	static function GetNextStationPocketRadio(currentIndex : Int32) : ERadioStationList; // RadioStationDataProvider::GetNextStationPocketRadio;Int32
+	static function GetNextStationTo(currentIndex : Int32) : ERadioStationList; // RadioStationDataProvider::GetNextStationTo;Int32
+	static function GetNextStationTo(station : ERadioStationList) : ERadioStationList; // RadioStationDataProvider::GetNextStationTo;ERadioStationList
+	static function GetPreviousStationTo(currentIndex : Int32) : ERadioStationList; // RadioStationDataProvider::GetPreviousStationTo;Int32
+	static function GetPreviousStationTo(station : ERadioStationList) : ERadioStationList; // RadioStationDataProvider::GetPreviousStationTo;ERadioStationList
+	static function GetRadioStationByUIIndex(index : Int32) : ERadioStationList; // RadioStationDataProvider::GetRadioStationByUIIndex;Int32
+	static function GetRadioStationUIIndex(index : Int32) : Int32; // RadioStationDataProvider::GetRadioStationUIIndex;Int32
+	static function GetRandomStation() : ERadioStationList; // RadioStationDataProvider::GetRandomStation;
+	static function GetStationName(radioStationType : ERadioStationList) : CName; // RadioStationDataProvider::GetStationName;ERadioStationList
+	static function GetStationNameByIndex(index : Int32, optional isUI : Bool) : CName; // RadioStationDataProvider::GetStationNameByIndex;Int32Bool
+	static function GetStationsCount() : Int32; // RadioStationDataProvider::GetStationsCount;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

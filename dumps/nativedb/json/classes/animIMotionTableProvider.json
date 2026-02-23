@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"animIMotionTableProvider","d":12,"e":[{"a":{"a":6},"b":"id","c":128},{"a":{"a":6},"b":"parentId","c":128},{"a":{"b":"animMotionTableType"},"b":"type","c":128},{"a":{"b":"animMotionTableAction"},"b":"action","c":128},{"a":{"b":"animParentStaticSwitchBranch"},"b":"parentStaticSwitchBranch","c":128}]}

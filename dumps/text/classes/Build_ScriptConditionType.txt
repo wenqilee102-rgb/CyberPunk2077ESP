@@ -1,0 +1,37 @@
+class Build_ScriptConditionType extends BluelineConditionTypeBase
+{
+	public    var questAssignment : TweakDBID;
+	public    var buildId : TweakDBID;
+	public    var difficulty : EGameplayChallengeLevel;
+	public    var comparisonType : ECompareOp;
+
+	function Evaluate(playerObject : handle:gameObject) : Bool; // Evaluate;GameObject
+	function GetBluelinePart(playerObject : handle:gameObject) : handle:gameinteractionsvisBluelinePart; // GetBluelinePart;GameObject
+	function ToString() : String; // ToString;
+}
+
+class abstract BluelineConditionTypeBase extends ScriptConditionTypeBase
+{
+	function ExecuteBluelineAction(playerObject : handle:gameObject); // ExecuteBluelineAction;GameObject
+	function GetBluelinePart(playerObject : handle:gameObject) : handle:gameinteractionsvisBluelinePart; // GetBluelinePart;GameObject
+}
+
+class abstract ScriptConditionTypeBase extends IScriptable
+{
+	function Evaluate(playerObject : handle:gameObject) : Bool; // Evaluate;GameObject
+	function ToString() : String; // ToString;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

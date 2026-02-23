@@ -1,0 +1,42 @@
+import class gamedataAimAssistMagnetism_Record extends gamedataTweakDBRecord
+{
+	import function BlendOffTime() : Float; // BlendOffTime
+	import function BlendOnTime() : Float; // BlendOnTime
+	import function CheckWeaponEffectiveRange() : Bool; // CheckWeaponEffectiveRange
+	import function DisableWithNoInput() : Bool; // DisableWithNoInput
+	import function DistanceMultiplier() : CName; // DistanceMultiplier
+	import function FullStickThreshold() : Float; // FullStickThreshold
+	import function FullStickYawAngleDisable() : Float; // FullStickYawAngleDisable
+	import function IsEnabled() : Bool; // IsEnabled
+	import function MaxStrength() : Vector2; // MaxStrength
+	import function MaxTimeTillOffTarget() : Float; // MaxTimeTillOffTarget
+	import function MinTimeTillOffTarget() : Float; // MinTimeTillOffTarget
+	import function PitchBoundAdditiveForYawMagnetism() : Float; // PitchBoundAdditiveForYawMagnetism
+	import function SoftLockBlendInTime() : Float; // SoftLockBlendInTime
+	import function SoftLockMinimumMagnetism() : Float; // SoftLockMinimumMagnetism
+	import function SoftLockTimeToReach() : Float; // SoftLockTimeToReach
+	import function StickInputMagMultiplier() : CName; // StickInputMagMultiplier
+	import function TargetLostBlendOut() : Bool; // TargetLostBlendOut
+	import function TrackedTargetAutoTargeting() : Bool; // TrackedTargetAutoTargeting
+	import function YawBoundAdditiveForPitchMagnetism() : Float; // YawBoundAdditiveForPitchMagnetism
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

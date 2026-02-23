@@ -1,0 +1,34 @@
+class ProcessRelevantDevicesForNetworkGridEvent extends ProcessDevicesEvent
+{
+	public    var ignoreRevealed : Bool;
+	public    var finalizeRegistrationAsMaster : Bool;
+	public    var breachedResource : gameFxResource;
+	public    var defaultResource : gameFxResource;
+	public    var isPing : Bool;
+	public    var lifetime : Float;
+	public    var revealSlave : Bool;
+	public    var revealMaster : Bool;
+}
+
+class ProcessDevicesEvent extends redEvent
+{
+	public    var devices : array:handle:gameDeviceComponentPS;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

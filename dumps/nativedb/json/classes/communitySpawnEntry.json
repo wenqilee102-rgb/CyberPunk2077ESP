@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"communitySpawnEntry","d":8,"e":[{"a":{"a":14},"b":"entryName","c":128},{"a":{"a":15},"b":"characterRecordId","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"communitySpawnPhase"}}},"b":"phases","c":128},{"a":{"b":"gameSpawnInViewState"},"b":"spawnInView","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"communitySpawnInitializer"}}},"b":"initializers","c":128}]}

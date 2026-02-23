@@ -1,0 +1,79 @@
+class MarketSystem extends gameIMarketSystem
+{
+	private   var vendors : array:handle:Vendor;
+	private   var vendingMachinesVendors : array:handle:Vendor;
+
+	static function CanPlayerSellItem(vendorObject : whandle:gameObject, itemID : gameItemID, allowQuestItems : Bool, excludeEquipped : Bool) : Bool; // MarketSystem::CanPlayerSellItem;GameObjectItemIDBoolBool
+	static function DoesEquipAreaContainNewItems(vendorObject : whandle:gameObject, area : gamedataEquipmentArea, checkPlayerCanBuy : Bool) : Bool; // MarketSystem::DoesEquipAreaContainNewItems;GameObjectgamedataEquipmentAreaBool
+	static function GetBuyPrice(game : ScriptGameInstance, vendorID : entEntityID, itemID : gameItemID) : Int32; // MarketSystem::GetBuyPrice;GameInstanceEntityIDItemID
+	static function GetBuyPrice(vendorObject : whandle:gameObject, itemID : gameItemID) : Int32; // MarketSystem::GetBuyPrice;GameObjectItemID
+	static function GetInstance(gameInstance : ScriptGameInstance) : handle:MarketSystem; // MarketSystem::GetInstance;GameInstance
+	static function GetItemsPlayerCanSell(vendorObject : whandle:gameObject, allowQuestItems : Bool, excludeEquipped : Bool) : array:gameSItemStack; // MarketSystem::GetItemsPlayerCanSell;GameObjectBoolBool
+	static function GetNewItems(vendorObject : whandle:gameObject) : array:TweakDBID; // MarketSystem::GetNewItems;GameObject
+	static function GetVendorCyberwareForSale(vendorObject : whandle:gameObject, checkPlayerCanBuy : Bool) : array:gameSItemStack; // MarketSystem::GetVendorCyberwareForSale;GameObjectBool
+	static function GetVendorID(vendor : whandle:gameObject) : TweakDBID; // MarketSystem::GetVendorID;GameObject
+	static function GetVendorItemsForSale(vendorObject : whandle:gameObject, checkPlayerCanBuy : Bool) : array:gameSItemStack; // MarketSystem::GetVendorItemsForSale;GameObjectBool
+	static function GetVendorMoney(vendorObject : whandle:gameObject) : Int32; // MarketSystem::GetVendorMoney;GameObject
+	static function GetVendorSoldItems(vendorObject : whandle:gameObject) : handle:SoldItemsCache; // MarketSystem::GetVendorSoldItems;GameObject
+	static function IsAccessible(player : whandle:PlayerPuppet, vendorID : TweakDBID) : Bool; // MarketSystem::IsAccessible;PlayerPuppetTweakDBID
+	static function IsAttached(vendorObject : whandle:gameObject) : Bool; // MarketSystem::IsAttached;GameObject
+	static function IsNewItem(vendorObject : whandle:gameObject, itemTDBID : TweakDBID) : Bool; // MarketSystem::IsNewItem;GameObjectTweakDBID
+	static function IsVisibleOnMap(player : whandle:PlayerPuppet, vendorID : TweakDBID) : Bool; // MarketSystem::IsVisibleOnMap;PlayerPuppetTweakDBID
+	static function ItemInspected(vendorObject : whandle:gameObject, itemTDBID : TweakDBID); // MarketSystem::ItemInspected;GameObjectTweakDBID
+	static function Money() : gameItemID; // MarketSystem::Money;
+	static function OnVendorMenuOpen(vendorObject : handle:gameObject); // MarketSystem::OnVendorMenuOpen;GameObject
+
+	function AddVendor(vendorObject : handle:gameObject) : handle:Vendor; // AddVendor;GameObject
+	function GetOrAddVendor(vendorObject : handle:gameObject) : handle:Vendor; // GetOrAddVendor;GameObject
+	function GetVendor(vendorObject : handle:gameObject) : handle:Vendor; // GetVendor;GameObject
+	function GetVendorByTDBID(vendorDataID : TweakDBID) : handle:Vendor; // GetVendorByTDBID;TweakDBID
+	function OnAddItemToStockRequest(request : handle:AddItemToVendorRequest); // OnAddItemToStockRequest;AddItemToVendorRequest
+	function OnAttachVendorRequest(request : handle:AttachVendorRequest); // OnAttachVendorRequest;AttachVendorRequest
+	function OnBuyRequest(request : handle:BuyRequest); // OnBuyRequest;BuyRequest
+	function OnBuybackRequest(request : handle:BuybackRequest); // OnBuybackRequest;BuybackRequest
+	function OnDeattachVendorRequest(request : handle:DeattachVendorRequest); // OnDeattachVendorRequest;DeattachVendorRequest
+	function OnDetach(); // OnDetach;
+	function OnDispenseRequest(request : handle:DispenseRequest); // OnDispenseRequest;DispenseRequest
+	function OnDispenseStackRequest(request : handle:DispenseStackRequest); // OnDispenseStackRequest;DispenseStackRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSellRequest(request : handle:SellRequest); // OnSellRequest;SellRequest
+	function OnSetPriceModifierRequest(request : handle:SetVendorPriceMultiplierRequest); // OnSetPriceModifierRequest;SetVendorPriceMultiplierRequest
+}
+
+import class gameIMarketSystem extends gameScriptableSystem
+{
+	import function AddVendorHashMap(key : entEntityID, tweakID : TweakDBID, vendor : handle:IScriptable) : Bool; // AddVendorHashMap
+	import function ClearVendorHashMap(); // ClearVendorHashMap
+	import function GetVendorHashMap(key : entEntityID) : whandle:IScriptable; // GetVendorHashMap
+	import function GetVendorTBIDHashMap(key : TweakDBID) : whandle:IScriptable; // GetVendorTBIDHashMap
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

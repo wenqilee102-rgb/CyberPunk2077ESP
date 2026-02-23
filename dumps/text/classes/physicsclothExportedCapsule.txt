@@ -1,0 +1,8 @@
+import struct physicsclothExportedCapsule
+{
+	var p0 : Vector3;
+	var p1 : Vector3;
+	var r0 : Float;
+	var r1 : Float;
+	var boneName : CName;
+}

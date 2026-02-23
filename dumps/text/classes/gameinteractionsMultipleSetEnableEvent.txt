@@ -1,0 +1,26 @@
+import class gameinteractionsMultipleSetEnableEvent extends redEvent
+{
+	var enable : static:4,Bool;
+	var layer : static:4,CName;
+	var linkedLayers : static:4,CName;
+
+	import function PushBack(enable : Bool, layer : CName, optional linkedLayers : CName); // PushBack
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+import class worldPhysicalImpulseAreaNode extends worldPhysicalTriggerAreaNode
+{
+	var impulse : Vector3;
+	var impulseRadius : Float;
+}
+
+import class worldPhysicalTriggerAreaNode extends worldNode
+{
+	var simulationType : physicsSimulationType;
+	var shape : physicsTriggerShape;
+	var filterData : handle:physicsFilterData;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

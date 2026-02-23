@@ -1,0 +1,37 @@
+class VehicleMinimapMappinComponent extends IScriptable
+{
+	private   var minimapPOIMappinController : whandle:MinimapPOIMappinController;
+	private   var vehicle : whandle:vehicleBaseObject;
+	private   var uiVehicleBB : whandle:gameIBlackboard;
+	private   var vehicleBBDef : handle:VehicleDef;
+	private   var deleteAnimCallback : handle:redCallbackObject;
+	private   var destroyMappinOnAnimEnd : Bool;
+	private   var vehicleIsLatestSummoned : Bool;
+	private   var vehicleEntityID : entEntityID;
+	private   var vehicleSummonDataDef : handle:VehicleSummonDataDef;
+	private   var vehicleSummonDataBB : whandle:gameIBlackboard;
+	private   var vehicleSummonStateCallback : handle:redCallbackObject;
+
+	event OnDeleteAnimSet(deleteAnimName : CName) : Bool; // OnDeleteAnimSet
+	event OnVehicleSummonStateChanged(value : Uint32) : Bool; // OnVehicleSummonStateChanged
+
+	function ActivatePingAnimation(activate : Bool); // ActivatePingAnimation;Bool
+	function OnAnimEnd(); // OnAnimEnd;
+	function OnInitialize(minimapPOIMappinController : whandle:MinimapPOIMappinController, vehicleMappin : whandle:gamemappinsVehicleMappin); // OnInitialize;MinimapPOIMappinControllerVehicleMappin
+	function OnUninitialize(); // OnUninitialize;
+	function VehicleIsLatestSummoned() : Bool; // VehicleIsLatestSummoned;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

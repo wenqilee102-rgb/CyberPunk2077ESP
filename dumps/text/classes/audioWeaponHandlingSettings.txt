@@ -1,0 +1,6 @@
+import struct audioWeaponHandlingSettings
+{
+	var equipEvent : CName;
+	var unequipStartedEvent : CName;
+	var unequippedEvent : CName;
+}

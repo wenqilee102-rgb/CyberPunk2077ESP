@@ -1,0 +1,1 @@
+{"b":"worldTriggerAreaEventInfo","d":8,"g":true,"e":[{"a":{"a":26,"c":{"b":"worldTriggerAreaNodeInstance"}},"b":"nodeInstance","c":128},{"a":{"b":"Vector3"},"b":"eventWorldPosition","c":128},{"a":{"a":7},"b":"numActivatorsInArea","c":128},{"a":{"a":7},"b":"activatorID","c":128}]}

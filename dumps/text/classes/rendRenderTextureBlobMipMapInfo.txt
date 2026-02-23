@@ -1,0 +1,5 @@
+import struct rendRenderTextureBlobMipMapInfo
+{
+	var layout : rendRenderTextureBlobMemoryLayout;
+	var placement : rendRenderTextureBlobPlacement;
+}

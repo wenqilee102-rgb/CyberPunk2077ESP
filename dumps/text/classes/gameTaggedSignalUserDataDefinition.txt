@@ -1,0 +1,12 @@
+import class gameTaggedSignalUserDataDefinition extends gameSignalUserDataDefinition
+{
+	var tags : array:CName;
+}
+
+import class abstract gameSignalUserDataDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

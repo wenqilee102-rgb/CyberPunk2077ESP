@@ -1,0 +1,14 @@
+import class gameuiCharacterCustomizationUiPreset extends CResource
+{
+	var isMaleVO : Bool;
+	var values : array:gameuiCharacterCustomizationUiPresetValue;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

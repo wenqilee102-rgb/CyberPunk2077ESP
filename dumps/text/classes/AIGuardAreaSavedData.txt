@@ -1,0 +1,5 @@
+import struct AIGuardAreaSavedData
+{
+	var puppetId : entEntityID;
+	var nodeRef : NodeRef;
+}

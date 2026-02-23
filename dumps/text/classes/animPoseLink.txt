@@ -1,0 +1,4 @@
+import struct animPoseLink
+{
+	var node : whandle:animAnimNode_Base;
+}

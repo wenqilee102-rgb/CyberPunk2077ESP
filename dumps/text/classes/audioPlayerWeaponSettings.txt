@@ -1,0 +1,51 @@
+import class audioPlayerWeaponSettings extends audioWeaponSettings
+{
+	var fireSound : CName;
+	var preFireSound : CName;
+	var burstFireSound : CName;
+	var autoFireSound : CName;
+	var autoFireStop : CName;
+	var timeLimitForAutoFireSingleShot : Float;
+	var padVibrationGain : Float;
+	var padVibrationReloadGain : Float;
+	var tails : CName;
+	var shellCasingsSettings : CName;
+	var animEventOverrides : handle:audioWeaponEventOverrides;
+	var quickMeleeHitEvent : CName;
+	var initEvent : CName;
+	var shutdownEvent : CName;
+	var aimEnterSound : CName;
+	var aimExitSound : CName;
+	var dryFireSound : CName;
+	var reloadSound : CName;
+	var triggerEffectSingle : CName;
+	var triggerEffectAiming : CName;
+	var triggerEffectAuto : CName;
+	var perfectChargePerkSounds : audioPerfectChargePerkSounds;
+}
+
+import class abstract audioWeaponSettings extends audioAudioMetadata
+{
+	var bulletType : audioWeaponBulletType;
+	var shellCasingType : audioWeaponShellCasingType;
+	var weaponHandlingSettings : audioWeaponHandlingSettings;
+	var singleShotInSandevistan : Bool;
+	var chargeStartSound : CName;
+	var chargeReadySound : CName;
+	var chargeOverchargeSound : CName;
+	var chargeDischargeSound : CName;
+	var fireModeSounds : audioWeaponFireModeSounds;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

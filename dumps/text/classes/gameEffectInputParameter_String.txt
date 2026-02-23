@@ -1,0 +1,6 @@
+import struct gameEffectInputParameter_String
+{
+	var evaluator : handle:gameIEffectParameter_StringEvaluator;
+
+	import static function Get(ctx : gameEffectInputParameter_String, bb : handle:gameIBlackboard) : String; // Get
+}

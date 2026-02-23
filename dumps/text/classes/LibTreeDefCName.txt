@@ -1,0 +1,6 @@
+import struct LibTreeDefCName
+{
+	var variableId : Uint16;
+	var treeVariable : CName;
+	var v : CName;
+}

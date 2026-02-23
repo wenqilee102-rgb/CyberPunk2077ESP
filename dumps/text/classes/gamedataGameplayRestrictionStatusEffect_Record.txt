@@ -1,0 +1,81 @@
+import class gamedataGameplayRestrictionStatusEffect_Record extends gamedataStatusEffect_Record
+{
+	import function ActionRestriction() : whandle:gamedataActionRestrictionGroup_Record; // ActionRestriction
+	import function ActionRestrictionHandle() : handle:gamedataActionRestrictionGroup_Record; // ActionRestrictionHandle
+}
+
+import class gamedataStatusEffect_Record extends gamedataTweakDBRecord
+{
+	import function AIData() : whandle:gamedataStatusEffectAIData_Record; // AIData
+	import function AIDataHandle() : handle:gamedataStatusEffectAIData_Record; // AIDataHandle
+	import function AdditionalParam() : CName; // AdditionalParam
+	import function DebugTags() : array:CName; // DebugTags
+	import function DebugTagsContains(item : CName) : Bool; // DebugTagsContains
+	import function Duration() : whandle:gamedataStatModifierGroup_Record; // Duration
+	import function DurationHandle() : handle:gamedataStatModifierGroup_Record; // DurationHandle
+	import function DynamicDuration() : Bool; // DynamicDuration
+	import function GameplayTags() : array:CName; // GameplayTags
+	import function GameplayTagsContains(item : CName) : Bool; // GameplayTagsContains
+	import function GetDebugTagsCount() : Int32; // GetDebugTagsCount
+	import function GetDebugTagsItem(index : Int32) : CName; // GetDebugTagsItem
+	import function GetGameplayTagsCount() : Int32; // GetGameplayTagsCount
+	import function GetGameplayTagsItem(index : Int32) : CName; // GetGameplayTagsItem
+	import function GetImmunityStatsCount() : Int32; // GetImmunityStatsCount
+	import function GetImmunityStatsItem(index : Int32) : whandle:gamedataStat_Record; // GetImmunityStatsItem
+	import function GetImmunityStatsItemHandle(index : Int32) : handle:gamedataStat_Record; // GetImmunityStatsItemHandle
+	import function GetPackagesCount() : Int32; // GetPackagesCount
+	import function GetPackagesItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetPackagesItem
+	import function GetPackagesItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetPackagesItemHandle
+	import function GetSFXCount() : Int32; // GetSFXCount
+	import function GetSFXItem(index : Int32) : whandle:gamedataStatusEffectFX_Record; // GetSFXItem
+	import function GetSFXItemHandle(index : Int32) : handle:gamedataStatusEffectFX_Record; // GetSFXItemHandle
+	import function GetVFXCount() : Int32; // GetVFXCount
+	import function GetVFXItem(index : Int32) : whandle:gamedataStatusEffectFX_Record; // GetVFXItem
+	import function GetVFXItemHandle(index : Int32) : handle:gamedataStatusEffectFX_Record; // GetVFXItemHandle
+	import function ImmunityStats(out outList : array:whandle:gamedataStat_Record); // ImmunityStats
+	import function ImmunityStatsContains(item : whandle:gamedataStat_Record) : Bool; // ImmunityStatsContains
+	import function IsAffectedByTimeDilationNPC() : Bool; // IsAffectedByTimeDilationNPC
+	import function IsAffectedByTimeDilationPlayer() : Bool; // IsAffectedByTimeDilationPlayer
+	import function MaxStacks() : whandle:gamedataStatModifierGroup_Record; // MaxStacks
+	import function MaxStacksHandle() : handle:gamedataStatModifierGroup_Record; // MaxStacksHandle
+	import function Packages(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // Packages
+	import function PackagesContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // PackagesContains
+	import function PlayerData() : whandle:gamedataStatusEffectPlayerData_Record; // PlayerData
+	import function PlayerDataHandle() : handle:gamedataStatusEffectPlayerData_Record; // PlayerDataHandle
+	import function ReapplyPackagesOnMaxStacks() : Bool; // ReapplyPackagesOnMaxStacks
+	import function RemoveAllStacksWhenDurationEnds() : Bool; // RemoveAllStacksWhenDurationEnds
+	import function RemoveAllStacksWhenDurationEndsStatModifiers() : whandle:gamedataStatModifierGroup_Record; // RemoveAllStacksWhenDurationEndsStatModifiers
+	import function RemoveAllStacksWhenDurationEndsStatModifiersHandle() : handle:gamedataStatModifierGroup_Record; // RemoveAllStacksWhenDurationEndsStatModifiersHandle
+	import function RemoveOnStoryTier() : Bool; // RemoveOnStoryTier
+	import function Replicated() : Bool; // Replicated
+	import function SFX(out outList : array:whandle:gamedataStatusEffectFX_Record); // SFX
+	import function SFXContains(item : whandle:gamedataStatusEffectFX_Record) : Bool; // SFXContains
+	import function Savable() : Bool; // Savable
+	import function StatusEffectType() : whandle:gamedataStatusEffectType_Record; // StatusEffectType
+	import function StatusEffectTypeHandle() : handle:gamedataStatusEffectType_Record; // StatusEffectTypeHandle
+	import function StopActiveSfxOnDeactivate() : Bool; // StopActiveSfxOnDeactivate
+	import function UiData() : whandle:gamedataStatusEffectUIData_Record; // UiData
+	import function UiDataHandle() : handle:gamedataStatusEffectUIData_Record; // UiDataHandle
+	import function VFX(out outList : array:whandle:gamedataStatusEffectFX_Record); // VFX
+	import function VFXContains(item : whandle:gamedataStatusEffectFX_Record) : Bool; // VFXContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

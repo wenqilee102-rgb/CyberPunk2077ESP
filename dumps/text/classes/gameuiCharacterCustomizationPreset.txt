@@ -1,0 +1,19 @@
+import class gameuiCharacterCustomizationPreset extends CResource
+{
+	var isMale : Bool;
+	var bodyGroups : array:gameuiCustomizationGroup;
+	var headGroups : array:gameuiCustomizationGroup;
+	var armsGroups : array:gameuiCustomizationGroup;
+	var perspectiveInfo : array:gameuiPerspectiveInfo;
+	var tags : redTagList;
+	var version : Uint32;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

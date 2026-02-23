@@ -1,0 +1,202 @@
+class NewPerksScreenLogicController extends inkWidgetLogicController
+{
+	private   var perksWidgets : array:inkWidgetReference;
+	private   var gauge : inkWidgetReference;
+	private   var tiers : array:PerkScreenTierInfo;
+	private   var animationBoldLineWidget : inkWidgetReference;
+	private   var animationLineWidget : inkWidgetReference;
+	private   var animationGradientWidget : inkWidgetReference;
+	private   var attributeButtonWidget : inkWidgetReference;
+	private   var lockedLineIcon : inkWidgetReference;
+	private   var unlockedLineIcon : inkWidgetReference;
+	private   var attributeRequirementTexts : array:inkTextWidgetReference;
+	private   var levelRequirementTexts : array:inkTextWidgetReference;
+	private   var perksInitialized : Bool;
+	private   var perksControllers : handle:inkScriptHashMap;
+	private   var perksContainersControllers : handle:inkScriptHashMap;
+	private   var perkControllersArray : array:whandle:NewPerksPerkContainerLogicController;
+	private   var enabledControllers : array:whandle:NewPerksPerkContainerLogicController;
+	private   var initData : handle:NewPerksScreenInitData;
+	private   var perksList : array:whandle:gamedataNewPerk_Record;
+	private   var playerDevelopmentSystem : whandle:PlayerDevelopmentSystem;
+	private   var player : whandle:PlayerPuppet;
+	private   var playerDevelopmentData : whandle:PlayerDevelopmentData;
+	private   var attributePoints : Int32;
+	private   var linksManager : handle:NewPerksRequirementsLinksManager;
+	private   var gaugeController : whandle:NewPerksGaugeController;
+	private   var attributeButtonController : whandle:NewPerksAttributeButtonController;
+	private   var buttonHintsController : whandle:ButtonHints;
+	private   var dataManager : whandle:PlayerDevelopmentDataManager;
+	private   var uiScriptableSystem : whandle:UIScriptableSystem;
+	private   var levels : array:NewPerksGaugePointDetails;
+	private   var highlightData : array:PerkTierHighlight;
+	private   var activeProxies : array:handle:inkanimProxy;
+	private   var highlightedWires : array:inkWidgetReference;
+	private   var highlightedPerks : array:whandle:inkWidget;
+	private   var dimmedWidgets : array:inkWidgetReference;
+	private   var dimProxies : array:handle:inkanimProxy;
+	private   var undimProxies : array:handle:inkanimProxy;
+	private   var isActiveScreen : Bool;
+	private   var isEspionage : Bool;
+	private   var unlockAnimData : UnlockAnimData;
+	private   var lineAnimProxy : handle:inkanimProxy;
+	private   var buttonMoveAnimProxy : handle:inkanimProxy;
+	private   var buttonCustomAnimProxy : handle:inkanimProxy;
+	private   var lockAnimProxy : handle:inkanimProxy;
+	private   var introFinished : Bool;
+	private   var perkHovered : Bool;
+	private   var currentHoveredPerkData : handle:NewPerkDisplayData;
+	private   var gameController : whandle:NewPerksCategoriesGameController;
+	private   var sellFailToken : handle:inkGameNotificationToken;
+	private   var perkToSnapCursor : gamedataNewPerkType;
+	private   var unlockState : Int32;
+
+	event OnButtonCustomAnimFinished(proxy : handle:inkanimProxy) : Bool; // OnButtonCustomAnimFinished
+	event OnInitialize() : Bool; // OnInitialize
+	event OnLineAnimFinished(proxy : handle:inkanimProxy) : Bool; // OnLineAnimFinished
+	event OnLockAnimFinished(proxy : handle:inkanimProxy) : Bool; // OnLockAnimFinished
+	event OnNewPerkBought(evt : handle:NewPerkBoughtEvent) : Bool; // OnNewPerkBought
+	event OnNewPerkClickEvent(evt : handle:NewPerkClickEvent) : Bool; // OnNewPerkClickEvent
+	event OnNewPerkLocked(evt : handle:NewPerkLockedEvent) : Bool; // OnNewPerkLocked
+	event OnNewPerkSold(evt : handle:NewPerkSoldEvent) : Bool; // OnNewPerkSold
+	event OnNewPerkUnlocked(evt : handle:NewPerkUnlockedEvent) : Bool; // OnNewPerkUnlocked
+	event OnPerkHoverOut(evt : handle:NewPerkHoverOutEvent) : Bool; // OnPerkHoverOut
+	event OnPlayerDevUpdateData(evt : handle:PlayerDevUpdateDataEvent) : Bool; // OnPlayerDevUpdateData
+	event OnPostOnRelease(evt : handle:inkPointerEvent) : Bool; // OnPostOnRelease
+	event OnSellFailed(data : handle:inkGameNotificationData) : Bool; // OnSellFailed
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function AnimateLevelGradient(levelFrom : Int32, levelTo : Int32); // AnimateLevelGradient;Int32Int32
+	function AnimateUnlockBoldLine(target : inkWidgetReference, offsetFrom : Float, offsetTo : Float); // AnimateUnlockBoldLine;inkWidgetRefFloatFloat
+	function AnimateUnlockLine(target : inkWidgetReference, offsetFrom : Float, offsetTo : Float, optional fadeOut : Bool) : handle:inkanimProxy; // AnimateUnlockLine;inkWidgetRefFloatFloatBool
+	function AnimateWiresToTargetPerk(target : gamedataNewPerkSlotType, perkPool : script_ref:array:gamedataNewPerkType); // AnimateWiresToTargetPerk;gamedataNewPerkSlotTypescript_ref<array<gamedataNewPerkType>>
+	function AttachSlotControllers(); // AttachSlotControllers;
+	function BuildPerkTree(); // BuildPerkTree;
+	function ClearAllLines(); // ClearAllLines;
+	function ClearDimProxies(); // ClearDimProxies;
+	function ClearUndimProxies(gotoEnd : Bool); // ClearUndimProxies;Bool
+	function DimPerkContainerWires(container : whandle:NewPerksPerkContainerLogicController, blacklist : script_ref:array:gamedataNewPerkSlotType); // DimPerkContainerWires;NewPerksPerkContainerLogicControllerscript_ref<array<gamedataNewPerkSlotType>>
+	function DimTreeForPerkHighlight(perkData : handle:NewPerkDisplayData); // DimTreeForPerkHighlight;NewPerkDisplayData
+	function FireDelayedDimming(); // FireDelayedDimming;
+	function FlipHighlightedPerkState(perk : whandle:inkWidget); // FlipHighlightedPerkState;inkWidget
+	function FlipHighlightedWireState(wire : inkWidgetReference); // FlipHighlightedWireState;inkWidgetRef
+	function GatherPreksInHighlightPath(perkData : handle:NewPerkDisplayData, outArray : script_ref:array:gamedataNewPerkSlotType); // GatherPreksInHighlightPath;NewPerkDisplayDatascript_ref<array<gamedataNewPerkSlotType>>
+	function GetAllRequiredPerks(perk : gamedataNewPerkType, finalResult : script_ref:array:gamedataNewPerkType); // GetAllRequiredPerks;gamedataNewPerkTypescript_ref<array<gamedataNewPerkType>>
+	function GetAnimationTranslationInterpolator(offsetFrom : Float, offsetTo : Float) : handle:inkanimTranslationInterpolator; // GetAnimationTranslationInterpolator;FloatFloat
+	function GetAnimationTransparencyInterpolator() : handle:inkanimTransparencyInterpolator; // GetAnimationTransparencyInterpolator;
+	function GetAttributeRequirement(perkRecord : handle:gamedataNewPerk_Record) : Int32; // GetAttributeRequirement;NewPerk_Record
+	function GetAttributeRequirement(perkType : gamedataNewPerkType) : Int32; // GetAttributeRequirement;gamedataNewPerkType
+	function GetButtonAnimOffset(level : Int32) : Float; // GetButtonAnimOffset;Int32
+	function GetCachedPerkContainerLogicController(perkSlotType : gamedataNewPerkSlotType) : whandle:NewPerksPerkContainerLogicController; // GetCachedPerkContainerLogicController;gamedataNewPerkSlotType
+	function GetCachedPerkContainerLogicController(perkType : gamedataNewPerkType) : whandle:NewPerksPerkContainerLogicController; // GetCachedPerkContainerLogicController;gamedataNewPerkType
+	function GetCachedPerkItemLogicController(perkType : gamedataNewPerkType) : whandle:NewPerksPerkItemLogicController; // GetCachedPerkItemLogicController;gamedataNewPerkType
+	function GetCachedPerkItemLogicController(perkSlotType : gamedataNewPerkSlotType) : whandle:NewPerksPerkItemLogicController; // GetCachedPerkItemLogicController;gamedataNewPerkSlotType
+	function GetDimAnimationForWidget(widget : inkWidgetReference, isWire : Bool) : handle:inkanimDefinition; // GetDimAnimationForWidget;inkWidgetRefBool
+	function GetHighlightData() : array:PerkTierHighlight; // GetHighlightData;
+	function GetHighligtedPerksHorizontalBoundries() : Vector2; // GetHighligtedPerksHorizontalBoundries;
+	function GetLevelGradientOffset(level : Int32) : Float; // GetLevelGradientOffset;Int32
+	function GetLevelThreshold(level : Int32) : Int32; // GetLevelThreshold;Int32
+	function GetLinearTransparencyInterpolator(duration : Float, delay : Float, start : Float, end : Float, mode : inkanimInterpolationMode, type : inkanimInterpolationType) : handle:inkanimTransparencyInterpolator; // GetLinearTransparencyInterpolator;FloatFloatFloatFloatinkanimInterpolationModeinkanimInterpolationType
+	function GetLinearTransparencyInterpolator(duration : Float, delay : Float, start : Float, end : Float) : handle:inkanimTransparencyInterpolator; // GetLinearTransparencyInterpolator;FloatFloatFloatFloat
+	function GetPointsToNextTier(level : Int32) : Int32; // GetPointsToNextTier;Int32
+	function GetRequiredPerksTypes(perk : gamedataNewPerkType, result : script_ref:array:gamedataNewPerkType); // GetRequiredPerksTypes;gamedataNewPerkTypescript_ref<array<gamedataNewPerkType>>
+	function GetSinusoidalTranslationInterpolator(duration : Float, delay : Float, start : Vector2, end : Vector2) : handle:inkanimTranslationInterpolator; // GetSinusoidalTranslationInterpolator;FloatFloatVector2Vector2
+	function GetUnlockStateOffset(state : Int32) : Float; // GetUnlockStateOffset;Int32
+	function GetWidgetDimValue(widget : inkWidgetReference, isWire : Bool) : Float; // GetWidgetDimValue;inkWidgetRefBool
+	function IndicateUnmaxedPerksInPath(controller : whandle:NewPerksPerkItemLogicController); // IndicateUnmaxedPerksInPath;NewPerksPerkItemLogicController
+	function Initialize(dataManager : whandle:PlayerDevelopmentDataManager, initData : handle:NewPerksScreenInitData, buttonHintsController : whandle:ButtonHints); // Initialize;PlayerDevelopmentDataManagerNewPerksScreenInitDataButtonHints
+	function InitializePerksControllers(); // InitializePerksControllers;
+	function IsThresholdExceeded(previousLevel : Int32, currentLevel : Int32) : Bool; // IsThresholdExceeded;Int32Int32
+	function OnPerkHoverOver(evt : handle:NewPerkHoverOverEvent); // OnPerkHoverOver;NewPerkHoverOverEvent
+	function ReevaluatePerkAvailability(); // ReevaluatePerkAvailability;
+	function RefreshCursorOverPerk(); // RefreshCursorOverPerk;
+	function SetActive(value : Bool); // SetActive;Bool
+	function SetCursorOverPerk(perkType : gamedataNewPerkType, forceSnap : Bool); // SetCursorOverPerk;gamedataNewPerkTypeBool
+	function SetGameController(gameController : handle:NewPerksCategoriesGameController); // SetGameController;NewPerksCategoriesGameController
+	function SetHighlightData(initialTopOffset : Float); // SetHighlightData;Float
+	function SetIntroFinished(value : Bool); // SetIntroFinished;Bool
+	function SetLevelGradient(level : Int32); // SetLevelGradient;Int32
+	function SetScriptableSystemPreviousLevel(stat : gamedataStatType, level : Int32); // SetScriptableSystemPreviousLevel;gamedataStatTypeInt32
+	function SetTierHighlightHover(tierIndex : Int32); // SetTierHighlightHover;Int32
+	function SetValues(); // SetValues;
+	function StartUnlockAnimation(levelFrom : Int32, levelTo : Int32); // StartUnlockAnimation;Int32Int32
+	function StopAllPerkAnimations(); // StopAllPerkAnimations;
+	function StopPathToTargetPerkAnimations(); // StopPathToTargetPerkAnimations;
+	function StopTierUnlockAnimations(); // StopTierUnlockAnimations;
+	function UndimTree(optional skipUndimAnim : Bool); // UndimTree;Bool
+	function UpdateTiers(level : Int32); // UpdateTiers;Int32
+	function UpdatemAttributeRequirementTexts(); // UpdatemAttributeRequirementTexts;
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

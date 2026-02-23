@@ -1,0 +1,9 @@
+import class vgAttributeTypeValuePair extends ISerializable
+{
+	var pe : vgEStyleAttributeType;
+	var lue : Variant;
+}
+
+import class abstract ISerializable
+{
+}

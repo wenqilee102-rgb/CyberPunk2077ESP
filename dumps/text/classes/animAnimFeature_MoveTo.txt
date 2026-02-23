@@ -1,0 +1,28 @@
+import class animAnimFeature_MoveTo extends animAnimFeature
+{
+	var initialFwdVector : Vector4;
+	var targetPositionWs : Vector4;
+	var targetDirectionWs : Vector4;
+	var timeToMove : Float;
+
+	import function MoveTo(targetPosition : Vector4, targetYawRotation : Float, timeToMove : Float); // MoveTo
+	import function MoveToWithDir(targetPosition : Vector4, targetYawRotation : Vector4, timeToMove : Float); // MoveToWithDir
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

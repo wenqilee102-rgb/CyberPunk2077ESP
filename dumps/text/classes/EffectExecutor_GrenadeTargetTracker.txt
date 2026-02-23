@@ -1,0 +1,39 @@
+class EffectExecutor_GrenadeTargetTracker extends gameEffectExecutor_Scripted
+{
+	public    var potentialTargetSlots : array:CName;
+
+	function GetAngleBetweenSourceUpAndTarget(sourcePosition : Vector4, targetPosition : Vector4) : Float; // GetAngleBetweenSourceUpAndTarget;Vector4Vector4
+	function IsPointReachable(ctx : gameEffectScriptContext, startPoint : Vector4, endPoint : Vector4) : Bool; // IsPointReachable;EffectScriptContextVector4Vector4
+	function IsTargetReachable(ctx : gameEffectScriptContext, target : handle:NPCPuppet, out targetSlot : CName) : Bool; // IsTargetReachable;EffectScriptContextNPCPuppetCName
+	function IsTargetValid(target : handle:NPCPuppet, ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext, out targetSlot : CName) : Bool; // IsTargetValid;NPCPuppetEffectScriptContextEffectExecutionScriptContextCName
+	function Process(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // Process;EffectScriptContextEffectExecutionScriptContext
+	function TargetAcquired(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext); // TargetAcquired;EffectScriptContextEffectExecutionScriptContext
+	function TargetLost(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext); // TargetLost;EffectScriptContextEffectExecutionScriptContext
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

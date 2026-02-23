@@ -1,0 +1,7 @@
+import struct SceneCustomData_ShadowManager extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

@@ -1,0 +1,6 @@
+import struct inkTextureSlot
+{
+	var texture : raRef:CBitmapTexture;
+	var parts : array:inkTextureAtlasMapper;
+	var slices : array:inkTextureAtlasSlice;
+}

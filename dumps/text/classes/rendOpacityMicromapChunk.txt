@@ -1,0 +1,15 @@
+import struct rendOpacityMicromapChunk
+{
+	var mChunkIndex : Uint32;
+	var unkIndex : Uint32;
+	var terialIdentifier : Uint64;
+	var terialName : CName;
+	var mDigest : Uint64;
+	var mIndexBufferSize : Uint32;
+	var mIndexBuffer16bit : Uint32;
+	var mIndexBufferOffset : Uint64;
+	var mArrayBufferOffset : Uint64;
+	var mDescsBufferOffset : Uint64;
+	var mDescArrayHistogramData : array:rendOpacityMicromapUsageCounts;
+	var mIndexHistogramData : array:rendOpacityMicromapUsageCounts;
+}

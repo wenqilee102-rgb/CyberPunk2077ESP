@@ -1,0 +1,1 @@
+{"a":"animAnimNode_MotionTableSwitch","b":"animAnimNode_StaticSwitch","d":8,"e":[{"a":{"a":26,"c":{"b":"animIStaticCondition"}},"b":"condition","c":128},{"a":{"a":26,"c":{"b":"animIMotionTableProvider"}},"b":"motionProvider","c":128},{"a":{"b":"animPoseLink"},"b":"True","c":128},{"a":{"b":"animPoseLink"},"b":"False","c":128}]}

@@ -1,0 +1,27 @@
+class CPOMissionDataState extends IScriptable
+{
+	public    var CPOMissionDataDamagesPreset : CName;
+	public    var compatibleDeviceName : CName;
+	public    var ownerDecidesOnTransfer : Bool;
+	public    var isChoiceToken : Bool;
+	public    var choiceTokenTimeout : Uint32;
+	public    var delayedGiveChoiceTokenEventId : gameDelayID;
+	private   var dataDamageTextLayerId : Uint32;
+
+	function OnDamage(puppet : handle:PlayerPuppet, healthDamage : Bool); // OnDamage;PlayerPuppetBool
+	function UpdateSounds(puppet : handle:PlayerPuppet); // UpdateSounds;PlayerPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

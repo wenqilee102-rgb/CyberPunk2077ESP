@@ -1,0 +1,12 @@
+import struct entEntityGameInterface
+{
+	import static function BindToComponent(self : entEntityGameInterface, target : entEntityGameInterface, componentName : CName, optional slotName : CName, optional keepWorldTransform : Bool); // BindToComponent
+	import static function Destroy(self : entEntityGameInterface); // Destroy
+	import static function GetEntity(self : entEntityGameInterface) : handle:entEntity; // GetEntity
+	import static function IsStatic(self : entEntityGameInterface) : Bool; // IsStatic
+	import static function IsValid(self : entEntityGameInterface) : Bool; // IsValid
+	import static function ToggleSelectionEffect(self : entEntityGameInterface, enable : Bool); // ToggleSelectionEffect
+	import static function TryDisableCrowdCollider(crowdEntity : array:whandle:entEntity); // TryDisableCrowdCollider
+	import static function TryEnableCrowdCollider(crowdEntity : array:whandle:entEntity); // TryEnableCrowdCollider
+	import static function UnbindTransform(self : entEntityGameInterface); // UnbindTransform
+}

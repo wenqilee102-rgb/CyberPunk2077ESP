@@ -1,0 +1,45 @@
+class cameraShotEffect_FOV extends vehicleTimedCinematicCameraShotEffect
+{
+	public    var curve : CName;
+	public    var startFOV : Float;
+	public    var endFOV : Float;
+
+	function Update(data : CinematicCameraData, resultTransform : script_ref:WorldTransform); // Update;CinematicCameraDatascript_ref<WorldTransform>
+}
+
+import class vehicleTimedCinematicCameraShotEffect extends vehicleCinematicCameraShotEffect
+{
+	var startDelay : Float;
+	var duration : Float;
+	private   var hasStarted : Bool;
+
+	function GetExecutionTime(data : CinematicCameraData) : Float; // GetExecutionTime;CinematicCameraData
+	function HasStarted() : Bool; // HasStarted;
+	function Reset(); // Reset;
+	function Start(data : CinematicCameraData); // Start;CinematicCameraData
+	function StartDelayed(data : CinematicCameraData, resultTransform : script_ref:WorldTransform); // StartDelayed;CinematicCameraDatascript_ref<WorldTransform>
+}
+
+import class vehicleCinematicCameraShotEffect extends IScriptable
+{
+	import function GetValueFromCurve(curve : CName, input : Float, optional min : Float, optional max : Float) : Float; // GetValueFromCurve
+
+	function GetExecutionTime(data : CinematicCameraData) : Float; // GetExecutionTime;CinematicCameraData
+	function Reset(); // Reset;
+	function Start(data : CinematicCameraData); // Start;CinematicCameraData
+	function Update(data : CinematicCameraData, resultTransform : script_ref:WorldTransform); // Update;CinematicCameraDatascript_ref<WorldTransform>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

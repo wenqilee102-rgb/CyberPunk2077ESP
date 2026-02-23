@@ -1,0 +1,24 @@
+import class gameuiIconsNameResolver extends IScriptable
+{
+	import static function GetIconsNameResolver() : handle:gameuiIconsNameResolver; // GetIconsNameResolver
+
+	import function IsInDebugMode() : Bool; // IsInDebugMode
+	import function ResolveIconCensorship(tweak : TweakDBID) : TweakDBID; // ResolveIconCensorship
+	import function TranslateItemToIconName(tweak : TweakDBID, optional useMaleGender : Bool) : CName; // TranslateItemToIconName
+	import function TranslateItemToIconRef(tweak : TweakDBID, optional useMaleGender : Bool) : handle:inkIconReference; // TranslateItemToIconRef
+	import function TranslateItemToIconTweak(tweak : TweakDBID, optional useMaleGender : Bool) : TweakDBID; // TranslateItemToIconTweak
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

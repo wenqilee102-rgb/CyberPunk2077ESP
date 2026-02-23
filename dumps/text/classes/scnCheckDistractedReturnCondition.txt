@@ -1,0 +1,12 @@
+import class scnCheckDistractedReturnCondition extends scnIReturnCondition
+{
+	var params : scnCheckDistractedReturnConditionParams;
+}
+
+import class abstract scnIReturnCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

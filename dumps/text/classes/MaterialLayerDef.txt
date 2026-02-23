@@ -1,0 +1,7 @@
+import struct MaterialLayerDef
+{
+	var name : CName;
+	var size : Uint32;
+	var colorPalette : array:Color;
+	var material : rRef:CMaterialInstance;
+}

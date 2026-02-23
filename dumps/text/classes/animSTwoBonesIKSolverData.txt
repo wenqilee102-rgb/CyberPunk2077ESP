@@ -1,0 +1,24 @@
+import struct animSTwoBonesIKSolverData
+{
+	var upperBone : animTransformIndex;
+	var jointBone : animTransformIndex;
+	var subLowerBone : animTransformIndex;
+	var lowerBone : animTransformIndex;
+	var ikBone : animTransformIndex;
+	var limitToLengthPercentage : Float;
+	var reverseBend : Bool;
+	var allowToLock : Bool;
+	var autoSetupDirs : Bool;
+	var jointSideWeightUpper : Float;
+	var jointSideWeightJoint : Float;
+	var jointSideWeightLower : Float;
+	var Joint to-next dir in upper's BS : Vector4;
+	var Joint to-next dir in joint's BS : Vector4;
+	var Joint to-next dir in lower's BS : Vector4;
+	var Joint side dir in upper's BS : Vector4;
+	var Joint side dir in joint's BS : Vector4;
+	var Joint side dir in lower's BS : Vector4;
+	var Joint bend dir in upper's BS : Vector4;
+	var Joint bend dir in joint's BS : Vector4;
+	var Joint bend dir in lower's BS : Vector4;
+}

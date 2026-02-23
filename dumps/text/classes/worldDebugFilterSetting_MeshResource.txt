@@ -1,0 +1,12 @@
+import class worldDebugFilterSetting_MeshResource extends worldEditorDebugFilterSettings
+{
+	var resourcePaths : array:String;
+}
+
+import class abstract worldEditorDebugFilterSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

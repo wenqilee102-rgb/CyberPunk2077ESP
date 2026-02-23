@@ -1,0 +1,16 @@
+import class CMaterialParameterScalar extends CMaterialParameter
+{
+	var scalar : Float;
+	var min : Float;
+	var max : Float;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

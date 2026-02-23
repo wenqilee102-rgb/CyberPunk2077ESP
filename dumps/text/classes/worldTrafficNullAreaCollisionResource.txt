@@ -1,0 +1,14 @@
+import class worldTrafficNullAreaCollisionResource extends CResource
+{
+	var nullAreasCollisionData : handle:worldTrafficNullAreaCollisionData;
+	var nullAreaBlockadeData : handle:worldTrafficNullAreaDynamicBlockadeData;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

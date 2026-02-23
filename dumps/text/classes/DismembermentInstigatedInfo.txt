@@ -1,0 +1,16 @@
+struct DismembermentInstigatedInfo
+{
+	public    var target : whandle:gameObject;
+	public    var targetPosition : Vector4;
+	public    var attackPosition : Vector4;
+	public    var bodyPart : EHitReactionZone;
+	public    var weaponRecord : handle:gamedataWeaponItem_Record;
+	public    var attackType : gamedataAttackType;
+	public    var attackSubtype : gamedataAttackSubtype;
+	public    var value : Uint32;
+	public    var timeSinceDeath : Float;
+	public    var timeSinceDefeat : Float;
+	public    var wasTargetAlreadyDead : Bool;
+	public    var wasTargetAlreadyDefeated : Bool;
+	public    var attackIsExplosion : Bool;
+}

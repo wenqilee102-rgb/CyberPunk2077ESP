@@ -1,0 +1,8 @@
+import class abstract gameEnvironmentDamageReceiverShape extends ISerializable
+{
+	var transform : Transform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,13 @@
+import class workStopWorkspotQuestAction extends workIWorkspotQuestAction
+{
+	var allowCurrAnimToFinish : Bool;
+	var exitAnim : CName;
+}
+
+import class abstract workIWorkspotQuestAction extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

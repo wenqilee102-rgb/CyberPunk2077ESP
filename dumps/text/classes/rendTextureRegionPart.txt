@@ -1,0 +1,9 @@
+import class rendTextureRegionPart extends ISerializable
+{
+	var innerRegion : Vector4;
+	var outerRegion : Vector4;
+}
+
+import class abstract ISerializable
+{
+}

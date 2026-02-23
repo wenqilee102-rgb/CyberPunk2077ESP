@@ -1,0 +1,36 @@
+class AIActionParams extends IScriptable
+{
+	static function CreateActionID(context : AIbehaviorScriptExecutionContext, puppet : handle:ScriptedPuppet, actionStringName : script_ref:String, actionPackageType : AIactionParamsPackageTypes, out actionName : CName) : TweakDBID; // AIActionParams::CreateActionID;ScriptExecutionContextScriptedPuppetscript_ref<String>AIactionParamsPackageTypesCName
+	static function GetBehaviorStateFromName(nameParam : CName) : gamedataNPCBehaviorState; // AIActionParams::GetBehaviorStateFromName;CName
+	static function GetDefenseModeFromName(nameParam : CName) : gamedataDefenseMode; // AIActionParams::GetDefenseModeFromName;CName
+	static function GetHighLevelStateFromName(nameParam : CName) : gamedataNPCHighLevelState; // AIActionParams::GetHighLevelStateFromName;CName
+	static function GetLocomotionModeFromName(nameParam : CName) : gamedataLocomotionMode; // AIActionParams::GetLocomotionModeFromName;CName
+	static function GetOwnerStatesFromArray(ownerStates : script_ref:array:CName) : AIActionNPCStates; // AIActionParams::GetOwnerStatesFromArray;script_ref<array<CName>>
+	static function GetPSMBodyCarryStateFromName(nameParam : CName, out bodyCarryState : gamePSMBodyCarrying) : Bool; // AIActionParams::GetPSMBodyCarryStateFromName;CNamegamePSMBodyCarrying
+	static function GetPSMCombatStateFromName(nameParam : CName, out combatState : gamePSMCombat) : Bool; // AIActionParams::GetPSMCombatStateFromName;CNamegamePSMCombat
+	static function GetPSMLocomotionStateFromName(nameParam : CName, out locomotionState : gamePSMLocomotionStates) : Bool; // AIActionParams::GetPSMLocomotionStateFromName;CNamegamePSMLocomotionStates
+	static function GetPSMMeleeStateFromName(nameParam : CName, out meleeState : gamePSMMelee) : Bool; // AIActionParams::GetPSMMeleeStateFromName;CNamegamePSMMelee
+	static function GetPSMUpperBodyStateFromName(nameParam : CName, out upperBodyState : gamePSMUpperBodyStates) : Bool; // AIActionParams::GetPSMUpperBodyStateFromName;CNamegamePSMUpperBodyStates
+	static function GetPSMZoneStateFromName(nameParam : CName, out zoneState : gamePSMZones) : Bool; // AIActionParams::GetPSMZoneStateFromName;CNamegamePSMZones
+	static function GetStanceStateFromName(nameParam : CName) : gamedataNPCStanceState; // AIActionParams::GetStanceStateFromName;CName
+	static function GetTargetStatesFromArray(targetStates : script_ref:array:CName, target : whandle:gameObject) : AIActionTargetStates; // AIActionParams::GetTargetStatesFromArray;script_ref<array<CName>>GameObject
+	static function GetTargetStatesFromArray(targetStates : script_ref:array:CName) : AIActionTargetStates; // AIActionParams::GetTargetStatesFromArray;script_ref<array<CName>>
+	static function GetUpperBodyStateFromName(nameParam : CName) : gamedataNPCUpperBodyState; // AIActionParams::GetUpperBodyStateFromName;CName
+	static function PushBackNPCState(npcStates : script_ref:AIActionNPCStates, stateName : CName); // AIActionParams::PushBackNPCState;script_ref<AIActionNPCStates>CName
+	static function PushBackPlayerState(playerStates : script_ref:AIActionPlayerStates, stateName : CName); // AIActionParams::PushBackPlayerState;script_ref<AIActionPlayerStates>CName
+	static function TempGetIsValid(actionID : TweakDBID) : Bool; // AIActionParams::TempGetIsValid;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

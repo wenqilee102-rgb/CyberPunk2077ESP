@@ -1,0 +1,5 @@
+import struct worldTrafficLanePolygonRepresentation
+{
+	var outline : array:Vector3;
+	var polygon : array:Vector2;
+}

@@ -1,0 +1,16 @@
+import class abstract audioAudioStateTransitionConditionData extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

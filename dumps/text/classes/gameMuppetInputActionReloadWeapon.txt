@@ -1,0 +1,7 @@
+import struct gameMuppetInputActionReloadWeapon extends gameIMuppetInputAction
+{
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

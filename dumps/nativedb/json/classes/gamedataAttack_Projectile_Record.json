@@ -1,0 +1,1 @@
+{"a":"gamedataAttack_Record","b":"gamedataAttack_Projectile_Record","c":"Attack_Projectile_Record","d":24,"f":[{"a":"ExplosionAttack","c":{"a":27,"c":{"b":"gamedataAttack_GameEffect_Record"}},"d":4},{"a":"ExplosionAttackHandle","c":{"a":26,"c":{"b":"gamedataAttack_GameEffect_Record"}},"d":4},{"a":"ProjectileTemplateName","c":{"a":14},"d":4}]}

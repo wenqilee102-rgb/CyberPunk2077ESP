@@ -1,0 +1,9 @@
+import struct gameTelemetryEnemy
+{
+	var characterRecord : TweakDBID;
+	var enemyAffiliation : String;
+	var enemy : whandle:gameObject;
+	var enemyEntityID : entEntityID;
+	var archetype : gamedataArchetypeType;
+	var level : Int32;
+}

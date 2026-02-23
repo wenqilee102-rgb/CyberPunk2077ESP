@@ -1,0 +1,1 @@
+{"a":"scnPlayFPPControlAnimEvent","b":"scnPlaySkAnimEvent","d":8,"e":[{"a":{"a":26,"c":{"b":"scnAnimName"}},"b":"animName","c":128},{"a":{"a":26,"c":{"b":"scnEventBlendWorkspotSetupParameters"}},"b":"poseBlendOutWorkspot","c":128},{"a":{"b":"scnPlaySkAnimRootMotionData"},"b":"rootMotionData","c":128},{"a":{"b":"scnPlayerAnimData"},"b":"playerData","c":128}]}

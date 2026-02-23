@@ -1,0 +1,14 @@
+import class CMaterialParameterVector extends CMaterialParameter
+{
+	var vector : Vector4;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

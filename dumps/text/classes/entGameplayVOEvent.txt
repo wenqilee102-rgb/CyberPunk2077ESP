@@ -1,0 +1,33 @@
+import class entGameplayVOEvent extends redEvent
+{
+	var voContext : CName;
+	var isQuest : Bool;
+	var ignoreFrustumCheck : Bool;
+	var ignoreDistanceCheck : Bool;
+	var debugInitialContext : CName;
+	var ignoreGlobalVoLimitCheck : Bool;
+	var answeringEntityId : entEntityID;
+	var overridingVoiceoverContext : locVoiceoverContext;
+	var overridingVoiceoverExpression : locVoiceoverExpression;
+	var overrideVoiceoverExpression : Bool;
+	var overridingVisualStyleValue : Uint8;
+	var overrideVisualStyle : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

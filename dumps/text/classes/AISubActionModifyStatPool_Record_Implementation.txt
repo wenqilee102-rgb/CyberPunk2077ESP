@@ -1,0 +1,21 @@
+class abstract AISubActionModifyStatPool_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionModifyStatPool_Record); // AISubActionModifyStatPool_Record_Implementation::Activate;ScriptExecutionContextAISubActionModifyStatPool_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionModifyStatPool_Record, duration : Float, interrupted : Bool); // AISubActionModifyStatPool_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionModifyStatPool_RecordFloatBool
+	static function ModifyStatPool(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionModifyStatPool_Record); // AISubActionModifyStatPool_Record_Implementation::ModifyStatPool;ScriptExecutionContextAISubActionModifyStatPool_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionModifyStatPool_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionModifyStatPool_Record_Implementation::Update;ScriptExecutionContextAISubActionModifyStatPool_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"questIVehicleManagerNodeType","b":"questForbiddenTrigger_NodeType","d":8,"e":[{"a":{"a":16},"b":"triggerNodeRef","c":128},{"a":{"a":1},"b":"activate","c":128},{"a":{"a":1},"b":"dismount","c":128},{"a":{"a":1},"b":"blockCombat","c":128}]}

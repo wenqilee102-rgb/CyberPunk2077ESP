@@ -1,0 +1,115 @@
+class AIMoveCommandsDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	protected var animMoveOnSplineCommand : whandle:AIAnimMoveOnSplineCommand;
+	private   var spline : NodeRef;
+	private   var useStart : Bool;
+	private   var useStop : Bool;
+	private   var reverse : Bool;
+	private   var controllerSetupName : CName;
+	private   var blendTime : Float;
+	private   var globalInBlendTime : Float;
+	private   var globalOutBlendTime : Float;
+	private   var turnCharacterToMatchVelocity : Bool;
+	private   var customStartAnimationName : CName;
+	private   var customMainAnimationName : CName;
+	private   var customStopAnimationName : CName;
+	private   var startSnapToTerrain : Bool;
+	private   var mainSnapToTerrain : Bool;
+	private   var stopSnapToTerrain : Bool;
+	private   var startSnapToTerrainBlendTime : Float;
+	private   var stopSnapToTerrainBlendTime : Float;
+	private   var moveOnSplineCommand : handle:AIMoveOnSplineCommand;
+	private   var strafingTarget : whandle:gameObject;
+	private   var movementType : moveMovementType;
+	private   var ignoreNavigation : Bool;
+	private   var startFromClosestPoint : Bool;
+	private   var splineRecalculation : Bool;
+	private   var disableFootIK : Bool;
+	private   var useCombatState : Bool;
+	private   var useAlertedState : Bool;
+	private   var noWaitToEndDistance : Float;
+	private   var noWaitToEndCompanionDistance : Float;
+	private   var lowestCompanionDistanceToEnd : Float;
+	private   var previousCompanionDistanceToEnd : Float;
+	private   var maxCompanionDistanceOnSpline : Float;
+	private   var companion : whandle:gameObject;
+	private   var ignoreLineOfSightCheck : Bool;
+	private   var shootingTarget : whandle:gameObject;
+	private   var minSearchAngle : Float;
+	private   var maxSearchAngle : Float;
+	private   var desiredDistance : Float;
+	private   var deadZoneRadius : Float;
+	private   var shouldBeInFrontOfCompanion : Bool;
+	private   var useMatchForSpeedForPlayer : Bool;
+	private   var lookAtTarget : whandle:gameObject;
+	private   var distanceToCompanion : Float;
+	private   var splineEndPoint : Vector4;
+	private   var hasSplineEndPoint : Bool;
+	private   var playerCompanion : whandle:PlayerPuppet;
+	private   var firstWaitingDemandTimestamp : Float;
+	private   var useOffMeshLinkReservation : Bool;
+	private   var allowCrowdOnPath : Bool;
+	private   var sprint : Bool;
+	private   var run : Bool;
+	private   var waitForCompanion : Bool;
+	private   var followTargetCommand : handle:AIFollowTargetCommand;
+	private   var stopWhenDestinationReached : Bool;
+	private   var teleportToTarget : Bool;
+	private   var shouldTeleportNow : Bool;
+	private   var teleportDestination : Vector4;
+	private   var matchTargetSpeed : Bool;
+
+	function DoEndAnimMoveOnSpline() : Bool; // DoEndAnimMoveOnSpline;
+	function DoEndMoveOnSpline() : Bool; // DoEndMoveOnSpline;
+	function DoEndTeleportToCompanionOnSpline() : Bool; // DoEndTeleportToCompanionOnSpline;
+	function DoEndWaitForCompanion() : Bool; // DoEndWaitForCompanion;
+	function DoFindClosestPointOnSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoFindClosestPointOnSpline;ScriptExecutionContext
+	function DoFindEndOfTheSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoFindEndOfTheSpline;ScriptExecutionContext
+	function DoFindStartOfTheSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoFindStartOfTheSpline;ScriptExecutionContext
+	function DoStartAnimMoveOnSpline() : Bool; // DoStartAnimMoveOnSpline;
+	function DoStartFollowTarget(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartFollowTarget;ScriptExecutionContext
+	function DoStartMoveOnSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartMoveOnSpline;ScriptExecutionContext
+	function DoStartWaitForCompanion() : Bool; // DoStartWaitForCompanion;
+	function DoUpdateDistanceToCompanionOnSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateDistanceToCompanionOnSpline;ScriptExecutionContext
+	function DoUpdateSpeed(context : AIbehaviorScriptExecutionContext); // DoUpdateSpeed;ScriptExecutionContext
+	function DoUpdateWaitForCompanionOnSpline(context : AIbehaviorScriptExecutionContext) : Bool; // DoUpdateWaitForCompanionOnSpline;ScriptExecutionContext
+	function DontWaitToCompanionNearEnd(owner : handle:ScriptedPuppet, distanceToDestination : Float, companionDistance : Float) : Bool; // DontWaitToCompanionNearEnd;ScriptedPuppetFloatFloat
+	function GetIsMoveToSplineNeeded(context : AIbehaviorScriptExecutionContext) : Bool; // GetIsMoveToSplineNeeded;ScriptExecutionContext
+	function GetRotateEntity(context : AIbehaviorScriptExecutionContext) : Bool; // GetRotateEntity;ScriptExecutionContext
+	function GetRunSpeedDistance(context : AIbehaviorScriptExecutionContext) : Float; // GetRunSpeedDistance;ScriptExecutionContext
+	function GetSprintSpeedDistance(context : AIbehaviorScriptExecutionContext) : Float; // GetSprintSpeedDistance;ScriptExecutionContext
+	function GetTeleportDistance(context : AIbehaviorScriptExecutionContext) : Float; // GetTeleportDistance;ScriptExecutionContext
+	function IsOnTheSpline(target : handle:ScriptedPuppet, tolerance : Float) : Bool; // IsOnTheSpline;ScriptedPuppetFloat
+	function OnWalkingOnSpline(context : AIbehaviorScriptExecutionContext, success : Bool, isCompanionProgressing : Bool); // OnWalkingOnSpline;ScriptExecutionContextBoolBool
+	function SelectFollowTeleportTarget(context : AIbehaviorScriptExecutionContext) : Bool; // SelectFollowTeleportTarget;ScriptExecutionContext
+	function SelectSplineTeleportTarget(context : AIbehaviorScriptExecutionContext) : Bool; // SelectSplineTeleportTarget;ScriptExecutionContext
+	function SetWaitForCompanion(owner : handle:ScriptedPuppet, value : Bool); // SetWaitForCompanion;ScriptedPuppetBool
+	function ShouldBeWaitingDelayed(context : AIbehaviorScriptExecutionContext) : Bool; // ShouldBeWaitingDelayed;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,16 @@
+import class questContentLock_ConditionType extends questIContentConditionType
+{
+	var isContentBlocked : Bool;
+}
+
+import class abstract questIContentConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

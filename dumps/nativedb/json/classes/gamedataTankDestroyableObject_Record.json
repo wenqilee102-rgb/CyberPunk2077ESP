@@ -1,0 +1,1 @@
+{"a":"gamedataArcadeCollidableObject_Record","b":"gamedataTankDestroyableObject_Record","c":"TankDestroyableObject_Record","d":24,"f":[{"a":"DropProbability","c":{"a":10},"d":4},{"a":"Health","c":{"a":6},"d":4},{"a":"RammingInvincibilityTime","c":{"a":10},"d":4},{"a":"Score","c":{"a":10},"d":4},{"a":"ScoreMultiplier","c":{"a":10},"d":4}]}

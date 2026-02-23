@@ -1,0 +1,7 @@
+import struct redTaskTextMessage
+{
+	var taskId : Uint32;
+	var parent : Uint32;
+	var text : String;
+	var type : redTaskTextMessageType;
+}

@@ -1,0 +1,1 @@
+{"a":"gameScriptableComponent","b":"ResourceLibraryComponent","d":0,"e":[{"a":{"a":31,"c":{"b":"FxResourceMapData"}},"b":"resources","c":129}],"f":[{"a":"GetResource;CName","b":"GetResource","c":{"b":"gameFxResource"},"d":176,"e":[{"a":{"a":14},"b":"key","c":0}]}]}

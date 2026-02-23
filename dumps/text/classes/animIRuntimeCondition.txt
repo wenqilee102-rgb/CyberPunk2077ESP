@@ -1,0 +1,7 @@
+import class abstract animIRuntimeCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"DeviceBaseBlackboardDef","b":"ElevatorDeviceBlackboardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_String"},"b":"CurrentFloor","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"isPlayerScanned","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"isPaused","c":128}]}

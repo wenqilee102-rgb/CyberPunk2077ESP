@@ -1,0 +1,14 @@
+import class CMaterialParameterMultilayerSetup extends CMaterialParameter
+{
+	var setup : rRef:Multilayer_Setup;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

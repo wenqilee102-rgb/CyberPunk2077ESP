@@ -1,0 +1,12 @@
+import class AIbehaviorTreeNodeDebugInfo extends AIbehaviorDebugInfoBase
+{
+}
+
+import class AIbehaviorDebugInfoBase extends ISerializable
+{
+	var caption : String;
+}
+
+import class abstract ISerializable
+{
+}

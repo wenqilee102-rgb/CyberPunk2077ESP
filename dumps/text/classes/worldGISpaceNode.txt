@@ -1,0 +1,24 @@
+import class worldGISpaceNode extends worldAreaShapeNode
+{
+	var priority : Uint32;
+	var group : rendGIGroup;
+	var interior : Bool;
+	var runtime : Bool;
+	var updated : Bool;
+}
+
+import class worldAreaShapeNode extends worldNode
+{
+	var color : Color;
+	var outline : handle:AreaShapeOutline;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,33 @@
+import class CParticleModificatorCollision extends IParticleModificator
+{
+	var restitution : Float;
+	var dynamicFriction : Float;
+	var staticFriction : Float;
+	var velocityDamp : Float;
+	var angularVelocityDamp : Float;
+	var particleMass : Float;
+	var particleRadius : Float;
+	var useGPUAcceleration : Bool;
+	var disableGravity : Bool;
+	var killOnCollision : Bool;
+}
+
+import class abstract IParticleModificator extends IParticleInitializer
+{
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

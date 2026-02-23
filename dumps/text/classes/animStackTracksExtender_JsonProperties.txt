@@ -1,0 +1,8 @@
+import class animStackTracksExtender_JsonProperties extends ISerializable
+{
+	var entries : array:animStackTracksExtender_JsonEntry;
+}
+
+import class abstract ISerializable
+{
+}

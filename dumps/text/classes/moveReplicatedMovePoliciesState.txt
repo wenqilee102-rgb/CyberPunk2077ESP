@@ -1,0 +1,5 @@
+import struct moveReplicatedMovePoliciesState
+{
+	var items : array:moveReplicatedMovePolicies;
+	var lastAppliedActionsTime : netTime;
+}

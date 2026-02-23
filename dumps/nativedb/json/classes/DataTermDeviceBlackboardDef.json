@@ -1,0 +1,1 @@
+{"a":"DeviceBaseBlackboardDef","b":"DataTermDeviceBlackboardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Variant"},"b":"fastTravelPoint","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"triggerWorldMap","c":128},{"a":{"b":"gamebbScriptID_Int32"},"b":"passengerCount","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"subwayGateOpen","c":128}]}

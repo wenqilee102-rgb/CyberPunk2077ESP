@@ -1,0 +1,5 @@
+import struct rendRenderParticleBlobHeader
+{
+	var version : Uint32;
+	var emitterInfo : rendRenderParticleBlobEmitterInfo;
+}

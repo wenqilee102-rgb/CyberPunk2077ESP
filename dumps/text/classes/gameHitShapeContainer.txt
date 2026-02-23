@@ -1,0 +1,9 @@
+import struct gameHitShapeContainer
+{
+	var name : CName;
+	var slotName : CName;
+	var color : Color;
+	var shape : handle:gameIHitShape;
+	var userData : handle:gameHitShapeUserData;
+	var physicsMaterial : physicsMaterialReference;
+}

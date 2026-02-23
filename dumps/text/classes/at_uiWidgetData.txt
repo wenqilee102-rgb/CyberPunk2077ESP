@@ -1,0 +1,6 @@
+struct at_uiWidgetData
+{
+	public    var widgetATID : String;
+	public    var layerType : inkELayerType;
+	public    var parentGameController : CName;
+}

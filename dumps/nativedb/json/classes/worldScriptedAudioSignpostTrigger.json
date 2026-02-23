@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"worldScriptedAudioSignpostTrigger","d":8,"f":[{"a":"OnPlayerEnter","c":{"a":1},"d":98,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"localPlayer","c":0}]},{"a":"OnPlayerExit","c":{"a":1},"d":98,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"localPlayer","c":0}]}]}

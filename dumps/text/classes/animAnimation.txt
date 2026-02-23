@@ -1,0 +1,18 @@
+import class animAnimation extends ISerializable
+{
+	var tags : redTagList;
+	var name : CName;
+	var duration : Float;
+	var animationType : animAnimationType;
+	var animBuffer : handle:animIAnimationBuffer;
+	var additionalTransforms : animAdditionalTransformContainer;
+	var additionalTracks : animAdditionalFloatTrackContainer;
+	var motionExtraction : handle:animIMotionExtraction;
+	var frameClamping : Bool;
+	var frameClampingStartFrame : Int8;
+	var frameClampingEndFrame : Int8;
+}
+
+import class abstract ISerializable
+{
+}

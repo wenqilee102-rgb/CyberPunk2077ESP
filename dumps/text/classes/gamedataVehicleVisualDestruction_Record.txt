@@ -1,0 +1,33 @@
+import class gamedataVehicleVisualDestruction_Record extends gamedataTweakDBRecord
+{
+	import function Back() : Float; // Back
+	import function BackLeft() : Float; // BackLeft
+	import function BackRight() : Float; // BackRight
+	import function Front() : Float; // Front
+	import function FrontLeft() : Float; // FrontLeft
+	import function FrontRight() : Float; // FrontRight
+	import function Left() : Float; // Left
+	import function Right() : Float; // Right
+	import function Roof() : Float; // Roof
+	import function SetVisualDestruction() : Bool; // SetVisualDestruction
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct SceneCustomData_ColorFadeParams extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

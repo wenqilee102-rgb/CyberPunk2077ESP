@@ -1,0 +1,7 @@
+import struct AIClearLineOfSightCoverSelectionRuntimeData extends AICoverSelectionRuntimeData
+{
+}
+
+import struct abstract AICoverSelectionRuntimeData
+{
+}

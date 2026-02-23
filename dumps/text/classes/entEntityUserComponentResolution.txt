@@ -1,0 +1,6 @@
+import struct entEntityUserComponentResolution
+{
+	var id : CRUID;
+	var include : raRef:entEntityTemplate;
+	var mode : entEntityUserComponentResolutionMode;
+}

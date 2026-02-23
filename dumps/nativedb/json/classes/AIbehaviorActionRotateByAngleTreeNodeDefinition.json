@@ -1,0 +1,1 @@
+{"a":"AIbehaviorActionTreeNodeDefinition","b":"AIbehaviorActionRotateByAngleTreeNodeDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"angle","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"angleTolerance","c":128}]}

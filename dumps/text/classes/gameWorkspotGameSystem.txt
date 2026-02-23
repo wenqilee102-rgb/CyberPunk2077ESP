@@ -1,0 +1,58 @@
+import class gameWorkspotGameSystem extends gameIWorkspotGameSystem
+{
+	import function GetDeviceUser(deviceID : entEntityID) : handle:gameObject; // GetDeviceUser
+	import function GetExtendedInfo(actor : handle:gameObject) : handle:gameExtendedWorkspotInfo; // GetExtendedInfo
+	import function GetIdOfExitAnim(actor : handle:gameObject, animName : CName) : Int32; // GetIdOfExitAnim
+	import function HardResetPlaybackToStart(actor : handle:gameObject); // HardResetPlaybackToStart
+	import function HasExitNodes(actor : handle:gameObject, fastExit : Bool, slowExit : Bool, optional performNavmeshChecks : Bool) : Bool; // HasExitNodes
+	import function IsActorInWorkspot(actor : handle:gameObject) : Bool; // IsActorInWorkspot
+	import function IsInVehicleWorkspot(vehicle : handle:gameObject, child : handle:gameObject, slotName : CName) : Bool; // IsInVehicleWorkspot
+	import function IsReactionAvailable(actor : handle:gameObject, reactionName : CName) : Bool; // IsReactionAvailable
+	import function IsWorkspotEnabled(actor : handle:gameObject) : Bool; // IsWorkspotEnabled
+	import function MountToVehicle(parent : handle:gameObject, child : handle:gameObject, slideTime : Float, animDelay : Float, workspotResourceContainer : CName, slotName : CName, optional syncronizedObjects : array:entEntityID, optional entrySlotName : CName, optional animVariables : array:CName) : Bool; // MountToVehicle
+	import function PlayInDevice(device : handle:gameObject, actor : handle:gameObject, optional workspotStateFlavourName : CName, optional actorDataCompName : CName, optional deviceDataCompName : CName, optional syncSlotName : CName, optional slideTime : Float, optional slideBehaviour : gameWorkspotSlidingBehaviour, optional callbackEventRecipient : handle:entEntity); // PlayInDevice
+	import function PlayInDeviceSimple(device : handle:gameObject, actor : handle:gameObject, allowCameraMov : Bool, optional actorDataCompName : CName, optional deviceDataCompName : CName, optional syncSlotName : CName, optional slideTime : Float, optional slideBehaviour : gameWorkspotSlidingBehaviour, optional callbackEventRecipient : handle:entEntity); // PlayInDeviceSimple
+	import function PlayNpcInWorkspot(npc : handle:gameObject, master : handle:gameObject, referenceEntity : handle:gameObject, actorDataCompName : CName, optional syncSlotName : CName, optional slideTime : Float, optional syncOffsetSourceCompName : CName); // PlayNpcInWorkspot
+	import function ResetPlaybackToStart(actor : handle:gameObject); // ResetPlaybackToStart
+	import function SendDebugCommand(mode : workWorkspotDebugMode, entId : String); // SendDebugCommand
+	import function SendDebugCommandEnt(mode : workWorkspotDebugMode, obj : handle:gameObject); // SendDebugCommandEnt
+	import function SendDebugCommandFunctionalTests(mode : workWorkspotDebugMode, obj : handle:gameObject, redscript : handle:IScriptable); // SendDebugCommandFunctionalTests
+	import function SendDynamicSyncBindSignal(actor : handle:gameObject, master : handle:gameObject); // SendDynamicSyncBindSignal
+	import function SendDynamicSyncUnbindSignal(actor : handle:gameObject); // SendDynamicSyncUnbindSignal
+	import function SendEventToConnectedSpots(actor : handle:gameObject, eventName : CName) : Bool; // SendEventToConnectedSpots
+	import function SendFastExitSignal(actor : handle:gameObject, optional dirLS : Vector3, optional stayInWorkspotIfFailed : Bool, optional playSlowExitIfFailed : Bool, optional instant : Bool, optional tryBlendToWalk : Bool); // SendFastExitSignal
+	import function SendForwardSignal(actor : handle:gameObject); // SendForwardSignal
+	import function SendJumpCommandEnt(actor : handle:gameObject, entryId : Int32, instant : Bool); // SendJumpCommandEnt
+	import function SendJumpToAnimEnt(actor : handle:gameObject, animName : CName, instant : Bool); // SendJumpToAnimEnt
+	import function SendJumpToTagCommandEnt(actor : handle:gameObject, entryTag : CName, instant : Bool, optional deviceId : entEntityID); // SendJumpToTagCommandEnt
+	import function SendPlaySignal(actor : handle:gameObject); // SendPlaySignal
+	import function SendReactionSignal(actor : handle:gameObject, reactionName : CName) : Bool; // SendReactionSignal
+	import function SendSlowExitSignal(actor : handle:gameObject, optional animationName : CName, optional dontWaitForCurrentAnimationToFinish : Bool); // SendSlowExitSignal
+	import function StopInDevice(actor : handle:gameObject, optional posDelta : Vector4, optional orientDelta : Quaternion); // StopInDevice
+	import function StopNpcInWorkspot(actor : handle:gameObject); // StopNpcInWorkspot
+	import function SwitchSeatVehicle(parent : handle:gameObject, child : handle:gameObject, workspotResourceContainer : CName, slotName : CName, optional exitSlotName : CName, optional activateAnimVariables : array:CName, optional deactivateAnimVariables : array:CName); // SwitchSeatVehicle
+	import function SynchronizeItemWithOwner(item : handle:gameItemObject, owner : handle:gameObject); // SynchronizeItemWithOwner
+	import function UnmountFromVehicle(parent : handle:gameObject, child : handle:gameObject, optional instant : Bool, optional posDelta : Vector4, optional orientDelta : Quaternion, optional exitSlotName : CName); // UnmountFromVehicle
+}
+
+import class abstract gameIWorkspotGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

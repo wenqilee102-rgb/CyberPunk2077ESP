@@ -1,0 +1,27 @@
+import struct Matrix
+{
+	var X : Vector4;
+	var Y : Vector4;
+	var Z : Vector4;
+	var W : Vector4;
+
+	import static function BuildFromDirectionVector(dirVec : Vector4, optional upVec : Vector4) : Matrix; // BuildFromDirectionVector
+	import static function BuiltPreScale(scale : Vector4) : Matrix; // BuiltPreScale
+	import static function BuiltRTS(optional rotation : EulerAngles, optional translation : Vector4, optional scale : Vector4) : Matrix; // BuiltRTS
+	import static function BuiltRotation(rot : EulerAngles) : Matrix; // BuiltRotation
+	import static function BuiltScale(scale : Vector4) : Matrix; // BuiltScale
+	import static function BuiltTRS(optional translation : Vector4, optional rotation : EulerAngles, optional scale : Vector4) : Matrix; // BuiltTRS
+	import static function BuiltTranslation(move : Vector4) : Matrix; // BuiltTranslation
+	import static function GetAxisX(m : Matrix) : Vector4; // GetAxisX
+	import static function GetAxisY(m : Matrix) : Vector4; // GetAxisY
+	import static function GetAxisZ(m : Matrix) : Vector4; // GetAxisZ
+	import static function GetDirectionVector(m : Matrix) : Vector4; // GetDirectionVector
+	import static function GetInverted(m : Matrix) : Matrix; // GetInverted
+	import static function GetInvertedFull(m : Matrix) : Matrix; // GetInvertedFull
+	import static function GetRotation(m : Matrix) : EulerAngles; // GetRotation
+	import static function GetScale(m : Matrix) : Vector4; // GetScale
+	import static function GetTranslation(m : Matrix) : Vector4; // GetTranslation
+	import static function Identity() : Matrix; // Identity
+	import static function IsOk(m : Matrix) : Bool; // IsOk
+	import static function ToQuat(m : Matrix) : Quaternion; // ToQuat
+}

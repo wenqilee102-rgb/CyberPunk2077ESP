@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"RipperdocMeterCapacityApplyEvent","d":0,"e":[{"a":{"a":6},"b":"CurrentCapacity","c":128},{"a":{"a":6},"b":"MaxCapacity","c":128},{"a":{"a":6},"b":"OverchargeCapacity","c":128},{"a":{"a":10},"b":"MaxCapacityPossible","c":128},{"a":{"a":1},"b":"IsPurchase","c":128}]}

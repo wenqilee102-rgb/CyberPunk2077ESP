@@ -1,0 +1,13 @@
+struct ProjectileHitAoEData
+{
+	public    var source : whandle:gameObject;
+	public    var instigator : whandle:gameObject;
+	public    var position : Vector4;
+	public    var radius : Float;
+	public    var duration : Float;
+	public    var attackRecord : handle:gamedataAttack_Record;
+	public    var weapon : whandle:gameweaponObject;
+	public    var disableVfx : Bool;
+	public    var enableImpulseFalloff : Bool;
+	public    var impulseFalloffFactor : Float;
+}

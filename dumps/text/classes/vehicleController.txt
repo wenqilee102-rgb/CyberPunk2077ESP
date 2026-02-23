@@ -1,0 +1,54 @@
+import class vehicleController extends gameComponent
+{
+	var alarmCurve : CName;
+	var alarmTime : Float;
+	var overrideHeadlightsSettingsForPlayer : Bool;
+
+	import function AreDefaultLightsToggled() : Bool; // AreDefaultLightsToggled
+	import function ResetLightColor(lightType : vehicleELightType, optional inTime : Float); // ResetLightColor
+	import function ResetLightParameters(lightType : vehicleELightType, optional inTime : Float); // ResetLightParameters
+	import function ResetLightStrength(lightType : vehicleELightType, optional inTime : Float); // ResetLightStrength
+	import function SetLightColor(lightType : vehicleELightType, color : Color, optional inTime : Float, optional forceOverrideEmissiveColor : Bool); // SetLightColor
+	import function SetLightParameters(lightType : vehicleELightType, strength : Float, color : Color, optional inTime : Float); // SetLightParameters
+	import function SetLightStrength(lightType : vehicleELightType, strength : Float, optional inTime : Float); // SetLightStrength
+	import function ToggleLights(on : Bool, optional lightType : vehicleELightType, optional inTime : Float, optional lerpCurve : CName, optional loop : Bool); // ToggleLights
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

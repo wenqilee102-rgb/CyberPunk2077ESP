@@ -1,0 +1,11 @@
+import class gameinteractionsOrbActivationPredicate extends gameinteractionsIPredicateType
+{
+}
+
+import class abstract gameinteractionsIPredicateType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

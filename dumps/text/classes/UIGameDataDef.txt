@@ -1,0 +1,60 @@
+class UIGameDataDef extends gamebbScriptDefinition
+{
+	public    var BreachUIParams : gamebbScriptID_Variant;
+	public    var InteractionData : gamebbScriptID_Variant;
+	public    var ShowDialogLine : gamebbScriptID_Variant;
+	public    var HideDialogLine : gamebbScriptID_Variant;
+	public    var HideDialogLineByData : gamebbScriptID_Variant;
+	public    var ShowSceneComment : gamebbScriptID_String;
+	public    var HideSceneComment : gamebbScriptID_Bool;
+	public    var ShowSubtitlesBackground : gamebbScriptID_Bool;
+	public    var Popup_IsModal : gamebbScriptID_Bool;
+	public    var Popup_IsShown : gamebbScriptID_Bool;
+	public    var Popup_Data : gamebbScriptID_Variant;
+	public    var Popup_Settings : gamebbScriptID_Variant;
+	public    var Controller_Disconnected : gamebbScriptID_Bool;
+	public    var ActivityLog : gamebbScriptID_Variant;
+	public    var RightWeaponRecordID : gamebbScriptID_Variant;
+	public    var LeftWeaponRecordID : gamebbScriptID_Variant;
+	public    var UIVendorContextRequest : gamebbScriptID_Bool;
+	public    var UIjailbreakData : gamebbScriptID_Variant;
+	public    var QuestTimerInitialDuration : gamebbScriptID_Float;
+	public    var QuestTimerCurrentDuration : gamebbScriptID_Float;
+	public    var Tutorial_EnableHighlight : gamebbScriptID_Bool;
+	public    var Tutorial_EntityRefToHighlight : gamebbScriptID_Variant;
+	public    var WeaponSway : gamebbScriptID_Vector2;
+	public    var ApplyWeaponSwayToCamera : gamebbScriptID_Bool;
+	public    var NormalizedWeaponSway : gamebbScriptID_Vector2;
+	public    var DriverCombatCrosshairReticle : gamebbScriptID_Variant;
+	public    var NotificationJournalHash : gamebbScriptID_Int32;
+	public    var IsBriefingActive : gamebbScriptID_Bool;
+	public    var MuppetStats : gamebbScriptID_Variant;
+	public    var ActiveNotificationsQueue : gamebbScriptID_Int32;
+	public    var BerserkActive : gamebbScriptID_Bool;
+	public    var Popup_VehiclesManager_IsShown : gamebbScriptID_Bool;
+	public    var Popup_Radio_IsShown : gamebbScriptID_Bool;
+	public    var Popup_Radio_Enabled : gamebbScriptID_Bool;
+	public    var Popup_CarColorPicker_IsShown : gamebbScriptID_Bool;
+	public    var Popup_TwintoneOverride_IsShown : gamebbScriptID_Bool;
+	public    var Popup_FrameSwitcher_IsShown : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

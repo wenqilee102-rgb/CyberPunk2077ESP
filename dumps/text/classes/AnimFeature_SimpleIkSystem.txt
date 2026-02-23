@@ -1,0 +1,29 @@
+class AnimFeature_SimpleIkSystem extends animAnimFeature
+{
+	public    var isEnable : Bool;
+	public    var weight : Float;
+	public    var setPosition : Bool;
+	public    var position : Vector4;
+	public    var positionOffset : Vector4;
+	public    var setRotation : Bool;
+	public    var rotation : Quaternion;
+	public    var rotationOffset : Quaternion;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

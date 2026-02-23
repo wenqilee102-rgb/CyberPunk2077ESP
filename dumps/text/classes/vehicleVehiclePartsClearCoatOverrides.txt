@@ -1,0 +1,7 @@
+import struct vehicleVehiclePartsClearCoatOverrides
+{
+	var partsName : array:CName;
+	var overrides : vehicleVehicleClearCoatOverrides;
+
+	static function FromRecord(record : handle:gamedataVehiclePartsClearCoatOverrides_Record) : vehicleVehiclePartsClearCoatOverrides; // vehicleVehiclePartsClearCoatOverrides::FromRecord;VehiclePartsClearCoatOverrides_Record
+}

@@ -1,0 +1,27 @@
+class AnimFeature_CameraGameplay extends animAnimFeature
+{
+	public    var is_forward_offset : Float;
+	public    var forward_offset_value : Float;
+	public    var upperbody_pitch_weight : Float;
+	public    var upperbody_yaw_weight : Float;
+	public    var is_pitch_off : Float;
+	public    var is_yaw_off : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct animActionAnimDatabase_DatabaseRow
+{
+	var animFeatureName : CName;
+	var state : Int32;
+	var animVariation : Int32;
+	var animationData : animActionAnimDatabase_AnimationData;
+}

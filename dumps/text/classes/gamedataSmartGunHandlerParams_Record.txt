@@ -1,0 +1,28 @@
+import class gamedataSmartGunHandlerParams_Record extends gamedataTweakDBRecord
+{
+	import function Blacklist(out outList : array:whandle:gamedataAimAssistTargetData_Record); // Blacklist
+	import function BlacklistContains(item : whandle:gamedataAimAssistTargetData_Record) : Bool; // BlacklistContains
+	import function GetBlacklistCount() : Int32; // GetBlacklistCount
+	import function GetBlacklistItem(index : Int32) : whandle:gamedataAimAssistTargetData_Record; // GetBlacklistItem
+	import function GetBlacklistItemHandle(index : Int32) : handle:gamedataAimAssistTargetData_Record; // GetBlacklistItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

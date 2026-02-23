@@ -1,0 +1,1 @@
+{"a":"IParticleDrawer","b":"CParticleDrawerTrail","d":8,"e":[{"a":{"a":10},"b":"texturesPerUnit","c":128},{"a":{"a":1},"b":"dynamicTexCoords","c":128},{"a":{"a":6},"b":"minSegmentsPer360Degrees","c":128},{"a":{"a":1},"b":"ribbonize","c":128},{"a":{"a":10},"b":"ribbonTesselationDelta","c":128}]}

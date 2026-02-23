@@ -1,0 +1,22 @@
+import struct inkHudWidgetSpawnEntry
+{
+	var hudEntryName : CName;
+	var enabled : Bool;
+	var contextVisibility : worlduiContextVisibility;
+	var gameContextVisibility : gameuiContext;
+	var spawnMode : inkSpawnMode;
+	var widgetResource : rRef:inkWidgetLibraryResource;
+	var anchorPlace : inkEAnchor;
+	var anchorPoint : Vector2;
+	var margins : inkMargin;
+	var attachToSlot : Bool;
+	var slotParams : inkWidgetSlotAttachmentParams;
+	var useSeparateWindow : Bool;
+	var ignoreHudSafezones : Bool;
+	var affectedByGlitchEffect : Bool;
+	var affectedByBlackwallEffect : Bool;
+	var spawnBeforeSlots : Bool;
+	var ignoreHudScaleOverride : Bool;
+	var hudScalingInterpolationValue : Float;
+	var hudScalingMarginCorrection : inkMargin;
+}

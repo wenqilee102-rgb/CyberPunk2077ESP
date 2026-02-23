@@ -1,0 +1,4 @@
+import struct scnExecutionTag
+{
+	var flags : Uint8;
+}

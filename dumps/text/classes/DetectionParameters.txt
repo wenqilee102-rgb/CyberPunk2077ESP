@@ -1,0 +1,9 @@
+struct DetectionParameters
+{
+	public    var canDetectIntruders : Bool;
+	public    var timeToActionAfterSpot : Float;
+	public    var overrideRootRotation : Float;
+	public    var maxRotationAngle : Float;
+	public    var pitchAngle : Float;
+	public    var rotationSpeed : Float;
+}

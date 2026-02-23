@@ -1,0 +1,33 @@
+import class gametargetingSystemTargetFilter_Script extends gametargetingSystemTargetFilter
+{
+	import function GetFilter() : physicsQueryFilter; // GetFilter
+	import function GetFilterMask() : Uint64; // GetFilterMask
+	import function GetResult(destination : handle:gametargetingSystemTargetFilterResult); // GetResult
+	import function SetFilter(queryFilter : physicsQueryFilter); // SetFilter
+	import function TestFilterMask(mask : Uint64) : Bool; // TestFilterMask
+
+	function CreateFilterResult() : handle:gametargetingSystemTargetFilterResult; // CreateFilterResult;
+	function Filter(hitInfo : gametargetingSystemHitInfo, workingState : handle:gametargetingSystemTargetFilterResult); // Filter;TargetHitInfoTargetFilterResult
+	function PostFilter(); // PostFilter;
+	function PreFilter(defaultPos : script_ref:Vector4); // PreFilter;script_ref<Vector4>
+}
+
+import class abstract gametargetingSystemTargetFilter extends IScriptable
+{
+	import function GetHitComponent() : whandle:entIComponent; // GetHitComponent
+	import function GetHitEntityID() : entEntityID; // GetHitEntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

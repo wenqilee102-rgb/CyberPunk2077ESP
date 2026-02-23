@@ -1,0 +1,5 @@
+import struct inkLayerDefinitionsSet
+{
+	var layersDefinitions : array:inkLayerDefinition_NEW;
+	var layersSystemConnections : array:inkLayerSystemConnection;
+}

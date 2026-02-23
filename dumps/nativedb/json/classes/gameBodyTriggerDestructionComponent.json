@@ -1,0 +1,1 @@
+{"a":"gameITriggerDestructionComponent","b":"gameBodyTriggerDestructionComponent","d":8,"e":[{"a":{"a":14},"b":"colliderComponentName","c":128},{"a":{"a":26,"c":{"b":"physicsFilterData"}},"b":"filterData","c":128},{"a":{"a":10},"b":"impulseForce","c":128},{"a":{"a":10},"b":"impulseRadius","c":128}]}

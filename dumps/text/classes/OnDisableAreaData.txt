@@ -1,0 +1,5 @@
+struct OnDisableAreaData
+{
+	public    var agent : gamePersistentID;
+	public    var remainingAreas : array:handle:SecurityAreaControllerPS;
+}

@@ -1,0 +1,32 @@
+import class inkanimController extends IScriptable
+{
+	import function Caller(caller : handle:inkWidget) : handle:inkanimController; // Caller
+	import function FromSet(other : handle:inkWidgetsSet) : handle:inkanimController; // FromSet
+	import function GetProxy(index : Uint32) : handle:inkanimProxy; // GetProxy
+	import function Interpolate(interpolatorName : CName, startValue : Variant, endValue : Variant) : handle:inkanimBuilder; // Interpolate
+	import function InterpolateFrom(interpolatorName : CName, startValue : Variant) : handle:inkanimBuilder; // InterpolateFrom
+	import function InterpolateTo(interpolatorName : CName, endValue : Variant) : handle:inkanimBuilder; // InterpolateTo
+	import function Pause(); // Pause
+	import function Play() : Bool; // Play
+	import function PlayOffset(offset : Float) : handle:inkanimController; // PlayOffset
+	import function PlayWithOptions(playbackOptions : inkanimPlaybackOptions) : Bool; // PlayWithOptions
+	import function RegisterToCallback(eventType : inkanimEventType, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function Resume(); // Resume
+	import function Select(widget : handle:inkWidget, optional selectionRule : inkSelectionRule, optional param : String) : handle:inkanimController; // Select
+	import function Stop(); // Stop
+	import function UnregisterFromCallback(eventType : inkanimEventType, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

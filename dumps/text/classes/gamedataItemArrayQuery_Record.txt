@@ -1,0 +1,45 @@
+import class gamedataItemArrayQuery_Record extends gamedataItemQuery_Record
+{
+	import function MaxItems() : Int32; // MaxItems
+	import function MinItems() : Int32; // MinItems
+}
+
+import class gamedataItemQuery_Record extends gamedataQuery_Record
+{
+	import function ExcludeUnlocked() : Bool; // ExcludeUnlocked
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function GetTagsToExcludeCount() : Int32; // GetTagsToExcludeCount
+	import function GetTagsToExcludeItem(index : Int32) : CName; // GetTagsToExcludeItem
+	import function LevelBasedQuality() : Bool; // LevelBasedQuality
+	import function QualityLevelModifier() : Int32; // QualityLevelModifier
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+	import function TagsToExclude() : array:CName; // TagsToExclude
+	import function TagsToExcludeContains(item : CName) : Bool; // TagsToExcludeContains
+}
+
+import class gamedataQuery_Record extends gamedataTweakDBRecord
+{
+	import function RecordType() : CName; // RecordType
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

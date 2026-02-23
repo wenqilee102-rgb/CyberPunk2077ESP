@@ -1,0 +1,1 @@
+{"b":"animTwistOutput","d":8,"g":true,"e":[{"a":{"a":10},"b":"positiveScale","c":128},{"a":{"a":10},"b":"negativeScale","c":128},{"a":{"b":"animAxis"},"b":"twistAxis","c":128},{"a":{"b":"animTransformIndex"},"b":"twistedTransform","c":128},{"a":{"b":"animNamedTrackIndex"},"b":"outputAngleTrack","c":128}]}

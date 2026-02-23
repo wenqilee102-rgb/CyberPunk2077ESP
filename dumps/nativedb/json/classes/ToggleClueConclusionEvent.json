@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"ToggleClueConclusionEvent","d":0,"e":[{"a":{"a":1},"b":"toggleConclusion","c":128},{"a":{"a":6},"b":"clueID","c":128},{"a":{"a":1},"b":"updatePS","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

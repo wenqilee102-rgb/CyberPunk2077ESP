@@ -1,0 +1,42 @@
+class GameplaySkillCondition extends GameplayConditionBase
+{
+	protected var skillToCheck : TweakDBID;
+	private   var difficulty : EGameplayChallengeLevel;
+	private   var skillBonus : TweakDBID;
+	private   var requiredLevel : Int32;
+
+	function Evaluate(requester : handle:gameObject) : Bool; // Evaluate;GameObject
+	function GetConditionDescription(gi : ScriptGameInstance) : String; // GetConditionDescription;GameInstance
+	function GetDescription(requester : handle:gameObject) : Condition; // GetDescription;GameObject
+	function GetPlayerSkill(requester : handle:gameObject) : Int32; // GetPlayerSkill;GameObject
+	function GetRequiredLevel(gi : ScriptGameInstance) : Int32; // GetRequiredLevel;GameInstance
+	function GetStatBonusType() : gamedataStatType; // GetStatBonusType;
+	function GetStatType() : gamedataStatType; // GetStatType;
+	function IsRequiredLevelSetup() : Bool; // IsRequiredLevelSetup;
+	function SetProperties(sel_skill : EDeviceChallengeSkill, sel_difficulty : EGameplayChallengeLevel); // SetProperties;EDeviceChallengeSkillEGameplayChallengeLevel
+	function TrySetRequiredLevel(requiredLevel : Int32); // TrySetRequiredLevel;Int32
+}
+
+class abstract GameplayConditionBase extends IScriptable
+{
+	protected var entityID : entEntityID;
+
+	function Evaluate(requester : handle:gameObject) : Bool; // Evaluate;GameObject
+	function GetDescription(requester : handle:gameObject) : Condition; // GetDescription;GameObject
+	function GetPlayer(requester : handle:gameObject) : handle:gameObject; // GetPlayer;GameObject
+	function SetEntityID(id : entEntityID); // SetEntityID;EntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

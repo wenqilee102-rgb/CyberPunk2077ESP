@@ -1,0 +1,29 @@
+import class gameCommunitySystem extends gameICommunitySystem
+{
+	import function ChangeDensityModifier(modiefier : Float); // ChangeDensityModifier
+	import function DisableCrowdNullArea(areaId : Uint64); // DisableCrowdNullArea
+	import function EnableDynamicCrowdNullArea(areaLocalBBox : Box, areaLocalToWorld : WorldTransform, savable : Bool, duration : Float) : Uint64; // EnableDynamicCrowdNullArea
+	import function ResetDensityModifier(); // ResetDensityModifier
+}
+
+import class abstract gameICommunitySystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

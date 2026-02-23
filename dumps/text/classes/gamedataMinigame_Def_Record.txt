@@ -1,0 +1,66 @@
+import class gamedataMinigame_Def_Record extends gamedataTweakDBRecord
+{
+	import function AdditionalProgramsList(out outList : array:whandle:gamedataProgram_Record); // AdditionalProgramsList
+	import function AdditionalProgramsListContains(item : whandle:gamedataProgram_Record) : Bool; // AdditionalProgramsListContains
+	import function BufferFullExitText() : CName; // BufferFullExitText
+	import function BufferSize() : Int32; // BufferSize
+	import function CanceledExitText() : CName; // CanceledExitText
+	import function DefaultTrap() : whandle:gamedataMiniGame_Trap_Record; // DefaultTrap
+	import function DefaultTrapHandle() : handle:gamedataMiniGame_Trap_Record; // DefaultTrapHandle
+	import function ExtraDifficulty() : Float; // ExtraDifficulty
+	import function FailExitText() : CName; // FailExitText
+	import function ForbiddenProgramsList(out outList : array:whandle:gamedataProgram_Record); // ForbiddenProgramsList
+	import function ForbiddenProgramsListContains(item : whandle:gamedataProgram_Record) : Bool; // ForbiddenProgramsListContains
+	import function GenericExitText() : CName; // GenericExitText
+	import function GetAdditionalProgramsListCount() : Int32; // GetAdditionalProgramsListCount
+	import function GetAdditionalProgramsListItem(index : Int32) : whandle:gamedataProgram_Record; // GetAdditionalProgramsListItem
+	import function GetAdditionalProgramsListItemHandle(index : Int32) : handle:gamedataProgram_Record; // GetAdditionalProgramsListItemHandle
+	import function GetForbiddenProgramsListCount() : Int32; // GetForbiddenProgramsListCount
+	import function GetForbiddenProgramsListItem(index : Int32) : whandle:gamedataProgram_Record; // GetForbiddenProgramsListItem
+	import function GetForbiddenProgramsListItemHandle(index : Int32) : handle:gamedataProgram_Record; // GetForbiddenProgramsListItemHandle
+	import function GetGridSymbolsCount() : Int32; // GetGridSymbolsCount
+	import function GetGridSymbolsItem(index : Int32) : whandle:gamedataRowSymbols_Record; // GetGridSymbolsItem
+	import function GetGridSymbolsItemHandle(index : Int32) : handle:gamedataRowSymbols_Record; // GetGridSymbolsItemHandle
+	import function GetGridTrapsCount() : Int32; // GetGridTrapsCount
+	import function GetGridTrapsItem(index : Int32) : whandle:gamedataRowTraps_Record; // GetGridTrapsItem
+	import function GetGridTrapsItemHandle(index : Int32) : handle:gamedataRowTraps_Record; // GetGridTrapsItemHandle
+	import function GetOverrideProgramsListCount() : Int32; // GetOverrideProgramsListCount
+	import function GetOverrideProgramsListItem(index : Int32) : whandle:gamedataProgram_Record; // GetOverrideProgramsListItem
+	import function GetOverrideProgramsListItemHandle(index : Int32) : handle:gamedataProgram_Record; // GetOverrideProgramsListItemHandle
+	import function GreatSuccessExitText() : CName; // GreatSuccessExitText
+	import function GridSize() : Int32; // GridSize
+	import function GridSymbols(out outList : array:whandle:gamedataRowSymbols_Record); // GridSymbols
+	import function GridSymbolsContains(item : whandle:gamedataRowSymbols_Record) : Bool; // GridSymbolsContains
+	import function GridTraps(out outList : array:whandle:gamedataRowTraps_Record); // GridTraps
+	import function GridTrapsContains(item : whandle:gamedataRowTraps_Record) : Bool; // GridTrapsContains
+	import function NoTraps() : Bool; // NoTraps
+	import function OverlapProbability() : Float; // OverlapProbability
+	import function OverrideProgramsList(out outList : array:whandle:gamedataProgram_Record); // OverrideProgramsList
+	import function OverrideProgramsListContains(item : whandle:gamedataProgram_Record) : Bool; // OverrideProgramsListContains
+	import function SaveSeed() : Bool; // SaveSeed
+	import function SuccessExitText() : CName; // SuccessExitText
+	import function TimeLimit() : Float; // TimeLimit
+	import function TimeOutExitText() : CName; // TimeOutExitText
+	import function TrapsProbability() : Float; // TrapsProbability
+	import function UseProgression() : Bool; // UseProgression
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

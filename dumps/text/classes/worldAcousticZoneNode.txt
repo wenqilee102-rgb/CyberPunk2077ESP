@@ -1,0 +1,16 @@
+import class worldAcousticZoneNode extends worldNode
+{
+	var isBlocker : Bool;
+	var tagName : CName;
+	var tagSpread : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+struct ActivatedDeviceNPCSetup
+{
+	public    var npcSpawnerNodeRef : NodeRef;
+	public    var npcSpawned : whandle:NPCPuppet;
+}

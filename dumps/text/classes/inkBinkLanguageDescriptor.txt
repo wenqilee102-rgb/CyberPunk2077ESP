@@ -1,0 +1,5 @@
+import struct inkBinkLanguageDescriptor
+{
+	var bink : raRef:Bink;
+	var languageId : inkLanguageId;
+}

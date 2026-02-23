@@ -1,0 +1,13 @@
+import class audioCookedMetadataResource extends CResource
+{
+	var entries : array:handle:audioAudioMetadata;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

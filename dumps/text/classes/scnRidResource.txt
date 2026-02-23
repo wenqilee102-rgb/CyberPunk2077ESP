@@ -1,0 +1,16 @@
+import class scnRidResource extends CResource
+{
+	var actors : array:scnActorRid;
+	var cameras : array:scnCameraRid;
+	var nextSerialNumber : scnRidSerialNumber;
+	var version : Uint32;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

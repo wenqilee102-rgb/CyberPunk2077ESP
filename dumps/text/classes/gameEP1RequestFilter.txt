@@ -1,0 +1,8 @@
+import struct gameEP1RequestFilter extends gameCustomRequestFilter
+{
+	var isEP1 : Bool;
+}
+
+import struct abstract gameCustomRequestFilter
+{
+}

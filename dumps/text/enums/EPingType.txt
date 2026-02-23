@@ -1,0 +1,5 @@
+enum EPingType
+{
+	DIRECT = 0,
+	SPACE = 1
+}

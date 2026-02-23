@@ -1,0 +1,13 @@
+import class meshMeshParamGpuBuffer extends meshMeshParameter
+{
+	var stride : Uint32;
+	var data : DataBuffer;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

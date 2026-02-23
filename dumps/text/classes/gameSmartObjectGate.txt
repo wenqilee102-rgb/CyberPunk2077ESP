@@ -1,0 +1,6 @@
+import struct gameSmartObjectGate
+{
+	var animationName : CName;
+	var movementType : moveMovementType;
+	var movementOrientationType : moveMovementOrientationType;
+}

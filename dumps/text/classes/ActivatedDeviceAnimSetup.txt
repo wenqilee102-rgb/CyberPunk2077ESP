@@ -1,0 +1,4 @@
+struct ActivatedDeviceAnimSetup
+{
+	public    var animationTime : Float;
+}

@@ -1,0 +1,7 @@
+import struct gameinteractionsChoiceLookAtDescriptor
+{
+	var type : gameinteractionsChoiceLookAtType;
+	var slotName : CName;
+	var offset : Vector3;
+	var orbId : gameinteractionsOrbID;
+}

@@ -1,0 +1,8 @@
+import struct gameinteractionsvisListChoiceData
+{
+	var localizedName : String;
+	var type : gameinteractionsChoiceTypeWrapper;
+	var inputActionName : CName;
+	var captionParts : gameinteractionsChoiceCaption;
+	var timeProvider : whandle:gameinteractionsvisIVisualizerTimeProvider;
+}

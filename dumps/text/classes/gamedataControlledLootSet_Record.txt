@@ -1,0 +1,62 @@
+import class gamedataControlledLootSet_Record extends gamedataTweakDBRecord
+{
+	import function BlocksFromNPCs() : Bool; // BlocksFromNPCs
+	import function BlocksInContainers() : Bool; // BlocksInContainers
+	import function ChanceBase() : Float; // ChanceBase
+	import function ChanceIncreasePerAttempt() : Float; // ChanceIncreasePerAttempt
+	import function ChanceMax() : Float; // ChanceMax
+	import function DropsFromNPCs() : Bool; // DropsFromNPCs
+	import function DropsInContainers() : Bool; // DropsInContainers
+	import function ExcludedContainerTypes(out outList : array:whandle:gamedataContainerType_Record); // ExcludedContainerTypes
+	import function ExcludedContainerTypesContains(item : whandle:gamedataContainerType_Record) : Bool; // ExcludedContainerTypesContains
+	import function GetExcludedContainerTypesCount() : Int32; // GetExcludedContainerTypesCount
+	import function GetExcludedContainerTypesItem(index : Int32) : whandle:gamedataContainerType_Record; // GetExcludedContainerTypesItem
+	import function GetExcludedContainerTypesItemHandle(index : Int32) : handle:gamedataContainerType_Record; // GetExcludedContainerTypesItemHandle
+	import function GetLootItemsCount() : Int32; // GetLootItemsCount
+	import function GetLootItemsItem(index : Int32) : whandle:gamedataLootItem_Record; // GetLootItemsItem
+	import function GetLootItemsItemHandle(index : Int32) : handle:gamedataLootItem_Record; // GetLootItemsItemHandle
+	import function GetReplacementLootItemsCount() : Int32; // GetReplacementLootItemsCount
+	import function GetReplacementLootItemsItem(index : Int32) : whandle:gamedataLootItem_Record; // GetReplacementLootItemsItem
+	import function GetReplacementLootItemsItemHandle(index : Int32) : handle:gamedataLootItem_Record; // GetReplacementLootItemsItemHandle
+	import function GetReplacementQueriesCount() : Int32; // GetReplacementQueriesCount
+	import function GetReplacementQueriesItem(index : Int32) : whandle:gamedataItemQueryElement_Record; // GetReplacementQueriesItem
+	import function GetReplacementQueriesItemHandle(index : Int32) : handle:gamedataItemQueryElement_Record; // GetReplacementQueriesItemHandle
+	import function ItemsInSetShareDropCount() : Bool; // ItemsInSetShareDropCount
+	import function LootItems(out outList : array:whandle:gamedataLootItem_Record); // LootItems
+	import function LootItemsContains(item : whandle:gamedataLootItem_Record) : Bool; // LootItemsContains
+	import function MaxDrops() : Int32; // MaxDrops
+	import function MaxDropsGloballyShared() : Bool; // MaxDropsGloballyShared
+	import function MaxDropsPerLevel() : Float; // MaxDropsPerLevel
+	import function NpcPrereqID() : whandle:gamedataIPrereq_Record; // NpcPrereqID
+	import function NpcPrereqIDHandle() : handle:gamedataIPrereq_Record; // NpcPrereqIDHandle
+	import function PlayerPrereqID() : whandle:gamedataIPrereq_Record; // PlayerPrereqID
+	import function PlayerPrereqIDHandle() : handle:gamedataIPrereq_Record; // PlayerPrereqIDHandle
+	import function ProgressionBasedChanceBonus() : Float; // ProgressionBasedChanceBonus
+	import function ProgressionBasedThreshold() : Float; // ProgressionBasedThreshold
+	import function ReplacementLootItems(out outList : array:whandle:gamedataLootItem_Record); // ReplacementLootItems
+	import function ReplacementLootItemsContains(item : whandle:gamedataLootItem_Record) : Bool; // ReplacementLootItemsContains
+	import function ReplacementQueries(out outList : array:whandle:gamedataItemQueryElement_Record); // ReplacementQueries
+	import function ReplacementQueriesContains(item : whandle:gamedataItemQueryElement_Record) : Bool; // ReplacementQueriesContains
+	import function RollBackCounterWhenLootIsDestroyed() : Bool; // RollBackCounterWhenLootIsDestroyed
+	import function RollOverDropsPerLevel() : Bool; // RollOverDropsPerLevel
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

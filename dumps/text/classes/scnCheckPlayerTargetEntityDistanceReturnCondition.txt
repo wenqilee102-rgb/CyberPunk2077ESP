@@ -1,0 +1,12 @@
+import class scnCheckPlayerTargetEntityDistanceReturnCondition extends scnIReturnCondition
+{
+	var params : scnCheckPlayerTargetEntityDistanceReturnConditionParams;
+}
+
+import class abstract scnIReturnCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

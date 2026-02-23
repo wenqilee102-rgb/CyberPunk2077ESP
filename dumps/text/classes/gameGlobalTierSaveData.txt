@@ -1,0 +1,5 @@
+import struct gameGlobalTierSaveData
+{
+	var subtype : gameGlobalTierSubtype;
+	var data : handle:gameSceneTierData;
+}

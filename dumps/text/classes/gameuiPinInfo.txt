@@ -1,0 +1,9 @@
+import struct gameuiPinInfo
+{
+	var shouldShow : Bool;
+	var showFloorAbove : Bool;
+	var showFloorBelow : Bool;
+	var iconType : Int32;
+	var offset : Float;
+	var displayText : String;
+}

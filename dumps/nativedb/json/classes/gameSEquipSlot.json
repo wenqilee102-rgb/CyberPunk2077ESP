@@ -1,0 +1,1 @@
+{"b":"gameSEquipSlot","c":"SEquipSlot","d":24,"g":true,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":132},{"a":{"a":15},"b":"slotID","c":128},{"a":{"a":26,"c":{"b":"gameIPrereq"}},"b":"unlockPrereq","c":128},{"a":{"a":1},"b":"visibleWhenLocked","c":128}]}

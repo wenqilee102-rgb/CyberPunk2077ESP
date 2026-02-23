@@ -1,0 +1,32 @@
+class AnimFeature_CameraBodyOffset extends animAnimFeature
+{
+	public    var lookat_pitch_forward_offset : Float;
+	public    var lookat_pitch_forward_down_ratio : Float;
+	public    var lookat_yaw_left_offset : Float;
+	public    var lookat_yaw_left_up_offset : Float;
+	public    var lookat_yaw_right_offset : Float;
+	public    var lookat_yaw_right_up_offset : Float;
+	public    var lookat_yaw_offset_active_angle : Float;
+	public    var is_paralax : Float;
+	public    var paralax_radius : Float;
+	public    var paralax_forward_offset : Float;
+	public    var lookat_offset_vertical : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

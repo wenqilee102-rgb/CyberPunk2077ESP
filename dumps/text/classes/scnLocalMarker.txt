@@ -1,0 +1,5 @@
+import struct scnLocalMarker
+{
+	var transformLS : Transform;
+	var name : CName;
+}

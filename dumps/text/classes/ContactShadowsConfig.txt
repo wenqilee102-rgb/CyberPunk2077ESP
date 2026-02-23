@@ -1,0 +1,8 @@
+import struct ContactShadowsConfig
+{
+	var range : Float;
+	var rangeLimit : Float;
+	var screenEdgeFadeRange : Float;
+	var distanceFadeLimit : Float;
+	var distanceFadeRange : Float;
+}

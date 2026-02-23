@@ -1,0 +1,30 @@
+import class gamedataEnvLight_Record extends gamedataTweakDBRecord
+{
+	import function Color() : array:Int32; // Color
+	import function ColorContains(item : Int32) : Bool; // ColorContains
+	import function GetColorCount() : Int32; // GetColorCount
+	import function GetColorItem(index : Int32) : Int32; // GetColorItem
+	import function Intensity() : Float; // Intensity
+	import function Radius() : Float; // Radius
+	import function Temperature() : Float; // Temperature
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

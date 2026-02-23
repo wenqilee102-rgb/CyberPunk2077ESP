@@ -1,0 +1,31 @@
+import class gamedataMiniGame_Trap_Record extends gamedataTweakDBRecord
+{
+	import function NegativeTrap() : Bool; // NegativeTrap
+	import function SpawnProbability() : Float; // SpawnProbability
+	import function TrapDescription() : CName; // TrapDescription
+	import function TrapIcon() : whandle:gamedataUIIcon_Record; // TrapIcon
+	import function TrapIconHandle() : handle:gamedataUIIcon_Record; // TrapIconHandle
+	import function TrapName() : CName; // TrapName
+	import function TrapType() : whandle:gamedataMinigameTrapType_Record; // TrapType
+	import function TrapTypeHandle() : handle:gamedataMinigameTrapType_Record; // TrapTypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

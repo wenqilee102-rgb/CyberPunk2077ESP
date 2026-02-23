@@ -1,0 +1,37 @@
+import class gamedataAttributeData_Record extends gamedataTweakDBRecord
+{
+	import function AttrIcon() : whandle:gamedataUIIcon_Record; // AttrIcon
+	import function AttrIconHandle() : handle:gamedataUIIcon_Record; // AttrIconHandle
+	import function Attribute() : whandle:gamedataAttribute_Record; // Attribute
+	import function AttributeHandle() : handle:gamedataAttribute_Record; // AttributeHandle
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetPerksCount() : Int32; // GetPerksCount
+	import function GetPerksItem(index : Int32) : whandle:gamedataNewPerk_Record; // GetPerksItem
+	import function GetPerksItemHandle(index : Int32) : handle:gamedataNewPerk_Record; // GetPerksItemHandle
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function Perks(out outList : array:whandle:gamedataNewPerk_Record); // Perks
+	import function PerksContains(item : whandle:gamedataNewPerk_Record) : Bool; // PerksContains
+	import function Type() : gamedataAttributeDataType; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

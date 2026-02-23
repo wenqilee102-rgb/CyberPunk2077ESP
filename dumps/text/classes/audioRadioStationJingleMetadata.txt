@@ -1,0 +1,8 @@
+import struct audioRadioStationJingleMetadata
+{
+	var introJingleEvent : CName;
+	var introDuration : Float;
+	var middleJingleEvent : CName;
+	var endJingleEvent : CName;
+	var outroDuration : Float;
+}

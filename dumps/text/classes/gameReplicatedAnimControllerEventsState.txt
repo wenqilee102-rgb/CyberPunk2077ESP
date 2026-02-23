@@ -1,0 +1,5 @@
+import struct gameReplicatedAnimControllerEventsState
+{
+	var items : array:gameReplicatedAnimEvent;
+	var lastAppliedActionsTime : netTime;
+}

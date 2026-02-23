@@ -1,0 +1,131 @@
+class DataTrackingSystem extends gameScriptableSystem
+{
+	protected var trackedAchievements : array:gamedataAchievement;
+	protected var rangedAttacksMade : Int32;
+	protected var meleeAttacksMade : Int32;
+	protected var meleeKills : Int32;
+	protected var rangedKills : Int32;
+	protected var quickhacksMade : Int32;
+	protected var distractionsMade : Int32;
+	protected var legendaryItemsCrafted : Int32;
+	protected var npcMeleeLightAttackReceived : Int32;
+	protected var npcMeleeStrongAttackReceived : Int32;
+	protected var npcMeleeBlockAttackReceived : Int32;
+	protected var npcMeleeBlockedAttacks : Int32;
+	protected var npcMeleeDeflectedAttacks : Int32;
+	protected var downedEnemies : Int32;
+	protected var killedEnemies : Int32;
+	protected var defeatedEnemies : Int32;
+	protected var incapacitatedEnemies : Int32;
+	protected var finishedEnemies : Int32;
+	protected var downedWithRanged : Int32;
+	protected var downedWithMelee : Int32;
+	protected var downedInTimeDilatation : Int32;
+	protected var rangedProgress : Int32;
+	protected var meleeProgress : Int32;
+	protected var dilationProgress : Int32;
+	protected var failedShardDrops : Float;
+	protected var LegPlusPlusHackDropped : Bool;
+	protected var bluelinesUseCount : Int32;
+	private   var twoHeadssourceID : entEntityID;
+	private   var twoHeadsValidTimestamp : Float;
+	private   var lastKillTimestamp : Float;
+	private   var enemiesKilledInTimeInterval : array:whandle:gameObject;
+	private   var timeInterval : Float;
+	private   var numerOfKillsRequired : Int32;
+	private   var gunKataKilledEnemies : Int32;
+	private   var gunKataValidTimestamp : Float;
+	private   var hardKneesInProgress : Bool;
+	private   var hardKneesKilledEnemies : Int32;
+	private   var harKneesValidTimestamp : Float;
+	private   var resetKilledReqDelayID : gameDelayID;
+	private   var resetFinishedReqDelayID : gameDelayID;
+	private   var resetDefeatedReqDelayID : gameDelayID;
+	private   var resetIncapacitatedReqDelayID : gameDelayID;
+	private   var resetDownedReqDelayID : gameDelayID;
+	private   var resetMeleeAttackReqDelayID : gameDelayID;
+	private   var resetRangedAttackReqDelayID : gameDelayID;
+	private   var resetAttackReqDelayID : gameDelayID;
+	private   var resetNpcMeleeLightAttackReqDelayID : gameDelayID;
+	private   var resetNpcMeleeStrongAttackReqDelayID : gameDelayID;
+	private   var resetNpcMeleeFinalAttackReqDelayID : gameDelayID;
+	private   var resetNpcMeleeBlockAttackReqDelayID : gameDelayID;
+	private   var resetNpcBlockedReqDelayID : gameDelayID;
+	private   var resetNpcDeflectedReqDelayID : gameDelayID;
+	private   var resetNpcGuardbreakReqDelayID : gameDelayID;
+
+	function CheckTimeDilationSources() : Bool; // CheckTimeDilationSources;
+	function GetAchievementRecordFromGameDataAchievement(achievement : gamedataAchievement) : whandle:gamedataAchievement_Record; // GetAchievementRecordFromGameDataAchievement;gamedataAchievement
+	function GetCountFromDataTrackingFactEnum(dataTrackingFact : ETelemetryData) : Int32; // GetCountFromDataTrackingFactEnum;ETelemetryData
+	function GetFailedShardDrops() : Float; // GetFailedShardDrops;
+	function GetNameFromDataTrackingFactEnum(dataTrackingFact : ETelemetryData) : CName; // GetNameFromDataTrackingFactEnum;ETelemetryData
+	function IsFirstPlusPlusLegendaryAwarded() : Bool; // IsFirstPlusPlusLegendaryAwarded;
+	function IsSourcePlayer(attackData : handle:gamedamageAttackData) : Bool; // IsSourcePlayer;AttackData
+	function OnAddAchievementRequest(request : handle:AddAchievementRequest); // OnAddAchievementRequest;AddAchievementRequest
+	function OnAttach(); // OnAttach;
+	function OnBluelineSelectedRequest(request : handle:scnBluelineSelectedRequest); // OnBluelineSelectedRequest;BluelineSelectedRequest
+	function OnDetach(); // OnDetach;
+	function OnFirstPlusPlusLegendaryAwarded(request : handle:FirstPlusPlusLegendaryAwardedRequest); // OnFirstPlusPlusLegendaryAwarded;FirstPlusPlusLegendaryAwardedRequest
+	function OnModifyNPCTelemetryVariable(request : handle:ModifyNPCTelemetryVariable); // OnModifyNPCTelemetryVariable;ModifyNPCTelemetryVariable
+	function OnModifyTelemetryVariable(request : handle:ModifyTelemetryVariable); // OnModifyTelemetryVariable;ModifyTelemetryVariable
+	function OnNPCKillDataTrackingRequest(request : handle:NPCKillDataTrackingRequest); // OnNPCKillDataTrackingRequest;NPCKillDataTrackingRequest
+	function OnResetBlockAttackHitsReceivedRequest(request : handle:ResetBlockAttackHitsReceivedRequest); // OnResetBlockAttackHitsReceivedRequest;ResetBlockAttackHitsReceivedRequest
+	function OnResetBlockedHitsRequest(request : handle:ResetBlockedHitsRequest); // OnResetBlockedHitsRequest;ResetBlockedHitsRequest
+	function OnResetDefeatedRequest(request : handle:ResetNPCDefeatedDelayedRequest); // OnResetDefeatedRequest;ResetNPCDefeatedDelayedRequest
+	function OnResetDownedRequest(request : handle:ResetNPCDownedDelayedRequest); // OnResetDownedRequest;ResetNPCDownedDelayedRequest
+	function OnResetFinalComboHitsReceivedRequest(request : handle:ResetFinalComboHitsReceivedRequest); // OnResetFinalComboHitsReceivedRequest;ResetFinalComboHitsReceivedRequest
+	function OnResetFinishedRequest(request : handle:ResetNPCFinishedDelayedRequest); // OnResetFinishedRequest;ResetNPCFinishedDelayedRequest
+	function OnResetIncapacitatedRequest(request : handle:ResetNPCIncapacitatedDelayedRequest); // OnResetIncapacitatedRequest;ResetNPCIncapacitatedDelayedRequest
+	function OnResetKilledRequest(request : handle:ResetNPCKilledDelayedRequest); // OnResetKilledRequest;ResetNPCKilledDelayedRequest
+	function OnResetLightHitsReceivedRequest(request : handle:ResetLightHitsReceivedRequest); // OnResetLightHitsReceivedRequest;ResetLightHitsReceivedRequest
+	function OnResetMeleeAttackRequest(request : handle:ResetMeleeAttackDelayedRequest); // OnResetMeleeAttackRequest;ResetMeleeAttackDelayedRequest
+	function OnResetQuickhackRequest(request : handle:ResetAttackDelayedRequest); // OnResetQuickhackRequest;ResetAttackDelayedRequest
+	function OnResetRangedAttackRequest(request : handle:ResetRangedAttackDelayedRequest); // OnResetRangedAttackRequest;ResetRangedAttackDelayedRequest
+	function OnResetStrongHitsReceivedRequest(request : handle:ResetStrongHitsReceivedRequest); // OnResetStrongHitsReceivedRequest;ResetStrongHitsReceivedRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSendItemCraftedDataTrackingRequest(request : handle:ItemCraftedDataTrackingRequest); // OnSendItemCraftedDataTrackingRequest;ItemCraftedDataTrackingRequest
+	function OnSetAchievementProgressRequest(request : handle:questSetAchievementProgressRequest); // OnSetAchievementProgressRequest;SetAchievementProgressRequest
+	function OnTakedownActionDataTrackingRequest(request : handle:TakedownActionDataTrackingRequest); // OnTakedownActionDataTrackingRequest;TakedownActionDataTrackingRequest
+	function OnUnlockAllAchievementsRequest(request : handle:UnlockAllAchievementsRequest); // OnUnlockAllAchievementsRequest;UnlockAllAchievementsRequest
+	function OnUpdateShardFailedDrops(request : handle:UpdateShardFailedDropsRequest); // OnUpdateShardFailedDrops;UpdateShardFailedDropsRequest
+	function ProcessDataTrackingFacts(); // ProcessDataTrackingFacts;
+	function ProcessGunKataAchievement(request : handle:NPCKillDataTrackingRequest); // ProcessGunKataAchievement;NPCKillDataTrackingRequest
+	function ProcessHandyManAchievement(targetItem : gameItemID, amount : Int32); // ProcessHandyManAchievement;ItemIDInt32
+	function ProcessHardForKneesAchievement(); // ProcessHardForKneesAchievement;
+	function ProcessNotTheMobileAchievement(damageEntry : script_ref:DamageHistoryEntry); // ProcessNotTheMobileAchievement;script_ref<DamageHistoryEntry>
+	function ProcessTutorialFact(telemetryData : ETelemetryData); // ProcessTutorialFact;ETelemetryData
+	function ProcessTwoHeadsOneBulletAchievement(request : handle:NPCKillDataTrackingRequest); // ProcessTwoHeadsOneBulletAchievement;NPCKillDataTrackingRequest
+	function RestoreTrackedAchievemenets(); // RestoreTrackedAchievemenets;
+	function SetAchievementProgress(achievement : gamedataAchievement, trackedData : Int32, optional customTarget : Int32); // SetAchievementProgress;gamedataAchievementInt32Int32
+	function UnlockAchievement(achievement : gamedataAchievement); // UnlockAchievement;gamedataAchievement
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

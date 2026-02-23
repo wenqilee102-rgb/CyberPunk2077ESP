@@ -1,0 +1,6 @@
+struct ActionInteractivityInfo
+{
+	public    var isExternal : Bool;
+	public    var isRemote : Bool;
+	public    var isDirect : Bool;
+}

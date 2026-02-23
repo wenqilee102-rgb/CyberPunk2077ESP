@@ -1,0 +1,10 @@
+import struct gameinteractionsvisInteractionChoiceData
+{
+	var inputAction : CName;
+	var rawInputKey : EInputKey;
+	var isHoldAction : Bool;
+	var localizedName : String;
+	var type : gameinteractionsChoiceTypeWrapper;
+	var data : array:Variant;
+	var captionParts : gameinteractionsChoiceCaption;
+}

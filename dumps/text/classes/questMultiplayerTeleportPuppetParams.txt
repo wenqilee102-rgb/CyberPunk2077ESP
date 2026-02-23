@@ -1,0 +1,8 @@
+import struct questMultiplayerTeleportPuppetParams
+{
+	var teleportAllPlayers : Bool;
+	var spawnPointTag : CName;
+	var destinationRef : gameEntityReference;
+	var destinationOffset : Vector3;
+	var areaNodeTriggerRef : gameEntityReference;
+}

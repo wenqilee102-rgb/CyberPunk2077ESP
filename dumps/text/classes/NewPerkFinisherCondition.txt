@@ -1,0 +1,28 @@
+class NewPerkFinisherCondition extends gameinteractionsInteractionScriptedCondition
+{
+	function IsAreaClear(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // IsAreaClear;GameObjectGameObject
+	function IsFinisherAvailable(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // IsFinisherAvailable;GameObjectGameObject
+	function NewPerkFinisherBladeEnabled(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject, equippedWeapon : handle:gameweaponObject) : Bool; // NewPerkFinisherBladeEnabled;GameObjectGameObjectWeaponObject
+	function NewPerkFinisherBluntEnabled(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject, equippedWeapon : handle:gameweaponObject) : Bool; // NewPerkFinisherBluntEnabled;GameObjectGameObjectWeaponObject
+	function NewPerkFinisherMonowireEnabled(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject, equippedWeapon : handle:gameweaponObject) : Bool; // NewPerkFinisherMonowireEnabled;GameObjectGameObjectWeaponObject
+	function NewPerkFinisherThrowableEnabled(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject, equippedWeapon : handle:gameweaponObject) : Bool; // NewPerkFinisherThrowableEnabled;GameObjectGameObjectWeaponObject
+	function Test(activatorObject : whandle:gameObject, hotSpotObject : whandle:gameObject) : Bool; // Test;GameObjectGameObject
+}
+
+import class gameinteractionsInteractionScriptedCondition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

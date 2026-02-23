@@ -1,0 +1,21 @@
+class BountyManager extends IScriptable
+{
+	static function CompleteBounty(target : whandle:NPCPuppet); // BountyManager::CompleteBounty;NPCPuppet
+	static function GenerateBounty(target : whandle:NPCPuppet) : Bounty; // BountyManager::GenerateBounty;NPCPuppet
+	static function GetTransgressionRecords(transgressions : script_ref:array:TweakDBID) : array:whandle:gamedataTransgression_Record; // BountyManager::GetTransgressionRecords;script_ref<array<TweakDBID>>
+	static function SetBountyFromID(bountyID : TweakDBID, target : whandle:NPCPuppet) : Bounty; // BountyManager::SetBountyFromID;TweakDBIDNPCPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,35 @@
+class AnimFeature_WeaponBlur extends animAnimFeature
+{
+	public    var weaponNearPlane : Float;
+	public    var weaponFarPlane : Float;
+	public    var weaponEdgesSharpness : Float;
+	public    var weaponVignetteIntensity : Float;
+	public    var weaponVignetteRadius : Float;
+	public    var weaponVignetteCircular : Float;
+	public    var weaponBlurIntensity : Float;
+	public    var weaponNearPlane_aim : Float;
+	public    var weaponFarPlane_aim : Float;
+	public    var weaponEdgesSharpness_aim : Float;
+	public    var weaponVignetteIntensity_aim : Float;
+	public    var weaponVignetteRadius_aim : Float;
+	public    var weaponVignetteCircular_aim : Float;
+	public    var weaponBlurIntensity_aim : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

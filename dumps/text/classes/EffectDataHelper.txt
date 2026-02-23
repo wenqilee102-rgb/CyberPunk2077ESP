@@ -1,0 +1,18 @@
+class abstract EffectDataHelper extends IScriptable
+{
+	static function FillMeleeEffectData(effectData : gameEffectData, colliderBoxSize : Vector4, duration : Float, position : Vector4, rotation : Quaternion, direction : Vector4, range : Float, initRange : Float, width : Float, axisConstraints : Vector4, coneHalfAngle : Float); // EffectDataHelper::FillMeleeEffectData;EffectDataVector4FloatVector4QuaternionVector4FloatFloatFloatVector4Float
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

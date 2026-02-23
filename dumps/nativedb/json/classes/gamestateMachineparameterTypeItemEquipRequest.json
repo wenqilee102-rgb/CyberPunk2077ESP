@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamestateMachineparameterTypeItemEquipRequest","c":"ItemEquipRequest","d":8,"e":[{"a":{"a":15},"b":"slotId","c":128},{"a":{"b":"gameItemID"},"b":"itemId","c":128},{"a":{"b":"ERenderingPlane"},"b":"startingRenderingPlane","c":128}]}

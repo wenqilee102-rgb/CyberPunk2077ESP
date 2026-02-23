@@ -1,0 +1,7 @@
+import struct scnPlayerAnimData
+{
+	var tierData : handle:gameSceneTierData;
+	var useZSnapping : Bool;
+	var unmountBodyCarry : Bool;
+	var isEndOfCarryingAnimation : Bool;
+}

@@ -1,0 +1,9 @@
+import class abstract worldTrafficSpotDefinition extends ISerializable
+{
+	var length : Float;
+	var direction : worldTrafficSpotDirection;
+}
+
+import class abstract ISerializable
+{
+}

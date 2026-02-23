@@ -1,0 +1,7 @@
+import struct GlobalLightingTrajectory
+{
+	var latitude : Float;
+	var sunRotationOffset : Float;
+	var moonRotationOffset : Float;
+	var timeOfYearSeason : ETimeOfYearSeason;
+}

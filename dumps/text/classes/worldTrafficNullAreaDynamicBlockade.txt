@@ -1,0 +1,7 @@
+import struct worldTrafficNullAreaDynamicBlockade
+{
+	var areaID : Uint64;
+	var offmeshLinks : array:Uint64;
+	var affectedTrafficLanes : array:worldTrafficLaneUID;
+	var permanentlyEnabledByDefault : Bool;
+}

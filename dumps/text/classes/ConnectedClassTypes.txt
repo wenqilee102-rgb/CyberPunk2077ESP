@@ -1,0 +1,6 @@
+struct ConnectedClassTypes
+{
+	public    var surveillanceCamera : Bool;
+	public    var securityTurret : Bool;
+	public    var puppet : Bool;
+}

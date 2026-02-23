@@ -1,0 +1,1 @@
+{"b":"garmentCollarAreaParams","d":8,"g":true,"e":[{"a":{"a":1},"b":"enable","c":128},{"a":{"a":10},"b":"radiusInCM","c":128},{"a":{"a":10},"b":"radiusForTriangleRemovalInCM","c":128},{"a":{"a":10},"b":"offsetFromSkinInCM","c":128},{"a":{"b":"Vector3"},"b":"offset","c":128}]}

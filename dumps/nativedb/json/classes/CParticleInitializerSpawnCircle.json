@@ -1,0 +1,1 @@
+{"a":"IParticleInitializer","b":"CParticleInitializerSpawnCircle","d":8,"e":[{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"innerRadius","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"outerRadius","c":128},{"a":{"a":1},"b":"surfaceOnly","c":128},{"a":{"a":1},"b":"worldSpace","c":128},{"a":{"b":"Matrix"},"b":"spawnToLocal","c":128}]}

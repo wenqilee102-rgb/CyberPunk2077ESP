@@ -1,0 +1,6 @@
+import struct rendSLightFlickering
+{
+	var positionOffset : Float;
+	var flickerStrength : Float;
+	var flickerPeriod : Float;
+}

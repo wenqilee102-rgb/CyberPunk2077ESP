@@ -1,0 +1,9 @@
+import struct Multilayer_LayerTemplateOverrides
+{
+	var colorScale : array:Multilayer_LayerTemplateOverridesColor;
+	var roughLevelsIn : array:Multilayer_LayerTemplateOverridesLevels;
+	var roughLevelsOut : array:Multilayer_LayerTemplateOverridesLevels;
+	var metalLevelsIn : array:Multilayer_LayerTemplateOverridesLevels;
+	var metalLevelsOut : array:Multilayer_LayerTemplateOverridesLevels;
+	var normalStrength : array:Multilayer_LayerTemplateOverridesNormalStrength;
+}

@@ -1,0 +1,111 @@
+import class gameVisionModeComponent extends gameComponent
+{
+	private   var defaultHighlightData : handle:HighlightEditableData;
+	private   var forcedHighlights : array:handle:FocusForcedHighlightData;
+	private   var activeForcedHighlight : handle:FocusForcedHighlightData;
+	private   var currentDefaultHighlight : handle:FocusForcedHighlightData;
+	private   var activeRevealRequests : array:gameVisionModeSystemRevealIdentifier;
+	private   var isFocusModeActive : Bool;
+	private   var wasCleanedUp : Bool;
+	private   var slaveObjectsToHighlight : array:entEntityID;
+
+	import function SetHiddenInVisionMode(hidden : Bool, type : gameVisionModeType); // SetHiddenInVisionMode
+
+	event OnAIAction(evt : handle:AIAIEvent) : Bool; // OnAIAction
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDefeated(evt : handle:gameeventsDefeatedEvent) : Bool; // OnDefeated
+	event OnForceReactivateHighlights(evt : handle:ForceReactivateHighlightsEvent) : Bool; // OnForceReactivateHighlights
+	event OnForceUpdateDefultHighlight(evt : handle:ForceUpdateDefaultHighlightEvent) : Bool; // OnForceUpdateDefultHighlight
+	event OnForceVisionApperance(evt : handle:ForceVisionApperanceEvent) : Bool; // OnForceVisionApperance
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnRestoreRevealEvent(evt : handle:RestoreRevealStateEvent) : Bool; // OnRestoreRevealEvent
+	event OnRevealObject(evt : handle:gameeventsRevealObjectEvent) : Bool; // OnRevealObject
+	event OnRevealQuestTargetEvent(evt : handle:RevealQuestTargetEvent) : Bool; // OnRevealQuestTargetEvent
+	event OnSetForcedDefaultHighlight(evt : handle:SetDefaultHighlightEvent) : Bool; // OnSetForcedDefaultHighlight
+	event OnSetPersistentForcedHighlightEvent(evt : handle:SetPersistentForcedHighlightEvent) : Bool; // OnSetPersistentForcedHighlightEvent
+	event OnToggleForcedHighlightEvent(evt : handle:ToggleForcedHighlightEvent) : Bool; // OnToggleForcedHighlightEvent
+	event OnToggleWeakspotHighlightEvent(evt : handle:ToggleWeakspotHighlightEvent) : Bool; // OnToggleWeakspotHighlightEvent
+	event OnVisionRevealExpiredEvent(evt : handle:gameVisionRevealExpiredEvent) : Bool; // OnVisionRevealExpiredEvent
+
+	function AddForcedHighlight(data : handle:FocusForcedHighlightData); // AddForcedHighlight;FocusForcedHighlightData
+	function AddRevealRequest(data : gameVisionModeSystemRevealIdentifier) : Int32; // AddRevealRequest;gameVisionModeSystemRevealIdentifier
+	function CancelForcedVisionAppearance(transitionTime : Float); // CancelForcedVisionAppearance;Float
+	function CleanUp(); // CleanUp;
+	function ClearAllReavealRequests() : Bool; // ClearAllReavealRequests;
+	function ClearForcedHighlights() : Bool; // ClearForcedHighlights;
+	function CompareHighlightData(data1 : handle:FocusForcedHighlightData, data2 : handle:FocusForcedHighlightData) : Bool; // CompareHighlightData;FocusForcedHighlightDataFocusForcedHighlightData
+	function EvaluateForcedHighLightsStack(); // EvaluateForcedHighLightsStack;
+	function ForceVisionAppearance(data : handle:FocusForcedHighlightData); // ForceVisionAppearance;FocusForcedHighlightData
+	function ForwardHighlightToSlaveEntity(data : handle:FocusForcedHighlightData, apply : Bool); // ForwardHighlightToSlaveEntity;FocusForcedHighlightDataBool
+	function GetDefaultHighlight(optional data : handle:HighlightInstance) : handle:FocusForcedHighlightData; // GetDefaultHighlight;HighlightInstance
+	function GetMyPS() : handle:gameVisionModeComponentPS; // GetMyPS;
+	function GetOwner() : handle:gameObject; // GetOwner;
+	function GetRevealRequestIndex(data : gameVisionModeSystemRevealIdentifier) : Int32; // GetRevealRequestIndex;gameVisionModeSystemRevealIdentifier
+	function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem;
+	function HasDefaultHighlight() : Bool; // HasDefaultHighlight;
+	function HasForcedHighlightOnStack(data : handle:FocusForcedHighlightData) : Bool; // HasForcedHighlightOnStack;FocusForcedHighlightData
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType, sourceID : entEntityID, sourceName : CName) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineTypeEntityIDCName
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineType
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType, sourceID : entEntityID) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineTypeEntityID
+	function HasOutlineOrFill(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType) : Bool; // HasOutlineOrFill;EFocusForcedHighlightTypeEFocusOutlineType
+	function HasRevealRequest(data : gameVisionModeSystemRevealIdentifier) : Bool; // HasRevealRequest;gameVisionModeSystemRevealIdentifier
+	function HasStaticDefaultHighlight() : Bool; // HasStaticDefaultHighlight;
+	function IsRequestTheSame(request1 : gameVisionModeSystemRevealIdentifier, request2 : gameVisionModeSystemRevealIdentifier) : Bool; // IsRequestTheSame;gameVisionModeSystemRevealIdentifiergameVisionModeSystemRevealIdentifier
+	function IsRevealRequestIndexValid(index : Int32) : Bool; // IsRevealRequestIndexValid;Int32
+	function IsRevealed() : Bool; // IsRevealed;
+	function IsTagged() : Bool; // IsTagged;
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameDetach(); // OnGameDetach;
+	function ReactivateForceHighlight(); // ReactivateForceHighlight;
+	function RemoveForcedHighlight(data : handle:FocusForcedHighlightData, optional ignoreStackEvaluation : Bool); // RemoveForcedHighlight;FocusForcedHighlightDataBool
+	function RemoveRevealRequest(data : gameVisionModeSystemRevealIdentifier); // RemoveRevealRequest;gameVisionModeSystemRevealIdentifier
+	function RemoveRevealWithDelay(reason : gameVisionModeSystemRevealIdentifier, lifetime : Float); // RemoveRevealWithDelay;gameVisionModeSystemRevealIdentifierFloat
+	function RequestHUDRefresh(); // RequestHUDRefresh;
+	function RestoreReveal(); // RestoreReveal;
+	function RevealObject(reveal : Bool, reason : gameVisionModeSystemRevealIdentifier, lifetime : Float, optional onlyRevealWeakspots : Bool); // RevealObject;BoolgameVisionModeSystemRevealIdentifierFloatBool
+	function SendRevealStateChangedEvent(state : ERevealState, reason : gameVisionModeSystemRevealIdentifier, optional onlyRevealWeakspots : Bool); // SendRevealStateChangedEvent;ERevealStategameVisionModeSystemRevealIdentifierBool
+	function ToggleForcedHighlight(sourceName : CName, highlightData : handle:HighlightEditableData, operation : EToggleOperationType); // ToggleForcedHighlight;CNameHighlightEditableDataEToggleOperationType
+	function ToggleRevealObject(reveal : Bool, optional forced : Bool); // ToggleRevealObject;BoolBool
+	function UpdateActiveForceHighlight(data : handle:FocusForcedHighlightData); // UpdateActiveForceHighlight;FocusForcedHighlightData
+	function UpdateDefaultHighlight(data : handle:FocusForcedHighlightData); // UpdateDefaultHighlight;FocusForcedHighlightData
+	function UpdateSlaveObjectsToHighlight(objectsToHighlight : script_ref:array:whandle:gameObject); // UpdateSlaveObjectsToHighlight;script_ref<array<GameObject>>
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

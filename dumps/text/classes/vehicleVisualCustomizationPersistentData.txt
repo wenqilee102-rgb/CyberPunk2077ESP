@@ -1,0 +1,5 @@
+struct vehicleVisualCustomizationPersistentData
+{
+	public    var ID : TweakDBID;
+	public    var visualCustomizationData : vehicleVisualModdingDefinition;
+}

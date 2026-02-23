@@ -1,0 +1,29 @@
+import class gamedataApperanceToEthnicities_Record extends gamedataTweakDBRecord
+{
+	import function AppearanceName() : CName; // AppearanceName
+	import function Ethnicities(out outList : array:whandle:gamedataEthnicNames_Record); // Ethnicities
+	import function EthnicitiesContains(item : whandle:gamedataEthnicNames_Record) : Bool; // EthnicitiesContains
+	import function GetEthnicitiesCount() : Int32; // GetEthnicitiesCount
+	import function GetEthnicitiesItem(index : Int32) : whandle:gamedataEthnicNames_Record; // GetEthnicitiesItem
+	import function GetEthnicitiesItemHandle(index : Int32) : handle:gamedataEthnicNames_Record; // GetEthnicitiesItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

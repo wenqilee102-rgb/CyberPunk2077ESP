@@ -1,0 +1,12 @@
+import class questValueDistance extends questIDistance
+{
+	var distanceValue : Float;
+}
+
+import class abstract questIDistance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

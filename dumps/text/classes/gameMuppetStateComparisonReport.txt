@@ -1,0 +1,5 @@
+import struct gameMuppetStateComparisonReport
+{
+	var frameID : Uint32;
+	var items : array:gameMuppetComparisonReportItem;
+}

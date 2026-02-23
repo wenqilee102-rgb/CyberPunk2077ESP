@@ -1,0 +1,1 @@
+{"b":"questRadioStationAnnouncementEventStruct","d":8,"g":true,"e":[{"a":{"a":30,"c":{"b":"scnSceneResource"}},"b":"announcementScene","c":128},{"a":{"a":14},"b":"sceneInput","c":128},{"a":{"a":1},"b":"queueAnnouncement","c":128},{"a":{"a":14},"b":"radioStationName","c":128},{"a":{"a":1},"b":"blockSignal","c":128},{"a":{"b":"audioRadioSpeakerType"},"b":"speaker","c":128}]}

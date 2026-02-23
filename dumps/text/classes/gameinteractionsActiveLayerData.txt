@@ -1,0 +1,6 @@
+import struct gameinteractionsActiveLayerData
+{
+	var activator : whandle:gameObject;
+	var linkedLayersName : CName;
+	var layerName : CName;
+}

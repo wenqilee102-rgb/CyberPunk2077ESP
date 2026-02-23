@@ -1,0 +1,14 @@
+import class meshMeshParamCloth_Graphical extends meshMeshParameter
+{
+	var lodChunkIndices : array:array:Uint16;
+	var chunks : array:meshGfxClothChunkData;
+	var latchers : array:array:array:Uint16;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

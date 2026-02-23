@@ -1,0 +1,66 @@
+class BraindanceSystem extends gameScriptableSystem
+{
+	private   var inputMask : SBraindanceInputMask;
+	private   var requestCameraToggle : Bool;
+	private   var requestEditorState : Bool;
+	private   var pauseBraindanceRequest : Bool;
+	private   var isInBraindance : Bool;
+	private   var debugFFSceneThrehsold : Int32;
+
+	function ApplyInvertedANDMask(mask : SBraindanceInputMask); // ApplyInvertedANDMask;SBraindanceInputMask
+	function ApplyORMask(mask : SBraindanceInputMask); // ApplyORMask;SBraindanceInputMask
+	function ClearEditorStateRequest(); // ClearEditorStateRequest;
+	function ClearPauseRequest(); // ClearPauseRequest;
+	function GetDebugFFSceneThreshold() : Int32; // GetDebugFFSceneThreshold;
+	function GetInputMask() : SBraindanceInputMask; // GetInputMask;
+	function GetIsInBraindance() : Bool; // GetIsInBraindance;
+	function GetPauseBraindanceRequest() : Bool; // GetPauseBraindanceRequest;
+	function GetRequestEditorState() : Bool; // GetRequestEditorState;
+	function GetRequstCameraToggle() : Bool; // GetRequstCameraToggle;
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnClearBraindancePauseRequest(request : handle:ClearBraindancePauseRequest); // OnClearBraindancePauseRequest;ClearBraindancePauseRequest
+	function OnClearBraindanceStateRequest(request : handle:ClearBraindanceStateRequest); // OnClearBraindanceStateRequest;ClearBraindanceStateRequest
+	function OnDisableFields(request : handle:DisableFields); // OnDisableFields;DisableFields
+	function OnEnableFields(request : handle:EnableFields); // OnEnableFields;EnableFields
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSendPauseBraindanceRequest(request : handle:SendPauseBraindanceRequest); // OnSendPauseBraindanceRequest;SendPauseBraindanceRequest
+	function OnSetBraindanceState(request : handle:SetBraindanceState); // OnSetBraindanceState;SetBraindanceState
+	function OnSetDebugSceneThrehsold(request : handle:SetDebugSceneThrehsold); // OnSetDebugSceneThrehsold;SetDebugSceneThrehsold
+	function OnSetIsInBraindance(request : handle:SetIsInBraindance); // OnSetIsInBraindance;SetIsInBraindance
+	function SetDebugFFSceneThreshold(newThreshold : Int32); // SetDebugFFSceneThreshold;Int32
+	function SetEditorStateRequest(newState : Bool); // SetEditorStateRequest;Bool
+	function SetInputMask(newMask : SBraindanceInputMask); // SetInputMask;SBraindanceInputMask
+	function SetIsInBraindance(newState : Bool); // SetIsInBraindance;Bool
+	function SetPauseRequest(); // SetPauseRequest;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

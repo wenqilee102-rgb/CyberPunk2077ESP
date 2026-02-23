@@ -1,0 +1,7 @@
+import struct animSnapToTerrainIkRequest
+{
+	var ikChain : CName;
+	var footTransformIndex : animTransformIndex;
+	var poleVectorRefTransformIndex : animTransformIndex;
+	var enableFootLockFloatTrack : animNamedTrackIndex;
+}

@@ -1,0 +1,32 @@
+import class gamedataSmartGunTargetSortData_Record extends gamedataTweakDBRecord
+{
+	import function AngleDistUnitSq() : Float; // AngleDistUnitSq
+	import function AngleDistUnitWeightSq() : Float; // AngleDistUnitWeightSq
+	import function AngleProximityBonusSq() : Float; // AngleProximityBonusSq
+	import function AngleProximityThresholdSq() : Float; // AngleProximityThresholdSq
+	import function PreviouslyLockedBonusSq() : Float; // PreviouslyLockedBonusSq
+	import function WorldDistUnitSq() : Float; // WorldDistUnitSq
+	import function WorldDistUnitWeightSq() : Float; // WorldDistUnitWeightSq
+	import function WorldProximityBonusSq() : Float; // WorldProximityBonusSq
+	import function WorldProximityThresholdSq() : Float; // WorldProximityThresholdSq
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

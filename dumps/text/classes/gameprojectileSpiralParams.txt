@@ -1,0 +1,28 @@
+import class gameprojectileSpiralParams extends IScriptable
+{
+	var enabled : Bool;
+	var radius : Float;
+	var cycleTimeMin : Float;
+	var cycleTimeMax : Float;
+	var rampUpDistanceStart : Float;
+	var rampUpDistanceEnd : Float;
+	var rampDownDistanceStart : Float;
+	var rampDownDistanceEnd : Float;
+	var rampDownFactor : Float;
+	var randomizePhase : Bool;
+	var randomizeDirection : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+struct TemporaryDoorState
+{
+	public    var door : vehicleEVehicleDoor;
+	public    var interactionState : vehicleVehicleDoorInteractionState;
+}

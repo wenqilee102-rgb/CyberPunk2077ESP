@@ -1,0 +1,6 @@
+import struct gameEffectOutputParameter_Vector
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+
+	import static function Set(ctx : gameEffectOutputParameter_Vector, bb : handle:gameIBlackboard, value : Vector4); // Set
+}

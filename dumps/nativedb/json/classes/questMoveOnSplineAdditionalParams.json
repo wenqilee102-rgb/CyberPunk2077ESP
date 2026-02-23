@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"questMoveOnSplineAdditionalParams","d":8,"e":[{"a":{"b":"questMoveOnSplineType"},"b":"type","c":128},{"a":{"b":"questSimpleMoveOnSplineParams"},"b":"simpleParams","c":128},{"a":{"b":"questAnimMoveOnSplineParams"},"b":"animParams","c":128},{"a":{"b":"questWithCompanionMoveOnSplineParams"},"b":"withCompanionParams","c":128}]}

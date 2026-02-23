@@ -1,0 +1,25 @@
+class vehicleCinematicCameraShotStartCondition_VehicleType extends vehicleCinematicCameraShotStartCondition
+{
+	public    var vehicleType : gamedataVehicleType;
+
+	function Evaluate(context : vehicleCinematicCameraShotUpdateContext) : Bool; // Evaluate;vehicleCinematicCameraShotUpdateContext
+}
+
+import class vehicleCinematicCameraShotStartCondition extends IScriptable
+{
+	function Evaluate(context : vehicleCinematicCameraShotUpdateContext) : Bool; // Evaluate;vehicleCinematicCameraShotUpdateContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

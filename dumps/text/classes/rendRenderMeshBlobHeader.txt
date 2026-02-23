@@ -1,0 +1,23 @@
+import struct rendRenderMeshBlobHeader
+{
+	var version : Uint32;
+	var dataProcessing : Uint32;
+	var bonePositions : array:Vector4;
+	var renderLODs : array:Float;
+	var renderChunks : array:Uint8;
+	var renderChunkInfos : array:rendChunk;
+	var speedTreeWind : array:Uint8;
+	var opacityMicromaps : array:Uint8;
+	var customData : array:Uint8;
+	var customDataElemStride : Uint32;
+	var topologyData : array:Uint8;
+	var topologyDataStride : Uint32;
+	var topologyMetadata : array:Uint8;
+	var topologyMetadataStride : Uint32;
+	var topology : array:rendTopologyData;
+	var quantizationScale : Vector4;
+	var quantizationOffset : Vector4;
+	var vertexBufferSize : Uint32;
+	var indexBufferSize : Uint32;
+	var indexBufferOffset : Uint32;
+}

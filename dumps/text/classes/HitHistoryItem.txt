@@ -1,0 +1,6 @@
+struct HitHistoryItem
+{
+	public    var instigator : whandle:gameObject;
+	public    var hitTime : Float;
+	public    var attackType : gamedataAttackType;
+}

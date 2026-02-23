@@ -1,0 +1,7 @@
+import struct interopTerrainImportedTile
+{
+	var heightMapAbsolutePath : String;
+	var controlMapAbsolutePath : String;
+	var colorMapAbsolutePath : String;
+	var position : Point;
+}

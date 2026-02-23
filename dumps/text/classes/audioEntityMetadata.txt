@@ -1,0 +1,25 @@
+import class audioEntityMetadata extends audioAudioMetadata
+{
+	var fallbackDecorators : array:CName;
+	var defaultPositionName : CName;
+	var defaultEmitterName : CName;
+	var isDefaultForEntityType : CName;
+	var preferSoundComponentPosition : Bool;
+	var priority : Int32;
+	var rigMetadata : CName;
+	var emitterDescriptions : array:audioEntityEmitterSettings;
+	var alwaysCreateDefaultEmitter : Bool;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,10 @@
+import struct scnPlaySkAnimEventData
+{
+	var animName : CName;
+	var blendIn : Float;
+	var blendOut : Float;
+	var clipFront : Float;
+	var stretch : Float;
+	var weight : Float;
+	var bodyPartMask : CName;
+}

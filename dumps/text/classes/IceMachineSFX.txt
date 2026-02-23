@@ -1,0 +1,11 @@
+struct IceMachineSFX extends VendingMachineSFX
+{
+	public    var iceFalls : CName;
+	public    var processing : CName;
+}
+
+struct VendingMachineSFX
+{
+	public    var glitchingStart : CName;
+	public    var glitchingStop : CName;
+}

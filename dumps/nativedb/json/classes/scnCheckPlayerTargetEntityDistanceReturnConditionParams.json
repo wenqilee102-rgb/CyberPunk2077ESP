@@ -1,0 +1,1 @@
+{"b":"scnCheckPlayerTargetEntityDistanceReturnConditionParams","d":8,"g":true,"e":[{"a":{"a":10},"b":"distance","c":128},{"a":{"b":"EComparisonType"},"b":"comparisonType","c":128},{"a":{"b":"gameEntityReference"},"b":"targetEntity","c":128}]}

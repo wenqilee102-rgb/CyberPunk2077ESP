@@ -1,0 +1,7 @@
+import struct inkInitialLoadingScreenData extends inkILoadingScreenData
+{
+}
+
+import struct inkILoadingScreenData
+{
+}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamestateMachineparameterTypeAdjustTransform","c":"AdjustTransform","d":8,"e":[{"a":{"b":"Vector4"},"b":"position","c":128},{"a":{"b":"Quaternion"},"b":"rotation","c":128}],"f":[{"a":"SetPosition","d":4,"e":[{"a":{"b":"Vector4"},"b":"value","c":0}]},{"a":"SetRotation","d":4,"e":[{"a":{"b":"Quaternion"},"b":"value","c":0}]}]}

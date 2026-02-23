@@ -1,0 +1,24 @@
+class ConsumablesChargesHelper extends IScriptable
+{
+	static function GetConsumableTag(tags : array:CName) : CName; // ConsumablesChargesHelper::GetConsumableTag;array<CName>
+	static function HideConsumableRecipe(gameInstance : ScriptGameInstance, recipeToHide : TweakDBID); // ConsumablesChargesHelper::HideConsumableRecipe;GameInstanceTweakDBID
+	static function HotkeyRefresh(gameInstance : ScriptGameInstance); // ConsumablesChargesHelper::HotkeyRefresh;GameInstance
+	static function LeaveTheBestQualityConsumable(gameInstance : ScriptGameInstance, tag : CName) : Bool; // ConsumablesChargesHelper::LeaveTheBestQualityConsumable;GameInstanceCName
+	static function RefreshAllCharges(gameInstance : ScriptGameInstance, statPool : gamedataStatPoolType); // ConsumablesChargesHelper::RefreshAllCharges;GameInstancegamedataStatPoolType
+	static function RefreshAmountOfCharges(gameInstance : ScriptGameInstance, statPool : gamedataStatPoolType, amount : Int32); // ConsumablesChargesHelper::RefreshAmountOfCharges;GameInstancegamedataStatPoolTypeInt32
+	static function RefreshToSpecificAmount(gameInstance : ScriptGameInstance, statPool : gamedataStatPoolType, amount : Int32); // ConsumablesChargesHelper::RefreshToSpecificAmount;GameInstancegamedataStatPoolTypeInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

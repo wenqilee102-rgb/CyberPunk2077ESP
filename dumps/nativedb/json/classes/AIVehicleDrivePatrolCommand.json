@@ -1,0 +1,1 @@
+{"a":"AIVehicleCommand","b":"AIVehicleDrivePatrolCommand","d":8,"e":[{"a":{"a":10},"b":"maxSpeed","c":128},{"a":{"a":10},"b":"minSpeed","c":128},{"a":{"a":1},"b":"clearTrafficOnPath","c":128},{"a":{"a":1},"b":"emergencyPatrol","c":128},{"a":{"a":7},"b":"numPatrolLoops","c":128},{"a":{"a":10},"b":"forcedStartSpeed","c":128}]}

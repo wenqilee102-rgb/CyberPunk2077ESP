@@ -1,0 +1,21 @@
+import class AIbehaviorIfElseNodeDefinition extends AIbehaviorCompositeTreeNodeDefinition
+{
+	var condition : handle:AIbehaviorExpressionSocket;
+}
+
+import class abstract AIbehaviorCompositeTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var children : array:handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

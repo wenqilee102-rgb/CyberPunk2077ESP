@@ -1,0 +1,4 @@
+import struct inkGridItem
+{
+	var rootIdx : Uint32;
+}

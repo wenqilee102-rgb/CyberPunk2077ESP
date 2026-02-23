@@ -1,0 +1,19 @@
+import class CameraAreaSettings extends IAreaSettings
+{
+	var cameraNearPlane : Float;
+	var cameraFarPlane : Float;
+	var automated : Bool;
+	var ISO : Uint32;
+	var shutterTime : Float;
+	var fStop : Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

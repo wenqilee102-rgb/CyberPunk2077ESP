@@ -1,0 +1,14 @@
+import class AIArchetype extends CResource
+{
+	var behaviorDefinition : handle:AIbehaviorParameterizedBehavior;
+	var movementParameters : static:5,moveMovementParameters;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gameIGameSystem","b":"gameIGameRulesSystem","d":12,"f":[{"a":"GetHeistStatus","c":{"b":"grsHeistStatus"},"d":4},{"a":"IsGameUnsuccessful","c":{"a":1},"d":4},{"a":"IsGameVictorious","c":{"a":1},"d":4},{"a":"IsPlayerReady","c":{"a":1},"d":4,"e":[{"a":{"a":12},"b":"PeerID","c":0}]},{"a":"SendChat","d":4,"e":[{"a":{"a":12},"b":"chat","c":0}]}]}

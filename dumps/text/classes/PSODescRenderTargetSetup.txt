@@ -1,0 +1,5 @@
+import struct PSODescRenderTargetSetup
+{
+	var rtFormats : static:8,GpuWrapApieTextureFormat;
+	var dsFormat : GpuWrapApieTextureFormat;
+}

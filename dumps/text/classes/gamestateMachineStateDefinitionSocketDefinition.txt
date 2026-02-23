@@ -1,0 +1,17 @@
+import class gamestateMachineStateDefinitionSocketDefinition extends graphGraphSocketDefinition
+{
+}
+
+import class abstract graphGraphSocketDefinition extends graphIGraphObjectDefinition
+{
+	var name : CName;
+	var connections : array:handle:graphGraphConnectionDefinition;
+}
+
+import class abstract graphIGraphObjectDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

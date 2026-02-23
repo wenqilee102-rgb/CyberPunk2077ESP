@@ -1,0 +1,1 @@
+{"a":"DeviceBaseBlackboardDef","b":"IntercomBlackboardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_String"},"b":"DisplayString","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"EnableActions","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"Status","c":128}]}

@@ -1,0 +1,30 @@
+class PerkDeviceMappinData extends IScriptable
+{
+	private   var ownerID : entEntityID;
+	private   var isUsed : Bool;
+	private   var position : Vector4;
+	private   var mappinID : gameNewMappinID;
+
+	function GetMappinID() : gameNewMappinID; // GetMappinID;
+	function GetOwnerID() : entEntityID; // GetOwnerID;
+	function GetPosition() : Vector4; // GetPosition;
+	function IsUsed() : Bool; // IsUsed;
+	function SetAsUsed(); // SetAsUsed;
+	function SetMappinID(mappinID : gameNewMappinID); // SetMappinID;NewMappinID
+	function SetOwnerID(ownerID : entEntityID); // SetOwnerID;EntityID
+	function SetPosition(position : Vector4); // SetPosition;Vector4
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,18 @@
+import struct gamemappinsStubMappinData extends gamemappinsMappinData
+{
+}
+
+import struct gamemappinsMappinData extends gamemappinsIMappinData
+{
+	var mappinType : TweakDBID;
+	var variant : gamedataMappinVariant;
+	var active : Bool;
+	var debugCaption : String;
+	var localizedCaption : LocalizationString;
+	var visibleThroughWalls : Bool;
+	var scriptData : handle:gamemappinsMappinScriptData;
+}
+
+import struct gamemappinsIMappinData
+{
+}

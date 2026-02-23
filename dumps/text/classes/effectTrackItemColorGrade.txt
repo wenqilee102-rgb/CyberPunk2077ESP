@@ -1,0 +1,26 @@
+import class effectTrackItemColorGrade extends effectTrackItem
+{
+	var contrast : effectEffectParameterEvaluatorFloat;
+	var saturate : effectEffectParameterEvaluatorFloat;
+	var brightness : effectEffectParameterEvaluatorFloat;
+	var lutWeight : effectEffectParameterEvaluatorFloat;
+	var lutParams : ColorGradingLutParams;
+	var lutParamsHdr : ColorGradingLutParams;
+	var blendWithBaseLut : Bool;
+	var mask : array:ERenderObjectType;
+}
+
+import class abstract effectTrackItem extends effectBaseItem
+{
+	var timeBegin : Float;
+	var timeDuration : Float;
+	var ruid : CRUID;
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

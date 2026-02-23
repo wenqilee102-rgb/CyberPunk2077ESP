@@ -1,0 +1,42 @@
+import class gamedataVehicleAirControlAxis_Record extends gamedataTweakDBRecord
+{
+	import function AngleCorrectionFactorMax() : Float; // AngleCorrectionFactorMax
+	import function AngleCorrectionFactorMin() : Float; // AngleCorrectionFactorMin
+	import function AngleCorrectionThresholdMax() : Float; // AngleCorrectionThresholdMax
+	import function AngleCorrectionThresholdMin() : Float; // AngleCorrectionThresholdMin
+	import function AngleDampFactor() : Float; // AngleDampFactor
+	import function BrakeMultiplierWhenNoInput() : Float; // BrakeMultiplierWhenNoInput
+	import function ControlAxis() : CName; // ControlAxis
+	import function InputDampFactor() : Float; // InputDampFactor
+	import function MaxAngleCompensation() : Float; // MaxAngleCompensation
+	import function MaxAngleToCompensateThreshold() : Float; // MaxAngleToCompensateThreshold
+	import function MaxVelocity() : Float; // MaxVelocity
+	import function MaxVelocityCompensation() : Float; // MaxVelocityCompensation
+	import function StabilizeAxis() : Bool; // StabilizeAxis
+	import function VelocityDampFactor() : Float; // VelocityDampFactor
+	import function VelocityDampingFactorMax() : Float; // VelocityDampingFactorMax
+	import function VelocityDampingFactorMin() : Float; // VelocityDampingFactorMin
+	import function VelocityDampingThresholdMax() : Float; // VelocityDampingThresholdMax
+	import function VelocityDampingThresholdMin() : Float; // VelocityDampingThresholdMin
+	import function ZeroAngleThreshold() : Float; // ZeroAngleThreshold
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,26 @@
+import class abstract gameIComparisonPrereq extends gameIPrereq
+{
+	var comparisonType : gameComparisonType;
+}
+
+import class abstract gameIPrereq extends IScriptable
+{
+	import static function CreatePrereq(id : TweakDBID) : handle:gameIPrereq; // CreatePrereq
+
+	import function IsFulfilled(game : ScriptGameInstance, context : handle:IScriptable) : Bool; // IsFulfilled
+	import function RegisterEntity(game : ScriptGameInstance, entityId : entEntityID) : handle:gamePrereqState; // RegisterEntity
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

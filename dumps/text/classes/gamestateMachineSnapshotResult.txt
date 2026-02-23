@@ -1,0 +1,5 @@
+import struct gamestateMachineSnapshotResult
+{
+	var snapshot : gamestateMachineStateSnapshot;
+	var valid : Bool;
+}

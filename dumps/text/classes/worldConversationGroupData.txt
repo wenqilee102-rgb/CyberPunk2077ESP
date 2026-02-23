@@ -1,0 +1,11 @@
+import class worldConversationGroupData extends ISerializable
+{
+	var conversationGroup : rRef:scnInterestingConversationsResource;
+	var interruptionOperations : array:handle:scnIInterruptionOperation;
+	var ignoreLocalLimit : Bool;
+	var ignoreGlobalLimit : Bool;
+}
+
+import class abstract ISerializable
+{
+}

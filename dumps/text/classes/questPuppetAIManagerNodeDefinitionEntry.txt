@@ -1,0 +1,5 @@
+import struct questPuppetAIManagerNodeDefinitionEntry
+{
+	var entityReference : gameEntityReference;
+	var aiTier : gameStoryTier;
+}

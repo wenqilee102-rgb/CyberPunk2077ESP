@@ -1,0 +1,8 @@
+struct AuthorizationData
+{
+	public    var isAuthorizationModuleOn : Bool;
+	public    var alwaysExposeActions : Bool;
+	public    var authorizationDataEntry : SecurityAccessLevelEntryClient;
+
+	static function IsAuthorizationValid(self : AuthorizationData) : Bool; // AuthorizationData::IsAuthorizationValid;AuthorizationData
+}

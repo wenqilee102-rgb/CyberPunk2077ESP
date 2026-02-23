@@ -1,0 +1,6 @@
+struct SMovementPattern
+{
+	public    var speed : Float;
+	public    var distance : Float;
+	public    var direction : EMovementDirection;
+}

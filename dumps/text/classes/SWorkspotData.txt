@@ -1,0 +1,6 @@
+struct SWorkspotData
+{
+	public    var componentName : CName;
+	public    var freeCamera : Bool;
+	public    var operationType : EWorkspotOperationType;
+}

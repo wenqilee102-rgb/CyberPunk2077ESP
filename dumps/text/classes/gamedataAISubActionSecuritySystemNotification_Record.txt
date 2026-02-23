@@ -1,0 +1,31 @@
+import class gamedataAISubActionSecuritySystemNotification_Record extends gamedataAISubAction_Record
+{
+	import function NotificationType() : whandle:gamedataAIActionSecurityNotificationType_Record; // NotificationType
+	import function NotificationTypeHandle() : handle:gamedataAIActionSecurityNotificationType_Record; // NotificationTypeHandle
+	import function Threat() : whandle:gamedataAIActionTarget_Record; // Threat
+	import function ThreatHandle() : handle:gamedataAIActionTarget_Record; // ThreatHandle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct gameJournalFactNameValue
+{
+	var factName : CName;
+	var factValue : Int32;
+}

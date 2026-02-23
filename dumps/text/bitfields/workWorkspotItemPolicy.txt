@@ -1,0 +1,6 @@
+bitfield workWorkspotItemPolicy
+{
+	ItemPolicy_SpawnItemOnIdleChange = 1 << 0,
+	ItemPolicy_DespawnItemOnIdleChange = 1 << 1,
+	ItemPolicy_DespawnItemOnReaction = 1 << 2
+}

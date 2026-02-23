@@ -1,0 +1,1 @@
+{"a":"gameTransformAnimationTrackItemImpl","b":"gameTransformAnimation_MoveOnSpline","d":8,"e":[{"a":{"a":16},"b":"splineNode","c":128},{"a":{"a":10},"b":"from","c":128},{"a":{"a":10},"b":"to","c":128},{"a":{"b":"gameTransformAnimation_MoveOnSplineRotationMode"},"b":"rotationMode","c":128},{"a":{"a":26,"c":{"b":"gameTransformAnimation_Movement"}},"b":"movement","c":128}]}

@@ -1,0 +1,1 @@
+{"b":"scnChoiceNodeNsAttachToWorldParams","d":8,"g":true,"e":[{"a":{"b":"Vector3"},"b":"entityPosition","c":128},{"a":{"b":"Quaternion"},"b":"entityOrientation","c":128},{"a":{"a":10},"b":"customEntityRadius","c":128},{"a":{"b":"scnChoiceNodeNsVisualizerStyle"},"b":"visualizerStyle","c":128}]}

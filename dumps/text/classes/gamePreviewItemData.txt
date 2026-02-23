@@ -1,0 +1,54 @@
+import class gamePreviewItemData extends gameUniqueItemData
+{
+}
+
+import class gameUniqueItemData extends gameItemData
+{
+}
+
+import class abstract gameItemData extends IScriptable
+{
+	import function AddStatsOnEquip(objectAttachedTo : handle:gameObject); // AddStatsOnEquip
+	import function GetBareStatValueByType(type : gamedataStatType) : Float; // GetBareStatValueByType
+	import function GetDynamicTags() : array:CName; // GetDynamicTags
+	import function GetEmptySlotsOnItem(out emptySlots : array:TweakDBID); // GetEmptySlotsOnItem
+	import function GetID() : gameItemID; // GetID
+	import function GetItemPart(out part : gameInnerItemData, slotId : TweakDBID); // GetItemPart
+	import function GetItemParts(out parts : array:gameInnerItemData); // GetItemParts
+	import function GetItemType() : gamedataItemType; // GetItemType
+	import function GetLocalizedItemType() : CName; // GetLocalizedItemType
+	import function GetName() : CName; // GetName
+	import function GetNameAsString() : String; // GetNameAsString
+	import function GetQuantity() : Int32; // GetQuantity
+	import function GetStatValueByType(type : gamedataStatType) : Float; // GetStatValueByType
+	import function GetStatsObjectID() : gameStatsObjectID; // GetStatsObjectID
+	import function GetTemporaryStatBundle() : handle:gameStatsBundleHandler; // GetTemporaryStatBundle
+	import function GetTimestamp() : GameTime; // GetTimestamp
+	import function GetUsedSlotsOnItem(out usedSlots : array:TweakDBID); // GetUsedSlotsOnItem
+	import function GetVariant() : Int32; // GetVariant
+	import function HasAnyOfTags(tags : array:CName) : Bool; // HasAnyOfTags
+	import function HasAttachmentSlot(slotID : TweakDBID) : Bool; // HasAttachmentSlot
+	import function HasPartInSlot(slotID : TweakDBID) : Bool; // HasPartInSlot
+	import function HasPlacementSlot(slotID : TweakDBID) : Bool; // HasPlacementSlot
+	import function HasStatData(type : gamedataStatType) : Bool; // HasStatData
+	import function HasTag(tag : CName) : Bool; // HasTag
+	import function ReinitializePlayerStats(gameInstance : ScriptGameInstance, ownerID : entEntityID); // ReinitializePlayerStats
+	import function RemoveDynamicTag(tag : CName) : Bool; // RemoveDynamicTag
+	import function SetDynamicTag(tag : CName) : Bool; // SetDynamicTag
+	import function SubtractStatsOnUnequip(objectDetachedFrom : handle:gameObject); // SubtractStatsOnUnequip
+	import function UsesVariants() : Bool; // UsesVariants
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

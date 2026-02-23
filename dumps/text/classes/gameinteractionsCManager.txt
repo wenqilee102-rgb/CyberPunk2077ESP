@@ -1,0 +1,28 @@
+import class gameinteractionsCManager extends gameinteractionsIManager
+{
+	import function AreSceneInteractionsBlocked() : Bool; // AreSceneInteractionsBlocked
+	import function IsInteractionLookAtTarget(activatorOwner : whandle:gameObject, hotSpotOwner : whandle:gameObject) : Bool; // IsInteractionLookAtTarget
+	import function SetBlockAllInteractions(blockAllInteractions : Bool); // SetBlockAllInteractions
+}
+
+import class abstract gameinteractionsIManager extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

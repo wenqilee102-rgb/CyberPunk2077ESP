@@ -1,0 +1,28 @@
+import class gamedataTankPickupSpawnerData_Record extends gamedataTweakDBRecord
+{
+	import function GetPickupListCount() : Int32; // GetPickupListCount
+	import function GetPickupListItem(index : Int32) : whandle:gamedataTankPickup_Record; // GetPickupListItem
+	import function GetPickupListItemHandle(index : Int32) : handle:gamedataTankPickup_Record; // GetPickupListItemHandle
+	import function PickupList(out outList : array:whandle:gamedataTankPickup_Record); // PickupList
+	import function PickupListContains(item : whandle:gamedataTankPickup_Record) : Bool; // PickupListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

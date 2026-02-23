@@ -1,0 +1,10 @@
+struct SHitOperationData
+{
+	public    var isAttackerPlayer : Bool;
+	public    var isAttackerNPC : Bool;
+	public    var bullets : Bool;
+	public    var explosions : Bool;
+	public    var melee : Bool;
+	public    var healthPercentage : Float;
+	public    var operation : SBaseDeviceOperationData;
+}

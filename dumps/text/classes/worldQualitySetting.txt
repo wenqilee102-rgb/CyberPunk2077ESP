@@ -1,0 +1,5 @@
+import struct worldQualitySetting
+{
+	var QualityLevel : ConfigGraphicsQualityLevel;
+	var xEntitiesBudget : Uint32;
+}

@@ -1,0 +1,4 @@
+struct MediaResaveData
+{
+	public    var mediaDeviceData : MediaDeviceData;
+}

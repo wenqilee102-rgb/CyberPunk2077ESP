@@ -1,0 +1,31 @@
+import class entAreaExitedEvent extends entTriggerEvent
+{
+}
+
+import class abstract entTriggerEvent extends redEvent
+{
+	var triggerID : entEntityID;
+	var activator : entEntityGameInterface;
+	var worldPosition : Vector4;
+	var numActivatorsInArea : Uint32;
+	var activatorID : Uint32;
+	var componentName : CName;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

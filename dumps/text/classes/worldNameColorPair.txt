@@ -1,0 +1,5 @@
+import struct worldNameColorPair
+{
+	var name : String;
+	var color : Color;
+}

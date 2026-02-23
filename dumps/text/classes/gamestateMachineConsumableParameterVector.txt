@@ -1,0 +1,10 @@
+import struct gamestateMachineConsumableParameterVector extends gamestateMachineActionParameterVector
+{
+	var consumed : Bool;
+}
+
+import struct gamestateMachineActionParameterVector
+{
+	var name : CName;
+	var value : Vector4;
+}

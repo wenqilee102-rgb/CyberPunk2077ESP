@@ -1,0 +1,31 @@
+class MenuCursorUserData extends inkUserData
+{
+	private   var animationOverride : CName;
+	private   var actions : array:CName;
+
+	function AddAction(action : CName); // AddAction;CName
+	function AddUniqueAction(action : CName); // AddUniqueAction;CName
+	function GetActions() : array:CName; // GetActions;
+	function GetActionsListSize() : Int32; // GetActionsListSize;
+	function GetAnimationOverride() : CName; // GetAnimationOverride;
+	function RemoveAction(action : CName); // RemoveAction;CName
+	function SetAnimationOverride(anim : CName); // SetAnimationOverride;CName
+}
+
+import class inkUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

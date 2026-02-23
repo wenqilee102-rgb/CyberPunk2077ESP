@@ -1,0 +1,13 @@
+import class worldInspectorNodeInstanceProperties extends ISerializable
+{
+	var setupInfo : worldCompiledNodeInstanceSetupInfo;
+	var meshNode : handle:worldMeshNode;
+	var instancedMeshNode : handle:worldInstancedMeshNode;
+	var lastObserverDistanceToStreamingPoint : Float;
+	var lastObserverDistanceToSecondaryReferencePoint : Float;
+	var renderProxyAddressForDebug : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

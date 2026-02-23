@@ -1,0 +1,12 @@
+import struct workDynamicSyncBindCommandData extends workSyncBindBaseCommandData
+{
+	var masterID : entEntityID;
+}
+
+import struct workSyncBindBaseCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

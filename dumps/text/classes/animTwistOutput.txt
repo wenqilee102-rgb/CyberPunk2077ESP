@@ -1,0 +1,8 @@
+import struct animTwistOutput
+{
+	var positiveScale : Float;
+	var negativeScale : Float;
+	var twistAxis : animAxis;
+	var twistedTransform : animTransformIndex;
+	var outputAngleTrack : animNamedTrackIndex;
+}

@@ -1,0 +1,51 @@
+import class vehicleControllerPS extends gameComponentPS
+{
+	var vehicleDoors : static:6,vehicleVehicleSlotsState;
+	var state : vehicleEState;
+	var lightMode : vehicleELightMode;
+	var isAlarmOn : Bool;
+	var lightTypeMask : Int32;
+	var allowPassengerCameraSwitch : Bool;
+
+	import function CycleHeadLightMode(optional isPlayer : Bool); // CycleHeadLightMode
+	import function GetAllowPassengerCameraSwitch() : Bool; // GetAllowPassengerCameraSwitch
+	import function GetDoorInteractionState(door : vehicleEVehicleDoor) : vehicleVehicleDoorInteractionState; // GetDoorInteractionState
+	import function GetDoorState(door : vehicleEVehicleDoor) : vehicleVehicleDoorState; // GetDoorState
+	import function GetHeadLightMode() : vehicleELightMode; // GetHeadLightMode
+	import function GetState() : vehicleEState; // GetState
+	import function GetWindowState(door : vehicleEVehicleDoor) : vehicleEVehicleWindowState; // GetWindowState
+	import function IsAlarmOn() : Bool; // IsAlarmOn
+	import function SetAlarm(on : Bool); // SetAlarm
+	import function SetAllowPassengerCameraSwitch(allow : Bool); // SetAllowPassengerCameraSwitch
+	import function SetDoorInteractionState(door : vehicleEVehicleDoor, state : vehicleVehicleDoorInteractionState); // SetDoorInteractionState
+	import function SetDoorState(door : vehicleEVehicleDoor, state : vehicleVehicleDoorState, immediate : Bool); // SetDoorState
+	import function SetHeadLightMode(lightMode : vehicleELightMode); // SetHeadLightMode
+	import function SetState(state : vehicleEState); // SetState
+	import function SetWindowState(door : vehicleEVehicleDoor, state : vehicleEVehicleWindowState); // SetWindowState
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,39 @@
+import class gamedataRoachRaceLevel_Record extends gamedataTweakDBRecord
+{
+	import function Background() : whandle:gamedataRoachRaceBackground_Record; // Background
+	import function BackgroundHandle() : handle:gamedataRoachRaceBackground_Record; // BackgroundHandle
+	import function Duration() : Float; // Duration
+	import function GetObstacleListCount() : Int32; // GetObstacleListCount
+	import function GetObstacleListItem(index : Int32) : whandle:gamedataRoachRaceObstacle_Record; // GetObstacleListItem
+	import function GetObstacleListItemHandle(index : Int32) : handle:gamedataRoachRaceObstacle_Record; // GetObstacleListItemHandle
+	import function GetObstacleTexturePartMapCount() : Int32; // GetObstacleTexturePartMapCount
+	import function GetObstacleTexturePartMapItem(index : Int32) : whandle:gamedataRoachRaceObstacleTexturePartPair_Record; // GetObstacleTexturePartMapItem
+	import function GetObstacleTexturePartMapItemHandle(index : Int32) : handle:gamedataRoachRaceObstacleTexturePartPair_Record; // GetObstacleTexturePartMapItemHandle
+	import function GetPreLoadedResourceListCount() : Int32; // GetPreLoadedResourceListCount
+	import function GetPreLoadedResourceListItem(index : Int32) : redResourceReferenceScriptToken; // GetPreLoadedResourceListItem
+	import function ObstacleList(out outList : array:whandle:gamedataRoachRaceObstacle_Record); // ObstacleList
+	import function ObstacleListContains(item : whandle:gamedataRoachRaceObstacle_Record) : Bool; // ObstacleListContains
+	import function ObstacleTexturePartMap(out outList : array:whandle:gamedataRoachRaceObstacleTexturePartPair_Record); // ObstacleTexturePartMap
+	import function ObstacleTexturePartMapContains(item : whandle:gamedataRoachRaceObstacleTexturePartPair_Record) : Bool; // ObstacleTexturePartMapContains
+	import function PreLoadedResourceList() : array:redResourceReferenceScriptToken; // PreLoadedResourceList
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

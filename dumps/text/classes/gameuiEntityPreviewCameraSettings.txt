@@ -1,0 +1,14 @@
+import struct gameuiEntityPreviewCameraSettings
+{
+	var autoEnable : Bool;
+	var renderingMode : ERenderingMode;
+	var panSpeed : Float;
+	var rotationSpeed : EulerAngles;
+	var rotationMin : EulerAngles;
+	var rotationMax : EulerAngles;
+	var rotationDefault : EulerAngles;
+	var zoomSpeed : Float;
+	var zoomMin : Float;
+	var zoomMax : Float;
+	var zoomDefault : Float;
+}

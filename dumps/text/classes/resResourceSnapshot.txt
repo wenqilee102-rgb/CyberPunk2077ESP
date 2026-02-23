@@ -1,0 +1,13 @@
+import class resResourceSnapshot extends CResource
+{
+	var resources : array:raRef:CResource;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,181 @@
+import class gamestateMachineGameScriptInterface extends gamestateMachineScriptInterface
+{
+	import static function CreateWaterImpulse(position : Vector4, radius : Float, strength : Float, numFrames : Uint32); // CreateWaterImpulse
+	import static function PushAnimationEventToItem(item : whandle:gameItemObject, eventName : CName); // PushAnimationEventToItem
+
+	import function ActivateCameraSetting(settingId : CName) : Bool; // ActivateCameraSetting
+	import function CanCapsuleFit(capsuleHeight : Float, capsuleRadius : Float) : Bool; // CanCapsuleFit
+	import function CanEnterInteraction(stateContext : handle:gamestateMachineStateContextScript) : Bool; // CanEnterInteraction
+	import function CanEquipItem(stateContext : handle:gamestateMachineStateContextScript) : Bool; // CanEquipItem
+	import function GetAINavigationSystem() : handle:AINavigationSystem; // GetAINavigationSystem
+	import function GetAchievementSystem() : handle:gameAchievementSystem; // GetAchievementSystem
+	import function GetActionPressCount(actionName : CName) : Uint32; // GetActionPressCount
+	import function GetActionPrevStateTime(actionName : CName) : Float; // GetActionPrevStateTime
+	import function GetActionStateTime(actionName : CName) : Float; // GetActionStateTime
+	import function GetActionValue(actionName : CName) : Float; // GetActionValue
+	import function GetActivityLogSystem() : handle:gameActivityLogSystem; // GetActivityLogSystem
+	import function GetAttitudeSystem() : handle:gameCAttitudeManager; // GetAttitudeSystem
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetBlackboardSystem() : handle:gameBlackboardSystem; // GetBlackboardSystem
+	import function GetCameraSystem() : handle:gameCameraSystem; // GetCameraSystem
+	import function GetCameraWorldTransform() : Transform; // GetCameraWorldTransform
+	import function GetCharacterCustomizationSystem() : handle:gameuiICharacterCustomizationSystem; // GetCharacterCustomizationSystem
+	import function GetCollisionReport() : array:physicsControllerHit; // GetCollisionReport
+	import function GetCombatQueriesSystem() : handle:gameICombatQueriesSystem; // GetCombatQueriesSystem
+	import function GetCommunitySystem() : handle:gameCommunitySystem; // GetCommunitySystem
+	import function GetCompanionSystem() : handle:gameCompanionSystem; // GetCompanionSystem
+	import function GetCooldownSystem() : handle:gameICooldownSystem; // GetCooldownSystem
+	import function GetCoverManager() : handle:AISmartCoverManager; // GetCoverManager
+	import function GetDamageSystem() : handle:gameDamageSystem; // GetDamageSystem
+	import function GetDebugCheatsSystem() : handle:gameDebugCheatsSystem; // GetDebugCheatsSystem
+	import function GetDebugDrawHistorySystem() : handle:gameIDebugDrawHistorySystem; // GetDebugDrawHistorySystem
+	import function GetDebugPlayerBreadcrumbs() : handle:gameDebugPlayerBreadcrumbs; // GetDebugPlayerBreadcrumbs
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetDeviceSystem() : handle:gameDeviceSystem; // GetDeviceSystem
+	import function GetDynamicSpawnSystem() : handle:gameDynamicSpawnSystem; // GetDynamicSpawnSystem
+	import function GetEffectorSystem() : handle:gameEffectorSystem; // GetEffectorSystem
+	import function GetEntitySpawnerEventsBroadcaster() : handle:gameEntitySpawnerEventsBroadcasterImpl; // GetEntitySpawnerEventsBroadcaster
+	import function GetFxSystem() : handle:gameFxSystem; // GetFxSystem
+	import function GetGame() : ScriptGameInstance; // GetGame
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem() : handle:gameIGameRulesSystem; // GetGameRulesSystem
+	import function GetGameTagSystem() : handle:gameGameTagSystem; // GetGameTagSystem
+	import function GetGamepadLightController() : handle:gameuiGamepadLightController; // GetGamepadLightController
+	import function GetGameplayLogicPackageSystem() : handle:gameGameplayLogicPackageSystem; // GetGameplayLogicPackageSystem
+	import function GetGodModeSystem() : handle:gameGodModeSystem; // GetGodModeSystem
+	import function GetInfluenceMapSystem() : handle:gameinfluenceSystem; // GetInfluenceMapSystem
+	import function GetInputHeading() : Float; // GetInputHeading
+	import function GetInteractionManager() : handle:gameinteractionsCManager; // GetInteractionManager
+	import function GetInventoryManager() : handle:gameInventoryManager; // GetInventoryManager
+	import function GetItemIdInSlot(slotName : TweakDBID) : gameItemID; // GetItemIdInSlot
+	import function GetJournalManager() : handle:gameJournalManager; // GetJournalManager
+	import function GetLevelAssignmentSystem() : handle:gameLevelAssignmentSystem; // GetLevelAssignmentSystem
+	import function GetLocationManager() : handle:gameLocationManager; // GetLocationManager
+	import function GetLootManager() : handle:gameLootManager; // GetLootManager
+	import function GetMappinSystem() : handle:gamemappinsMappinSystem; // GetMappinSystem
+	import function GetMeleeAttackData(attackRecord : whandle:gamedataAttack_Melee_Record, staminaCost : Float, attackSpeed : Float) : handle:gameMeleeAttackData; // GetMeleeAttackData
+	import function GetMinimapSystem() : handle:gameMinimapSystem; // GetMinimapSystem
+	import function GetModdingSystem(); // GetModdingSystem
+	import function GetMountingFacility() : handle:gamemountingIMountingFacility; // GetMountingFacility
+	import function GetMountingInfo(child : handle:gameObject) : gamemountingMountingInfo; // GetMountingInfo
+	import function GetObjectFromComponent(targetingComponent : handle:entIPlacedComponent) : handle:gameObject; // GetObjectFromComponent
+	import function GetObjectPoolSystem() : handle:gameObjectPoolSystem; // GetObjectPoolSystem
+	import function GetOnlineSystem() : handle:gameIOnlineSystem; // GetOnlineSystem
+	import function GetOwnerForward() : Vector4; // GetOwnerForward
+	import function GetOwnerMovingDirection() : Vector4; // GetOwnerMovingDirection
+	import function GetOwnerStateVectorParameterFloat(parameterType : physicsStateValue) : Float; // GetOwnerStateVectorParameterFloat
+	import function GetOwnerStateVectorParameterVector(parameterType : physicsStateValue) : Vector4; // GetOwnerStateVectorParameterVector
+	import function GetOwnerTransform() : Transform; // GetOwnerTransform
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPhotoModeSystem() : handle:gamePhotoModeSystem; // GetPhotoModeSystem
+	import function GetPingSystem() : handle:gamePingSystem; // GetPingSystem
+	import function GetPlayerManagerSystem() : handle:gameIPlayerManager; // GetPlayerManagerSystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetPoliceRadioSystem() : handle:gamePoliceRadioSystem; // GetPoliceRadioSystem
+	import function GetPrereqManager() : handle:gamePrereqManager; // GetPrereqManager
+	import function GetPreventionSpawnSystem() : handle:gamePreventionSpawnSystem; // GetPreventionSpawnSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetRazerChromaEffectsSystem(); // GetRazerChromaEffectsSystem
+	import function GetRestrictMovementAreaManager() : handle:AIGuardAreaManager; // GetRestrictMovementAreaManager
+	import function GetRoleForSlot(slot : gamemountingMountingSlotId, parent : handle:gameObject, optional occupantSlotComponentName : CName) : gameMountingSlotRole; // GetRoleForSlot
+	import function GetSafeAreaManager() : handle:AISafeAreaManager; // GetSafeAreaManager
+	import function GetSceneSystem() : handle:scnISceneSystem; // GetSceneSystem
+	import function GetScriptableSystem(name : CName) : handle:gameScriptableSystem; // GetScriptableSystem
+	import function GetScriptableSystemsContainer() : handle:gameScriptableSystemsContainer; // GetScriptableSystemsContainer
+	import function GetScriptsDebugOverlaySystem() : handle:gameScriptsDebugOverlaySystem; // GetScriptsDebugOverlaySystem
+	import function GetSenseManager() : handle:senseCSenseManager; // GetSenseManager
+	import function GetSpatialQueriesSystem() : handle:gameSpatialQueriesSystem; // GetSpatialQueriesSystem
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStateVectorParameter(stateVectorParameter : physicsStateValue) : Variant; // GetStateVectorParameter
+	import function GetStatsDataSystem() : handle:gameStatsDataSystem; // GetStatsDataSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetStatusEffectSystem() : handle:gameStatusEffectSystem; // GetStatusEffectSystem
+	import function GetSubtitleHandlerSystem() : handle:gameuiSubtitleHandlerSystem; // GetSubtitleHandlerSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTelemetrySystem() : handle:gameTelemetryTelemetrySystem; // GetTelemetrySystem
+	import function GetTeleportationFacility() : handle:gameTeleportationFacility; // GetTeleportationFacility
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetUISystem() : handle:gameuiGameSystemUI; // GetUISystem
+	import function GetVehicleSystem() : handle:gameVehicleSystem; // GetVehicleSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+	import function GetWardrobeSystem(); // GetWardrobeSystem
+	import function GetWatchdogSystem() : handle:gameIWatchdogSystem; // GetWatchdogSystem
+	import function GetWaterLevel(puppetPosition : Vector4, referencePosition : Vector4, out waterLevel : Float) : Bool; // GetWaterLevel
+	import function GetWorkspotSystem() : handle:gameWorkspotGameSystem; // GetWorkspotSystem
+	import function HasSecureFooting() : moveSecureFootingResult; // HasSecureFooting
+	import function HasStatFlag(flag : gamedataStatType) : Bool; // HasStatFlag
+	import function HasStatFlagOwner(flag : gamedataStatType, owner : handle:gameObject) : Bool; // HasStatFlagOwner
+	import function IsActionHeld(actionName : CName) : Bool; // IsActionHeld
+	import function IsActionJustHeld(actionName : CName) : Bool; // IsActionJustHeld
+	import function IsActionJustPressed(actionName : CName) : Bool; // IsActionJustPressed
+	import function IsActionJustReleased(actionName : CName) : Bool; // IsActionJustReleased
+	import function IsActionJustTapped(actionName : CName) : Bool; // IsActionJustTapped
+	import function IsAxisChangeAction(actionName : CName) : Bool; // IsAxisChangeAction
+	import function IsDriverInVehicle(optional child : handle:gameObject, optional parent : handle:gameObject) : Bool; // IsDriverInVehicle
+	import function IsEntityInCombat(optional objectId : entEntityID) : Bool; // IsEntityInCombat
+	import function IsFalling() : Bool; // IsFalling
+	import function IsMountedToObject(optional object : handle:gameObject) : Bool; // IsMountedToObject
+	import function IsMoveInputConsiderable() : Bool; // IsMoveInputConsiderable
+	import function IsOnGround() : Bool; // IsOnGround
+	import function IsOnMovingPlatform() : Bool; // IsOnMovingPlatform
+	import function IsPassengerInVehicle(optional child : handle:gameObject, optional parent : handle:gameObject) : Bool; // IsPassengerInVehicle
+	import function IsPlayerInBraindance() : Bool; // IsPlayerInBraindance
+	import function IsRelativeChangeAction(actionName : CName) : Bool; // IsRelativeChangeAction
+	import function IsSceneAnimationActive() : Bool; // IsSceneAnimationActive
+	import function IsTriggerModeActive(triggerMode : gamedataTriggerMode) : Bool; // IsTriggerModeActive
+	import function LocomotionOverlapTest(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, out result : physicsTraceResult) : Bool; // LocomotionOverlapTest
+	import function LocomotionOverlapTestExcludeEntity(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, excludedEntity : handle:entEntity, out result : physicsTraceResult) : Bool; // LocomotionOverlapTestExcludeEntity
+	import function LocomotionRaycastTest(start : Vector4, end : Vector4) : physicsTraceResult; // LocomotionRaycastTest
+	import function LocomotionSweepTest(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, direction : Vector4, distance : Float, optional assumeInitialPositionClear : Bool, out result : physicsTraceResult) : Bool; // LocomotionSweepTest
+	import function MeetsPrerequisites(prereqName : TweakDBID) : Bool; // MeetsPrerequisites
+	import function Overlap(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, queryPreset : CName, out result : physicsTraceResult) : Bool; // Overlap
+	import function OverlapMultipleHits(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, queryPreset : CName) : array:physicsTraceResult; // OverlapMultipleHits
+	import function OverlapWithASingleGroup(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, queryGroup : CName, out result : physicsTraceResult) : Bool; // OverlapWithASingleGroup
+	import function PushAnimationEvent(eventName : CName) : Bool; // PushAnimationEvent
+	import function Raycast(start : Vector4, end : Vector4, queryPreset : CName) : physicsTraceResult; // Raycast
+	import function RaycastMultipleHits(start : Vector4, end : Vector4, queryPreset : CName) : array:physicsTraceResult; // RaycastMultipleHits
+	import function RaycastWithASingleGroup(start : Vector4, end : Vector4, queryGroup : CName) : physicsTraceResult; // RaycastWithASingleGroup
+	import function RequestWeaponEquipOnServer(slotName : TweakDBID, itemId : gameItemID); // RequestWeaponEquipOnServer
+	import function SetAnimationParameterBool(key : CName, value : Bool) : Bool; // SetAnimationParameterBool
+	import function SetAnimationParameterFeature(key : CName, value : handle:animAnimFeature, optional owner : handle:gameObject) : Bool; // SetAnimationParameterFeature
+	import function SetAnimationParameterFloat(key : CName, value : Float) : Bool; // SetAnimationParameterFloat
+	import function SetAnimationParameterInt(key : CName, value : Int32) : Bool; // SetAnimationParameterInt
+	import function SetAnimationParameterQuaternion(key : CName, value : Quaternion) : Bool; // SetAnimationParameterQuaternion
+	import function SetAnimationParameterVector(key : CName, value : Vector4) : Bool; // SetAnimationParameterVector
+	import function SetCameraTimeDilationCurve(curveName : CName) : Bool; // SetCameraTimeDilationCurve
+	import function SetComponentVisibility(actionName : CName, visibility : Bool) : Bool; // SetComponentVisibility
+	import function SetStateVectorParameter(stateVectorParameter : physicsStateValue, value : Variant) : Bool; // SetStateVectorParameter
+	import function Sweep(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, direction : Vector4, distance : Float, queryPreset : CName, optional assumeInitialPositionClear : Bool, out result : physicsTraceResult) : Bool; // Sweep
+	import function SweepMultipleHits(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, direction : Vector4, distance : Float, queryPreset : CName) : array:physicsTraceResult; // SweepMultipleHits
+	import function SweepWithASingleGroup(primitiveDimension : Vector4, position : Vector4, rotation : EulerAngles, direction : Vector4, distance : Float, queryGroup : CName, optional assumeInitialPositionClear : Bool, out result : physicsTraceResult) : Bool; // SweepWithASingleGroup
+	import function TEMP_WeaponStopFiring() : Bool; // TEMP_WeaponStopFiring
+	import function TransformInvPointFromObject(point : Vector4, optional object : handle:gameObject) : Vector4; // TransformInvPointFromObject
+}
+
+import class gamestateMachineScriptInterface extends IScriptable
+{
+	var owner : whandle:gameObject;
+	var executionOwner : whandle:gameObject;
+	var localBlackboard : whandle:gameIBlackboard;
+	var ownerEntityID : entEntityID;
+	var executionOwnerEntityID : entEntityID;
+	var stateMachineBBDef : handle:gamebbScriptDefinition;
+
+	import function GetNow() : Float; // GetNow
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

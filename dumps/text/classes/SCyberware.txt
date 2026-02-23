@@ -1,0 +1,7 @@
+struct SCyberware
+{
+	public    var cyberwareName : String;
+	public    var cyberWareTier : Int32;
+	public    var loc_name_key : String;
+	public    var loc_desc_key : String;
+}

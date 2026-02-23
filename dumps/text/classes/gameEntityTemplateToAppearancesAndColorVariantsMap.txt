@@ -1,0 +1,8 @@
+import class gameEntityTemplateToAppearancesAndColorVariantsMap extends ISerializable
+{
+	var entries : array:gameEntityToAppearancesAndColorVariantsMapEntry;
+}
+
+import class abstract ISerializable
+{
+}

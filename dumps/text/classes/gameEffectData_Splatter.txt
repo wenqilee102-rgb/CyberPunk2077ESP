@@ -1,0 +1,3 @@
+import struct gameEffectData_Splatter
+{
+}

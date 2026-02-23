@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"inkSetNextLoadingScreenEvent","d":8,"f":[{"a":"GetNextLoadingScreenType","c":{"b":"inkLoadingScreenType"},"d":4},{"a":"SetNextLoadingScreenType","d":4,"e":[{"a":{"b":"inkLoadingScreenType"},"b":"newType","c":0}]}]}

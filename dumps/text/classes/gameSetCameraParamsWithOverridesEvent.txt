@@ -1,0 +1,28 @@
+import class gameSetCameraParamsWithOverridesEvent extends redEvent
+{
+	var paramsName : CName;
+	var yawMaxLeft : Float;
+	var yawMaxRight : Float;
+	var pitchMax : Float;
+	var pitchMin : Float;
+	var sensitivityMultX : Float;
+	var sensitivityMultY : Float;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,33 @@
+import class gamedataAIDirectorScheduleEntry_Record extends gamedataTweakDBRecord
+{
+	import function Duration() : Float; // Duration
+	import function EntryStartType() : whandle:gamedataAIDirectorEntryStartType_Record; // EntryStartType
+	import function EntryStartTypeHandle() : handle:gamedataAIDirectorEntryStartType_Record; // EntryStartTypeHandle
+	import function GetPlansCount() : Int32; // GetPlansCount
+	import function GetPlansItem(index : Int32) : whandle:gamedataAIDirectorSchedulePlan_Record; // GetPlansItem
+	import function GetPlansItemHandle(index : Int32) : handle:gamedataAIDirectorSchedulePlan_Record; // GetPlansItemHandle
+	import function KillsLimit() : Int32; // KillsLimit
+	import function Plans(out outList : array:whandle:gamedataAIDirectorSchedulePlan_Record); // Plans
+	import function PlansContains(item : whandle:gamedataAIDirectorSchedulePlan_Record) : Bool; // PlansContains
+	import function TensionDelta() : Float; // TensionDelta
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import struct gameStimuliMergeInfo
+{
+	var position : Vector4;
+	var instigator : whandle:gameObject;
+	var radius : Float;
+	var type : gamedataStimType;
+	var propagationType : gamedataStimPropagation;
+	var targets : gamedataStimTargets;
+}

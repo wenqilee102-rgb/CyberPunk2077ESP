@@ -1,0 +1,40 @@
+import class questMiscAICommandNode extends questConfigurableAICommandNode
+{
+	var entityReference : gameEntityReference;
+	var function : CName;
+	var params : handle:questAICommandParams;
+}
+
+import class abstract questConfigurableAICommandNode extends questAICommandNodeBase
+{
+}
+
+import class abstract questAICommandNodeBase extends questSignalStoppingNodeDefinition
+{
+}
+
+import class abstract questSignalStoppingNodeDefinition extends questDisableableNodeDefinition
+{
+}
+
+import class abstract questDisableableNodeDefinition extends questNodeDefinition
+{
+}
+
+import class abstract questNodeDefinition extends graphGraphNodeDefinition
+{
+	var id : Uint16;
+}
+
+import class abstract graphGraphNodeDefinition extends graphIGraphObjectDefinition
+{
+	var sockets : array:handle:graphGraphSocketDefinition;
+}
+
+import class abstract graphIGraphObjectDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class rendHairProfileGradientEntry extends ISerializable
+{
+	var value : Float;
+	var color : Color;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,43 @@
+import class worldAdvertisementNode extends worldStaticMeshNode
+{
+	var meshInitialScale : Vector3;
+	var format : AdvertisementFormat;
+	var adGroupTDBID : TweakDBID;
+	var enableOverride : Bool;
+	var adOverrideTDBID : TweakDBID;
+	var adVersion : Uint32;
+	var glitchValue : Float;
+	var lightsData : array:worldAdvertisementLightData;
+}
+
+import class worldStaticMeshNode extends worldMeshNode
+{
+}
+
+import class worldMeshNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var forceAutoHideDistance : Float;
+	var occluderType : visWorldOccluderType;
+	var occluderAutohideDistanceScale : Uint8;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var castRayTracedGlobalShadows : shadowsShadowCastingMode;
+	var castRayTracedLocalShadows : shadowsShadowCastingMode;
+	var windImpulseEnabled : Bool;
+	var removeFromRainMap : Bool;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+	var lodLevelScales : Uint32;
+	var version : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"b":"worldStreamingQueryRoadData","d":8,"g":true,"e":[{"a":{"b":"Transform"},"b":"transform","c":128},{"a":{"a":26,"c":{"b":"Spline"}},"b":"splineData","c":128},{"a":{"b":"worldGlobalNodeID"},"b":"roadGlobalNodeId","c":128},{"a":{"a":10},"b":"totalRoadWidth","c":128},{"a":{"a":5},"b":"connectedRoadsStartIndex","c":128},{"a":{"a":5},"b":"connectedRoadsCount","c":128}]}

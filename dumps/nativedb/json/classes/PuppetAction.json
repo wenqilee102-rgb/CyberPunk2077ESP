@@ -1,0 +1,1 @@
+{"a":"ScriptableDeviceAction","b":"PuppetAction","d":0,"f":[{"a":"GetObjectActionRecord;","b":"GetObjectActionRecord","c":{"a":27,"c":{"b":"gamedataObjectAction_Record"}},"d":160},{"a":"GetTweakDBChoiceID;","b":"GetTweakDBChoiceID","c":{"a":15},"d":32},{"a":"GetTweakDBChoiceRecord;","b":"GetTweakDBChoiceRecord","c":{"a":12},"d":32}]}

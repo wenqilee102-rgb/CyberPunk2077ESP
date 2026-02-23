@@ -1,0 +1,8 @@
+import struct gameSimpleScreenMessage
+{
+	var isShown : Bool;
+	var duration : Float;
+	var message : String;
+	var isInstant : Bool;
+	var type : gameSimpleMessageType;
+}

@@ -1,0 +1,5 @@
+import struct animPoleVectorDetails
+{
+	var targetBone : animTransformIndex;
+	var positionOffset : Vector3;
+}

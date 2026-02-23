@@ -1,0 +1,33 @@
+import class AIbehaviorActionSlideToWorldPositionNodeDefinition extends AIbehaviorActionSlideNodeDefinition
+{
+	var worldPosition : handle:AIArgumentMapping;
+	var useMovePlanner : Bool;
+}
+
+import class abstract AIbehaviorActionSlideNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+	var duration : handle:AIArgumentMapping;
+	var ignoreNavigation : handle:AIArgumentMapping;
+	var rotateTowardsMovementDirection : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

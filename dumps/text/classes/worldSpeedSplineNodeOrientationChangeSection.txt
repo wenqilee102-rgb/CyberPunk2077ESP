@@ -1,0 +1,6 @@
+import struct worldSpeedSplineNodeOrientationChangeSection
+{
+	var pos : Float;
+	var type : worldSpeedSplineOrientationMarkerType;
+	var targetOrientation : EulerAngles;
+}

@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataHitPrereqCondition_Record","c":"HitPrereqCondition_Record","d":24,"f":[{"a":"Invert","c":{"a":1},"d":4},{"a":"OnlyOncePerShot","c":{"a":1},"d":4},{"a":"Type","c":{"a":27,"c":{"b":"gamedataHitPrereqConditionType_Record"}},"d":4},{"a":"TypeHandle","c":{"a":26,"c":{"b":"gamedataHitPrereqConditionType_Record"}},"d":4}]}

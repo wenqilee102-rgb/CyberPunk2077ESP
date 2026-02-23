@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"CombatGadgetDataDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"throwUnequip","c":128},{"a":{"b":"gamebbScriptID_Float"},"b":"lastThrowAngle","c":128},{"a":{"b":"gamebbScriptID_Vector4"},"b":"lastThrowPosition","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"lastThrowStartType","c":128}]}

@@ -1,0 +1,1 @@
+{"b":"gameHitResult","c":"HitShapeResult","d":24,"g":true,"e":[{"a":{"b":"Vector4"},"b":"hitPositionEnter","c":128},{"a":{"b":"Vector4"},"b":"hitPositionExit","c":128},{"a":{"a":10},"b":"enterDistanceFromOriginSq","c":128}]}

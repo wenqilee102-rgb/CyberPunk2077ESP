@@ -1,0 +1,5 @@
+import struct gamestateMachineActionParameterVector
+{
+	var name : CName;
+	var value : Vector4;
+}

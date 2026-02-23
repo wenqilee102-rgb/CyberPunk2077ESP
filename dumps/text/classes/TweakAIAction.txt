@@ -1,0 +1,155 @@
+class TweakAIAction extends TweakAIActionAbstract
+{
+	public    var record : TweakDBID;
+
+	function Debug_GetBaseActionId() : TweakDBID; // Debug_GetBaseActionId;
+	function GetActionRecord(context : AIbehaviorScriptExecutionContext, actionDebugName : script_ref:String, out actionRecord : whandle:gamedataAIAction_Record, out shouldCallAgain : Bool) : Bool; // GetActionRecord;ScriptExecutionContextscript_ref<String>AIAction_RecordBool
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+	function GetFriendlyName() : String; // GetFriendlyName;
+}
+
+class abstract TweakAIActionAbstract extends AIbehaviortaskScript
+{
+	private   var actionRecord : whandle:gamedataAIAction_Record;
+	private   var actionDebugName : String;
+	private   var actionActivationTimeStamp : Float;
+	private   var startActionTimeStamp : Float;
+	protected var hasGracefulInterruptionConditions : Bool;
+	protected var gracefulInterruptionCheckRandomizedInterval : Float;
+	protected var gracefullyInterrupted : Bool;
+	private   var actionPhase : EAIActionPhase;
+	private   var phaseRecord : whandle:gamedataAIActionPhase_Record;
+	private   var nextPhaseConditionCount : Int32;
+	private   var repeatPhaseConditionCount : Int32;
+	private   var phaseActivationTimeStamp : Float;
+	private   var phaseConditionSuccessfulCheckTimeStamp : Float;
+	private   var phaseConditionCheckTimeStamp : Float;
+	private   var phaseConditionCheckRandomizedInterval : Float;
+	private   var phaseIteration : Uint32;
+	private   var phaseDuration : Float;
+	private   var phaseAnimationDuration : Float;
+	private   var lookatEvents : array:handle:entLookAtAddEvent;
+	private   var movePolicy : handle:movePolicies;
+	private   var generalSubActionsResults : [8]AIbehaviorUpdateOutcome;
+	private   var phaseSubActionsResults : [8]AIbehaviorUpdateOutcome;
+	private   var phaseSubActionsCount : Int32;
+	private   var phaseForceZeroUpdateInterval : Bool;
+	private   var generalSubActionsCount : Int32;
+	private   var repeatPhaseConditionsCount : Int32;
+	private   var tickForActionDurationOnly : Bool;
+	private   var tickForActionDurationActivePhase : EAIActionPhase;
+	private   var hasTicketDeactivationConditions : Bool;
+	private   var isActionImmediate : Bool;
+	private   var lookatActivated : Bool;
+	private   var ticketsCommited : Bool;
+	private   var ticketsAcknowledged : Bool;
+	private   var failureStatus : Bool;
+	private   var animationLoaded : Bool;
+	private   var initializedAfterActivation : Bool;
+	protected var shouldCallGetActionRecordAgain : Bool;
+
+	function ActionUpdateIntervalCheck(context : AIbehaviorScriptExecutionContext); // ActionUpdateIntervalCheck;ScriptExecutionContext
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function ActivateAnimData(context : AIbehaviorScriptExecutionContext); // ActivateAnimData;ScriptExecutionContext
+	function ActivateAnimationWrapperOverrides(context : AIbehaviorScriptExecutionContext); // ActivateAnimationWrapperOverrides;ScriptExecutionContext
+	function ActivateGeneralSubActions(context : AIbehaviorScriptExecutionContext); // ActivateGeneralSubActions;ScriptExecutionContext
+	function ActivateLookat(context : AIbehaviorScriptExecutionContext); // ActivateLookat;ScriptExecutionContext
+	function ActivateLoopSubActions(context : AIbehaviorScriptExecutionContext); // ActivateLoopSubActions;ScriptExecutionContext
+	function ActivateRecoverySubActions(context : AIbehaviorScriptExecutionContext); // ActivateRecoverySubActions;ScriptExecutionContext
+	function ActivateStartupSubActions(context : AIbehaviorScriptExecutionContext); // ActivateStartupSubActions;ScriptExecutionContext
+	function CalculatePhaseDuration(context : AIbehaviorScriptExecutionContext, optional phaseDurationFromAnimSlot : Float); // CalculatePhaseDuration;ScriptExecutionContextFloat
+	function ChangeNPCState(context : AIbehaviorScriptExecutionContext); // ChangeNPCState;ScriptExecutionContext
+	function ChangePhaseTo(context : AIbehaviorScriptExecutionContext, newPhase : EAIActionPhase) : Bool; // ChangePhaseTo;ScriptExecutionContextEAIActionPhase
+	function ChangeToNextPhase(context : AIbehaviorScriptExecutionContext) : Bool; // ChangeToNextPhase;ScriptExecutionContext
+	function ChildCompleted(context : AIbehaviorScriptExecutionContext, status : AIbehaviorCompletionStatus); // ChildCompleted;ScriptExecutionContextAIbehaviorCompletionStatus
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+	function DeactivateAnimData(context : AIbehaviorScriptExecutionContext); // DeactivateAnimData;ScriptExecutionContext
+	function DeactivateAnimationWrapperOverrides(context : AIbehaviorScriptExecutionContext); // DeactivateAnimationWrapperOverrides;ScriptExecutionContext
+	function DeactivateGeneralSubActions(context : AIbehaviorScriptExecutionContext, duration : Float); // DeactivateGeneralSubActions;ScriptExecutionContextFloat
+	function DeactivateLookat(context : AIbehaviorScriptExecutionContext); // DeactivateLookat;ScriptExecutionContext
+	function DeactivateLoopSubActions(context : AIbehaviorScriptExecutionContext, duration : Float); // DeactivateLoopSubActions;ScriptExecutionContextFloat
+	function DeactivateRecoverySubActions(context : AIbehaviorScriptExecutionContext, duration : Float); // DeactivateRecoverySubActions;ScriptExecutionContextFloat
+	function DeactivateStartupSubActions(context : AIbehaviorScriptExecutionContext, duration : Float); // DeactivateStartupSubActions;ScriptExecutionContextFloat
+	function Debug_GetBaseActionId() : TweakDBID; // Debug_GetBaseActionId;
+	function Debug_GetCompositeId() : TweakDBID; // Debug_GetCompositeId;
+	function GetActionDuration(context : AIbehaviorScriptExecutionContext) : Float; // GetActionDuration;ScriptExecutionContext
+	function GetActionRecord(context : AIbehaviorScriptExecutionContext, actionDebugName : script_ref:String, out actionRecord : whandle:gamedataAIAction_Record, out shouldCallAgain : Bool) : Bool; // GetActionRecord;ScriptExecutionContextscript_ref<String>AIAction_RecordBool
+	function GetAllowBlendDuration() : Float; // GetAllowBlendDuration;
+	function GetAnimDirection(context : AIbehaviorScriptExecutionContext, animDirection : whandle:gamedataAIActionAnimDirection_Record) : Float; // GetAnimDirection;ScriptExecutionContextAIActionAnimDirection_Record
+	function GetAnimFeature(context : AIbehaviorScriptExecutionContext) : handle:animAnimFeature_AIAction; // GetAnimFeature;ScriptExecutionContext
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+	function GetPhaseDuration(context : AIbehaviorScriptExecutionContext) : Float; // GetPhaseDuration;ScriptExecutionContext
+	function GetPhaseDurationWithoutFrameDelta(context : AIbehaviorScriptExecutionContext) : Float; // GetPhaseDurationWithoutFrameDelta;ScriptExecutionContext
+	function GetSlideParams(context : AIbehaviorScriptExecutionContext, slideTarget : whandle:gameObject) : gameActionAnimationSlideParams; // GetSlideParams;ScriptExecutionContextGameObject
+	function GetSlideTarget(context : AIbehaviorScriptExecutionContext, out slideTarget : whandle:gameObject, out slideTargetTrackingMode : gamedataTrackingMode) : Bool; // GetSlideTarget;ScriptExecutionContextGameObjectgamedataTrackingMode
+	function GetTotalActionDuration() : Float; // GetTotalActionDuration;
+	function HasTicketDeactivationCondition(context : AIbehaviorScriptExecutionContext) : Bool; // HasTicketDeactivationCondition;ScriptExecutionContext
+	function Initialize(context : AIbehaviorScriptExecutionContext); // Initialize;ScriptExecutionContext
+	function IsActionImmediate() : Bool; // IsActionImmediate;
+	function OnPhaseEnded(context : AIbehaviorScriptExecutionContext, duration : Float); // OnPhaseEnded;ScriptExecutionContextFloat
+	function OnPhaseStarted(context : AIbehaviorScriptExecutionContext); // OnPhaseStarted;ScriptExecutionContext
+	function PlayAnimationOnSlot(context : AIbehaviorScriptExecutionContext, animFeature : whandle:animAnimFeature_AIAction); // PlayAnimationOnSlot;ScriptExecutionContextAnimFeature_AIAction
+	function ReactOnAllPhaseSubActionsCompleted(context : AIbehaviorScriptExecutionContext); // ReactOnAllPhaseSubActionsCompleted;ScriptExecutionContext
+	function RepeatPhase(context : AIbehaviorScriptExecutionContext) : Bool; // RepeatPhase;ScriptExecutionContext
+	function RequestGracefulInterruption(context : AIbehaviorScriptExecutionContext) : Bool; // RequestGracefulInterruption;ScriptExecutionContext
+	function ResetNPCState(context : AIbehaviorScriptExecutionContext); // ResetNPCState;ScriptExecutionContext
+	function RetryGetActionRecord(context : AIbehaviorScriptExecutionContext) : Bool; // RetryGetActionRecord;ScriptExecutionContext
+	function SendAnimData(context : AIbehaviorScriptExecutionContext); // SendAnimData;ScriptExecutionContext
+	function SetAnimationWrapperOverrides(context : AIbehaviorScriptExecutionContext, value : Float); // SetAnimationWrapperOverrides;ScriptExecutionContextFloat
+	function SetPhaseUpdateInterval(context : AIbehaviorScriptExecutionContext, subActionsOutcome : AIbehaviorUpdateOutcome, generalSubActionsOutcome : AIbehaviorUpdateOutcome); // SetPhaseUpdateInterval;ScriptExecutionContextAIbehaviorUpdateOutcomeAIbehaviorUpdateOutcome
+	function StartActionTimeStamp(context : AIbehaviorScriptExecutionContext); // StartActionTimeStamp;ScriptExecutionContext
+	function StartCooldowns(context : AIbehaviorScriptExecutionContext); // StartCooldowns;ScriptExecutionContext
+	function TrackCommands(context : AIbehaviorScriptExecutionContext, stop : Bool); // TrackCommands;ScriptExecutionContextBool
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+	function UpdateActivePhase(context : AIbehaviorScriptExecutionContext, out subActionsOutcome : AIbehaviorUpdateOutcome, out phaseChanged : Bool) : Bool; // UpdateActivePhase;ScriptExecutionContextAIbehaviorUpdateOutcomeBool
+	function UpdateGeneralSubActions(context : AIbehaviorScriptExecutionContext, duration : Float) : AIbehaviorUpdateOutcome; // UpdateGeneralSubActions;ScriptExecutionContextFloat
+	function UpdateLoopSubActions(context : AIbehaviorScriptExecutionContext, duration : Float, subActionCount : Int32) : AIbehaviorUpdateOutcome; // UpdateLoopSubActions;ScriptExecutionContextFloatInt32
+	function UpdateRecoverySubActions(context : AIbehaviorScriptExecutionContext, duration : Float, subActionCount : Int32) : AIbehaviorUpdateOutcome; // UpdateRecoverySubActions;ScriptExecutionContextFloatInt32
+	function UpdateStartupSubActions(context : AIbehaviorScriptExecutionContext, duration : Float, subActionCount : Int32) : AIbehaviorUpdateOutcome; // UpdateStartupSubActions;ScriptExecutionContextFloatInt32
+	function UpdateSubActions(context : AIbehaviorScriptExecutionContext, out generalResult : AIbehaviorUpdateOutcome) : AIbehaviorUpdateOutcome; // UpdateSubActions;ScriptExecutionContextAIbehaviorUpdateOutcome
+	function VerifyActionRecord() : Bool; // VerifyActionRecord;
+	function WaitForAnimToLoad(context : AIbehaviorScriptExecutionContext) : Bool; // WaitForAnimToLoad;ScriptExecutionContext
+	function WeaponOverride(context : AIbehaviorScriptExecutionContext, value : Int32); // WeaponOverride;ScriptExecutionContextInt32
+}
+
+import class AIbehaviortaskScript extends AIbehaviorScriptBase
+{
+	import function CutSelector(context : AIbehaviorScriptExecutionContext); // CutSelector
+	import function SetUpdateInterval(context : AIbehaviorScriptExecutionContext, interval : Float) : Bool; // SetUpdateInterval
+
+	function Activate(context : AIbehaviorScriptExecutionContext); // Activate;ScriptExecutionContext
+	function ChildCompleted(context : AIbehaviorScriptExecutionContext, status : AIbehaviorCompletionStatus); // ChildCompleted;ScriptExecutionContextAIbehaviorCompletionStatus
+	function Deactivate(context : AIbehaviorScriptExecutionContext); // Deactivate;ScriptExecutionContext
+	function Update(context : AIbehaviorScriptExecutionContext) : AIbehaviorUpdateOutcome; // Update;ScriptExecutionContext
+}
+
+import class AIbehaviorScriptBase extends IScriptable
+{
+	static function GetAIComponent(context : AIbehaviorScriptExecutionContext) : handle:AIHumanComponent; // AIbehaviorScriptBase::GetAIComponent;ScriptExecutionContext
+	static function GetCombatTarget(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCombatTarget;ScriptExecutionContext
+	static function GetCompanion(context : AIbehaviorScriptExecutionContext) : handle:gameObject; // AIbehaviorScriptBase::GetCompanion;ScriptExecutionContext
+	static function GetGame(context : AIbehaviorScriptExecutionContext) : ScriptGameInstance; // AIbehaviorScriptBase::GetGame;ScriptExecutionContext
+	static function GetHitReactionComponent(context : AIbehaviorScriptExecutionContext) : handle:HitReactionComponent; // AIbehaviorScriptBase::GetHitReactionComponent;ScriptExecutionContext
+	static function GetNPCPuppet(context : AIbehaviorScriptExecutionContext) : handle:NPCPuppet; // AIbehaviorScriptBase::GetNPCPuppet;ScriptExecutionContext
+	static function GetPuppet(context : AIbehaviorScriptExecutionContext) : handle:ScriptedPuppet; // AIbehaviorScriptBase::GetPuppet;ScriptExecutionContext
+	static function GetStatPoolPercentage(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolPercentage;ScriptExecutionContextgamedataStatPoolType
+	static function GetStatPoolValue(context : AIbehaviorScriptExecutionContext, statPoolType : gamedataStatPoolType) : Float; // AIbehaviorScriptBase::GetStatPoolValue;ScriptExecutionContextgamedataStatPoolType
+	static function GetUpperBodyState(context : AIbehaviorScriptExecutionContext) : gamedataNPCUpperBodyState; // AIbehaviorScriptBase::GetUpperBodyState;ScriptExecutionContext
+	static function RandomizeOffsetForUpdateInterval(interval : Float) : Float; // AIbehaviorScriptBase::RandomizeOffsetForUpdateInterval;Float
+
+	function GetDescription(context : AIbehaviorScriptExecutionContext) : String; // GetDescription;ScriptExecutionContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

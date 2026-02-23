@@ -1,0 +1,12 @@
+import class questMountedObjectInfo extends ISerializable
+{
+	var isFirst : Bool;
+	var isPlayer : Bool;
+	var ref : gameEntityReference;
+	var onMount : Bool;
+	var role : gameMountingSlotRole;
+}
+
+import class abstract ISerializable
+{
+}

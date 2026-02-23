@@ -1,0 +1,24 @@
+import class audioBreathingStateTransitionMetadata extends audioAudioMetadata
+{
+	var fromNames : array:CName;
+	var toName : CName;
+	var transitionStateName : CName;
+	var conditionType : audioBreathingTransitionType;
+	var conditionComparator : audioBreathingTransitionComparator;
+	var value : CName;
+	var eventTags : array:audiobreathingEventTag;
+	var isImmediate : Bool;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

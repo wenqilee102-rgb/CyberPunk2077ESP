@@ -1,0 +1,28 @@
+import class AIbehaviorStackScriptPassiveExpressionDefinition extends AIbehaviorPassiveExpressionDefinition
+{
+	import function AddBehaviorCallback(context : script_ref:AIbehaviorScriptExecutionContext, callbackName : CName) : Uint32; // AddBehaviorCallback
+	import function AddToUpdateQueue(context : script_ref:AIbehaviorScriptExecutionContext) : Bool; // AddToUpdateQueue
+	import function ListenToSignal(context : script_ref:AIbehaviorScriptExecutionContext, signalName : CName) : Uint16; // ListenToSignal
+	import function MarkDirty(context : script_ref:AIbehaviorScriptExecutionContext); // MarkDirty
+	import function RemoveBehaviorCallback(context : script_ref:AIbehaviorScriptExecutionContext, callbackId : Uint32) : Bool; // RemoveBehaviorCallback
+	import function RemoveFromUpdateQueue(context : script_ref:AIbehaviorScriptExecutionContext) : Bool; // RemoveFromUpdateQueue
+	import function StopListeningToSignal(context : script_ref:AIbehaviorScriptExecutionContext, signalId : Uint16) : Bool; // StopListeningToSignal
+}
+
+import class abstract AIbehaviorPassiveExpressionDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

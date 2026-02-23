@@ -1,0 +1,1 @@
+{"a":"physicsEClothCollisionMaskEnum","c":[{"SPHERE":0},{"BOX":1},{"CONVEX":2},{"TRIMESH":3},{"CAPSULE":4}]}

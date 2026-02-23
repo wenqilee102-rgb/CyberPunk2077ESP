@@ -1,0 +1,13 @@
+import class gameHardcodedSignalPriorityDefinition extends gameSignalPriorityDefinition
+{
+	var signals : array:CName;
+}
+
+import class abstract gameSignalPriorityDefinition extends ISerializable
+{
+	var defaultPriority : Uint16;
+}
+
+import class abstract ISerializable
+{
+}

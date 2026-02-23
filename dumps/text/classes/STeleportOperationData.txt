@@ -1,0 +1,4 @@
+struct STeleportOperationData
+{
+	public    var nodeRef : NodeRef;
+}

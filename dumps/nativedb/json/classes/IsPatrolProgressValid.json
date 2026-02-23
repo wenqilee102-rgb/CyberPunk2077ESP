@@ -1,0 +1,1 @@
+{"a":"AIbehaviorconditionScript","b":"IsPatrolProgressValid","d":0,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"patrolProgress","c":128}],"f":[{"a":"Check;ScriptExecutionContext","b":"Check","c":{"b":"AIbehaviorConditionOutcomes"},"d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

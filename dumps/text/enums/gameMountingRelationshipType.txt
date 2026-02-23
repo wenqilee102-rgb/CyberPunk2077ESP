@@ -1,0 +1,6 @@
+enum gameMountingRelationshipType
+{
+	Invalid = -1,
+	Parent = 0,
+	Child = 1
+}

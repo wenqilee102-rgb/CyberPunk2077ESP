@@ -1,0 +1,30 @@
+class MuteArmDurationModifier extends gameEffectDurationModifier_Scripted
+{
+	public    var initialDuration : Float;
+
+	function Init(ctx : gameEffectScriptContext) : Float; // Init;EffectScriptContext
+	function Process(ctx : gameEffectScriptContext, durationCtx : gameEffectDurationModifierScriptContext) : Float; // Process;EffectScriptContextEffectDurationModifierScriptContext
+	function ResetMuteArmBlackboard(ctx : gameEffectScriptContext); // ResetMuteArmBlackboard;EffectScriptContext
+}
+
+import class gameEffectDurationModifier_Scripted extends gameEffectDurationModifier
+{
+}
+
+import class abstract gameEffectDurationModifier extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

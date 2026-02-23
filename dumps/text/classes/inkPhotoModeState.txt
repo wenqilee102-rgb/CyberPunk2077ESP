@@ -1,0 +1,7 @@
+import struct inkPhotoModeState extends inkIStateMachineState
+{
+}
+
+import struct abstract inkIStateMachineState
+{
+}

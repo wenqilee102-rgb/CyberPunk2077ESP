@@ -1,0 +1,83 @@
+import class gamedataMovementPolicy_Record extends gamedataTweakDBRecord
+{
+	import function AllowedTags(out outList : array:whandle:gamedataMovementPolicyTagList_Record); // AllowedTags
+	import function AllowedTagsContains(item : whandle:gamedataMovementPolicyTagList_Record) : Bool; // AllowedTagsContains
+	import function AvoidObstacleWithinTolerance() : Bool; // AvoidObstacleWithinTolerance
+	import function AvoidSafeArea() : Bool; // AvoidSafeArea
+	import function AvoidThreat() : Bool; // AvoidThreat
+	import function AvoidThreatCost() : Float; // AvoidThreatCost
+	import function AvoidThreatIgnoringDirection() : Bool; // AvoidThreatIgnoringDirection
+	import function AvoidThreatRange() : Float; // AvoidThreatRange
+	import function BlockedTags(out outList : array:whandle:gamedataMovementPolicyTagList_Record); // BlockedTags
+	import function BlockedTagsContains(item : whandle:gamedataMovementPolicyTagList_Record) : Bool; // BlockedTagsContains
+	import function CalculateStartTangent() : Bool; // CalculateStartTangent
+	import function CirclingDirection() : CName; // CirclingDirection
+	import function DeadAngle() : Float; // DeadAngle
+	import function DebugName() : CName; // DebugName
+	import function DestinationOrientationPosition() : whandle:gamedataAIActionTarget_Record; // DestinationOrientationPosition
+	import function DestinationOrientationPositionHandle() : handle:gamedataAIActionTarget_Record; // DestinationOrientationPositionHandle
+	import function Distance() : Float; // Distance
+	import function DontUseStart() : Bool; // DontUseStart
+	import function DontUseStop() : Bool; // DontUseStop
+	import function DynamicTargetUpdateDistance() : Float; // DynamicTargetUpdateDistance
+	import function DynamicTargetUpdateTimer() : Float; // DynamicTargetUpdateTimer
+	import function GetAllowedTagsCount() : Int32; // GetAllowedTagsCount
+	import function GetAllowedTagsItem(index : Int32) : whandle:gamedataMovementPolicyTagList_Record; // GetAllowedTagsItem
+	import function GetAllowedTagsItemHandle(index : Int32) : handle:gamedataMovementPolicyTagList_Record; // GetAllowedTagsItemHandle
+	import function GetBlockedTagsCount() : Int32; // GetBlockedTagsCount
+	import function GetBlockedTagsItem(index : Int32) : whandle:gamedataMovementPolicyTagList_Record; // GetBlockedTagsItem
+	import function GetBlockedTagsItemHandle(index : Int32) : handle:gamedataMovementPolicyTagList_Record; // GetBlockedTagsItemHandle
+	import function GetOutOfWay() : Bool; // GetOutOfWay
+	import function IgnoreCollisionAvoidance() : Bool; // IgnoreCollisionAvoidance
+	import function IgnoreLoSPrecheck() : Bool; // IgnoreLoSPrecheck
+	import function IgnoreNavigation() : Bool; // IgnoreNavigation
+	import function IgnoreRestrictedMovementArea() : Bool; // IgnoreRestrictedMovementArea
+	import function IgnoreSpotReservation() : Bool; // IgnoreSpotReservation
+	import function KeepLineOfSight() : CName; // KeepLineOfSight
+	import function LineOfSightPointPreference() : CName; // LineOfSightPointPreference
+	import function MaxPathLength() : Float; // MaxPathLength
+	import function MaxPathLengthToDirectDistanceRatioCurve() : CName; // MaxPathLengthToDirectDistanceRatioCurve
+	import function MinDistance() : Float; // MinDistance
+	import function MovementType() : CName; // MovementType
+	import function Ring() : whandle:gamedataAIRingType_Record; // Ring
+	import function RingDistanceMult() : Float; // RingDistanceMult
+	import function RingDistanceOffset() : Float; // RingDistanceOffset
+	import function RingHandle() : handle:gamedataAIRingType_Record; // RingHandle
+	import function RingToleranceMult() : Float; // RingToleranceMult
+	import function RingToleranceOffset() : Float; // RingToleranceOffset
+	import function SpatialHintMults() : Vector3; // SpatialHintMults
+	import function StopOnObstacle() : Bool; // StopOnObstacle
+	import function StrafingPredictionTime() : Float; // StrafingPredictionTime
+	import function StrafingPredictionVelocityMax() : Float; // StrafingPredictionVelocityMax
+	import function StrafingRotationOffset() : Float; // StrafingRotationOffset
+	import function StrafingTarget() : whandle:gamedataAIActionTarget_Record; // StrafingTarget
+	import function StrafingTargetHandle() : handle:gamedataAIActionTarget_Record; // StrafingTargetHandle
+	import function SymmetricAnglesScores() : Bool; // SymmetricAnglesScores
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function Tolerance() : Float; // Tolerance
+	import function UseFollowSlots() : Bool; // UseFollowSlots
+	import function UseOffMeshAllowedTags() : Bool; // UseOffMeshAllowedTags
+	import function UseOffMeshBlockedTags() : Bool; // UseOffMeshBlockedTags
+	import function ZDiff() : Float; // ZDiff
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

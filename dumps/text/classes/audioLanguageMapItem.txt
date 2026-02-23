@@ -1,0 +1,17 @@
+import class audioLanguageMapItem extends audioAudioMetadata
+{
+	var language : audioLanguage;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct scnRidAnimationContainerSRRefAnimContainer
+{
+	var animation : scnRidAnimationSRRefId;
+	var context : scnRidAnimationContainerSRRefAnimContainerContext;
+}

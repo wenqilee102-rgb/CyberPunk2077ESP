@@ -1,0 +1,11 @@
+import struct AINavigationSystemQuery
+{
+	var source : AIPositionSpec;
+	var target : AIPositionSpec;
+	var allowedTags : array:CName;
+	var blockedTags : array:CName;
+	var minDesiredDistance : Float;
+	var maxDesiredDistance : Float;
+	var useFollowSlots : Bool;
+	var usePredictionTime : Bool;
+}

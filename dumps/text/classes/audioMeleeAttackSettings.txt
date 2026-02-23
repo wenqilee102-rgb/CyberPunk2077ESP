@@ -1,0 +1,7 @@
+import struct audioMeleeAttackSettings
+{
+	var hitEvent : CName;
+	var penetratingHitEvent : CName;
+	var criticalHitEvent : CName;
+	var killingHitEvent : CName;
+}

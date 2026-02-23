@@ -1,0 +1,4 @@
+import struct scneventsDespawnEntityEventParams
+{
+	var performer : scnPerformerId;
+}

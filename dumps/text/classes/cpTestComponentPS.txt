@@ -1,0 +1,36 @@
+import class cpTestComponentPS extends gameComponentPS
+{
+	var something : Int32;
+	var somethingNotInstanceEdiable : Bool;
+	var nameEditable : CName;
+	var nameInstanceEditable : CName;
+	var namePersistent : CName;
+	var namePersistentEdiable : CName;
+	var namePersistentInstanceEditable : CName;
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

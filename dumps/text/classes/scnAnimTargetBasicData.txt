@@ -1,0 +1,12 @@
+import struct scnAnimTargetBasicData
+{
+	var performerId : scnPerformerId;
+	var isStart : Bool;
+	var targetPerformerId : scnPerformerId;
+	var targetSlot : CName;
+	var targetOffsetEntitySpace : Vector4;
+	var staticTarget : Vector4;
+	var targetActorId : scnActorId;
+	var targetPropId : scnPropId;
+	var targetType : scnLookAtTargetType;
+}

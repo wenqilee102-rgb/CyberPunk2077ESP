@@ -1,0 +1,5 @@
+import struct communitySquadInitializerEntry
+{
+	var type : communityESquadType;
+	var value : CName;
+}

@@ -1,0 +1,11 @@
+import struct worldExtractedNodeSocket
+{
+	var name : CName;
+	var displayName : CName;
+	var position : Vector3;
+	var rotation : Quaternion;
+	var direction : Vector3;
+	var type : worldNodeSocketType;
+	var isSnapped : Bool;
+	var color : Color;
+}

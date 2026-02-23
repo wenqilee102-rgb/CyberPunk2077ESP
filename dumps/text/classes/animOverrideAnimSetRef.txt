@@ -1,0 +1,5 @@
+import struct animOverrideAnimSetRef
+{
+	var animSet : raRef:animAnimSet;
+	var variableName : CName;
+}

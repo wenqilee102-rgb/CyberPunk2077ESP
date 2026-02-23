@@ -1,0 +1,16 @@
+import class worldPhysicalTriggerAreaNode extends worldNode
+{
+	var simulationType : physicsSimulationType;
+	var shape : physicsTriggerShape;
+	var filterData : handle:physicsFilterData;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

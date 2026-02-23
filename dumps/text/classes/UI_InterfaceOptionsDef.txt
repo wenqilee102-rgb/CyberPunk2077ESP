@@ -1,0 +1,28 @@
+class UI_InterfaceOptionsDef extends gamebbScriptDefinition
+{
+	public    var CrowdsOnMinimap : gamebbScriptID_Bool;
+	public    var ObjectMarkersEnabled : gamebbScriptID_Bool;
+	public    var NPCNamesEnabled : gamebbScriptID_Bool;
+	public    var NPCNameplatesEnabled : gamebbScriptID_Bool;
+	public    var HUDMarkersEnabled : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

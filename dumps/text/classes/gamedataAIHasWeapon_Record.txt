@@ -1,0 +1,39 @@
+import class gamedataAIHasWeapon_Record extends gamedataAIActionSubCondition_Record
+{
+	import function GetItemCategoryCount() : Int32; // GetItemCategoryCount
+	import function GetItemCategoryItem(index : Int32) : whandle:gamedataItemCategory_Record; // GetItemCategoryItem
+	import function GetItemCategoryItemHandle(index : Int32) : handle:gamedataItemCategory_Record; // GetItemCategoryItemHandle
+	import function GetItemTypeCount() : Int32; // GetItemTypeCount
+	import function GetItemTypeItem(index : Int32) : whandle:gamedataItemType_Record; // GetItemTypeItem
+	import function GetItemTypeItemHandle(index : Int32) : handle:gamedataItemType_Record; // GetItemTypeItemHandle
+	import function ItemCategory(out outList : array:whandle:gamedataItemCategory_Record); // ItemCategory
+	import function ItemCategoryContains(item : whandle:gamedataItemCategory_Record) : Bool; // ItemCategoryContains
+	import function ItemTag() : CName; // ItemTag
+	import function ItemType(out outList : array:whandle:gamedataItemType_Record); // ItemType
+	import function ItemTypeContains(item : whandle:gamedataItemType_Record) : Bool; // ItemTypeContains
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

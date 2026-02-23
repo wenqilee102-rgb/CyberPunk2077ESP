@@ -1,0 +1,15 @@
+import class AIbehaviorGetPatrolPointTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var inPatrolDistance : handle:AIArgumentMapping;
+	var inLastKnownPosition : handle:AIArgumentMapping;
+	var outFollowTrailPoint : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

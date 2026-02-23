@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"IncreaseTraitLevel","d":0,"e":[{"a":{"b":"gamedataTraitType"},"b":"trait","c":128}],"f":[{"a":"Set;GameObjectgamedataTraitType","b":"Set","d":48,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"_owner","c":0},{"a":{"b":"gamedataTraitType"},"b":"traitType","c":0}]}]}

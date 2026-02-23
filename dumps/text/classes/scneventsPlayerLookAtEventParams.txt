@@ -1,0 +1,16 @@
+import struct scneventsPlayerLookAtEventParams
+{
+	var slotName : CName;
+	var offsetPos : Vector3;
+	var duration : Float;
+	var adjustPitch : Bool;
+	var adjustYaw : Bool;
+	var endOnTargetReached : Bool;
+	var endOnCameraInputApplied : Bool;
+	var endOnTimeExceeded : Bool;
+	var cameraInputMagToBreak : Float;
+	var precision : Float;
+	var maxDuration : Float;
+	var easeIn : Bool;
+	var easeOut : Bool;
+}

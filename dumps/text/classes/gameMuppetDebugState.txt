@@ -1,0 +1,10 @@
+import class gameMuppetDebugState extends ISerializable
+{
+	var comparisonReports : array:gameMuppetStateComparisonReport;
+	var comparisonReportIndex : Uint32;
+	var subStepsData : array:gameMuppetSubStepData;
+}
+
+import class abstract ISerializable
+{
+}

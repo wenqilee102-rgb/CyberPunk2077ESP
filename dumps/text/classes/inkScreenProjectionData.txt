@@ -1,0 +1,12 @@
+import struct inkScreenProjectionData
+{
+	var entity : whandle:entEntity;
+	var slotComponentName : CName;
+	var slotName : CName;
+	var slotFallbackName : CName;
+	var staticWorldPosition : Vector4;
+	var fixedWorldOffset : Vector4;
+	var userData : whandle:IScriptable;
+	var adjustWithDistance : Bool;
+	var extraOffsetAtMaxDistance : Vector3;
+}

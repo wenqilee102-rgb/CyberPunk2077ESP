@@ -1,0 +1,8 @@
+import struct worldProxySurfaceFlattenParams
+{
+	var flatten : Bool;
+	var groupingStepAngle : worldProxyNormalAngleStepSize;
+	var syncNormalSource : worldProxySyncNormalSource;
+	var coreAxisRotationOffset : Float;
+	var postFlattenReduce : Bool;
+}

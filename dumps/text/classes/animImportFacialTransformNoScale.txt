@@ -1,0 +1,5 @@
+import struct animImportFacialTransformNoScale
+{
+	var rotation : Quaternion;
+	var translation : Vector3;
+}

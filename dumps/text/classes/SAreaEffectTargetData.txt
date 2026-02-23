@@ -1,0 +1,6 @@
+struct SAreaEffectTargetData
+{
+	public    var areaEffectID : CName;
+	public    var onSelf : Bool;
+	public    var onSlaves : Bool;
+}

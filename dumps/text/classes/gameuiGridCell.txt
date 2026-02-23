@@ -1,0 +1,6 @@
+import struct gameuiGridCell
+{
+	var rarityValue : Int32;
+	var currentTrap : handle:gamedataMiniGame_Trap_Record;
+	var isActive : Bool;
+}

@@ -1,0 +1,1 @@
+{"b":"animHipsIkRequest","d":8,"g":true,"e":[{"a":{"a":14},"b":"leftLegIkChain","c":128},{"a":{"a":14},"b":"rightLegIkChain","c":128},{"a":{"b":"animTransformIndex"},"b":"hipsTransformIndex","c":128},{"a":{"b":"animTransformIndex"},"b":"leftFootTransformIndex","c":128},{"a":{"b":"animTransformIndex"},"b":"rightFootTransformIndex","c":128}]}

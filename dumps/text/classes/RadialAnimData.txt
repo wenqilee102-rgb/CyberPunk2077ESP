@@ -1,0 +1,7 @@
+struct RadialAnimData
+{
+	public    var hover_in : CName;
+	public    var hover_out : CName;
+	public    var cycle_in : CName;
+	public    var cycle_out : CName;
+}

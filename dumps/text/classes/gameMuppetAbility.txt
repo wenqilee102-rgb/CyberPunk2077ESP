@@ -1,0 +1,5 @@
+import struct gameMuppetAbility
+{
+	var value : Int32;
+	var blocks : Int32;
+}

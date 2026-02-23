@@ -1,0 +1,29 @@
+import class gamedataRule_Record extends gamedataTweakDBRecord
+{
+	import function Cooldown() : Float; // Cooldown
+	import function Output() : whandle:gamedataOutput_Record; // Output
+	import function OutputHandle() : handle:gamedataOutput_Record; // OutputHandle
+	import function Stimulus() : whandle:gamedataStimType_Record; // Stimulus
+	import function StimulusHandle() : handle:gamedataStimType_Record; // StimulusHandle
+	import function WorkspotOutput() : CName; // WorkspotOutput
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

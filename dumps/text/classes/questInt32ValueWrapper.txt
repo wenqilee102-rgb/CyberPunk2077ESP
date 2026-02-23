@@ -1,0 +1,4 @@
+import struct questInt32ValueWrapper
+{
+	var valueProvider : handle:questIInt32ValueProvider;
+}

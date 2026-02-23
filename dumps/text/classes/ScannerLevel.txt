@@ -1,0 +1,31 @@
+class ScannerLevel extends ScannerChunk
+{
+	private   var level : Int32;
+	private   var isHard : Bool;
+
+	function GetIndicator() : Bool; // GetIndicator;
+	function GetLevel() : Int32; // GetLevel;
+	function GetType() : ScannerDataType; // GetType;
+	function Set(value : Int32); // Set;Int32
+	function SetIndicator(value : Bool); // SetIndicator;Bool
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

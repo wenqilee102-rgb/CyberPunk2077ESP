@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"DeviceDebugDef","d":0,"e":[{"a":{"b":"gamebbScriptID_CName"},"b":"CurrentlyDebuggedDevice","c":128},{"a":{"b":"gamebbScriptID_String"},"b":"DebuggedEntityIDAsString","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

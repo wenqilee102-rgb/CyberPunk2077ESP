@@ -1,0 +1,5 @@
+import struct meshMeshMaterialBuffer
+{
+	var rawData : DataBuffer;
+	var rawDataHeaders : array:meshLocalMaterialHeader;
+}

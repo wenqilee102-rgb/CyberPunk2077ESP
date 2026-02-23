@@ -1,0 +1,6 @@
+enum EProgressBarState
+{
+	Available = 0,
+	Blocked = 1,
+	Invisible = 2
+}

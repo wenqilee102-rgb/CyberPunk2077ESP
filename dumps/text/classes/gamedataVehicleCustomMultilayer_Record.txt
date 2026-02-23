@@ -1,0 +1,39 @@
+import class gamedataVehicleCustomMultilayer_Record extends gamedataTweakDBRecord
+{
+	import function AffectedComponents() : array:CName; // AffectedComponents
+	import function AffectedComponentsContains(item : CName) : Bool; // AffectedComponentsContains
+	import function CoatLayerMax() : Float; // CoatLayerMax
+	import function CoatLayerMin() : Float; // CoatLayerMin
+	import function CustomMlMask() : redResourceReferenceScriptToken; // CustomMlMask
+	import function CustomMlSetup() : redResourceReferenceScriptToken; // CustomMlSetup
+	import function ExcludedComponents() : array:CName; // ExcludedComponents
+	import function ExcludedComponentsContains(item : CName) : Bool; // ExcludedComponentsContains
+	import function GetAffectedComponentsCount() : Int32; // GetAffectedComponentsCount
+	import function GetAffectedComponentsItem(index : Int32) : CName; // GetAffectedComponentsItem
+	import function GetExcludedComponentsCount() : Int32; // GetExcludedComponentsCount
+	import function GetExcludedComponentsItem(index : Int32) : CName; // GetExcludedComponentsItem
+	import function GetOnlyForPlayerVehicleAppearancesCount() : Int32; // GetOnlyForPlayerVehicleAppearancesCount
+	import function GetOnlyForPlayerVehicleAppearancesItem(index : Int32) : CName; // GetOnlyForPlayerVehicleAppearancesItem
+	import function OnlyForPlayerVehicleAppearances() : array:CName; // OnlyForPlayerVehicleAppearances
+	import function OnlyForPlayerVehicleAppearancesContains(item : CName) : Bool; // OnlyForPlayerVehicleAppearancesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

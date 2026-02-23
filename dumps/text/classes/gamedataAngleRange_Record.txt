@@ -1,0 +1,33 @@
+import class gamedataAngleRange_Record extends gamedataSenseShape_Record
+{
+	import function Angle() : Float; // Angle
+	import function HalfHeight() : Float; // HalfHeight
+	import function Position() : Vector3; // Position
+	import function Range() : Float; // Range
+}
+
+import class gamedataSenseShape_Record extends gamedataTweakDBRecord
+{
+	import function DetectionMultiplier() : Float; // DetectionMultiplier
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

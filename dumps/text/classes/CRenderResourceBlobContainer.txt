@@ -1,0 +1,8 @@
+import class CRenderResourceBlobContainer extends ISerializable
+{
+	var blob : handle:IRenderResourceBlob;
+}
+
+import class abstract ISerializable
+{
+}

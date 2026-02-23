@@ -1,0 +1,31 @@
+class StrikeExecutor_ApplyStatusEffect extends gameEffectExecutor_Scripted
+{
+	function Process(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // Process;EffectScriptContextEffectExecutionScriptContext
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

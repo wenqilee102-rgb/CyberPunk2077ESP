@@ -1,0 +1,49 @@
+import class gamedataReactionPresetNoReaction_Record extends gamedataReactionPreset_Record
+{
+}
+
+import class gamedataReactionPreset_Record extends gamedataTweakDBRecord
+{
+	import function AggressiveThreshold() : Float; // AggressiveThreshold
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function FearThreshold() : Float; // FearThreshold
+	import function GetPresetMapperCount() : Int32; // GetPresetMapperCount
+	import function GetPresetMapperItem(index : Int32) : whandle:gamedataPresetMapper_Record; // GetPresetMapperItem
+	import function GetPresetMapperItemHandle(index : Int32) : handle:gamedataPresetMapper_Record; // GetPresetMapperItemHandle
+	import function GetRulesCount() : Int32; // GetRulesCount
+	import function GetRulesItem(index : Int32) : whandle:gamedataRule_Record; // GetRulesItem
+	import function GetRulesItemHandle(index : Int32) : handle:gamedataRule_Record; // GetRulesItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function IsAggressive() : Bool; // IsAggressive
+	import function PresetMapper(out outList : array:whandle:gamedataPresetMapper_Record); // PresetMapper
+	import function PresetMapperContains(item : whandle:gamedataPresetMapper_Record) : Bool; // PresetMapperContains
+	import function ReactionGroup() : String; // ReactionGroup
+	import function Rules(out outList : array:whandle:gamedataRule_Record); // Rules
+	import function RulesContains(item : whandle:gamedataRule_Record) : Bool; // RulesContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function Type() : gamedataReactionPresetType; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

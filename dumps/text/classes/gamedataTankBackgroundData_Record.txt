@@ -1,0 +1,29 @@
+import class gamedataTankBackgroundData_Record extends gamedataTweakDBRecord
+{
+	import function BackgroundLayerList(out outList : array:whandle:gamedataArcadeBackgroundLayer_Record); // BackgroundLayerList
+	import function BackgroundLayerListContains(item : whandle:gamedataArcadeBackgroundLayer_Record) : Bool; // BackgroundLayerListContains
+	import function DecorationSpawnerTDBID() : CName; // DecorationSpawnerTDBID
+	import function GetBackgroundLayerListCount() : Int32; // GetBackgroundLayerListCount
+	import function GetBackgroundLayerListItem(index : Int32) : whandle:gamedataArcadeBackgroundLayer_Record; // GetBackgroundLayerListItem
+	import function GetBackgroundLayerListItemHandle(index : Int32) : handle:gamedataArcadeBackgroundLayer_Record; // GetBackgroundLayerListItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

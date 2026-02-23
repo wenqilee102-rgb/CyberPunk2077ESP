@@ -1,0 +1,11 @@
+import struct AIBehaviourSpotInstance extends AISmartSpotInstance
+{
+}
+
+import struct abstract AISmartSpotInstance extends AISpotInstance
+{
+}
+
+import struct abstract AISpotInstance
+{
+}

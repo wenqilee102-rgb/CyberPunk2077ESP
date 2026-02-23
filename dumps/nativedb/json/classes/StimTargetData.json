@@ -1,0 +1,1 @@
+{"b":"StimTargetData","d":0,"g":true,"e":[{"a":{"a":16},"b":"spawnerRef","c":128},{"a":{"a":14},"b":"entryID","c":128}],"f":[{"a":"StimTargetData::IsValid;StimTargetData","b":"IsValid","c":{"a":1},"d":56,"e":[{"a":{"b":"StimTargetData"},"b":"self","c":0}]}]}

@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"UI_InventoryDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Variant"},"b":"itemAdded","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"itemRemoved","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"itemQuantityChanged","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

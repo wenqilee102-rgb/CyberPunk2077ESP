@@ -1,0 +1,73 @@
+class abstract AICustomComponents extends AIRelatedComponents
+{
+}
+
+class abstract AIRelatedComponents extends gameScriptableComponent
+{
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

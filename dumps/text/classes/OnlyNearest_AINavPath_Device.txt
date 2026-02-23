@@ -1,0 +1,35 @@
+class OnlyNearest_AINavPath_Device extends gameEffectObjectGroupFilter_Scripted
+{
+	function Process(out ctx : gameEffectScriptContext, out filterCtx : gameEffectGroupFilterScriptContext) : Bool; // Process;EffectScriptContextEffectGroupFilterScriptContext
+	function SortTargetsByDistance(source : handle:gameObject, targets : script_ref:array:handle:ScriptedPuppet) : array:scriptOptimizationsHandleWithValue; // SortTargetsByDistance;GameObjectscript_ref<array<ScriptedPuppet>>
+}
+
+import class gameEffectObjectGroupFilter_Scripted extends gameEffectObjectGroupFilter
+{
+}
+
+import class abstract gameEffectObjectGroupFilter extends gameEffectObjectFilter
+{
+}
+
+import class abstract gameEffectObjectFilter extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

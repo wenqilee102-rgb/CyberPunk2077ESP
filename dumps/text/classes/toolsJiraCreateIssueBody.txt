@@ -1,0 +1,8 @@
+import class toolsJiraCreateIssueBody extends ISerializable
+{
+	var fields : toolsJiraIssueFields;
+}
+
+import class abstract ISerializable
+{
+}

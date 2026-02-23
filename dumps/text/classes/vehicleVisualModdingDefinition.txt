@@ -1,0 +1,17 @@
+struct vehicleVisualModdingDefinition
+{
+	public    var primaryColorDefined : Bool;
+	public    var primaryColorH : Float;
+	public    var primaryColorS : Float;
+	public    var primaryColorB : Float;
+	public    var secondaryColorDefined : Bool;
+	public    var secondaryColorH : Float;
+	public    var secondaryColorS : Float;
+	public    var secondaryColorB : Float;
+	public    var lightsColorDefined : Bool;
+	public    var lightsColorH : Float;
+	public    var decoPreset : Int32;
+	public    var defaultAppearance : CName;
+
+	static function UpdateToNewFormat(oldData : vehicleVisualModdingDefinition) : VehicleVisualCustomizationTemplate; // vehicleVisualModdingDefinition::UpdateToNewFormat;vehicleVisualModdingDefinition
+}

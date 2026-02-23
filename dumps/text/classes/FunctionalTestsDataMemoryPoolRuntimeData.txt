@@ -1,0 +1,10 @@
+import class FunctionalTestsDataMemoryPoolRuntimeData extends ISerializable
+{
+	var poolName : String;
+	var bytesAllocated : Int64;
+	var allocationCount : Int64;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+import class animRig extends CResource
+{
+	var boneNames : array:CName;
+	var trackNames : array:CName;
+	var rigExtraTracks : array:animFloatTrackInfo;
+	var levelOfDetailStartIndices : array:Int16;
+	var distanceCategoryToLodMap : array:Int16;
+	var turnOffLOD : Int32;
+	var turningOffUpdateAndSample : Bool;
+	var referenceTracks : array:Float;
+	var referencePoseMS : array:QsTransform;
+	var aPoseLS : array:QsTransform;
+	var aPoseMS : array:QsTransform;
+	var tags : redTagList;
+	var parts : array:animRigPart;
+	var retargets : array:animRigRetarget;
+	var ikSetups : array:handle:animIRigIkSetup;
+	var ragdollDesc : array:physicsRagdollBodyInfo;
+	var ragdollNames : array:physicsRagdollBodyNames;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

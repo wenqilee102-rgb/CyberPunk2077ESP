@@ -1,0 +1,5 @@
+enum MountType
+{
+	Hijack = 0,
+	Regular = 1
+}

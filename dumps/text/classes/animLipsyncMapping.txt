@@ -1,0 +1,15 @@
+import class animLipsyncMapping extends CResource
+{
+	var languageCodeName : CName;
+	var scenePaths : array:Uint64;
+	var sceneEntries : array:animLipsyncMappingSceneEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

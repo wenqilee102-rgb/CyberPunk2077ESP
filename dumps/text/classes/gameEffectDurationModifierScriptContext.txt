@@ -1,0 +1,6 @@
+import struct gameEffectDurationModifierScriptContext
+{
+	import static function GetRemainingTime(modifierCtx : gameEffectDurationModifierScriptContext) : Float; // GetRemainingTime
+	import static function GetTimeDelta(modifierCtx : gameEffectDurationModifierScriptContext) : Float; // GetTimeDelta
+	import static function SetRemainingTime(modifierCtx : gameEffectDurationModifierScriptContext, time : Float); // SetRemainingTime
+}

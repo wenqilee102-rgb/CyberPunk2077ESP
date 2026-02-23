@@ -1,0 +1,12 @@
+struct OutputValidationDataStruct
+{
+	public    var targetID : entEntityID;
+	public    var agentID : gamePersistentID;
+	public    var reprimenderID : entEntityID;
+	public    var eventReportedFromArea : gamePersistentID;
+	public    var eventType : ESecurityNotificationType;
+	public    var breachedAreas : array:gamePersistentID;
+
+	static function Construct(evt : handle:SecuritySystemInput, currentReprimender : entEntityID, breachedAreas : script_ref:array:gamePersistentID) : OutputValidationDataStruct; // OutputValidationDataStruct::Construct;SecuritySystemInputEntityIDscript_ref<array<PersistentID>>
+	static function IsDuplicated(self : script_ref:OutputValidationDataStruct, evt : handle:SecuritySystemInput, currentReprimender : entEntityID, currentlyBreachedAreas : script_ref:array:gamePersistentID) : Bool; // OutputValidationDataStruct::IsDuplicated;script_ref<OutputValidationDataStruct>SecuritySystemInputEntityIDscript_ref<array<PersistentID>>
+}

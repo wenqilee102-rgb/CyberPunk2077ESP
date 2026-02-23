@@ -1,0 +1,1 @@
+{"a":"AIbehaviorConditionDefinition","b":"AIbehaviorCommandConditionDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"commandName","c":128},{"a":{"a":1},"b":"useInheritance","c":128},{"a":{"a":1},"b":"isWaiting","c":128},{"a":{"a":1},"b":"isExecuting","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"commandOut","c":128}]}

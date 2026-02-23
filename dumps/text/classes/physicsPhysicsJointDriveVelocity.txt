@@ -1,0 +1,5 @@
+import struct physicsPhysicsJointDriveVelocity
+{
+	var linearVelocity : Vector4;
+	var angularVelocity : Vector4;
+}

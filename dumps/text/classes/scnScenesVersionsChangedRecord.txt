@@ -1,0 +1,5 @@
+import struct scnScenesVersionsChangedRecord
+{
+	var changeInVersion : Uint32;
+	var sceneBeforeChange : raRef:scnSceneResource;
+}

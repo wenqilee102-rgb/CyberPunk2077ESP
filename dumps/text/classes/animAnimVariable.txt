@@ -1,0 +1,8 @@
+import class abstract animAnimVariable extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

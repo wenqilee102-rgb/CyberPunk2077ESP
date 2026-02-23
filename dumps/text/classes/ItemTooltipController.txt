@@ -1,0 +1,245 @@
+class ItemTooltipController extends AGenericTooltipControllerWithDebug
+{
+	protected var itemNameText : inkTextWidgetReference;
+	protected var itemRarityText : inkTextWidgetReference;
+	protected var progressBar : inkWidgetReference;
+	protected var recipeStatsTitle : inkTextWidgetReference;
+	protected var categoriesWrapper : inkCompoundWidgetReference;
+	protected var backgroundContainer : inkCompoundWidgetReference;
+	protected var topContainer : inkCompoundWidgetReference;
+	protected var headerContainer : inkCompoundWidgetReference;
+	protected var headerWeaponContainer : inkCompoundWidgetReference;
+	protected var headerItemContainer : inkCompoundWidgetReference;
+	protected var headerGrenadeContainer : inkCompoundWidgetReference;
+	protected var headerArmorContainer : inkCompoundWidgetReference;
+	protected var primmaryStatsContainer : inkCompoundWidgetReference;
+	protected var secondaryStatsContainer : inkCompoundWidgetReference;
+	protected var recipeStatsContainer : inkCompoundWidgetReference;
+	protected var recipeDamageTypesContainer : inkCompoundWidgetReference;
+	protected var modsContainer : inkCompoundWidgetReference;
+	protected var dedicatedModsContainer : inkCompoundWidgetReference;
+	protected var descriptionContainer : inkCompoundWidgetReference;
+	protected var craftedItemContainer : inkCompoundWidgetReference;
+	protected var bottomContainer : inkCompoundWidgetReference;
+	protected var primmaryStatsList : inkCompoundWidgetReference;
+	protected var secondaryStatsList : inkCompoundWidgetReference;
+	protected var recipeStatsTypesList : inkCompoundWidgetReference;
+	protected var recipeDamageTypesList : inkCompoundWidgetReference;
+	protected var modsList : inkCompoundWidgetReference;
+	protected var dedicatedModsList : inkCompoundWidgetReference;
+	protected var requiredLevelContainer : inkCompoundWidgetReference;
+	protected var priceContainer : inkCompoundWidgetReference;
+	protected var descriptionText : inkTextWidgetReference;
+	protected var requireLevelText : inkTextWidgetReference;
+	protected var priceText : inkTextWidgetReference;
+	protected var dpsWrapper : inkWidgetReference;
+	protected var dpsArrow : inkImageWidgetReference;
+	protected var dpsText : inkTextWidgetReference;
+	protected var nonLethalText : inkTextWidgetReference;
+	protected var damagePerHitValue : inkTextWidgetReference;
+	protected var attacksPerSecondValue : inkTextWidgetReference;
+	protected var silencerPartWrapper : inkWidgetReference;
+	protected var scopePartWrapper : inkWidgetReference;
+	protected var craftedItemIcon : inkWidgetReference;
+	protected var grenadeDamageTypeWrapper : inkWidgetReference;
+	protected var grenadeDamageTypeIcon : inkImageWidgetReference;
+	protected var grenadeRangeValue : inkTextWidgetReference;
+	protected var grenadeRangeText : inkTextWidgetReference;
+	protected var grenadeDeliveryLabel : inkTextWidgetReference;
+	protected var grenadeDeliveryIcon : inkImageWidgetReference;
+	protected var grenadeDamageStatWrapper : inkWidgetReference;
+	protected var grenadeDamageStatLabel : inkTextWidgetReference;
+	protected var grenadeDamageStatValue : inkTextWidgetReference;
+	protected var armorStatArrow : inkImageWidgetReference;
+	protected var armorStatLabel : inkTextWidgetReference;
+	protected var quickhackStatWrapper : inkWidgetReference;
+	protected var quickhackCostValue : inkTextWidgetReference;
+	protected var quickhackDuration : inkTextWidgetReference;
+	protected var quickhackCooldown : inkTextWidgetReference;
+	protected var quickhackUpload : inkTextWidgetReference;
+	protected var damageTypeWrapper : inkWidgetReference;
+	protected var damageTypeIcon : inkImageWidgetReference;
+	protected var equipedWrapper : inkWidgetReference;
+	protected var itemTypeText : inkTextWidgetReference;
+	protected var itemPreviewWrapper : inkWidgetReference;
+	protected var itemPreviewIcon : inkImageWidgetReference;
+	protected var itemPreviewIconicLines : inkWidgetReference;
+	protected var itemWeightWrapper : inkWidgetReference;
+	protected var itemWeightText : inkTextWidgetReference;
+	protected var itemAmmoWrapper : inkWidgetReference;
+	protected var itemAmmoText : inkTextWidgetReference;
+	protected var itemRequirements : inkWidgetReference;
+	protected var itemLevelRequirements : inkWidgetReference;
+	protected var itemStrenghtRequirements : inkWidgetReference;
+	protected var itemAttributeRequirements : inkWidgetReference;
+	protected var itemSmartGunLinkRequirements : inkWidgetReference;
+	protected var itemLevelRequirementsValue : inkTextWidgetReference;
+	protected var itemStrenghtRequirementsValue : inkTextWidgetReference;
+	protected var itemAttributeRequirementsText : inkTextWidgetReference;
+	protected var weaponEvolutionWrapper : inkWidgetReference;
+	protected var weaponEvolutionIcon : inkImageWidgetReference;
+	protected var weaponEvolutionName : inkTextWidgetReference;
+	protected var weaponEvolutionDescription : inkTextWidgetReference;
+	protected var DEBUG_iconErrorWrapper : inkWidgetReference;
+	protected var DEBUG_iconErrorText : inkTextWidgetReference;
+	protected var data : handle:InventoryTooltipData;
+	private   var animProxy : handle:inkanimProxy;
+	private   var playAnimation : Bool;
+
+	event OnIconCallback(e : handle:inkCallbackData) : Bool; // OnIconCallback
+
+	function DEBUG_UpdateDebugInfo(); // DEBUG_UpdateDebugInfo;
+	function FilterArmorStat(stats : script_ref:array:InventoryTooltipData_StatData) : array:InventoryTooltipData_StatData; // FilterArmorStat;script_ref<array<InventoryTooltipData_StatData>>
+	function FilterGrenadeStats(stats : script_ref:array:InventoryTooltipData_StatData) : array:InventoryTooltipData_StatData; // FilterGrenadeStats;script_ref<array<InventoryTooltipData_StatData>>
+	function FilterStatsWithValue(stats : script_ref:array:InventoryTooltipData_StatData) : array:InventoryTooltipData_StatData; // FilterStatsWithValue;script_ref<array<InventoryTooltipData_StatData>>
+	function FixLines(); // FixLines;
+	function ForceNoEquipped(); // ForceNoEquipped;
+	function GetArmorStatFromSecondaryStats() : InventoryTooltipData_StatData; // GetArmorStatFromSecondaryStats;
+	function GetArrowWrapperState(diffValue : Float) : CName; // GetArrowWrapperState;Float
+	function GetDamageStatsFromSecondayStats() : array:InventoryTooltipData_StatData; // GetDamageStatsFromSecondayStats;
+	function GetDoTEffects(attackRecord : whandle:gamedataAttack_Record) : array:handle:DamageEffectUIEntry; // GetDoTEffects;Attack_Record
+	function GetGranadeDamageFromStats() : InventoryTooltipData_StatData; // GetGranadeDamageFromStats;
+	function GetItemType() : gamedataItemType; // GetItemType;
+	function GetSecondaryStatsData(data : handle:InventoryTooltipData) : array:InventoryTooltipData_StatData; // GetSecondaryStatsData;InventoryTooltipData
+	function IsDamageStat(stat : gamedataStatType) : Bool; // IsDamageStat;gamedataStatType
+	function ProcessDoTEffects(effects : whandle:gamedataStatusEffect_Record) : array:handle:DamageEffectUIEntry; // ProcessDoTEffects;StatusEffect_Record
+	function SetData(data : script_ref:gameItemViewData); // SetData;script_ref<ItemViewData>
+	function SetData(tooltipData : handle:ATooltipData); // SetData;ATooltipData
+	function ShouldDisplayGrenadeStat(stat : script_ref:InventoryTooltipData_StatData) : Bool; // ShouldDisplayGrenadeStat;script_ref<InventoryTooltipData_StatData>
+	function Show(); // Show;
+	function UpdateAmmo(); // UpdateAmmo;
+	function UpdateArmor(); // UpdateArmor;
+	function UpdateAttachments(); // UpdateAttachments;
+	function UpdateCraftedIcon(); // UpdateCraftedIcon;
+	function UpdateDPS(); // UpdateDPS;
+	function UpdateDamageType(); // UpdateDamageType;
+	function UpdateDedicatedMods(mods : script_ref:array:handle:gameInventoryItemAttachments); // UpdateDedicatedMods;script_ref<array<InventoryItemAttachments>>
+	function UpdateDescription(); // UpdateDescription;
+	function UpdateEquipped(); // UpdateEquipped;
+	function UpdateEvolutionDescription(); // UpdateEvolutionDescription;
+	function UpdateGrenadeDamage(tweakRecord : handle:gamedataGrenade_Record); // UpdateGrenadeDamage;Grenade_Record
+	function UpdateGrenadeDelivery(tweakRecord : handle:gamedataGrenade_Record); // UpdateGrenadeDelivery;Grenade_Record
+	function UpdateGrenadeRange(tweakRecord : handle:gamedataGrenade_Record); // UpdateGrenadeRange;Grenade_Record
+	function UpdateGrenadeStats(); // UpdateGrenadeStats;
+	function UpdateHeader(); // UpdateHeader;
+	function UpdateIcon(); // UpdateIcon;
+	function UpdateItemType(); // UpdateItemType;
+	function UpdateLayout(); // UpdateLayout;
+	function UpdateMods(mods : script_ref:array:handle:gameInventoryItemAttachments); // UpdateMods;script_ref<array<InventoryItemAttachments>>
+	function UpdateName(); // UpdateName;
+	function UpdateParts(); // UpdateParts;
+	function UpdatePrice(); // UpdatePrice;
+	function UpdatePrimmaryStats(); // UpdatePrimmaryStats;
+	function UpdateProgressBar(); // UpdateProgressBar;
+	function UpdateQuickhackState(); // UpdateQuickhackState;
+	function UpdateRarity(); // UpdateRarity;
+	function UpdateRecipeIcon(); // UpdateRecipeIcon;
+	function UpdateRequiredLevel(); // UpdateRequiredLevel;
+	function UpdateRequirements(); // UpdateRequirements;
+	function UpdateSecondaryStats(); // UpdateSecondaryStats;
+	function UpdateWeight(); // UpdateWeight;
+	function UpdatemRecipeDamageTypes(); // UpdatemRecipeDamageTypes;
+	function UpdatemRecipeProperties(); // UpdatemRecipeProperties;
+}
+
+class abstract AGenericTooltipControllerWithDebug extends AGenericTooltipController
+{
+	protected var DEBUG_showDebug : Bool;
+	protected var DEBUG_openInVSCode : Bool;
+	protected var DEBUG_openInVSCodeBlocked : Bool;
+
+	event OnGlobalPress_DEBUG(evt : handle:inkPointerEvent) : Bool; // OnGlobalPress_DEBUG
+	event OnGlobalRelease_DEBUG(evt : handle:inkPointerEvent) : Bool; // OnGlobalRelease_DEBUG
+	event OnInitialize() : Bool; // OnInitialize
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function DEBUG_UpdateDebugInfo(); // DEBUG_UpdateDebugInfo;
+	function OpenTweakDBRecordInVSCodeIfRequested(tdbID : TweakDBID); // OpenTweakDBRecordInVSCodeIfRequested;TweakDBID
+}
+
+class abstract AGenericTooltipController extends inkWidgetLogicController
+{
+	protected var Root : whandle:inkCompoundWidget;
+
+	event OnInitialize() : Bool; // OnInitialize
+
+	function Hide(); // Hide;
+	function PrespawnLazyModules(); // PrespawnLazyModules;
+	function Refresh(); // Refresh;
+	function SetData(tooltipData : handle:ATooltipData); // SetData;ATooltipData
+	function SetStyle(styleResPath : redResourceReferenceScriptToken); // SetStyle;ResRef
+	function Show(); // Show;
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

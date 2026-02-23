@@ -1,0 +1,246 @@
+class FrameSwitcherMenuGameController extends GalleryMenuGameController
+{
+	private   var frameDisplay : inkImageWidgetReference;
+	private   var frameCanvas : inkWidgetReference;
+	private   var frameWrapper : inkWidgetReference;
+	private   var defaultImageRef : inkImageWidgetReference;
+	private   var adjustButtonHintsManagerRef : inkWidgetReference;
+	private   var movementGlobalScale : Float;
+	private   var zoomScale : Float;
+	private   var maxZoom : Float;
+	private   var data : handle:inkFrameNotificationData;
+	private   var player : whandle:PlayerPuppet;
+	private   var adjustButtonHintsController : whandle:ButtonHints;
+	private   var frameState : EFrameState;
+	private   var isPressing : Bool;
+	private   var readyToZoom : Bool;
+	private   var isHoveringScreenshot : Bool;
+	private   var isHoveringFilter : Bool;
+	private   var lastPressingPoint : Vector2;
+	private   var movementScale : Vector2;
+	private   var timeDilationProfile : String;
+	private   var lastMovementInput : Vector2;
+	private   var transitionAnimproxy : handle:inkanimProxy;
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnFramePressed(e : handle:inkPointerEvent) : Bool; // OnFramePressed
+	event OnHoverOutFrame(e : handle:inkPointerEvent) : Bool; // OnHoverOutFrame
+	event OnHoverOutScreenshot(e : handle:inkPointerEvent) : Bool; // OnHoverOutScreenshot
+	event OnHoverOverFrame(e : handle:inkPointerEvent) : Bool; // OnHoverOverFrame
+	event OnHoverOverScreenshot(e : handle:inkPointerEvent) : Bool; // OnHoverOverScreenshot
+	event OnInitialize() : Bool; // OnInitialize
+	event OnNewScreenshotLoaded(screenshotSize : Vector2, errorCode : Int32) : Bool; // OnNewScreenshotLoaded
+	event OnPostOnAxis(e : handle:inkPointerEvent) : Bool; // OnPostOnAxis
+	event OnPostOnPress(e : handle:inkPointerEvent) : Bool; // OnPostOnPress
+	event OnPostOnRelease(e : handle:inkPointerEvent) : Bool; // OnPostOnRelease
+	event OnReleaseOnScreenshotItem(e : handle:inkPointerEvent) : Bool; // OnReleaseOnScreenshotItem
+	event OnScreenshotInitialized(screenshotSize : Vector2, errorCode : Int32) : Bool; // OnScreenshotInitialized
+	event OnTransitionGlitchEndLoop(proxy : handle:inkanimProxy) : Bool; // OnTransitionGlitchEndLoop
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function Close(); // Close;
+	function Confirm(); // Confirm;
+	function DisplayPreload(display : Bool); // DisplayPreload;Bool
+	function InitImageDisplay(); // InitImageDisplay;
+	function InitScreenshotItem(itemButton : whandle:inkCompoundWidget, controller : whandle:GalleryScreenshotItem); // InitScreenshotItem;inkCompoundWidgetGalleryScreenshotItem
+	function IsLoading() : Bool; // IsLoading;
+	function ProcessAxisMovement(min : Float, max : Float, offset : Float) : Vector2; // ProcessAxisMovement;FloatFloatFloat
+	function RefreshLastMovementInputX(axis : Float); // RefreshLastMovementInputX;Float
+	function RefreshLastMovementInputY(axis : Float); // RefreshLastMovementInputY;Float
+	function Remove(); // Remove;
+	function SetScreenshot(data : handle:GalleryScreenshotPreviewData); // SetScreenshot;GalleryScreenshotPreviewData
+	function SetScreenshotItemData(item : handle:GalleryScreenshotItem, screenshotInfo : inkGameScreenshotInfo); // SetScreenshotItemData;GalleryScreenshotItemGameScreenshotInfo
+	function SetState(state : EFrameState); // SetState;EFrameState
+	function TriggerSingleLoadAnim(); // TriggerSingleLoadAnim;
+	function UpdateButtonHints(); // UpdateButtonHints;
+	function UpdateButtonHints_Gamepad(); // UpdateButtonHints_Gamepad;
+	function UpdateButtonHints_KM(); // UpdateButtonHints_KM;
+	function ZoomIn(); // ZoomIn;
+	function ZoomOut(); // ZoomOut;
+}
+
+class GalleryMenuGameController extends gameuiMenuGameController
+{
+	protected var tooltipsManagerRef : inkWidgetReference;
+	protected var favoriteManagerRef : inkWidgetReference;
+	protected var buttonHintsManagerRef : inkWidgetReference;
+	protected var globalWrapper : inkWidgetReference;
+	protected var screenshotsGrid : inkCompoundWidgetReference;
+	protected var filtersGrid : inkWidgetReference;
+	protected var paginationWidget : inkCompoundWidgetReference;
+	protected var globalPreloaderContainer : inkWidgetReference;
+	protected var screenshotsPerPage : Int32;
+	protected var noPermissionWidget : inkWidgetReference;
+	private   var noPermissionController : whandle:GalleryPopup;
+	private   var globalPreloader : whandle:inkWidget;
+	private   var paginationController : whandle:PaginationController;
+	protected var buttonHintsController : whandle:ButtonHints;
+	private   var systemHandler : whandle:inkISystemRequestsHandler;
+	private   var gameInstance : ScriptGameInstance;
+	private   var screenshotInfos : array:inkGameScreenshotInfo;
+	private   var sortedScreenshotInfos : array:inkGameScreenshotInfo;
+	private   var screenshotFullPreviewPopupToken : handle:inkGameNotificationToken;
+	private   var filterTypes : array:inkGameScreenshotSortMode;
+	private   var activeSort : whandle:GalleryFilterController;
+	private   var isFavoriteFiltering : Bool;
+	protected var screenshotItems : array:whandle:GalleryScreenshotItem;
+	private   var pageCount : Int32;
+	private   var currentPage : Int32;
+	private   var tooltipsManager : whandle:gameuiTooltipsManager;
+	private   var favoriteManager : whandle:GalleryFavoriteManager;
+	private   var onInputDeviceChangedCallbackID : handle:redCallbackObject;
+	private   var deleteConfirmationToken : handle:inkGameNotificationToken;
+	private   var deleteScreenshotId : Int32;
+	protected var visualStateName : CName;
+	protected var isSecondaryActionEnabled : Bool;
+	private   var filterButtons : array:whandle:GalleryFilterController;
+	public    var canInteract : Bool;
+	private   var playerObj : whandle:gameObject;
+	private   var pageToDisplayOnLoad : Int32;
+
+	event OnArrowNext(e : handle:inkPointerEvent) : Bool; // OnArrowNext
+	event OnArrowPrev(e : handle:inkPointerEvent) : Bool; // OnArrowPrev
+	event OnDelayedDeleteNotificationOKEvent(evt : handle:DelayedDeleteNotificationOKEvent) : Bool; // OnDelayedDeleteNotificationOKEvent
+	event OnDeleteConfirm(data : handle:inkGameNotificationData) : Bool; // OnDeleteConfirm
+	event OnFavoritesLoadedReady(favorites : array:Uint32) : Bool; // OnFavoritesLoadedReady
+	event OnFirstPartNext(proxy : handle:inkanimProxy) : Bool; // OnFirstPartNext
+	event OnFirstPartPrev(proxy : handle:inkanimProxy) : Bool; // OnFirstPartPrev
+	event OnInitialize() : Bool; // OnInitialize
+	event OnItemFilterClick(evt : handle:inkPointerEvent) : Bool; // OnItemFilterClick
+	event OnPageNumberReleased(e : handle:inkPointerEvent) : Bool; // OnPageNumberReleased
+	event OnPostOnAxis(e : handle:inkPointerEvent) : Bool; // OnPostOnAxis
+	event OnReleaseOnScreenshotItem(e : handle:inkPointerEvent) : Bool; // OnReleaseOnScreenshotItem
+	event OnScreenshotDeleted(successful : Bool) : Bool; // OnScreenshotDeleted
+	event OnScreenshotFullPreviewPopup(data : handle:inkGameNotificationData) : Bool; // OnScreenshotFullPreviewPopup
+	event OnScreenshotPreviewShowRequest(evt : handle:GalleryScreenshotPreviewPopupEvent) : Bool; // OnScreenshotPreviewShowRequest
+	event OnScreenshotsForLoadReady(screenshotinfos : array:inkGameScreenshotInfo) : Bool; // OnScreenshotsForLoadReady
+	event OnShortcutPress(e : handle:inkPointerEvent) : Bool; // OnShortcutPress
+	event OnSwitchPageAnimFinish(proxy : handle:inkanimProxy) : Bool; // OnSwitchPageAnimFinish
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function CreateScreenshotItem(); // CreateScreenshotItem;
+	function DeleteScreenshot(screenshotIndex : Int32, canBeDeleted : Bool); // DeleteScreenshot;Int32Bool
+	function DisplayNoPermission(); // DisplayNoPermission;
+	function InitScreenshotItem(itemButton : whandle:inkCompoundWidget, controller : whandle:GalleryScreenshotItem); // InitScreenshotItem;inkCompoundWidgetGalleryScreenshotItem
+	function RefreshPageCount(screenshotCount : Int32); // RefreshPageCount;Int32
+	function RegisterToPaginationNumbers(); // RegisterToPaginationNumbers;
+	function RequestGameScreenshotsForLoad(pageToDisplayOnLoad : Int32); // RequestGameScreenshotsForLoad;Int32
+	function SetItemsHoverable(enabled : Bool); // SetItemsHoverable;Bool
+	function SetPageNumber(nextPageIndex : Int32, forceUpdate : Bool); // SetPageNumber;Int32Bool
+	function SetScreenshotItemData(item : handle:GalleryScreenshotItem, screenshotInfo : inkGameScreenshotInfo); // SetScreenshotItemData;GalleryScreenshotItemGameScreenshotInfo
+	function SetSelectedItem(hash : Uint32); // SetSelectedItem;Uint32
+	function SetupFilters(); // SetupFilters;
+	function SortScreenshots(); // SortScreenshots;
+	function SwitchPage(pageOffset : Int32); // SwitchPage;Int32
+	function UnregisterFromPaginationNumbers(); // UnregisterFromPaginationNumbers;
+	function UpdateGalleryView(); // UpdateGalleryView;
+}
+
+import class gameuiMenuGameController extends gameuiWidgetGameController
+{
+	private   var baseEventDispatcher : whandle:inkMenuEventDispatcher;
+
+	import function GetTelemetrySystem() : handle:gameITelemetrySystem; // GetTelemetrySystem
+	import function IsAnyActionWithoutAssignedKey() : Bool; // IsAnyActionWithoutAssignedKey
+	import function PushNotification(notificationTitle : CName, noticationDescription : CName); // PushNotification
+	import function RefreshInputIcons(); // RefreshInputIcons
+	import function RegisterToGlobalInputCallback(); // RegisterToGlobalInputCallback
+	import function UnregisterFromGlobalInputCallback(); // UnregisterFromGlobalInputCallback
+
+	event OnBack(userData : handle:IScriptable) : Bool; // OnBack
+	event OnInitialize() : Bool; // OnInitialize
+	event OnSetMenuEventDispatcher(menuEventDispatcher : whandle:inkMenuEventDispatcher) : Bool; // OnSetMenuEventDispatcher
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function ForceResetCursorType(); // ForceResetCursorType;
+}
+
+import class gameuiWidgetGameController extends worlduiIWidgetGameController
+{
+	import function GetBlackboardSystem() : handle:gameBlackboardSystem; // GetBlackboardSystem
+	import function GetOwnerEntity() : handle:entEntity; // GetOwnerEntity
+	import function GetPSMBlackboard(playerPuppet : handle:gameObject) : handle:gameIBlackboard; // GetPSMBlackboard
+	import function GetPlayerControlledObject() : handle:gameObject; // GetPlayerControlledObject
+	import function GetUIBlackboard() : handle:gameIBlackboard; // GetUIBlackboard
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function RegisterDebugCommand(debugFunctionName : CName); // RegisterDebugCommand
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float, optional forceSnapping : Bool); // SetCursorOverWidget
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+}
+
+import class abstract worlduiIWidgetGameController extends inkIWidgetController
+{
+	var elementRecordID : TweakDBID;
+
+	import function ProjectWorldToScreen(worldPosition : Vector4) : Vector2; // ProjectWorldToScreen
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+}
+
+import class abstract inkIWidgetController extends IScriptable
+{
+	var audioMetadataName : CName;
+
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function IsKeyboardConnected() : Bool; // IsKeyboardConnected
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function RequestProcessFitToViewport(); // RequestProcessFitToViewport
+	import function RequestSetFocus(widget : whandle:inkWidget); // RequestSetFocus
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : whandle:inkAsyncSpawnRequest; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindLibraryID(widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : CName; // FindLibraryID;WidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function ReadUICondition(condition : gamedataUICondition) : Bool; // ReadUICondition;gamedataUICondition
+	function RequestWidgetFromLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : CName; // RequestWidgetFromLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRefAsyncSpawnData
+	function RequestWidgetFromLibraryById(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryById;inkWidgetCNameResRefAsyncSpawnDatainkAsyncSpawnRequest
+	function RequestWidgetFromLibraryByRecord(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, spawnData : handle:AsyncSpawnData, out asyncSpawnRequest : whandle:inkAsyncSpawnRequest) : CName; // RequestWidgetFromLibraryByRecord;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordAsyncSpawnDatainkAsyncSpawnRequest
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

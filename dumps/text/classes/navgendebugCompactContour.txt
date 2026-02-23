@@ -1,0 +1,9 @@
+import struct navgendebugCompactContour
+{
+	var rawVertices : array:Int32;
+	var simplifiedVertices : array:Int32;
+	var innerPoints : array:Int32;
+	var region : Uint16;
+	var area : Uint8;
+	var box : Box;
+}

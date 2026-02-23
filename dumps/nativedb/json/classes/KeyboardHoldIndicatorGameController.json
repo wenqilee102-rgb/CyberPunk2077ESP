@@ -1,0 +1,1 @@
+{"a":"gameuiHoldIndicatorGameController","b":"KeyboardHoldIndicatorGameController","d":0,"e":[{"a":{"b":"inkImageWidgetReference"},"b":"progress","c":129}],"f":[{"a":"HoldFinish;","b":"HoldFinish","d":34},{"a":"HoldProgress;Float","b":"HoldProgress","d":34,"e":[{"a":{"a":10},"b":"value","c":0}]},{"a":"HoldStart;","b":"HoldStart","d":34},{"a":"HoldStop;","b":"HoldStop","d":34}]}

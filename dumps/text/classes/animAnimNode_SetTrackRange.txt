@@ -1,0 +1,27 @@
+import class animAnimNode_SetTrackRange extends animAnimNode_OnePoseInput
+{
+	var min : Float;
+	var max : Float;
+	var oldMin : Float;
+	var oldMax : Float;
+	var minLink : animFloatLink;
+	var maxLink : animFloatLink;
+	var oldMinLink : animFloatLink;
+	var oldMaxLink : animFloatLink;
+	var track : animNamedTrackIndex;
+	var debug : Bool;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+struct SecuritySystemData
+{
+	public    var suppressIncomingEvents : Bool;
+	public    var suppressOutgoingEvents : Bool;
+
+	static function AreIncomingEventsSuppressed(self : SecuritySystemData) : Bool; // SecuritySystemData::AreIncomingEventsSuppressed;SecuritySystemData
+	static function AreOutgoingEventsSuppressed(self : SecuritySystemData) : Bool; // SecuritySystemData::AreOutgoingEventsSuppressed;SecuritySystemData
+}

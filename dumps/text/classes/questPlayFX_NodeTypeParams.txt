@@ -1,0 +1,10 @@
+import struct questPlayFX_NodeTypeParams
+{
+	var play : Bool;
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+	var effectName : CName;
+	var effectInstanceName : CName;
+	var sequenceShift : Uint32;
+	var save : Bool;
+}

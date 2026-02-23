@@ -1,0 +1,5 @@
+enum gameScriptTaskExecutionStage
+{
+	Any = 0,
+	PostPhysics = 1
+}

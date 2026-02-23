@@ -1,0 +1,17 @@
+import class VignetteAreaSettings extends IAreaSettings
+{
+	var vignetteEnabled : Bool;
+	var vignetteRadius : Float;
+	var vignetteExp : Float;
+	var vignetteColor : Color;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

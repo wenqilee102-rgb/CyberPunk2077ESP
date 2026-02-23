@@ -1,0 +1,4 @@
+import struct AIAIBlackboardSerializableID
+{
+	var id : gameBlackboardSerializableID;
+}

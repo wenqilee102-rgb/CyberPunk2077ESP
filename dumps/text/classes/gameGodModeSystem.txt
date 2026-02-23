@@ -1,0 +1,37 @@
+import class gameGodModeSystem extends gameIGodModeSystem
+{
+	import function AddGodMode(entID : entEntityID, gmType : gameGodModeType, sourceInfo : CName) : Bool; // AddGodMode
+	import function ClearGodMode(entID : entEntityID, sourceInfo : CName); // ClearGodMode
+	import function DisableOverride(entID : entEntityID, sourceInfo : CName) : Bool; // DisableOverride
+	import function EnableOverride(entID : entEntityID, gmType : gameGodModeType, sourceInfo : CName) : Bool; // EnableOverride
+	import function GetGodModeCount(entID : entEntityID, gmType : gameGodModeType) : Uint32; // GetGodModeCount
+	import function GetGodModeSources(entID : entEntityID, gmType : gameGodModeType) : array:CName; // GetGodModeSources
+	import function HasGodMode(entID : entEntityID, gmType : gameGodModeType) : Bool; // HasGodMode
+	import function RemoveGodMode(entID : entEntityID, gmType : gameGodModeType, sourceInfo : CName) : Bool; // RemoveGodMode
+}
+
+import class abstract gameIGodModeSystem extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

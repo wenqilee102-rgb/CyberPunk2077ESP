@@ -1,0 +1,21 @@
+import class questRenderPlane_NodeType extends questIRenderFxManagerNodeType
+{
+	var puppetRef : gameEntityReference;
+	var renderPlane : ERenderingPlane;
+}
+
+import class abstract questIRenderFxManagerNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

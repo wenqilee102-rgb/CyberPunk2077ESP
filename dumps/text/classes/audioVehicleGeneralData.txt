@@ -1,0 +1,44 @@
+import struct audioVehicleGeneralData
+{
+	var revSoundbankName : CName;
+	var revElectricSoundbankName : CName;
+	var reverbSoundbankName : CName;
+	var enterVehicleEvent : CName;
+	var exitVehicleEvent : CName;
+	var ignitionStartEvent : CName;
+	var ignitionEndEvent : CName;
+	var UIStartEvent : CName;
+	var UIEndEvent : CName;
+	var hornOnEvent : CName;
+	var hornOffEvent : CName;
+	var policeHornOnEvent : CName;
+	var policeHornOffEvent : CName;
+	var trafficPanicHornOnEvent : CName;
+	var trafficPanicHornOffEvent : CName;
+	var sirenOnEvent : CName;
+	var sirenOffEvent : CName;
+	var rainStartEvent : CName;
+	var rainStopEvent : CName;
+	var waterStartEvent : CName;
+	var waterStopEvent : CName;
+	var tyreBurstEvent : CName;
+	var skid : CName;
+	var inclination : CName;
+	var impactVelocity : CName;
+	var impactGridCellRawChange : CName;
+	var collisionSoundEvent : CName;
+	var brakeApplyEvent : CName;
+	var brakeReleaseEvent : CName;
+	var handbrakeApplyEvent : CName;
+	var handbrakeReleaseEvent : CName;
+	var brakeLoopStartEvent : CName;
+	var brakeLoopEndEvent : CName;
+	var lightsOnEvent : CName;
+	var lightsOffEvent : CName;
+	var interiorReverbBus : CName;
+	var acoustingIsolationFactor : CName;
+	var dopplerShift : CName;
+	var vehicleDoorsSettings : audioVehicleDoorsSettingsMetadata;
+	var vehicleInteriorParameterData : audioVehicleInteriorParameterData;
+	var vehicleTemperatureSettings : audioVehicleTemperatureSettings;
+}

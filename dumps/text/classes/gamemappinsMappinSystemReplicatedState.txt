@@ -1,0 +1,13 @@
+import class gamemappinsMappinSystemReplicatedState extends gameIGameSystemReplicatedState
+{
+	var mappinState : array:gameNewMappinID;
+	var mappinWithJournalState : array:Uint32;
+}
+
+import class abstract gameIGameSystemReplicatedState extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

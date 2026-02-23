@@ -1,0 +1,5 @@
+import struct CurveResourceSetEntry
+{
+	var name : CName;
+	var curveResRef : rRef:CurveSet;
+}

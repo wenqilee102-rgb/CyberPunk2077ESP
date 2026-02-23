@@ -1,0 +1,10 @@
+import struct gamestateMachineConsumableParameterFloat extends gamestateMachineActionParameterFloat
+{
+	var consumed : Bool;
+}
+
+import struct gamestateMachineActionParameterFloat
+{
+	var name : CName;
+	var value : Float;
+}

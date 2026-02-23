@@ -1,0 +1,6 @@
+import struct gameItemModParams
+{
+	var itemID : gameItemID;
+	var quantity : Int32;
+	var customPartsToInstall : array:gameItemID;
+}

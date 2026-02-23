@@ -1,0 +1,8 @@
+import struct MorphTargetMeshEntry
+{
+	var name : CName;
+	var regionName : CName;
+	var faceRegion : MorphTargetsFaceRegion;
+	var boneNames : array:CName;
+	var boneRigMatrices : array:Matrix;
+}

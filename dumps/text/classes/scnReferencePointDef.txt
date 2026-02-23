@@ -1,0 +1,6 @@
+import struct scnReferencePointDef
+{
+	var id : scnReferencePointId;
+	var offset : Vector3;
+	var originMarker : scnMarker;
+}

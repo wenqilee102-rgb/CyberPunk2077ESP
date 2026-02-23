@@ -1,0 +1,6 @@
+import struct entdismembermentWoundMeshes
+{
+	var ResourceSet : entdismembermentResourceSetE;
+	var Meshes : array:entdismembermentMeshInfo;
+	var FillMeshes : array:entdismembermentFillMeshInfo;
+}

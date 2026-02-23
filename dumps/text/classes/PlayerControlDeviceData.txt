@@ -1,0 +1,5 @@
+struct PlayerControlDeviceData
+{
+	public    var currentYawModifier : Float;
+	public    var currentPitchModifier : Float;
+}

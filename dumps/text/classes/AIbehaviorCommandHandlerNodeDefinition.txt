@@ -1,0 +1,29 @@
+import class AIbehaviorCommandHandlerNodeDefinition extends AIbehaviorDecoratorNodeDefinition
+{
+	var commandName : CName;
+	var useInheritance : Bool;
+	var contexts : array:AICommandContextsType;
+	var commandOut : handle:AIArgumentMapping;
+	var runningSignal : CName;
+	var waitForCommand : Bool;
+	var retryIfCommandEnqueued : Bool;
+	var resultIfNoCommand : AIbehaviorCompletionStatus;
+	var resultIfChildFailed : AIbehaviorCompletionStatus;
+}
+
+import class abstract AIbehaviorDecoratorNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var child : handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

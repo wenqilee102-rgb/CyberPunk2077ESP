@@ -1,0 +1,5 @@
+import struct questTransferItems_NodeTypeParams_OperationData
+{
+	var itemTDBID : TweakDBID;
+	var quantity : Int32;
+}

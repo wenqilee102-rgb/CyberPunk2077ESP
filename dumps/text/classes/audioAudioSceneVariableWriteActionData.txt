@@ -1,0 +1,6 @@
+import struct audioAudioSceneVariableWriteActionData
+{
+	var name : CName;
+	var operation : audioNumberOperation;
+	var value : Int32;
+}

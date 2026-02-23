@@ -1,0 +1,13 @@
+import class CGradient extends CResource
+{
+	var gradientEntries : array:rendGradientEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

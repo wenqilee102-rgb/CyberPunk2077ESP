@@ -1,0 +1,26 @@
+class UIInventoryItemComparisonManager extends IScriptable
+{
+	public    var ComparedStats : array:handle:UIInventoryItemStatComparison;
+	public    var ComparedItem : whandle:UIInventoryItem;
+	private   var comparisonHash : Uint64;
+
+	static function Make(localItem : whandle:UIInventoryItem, comparisonItem : whandle:UIInventoryItem) : handle:UIInventoryItemComparisonManager; // UIInventoryItemComparisonManager::Make;UIInventoryItemUIInventoryItem
+
+	function GetByType(type : gamedataStatType) : whandle:UIInventoryItemStatComparison; // GetByType;gamedataStatType
+	function GetComparisonQualityF() : Float; // GetComparisonQualityF;
+	function GetQuality() : gamedataQuality; // GetQuality;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

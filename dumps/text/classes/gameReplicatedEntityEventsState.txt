@@ -1,0 +1,5 @@
+import struct gameReplicatedEntityEventsState
+{
+	var items : array:gameReplicatedEntityEvent;
+	var lastAppliedActionsTime : netTime;
+}

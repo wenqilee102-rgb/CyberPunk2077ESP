@@ -1,0 +1,6 @@
+import struct Point3D
+{
+	var x : Int32;
+	var y : Int32;
+	var z : Int32;
+}

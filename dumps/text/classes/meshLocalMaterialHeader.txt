@@ -1,0 +1,5 @@
+import struct meshLocalMaterialHeader
+{
+	var offset : Uint32;
+	var size : Uint32;
+}

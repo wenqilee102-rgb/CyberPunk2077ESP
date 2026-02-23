@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTreeNodeDefinition","b":"AIbehaviorFSMStateDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIbehaviorTreeNodeDefinition"}},"b":"behaviorRoot","c":128},{"a":{"a":1},"b":"isInitial","c":128},{"a":{"a":1},"b":"isExit","c":128},{"a":{"b":"AIbehaviorStateCompletionStatus"},"b":"completionStatus","c":128}]}

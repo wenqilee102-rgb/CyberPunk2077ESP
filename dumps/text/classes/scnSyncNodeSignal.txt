@@ -1,0 +1,7 @@
+import struct scnSyncNodeSignal
+{
+	var nodeId : Uint32;
+	var name : Uint16;
+	var ordinal : Uint16;
+	var numRuns : Uint16;
+}

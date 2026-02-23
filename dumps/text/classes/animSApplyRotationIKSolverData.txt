@@ -1,0 +1,4 @@
+import struct animSApplyRotationIKSolverData
+{
+	var bone : animTransformIndex;
+}

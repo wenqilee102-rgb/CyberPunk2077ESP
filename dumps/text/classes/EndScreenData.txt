@@ -1,0 +1,5 @@
+struct EndScreenData
+{
+	public    var unlockedPrograms : array:ProgramData;
+	public    var outcome : OutcomeMessage;
+}

@@ -1,0 +1,8 @@
+struct TerminalSetup
+{
+	public    var minClearance : Int32;
+	public    var maxClearance : Int32;
+	public    var ignoreSlaveAuthorizationModule : Bool;
+	public    var allowRemoteAuthorization : Bool;
+	public    var shouldForceVirtualSystem : Bool;
+}

@@ -1,0 +1,16 @@
+import struct AITrackedLocation
+{
+	var lastKnown : AILocationInformation;
+	var location : AILocationInformation;
+	var sharedLocation : AILocationInformation;
+	var entity : whandle:entEntity;
+	var accuracy : Float;
+	var sharedAccuracy : Float;
+	var sharedTimeDelay : Float;
+	var threat : Float;
+	var speed : Vector4;
+	var visible : Bool;
+	var invalidExpectation : Bool;
+	var status : AITrackedStatusType;
+	var sharedLastKnown : AILocationInformation;
+}

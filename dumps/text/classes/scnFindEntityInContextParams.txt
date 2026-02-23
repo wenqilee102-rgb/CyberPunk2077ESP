@@ -1,0 +1,8 @@
+import struct scnFindEntityInContextParams
+{
+	var contextualName : scnContextualActorName;
+	var voiceVagId : scnVoicetagId;
+	var contextActorName : CName;
+	var specRecordId : TweakDBID;
+	var forceMaxVisibility : Bool;
+}

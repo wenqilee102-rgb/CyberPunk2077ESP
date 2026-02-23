@@ -1,0 +1,10 @@
+import struct scnSceneMarkerInternalsAnimEventEntry
+{
+	var startName : CName;
+	var endName : CName;
+	var startPos : Vector3;
+	var endPos : Vector3;
+	var startDir : Vector3;
+	var endDir : Vector3;
+	var flags : Uint8;
+}

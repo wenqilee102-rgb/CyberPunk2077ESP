@@ -1,0 +1,29 @@
+import class audioVehicleCollisionMap extends audioAudioMetadata
+{
+	var minImpactVelocityThreshold : Float;
+	var minRumbleVelocityThreshold : Float;
+	var rumbleCooldown : Float;
+	var scrapingMinTangentialVelocityThreshold : Float;
+	var scrapingMaxCollisionCooldown : Float;
+	var scrapingMinVehicleUpCollisionContactAngle : Float;
+	var useScrapingMinVehicleUpCollisionContactAngle : Bool;
+	var explosionEvent : CName;
+	var bigFireEvent : CName;
+	var engineFireEvent : CName;
+	var coolerDamageEvent : CName;
+	var interiorCollisionEvent : CName;
+	var collisionSettings : array:audioVehicleCollisionMapItem;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

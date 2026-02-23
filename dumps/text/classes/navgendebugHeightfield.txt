@@ -1,0 +1,18 @@
+import class navgendebugHeightfield extends ISerializable
+{
+	var bounds : Box;
+	var cellSize : Float;
+	var cellHeight : Float;
+	var width : Uint16;
+	var height : Uint16;
+	var rawSpans : navgendebugSpansData;
+	var compactSpans : navgendebugSpansData;
+	var cells : array:navgendebugCompactCell;
+	var regions : array:Uint16;
+	var distancefield : array:Uint16;
+	var maxDistancefieldValue : Uint16;
+}
+
+import class abstract ISerializable
+{
+}

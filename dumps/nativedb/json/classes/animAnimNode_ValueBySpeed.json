@@ -1,0 +1,1 @@
+{"a":"animAnimNode_FloatValue","b":"animAnimNode_ValueBySpeed","d":8,"e":[{"a":{"a":10},"b":"defaultValue","c":128},{"a":{"b":"animClampType"},"b":"clampType","c":128},{"a":{"a":10},"b":"rangeMin","c":128},{"a":{"a":10},"b":"rangeMax","c":128},{"a":{"a":1},"b":"resetOnActivation","c":128},{"a":{"b":"animFloatLink"},"b":"speed","c":128}]}

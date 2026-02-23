@@ -1,0 +1,22 @@
+import class gameClothingSet extends IScriptable
+{
+	var setID : gameWardrobeClothingSetIndex;
+	var clothingList : array:gameSSlotVisualInfo;
+	var iconID : TweakDBID;
+
+	import static function IsEmpty(set : handle:gameClothingSet) : Bool; // IsEmpty
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

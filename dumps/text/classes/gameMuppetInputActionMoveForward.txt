@@ -1,0 +1,9 @@
+import struct gameMuppetInputActionMoveForward extends gameIMuppetInputAction
+{
+	var direction : Vector2;
+	var isSprinting : Bool;
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

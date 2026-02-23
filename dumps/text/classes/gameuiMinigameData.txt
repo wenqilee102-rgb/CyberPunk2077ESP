@@ -1,0 +1,11 @@
+import struct gameuiMinigameData
+{
+	var timeLimit : Float;
+	var trapSpawnProbability : Float;
+	var gridSize : Uint32;
+	var bufferSize : Uint32;
+	var timerWaitsForInteraction : Bool;
+	var acceptableTraps : array:handle:gamedataMiniGame_Trap_Record;
+	var symbolsToUse : handle:gamedataMiniGame_AllSymbols_Record;
+	var rules : array:handle:gameuiMinigameGenerationRule;
+}

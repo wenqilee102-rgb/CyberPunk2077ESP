@@ -1,0 +1,31 @@
+import class gamedataItemPartListElement_Record extends gamedataTweakDBRecord
+{
+	import function GetStatModifierWeightCount() : Int32; // GetStatModifierWeightCount
+	import function GetStatModifierWeightItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifierWeightItem
+	import function GetStatModifierWeightItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifierWeightItemHandle
+	import function Item() : whandle:gamedataItem_Record; // Item
+	import function ItemHandle() : handle:gamedataItem_Record; // ItemHandle
+	import function StatModifierWeight(out outList : array:whandle:gamedataStatModifier_Record); // StatModifierWeight
+	import function StatModifierWeightContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifierWeightContains
+	import function Weight() : Float; // Weight
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+struct AttachmentSlotCacheData
+{
+	public    var empty : Bool;
+	public    var attachmentSlotRecord : whandle:gamedataAttachmentSlot_Record;
+	public    var shouldBeAvailable : Bool;
+	public    var slotId : TweakDBID;
+}

@@ -1,0 +1,7 @@
+import struct redTaskProgressMessage
+{
+	var id : Uint32;
+	var parent : Uint32;
+	var progress : Float;
+	var processingTime : Float;
+}

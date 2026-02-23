@@ -1,0 +1,7 @@
+struct PulseAnimationParams
+{
+	public    var topOpacity : Float;
+	public    var bottomOpacity : Float;
+	public    var pulseRate : Float;
+	public    var delay : Float;
+}

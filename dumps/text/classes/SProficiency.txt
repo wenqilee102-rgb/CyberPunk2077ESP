@@ -1,0 +1,10 @@
+struct SProficiency
+{
+	public    var type : gamedataProficiencyType;
+	public    var currentLevel : Int32;
+	public    var maxLevel : Int32;
+	public    var isAtMaxLevel : Bool;
+	public    var currentExp : Int32;
+	public    var expToLevel : Int32;
+	public    var spentPerkPoints : Int32;
+}

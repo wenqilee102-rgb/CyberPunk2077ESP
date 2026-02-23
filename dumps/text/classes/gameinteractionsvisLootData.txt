@@ -1,0 +1,12 @@
+import struct gameinteractionsvisLootData
+{
+	var isActive : Bool;
+	var isListOpen : Bool;
+	var e3hack_isWeapon : Bool;
+	var currentIndex : Int32;
+	var title : String;
+	var choices : array:gameinteractionsvisInteractionChoiceData;
+	var itemIDs : array:gameItemID;
+	var ownerId : entEntityID;
+	var isLocked : Bool;
+}

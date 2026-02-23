@@ -1,0 +1,13 @@
+import class gameEnvironmentDamageReceiverBox extends gameEnvironmentDamageReceiverShape
+{
+	var dimensions : Vector3;
+}
+
+import class abstract gameEnvironmentDamageReceiverShape extends ISerializable
+{
+	var transform : Transform;
+}
+
+import class abstract ISerializable
+{
+}

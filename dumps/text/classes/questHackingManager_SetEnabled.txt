@@ -1,0 +1,12 @@
+import class questHackingManager_SetEnabled extends questHackingManager_ActionType
+{
+	var enabled : Bool;
+}
+
+import class abstract questHackingManager_ActionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

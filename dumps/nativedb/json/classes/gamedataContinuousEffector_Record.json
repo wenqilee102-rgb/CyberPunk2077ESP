@@ -1,0 +1,1 @@
+{"a":"gamedataEffector_Record","b":"gamedataContinuousEffector_Record","c":"ContinuousEffector_Record","d":24,"f":[{"a":"DelayTime","c":{"a":10},"d":4},{"a":"TimeDilationDriver","c":{"a":27,"c":{"b":"gamedataEffectorTimeDilationDriver_Record"}},"d":4},{"a":"TimeDilationDriverHandle","c":{"a":26,"c":{"b":"gamedataEffectorTimeDilationDriver_Record"}},"d":4}]}

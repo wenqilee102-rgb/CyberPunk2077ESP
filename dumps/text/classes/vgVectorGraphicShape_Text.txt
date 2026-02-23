@@ -1,0 +1,14 @@
+import class vgVectorGraphicShape_Text extends vgBaseVectorGraphicShape
+{
+	var xt : String;
+}
+
+import class abstract vgBaseVectorGraphicShape extends ISerializable
+{
+	var calTransform : Matrix;
+	var yle : handle:vgVectorGraphicStyle;
+}
+
+import class abstract ISerializable
+{
+}

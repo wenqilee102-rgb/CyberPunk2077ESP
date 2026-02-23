@@ -1,0 +1,10 @@
+struct ExplosiveDeviceResourceDefinition
+{
+	public    var damageType : TweakDBID;
+	public    var vfxResource : gameFxResource;
+	public    var vfxEventNamesOnExplosion : array:CName;
+	public    var vfxResourceOnFirstHit : array:gameFxResource;
+	public    var executionDelay : Float;
+	public    var additionalGameEffectType : EExplosiveAdditionalGameEffectType;
+	public    var dontHighlightOnLookat : Bool;
+}

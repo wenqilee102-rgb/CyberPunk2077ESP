@@ -1,0 +1,7 @@
+import struct genRandomizationDataEntry
+{
+	var id : String;
+	var templateName : CName;
+	var transform : Transform;
+	var probability : Float;
+}

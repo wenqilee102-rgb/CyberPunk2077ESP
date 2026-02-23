@@ -1,0 +1,37 @@
+class ActionWeightManagerDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	public    var actionsConditions : array:String;
+	public    var actionsWeights : array:Int32;
+	public    var lowestWeight : Int32;
+	public    var selectedActionIndex : Int32;
+
+	function ProcessActionToPlay(context : AIbehaviorScriptExecutionContext) : Bool; // ProcessActionToPlay;ScriptExecutionContext
+	function WeightUpdate() : Bool; // WeightUpdate;
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+struct previewTargetStruct
+{
+	public    var currentlyTrackedTarget : whandle:gameObject;
+	public    var currentBodyPart : EHitReactionZone;
+	public    var currentlyHittingBreach : Bool;
+}

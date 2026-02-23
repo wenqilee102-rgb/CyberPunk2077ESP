@@ -1,0 +1,5 @@
+import struct prvFunctionalTestQueryOverlapResult
+{
+	var entityID : entEntityID;
+	var position : Vector3;
+}

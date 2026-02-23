@@ -1,0 +1,32 @@
+import class gamedataVehicleDestructibleGlass_Record extends gamedataTweakDBRecord
+{
+	import function Broken() : CName; // Broken
+	import function Component() : CName; // Component
+	import function Effect() : CName; // Effect
+	import function GetGridCellsCount() : Int32; // GetGridCellsCount
+	import function GetGridCellsItem(index : Int32) : Int32; // GetGridCellsItem
+	import function GridCells() : array:Int32; // GridCells
+	import function GridCellsContains(item : Int32) : Bool; // GridCellsContains
+	import function IsWindshield() : Bool; // IsWindshield
+	import function Threshold() : Float; // Threshold
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

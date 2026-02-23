@@ -1,0 +1,5 @@
+import struct Point
+{
+	var x : Int32;
+	var y : Int32;
+}

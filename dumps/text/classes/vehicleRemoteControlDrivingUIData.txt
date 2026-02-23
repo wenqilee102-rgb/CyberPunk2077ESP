@@ -1,0 +1,5 @@
+import struct vehicleRemoteControlDrivingUIData
+{
+	var remoteControlledVehicle : whandle:vehicleBaseObject;
+	var isDistanceDisconnect : Bool;
+}

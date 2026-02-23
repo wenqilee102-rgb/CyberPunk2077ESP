@@ -1,0 +1,12 @@
+import struct gameScanningComponentReplicatedState extends netIComponentState
+{
+	var scanningState : gameScanningState;
+	var pctScanned : Float;
+	var controllingPeerIDs : static:8,netPeerID;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

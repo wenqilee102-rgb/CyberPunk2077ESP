@@ -1,0 +1,41 @@
+import class gamedataStim_Record extends gamedataTweakDBRecord
+{
+	import function Aggressive() : Float; // Aggressive
+	import function Category() : CName; // Category
+	import function Fear() : Float; // Fear
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function Interval() : Float; // Interval
+	import function IsReactionStim() : Bool; // IsReactionStim
+	import function Priority() : whandle:gamedataStimPriority_Record; // Priority
+	import function PriorityHandle() : handle:gamedataStimPriority_Record; // PriorityHandle
+	import function Propagation() : whandle:gamedataStimPropagation_Record; // Propagation
+	import function PropagationHandle() : handle:gamedataStimPropagation_Record; // PropagationHandle
+	import function Radius() : Float; // Radius
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+	import function Targets() : whandle:gamedataStimTargets_Record; // Targets
+	import function TargetsHandle() : handle:gamedataStimTargets_Record; // TargetsHandle
+	import function Type() : whandle:gamedataStimType_Record; // Type
+	import function TypeHandle() : handle:gamedataStimType_Record; // TypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

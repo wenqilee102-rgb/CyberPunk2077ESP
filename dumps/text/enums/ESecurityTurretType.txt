@@ -1,0 +1,4 @@
+enum ESecurityTurretType
+{
+	SIMPLE = 0
+}

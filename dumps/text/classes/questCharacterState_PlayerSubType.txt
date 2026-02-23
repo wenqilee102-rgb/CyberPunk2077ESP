@@ -1,0 +1,25 @@
+import class questCharacterState_PlayerSubType extends questICharacterConditionSubType
+{
+	var locomotionComparisonType : questEComparisonTypeEquality;
+	var locomotionState : gamePSMLocomotionStates;
+	var upperBodyComparisonType : questEComparisonTypeEquality;
+	var upperBodyState : gamePSMUpperBodyStates;
+	var weaponComparisonType : questEComparisonTypeEquality;
+	var weaponState : gamePSMRangedWeaponStates;
+	var timeDilationComparisonType : questEComparisonTypeEquality;
+	var timeDilationState : gamePSMTimeDilation;
+	var vehicleComparisonType : questEComparisonTypeEquality;
+	var vehicleState : gamePSMVehicle;
+	var takedownStateComparisonType : questEComparisonTypeEquality;
+	var takedownState : gamePSMTakedown;
+	var swimmingStateComparisonType : questEComparisonTypeEquality;
+	var swimmingState : gamePSMSwimming;
+}
+
+import class abstract questICharacterConditionSubType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

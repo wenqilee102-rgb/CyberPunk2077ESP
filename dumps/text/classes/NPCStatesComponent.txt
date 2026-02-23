@@ -1,0 +1,214 @@
+class NPCStatesComponent extends gameAINetStateComponent
+{
+	private   var aimingLookatEvent : handle:entLookAtAddEvent;
+	private   var highLevelAnimFeatureName : CName;
+	private   var upperBodyAnimFeatureName : CName;
+	private   var stanceAnimFeatureName : CName;
+	public    var statFlagDefensiveState : handle:gameStatModifierData_Deprecated;
+	private   var prevNPCStanceState : gamedataNPCStanceState;
+	private   var previousHighLevelState : gamedataNPCHighLevelState;
+	private   var prevHitReactionMode : EHitReactionMode;
+	private   var bulkyStaggerMinRecordID : TweakDBID;
+	private   var staggerMinRecordID : TweakDBID;
+	private   var unstoppableRecordID : TweakDBID;
+	private   var unstoppableTwitchMinRecordID : TweakDBID;
+	private   var unstoppableTwitchNoneRecordID : TweakDBID;
+	private   var forceImpactRecordID : TweakDBID;
+	private   var forceStaggerRecordID : TweakDBID;
+	private   var forceKnockdownRecordID : TweakDBID;
+	private   var fragileRecordID : TweakDBID;
+	private   var weakRecordID : TweakDBID;
+	private   var toughRecordID : TweakDBID;
+	private   var bulkyRecordID : TweakDBID;
+	private   var regularRecordID : TweakDBID;
+	private   var keepRecentThreatAfterRelaxedDuration : Float;
+	private   var inCombat : Bool;
+
+	static function AlertPuppet(ownerPuppet : whandle:ScriptedPuppet) : Bool; // NPCStatesComponent::AlertPuppet;ScriptedPuppet
+	static function GetAnimWrapperNameBasedOnHighLevelState(highLevelState : gamedataNPCHighLevelState) : CName; // NPCStatesComponent::GetAnimWrapperNameBasedOnHighLevelState;gamedataNPCHighLevelState
+	static function GetAnimWrapperNameBasedOnStanceState(stanceState : gamedataNPCStanceState) : CName; // NPCStatesComponent::GetAnimWrapperNameBasedOnStanceState;gamedataNPCStanceState
+	static function GetCombatTarget(npcPuppet : handle:NPCPuppet) : whandle:gameObject; // NPCStatesComponent::GetCombatTarget;NPCPuppet
+
+	event OnNotifyNearbyAboutCombatEvent(evt : handle:NotifyNearbyAboutCombatEvent) : Bool; // OnNotifyNearbyAboutCombatEvent
+	event OnNotifySecuritySystemCombatEvent(evt : handle:NotifySecuritySystemCombatEvent) : Bool; // OnNotifySecuritySystemCombatEvent
+
+	function ChangeBehaviorState(newState : gamedataNPCBehaviorState); // ChangeBehaviorState;gamedataNPCBehaviorState
+	function ChangeDefenseMode(newState : gamedataDefenseMode); // ChangeDefenseMode;gamedataDefenseMode
+	function ChangeHighLevelState(newState : gamedataNPCHighLevelState); // ChangeHighLevelState;gamedataNPCHighLevelState
+	function ChangeHitReactionModeState(newState : EHitReactionMode); // ChangeHitReactionModeState;EHitReactionMode
+	function ChangeLocomotionMode(newState : gamedataLocomotionMode); // ChangeLocomotionMode;gamedataLocomotionMode
+	function ChangePhaseState(newState : ENPCPhaseState); // ChangePhaseState;ENPCPhaseState
+	function ChangeStanceState(newState : gamedataNPCStanceState); // ChangeStanceState;gamedataNPCStanceState
+	function ChangeUpperBodyState(newState : gamedataNPCUpperBodyState); // ChangeUpperBodyState;gamedataNPCUpperBodyState
+	function GetCurrentBehaviorState() : gamedataNPCBehaviorState; // GetCurrentBehaviorState;
+	function GetCurrentDefenseMode() : gamedataDefenseMode; // GetCurrentDefenseMode;
+	function GetCurrentHighLevelState() : gamedataNPCHighLevelState; // GetCurrentHighLevelState;
+	function GetCurrentHitReactionModeState() : EHitReactionMode; // GetCurrentHitReactionModeState;
+	function GetCurrentLocomotionMode() : gamedataLocomotionMode; // GetCurrentLocomotionMode;
+	function GetCurrentPhaseState() : ENPCPhaseState; // GetCurrentPhaseState;
+	function GetCurrentStanceState() : gamedataNPCStanceState; // GetCurrentStanceState;
+	function GetCurrentUpperBodyState() : gamedataNPCUpperBodyState; // GetCurrentUpperBodyState;
+	function GetPreviousHighLevelState() : gamedataNPCHighLevelState; // GetPreviousHighLevelState;
+	function GetPreviousHitReactionMode() : EHitReactionMode; // GetPreviousHitReactionMode;
+	function GetPreviousStanceState() : gamedataNPCStanceState; // GetPreviousStanceState;
+	function GetPuppet() : handle:ScriptedPuppet; // GetPuppet;
+	function GetPuppetStateBlackboard() : handle:gameIBlackboard; // GetPuppetStateBlackboard;
+	function GetUpperBodyStateForAnimGraph() : Int32; // GetUpperBodyStateForAnimGraph;
+	function HandleCombatStateAnimHint(newState : gamedataNPCHighLevelState, previousState : gamedataNPCHighLevelState); // HandleCombatStateAnimHint;gamedataNPCHighLevelStategamedataNPCHighLevelState
+	function MaxtacSetQuestCammo(newState : gamedataNPCHighLevelState); // MaxtacSetQuestCammo;gamedataNPCHighLevelState
+	function NotifySecuritySystemCombat(); // NotifySecuritySystemCombat;
+	function OnAlerted(); // OnAlerted;
+	function OnAttack(); // OnAttack;
+	function OnBulky(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnBulky;StatsSystemEntityIDTweakDBID
+	function OnBulkyStaggerMin(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnBulkyStaggerMin;StatsSystemEntityIDTweakDBID
+	function OnChargeAttack(); // OnChargeAttack;
+	function OnCombat(); // OnCombat;
+	function OnCover(); // OnCover;
+	function OnCrouch(); // OnCrouch;
+	function OnDead(); // OnDead;
+	function OnDefend(); // OnDefend;
+	function OnDefendAll(); // OnDefendAll;
+	function OnDefendMelee(); // OnDefendMelee;
+	function OnDefendRanged(); // OnDefendRanged;
+	function OnDefenseModeChanged(); // OnDefenseModeChanged;
+	function OnFear(); // OnFear;
+	function OnForceImpact(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnForceImpact;StatsSystemEntityIDTweakDBID
+	function OnForceKnockdown(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnForceKnockdown;StatsSystemEntityIDTweakDBID
+	function OnForceStagger(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnForceStagger;StatsSystemEntityIDTweakDBID
+	function OnFragile(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnFragile;StatsSystemEntityIDTweakDBID
+	function OnGameAttach(); // OnGameAttach;
+	function OnHighLevelStateEnter(newState : gamedataNPCHighLevelState, previousState : gamedataNPCHighLevelState); // OnHighLevelStateEnter;gamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnHighLevelStateExit(leftState : gamedataNPCHighLevelState, nextState : gamedataNPCHighLevelState); // OnHighLevelStateExit;gamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnLocomotionModeChanged(); // OnLocomotionModeChanged;
+	function OnMoving(); // OnMoving;
+	function OnNPCStateChangeSignalReceived(signal : handle:NPCStateChangeSignal); // OnNPCStateChangeSignalReceived;NPCStateChangeSignal
+	function OnNoDefend(); // OnNoDefend;
+	function OnNormal(); // OnNormal;
+	function OnParry(); // OnParry;
+	function OnRegular(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnRegular;StatsSystemEntityIDTweakDBID
+	function OnRelaxed(); // OnRelaxed;
+	function OnReload(); // OnReload;
+	function OnShoot(); // OnShoot;
+	function OnStaggerMin(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnStaggerMin;StatsSystemEntityIDTweakDBID
+	function OnStanceStateChanged(); // OnStanceStateChanged;
+	function OnStand(); // OnStand;
+	function OnStatic(); // OnStatic;
+	function OnSwim(); // OnSwim;
+	function OnTough(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnTough;StatsSystemEntityIDTweakDBID
+	function OnUnstoppable(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnUnstoppable;StatsSystemEntityIDTweakDBID
+	function OnUnstoppableTwitchMin(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnUnstoppableTwitchMin;StatsSystemEntityIDTweakDBID
+	function OnUnstoppableTwitchNone(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnUnstoppableTwitchNone;StatsSystemEntityIDTweakDBID
+	function OnUpperBodyStateChanged(); // OnUpperBodyStateChanged;
+	function OnVehicle(); // OnVehicle;
+	function OnWeak(statSystem : handle:gameStatsSystem, entityID : entEntityID, recordID : TweakDBID); // OnWeak;StatsSystemEntityIDTweakDBID
+	function PlayDeadVO(); // PlayDeadVO;
+	function SendOnUnstoppableRemovedSignal(b : Bool); // SendOnUnstoppableRemovedSignal;Bool
+	function SetCurrentBehaviorState(newState : gamedataNPCBehaviorState) : Bool; // SetCurrentBehaviorState;gamedataNPCBehaviorState
+	function SetCurrentDefenseMode(newState : gamedataDefenseMode) : Bool; // SetCurrentDefenseMode;gamedataDefenseMode
+	function SetCurrentHighLevelState(newState : gamedataNPCHighLevelState) : Bool; // SetCurrentHighLevelState;gamedataNPCHighLevelState
+	function SetCurrentHitReactionModeState(newState : EHitReactionMode) : Bool; // SetCurrentHitReactionModeState;EHitReactionMode
+	function SetCurrentLocomotionMode(newState : gamedataLocomotionMode) : Bool; // SetCurrentLocomotionMode;gamedataLocomotionMode
+	function SetCurrentPhaseState(newState : ENPCPhaseState) : Bool; // SetCurrentPhaseState;ENPCPhaseState
+	function SetCurrentStanceState(newState : gamedataNPCStanceState) : Bool; // SetCurrentStanceState;gamedataNPCStanceState
+	function SetCurrentUpperBodyState(newState : gamedataNPCUpperBodyState) : Bool; // SetCurrentUpperBodyState;gamedataNPCUpperBodyState
+	function SetPreviousHitReactionMode(prevState : EHitReactionMode); // SetPreviousHitReactionMode;EHitReactionMode
+	function SetPreviousStanceState(prevState : gamedataNPCStanceState); // SetPreviousStanceState;gamedataNPCStanceState
+	function ToggleVehicleWindow(toggle : Bool); // ToggleVehicleWindow;Bool
+	function TurnOffParryState(); // TurnOffParryState;
+	function TurnOnParryState(); // TurnOnParryState;
+	function UpdateBehaviorState(); // UpdateBehaviorState;
+	function UpdateDefenseMode(); // UpdateDefenseMode;
+	function UpdateDefensiveState(enable : Bool); // UpdateDefensiveState;Bool
+	function UpdateHighLevelState(newState : gamedataNPCHighLevelState, previousState : gamedataNPCHighLevelState); // UpdateHighLevelState;gamedataNPCHighLevelStategamedataNPCHighLevelState
+	function UpdateHitReactionsExceptionState(); // UpdateHitReactionsExceptionState;
+	function UpdateLocomotionMode(); // UpdateLocomotionMode;
+	function UpdatePhaseState(); // UpdatePhaseState;
+	function UpdateStanceState(); // UpdateStanceState;
+	function UpdateUpperBodyState(); // UpdateUpperBodyState;
+}
+
+import class gameAINetStateComponent extends gameScriptableComponent
+{
+	import function GetReplicatedBehaviorState() : Int32; // GetReplicatedBehaviorState
+	import function GetReplicatedDefenseMode() : Int32; // GetReplicatedDefenseMode
+	import function GetReplicatedHighLevelState() : Int32; // GetReplicatedHighLevelState
+	import function GetReplicatedHitReactionModeState() : Int32; // GetReplicatedHitReactionModeState
+	import function GetReplicatedLocomotionMode() : Int32; // GetReplicatedLocomotionMode
+	import function GetReplicatedPhaseState() : Int32; // GetReplicatedPhaseState
+	import function GetReplicatedStanceState() : Int32; // GetReplicatedStanceState
+	import function GetReplicatedUpperBodyState() : Int32; // GetReplicatedUpperBodyState
+	import function SetReplicatedBehaviorState(newState : Int32) : Bool; // SetReplicatedBehaviorState
+	import function SetReplicatedDefenseMode(newState : Int32) : Bool; // SetReplicatedDefenseMode
+	import function SetReplicatedHighLevelState(newState : Int32) : Bool; // SetReplicatedHighLevelState
+	import function SetReplicatedHitReactionModeState(newState : Int32) : Bool; // SetReplicatedHitReactionModeState
+	import function SetReplicatedLocomotionMode(newState : Int32) : Bool; // SetReplicatedLocomotionMode
+	import function SetReplicatedPhaseState(newState : Int32) : Bool; // SetReplicatedPhaseState
+	import function SetReplicatedStanceState(newState : Int32) : Bool; // SetReplicatedStanceState
+	import function SetReplicatedUpperBodyState(newState : Int32) : Bool; // SetReplicatedUpperBodyState
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

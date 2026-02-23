@@ -1,0 +1,12 @@
+import class meshMeshParamPhysics extends meshMeshParameter
+{
+	var physicsData : handle:physicsSystemResource;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

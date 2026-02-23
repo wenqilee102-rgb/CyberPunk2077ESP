@@ -1,0 +1,9 @@
+struct LedColors_SensorDevice
+{
+	public    var off : ScriptLightSettings;
+	public    var red : ScriptLightSettings;
+	public    var green : ScriptLightSettings;
+	public    var blue : ScriptLightSettings;
+	public    var yellow : ScriptLightSettings;
+	public    var white : ScriptLightSettings;
+}

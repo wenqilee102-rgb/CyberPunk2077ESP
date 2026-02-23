@@ -1,0 +1,9 @@
+import class worldTrafficNullAreaCollisionData extends ISerializable
+{
+	var header : worldCrowdNullAreaCollisionHeader;
+	var nullAreaCollisions : array:worldCrowdNullAreaCollisionData;
+}
+
+import class abstract ISerializable
+{
+}

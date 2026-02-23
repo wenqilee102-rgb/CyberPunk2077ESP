@@ -1,0 +1,9 @@
+import struct gameStatDetailedData
+{
+	var statType : gamedataStatType;
+	var limitMin : Float;
+	var limitMax : Float;
+	var value : Float;
+	var modifiers : array:gameStatModifierDetailedData;
+	var boolStatType : Bool;
+}

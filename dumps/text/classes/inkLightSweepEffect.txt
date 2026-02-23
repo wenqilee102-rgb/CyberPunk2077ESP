@@ -1,0 +1,18 @@
+import class inkLightSweepEffect extends inkIEffect
+{
+	var positionX : Float;
+	var positionY : Float;
+	var angle : Float;
+	var width : Float;
+	var intensity : Float;
+}
+
+import class abstract inkIEffect extends ISerializable
+{
+	var isEnabled : Bool;
+	var effectName : CName;
+}
+
+import class abstract ISerializable
+{
+}

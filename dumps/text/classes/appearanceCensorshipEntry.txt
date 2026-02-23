@@ -1,0 +1,6 @@
+import struct appearanceCensorshipEntry
+{
+	var Original : CName;
+	var Censored : CName;
+	var CensorFlags : Uint32;
+}

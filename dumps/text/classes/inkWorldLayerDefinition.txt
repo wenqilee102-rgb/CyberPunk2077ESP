@@ -1,0 +1,23 @@
+import struct inkWorldLayerDefinition extends inkLayerDefinition
+{
+	var projectionPlaneSize : Vector2;
+	var renderingPlane : ERenderingPlane;
+	var isAlwaysVisible : Bool;
+	var isInteractableFromBehind : Bool;
+	var maxInteractionDistance : Float;
+	var overrideMaxInteractionDistance : Bool;
+	var useCustomFaceVector : Bool;
+	var faceVector : Vector3;
+}
+
+import struct inkLayerDefinition
+{
+	var enabled : Bool;
+	var rootLibrary : rRef:inkWidgetLibraryResource;
+	var activeByDefault : Bool;
+	var isPermanent : Bool;
+	var useGlobalStyleTheme : Bool;
+	var isAffectedByFadeout : Bool;
+	var useGameInput : Bool;
+	var inputContext : CName;
+}

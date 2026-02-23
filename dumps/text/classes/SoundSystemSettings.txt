@@ -1,0 +1,6 @@
+struct SoundSystemSettings
+{
+	public    var interactionName : TweakDBID;
+	public    var musicSettings : handle:MusicSettings;
+	public    var canBeUsedAsQuickHack : Bool;
+}

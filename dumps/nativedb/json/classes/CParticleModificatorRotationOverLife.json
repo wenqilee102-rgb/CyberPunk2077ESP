@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorRotationOverLife","d":8,"e":[{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"rotation","c":128},{"a":{"a":1},"b":"modulate","c":128}]}

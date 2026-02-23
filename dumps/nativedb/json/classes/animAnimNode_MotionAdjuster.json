@@ -1,0 +1,1 @@
+{"a":"animAnimNode_Base","b":"animAnimNode_MotionAdjuster","d":8,"e":[{"a":{"b":"animPoseLink"},"b":"inputNode","c":128},{"a":{"b":"animVectorLink"},"b":"targetPosition","c":128},{"a":{"b":"animVectorLink"},"b":"targetDirection","c":128},{"a":{"b":"animFloatLink"},"b":"totalTimeToAdjust","c":128},{"a":{"b":"Vector4"},"b":"forwardVector","c":128}]}

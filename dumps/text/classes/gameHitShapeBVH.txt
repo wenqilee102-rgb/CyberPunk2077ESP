@@ -1,0 +1,6 @@
+import struct gameHitShapeBVH
+{
+	var nodeName : CName;
+	var childrenNodes : array:gameHitShapeBVH;
+	var childrenShapeNames : array:CName;
+}

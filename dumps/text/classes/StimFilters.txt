@@ -1,0 +1,39 @@
+class StimFilters extends IScriptable
+{
+	static function AllowFriendlyInCombat(stimType : gamedataStimType) : Bool; // StimFilters::AllowFriendlyInCombat;gamedataStimType
+	static function CanBeIgnoredInCombat(stimType : gamedataStimType) : Bool; // StimFilters::CanBeIgnoredInCombat;gamedataStimType
+	static function CanProcessPastAllyHelp(stimType : gamedataStimType) : Bool; // StimFilters::CanProcessPastAllyHelp;gamedataStimType
+	static function CanTriggerAlertedDirectly(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerAlertedDirectly;gamedataStimType
+	static function CanTriggerAllyHelp(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerAllyHelp;gamedataStimType
+	static function CanTriggerCombatDirectly(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerCombatDirectly;gamedataStimType
+	static function CanTriggerEnemyHostility(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerEnemyHostility;gamedataStimType
+	static function CanTriggerNeutralHelp(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerNeutralHelp;gamedataStimType
+	static function CanTriggerPreventionCombatDirectly(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerPreventionCombatDirectly;gamedataStimType
+	static function CanTriggerPreventionCombatDirectlyEvenInvisible(stimType : gamedataStimType) : Bool; // StimFilters::CanTriggerPreventionCombatDirectlyEvenInvisible;gamedataStimType
+	static function Debug_IsAllowed(stimType : gamedataStimType) : Bool; // StimFilters::Debug_IsAllowed;gamedataStimType
+	static function IsForTheDead(stimType : gamedataStimType) : Bool; // StimFilters::IsForTheDead;gamedataStimType
+	static function IsGunshot(stimType : gamedataStimType) : Bool; // StimFilters::IsGunshot;gamedataStimType
+	static function IsIgnoredFromSameSource(stimType : gamedataStimType) : Bool; // StimFilters::IsIgnoredFromSameSource;gamedataStimType
+	static function IsIgnoredInVehicle(stimType : gamedataStimType) : Bool; // StimFilters::IsIgnoredInVehicle;gamedataStimType
+	static function IsIgnoredWhileGrappled(stimType : gamedataStimType) : Bool; // StimFilters::IsIgnoredWhileGrappled;gamedataStimType
+	static function IsIllegal(stimType : gamedataStimType) : Bool; // StimFilters::IsIllegal;gamedataStimType
+	static function IsIllegalAction(stimType : gamedataStimType) : Bool; // StimFilters::IsIllegalAction;gamedataStimType
+	static function IsProjectile(stimType : gamedataStimType) : Bool; // StimFilters::IsProjectile;gamedataStimType
+	static function ShouldBeDetected(stimType : gamedataStimType) : Bool; // StimFilters::ShouldBeDetected;gamedataStimType
+	static function ShouldBeFriendly(stimType : gamedataStimType) : Bool; // StimFilters::ShouldBeFriendly;gamedataStimType
+	static function ShouldBeInPublicZone(stimType : gamedataStimType) : Bool; // StimFilters::ShouldBeInPublicZone;gamedataStimType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class vgVectorGraphicShape_Group extends vgBaseVectorGraphicShape
+{
+	var childShapes : array:handle:vgBaseVectorGraphicShape;
+}
+
+import class abstract vgBaseVectorGraphicShape extends ISerializable
+{
+	var calTransform : Matrix;
+	var yle : handle:vgVectorGraphicStyle;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+import class gamedataCompoundSelectionPreset_Record extends gamedataTweakDBRecord
+{
+	import function GatherRadius() : Float; // GatherRadius
+	import function GetPresetsCount() : Int32; // GetPresetsCount
+	import function GetPresetsItem(index : Int32) : String; // GetPresetsItem
+	import function Presets() : array:String; // Presets
+	import function PresetsContains(item : String) : Bool; // PresetsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

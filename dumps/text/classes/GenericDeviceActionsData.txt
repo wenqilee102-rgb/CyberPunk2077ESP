@@ -1,0 +1,5 @@
+struct GenericDeviceActionsData
+{
+	public    var stateActionsOverrides : SGenericDeviceActionsData;
+	public    var customActions : SCustomDeviceActionsData;
+}

@@ -1,0 +1,8 @@
+import struct toolsMessage
+{
+	var severity : toolsMessageSeverity;
+	var created : Int64;
+	var location : handle:toolsIMessageLocation;
+	var tokens : array:handle:toolsIMessageToken;
+	var verbosity : toolsMessageVerbosity;
+}

@@ -1,0 +1,1 @@
+{"a":"entIComponent","b":"entVisualControllerComponent","d":8,"e":[{"a":{"a":29,"c":{"b":"CMesh"}},"b":"meshProxy","c":128},{"a":{"a":31,"c":{"b":"entVisualControllerDependency"}},"b":"appearanceDependency","c":128},{"a":{"a":30,"c":{"b":"appearanceCookedAppearanceData"}},"b":"cookedAppearanceData","c":128},{"a":{"b":"entForcedLodDistance"},"b":"forcedLodDistance","c":128}]}

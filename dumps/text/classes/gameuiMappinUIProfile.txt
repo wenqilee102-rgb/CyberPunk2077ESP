@@ -1,0 +1,12 @@
+import struct gameuiMappinUIProfile
+{
+	var widgetResource : redResourceReferenceScriptToken;
+	var widgetLibraryID : CName;
+	var spawn : handle:gamedataMappinUISpawnProfile_Record;
+	var runtime : handle:gamedataMappinUIRuntimeProfile_Record;
+
+	static function Create(_widgetResource : redResourceReferenceScriptToken, spawnProfile : TweakDBID) : gameuiMappinUIProfile; // gameuiMappinUIProfile::Create;ResRefTweakDBID
+	static function Create(_widgetResource : redResourceReferenceScriptToken, spawnProfile : TweakDBID, runtimeProfile : TweakDBID) : gameuiMappinUIProfile; // gameuiMappinUIProfile::Create;ResRefTweakDBIDTweakDBID
+	static function CreateDefault(_widgetResource : redResourceReferenceScriptToken) : gameuiMappinUIProfile; // gameuiMappinUIProfile::CreateDefault;ResRef
+	static function None() : gameuiMappinUIProfile; // gameuiMappinUIProfile::None;
+}

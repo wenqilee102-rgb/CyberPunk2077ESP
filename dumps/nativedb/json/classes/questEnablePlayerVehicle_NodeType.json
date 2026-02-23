@@ -1,0 +1,1 @@
+{"a":"questIVehicleManagerNodeType","b":"questEnablePlayerVehicle_NodeType","d":8,"e":[{"a":{"a":12},"b":"vehicle","c":128},{"a":{"a":1},"b":"enable","c":128},{"a":{"a":1},"b":"despawn","c":128},{"a":{"a":1},"b":"makePlayerActiveVehicle","c":128}]}

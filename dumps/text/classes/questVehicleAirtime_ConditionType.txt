@@ -1,0 +1,16 @@
+import class questVehicleAirtime_ConditionType extends questIVehicleConditionType
+{
+	var seconds : Float;
+}
+
+import class abstract questIVehicleConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

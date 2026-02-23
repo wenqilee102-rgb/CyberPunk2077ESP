@@ -1,0 +1,17 @@
+struct SCooldown
+{
+	public    var delayId : gameDelayID;
+	public    var removeId : gameDelayID;
+	public    var cid : Int32;
+	public    var cdName : CName;
+	public    var owner : whandle:entEntity;
+	public    var ownerItemID : gameItemID;
+	public    var ownerRecord : TweakDBID;
+	public    var duration : Float;
+	public    var type : gamedataStatType;
+	public    var durationMultiplier : Float;
+	public    var modifiable : Bool;
+	public    var affectedByTimeDilation : Bool;
+	public    var abilityType : gamedataStatType;
+	public    var statMod : handle:gameStatModifierData_Deprecated;
+}

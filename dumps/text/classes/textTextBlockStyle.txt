@@ -1,0 +1,8 @@
+import struct textTextBlockStyle
+{
+	var tintColor : HDRColor;
+	var shadowOffset : Vector2;
+	var shadowColor : HDRColor;
+	var fontStyle : textTextBlockFontStyle;
+	var fontSize : Uint16;
+}

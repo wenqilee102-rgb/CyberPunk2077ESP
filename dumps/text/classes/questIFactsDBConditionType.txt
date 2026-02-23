@@ -1,0 +1,11 @@
+import class abstract questIFactsDBConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

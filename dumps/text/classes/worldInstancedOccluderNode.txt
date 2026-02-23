@@ -1,0 +1,17 @@
+import class worldInstancedOccluderNode extends worldNode
+{
+	var worldBounds : Box;
+	var occluderType : visWorldOccluderType;
+	var autohideDistanceScale : Uint8;
+	var mesh : raRef:CMesh;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

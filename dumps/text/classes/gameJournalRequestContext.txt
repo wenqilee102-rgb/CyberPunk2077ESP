@@ -1,0 +1,9 @@
+import struct gameJournalRequestContext
+{
+	var stateFilter : gameJournalRequestStateFilter;
+	var classFilter : gameJournalRequestClassFilter;
+
+	import static function CreatePlayerLevelBasedQuestRequestFilter(self : gameJournalRequestContext, gameInstance : ScriptGameInstance, percentMargin : Uint32); // CreatePlayerLevelBasedQuestRequestFilter
+	import static function CreateQuestDistanceRequestFilter(self : gameJournalRequestContext, gameInstance : ScriptGameInstance, distance : Float); // CreateQuestDistanceRequestFilter
+	import static function CreateQuestTypeRequestFilter(self : gameJournalRequestContext, gameInstance : ScriptGameInstance, includeMainQuests : Bool, includeSideQuests : Bool, includeStreetStories : Bool, includeCyberPsycho : Bool, includeContracts : Bool); // CreateQuestTypeRequestFilter
+}

@@ -1,0 +1,31 @@
+import class AIbehaviorActionUseWorkspotNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+	var eventData : handle:AIArgumentMapping;
+	var playStartAnimationAfterwards : handle:AIArgumentMapping;
+	var mountData : handle:AIArgumentMapping;
+	var dependentWorkspotData : handle:AIArgumentMapping;
+	var playExitAutomatically : handle:AIArgumentMapping;
+	var markUninterruptable : handle:AIArgumentMapping;
+	var fastForwardAfterTeleport : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

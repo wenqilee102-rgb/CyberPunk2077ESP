@@ -1,0 +1,28 @@
+import class gamedataTankLevelGameplay_Record extends gamedataTweakDBRecord
+{
+	import function Duration() : Float; // Duration
+	import function GetPreLoadedResourceListCount() : Int32; // GetPreLoadedResourceListCount
+	import function GetPreLoadedResourceListItem(index : Int32) : redResourceReferenceScriptToken; // GetPreLoadedResourceListItem
+	import function PreLoadedResourceList() : array:redResourceReferenceScriptToken; // PreLoadedResourceList
+	import function StartSFX() : CName; // StartSFX
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

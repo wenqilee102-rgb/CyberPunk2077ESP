@@ -1,0 +1,11 @@
+import class inkWorldLayer extends inkLayer
+{
+}
+
+import class abstract inkLayer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

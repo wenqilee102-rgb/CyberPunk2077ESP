@@ -1,0 +1,35 @@
+class ShardCollectedInventoryCallback extends gameInventoryScriptCallback
+{
+	public    var notificationQueue : whandle:JournalNotificationQueue;
+	public    var journalManager : whandle:gameJournalManager;
+
+	function OnItemQuantityChanged(item : gameItemID, diff : Int32, total : Uint32, flaggedAsSilent : Bool); // OnItemQuantityChanged;ItemIDInt32Uint32Bool
+	function OpenShardPopup(entry : handle:gameJournalOnscreen, item : gameItemID, isCrypted : Bool); // OpenShardPopup;JournalOnscreenItemIDBool
+}
+
+import class gameInventoryScriptCallback extends IScriptable
+{
+	var itemID : gameItemID;
+
+	function OnItemAdded(item : gameItemID, itemData : whandle:gameItemData, flaggedAsSilent : Bool); // OnItemAdded;ItemIDgameItemDataBool
+	function OnItemExtracted(item : gameItemID); // OnItemExtracted;ItemID
+	function OnItemNotification(item : gameItemID, itemData : whandle:gameItemData); // OnItemNotification;ItemIDgameItemData
+	function OnItemQuantityChanged(item : gameItemID, diff : Int32, total : Uint32, flaggedAsSilent : Bool); // OnItemQuantityChanged;ItemIDInt32Uint32Bool
+	function OnItemRemoved(item : gameItemID, difference : Int32, currentQuantity : Int32); // OnItemRemoved;ItemIDInt32Int32
+	function OnPartAdded(item : gameItemID, partID : gameItemID); // OnPartAdded;ItemIDItemID
+	function OnPartRemoved(partID : gameItemID, formerItemID : gameItemID); // OnPartRemoved;ItemIDItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

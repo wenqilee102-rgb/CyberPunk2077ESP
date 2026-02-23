@@ -1,0 +1,5 @@
+import struct effectEffectParameterEvaluatorVector
+{
+	var evaluator : handle:IEvaluatorVector;
+	var inputParameterOverride : CName;
+}

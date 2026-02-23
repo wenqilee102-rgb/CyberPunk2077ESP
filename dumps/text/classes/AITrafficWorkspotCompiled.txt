@@ -1,0 +1,11 @@
+import class AITrafficWorkspotCompiled extends worldTrafficSpotCompiled
+{
+}
+
+import class abstract worldTrafficSpotCompiled extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

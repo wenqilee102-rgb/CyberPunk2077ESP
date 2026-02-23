@@ -1,0 +1,7 @@
+import struct animCurvePathAnimControllerPreset
+{
+	var name : CName;
+	var leftAnimationName : CName;
+	var forwardAnimationName : CName;
+	var rightAnimationName : CName;
+}

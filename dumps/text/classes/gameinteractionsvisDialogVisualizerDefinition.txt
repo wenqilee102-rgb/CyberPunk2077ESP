@@ -1,0 +1,17 @@
+import class gameinteractionsvisDialogVisualizerDefinition extends gameinteractionsvisIVisualizerDefinition
+{
+	var displayNameOverride : String;
+	var useLookAt : Bool;
+	var disableAfterSelectingChoice : Bool;
+	var timeProvider : handle:gameinteractionsvisIVisualizerTimeProvider;
+	var hubPriority : Uint8;
+}
+
+import class abstract gameinteractionsvisIVisualizerDefinition extends ISerializable
+{
+	var flags : gameinteractionsvisEVisualizerDefinitionFlags;
+}
+
+import class abstract ISerializable
+{
+}

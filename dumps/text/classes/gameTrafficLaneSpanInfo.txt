@@ -1,0 +1,6 @@
+import struct gameTrafficLaneSpanInfo
+{
+	var laneId : worldTrafficLaneUID;
+	var laneX1 : Float;
+	var laneX2 : Float;
+}

@@ -1,0 +1,8 @@
+import struct garmentSmoothingParams
+{
+	var smoothingStrength : Float;
+	var smoothingRadiusInCM : Float;
+	var smoothingExponent : Float;
+	var smoothingNumNeighbours : Uint32;
+	var smoothNormalsEnabled : Bool;
+}

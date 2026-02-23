@@ -1,0 +1,6 @@
+import struct audioConversationItemMetadata
+{
+	var sceneFile : CName;
+	var characterConditions : array:audioConversationCharacterCondition;
+	var shouldSceneInstanceBeSaved : Bool;
+}

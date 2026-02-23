@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"WorldMapFiltersList","d":0,"f":[{"a":"OnConsumeInput","c":{"a":1},"d":98,"e":[{"a":{"a":26,"c":{"b":"inkPointerEvent"}},"b":"evt","c":0}]},{"a":"OnInitialize","c":{"a":1},"d":98},{"a":"OnUninitialize","c":{"a":1},"d":98}]}

@@ -1,0 +1,7 @@
+import class questPhaseInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

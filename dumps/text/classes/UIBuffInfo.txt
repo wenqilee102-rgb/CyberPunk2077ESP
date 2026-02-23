@@ -1,0 +1,12 @@
+struct UIBuffInfo extends gameuiBuffInfo
+{
+	public    var isBuff : Bool;
+}
+
+import struct gameuiBuffInfo
+{
+	var buffID : TweakDBID;
+	var timeRemaining : Float;
+	var timeTotal : Float;
+	var stackCount : Uint32;
+}

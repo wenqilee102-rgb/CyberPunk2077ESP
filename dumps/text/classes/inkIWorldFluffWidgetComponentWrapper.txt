@@ -1,0 +1,7 @@
+import struct abstract inkIWorldFluffWidgetComponentWrapper extends inkIWorldWidgetComponentWrapper
+{
+}
+
+import struct abstract inkIWorldWidgetComponentWrapper
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gameScriptableComponent","b":"Example_FxSpawning","d":4,"e":[{"a":{"b":"gameFxResource"},"b":"effect","c":129},{"a":{"b":"gameFxResource"},"b":"effectBeam","c":129}],"f":[{"a":"OnGameAttach;","b":"OnGameAttach","d":49}]}

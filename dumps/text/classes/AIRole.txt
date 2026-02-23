@@ -1,0 +1,25 @@
+import class AIRole extends IScriptable
+{
+	import function GetRoleTweakRecord() : handle:gamedataAIRole_Record; // GetRoleTweakRecord
+
+	function GetRoleEnum() : EAIRole; // GetRoleEnum;
+	function GetTweakRecordId() : TweakDBID; // GetTweakRecordId;
+	function OnHighLevelStateEnter(owner : whandle:gameObject, newState : gamedataNPCHighLevelState, previousState : gamedataNPCHighLevelState); // OnHighLevelStateEnter;GameObjectgamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnHighLevelStateExit(owner : whandle:gameObject, leftState : gamedataNPCHighLevelState, nextState : gamedataNPCHighLevelState); // OnHighLevelStateExit;GameObjectgamedataNPCHighLevelStategamedataNPCHighLevelState
+	function OnRoleCleared(owner : whandle:gameObject); // OnRoleCleared;GameObject
+	function OnRoleSet(owner : whandle:gameObject); // OnRoleSet;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

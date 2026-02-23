@@ -1,0 +1,40 @@
+class CityFluffMessageSelector extends ScreenMessageSelector
+{
+	private   var recordID : TweakDBID;
+
+	function GetRecordID() : TweakDBID; // GetRecordID;
+	function SetRecordID(recordID : TweakDBID); // SetRecordID;TweakDBID
+}
+
+class abstract ScreenMessageSelector extends inkTweakDBIDSelector
+{
+	protected var replaceTextWithCustomNumber : Bool;
+	protected var customNumber : Int32;
+
+	function GetCustomNumber() : Int32; // GetCustomNumber;
+	function HasCustomNumber() : Bool; // HasCustomNumber;
+	function SetCustomNumber(value : Int32); // SetCustomNumber;Int32
+	function SetReplaceTextWithCustomNumber(value : Bool); // SetReplaceTextWithCustomNumber;Bool
+}
+
+import class inkTweakDBIDSelector extends IScriptable
+{
+	var baseTweakID : TweakDBID;
+
+	function GetRecordID() : TweakDBID; // GetRecordID;
+	function SetRecordID(recordID : TweakDBID); // SetRecordID;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

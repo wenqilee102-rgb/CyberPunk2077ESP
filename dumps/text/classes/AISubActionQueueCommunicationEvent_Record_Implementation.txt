@@ -1,0 +1,21 @@
+class abstract AISubActionQueueCommunicationEvent_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQueueCommunicationEvent_Record); // AISubActionQueueCommunicationEvent_Record_Implementation::Activate;ScriptExecutionContextAISubActionQueueCommunicationEvent_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQueueCommunicationEvent_Record, duration : Float, interrupted : Bool); // AISubActionQueueCommunicationEvent_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionQueueCommunicationEvent_RecordFloatBool
+	static function QueueCommunicationEvent(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQueueCommunicationEvent_Record); // AISubActionQueueCommunicationEvent_Record_Implementation::QueueCommunicationEvent;ScriptExecutionContextAISubActionQueueCommunicationEvent_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQueueCommunicationEvent_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionQueueCommunicationEvent_Record_Implementation::Update;ScriptExecutionContextAISubActionQueueCommunicationEvent_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

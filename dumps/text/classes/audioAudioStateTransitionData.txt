@@ -1,0 +1,10 @@
+import struct audioAudioStateTransitionData
+{
+	var targetStateId : Uint8;
+	var allConditionsFulfilled : Bool;
+	var transitionTime : Float;
+	var exitTime : Float;
+	var exitSignal : CName;
+	var readVariableActions : array:audioAudioSceneVariableReadActionData;
+	var conditions : array:CName;
+}

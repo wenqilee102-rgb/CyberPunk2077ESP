@@ -1,0 +1,18 @@
+import class audioPlaylistMetadata extends audioAudioMetadata
+{
+	var broadcastChannel : Uint8;
+	var tracks : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

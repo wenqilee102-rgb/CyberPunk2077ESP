@@ -1,0 +1,9 @@
+import class worldTrafficGlobalPathPosition extends ISerializable
+{
+	var worldPosition : Vector3;
+	var pathIdx : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

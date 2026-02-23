@@ -1,0 +1,16 @@
+struct PlayerVisionModeControllerRefreshPolicy
+{
+	public    var kerenzikov : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var restrictedScene : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var dead : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var takedown : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var deviceTakeover : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var braindanceFPP : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var braindanceActive : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var veryHardLanding : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var noScanningRestriction : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var hasNotCybereye : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var isPhotoMode : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var isBriefingActive : PlayerVisionModeControllerRefreshPolicyEnum;
+	public    var twintoneOverrideShown : PlayerVisionModeControllerRefreshPolicyEnum;
+}

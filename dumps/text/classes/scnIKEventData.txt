@@ -1,0 +1,7 @@
+import struct scnIKEventData
+{
+	var orientation : Quaternion;
+	var basic : scnAnimTargetBasicData;
+	var chainName : CName;
+	var request : animIKTargetRequest;
+}

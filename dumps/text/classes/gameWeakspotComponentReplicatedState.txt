@@ -1,0 +1,10 @@
+import struct gameWeakspotComponentReplicatedState extends netIComponentState
+{
+	var WeakspotRepInfos : array:gameWeakSpotReplicatedInfo;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

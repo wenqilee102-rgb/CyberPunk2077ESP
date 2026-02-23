@@ -1,0 +1,6 @@
+import struct animTEMP_IKTargetsControllerBodyType
+{
+	var genderTag : CName;
+	var bodyTypeTag : CName;
+	var ikChainSettings : array:animIKChainSettings;
+}

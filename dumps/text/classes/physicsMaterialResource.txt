@@ -1,0 +1,20 @@
+import class physicsMaterialResource extends CResource
+{
+	var staticFriction : Float;
+	var dynamicFriction : Float;
+	var restitution : Float;
+	var frictionMode : physicsMaterialFriction;
+	var density : Float;
+	var tags : physicsMaterialTags;
+	var color : Color;
+	var id : Uint64;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

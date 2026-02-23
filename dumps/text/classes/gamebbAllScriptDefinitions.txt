@@ -1,0 +1,142 @@
+import class gamebbAllScriptDefinitions extends IScriptable
+{
+	public    var PlayerStateMachine : handle:PlayerStateMachineDef;
+	public    var PlayerPerkData : handle:PlayerPerkDataDef;
+	public    var PlayerQuickHackData : handle:PlayerQuickHackDataDef;
+	public    var EffectSharedData : handle:EffectSharedDataDef;
+	public    var FollowNPC : handle:FollowNPCDef;
+	public    var AISquadBlackBoard : handle:AISquadBlackBoardDef;
+	public    var Puppet : handle:PuppetDef;
+	public    var PuppetState : handle:PuppetStateDef;
+	public    var PuppetReaction : handle:PuppetReactionDef;
+	public    var LocalPlayer : handle:PuppetReactionDef;
+	public    var UIGameData : handle:UIGameDataDef;
+	public    var UIInteractions : handle:UIInteractionsDef;
+	public    var Weapon : handle:WeaponDataDef;
+	public    var DeviceTakeControl : handle:DeviceTakeControlDef;
+	public    var TaggedObjectsList : handle:TaggedObjectsListDef;
+	public    var AdHocAnimation : handle:AdHocAnimationDef;
+	public    var QuickMeleeData : handle:QuickMeleeDataDef;
+	public    var Vehicle : handle:VehicleDef;
+	public    var VehicleSummonData : handle:VehicleSummonDataDef;
+	public    var VehiclePurchaseData : handle:VehiclePurchaseDataDef;
+	public    var Braindance : handle:BraindanceBlackboardDef;
+	public    var HackingMinigame : handle:HackingMinigameDef;
+	public    var HackingData : handle:HackingDataDef;
+	public    var AIShooting : handle:AIShootingDataDef;
+	public    var AICover : handle:AICoverDataDef;
+	public    var AIAction : handle:AIActionDataDef;
+	public    var AIPrereqs : handle:AIPrereqsDataDef;
+	public    var AIPatrol : handle:AIPatrolDef;
+	public    var AIAlertedPatrol : handle:AIAlertedPatrolDef;
+	public    var VendorRegister : handle:VendorRegisterBlackBoardDef;
+	public    var AIFollowSlot : handle:AIFollowSlotDef;
+	public    var AIActionBossData : handle:AIActionBossDataDef;
+	public    var UI_System : handle:UI_SystemDef;
+	public    var UI_ActiveVehicleData : handle:UI_ActiveVehicleDataDef;
+	public    var UI_AutodriveData : handle:UI_AutodriveDataDef;
+	public    var UIWorldBoundaries : handle:UIWorldBoundariesDef;
+	public    var UI_PlayerStats : handle:UI_PlayerStatsDef;
+	public    var UI_EquipmentData : handle:UI_EquipmentDataDef;
+	public    var UI_PlayerBioMonitor : handle:UI_PlayerBioMonitorDef;
+	public    var FastTRavelSystem : handle:FastTRavelSystemDef;
+	public    var UI_ComDevice : handle:UI_ComDeviceDef;
+	public    var UI_Scanner : handle:UI_ScannerDef;
+	public    var UI_ScannerModules : handle:UI_ScannerModulesDef;
+	public    var UI_WantedBar : handle:UI_WantedBarDef;
+	public    var UI_FastForward : handle:UI_FastForwardDef;
+	public    var UI_HUDProgressBar : handle:UI_HUDProgressBarDef;
+	public    var UI_HUDSignalProgressBar : handle:UI_HUDSignalProgressBarDef;
+	public    var UI_HUDCountdownTimer : handle:UI_HUDCountdownTimerDef;
+	public    var UI_Hotkeys : handle:UI_HotkeysDef;
+	public    var DeviceBaseBlackboard : handle:DeviceBaseBlackboardDef;
+	public    var TVDeviceBlackboard : handle:TVDeviceBlackboardDef;
+	public    var ArcadeMachineBlackBoard : handle:ArcadeMachineBlackboardDef;
+	public    var ElectricBoxBlackBoard : handle:ElectricBoxBlackboardDef;
+	public    var LcdScreenBlackBoard : handle:LcdScreenBlackBoardDef;
+	public    var NcartTimetableBlackboard : handle:NcartTimetableBlackboardDef;
+	public    var IntercomBlackboard : handle:IntercomBlackboardDef;
+	public    var ElevatorDeviceBlackboard : handle:ElevatorDeviceBlackboardDef;
+	public    var VendingMachineDeviceBlackboard : handle:VendingMachineDeviceBlackboardDef;
+	public    var InteractiveDeviceBlackboard : handle:InteractiveDeviceBlackboardDef;
+	public    var MasterDeviceBaseBlackboard : handle:MasterDeviceBaseBlackboardDef;
+	public    var ComputerDeviceBlackboard : handle:ComputerDeviceBlackboardDef;
+	public    var DataTermDeviceBlackboard : handle:DataTermDeviceBlackboardDef;
+	public    var NetworkBlackboard : handle:NetworkBlackboardDef;
+	public    var StorageBlackboard : handle:StorageBlackboardDef;
+	public    var BackdoorBlackboard : handle:BackDoorDeviceBlackboardDef;
+	public    var ConfessionalBlackboard : handle:ConfessionalBlackboardDef;
+	public    var JukeboxBlackboard : handle:JukeboxBlackboardDef;
+	public    var MenuEventBlackboard : handle:MenuEventBlackboardDef;
+	public    var NumericDisplay : handle:NumericDisplayBlackboardDef;
+	public    var SniperNestDeviceBlackboard : handle:SniperNestDeviceBlackboardDef;
+	public    var UI_NPCNextToTheCrosshair : handle:UI_NPCNextToTheCrosshairDef;
+	public    var UI_NameplateData : handle:UI_NameplateDataDef;
+	public    var UI_DamageInfo : handle:UI_DamageInfoDef;
+	public    var UI_InterfaceOptions : handle:UI_InterfaceOptionsDef;
+	public    var UI_CompassInfo : handle:UI_CompassInfoDef;
+	public    var UI_ActiveWeaponData : handle:UI_ActiveWeaponDataDef;
+	public    var UI_TargetingInfo : handle:UI_TargetingInfoDef;
+	public    var UI_Notifications : handle:UI_NotificationsDef;
+	public    var LeftHandCyberware : handle:LeftHandCyberwareDataDef;
+	public    var CoverAction : handle:CoverActionDataDef;
+	public    var UI_QuickSlotsData : handle:UI_QuickSlotsDataDef;
+	public    var UI_VisionMode : handle:UI_VisionModeDef;
+	public    var UI_HudTooltip : handle:UI_HudTooltipDef;
+	public    var UI_HudButtonHelp : handle:UI_HudButtonHelpDef;
+	public    var UI_ActivityLog : handle:UI_ActivityLogDef;
+	public    var UI_LevelUp : handle:UI_LevelUpDef;
+	public    var UI_AttributeBought : handle:UI_AttributeBoughtDef;
+	public    var UI_Vendor : handle:UI_VendorDef;
+	public    var UI_Briefing : handle:UI_BriefingDef;
+	public    var UI_ItemModSystem : handle:UI_ItemModSystemDef;
+	public    var UI_CodexSystem : handle:UI_CodexSystemDef;
+	public    var UI_Equipment : handle:UI_EquipmentDef;
+	public    var UI_Inventory : handle:UI_InventoryDef;
+	public    var UI_Crafting : handle:UI_CraftingDef;
+	public    var UI_Map : handle:UI_MapDef;
+	public    var UI_CpoCharacterSelection : handle:UI_CpoCharacterSelectionDef;
+	public    var UI_ChatBox : handle:UI_ChatBoxDef;
+	public    var UI_HUDNarrationLog : handle:UI_HUDNarrationLogDef;
+	public    var UI_NarrativePlate : handle:UI_NarrativePlateDef;
+	public    var UI_Crosshair : handle:UI_CrosshairDef;
+	public    var UI_ItemLog : handle:UI_ItemLogDef;
+	public    var UI_HUDButtonHints : handle:UI_HUDButtonHintDef;
+	public    var UI_Companion : handle:UI_CompanionDef;
+	public    var UI_CustomQuestNotification : handle:UI_CustomQuestNotificationDef;
+	public    var HUD_Manager : handle:HUDManagerDef;
+	public    var UI_Hacking : handle:UI_HackingDef;
+	public    var UI_Stealth : handle:UI_StealthDef;
+	public    var UI_TopbarHubMenu : handle:UI_TopbarHubMenuDef;
+	public    var UI_LocalPlayer : handle:LocalPlayerDef;
+	public    var UI_SceneScreen : handle:UI_SceneScreenDef;
+	public    var UI_PointOfNoReturnRewardScreen : handle:UI_PointOfNoReturnRewardScreenDef;
+	public    var TokenUpgradedCyberwareBlackboard : handle:TokenUpgradedCyberwareBlackboardDef;
+	public    var CombatGadget : handle:CombatGadgetDataDef;
+	public    var Mines : handle:MinesDataDef;
+	public    var DebugData : handle:DebugDataDef;
+	public    var DeviceDebug : handle:DeviceDebugDef;
+	public    var ChargedGrenadesBlackBoard : handle:ChargedGrenadesBlackBoardDef;
+	public    var ChargedHealingBlackBoard : handle:ChargedHealingBlackBoardDef;
+	public    var BlackwallDeathAnim : handle:BlackwallAnimDef;
+	public    var CustomCentaurBlackboard : handle:CustomCentaurBlackboardDef;
+	public    var CW_MuteArm : handle:CW_MuteArmDef;
+	public    var PhotoMode : handle:PhotoModeDef;
+	public    var GameplaySettings : handle:GameplaySettingsDef;
+	public    var InputSchemes : handle:InputSchemesDef;
+	public    var PoliceChaseParams : handle:PoliceChaseParamsDef;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

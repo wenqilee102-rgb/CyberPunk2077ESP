@@ -1,0 +1,6 @@
+enum EForcedElevatorArrowsState
+{
+	Disabled = 0,
+	ArrowsUp = 1,
+	ArrowsDown = 2
+}

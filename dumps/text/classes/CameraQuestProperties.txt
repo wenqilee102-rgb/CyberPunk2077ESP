@@ -1,0 +1,7 @@
+struct CameraQuestProperties
+{
+	public    var factOnFeedReceived : CName;
+	public    var questFactOnDetection : CName;
+	public    var isInFollowMode : Bool;
+	public    var followedTargetID : entEntityID;
+}

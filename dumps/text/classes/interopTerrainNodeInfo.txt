@@ -1,0 +1,19 @@
+import struct interopTerrainNodeInfo
+{
+	var width : Uint32;
+	var height : Uint32;
+	var externalDataSource : Bool;
+	var isTerrainNode : Bool;
+	var blendOrder : Uint8;
+	var blendModeHeightIsIgnore : Bool;
+	var blendModeHeightIsNormal : Bool;
+	var blendModeColorIsIgnore : Bool;
+	var blendModeHolesIsIgnore : Bool;
+	var terrainSysID : Uint16;
+	var nodeName : String;
+	var nodeScale : Vector3;
+	var nodeTransform : Transform;
+	var nodeCellResScale : Float;
+	var densityTexelSize : Float;
+	var nodeIDPath : toolsEditorObjectIDPath;
+}

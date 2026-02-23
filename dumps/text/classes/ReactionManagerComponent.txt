@@ -1,0 +1,433 @@
+class ReactionManagerComponent extends gameScriptableComponent
+{
+	private   var activeReaction : handle:AIReactionData;
+	private   var desiredReaction : handle:AIReactionData;
+	private   var stimuliCache : array:handle:StimEventTaskData;
+	private   var reactionCache : array:handle:AIReactionData;
+	private   var reactionPreset : handle:gamedataReactionPreset_Record;
+	private   var puppetReactionBlackboard : handle:gameIBlackboard;
+	private   var receivedStimType : gamedataStimType;
+	private   var receivedStimPropagation : gamedataStimPropagation;
+	private   var inCrowd : Bool;
+	private   var inTrafficLane : Bool;
+	private   var desiredFearPhase : Int32;
+	private   var previousFearPhase : Int32;
+	private   var NPCRadius : Float;
+	private   var bumpTriggerDistanceBufferMounted : Float;
+	private   var bumpTriggerDistanceBufferCrouched : Float;
+	private   var delayReactionEventID : gameDelayID;
+	private   var delay : Vector2;
+	private   var delayDetectionEventID : gameDelayID;
+	private   var delayStimEventID : gameDelayID;
+	private   var resetReactionDataID : gameDelayID;
+	private   var callingPoliceID : gameDelayID;
+	private   var lookatEvent : handle:entLookAtAddEvent;
+	private   var ignoreList : array:entEntityID;
+	private   var investigationList : array:StimEventData;
+	private   var pendingReaction : handle:AIReactionData;
+	private   var ovefloodCooldown : Float;
+	private   var stanceState : gamedataNPCStanceState;
+	private   var highLevelState : gamedataNPCHighLevelState;
+	private   var aiRole : EAIRole;
+	private   var pendingBehaviorCb : handle:redCallbackObject;
+	private   var inPendingBehavior : Bool;
+	private   var cacheSecuritySysOutput : handle:SecuritySystemOutput;
+	private   var environmentalHazards : array:handle:senseStimuliEvent;
+	private   var environmentalHazardsDelayIDs : array:gameDelayID;
+	private   var stolenVehicle : whandle:vehicleBaseObject;
+	private   var isAlertedByDeadBody : Bool;
+	private   var isInCrosswalk : Bool;
+	private   var beignHijacked : Bool;
+	private   var owner_id : entEntityID;
+	private   var presetName : CName;
+	private   var updateByActive : Bool;
+	private   var personalities : array:gamedataStatType;
+	private   var workspotReactionPlayed : Bool;
+	private   var inReactionSequence : Bool;
+	private   var playerProximity : Bool;
+	private   var fearToIdleDistance : Vector2;
+	private   var exitWorkspotAim : Vector2;
+	private   var bumpedRecently : Int32;
+	private   var bumpTimestamp : Float;
+	private   var crowdAimingReactionDistance : Float;
+	private   var fearInPlaceAroundDistance : Float;
+	private   var lookatRepeat : Bool;
+	private   var disturbingComfortZoneInProgress : Bool;
+	private   var entereProximityRecently : Int32;
+	private   var comfortZoneTimestamp : Float;
+	private   var disturbComfortZoneEventId : gameDelayID;
+	private   var checkComfortZoneEventId : gameDelayID;
+	private   var spreadingFearEventId : gameDelayID;
+	private   var proximityLookatEventId : gameDelayID;
+	private   var resetFacialEventId : gameDelayID;
+	private   var exitWorkspotSequenceEventId : gameDelayID;
+	private   var exitFearInVehicleEventId : gameDelayID;
+	private   var fastWalk : Bool;
+	private   var createThreshold : Bool;
+	private   var initialized : Bool;
+	private   var initCrowd : Bool;
+	private   var facialCooldown : Float;
+	private   var disturbComfortZoneAggressiveEventId : gameDelayID;
+	private   var backOffInProgress : Bool;
+	private   var backOffTimestamp : Float;
+	private   var crowdFearStage : gameFearStage;
+	private   var fearLocomotionWrapper : Bool;
+	private   var successfulFearDeescalation : Float;
+	private   var willingToCallPolice : Bool;
+	private   var deadBodyInvestigators : array:entEntityID;
+	private   var deadBodyStartingPosition : Vector4;
+	private   var currentStimThresholdValue : Int32;
+	private   var timeStampThreshold : Float;
+	private   var currentStealthStimThresholdValue : Int32;
+	private   var stealthTimeStampThreshold : Float;
+	private   var driverAllowedToGetAggressive : Bool;
+	private   var driverIsAggressive : Bool;
+	private   var logSource : EReactLogSource;
+	private   var gracePeriodDuration : Float;
+	private   var recentAlertObject : whandle:gameObject;
+	private   var recentAlertTimeStamp : Float;
+
+	static function BodyInvestigated(owner : whandle:ScriptedPuppet); // ReactionManagerComponent::BodyInvestigated;ScriptedPuppet
+	static function InGunshotCone(shooter : whandle:gameObject, target : whandle:gameObject) : Bool; // ReactionManagerComponent::InGunshotCone;GameObjectGameObject
+	static function IsTargetInFrontOfSource(source : whandle:gameObject, target : whandle:gameObject, optional frontAngle : Float, optional checkFullAngle : Bool) : Bool; // ReactionManagerComponent::IsTargetInFrontOfSource;GameObjectGameObjectFloatBool
+	static function ReactOnPlayerStealthStim(owner : whandle:gameObject, target : whandle:gameObject) : Bool; // ReactionManagerComponent::ReactOnPlayerStealthStim;GameObjectGameObject
+	static function SendVOEventToSquad(owner : whandle:gameObject, voEvent : CName, optional setOwnerAsAnsweringEntity : Bool, optional onlyForMembersInCombat : Bool); // ReactionManagerComponent::SendVOEventToSquad;GameObjectCNameBoolBool
+
+	event OnAIEvent(aiEvent : handle:AIAIEvent) : Bool; // OnAIEvent
+	event OnAddInvestigatedBodyEvent(evt : handle:AddInvestigatorEvent) : Bool; // OnAddInvestigatedBodyEvent
+	event OnAreaEnter(trigger : handle:entAreaEnteredEvent) : Bool; // OnAreaEnter
+	event OnAreaExit(trigger : handle:entAreaExitedEvent) : Bool; // OnAreaExit
+	event OnAttitudeGroupChanged(evt : handle:gameeventsAttitudeGroupChangedEvent) : Bool; // OnAttitudeGroupChanged
+	event OnBodyInvestigated(evt : handle:BodyInvestigatedEvent) : Bool; // OnBodyInvestigated
+	event OnBodyPickedUp(evt : handle:SetBodyPositionEvent) : Bool; // OnBodyPickedUp
+	event OnBumpEvent(evt : handle:gameinteractionsBumpEvent) : Bool; // OnBumpEvent
+	event OnCheckComfortZoneEvent(evt : handle:CheckComfortZoneEvent) : Bool; // OnCheckComfortZoneEvent
+	event OnCleanEnvironmentalHazardEvent(cleanEnvironmentalHazardEvent : handle:CleanEnvironmentalHazardEvent) : Bool; // OnCleanEnvironmentalHazardEvent
+	event OnClearFearOnHitEvent(evt : handle:ClearFearOnHitEvent) : Bool; // OnClearFearOnHitEvent
+	event OnCrosswalkEvent(evt : handle:gameinteractionsCrosswalkEvent) : Bool; // OnCrosswalkEvent
+	event OnCrowdCallingPoliceEvent(evt : handle:CrowdCallingPoliceEvent) : Bool; // OnCrowdCallingPoliceEvent
+	event OnCrowdReaction(reactionDelayEvent : handle:DelayedCrowdReactionEvent) : Bool; // OnCrowdReaction
+	event OnCrowdSettingsEvent(evt : handle:CrowdSettingsEvent) : Bool; // OnCrowdSettingsEvent
+	event OnDeescalateFearInVehicle(evt : handle:DeescalateFearInVehicle) : Bool; // OnDeescalateFearInVehicle
+	event OnDelayStimEvent(evt : handle:DelayStimEvent) : Bool; // OnDelayStimEvent
+	event OnDetectedEvent(evt : handle:senseOnDetectedEvent) : Bool; // OnDetectedEvent
+	event OnDisableUndeadAnimFeatureEvent(evt : handle:DisableUndeadAnimFeatureEvent) : Bool; // OnDisableUndeadAnimFeatureEvent
+	event OnDistrurbComfortZoneAggressiveEvent(evt : handle:DistrurbComfortZoneAggressiveEvent) : Bool; // OnDistrurbComfortZoneAggressiveEvent
+	event OnDisturbingComfortZoneEvent(evt : handle:DisturbingComfortZone) : Bool; // OnDisturbingComfortZoneEvent
+	event OnEndLookatEvent(evt : handle:EndLookatEvent) : Bool; // OnEndLookatEvent
+	event OnEventReceived(stimEvent : handle:senseStimuliEvent) : Bool; // OnEventReceived
+	event OnExitWorkspotSequenceEvent(evt : handle:ExitWorkspotSequenceEvent) : Bool; // OnExitWorkspotSequenceEvent
+	event OnExplorationEnteredEvent(evt : handle:moveExplorationEnteredEvent) : Bool; // OnExplorationEnteredEvent
+	event OnExplorationLeftEvent(evt : handle:moveExplorationLeftEvent) : Bool; // OnExplorationLeftEvent
+	event OnHighLevelStateDataEvent(evt : handle:gameeventsHighLevelStateDataEvent) : Bool; // OnHighLevelStateDataEvent
+	event OnIgnoreListEvent(evt : handle:IgnoreListEvent) : Bool; // OnIgnoreListEvent
+	event OnInCrowd(evt : handle:gameInCrowd) : Bool; // OnInCrowd
+	event OnIncapacitatedEvent(evt : handle:IncapacitatedEvent) : Bool; // OnIncapacitatedEvent
+	event OnLookedAtEvent(evt : handle:LookedAtEvent) : Bool; // OnLookedAtEvent
+	event OnNPCRoleChangeEvent(evt : handle:NPCRoleChangeEvent) : Bool; // OnNPCRoleChangeEvent
+	event OnOutOfCrowd(evt : handle:gameOutOfCrowd) : Bool; // OnOutOfCrowd
+	event OnPendingBehaviorChanged(value : Bool) : Bool; // OnPendingBehaviorChanged
+	event OnPlayerMuntedToMyVehicle(evt : handle:PlayerMuntedToMyVehicle) : Bool; // OnPlayerMuntedToMyVehicle
+	event OnPlayerProximityStartEvent(evt : handle:worldPlayerProximityStartEvent) : Bool; // OnPlayerProximityStartEvent
+	event OnPlayerProximityStopEvent(evt : handle:worldPlayerProximityStopEvent) : Bool; // OnPlayerProximityStopEvent
+	event OnProximityLookatEvent(evt : handle:ProximityLookatEvent) : Bool; // OnProximityLookatEvent
+	event OnRagdollEnabledEvent(evt : handle:entRagdollNotifyEnabledEvent) : Bool; // OnRagdollEnabledEvent
+	event OnRainEvent(evt : handle:worldRainEvent) : Bool; // OnRainEvent
+	event OnReactionBehaviorStatus(evt : handle:ReactionBehaviorStatus) : Bool; // OnReactionBehaviorStatus
+	event OnReactionChangeRequestEvent(evt : handle:gameeventsReactionChangeRequestEvent) : Bool; // OnReactionChangeRequestEvent
+	event OnReactionFinishedEvent(evt : handle:workReactionFinishedEvent) : Bool; // OnReactionFinishedEvent
+	event OnReevaluatePresetEvent(evt : handle:ReevaluatePresetEvent) : Bool; // OnReevaluatePresetEvent
+	event OnRepeatLookatEvent(evt : handle:RepeatLookatEvent) : Bool; // OnRepeatLookatEvent
+	event OnReprimandEscalationEvent(evt : handle:ReprimandEscalationEvent) : Bool; // OnReprimandEscalationEvent
+	event OnReprimandUpdate(evt : handle:ReprimandUpdate) : Bool; // OnReprimandUpdate
+	event OnResetFacialEvent(evt : handle:ResetFacialEvent) : Bool; // OnResetFacialEvent
+	event OnResetLookatReactionEvent(evt : handle:ResetLookatReactionEvent) : Bool; // OnResetLookatReactionEvent
+	event OnResetReactionEvent(evt : handle:ResetReactionEvent) : Bool; // OnResetReactionEvent
+	event OnResetVehicleHijackEvent(evt : handle:ResetVehicleHijackEvent) : Bool; // OnResetVehicleHijackEvent
+	event OnSecurityAreaCrossingPerimeter(evt : handle:SecurityAreaCrossingPerimeter) : Bool; // OnSecurityAreaCrossingPerimeter
+	event OnSecuritySystemOutput(evt : handle:SecuritySystemOutput) : Bool; // OnSecuritySystemOutput
+	event OnSenseVisibilityEvent(evt : handle:senseVisibilityEvent) : Bool; // OnSenseVisibilityEvent
+	event OnStanceLevelChanged(evt : handle:gameeventsStanceStateChangeEvent) : Bool; // OnStanceLevelChanged
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect) : Bool; // OnStatusEffectRemoved
+	event OnStealthStimThresholdEvent(thresholdEvent : handle:StealthStimThresholdEvent) : Bool; // OnStealthStimThresholdEvent
+	event OnStimThresholdEvent(thresholdEvent : handle:StimThresholdEvent) : Bool; // OnStimThresholdEvent
+	event OnSuspiciousObjectEvent(evt : handle:AIbehaviorSuspiciousObjectEvent) : Bool; // OnSuspiciousObjectEvent
+	event OnSwapPreset(evt : handle:SwapPresetEvent) : Bool; // OnSwapPreset
+	event OnSwapped(evt : handle:AIPuppetSwappedEvent) : Bool; // OnSwapped
+	event OnTeleported(evt : handle:AIPuppetTeleportedEvent) : Bool; // OnTeleported
+	event OnTerminateReactionLookatEvent(evt : handle:TerminateReactionLookatEvent) : Bool; // OnTerminateReactionLookatEvent
+	event OnTriggerDelayedReactionEvent(evt : handle:TriggerDelayedReactionEvent) : Bool; // OnTriggerDelayedReactionEvent
+	event OnVehicleHijackEvent(evt : handle:VehicleHijackEvent) : Bool; // OnVehicleHijackEvent
+	event OnVehicleHit(evt : handle:gameeventsVehicleHitEvent) : Bool; // OnVehicleHit
+	event OnWorkspotFinishedEvent(evt : handle:workWorkspotFinishedEvent) : Bool; // OnWorkspotFinishedEvent
+	event OnWorkspotStartedEvent(evt : handle:workWorkspotStartedEvent) : Bool; // OnWorkspotStartedEvent
+
+	function ActivateReactionLookAt(targetEntity : handle:entEntity, optional end : Bool, optional repeat : Bool, optional duration : Float, optional upperBody : Bool, optional inVehicle : Bool) : Bool; // ActivateReactionLookAt;EntityBoolBoolFloatBoolBool
+	function ActivateUndeadLookAt(targetEntity : handle:entEntity) : Bool; // ActivateUndeadLookAt;Entity
+	function AddInvestigatedBody(bodyID : entEntityID); // AddInvestigatedBody;EntityID
+	function AddReactionValueToStatPool(reactionData : handle:AIReactionData); // AddReactionValueToStatPool;AIReactionData
+	function CacheEvent(stimData : handle:StimEventTaskData); // CacheEvent;StimEventTaskData
+	function CacheReaction(reactionData : handle:AIReactionData); // CacheReaction;AIReactionData
+	function CalculateMoveTypeChangeDelay(totalDistance : Float, distanceLeft : Float, minDistance : Float, maxDelay : Float) : Float; // CalculateMoveTypeChangeDelay;FloatFloatFloatFloat
+	function CanAskToHolsterWeapon() : Bool; // CanAskToHolsterWeapon;
+	function CanReactInVehicle(stimEvent : handle:senseStimuliEvent) : Bool; // CanReactInVehicle;StimuliEvent
+	function CanStimInterruptCombat(stimEvent : handle:senseStimuliEvent, canIgnorePlayerCombatStim : Bool) : Bool; // CanStimInterruptCombat;StimuliEventBool
+	function CanTriggerAlertedFromHostileStim(stimEvent : handle:senseStimuliEvent) : Bool; // CanTriggerAlertedFromHostileStim;StimuliEvent
+	function CanTriggerCombatFromHostileStim(stimEvent : handle:senseStimuliEvent, reactionData : handle:AIReactionData) : Bool; // CanTriggerCombatFromHostileStim;StimuliEventAIReactionData
+	function CanTriggerExpressionLookAt() : Bool; // CanTriggerExpressionLookAt;
+	function CanTriggerPanicInCombat(stimEvent : handle:senseStimuliEvent) : Bool; // CanTriggerPanicInCombat;StimuliEvent
+	function CanTriggerReprimandOrder() : Bool; // CanTriggerReprimandOrder;
+	function CheckComfortZone(); // CheckComfortZone;
+	function CheckCrowd(); // CheckCrowd;
+	function CheckHearingDistance(stimEvent : handle:senseStimuliEvent) : Bool; // CheckHearingDistance;StimuliEvent
+	function CheckStalk(target : handle:gameObject, timeout : Float); // CheckStalk;GameObjectFloat
+	function ClearPendingReaction(); // ClearPendingReaction;
+	function CombatGracePeriodPassed(player : handle:PlayerPuppet) : Bool; // CombatGracePeriodPassed;PlayerPuppet
+	function ConvertFearStageToFearPhase(fearStage : gameFearStage) : Int32; // ConvertFearStageToFearPhase;gameFearStage
+	function CreateFearArea(stimEvent : handle:senseStimuliEvent, fearPhase : Int32); // CreateFearArea;StimuliEventInt32
+	function CreateFearThreashold(); // CreateFearThreashold;
+	function DeactiveLookAt(optional repeat : Bool) : Bool; // DeactiveLookAt;Bool
+	function DeescalateReprimand(); // DeescalateReprimand;
+	function DelayEnvironmentalHazardEvent(stimEvent : handle:senseStimuliEvent) : gameDelayID; // DelayEnvironmentalHazardEvent;StimuliEvent
+	function DelayReaction(stimType : gamedataStimType) : Bool; // DelayReaction;gamedataStimType
+	function DidTargetMakeMeAlerted(target : handle:gameObject) : Bool; // DidTargetMakeMeAlerted;GameObject
+	function FillStimData(stimEvent : handle:senseStimuliEvent) : StimEventData; // FillStimData;StimuliEvent
+	function FirstSquadMemberReaction() : Bool; // FirstSquadMemberReaction;
+	function GetActiveOrDesiredReactionData() : handle:AIReactionData; // GetActiveOrDesiredReactionData;
+	function GetActiveReactionData() : handle:AIReactionData; // GetActiveReactionData;
+	function GetActiveStimPriority() : gamedataStimPriority; // GetActiveStimPriority;
+	function GetActiveStimSource() : Vector4; // GetActiveStimSource;
+	function GetActiveStimTarget() : handle:gameObject; // GetActiveStimTarget;
+	function GetCombatTarget(source : whandle:gameObject, optional attacker : whandle:entEntity) : whandle:gameObject; // GetCombatTarget;GameObjectEntity
+	function GetCurrentStealthStimThresholdValue() : Int32; // GetCurrentStealthStimThresholdValue;
+	function GetCurrentStealthStimTimeStamp() : Float; // GetCurrentStealthStimTimeStamp;
+	function GetCurrentStimThresholdValue() : Int32; // GetCurrentStimThresholdValue;
+	function GetCurrentStimTimeStamp() : Float; // GetCurrentStimTimeStamp;
+	function GetDesiredReactionData() : handle:AIReactionData; // GetDesiredReactionData;
+	function GetDesiredReactionName() : gamedataOutput; // GetDesiredReactionName;
+	function GetEnvironmentalHazards() : array:handle:senseStimuliEvent; // GetEnvironmentalHazards;
+	function GetFearAnimWrapper(fearPhase : Int32) : CName; // GetFearAnimWrapper;Int32
+	function GetFearReactionPhase(stimEvent : handle:senseStimuliEvent) : Int32; // GetFearReactionPhase;StimuliEvent
+	function GetGrenadeInstigator(stimEvent : handle:senseStimuliEvent) : whandle:gameObject; // GetGrenadeInstigator;StimuliEvent
+	function GetIgnoreList() : array:entEntityID; // GetIgnoreList;
+	function GetInPendingBehavior() : Bool; // GetInPendingBehavior;
+	function GetOutputPriority(output : gamedataOutput) : Float; // GetOutputPriority;gamedataOutput
+	function GetOwnerPuppet() : handle:ScriptedPuppet; // GetOwnerPuppet;
+	function GetPendingReactionName() : gamedataOutput; // GetPendingReactionName;
+	function GetPreviousFearPhase() : Int32; // GetPreviousFearPhase;
+	function GetPuppetReactionBlackboard() : handle:gameIBlackboard; // GetPuppetReactionBlackboard;
+	function GetRandomFearLocomotionAnimWrapper(fearPhase : Int32, optional stimType : gamedataStimType) : CName; // GetRandomFearLocomotionAnimWrapper;Int32gamedataStimType
+	function GetReactionBehaviorName() : gamedataOutput; // GetReactionBehaviorName;
+	function GetReactionCache() : array:handle:AIReactionData; // GetReactionCache;
+	function GetReactionOutput(stimType : gamedataStimType, rules : script_ref:array:whandle:gamedataRule_Record) : ReactionOutput; // GetReactionOutput;gamedataStimTypescript_ref<array<Rule_Record>>
+	function GetReactionPreset() : whandle:gamedataReactionPreset_Record; // GetReactionPreset;
+	function GetRealStimSource(stimEvent : handle:senseStimuliEvent) : whandle:gameObject; // GetRealStimSource;StimuliEvent
+	function GetReceivedStimPropagation() : gamedataStimPropagation; // GetReceivedStimPropagation;
+	function GetReceivedStimType() : gamedataStimType; // GetReceivedStimType;
+	function GetRules() : array:whandle:gamedataRule_Record; // GetRules;
+	function GetSpreadFearPhase(stimEvent : handle:senseStimuliEvent) : Int32; // GetSpreadFearPhase;StimuliEvent
+	function GetStimSource(stimEvent : handle:senseStimuliEvent) : Vector4; // GetStimSource;StimuliEvent
+	function GetStimuliCache() : array:handle:StimEventTaskData; // GetStimuliCache;
+	function GetThreatDistanceSquared(threat : handle:gameObject) : Float; // GetThreatDistanceSquared;GameObject
+	function GetWorkSpotReactionFlag() : Bool; // GetWorkSpotReactionFlag;
+	function HandleCrowdReaction(stimEvent : handle:senseStimuliEvent); // HandleCrowdReaction;StimuliEvent
+	function HandleStimEvent(stimData : handle:StimEventTaskData); // HandleStimEvent;StimEventTaskData
+	function HandleStimEventByTask(stimEvent : handle:senseStimuliEvent, optional delayed : Bool); // HandleStimEventByTask;StimuliEventBool
+	function HandleStimEventTask(data : handle:gameScriptTaskData); // HandleStimEventTask;ScriptTaskData
+	function HasCombatTarget() : Bool; // HasCombatTarget;
+	function HelpAlly(ally : whandle:gameObject, targetOfAlly : whandle:gameObject, onlyAlertNoThreat : Bool, optional dontTrySquad : Bool); // HelpAlly;GameObjectGameObjectBoolBool
+	function HelpAllyWithAlert(ownerPuppet : handle:ScriptedPuppet, target : whandle:gameObject, timeToLive : Float); // HelpAllyWithAlert;ScriptedPuppetGameObjectFloat
+	function HelpPlayer(enemy : whandle:gameObject); // HelpPlayer;GameObject
+	function InformInvestigators(); // InformInvestigators;
+	function InitCrowd(); // InitCrowd;
+	function Initialiaze(); // Initialiaze;
+	function InvestigatingAlready(stimEvent : handle:senseStimuliEvent) : Bool; // InvestigatingAlready;StimuliEvent
+	function IsAlertedByDeadBody() : Bool; // IsAlertedByDeadBody;
+	function IsDuplicate(stimEvent : handle:senseStimuliEvent, cacheStim : handle:senseStimuliEvent) : Bool; // IsDuplicate;StimuliEventStimuliEvent
+	function IsEventDuplicated(stimEvent : handle:senseStimuliEvent) : Bool; // IsEventDuplicated;StimuliEvent
+	function IsFearLocomotionWrapperSet() : Bool; // IsFearLocomotionWrapperSet;
+	function IsIllegalActionAgainstGanger(stimEvent : handle:senseStimuliEvent) : Bool; // IsIllegalActionAgainstGanger;StimuliEvent
+	function IsInList(list : script_ref:array:StimEventData, stimData : StimEventData) : Bool; // IsInList;script_ref<array<StimEventData>>StimEventData
+	function IsInPendingBehavior() : Bool; // IsInPendingBehavior;
+	function IsInTrafficLane() : Bool; // IsInTrafficLane;
+	function IsInitAnimCall(stim : gamedataStimType) : Bool; // IsInitAnimCall;gamedataStimType
+	function IsInitAnimShock(behavior : gamedataOutput) : Bool; // IsInitAnimShock;gamedataOutput
+	function IsLowerPriority(stimEvent : handle:senseStimuliEvent, activePriority : gamedataStimPriority) : Bool; // IsLowerPriority;StimuliEventgamedataStimPriority
+	function IsPlayerAiming() : Bool; // IsPlayerAiming;
+	function IsPlayerCarryingBody(playerPuppet : whandle:PlayerPuppet) : Bool; // IsPlayerCarryingBody;PlayerPuppet
+	function IsPlayerFearThreat() : Bool; // IsPlayerFearThreat;
+	function IsPlayerInZone(zone : gamePSMZones) : Bool; // IsPlayerInZone;gamePSMZones
+	function IsReactionAvailableInPreset(stimTrigger : gamedataStimType) : Bool; // IsReactionAvailableInPreset;gamedataStimType
+	function IsSameSourceObject(stimEvent : handle:senseStimuliEvent) : Bool; // IsSameSourceObject;StimuliEvent
+	function IsSameStimulus(stimEvent : handle:senseStimuliEvent) : Bool; // IsSameStimulus;StimuliEvent
+	function IsSourceGrenade(stimEvent : handle:senseStimuliEvent) : Bool; // IsSourceGrenade;StimuliEvent
+	function IsSquadMateInDanger() : Bool; // IsSquadMateInDanger;
+	function IsStimuliEventValid(stimEvent : handle:senseStimuliEvent) : Bool; // IsStimuliEventValid;StimuliEvent
+	function IsTargetArmed(target : handle:gameObject) : Bool; // IsTargetArmed;GameObject
+	function IsTargetBehind(target : whandle:gameObject, optional angle : Float, optional meBehindOfTarget : Bool) : Bool; // IsTargetBehind;GameObjectFloatBool
+	function IsTargetClose(target : whandle:gameObject, distance : Float) : Bool; // IsTargetClose;GameObjectFloat
+	function IsTargetDetected(target : handle:gameObject) : Bool; // IsTargetDetected;GameObject
+	function IsTargetInFront(target : whandle:gameObject, optional frontAngle : Float, optional meInFrontOfTarget : Bool, optional checkFullAngle : Bool) : Bool; // IsTargetInFront;GameObjectFloatBoolBool
+	function IsTargetInMovementDirection(target : whandle:gameObject) : Bool; // IsTargetInMovementDirection;GameObject
+	function IsTargetInSameSecuritySystem(target : whandle:gameObject) : Bool; // IsTargetInSameSecuritySystem;GameObject
+	function IsTargetInterestingForPerception(target : handle:gameObject) : Bool; // IsTargetInterestingForPerception;GameObject
+	function IsTargetInterestingForRecentSquadMates(target : handle:gameObject, ally : handle:gameObject) : Bool; // IsTargetInterestingForRecentSquadMates;GameObjectGameObject
+	function IsTargetMelee(target : handle:gameObject) : Bool; // IsTargetMelee;GameObject
+	function IsTargetPositionClose(targetPos : Vector4, distance : Float) : Bool; // IsTargetPositionClose;Vector4Float
+	function IsTargetRecentSquadAlly(target : whandle:gameObject) : Bool; // IsTargetRecentSquadAlly;GameObject
+	function IsTargetSquadAlly(target : whandle:gameObject) : Bool; // IsTargetSquadAlly;GameObject
+	function IsTargetVeryClose(target : whandle:gameObject) : Bool; // IsTargetVeryClose;GameObject
+	function IsTargetVisible(target : handle:gameObject) : Bool; // IsTargetVisible;GameObject
+	function IsTargetVisibleBeyondSenses(stimEvent : handle:senseStimuliEvent, reactionData : handle:AIReactionData) : Bool; // IsTargetVisibleBeyondSenses;StimuliEventAIReactionData
+	function IsVisibleRaycast(stimEvent : handle:senseStimuliEvent, stimOffset : Vector4) : Bool; // IsVisibleRaycast;StimuliEventVector4
+	function JoinSearchWithAlert(ownerPuppet : handle:ScriptedPuppet, target : whandle:gameObject, timeToLive : Float); // JoinSearchWithAlert;ScriptedPuppetGameObjectFloat
+	function Log(category : CName, message : String); // Log;CNameString
+	function LogCategory(suffix : String) : CName; // LogCategory;String
+	function LogEnabled() : Bool; // LogEnabled;
+	function LogFailure(message : String); // LogFailure;String
+	function LogInfo(message : String); // LogInfo;String
+	function LogReaction(category : CName, message : String); // LogReaction;CNameString
+	function LogReactionData(category : CName, reactionData : handle:AIReactionData, message : String); // LogReactionData;CNameAIReactionDataString
+	function LogStart(source : EReactLogSource, message : String); // LogStart;EReactLogSourceString
+	function LogStim(category : CName, stimType : gamedataStimType, stimPropagation : gamedataStimPropagation, message : String); // LogStim;CNamegamedataStimTypegamedataStimPropagationString
+	function LogSuccess(message : String); // LogSuccess;String
+	function MapLookAtVO(lookAtData : LookAtData, out vo : CName); // MapLookAtVO;LookAtDataCName
+	function MapReactionPreset(mappingName : script_ref:String); // MapReactionPreset;script_ref<String>
+	function NotifySecuritySystem(stimType : gamedataStimType, stimObject : handle:gameObject); // NotifySecuritySystem;gamedataStimTypeGameObject
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameDetach(); // OnGameDetach;
+	function OnIncapacitated(instigator : handle:gameObject); // OnIncapacitated;GameObject
+	function OnReactionEnded(); // OnReactionEnded;
+	function OnReactionStarted(reactionData : handle:AIReactionData); // OnReactionStarted;AIReactionData
+	function PickCloserTarget(newStimEvent : handle:senseStimuliEvent, out updateByActive : Bool); // PickCloserTarget;StimuliEventBool
+	function PlayBumpInWorkspot(side : gameinteractionsBumpSide, direction : Vector4); // PlayBumpInWorkspot;gameinteractionsBumpSideVector4
+	function ProcessEnvironmentalHazard(stimEvent : handle:senseStimuliEvent); // ProcessEnvironmentalHazard;StimuliEvent
+	function ProcessReactionOutput(stimData : handle:StimEventTaskData, stimParams : StimParams); // ProcessReactionOutput;StimEventTaskDataStimParams
+	function ProcessStimForTheDead(stimEvent : handle:senseStimuliEvent); // ProcessStimForTheDead;StimuliEvent
+	function ProcessStimParams(stimEvent : handle:senseStimuliEvent) : StimParams; // ProcessStimParams;StimuliEvent
+	function ReactToSecurityOutput(evt : handle:SecuritySystemOutput); // ReactToSecurityOutput;SecuritySystemOutput
+	function ReactToSecuritySystemOutputByTask(evt : handle:SecuritySystemOutput); // ReactToSecuritySystemOutputByTask;SecuritySystemOutput
+	function ReactToSecuritySystemOutputTask(data : handle:gameScriptTaskData); // ReactToSecuritySystemOutputTask;ScriptTaskData
+	function RecentReaction(behaviorName : gamedataOutput) : Bool; // RecentReaction;gamedataOutput
+	function ReevaluateReaction(); // ReevaluateReaction;
+	function ReevaluateReactionPreset(optional ignoreSavedPreset : Bool); // ReevaluateReactionPreset;Bool
+	function ReflectSecSysStateToHLS(securityState : ESecuritySystemState) : Bool; // ReflectSecSysStateToHLS;ESecuritySystemState
+	function ReprimandEscalation(); // ReprimandEscalation;
+	function ResetAllFearAnimWrappers(); // ResetAllFearAnimWrappers;
+	function ResetFacial(cooldown : Float); // ResetFacial;Float
+	function SafeToExitFear() : Bool; // SafeToExitFear;
+	function SafeToExitPanicFear() : Bool; // SafeToExitPanicFear;
+	function SelectFacialEmotion(out lookAtData : LookAtData); // SelectFacialEmotion;LookAtData
+	function SendIgnoreEventToSquad(optional ignoreListEvent : handle:IgnoreListEvent); // SendIgnoreEventToSquad;IgnoreListEvent
+	function SetBaseReactionPreset(optional ignoreSavedPreset : Bool); // SetBaseReactionPreset;Bool
+	function SetCrowdRunningAwayAnimFeature(stimType : gamedataStimType); // SetCrowdRunningAwayAnimFeature;gamedataStimType
+	function SetDownedBodyVisibleComponent(visible : Bool, description : CName); // SetDownedBodyVisibleComponent;BoolCName
+	function SetReactionPreset(reactionPreset : handle:gamedataReactionPreset_Record); // SetReactionPreset;ReactionPreset_Record
+	function SetWarningMessage(lockey : script_ref:String); // SetWarningMessage;script_ref<String>
+	function ShouldAddToIgnoreList(stimType : gamedataStimType) : Bool; // ShouldAddToIgnoreList;gamedataStimType
+	function ShouldAudioStimBeProcessed(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldAudioStimBeProcessed;StimuliEvent
+	function ShouldEventBeProcessed(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldEventBeProcessed;StimuliEvent
+	function ShouldFearInPlace(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldFearInPlace;StimuliEvent
+	function ShouldFearWhileAggressiveCrowdNPCCombat(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldFearWhileAggressiveCrowdNPCCombat;StimuliEvent
+	function ShouldFriendlyStimBeProcessed(stimEvent : handle:senseStimuliEvent, investigateData : senseStimInvestigateData) : Bool; // ShouldFriendlyStimBeProcessed;StimuliEventstimInvestigateData
+	function ShouldHelpCausePlayerGotTooClose(targetOfTarget : whandle:gameObject, onlyAlertNoThreat : script_ref:Bool) : Bool; // ShouldHelpCausePlayerGotTooClose;GameObjectscript_ref<Bool>
+	function ShouldHelpTargetFromSameAttitudeGroup(target : whandle:gameObject, targetOfTarget : whandle:gameObject) : Bool; // ShouldHelpTargetFromSameAttitudeGroup;GameObjectGameObject
+	function ShouldHostileStimBeProcessed(stimEvent : handle:senseStimuliEvent, investigateData : senseStimInvestigateData) : Bool; // ShouldHostileStimBeProcessed;StimuliEventstimInvestigateData
+	function ShouldIgnoreCombatStim(stimType : gamedataStimType, instigator : whandle:ScriptedPuppet, source : whandle:ScriptedPuppet, sourcePos : Vector4, optional log : Bool) : Bool; // ShouldIgnoreCombatStim;gamedataStimTypeScriptedPuppetScriptedPuppetVector4Bool
+	function ShouldIgnoreCombatStim(stimType : gamedataStimType, instigator : whandle:ScriptedPuppet, source : whandle:ScriptedPuppet, sourcePos : Vector4, canDelay : Bool, out canIgnoreOnlyDueToDelay : Bool, out canIgnorePlayerCombatStim : Bool, log : Bool) : Bool; // ShouldIgnoreCombatStim;gamedataStimTypeScriptedPuppetScriptedPuppetVector4BoolBoolBoolBool
+	function ShouldInterruptCurrentFearStage(fearPhase : Int32) : Bool; // ShouldInterruptCurrentFearStage;Int32
+	function ShouldNeutralStimBeProcessed(stimEvent : handle:senseStimuliEvent, investigateData : senseStimInvestigateData) : Bool; // ShouldNeutralStimBeProcessed;StimuliEventstimInvestigateData
+	function ShouldPreventionReact(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldPreventionReact;StimuliEvent
+	function ShouldReactToNPCGrenade(grenade : whandle:BaseGrenade) : Bool; // ShouldReactToNPCGrenade;BaseGrenade
+	function ShouldStimBeProcessed(stimEvent : handle:senseStimuliEvent, delayed : Bool) : Bool; // ShouldStimBeProcessed;StimuliEventBool
+	function ShouldStimBeProcessedByCrowd(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldStimBeProcessedByCrowd;StimuliEvent
+	function ShouldTriggerAggressiveCrowdNPCCombat(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldTriggerAggressiveCrowdNPCCombat;StimuliEvent
+	function ShouldTriggerGrenadeDodgeBehavior(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldTriggerGrenadeDodgeBehavior;StimuliEvent
+	function ShouldUpdateThreatPosition(stimEvent : handle:senseStimuliEvent) : Bool; // ShouldUpdateThreatPosition;StimuliEvent
+	function ShouldVisualStimBeProcessed(stimEvent : handle:senseStimuliEvent, reactionData : handle:AIReactionData) : Bool; // ShouldVisualStimBeProcessed;StimuliEventAIReactionData
+	function SourceAttitude(source : whandle:gameObject, attitude : EAIAttitude) : Bool; // SourceAttitude;GameObjectEAIAttitude
+	function SpreadFear(phase : Int32); // SpreadFear;Int32
+	function StartEscalateReprimand(); // StartEscalateReprimand;
+	function StimRule(rule : whandle:gamedataRule_Record, stimType : gamedataStimType) : Bool; // StimRule;Rule_RecordgamedataStimType
+	function SurrenderToLeave() : Bool; // SurrenderToLeave;
+	function TargetVerticalCheck(target : whandle:gameObject, optional distance : Float) : Bool; // TargetVerticalCheck;GameObjectFloat
+	function TriggerAggressiveCrowdBehavior(owner : handle:gameObject, target : handle:gameObject); // TriggerAggressiveCrowdBehavior;GameObjectGameObject
+	function TriggerAlerted(optional instigator : whandle:gameObject); // TriggerAlerted;GameObject
+	function TriggerBehaviorReaction(reaction : ReactionOutput, stimTaskData : handle:StimEventTaskData, stimData : StimEventData); // TriggerBehaviorReaction;ReactionOutputStimEventTaskDataStimEventData
+	function TriggerCombat(trespasser : whandle:gameObject); // TriggerCombat;GameObject
+	function TriggerFacialLookAtReaction(optional forceFear : Bool, optional playVO : Bool); // TriggerFacialLookAtReaction;BoolBool
+	function TriggerFearFacial(phase : Int32); // TriggerFearFacial;Int32
+	function TriggerPendingReaction(); // TriggerPendingReaction;
+	function TriggerReactionBehaviorForCrowd(target : handle:gameObject, reaction : gamedataOutput, initAnimInWorkspot : Bool, optional sourcePosition : Vector4); // TriggerReactionBehaviorForCrowd;GameObjectgamedataOutputBoolVector4
+	function TriggerReactionBehaviorForCrowd(stimEvent : handle:senseStimuliEvent, reaction : gamedataOutput, dontPlayStartUpAnimation : Bool, optional skipInitialAnimation : Bool); // TriggerReactionBehaviorForCrowd;StimuliEventgamedataOutputBoolBool
+	function TryTriggerCombatOrAlertedFromHostileStim(stimEvent : handle:senseStimuliEvent, stimData : handle:StimEventTaskData, reactionData : handle:AIReactionData, instigator : handle:gameObject) : Bool; // TryTriggerCombatOrAlertedFromHostileStim;StimuliEventStimEventTaskDataAIReactionDataGameObject
+	function UpdateActiveReaction(reaction : ReactionOutput, stimEvent : handle:senseStimuliEvent, stimData : StimEventData, updateByActive : Bool); // UpdateActiveReaction;ReactionOutputStimuliEventStimEventDataBool
+	function UpdateStimSource(); // UpdateStimSource;
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

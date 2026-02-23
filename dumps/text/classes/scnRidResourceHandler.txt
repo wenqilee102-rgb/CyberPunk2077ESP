@@ -1,0 +1,5 @@
+import struct scnRidResourceHandler
+{
+	var id : scnRidResourceId;
+	var ridResource : rRef:scnRidResource;
+}

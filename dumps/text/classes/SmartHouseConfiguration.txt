@@ -1,0 +1,5 @@
+struct SmartHouseConfiguration
+{
+	public    var enableInteraction : Bool;
+	public    var factName : CName;
+}

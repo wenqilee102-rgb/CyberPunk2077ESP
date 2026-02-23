@@ -1,0 +1,25 @@
+import class worldStaticFogVolumeNode extends worldNode
+{
+	var priority : Uint8;
+	var absolute : Bool;
+	var applyHeightFalloff : Bool;
+	var densityFalloff : Float;
+	var blendFalloff : Float;
+	var densityFactor : Float;
+	var absorption : Float;
+	var streamingDistance : Float;
+	var ambientScale : Float;
+	var envColorGroup : EEnvColorGroup;
+	var color : Color;
+	var lightChannels : rendLightChannel;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

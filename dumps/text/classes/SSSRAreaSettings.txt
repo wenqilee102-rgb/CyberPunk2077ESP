@@ -1,0 +1,15 @@
+import class SSSRAreaSettings extends IAreaSettings
+{
+	var depthFadeStart : Float;
+	var depthFadeEnd : Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

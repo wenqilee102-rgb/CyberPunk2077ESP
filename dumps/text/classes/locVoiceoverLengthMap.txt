@@ -1,0 +1,8 @@
+import class locVoiceoverLengthMap extends ISerializable
+{
+	var entries : array:locVoLengthEntry;
+}
+
+import class abstract ISerializable
+{
+}

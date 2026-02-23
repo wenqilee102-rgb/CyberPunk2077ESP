@@ -1,0 +1,33 @@
+import class gamedataAIActionTarget_Record extends gamedataTweakDBRecord
+{
+	import function BehaviorArgumentName() : CName; // BehaviorArgumentName
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function IsCoverID() : Bool; // IsCoverID
+	import function IsObject() : Bool; // IsObject
+	import function IsPosition() : Bool; // IsPosition
+	import function TargetSlot() : CName; // TargetSlot
+	import function TrackingMode() : whandle:gamedataTrackingMode_Record; // TrackingMode
+	import function TrackingModeHandle() : handle:gamedataTrackingMode_Record; // TrackingModeHandle
+	import function Type() : gamedataAIActionTarget; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

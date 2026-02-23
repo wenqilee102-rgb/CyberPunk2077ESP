@@ -1,0 +1,11 @@
+import struct PSODescRasterizerModeDesc
+{
+	var wireframe : Bool;
+	var frontWinding : PSODescRasterizerModeFrontFaceWinding;
+	var cullMode : PSODescRasterizerModeCullMode;
+	var allowMSAA : Bool;
+	var conservativeRasterization : Bool;
+	var offsetMode : PSODescRasterizerModeOffsetMode;
+	var scissors : Bool;
+	var valid : Bool;
+}

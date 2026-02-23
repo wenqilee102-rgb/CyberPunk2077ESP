@@ -1,0 +1,28 @@
+class DefaultUIInventoryItemStatsProvider extends IUIInventoryItemStatsProvider
+{
+	private   var statType : gamedataStatType;
+	private   var manager : whandle:UIInventoryItemsManager;
+
+	static function Make(statType : gamedataStatType, optional manager : whandle:UIInventoryItemsManager) : handle:DefaultUIInventoryItemStatsProvider; // DefaultUIInventoryItemStatsProvider::Make;gamedataStatTypeUIInventoryItemsManager
+
+	function Get() : handle:UIItemStatProperties; // Get;
+}
+
+class abstract IUIInventoryItemStatsProvider extends IScriptable
+{
+	function Get() : handle:UIItemStatProperties; // Get;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

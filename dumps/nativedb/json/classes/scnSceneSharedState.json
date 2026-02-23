@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"scnSceneSharedState","d":8,"e":[{"a":{"a":14},"b":"entrypoint","c":128},{"a":{"a":31,"c":{"b":"scnSyncNodeSignal"}},"b":"syncNodesVisited","c":128},{"a":{"a":9},"b":"instanceHash","c":128},{"a":{"a":1},"b":"finishedOnServer","c":128},{"a":{"a":1},"b":"finishedOnClient","c":128}]}

@@ -1,0 +1,49 @@
+class ContainerObjectSingleItemPS extends gameLootContainerBasePS
+{
+}
+
+class gameLootContainerBasePS extends gameObjectPS
+{
+	protected var markAsQuest : Bool;
+	protected var isDisabled : Bool;
+	protected var isLocked : Bool;
+	protected var shouldHideLockedUI : Bool;
+	protected var started : Bool;
+
+	function IsDisabled() : Bool; // IsDisabled;
+	function IsLocked() : Bool; // IsLocked;
+	function IsMarkedAsQuest() : Bool; // IsMarkedAsQuest;
+	function IsStarted() : Bool; // IsStarted;
+	function OnSetContainerStateEventEvent(evt : handle:SetContainerStateEvent) : EntityNotificationType; // OnSetContainerStateEventEvent;SetContainerStateEvent
+	function OnToggleContainerLockEvent(evt : handle:ToggleContainerLockEvent) : EntityNotificationType; // OnToggleContainerLockEvent;ToggleContainerLockEvent
+	function SetIsMarkedAsQuest(isQuest : Bool); // SetIsMarkedAsQuest;Bool
+	function SetLocked(locked : Bool); // SetLocked;Bool
+	function SetStarted(started : Bool); // SetStarted;Bool
+	function ShouldHideLockedUI() : Bool; // ShouldHideLockedUI;
+}
+
+import class gameObjectPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

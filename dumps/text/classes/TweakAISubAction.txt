@@ -1,0 +1,27 @@
+class abstract TweakAISubAction extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, subActionRecord : whandle:gamedataAISubAction_Record) : Bool; // TweakAISubAction::Activate;ScriptExecutionContextAISubAction_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, subActionRecord : whandle:gamedataAISubAction_Record, duration : Float, interrupted : Bool); // TweakAISubAction::Deactivate;ScriptExecutionContextAISubAction_RecordFloatBool
+	static function GetAnimVariation(context : AIbehaviorScriptExecutionContext, subActionRecord : whandle:gamedataAISubAction_Record, out animVariation : Int32) : Bool; // TweakAISubAction::GetAnimVariation;ScriptExecutionContextAISubAction_RecordInt32
+	static function GetPhaseDuration(context : AIbehaviorScriptExecutionContext, subActionRecord : whandle:gamedataAISubAction_Record, actionPhase : EAIActionPhase, baseDuration : Float, out duration : Float) : Bool; // TweakAISubAction::GetPhaseDuration;ScriptExecutionContextAISubAction_RecordEAIActionPhaseFloatFloat
+	static function OnCantFindProperActivateMethod(className : CName); // TweakAISubAction::OnCantFindProperActivateMethod;CName
+	static function OnCantFindProperDeactivateMethod(className : CName); // TweakAISubAction::OnCantFindProperDeactivateMethod;CName
+	static function OnCantFindProperGetAnimVariationMethod(className : CName); // TweakAISubAction::OnCantFindProperGetAnimVariationMethod;CName
+	static function OnCantFindProperGetPhaseDurationnMethod(className : CName); // TweakAISubAction::OnCantFindProperGetPhaseDurationnMethod;CName
+	static function OnCantFindProperUpdateMethod(className : CName); // TweakAISubAction::OnCantFindProperUpdateMethod;CName
+	static function Update(context : AIbehaviorScriptExecutionContext, subActionRecord : whandle:gamedataAISubAction_Record, duration : Float) : AIbehaviorUpdateOutcome; // TweakAISubAction::Update;ScriptExecutionContextAISubAction_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

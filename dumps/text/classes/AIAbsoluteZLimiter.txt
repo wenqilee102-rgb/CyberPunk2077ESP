@@ -1,0 +1,7 @@
+import struct AIAbsoluteZLimiter extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

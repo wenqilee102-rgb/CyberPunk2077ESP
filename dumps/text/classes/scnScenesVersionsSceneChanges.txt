@@ -1,0 +1,5 @@
+import struct scnScenesVersionsSceneChanges
+{
+	var scene : raRef:scnSceneResource;
+	var sceneChanges : array:scnScenesVersionsChangedRecord;
+}

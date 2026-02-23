@@ -1,0 +1,7 @@
+import struct worldCompiledEffectEventInfo
+{
+	var eventRUID : CRUID;
+	var placementIndexMask : Uint64;
+	var componentIndexMask : Uint64;
+	var flags : Uint8;
+}

@@ -1,0 +1,63 @@
+class CodexListVirtualNestedDataView extends VirtualNestedListDataView
+{
+	public    var currentFilter : CodexCategoryType;
+
+	function FilterItems(data : handle:VirutalNestedListData) : Bool; // FilterItems;VirutalNestedListData
+	function SetFilter(filterType : CodexCategoryType); // SetFilter;CodexCategoryType
+	function SortItems(compareBuilder : handle:CompareBuilder, left : handle:VirutalNestedListData, right : handle:VirutalNestedListData); // SortItems;CompareBuilderVirutalNestedListDataVirutalNestedListData
+}
+
+class VirtualNestedListDataView extends inkScriptableDataViewWrapper
+{
+	public    var compareBuilder : handle:CompareBuilder;
+	public    var defaultCollapsed : Bool;
+	public    var toggledLevels : array:Int32;
+
+	function FilterItem(data : handle:IScriptable) : Bool; // FilterItem;IScriptable
+	function FilterItems(data : handle:VirutalNestedListData) : Bool; // FilterItems;VirutalNestedListData
+	function PreSortItems(compareBuilder : handle:CompareBuilder, left : handle:VirutalNestedListData, right : handle:VirutalNestedListData); // PreSortItems;CompareBuilderVirutalNestedListDataVirutalNestedListData
+	function SetToggledLevels(toggledLevels : script_ref:array:Int32, defaultCollapsed : Bool); // SetToggledLevels;script_ref<array<Int32>>Bool
+	function Setup(); // Setup;
+	function SortItem(left : handle:IScriptable, right : handle:IScriptable) : Bool; // SortItem;IScriptableIScriptable
+	function SortItems(compareBuilder : handle:CompareBuilder, left : handle:VirutalNestedListData, right : handle:VirutalNestedListData); // SortItems;CompareBuilderVirutalNestedListDataVirutalNestedListData
+}
+
+import class inkScriptableDataViewWrapper extends inkBaseScriptableDataSource
+{
+	import function DisableSorting(); // DisableSorting
+	import function EnableSorting(); // EnableSorting
+	import function Filter(); // Filter
+	import function IsSortingEnabled() : Bool; // IsSortingEnabled
+	import function SetSource(source : whandle:inkBaseScriptableDataSource); // SetSource
+	import function Sort(); // Sort
+
+	function FilterItem(data : handle:IScriptable) : Bool; // FilterItem;IScriptable
+	function SortItem(left : handle:IScriptable, right : handle:IScriptable) : Bool; // SortItem;IScriptableIScriptable
+}
+
+import class inkBaseScriptableDataSource extends inkAbstractDataSourceWrapper
+{
+	import function GetItem(index : Uint32) : handle:IScriptable; // GetItem
+	import function HasItem(data : handle:IScriptable) : Bool; // HasItem
+}
+
+import class inkAbstractDataSourceWrapper extends IScriptable
+{
+	import function GetItemAsVariant(index : Uint32) : Variant; // GetItemAsVariant
+	import function HasItemAsVariant(data : Variant) : Bool; // HasItemAsVariant
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

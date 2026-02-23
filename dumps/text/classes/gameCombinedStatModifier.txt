@@ -1,0 +1,7 @@
+import struct gameCombinedStatModifier extends gameStatModifierBase
+{
+}
+
+import struct abstract gameStatModifierBase
+{
+}

@@ -1,0 +1,9 @@
+import class vgVectorGraphicDefinition extends ISerializable
+{
+	var rootShapeGroup : handle:vgVectorGraphicShape_Group;
+	var dimensions : Vector2;
+}
+
+import class abstract ISerializable
+{
+}

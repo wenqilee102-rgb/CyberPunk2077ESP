@@ -1,0 +1,7 @@
+import struct worldSceneRecordingNodeFilter
+{
+	var streamInNodesWithStreamingDistanceMoreThan : Float;
+	var streamOutPrefabProxyMeshesWithStreamingDistanceMoreThan : Float;
+	var meshNodesOnly : Bool;
+	var meshResourceFilter : worldSceneRecordingNodeMeshResourceFilter;
+}

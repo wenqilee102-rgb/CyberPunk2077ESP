@@ -1,0 +1,10 @@
+enum UIInventoryItemWeaponBarsType
+{
+	Ranged = 0,
+	Melee = 1,
+	Throwable = 2,
+	CyberwareWeapon = 3,
+	CyberwareRangedWeapon = 4,
+	InjectorHealing = 5,
+	InhalerHealing = 6
+}

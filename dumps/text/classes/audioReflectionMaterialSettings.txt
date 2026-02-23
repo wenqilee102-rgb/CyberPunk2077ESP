@@ -1,0 +1,19 @@
+import class audioReflectionMaterialSettings extends audioAudioMetadata
+{
+	var lowPass : Float;
+	var highPass : Float;
+	var gain : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

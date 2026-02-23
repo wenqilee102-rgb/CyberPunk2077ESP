@@ -1,0 +1,21 @@
+import class questSpawner_NodeType extends questSpawnManagerNodeType
+{
+	var spawnerReference : NodeRef;
+}
+
+import class abstract questSpawnManagerNodeType extends questIRetNodeType
+{
+	var action : populationSpawnerObjectCtrlAction;
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

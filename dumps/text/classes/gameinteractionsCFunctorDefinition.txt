@@ -1,0 +1,13 @@
+import class gameinteractionsCFunctorDefinition extends gameinteractionsIFunctorDefinition
+{
+	var predicate : gameinteractionsCPredicateDefinition;
+	var unaryOperator : gameinteractionsEUnaryOperator;
+}
+
+import class abstract gameinteractionsIFunctorDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

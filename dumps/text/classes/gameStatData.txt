@@ -1,0 +1,5 @@
+import struct gameStatData
+{
+	var modifiers : array:gameStatModifierHandle;
+	var statType : gamedataStatType;
+}

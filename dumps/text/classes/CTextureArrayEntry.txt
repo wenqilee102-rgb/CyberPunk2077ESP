@@ -1,0 +1,4 @@
+import struct CTextureArrayEntry
+{
+	var texture : rRef:CBitmapTexture;
+}

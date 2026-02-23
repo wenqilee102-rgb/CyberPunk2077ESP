@@ -1,0 +1,25 @@
+class PaymentBluelinePart extends gameinteractionsvisBluelinePart
+{
+	public    var playerMoney : Int32;
+	public    var paymentMoney : Int32;
+}
+
+import class gameinteractionsvisBluelinePart extends IScriptable
+{
+	var passed : Bool;
+	var captionIconRecordId : TweakDBID;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

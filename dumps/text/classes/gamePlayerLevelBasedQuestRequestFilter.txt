@@ -1,0 +1,8 @@
+import struct gamePlayerLevelBasedQuestRequestFilter extends gameCustomRequestFilter
+{
+	var percentMargin : Uint32;
+}
+
+import struct abstract gameCustomRequestFilter
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gameJournalInternetBase","b":"gameJournalInternetImage","c":"JournalInternetImage","d":8,"e":[{"a":{"a":30,"c":{"b":"inkTextureAtlas"}},"b":"textureAtlas","c":128},{"a":{"a":14},"b":"texturePart","c":128}],"f":[{"a":"GetAtlasPath","c":{"b":"redResourceReferenceScriptToken"},"d":132},{"a":"GetTexturePart","c":{"a":14},"d":132}]}

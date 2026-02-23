@@ -1,0 +1,27 @@
+import class gamedataVehicleWheelDrivingSetup_Record extends gamedataTweakDBRecord
+{
+	import function BackPreset() : whandle:gamedataVehicleWheelDrivingPreset_Record; // BackPreset
+	import function BackPresetHandle() : handle:gamedataVehicleWheelDrivingPreset_Record; // BackPresetHandle
+	import function FrontPreset() : whandle:gamedataVehicleWheelDrivingPreset_Record; // FrontPreset
+	import function FrontPresetHandle() : handle:gamedataVehicleWheelDrivingPreset_Record; // FrontPresetHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

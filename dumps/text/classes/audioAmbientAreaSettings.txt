@@ -1,0 +1,42 @@
+import class audioAmbientAreaSettings extends audioAudioMetadata
+{
+	var MetadataParent : CName;
+	var EmitterDecorator : CName;
+	var Priority : Int32;
+	var EventsOnEnter : array:audioAudEventStruct;
+	var EventsOnExit : array:audioAudEventStruct;
+	var EventsOnActive : array:audioAudEventStruct;
+	var SoundBanks : array:audioSoundBankStruct;
+	var Switches : array:audioAudSwitch;
+	var Parameters : array:audioAudParameter;
+	var Reverb : CName;
+	var reverbTransitionTime : Float;
+	var VoReverb : CName;
+	var FootstepMaterialOverride : CName;
+	var soundsLimitingSettings : CName;
+	var isMusic : Bool;
+	var groupingSettings : audioAmbientAreaGroupingSettings;
+	var quadSettings : audioQuadEmitterSettings;
+	var outerDistance : Float;
+	var verticalOuterDistance : Float;
+	var insideSourceDistance : Float;
+	var eventOverrides : CName;
+	var outdoornessOverride : Bool;
+	var outdoorness : Float;
+	var mergeRoomsWithinArea : Bool;
+	var mixingContext : CName;
+	var ambientPaletteEntries : array:audioAmbientPaletteEntry;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

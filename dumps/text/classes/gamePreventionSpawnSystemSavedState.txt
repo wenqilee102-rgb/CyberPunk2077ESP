@@ -1,0 +1,8 @@
+import class gamePreventionSpawnSystemSavedState extends ISerializable
+{
+	var areaIds : array:Uint64;
+}
+
+import class abstract ISerializable
+{
+}

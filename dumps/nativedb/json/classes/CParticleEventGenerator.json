@@ -1,0 +1,1 @@
+{"a":"IParticleEvent","b":"CParticleEventGenerator","d":8,"e":[{"a":{"b":"EParticleEventType"},"b":"evtType","c":128},{"a":{"a":10},"b":"frequency","c":128},{"a":{"a":10},"b":"probability","c":128}]}

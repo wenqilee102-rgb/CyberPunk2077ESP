@@ -1,0 +1,7 @@
+import struct gameEffectSingleFilterScriptContext
+{
+	import static function GetEntity(filterCtx : gameEffectSingleFilterScriptContext) : handle:entEntity; // GetEntity
+	import static function GetHitNormal(filterCtx : gameEffectSingleFilterScriptContext) : Vector4; // GetHitNormal
+	import static function GetHitPosition(filterCtx : gameEffectSingleFilterScriptContext) : Vector4; // GetHitPosition
+	import static function GetTimeDelta(filterCtx : gameEffectSingleFilterScriptContext) : Float; // GetTimeDelta
+}

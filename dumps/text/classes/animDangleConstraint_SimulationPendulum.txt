@@ -1,0 +1,48 @@
+import class animDangleConstraint_SimulationPendulum extends animDangleConstraint_SimulationSingleBone
+{
+	var constraintType : animPendulumConstraintType;
+	var halfOfMaxApertureAngle : Float;
+	var mass : Float;
+	var damping : Float;
+	var pullForceFactor : Float;
+	var pullForceDirectionLS : Vector3;
+	var externalForceWS : Vector3;
+	var externalForceWsLink : animVectorLink;
+	var collisionCapsuleRadius : Float;
+	var collisionCapsuleHeightExtent : Float;
+	var cosOfHalfMaxApertureAngle : Float;
+	var cosOfHalfOfHalfMaxApertureAngle : Float;
+	var sinOfHalfOfHalfMaxApertureAngle : Float;
+	var invertedMass : Float;
+	var simulationFps : Float;
+	var gravityWS : Float;
+	var projectionType : animPendulumProjectionType;
+	var constraintOrientation : Vector3;
+	var cosOfHalfXAngle : Float;
+	var cosOfHalfYAngle : Float;
+	var cosOfHalfZAngle : Float;
+	var sinOfHalfXAngle : Float;
+	var sinOfHalfYAngle : Float;
+	var sinOfHalfZAngle : Float;
+}
+
+import class abstract animDangleConstraint_SimulationSingleBone extends animDangleConstraint_Simulation
+{
+	var dangleBone : animTransformIndex;
+}
+
+import class abstract animDangleConstraint_Simulation extends ISerializable
+{
+	var collisionRoundedShapes : array:animCollisionRoundedShape;
+	var jsonCollisionShapes : rRef:JsonResource;
+	var jsonCollisionShapesLoadedSuccessfully : Bool;
+	var alpha : Float;
+	var rotateParentToLookAtDangle : Bool;
+	var parentRotationAltersTransformsOfDangleAndItsChildren : Bool;
+	var parentRotationAltersTransformsOfNonDanglesAndItsChildren : Bool;
+	var dangleAltersTransformsOfItsChildren : Bool;
+}
+
+import class abstract ISerializable
+{
+}

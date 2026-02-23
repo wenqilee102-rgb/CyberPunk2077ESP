@@ -1,0 +1,34 @@
+import class worldRotatingMeshNode extends worldMeshNode
+{
+	var rotationAxis : worldRotatingMeshNodeAxis;
+	var fullRotationTime : Float;
+	var reverseDirection : Bool;
+}
+
+import class worldMeshNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var forceAutoHideDistance : Float;
+	var occluderType : visWorldOccluderType;
+	var occluderAutohideDistanceScale : Uint8;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var castRayTracedGlobalShadows : shadowsShadowCastingMode;
+	var castRayTracedLocalShadows : shadowsShadowCastingMode;
+	var windImpulseEnabled : Bool;
+	var removeFromRainMap : Bool;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+	var lodLevelScales : Uint32;
+	var version : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

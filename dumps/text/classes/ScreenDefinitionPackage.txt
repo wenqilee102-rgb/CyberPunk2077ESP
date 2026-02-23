@@ -1,0 +1,5 @@
+struct ScreenDefinitionPackage
+{
+	public    var screenDefinition : handle:gamedataDeviceUIDefinition_Record;
+	public    var style : handle:gamedataWidgetStyle_Record;
+}

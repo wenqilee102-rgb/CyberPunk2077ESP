@@ -1,0 +1,21 @@
+class abstract AISubActionScaleDurationWithDistance_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionScaleDurationWithDistance_Record); // AISubActionScaleDurationWithDistance_Record_Implementation::Activate;ScriptExecutionContextAISubActionScaleDurationWithDistance_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionScaleDurationWithDistance_Record, duration : Float, interrupted : Bool); // AISubActionScaleDurationWithDistance_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionScaleDurationWithDistance_RecordFloatBool
+	static function GetPhaseDuration(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionScaleDurationWithDistance_Record, actionPhase : Int32, baseDuration : Float) : Float; // AISubActionScaleDurationWithDistance_Record_Implementation::GetPhaseDuration;ScriptExecutionContextAISubActionScaleDurationWithDistance_RecordInt32Float
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionScaleDurationWithDistance_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionScaleDurationWithDistance_Record_Implementation::Update;ScriptExecutionContextAISubActionScaleDurationWithDistance_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

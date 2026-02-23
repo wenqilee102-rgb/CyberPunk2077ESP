@@ -1,0 +1,27 @@
+class TakedownUtils extends IScriptable
+{
+	static function CleanUpGrappleState(caller : handle:DefaultTransition, stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, target : whandle:gameObject); // TakedownUtils::CleanUpGrappleState;DefaultTransitionStateContextStateGameScriptInterfaceGameObject
+	static function CleanUpGrappleState(caller : handle:DefaultTransition, stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface, targetID : entEntityID); // TakedownUtils::CleanUpGrappleState;DefaultTransitionStateContextStateGameScriptInterfaceEntityID
+	static function ExitWorkspot(scriptInterface : handle:gamestateMachineGameScriptInterface, owner : handle:gameObject); // TakedownUtils::ExitWorkspot;StateGameScriptInterfaceGameObject
+	static function SetIgnoreLookAtEntity(scriptInterface : handle:gamestateMachineGameScriptInterface, targetID : entEntityID, b : Bool); // TakedownUtils::SetIgnoreLookAtEntity;StateGameScriptInterfaceEntityIDBool
+	static function SetIgnoreLookAtEntity(scriptInterface : handle:gamestateMachineGameScriptInterface, target : whandle:gameObject, b : Bool); // TakedownUtils::SetIgnoreLookAtEntity;StateGameScriptInterfaceGameObjectBool
+	static function SetInGrappleAnimFeature(scriptInterface : handle:gamestateMachineGameScriptInterface, b : Bool); // TakedownUtils::SetInGrappleAnimFeature;StateGameScriptInterfaceBool
+	static function SetTakedownAction(stateContext : handle:gamestateMachineStateContextScript, actionName : ETakedownActionType); // TakedownUtils::SetTakedownAction;StateContextETakedownActionType
+	static function SetTargetBodyType(executionOwner : whandle:gameObject, target : whandle:gameObject, enable : Bool); // TakedownUtils::SetTargetBodyType;GameObjectGameObjectBool
+	static function ShouldForceTakedown(scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // TakedownUtils::ShouldForceTakedown;StateGameScriptInterface
+	static function TakedownActionNameToEnum(actionName : CName) : ETakedownActionType; // TakedownUtils::TakedownActionNameToEnum;CName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

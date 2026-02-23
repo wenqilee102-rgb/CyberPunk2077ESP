@@ -1,0 +1,10 @@
+import class gameTransformAnimationTrackItem extends ISerializable
+{
+	var impl : handle:gameTransformAnimationTrackItemImpl;
+	var startTime : Float;
+	var duration : Float;
+}
+
+import class abstract ISerializable
+{
+}

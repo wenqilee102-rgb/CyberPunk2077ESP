@@ -1,0 +1,24 @@
+import class questSetItemTags_NodeType extends questIItemManagerNodeType
+{
+	var params : array:questSetItemTags_NodeTypeParams;
+}
+
+import class abstract questIItemManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

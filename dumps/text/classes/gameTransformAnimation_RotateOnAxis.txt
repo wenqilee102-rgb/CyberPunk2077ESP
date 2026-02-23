@@ -1,0 +1,16 @@
+import class gameTransformAnimation_RotateOnAxis extends gameTransformAnimationTrackItemImpl
+{
+	var axis : gameTransformAnimation_RotateOnAxisAxis;
+	var numberOfFullRotations : Float;
+	var startAngle : Float;
+	var reverseDirection : Bool;
+	var movement : handle:gameTransformAnimation_Movement;
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

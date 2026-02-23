@@ -1,0 +1,24 @@
+class UIInventoryItemModDataPackage extends UIInventoryItemMod
+{
+	public    var Description : String;
+	public    var DataPackage : handle:gameUILocalizationDataPackage;
+	public    var AttunementData : handle:UIInventoryItemModAttunementData;
+}
+
+class UIInventoryItemMod extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

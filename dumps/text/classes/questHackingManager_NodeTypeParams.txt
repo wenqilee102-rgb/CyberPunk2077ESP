@@ -1,0 +1,5 @@
+import struct questHackingManager_NodeTypeParams
+{
+	var objectRef : NodeRef;
+	var actions : array:handle:questHackingManager_ActionType;
+}

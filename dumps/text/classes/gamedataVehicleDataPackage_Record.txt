@@ -1,0 +1,73 @@
+import class gamedataVehicleDataPackage_Record extends gamedataTweakDBRecord
+{
+	import function AdditionalAnimFeatures() : array:CName; // AdditionalAnimFeatures
+	import function AdditionalAnimFeaturesContains(item : CName) : Bool; // AdditionalAnimFeaturesContains
+	import function AnimVars() : array:CName; // AnimVars
+	import function AnimVarsContains(item : CName) : Bool; // AnimVarsContains
+	import function BarnDoorsTailgate() : Bool; // BarnDoorsTailgate
+	import function Body_dump_close_trunk_delay() : Float; // Body_dump_close_trunk_delay
+	import function BoneNames() : array:CName; // BoneNames
+	import function BoneNamesContains(item : CName) : Bool; // BoneNamesContains
+	import function CanStoreBody() : Bool; // CanStoreBody
+	import function CombatEntering() : Float; // CombatEntering
+	import function DisableSwitchSeats() : Bool; // DisableSwitchSeats
+	import function DriverCombat() : whandle:gamedataDriverCombatType_Record; // DriverCombat
+	import function DriverCombatHandle() : handle:gamedataDriverCombatType_Record; // DriverCombatHandle
+	import function Entering() : Float; // Entering
+	import function ExitDelay() : Float; // ExitDelay
+	import function FppCameraOverride() : CName; // FppCameraOverride
+	import function FromCombat() : Float; // FromCombat
+	import function GetAdditionalAnimFeaturesCount() : Int32; // GetAdditionalAnimFeaturesCount
+	import function GetAdditionalAnimFeaturesItem(index : Int32) : CName; // GetAdditionalAnimFeaturesItem
+	import function GetAnimVarsCount() : Int32; // GetAnimVarsCount
+	import function GetAnimVarsItem(index : Int32) : CName; // GetAnimVarsItem
+	import function GetBoneNamesCount() : Int32; // GetBoneNamesCount
+	import function GetBoneNamesItem(index : Int32) : CName; // GetBoneNamesItem
+	import function HasSpoiler() : Bool; // HasSpoiler
+	import function HasTurboCharger() : Bool; // HasTurboCharger
+	import function Immediate_open_close_duration() : Float; // Immediate_open_close_duration
+	import function InteractiveHood() : Bool; // InteractiveHood
+	import function InteractiveTrunk() : Bool; // InteractiveTrunk
+	import function KnockOffForce() : Float; // KnockOffForce
+	import function Normal_open() : Float; // Normal_open
+	import function Open_close_duration() : Float; // Open_close_duration
+	import function ParkingAngle() : Float; // ParkingAngle
+	import function SeatingTemplateOverride() : CName; // SeatingTemplateOverride
+	import function SlideDuration() : Float; // SlideDuration
+	import function SlidingRearDoors() : Bool; // SlidingRearDoors
+	import function SpeedToClose() : Float; // SpeedToClose
+	import function SpoilerSpeedToDeploy() : Float; // SpoilerSpeedToDeploy
+	import function SpoilerSpeedToRetract() : Float; // SpoilerSpeedToRetract
+	import function Stealing() : Float; // Stealing
+	import function Stealing_open() : Float; // Stealing_open
+	import function SwitchSeats() : Float; // SwitchSeats
+	import function TireOnVehicleDamageImpulseScalor() : Float; // TireOnVehicleDamageImpulseScalor
+	import function ToCombat() : Float; // ToCombat
+	import function UseAuxiliary() : Bool; // UseAuxiliary
+	import function VehSeatSet() : whandle:gamedataVehicleSeatSet_Record; // VehSeatSet
+	import function VehSeatSetHandle() : handle:gamedataVehicleSeatSet_Record; // VehSeatSetHandle
+	import function WheelBumperLengthScalor() : Float; // WheelBumperLengthScalor
+	import function WheelBumperVertOffsetScalor() : Float; // WheelBumperVertOffsetScalor
+	import function WheelBumperWidthScalor() : Float; // WheelBumperWidthScalor
+	import function WindowsRollDown() : Bool; // WindowsRollDown
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

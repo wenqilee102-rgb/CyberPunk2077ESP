@@ -1,0 +1,6 @@
+import struct effectSlotEntry
+{
+	var slotName : CName;
+	var relativePosition : Vector3;
+	var relativeRotation : Quaternion;
+}

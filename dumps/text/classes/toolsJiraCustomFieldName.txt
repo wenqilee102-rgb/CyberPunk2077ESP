@@ -1,0 +1,4 @@
+import struct toolsJiraCustomFieldName
+{
+	var name : String;
+}

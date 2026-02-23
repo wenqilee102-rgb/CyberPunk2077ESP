@@ -1,0 +1,23 @@
+import class animAnimNode_LookAtController extends animAnimNode_OnePoseInput
+{
+	var E3_HACK_offset : animVectorLink;
+	var orderedBodyParts : array:animLookAtPartInfo;
+	var stateMachinesSettings : array:animLookAtStateMachineSettings;
+	var bodyPartsDependencies : array:animLookAtPartsDependency;
+	var substepTime : Float;
+	var isFacial : Bool;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

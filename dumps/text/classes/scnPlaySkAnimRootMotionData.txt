@@ -1,0 +1,17 @@
+import struct scnPlaySkAnimRootMotionData
+{
+	var enabled : Bool;
+	var placementMode : scnRootMotionAnimPlacementMode;
+	var originMarker : scnMarker;
+	var originOffset : Transform;
+	var customBlendInTime : Float;
+	var customBlendInCurve : scnEasingType;
+	var removePitchRollRotation : Bool;
+	var meshDissolvingEnabled : Bool;
+	var snapToGroundStart : Float;
+	var snapToGroundEnd : Float;
+	var snapToGround : Bool;
+	var vehicleChangePhysicsState : Bool;
+	var vehicleEnabledPhysicsOnEnd : Bool;
+	var trajectoryLOD : array:scnAnimationMotionSample;
+}

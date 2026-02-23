@@ -1,0 +1,5 @@
+import struct gameuiCharacterCustomizationOptionVersionPrereq
+{
+	var optionName : CName;
+	var definitionName : CName;
+}

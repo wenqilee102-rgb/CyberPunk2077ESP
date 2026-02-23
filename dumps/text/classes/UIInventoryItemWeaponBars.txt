@@ -1,0 +1,45 @@
+class UIInventoryItemWeaponBars extends IScriptable
+{
+	public    var Values : array:handle:UIInventoryItemWeaponBar;
+	private   var type : UIInventoryItemWeaponBarsType;
+	private   var itemType : gamedataItemType;
+	private   var comparedBars : handle:UIInventoryItemWeaponBars;
+
+	static function CalculateHandling(cycleTime : Float, spreadDefaultX : Float, recoilKickMax : Float, recoilDirection : Float, recoilAngle : Float, swaySide : Float, swayBottom : Float) : Float; // UIInventoryItemWeaponBars::CalculateHandling;FloatFloatFloatFloatFloatFloatFloat
+	static function CalculateMeleeReturnTime() : Float; // UIInventoryItemWeaponBars::CalculateMeleeReturnTime;
+	static function CalculateMeleeStamina() : Float; // UIInventoryItemWeaponBars::CalculateMeleeStamina;
+	static function CalculateStamina(weaponTypeToStaminaCost : Float, magazineCapacity : Float, weaponEvolutionToStaminaCost : Float, firePower : Float) : Float; // UIInventoryItemWeaponBars::CalculateStamina;FloatFloatFloatFloat
+	static function GetCumulativeHealing(itemData : handle:gameItemData) : Float; // UIInventoryItemWeaponBars::GetCumulativeHealing;gameItemData
+	static function GetDisplayedStats(barsType : UIInventoryItemWeaponBarsType) : array:WeaponBarType; // UIInventoryItemWeaponBars::GetDisplayedStats;UIInventoryItemWeaponBarsType
+	static function GetInjectorDuration() : Float; // UIInventoryItemWeaponBars::GetInjectorDuration;
+	static function GetInstantHealing(itemData : handle:gameItemData) : Float; // UIInventoryItemWeaponBars::GetInstantHealing;gameItemData
+	static function GetItemTypeMultiplier(itemType : gamedataItemType) : Float; // UIInventoryItemWeaponBars::GetItemTypeMultiplier;gamedataItemType
+	static function GetProjectileLauncherDamage(itemData : whandle:gameItemData, player : whandle:PlayerPuppet) : Float; // UIInventoryItemWeaponBars::GetProjectileLauncherDamage;gameItemDataPlayerPuppet
+	static function IsBarReversed(barType : WeaponBarType) : Bool; // UIInventoryItemWeaponBars::IsBarReversed;WeaponBarType
+	static function Make(statsManager : handle:UIInventoryItemStatsManager, itemData : handle:gameItemData, itemType : gamedataItemType, type : UIInventoryItemWeaponBarsType) : handle:UIInventoryItemWeaponBars; // UIInventoryItemWeaponBars::Make;UIInventoryItemStatsManagergameItemDatagamedataItemTypeUIInventoryItemWeaponBarsType
+	static function MakeCyberwareRangedWeapon(statsManager : handle:UIInventoryItemStatsManager, itemType : gamedataItemType) : handle:UIInventoryItemWeaponBars; // UIInventoryItemWeaponBars::MakeCyberwareRangedWeapon;UIInventoryItemStatsManagergamedataItemType
+	static function MakeHealing(statsManager : handle:UIInventoryItemStatsManager, itemData : handle:gameItemData, itemType : gamedataItemType) : handle:UIInventoryItemWeaponBars; // UIInventoryItemWeaponBars::MakeHealing;UIInventoryItemStatsManagergameItemDatagamedataItemType
+	static function MakeMelee(statsManager : handle:UIInventoryItemStatsManager, itemType : gamedataItemType, type : UIInventoryItemWeaponBarsType) : handle:UIInventoryItemWeaponBars; // UIInventoryItemWeaponBars::MakeMelee;UIInventoryItemStatsManagergamedataItemTypeUIInventoryItemWeaponBarsType
+	static function MakeRanged(statsManager : handle:UIInventoryItemStatsManager, itemType : gamedataItemType) : handle:UIInventoryItemWeaponBars; // UIInventoryItemWeaponBars::MakeRanged;UIInventoryItemStatsManagergamedataItemType
+
+	function GetComparableBar(barType : WeaponBarType) : whandle:UIInventoryItemWeaponBar; // GetComparableBar;WeaponBarType
+	function GetComparedBars() : whandle:UIInventoryItemWeaponBars; // GetComparedBars;
+	function GetItemType() : gamedataItemType; // GetItemType;
+	function GetPercentages() : array:Float; // GetPercentages;
+	function GetType() : UIInventoryItemWeaponBarsType; // GetType;
+	function SetComparedBars(comparedBars : handle:UIInventoryItemWeaponBars) : handle:UIInventoryItemWeaponBars; // SetComparedBars;UIInventoryItemWeaponBars
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

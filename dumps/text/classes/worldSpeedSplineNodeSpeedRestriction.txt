@@ -1,0 +1,6 @@
+import struct worldSpeedSplineNodeSpeedRestriction
+{
+	var speed : Float;
+	var from : Float;
+	var adjustTime : Float;
+}

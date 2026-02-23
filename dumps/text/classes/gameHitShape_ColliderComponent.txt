@@ -1,0 +1,19 @@
+import class gameHitShape_ColliderComponent extends gameHitShapeBase
+{
+	var componentNames : array:CName;
+}
+
+import class abstract gameHitShapeBase extends gameIHitShape
+{
+	var translation : Vector3;
+	var rotation : Quaternion;
+	var localTransform : Matrix;
+}
+
+import class abstract gameIHitShape extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

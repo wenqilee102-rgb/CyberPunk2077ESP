@@ -1,0 +1,24 @@
+import class questForceModule_NodeType extends questIVisionModeNodeType
+{
+	var params : array:questForceVMModule_NodeTypeParams;
+}
+
+import class abstract questIVisionModeNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

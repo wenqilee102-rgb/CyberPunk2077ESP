@@ -1,0 +1,36 @@
+import class AIbehaviorDriveToPointTreeNodeDefinition extends AIbehaviorDriveTreeNodeDefinition
+{
+	var targetPosition : handle:AIArgumentMapping;
+	var secureTimeOut : handle:AIArgumentMapping;
+	var useTraffic : handle:AIArgumentMapping;
+	var speedInTraffic : handle:AIArgumentMapping;
+	var forceGreenLights : handle:AIArgumentMapping;
+	var portals : handle:AIArgumentMapping;
+	var trafficTryNeighborsForStart : handle:AIArgumentMapping;
+	var trafficTryNeighborsForEnd : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDriveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

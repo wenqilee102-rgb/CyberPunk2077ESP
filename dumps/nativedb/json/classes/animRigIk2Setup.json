@@ -1,0 +1,1 @@
+{"a":"animIRigIkSetup","b":"animRigIk2Setup","d":8,"e":[{"a":{"a":14},"b":"firstBone","c":128},{"a":{"a":14},"b":"secondBone","c":128},{"a":{"a":14},"b":"endBone","c":128},{"a":{"b":"animAxis"},"b":"hingeAxis","c":128},{"a":{"a":4},"b":"firstBoneIdx","c":128},{"a":{"a":4},"b":"secondBoneIdx","c":128},{"a":{"a":4},"b":"endBoneIdx","c":128}]}

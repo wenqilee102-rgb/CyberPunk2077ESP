@@ -1,0 +1,7 @@
+import struct textWrappingInfo
+{
+	var autoWrappingEnabled : Bool;
+	var wrappingAtPosition : Float;
+	var wrappingPolicy : textWrappingPolicy;
+	var forceMinimumWidthToWrappingAtPosition : Bool;
+}

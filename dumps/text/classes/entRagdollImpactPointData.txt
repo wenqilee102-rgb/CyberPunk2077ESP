@@ -1,0 +1,12 @@
+import struct entRagdollImpactPointData
+{
+	var worldPosition : WorldPosition;
+	var worldNormal : Vector4;
+	var forceMagnitude : Float;
+	var impulseMagnitude : Float;
+	var maxForceMagnitude : Float;
+	var maxImpulseMagnitude : Float;
+	var velocityChange : Float;
+	var ragdollProxyActorIndex : Uint32;
+	var otherProxyActorIndex : Uint32;
+}

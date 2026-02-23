@@ -1,0 +1,5 @@
+enum gameContactType
+{
+	Caller = 0,
+	Texter = 1
+}

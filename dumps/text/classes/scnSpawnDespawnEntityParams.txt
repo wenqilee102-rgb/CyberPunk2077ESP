@@ -1,0 +1,19 @@
+import struct scnSpawnDespawnEntityParams
+{
+	var dynamicEntityUniqueName : CName;
+	var spawnMarker : CName;
+	var spawnMarkerType : scnMarkerType;
+	var spawnMarkerNodeRef : NodeRef;
+	var spawnOffset : Transform;
+	var itemOwnerId : scnPerformerId;
+	var specRecordId : TweakDBID;
+	var appearance : CName;
+	var spawnOnStart : Bool;
+	var isEnabled : Bool;
+	var validateSpawnPostion : Bool;
+	var alwaysSpawned : Bool;
+	var keepAlive : Bool;
+	var findInWorld : Bool;
+	var forceMaxVisibility : Bool;
+	var prefetchAppearance : Bool;
+}

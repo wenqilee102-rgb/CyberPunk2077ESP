@@ -1,0 +1,24 @@
+import class animDangleConstraint_SimulationDyng extends animDangleConstraint_Simulation
+{
+	var HACK_checkDangleTeleport : Bool;
+	var substepTime : Float;
+	var solverIterations : Uint32;
+	var particlesContainer : animDyngParticlesContainer;
+	var dyngConstraint : handle:animIDyngConstraint;
+}
+
+import class abstract animDangleConstraint_Simulation extends ISerializable
+{
+	var collisionRoundedShapes : array:animCollisionRoundedShape;
+	var jsonCollisionShapes : rRef:JsonResource;
+	var jsonCollisionShapesLoadedSuccessfully : Bool;
+	var alpha : Float;
+	var rotateParentToLookAtDangle : Bool;
+	var parentRotationAltersTransformsOfDangleAndItsChildren : Bool;
+	var parentRotationAltersTransformsOfNonDanglesAndItsChildren : Bool;
+	var dangleAltersTransformsOfItsChildren : Bool;
+}
+
+import class abstract ISerializable
+{
+}

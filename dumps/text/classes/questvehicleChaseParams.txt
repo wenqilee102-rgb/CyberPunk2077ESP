@@ -1,0 +1,22 @@
+import class questvehicleChaseParams extends questVehicleSpecificCommandParams
+{
+	var targetEntRef : gameEntityReference;
+	var isPlayer : Bool;
+	var distanceMin : Float;
+	var distanceMax : Float;
+	var forceStartSpeed : Float;
+	var aggressiveRammingEnabled : Bool;
+	var ignoreChaseVehiclesLimit : Bool;
+	var boostDrivingStats : Bool;
+}
+
+import class abstract questVehicleSpecificCommandParams extends ISerializable
+{
+	var pushOtherVehiclesAside : Bool;
+	var needDriver : Bool;
+	var secureTimeOut : Float;
+}
+
+import class abstract ISerializable
+{
+}

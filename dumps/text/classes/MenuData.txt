@@ -1,0 +1,18 @@
+struct MenuData
+{
+	public    var identifier : Int32;
+	public    var label : String;
+	public    var icon : CName;
+	public    var subMenus : array:MenuData;
+	public    var eventName : CName;
+	public    var fullscreenName : CName;
+	public    var userData : handle:IScriptable;
+	public    var disabled : Bool;
+	public    var parentIdentifier : Int32;
+	public    var attrFlag : Bool;
+	public    var attrText : Int32;
+	public    var perkFlag : Bool;
+	public    var perkText : Int32;
+	public    var overrideDefaultUserData : Bool;
+	public    var overrideSubMenuUserData : Bool;
+}

@@ -1,0 +1,6 @@
+import struct gamemappinsMappinEntry
+{
+	var id : gameNewMappinID;
+	var type : CName;
+	var worldPosition : Vector4;
+}

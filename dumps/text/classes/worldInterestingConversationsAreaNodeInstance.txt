@@ -1,0 +1,19 @@
+import class worldInterestingConversationsAreaNodeInstance extends worldTriggerAreaNodeInstance
+{
+}
+
+import class worldTriggerAreaNodeInstance extends worldAreaShapeNodeInstance
+{
+}
+
+import class worldAreaShapeNodeInstance extends worldINodeInstance
+{
+}
+
+import class abstract worldINodeInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

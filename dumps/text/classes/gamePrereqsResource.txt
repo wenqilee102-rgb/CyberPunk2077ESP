@@ -1,0 +1,13 @@
+import class gamePrereqsResource extends CResource
+{
+	var prereqs : array:gamePrereqDefinition;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

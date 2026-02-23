@@ -1,0 +1,21 @@
+import class questvehicleRacingParams extends questVehicleSpecificCommandParams
+{
+	var splineRef : NodeRef;
+	var preciseLevel : Float;
+	var reverseSpline : Bool;
+	var backwards : Bool;
+	var closest : Bool;
+	var rubberBanding : Bool;
+	var rubberBandingParam : handle:questParamRubberbanding;
+}
+
+import class abstract questVehicleSpecificCommandParams extends ISerializable
+{
+	var pushOtherVehiclesAside : Bool;
+	var needDriver : Bool;
+	var secureTimeOut : Float;
+}
+
+import class abstract ISerializable
+{
+}

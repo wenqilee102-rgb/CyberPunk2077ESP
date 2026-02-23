@@ -1,0 +1,4 @@
+import struct WorldRenderAreaSettings
+{
+	var areaParameters : array:handle:IAreaSettings;
+}

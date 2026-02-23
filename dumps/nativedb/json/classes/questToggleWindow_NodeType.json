@@ -1,0 +1,1 @@
+{"a":"questIVehicleManagerNodeType","b":"questToggleWindow_NodeType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"vehicleRef","c":128},{"a":{"b":"vehicleEQuestVehicleWindowState"},"b":"windowState","c":128},{"a":{"b":"vehicleEVehicleDoor"},"b":"door","c":128}]}

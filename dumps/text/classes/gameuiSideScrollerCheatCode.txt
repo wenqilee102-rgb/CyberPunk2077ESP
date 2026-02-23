@@ -1,0 +1,5 @@
+import struct gameuiSideScrollerCheatCode
+{
+	var name : CName;
+	var keys : array:CName;
+}

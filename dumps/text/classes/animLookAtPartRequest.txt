@@ -1,0 +1,7 @@
+import struct animLookAtPartRequest
+{
+	var partName : CName;
+	var weight : Float;
+	var suppress : Float;
+	var mode : Int32;
+}

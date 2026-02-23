@@ -1,0 +1,1 @@
+{"a":"questScriptedAICommandParams","b":"AIAssignRoleCommandParams","d":0,"e":[{"a":{"a":26,"c":{"b":"AIRole"}},"b":"role","c":128}],"f":[{"a":"CreateCommand;","b":"CreateCommand","c":{"a":26,"c":{"b":"AICommand"}},"d":32},{"a":"GetCommandName;","b":"GetCommandName","c":{"a":12},"d":48}]}

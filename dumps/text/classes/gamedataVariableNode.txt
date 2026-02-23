@@ -1,0 +1,23 @@
+import class gamedataVariableNode extends gamedataDataNode
+{
+	var hashedName : CName;
+	var type : String;
+	var name : String;
+	var isForeignKey : Bool;
+	var isArray : Bool;
+	var hasArrayValues : Bool;
+	var isAddition : Bool;
+	var typeEnum : gamedataTweakDBType;
+	var values : array:gamedataVariableNodeVariableValue;
+}
+
+import class abstract gamedataDataNode extends ISerializable
+{
+	var nodeType : gamedataDataNodeType;
+	var fileName : String;
+	var parent : whandle:gamedataDataNode;
+}
+
+import class abstract ISerializable
+{
+}

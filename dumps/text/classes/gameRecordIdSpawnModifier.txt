@@ -1,0 +1,11 @@
+import class gameRecordIdSpawnModifier extends populationModifier
+{
+}
+
+import class abstract populationModifier extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

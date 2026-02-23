@@ -1,0 +1,37 @@
+class NewPerkTooltipData extends BasePerksMenuTooltipData
+{
+	public    var perkType : gamedataNewPerkType;
+	public    var perkArea : gamedataNewPerkSlotType;
+	public    var attributeId : TweakDBID;
+	public    var proficiency : gamedataProficiencyType;
+	public    var isRipperdoc : Bool;
+	public    var perkData : handle:NewPerkDisplayData;
+	public    var attributeData : handle:AttributeData;
+
+	function RefreshRuntimeData(); // RefreshRuntimeData;
+}
+
+class BasePerksMenuTooltipData extends ATooltipData
+{
+	public    var manager : handle:PlayerDevelopmentDataManager;
+
+	function RefreshRuntimeData(); // RefreshRuntimeData;
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,15 @@
+import class physicsGeometryCacheArtifact extends CResource
+{
+	var buffer : serializationDeferredDataBuffer;
+	var entryKeys : array:physicsCacheKey;
+	var entryTable : array:physicsCacheEntry;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

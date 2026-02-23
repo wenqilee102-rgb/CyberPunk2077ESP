@@ -1,0 +1,49 @@
+import class worldPrefab extends resStreamedResource
+{
+	var mainGroup : handle:worldNodesGroup;
+	var type : worldPrefabType;
+	var teamOwnership : worldPrefabOwnership;
+	var streamingOcclusion : worldPrefabStreamingOcclusion;
+	var streamingImportance : worldPrefabStreamingImportance;
+	var defaultVariants : handle:worldPrefabVariantsList;
+	var isLocked : Bool;
+	var maxBounds : Box;
+	var environmentDefinition : raRef:worldEnvironmentDefinition;
+	var terrainMultilayerSetup : raRef:Multilayer_Setup;
+	var foliageBrushToTerrainLayerMapping : raRef:worldAutoFoliageMapping;
+	var prefabUniqueId : CRUID;
+	var metadataArray : array:handle:worldPrefabMetadata;
+	var isMerged : Bool;
+	var proxyMeshBuildParams : worldProxyMeshBuildParams;
+	var isProxyMeshOnly : Bool;
+	var proxyMesh : raRef:CMesh;
+	var proxyScale : Vector3;
+	var maxProxyStreamingDistance : Float;
+	var proxyDistanceFactor : Float;
+	var averageNodeDiagonal : Float;
+	var boostInnerNodesToProxyDistance : Bool;
+	var overrideStreamingPosWithBBoxCenter : Bool;
+	var ignoreMeshEmbeddedOccluders : Bool;
+	var ignoreAllOccluders : Bool;
+	var excludeOnConsole : Bool;
+	var excludeOnNextGenConsoles : Bool;
+	var isTerrainPrefab : Bool;
+	var minimapContribution : worldPrefabMinimapContribution;
+	var interiorMapContribution : worldPrefabInteriorMapContribution;
+	var booleanProxyHelper : raRef:worldPrefab;
+	var proxyLimiterHelper : raRef:worldPrefab;
+	var customProxyMeshHelper : raRef:CMesh;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

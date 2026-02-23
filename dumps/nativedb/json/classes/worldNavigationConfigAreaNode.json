@@ -1,0 +1,1 @@
+{"a":"worldAreaShapeNode","b":"worldNavigationConfigAreaNode","d":8,"e":[{"a":{"a":1},"b":"generateVariantsNavmesh","c":128},{"a":{"b":"NavGenSamplingDensity"},"b":"detailSamplingDensity","c":128},{"a":{"a":1},"b":"smoothWalkableAreas","c":128},{"a":{"a":1},"b":"generateCrouchableAreas","c":128}]}

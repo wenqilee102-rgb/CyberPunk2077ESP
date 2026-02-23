@@ -1,0 +1,7 @@
+import struct inkLanguageDefinition
+{
+	var languageCode : CName;
+	var isoScriptCode : CName;
+	var textDirection : inkETextDirection;
+	var fonts : array:inkLanguageFont;
+}

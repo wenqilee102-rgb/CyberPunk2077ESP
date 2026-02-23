@@ -1,0 +1,18 @@
+import class DistantIrradianceeSettings extends IAreaSettings
+{
+	var distantRange : curveData:Vector2;
+	var distantHeightRange : curveData:Vector3;
+	var distantLights : curveData:Float;
+	var distantLightsRange : curveData:Vector2;
+	var blendDistance : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

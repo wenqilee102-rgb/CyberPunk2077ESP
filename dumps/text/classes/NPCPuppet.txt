@@ -1,0 +1,1349 @@
+class NPCPuppet extends ScriptedPuppet
+{
+	private   var lastHitEvent : handle:gameeventsHitEvent;
+	private   var totalFrameReactionDamageReceived : Float;
+	private   var totalFrameWoundsDamageReceived : Float;
+	private   var totalFrameDismembermentDamageReceived : Float;
+	private   var hitEventLock : ScriptReentrantRWLock;
+	private   var NPCManager : handle:NPCManager;
+	private   var customDeathDirection : Int32;
+	private   var deathOverrideState : Bool;
+	private   var agonyState : Bool;
+	private   var defensiveState : Bool;
+	private   var lastSetupWorkspotActionEvent : handle:gameSetupWorkspotActionEvent;
+	public    var wasJustKilledOrDefeated : Bool;
+	private   var shouldDie : Bool;
+	private   var shouldBeDefeated : Bool;
+	private   var sentDownedEvent : Bool;
+	private   var isRagdolling : Bool;
+	private   var hasAnimatedRagdoll : Bool;
+	private   var disableCollisionRequested : Bool;
+	private   var ragdollInstigator : whandle:gameObject;
+	private   var ragdollSplattersSpawned : Int32;
+	private   var ragdollFloorSplashSpawned : Bool;
+	private   var ragdollDamageData : RagdollDamagePollData;
+	private   var ragdollInitialPosition : Vector4;
+	private   var ragdollActivationTimestamp : Float;
+	private   var ragdollImpactedNPCs : array:whandle:NPCPuppet;
+	private   var disableRagdollAfterRecovery : Bool;
+	private   var thrownNPCNearbyCrowdNPCs : array:whandle:entEntity;
+	private   var isNotVisible : Bool;
+	private   var deathListener : handle:NPCDeathListener;
+	private   var poiseListener : handle:NPCPoiseListener;
+	private   var godModeStatListener : handle:NPCGodModeListener;
+	private   var VehicleHitImmunityCallbackID : Uint32;
+	private   var npcCollisionComponent : handle:entSimpleColliderComponent;
+	private   var npcRagdollComponent : handle:entIComponent;
+	private   var npcTraceObstacleComponent : handle:entSimpleColliderComponent;
+	private   var npcMountedToPlayerComponents : array:handle:entIComponent;
+	private   var scavengeComponent : handle:ScavengeComponent;
+	private   var influenceComponent : handle:gameinfluenceComponent;
+	private   var comfortZoneComponent : handle:entIComponent;
+	public    var isTargetingPlayer : Bool;
+	public    var shouldBeImmuneToVehicleHit : Bool;
+	private   var playerStatsListener : handle:gameScriptStatsListener;
+	private   var upperBodyStateCallbackID : handle:redCallbackObject;
+	private   var leftCyberwareStateCallbackID : handle:redCallbackObject;
+	private   var meleeStateCallbackID : handle:redCallbackObject;
+	private   var combatGadgetStateCallbackID : handle:redCallbackObject;
+	private   var wasAimedAtLast : Bool;
+	private   var wasCWChargedAtLast : Bool;
+	private   var wasMeleeChargedAtLast : Bool;
+	private   var wasChargingGadgetAtLast : Bool;
+	private   var isLookedAt : Bool;
+	private   var cachedPlayerID : entEntityID;
+	private   var wasAggressiveCrowd : Bool;
+	private   var canGoThroughDoors : Bool;
+	private   var lastStatusEffectSignalSent : whandle:gamedataStatusEffect_Record;
+	private   var cachedStatusEffectAnim : whandle:gamedataStatusEffect_Record;
+	private   var resendStatusEffectSignalDelayID : gameDelayID;
+	private   var lastSEAppliedByPlayer : handle:gameStatusEffect;
+	private   var pendingSEEvent : handle:gameeventsApplyStatusEffectEvent;
+	private   var pendingDueToCachedSEAnim : Bool;
+	private   var bounty : Bounty;
+	private   var cachedVFXList : array:whandle:gamedataStatusEffectFX_Record;
+	private   var cachedSFXList : array:whandle:gamedataStatusEffectFX_Record;
+	private   var isThrowingGrenadeToPlayer : Bool;
+	private   var throwingGrenadeDelayEventID : gameDelayID;
+	private   var myKiller : whandle:gameObject;
+	private   var primaryThreatCalculationType : EAIThreatCalculationType;
+	private   var temporaryThreatCalculationType : EAIThreatCalculationType;
+	private   var isPlayerCompanionCached : Bool;
+	private   var isPlayerCompanionCachedTimeStamp : Float;
+	private   var quickHackEffectsApplied : Uint32;
+	private   var hackingResistanceMod : handle:gameConstantStatModifierData_Deprecated;
+	private   var delayNonStealthQuickHackVictimEventID : gameDelayID;
+	private   var cachedIsPaperdoll : Int32;
+	private   var smartDespawnDelayID : gameDelayID;
+	private   var despawnTicks : Uint32;
+
+	static function ChangeBehaviorState(obj : handle:gameObject, newState : gamedataNPCBehaviorState); // NPCPuppet::ChangeBehaviorState;GameObjectgamedataNPCBehaviorState
+	static function ChangeDefenseModeState(obj : handle:gameObject, newState : gamedataDefenseMode); // NPCPuppet::ChangeDefenseModeState;GameObjectgamedataDefenseMode
+	static function ChangeForceRagdollOnDeath(obj : handle:gameObject, value : Bool); // NPCPuppet::ChangeForceRagdollOnDeath;GameObjectBool
+	static function ChangeHighLevelState(obj : handle:gameObject, newState : gamedataNPCHighLevelState); // NPCPuppet::ChangeHighLevelState;GameObjectgamedataNPCHighLevelState
+	static function ChangeHitReactionModeState(obj : handle:gameObject, newState : EHitReactionMode); // NPCPuppet::ChangeHitReactionModeState;GameObjectEHitReactionMode
+	static function ChangeLocomotionMode(obj : handle:gameObject, newState : gamedataLocomotionMode); // NPCPuppet::ChangeLocomotionMode;GameObjectgamedataLocomotionMode
+	static function ChangePhaseState(obj : handle:gameObject, newState : ENPCPhaseState); // NPCPuppet::ChangePhaseState;GameObjectENPCPhaseState
+	static function ChangeStanceState(obj : handle:gameObject, newState : gamedataNPCStanceState); // NPCPuppet::ChangeStanceState;GameObjectgamedataNPCStanceState
+	static function ChangeUpperBodyState(obj : handle:gameObject, newState : gamedataNPCUpperBodyState); // NPCPuppet::ChangeUpperBodyState;GameObjectgamedataNPCUpperBodyState
+	static function FinisherEffectorActionOn(npc : whandle:NPCPuppet, instigator : whandle:gameObject); // NPCPuppet::FinisherEffectorActionOn;NPCPuppetGameObject
+	static function GetGorillaArmsOnePunchNPCMarkStatusEffectID() : TweakDBID; // NPCPuppet::GetGorillaArmsOnePunchNPCMarkStatusEffectID;
+	static function GetMantisBladesNPCMarkStatusEffectID() : TweakDBID; // NPCPuppet::GetMantisBladesNPCMarkStatusEffectID;
+	static function IsInAlerted(npc : whandle:ScriptedPuppet) : Bool; // NPCPuppet::IsInAlerted;ScriptedPuppet
+	static function IsInCombat(npc : whandle:ScriptedPuppet) : Bool; // NPCPuppet::IsInCombat;ScriptedPuppet
+	static function IsInCombatWithTarget(npc : whandle:ScriptedPuppet, target : handle:entEntity) : Bool; // NPCPuppet::IsInCombatWithTarget;ScriptedPuppetEntity
+	static function IsSusceptibleOnlyToStaggerAndHigher(npc : whandle:ScriptedPuppet) : Bool; // NPCPuppet::IsSusceptibleOnlyToStaggerAndHigher;ScriptedPuppet
+	static function IsUnstoppable(npc : whandle:ScriptedPuppet) : Bool; // NPCPuppet::IsUnstoppable;ScriptedPuppet
+	static function RemoveTemporaryThreatCalculationType(npc : whandle:gameObject); // NPCPuppet::RemoveTemporaryThreatCalculationType;GameObject
+	static function RevealPlayerPositionIfNeeded(ownerPuppet : whandle:ScriptedPuppet, playerID : entEntityID, optional isPrevention : Bool) : Bool; // NPCPuppet::RevealPlayerPositionIfNeeded;ScriptedPuppetEntityIDBool
+	static function SendNPCHitDataTrackingRequest(owner : handle:NPCPuppet, telemetryData : ENPCTelemetryData, modifyValue : Int32); // NPCPuppet::SendNPCHitDataTrackingRequest;NPCPuppetENPCTelemetryDataInt32
+	static function SetAnimWrapperBasedOnEquippedItem(npc : whandle:NPCPuppet, wrapperNameBasedOnID : CName, slotID : TweakDBID, itemID : gameItemID, value : Float); // NPCPuppet::SetAnimWrapperBasedOnEquippedItem;NPCPuppetCNameTweakDBIDItemIDFloat
+	static function SetAnimWrapperBasedOnEquippedItem(npc : whandle:NPCPuppet, slotID : TweakDBID, itemID : gameItemID, value : Float); // NPCPuppet::SetAnimWrapperBasedOnEquippedItem;NPCPuppetTweakDBIDItemIDFloat
+	static function SetBountyObject(target : handle:gameObject, bounty : script_ref:Bounty); // NPCPuppet::SetBountyObject;GameObjectscript_ref<Bounty>
+	static function SetNPCDisposedFact(npcBody : whandle:NPCPuppet); // NPCPuppet::SetNPCDisposedFact;NPCPuppet
+	static function SetTemporaryThreatCalculationType(npc : whandle:gameObject, newType : EAIThreatCalculationType); // NPCPuppet::SetTemporaryThreatCalculationType;GameObjectEAIThreatCalculationType
+	static function ShouldShowIndicator(npc : handle:gameObject) : Bool; // NPCPuppet::ShouldShowIndicator;GameObject
+	static function TargetIsHumanTrashToElite(target : handle:ScriptedPuppet) : Bool; // NPCPuppet::TargetIsHumanTrashToElite;ScriptedPuppet
+	static function TutorialAddIllegalActionFact(targetPuppet : handle:NPCPuppet); // NPCPuppet::TutorialAddIllegalActionFact;NPCPuppet
+
+	event OnAIThreatCalculationEvent(evt : handle:AIThreatCalculationEvent) : Bool; // OnAIThreatCalculationEvent
+	event OnAfterDeathOrDefeat(evt : handle:NPCAfterDeathOrDefeatEvent) : Bool; // OnAfterDeathOrDefeat
+	event OnAimedAt(value : Int32) : Bool; // OnAimedAt
+	event OnAnimVisibilityChangedEvent(evt : handle:entAnimVisibilityChangedEvent) : Bool; // OnAnimVisibilityChangedEvent
+	event OnAnimatedRagdollDisabledEvent(evt : handle:entAnimatedRagdollNotifyDisabledEvent) : Bool; // OnAnimatedRagdollDisabledEvent
+	event OnAnimatedRagdollEnabledEvent(evt : handle:entAnimatedRagdollNotifyEnabledEvent) : Bool; // OnAnimatedRagdollEnabledEvent
+	event OnApplyRelicMeleewareDamageOnNPCEvent(evt : handle:ApplyRelicMeleewareDamageOnNPCEvent) : Bool; // OnApplyRelicMeleewareDamageOnNPCEvent
+	event OnAttitudeChanged(evt : handle:gameeventsAttitudeChangedEvent) : Bool; // OnAttitudeChanged
+	event OnCacheStatusEffectAnim(evt : handle:CacheStatusEffectAnimEvent) : Bool; // OnCacheStatusEffectAnim
+	event OnCacheStatusEffectFX(evt : handle:CacheStatusEffectFXEvent) : Bool; // OnCacheStatusEffectFX
+	event OnCancelSmartDespawnRequest(evt : handle:CancelSmartDespawnRequest) : Bool; // OnCancelSmartDespawnRequest
+	event OnCheckDeadPuppetDisposedEvent(evt : handle:CheckDeadPuppetDisposedEvent) : Bool; // OnCheckDeadPuppetDisposedEvent
+	event OnCheckRagdollStateEvent(evt : handle:CheckPuppetRagdollStateEvent) : Bool; // OnCheckRagdollStateEvent
+	event OnCheckUncontrolledMovementStatusEffectEvent(evt : handle:CheckUncontrolledMovementStatusEffectEvent) : Bool; // OnCheckUncontrolledMovementStatusEffectEvent
+	event OnCleanUpThrownNPCNearbyCrowdNPCs(evt : handle:CleanUpThrownNPCNearbyCrowdNPCs) : Bool; // OnCleanUpThrownNPCNearbyCrowdNPCs
+	event OnCombatGadget(value : Int32) : Bool; // OnCombatGadget
+	event OnCoverHit(evt : handle:gameeventsCoverHitEvent) : Bool; // OnCoverHit
+	event OnCyberware(value : Int32) : Bool; // OnCyberware
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDelaySetCoverNPCCurrentlyExposed(evt : handle:DelaySetCoverNPCCurrentlyExposed) : Bool; // OnDelaySetCoverNPCCurrentlyExposed
+	event OnDelayedSEReactionEvent(evt : handle:DelayedStatusEffectApplicationEvent) : Bool; // OnDelayedSEReactionEvent
+	event OnDetach() : Bool; // OnDetach
+	event OnDeviceLinkEstablished(evt : handle:DeviceLinkEstablished) : Bool; // OnDeviceLinkEstablished
+	event OnDeviceLinkRequest(evt : handle:DeviceLinkRequest) : Bool; // OnDeviceLinkRequest
+	event OnDisableRagdollComponentEvent(evt : handle:DisableRagdollComponentEvent) : Bool; // OnDisableRagdollComponentEvent
+	event OnEnteredPathWithDoors(evt : handle:EnteredPathWithDoors) : Bool; // OnEnteredPathWithDoors
+	event OnEnteredSplineEvent(evt : handle:moveEnteredSplineEvent) : Bool; // OnEnteredSplineEvent
+	event OnExitedSplineEvent(evt : handle:moveExitedSplineEvent) : Bool; // OnExitedSplineEvent
+	event OnExplorationLeftEvent(evt : handle:moveExplorationLeftEvent) : Bool; // OnExplorationLeftEvent
+	event OnFactChangedEvent(evt : handle:gameFactChangedEvent) : Bool; // OnFactChangedEvent
+	event OnFinishedPathWithDoors(evt : handle:FinishedPathWithDoors) : Bool; // OnFinishedPathWithDoors
+	event OnFinisherEffectorActionOn(evt : handle:FinisherEffectorActionOn) : Bool; // OnFinisherEffectorActionOn
+	event OnGameAttached() : Bool; // OnGameAttached
+	event OnGrappleTargetDeadEnableRagdollWithDelay(evt : handle:RagdollToggleDelayEvent) : Bool; // OnGrappleTargetDeadEnableRagdollWithDelay
+	event OnHandleRagdollOnDeath(evt : handle:HandleRagdollOnDeathEvent) : Bool; // OnHandleRagdollOnDeath
+	event OnHidePuppetDelayEvent(evt : handle:HidePuppetDelayEvent) : Bool; // OnHidePuppetDelayEvent
+	event OnHit(evt : handle:gameeventsHitEvent) : Bool; // OnHit
+	event OnItemAddedToSlot(evt : handle:gameAttachmentSlotEventsItemAddedToSlot) : Bool; // OnItemAddedToSlot
+	event OnItemRemovedFromSlot(evt : handle:gameAttachmentSlotEventsItemRemovedFromSlot) : Bool; // OnItemRemovedFromSlot
+	event OnItemVisualsAddedToSlot(evt : handle:gameAttachmentSlotEventsItemVisualsAddedToSlot) : Bool; // OnItemVisualsAddedToSlot
+	event OnLookedAtEvent(evt : handle:LookedAtEvent) : Bool; // OnLookedAtEvent
+	event OnMelee(value : Int32) : Bool; // OnMelee
+	event OnNPCStartThrowingGrenadeEvent(evt : handle:NPCThrowingGrenadeEvent) : Bool; // OnNPCStartThrowingGrenadeEvent
+	event OnNonStealthQuickHackVictimEvent(evt : handle:NonStealthQuickHackVictimEvent) : Bool; // OnNonStealthQuickHackVictimEvent
+	event OnPlayerCompanionCacheData(evt : handle:PlayerCompanionCacheDataEvent) : Bool; // OnPlayerCompanionCacheData
+	event OnPlayerDetectionChangedEvent(evt : handle:sensePlayerDetectionChangedEvent) : Bool; // OnPlayerDetectionChangedEvent
+	event OnPostInitialize(evt : handle:entPostInitializeEvent) : Bool; // OnPostInitialize
+	event OnPotentialDeath(evt : handle:gameeventsPotentialDeathEvent) : Bool; // OnPotentialDeath
+	event OnPreUninitialize(evt : handle:entPreUninitializeEvent) : Bool; // OnPreUninitialize
+	event OnPreloadAnimationsEvent(evt : handle:PreloadAnimationsEvent) : Bool; // OnPreloadAnimationsEvent
+	event OnQuestOverrideScannerPreset(evt : handle:OverrideScannerPreset) : Bool; // OnQuestOverrideScannerPreset
+	event OnQuestResetScannerPreset(evt : handle:ResetScannerPreset) : Bool; // OnQuestResetScannerPreset
+	event OnRagdollBodyPartWaterImpactEvent(evt : handle:entRagdollBodyPartWaterImpactEvent) : Bool; // OnRagdollBodyPartWaterImpactEvent
+	event OnRagdollDisabledEvent(evt : handle:entRagdollNotifyDisabledEvent) : Bool; // OnRagdollDisabledEvent
+	event OnRagdollEnabledEvent(evt : handle:entRagdollNotifyEnabledEvent) : Bool; // OnRagdollEnabledEvent
+	event OnRagdollImpactEvent(evt : handle:entRagdollImpactEvent) : Bool; // OnRagdollImpactEvent
+	event OnRemoveCachedStatusEffectFX(evt : handle:RemoveCachedStatusEffectFXEvent) : Bool; // OnRemoveCachedStatusEffectFX
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnResetAttackBlockedBlackBoardValue(evt : handle:ResetAttackBlockedBlackBoardValue) : Bool; // OnResetAttackBlockedBlackBoardValue
+	event OnResetNPCHitReactionTypePrereqStateEvent(evt : handle:ResetNPCHitReactionTypePrereqStateEvent) : Bool; // OnResetNPCHitReactionTypePrereqStateEvent
+	event OnResetTimeDilation(evt : handle:ResetTimeDilation) : Bool; // OnResetTimeDilation
+	event OnResetTotalFrameDamage(evt : handle:ResetFrameDamage) : Bool; // OnResetTotalFrameDamage
+	event OnResetVehicleHijackEvent(evt : handle:ResetVehicleHijackEvent) : Bool; // OnResetVehicleHijackEvent
+	event OnRevealStateChanged(evt : handle:RevealStateChangedEvent) : Bool; // OnRevealStateChanged
+	event OnScanningLookedAt(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookedAt
+	event OnSecuritySystemAgentTrackingPlayer(evt : handle:SecuritySystemSupport) : Bool; // OnSecuritySystemAgentTrackingPlayer
+	event OnSetBounty(evt : handle:SetBountyEvent) : Bool; // OnSetBounty
+	event OnSetBountyAwardedEvent(evt : handle:SetBountyAwardedEvent) : Bool; // OnSetBountyAwardedEvent
+	event OnSetBountyObjectEvent(evt : handle:SetBountyObjectEvent) : Bool; // OnSetBountyObjectEvent
+	event OnSetDeathDirection(evt : handle:gameeventsDeathDirectionEvent) : Bool; // OnSetDeathDirection
+	event OnSetDeathParams(evt : handle:gameeventsDeathParamsEvent) : Bool; // OnSetDeathParams
+	event OnSetExposeQuickHacks(evt : handle:SetExposeQuickHacks) : Bool; // OnSetExposeQuickHacks
+	event OnSetPuppetTargetingPlayer(evt : handle:OnBeingTarget) : Bool; // OnSetPuppetTargetingPlayer
+	event OnSetupWorkspotActionEvent(evt : handle:gameSetupWorkspotActionEvent) : Bool; // OnSetupWorkspotActionEvent
+	event OnSmartBulletDeflectedEvent(evt : handle:SmartBulletDeflectedEvent) : Bool; // OnSmartBulletDeflectedEvent
+	event OnSmartDespawnRequest(evt : handle:SmartDespawnRequest) : Bool; // OnSmartDespawnRequest
+	event OnStartRagdollDamageEvent(inEvent : handle:StartRagdollDamageEvent) : Bool; // OnStartRagdollDamageEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect) : Bool; // OnStatusEffectRemoved
+	event OnStatusEffectSignal(evt : handle:StatusEffectSignalEvent) : Bool; // OnStatusEffectSignal
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnUnregisterAggressiveCrowd(evt : handle:UnregisterAggressiveCrowd) : Bool; // OnUnregisterAggressiveCrowd
+	event OnVehicleHackedEvent(evt : handle:VehicleHackedEvent) : Bool; // OnVehicleHackedEvent
+	event OnVehicleHijackEvent(evt : handle:VehicleHijackEvent) : Bool; // OnVehicleHijackEvent
+	event OnVehicleRammedEvent(evt : handle:VehicleRammedEvent) : Bool; // OnVehicleRammedEvent
+	event On_TEMP_TestNPCOutsideNavmeshEvent(evt : handle:TestNPCOutsideNavmeshEvent) : Bool; // On_TEMP_TestNPCOutsideNavmeshEvent
+
+	function CacheStatusEffectAppliedByPlayer(evt : handle:gameeventsApplyStatusEffectEvent); // CacheStatusEffectAppliedByPlayer;ApplyStatusEffectEvent
+	function CallUnregisterAggressiveNPC(); // CallUnregisterAggressiveNPC;
+	function CanEnableRagdollComponent(optional fromSetDeathParams : Bool) : Bool; // CanEnableRagdollComponent;Bool
+	function CanGoThroughDoors() : Bool; // CanGoThroughDoors;
+	function CanReceiveDamageFromRagdollImpacts(isDead : Bool, isDefeated : Bool, terminalVelocityReached : Bool, isHighFall : Bool) : Bool; // CanReceiveDamageFromRagdollImpacts;BoolBoolBoolBool
+	function CanStandUpFromRagdoll(currentPosition : Vector4) : Bool; // CanStandUpFromRagdoll;Vector4
+	function CheckNPCKilledThrowingGrenade(instigator : handle:gameObject); // CheckNPCKilledThrowingGrenade;GameObject
+	function CheckStubData(data : gameNPCstubData) : Bool; // CheckStubData;NPCstubData
+	function ClearDefeatAndImmortality(); // ClearDefeatAndImmortality;
+	function CompileScannerChunks() : Bool; // CompileScannerChunks;
+	function CreateListeners(); // CreateListeners;
+	function DamagePipelineFinalized(evt : handle:gameeventsHitEvent); // DamagePipelineFinalized;gameHitEvent
+	function Debug_Ragdoll(); // Debug_Ragdoll;
+	function DelayStatusEffectApplication(evt : handle:gameeventsApplyStatusEffectEvent); // DelayStatusEffectApplication;ApplyStatusEffectEvent
+	function DisableCollision(); // DisableCollision;
+	function EnableCollision(); // EnableCollision;
+	function EvaluateQuickHackPassivesIncapacitated(); // EvaluateQuickHackPassivesIncapacitated;
+	function ForceReEvaluateGameplayRole(); // ForceReEvaluateGameplayRole;
+	function GetAffiliation() : String; // GetAffiliation;
+	function GetBounty() : Bounty; // GetBounty;
+	function GetComfortZoneComponent() : handle:entIComponent; // GetComfortZoneComponent;
+	function GetDetectionPercentage() : Float; // GetDetectionPercentage;
+	function GetHighestDamageStat(item : handle:gameItemData) : gamedataDamageType; // GetHighestDamageStat;gameItemData
+	function GetInfluenceComponent() : handle:gameinfluenceComponent; // GetInfluenceComponent;
+	function GetInfluenceMapScoreInRange(currentPosition : Vector4, range : Float, out scorePercentage : Float) : Int32; // GetInfluenceMapScoreInRange;Vector4FloatFloat
+	function GetInitialRagdollPosition() : Vector4; // GetInitialRagdollPosition;
+	function GetLastHitAttackDirection() : Vector4; // GetLastHitAttackDirection;
+	function GetLastHitAttackRecord() : handle:gamedataAttack_GameEffect_Record; // GetLastHitAttackRecord;
+	function GetLastHitAttackType() : gamedataAttackType; // GetLastHitAttackType;
+	function GetLastHitAttackValues() : array:Float; // GetLastHitAttackValues;
+	function GetLastHitInstigator() : whandle:gameObject; // GetLastHitInstigator;
+	function GetLastSEAppliedByPlayer() : handle:gameStatusEffect; // GetLastSEAppliedByPlayer;
+	function GetMyKiller() : whandle:gameObject; // GetMyKiller;
+	function GetPS() : handle:ScriptedPuppetPS; // GetPS
+	function GetPlayerID() : entEntityID; // GetPlayerID;
+	function GetRagdollInstigator(out ragdollInstigator : whandle:gameObject) : Bool; // GetRagdollInstigator;GameObject
+	function GetReplicatedStateClass() : CName; // GetReplicatedStateClass;
+	function GetScavengeComponent() : handle:ScavengeComponent; // GetScavengeComponent;
+	function GetThreatCalculationType() : EAIThreatCalculationType; // GetThreatCalculationType;
+	function GetTotalFrameDamage() : Float; // GetTotalFrameDamage;
+	function GetTotalFrameDismembermentDamage() : Float; // GetTotalFrameDismembermentDamage;
+	function GetTotalFrameWoundsDamage() : Float; // GetTotalFrameWoundsDamage;
+	function GetValidAttackFromDamageHistory(entry : script_ref:DamageHistoryEntry) : Bool; // GetValidAttackFromDamageHistory;script_ref<DamageHistoryEntry>
+	function GetWasAggressiveCrowd() : Bool; // GetWasAggressiveCrowd;
+	function GrappleTargetDeadEnableRagdollComponent(b : Bool); // GrappleTargetDeadEnableRagdollComponent;Bool
+	function HandleRagdollOnDeath(handleUncontrolledMovement : Bool); // HandleRagdollOnDeath;Bool
+	function HandleRagdollOnDeathByEvent(handleUncontrolledMovement : Bool); // HandleRagdollOnDeathByEvent;Bool
+	function HasHeadUnderwater() : Bool; // HasHeadUnderwater;
+	function HasLastHitFlag(flag : hitFlag) : Bool; // HasLastHitFlag;hitFlag
+	function InitThreatsCurves(); // InitThreatsCurves;
+	function InitializeNPCManager(); // InitializeNPCManager;
+	function IsAboutToBeDefeated() : Bool; // IsAboutToBeDefeated;
+	function IsAboutToDie() : Bool; // IsAboutToDie;
+	function IsAboutToDieOrDefeated() : Bool; // IsAboutToDieOrDefeated;
+	function IsAnOccupiedInfluenceMapNode(currentPosition : Vector4) : Bool; // IsAnOccupiedInfluenceMapNode;Vector4
+	function IsCloseEnoughForGrandFinale(target : whandle:gameObject, maxDistance : Float) : Bool; // IsCloseEnoughForGrandFinale;GameObjectFloat
+	function IsDead() : Bool; // IsDead;
+	function IsDefeatMechanicActive() : Bool; // IsDefeatMechanicActive;
+	function IsFloorSteepEnoughToRagdoll() : Bool; // IsFloorSteepEnoughToRagdoll;
+	function IsIncapacitated() : Bool; // IsIncapacitated;
+	function IsNPC() : Bool; // IsNPC;
+	function IsOutsideOfNavmesh(currentPosition : Vector4, out navmeshPoint : Vector4) : Bool; // IsOutsideOfNavmesh;Vector4Vector4
+	function IsOutsideOfNavmesh(currentPosition : Vector4) : Bool; // IsOutsideOfNavmesh;Vector4
+	function IsOutsideOfNavmeshWithTolerance(currentPosition : Vector4, tolerance : Vector4) : Bool; // IsOutsideOfNavmeshWithTolerance;Vector4Vector4
+	function IsPaperdoll() : Bool; // IsPaperdoll;
+	function IsPlayerCompanion() : Bool; // IsPlayerCompanion;
+	function IsPointOnStaticMesh(position : Vector4, normal : Vector4) : Bool; // IsPointOnStaticMesh;Vector4Vector4
+	function IsPuppetInCombat() : Bool; // IsPuppetInCombat;
+	function IsPuppetTargetingPlayer() : Bool; // IsPuppetTargetingPlayer;
+	function IsRagdollEnabled() : Bool; // IsRagdollEnabled;
+	function IsRagdolling() : Bool; // IsRagdolling;
+	function IsReplicable() : Bool; // IsReplicable;
+	function IsRipperdoc() : Bool; // IsRipperdoc;
+	function IsUnderneathVehicle() : Bool; // IsUnderneathVehicle;
+	function Kill(optional instigator : whandle:gameObject, optional skipNPCDeathAnim : Bool, optional disableNPCRagdoll : Bool); // Kill;GameObjectBoolBool
+	function KillIfUnderwater() : Bool; // KillIfUnderwater;
+	function MarkForDeath(); // MarkForDeath;
+	function MarkForDefeat(); // MarkForDefeat;
+	function MountingEndEnableComponents(); // MountingEndEnableComponents;
+	function MountingStartDisableComponents(); // MountingStartDisableComponents;
+	function OnDefeatedWithRecoverStatusEffectApplied(); // OnDefeatedWithRecoverStatusEffectApplied;
+	function OnDefeatedWithRecoverStatusEffectRemoved(); // OnDefeatedWithRecoverStatusEffectRemoved;
+	function OnGodModeChanged(); // OnGodModeChanged;
+	function OnHitAnimation(hitEvent : handle:gameeventsHitEvent); // OnHitAnimation;gameHitEvent
+	function OnHitSounds(hitEvent : handle:gameeventsHitEvent); // OnHitSounds;gameHitEvent
+	function OnHitUI(hitEvent : handle:gameeventsHitEvent); // OnHitUI;gameHitEvent
+	function OnHitVFX(hitEvent : handle:gameeventsHitEvent); // OnHitVFX;gameHitEvent
+	function OnHittingPlayer(playerPuppet : whandle:gameObject, damageInflicted : Float); // OnHittingPlayer;GameObjectFloat
+	function OnIncapacitated(); // OnIncapacitated;
+	function OnNPCThrown(nearbyCrowdNPCs : array:whandle:entEntity); // OnNPCThrown;array<Entity>
+	function OnQuickHackEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent); // OnQuickHackEffectApplied;ApplyStatusEffectEvent
+	function OnQuickHackEffectRemoved(evt : handle:gameeventsRemoveStatusEffect); // OnQuickHackEffectRemoved;RemoveStatusEffect
+	function OnResurrected(); // OnResurrected;
+	function OnSignalOnUnstoppableStateSignal(signalId : Uint16, newValue : Bool, userData : handle:OnUnstoppableStateSignal); // OnSignalOnUnstoppableStateSignal;Uint16BoolOnUnstoppableStateSignal
+	function OnThrownNPCRagdollImpact(); // OnThrownNPCRagdollImpact;
+	function OnUncontrolledMovementStatusEffectAdded(evt : handle:gameeventsApplyStatusEffectEvent); // OnUncontrolledMovementStatusEffectAdded;ApplyStatusEffectEvent
+	function OnUncontrolledMovementStatusEffectRemoved(); // OnUncontrolledMovementStatusEffectRemoved;
+	function PlayImpactSound(); // PlayImpactSound;
+	function PlayVOOnPlayerOrPlayerCompanion(instigator : handle:gameObject); // PlayVOOnPlayerOrPlayerCompanion;GameObject
+	function PlayVOOnSquadMembers(instigatorIsPlayer : Bool); // PlayVOOnSquadMembers;Bool
+	function PrepareVendor(); // PrepareVendor;
+	function PrepareVendorTask(data : handle:gameScriptTaskData); // PrepareVendorTask;ScriptTaskData
+	function ProcessAndroidIncapacitated(); // ProcessAndroidIncapacitated;
+	function ProcessDoTAttackData(); // ProcessDoTAttackData;
+	function ProcessStatusEffectApplication(evt : handle:gameeventsApplyStatusEffectEvent); // ProcessStatusEffectApplication;ApplyStatusEffectEvent
+	function PuppetIsNotVisible() : Bool; // PuppetIsNotVisible;
+	function ReevaluatEAIThreatCalculationType(); // ReevaluatEAIThreatCalculationType;
+	function ReevaluateQuickHackPerkRewardsForPlayer(); // ReevaluateQuickHackPerkRewardsForPlayer;
+	function RegisterCallbacks(); // RegisterCallbacks;
+	function RegisterCallbacksForReactions(); // RegisterCallbacksForReactions;
+	function RemoveListeners(); // RemoveListeners;
+	function RemoveStrongArmsFX(); // RemoveStrongArmsFX;
+	function RemoveVendor(); // RemoveVendor;
+	function RemoveVendorTask(); // RemoveVendorTask;
+	function RequestHitReaction(hitEvent : handle:gameeventsHitEvent); // RequestHitReaction;gameHitEvent
+	function ResetCompanionRoleCacheTimeStamp(); // ResetCompanionRoleCacheTimeStamp;
+	function ResetRagdollDamageData(); // ResetRagdollDamageData;
+	function ResolveReactiOnLookedAt(isLookedAt : Bool); // ResolveReactiOnLookedAt;Bool
+	function SearchForNonlethalFlag() : Bool; // SearchForNonlethalFlag;
+	function SendAfterDeathOrDefeatEvent(); // SendAfterDeathOrDefeatEvent;
+	function SendDataTrackingEvent(defeated : Bool, nonLethal : Bool); // SendDataTrackingEvent;BoolBool
+	function SendRevealStateToAllWeakspots(revealState : ERevealState); // SendRevealStateToAllWeakspots;ERevealState
+	function SendStatusEffectSignal(priority : Float, tags : script_ref:array:CName, flags : script_ref:array:EAIGateSignalFlags, statusEffectID : TweakDBID, repeatSignalDelay : Float, remainingStatusEffectDuration : Float); // SendStatusEffectSignal;Floatscript_ref<array<CName>>script_ref<array<EAIGateSignalFlags>>TweakDBIDFloatFloat
+	function SetAnimWrapperWeightBasedOnFaction(); // SetAnimWrapperWeightBasedOnFaction;
+	function SetBounty(bounty : script_ref:Bounty); // SetBounty;script_ref<Bounty>
+	function SetBountyAwarded(awarded : Bool); // SetBountyAwarded;Bool
+	function SetDetectionPercentage(percent : Float); // SetDetectionPercentage;Float
+	function SetDisableRagdoll(disableRagdoll : Bool, optional force : Bool, optional leaveRagdollEnabled : Bool); // SetDisableRagdoll;BoolBoolBool
+	function SetHitEventData(hitEvent : handle:gameeventsHitEvent, hitReactionFactor : Float, hitWoundsFactor : Float, hitDismembermentFactor : Float); // SetHitEventData;gameHitEventFloatFloatFloat
+	function SetIsDefeatMechanicActive(isDefeatMechanicActive : Bool, optional isInitialisation : Bool); // SetIsDefeatMechanicActive;BoolBool
+	function SetMyKiller(killer : handle:gameObject); // SetMyKiller;GameObject
+	function SetPuppetTargetingPlayer(isTargeting : Bool); // SetPuppetTargetingPlayer;Bool
+	function SetRagdollDamageData(ragdollImpactPointData : entRagdollImpactPointData, currentPosition : Vector4); // SetRagdollDamageData;RagdollImpactPointDataVector4
+	function SetRandomAnimWrappersForLocomotion(); // SetRandomAnimWrappersForLocomotion;
+	function SetWasAggressiveCrowd(wasAggressive : Bool); // SetWasAggressiveCrowd;Bool
+	function SetWeaponFx(); // SetWeaponFx;
+	function ShouldDelayStatusEffectApplication(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // ShouldDelayStatusEffectApplication;ApplyStatusEffectEvent
+	function ShouldRequestHitReaction(hitEvent : handle:gameeventsHitEvent) : Bool; // ShouldRequestHitReaction;gameHitEvent
+	function ShouldTripVictim(victim : handle:NPCPuppet) : Bool; // ShouldTripVictim;NPCPuppet
+	function SpawnHitVisualEffect(n : CName); // SpawnHitVisualEffect;CName
+	function SpawnRagdollBumpAttack(position : Vector4); // SpawnRagdollBumpAttack;Vector4
+	function SpawnRagdollFloorSplash(evt : script_ref:entRagdollImpactPointData); // SpawnRagdollFloorSplash;script_ref<RagdollImpactPointData>
+	function SpawnRagdollSplatter(impactData : script_ref:entRagdollImpactPointData, isDead : Bool); // SpawnRagdollSplatter;script_ref<RagdollImpactPointData>Bool
+	function SpawnStrongArmsFX(); // SpawnStrongArmsFX;
+	function SpawnVehicleBumpAttack(vehicle : whandle:vehicleBaseObject, instigator : whandle:gameObject); // SpawnVehicleBumpAttack;VehicleObjectGameObject
+	function StopStatusEffectSFX(evt : handle:gameeventsRemoveStatusEffect); // StopStatusEffectSFX;RemoveStatusEffect
+	function StopStatusEffectVFX(evt : handle:gameeventsRemoveStatusEffect); // StopStatusEffectVFX;RemoveStatusEffect
+	function SwitchTargetPlayerTrackedAccuracy(freeze : Bool) : Bool; // SwitchTargetPlayerTrackedAccuracy;Bool
+	function SwitchTargetPlayerTrackedAccuracy(ttc : handle:AITargetTrackerComponent, freeze : Bool) : Bool; // SwitchTargetPlayerTrackedAccuracy;TargetTrackerComponentBool
+	function TriggerDefeatedBehavior(evt : handle:gameeventsApplyStatusEffectEvent); // TriggerDefeatedBehavior;ApplyStatusEffectEvent
+	function TriggerPendingSEEvent(); // TriggerPendingSEEvent;
+	function TriggerRagdollBehavior(); // TriggerRagdollBehavior;
+	function TriggerRagdollBehaviorEnd(); // TriggerRagdollBehaviorEnd;
+	function TriggerStatusEffectBehavior(evt : handle:gameeventsApplyStatusEffectEvent, optional alwaysTrigger : Bool, optional checkCachedSEAnim : Bool); // TriggerStatusEffectBehavior;ApplyStatusEffectEventBoolBool
+	function TryRepeatStatusEffectSignal(priority : Float, tags : script_ref:array:CName, flags : script_ref:array:EAIGateSignalFlags, statusEffectID : TweakDBID, repeatSignalDelay : Float, remainingStatusEffectDuration : Float); // TryRepeatStatusEffectSignal;Floatscript_ref<array<CName>>script_ref<array<EAIGateSignalFlags>>TweakDBIDFloatFloat
+	function TrySetPreventionCodeRedReinforcement(); // TrySetPreventionCodeRedReinforcement;
+	function UnregisterAggressiveNPC(); // UnregisterAggressiveNPC;
+	function UnregisterCallbacksForReactions(); // UnregisterCallbacksForReactions;
+	function UpdateAdditionalScanningData(); // UpdateAdditionalScanningData;
+	function UpdateAnimgraphRagdollState(isActive : Bool); // UpdateAnimgraphRagdollState;Bool
+	function UpdateCollisionState(optional onRagdollDisabled : Bool); // UpdateCollisionState;Bool
+	function UpdateVehicleHitImmunity(); // UpdateVehicleHitImmunity;
+	function WasJustKilledOrDefeated() : Bool; // WasJustKilledOrDefeated;
+}
+
+class ScriptedPuppet extends gamePuppet
+{
+	private   var aiController : handle:AIHumanComponent;
+	private   var movePolicies : handle:movePoliciesComponent;
+	private   var aiStateHandlerComponent : handle:AIPhaseStateEventHandlerComponent;
+	protected var hitReactionComponent : handle:HitReactionComponent;
+	private   var signalHandlerComponent : handle:AISignalHandlerComponent;
+	private   var reactionComponent : handle:ReactionManagerComponent;
+	private   var dismembermentComponent : handle:gameDismembermentComponent;
+	private   var hitRepresantation : handle:entSlotComponent;
+	private   var interactionComponent : handle:gameinteractionsComponent;
+	private   var slotComponent : handle:entSlotComponent;
+	private   var sensesComponent : handle:senseComponent;
+	protected var visibleObjectComponent : handle:senseVisibleObjectComponent;
+	public    var visibleObjectPositionUpdated : Bool;
+	private   var sensorObjectComponent : handle:senseSensorObjectComponent;
+	private   var targetTrackerComponent : handle:AITargetTrackerComponent;
+	private   var targetingComponentsArray : array:handle:gameTargetingComponent;
+	private   var statesComponent : handle:NPCStatesComponent;
+	private   var fxResourceMapper : handle:FxResourceMapperComponent;
+	private   var linkedStatusEffect : LinkedStatusEffect;
+	protected var resourceLibraryComponent : handle:ResourceLibraryComponent;
+	protected var crowdMemberComponent : handle:CrowdMemberBaseComponent;
+	private   var inventoryComponent : whandle:gameInventory;
+	private   var objectSelectionComponent : handle:AIObjectSelectionComponent;
+	private   var transformHistoryComponent : handle:entTransformHistoryComponent;
+	private   var animationControllerComponent : handle:entAnimationControllerComponent;
+	private   var bumpComponent : handle:gameinfluenceBumpComponent;
+	private   var isCrowd : Bool;
+	private   var incapacitatedOnAttach : Bool;
+	private   var isIconic : Bool;
+	private   var combatHUDManager : handle:CombatHUDManager;
+	private   var exposePosition : Bool;
+	private   var puppetStateBlackboard : handle:gameIBlackboard;
+	private   var customBlackboard : handle:gameIBlackboard;
+	private   var securityAreaCallbackID : Uint32;
+	private   var customAIComponents : array:handle:AICustomComponents;
+	protected var listeners : array:handle:PuppetListener;
+	protected var securitySupportListener : handle:SecuritySupportListener;
+	private   var shouldBeRevealedStorage : handle:RevealRequestsStorage;
+	private   var inputProcessed : Bool;
+	private   var shouldSpawnBloodPuddle : Bool;
+	private   var bloodPuddleSpawned : Bool;
+	private   var skipDeathAnimation : Bool;
+	private   var hitHistory : handle:HitHistory;
+	private   var currentWorkspotTags : array:CName;
+	private   var lootQuality : gamedataQuality;
+	private   var hasQuestItems : Bool;
+	private   var activeQualityRangeInteraction : CName;
+	private   var droppedWeapons : Bool;
+	private   var weakspotComponent : handle:gameWeakspotComponent;
+	private   var breachControllerComponent : handle:gameBreachControllerComponent;
+	private   var highlightData : handle:FocusForcedHighlightData;
+	private   var currentTagsStack : Uint32;
+	private   var killer : whandle:entEntity;
+	private   var objectActionsCallbackCtrl : handle:gameObjectActionsCallbackController;
+	private   var isActiveCached : AIUtilsCachedBoolValue;
+	private   var isCyberpsycho : Bool;
+	private   var isCivilian : Bool;
+	private   var isPolice : Bool;
+	private   var isGanger : Bool;
+	private   var currentlyUploadingAction : whandle:ScriptableDeviceAction;
+	private   var gameplayRoleComponent : whandle:GameplayRoleComponent;
+	private   var activeQuickhackActionHistory : array:handle:ScriptableDeviceAction;
+	private   var completedQuickhackHistory : array:handle:ScriptableDeviceAction;
+	private   var isFinsherSoundPlayed : Bool;
+	private   var attemptedShards : array:gameItemID;
+
+	static function AddListener(obj : handle:gameObject, listener : handle:PuppetListener); // ScriptedPuppet::AddListener;GameObjectPuppetListener
+	static function CanRagdoll(obj : whandle:gameObject) : Bool; // ScriptedPuppet::CanRagdoll;GameObject
+	static function CanTripOverRagdolls(obj : whandle:gameObject) : Bool; // ScriptedPuppet::CanTripOverRagdolls;GameObject
+	static function CreateCustomBlackboard(obj : handle:gameObject, blackboard : handle:gameIBlackboard); // ScriptedPuppet::CreateCustomBlackboard;GameObjectIBlackboard
+	static function CreateCustomBlackboardFromDef(obj : handle:gameObject, blackboardDef : handle:CustomBlackboardDef); // ScriptedPuppet::CreateCustomBlackboardFromDef;GameObjectCustomBlackboardDef
+	static function DropItemFromSlot(obj : whandle:gameObject, slot : TweakDBID); // ScriptedPuppet::DropItemFromSlot;GameObjectTweakDBID
+	static function DropWeaponFromSlot(obj : whandle:gameObject, slot : TweakDBID); // ScriptedPuppet::DropWeaponFromSlot;GameObjectTweakDBID
+	static function EvaluateApplyingStatusEffectsFromMountedObjectToPlayer(npc : whandle:gameObject, player : whandle:gameObject); // ScriptedPuppet::EvaluateApplyingStatusEffectsFromMountedObjectToPlayer;GameObjectGameObject
+	static function EvaluateLootQuality(self : whandle:gameObject); // ScriptedPuppet::EvaluateLootQuality;GameObject
+	static function EvaluateLootQualityByTask(self : whandle:gameObject); // ScriptedPuppet::EvaluateLootQualityByTask;GameObject
+	static function GetActiveWeapon(obj : handle:gameObject) : whandle:gameweaponObject; // ScriptedPuppet::GetActiveWeapon;GameObject
+	static function GetGrappleChild(obj : handle:gameObject) : handle:gameObject; // ScriptedPuppet::GetGrappleChild;GameObject
+	static function GetGrappleParent(obj : handle:gameObject) : handle:gameObject; // ScriptedPuppet::GetGrappleParent;GameObject
+	static function GetWeaponLeft(obj : handle:gameObject) : whandle:gameweaponObject; // ScriptedPuppet::GetWeaponLeft;GameObject
+	static function GetWeaponRight(obj : handle:gameObject) : whandle:gameweaponObject; // ScriptedPuppet::GetWeaponRight;GameObject
+	static function IsActive(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsActive;GameObject
+	static function IsAlive(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsAlive;GameObject
+	static function IsBeingGrappled(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsBeingGrappled;GameObject
+	static function IsBlinded(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsBlinded;GameObject
+	static function IsBoss(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsBoss;GameObject
+	static function IsCharacterPolice(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsCharacterPolice;GameObject
+	static function IsDeaf(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsDeaf;GameObject
+	static function IsDefeated(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsDefeated;GameObject
+	static function IsMaxTac(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsMaxTac;GameObject
+	static function IsNanoWireHacked(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsNanoWireHacked;GameObject
+	static function IsOnOffMeshLink(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsOnOffMeshLink;GameObject
+	static function IsPlayerAround() : Bool; // ScriptedPuppet::IsPlayerAround;
+	static function IsPlayerCompanion(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsPlayerCompanion;GameObject
+	static function IsPlayerCompanion(obj : whandle:gameObject, out companion : whandle:gameObject) : Bool; // ScriptedPuppet::IsPlayerCompanion;GameObjectGameObject
+	static function IsPlayerFollower(obj : whandle:gameObject) : Bool; // ScriptedPuppet::IsPlayerFollower;GameObject
+	static function IsTurnedOff(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsTurnedOff;GameObject
+	static function IsUnconscious(obj : handle:gameObject) : Bool; // ScriptedPuppet::IsUnconscious;GameObject
+	static function ReevaluateOxygenConsumption(puppet : whandle:ScriptedPuppet); // ScriptedPuppet::ReevaluateOxygenConsumption;ScriptedPuppet
+	static function RemoveListener(obj : handle:gameObject, listener : handle:PuppetListener); // ScriptedPuppet::RemoveListener;GameObjectPuppetListener
+	static function RequestDeviceDebug(obj : handle:gameObject, device : whandle:Device); // ScriptedPuppet::RequestDeviceDebug;GameObjectDevice
+	static function RequestRevealOutline(obj : handle:gameObject, doReveal : Bool, whoWantsToReveal : entEntityID); // ScriptedPuppet::RequestRevealOutline;GameObjectBoolEntityID
+	static function ResetActionSignal(puppet : whandle:ScriptedPuppet, signalName : CName) : Bool; // ScriptedPuppet::ResetActionSignal;ScriptedPuppetCName
+	static function RevokeAllTicketsForPrevention(puppet : handle:ScriptedPuppet); // ScriptedPuppet::RevokeAllTicketsForPrevention;ScriptedPuppet
+	static function SendActionSignal(puppet : whandle:ScriptedPuppet, signalName : CName, optional duration : Float) : Bool; // ScriptedPuppet::SendActionSignal;ScriptedPuppetCNameFloat
+	static function SendAndroidTurnOffEvent(obj : whandle:gameObject); // ScriptedPuppet::SendAndroidTurnOffEvent;GameObject
+	static function SendAndroidTurnOnEvent(obj : whandle:gameObject); // ScriptedPuppet::SendAndroidTurnOnEvent;GameObject
+	static function SendDefeatedEvent(obj : whandle:gameObject); // ScriptedPuppet::SendDefeatedEvent;GameObject
+	static function SendNameplateVisibleEvent(obj : whandle:gameObject, visible : Bool); // ScriptedPuppet::SendNameplateVisibleEvent;GameObjectBool
+	static function SendResurrectEvent(obj : whandle:gameObject); // ScriptedPuppet::SendResurrectEvent;GameObject
+	static function SetAnimWrappersOnItem(item : whandle:gameItemObject, animWrappers : array:CName); // ScriptedPuppet::SetAnimWrappersOnItem;ItemObjectarray<CName>
+	static function SetBloodPuddleSettings(puppet : handle:gameObject, shouldSpawnBloodPuddle : Bool); // ScriptedPuppet::SetBloodPuddleSettings;GameObjectBool
+
+	event OnAccessPointMiniGameStatus(evt : handle:gameuiAccessPointMiniGameStatus) : Bool; // OnAccessPointMiniGameStatus
+	event OnAddOrRemoveListener(evt : handle:AddOrRemoveListenerEvent) : Bool; // OnAddOrRemoveListener
+	event OnApplyNewStatusEffect(evt : handle:ApplyNewStatusEffectEvent) : Bool; // OnApplyNewStatusEffect
+	event OnAttitudeChanged(evt : handle:gameeventsAttitudeChangedEvent) : Bool; // OnAttitudeChanged
+	event OnBloodPuddleEvent(evt : handle:BloodPuddleEvent) : Bool; // OnBloodPuddleEvent
+	event OnCommunicationEvent(evt : handle:CommunicationEvent) : Bool; // OnCommunicationEvent
+	event OnCreateCustomBlackboard(evt : handle:CreateCustomBlackboardEvent) : Bool; // OnCreateCustomBlackboard
+	event OnDamageDealt(evt : handle:gameeventsTargetDamageEvent) : Bool; // OnDamageDealt
+	event OnDamageReceived(evt : handle:gameeventsDamageReceivedEvent) : Bool; // OnDamageReceived
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDefeated(evt : handle:gameeventsDefeatedEvent) : Bool; // OnDefeated
+	event OnDelayedTakedownGameEffectEvent(evt : handle:DelayedGameEffectEvent) : Bool; // OnDelayedTakedownGameEffectEvent
+	event OnDetach() : Bool; // OnDetach
+	event OnEvaluateLootQuality(evt : handle:gameeventsEvaluateLootQualityEvent) : Bool; // OnEvaluateLootQuality
+	event OnEvaluateMinigame(evt : handle:EvaluateMinigame) : Bool; // OnEvaluateMinigame
+	event OnExecutePuppetAction(evt : handle:ExecutePuppetActionEvent) : Bool; // OnExecutePuppetAction
+	event OnExitShapeEvent(evt : handle:senseOnExitShapeEvent) : Bool; // OnExitShapeEvent
+	event OnGameAttached() : Bool; // OnGameAttached
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnHackTargetEvent(evt : handle:HackTargetEvent) : Bool; // OnHackTargetEvent
+	event OnHit(evt : handle:gameeventsHitEvent) : Bool; // OnHit
+	event OnInteraction(choiceEvent : handle:gameinteractionsChoiceEvent) : Bool; // OnInteraction
+	event OnInteractionActivated(evt : handle:gameinteractionsInteractionActivationEvent) : Bool; // OnInteractionActivated
+	event OnInteractionUsed(evt : handle:gameinteractionsChoiceEvent) : Bool; // OnInteractionUsed
+	event OnInventoryChangedEvent(evt : handle:gameInventoryChangedEvent) : Bool; // OnInventoryChangedEvent
+	event OnInventoryEmptyEvent(evt : handle:gameOnInventoryEmptyEvent) : Bool; // OnInventoryEmptyEvent
+	event OnItemAddedEvent(evt : handle:gameItemAddedEvent) : Bool; // OnItemAddedEvent
+	event OnItemAddedToSlot(evt : handle:gameAttachmentSlotEventsItemAddedToSlot) : Bool; // OnItemAddedToSlot
+	event OnItemRemovedEvent(evt : handle:gameItemBeingRemovedEvent) : Bool; // OnItemRemovedEvent
+	event OnItemRemovedFromSlot(evt : handle:gameAttachmentSlotEventsItemRemovedFromSlot) : Bool; // OnItemRemovedFromSlot
+	event OnKillRewardEvent(evt : handle:gameeventsKillRewardEvent) : Bool; // OnKillRewardEvent
+	event OnLootPickupDelayEvent(evt : handle:LootPickupDelayEvent) : Bool; // OnLootPickupDelayEvent
+	event OnMinigameFailEvent(evt : handle:MinigameFailEvent) : Bool; // OnMinigameFailEvent
+	event OnNetworkLinkQuickhackEvent(evt : handle:NetworkLinkQuickhackEvent) : Bool; // OnNetworkLinkQuickhackEvent
+	event OnObjectActionRefreshEvent(evt : handle:gameObjectActionRefreshEvent) : Bool; // OnObjectActionRefreshEvent
+	event OnOutlineRequestEvent(evt : handle:OutlineRequestEvent) : Bool; // OnOutlineRequestEvent
+	event OnPauseResumePhoneCallEvent(evt : handle:PauseResumePhoneCallEvent) : Bool; // OnPauseResumePhoneCallEvent
+	event OnPulseEvent(evt : handle:gameVisionModeUpdateVisuals) : Bool; // OnPulseEvent
+	event OnQuickHackPanelStateChanged(evt : handle:QuickHackPanelStateEvent) : Bool; // OnQuickHackPanelStateChanged
+	event OnQuickSlotCommandUsed(evt : handle:QuickSlotCommandUsed) : Bool; // OnQuickSlotCommandUsed
+	event OnReevaluateOxygenEvent(evt : handle:ReevaluateOxygenEvent) : Bool; // OnReevaluateOxygenEvent
+	event OnRegisterPostion(evt : handle:RegisterPostionEvent) : Bool; // OnRegisterPostion
+	event OnRemoveAllStatusEffectOfTypeEvent(evt : handle:RemoveAllStatusEffectOfTypeEvent) : Bool; // OnRemoveAllStatusEffectOfTypeEvent
+	event OnRemoveLinkEvent(evt : handle:RemoveLinkEvent) : Bool; // OnRemoveLinkEvent
+	event OnRemoveLinkedStatusEffectsEvent(evt : handle:RemoveLinkedStatusEffectsEvent) : Bool; // OnRemoveLinkedStatusEffectsEvent
+	event OnRemoveStatusEffect(evt : handle:RemoveStatusEffectEvent) : Bool; // OnRemoveStatusEffect
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnRequestDismemberment(evt : handle:RequestDismembermentEvent) : Bool; // OnRequestDismemberment
+	event OnResetSignalAIEventReceived(evt : handle:ResetSignal) : Bool; // OnResetSignalAIEventReceived
+	event OnResurrect(evt : handle:gameeventsResurrectEvent) : Bool; // OnResurrect
+	event OnRevealDeviceRequest(evt : handle:RevealDeviceRequest) : Bool; // OnRevealDeviceRequest
+	event OnRevealNetworkGridOnPulse(evt : handle:RevealNetworkGridOnPulse) : Bool; // OnRevealNetworkGridOnPulse
+	event OnRevealRequest(evt : handle:RevealRequestEvent) : Bool; // OnRevealRequest
+	event OnRevealStateChanged(evt : handle:RevealStateChangedEvent) : Bool; // OnRevealStateChanged
+	event OnScanningEvent(evt : handle:gameScanningEvent) : Bool; // OnScanningEvent
+	event OnScanningLookAtEvent(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookAtEvent
+	event OnSecurityAreaCrossingPerimeter(evt : handle:SecurityAreaCrossingPerimeter) : Bool; // OnSecurityAreaCrossingPerimeter
+	event OnSetBloodPuddleSettingsEvent(evt : handle:SetBloodPuddleSettingsEvent) : Bool; // OnSetBloodPuddleSettingsEvent
+	event OnSetExposeQuickHacks(evt : handle:SetExposeQuickHacks) : Bool; // OnSetExposeQuickHacks
+	event OnSetLootInteractionAccessEvent(evt : handle:gameSetLootInteractionAccessibilityEvent) : Bool; // OnSetLootInteractionAccessEvent
+	event OnStartEndPhoneCallEvent(evt : handle:StartEndPhoneCallEvent) : Bool; // OnStartEndPhoneCallEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect) : Bool; // OnStatusEffectRemoved
+	event OnSuppressNPCInSecuritySystem(evt : handle:SuppressNPCInSecuritySystem) : Bool; // OnSuppressNPCInSecuritySystem
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnToggleTargetingComponentsEvent(evt : handle:ToggleTargetingComponentsEvent) : Bool; // OnToggleTargetingComponentsEvent
+	event OnUploadProgressStateChanged(evt : handle:UploadProgramProgressEvent) : Bool; // OnUploadProgressStateChanged
+	event OnWorkspotFinishedEvent(evt : handle:workWorkspotFinishedEvent) : Bool; // OnWorkspotFinishedEvent
+	event OnWorkspotStartedEvent(evt : handle:workWorkspotStartedEvent) : Bool; // OnWorkspotStartedEvent
+
+	function ActivateIntelligencePerks(action : handle:ScriptableDeviceAction); // ActivateIntelligencePerks;ScriptableDeviceAction
+	function AddLinkedStatusEffect(netrunner : entEntityID, target : entEntityID, optional actionEffects : array:whandle:gamedataObjectActionEffect_Record); // AddLinkedStatusEffect;EntityIDEntityIDarray<ObjectActionEffect_Record>
+	function AddRecordEquipment(equipmentPriority : EquipmentPriority, optional powerLevel : Int32); // AddRecordEquipment;EquipmentPriorityInt32
+	function AllowFinisherThreshold() : Bool; // AllowFinisherThreshold;
+	function AwardsExperience() : Bool; // AwardsExperience;
+	function CanBeTagged() : Bool; // CanBeTagged;
+	function CanNewActionBeQueued() : Bool; // CanNewActionBeQueued;
+	function CanOverrideNetworkContext() : Bool; // CanOverrideNetworkContext;
+	function CanRevealRemoteActionsWheel() : Bool; // CanRevealRemoteActionsWheel;
+	function ClearLinkedStatusEffect(); // ClearLinkedStatusEffect;
+	function CreateClearOutlinesRequest(); // CreateClearOutlinesRequest;
+	function CreateListeners(); // CreateListeners;
+	function CreateObjectActionsCallbackController(instigator : whandle:entEntity); // CreateObjectActionsCallbackController;Entity
+	function CreateTakedownEventOnLayerActivation(evt : handle:gameinteractionsInteractionActivationEvent); // CreateTakedownEventOnLayerActivation;InteractionActivationEvent
+	function DamagePipelineFinalized(evt : handle:gameeventsHitEvent); // DamagePipelineFinalized;gameHitEvent
+	function DestroyObjectActionsCallbackController(); // DestroyObjectActionsCallbackController;
+	function DeterminGameplayRole() : EGameplayRole; // DeterminGameplayRole;
+	function DetermineInteractionState(); // DetermineInteractionState;
+	function DetermineInteractionStateByTask(); // DetermineInteractionStateByTask;
+	function DetermineInteractionStateTask(data : handle:gameScriptTaskData); // DetermineInteractionStateTask;ScriptTaskData
+	function DropHeldItems() : Bool; // DropHeldItems;
+	function EnableInteraction(layer : CName, b : Bool); // EnableInteraction;CNameBool
+	function EnableLootInteractionWithDelay(puppet : handle:gamePuppet); // EnableLootInteractionWithDelay;gamePuppet
+	function EnableSensesComponent(b : Bool); // EnableSensesComponent;Bool
+	function EquipSavedLoadout(); // EquipSavedLoadout;
+	function EquipSavedLoadoutTask(data : handle:gameScriptTaskData); // EquipSavedLoadoutTask;ScriptTaskData
+	function EvaluateLootQuality() : Bool; // EvaluateLootQuality;
+	function EvaluateLootQualityByTask(); // EvaluateLootQualityByTask;
+	function EvaluateLootQualityEvent(); // EvaluateLootQualityEvent;
+	function EvaluateLootQualityTask(data : handle:gameScriptTaskData); // EvaluateLootQualityTask;ScriptTaskData
+	function EvaluateQuickhacksCount(); // EvaluateQuickhacksCount;
+	function ExecuteAction(action : handle:ScriptableDeviceAction); // ExecuteAction;ScriptableDeviceAction
+	function ExecuteAction(choice : script_ref:gameinteractionsChoice); // ExecuteAction;script_ref<InteractionChoice>
+	function ForceVisionAppearanceNetrunner(target : handle:gameObject, sourceID : entEntityID, sourceName : CName, toggle : Bool); // ForceVisionAppearanceNetrunner;GameObjectEntityIDCNameBool
+	function GenerateMaterialDrops(baseUncommonMaterials : Float, baseRareMaterials : Float, baseEpicMaterials : Float, baseLegendaryMaterials : Float, TS : handle:gameTransactionSystem); // GenerateMaterialDrops;FloatFloatFloatFloatTransactionSystem
+	function GetAIControllerComponent() : handle:AIHumanComponent; // GetAIControllerComponent;
+	function GetActiveQuickhackActionHistory() : array:handle:ScriptableDeviceAction; // GetActiveQuickhackActionHistory;
+	function GetAnimationControllerComponent() : handle:entAnimationControllerComponent; // GetAnimationControllerComponent;
+	function GetAreIncomingSecuritySystemEventsSuppressed() : Bool; // GetAreIncomingSecuritySystemEventsSuppressed;
+	function GetAttitudeAgent() : handle:gameAttitudeAgent; // GetAttitudeAgent;
+	function GetBlackboardIntVariable(id : gamebbScriptID_Int32) : Int32; // GetBlackboardIntVariable;BlackboardID_Int
+	function GetBreachControllerComponent() : handle:gameBreachControllerComponent; // GetBreachControllerComponent;
+	function GetBumpComponent() : handle:gameinfluenceBumpComponent; // GetBumpComponent;
+	function GetChimeraHighlight() : handle:FocusForcedHighlightData; // GetChimeraHighlight;
+	function GetCombatHUDManagerComponent() : handle:CombatHUDManager; // GetCombatHUDManagerComponent;
+	function GetCompletedQuickhackActionHistory() : array:handle:ScriptableDeviceAction; // GetCompletedQuickhackActionHistory;
+	function GetCooldownStorage() : handle:CooldownStorage; // GetCooldownStorage;
+	function GetCrowd() : Bool; // GetCrowd;
+	function GetCrowdMemberComponent() : handle:CrowdMemberBaseComponent; // GetCrowdMemberComponent;
+	function GetCurrentOutline() : EFocusOutlineType; // GetCurrentOutline;
+	function GetCurrentWorkspotTags() : array:CName; // GetCurrentWorkspotTags;
+	function GetCurrentlyEquippedItems(heldObjects : script_ref:array:handle:gameItemObject) : Bool; // GetCurrentlyEquippedItems;script_ref<array<ItemObject>>
+	function GetCurrentlyUploadingAction() : handle:ScriptableDeviceAction; // GetCurrentlyUploadingAction;
+	function GetCustomBlackboard() : handle:gameIBlackboard; // GetCustomBlackboard;
+	function GetDefaultHighlight() : handle:FocusForcedHighlightData; // GetDefaultHighlight;
+	function GetDefenseModeStateFromBlackboard() : gamedataDefenseMode; // GetDefenseModeStateFromBlackboard;
+	function GetDeterminatedSecurityAreaType() : ESecurityAreaType; // GetDeterminatedSecurityAreaType;
+	function GetDeviceActionMaxQueueSize() : Int32; // GetDeviceActionMaxQueueSize;
+	function GetDeviceActionQueueNames() : array:CName; // GetDeviceActionQueueNames;
+	function GetDeviceActionQueueSize() : Int32; // GetDeviceActionQueueSize;
+	function GetDeviceLink() : handle:PuppetDeviceLinkPS; // GetDeviceLink;
+	function GetDismembermentComponent() : handle:gameDismembermentComponent; // GetDismembermentComponent;
+	function GetDistToTraceEndFromPosToMainTrackedObject(traceSource : senseAdditionalTraceType) : Float; // GetDistToTraceEndFromPosToMainTrackedObject;AdditionalTraceType
+	function GetFxResourceByKey(key : CName) : gameFxResource; // GetFxResourceByKey;CName
+	function GetGameplayRoleComponent() : handle:GameplayRoleComponent; // GetGameplayRoleComponent;
+	function GetGender() : CName; // GetGender;
+	function GetHighLevelStateFromBlackboard() : gamedataNPCHighLevelState; // GetHighLevelStateFromBlackboard;
+	function GetHitReactionComponent() : handle:HitReactionComponent; // GetHitReactionComponent;
+	function GetHitReactionModeFromBlackboard() : EHitReactionMode; // GetHitReactionModeFromBlackboard;
+	function GetHitRepresantationSlotComponent() : handle:entSlotComponent; // GetHitRepresantationSlotComponent;
+	function GetICELevel() : Float; // GetICELevel;
+	function GetIgnoredDurationStats() : array:whandle:gamedataStatusEffect_Record; // GetIgnoredDurationStats;
+	function GetIsIconic() : Bool; // GetIsIconic;
+	function GetItemMinigameAttempted(itemID : gameItemID) : Bool; // GetItemMinigameAttempted;ItemID
+	function GetKiller() : whandle:entEntity; // GetKiller;
+	function GetLastDamageTimeFrom(threat : handle:gameObject, out isMelee : Bool) : Float; // GetLastDamageTimeFrom;GameObjectBool
+	function GetLinkedStatusEffect() : LinkedStatusEffect; // GetLinkedStatusEffect;
+	function GetLootQuality() : gamedataQuality; // GetLootQuality;
+	function GetMasterConnectedClassTypes() : ConnectedClassTypes; // GetMasterConnectedClassTypes;
+	function GetMovePolicesComponent() : handle:movePoliciesComponent; // GetMovePolicesComponent;
+	function GetNPCType() : gamedataNPCType; // GetNPCType;
+	function GetNetworkBlackboard() : handle:gameIBlackboard; // GetNetworkBlackboard;
+	function GetNetworkBlackboardDef() : handle:NetworkBlackboardDef; // GetNetworkBlackboardDef;
+	function GetNetworkLinkSlotName(out transform : WorldTransform) : CName; // GetNetworkLinkSlotName;WorldTransform
+	function GetNetworkLinkSlotName() : CName; // GetNetworkLinkSlotName;
+	function GetObjectActionEffectDurationValue(category : gamedataHackCategory, durationMods : script_ref:array:whandle:gamedataObjectActionEffect_Record, rootObject : whandle:gameObject, targetID : gameStatsObjectID, instigatorID : entEntityID) : Float; // GetObjectActionEffectDurationValue;gamedataHackCategoryscript_ref<array<ObjectActionEffect_Record>>GameObjectStatsObjectIDEntityID
+	function GetObjectSelectionComponent() : handle:AIObjectSelectionComponent; // GetObjectSelectionComponent;
+	function GetObjectToForwardHighlight() : array:whandle:gameObject; // GetObjectToForwardHighlight;
+	function GetPS() : handle:ScriptedPuppetPS; // GetPS
+	function GetPhoneCallIndicatorSlotName() : CName; // GetPhoneCallIndicatorSlotName;
+	function GetPingDuration() : Float; // GetPingDuration;
+	function GetPuppetPS() : handle:ScriptedPuppetPS; // GetPuppetPS;
+	function GetPuppetReactionPresetType() : gamedataReactionPresetType; // GetPuppetReactionPresetType;
+	function GetPuppetStateBlackboard() : handle:gameIBlackboard; // GetPuppetStateBlackboard;
+	function GetQuickHackDuration(quickHackRecord : whandle:gamedataObjectAction_Record, rootObject : whandle:gameObject, targetID : gameStatsObjectID, instigatorID : entEntityID) : Float; // GetQuickHackDuration;ObjectAction_RecordGameObjectStatsObjectIDEntityID
+	function GetQuickHackDuration(quickHackID : TweakDBID, rootObject : whandle:gameObject, targetID : gameStatsObjectID, instigatorID : entEntityID) : Float; // GetQuickHackDuration;TweakDBIDGameObjectStatsObjectIDEntityID
+	function GetQuickHackDurationFromLongestEffect(quickHackRecord : whandle:gamedataObjectAction_Record, rootObject : whandle:gameObject, targetID : gameStatsObjectID, instigatorID : entEntityID) : Float; // GetQuickHackDurationFromLongestEffect;ObjectAction_RecordGameObjectStatsObjectIDEntityID
+	function GetReactionPresetID() : TweakDBID; // GetReactionPresetID;
+	function GetRecord() : handle:gamedataCharacter_Record; // GetRecord;
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetSensesComponent() : handle:senseComponent; // GetSensesComponent;
+	function GetSensorObjectComponent() : handle:senseSensorObjectComponent; // GetSensorObjectComponent;
+	function GetSignalHandlerComponent() : handle:AISignalHandlerComponent; // GetSignalHandlerComponent;
+	function GetSignalTable() : handle:gameBoolSignalTable; // GetSignalTable;
+	function GetSlotComponent() : handle:entSlotComponent; // GetSlotComponent;
+	function GetStanceStateFromBlackboard() : gamedataNPCStanceState; // GetStanceStateFromBlackboard;
+	function GetStatesComponent() : handle:NPCStatesComponent; // GetStatesComponent;
+	function GetStimReactionComponent() : handle:ReactionManagerComponent; // GetStimReactionComponent;
+	function GetTargetTrackerComponent() : handle:AITargetTrackerComponent; // GetTargetTrackerComponent;
+	function GetTargetTrackingExension() : handle:TargetTrackingExtension; // GetTargetTrackingExension;
+	function GetTransformHistoryComponent() : handle:entTransformHistoryComponent; // GetTransformHistoryComponent;
+	function GetUpperBodyStateFromBlackboard() : gamedataNPCUpperBodyState; // GetUpperBodyStateFromBlackboard;
+	function GetVendorType() : gamedataVendorType; // GetVendorType;
+	function GetVisibleObjectComponent() : handle:senseVisibleObjectComponent; // GetVisibleObjectComponent;
+	function GetWasAggressiveCrowd() : Bool; // GetWasAggressiveCrowd;
+	function GetWeakspotComponent() : handle:gameWeakspotComponent; // GetWeakspotComponent;
+	function GiveEquipment(equipmentPriority : EquipmentPriority, characterRecord : handle:gamedataCharacter_Record, powerLevel : Int32); // GiveEquipment;EquipmentPriorityCharacter_RecordInt32
+	function HandleChainLightningEffectAndDamageTask(data : handle:gameScriptTaskData); // HandleChainLightningEffectAndDamageTask;ScriptTaskData
+	function HandleDeath(instigator : whandle:gameObject); // HandleDeath;GameObject
+	function HandleDefeated(); // HandleDefeated;
+	function HandleDefeatedByTask(); // HandleDefeatedByTask;
+	function HandleDefeatedTask(data : handle:gameScriptTaskData); // HandleDefeatedTask;ScriptTaskData
+	function HandleSquadAction(actionName : CName, verb : EAISquadVerb); // HandleSquadAction;CNameEAISquadVerb
+	function HandleStimsOnHit(evt : handle:gameeventsHitEvent); // HandleStimsOnHit;gameHitEvent
+	function HasActiveQuickHackUpload() : Bool; // HasActiveQuickHackUpload;
+	function HasCalculatedEquipment(equipmentPriority : EquipmentPriority, characterRecord : handle:gamedataCharacter_Record) : Bool; // HasCalculatedEquipment;EquipmentPriorityCharacter_Record
+	function HasDirectActionsActive() : Bool; // HasDirectActionsActive;
+	function HasEquipment(equipmentPriority : EquipmentPriority) : Bool; // HasEquipment;EquipmentPriority
+	function HasHeadUnderwater() : Bool; // HasHeadUnderwater;
+	function HasLoot() : Bool; // HasLoot;
+	function HasPrimaryOrSecondaryEquipment() : Bool; // HasPrimaryOrSecondaryEquipment;
+	function HasQuestItems() : Bool; // HasQuestItems;
+	function HasValidLootQuality() : Bool; // HasValidLootQuality;
+	function HasWorkspotTag(tag : CName) : Bool; // HasWorkspotTag;CName
+	function HidePhoneCallDuration(statPoolType : gamedataStatPoolType); // HidePhoneCallDuration;gamedataStatPoolType
+	function IsActionCurrentlyUploading() : Bool; // IsActionCurrentlyUploading;
+	function IsActionQueueEnabled() : Bool; // IsActionQueueEnabled;
+	function IsActionQueueFull() : Bool; // IsActionQueueFull;
+	function IsActive() : Bool; // IsActive;
+	function IsActiveBackdoor() : Bool; // IsActiveBackdoor;
+	function IsActiveInternal() : Bool; // IsActiveInternal;
+	function IsAggressive() : Bool; // IsAggressive;
+	function IsAimAssistEnabled() : Bool; // IsAimAssistEnabled;
+	function IsAndroid() : Bool; // IsAndroid;
+	function IsBackdoor() : Bool; // IsBackdoor;
+	function IsBoss() : Bool; // IsBoss;
+	function IsBreached() : Bool; // IsBreached;
+	function IsCerberus() : Bool; // IsCerberus;
+	function IsCharacterChildren() : Bool; // IsCharacterChildren;
+	function IsCharacterCivilian() : Bool; // IsCharacterCivilian;
+	function IsCharacterCyberpsycho() : Bool; // IsCharacterCyberpsycho;
+	function IsCharacterGanger() : Bool; // IsCharacterGanger;
+	function IsCharacterPolice() : Bool; // IsCharacterPolice;
+	function IsChimera() : Bool; // IsChimera;
+	function IsCivilian() : Bool; // IsCivilian;
+	function IsConnectedToBackdoorDevice() : Bool; // IsConnectedToBackdoorDevice;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsContainer() : Bool; // IsContainer;
+	function IsCrowd() : Bool; // IsCrowd;
+	function IsDead() : Bool; // IsDead;
+	function IsDeadNoStatPool() : Bool; // IsDeadNoStatPool;
+	function IsDrone() : Bool; // IsDrone;
+	function IsElite() : Bool; // IsElite;
+	function IsEnemy() : Bool; // IsEnemy;
+	function IsFinisherSoundPlayed() : Bool; // IsFinisherSoundPlayed;
+	function IsHackingPlayer() : Bool; // IsHackingPlayer;
+	function IsHuman() : Bool; // IsHuman;
+	function IsHumanoid() : Bool; // IsHumanoid;
+	function IsInvestigating() : Bool; // IsInvestigating;
+	function IsInvestigatingObject(object : handle:gameObject) : Bool; // IsInvestigatingObject;GameObject
+	function IsMassive() : Bool; // IsMassive;
+	function IsMaxTac() : Bool; // IsMaxTac;
+	function IsMech() : Bool; // IsMech;
+	function IsMechanical() : Bool; // IsMechanical;
+	function IsNetrunnerPuppet() : Bool; // IsNetrunnerPuppet;
+	function IsNetworkKnownToPlayer() : Bool; // IsNetworkKnownToPlayer;
+	function IsNetworkLinkDynamic() : Bool; // IsNetworkLinkDynamic;
+	function IsOfficer() : Bool; // IsOfficer;
+	function IsOnAutonomousAI() : Bool; // IsOnAutonomousAI;
+	function IsPerformingCallReinforcements() : Bool; // IsPerformingCallReinforcements;
+	function IsPlayerCompanion() : Bool; // IsPlayerCompanion;
+	function IsPrevention() : Bool; // IsPrevention;
+	function IsPuppet() : Bool; // IsPuppet;
+	function IsPuppetInCombat() : Bool; // IsPuppetInCombat;
+	function IsQualityRangeInteractionLayer(layerTag : CName) : Bool; // IsQualityRangeInteractionLayer;CName
+	function IsQuest() : Bool; // IsQuest;
+	function IsQuickHackAble() : Bool; // IsQuickHackAble;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function IsResistantToTakedown() : Bool; // IsResistantToTakedown;
+	function IsRevealed() : Bool; // IsRevealed;
+	function IsTargetTresspassingMyZone(target : handle:gameObject) : Bool; // IsTargetTresspassingMyZone;GameObject
+	function IsTurnedOffNoStatusEffect() : Bool; // IsTurnedOffNoStatusEffect;
+	function IsUnderwater(optional howDeep : Float) : Bool; // IsUnderwater;Float
+	function IsVendor() : Bool; // IsVendor;
+	function Kill(optional instigator : whandle:gameObject, optional skipNPCDeathAnim : Bool, optional disableNPCRagdoll : Bool); // Kill;GameObjectBoolBool
+	function LogDamageReceived(evt : handle:gameeventsDamageReceivedEvent, instigator : handle:gameObject, dmgSituation : gameTelemetryDamageSituation); // LogDamageReceived;gameDamageReceivedEventGameObjectgameTelemetryDamageSituation
+	function LogEnemyDown(evt : handle:gameeventsKillRewardEvent, dmgSituation : gameTelemetryDamageSituation); // LogEnemyDown;KillRewardEventgameTelemetryDamageSituation
+	function LootAllItems(choiceEvent : handle:gameinteractionsChoiceEvent); // LootAllItems;InteractionChoiceEvent
+	function MySecuritySystemState() : ESecuritySystemState; // MySecuritySystemState;
+	function NotifyHitReactionSourceChanged(hitSource : Int32); // NotifyHitReactionSourceChanged;Int32
+	function NotifyHitReactionTypeChanged(hitType : Int32); // NotifyHitReactionTypeChanged;Int32
+	function OnClearOutlinesRequest(evt : handle:ClearOutlinesRequestEvent); // OnClearOutlinesRequest;ClearOutlinesRequestEvent
+	function OnDied(); // OnDied;
+	function OnDiveFinished(reason : CName); // OnDiveFinished;CName
+	function OnIncapacitated(); // OnIncapacitated;
+	function OnResurrected(); // OnResurrected;
+	function OnSecuritySupportThreshold(above : Bool); // OnSecuritySupportThreshold;Bool
+	function OnSignalForcedRagdollDeathSignal(signalId : Uint16, newValue : Bool, userData : handle:ForcedRagdollDeathSignal); // OnSignalForcedRagdollDeathSignal;Uint16BoolForcedRagdollDeathSignal
+	function OnSignalNPCStateChangeSignal(signalId : Uint16, newValue : Bool, userData : handle:NPCStateChangeSignal); // OnSignalNPCStateChangeSignal;Uint16BoolNPCStateChangeSignal
+	function OnSignalSquadActionSignal(signalId : Uint16, newValue : Bool); // OnSignalSquadActionSignal;Uint16Bool
+	function OrderChoice(choiceEvent : handle:gameinteractionsChoiceEvent); // OrderChoice;InteractionChoiceEvent
+	function PausePhoneCallDuration(statPoolType : gamedataStatPoolType); // PausePhoneCallDuration;gamedataStatPoolType
+	function ProcessEnemyNetrunnerTutorialFact(); // ProcessEnemyNetrunnerTutorialFact;
+	function ProcessLootMinigame(baseMoney : Float, baseUncommonMaterials : Float, baseRareMaterials : Float, baseEpicMaterials : Float, baseLegendaryMaterials : Float, baseShardDropChance : Float, TS : handle:gameTransactionSystem); // ProcessLootMinigame;FloatFloatFloatFloatFloatFloatTransactionSystem
+	function ProcessNewPerkFinisherLayer(evt : handle:gameinteractionsChoiceEvent, playerPuppet : handle:PlayerPuppet, npcPuppet : handle:NPCPuppet); // ProcessNewPerkFinisherLayer;InteractionChoiceEventPlayerPuppetNPCPuppet
+	function ProcessQuickHackQueueOnDefeat(); // ProcessQuickHackQueueOnDefeat;
+	function ProcessSyncedAnimationPuppetActions(evt : handle:gameinteractionsChoiceEvent); // ProcessSyncedAnimationPuppetActions;InteractionChoiceEvent
+	function PropagateFadeOutlinesRequestToItems(); // PropagateFadeOutlinesRequestToItems;
+	function PropagateOutlineToCurrentlyUsedItems(evt : handle:OutlineRequestEvent); // PropagateOutlineToCurrentlyUsedItems;OutlineRequestEvent
+	function PulseNetwork(revealNetworkAtEnd : Bool); // PulseNetwork;Bool
+	function PuppetDamagePipelineFinalized(evt : handle:gameeventsHitEvent); // PuppetDamagePipelineFinalized;gameHitEvent
+	function PuppetSubmergedRequestRemovingStatusEffects(obj : whandle:gameObject); // PuppetSubmergedRequestRemovingStatusEffects;GameObject
+	function PushFinisherActionEventToPSM(evt : handle:gameinteractionsChoiceEvent, isFastFinisher : Bool); // PushFinisherActionEventToPSM;InteractionChoiceEventBool
+	function PushTakedownActionEventToPSM(evt : handle:gameinteractionsChoiceEvent); // PushTakedownActionEventToPSM;InteractionChoiceEvent
+	function RefreshCachedDataCharacterTags(); // RefreshCachedDataCharacterTags;
+	function RefreshCachedReactionPresetData(); // RefreshCachedReactionPresetData;
+	function RegisterSubCharacter(); // RegisterSubCharacter;
+	function RemoveLink(); // RemoveLink;
+	function RemoveLinkedStatusEffects(optional ssAction : Bool) : Bool; // RemoveLinkedStatusEffects;Bool
+	function RemoveLinkedStatusEffectsFromTarget(sourceID : entEntityID, optional ssAction : Bool) : Bool; // RemoveLinkedStatusEffectsFromTarget;EntityIDBool
+	function RemoveListeners(); // RemoveListeners;
+	function RequestRevealOutline(shouldIncreaseCounter : Bool, requester : entEntityID); // RequestRevealOutline;BoolEntityID
+	function ResolveConnectionWithDeviceSystem(); // ResolveConnectionWithDeviceSystem;
+	function ResolveConnectionWithDeviceSystemTask(data : handle:gameScriptTaskData); // ResolveConnectionWithDeviceSystemTask;ScriptTaskData
+	function ResolveQualityRangeInteractionLayer(); // ResolveQualityRangeInteractionLayer;
+	function ResumePhoneCallDuration(statPoolType : gamedataStatPoolType, initialDuration : Float); // ResumePhoneCallDuration;gamedataStatPoolTypeFloat
+	function RevokeAllTickets(); // RevokeAllTickets;
+	function RevokeAllTicketsForPreventionSquad(); // RevokeAllTicketsForPreventionSquad;
+	function RewardKiller(killer : whandle:gameObject, killType : gameKillType, isAnyDamageNonlethal : Bool); // RewardKiller;GameObjectgameKillTypeBool
+	function SendAIDeathSignal(); // SendAIDeathSignal;
+	function SendInteractionChoiceToPSM(choiceEvent : handle:gameinteractionsChoiceEvent, id : CName, isChoiceActive : Bool); // SendInteractionChoiceToPSM;InteractionChoiceEventCNameBool
+	function SendQuickhackCommands(shouldOpen : Bool); // SendQuickhackCommands;Bool
+	function SetAnimWrappersOnItem(item : whandle:gameItemObject); // SetAnimWrappersOnItem;ItemObject
+	function SetCurrentlyUploadingAction(action : handle:ScriptableDeviceAction); // SetCurrentlyUploadingAction;ScriptableDeviceAction
+	function SetFinisherSoundPlayed(value : Bool); // SetFinisherSoundPlayed;Bool
+	function SetItemMinigameAttempted(itemID : gameItemID); // SetItemMinigameAttempted;ItemID
+	function SetKiller(killer : whandle:entEntity); // SetKiller;Entity
+	function SetMainTrackedObject(target : handle:gameObject); // SetMainTrackedObject;GameObject
+	function SetReactionPresetID(presetID : TweakDBID); // SetReactionPresetID;TweakDBID
+	function SetSenseObjectType(type : gamedataSenseObjectType); // SetSenseObjectType;gamedataSenseObjectType
+	function SetSkipDeathAnimation(value : Bool); // SetSkipDeathAnimation;Bool
+	function SetWasIncapacitatedOnAttach(value : Bool); // SetWasIncapacitatedOnAttach;Bool
+	function ShouldEnableRemoteLayer() : Bool; // ShouldEnableRemoteLayer;
+	function ShouldPulseNetwork() : Bool; // ShouldPulseNetwork;
+	function ShouldRegisterToHUD() : Bool; // ShouldRegisterToHUD;
+	function ShouldShowScanner() : Bool; // ShouldShowScanner;
+	function ShouldSkipDeathAnimation() : Bool; // ShouldSkipDeathAnimation;
+	function ShouldSpawnBloodPuddle() : Bool; // ShouldSpawnBloodPuddle;
+	function ShowPhoneCallDuration(duration : Float, statType : gamedataStatType, statPoolType : gamedataStatPoolType, statPoolID : TweakDBID); // ShowPhoneCallDuration;FloatgamedataStatTypegamedataStatPoolTypeTweakDBID
+	function ShowQuickHackDuration(action : handle:ScriptableDeviceAction); // ShowQuickHackDuration;ScriptableDeviceAction
+	function SoftKill(optional instigator : whandle:gameObject, optional skipNPCDeathAnim : Bool, optional disableNPCRagdoll : Bool); // SoftKill;GameObjectBoolBool
+	function SquadUpdate(leaveSquad : Bool, squadType : AISquadType); // SquadUpdate;BoolAISquadType
+	function StartOxygenDecay(); // StartOxygenDecay;
+	function StartPingingNetwork(); // StartPingingNetwork;
+	function StopOxygenDecay(); // StopOxygenDecay;
+	function StopPingingNetwork(); // StopPingingNetwork;
+	function StopPoliceBehaviour(); // StopPoliceBehaviour;
+	function ToggleInteractionLayers(); // ToggleInteractionLayers;
+	function TranslateChoicesIntoQuickSlotCommands(puppetActions : script_ref:array:handle:PuppetAction, commands : script_ref:array:handle:QuickhackData); // TranslateChoicesIntoQuickSlotCommands;script_ref<array<PuppetAction>>script_ref<array<QuickhackData>>
+	function TriggerNewPerkFinisher(evt : handle:gameinteractionsChoiceEvent, playerPuppet : handle:PlayerPuppet); // TriggerNewPerkFinisher;InteractionChoiceEventPlayerPuppet
+	function TriggerNewPerkFinisherBluntHold(playerPuppet : handle:PlayerPuppet, npcPuppet : handle:NPCPuppet); // TriggerNewPerkFinisherBluntHold;PlayerPuppetNPCPuppet
+	function TriggerSecuritySystemNotification(lastKnownPosition : Vector4, threat : whandle:gameObject, type : ESecurityNotificationType, optional stimType : gamedataStimType); // TriggerSecuritySystemNotification;Vector4GameObjectESecurityNotificationTypegamedataStimType
+	function TryRegisterToPrevention(); // TryRegisterToPrevention;
+	function UnregisterSubCharacter(); // UnregisterSubCharacter;
+	function Update(dt : Float); // Update;Float
+	function UpdateLootInteraction(); // UpdateLootInteraction;
+	function UpdateQuickHackableState(isQuickHackable : Bool); // UpdateQuickHackableState;Bool
+	function UpdateScannerLookAtBB(b : Bool); // UpdateScannerLookAtBB;Bool
+	function WasIncapacitatedOnAttach() : Bool; // WasIncapacitatedOnAttach;
+}
+
+import class gamePuppet extends gamePuppetBase
+{
+	import static function HasLootableItems(self : whandle:ScriptedPuppet) : Bool; // HasLootableItems
+
+	import function CacheLootForDropping(); // CacheLootForDropping
+	import function CanRagdoll() : Bool; // CanRagdoll
+	import function CheckIsStandingOnVehicle(vehicleID : entEntityID) : Bool; // CheckIsStandingOnVehicle
+	import function DropAmmo(); // DropAmmo
+	import function DropLootBag(); // DropLootBag
+	import function DropWeapons(); // DropWeapons
+	import function GenerateLoot(); // GenerateLoot
+	import function GenerateLootWithStats(lootModifiers : array:handle:gameStatModifierData_Deprecated); // GenerateLootWithStats
+	import function GetAttitude() : handle:gameAttitudeAgent; // GetAttitude
+	import function GetBlackboard() : handle:gameIBlackboard; // GetBlackboard
+	import function GetBodyType() : CName; // GetBodyType
+	import function GetCPOMissionVoted(deviceGroup : CName) : Bool; // GetCPOMissionVoted
+	import function GetCurrentNavmeshPosition(position : script_ref:Vector4) : navNaviPositionType; // GetCurrentNavmeshPosition
+	import function GetLastValidNavmeshPoint() : Vector4; // GetLastValidNavmeshPoint
+	import function GetNPCRarity() : gamedataNPCRarity; // GetNPCRarity
+	import function GetNPCRarityRecord() : handle:gamedataNPCRarity_Record; // GetNPCRarityRecord
+	import function GetResolvedGenderName() : CName; // GetResolvedGenderName
+	import function GetSenses() : handle:senseComponent; // GetSenses
+	import function GetTargetTracker() : handle:AITargetTrackerComponent; // GetTargetTracker
+	import function GetVelocity() : Vector4; // GetVelocity
+	import function GetVisibleObject() : handle:senseVisibleObjectComponent; // GetVisibleObject
+	import function HasCPOMissionData() : Bool; // HasCPOMissionData
+	import function HasCrowdStaticLOD() : Bool; // HasCrowdStaticLOD
+	import function HasMechanicalImpactComponent() : Bool; // HasMechanicalImpactComponent
+	import function HasRuntimeAnimsetTags(tagList : array:CName) : Bool; // HasRuntimeAnimsetTags
+	import function HideIrreversibly(); // HideIrreversibly
+	import function InitializeBaseInventory(); // InitializeBaseInventory
+	import function IsLooted() : Bool; // IsLooted
+	import function ProcessLoot(); // ProcessLoot
+	import function SetCPOMissionData(hasCPOMissionData : Bool); // SetCPOMissionData
+	import function SetCPOMissionVoted(deviceGroup : CName, hasVoted : Bool); // SetCPOMissionVoted
+	import function TryGetVehicleBelow() : entEntityID; // TryGetVehicleBelow
+	import function WasLootGenerated() : Bool; // WasLootGenerated
+}
+
+import class abstract gamePuppetBase extends gameTimeDilatable
+{
+	import function GetRecordID() : TweakDBID; // GetRecordID
+	import function GetTweakDBDisplayName(useDisplayNameAsFallback : Bool) : String; // GetTweakDBDisplayName
+	import function GetTweakDBFullDisplayName(useDisplayNameAsFallback : Bool) : String; // GetTweakDBFullDisplayName
+
+	function GetBoolFromCharacterTweak(varName : script_ref:String, optional defaultValue : Bool) : Bool; // GetBoolFromCharacterTweak;script_ref<String>Bool
+	function GetCNameFromCharacterTweak(varName : script_ref:String, optional defaultValue : CName) : CName; // GetCNameFromCharacterTweak;script_ref<String>CName
+	function GetFloatFromCharacterTweak(varName : script_ref:String, optional defaultValue : Float) : Float; // GetFloatFromCharacterTweak;script_ref<String>Float
+	function GetIntFromCharacterTweak(varName : script_ref:String, optional defaultValue : Int32) : Int32; // GetIntFromCharacterTweak;script_ref<String>Int32
+	function GetStringFromCharacterTweak(varName : script_ref:String, optional defaultValue : String) : String; // GetStringFromCharacterTweak;script_ref<String>String
+	function IsIncapacitated() : Bool; // IsIncapacitated;
+}
+
+import class gameTimeDilatable extends gameObject
+{
+	import function GetTimeDilationValue() : Float; // GetTimeDilationValue
+	import function HasIndividualTimeDilation(optional reason : CName) : Bool; // HasIndividualTimeDilation
+	import function IsIgnoringGlobalTimeDilation() : Bool; // IsIgnoringGlobalTimeDilation
+	import function IsIgnoringTimeDilation() : Bool; // IsIgnoringTimeDilation
+	import function SetIndividualTimeDilation(reason : CName, dilation : Float, optional duration : Float, optional easeInCurve : CName, optional easeOutCurve : CName, optional ignoreGlobalDilation : Bool, optional useRealTime : Bool); // SetIndividualTimeDilation
+	import function UnsetIndividualTimeDilation(optional easeOutCurve : CName); // UnsetIndividualTimeDilation
+}
+
+import class gameObject extends entGameEntity
+{
+	var persistentState : handle:gamePersistentState;
+	var playerSocket : gamePlayerSocket;
+	var uiSlotComponent : handle:entSlotComponent;
+	var tags : redTagList;
+	var displayName : LocalizationString;
+	var displayDescription : LocalizationString;
+	var audioResourceName : CName;
+	var visibilityCheckDistance : Float;
+	protected var forceRegisterInHudManager : Bool;
+	protected var prereqListeners : array:handle:GameObjectListener;
+	protected var statusEffectListeners : array:handle:StatusEffectTriggerListener;
+	private   var lastEngineTime : Float;
+	private   var accumulatedTimePasssed : Float;
+	protected var scanningComponent : handle:gameScanningComponent;
+	protected var visionComponent : handle:gameVisionModeComponent;
+	protected var isHighlightedInFocusMode : Bool;
+	protected var statusEffectComponent : handle:gameStatusEffectComponent;
+	protected var markAsQuest : Bool;
+	private   var e3ObjectRevealed : Bool;
+	protected var workspotMapper : handle:WorkspotMapperComponent;
+	protected var stimBroadcaster : handle:StimBroadcasterComponent;
+	protected var squadMemberComponent : handle:SquadMemberBaseComponent;
+	private   var sourceShootComponent : handle:gameSourceShootComponent;
+	private   var targetShootComponent : handle:gameTargetShootComponent;
+	protected var receivedDamageHistory : array:DamageHistoryEntry;
+	protected var forceDefeatReward : Bool;
+	protected var killRewardDisabled : Bool;
+	protected var willDieSoon : Bool;
+	private   var isScannerDataDirty : Bool;
+	private   var hasVisibilityForcedInAnimSystem : Bool;
+	protected var isDead : Bool;
+	private   var lastHitInstigatorID : entEntityID;
+	private   var hitInstigatorCooldownID : gameDelayID;
+	protected var isTargetedWithSmartWeapon : Bool;
+
+	static function AddListener(obj : handle:gameObject, listener : handle:GameObjectListener); // gameObject::AddListener;GameObjectGameObjectListener
+	static function AddStatusEffectTriggerListener(target : handle:gameObject, listener : handle:StatusEffectTriggerListener); // gameObject::AddStatusEffectTriggerListener;GameObjectStatusEffectTriggerListener
+	static function ApplyModifierGroup(self : handle:gameObject, modifierGroupID : Uint64); // gameObject::ApplyModifierGroup;GameObjectUint64
+	static function AudioParameter(self : handle:gameObject, parameterName : CName, parameterValue : Float, optional emitterName : CName); // gameObject::AudioParameter;GameObjectCNameFloatCName
+	static function AudioSwitch(self : handle:gameObject, switchName : CName, switchValue : CName, optional emitterName : CName); // gameObject::AudioSwitch;GameObjectCNameCNameCName
+	static function BreakReplicatedEffectLoopEvent(self : handle:gameObject, effectName : CName); // gameObject::BreakReplicatedEffectLoopEvent;GameObjectCName
+	static function ChangeAttitudeToHostile(owner : whandle:gameObject, target : whandle:gameObject); // gameObject::ChangeAttitudeToHostile;GameObjectGameObject
+	static function ChangeAttitudeToNeutral(owner : whandle:gameObject, target : whandle:gameObject); // gameObject::ChangeAttitudeToNeutral;GameObjectGameObject
+	static function ForceVisionAppearance(self : handle:gameObject, data : handle:FocusForcedHighlightData); // gameObject::ForceVisionAppearance;GameObjectFocusForcedHighlightData
+	static function GetActiveWeapon(object : whandle:gameObject) : handle:gameweaponObject; // gameObject::GetActiveWeapon;GameObject
+	static function GetAttackAngleInFloat(hitEvent : handle:gameeventsHitEvent) : Float; // gameObject::GetAttackAngleInFloat;gameHitEvent
+	static function GetAttackAngleInInt(hitEvent : handle:gameeventsHitEvent, optional hitSource : Int32) : Int32; // gameObject::GetAttackAngleInInt;gameHitEventInt32
+	static function GetAttitudeBetween(first : handle:gameObject, second : handle:gameObject) : EAIAttitude; // gameObject::GetAttitudeBetween;GameObjectGameObject
+	static function GetAttitudeTowards(first : handle:gameObject, second : handle:gameObject) : EAIAttitude; // gameObject::GetAttitudeTowards;GameObjectGameObject
+	static function GetFinisherHealthThresholdIncrease(target : whandle:gameObject, playerPuppet : whandle:gameObject) : Float; // gameObject::GetFinisherHealthThresholdIncrease;GameObjectGameObject
+	static function GetLocalAngleForDirectionInInt(direction : Vector4, owner : handle:gameObject) : Int32; // gameObject::GetLocalAngleForDirectionInInt;Vector4GameObject
+	static function GetTDBID(object : whandle:gameObject) : TweakDBID; // gameObject::GetTDBID;GameObject
+	static function GetTargetAngleInFloat(target : handle:gameObject, owner : handle:gameObject) : Float; // gameObject::GetTargetAngleInFloat;GameObjectGameObject
+	static function GetTargetAngleInInt(target : handle:gameObject, owner : handle:gameObject, out backDirection : Int32) : Int32; // gameObject::GetTargetAngleInInt;GameObjectGameObjectInt32
+	static function GetTargetAngleInInt(target : handle:gameObject, owner : handle:gameObject) : Int32; // gameObject::GetTargetAngleInInt;GameObjectGameObject
+	static function IsCooldownActive(self : handle:gameObject, cooldownName : CName, optional id : Int32) : Bool; // gameObject::IsCooldownActive;GameObjectCNameInt32
+	static function IsFriendlyTowardsPlayer(obj : whandle:gameObject) : Bool; // gameObject::IsFriendlyTowardsPlayer;GameObject
+	static function IsVehicle(object : whandle:gameObject) : Bool; // gameObject::IsVehicle;GameObject
+	static function PlayMetadataEvent(self : handle:gameObject, eventName : CName); // gameObject::PlayMetadataEvent;GameObjectCName
+	static function PlaySound(self : handle:gameObject, eventName : CName, optional emitterName : CName); // gameObject::PlaySound;GameObjectCNameCName
+	static function PlaySoundEvent(self : handle:gameObject, eventName : CName); // gameObject::PlaySoundEvent;GameObjectCName
+	static function PlaySoundEventWithParams(self : handle:gameObject, eventName : CName, optional flag : audioAudioEventFlags, optional type : audioEventActionType); // gameObject::PlaySoundEventWithParams;GameObjectCNameaudioAudioEventFlagsaudioEventActionType
+	static function PlaySoundWithParams(self : handle:gameObject, eventName : CName, optional emitterName : CName, optional flag : audioAudioEventFlags, optional type : audioEventActionType); // gameObject::PlaySoundWithParams;GameObjectCNameCNameaudioAudioEventFlagsaudioEventActionType
+	static function PlayVoiceOver(self : handle:gameObject, voName : CName, debugInitialContext : CName, optional delay : Float, optional answeringEntityID : entEntityID, optional canPlayInVehicle : Bool) : gameDelayID; // gameObject::PlayVoiceOver;GameObjectCNameCNameFloatEntityIDBool
+	static function RemoveCooldown(self : handle:gameObject, cooldownName : CName); // gameObject::RemoveCooldown;GameObjectCName
+	static function RemoveListener(obj : handle:gameObject, listener : handle:GameObjectListener); // gameObject::RemoveListener;GameObjectGameObjectListener
+	static function RemoveModifierGroup(self : handle:gameObject, modifierGroupID : Uint64); // gameObject::RemoveModifierGroup;GameObjectUint64
+	static function RemoveStatusEffectTriggerListener(target : handle:gameObject, listener : handle:StatusEffectTriggerListener); // gameObject::RemoveStatusEffectTriggerListener;GameObjectStatusEffectTriggerListener
+	static function SendForceRevealObjectEvent(self : handle:gameObject, reveal : Bool, reason : CName, optional instigatorID : entEntityID, optional lifetime : Float, optional delay : Float); // gameObject::SendForceRevealObjectEvent;GameObjectBoolCNameEntityIDFloatFloat
+	static function SetAudioParameter(self : handle:gameObject, paramName : CName, paramValue : Float); // gameObject::SetAudioParameter;GameObjectCNameFloat
+	static function SetAudioSwitch(self : handle:gameObject, switchName : CName, switchValue : CName); // gameObject::SetAudioSwitch;GameObjectCNameCName
+	static function SetFocusForcedHightlightData(outType : EFocusOutlineType, highType : EFocusForcedHighlightType, prio : EPriority, id : entEntityID, className : CName) : handle:FocusForcedHighlightData; // gameObject::SetFocusForcedHightlightData;EFocusOutlineTypeEFocusForcedHighlightTypeEPriorityEntityIDCName
+	static function SetMeshAppearanceEvent(self : handle:gameObject, appearance : CName); // gameObject::SetMeshAppearanceEvent;GameObjectCName
+	static function StartCooldown(self : handle:gameObject, cooldownName : CName, cooldownDuration : Float, optional ignoreTimeDilation : Bool) : Int32; // gameObject::StartCooldown;GameObjectCNameFloatBool
+	static function StartReplicatedEffectEvent(self : handle:gameObject, effectName : CName, optional shouldPersist : Bool, optional breakAllOnDestroy : Bool); // gameObject::StartReplicatedEffectEvent;GameObjectCNameBoolBool
+	static function StopEffectEvent(self : handle:gameObject, id : entEntityID, effectName : CName); // gameObject::StopEffectEvent;GameObjectEntityIDCName
+	static function StopReplicatedEffectEvent(self : handle:gameObject, effectName : CName); // gameObject::StopReplicatedEffectEvent;GameObjectCName
+	static function StopSound(self : handle:gameObject, eventName : CName, optional emitterName : CName); // gameObject::StopSound;GameObjectCNameCName
+	static function StopSoundEvent(self : handle:gameObject, eventName : CName); // gameObject::StopSoundEvent;GameObjectCName
+	static function TagObject(obj : whandle:gameObject); // gameObject::TagObject;GameObject
+	static function TargetHasDebuff(target : whandle:gameObject) : Bool; // gameObject::TargetHasDebuff;GameObject
+	static function TargetHasLocomotionMalfunction(target : whandle:gameObject) : Bool; // gameObject::TargetHasLocomotionMalfunction;GameObject
+	static function TargetIsStunned(target : whandle:gameObject) : Bool; // gameObject::TargetIsStunned;GameObject
+	static function ToggleForcedVisibilityInAnimSystemEvent(owner : handle:gameObject, sourceName : CName, isVisibe : Bool, optional transitionTime : Float); // gameObject::ToggleForcedVisibilityInAnimSystemEvent;GameObjectCNameBoolFloat
+	static function UntagObject(obj : whandle:gameObject); // gameObject::UntagObject;GameObject
+
+	import function EnableTransformUpdates(enable : Bool); // EnableTransformUpdates
+	import function GetAudioName(); // GetAudioName
+	import function GetBasePS() : handle:gameObjectPS; // GetBasePS
+	import function GetCurrentContext() : CName; // GetCurrentContext
+	import function GetCurveValue(out x : Float, out y : Float, curveName : CName, isDebug : Bool); // GetCurveValue
+	import function GetDisplayDescription() : String; // GetDisplayDescription
+	import function GetDisplayName() : String; // GetDisplayName
+	import function GetGame() : ScriptGameInstance; // GetGame
+	import function GetName() : CName; // GetName
+	import function GetOwner() : whandle:gameObject; // GetOwner
+	import function GetPS() : handle:gameObjectPS; // GetPS
+	import function GetTracedActionName() : String; // GetTracedActionName
+	import function GetUISlotComponent() : handle:entSlotComponent; // GetUISlotComponent
+	import function HasTag(tag : CName) : Bool; // HasTag
+	import function IsPlayerControlled() : Bool; // IsPlayerControlled
+	import function IsSelectedForDebugging() : Bool; // IsSelectedForDebugging
+	import function PlayerLastUsedKBM() : Bool; // PlayerLastUsedKBM
+	import function PlayerLastUsedPS5Pad() : Bool; // PlayerLastUsedPS5Pad
+	import function PlayerLastUsedPad() : Bool; // PlayerLastUsedPad
+	import function QueueReplicatedEvent(evt : handle:redEvent); // QueueReplicatedEvent
+	import function RegisterInputListener(listener : handle:IScriptable, optional name : CName); // RegisterInputListener
+	import function RegisterInputListenerWithOwner(listener : handle:IScriptable, name : CName); // RegisterInputListenerWithOwner
+	import function ReplicateAnimEvent(obj : handle:gameObject, eventName : CName); // ReplicateAnimEvent
+	import function ReplicateAnimFeature(obj : handle:gameObject, inputName : CName, value : handle:animAnimFeature); // ReplicateAnimFeature
+	import function ReplicateInputBool(obj : handle:gameObject, inputName : CName, value : Bool); // ReplicateInputBool
+	import function ReplicateInputFloat(obj : handle:gameObject, inputName : CName, value : Float); // ReplicateInputFloat
+	import function ReplicateInputInt(obj : handle:gameObject, inputName : CName, value : Int32); // ReplicateInputInt
+	import function ReplicateInputVector(obj : handle:gameObject, inputName : CName, value : Vector4); // ReplicateInputVector
+	import function TriggerEvent(eventName : CName, optional data : handle:IScriptable, optional flags : Int32) : Bool; // TriggerEvent
+	import function UnregisterInputListener(listener : handle:IScriptable, optional name : CName); // UnregisterInputListener
+
+	event OnAddOrRemoveListenerForGameObject(evt : handle:AddOrRemoveListenerForGOEvent) : Bool; // OnAddOrRemoveListenerForGameObject
+	event OnAddStatusEffectTriggerListener(evt : handle:AddStatusEffectListenerEvent) : Bool; // OnAddStatusEffectTriggerListener
+	event OnAttitudeChanged(evt : handle:gameeventsAttitudeChangedEvent) : Bool; // OnAttitudeChanged
+	event OnAutoSaveEvent(evt : handle:AutoSaveEvent) : Bool; // OnAutoSaveEvent
+	event OnChangeRewardSettingsEvent(evt : handle:ChangeRewardSettingsEvent) : Bool; // OnChangeRewardSettingsEvent
+	event OnCustomUIAnimationEvent(evt : handle:CustomUIAnimationEvent) : Bool; // OnCustomUIAnimationEvent
+	event OnDamageReceived(evt : handle:gameeventsDamageReceivedEvent) : Bool; // OnDamageReceived
+	event OnDebugOutlineEvent(evt : handle:DebugOutlineEvent) : Bool; // OnDebugOutlineEvent
+	event OnDelayPrereqEvent(evt : handle:DelayPrereqEvent) : Bool; // OnDelayPrereqEvent
+	event OnDetach() : Bool; // OnDetach
+	event OnDeviceLinkRequest(evt : handle:DeviceLinkRequest) : Bool; // OnDeviceLinkRequest
+	event OnGameAttached() : Bool; // OnGameAttached
+	event OnGameplayRoleChangeNotification(evt : handle:GameplayRoleChangeNotification) : Bool; // OnGameplayRoleChangeNotification
+	event OnHUDInstruction(evt : handle:HUDInstruction) : Bool; // OnHUDInstruction
+	event OnHit(evt : handle:gameeventsHitEvent) : Bool; // OnHit
+	event OnHitInstigatorCooldown(evt : handle:HitInstigatorCooldownEvent) : Bool; // OnHitInstigatorCooldown
+	event OnHitProjection(evt : handle:gameeventsProjectedHitEvent) : Bool; // OnHitProjection
+	event OnLookedAtEvent(evt : handle:LookedAtEvent) : Bool; // OnLookedAtEvent
+	event OnMiss(evt : handle:gameeventsMissEvent) : Bool; // OnMiss
+	event OnOutlineRequestEvent(evt : handle:OutlineRequestEvent) : Bool; // OnOutlineRequestEvent
+	event OnPhysicalDestructionEvent(evt : handle:entPhysicalDestructionEvent) : Bool; // OnPhysicalDestructionEvent
+	event OnPostInitialize(evt : handle:entPostInitializeEvent) : Bool; // OnPostInitialize
+	event OnPreUninitialize(evt : handle:entPreUninitializeEvent) : Bool; // OnPreUninitialize
+	event OnPulseEvent(evt : handle:gameVisionModeUpdateVisuals) : Bool; // OnPulseEvent
+	event OnRecord1DamageInHistoryEvent(evt : handle:Record1DamageInHistoryEvent) : Bool; // OnRecord1DamageInHistoryEvent
+	event OnRemoveStatusEffectTriggerListener(evt : handle:RemoveStatusEffectListenerEvent) : Bool; // OnRemoveStatusEffectTriggerListener
+	event OnRequestComponents(ri : entEntityRequestComponentsInterface) : Bool; // OnRequestComponents
+	event OnScaleAndLockLeftHandWeaponsCompensateInStashEvent(evt : handle:ScaleAndLockLeftHandWeaponsCompensateInStashEvent) : Bool; // OnScaleAndLockLeftHandWeaponsCompensateInStashEvent
+	event OnScanningLookedAt(evt : handle:gameScanningLookAtEvent) : Bool; // OnScanningLookedAt
+	event OnScanningModeChanged(evt : handle:gameScanningModeEvent) : Bool; // OnScanningModeChanged
+	event OnSetAsQuestImportantEvent(evt : handle:gameSetAsQuestImportantEvent) : Bool; // OnSetAsQuestImportantEvent
+	event OnSmartGunLockEvent(evt : handle:gamesmartGunSmartGunLockEvent) : Bool; // OnSmartGunLockEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect) : Bool; // OnStatusEffectRemoved
+	event OnTagObjectEvent(evt : handle:TagObjectEvent) : Bool; // OnTagObjectEvent
+	event OnTakeControl(ri : entEntityResolveComponentsInterface) : Bool; // OnTakeControl
+	event OnToggleOffMeshConnections(evt : handle:ToggleOffMeshConnections) : Bool; // OnToggleOffMeshConnections
+	event OnToggleVisibilityInAnimSystemEvent(evt : handle:ToggleVisibilityInAnimSystemEvent) : Bool; // OnToggleVisibilityInAnimSystemEvent
+	event OnTriggerAttackEffectorWithDelay(evt : handle:TriggerAttackEffectorWithDelay) : Bool; // OnTriggerAttackEffectorWithDelay
+	event OnUnifyIconicsUpgradeCountWithEffectiveTierInStashEvent(evt : handle:UnifyIconicsUpgradeCountWithEffectiveTierInStashEvent) : Bool; // OnUnifyIconicsUpgradeCountWithEffectiveTierInStashEvent
+	event OnVehicleHit(evt : handle:gameeventsVehicleHitEvent) : Bool; // OnVehicleHit
+	event OnWillDieSoonEventEvent(evt : handle:WillDieSoonEvent) : Bool; // OnWillDieSoonEventEvent
+	event OnlinkedClueTagEvent(evt : handle:linkedClueTagEvent) : Bool; // OnlinkedClueTagEvent
+
+	function BlockFinisherThreshold() : Bool; // BlockFinisherThreshold;
+	function BlockWorkspotFinishers() : Bool; // BlockWorkspotFinishers;
+	function CanBeInvestigated() : Bool; // CanBeInvestigated;
+	function CanBeTagged() : Bool; // CanBeTagged;
+	function CanOverrideNetworkContext() : Bool; // CanOverrideNetworkContext;
+	function CanPassDemolitionSkillCheck() : Bool; // CanPassDemolitionSkillCheck;
+	function CanPassEngineeringSkillCheck() : Bool; // CanPassEngineeringSkillCheck;
+	function CanPassHackingSkillCheck() : Bool; // CanPassHackingSkillCheck;
+	function CanPlayerScanThroughWalls() : Bool; // CanPlayerScanThroughWalls;
+	function CanPlayerUseQuickHackVulnerability(data : TweakDBID) : Bool; // CanPlayerUseQuickHackVulnerability;TweakDBID
+	function CanReceivePoiseDamage() : Bool; // CanReceivePoiseDamage;
+	function CanRevealRemoteActionsWheel() : Bool; // CanRevealRemoteActionsWheel;
+	function CancelForcedVisionAppearance(data : handle:FocusForcedHighlightData); // CancelForcedVisionAppearance;FocusForcedHighlightData
+	function CheckIfPreventionShouldReact(damageDealers : script_ref:array:whandle:gameObject); // CheckIfPreventionShouldReact;script_ref<array<GameObject>>
+	function ClearForcedVisibilityInAnimSystem(); // ClearForcedVisibilityInAnimSystem;
+	function CompileScannerChunks() : Bool; // CompileScannerChunks;
+	function DamagePipelineFinalized(evt : handle:gameeventsHitEvent); // DamagePipelineFinalized;gameHitEvent
+	function DeterminGameplayRole() : EGameplayRole; // DeterminGameplayRole;
+	function DeterminGameplayRoleMappinRange(data : script_ref:SDeviceMappinData) : Float; // DeterminGameplayRoleMappinRange;script_ref<SDeviceMappinData>
+	function DeterminGameplayRoleMappinVisuaState(data : script_ref:SDeviceMappinData) : EMappinVisualState; // DeterminGameplayRoleMappinVisuaState;script_ref<SDeviceMappinData>
+	function DisableKillReward(value : Bool); // DisableKillReward;Bool
+	function DisableOffMeshConnections(player : Bool, npc : Bool); // DisableOffMeshConnections;BoolBool
+	function DisplayHitUI(dmgInfos : script_ref:array:gameuiDamageInfo); // DisplayHitUI;script_ref<array<DamageInfo>>
+	function DisplayKillUI(killInfo : gameuiKillInfo); // DisplayKillUI;KillInfo
+	function EnableOffMeshConnections(player : Bool, npc : Bool); // EnableOffMeshConnections;BoolBool
+	function EvaluateMappinsVisualState(); // EvaluateMappinsVisualState;
+	function FillObjectDescription(out arr : array:gameScanningTooltipElementDef); // FillObjectDescription;array<ScanningTooltipElementDef>
+	function FindAndRewardKiller(killType : gameKillType, optional instigator : whandle:gameObject); // FindAndRewardKiller;gameKillTypeGameObject
+	function ForceDefeatReward(value : Bool); // ForceDefeatReward;Bool
+	function ForceVisionAppearance(data : handle:FocusForcedHighlightData); // ForceVisionAppearance;FocusForcedHighlightData
+	function GetAcousticQuerryStartPoint() : Vector4; // GetAcousticQuerryStartPoint;
+	function GetAnimationSystemForcedVisibilityManager() : handle:AnimationSystemForcedVisibilityManager; // GetAnimationSystemForcedVisibilityManager;
+	function GetAttitudeAgent() : handle:gameAttitudeAgent; // GetAttitudeAgent;
+	function GetAttitudeTowards(target : handle:gameObject) : EAIAttitude; // GetAttitudeTowards;GameObject
+	function GetAvailableClueIndex() : Int32; // GetAvailableClueIndex;
+	function GetBraindanceLayer() : braindanceVisionMode; // GetBraindanceLayer;
+	function GetContentScale() : TweakDBID; // GetContentScale;
+	function GetCurrentOutline() : EFocusOutlineType; // GetCurrentOutline;
+	function GetCurrentlyUploadingAction() : handle:ScriptableDeviceAction; // GetCurrentlyUploadingAction;
+	function GetDefaultHighlight() : handle:FocusForcedHighlightData; // GetDefaultHighlight;
+	function GetDefaultHighlightType() : EFocusForcedHighlightType; // GetDefaultHighlightType;
+	function GetDeviceLink() : handle:DeviceLinkComponentPS; // GetDeviceLink;
+	function GetEntitiesAroundObject(optional range : Float, optional searchFilter : gameTargetSearchFilter) : array:handle:entEntity; // GetEntitiesAroundObject;FloatTargetSearchFilter
+	function GetFastTravelSystem() : handle:FastTravelSystem; // GetFastTravelSystem;
+	function GetFocusClueSystem() : handle:FocusCluesSystem; // GetFocusClueSystem;
+	function GetFreeWorkspotDataForAIAction(aiAction : gamedataWorkspotActionType) : handle:WorkspotEntryData; // GetFreeWorkspotDataForAIAction;gamedataWorkspotActionType
+	function GetFreeWorkspotRefForAIAction(aiAction : gamedataWorkspotActionType) : NodeRef; // GetFreeWorkspotRefForAIAction;gamedataWorkspotActionType
+	function GetFreeWorkspotsCountForAIAction(aiAction : gamedataWorkspotActionType) : Int32; // GetFreeWorkspotsCountForAIAction;gamedataWorkspotActionType
+	function GetFxResourceByKey(key : CName) : gameFxResource; // GetFxResourceByKey;CName
+	function GetHudManager() : handle:HUDManager; // GetHudManager;
+	function GetIsBroken() : Bool; // GetIsBroken;
+	function GetIsIconic() : Bool; // GetIsIconic;
+	function GetIsInFastFinisher() : Bool; // GetIsInFastFinisher;
+	function GetLinkedClueData(clueIndex : Int32) : LinkedFocusClueData; // GetLinkedClueData;Int32
+	function GetLootQuality() : gamedataQuality; // GetLootQuality;
+	function GetNPCsAroundObject(optional range : Float) : array:handle:NPCPuppet; // GetNPCsAroundObject;Float
+	function GetNetworkBeamEndpoint() : Vector4; // GetNetworkBeamEndpoint;
+	function GetNetworkLinkSlotName(out transform : WorldTransform) : CName; // GetNetworkLinkSlotName;WorldTransform
+	function GetNetworkLinkSlotName() : CName; // GetNetworkLinkSlotName;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetNumberOfWorkpotsForAIAction(aiAction : gamedataWorkspotActionType) : Int32; // GetNumberOfWorkpotsForAIAction;gamedataWorkspotActionType
+	function GetObjectToForwardHighlight() : array:whandle:gameObject; // GetObjectToForwardHighlight;
+	function GetPSClassName() : CName; // GetPSClassName;
+	function GetPSOwnerData() : PSOwnerData; // GetPSOwnerData;
+	function GetPersistentID() : gamePersistentID; // GetPersistentID;
+	function GetPhoneCallIndicatorSlotName() : CName; // GetPhoneCallIndicatorSlotName;
+	function GetPlaystyleMappinLocalPos() : Vector4; // GetPlaystyleMappinLocalPos;
+	function GetPlaystyleMappinSlotWorldPos() : Vector4; // GetPlaystyleMappinSlotWorldPos;
+	function GetPlaystyleMappinSlotWorldTransform() : WorldTransform; // GetPlaystyleMappinSlotWorldTransform;
+	function GetPreventionSystem() : handle:PreventionSystem; // GetPreventionSystem;
+	function GetQuickHackIndicatorSlotName() : CName; // GetQuickHackIndicatorSlotName;
+	function GetReceivedDamageByPlayerLastTimeStamp() : Float; // GetReceivedDamageByPlayerLastTimeStamp;
+	function GetRoleMappinSlotName() : CName; // GetRoleMappinSlotName;
+	function GetScannableObjects() : array:gameScanningTooltipElementDef; // GetScannableObjects;
+	function GetScannerAttitudeTweak() : TweakDBID; // GetScannerAttitudeTweak;
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetSensesComponent() : handle:senseComponent; // GetSensesComponent;
+	function GetSourceShootComponent() : handle:gameSourceShootComponent; // GetSourceShootComponent;
+	function GetSquadMemberComponent() : handle:SquadMemberBaseComponent; // GetSquadMemberComponent;
+	function GetStatusEffectComponent() : handle:gameStatusEffectComponent; // GetStatusEffectComponent;
+	function GetStimBroadcasterComponent() : handle:StimBroadcasterComponent; // GetStimBroadcasterComponent;
+	function GetTaggingSystem() : handle:FocusModeTaggingSystem; // GetTaggingSystem;
+	function GetTakeOverControlSystem() : handle:TakeOverControlSystem; // GetTakeOverControlSystem;
+	function GetTargetShootComponent() : handle:gameTargetShootComponent; // GetTargetShootComponent;
+	function GetTargetTrackerComponent() : handle:AITargetTrackerComponent; // GetTargetTrackerComponent;
+	function GetTotalCountOfInvestigationSlots() : Int32; // GetTotalCountOfInvestigationSlots;
+	function HandleDeath(instigator : whandle:gameObject); // HandleDeath;GameObject
+	function HandleDeathByTask(instigator : whandle:gameObject); // HandleDeathByTask;GameObject
+	function HandleDeathTask(data : handle:gameScriptTaskData); // HandleDeathTask;ScriptTaskData
+	function HandleICEBreakerUpdate(evt : handle:gameeventsApplyStatusEffectEvent); // HandleICEBreakerUpdate;ApplyStatusEffectEvent
+	function HandleStimsOnHit(evt : handle:gameeventsHitEvent); // HandleStimsOnHit;gameHitEvent
+	function HasActiveDistraction() : Bool; // HasActiveDistraction;
+	function HasActiveQuickHackUpload() : Bool; // HasActiveQuickHackUpload;
+	function HasAnyClue() : Bool; // HasAnyClue;
+	function HasAnyDirectInteractionActive() : Bool; // HasAnyDirectInteractionActive;
+	function HasAnySlaveDevices() : Bool; // HasAnySlaveDevices;
+	function HasAnyStoredClues() : Bool; // HasAnyStoredClues;
+	function HasAttitude(attitude : EAIAttitude) : Bool; // HasAttitude;EAIAttitude
+	function HasDirectActionsActive() : Bool; // HasDirectActionsActive;
+	function HasFinisherAvailable() : Bool; // HasFinisherAvailable;
+	function HasFreeWorkspotForInvestigation() : Bool; // HasFreeWorkspotForInvestigation;
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType, sourceID : entEntityID) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineTypeEntityID
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType, sourceID : entEntityID, sourceName : CName) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineTypeEntityIDCName
+	function HasHighlight(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType) : Bool; // HasHighlight;EFocusForcedHighlightTypeEFocusOutlineType
+	function HasImportantInteraction() : Bool; // HasImportantInteraction;
+	function HasOutlineOrFill(highlightType : EFocusForcedHighlightType, outlineType : EFocusOutlineType) : Bool; // HasOutlineOrFill;EFocusForcedHighlightTypeEFocusOutlineType
+	function HasRevealRequest(data : gameVisionModeSystemRevealIdentifier) : Bool; // HasRevealRequest;gameVisionModeSystemRevealIdentifier
+	function HasVisibilityForcedInAnimSystem() : Bool; // HasVisibilityForcedInAnimSystem;
+	function IsAccessPoint() : Bool; // IsAccessPoint;
+	function IsActive() : Bool; // IsActive;
+	function IsActiveBackdoor() : Bool; // IsActiveBackdoor;
+	function IsAmmoLoot() : Bool; // IsAmmoLoot;
+	function IsAnyClueEnabled() : Bool; // IsAnyClueEnabled;
+	function IsAnyPlaystyleValid() : Bool; // IsAnyPlaystyleValid;
+	function IsBackdoor() : Bool; // IsBackdoor;
+	function IsBodyDisposalPossible() : Bool; // IsBodyDisposalPossible;
+	function IsBraindanceBlocked() : Bool; // IsBraindanceBlocked;
+	function IsBreached() : Bool; // IsBreached;
+	function IsClueInspected() : Bool; // IsClueInspected;
+	function IsConnectedToBackdoorDevice() : Bool; // IsConnectedToBackdoorDevice;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsContainer() : Bool; // IsContainer;
+	function IsControllingDevices() : Bool; // IsControllingDevices;
+	function IsCurrentTarget() : Bool; // IsCurrentTarget;
+	function IsCurrentlyScanned() : Bool; // IsCurrentlyScanned;
+	function IsDead() : Bool; // IsDead;
+	function IsDeadNoStatPool() : Bool; // IsDeadNoStatPool;
+	function IsDemolitionSkillCheckActive() : Bool; // IsDemolitionSkillCheckActive;
+	function IsDevice() : Bool; // IsDevice;
+	function IsDrone() : Bool; // IsDrone;
+	function IsDropPoint() : Bool; // IsDropPoint;
+	function IsEngineeringSkillCheckActive() : Bool; // IsEngineeringSkillCheckActive;
+	function IsExplosive() : Bool; // IsExplosive;
+	function IsFastTravelPoint() : Bool; // IsFastTravelPoint;
+	function IsGameplayRelevant() : Bool; // IsGameplayRelevant;
+	function IsGameplayRoleValid(role : EGameplayRole) : Bool; // IsGameplayRoleValid;EGameplayRole
+	function IsGrouppedClue() : Bool; // IsGrouppedClue;
+	function IsHackingPlayer() : Bool; // IsHackingPlayer;
+	function IsHackingSkillCheckActive() : Bool; // IsHackingSkillCheckActive;
+	function IsHandgunAmmoLoot() : Bool; // IsHandgunAmmoLoot;
+	function IsHighlightedInFocusMode() : Bool; // IsHighlightedInFocusMode;
+	function IsHostile() : Bool; // IsHostile;
+	function IsInFinisherHealthThreshold(playerPuppet : whandle:gameObject) : Bool; // IsInFinisherHealthThreshold;GameObject
+	function IsInIconForcedVisibilityRange() : Bool; // IsInIconForcedVisibilityRange;
+	function IsInitialized() : Bool; // IsInitialized;
+	function IsInvestigating() : Bool; // IsInvestigating;
+	function IsInvestigatingObject(targetID : handle:gameObject) : Bool; // IsInvestigatingObject;GameObject
+	function IsItem() : Bool; // IsItem;
+	function IsJohnnyReplacer() : Bool; // IsJohnnyReplacer;
+	function IsNPC() : Bool; // IsNPC;
+	function IsNetrunner() : Bool; // IsNetrunner;
+	function IsNetworkKnownToPlayer() : Bool; // IsNetworkKnownToPlayer;
+	function IsNetworkLinkDynamic() : Bool; // IsNetworkLinkDynamic;
+	function IsNeutral() : Bool; // IsNeutral;
+	function IsObjectRevealed() : Bool; // IsObjectRevealed;
+	function IsPaperdoll() : Bool; // IsPaperdoll;
+	function IsPhotoModeBlocked() : Bool; // IsPhotoModeBlocked;
+	function IsPlayer() : Bool; // IsPlayer;
+	function IsPlayerStash() : Bool; // IsPlayerStash;
+	function IsPrevention() : Bool; // IsPrevention;
+	function IsPuppet() : Bool; // IsPuppet;
+	function IsQuest() : Bool; // IsQuest;
+	function IsQuickHackAble() : Bool; // IsQuickHackAble;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function IsReplacer() : Bool; // IsReplacer;
+	function IsRifleAmmoLoot() : Bool; // IsRifleAmmoLoot;
+	function IsScaningCluesBlocked() : Bool; // IsScaningCluesBlocked;
+	function IsScanned() : Bool; // IsScanned;
+	function IsScannerDataDirty() : Bool; // IsScannerDataDirty;
+	function IsSensor() : Bool; // IsSensor;
+	function IsShardContainer() : Bool; // IsShardContainer;
+	function IsShotgunAmmoLoot() : Bool; // IsShotgunAmmoLoot;
+	function IsSniperAmmoLoot() : Bool; // IsSniperAmmoLoot;
+	function IsSolo() : Bool; // IsSolo;
+	function IsTaggedinFocusMode() : Bool; // IsTaggedinFocusMode;
+	function IsTargetTresspassingMyZone(target : handle:gameObject) : Bool; // IsTargetTresspassingMyZone;GameObject
+	function IsTargetedWithSmartWeapon() : Bool; // IsTargetedWithSmartWeapon;
+	function IsTechie() : Bool; // IsTechie;
+	function IsTurret() : Bool; // IsTurret;
+	function IsVRReplacer() : Bool; // IsVRReplacer;
+	function IsValidHostileTarget() : Bool; // IsValidHostileTarget;
+	function IsVehicle() : Bool; // IsVehicle;
+	function IsWardrobe() : Bool; // IsWardrobe;
+	function MarkAsQuest(isQuest : Bool); // MarkAsQuest;Bool
+	function OnAnimEventReplicated(eventName : CName); // OnAnimEventReplicated;CName
+	function OnAnimFeatureReplicated(inputName : CName, value : handle:animAnimFeature); // OnAnimFeatureReplicated;CNameAnimFeature
+	function OnEventReplicated(evt : handle:redEvent); // OnEventReplicated;Event
+	function OnHitAnimation(hitEvent : handle:gameeventsHitEvent); // OnHitAnimation;gameHitEvent
+	function OnHitBlockedOrDeflected(hitEvent : handle:gameeventsHitEvent); // OnHitBlockedOrDeflected;gameHitEvent
+	function OnHitSounds(hitEvent : handle:gameeventsHitEvent); // OnHitSounds;gameHitEvent
+	function OnHitUI(hitEvent : handle:gameeventsHitEvent); // OnHitUI;gameHitEvent
+	function OnHitVFX(hitEvent : handle:gameeventsHitEvent); // OnHitVFX;gameHitEvent
+	function OnTransformUpdated(); // OnTransformUpdated;
+	function PassUpdate(dt : Float); // PassUpdate;Float
+	function ProcessDamagePipeline(evt : handle:gameeventsHitEvent); // ProcessDamagePipeline;gameHitEvent
+	function ProcessDamageReceived(evt : handle:gameeventsDamageReceivedEvent); // ProcessDamageReceived;gameDamageReceivedEvent
+	function ProlongWeaponGlitchNPCDebuff(player : handle:PlayerPuppet); // ProlongWeaponGlitchNPCDebuff;PlayerPuppet
+	function PulseNetwork(revealNetworkAtEnd : Bool); // PulseNetwork;Bool
+	function PurgeScannerBlackboard(); // PurgeScannerBlackboard;
+	function ReactToHitProcess(hitEvent : handle:gameeventsHitEvent); // ReactToHitProcess;gameHitEvent
+	function Record1DamageInHistory(source : handle:gameObject); // Record1DamageInHistory;GameObject
+	function RegisterToHUDManager(shouldRegister : Bool); // RegisterToHUDManager;Bool
+	function RegisterToHUDManagerByTask(shouldRegister : Bool); // RegisterToHUDManagerByTask;Bool
+	function RegisterToHUDManagerTask(data : handle:gameScriptTaskData); // RegisterToHUDManagerTask;ScriptTaskData
+	function RequestAutoSave(isForced : Bool) : Bool; // RequestAutoSave;Bool
+	function RequestAutoSaveWithDelay(value : Float, maxAttempts : Int32, isForced : Bool); // RequestAutoSaveWithDelay;FloatInt32Bool
+	function RequestHUDRefresh(targetID : entEntityID, optional updateData : handle:HUDActorUpdateData); // RequestHUDRefresh;EntityIDHUDActorUpdateData
+	function RequestHUDRefresh(optional updateData : handle:HUDActorUpdateData); // RequestHUDRefresh;HUDActorUpdateData
+	function ResolveFacts(facts : script_ref:array:SFactOperationData); // ResolveFacts;script_ref<array<SFactOperationData>>
+	function ResolveFocusClueConclusion(clueIndex : Int32, conclusionData : gameScanningTooltipElementDef); // ResolveFocusClueConclusion;Int32ScanningTooltipElementDef
+	function ResolveFocusClueExtendedDescription(clueIndex : Int32); // ResolveFocusClueExtendedDescription;Int32
+	function ResolveHitIstigatorCooldown(instigatorID : entEntityID) : Bool; // ResolveHitIstigatorCooldown;EntityID
+	function RestoreRevealState(); // RestoreRevealState;
+	function RewardKiller(killer : whandle:gameObject, killType : gameKillType, isAnyDamageNonlethal : Bool); // RewardKiller;GameObjectgameKillTypeBool
+	function SendEventToDefaultPS(evt : handle:redEvent); // SendEventToDefaultPS;Event
+	function SendForceRevealObjectEvent(reveal : Bool, reason : CName, optional instigatorID : entEntityID, optional lifetime : Float, optional delay : Float); // SendForceRevealObjectEvent;BoolCNameEntityIDFloatFloat
+	function SendQuickhackCommands(shouldOpen : Bool); // SendQuickhackCommands;Bool
+	function SendReactivateHighlightEvent(); // SendReactivateHighlightEvent;
+	function SetCurrentlyUploadingAction(action : handle:ScriptableDeviceAction); // SetCurrentlyUploadingAction;ScriptableDeviceAction
+	function SetScannerDirty(dirty : Bool); // SetScannerDirty;Bool
+	function ShouldEnableRemoteLayer() : Bool; // ShouldEnableRemoteLayer;
+	function ShouldForceRegisterInHUDManager() : Bool; // ShouldForceRegisterInHUDManager;
+	function ShouldReactToTarget(targetID : entEntityID) : Bool; // ShouldReactToTarget;EntityID
+	function ShouldRegisterToHUD() : Bool; // ShouldRegisterToHUD;
+	function ShouldSendGameAttachedEventToPS() : Bool; // ShouldSendGameAttachedEventToPS;
+	function ShouldShowScanner() : Bool; // ShouldShowScanner;
+	function StartPingingNetwork(); // StartPingingNetwork;
+	function StartStatusEffectSFX(evt : handle:gameeventsApplyStatusEffectEvent); // StartStatusEffectSFX;ApplyStatusEffectEvent
+	function StartStatusEffectVFX(evt : handle:gameeventsApplyStatusEffectEvent); // StartStatusEffectVFX;ApplyStatusEffectEvent
+	function StopPingingNetwork(); // StopPingingNetwork;
+	function StopStatusEffectSFX(evt : handle:gameeventsRemoveStatusEffect); // StopStatusEffectSFX;RemoveStatusEffect
+	function StopStatusEffectVFX(evt : handle:gameeventsRemoveStatusEffect); // StopStatusEffectVFX;RemoveStatusEffect
+	function ToggleForcedVisibilityInAnimSystem(sourceName : CName, isVisibe : Bool, optional transitionTime : Float, optional entityID : entEntityID, optional forcedVisibleOnlyInFrustum : Bool); // ToggleForcedVisibilityInAnimSystem;CNameBoolFloatEntityIDBool
+	function ToggleQuestImportance(isImportant : Bool); // ToggleQuestImportance;Bool
+	function TriggerMenuEvent(eventName : CName); // TriggerMenuEvent;CName
+	function TryGetControlledProxy() : handle:gameObject; // TryGetControlledProxy;
+	function TryOpenQuickhackMenu(shouldOpen : Bool); // TryOpenQuickhackMenu;Bool
+	function Update(dt : Float); // Update;Float
+	function UpdateAdditionalScanningData(); // UpdateAdditionalScanningData;
+	function UpdateDefaultHighlight(); // UpdateDefaultHighlight;
+}
+
+import class entGameEntity extends entEntity
+{
+}
+
+import class entEntity extends IScriptable
+{
+	var customCameraTarget : ECustomCameraTarget;
+	var renderSceneLayerMask : RenderSceneLayerMask;
+
+	import function CanServiceEvent(evtName : CName) : Bool; // CanServiceEvent
+	import function Dispose(); // Dispose
+	import function FindComponentByName(componentName : CName) : handle:entIComponent; // FindComponentByName
+	import function GetControllingPeerID() : Uint32; // GetControllingPeerID
+	import function GetCurrentAppearanceName() : CName; // GetCurrentAppearanceName
+	import function GetCurrentColorVariantName() : CName; // GetCurrentColorVariantName
+	import function GetEntity() : entEntityGameInterface; // GetEntity
+	import function GetEntityID() : entEntityID; // GetEntityID
+	import function GetWorldForward() : Vector4; // GetWorldForward
+	import function GetWorldOrientation() : Quaternion; // GetWorldOrientation
+	import function GetWorldPosition() : Vector4; // GetWorldPosition
+	import function GetWorldRight() : Vector4; // GetWorldRight
+	import function GetWorldUp() : Vector4; // GetWorldUp
+	import function GetWorldYaw() : Float; // GetWorldYaw
+	import function IsAttached() : Bool; // IsAttached
+	import function IsControlledByAnotherClient() : Bool; // IsControlledByAnotherClient
+	import function IsControlledByAnyPeer() : Bool; // IsControlledByAnyPeer
+	import function IsControlledByLocalPeer() : Bool; // IsControlledByLocalPeer
+	import function IsReplicated() : Bool; // IsReplicated
+	import function MatchVisualTag(visualTag : CName) : Bool; // MatchVisualTag
+	import function MatchVisualTags(visualTags : array:CName) : Bool; // MatchVisualTags
+	import function PrefetchAppearanceChange(newAppearanceName : CName); // PrefetchAppearanceChange
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function QueueEventForEntityID(entityID : entEntityID, evt : handle:redEvent) : Bool; // QueueEventForEntityID
+	import function QueueEventForNodeID(nodeID : worldGlobalNodeRef, evt : handle:redEvent) : Bool; // QueueEventForNodeID
+	import function ScheduleAppearanceChange(newAppearanceName : CName); // ScheduleAppearanceChange
+
+	event OnSetGlitchOnUIEvent(evt : handle:SetGlitchOnUIEvent) : Bool; // OnSetGlitchOnUIEvent
+
+	function GetWorldTransform() : WorldTransform; // GetWorldTransform;
+	function OnInspectorDebugDraw(out box : handle:rendInfoBox); // OnInspectorDebugDraw;InfoBox
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

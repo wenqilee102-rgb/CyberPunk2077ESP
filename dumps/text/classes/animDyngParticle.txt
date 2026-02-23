@@ -1,0 +1,12 @@
+import struct animDyngParticle
+{
+	var mass : Float;
+	var damping : Float;
+	var pullForceFactor : Float;
+	var isFree : Bool;
+	var bone : animTransformIndex;
+	var collisionCapsuleRadius : Float;
+	var collisionCapsuleHeightExtent : Float;
+	var collisionCapsuleAxisLS : Vector3;
+	var projectionType : animDyngParticleProjectionType;
+}

@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataHUD_Preset_Entry_Record","c":"HUD_Preset_Entry_Record","d":24,"f":[{"a":"GetHudEntriesCount","c":{"a":6},"d":4},{"a":"GetHudEntriesItem","c":{"a":14},"d":4,"e":[{"a":{"a":6},"b":"index","c":0}]},{"a":"HudEntries","c":{"a":31,"c":{"a":14}},"d":4},{"a":"HudEntriesContains","c":{"a":1},"d":4,"e":[{"a":{"a":14},"b":"item","c":0}]}]}

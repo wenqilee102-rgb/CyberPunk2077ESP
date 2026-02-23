@@ -1,0 +1,8 @@
+import struct gameuiGenericNotificationData
+{
+	var time : Float;
+	var widgetLibraryItemName : CName;
+	var introAnimation : CName;
+	var widgetLibraryResource : redResourceReferenceScriptToken;
+	var notificationData : handle:gameuiGenericNotificationViewData;
+}

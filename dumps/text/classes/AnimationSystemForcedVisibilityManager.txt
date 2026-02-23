@@ -1,0 +1,46 @@
+class AnimationSystemForcedVisibilityManager extends gameScriptableSystem
+{
+	private   var entities : array:handle:AnimationSystemForcedVisibilityEntityData;
+
+	function CancelDelayedRequestForVisilityData(data : handle:ForcedVisibilityInAnimSystemData); // CancelDelayedRequestForVisilityData;ForcedVisibilityInAnimSystemData
+	function ClearEntity(id : entEntityID); // ClearEntity;EntityID
+	function GetEntityData(id : entEntityID) : handle:AnimationSystemForcedVisibilityEntityData; // GetEntityData;EntityID
+	function HasVisibilityForced(id : entEntityID) : Bool; // HasVisibilityForced;EntityID
+	function IsEntityRegistered(id : entEntityID) : Bool; // IsEntityRegistered;EntityID
+	function OnClearVisibilityInAnimSystemRequest(request : handle:ClearVisibilityInAnimSystemRequest); // OnClearVisibilityInAnimSystemRequest;ClearVisibilityInAnimSystemRequest
+	function OnHandleDelayedVisibilityInAnimSystemRequest(request : handle:DelayedVisibilityInAnimSystemRequest); // OnHandleDelayedVisibilityInAnimSystemRequest;DelayedVisibilityInAnimSystemRequest
+	function OnToggleVisibilityInAnimSystemRequest(request : handle:ToggleVisibilityInAnimSystemRequest); // OnToggleVisibilityInAnimSystemRequest;ToggleVisibilityInAnimSystemRequest
+	function ResovleVisibilityInAnimSystem(entityData : handle:AnimationSystemForcedVisibilityEntityData); // ResovleVisibilityInAnimSystem;AnimationSystemForcedVisibilityEntityData
+	function SendDelayedRequestForVisilityData(entityID : entEntityID, isVisible : Bool, transitionTime : Float, data : handle:ForcedVisibilityInAnimSystemData); // SendDelayedRequestForVisilityData;EntityIDBoolFloatForcedVisibilityInAnimSystemData
+	function ToggleForcedVisibilityInAnimSystem(entityID : entEntityID, sourceName : CName, isVisible : Bool, optional transitionTime : Float, optional forcedVisibleOnlyInFrustum : Bool); // ToggleForcedVisibilityInAnimSystem;EntityIDCNameBoolFloatBool
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

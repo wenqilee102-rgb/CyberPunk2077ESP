@@ -1,0 +1,9 @@
+import struct gameTelemetryLevelGained
+{
+	var playerPuppet : whandle:gameObject;
+	var proficiencyType : gamedataProficiencyType;
+	var proficiencyValue : Int32;
+	var perkPointsAwarded : Int32;
+	var attributePointsAwarded : Int32;
+	var isDebugEvt : Bool;
+}

@@ -1,0 +1,11 @@
+import struct PSODescRenderTarget
+{
+	var blendEnable : Bool;
+	var writeMask : PSODescBlendModeWriteMask;
+	var colorOp : PSODescBlendModeOp;
+	var alphaOp : PSODescBlendModeOp;
+	var destFactor : PSODescBlendModeFactor;
+	var destAlphaFactor : PSODescBlendModeFactor;
+	var srcFactor : PSODescBlendModeFactor;
+	var srcAlphaFactor : PSODescBlendModeFactor;
+}

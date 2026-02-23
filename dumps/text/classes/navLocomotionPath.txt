@@ -1,0 +1,12 @@
+import class navLocomotionPath extends ISerializable
+{
+	var splineNodeRef : NodeRef;
+	var segments : array:navLocomotionPathSegmentInfo;
+	var backwardSegments : array:navLocomotionPathSegmentInfo;
+	var points : array:navLocomotionPathPointInfo;
+	var userData : array:navLocomotionPathPointUserDataEntry;
+}
+
+import class abstract ISerializable
+{
+}

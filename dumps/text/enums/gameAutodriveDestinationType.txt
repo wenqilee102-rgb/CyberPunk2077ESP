@@ -1,0 +1,6 @@
+enum gameAutodriveDestinationType
+{
+	None = 0,
+	PlayerTracked = 1,
+	Quest = 2
+}

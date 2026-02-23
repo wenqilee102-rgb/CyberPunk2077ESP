@@ -1,0 +1,32 @@
+import class gamedataUIIconCensorship_Record extends gamedataTweakDBRecord
+{
+	import function CensorFlags(out outList : array:whandle:gamedataUIIconCensorFlag_Record); // CensorFlags
+	import function CensorFlagsContains(item : whandle:gamedataUIIconCensorFlag_Record) : Bool; // CensorFlagsContains
+	import function CensoredIcon() : whandle:gamedataUIIcon_Record; // CensoredIcon
+	import function CensoredIconHandle() : handle:gamedataUIIcon_Record; // CensoredIconHandle
+	import function GetCensorFlagsCount() : Int32; // GetCensorFlagsCount
+	import function GetCensorFlagsItem(index : Int32) : whandle:gamedataUIIconCensorFlag_Record; // GetCensorFlagsItem
+	import function GetCensorFlagsItemHandle(index : Int32) : handle:gamedataUIIconCensorFlag_Record; // GetCensorFlagsItemHandle
+	import function Replacer() : whandle:gamedataUIIcon_Record; // Replacer
+	import function ReplacerHandle() : handle:gamedataUIIcon_Record; // ReplacerHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

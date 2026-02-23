@@ -1,0 +1,4 @@
+import struct Sample_Replicated_Root_Object
+{
+	var bool : Bool;
+}

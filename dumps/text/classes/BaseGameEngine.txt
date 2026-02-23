@@ -1,0 +1,7 @@
+import struct BaseGameEngine extends CBaseEngine
+{
+}
+
+import struct CBaseEngine
+{
+}

@@ -1,0 +1,9 @@
+import class animAdditionalTransformEntry extends ISerializable
+{
+	var transformInfo : animTransformInfo;
+	var value : QsTransform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"SecurityAreaTypeChangedNotification","d":0,"e":[{"a":{"b":"ESecurityAreaType"},"b":"previousType","c":128},{"a":{"b":"ESecurityAreaType"},"b":"currentType","c":128},{"a":{"a":27,"c":{"b":"SecurityAreaControllerPS"}},"b":"area","c":128},{"a":{"a":1},"b":"wasScheduled","c":128}]}

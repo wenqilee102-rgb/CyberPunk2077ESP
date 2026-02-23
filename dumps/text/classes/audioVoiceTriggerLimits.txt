@@ -1,0 +1,8 @@
+import struct audioVoiceTriggerLimits
+{
+	var probability : Float;
+	var singleNpcMinRepeatTime : Float;
+	var allNpcsMinRepeatTime : Float;
+	var allNpcsSharingVoicesetMinRepeatTime : Float;
+	var combatVolume : Float;
+}

@@ -1,0 +1,6 @@
+enum ENetworkRelation
+{
+	MASTER = 0,
+	SLAVE = 1,
+	NONE = 2
+}

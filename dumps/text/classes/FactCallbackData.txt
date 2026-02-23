@@ -1,0 +1,5 @@
+struct FactCallbackData
+{
+	public    var factName : CName;
+	public    var callbackID : Uint32;
+}

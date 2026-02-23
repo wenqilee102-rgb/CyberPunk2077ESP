@@ -1,0 +1,9 @@
+import struct cpPlayer extends gamePlayer
+{
+}
+
+import struct abstract gamePlayer
+{
+	var peerID : netPeerID;
+	var nickname : String;
+}

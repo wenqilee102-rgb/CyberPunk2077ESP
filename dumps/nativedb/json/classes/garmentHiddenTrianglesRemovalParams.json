@@ -1,0 +1,1 @@
+{"b":"garmentHiddenTrianglesRemovalParams","d":8,"g":true,"e":[{"a":{"a":10},"b":"garmentBorderThreshold","c":128},{"a":{"a":1},"b":"removeHiddenTriangles","c":128},{"a":{"a":1},"b":"removeHiddenTrianglesRasterization","c":128},{"a":{"a":10},"b":"rayLengthInCM","c":128},{"a":{"a":10},"b":"rayLengthMorphOffsetFactor","c":128}]}

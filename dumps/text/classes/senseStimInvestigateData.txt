@@ -1,0 +1,16 @@
+import struct senseStimInvestigateData
+{
+	var distrationPoint : Vector4;
+	var attackInstigatorPosition : Vector4;
+	var investigationSpots : array:Vector4;
+	var controllerEntity : whandle:entEntity;
+	var mainDeviceEntity : whandle:entEntity;
+	var attackInstigator : whandle:entEntity;
+	var victimEntity : whandle:entEntity;
+	var fearPhase : Int32;
+	var revealsInstigatorPosition : Bool;
+	var illegalAction : Bool;
+	var skipReactionDelay : Bool;
+	var skipInitialAnimation : Bool;
+	var investigateController : Bool;
+}

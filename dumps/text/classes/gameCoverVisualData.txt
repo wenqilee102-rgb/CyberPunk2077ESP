@@ -1,0 +1,7 @@
+import struct gameCoverVisualData extends gameSmartObjectVisualData
+{
+}
+
+import struct gameSmartObjectVisualData
+{
+}

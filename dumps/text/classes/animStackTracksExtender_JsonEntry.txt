@@ -1,0 +1,5 @@
+import struct animStackTracksExtender_JsonEntry
+{
+	var name : CName;
+	var referenceValue : Float;
+}

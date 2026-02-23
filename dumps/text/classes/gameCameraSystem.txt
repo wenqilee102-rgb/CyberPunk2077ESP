@@ -1,0 +1,37 @@
+import class gameCameraSystem extends gameICameraSystem
+{
+	import function AbandonBlendCamera(); // AbandonBlendCamera
+	import function GetActiveCameraData() : entCameraData; // GetActiveCameraData
+	import function GetActiveCameraFOV() : Float; // GetActiveCameraFOV
+	import function GetActiveCameraForward() : Vector4; // GetActiveCameraForward
+	import function GetActiveCameraRight() : Vector4; // GetActiveCameraRight
+	import function GetActiveCameraUp() : Vector4; // GetActiveCameraUp
+	import function GetActiveCameraWorldTransform(transform : Transform) : Bool; // GetActiveCameraWorldTransform
+	import function GetAspectRatio() : Float; // GetAspectRatio
+	import function IsInCameraFrustum(targetObject : handle:gameObject, objectHeight : Float, objectRadius : Float) : Bool; // IsInCameraFrustum
+	import function PrepareBlendCamera(); // PrepareBlendCamera
+	import function ProjectPoint(worldSpacePoint : Vector4) : Vector4; // ProjectPoint
+	import function UnprojectPoint(screenSpacePoint : Vector2) : Vector4; // UnprojectPoint
+}
+
+import class abstract gameICameraSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

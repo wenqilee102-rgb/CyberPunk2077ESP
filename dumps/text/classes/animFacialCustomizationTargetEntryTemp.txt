@@ -1,0 +1,5 @@
+import struct animFacialCustomizationTargetEntryTemp
+{
+	var setup : raRef:animFacialSetup;
+	var targetNames : array:CName;
+}

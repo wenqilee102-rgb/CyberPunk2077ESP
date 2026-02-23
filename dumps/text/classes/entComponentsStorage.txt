@@ -1,0 +1,8 @@
+import class entComponentsStorage extends ISerializable
+{
+	var components : array:handle:entIComponent;
+}
+
+import class abstract ISerializable
+{
+}

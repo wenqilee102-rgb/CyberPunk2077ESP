@@ -1,0 +1,15 @@
+import class audioAudioEventArray extends ISerializable
+{
+	var isSortedByRedHash : Bool;
+	var events : array:audioAudioEventMetadataArrayElement;
+	var switchGroup : array:audioAudioEventMetadataArrayElement;
+	var switch : array:audioAudioEventMetadataArrayElement;
+	var stateGroup : array:audioAudioEventMetadataArrayElement;
+	var state : array:audioAudioEventMetadataArrayElement;
+	var gameParameter : array:audioAudioEventMetadataArrayElement;
+	var bus : array:audioAudioEventMetadataArrayElement;
+}
+
+import class abstract ISerializable
+{
+}

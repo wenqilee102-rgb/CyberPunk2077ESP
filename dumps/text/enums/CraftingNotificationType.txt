@@ -1,0 +1,5 @@
+enum CraftingNotificationType
+{
+	NoPerks = 0,
+	NotEnoughMaterial = 1
+}

@@ -1,0 +1,5 @@
+struct AIStackSignalConditionData
+{
+	public    var callbackId : Uint32;
+	public    var lastValue : Bool;
+}

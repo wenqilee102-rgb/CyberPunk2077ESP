@@ -1,0 +1,27 @@
+import class questSetInspectMode_NodeType extends questIInteractiveObjectManagerNodeType
+{
+	var objectID : String;
+	var startingOffset : Float;
+	var zoomOffset : Float;
+	var timeInterval : Float;
+}
+
+import class abstract questIInteractiveObjectManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

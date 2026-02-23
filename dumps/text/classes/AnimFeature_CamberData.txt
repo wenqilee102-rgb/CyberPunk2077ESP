@@ -1,0 +1,33 @@
+class AnimFeature_CamberData extends animAnimFeatureMarkUnstable
+{
+	public    var rightFrontCamber : Float;
+	public    var leftFrontCamber : Float;
+	public    var rightBackCamber : Float;
+	public    var leftBackCamber : Float;
+	public    var rightFrontCamberOffset : Vector4;
+	public    var leftFrontCamberOffset : Vector4;
+	public    var rightBackCamberOffset : Vector4;
+	public    var leftBackCamberOffset : Vector4;
+}
+
+import class animAnimFeatureMarkUnstable extends animAnimFeature
+{
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

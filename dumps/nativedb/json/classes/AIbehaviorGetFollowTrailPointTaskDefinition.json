@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorGetFollowTrailPointTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"inTrailDelay","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"outFollowTrailPoint","c":128}]}

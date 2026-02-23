@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="..\..\DirectHook\directhook.cpp">
+      <Filter>directhook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\DirectHook\D3D9\d3d9hook.cpp">
+      <Filter>directhook\D3D9</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx9.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="directhook">
+      <UniqueIdentifier>{4b9251be-321b-45f8-a394-b2b475a9fa59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="directhook\D3D9">
+      <UniqueIdentifier>{1fea4b0a-cf6b-46af-963c-e9d0f18f6699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{87317f0f-2bed-4d04-b690-c0f1061bdcbe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\DirectHook\directhook.h">
+      <Filter>directhook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DirectHook\method_table.h">
+      <Filter>directhook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DirectHook\D3D9\d3d9hook.h">
+      <Filter>directhook\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DirectHook\D3D9\d3d9hook_aliases.h">
+      <Filter>directhook\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DirectHook\D3D9\d3d9hook_indices.h">
+      <Filter>directhook\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx9.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

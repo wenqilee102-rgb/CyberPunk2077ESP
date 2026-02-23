@@ -1,0 +1,1 @@
+{"a":"PreventionConditionAbstract","b":"IsAVSpawned","d":0,"e":[{"a":{"a":26,"c":{"b":"PoliceAgentRegistry"}},"b":"agentRegistry","c":128},{"a":{"a":26,"c":{"b":"PreventionSystem"}},"b":"prevSys","c":128}],"f":[{"a":"Check;ScriptExecutionContext","b":"Check","c":{"b":"AIbehaviorConditionOutcomes"},"d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

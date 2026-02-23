@@ -1,0 +1,8 @@
+import class gameCrowdCreationDataRegistry extends ISerializable
+{
+	var creationData : array:gameCrowdCreationData;
+}
+
+import class abstract ISerializable
+{
+}

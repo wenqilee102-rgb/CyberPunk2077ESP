@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"SetPreventionDifficulty","d":0,"e":[{"a":{"a":10},"b":"damageDealtToPlayerMultiplier","c":128},{"a":{"a":10},"b":"chaseAggressivnessMultiplier","c":128},{"a":{"a":1},"b":"difficuiltyReset","c":128},{"a":{"a":14},"b":"source","c":128}],"f":[{"a":"GetFriendlyDesctiption;","b":"GetFriendlyDesctiption","c":{"a":12},"d":48}]}

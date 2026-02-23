@@ -1,0 +1,24 @@
+class abstract DamageSystemHelper extends IScriptable
+{
+	static function DoQuickHacksPierceProtection(data : script_ref:gameShapeData) : Bool; // DamageSystemHelper::DoQuickHacksPierceProtection;script_ref<HitShapeData>
+	static function GetHitShape(hitEvent : handle:gameeventsHitEvent) : gameShapeData; // DamageSystemHelper::GetHitShape;gameHitEvent
+	static function GetHitShapeTypeFromData(data : script_ref:gameShapeData) : EHitShapeType; // DamageSystemHelper::GetHitShapeTypeFromData;script_ref<HitShapeData>
+	static function GetHitShapeUserDataBase(data : script_ref:gameShapeData) : handle:HitShapeUserDataBase; // DamageSystemHelper::GetHitShapeUserDataBase;script_ref<HitShapeData>
+	static function GetLocalizedDamageMultiplier(type : EHitShapeType, armorPenetration : Float, useModernFormula : Bool) : Float; // DamageSystemHelper::GetLocalizedDamageMultiplier;EHitShapeTypeFloatBool
+	static function IsHitShapeArmored(type : EHitShapeType) : Bool; // DamageSystemHelper::IsHitShapeArmored;EHitShapeType
+	static function IsProtectionLayer(data : script_ref:gameShapeData) : Bool; // DamageSystemHelper::IsProtectionLayer;script_ref<HitShapeData>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct CameraCustomData_Histogram extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

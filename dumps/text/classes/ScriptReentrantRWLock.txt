@@ -1,0 +1,7 @@
+import struct ScriptReentrantRWLock
+{
+	import static function Acquire(self : script_ref:ScriptReentrantRWLock); // Acquire
+	import static function AcquireShared(self : script_ref:ScriptReentrantRWLock); // AcquireShared
+	import static function Release(self : script_ref:ScriptReentrantRWLock); // Release
+	import static function ReleaseShared(self : script_ref:ScriptReentrantRWLock); // ReleaseShared
+}

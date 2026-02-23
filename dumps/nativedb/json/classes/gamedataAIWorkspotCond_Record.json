@@ -1,0 +1,1 @@
+{"a":"gamedataAIActionSubCondition_Record","b":"gamedataAIWorkspotCond_Record","c":"AIWorkspotCond_Record","d":24,"f":[{"a":"IsInWorkspot","c":{"a":6},"d":4},{"a":"WorkspotObj","c":{"a":27,"c":{"b":"gamedataAIActionTarget_Record"}},"d":4},{"a":"WorkspotObjHandle","c":{"a":26,"c":{"b":"gamedataAIActionTarget_Record"}},"d":4}]}

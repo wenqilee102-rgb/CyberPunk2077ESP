@@ -1,0 +1,15 @@
+import struct animLookAtStateMachineSettings
+{
+	var partName : CName;
+	var partAlias : CName;
+	var sphereAttachmentBone : CName;
+	var sphereRadius : Float;
+	var followingSpeedFactor : Float;
+	var followingSpeedByAngleCurve : curveData:Float;
+	var enableFloatTrack : CName;
+	var eyesOverrideFloatTrack : CName;
+	var transitionSpeedMultiplier : Float;
+	var blendWeightPowFactor : Float;
+	var coneLimitReached : CName;
+	var allowToBlendBehindBack : Bool;
+}

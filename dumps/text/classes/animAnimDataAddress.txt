@@ -1,0 +1,6 @@
+import struct animAnimDataAddress
+{
+	var unkIndex : Uint32;
+	var fsetInBytes : Uint32;
+	var zeInBytes : Uint32;
+}

@@ -1,0 +1,4 @@
+import struct scnActorId
+{
+	var id : Uint32;
+}

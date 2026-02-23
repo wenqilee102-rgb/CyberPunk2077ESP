@@ -1,0 +1,5 @@
+import struct gameAvailableAnimset
+{
+	var hash : Uint64;
+	var resourcePath : String;
+}

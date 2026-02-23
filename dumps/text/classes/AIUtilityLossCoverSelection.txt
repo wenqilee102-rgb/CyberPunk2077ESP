@@ -1,0 +1,7 @@
+import struct AIUtilityLossCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

@@ -1,0 +1,17 @@
+import class worldTrafficPersistentResource extends resStreamedResource
+{
+	var data : worldTrafficPersistentData;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

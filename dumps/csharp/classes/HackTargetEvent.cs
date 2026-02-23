@@ -1,0 +1,49 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class HackTargetEvent : redEvent
+	{
+		private entEntityID _netrunnerID;
+		private entEntityID _targetID;
+		private wCHandle<gamedataObjectAction_Record> _objectRecord;
+		private HackTargetSettings _settings;
+
+		[Ordinal(0)] 
+		[RED("netrunnerID")] 
+		public entEntityID NetrunnerID
+		{
+			get => GetProperty(ref _netrunnerID);
+			set => SetProperty(ref _netrunnerID, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("targetID")] 
+		public entEntityID TargetID
+		{
+			get => GetProperty(ref _targetID);
+			set => SetProperty(ref _targetID, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("objectRecord")] 
+		public wCHandle<gamedataObjectAction_Record> ObjectRecord
+		{
+			get => GetProperty(ref _objectRecord);
+			set => SetProperty(ref _objectRecord, value);
+		}
+
+		[Ordinal(3)] 
+		[RED("settings")] 
+		public HackTargetSettings Settings
+		{
+			get => GetProperty(ref _settings);
+			set => SetProperty(ref _settings, value);
+		}
+
+		public HackTargetEvent(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

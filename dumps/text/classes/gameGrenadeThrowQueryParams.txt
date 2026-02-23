@@ -1,0 +1,13 @@
+import struct gameGrenadeThrowQueryParams
+{
+	var requester : whandle:gameObject;
+	var target : whandle:gameObject;
+	var targetPositionProvider : handle:entIPositionProvider;
+	var minRadius : Float;
+	var maxRadius : Float;
+	var friendlyAvoidanceRadius : Float;
+	var throwAngleDegrees : Float;
+	var gravitySimulation : Float;
+	var minTargetAngleDegrees : Float;
+	var maxTargetAngleDegrees : Float;
+}

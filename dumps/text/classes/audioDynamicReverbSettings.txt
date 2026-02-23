@@ -1,0 +1,31 @@
+import class audioDynamicReverbSettings extends audioAudioMetadata
+{
+	var reverbType : audioDynamicReverbType;
+	var crossover1 : audioReverbCrossoverParams;
+	var crossover2 : audioReverbCrossoverParams;
+	var maxDistance : Float;
+	var smallReverb : CName;
+	var smallReverbMaxDistance : Float;
+	var smallReverbFadeOutThreshold : Float;
+	var mediumReverb : CName;
+	var largeReverb : CName;
+	var vehicleReverb : CName;
+	var overrideWeaponTail : Bool;
+	var sourceBasedReverbSet : CName;
+	var weaponTailType : audioWeaponTailEnvironment;
+	var echoPositionType : audioEchoPositionType;
+	var reportPositionType : audioEchoPositionType;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

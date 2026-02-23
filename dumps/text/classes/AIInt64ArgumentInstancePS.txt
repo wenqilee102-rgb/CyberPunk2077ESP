@@ -1,0 +1,13 @@
+import class AIInt64ArgumentInstancePS extends AIArgumentInstancePS
+{
+	var value : Int64;
+}
+
+import class abstract AIArgumentInstancePS extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

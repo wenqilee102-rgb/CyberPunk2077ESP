@@ -1,0 +1,33 @@
+class HUDActorUpdateData extends IScriptable
+{
+	public    var updateVisibility : Bool;
+	public    var visibilityValue : ActorVisibilityStatus;
+	public    var updateIsRevealed : Bool;
+	public    var isRevealedValue : Bool;
+	public    var updateIsTagged : Bool;
+	public    var isTaggedValue : Bool;
+	public    var updateClueData : Bool;
+	public    var clueDataValue : HUDClueData;
+	public    var updateIsRemotelyAccessed : Bool;
+	public    var isRemotelyAccessedValue : Bool;
+	public    var updateCanOpenScannerInfo : Bool;
+	public    var canOpenScannerInfoValue : Bool;
+	public    var updateIsInIconForcedVisibilityRange : Bool;
+	public    var isInIconForcedVisibilityRangeValue : Bool;
+	public    var updateIsIconForcedVisibleThroughWalls : Bool;
+	public    var isIconForcedVisibleThroughWallsValue : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct questIsInMirrorsAreaMapArrayElement
+{
+	var objectRef : NodeRef;
+	var isInMirrorsArea : Bool;
+}

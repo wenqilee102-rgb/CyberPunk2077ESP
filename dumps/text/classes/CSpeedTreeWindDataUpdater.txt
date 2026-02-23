@@ -1,0 +1,7 @@
+import struct CSpeedTreeWindDataUpdater extends ISceneStorageCustomData
+{
+}
+
+import struct abstract ISceneStorageCustomData
+{
+}

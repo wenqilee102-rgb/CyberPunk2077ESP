@@ -1,0 +1,1 @@
+{"a":"gameEffectExecutor","b":"gameEffectExecutor_Ricochet","d":8,"e":[{"a":{"b":"gameEffectOutputParameter_Vector"},"b":"outputRicochetVector","c":128}],"f":[{"a":"OnSnap;EffectScriptContextEntity","b":"OnSnap","d":48,"e":[{"a":{"b":"gameEffectScriptContext"},"b":"ctx","c":0},{"a":{"a":26,"c":{"b":"entEntity"}},"b":"entity","c":0}]}]}

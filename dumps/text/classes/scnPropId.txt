@@ -1,0 +1,4 @@
+import struct scnPropId
+{
+	var id : Uint32;
+}

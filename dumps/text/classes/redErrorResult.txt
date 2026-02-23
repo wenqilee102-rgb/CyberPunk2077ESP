@@ -1,0 +1,5 @@
+import struct redErrorResult
+{
+	var message : String;
+	var userData : Variant;
+}

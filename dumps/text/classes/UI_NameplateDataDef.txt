@@ -1,0 +1,27 @@
+class UI_NameplateDataDef extends gamebbScriptDefinition
+{
+	public    var EntityID : gamebbScriptID_Variant;
+	public    var IsVisible : gamebbScriptID_Bool;
+	public    var HeightOffset : gamebbScriptID_Float;
+	public    var DamageProjection : gamebbScriptID_Int32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

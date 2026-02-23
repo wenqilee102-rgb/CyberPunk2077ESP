@@ -1,0 +1,53 @@
+import class gamedataProficiency_Record extends gamedataTweakDBRecord
+{
+	import function CurveName() : CName; // CurveName
+	import function CurveSetName() : CName; // CurveSetName
+	import function DisplayName() : String; // DisplayName
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetPackagesCount() : Int32; // GetPackagesCount
+	import function GetPackagesItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetPackagesItem
+	import function GetPackagesItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetPackagesItemHandle
+	import function GetPassiveBonusesCount() : Int32; // GetPassiveBonusesCount
+	import function GetPassiveBonusesItem(index : Int32) : whandle:gamedataPassiveProficiencyBonus_Record; // GetPassiveBonusesItem
+	import function GetPassiveBonusesItemHandle(index : Int32) : handle:gamedataPassiveProficiencyBonus_Record; // GetPassiveBonusesItemHandle
+	import function GetPerkAreasCount() : Int32; // GetPerkAreasCount
+	import function GetPerkAreasItem(index : Int32) : whandle:gamedataPerkArea_Record; // GetPerkAreasItem
+	import function GetPerkAreasItemHandle(index : Int32) : handle:gamedataPerkArea_Record; // GetPerkAreasItemHandle
+	import function IconPath() : CName; // IconPath
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function MaxLevel() : Int32; // MaxLevel
+	import function MinLevel() : Int32; // MinLevel
+	import function Packages(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // Packages
+	import function PackagesContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // PackagesContains
+	import function PassiveBonuses(out outList : array:whandle:gamedataPassiveProficiencyBonus_Record); // PassiveBonuses
+	import function PassiveBonusesContains(item : whandle:gamedataPassiveProficiencyBonus_Record) : Bool; // PassiveBonusesContains
+	import function PerkAreas(out outList : array:whandle:gamedataPerkArea_Record); // PerkAreas
+	import function PerkAreasContains(item : whandle:gamedataPerkArea_Record) : Bool; // PerkAreasContains
+	import function TiedAttribute() : whandle:gamedataStat_Record; // TiedAttribute
+	import function TiedAttributeHandle() : handle:gamedataStat_Record; // TiedAttributeHandle
+	import function Trait() : whandle:gamedataTrait_Record; // Trait
+	import function TraitHandle() : handle:gamedataTrait_Record; // TraitHandle
+	import function Type() : gamedataProficiencyType; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

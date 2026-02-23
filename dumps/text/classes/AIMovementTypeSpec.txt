@@ -1,0 +1,7 @@
+import struct AIMovementTypeSpec
+{
+	var useNPCMovementParams : Bool;
+	var movementType : moveMovementType;
+
+	import static function Resolve(spec : AIMovementTypeSpec, puppet : handle:gamePuppet) : moveMovementType; // Resolve
+}

@@ -1,0 +1,13 @@
+import class navLocomotionPathResource extends CResource
+{
+	var paths : array:handle:navLocomotionPath;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

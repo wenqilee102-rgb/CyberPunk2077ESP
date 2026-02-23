@@ -1,0 +1,1 @@
+{"a":"AICTreeNodeActionDefinition","b":"AICTreeNodeActionDynamicMoveToDefinition","d":8,"e":[{"a":{"b":"moveMovementType"},"b":"moveType","c":128},{"a":{"a":10},"b":"tolerance","c":128},{"a":{"a":14},"b":"target","c":128},{"a":{"a":1},"b":"keepDistance","c":128}]}

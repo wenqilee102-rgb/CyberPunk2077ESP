@@ -1,0 +1,28 @@
+class abstract QuestLogUtils extends IScriptable
+{
+	static function GetDefaultFilter() : gameJournalRequestStateFilter; // QuestLogUtils::GetDefaultFilter;
+	static function GetDescriptions(journalManager : handle:gameJournalManager, entry : whandle:gameJournalContainerEntry) : array:whandle:gameJournalQuestDescription; // QuestLogUtils::GetDescriptions;JournalManagerJournalContainerEntry
+	static function GetFailedFilter() : gameJournalRequestStateFilter; // QuestLogUtils::GetFailedFilter;
+	static function GetFixerData(journalManager : handle:gameJournalManager, firstObjective : whandle:gameJournalQuestObjective) : TweakDBID; // QuestLogUtils::GetFixerData;JournalManagerJournalQuestObjective
+	static function GetLevelState(playerLevel : Int32, targetLevel : Int32) : CName; // QuestLogUtils::GetLevelState;Int32Int32
+	static function GetObjectiveFilter() : gameJournalRequestStateFilter; // QuestLogUtils::GetObjectiveFilter;
+	static function GetSuccessFilter() : gameJournalRequestStateFilter; // QuestLogUtils::GetSuccessFilter;
+	static function GetThreatText(playerLevel : Int32, targetLevel : Int32) : String; // QuestLogUtils::GetThreatText;Int32Int32
+	static function Unpack(journalManager : handle:gameJournalManager, entry : whandle:gameJournalContainerEntry, filter : gameJournalRequestStateFilter) : array:whandle:gameJournalEntry; // QuestLogUtils::Unpack;JournalManagerJournalContainerEntryJournalRequestStateFilter
+	static function UnpackRecursive(journalManager : handle:gameJournalManager, entry : whandle:gameJournalContainerEntry, result : script_ref:array:whandle:gameJournalEntry); // QuestLogUtils::UnpackRecursive;JournalManagerJournalContainerEntryscript_ref<array<JournalEntry>>
+	static function UnpackRecursiveWithFilter(journalManager : handle:gameJournalManager, entry : whandle:gameJournalContainerEntry, filter : gameJournalRequestStateFilter, result : script_ref:array:whandle:gameJournalEntry, optional includeInactive : Bool); // QuestLogUtils::UnpackRecursiveWithFilter;JournalManagerJournalContainerEntryJournalRequestStateFilterscript_ref<array<JournalEntry>>Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

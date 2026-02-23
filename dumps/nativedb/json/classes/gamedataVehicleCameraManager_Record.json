@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataVehicleCameraManager_Record","c":"VehicleCameraManager_Record","d":24,"f":[{"a":"AllowCameraReset","c":{"a":1},"d":4},{"a":"CamCollisionOBBIncrease","c":{"b":"Vector3"},"d":4},{"a":"CameraBlendTime","c":{"a":10},"d":4}]}

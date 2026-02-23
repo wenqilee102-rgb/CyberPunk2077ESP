@@ -1,0 +1,17 @@
+import class animAnimNode_BaseSwitch extends animAnimNode_Base
+{
+	var blendTime : Float;
+	var timeWarpingEnabled : Bool;
+	var syncMethod : handle:animISyncMethod;
+	var inputNodes : array:animPoseLink;
+	var canRequestInertialization : Bool;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

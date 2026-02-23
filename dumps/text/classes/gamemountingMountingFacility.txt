@@ -1,0 +1,38 @@
+import class gamemountingMountingFacility extends gamemountingIMountingFacility
+{
+}
+
+import class abstract gamemountingIMountingFacility extends gameIGameSystem
+{
+	import static function InfoHasChild(info : gamemountingMountingInfo) : Bool; // InfoHasChild
+	import static function InfoHasParent(info : gamemountingMountingInfo) : Bool; // InfoHasParent
+	import static function InfoIsComplete(info : gamemountingMountingInfo) : Bool; // InfoIsComplete
+	import static function RelationshipGetOtherObject(relationship : gamemountingMountingRelationship) : whandle:gameObject; // RelationshipGetOtherObject
+	import static function SlotIsValid(slotId : gamemountingMountingSlotId) : Bool; // SlotIsValid
+
+	import function GetMountingInfoMultipleWithIds(optional child : entEntityID, optional parent : entEntityID, optional slotId : gamemountingMountingSlotId) : array:gamemountingMountingInfo; // GetMountingInfoMultipleWithIds
+	import function GetMountingInfoMultipleWithObjects(optional child : handle:gameObject, optional parent : handle:gameObject, optional slotId : gamemountingMountingSlotId) : array:gamemountingMountingInfo; // GetMountingInfoMultipleWithObjects
+	import function GetMountingInfoSingleWithIds(optional child : entEntityID, optional parent : entEntityID, optional slotId : gamemountingMountingSlotId) : gamemountingMountingInfo; // GetMountingInfoSingleWithIds
+	import function GetMountingInfoSingleWithObjects(optional child : handle:gameObject, optional parent : handle:gameObject, optional slotId : gamemountingMountingSlotId) : gamemountingMountingInfo; // GetMountingInfoSingleWithObjects
+	import function IsMountedToAnything(child : entEntityID) : Bool; // IsMountedToAnything
+	import function Mount(mountEvent : handle:gamemountingMountingRequest); // Mount
+	import function Unmount(unmountEvent : handle:gamemountingUnmountingRequest); // Unmount
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

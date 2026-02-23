@@ -1,0 +1,9 @@
+import struct animPoseLimitWeights
+{
+	var min : Float;
+	var mid : Float;
+	var max : Float;
+	var poseTrackIndex : Int16;
+	var type : Uint8;
+	var isCachable : Bool;
+}

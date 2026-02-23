@@ -1,0 +1,5 @@
+import struct scnChoiceNodeNsAttachToPropParams
+{
+	var propId : scnPropId;
+	var visualizerStyle : scnChoiceNodeNsVisualizerStyle;
+}

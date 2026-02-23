@@ -1,0 +1,30 @@
+import class gamedataSeatState_Record extends gamedataTweakDBRecord
+{
+	import function DisableInteraction() : Bool; // DisableInteraction
+	import function EnableInteraction() : Bool; // EnableInteraction
+	import function ForceClose() : Bool; // ForceClose
+	import function ForceLock() : Bool; // ForceLock
+	import function ForceOpen() : Bool; // ForceOpen
+	import function ForceUnlock() : Bool; // ForceUnlock
+	import function QuestLock() : Bool; // QuestLock
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

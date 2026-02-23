@@ -1,0 +1,20 @@
+import class audioWeaponSettingsGroup extends audioAudioMetadata
+{
+	var playerSettings : CName;
+	var playerSilenced : CName;
+	var npcSettings : CName;
+	var npcSilenced : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

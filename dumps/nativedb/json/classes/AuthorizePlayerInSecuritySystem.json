@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"AuthorizePlayerInSecuritySystem","d":0,"e":[{"a":{"a":1},"b":"authorize","c":128},{"a":{"a":1},"b":"forceRemoveFromBlacklist","c":128},{"a":{"b":"ESecurityAccessLevel"},"b":"ESL","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

@@ -1,0 +1,6 @@
+import struct scnLookAtBasicEventData
+{
+	var basic : scnAnimTargetBasicData;
+	var removePreviousAdvancedLookAts : Bool;
+	var requests : array:animLookAtRequestForPart;
+}

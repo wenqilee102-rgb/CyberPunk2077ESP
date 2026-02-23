@@ -1,0 +1,7 @@
+import struct gameRegisterCooldownFromRecordRequest
+{
+	var owner : whandle:entEntity;
+	var ownerItemId : gameItemID;
+	var ownerRecord : TweakDBID;
+	var cooldownRecord : handle:gamedataCooldown_Record;
+}

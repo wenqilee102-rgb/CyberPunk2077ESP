@@ -1,0 +1,27 @@
+import class gameChatterHelper extends IScriptable
+{
+	import static function PlayCpoClientVoiceOver(instigator : handle:gameObject, voName : CName); // PlayCpoClientVoiceOver
+	import static function PlayCpoServerSyncVoiceOver(instigator : handle:gameObject, voName : CName); // PlayCpoServerSyncVoiceOver
+	import static function PlayVoiceOver(instigator : handle:gameObject, voName : CName); // PlayVoiceOver
+	import static function TryPlayEnemyDamagedChatter(instigator : handle:gameObject); // TryPlayEnemyDamagedChatter
+	import static function TryPlayEnemyKilledChatter(instigator : handle:gameObject); // TryPlayEnemyKilledChatter
+	import static function TryPlayEnterCombatChatter(instigator : handle:gameObject); // TryPlayEnterCombatChatter
+	import static function TryPlayLeaveCombatChatter(instigator : handle:gameObject); // TryPlayLeaveCombatChatter
+	import static function TryPlayReloadChatter(instigator : handle:gameObject); // TryPlayReloadChatter
+	import static function TryPlayScanCompleteChatter(instigator : handle:gameObject); // TryPlayScanCompleteChatter
+	import static function TryPlayScanStartedChatter(instigator : handle:gameObject); // TryPlayScanStartedChatter
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

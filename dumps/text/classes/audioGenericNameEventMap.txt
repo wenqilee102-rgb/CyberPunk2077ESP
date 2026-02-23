@@ -1,0 +1,17 @@
+import class audioGenericNameEventMap extends audioAudioMetadata
+{
+	var eventOverrides : handle:audioGenericNameEventDictionary;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

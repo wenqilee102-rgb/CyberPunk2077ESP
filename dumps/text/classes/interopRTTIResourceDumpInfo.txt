@@ -1,0 +1,6 @@
+import struct interopRTTIResourceDumpInfo
+{
+	var extension : String;
+	var deprecatedExtension : String;
+	var friendlyDescription : String;
+}

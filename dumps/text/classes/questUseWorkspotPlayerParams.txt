@@ -1,0 +1,11 @@
+import struct questUseWorkspotPlayerParams
+{
+	var tier : questUseWorkspotTier;
+	var cameraSettings : gameTier3CameraSettings;
+	var emptyHands : Bool;
+	var cameraUseTrajectorySpace : Bool;
+	var applyCameraParams : Bool;
+	var vehicleProceduralCameraWeight : Float;
+	var parallaxWeight : Float;
+	var parallaxSpace : questCameraParallaxSpace;
+}

@@ -1,0 +1,5 @@
+import struct gameuiCharacterCustomizationVersionUpdateInfo
+{
+	var newVersion : Uint32;
+	var optionUpdates : array:gameuiCharacterCustomizationOptionVersionUpdateInfo;
+}

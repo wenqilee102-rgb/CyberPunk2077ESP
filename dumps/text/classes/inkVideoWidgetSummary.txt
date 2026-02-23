@@ -1,0 +1,10 @@
+import struct inkVideoWidgetSummary
+{
+	var width : Uint32;
+	var height : Uint32;
+	var currentTimeMs : Uint32;
+	var totalTimeMs : Uint32;
+	var currentFrame : Uint32;
+	var totalFrames : Uint32;
+	var frameRate : Uint32;
+}

@@ -1,0 +1,9 @@
+import struct questRadioStationAnnouncementEventStruct
+{
+	var announcementScene : raRef:scnSceneResource;
+	var sceneInput : CName;
+	var queueAnnouncement : Bool;
+	var radioStationName : CName;
+	var blockSignal : Bool;
+	var speaker : audioRadioSpeakerType;
+}

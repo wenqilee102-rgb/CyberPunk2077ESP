@@ -1,0 +1,18 @@
+import class audioAudioFoliageMaterialDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioAudioFoliageMaterialDictionaryItem;
+	var entryType : handle:audioAudioFoliageMaterialDictionaryItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

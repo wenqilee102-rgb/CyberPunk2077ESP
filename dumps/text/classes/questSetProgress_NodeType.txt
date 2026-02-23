@@ -1,0 +1,15 @@
+import class questSetProgress_NodeType extends questIAchievementManagerNodeType
+{
+	var achievement : TweakDBID;
+	var factName : String;
+	var maxValue : Uint32;
+	var currentValue : Uint32;
+}
+
+import class abstract questIAchievementManagerNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

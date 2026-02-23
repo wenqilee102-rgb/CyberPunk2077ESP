@@ -1,0 +1,28 @@
+import class gameStimuliSystem extends gameIStimuliSystem
+{
+	import function BroadcastMergeableStimuli(stimuliInfo : gameStimuliMergeInfo, suppressedByType : array:gamedataStimType); // BroadcastMergeableStimuli
+	import function BroadcastStimuli(effect : handle:gameEffectInstance); // BroadcastStimuli
+	import function GetStimRecord(stimType : gamedataStimType) : handle:gamedataStim_Record; // GetStimRecord
+}
+
+import class abstract gameIStimuliSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

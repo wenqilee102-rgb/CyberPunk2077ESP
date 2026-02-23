@@ -1,0 +1,29 @@
+import class gamedataObjectActionEffect_Record extends gamedataTweakDBRecord
+{
+	import function EffectorToTrigger() : whandle:gamedataEffector_Record; // EffectorToTrigger
+	import function EffectorToTriggerHandle() : handle:gamedataEffector_Record; // EffectorToTriggerHandle
+	import function Recipient() : whandle:gamedataObjectActionReference_Record; // Recipient
+	import function RecipientHandle() : handle:gamedataObjectActionReference_Record; // RecipientHandle
+	import function StatusEffect() : whandle:gamedataStatusEffect_Record; // StatusEffect
+	import function StatusEffectHandle() : handle:gamedataStatusEffect_Record; // StatusEffectHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

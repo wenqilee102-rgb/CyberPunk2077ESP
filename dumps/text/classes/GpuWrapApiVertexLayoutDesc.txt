@@ -1,0 +1,7 @@
+import struct GpuWrapApiVertexLayoutDesc
+{
+	var elements : static:32,GpuWrapApiVertexPackingPackingElement;
+	var slotStrides : static:8,Uint8;
+	var slotMask : Uint32;
+	var hash : Uint32;
+}

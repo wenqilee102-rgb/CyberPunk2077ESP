@@ -1,0 +1,20 @@
+import class questEnableVehicleSummon_NodeType extends questIVehicleManagerNodeType
+{
+	var enable : Bool;
+}
+
+import class abstract questIVehicleManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

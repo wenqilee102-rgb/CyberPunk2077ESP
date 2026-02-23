@@ -1,0 +1,16 @@
+import class questProximityProgressBar_ConditionType extends questIUIConditionType
+{
+	var action : questProximityProgressBarAction;
+}
+
+import class abstract questIUIConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+class MeleeLeapAttackObjectTagger extends IScriptable
+{
+	private   var game : ScriptGameInstance;
+	private   var playerPuppet : whandle:gameObject;
+	private   var playerDevelopmentData : whandle:PlayerDevelopmentData;
+	private   var visionModeSystem : whandle:gameVisionModeSystem;
+	private   var target : whandle:gameObject;
+	private   var minDistanceToTarget : Float;
+
+	function CanPerformRelicLeap(equippedWeapon : handle:gameweaponObject) : Bool; // CanPerformRelicLeap;WeaponObject
+	function GetTargetMaxRange() : Float; // GetTargetMaxRange;
+	function ResetVisionOnTargetObj(); // ResetVisionOnTargetObj;
+	function SetUp(playerPuppet : handle:gameObject); // SetUp;GameObject
+	function SetVisionOnTargetObj(targetEntity : handle:entEntity, distanceToTarget : Float); // SetVisionOnTargetObj;EntityFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

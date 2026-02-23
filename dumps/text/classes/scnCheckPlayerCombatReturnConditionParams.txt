@@ -1,0 +1,4 @@
+import struct scnCheckPlayerCombatReturnConditionParams
+{
+	var isInCombat : Bool;
+}

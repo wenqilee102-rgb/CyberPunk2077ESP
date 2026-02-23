@@ -1,0 +1,5 @@
+import struct navSerializableSplineProgression
+{
+	var sectionIdx : Uint32;
+	var alpha : Float;
+}

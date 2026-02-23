@@ -1,0 +1,18 @@
+import class worldCommunityRegistryNode extends worldNode
+{
+	var spawnSetNameToCommunityID : gameCommunitySpawnSetNameToID;
+	var crowdCreationRegistry : handle:gameCrowdCreationDataRegistry;
+	var communitiesData : array:worldCommunityRegistryItem;
+	var workspotsPersistentData : array:AISpotPersistentData;
+	var representsCrowd : Bool;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,20 @@
+import class AIbehaviorSequenceTreeNodeDefinition extends AIbehaviorCompositeTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorCompositeTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+	var children : array:handle:AIbehaviorTreeNodeDefinition;
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

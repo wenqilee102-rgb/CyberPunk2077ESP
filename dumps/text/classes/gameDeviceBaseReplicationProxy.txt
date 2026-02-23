@@ -1,0 +1,14 @@
+import struct gameDeviceBaseReplicationProxy extends netIEntityState
+{
+	var scriptState : handle:gameDeviceReplicatedState;
+	var versionId : Uint32;
+	var versionTimestamp : netTime;
+	var initialOrientation : EulerAngles;
+	var initialLocation : Vector3;
+}
+
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

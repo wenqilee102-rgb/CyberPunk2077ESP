@@ -1,0 +1,1 @@
+{"a":"AIBlackboardDef","b":"AIActionBossDataDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Variant"},"b":"excludedWaypointPosition","c":128},{"a":{"b":"gamebbScriptID_Vector4"},"b":"excludedTeleportPosition","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

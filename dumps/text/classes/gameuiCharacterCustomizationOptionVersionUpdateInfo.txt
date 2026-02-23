@@ -1,0 +1,9 @@
+import struct gameuiCharacterCustomizationOptionVersionUpdateInfo
+{
+	var curOptionNames : array:CName;
+	var curDefintionName : CName;
+	var optionPrereqs : array:gameuiCharacterCustomizationOptionVersionPrereq;
+	var newOptionName : CName;
+	var newDefinitionName : CName;
+	var replaceCurOption : Bool;
+}

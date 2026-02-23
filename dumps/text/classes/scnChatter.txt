@@ -1,0 +1,5 @@
+import struct scnChatter
+{
+	var id : Uint16;
+	var voicesetComponent : whandle:scnVoicesetComponent;
+}

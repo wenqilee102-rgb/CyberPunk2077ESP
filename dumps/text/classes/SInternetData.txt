@@ -1,0 +1,4 @@
+struct SInternetData
+{
+	public    var startingPage : String;
+}

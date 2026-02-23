@@ -1,0 +1,9 @@
+import struct redResourceReferenceScriptToken
+{
+	var resource : raRef:CResource;
+
+	import static function FromHash(hash : Uint64) : redResourceReferenceScriptToken; // FromHash
+	import static function FromName(path : CName) : redResourceReferenceScriptToken; // FromName
+	import static function FromString(path : String) : redResourceReferenceScriptToken; // FromString
+	import static function IsValid(path : redResourceReferenceScriptToken) : Bool; // IsValid
+}

@@ -1,0 +1,48 @@
+import class animAnimFeature_PlayerMovement extends animAnimFeature_Movement
+{
+	var facingDirection : Vector4;
+	var verticalSpeed : Float;
+	var movementDirectionHorizontalAngle : Float;
+	var inAir : Bool;
+	var standingTerrainAngle : Float;
+
+	import function SetFacingDirection(facingDirection : Vector4); // SetFacingDirection
+	import function SetInAir(); // SetInAir
+	import function SetMovementDirection(movementDirection : Vector4, forwardVector : Vector4); // SetMovementDirection
+	import function SetStandingTerrainAngle(); // SetStandingTerrainAngle
+	import function SetVerticalSpeed(verticalSpeed : Float); // SetVerticalSpeed
+}
+
+import class animAnimFeature_Movement extends animAnimFeature
+{
+	var movementDirection : Vector4;
+	var speed : Float;
+	var desiredSpeed : Float;
+	var stabilizedSpeed : Float;
+	var acceleration : Float;
+	var timeToChangeLocomotion : Float;
+	var strafeYaw : Float;
+	var yawSpeed : Float;
+	var locomotionState : Int32;
+
+	import function SetAcceleration(); // SetAcceleration
+	import function SetSpeed(speed : Float); // SetSpeed
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

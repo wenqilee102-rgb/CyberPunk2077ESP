@@ -1,0 +1,8 @@
+import class gameStatsUnit extends ISerializable
+{
+	var recordID : TweakDBID;
+}
+
+import class abstract ISerializable
+{
+}

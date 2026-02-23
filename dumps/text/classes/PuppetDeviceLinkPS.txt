@@ -1,0 +1,224 @@
+class PuppetDeviceLinkPS extends DeviceLinkComponentPS
+{
+	private   var securitySystemData : SecuritySystemData;
+
+	static function AcquirePuppetDeviceLink(game : ScriptGameInstance, entityID : entEntityID) : handle:PuppetDeviceLinkPS; // PuppetDeviceLinkPS::AcquirePuppetDeviceLink;GameInstanceEntityID
+	static function CreateAndAcquirePuppetDeviceLinkPS(game : ScriptGameInstance, id : entEntityID) : handle:PuppetDeviceLinkPS; // PuppetDeviceLinkPS::CreateAndAcquirePuppetDeviceLinkPS;GameInstanceEntityID
+
+	function ActionPingSquad() : handle:PingSquad; // ActionPingSquad;
+	function AreIncomingEventsSuppressed() : Bool; // AreIncomingEventsSuppressed;
+	function AreOutgoingEventsSuppressed() : Bool; // AreOutgoingEventsSuppressed;
+	function IsPuppet() : Bool; // IsPuppet;
+	function NotifyAboutSpottingPlayer(doSee : Bool); // NotifyAboutSpottingPlayer;Bool
+	function OnDeviceLinkRequest(evt : handle:DeviceLinkRequest) : EntityNotificationType; // OnDeviceLinkRequest;DeviceLinkRequest
+	function OnSecuritySystemOutput(evt : handle:SecuritySystemOutput) : EntityNotificationType; // OnSecuritySystemOutput;SecuritySystemOutput
+	function OnSecuritySystemSupport(evt : handle:SecuritySystemSupport) : EntityNotificationType; // OnSecuritySystemSupport;SecuritySystemSupport
+	function OnSuppressNPCInSecuritySystem(evt : handle:SuppressNPCInSecuritySystem) : EntityNotificationType; // OnSuppressNPCInSecuritySystem;SuppressNPCInSecuritySystem
+	function PerformNPCBreach(state : gameuiHackingMinigameState); // PerformNPCBreach;HackingMinigameState
+	function PingSquadNetwork(); // PingSquadNetwork;
+	function TriggerSecuritySystemNotification(lastKnownPosition : Vector4, whoBreached : handle:gameObject, type : ESecurityNotificationType, optional stimType : gamedataStimType); // TriggerSecuritySystemNotification;Vector4GameObjectESecurityNotificationTypegamedataStimType
+}
+
+class DeviceLinkComponentPS extends SharedGameplayPS
+{
+	private   var parentDevice : DeviceLink;
+	private   var isConnected : Bool;
+	protected var ownerEntityID : entEntityID;
+
+	static function AcquireDeviceLink(game : ScriptGameInstance, entityID : entEntityID) : handle:DeviceLinkComponentPS; // DeviceLinkComponentPS::AcquireDeviceLink;GameInstanceEntityID
+	static function CreateAndAcquireDeviceLink(game : ScriptGameInstance, entityID : entEntityID) : handle:DeviceLinkComponentPS; // DeviceLinkComponentPS::CreateAndAcquireDeviceLink;GameInstanceEntityID
+	static function GenerateID(id : entEntityID) : gamePersistentID; // DeviceLinkComponentPS::GenerateID;EntityID
+
+	function ActionDevicePing(ps : handle:gamePersistentState) : handle:PingDevice; // ActionDevicePing;PersistentState
+	function ActionSecurityBreachNotification(lastKnownPosition : Vector4, whoBreached : handle:gameObject, type : ESecurityNotificationType, optional stimType : gamedataStimType) : handle:SecuritySystemInput; // ActionSecurityBreachNotification;Vector4GameObjectESecurityNotificationTypegamedataStimType
+	function Connect(links : script_ref:array:handle:gameDeviceComponentPS); // Connect;script_ref<array<DeviceComponentPS>>
+	function Connect(link : handle:gameDeviceComponentPS); // Connect;DeviceComponentPS
+	function Disconnect(links : script_ref:array:handle:gameDeviceComponentPS); // Disconnect;script_ref<array<DeviceComponentPS>>
+	function Disconnect(link : handle:gameDeviceComponentPS); // Disconnect;DeviceComponentPS
+	function EstablishLink(connect : Bool); // EstablishLink;Bool
+	function GetAncestors(out outDevices : array:handle:gameDeviceComponentPS); // GetAncestors;array<DeviceComponentPS>
+	function GetDevice(deviceLink : DeviceLink) : whandle:gameDeviceComponentPS; // GetDevice;DeviceLink
+	function GetParentDevice() : whandle:SharedGameplayPS; // GetParentDevice;
+	function GetParentDeviceLink() : DeviceLink; // GetParentDeviceLink;
+	function GetParents(out outDevices : array:handle:gameDeviceComponentPS); // GetParents;array<DeviceComponentPS>
+	function HasNetworkBackdoor() : Bool; // HasNetworkBackdoor;
+	function IsConnected() : Bool; // IsConnected;
+	function OnAddToBlacklistEvent(evt : handle:AddToBlacklistEvent) : EntityNotificationType; // OnAddToBlacklistEvent;AddToBlacklistEvent
+	function OnDestroyLink(evt : handle:DestroyLink) : EntityNotificationType; // OnDestroyLink;DestroyLink
+	function OnDeviceLinkRequest(evt : handle:DeviceLinkRequest) : EntityNotificationType; // OnDeviceLinkRequest;DeviceLinkRequest
+	function OnRemoveFromBlacklistEvent(evt : handle:RemoveFromBlacklistEvent) : EntityNotificationType; // OnRemoveFromBlacklistEvent;RemoveFromBlacklistEvent
+	function OnSecurityAreaCrossingPerimeter(evt : handle:SecurityAreaCrossingPerimeter) : EntityNotificationType; // OnSecurityAreaCrossingPerimeter;SecurityAreaCrossingPerimeter
+	function OnSecuritySystemDisabled(evt : handle:SecuritySystemDisabled) : EntityNotificationType; // OnSecuritySystemDisabled;SecuritySystemDisabled
+	function OnSecuritySystemEnabled(evt : handle:SecuritySystemEnabled) : EntityNotificationType; // OnSecuritySystemEnabled;SecuritySystemEnabled
+	function OnSecuritySystemOutput(evt : handle:SecuritySystemOutput) : EntityNotificationType; // OnSecuritySystemOutput;SecuritySystemOutput
+	function OnTargetAssessmentRequest(evt : handle:TargetAssessmentRequest) : EntityNotificationType; // OnTargetAssessmentRequest;TargetAssessmentRequest
+	function PingDevicesNetwork(); // PingDevicesNetwork;
+	function QueuePSEvent(deviceLink : DeviceLink, evt : handle:redEvent); // QueuePSEvent;DeviceLinkEvent
+	function SetRevealedInNetworkPing(wasRevealed : Bool); // SetRevealedInNetworkPing;Bool
+	function TriggerSecuritySystemNotification(lastKnownPosition : Vector4, whoBreached : handle:gameObject, type : ESecurityNotificationType, optional stimType : gamedataStimType); // TriggerSecuritySystemNotification;Vector4GameObjectESecurityNotificationTypegamedataStimType
+	function WasRevealedInNetworkPing() : Bool; // WasRevealedInNetworkPing;
+}
+
+class SharedGameplayPS extends gameDeviceComponentPS
+{
+	protected var deviceState : EDeviceStatus;
+	protected var authorizationProperties : AuthorizationData;
+	protected var wasStateCached : Bool;
+	protected var wasStateSet : Bool;
+	protected var cachedDeviceState : EDeviceStatus;
+	protected var revealDevicesGrid : Bool;
+	protected var revealDevicesGridWhenUnpowered : Bool;
+	protected var wasRevealedInNetworkPing : Bool;
+	protected var hasNetworkBackdoor : Bool;
+
+	function CacheDeviceState(state : EDeviceStatus); // CacheDeviceState;EDeviceStatus
+	function CheckMasterConnectedClassTypes() : ConnectedClassTypes; // CheckMasterConnectedClassTypes;
+	function EvaluateDeviceState(); // EvaluateDeviceState;
+	function FindHighestSecurityAccessLevel(securityAreas : script_ref:array:handle:SecurityAreaControllerPS) : ESecurityAccessLevel; // FindHighestSecurityAccessLevel;script_ref<array<SecurityAreaControllerPS>>
+	function GetAccessPoints() : array:handle:AccessPointControllerPS; // GetAccessPoints;
+	function GetBackdoorAccessPoint() : handle:AccessPointControllerPS; // GetBackdoorAccessPoint;
+	function GetDeviceState() : EDeviceStatus; // GetDeviceState;
+	function GetNetworkName() : String; // GetNetworkName;
+	function GetSecurityAccessLevel() : ESecurityAccessLevel; // GetSecurityAccessLevel;
+	function HasNetworkBackdoor() : Bool; // HasNetworkBackdoor;
+	function IsBreached() : Bool; // IsBreached;
+	function IsConnectedToBackdoorDevice() : Bool; // IsConnectedToBackdoorDevice;
+	function IsConnectedToSecuritySystem() : Bool; // IsConnectedToSecuritySystem;
+	function IsConnectedToSecuritySystem(out level : ESecurityAccessLevel) : Bool; // IsConnectedToSecuritySystem;ESecurityAccessLevel
+	function IsPartOfSystem(systemType : ESystems) : Bool; // IsPartOfSystem;ESystems
+	function IsPuppet() : Bool; // IsPuppet;
+	function OnSetRevealedInNetwork(evt : handle:SetRevealedInNetwork) : EntityNotificationType; // OnSetRevealedInNetwork;SetRevealedInNetwork
+	function QueueEntityEvent(entityID : entEntityID, evt : handle:redEvent); // QueueEntityEvent;EntityIDEvent
+	function QueuePSEvent(targetPS : whandle:gamePersistentState, evt : handle:redEvent); // QueuePSEvent;PersistentStateEvent
+	function QueuePSEvent(targetID : gamePersistentID, psClassName : CName, evt : handle:redEvent); // QueuePSEvent;PersistentIDCNameEvent
+	function QueuePSEventWithDelay(targetPS : whandle:gamePersistentState, evt : handle:redEvent, delay : Float); // QueuePSEventWithDelay;PersistentStateEventFloat
+	function QueuePSEventWithDelay(targetID : gamePersistentID, psClassName : CName, evt : handle:redEvent, delay : Float); // QueuePSEventWithDelay;PersistentIDCNameEventFloat
+	function SetDeviceState(state : EDeviceStatus); // SetDeviceState;EDeviceStatus
+	function SetRevealedInNetworkPing(wasRevealed : Bool); // SetRevealedInNetworkPing;Bool
+	function WasRevealedInNetworkPing() : Bool; // WasRevealedInNetworkPing;
+}
+
+import class gameDeviceComponentPS extends gameComponentPS
+{
+	protected var markAsQuest : Bool;
+	protected var autoToggleQuestMark : Bool;
+	protected var factToDisableQuestMark : CName;
+	protected var callbackToDisableQuestMarkID : Uint32;
+	protected var backdoorObjectiveData : handle:BackDoorObjectiveData;
+	protected var controlPanelObjectiveData : handle:ControlPanelObjectiveData;
+	protected var deviceUIStyle : gamedataComputerUIStyle;
+	protected var blackboard : whandle:gameIBlackboard;
+	protected var isScanned : Bool;
+	private   var isBeingScanned : Bool;
+	protected var exposeQuickHacks : Bool;
+	protected var isAttachedToGame : Bool;
+	protected var isLogicReady : Bool;
+	protected var maxDevicesToExtractInOneFrame : Int32;
+
+	import function GetClearance() : handle:gamedeviceClearance; // GetClearance
+	import function GetDeviceIconPath() : String; // GetDeviceIconPath
+	import function GetDeviceName() : String; // GetDeviceName
+	import function GetDeviceStatus() : String; // GetDeviceStatus
+	import function GetNativeActions(out outActions : array:handle:gamedeviceAction, context : gameGetActionsContext); // GetNativeActions
+	import function GetWidgetTypeName() : CName; // GetWidgetTypeName
+
+	function ActionThumbnailUI() : handle:ThumbnailUI; // ActionThumbnailUI;
+	function DetermineInteractionState(interactionComponent : handle:gameinteractionsComponent, context : script_ref:gameGetActionsContext); // DetermineInteractionState;InteractionComponentscript_ref<GetActionsContext>
+	function ExposeQuickHacks(); // ExposeQuickHacks;
+	function ExposeQuickHacks(shouldExpose : Bool); // ExposeQuickHacks;Bool
+	function GetActionWidgets(context : script_ref:gameGetActionsContext) : array:SActionWidgetPackage; // GetActionWidgets;script_ref<GetActionsContext>
+	function GetActions(out outActions : array:handle:gamedeviceAction, context : gameGetActionsContext) : Bool; // GetActions;array<DeviceAction>GetActionsContext
+	function GetActionsToNative(context : gameGetActionsContext) : array:handle:gamedeviceAction; // GetActionsToNative;GetActionsContext
+	function GetAncestors(out outDevices : array:handle:gameDeviceComponentPS); // GetAncestors;array<DeviceComponentPS>
+	function GetAttachedSlaveForPing(optional context : handle:MasterControllerPS) : handle:gameDeviceComponentPS; // GetAttachedSlaveForPing;MasterControllerPS
+	function GetBackdoorObjectiveData() : handle:BackDoorObjectiveData; // GetBackdoorObjectiveData;
+	function GetBackgroundTextureTweakDBID() : TweakDBID; // GetBackgroundTextureTweakDBID;
+	function GetBlackboard() : handle:gameIBlackboard; // GetBlackboard;
+	function GetBlackboardDef() : handle:DeviceBaseBlackboardDef; // GetBlackboardDef;
+	function GetChildren(out outDevices : array:handle:gameDeviceComponentPS); // GetChildren;array<DeviceComponentPS>
+	function GetControlPanelObjectiveData() : handle:ControlPanelObjectiveData; // GetControlPanelObjectiveData;
+	function GetDeviceIconID() : CName; // GetDeviceIconID;
+	function GetDeviceIconTweakDBID() : TweakDBID; // GetDeviceIconTweakDBID;
+	function GetDeviceWidget(context : script_ref:gameGetActionsContext) : SDeviceWidgetPackage; // GetDeviceWidget;script_ref<GetActionsContext>
+	function GetFactToDisableQuestMarkName() : CName; // GetFactToDisableQuestMarkName;
+	function GetFirstAttachedSlave() : handle:gameDeviceComponentPS; // GetFirstAttachedSlave;
+	function GetImmediateParents() : array:handle:gameDeviceComponentPS; // GetImmediateParents;
+	function GetInkWidgetLibraryID(context : script_ref:gameGetActionsContext) : CName; // GetInkWidgetLibraryID;script_ref<GetActionsContext>
+	function GetInkWidgetLibraryPath() : redResourceReferenceScriptToken; // GetInkWidgetLibraryPath;
+	function GetInkWidgetTweakDBID(context : script_ref:gameGetActionsContext) : TweakDBID; // GetInkWidgetTweakDBID;script_ref<GetActionsContext>
+	function GetLazyAncestors() : array:handle:gameLazyDevice; // GetLazyAncestors;
+	function GetLazyChildren(out outDevices : array:handle:gameLazyDevice); // GetLazyChildren;array<LazyDevice>
+	function GetLazyParents() : array:handle:gameLazyDevice; // GetLazyParents;
+	function GetMyEntityID() : entEntityID; // GetMyEntityID;
+	function GetNetworkSystem() : handle:NetworkSystem; // GetNetworkSystem;
+	function GetOwnerEntityWeak() : whandle:entEntity; // GetOwnerEntityWeak;
+	function GetPS(deviceLink : DeviceLink) : handle:gameDeviceComponentPS; // GetPS;DeviceLink
+	function GetParents(out outDevices : array:handle:gameDeviceComponentPS); // GetParents;array<DeviceComponentPS>
+	function GetPersistentStateName() : CName; // GetPersistentStateName;
+	function GetQuestActionByName(actionName : CName) : handle:gamedeviceAction; // GetQuestActionByName;CName
+	function GetQuestActionByNameToNative(actionName : CName) : handle:gamedeviceAction; // GetQuestActionByNameToNative;CName
+	function GetQuestActions(out outActions : array:handle:gamedeviceAction, context : script_ref:gameGetActionsContext); // GetQuestActions;array<DeviceAction>script_ref<GetActionsContext>
+	function GetQuestActionsToNative(context : gameGetActionsContext) : array:handle:gamedeviceAction; // GetQuestActionsToNative;GetActionsContext
+	function GetSecurityAreas(optional includeInactive : Bool, optional returnOnlyDirectlyConnected : Bool) : array:handle:SecurityAreaControllerPS; // GetSecurityAreas;BoolBool
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetThumbnailAction() : handle:ThumbnailUI; // GetThumbnailAction;
+	function GetThumbnailWidget() : SThumbnailWidgetPackage; // GetThumbnailWidget;
+	function GetVirtualSystem(slave : handle:gameDeviceComponentPS, out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;DeviceComponentPSVirtualSystemPS
+	function GetVirtualSystem(id : gamePersistentID, out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;PersistentIDVirtualSystemPS
+	function GetVirtualSystem(out vs : handle:VirtualSystemPS) : Bool; // GetVirtualSystem;VirtualSystemPS
+	function GetVirtualSystemType() : EVirtualSystem; // GetVirtualSystemType;
+	function HackGetOwner() : handle:entEntity; // HackGetOwner;
+	function HasAnyDeviceConnection() : Bool; // HasAnyDeviceConnection;
+	function HasAnySlave() : Bool; // HasAnySlave;
+	function InitializeGameplayObjectives(); // InitializeGameplayObjectives;
+	function InitializeQuestDBCallbacksForQuestmark(); // InitializeQuestDBCallbacksForQuestmark;
+	function IsAnyMasterFlaggedAsQuest() : Bool; // IsAnyMasterFlaggedAsQuest;
+	function IsAttachedToGame() : Bool; // IsAttachedToGame;
+	function IsAutoTogglingQuestMark() : Bool; // IsAutoTogglingQuestMark;
+	function IsBeingScanned() : Bool; // IsBeingScanned;
+	function IsLogicReady() : Bool; // IsLogicReady;
+	function IsMarkedAsQuest() : Bool; // IsMarkedAsQuest;
+	function IsMasterType() : Bool; // IsMasterType;
+	function IsQuickHacksExposed() : Bool; // IsQuickHacksExposed;
+	function IsScanned() : Bool; // IsScanned;
+	function IsStatic() : Bool; // IsStatic;
+	function OnExtractDevicesEvent(evt : handle:ExtractDevicesEvent) : EntityNotificationType; // OnExtractDevicesEvent;ExtractDevicesEvent
+	function OnMaraudersMapDeviceDebug(sink : handle:worldMaraudersMapDevicesSink); // OnMaraudersMapDeviceDebug;MaraudersMapDevicesSink
+	function PassBlackboard(blackboard : handle:gameIBlackboard); // PassBlackboard;IBlackboard
+	function ProcessDevicesLazy(lazyDevices : script_ref:array:handle:gameLazyDevice, optional eventToSendOnCompleted : handle:ProcessDevicesEvent); // ProcessDevicesLazy;script_ref<array<LazyDevice>>ProcessDevicesEvent
+	function RefreshUI(blackboard : handle:gameIBlackboard); // RefreshUI;IBlackboard
+	function RequestActionWidgetsUpdate(blackboard : handle:gameIBlackboard); // RequestActionWidgetsUpdate;IBlackboard
+	function RequestBreadCrumbUpdate(blackboard : handle:gameIBlackboard, data : SBreadCrumbUpdateData); // RequestBreadCrumbUpdate;IBlackboardSBreadCrumbUpdateData
+	function ResloveUIOnAction(action : handle:ScriptableDeviceAction); // ResloveUIOnAction;ScriptableDeviceAction
+	function ResolveExtractDevicesEvent(evt : handle:ExtractDevicesEvent); // ResolveExtractDevicesEvent;ExtractDevicesEvent
+	function SetIsBeingScannedFlag(isBeingScanned : Bool); // SetIsBeingScannedFlag;Bool
+	function SetIsMarkedAsQuest(isQuest : Bool); // SetIsMarkedAsQuest;Bool
+	function SetIsScanComplete(isComplete : Bool); // SetIsScanComplete;Bool
+	function UnInitializeQuestDBCallbacksForQuestmark(); // UnInitializeQuestDBCallbacksForQuestmark;
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

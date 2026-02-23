@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"ChargedGrenadesBlackBoardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Int32"},"b":"curentGrenadeCharges","c":128},{"a":{"b":"gamebbScriptID_Int32"},"b":"maxGrenadeCharges","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"rechargeGoingOn","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

@@ -1,0 +1,25 @@
+class DamageEffectUIEntry extends IScriptable
+{
+	public    var damageType : gamedataDamageType;
+	public    var valueStat : gamedataStatType;
+	public    var targetStat : gamedataStatType;
+	public    var displayType : DamageEffectDisplayType;
+	public    var valueToDisplay : Float;
+	public    var effectorDuration : Float;
+	public    var effectorDelay : Float;
+	public    var isContinuous : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

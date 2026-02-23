@@ -1,0 +1,5 @@
+import struct inkDynamicTextureSlot
+{
+	var texture : raRef:DynamicTexture;
+	var parts : array:inkTextureAtlasMapper;
+}

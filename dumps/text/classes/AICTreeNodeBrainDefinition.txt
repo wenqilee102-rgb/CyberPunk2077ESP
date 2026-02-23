@@ -1,0 +1,21 @@
+import class AICTreeNodeBrainDefinition extends AICTreeNodeCompositeDefinition
+{
+	var children : array:handle:LibTreeINodeDefinition;
+	var useScoring : Bool;
+}
+
+import class abstract AICTreeNodeCompositeDefinition extends AICTreeNodeDefinition
+{
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

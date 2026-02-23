@@ -1,0 +1,20 @@
+import class audioPhysicalPropSettings extends audioAudioMetadata
+{
+	var shockwaveSound : CName;
+	var damagedSound : CName;
+	var destroyedSound : CName;
+	var materialOverrides : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

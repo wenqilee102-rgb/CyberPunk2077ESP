@@ -1,0 +1,8 @@
+import struct animSAnimationBufferBitwiseCompressedData
+{
+	var dt : Float;
+	var compression : Int8;
+	var numFrames : Uint16;
+	var dataAddr : Uint32;
+	var dataAddrFallback : Uint32;
+}

@@ -1,0 +1,28 @@
+import class gamestateMachineparameterTypeLadderDescription extends IScriptable
+{
+	var position : Vector4;
+	var normal : Vector4;
+	var up : Vector4;
+	var topHeightFromPosition : Float;
+	var exitStepTop : Float;
+	var verticalStepTop : Float;
+	var exitStepBottom : Float;
+	var verticalStepBottom : Float;
+	var exitStepJump : Float;
+	var verticalStepJump : Float;
+	var enterOffset : Float;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

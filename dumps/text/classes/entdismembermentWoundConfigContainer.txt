@@ -1,0 +1,9 @@
+import class entdismembermentWoundConfigContainer extends ISerializable
+{
+	var AppearanceName : CName;
+	var Wounds : array:entdismembermentWoundConfig;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+struct RadioSetup
+{
+	public    var randomizeStartingStation : Bool;
+	public    var startingStation : ERadioStationList;
+	public    var isInteractive : Bool;
+	public    var glitchSFX : CName;
+	public    var enableHighPitchNoiseQuickHack : Bool;
+	public    var highPitchNoiseSFX : CName;
+	public    var hithPitchNoiseVFX : gameFxResource;
+	public    var hithPitchNoiseRadius : Float;
+	public    var enableAoeDamageQuickHack : Bool;
+	public    var AoeDamageSFX : CName;
+	public    var AoeDamageVFX : gameFxResource;
+}

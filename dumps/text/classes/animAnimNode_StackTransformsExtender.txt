@@ -1,0 +1,25 @@
+import class animAnimNode_StackTransformsExtender extends animAnimNode_OnePoseInput
+{
+	var tag : CName;
+	var transformInfos : array:animTransformInfo;
+	var snapMethods : array:animStackTransformsExtender_SnapToBoneMethod;
+	var snapToReferenceValues : array:Bool;
+	var snapTargetBones : array:animTransformIndex;
+	var offsetToReferenceValues : array:Bool;
+	var offsetSpaceBones : array:animTransformIndex;
+	var offsets : array:QsTransform;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

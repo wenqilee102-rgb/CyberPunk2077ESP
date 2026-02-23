@@ -1,0 +1,5 @@
+import struct gameuiSwitchPair
+{
+	var prevOption : whandle:gameuiCharacterCustomizationOption;
+	var currOption : whandle:gameuiCharacterCustomizationOption;
+}

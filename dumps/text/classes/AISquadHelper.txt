@@ -1,0 +1,42 @@
+class AISquadHelper extends IScriptable
+{
+	static function EnterAlerted(owner : whandle:ScriptedPuppet); // AISquadHelper::EnterAlerted;ScriptedPuppet
+	static function GeThreatLocationFromSquadmate(squadmate : whandle:ScriptedPuppet, threat : whandle:entEntity, threatLocation : script_ref:AITrackedLocation) : Bool; // AISquadHelper::GeThreatLocationFromSquadmate;ScriptedPuppetEntityscript_ref<TrackedLocation>
+	static function GetAllSquadMemberInterfaces(obj : whandle:gameObject) : array:handle:AISquadScriptInterface; // AISquadHelper::GetAllSquadMemberInterfaces;GameObject
+	static function GetCombatSquadInterface(obj : whandle:gameObject, out squadInterface : handle:AICombatSquadScriptInterface) : Bool; // AISquadHelper::GetCombatSquadInterface;GameObjectCombatSquadScriptInterface
+	static function GetCurrentSquadRing(puppet : whandle:ScriptedPuppet) : gamedataAIRingType; // AISquadHelper::GetCurrentSquadRing;ScriptedPuppet
+	static function GetPlayerSquadInterface(obj : whandle:gameObject, out playerSquadInterface : handle:PlayerSquadInterface) : Bool; // AISquadHelper::GetPlayerSquadInterface;GameObjectPlayerSquadInterface
+	static function GetSquadBaseInterface(obj : whandle:gameObject, out squadBaseInterface : handle:PuppetSquadInterface) : Bool; // AISquadHelper::GetSquadBaseInterface;GameObjectPuppetSquadInterface
+	static function GetSquadMemberInterface(obj : whandle:gameObject, out squadInterface : handle:AISquadScriptInterface) : Bool; // AISquadHelper::GetSquadMemberInterface;GameObjectSquadScriptInterface
+	static function GetSquadName(obj : whandle:gameObject) : CName; // AISquadHelper::GetSquadName;GameObject
+	static function GetSquadmates(obj : whandle:gameObject, membersList : script_ref:array:whandle:entEntity, optional dontRemoveSelf : Bool) : Bool; // AISquadHelper::GetSquadmates;GameObjectscript_ref<array<Entity>>Bool
+	static function GetSquadmatesID(obj : whandle:gameObject, out membersListID : array:entEntityID, optional dontRemoveSelf : Bool) : Bool; // AISquadHelper::GetSquadmatesID;GameObjectarray<EntityID>Bool
+	static function GetThreatLocationFromSquad(puppet : whandle:ScriptedPuppet, threat : whandle:entEntity, threatLocation : script_ref:AITrackedLocation) : Bool; // AISquadHelper::GetThreatLocationFromSquad;ScriptedPuppetEntityscript_ref<TrackedLocation>
+	static function HasSquadMemberComponent(obj : whandle:gameObject) : Bool; // AISquadHelper::HasSquadMemberComponent;GameObject
+	static function IsSignalActive(owner : whandle:ScriptedPuppet, signalName : CName) : Bool; // AISquadHelper::IsSignalActive;ScriptedPuppetCName
+	static function LeaveAllSquads(obj : whandle:gameObject) : Bool; // AISquadHelper::LeaveAllSquads;GameObject
+	static function LeaveSquad(obj : whandle:gameObject, squadType : AISquadType) : Bool; // AISquadHelper::LeaveSquad;GameObjectAISquadType
+	static function NotifySquadOnIncapacitated(puppet : whandle:ScriptedPuppet); // AISquadHelper::NotifySquadOnIncapacitated;ScriptedPuppet
+	static function PlayerSquadOrderStringToEnum(playerSquadOrderName : script_ref:String) : EAIPlayerSquadOrder; // AISquadHelper::PlayerSquadOrderStringToEnum;script_ref<String>
+	static function PullSquadSync(puppet : whandle:ScriptedPuppet, squadType : AISquadType); // AISquadHelper::PullSquadSync;ScriptedPuppetAISquadType
+	static function PullSquadSyncOnSquadmate(game : ScriptGameInstance, squadmate : whandle:ScriptedPuppet, squadType : AISquadType, currentTopThreat : whandle:entEntity); // AISquadHelper::PullSquadSyncOnSquadmate;GameInstanceScriptedPuppetAISquadTypeEntity
+	static function RemoveThreatFromSquad(puppet : whandle:ScriptedPuppet, threat : script_ref:AITrackedLocation); // AISquadHelper::RemoveThreatFromSquad;ScriptedPuppetscript_ref<TrackedLocation>
+	static function RemoveThreatOnSquadmate(game : ScriptGameInstance, squadmate : whandle:ScriptedPuppet, threat : script_ref:AITrackedLocation); // AISquadHelper::RemoveThreatOnSquadmate;GameInstanceScriptedPuppetscript_ref<TrackedLocation>
+	static function SendStimFromSquadTargetToMember(member : handle:entEntity, actionName : CName); // AISquadHelper::SendStimFromSquadTargetToMember;EntityCName
+	static function SquadRingTypeToTicketName(type : gamedataAIRingType) : CName; // AISquadHelper::SquadRingTypeToTicketName;gamedataAIRingType
+	static function SquadRingTypeToTicketString(type : gamedataAIRingType) : String; // AISquadHelper::SquadRingTypeToTicketString;gamedataAIRingType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

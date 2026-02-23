@@ -1,0 +1,11 @@
+import class meshMeshImportedSnapPoint extends ISerializable
+{
+	var localToCloud : Matrix;
+	var range : Float;
+	var rotationAlignmentSteps : Uint8;
+	var snapTags : meshImportedSnapTags;
+}
+
+import class abstract ISerializable
+{
+}

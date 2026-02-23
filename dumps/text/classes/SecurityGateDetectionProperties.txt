@@ -1,0 +1,7 @@
+struct SecurityGateDetectionProperties
+{
+	public    var performWeaponCheck : Bool;
+	public    var performCyberwareCheck : Bool;
+	public    var scannerEntranceType : ESecurityGateEntranceType;
+	public    var performCheckOnPlayerOnly : Bool;
+}

@@ -1,0 +1,11 @@
+import struct gameMovingPlatformSavedData
+{
+	var currentLocalPosition : Vector4;
+	var movement : handle:gameIMovingPlatformMovement;
+	var destinationName : CName;
+	var destinationData : Int32;
+	var time : Float;
+	var maxTime : Float;
+	var mountedPlayerEntityID : Uint32;
+	var isPaused : Bool;
+}

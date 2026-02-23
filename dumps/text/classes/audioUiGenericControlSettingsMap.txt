@@ -1,0 +1,17 @@
+import class audioUiGenericControlSettingsMap extends audioAudioMetadata
+{
+	var uiControlMatrix : array:audioUiGenericControlSettingsMapItem;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

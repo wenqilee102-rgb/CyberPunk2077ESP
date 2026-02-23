@@ -1,0 +1,29 @@
+import class entEntityTemplate extends resStreamedResource
+{
+	var includes : array:entTemplateInclude;
+	var appearances : array:entTemplateAppearance;
+	var defaultAppearance : CName;
+	var visualTagsSchema : handle:entVisualTagsSchema;
+	var componentResolveSettings : array:entTemplateComponentResolveSettings;
+	var bindingOverrides : array:entTemplateBindingOverride;
+	var backendDataOverrides : array:entTemplateComponentBackendDataOverrideInfo;
+	var localData : DataBuffer;
+	var includeInstanceBuffer : DataBuffer;
+	var compiledData : DataBuffer;
+	var resolvedDependencies : array:raRef:CResource;
+	var inplaceResources : array:rRef:CResource;
+	var compiledEntityLODFlags : Uint16;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

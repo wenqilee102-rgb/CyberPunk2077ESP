@@ -1,0 +1,50 @@
+class StatusEffectHelper extends IScriptable
+{
+	static function ApplyStatusEffect(target : whandle:gameObject, statusEffectID : TweakDBID, optional delay : Float) : Bool; // StatusEffectHelper::ApplyStatusEffect;GameObjectTweakDBIDFloat
+	static function ApplyStatusEffect(target : whandle:gameObject, statusEffectID : TweakDBID, instigatorEntityID : entEntityID) : Bool; // StatusEffectHelper::ApplyStatusEffect;GameObjectTweakDBIDEntityID
+	static function ApplyStatusEffect(target : whandle:gameObject, statusEffectID : TweakDBID, instigatorID : TweakDBID) : Bool; // StatusEffectHelper::ApplyStatusEffect;GameObjectTweakDBIDTweakDBID
+	static function ApplyStatusEffect(target : whandle:gameObject, statusEffectID : TweakDBID, instigatorEntityID : entEntityID, proxyEntityID : entEntityID) : Bool; // StatusEffectHelper::ApplyStatusEffect;GameObjectTweakDBIDEntityIDEntityID
+	static function ApplyStatusEffectForTimeWindow(target : whandle:gameObject, statusEffectID : TweakDBID, instigatorEntityID : entEntityID, delay : Float, duration : Float); // StatusEffectHelper::ApplyStatusEffectForTimeWindow;GameObjectTweakDBIDEntityIDFloatFloat
+	static function ApplyStatusEffectOnSelf(gameInstance : ScriptGameInstance, statusEffectID : TweakDBID, entityID : entEntityID) : Bool; // StatusEffectHelper::ApplyStatusEffectOnSelf;GameInstanceTweakDBIDEntityID
+	static function CheckStatusEffectBehaviorPrereqs(target : whandle:gameObject, statusEffectRecord : whandle:gamedataStatusEffect_Record) : Bool; // StatusEffectHelper::CheckStatusEffectBehaviorPrereqs;GameObjectStatusEffect_Record
+	static function GetAppliedEffects(target : whandle:gameObject) : array:handle:gameStatusEffect; // StatusEffectHelper::GetAppliedEffects;GameObject
+	static function GetAppliedEffectsWithTag(target : whandle:gameObject, tag : CName, statusEffects : script_ref:array:handle:gameStatusEffect, optional instigatorID : entEntityID) : Bool; // StatusEffectHelper::GetAppliedEffectsWithTag;GameObjectCNamescript_ref<array<StatusEffect>>EntityID
+	static function GetAppliedStatusEffectKey() : CName; // StatusEffectHelper::GetAppliedStatusEffectKey;
+	static function GetCanExitKnockdownKey() : CName; // StatusEffectHelper::GetCanExitKnockdownKey;
+	static function GetForceKnockdownKey() : CName; // StatusEffectHelper::GetForceKnockdownKey;
+	static function GetForcedKnockdownImpulseKey() : CName; // StatusEffectHelper::GetForcedKnockdownImpulseKey;
+	static function GetStateStartTimeKey() : CName; // StatusEffectHelper::GetStateStartTimeKey;
+	static function GetStatusEffectByID(target : whandle:gameObject, statusEffectID : TweakDBID) : handle:gameStatusEffect; // StatusEffectHelper::GetStatusEffectByID;GameObjectTweakDBID
+	static function GetStatusEffectWithTag(target : whandle:gameObject, gameplayTag : CName) : handle:gameStatusEffect; // StatusEffectHelper::GetStatusEffectWithTag;GameObjectCName
+	static function GetTopPriorityEffect(target : whandle:gameObject, statusEffectType : gamedataStatusEffectType, optional discardStatusEffect : Bool) : handle:gameStatusEffect; // StatusEffectHelper::GetTopPriorityEffect;GameObjectgamedataStatusEffectTypeBool
+	static function GetTopPriorityEffect(target : whandle:gameObject) : handle:gameStatusEffect; // StatusEffectHelper::GetTopPriorityEffect;GameObject
+	static function HasStatusEffectAttack(statusEffect : handle:gamedataStatusEffect_Record, out statusEffectAttack : handle:gamedataAttack_Record) : Bool; // StatusEffectHelper::HasStatusEffectAttack;StatusEffect_RecordAttack_Record
+	static function HasStatusEffectFromInstigator(target : whandle:gameObject, statusEffectID : TweakDBID, instigator : entEntityID) : Bool; // StatusEffectHelper::HasStatusEffectFromInstigator;GameObjectTweakDBIDEntityID
+	static function HasStatusEffectWithTagConst(target : whandle:gameObject, gameplayTag : CName) : Bool; // StatusEffectHelper::HasStatusEffectWithTagConst;GameObjectCName
+	static function HasTag(record : whandle:gamedataStatusEffect_Record, tag : CName) : Bool; // StatusEffectHelper::HasTag;StatusEffect_RecordCName
+	static function PopulateStatusEffectAnimData(owner : handle:gameObject, statusEffectRecord : whandle:gamedataStatusEffect_Record, state : EKnockdownStates, hitDirection : Vector4, out animData : handle:AnimFeature_StatusEffect); // StatusEffectHelper::PopulateStatusEffectAnimData;GameObjectStatusEffect_RecordEKnockdownStatesVector4AnimFeature_StatusEffect
+	static function RemoveAllStatusEffects(target : whandle:gameObject); // StatusEffectHelper::RemoveAllStatusEffects;GameObject
+	static function RemoveAllStatusEffectsByType(gameInstance : ScriptGameInstance, target : entEntityID, type : gamedataStatusEffectType); // StatusEffectHelper::RemoveAllStatusEffectsByType;GameInstanceEntityIDgamedataStatusEffectType
+	static function RemoveAllStatusEffectsByType(target : whandle:gameObject, type : gamedataStatusEffectType); // StatusEffectHelper::RemoveAllStatusEffectsByType;GameObjectgamedataStatusEffectType
+	static function RemoveAllStatusEffectsWithTagBeside(target : whandle:gameObject, gameplayTag : CName, beside : TweakDBID); // StatusEffectHelper::RemoveAllStatusEffectsWithTagBeside;GameObjectCNameTweakDBID
+	static function RemoveStatusEffect(target : whandle:gameObject, statusEffect : handle:gameStatusEffect, optional removeCount : Uint32) : Bool; // StatusEffectHelper::RemoveStatusEffect;GameObjectStatusEffectUint32
+	static function RemoveStatusEffect(target : whandle:gameObject, statusEffectID : TweakDBID, optional removeCount : Uint32) : Bool; // StatusEffectHelper::RemoveStatusEffect;GameObjectTweakDBIDUint32
+	static function RemoveStatusEffectsByInstigatorID(target : whandle:gameObject, instigatorID : TweakDBID); // StatusEffectHelper::RemoveStatusEffectsByInstigatorID;GameObjectTweakDBID
+	static function RemoveStatusEffectsWithTag(gameInstance : ScriptGameInstance, target : entEntityID, gameplayTag : CName); // StatusEffectHelper::RemoveStatusEffectsWithTag;GameInstanceEntityIDCName
+	static function RemoveStatusEffectsWithTag(target : whandle:gameObject, gameplayTag : CName, optional delay : Float); // StatusEffectHelper::RemoveStatusEffectsWithTag;GameObjectCNameFloat
+	static function TriggerSecondaryKnockdownKey() : CName; // StatusEffectHelper::TriggerSecondaryKnockdownKey;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

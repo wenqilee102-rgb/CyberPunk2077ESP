@@ -1,0 +1,1 @@
+{"a":"userSettingsVar","b":"userSettingsVarInt","c":"ConfigVarInt","d":8,"f":[{"a":"GetDefaultValue","c":{"a":6},"d":4},{"a":"GetMaxValue","c":{"a":6},"d":4},{"a":"GetMinValue","c":{"a":6},"d":4},{"a":"GetStepValue","c":{"a":6},"d":4},{"a":"GetValue","c":{"a":6},"d":4},{"a":"SetValue","d":4,"e":[{"a":{"a":6},"b":"value","c":0}]}]}

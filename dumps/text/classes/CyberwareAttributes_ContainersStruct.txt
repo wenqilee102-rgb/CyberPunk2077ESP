@@ -1,0 +1,13 @@
+struct CyberwareAttributes_ContainersStruct
+{
+	public    var widgetBody : inkWidgetReference;
+	public    var widgetCool : inkWidgetReference;
+	public    var widgetInt : inkWidgetReference;
+	public    var widgetRef : inkWidgetReference;
+	public    var widgetTech : inkWidgetReference;
+	public    var logicBody : whandle:CyberwareAttributes_Logic;
+	public    var logicCool : whandle:CyberwareAttributes_Logic;
+	public    var logicInt : whandle:CyberwareAttributes_Logic;
+	public    var logicRef : whandle:CyberwareAttributes_Logic;
+	public    var logicTech : whandle:CyberwareAttributes_Logic;
+}

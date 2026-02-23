@@ -1,0 +1,4 @@
+struct InterestingFacts
+{
+	public    var zone : CName;
+}

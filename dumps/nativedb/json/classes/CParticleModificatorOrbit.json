@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorOrbit","d":8,"e":[{"a":{"a":26,"c":{"b":"IEvaluatorVector"}},"b":"offset","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorVector"}},"b":"frequency","c":128},{"a":{"a":26,"c":{"b":"IEvaluatorVector"}},"b":"phase","c":128},{"a":{"a":1},"b":"overridePosition","c":128}]}

@@ -1,0 +1,11 @@
+import struct entEntityID
+{
+	var hash : Uint64;
+
+	import static function GetHash(id : entEntityID) : Uint32; // GetHash
+	import static function IsDefined(id : entEntityID) : Bool; // IsDefined
+	import static function IsDynamic(id : entEntityID) : Bool; // IsDynamic
+	import static function IsStatic(id : entEntityID) : Bool; // IsStatic
+	import static function ToDebugString(id : entEntityID) : String; // ToDebugString
+	import static function ToDebugStringDecimal(id : entEntityID) : String; // ToDebugStringDecimal
+}

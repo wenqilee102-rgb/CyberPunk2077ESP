@@ -1,0 +1,28 @@
+class UI_CompassInfoDef extends gamebbScriptDefinition
+{
+	public    var NorthOffset : gamebbScriptID_Float;
+	public    var SouthOffset : gamebbScriptID_Float;
+	public    var EastOffset : gamebbScriptID_Float;
+	public    var WestOffset : gamebbScriptID_Float;
+	public    var Pins : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

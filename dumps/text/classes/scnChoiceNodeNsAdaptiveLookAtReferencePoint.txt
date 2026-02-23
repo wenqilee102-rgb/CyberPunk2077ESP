@@ -1,0 +1,5 @@
+import struct scnChoiceNodeNsAdaptiveLookAtReferencePoint
+{
+	var referencePoint : scnReferencePointId;
+	var constantWeight : Float;
+}

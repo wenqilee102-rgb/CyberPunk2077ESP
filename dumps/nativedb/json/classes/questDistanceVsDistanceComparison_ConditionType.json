@@ -1,0 +1,1 @@
+{"a":"questIDistanceConditionType","b":"questDistanceVsDistanceComparison_ConditionType","d":8,"e":[{"a":{"a":26,"c":{"b":"questObjectDistance"}},"b":"distanceDefinition1","c":128},{"a":{"a":26,"c":{"b":"questObjectDistance"}},"b":"distanceDefinition2","c":128},{"a":{"b":"EComparisonType"},"b":"comparisonType","c":128}]}

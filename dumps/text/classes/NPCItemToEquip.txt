@@ -1,0 +1,6 @@
+struct NPCItemToEquip
+{
+	public    var itemID : gameItemID;
+	public    var slotID : TweakDBID;
+	public    var bodySlotID : TweakDBID;
+}

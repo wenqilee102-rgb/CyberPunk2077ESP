@@ -1,0 +1,1 @@
+{"b":"AIMovementTypeSpec","d":8,"g":true,"e":[{"a":{"a":1},"b":"useNPCMovementParams","c":132},{"a":{"b":"moveMovementType"},"b":"movementType","c":132}],"f":[{"a":"Resolve","c":{"b":"moveMovementType"},"d":12,"e":[{"a":{"b":"AIMovementTypeSpec"},"b":"spec","c":0},{"a":{"a":26,"c":{"b":"gamePuppet"}},"b":"puppet","c":0}]}]}

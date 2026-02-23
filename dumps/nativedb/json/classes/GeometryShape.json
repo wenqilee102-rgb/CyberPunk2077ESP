@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"GeometryShape","d":8,"e":[{"a":{"a":31,"c":{"b":"Vector3"}},"b":"vertices","c":128},{"a":{"a":31,"c":{"a":5}},"b":"indices","c":128},{"a":{"a":31,"c":{"b":"GeometryShapeFace"}},"b":"faces","c":128}]}

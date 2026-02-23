@@ -1,0 +1,5 @@
+import struct vehicleUnlockedVehicle
+{
+	var vehicleID : vehicleGarageVehicleID;
+	var health : Float;
+}

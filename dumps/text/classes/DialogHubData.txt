@@ -1,0 +1,9 @@
+struct DialogHubData
+{
+	public    var isSelected : Bool;
+	public    var selectedInd : Int32;
+	public    var hasAboveElements : Bool;
+	public    var hasBelowElements : Bool;
+	public    var currentNum : Int32;
+	public    var argTotalCountAcrossHubs : Int32;
+}

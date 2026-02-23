@@ -1,0 +1,5 @@
+import struct gameAnimsetOverrideData
+{
+	var animsetHash : Uint64;
+	var variables : array:CName;
+}

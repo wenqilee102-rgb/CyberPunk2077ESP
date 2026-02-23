@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"userSettingsNotificationListener","c":"ConfigNotificationListener","d":8,"f":[{"a":"OnNotify","d":4,"e":[{"a":{"b":"InGameConfigNotificationType"},"b":"status","c":0}]},{"a":"Register","c":{"a":1},"d":4},{"a":"Unregister","c":{"a":1},"d":4}]}

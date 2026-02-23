@@ -1,0 +1,1 @@
+{"a":"ScriptableDeviceAction","b":"AddItemForPlayerToPickUp","d":0,"e":[{"a":{"a":15},"b":"lootTable","c":128},{"a":{"a":1},"b":"shouldAdd","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

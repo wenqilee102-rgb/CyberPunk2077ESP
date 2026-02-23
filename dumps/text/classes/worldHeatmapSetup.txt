@@ -1,0 +1,6 @@
+import struct worldHeatmapSetup
+{
+	var volumeBox : Box;
+	var verticalResolution : Uint32;
+	var horizontalResolution : Uint32;
+}

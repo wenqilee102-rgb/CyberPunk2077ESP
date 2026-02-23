@@ -1,0 +1,10 @@
+import class scnTimedCondition extends ISerializable
+{
+	var duration : scnSceneTime;
+	var action : scnChoiceNodeNsTimedAction;
+	var timeLimitedFinish : Bool;
+}
+
+import class abstract ISerializable
+{
+}

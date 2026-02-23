@@ -1,0 +1,1 @@
+{"a":"ABaseWrapper","b":"AJournalEntryWrapper","d":4,"e":[{"a":{"a":6},"b":"UniqueId","c":129}],"f":[{"a":"GetUniqueId;","b":"GetUniqueId","c":{"a":6},"d":48},{"a":"SetUniqueId;Int32","b":"SetUniqueId","d":48,"e":[{"a":{"a":6},"b":"uniqueId","c":0}]}]}

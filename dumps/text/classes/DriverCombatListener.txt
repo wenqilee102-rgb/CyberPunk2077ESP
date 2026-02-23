@@ -1,0 +1,29 @@
+class DriverCombatListener extends IScriptable
+{
+	public    var mountedCallback : handle:redCallbackObject;
+	public    var tppCallback : handle:redCallbackObject;
+	public    var isMounted : Bool;
+	public    var isInTPP : Bool;
+
+	event OnDriveCombatTPPChanged(value : Bool) : Bool; // OnDriveCombatTPPChanged
+	event OnMountedInDriverSeatChanged(value : Bool) : Bool; // OnMountedInDriverSeatChanged
+
+	function Init(scriptInterface : handle:gamestateMachineGameScriptInterface); // Init;StateGameScriptInterface
+	function IsMounted() : Bool; // IsMounted;
+	function IsMountedInTPP() : Bool; // IsMountedInTPP;
+	function UnInit(scriptInterface : handle:gamestateMachineGameScriptInterface); // UnInit;StateGameScriptInterface
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class CParticleDrawerMesh extends IParticleDrawer
+{
+	var meshes : array:rRef:CMesh;
+	var orientationMode : EMeshParticleOrientationMode;
+}
+
+import class abstract IParticleDrawer extends ISerializable
+{
+	var pivotOffset : Float;
+}
+
+import class abstract ISerializable
+{
+}

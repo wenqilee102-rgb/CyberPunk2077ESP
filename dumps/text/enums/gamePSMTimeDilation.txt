@@ -1,0 +1,6 @@
+enum gamePSMTimeDilation
+{
+	Any = -1,
+	Default = 0,
+	Sandevistan = 1
+}

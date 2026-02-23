@@ -1,0 +1,1 @@
+{"b":"gameuiarcadeShooterEventSpawnerData","d":8,"g":true,"e":[{"a":{"a":14},"b":"dataName","c":128},{"a":{"b":"inkWidgetReference"},"b":"targetSpawner","c":128},{"a":{"b":"inkWidgetReference"},"b":"tiedSpawner","c":128},{"a":{"b":"gameuiarcadeShooterTriggerType"},"b":"triggerCondition","c":128},{"a":{"a":10},"b":"delayDuration","c":128}]}

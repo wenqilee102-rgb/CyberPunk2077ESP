@@ -1,0 +1,17 @@
+import class audioAudBulletTimeModeMap extends audioAudioMetadata
+{
+	var bulletTimeMapItems : array:audioAudBulletTimeModeMapItem;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,26 @@
+import class animAnimFeature_WallRun extends animAnimFeature
+{
+	var wallOnRightSide : Bool;
+	var wallPosition : Vector4;
+	var wallNormal : Vector4;
+
+	import function SetWallOnRightSide(); // SetWallOnRightSide
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

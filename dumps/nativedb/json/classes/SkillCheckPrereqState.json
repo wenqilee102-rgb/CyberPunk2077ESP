@@ -1,0 +1,1 @@
+{"a":"gamePrereqState","b":"SkillCheckPrereqState","d":0,"f":[{"a":"GetSkillToCheck;","b":"GetSkillToCheck","c":{"b":"gamedataProficiencyType"},"d":176},{"a":"UpdateSkillCheckPrereqData;GameObjectInt32","b":"UpdateSkillCheckPrereqData","d":48,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"obj","c":0},{"a":{"a":6},"b":"newLevel","c":0}]}]}

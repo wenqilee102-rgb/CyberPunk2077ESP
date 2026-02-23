@@ -1,0 +1,17 @@
+import struct STonemappingACESParamsHDR extends STonemappingACESParams
+{
+}
+
+import struct STonemappingACESParams
+{
+	var minStops : Float;
+	var maxStops : Float;
+	var midGrayScale : Float;
+	var surroundGamma : Float;
+	var toneCurveSaturation : Float;
+	var adjustWhitePoint : Bool;
+	var desaturate : Bool;
+	var dimSurround : Bool;
+	var tonemapLuminance : Bool;
+	var applyAfterLUT : Bool;
+}

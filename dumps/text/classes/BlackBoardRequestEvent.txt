@@ -1,0 +1,30 @@
+class BlackBoardRequestEvent extends redEvent
+{
+	protected var blackBoard : whandle:gameIBlackboard;
+	protected var storageClass : gameScriptedBlackboardStorage;
+	protected var entryTag : CName;
+
+	function GetBlackboardReference() : whandle:gameIBlackboard; // GetBlackboardReference;
+	function GetEntryTag() : CName; // GetEntryTag;
+	function GetStorageType() : gameScriptedBlackboardStorage; // GetStorageType;
+	function PassBlackBoardReference(newBlackbord : whandle:gameIBlackboard, blackBoardName : CName); // PassBlackBoardReference;IBlackboardCName
+	function SetStorageType(storageType : gameScriptedBlackboardStorage); // SetStorageType;gameScriptedBlackboardStorage
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

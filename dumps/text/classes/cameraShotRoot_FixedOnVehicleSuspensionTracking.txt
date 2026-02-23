@@ -1,0 +1,42 @@
+class cameraShotRoot_FixedOnVehicleSuspensionTracking extends cameraShotRoot_FixedOnVehicle
+{
+	public    var offsetFromChassis : Transform;
+
+	function GetRootTransform_Internal(data : CinematicCameraData) : WorldTransform; // GetRootTransform_Internal;CinematicCameraData
+	function GetShotSpaceTransform(data : CinematicCameraData) : WorldTransform; // GetShotSpaceTransform;CinematicCameraData
+}
+
+class cameraShotRoot_FixedOnVehicle extends vehicleCinematicCameraShotRoot
+{
+	public    var deccelerationAmount : Float;
+	public    var detachToVehicleTime : Float;
+	private   var detachedFromVehicle : Bool;
+	private   var detachedDirection : Vector4;
+	private   var detachedSpeed : Float;
+	private   var detachedTransform : WorldTransform;
+
+	function GetRootTransform(data : CinematicCameraData) : WorldTransform; // GetRootTransform;CinematicCameraData
+	function GetRootTransform_Internal(data : CinematicCameraData) : WorldTransform; // GetRootTransform_Internal;CinematicCameraData
+	function Reset(); // Reset;
+}
+
+import class vehicleCinematicCameraShotRoot extends IScriptable
+{
+	function GetRootTransform(data : CinematicCameraData) : WorldTransform; // GetRootTransform;CinematicCameraData
+	function GetShotSpaceTransform(data : CinematicCameraData) : WorldTransform; // GetShotSpaceTransform;CinematicCameraData
+	function Reset(); // Reset;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

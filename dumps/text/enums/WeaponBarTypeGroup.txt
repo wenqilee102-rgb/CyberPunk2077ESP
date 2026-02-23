@@ -1,0 +1,13 @@
+enum WeaponBarTypeGroup
+{
+	AttackSpeed = 0,
+	DamagePerHit = 1,
+	Range = 2,
+	ReloadSpeed = 3,
+	Stamina = 4,
+	Handling = 5,
+	ReturnTime = 6,
+	Healing = 7,
+	HealingOverTime = 8,
+	Invalid = -1
+}

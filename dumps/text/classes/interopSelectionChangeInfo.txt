@@ -1,0 +1,5 @@
+import struct interopSelectionChangeInfo
+{
+	var selected : array:Uint64;
+	var deselected : array:Uint64;
+}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamePersistentState","c":"PersistentState","d":28,"f":[{"a":"ForcePersistentStateChanged","d":4},{"a":"GetGameInstance","c":{"b":"ScriptGameInstance"},"d":132},{"a":"GetID","c":{"b":"gamePersistentID"},"d":132},{"a":"GetPersistencySystem","c":{"a":26,"c":{"b":"gamePersistencySystem"}},"d":132}]}

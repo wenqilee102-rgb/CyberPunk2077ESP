@@ -1,0 +1,23 @@
+import class worldNavigationConfigAreaNode extends worldAreaShapeNode
+{
+	var generateVariantsNavmesh : Bool;
+	var detailSamplingDensity : NavGenSamplingDensity;
+	var smoothWalkableAreas : Bool;
+	var generateCrouchableAreas : Bool;
+}
+
+import class worldAreaShapeNode extends worldNode
+{
+	var color : Color;
+	var outline : handle:AreaShapeOutline;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

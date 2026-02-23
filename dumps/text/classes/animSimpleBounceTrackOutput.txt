@@ -1,0 +1,5 @@
+import struct animSimpleBounceTrackOutput
+{
+	var targetTrack : animNamedTrackIndex;
+	var multiplier : Float;
+}

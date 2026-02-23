@@ -1,0 +1,7 @@
+import struct gameCookedDeviceData
+{
+	var className : CName;
+	var parents : array:Uint64;
+	var children : array:Uint64;
+	var nodePosition : Vector3;
+}

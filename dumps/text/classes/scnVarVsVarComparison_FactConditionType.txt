@@ -1,0 +1,12 @@
+import class scnVarVsVarComparison_FactConditionType extends scnInterruptFactConditionType
+{
+	var params : scnVarVsVarComparison_FactConditionTypeParams;
+}
+
+import class abstract scnInterruptFactConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

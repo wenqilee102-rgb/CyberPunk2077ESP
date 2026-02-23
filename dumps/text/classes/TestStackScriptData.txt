@@ -1,0 +1,5 @@
+struct TestStackScriptData
+{
+	public    var testVar : Int32;
+	public    var anotherVar : CName;
+}

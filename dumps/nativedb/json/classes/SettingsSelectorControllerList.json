@@ -1,0 +1,1 @@
+{"a":"SettingsSelectorControllerRange","b":"SettingsSelectorControllerList","d":0,"e":[{"a":{"b":"inkHorizontalPanelWidgetReference"},"b":"dotsContainer","c":130}],"f":[{"a":"PopulateDots;Int32","b":"PopulateDots","d":50,"e":[{"a":{"a":6},"b":"size","c":0}]},{"a":"SelectDot;Int32","b":"SelectDot","d":50,"e":[{"a":{"a":6},"b":"index","c":0}]}]}

@@ -1,0 +1,4 @@
+import struct workWorkEntryId
+{
+	var id : Uint32;
+}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"questInjectLoot_NodeTypeParams","d":8,"e":[{"a":{"a":26,"c":{"b":"questUniversalRef"}},"b":"objectRef","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"questInjectLoot_NodeTypeParams_OperationData"}}},"b":"lootOperations","c":128},{"a":{"a":31,"c":{"b":"questInjectLoot_NodeTypeParams_OperationData"}},"b":"operations","c":128}]}

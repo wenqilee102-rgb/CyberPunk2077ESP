@@ -1,0 +1,1 @@
+{"b":"MorphTargetMeshEntry","d":8,"g":true,"e":[{"a":{"a":14},"b":"name","c":128},{"a":{"a":14},"b":"regionName","c":128},{"a":{"b":"MorphTargetsFaceRegion"},"b":"faceRegion","c":128},{"a":{"a":31,"c":{"a":14}},"b":"boneNames","c":128},{"a":{"a":31,"c":{"b":"Matrix"}},"b":"boneRigMatrices","c":128}]}

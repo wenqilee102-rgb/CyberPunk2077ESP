@@ -1,0 +1,1 @@
+{"a":"ScannerChunk","b":"ScannerWeaponBasic","d":0,"e":[{"a":{"a":14},"b":"weapon","c":130}],"f":[{"a":"GetType;","b":"GetType","c":{"b":"ScannerDataType"},"d":32},{"a":"GetWeapon;","b":"GetWeapon","c":{"a":14},"d":176},{"a":"Set;CName","b":"Set","d":48,"e":[{"a":{"a":14},"b":"displayName","c":0}]}]}

@@ -1,0 +1,38 @@
+import class worldgeometryDescriptionResult extends IScriptable
+{
+	var leftHandData : worldgeometryHandIKDescriptionResult;
+	var rightHandData : worldgeometryHandIKDescriptionResult;
+	var collisionNormal : Vector4;
+	var distanceVector : Vector4;
+	var topPoint : Vector4;
+	var topNormal : Vector4;
+	var behindPoint : Vector4;
+	var behindNormal : Vector4;
+	var obstacleDepth : Float;
+	var upExtent : Float;
+	var downExtent : Float;
+	var topExtent : Float;
+	var obstacleDepthStatus : worldgeometryProbingStatus;
+	var leftExtentStatus : worldgeometryProbingStatus;
+	var rightExtentStatus : worldgeometryProbingStatus;
+	var upExtentStatus : worldgeometryProbingStatus;
+	var downExtentStatus : worldgeometryProbingStatus;
+	var topTestStatus : worldgeometryProbingStatus;
+	var behindTestStatus : worldgeometryProbingStatus;
+	var queryStatus : worldgeometryDescriptionQueryStatus;
+	var climbedEntity : whandle:entEntity;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

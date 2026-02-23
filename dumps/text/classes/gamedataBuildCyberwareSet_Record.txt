@@ -1,0 +1,33 @@
+import class gamedataBuildCyberwareSet_Record extends gamedataTweakDBRecord
+{
+	import function Cyberware(out outList : array:whandle:gamedataBuildCyberware_Record); // Cyberware
+	import function CyberwareContains(item : whandle:gamedataBuildCyberware_Record) : Bool; // CyberwareContains
+	import function GetCyberwareCount() : Int32; // GetCyberwareCount
+	import function GetCyberwareItem(index : Int32) : whandle:gamedataBuildCyberware_Record; // GetCyberwareItem
+	import function GetCyberwareItemHandle(index : Int32) : handle:gamedataBuildCyberware_Record; // GetCyberwareItemHandle
+	import function GetProgramsCount() : Int32; // GetProgramsCount
+	import function GetProgramsItem(index : Int32) : whandle:gamedataBuildProgram_Record; // GetProgramsItem
+	import function GetProgramsItemHandle(index : Int32) : handle:gamedataBuildProgram_Record; // GetProgramsItemHandle
+	import function Programs(out outList : array:whandle:gamedataBuildProgram_Record); // Programs
+	import function ProgramsContains(item : whandle:gamedataBuildProgram_Record) : Bool; // ProgramsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

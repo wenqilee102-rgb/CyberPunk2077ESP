@@ -1,0 +1,27 @@
+import class worldStaticSoundEmitterNode extends worldNode
+{
+	var radius : Float;
+	var audioName : CName;
+	var Settings : handle:audioAmbientAreaSettings;
+	var usePhysicsObstruction : Bool;
+	var occlusionEnabled : Bool;
+	var acousticRepositioningEnabled : Bool;
+	var obstructionChangeTime : Float;
+	var useDoppler : Bool;
+	var dopplerFactor : Float;
+	var setOpenDoorEmitter : Bool;
+	var emitterMetadataName : CName;
+	var overrideRolloff : Bool;
+	var rolloffOverride : Float;
+	var ambientPaletteTag : CName;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"gamePrereqState","b":"IsPlayerOnGroundPrereqState","d":0,"e":[{"a":{"a":1},"b":"bbValue","c":128},{"a":{"a":26,"c":{"b":"redCallbackObject"}},"b":"isOnGroundListener","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"owner","c":128}],"f":[{"a":"OnStateUpdateBool","c":{"a":1},"d":98,"e":[{"a":{"a":1},"b":"value","c":0}]}]}

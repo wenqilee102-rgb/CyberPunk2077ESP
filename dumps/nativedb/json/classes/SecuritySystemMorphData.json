@@ -1,0 +1,1 @@
+{"b":"SecuritySystemMorphData","d":0,"g":true,"e":[{"a":{"a":26,"c":{"b":"State"}},"b":"state","c":128},{"a":{"a":26,"c":{"b":"Reprimand"}},"b":"reprimandData","c":128},{"a":{"a":26,"c":{"b":"Blacklist"}},"b":"blacklist","c":128},{"a":{"a":26,"c":{"b":"ProtectedEntities"}},"b":"protectedEntities","c":128},{"a":{"a":26,"c":{"b":"EntitiesAtGate"}},"b":"entitiesAtGate","c":128}]}

@@ -1,0 +1,17 @@
+import class questTimePeriod_ConditionType extends questITimeConditionType
+{
+	var begin : GameTime;
+	var end : GameTime;
+}
+
+import class abstract questITimeConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

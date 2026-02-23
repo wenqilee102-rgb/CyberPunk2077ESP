@@ -1,0 +1,32 @@
+class PlayRadioArgs extends IScriptable
+{
+	public    var instance : ScriptGameInstance;
+	public    var delay : Float;
+	public    var entryName : CName;
+	public    var onlyPlayIfPlayerIsBeingChased : Bool;
+	public    var shouldCheckDistrictAfterDelay : Bool;
+	public    var handleVehicleEntranceEdgeCase : Bool;
+	public    var handleVehicleLostOrSpottedEdgeCase : Bool;
+	public    var stateUsedOnRequest : EStarState;
+
+	static function CheckPlayerIsChasedAndDistrictArgs(gameInstance : ScriptGameInstance, entry : CName, timeDelay : Float) : handle:PlayRadioArgs; // PlayRadioArgs::CheckPlayerIsChasedAndDistrictArgs;GameInstanceCNameFloat
+	static function CheckPlayerIsChasedAndVehicleEntranceArgs(gameInstance : ScriptGameInstance, entry : CName, timeDelay : Float) : handle:PlayRadioArgs; // PlayRadioArgs::CheckPlayerIsChasedAndVehicleEntranceArgs;GameInstanceCNameFloat
+	static function CheckPlayerIsChasedAndVisibilityArgs(gameInstance : ScriptGameInstance, entry : CName, timeDelay : Float, state : EStarState) : handle:PlayRadioArgs; // PlayRadioArgs::CheckPlayerIsChasedAndVisibilityArgs;GameInstanceCNameFloatEStarState
+	static function CheckPlayerIsChasedArgs(gameInstance : ScriptGameInstance, entry : CName, timeDelay : Float) : handle:PlayRadioArgs; // PlayRadioArgs::CheckPlayerIsChasedArgs;GameInstanceCNameFloat
+	static function DefaultArgs(gameInstance : ScriptGameInstance, entry : CName) : handle:PlayRadioArgs; // PlayRadioArgs::DefaultArgs;GameInstanceCName
+	static function DefaultDelayedArgs(gameInstance : ScriptGameInstance, entry : CName, timeDelay : Float) : handle:PlayRadioArgs; // PlayRadioArgs::DefaultDelayedArgs;GameInstanceCNameFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

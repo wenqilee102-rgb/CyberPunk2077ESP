@@ -1,0 +1,6 @@
+import struct scnCheckPlayerTargetNodeDistanceInterruptConditionParams
+{
+	var distance : Float;
+	var comparisonType : EComparisonType;
+	var targetNode : NodeRef;
+}

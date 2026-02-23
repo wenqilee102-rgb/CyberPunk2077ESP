@@ -1,0 +1,1 @@
+{"a":"gameActionEvent","b":"vehicleRemoteControlEvent","c":"VehicleRemoteControlEvent","d":24,"e":[{"a":{"a":1},"b":"remoteControl","c":128},{"a":{"a":1},"b":"shouldUnseatPassengers","c":128},{"a":{"a":1},"b":"shouldModifyInteractionState","c":128},{"a":{"a":1},"b":"isDistanceDisconnect","c":128}]}

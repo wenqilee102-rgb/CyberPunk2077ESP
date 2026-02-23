@@ -1,0 +1,4 @@
+struct SCustomDeviceActionsData
+{
+	public    var actions : array:SDeviceActionCustomData;
+}

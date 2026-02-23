@@ -1,0 +1,8 @@
+import class physicsDeferredCollection extends ISerializable
+{
+	var buffer : serializationDeferredDataBuffer;
+}
+
+import class abstract ISerializable
+{
+}

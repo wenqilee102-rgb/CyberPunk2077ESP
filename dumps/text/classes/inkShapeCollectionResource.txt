@@ -1,0 +1,13 @@
+import class inkShapeCollectionResource extends CResource
+{
+	var presets : array:inkShapePreset;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

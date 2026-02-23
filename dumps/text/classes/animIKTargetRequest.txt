@@ -1,0 +1,8 @@
+import struct animIKTargetRequest
+{
+	var weightPosition : Float;
+	var weightOrientation : Float;
+	var transitionIn : Float;
+	var transitionOut : Float;
+	var priority : Int32;
+}

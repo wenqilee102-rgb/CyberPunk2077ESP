@@ -1,0 +1,35 @@
+import class gamedataStickyGDM_Record extends gamedataGrenadeDeliveryMethod_Record
+{
+}
+
+import class gamedataGrenadeDeliveryMethod_Record extends gamedataTweakDBRecord
+{
+	import function AccelerationZ() : Float; // AccelerationZ
+	import function Bounciness() : Float; // Bounciness
+	import function DetonationTimer() : Float; // DetonationTimer
+	import function InitialQuickThrowVelocity() : Float; // InitialQuickThrowVelocity
+	import function InitialVelocity() : Float; // InitialVelocity
+	import function TrackingRadius() : Float; // TrackingRadius
+	import function Type() : whandle:gamedataGrenadeDeliveryMethodType_Record; // Type
+	import function TypeHandle() : handle:gamedataGrenadeDeliveryMethodType_Record; // TypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

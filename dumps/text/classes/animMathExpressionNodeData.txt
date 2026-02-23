@@ -1,0 +1,7 @@
+import struct animMathExpressionNodeData
+{
+	var expression : handle:mathExprExpression;
+	var floatSockets : array:animAnimMathExpressionFloatSocket;
+	var vectorSockets : array:animAnimMathExpressionVectorSocket;
+	var quaternionSockets : array:animAnimMathExpressionQuaternionSocket;
+}

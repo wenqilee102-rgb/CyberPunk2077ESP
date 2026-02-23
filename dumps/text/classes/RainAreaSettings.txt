@@ -1,0 +1,34 @@
+import class RainAreaSettings extends IAreaSettings
+{
+	var numParticles : Uint32;
+	var radius : Float;
+	var heightRange : Float;
+	var globalLightResponse : Float;
+	var tiling : curveData:Float;
+	var porosityThresholdStart : Float;
+	var porosityThresholdEnd : Float;
+	var glossinessFactor : Float;
+	var baseColorFactor : Float;
+	var moistureAccumulationSpeed : Float;
+	var puddlesAccumulationSpeed : Float;
+	var moistureEvaporationSpeed : Float;
+	var puddlesEvaporationSpeed : Float;
+	var rainIntensity : curveData:Float;
+	var rainOverride : curveData:Float;
+	var rainMoistureOverride : curveData:Float;
+	var rainPuddlesOverride : curveData:Float;
+	var waterRainIntensity : Float;
+	var rainleaksMask : rRef:CBitmapTexture;
+	var raindropsMask : rRef:CBitmapTexture;
+	var rainRipplesMask : rRef:CBitmapTexture;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

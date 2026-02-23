@@ -1,0 +1,21 @@
+import struct physicsclothRuntimeInfo
+{
+	var translation : Vector3;
+	var rotation : Quaternion;
+	var gravity : Vector3;
+	var damping : Float;
+	var drag : Float;
+	var inertia : Float;
+	var numSolverIterations : Uint32;
+	var stiffnessFrequency : Float;
+	var friction : Float;
+	var tetherStiffness : Float;
+	var tetherScale : Float;
+	var selfCollisionDistance : Float;
+	var selfCollisionStiffness : Float;
+	var liftCoefficient : Float;
+	var dragCoefficient : Float;
+	var gravityScale : Float;
+	var motionConstraintStiffness : Float;
+	var enableSelfCollision : Bool;
+}

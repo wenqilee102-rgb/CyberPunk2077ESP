@@ -1,0 +1,30 @@
+class UI_DamageInfoDef extends gamebbScriptDefinition
+{
+	public    var DamageList : gamebbScriptID_Variant;
+	public    var KillList : gamebbScriptID_Variant;
+	public    var DigitsMode : gamebbScriptID_Variant;
+	public    var DigitsInterpolationOn : gamebbScriptID_Bool;
+	public    var DigitsStickingMode : gamebbScriptID_Variant;
+	public    var HitIndicatorEnabled : gamebbScriptID_Bool;
+	public    var DmgIndicatorMode : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

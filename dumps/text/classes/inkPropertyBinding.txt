@@ -1,0 +1,5 @@
+import struct inkPropertyBinding
+{
+	var propertyName : CName;
+	var stylePath : CName;
+}

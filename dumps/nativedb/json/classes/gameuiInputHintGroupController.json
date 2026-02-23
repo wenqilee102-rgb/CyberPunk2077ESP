@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"gameuiInputHintGroupController","c":"InputHintGroupController","d":8,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"titleTextRef","c":128},{"a":{"b":"inkTextWidgetReference"},"b":"descriptionTextRef","c":128},{"a":{"b":"inkCompoundWidgetReference"},"b":"hintsContainerRef","c":128},{"a":{"b":"inkImageWidgetReference"},"b":"iconRef","c":128}]}

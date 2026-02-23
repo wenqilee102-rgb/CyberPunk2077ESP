@@ -1,0 +1,7 @@
+import struct CameraCustomData_DataMoshing extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

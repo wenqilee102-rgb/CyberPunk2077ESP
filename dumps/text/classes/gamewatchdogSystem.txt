@@ -1,0 +1,29 @@
+import class gamewatchdogSystem extends gameIWatchdogSystem
+{
+}
+
+import class abstract gameIWatchdogSystem extends gameIGameSystem
+{
+	import function HasActiveFallback(entityId : entEntityID, fallbackCategory : CName) : Bool; // HasActiveFallback
+	import function IsFallbackForced(fallbackCategory : CName) : Bool; // IsFallbackForced
+	import function IsFallbackHandled(fallbackCategory : CName) : Bool; // IsFallbackHandled
+	import function SetForcedFallback(fallbackCategory : CName, isForced : Bool); // SetForcedFallback
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

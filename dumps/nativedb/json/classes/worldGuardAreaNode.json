@@ -1,0 +1,1 @@
+{"a":"worldAreaShapeNode","b":"worldGuardAreaNode","d":8,"e":[{"a":{"a":31,"c":{"b":"AIGuardAreaConnectedCommunity"}},"b":"communityEntries","c":128},{"a":{"a":31,"c":{"b":"AICombatGuardAreaConnectedCommunity"}},"b":"combatCommunityEntries","c":128},{"a":{"a":16},"b":"pursuitArea","c":128},{"a":{"a":10},"b":"pursuitRange","c":128}]}

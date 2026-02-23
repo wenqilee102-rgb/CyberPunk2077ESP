@@ -1,0 +1,17 @@
+import class CEvaluatorFloatRandomUniform extends IEvaluatorFloat
+{
+	var min : Float;
+	var max : Float;
+}
+
+import class abstract IEvaluatorFloat extends IEvaluator
+{
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,18 @@
+import class audioWeaponEventOverrides extends audioInlinedAudioMetadata
+{
+	var entries : array:audioWeaponEventOverride;
+	var entryType : handle:audioWeaponEventOverride;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"questIDistanceConditionType","b":"questMappinGPSComparison_ConditionType","d":8,"e":[{"a":{"a":26,"c":{"b":"questMappinGPSDistance"}},"b":"distanceDefinition1","c":128},{"a":{"a":26,"c":{"b":"questValueDistance"}},"b":"distanceDefinition2","c":128},{"a":{"b":"EComparisonType"},"b":"comparisonType","c":128}]}

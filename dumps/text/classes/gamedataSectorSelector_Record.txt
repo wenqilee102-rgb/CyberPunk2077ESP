@@ -1,0 +1,36 @@
+import class gamedataSectorSelector_Record extends gamedataTweakDBRecord
+{
+	import function DefensiveSelection() : Bool; // DefensiveSelection
+	import function HomeBackLeft() : Bool; // HomeBackLeft
+	import function HomeBackMid() : Bool; // HomeBackMid
+	import function HomeBackRight() : Bool; // HomeBackRight
+	import function HomeLeft() : Bool; // HomeLeft
+	import function HomeMid() : Bool; // HomeMid
+	import function HomeRight() : Bool; // HomeRight
+	import function TargetBackLeft() : Bool; // TargetBackLeft
+	import function TargetBackMid() : Bool; // TargetBackMid
+	import function TargetBackRight() : Bool; // TargetBackRight
+	import function TargetLeft() : Bool; // TargetLeft
+	import function TargetMid() : Bool; // TargetMid
+	import function TargetRight() : Bool; // TargetRight
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

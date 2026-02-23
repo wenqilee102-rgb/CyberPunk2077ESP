@@ -1,0 +1,21 @@
+import class questCharacterKilled_ConditionType extends questICharacterConditionType
+{
+	var objectRef : gameEntityReference;
+	var source : handle:questUniversalRef;
+	var comparisonParams : handle:questComparisonParam;
+	var killed : Bool;
+	var unconscious : Bool;
+	var defeated : Bool;
+}
+
+import class abstract questICharacterConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

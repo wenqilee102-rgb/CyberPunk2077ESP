@@ -1,0 +1,29 @@
+class CoverActionDataDef extends gamebbScriptDefinition
+{
+	public    var coverActionStateId : gamebbScriptID_Int32;
+	public    var playerNearValidEdge : gamebbScriptID_Bool;
+	public    var debugLeaning : gamebbScriptID_Bool;
+	public    var debugAutoLeaning : gamebbScriptID_Bool;
+	public    var debugDpadLeaning : gamebbScriptID_Bool;
+	public    var debugLsLeaning : gamebbScriptID_Bool;
+	public    var debugStagesLeaning : gamebbScriptID_Bool;
+	public    var debugAdsLeaning : gamebbScriptID_Bool;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

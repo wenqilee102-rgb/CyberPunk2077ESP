@@ -1,0 +1,30 @@
+import class animAnimNode_LocomotionSwitch extends animAnimNode_Switch
+{
+	var audioTagsPerInput : array:CName;
+}
+
+import class animAnimNode_Switch extends animAnimNode_MotionTableSwitch
+{
+	var numInputs : Uint32;
+	var blendTime : Float;
+	var timeWarpingEnabled : Bool;
+	var syncMethod : handle:animISyncMethod;
+	var motionProvider : handle:animIMotionTableProvider;
+	var weightNode : animFloatLink;
+	var inputNodes : array:animPoseLink;
+	var pushDataByTag : CName;
+	var canRequestInertialization : Bool;
+}
+
+import class abstract animAnimNode_MotionTableSwitch extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

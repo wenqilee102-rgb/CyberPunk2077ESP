@@ -1,0 +1,33 @@
+import struct physicsDestructionParams
+{
+	var startInactive : Bool;
+	var simulationType : physicsSimulationType;
+	var markEdgeChunks : Bool;
+	var useAggregatesForClusters : Bool;
+	var turnDynamicOnImpulse : Bool;
+	var buildConvexForClusters : Bool;
+	var damageThreshold : Float;
+	var damageEndurance : Float;
+	var bondEndurance : Float;
+	var accumulateDamage : Bool;
+	var enableImpulseDamage : Bool;
+	var impulseToDamage : Float;
+	var contactToDamage : Float;
+	var maxContactImpulseRatio : Float;
+	var impulseChildPropagationFactor : Float;
+	var impulsePropagationFactor : Float;
+	var impulseDiminishingFactor : Float;
+	var breakBonds : Bool;
+	var debrisInstantRemovalThreshold : Float;
+	var debrisTimeoutThreshold : Float;
+	var debrisTimeout : Bool;
+	var debrisTimeoutMin : Float;
+	var debrisTimeoutMax : Float;
+	var fadeOutTime : Float;
+	var debrisMaxSeparation : Float;
+	var visualsRemain : Bool;
+	var debrisDestructible : Bool;
+	var supportDamage : Bool;
+	var maxAngularVelocity : Float;
+	var fractureFieldMask : physicsFractureFieldType;
+}

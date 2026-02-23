@@ -1,0 +1,4 @@
+import struct communityTimePeriod
+{
+	var hour : communityECommunitySpawnTime;
+}

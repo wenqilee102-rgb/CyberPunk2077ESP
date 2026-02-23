@@ -1,0 +1,25 @@
+import class questSetTier_NodeType extends questISceneManagerNodeType
+{
+	var tier : GameplayTier;
+	var usePlayerWorkspot : Bool;
+	var useEnterAnim : Bool;
+	var useExitAnim : Bool;
+	var forceEmptyHands : Bool;
+	var motionConstrainedTierDataParams : gameMotionConstrainedTierDataParams;
+}
+
+import class abstract questISceneManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

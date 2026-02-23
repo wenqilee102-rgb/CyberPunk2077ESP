@@ -1,0 +1,22 @@
+class abstract AISubActionBlockData_Record_Implementation extends IScriptable
+{
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionBlockData_Record, duration : Float, interrupted : Bool); // AISubActionBlockData_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionBlockData_RecordFloatBool
+	static function GetAnimVariation(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionBlockData_Record) : Int32; // AISubActionBlockData_Record_Implementation::GetAnimVariation;ScriptExecutionContextAISubActionBlockData_Record
+	static function GetAnimVariationInBlackBoard(blackBoard : handle:gameIBlackboard, owner : whandle:ScriptedPuppet) : Int32; // AISubActionBlockData_Record_Implementation::GetAnimVariationInBlackBoard;IBlackboardScriptedPuppet
+	static function SetAnimVariation(owner : whandle:ScriptedPuppet, direction : EAIBlockDirection) : Int32; // AISubActionBlockData_Record_Implementation::SetAnimVariation;ScriptedPuppetEAIBlockDirection
+	static function SetAnimVariationInBlackBoard(blackBoard : handle:gameIBlackboard, owner : whandle:ScriptedPuppet, animVariation : Int32); // AISubActionBlockData_Record_Implementation::SetAnimVariationInBlackBoard;IBlackboardScriptedPuppetInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,38 @@
+import class gameeventsVehicleHitEvent extends gameeventsHitEvent
+{
+	var vehicleVelocity : Vector4;
+	var preyVelocity : Vector4;
+}
+
+import class gameeventsHitEvent extends redEvent
+{
+	var attackData : handle:gamedamageAttackData;
+	var target : whandle:gameObject;
+	var hitPosition : Vector4;
+	var hitDirection : Vector4;
+	var hitComponent : whandle:entIPlacedComponent;
+	var hitColliderTag : CName;
+	var hitRepresentationResult : gameQueryResult;
+	var attackPentration : Float;
+	var hasPiercedTechSurface : Bool;
+	var attackComputed : handle:gameAttackComputed;
+	public    var projectionPipeline : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

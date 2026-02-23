@@ -1,0 +1,28 @@
+import class CParticleModificatorVelocityTurbulize extends IParticleModificator
+{
+	var scale : handle:IEvaluatorVector;
+	var timelifeLimit : handle:IEvaluatorFloat;
+	var noiseInterval : Float;
+	var duration : Float;
+	var worldSpace : Bool;
+}
+
+import class abstract IParticleModificator extends IParticleInitializer
+{
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

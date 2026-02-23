@@ -1,0 +1,21 @@
+class abstract AISubActionLeaveCover_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionLeaveCover_Record); // AISubActionLeaveCover_Record_Implementation::Activate;ScriptExecutionContextAISubActionLeaveCover_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionLeaveCover_Record, duration : Float, interrupted : Bool); // AISubActionLeaveCover_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionLeaveCover_RecordFloatBool
+	static function LeaveCover(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionLeaveCover_Record) : Bool; // AISubActionLeaveCover_Record_Implementation::LeaveCover;ScriptExecutionContextAISubActionLeaveCover_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionLeaveCover_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionLeaveCover_Record_Implementation::Update;ScriptExecutionContextAISubActionLeaveCover_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

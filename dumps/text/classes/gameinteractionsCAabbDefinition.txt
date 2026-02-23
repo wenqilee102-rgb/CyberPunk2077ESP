@@ -1,0 +1,13 @@
+import class gameinteractionsCAabbDefinition extends gameinteractionsIShapeDefinition
+{
+	var min : Vector4;
+	var max : Vector4;
+}
+
+import class abstract gameinteractionsIShapeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

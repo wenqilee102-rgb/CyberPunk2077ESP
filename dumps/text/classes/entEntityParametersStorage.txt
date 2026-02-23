@@ -1,0 +1,8 @@
+import class entEntityParametersStorage extends ISerializable
+{
+	var parameters : array:handle:entEntityParameter;
+}
+
+import class abstract ISerializable
+{
+}

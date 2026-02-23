@@ -1,0 +1,30 @@
+class UI_TargetingInfoDef extends gamebbScriptDefinition
+{
+	public    var CurrentVisibleTarget : gamebbScriptID_EntityID;
+	public    var CrosshairRaycastTarget : gamebbScriptID_EntityID;
+	public    var VisibleTargetDistance : gamebbScriptID_Float;
+	public    var VisibleTargetAttitude : gamebbScriptID_Int32;
+	public    var CurrentObstructedTarget : gamebbScriptID_EntityID;
+	public    var ObstructedTargetDistance : gamebbScriptID_Float;
+	public    var ObstructedTargetAttitude : gamebbScriptID_Int32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

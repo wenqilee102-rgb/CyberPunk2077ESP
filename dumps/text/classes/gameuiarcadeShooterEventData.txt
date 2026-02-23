@@ -1,0 +1,6 @@
+import struct gameuiarcadeShooterEventData
+{
+	var triggerPosition : Vector2;
+	var finalPosition : Vector2;
+	var spawnerDataList : array:gameuiarcadeShooterEventSpawnerData;
+}

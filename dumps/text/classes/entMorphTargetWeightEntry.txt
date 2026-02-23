@@ -1,0 +1,6 @@
+import struct entMorphTargetWeightEntry
+{
+	var targetName : CName;
+	var regionName : CName;
+	var weight : Float;
+}

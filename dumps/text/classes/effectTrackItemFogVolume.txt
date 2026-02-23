@@ -1,0 +1,24 @@
+import class effectTrackItemFogVolume extends effectTrackItem
+{
+	var priority : Uint8;
+	var densityFalloff : Float;
+	var blendFalloff : Float;
+	var density : handle:IEvaluatorFloat;
+	var size : handle:IEvaluatorVector;
+	var color : handle:IEvaluatorColor;
+}
+
+import class abstract effectTrackItem extends effectBaseItem
+{
+	var timeBegin : Float;
+	var timeDuration : Float;
+	var ruid : CRUID;
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

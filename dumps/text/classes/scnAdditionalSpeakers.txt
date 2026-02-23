@@ -1,0 +1,6 @@
+import struct scnAdditionalSpeakers
+{
+	var executionTag : Uint8;
+	var role : scnAdditionalSpeakerRole;
+	var speakers : array:scnAdditionalSpeaker;
+}

@@ -1,0 +1,19 @@
+import class animAnimNode_LookAtPose360 extends animAnimNode_Base
+{
+	var speedInDegreesPerSecond : Float;
+	var angleOffsetNode : animFloatLink;
+	var targetAngleOffsetNode : animFloatLink;
+	var weightNode : animFloatLink;
+	var animEndEventName : CName;
+	var animation : CName;
+	var durationCut : Float;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

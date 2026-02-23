@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"RequestTakeControl","d":0,"e":[{"a":{"b":"entEntityID"},"b":"requestSource","c":128},{"a":{"a":26,"c":{"b":"ToggleTakeOverControl"}},"b":"originalEvent","c":128}]}

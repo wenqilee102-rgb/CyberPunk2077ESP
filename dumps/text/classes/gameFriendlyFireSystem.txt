@@ -1,0 +1,31 @@
+import class gameFriendlyFireSystem extends gameIFriendlyFireSystem
+{
+}
+
+import class abstract gameIFriendlyFireSystem extends gameIGameSystem
+{
+	import function Check(id : Uint32) : Bool; // Check
+	import function SetFFApplyAttitude(id : Uint32, FFApplyAttitude : Uint32); // SetFFApplyAttitude
+	import function StartChecking(params : handle:gameFriendlyFireParams) : Uint32; // StartChecking
+	import function StopChecking(id : Uint32) : Bool; // StopChecking
+	import function UpdateCurrentTargetComponent(id : Uint32, currentTarget : whandle:gameTargetingComponent); // UpdateCurrentTargetComponent
+	import function UpdateCurrentTargetObject(id : Uint32, currentTarget : whandle:gameObject); // UpdateCurrentTargetObject
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

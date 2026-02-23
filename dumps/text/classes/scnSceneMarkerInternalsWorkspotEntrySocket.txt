@@ -1,0 +1,5 @@
+import struct scnSceneMarkerInternalsWorkspotEntrySocket
+{
+	var name : CName;
+	var transform : Transform;
+}

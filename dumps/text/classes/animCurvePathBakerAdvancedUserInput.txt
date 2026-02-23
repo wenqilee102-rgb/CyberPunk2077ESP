@@ -1,0 +1,4 @@
+import struct animCurvePathBakerAdvancedUserInput
+{
+	var partsInputs : static:3,animCurvePathPartInput;
+}

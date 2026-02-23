@@ -1,0 +1,8 @@
+import class gameAppearanceNameVisualTagsPreset extends ISerializable
+{
+	var presets : array:gameAppearanceNameVisualTagsPreset_Entity;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class scnSceneSharedState extends ISerializable
+{
+	var entrypoint : CName;
+	var syncNodesVisited : array:scnSyncNodeSignal;
+	var instanceHash : Uint64;
+	var finishedOnServer : Bool;
+	var finishedOnClient : Bool;
+}
+
+import class abstract ISerializable
+{
+}

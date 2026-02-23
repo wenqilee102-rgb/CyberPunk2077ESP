@@ -1,0 +1,35 @@
+class NetworkBlackboardDef extends gamebbScriptDefinition
+{
+	public    var MinigameDef : gamebbScriptID_Variant;
+	public    var NetworkName : gamebbScriptID_String;
+	public    var NetworkTDBID : gamebbScriptID_Variant;
+	public    var DevicesCount : gamebbScriptID_Int32;
+	public    var DeviceID : gamebbScriptID_EntityID;
+	public    var OfficerBreach : gamebbScriptID_Bool;
+	public    var SuicideBreach : gamebbScriptID_Bool;
+	public    var RemoteBreach : gamebbScriptID_Bool;
+	public    var ItemBreach : gamebbScriptID_Bool;
+	public    var Attempt : gamebbScriptID_Int32;
+	public    var SelectedMinigameDef : gamebbScriptID_Variant;
+	public    var PersonalLinkStatus : gamebbScriptID_Int32;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

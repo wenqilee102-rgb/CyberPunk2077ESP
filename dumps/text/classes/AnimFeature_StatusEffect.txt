@@ -1,0 +1,31 @@
+class AnimFeature_StatusEffect extends animAnimFeature
+{
+	public    var state : Int32;
+	public    var duration : Float;
+	public    var variation : Int32;
+	public    var direction : Int32;
+	public    var impactDirection : Int32;
+	public    var knockdown : Bool;
+	public    var stunned : Bool;
+	public    var playImpact : Bool;
+
+	function Clear(); // Clear;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

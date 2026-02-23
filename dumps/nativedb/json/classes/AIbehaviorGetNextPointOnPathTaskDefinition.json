@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorGetNextPointOnPathTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"patrolProgress","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"positionOnPath","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"entryTangent","c":128}]}

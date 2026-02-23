@@ -1,0 +1,1 @@
+{"a":"ActionEntityReference","b":"QuestLookAtTarget","d":0,"e":[{"a":{"b":"entEntityID"},"b":"ForcedTarget","c":128}],"f":[{"a":"SetProperties;","b":"SetProperties","d":48},{"a":"SetPropertiesFromScripts;EntityID","b":"SetPropertiesFromScripts","d":48,"e":[{"a":{"b":"entEntityID"},"b":"id","c":0}]}]}

@@ -1,0 +1,9 @@
+import struct gameEffectSettings
+{
+	var advancedTargetHandling : Bool;
+	var synchronousProcessingForPlayer : Bool;
+	var forceSynchronousProcessing : Bool;
+	var tempExecuteOnlyOnce : Bool;
+	var tickRate : Float;
+	var useSimTimeForTick : Bool;
+}

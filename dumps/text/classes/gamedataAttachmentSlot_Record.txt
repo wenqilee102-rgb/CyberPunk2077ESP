@@ -1,0 +1,30 @@
+import class gamedataAttachmentSlot_Record extends gamedataTweakDBRecord
+{
+	import function CustomOffset() : Vector3; // CustomOffset
+	import function EntitySlotName() : String; // EntitySlotName
+	import function GetTagsForActiveItemCyclingCount() : Int32; // GetTagsForActiveItemCyclingCount
+	import function GetTagsForActiveItemCyclingItem(index : Int32) : CName; // GetTagsForActiveItemCyclingItem
+	import function LocalizedName() : String; // LocalizedName
+	import function TagsForActiveItemCycling() : array:CName; // TagsForActiveItemCycling
+	import function TagsForActiveItemCyclingContains(item : CName) : Bool; // TagsForActiveItemCyclingContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

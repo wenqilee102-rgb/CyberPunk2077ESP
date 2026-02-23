@@ -1,0 +1,7 @@
+import struct animAnimDebuggerCommand_FloatOutputApplied extends animIAnimDebuggerCommand
+{
+}
+
+import struct abstract animIAnimDebuggerCommand
+{
+}

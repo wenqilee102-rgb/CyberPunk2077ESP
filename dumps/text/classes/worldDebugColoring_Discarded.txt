@@ -1,0 +1,12 @@
+import class worldDebugColoring_Discarded extends worldEditorDebugColoringSettings
+{
+	var color : Color;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

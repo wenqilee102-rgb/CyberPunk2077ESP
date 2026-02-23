@@ -1,0 +1,28 @@
+import class gamedataBuildProficiencySet_Record extends gamedataTweakDBRecord
+{
+	import function GetProficienciesCount() : Int32; // GetProficienciesCount
+	import function GetProficienciesItem(index : Int32) : whandle:gamedataBuildProficiency_Record; // GetProficienciesItem
+	import function GetProficienciesItemHandle(index : Int32) : handle:gamedataBuildProficiency_Record; // GetProficienciesItemHandle
+	import function Proficiencies(out outList : array:whandle:gamedataBuildProficiency_Record); // Proficiencies
+	import function ProficienciesContains(item : whandle:gamedataBuildProficiency_Record) : Bool; // ProficienciesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

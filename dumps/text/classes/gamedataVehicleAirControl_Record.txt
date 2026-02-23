@@ -1,0 +1,42 @@
+import class gamedataVehicleAirControl_Record extends gamedataTweakDBRecord
+{
+	import function AnglePID() : array:Float; // AnglePID
+	import function AnglePIDContains(item : Float) : Bool; // AnglePIDContains
+	import function FlippedOverRecoveryPID() : array:Float; // FlippedOverRecoveryPID
+	import function FlippedOverRecoveryPIDContains(item : Float) : Bool; // FlippedOverRecoveryPIDContains
+	import function GetAnglePIDCount() : Int32; // GetAnglePIDCount
+	import function GetAnglePIDItem(index : Int32) : Float; // GetAnglePIDItem
+	import function GetFlippedOverRecoveryPIDCount() : Int32; // GetFlippedOverRecoveryPIDCount
+	import function GetFlippedOverRecoveryPIDItem(index : Int32) : Float; // GetFlippedOverRecoveryPIDItem
+	import function GetVelocityPIDCount() : Int32; // GetVelocityPIDCount
+	import function GetVelocityPIDItem(index : Int32) : Float; // GetVelocityPIDItem
+	import function MassReference() : Float; // MassReference
+	import function Pitch() : whandle:gamedataVehicleAirControlAxis_Record; // Pitch
+	import function PitchHandle() : handle:gamedataVehicleAirControlAxis_Record; // PitchHandle
+	import function Roll() : whandle:gamedataVehicleAirControlAxis_Record; // Roll
+	import function RollHandle() : handle:gamedataVehicleAirControlAxis_Record; // RollHandle
+	import function VelocityPID() : array:Float; // VelocityPID
+	import function VelocityPIDContains(item : Float) : Bool; // VelocityPIDContains
+	import function Yaw() : whandle:gamedataVehicleAirControlAxis_Record; // Yaw
+	import function YawHandle() : handle:gamedataVehicleAirControlAxis_Record; // YawHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

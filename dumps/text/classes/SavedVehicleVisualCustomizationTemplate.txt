@@ -1,0 +1,10 @@
+struct SavedVehicleVisualCustomizationTemplate
+{
+	public    var hasUniqueTemplate : Bool;
+	public    var genericData : GenericTemplatePersistentData;
+	public    var uniqueDataID : TweakDBID;
+	public    var twintoneModelName : CName;
+
+	static function FromVehicleVisualCustomizationTemplate(template : VehicleVisualCustomizationTemplate) : SavedVehicleVisualCustomizationTemplate; // SavedVehicleVisualCustomizationTemplate::FromVehicleVisualCustomizationTemplate;VehicleVisualCustomizationTemplate
+	static function ToVehicleVisualCustomizationTemplate(savedData : SavedVehicleVisualCustomizationTemplate) : VehicleVisualCustomizationTemplate; // SavedVehicleVisualCustomizationTemplate::ToVehicleVisualCustomizationTemplate;SavedVehicleVisualCustomizationTemplate
+}

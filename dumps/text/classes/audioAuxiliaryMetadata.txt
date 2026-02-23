@@ -1,0 +1,4 @@
+import struct audioAuxiliaryMetadata
+{
+	var physicalPropSettings : CName;
+}

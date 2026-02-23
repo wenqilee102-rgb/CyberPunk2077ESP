@@ -1,0 +1,19 @@
+import struct MeasurementUtils
+{
+	import static function GetPlayerSettingSystem() : EMeasurementSystem; // GetPlayerSettingSystem
+	import static function GetSystemForUnit(inUnit : EMeasurementUnit) : EMeasurementSystem; // GetSystemForUnit
+	import static function GetUnitLocalizationKey(inUnit : EMeasurementUnit) : CName; // GetUnitLocalizationKey
+	import static function UnitToImperial(inUnit : EMeasurementUnit) : EMeasurementUnit; // UnitToImperial
+	import static function UnitToMetric(inUnit : EMeasurementUnit) : EMeasurementUnit; // UnitToMetric
+	import static function UnitToSystem(inUnit : EMeasurementUnit, outSystem : EMeasurementSystem) : EMeasurementUnit; // UnitToSystem
+	import static function ValueToImperial(inValue : Float, inUnit : EMeasurementUnit, out outUnit : EMeasurementUnit) : Float; // ValueToImperial
+	import static function ValueToMetric(inValue : Float, inUnit : EMeasurementUnit, out outUnit : EMeasurementUnit) : Float; // ValueToMetric
+	import static function ValueToPlayerSettingSystem(inValue : Float, inUnit : EMeasurementUnit, out outUnit : EMeasurementUnit) : Float; // ValueToPlayerSettingSystem
+	import static function ValueToSystem(inValue : Float, inUnit : EMeasurementUnit, outUnitSystem : EMeasurementSystem, out outUnit : EMeasurementUnit) : Float; // ValueToSystem
+	import static function ValueUnitToUnit(inValue : Float, inUnit : EMeasurementUnit, outUnit : EMeasurementUnit) : Float; // ValueUnitToUnit
+
+	static function ValueToImperial(inValue : Float, inUnit : EMeasurementUnit) : Float; // MeasurementUtils::ValueToImperial;FloatEMeasurementUnit
+	static function ValueToMetric(inValue : Float, inUnit : EMeasurementUnit) : Float; // MeasurementUtils::ValueToMetric;FloatEMeasurementUnit
+	static function ValueToPlayerSettingSystem(inValue : Float, inUnit : EMeasurementUnit) : Float; // MeasurementUtils::ValueToPlayerSettingSystem;FloatEMeasurementUnit
+	static function ValueToSystem(inValue : Float, inUnit : EMeasurementUnit, outUnitSystem : EMeasurementSystem) : Float; // MeasurementUtils::ValueToSystem;FloatEMeasurementUnitEMeasurementSystem
+}

@@ -1,0 +1,12 @@
+import class gameTransformAnimation_Position_LocalPosition extends gameTransformAnimation_Position
+{
+	var position : Vector3;
+}
+
+import class abstract gameTransformAnimation_Position extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,39 @@
+class RadioportSettingsListener extends userSettingsVarListener
+{
+	private   var player : whandle:PlayerPuppet;
+	private   var settings : handle:userSettingsUserSettings;
+	private   var settingsGroup : handle:userSettingsGroup;
+	private   var syncToCarRadio : Bool;
+	private   var cycleOnButtonPress : Bool;
+	private   var saveStation : Bool;
+	private   var syncToCarRadioName : CName;
+	private   var cycleOnButtonPressName : CName;
+	private   var saveStationName : CName;
+	private   var radioportSettingsPath : CName;
+
+	function GetCycleButtonPress() : Bool; // GetCycleButtonPress;
+	function GetSaveStation() : Bool; // GetSaveStation;
+	function GetSyncToCarRadio() : Bool; // GetSyncToCarRadio;
+	function Initialize(player : whandle:PlayerPuppet); // Initialize;PlayerPuppet
+	function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+}
+
+import class userSettingsVarListener extends IScriptable
+{
+	import function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+	import function Register(groupPath : CName) : Bool; // Register
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

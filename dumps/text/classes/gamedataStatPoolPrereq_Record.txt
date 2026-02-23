@@ -1,0 +1,39 @@
+import class gamedataStatPoolPrereq_Record extends gamedataIPrereq_Record
+{
+	import function ComparePercentage() : Bool; // ComparePercentage
+	import function ComparisonType() : CName; // ComparisonType
+	import function GetValueToCheckCount() : Int32; // GetValueToCheckCount
+	import function GetValueToCheckItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetValueToCheckItem
+	import function GetValueToCheckItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetValueToCheckItemHandle
+	import function ListenConstantly() : Bool; // ListenConstantly
+	import function ObjectToCheck() : CName; // ObjectToCheck
+	import function SkipOnApply() : Bool; // SkipOnApply
+	import function StatPoolType() : CName; // StatPoolType
+	import function ValueToCheck(out outList : array:whandle:gamedataStatModifier_Record); // ValueToCheck
+	import function ValueToCheckContains(item : whandle:gamedataStatModifier_Record) : Bool; // ValueToCheckContains
+}
+
+import class gamedataIPrereq_Record extends gamedataTweakDBRecord
+{
+	import function PrereqClassName() : CName; // PrereqClassName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

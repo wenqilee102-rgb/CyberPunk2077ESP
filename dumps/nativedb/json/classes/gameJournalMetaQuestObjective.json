@@ -1,0 +1,1 @@
+{"a":"gameJournalEntry","b":"gameJournalMetaQuestObjective","c":"JournalMetaQuestObjective","d":8,"e":[{"a":{"a":13},"b":"description","c":128},{"a":{"a":7},"b":"progressPercent","c":128},{"a":{"a":15},"b":"iconID","c":128}],"f":[{"a":"GetDescription","c":{"a":12},"d":132},{"a":"GetIconID","c":{"a":15},"d":132},{"a":"GetProgressPercent","c":{"a":7},"d":132}]}

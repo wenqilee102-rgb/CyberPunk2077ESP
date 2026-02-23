@@ -1,0 +1,29 @@
+class UpdateDebuggerRequest extends gameScriptableSystemRequest
+{
+	public    var system : handle:SecuritySystemControllerPS;
+	public    var time : Float;
+	public    var instructionAttached : Bool;
+	public    var inputAttached : Bool;
+	public    var callstack : CName;
+	public    var instruction : EReprimandInstructions;
+	public    var recentInput : handle:SecuritySystemInput;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

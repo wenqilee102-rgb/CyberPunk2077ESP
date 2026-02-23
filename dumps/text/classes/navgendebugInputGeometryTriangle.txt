@@ -1,0 +1,5 @@
+import struct navgendebugInputGeometryTriangle
+{
+	var vertices : [3]Vector3;
+	var area : Uint8;
+}

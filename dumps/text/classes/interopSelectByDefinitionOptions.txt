@@ -1,0 +1,10 @@
+import struct interopSelectByDefinitionOptions
+{
+	var searchInSelection : Bool;
+	var minBBoxDiagonalLength : Float;
+	var maxBBoxDiagonalLength : Float;
+	var maxBBoxParentPercantageDiagonalLength : Float;
+	var includePrefabNodes : Bool;
+	var includeDecalNodes : Bool;
+	var includeMeshNodes : Bool;
+}

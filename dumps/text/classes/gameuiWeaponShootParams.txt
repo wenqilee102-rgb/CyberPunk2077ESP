@@ -1,0 +1,5 @@
+import struct gameuiWeaponShootParams
+{
+	var fromWorldPosition : Vector4;
+	var forward : Vector4;
+}

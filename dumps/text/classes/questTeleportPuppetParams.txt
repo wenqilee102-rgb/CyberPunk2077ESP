@@ -1,0 +1,5 @@
+import struct questTeleportPuppetParams
+{
+	var destinationRef : handle:questUniversalRef;
+	var destinationOffset : Vector3;
+}

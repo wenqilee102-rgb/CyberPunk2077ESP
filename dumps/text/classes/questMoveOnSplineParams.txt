@@ -1,0 +1,42 @@
+import class questMoveOnSplineParams extends questAICommandParams
+{
+	var splineNodeRef : NodeRef;
+	var useStart : Bool;
+	var useStop : Bool;
+	var reverse : Bool;
+	var startFromClosestPoint : Bool;
+	var splineRecalculation : Bool;
+	var additionalParams : handle:questMoveOnSplineAdditionalParams;
+	var useAlertedState : Bool;
+	var useCombatState : Bool;
+	var executeWhileDespawned : Bool;
+	var repeatCommandOnInterrupt : Bool;
+	var noWaitToEndDistance : Float;
+	var noWaitToEndCompanionDistance : Float;
+	var removeAfterCombat : Bool;
+	var ignoreInCombat : Bool;
+	var alwaysUseStealth : Bool;
+	var disableFootIK : Bool;
+}
+
+import class abstract questAICommandParams extends scnAICommandFactory
+{
+}
+
+import class abstract scnAICommandFactory extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

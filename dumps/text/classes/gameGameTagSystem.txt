@@ -1,0 +1,23 @@
+import class gameGameTagSystem extends gameIGameSystem
+{
+	import function GetAllMatchingEntities(tag : CName, out entities : array:handle:entEntity) : Bool; // GetAllMatchingEntities
+	import function GetAnyMatchingEntity(tag : CName) : handle:entEntity; // GetAnyMatchingEntity
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

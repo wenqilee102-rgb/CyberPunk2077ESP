@@ -1,0 +1,16 @@
+import class entCorpseParameter extends entEntityParameter
+{
+	var lod : Uint32;
+	var bakedPose : array:QsTransform;
+	var bakedBoneNames : array:CName;
+	var forceLOD0Components : array:CRUID;
+	var baseRig : raRef:animRig;
+}
+
+import class abstract entEntityParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,15 @@
+import class questDynamicVehicleSpawn_NodeType extends questIDynamicSpawnSystemType
+{
+	var VehicleData : array:TweakDBID;
+	var waveTag : CName;
+	var spawnDirectionPreference : questSpawnDirectionPreference;
+	var distanceRange : Vector2;
+}
+
+import class abstract questIDynamicSpawnSystemType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

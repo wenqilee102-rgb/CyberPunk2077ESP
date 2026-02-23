@@ -1,0 +1,10 @@
+struct DamageEntry
+{
+	public    var damageInfo : gameuiDamageInfo;
+	public    var damageOverTimeInfo : gameuiDamageInfo;
+	public    var hasDamageInfo : Bool;
+	public    var hasDamageOverTimeInfo : Bool;
+	public    var oneInstance : Bool;
+	public    var oneDotInstance : Bool;
+	public    var hasDotAccumulator : Bool;
+}

@@ -1,0 +1,1 @@
+{"b":"AreaTypeTransition","d":0,"g":true,"e":[{"a":{"b":"ESecurityAreaType"},"b":"transitionTo","c":132},{"a":{"a":6},"b":"transitionHour","c":132},{"a":{"b":"ETransitionMode"},"b":"transitionMode","c":132},{"a":{"a":7},"b":"listenerID","c":132},{"a":{"a":1},"b":"locked","c":132}]}

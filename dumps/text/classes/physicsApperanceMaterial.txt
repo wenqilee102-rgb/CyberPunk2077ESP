@@ -1,0 +1,6 @@
+import struct physicsApperanceMaterial
+{
+	var apperanceName : CName;
+	var materialFrom : CName;
+	var material : CName;
+}

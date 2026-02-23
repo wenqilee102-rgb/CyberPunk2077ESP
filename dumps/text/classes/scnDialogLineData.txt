@@ -1,0 +1,14 @@
+import struct scnDialogLineData
+{
+	var id : CRUID;
+	var text : String;
+	var type : scnDialogLineType;
+	var speaker : whandle:gameObject;
+	var speakerName : String;
+	var isPersistent : Bool;
+	var duration : Float;
+
+	import static function GetDisplayText(self : scnDialogLineData) : scnDialogDisplayString; // GetDisplayText
+	import static function HasKiroshiTag(self : scnDialogLineData) : Bool; // HasKiroshiTag
+	import static function HasMothertongueTag(self : scnDialogLineData) : Bool; // HasMothertongueTag
+}

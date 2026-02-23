@@ -1,0 +1,1 @@
+{"a":"ActionFloat","b":"QuestForceClose","d":0,"f":[{"a":"GetProperties","c":{"a":31,"c":{"a":26,"c":{"b":"gamedeviceActionProperty"}}},"d":32},{"a":"GetValue;","b":"GetValue","c":{"a":10},"d":48},{"a":"SetProperties;Float","b":"SetProperties","d":48,"e":[{"a":{"a":10},"b":"speedMultiplier","c":0}]}]}

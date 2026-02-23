@@ -1,0 +1,21 @@
+class TooltipSpawnedCallbackData extends IScriptable
+{
+	public    var index : Int32;
+	public    var identifier : CName;
+	public    var tooltipStyle : ETooltipsStyle;
+	public    var styleResRef : redResourceReferenceScriptToken;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

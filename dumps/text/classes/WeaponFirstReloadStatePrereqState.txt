@@ -1,0 +1,36 @@
+class WeaponFirstReloadStatePrereqState extends gamePrereqState
+{
+	public    var listenerWeaponInt : handle:redCallbackObject;
+	public    var listenerActiveWeaponVariant : handle:redCallbackObject;
+	public    var weaponObj : whandle:gameweaponObject;
+	public    var owner : whandle:gameObject;
+	public    var reloaded : Bool;
+
+	event OnInventoryChangeStateUpdate(value : Variant) : Bool; // OnInventoryChangeStateUpdate
+	event OnWeaponStateUpdate(value : Int32) : Bool; // OnWeaponStateUpdate
+
+	function CheckIfPlayerWeaponChanged(); // CheckIfPlayerWeaponChanged;
+}
+
+import class gamePrereqState extends IScriptable
+{
+	import function GetContext() : handle:IScriptable; // GetContext
+	import function GetPrereq() : handle:gameIPrereq; // GetPrereq
+	import function IsFulfilled() : Bool; // IsFulfilled
+	import function OnChanged(newState : Bool); // OnChanged
+	import function OnChangedRepeated(optional callOnlyOnStateFulfilled : Bool); // OnChangedRepeated
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct inkDrawArea
+{
+	var size : Vector2;
+	var scale : Float;
+	var relativePosition : Vector2;
+	var absolutePosition : Vector2;
+}

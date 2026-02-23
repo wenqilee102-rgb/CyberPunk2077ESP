@@ -1,0 +1,43 @@
+class DefaultTest extends gamestateMachineFunctor
+{
+	function EnterCondition(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // EnterCondition;StateContextStateGameScriptInterface
+}
+
+import class gamestateMachineFunctor extends IScriptable
+{
+	import function EnableOnEnterCondition(enable : Bool); // EnableOnEnterCondition
+	import function GetInStateTime() : Float; // GetInStateTime
+	import function GetStateMachineName() : CName; // GetStateMachineName
+	import function GetStateName() : CName; // GetStateName
+	import function GetStaticBoolArrayParameter(parameterName : String) : array:Bool; // GetStaticBoolArrayParameter
+	import function GetStaticBoolParameter(parameterName : String) : gamestateMachineResultBool; // GetStaticBoolParameter
+	import function GetStaticBoolParameterDefault(parameterName : String, defaultVal : Bool) : Bool; // GetStaticBoolParameterDefault
+	import function GetStaticCNameArrayParameter(parameterName : String) : array:CName; // GetStaticCNameArrayParameter
+	import function GetStaticCNameParameter(parameterName : String) : gamestateMachineResultCName; // GetStaticCNameParameter
+	import function GetStaticCNameParameterDefault(parameterName : String, defaultVal : CName) : CName; // GetStaticCNameParameterDefault
+	import function GetStaticFloatArrayParameter(parameterName : String) : array:Float; // GetStaticFloatArrayParameter
+	import function GetStaticFloatParameter(parameterName : String) : gamestateMachineResultFloat; // GetStaticFloatParameter
+	import function GetStaticFloatParameterDefault(parameterName : String, defaultVal : Float) : Float; // GetStaticFloatParameterDefault
+	import function GetStaticIntArrayParameter(parameterName : String) : array:Int32; // GetStaticIntArrayParameter
+	import function GetStaticIntParameter(parameterName : String) : gamestateMachineResultInt; // GetStaticIntParameter
+	import function GetStaticIntParameterDefault(parameterName : String, defaultVal : Int32) : Int32; // GetStaticIntParameterDefault
+	import function GetStaticStringArrayParameter(parameterName : String) : array:String; // GetStaticStringArrayParameter
+	import function GetStaticStringParameter(parameterName : String) : gamestateMachineResultString; // GetStaticStringParameter
+	import function GetStaticStringParameterDefault(parameterName : String, defaultVal : String) : String; // GetStaticStringParameterDefault
+	import function IsOnEnterConditionEnabled() : Bool; // IsOnEnterConditionEnabled
+	import function SetFlavour(flavourName : CName); // SetFlavour
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

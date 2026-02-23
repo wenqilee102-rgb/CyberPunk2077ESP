@@ -1,0 +1,28 @@
+import class gamedataWeaponSafeModeBounds_Record extends gamedataTweakDBRecord
+{
+	import function BackBound() : whandle:gamedataWeaponSafeModeBound_Record; // BackBound
+	import function BackBoundHandle() : handle:gamedataWeaponSafeModeBound_Record; // BackBoundHandle
+	import function EnableSafeModeBounds() : Bool; // EnableSafeModeBounds
+	import function WindshieldBound() : whandle:gamedataWeaponSafeModeBound_Record; // WindshieldBound
+	import function WindshieldBoundHandle() : handle:gamedataWeaponSafeModeBound_Record; // WindshieldBoundHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+struct VendorShoppingCartItem
+{
+	public    var itemData : whandle:gameItemData;
+	public    var amount : Int32;
+}

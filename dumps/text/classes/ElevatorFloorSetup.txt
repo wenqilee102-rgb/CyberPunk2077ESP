@@ -1,0 +1,12 @@
+struct ElevatorFloorSetup
+{
+	public    var isHidden : Bool;
+	public    var isInactive : Bool;
+	public    var floorMarker : NodeRef;
+	public    var floorName : String;
+	public    var floorDisplayName : CName;
+	public    var authorizationTextOverride : String;
+	public    var doorShouldOpenFrontLeftRight : array:Bool;
+
+	static function GetFloorName(self : script_ref:ElevatorFloorSetup) : String; // ElevatorFloorSetup::GetFloorName;script_ref<ElevatorFloorSetup>
+}

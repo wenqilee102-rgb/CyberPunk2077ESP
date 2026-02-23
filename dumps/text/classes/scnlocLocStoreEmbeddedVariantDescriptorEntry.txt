@@ -1,0 +1,8 @@
+import struct scnlocLocStoreEmbeddedVariantDescriptorEntry
+{
+	var variantId : scnlocVariantId;
+	var locstringId : scnlocLocstringId;
+	var localeId : scnlocLocaleId;
+	var signature : scnlocSignature;
+	var vpeIndex : Uint32;
+}

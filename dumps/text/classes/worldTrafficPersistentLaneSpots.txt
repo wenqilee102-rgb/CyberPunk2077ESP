@@ -1,0 +1,4 @@
+import struct worldTrafficPersistentLaneSpots
+{
+	var spots : array:handle:worldTrafficSpotCompiled;
+}

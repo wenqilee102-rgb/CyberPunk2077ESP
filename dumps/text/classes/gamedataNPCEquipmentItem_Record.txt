@@ -1,0 +1,43 @@
+import class gamedataNPCEquipmentItem_Record extends gamedataNPCEquipmentGroupEntry_Record
+{
+	import function EquipCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // EquipCondition
+	import function EquipConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // EquipConditionContains
+	import function EquipSlot() : whandle:gamedataAttachmentSlot_Record; // EquipSlot
+	import function EquipSlotHandle() : handle:gamedataAttachmentSlot_Record; // EquipSlotHandle
+	import function GetEquipConditionCount() : Int32; // GetEquipConditionCount
+	import function GetEquipConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetEquipConditionItem
+	import function GetEquipConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetEquipConditionItemHandle
+	import function GetUnequipConditionCount() : Int32; // GetUnequipConditionCount
+	import function GetUnequipConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetUnequipConditionItem
+	import function GetUnequipConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetUnequipConditionItemHandle
+	import function Item() : whandle:gamedataItem_Record; // Item
+	import function ItemHandle() : handle:gamedataItem_Record; // ItemHandle
+	import function OnBodySlot() : whandle:gamedataAttachmentSlot_Record; // OnBodySlot
+	import function OnBodySlotHandle() : handle:gamedataAttachmentSlot_Record; // OnBodySlotHandle
+	import function UnequipCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // UnequipCondition
+	import function UnequipConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // UnequipConditionContains
+}
+
+import class gamedataNPCEquipmentGroupEntry_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

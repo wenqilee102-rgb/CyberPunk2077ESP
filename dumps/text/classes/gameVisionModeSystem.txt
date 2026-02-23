@@ -1,0 +1,37 @@
+import class gameVisionModeSystem extends gameIVisionModeSystem
+{
+	import function CancelForceVisionAppearance(entity : handle:gameObject, optional transitionTime : Float); // CancelForceVisionAppearance
+	import function EnterMode(activator : handle:gameObject, mode : gameVisionModeType); // EnterMode
+	import function ForceVisionAppearance(entity : handle:gameObject, appearance : gameVisionAppearance, optional transitionTime : Float); // ForceVisionAppearance
+	import function GetDelayedRevealEntries(revealEntityId : entEntityID, out revealIds : array:gameVisionModeSystemRevealIdentifier); // GetDelayedRevealEntries
+	import function GetScanningController() : handle:gameScanningController; // GetScanningController
+	import function IsDelayedRevealInProgress(revealEntityId : entEntityID, revealId : gameVisionModeSystemRevealIdentifier) : Bool; // IsDelayedRevealInProgress
+	import function RegisterActivatorCallback(activator : handle:gameObject, listener : handle:gameObject) : Bool; // RegisterActivatorCallback
+	import function RegisterDelayedReveal(revealEntityId : entEntityID, revealId : gameVisionModeSystemRevealIdentifier, delayTime : Float); // RegisterDelayedReveal
+	import function SetChildEntityVisionMode(parentId : entEntityID, childNodeRef : NodeRef, enable : Bool); // SetChildEntityVisionMode
+	import function SetEntityVisionMode(id : entEntityID, val : Bool); // SetEntityVisionMode
+	import function UnregisterActivatorCallback(activator : handle:gameObject, listener : handle:gameObject); // UnregisterActivatorCallback
+	import function UnregisterDelayedReveal(revealEntityId : entEntityID, revealId : gameVisionModeSystemRevealIdentifier); // UnregisterDelayedReveal
+}
+
+import class abstract gameIVisionModeSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

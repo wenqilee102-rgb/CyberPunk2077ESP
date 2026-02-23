@@ -1,0 +1,7 @@
+import struct RayTracingRenderDebugCustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

@@ -1,0 +1,1 @@
+{"a":"entIVisualComponent","b":"entParticlesComponent","d":8,"e":[{"a":{"a":10},"b":"emissionRate","c":128},{"a":{"a":29,"c":{"b":"CParticleSystem"}},"b":"particleSystem","c":128},{"a":{"a":10},"b":"autoHideRange","c":128},{"a":{"b":"RenderSceneLayerMask"},"b":"renderLayerMask","c":128},{"a":{"a":1},"b":"isEnabled","c":128}]}

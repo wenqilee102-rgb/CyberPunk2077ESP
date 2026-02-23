@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataRowSymbols_Record","c":"RowSymbols_Record","d":24,"f":[{"a":"GetSymbolsCount","c":{"a":6},"d":4},{"a":"GetSymbolsItem","c":{"a":6},"d":4,"e":[{"a":{"a":6},"b":"index","c":0}]},{"a":"Symbols","c":{"a":31,"c":{"a":6}},"d":4},{"a":"SymbolsContains","c":{"a":1},"d":4,"e":[{"a":{"a":6},"b":"item","c":0}]}]}

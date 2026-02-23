@@ -1,0 +1,5 @@
+import struct scnRidTag
+{
+	var signature : CName;
+	var serialNumber : scnRidSerialNumber;
+}

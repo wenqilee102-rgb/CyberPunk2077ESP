@@ -1,0 +1,29 @@
+import class abstract gameICooldownSystem extends gameIGameSystem
+{
+	import function DoesCooldownExist(id : Int32) : Bool; // DoesCooldownExist
+	import function GetCIDByItemID(itemId : gameItemID) : Int32; // GetCIDByItemID
+	import function GetCIDByOwnerAndName(owner : whandle:entEntity, cdName : CName) : Int32; // GetCIDByOwnerAndName
+	import function GetCIDByRecord(owner : whandle:entEntity, record : TweakDBID) : Int32; // GetCIDByRecord
+	import function Register(request : script_ref:gameRegisterNewCooldownRequest) : Int32; // Register
+	import function RegisterAbility(request : script_ref:gameRegisterNewAbilityCooldownRequest) : Int32; // RegisterAbility
+	import function RegisterFromRecord(request : script_ref:gameRegisterCooldownFromRecordRequest) : Int32; // RegisterFromRecord
+	import function Remove(id : Int32) : Bool; // Remove
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

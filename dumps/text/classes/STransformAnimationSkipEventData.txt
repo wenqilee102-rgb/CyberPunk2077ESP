@@ -1,0 +1,5 @@
+struct STransformAnimationSkipEventData
+{
+	public    var time : Float;
+	public    var skipToEnd : Bool;
+}

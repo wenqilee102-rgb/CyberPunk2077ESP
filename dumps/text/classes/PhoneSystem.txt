@@ -1,0 +1,88 @@
+class PhoneSystem extends gameScriptableSystem
+{
+	private   var BlackboardSystem : handle:gameBlackboardSystem;
+	private   var Blackboard : whandle:gameIBlackboard;
+	private   var PsmBlackboard : whandle:gameIBlackboard;
+	private   var LastCallInformation : questPhoneCallInformation;
+	private   var StatusEffectsListener : handle:PhoneStatusEffectListener;
+	private   var StatsListener : handle:PhoneStatsListener;
+	private   var ContactsOpen : Bool;
+	private   var PhoneVisibilityBBId : handle:redCallbackObject;
+	private   var ContactsOpenBBId : handle:redCallbackObject;
+	private   var HighLevelBBId : handle:redCallbackObject;
+	private   var CombatBBId : handle:redCallbackObject;
+	private   var SwimmingBBId : handle:redCallbackObject;
+	private   var IsContrDeviceBBId : handle:redCallbackObject;
+	private   var IsUIZoomDeviceBBId : handle:redCallbackObject;
+	private   var PlayerAttachedCallbackID : Uint32;
+	private   var PlayerDetachedCallbackID : Uint32;
+
+	event OnPhoneEnabledChangedBool(value : Bool) : Bool; // OnPhoneEnabledChangedBool
+	event OnPhoneEnabledChangedInt(value : Int32) : Bool; // OnPhoneEnabledChangedInt
+
+	function GetPhoneCallFactName(contactName1 : CName, contactName2 : CName) : String; // GetPhoneCallFactName;CNameCName
+	function IsBlockedByBlackboard() : Bool; // IsBlockedByBlackboard;
+	function IsBlockedByCombat() : Bool; // IsBlockedByCombat;
+	function IsBlockedByHUD() : Bool; // IsBlockedByHUD;
+	function IsBlockedByStatus() : Bool; // IsBlockedByStatus;
+	function IsBlockedByTier() : Bool; // IsBlockedByTier;
+	function IsBlockedByVisiblity() : Bool; // IsBlockedByVisiblity;
+	function IsCallingAvaliable() : Bool; // IsCallingAvaliable;
+	function IsCallingBlockedByStatus() : Bool; // IsCallingBlockedByStatus;
+	function IsCallingEnabled() : Bool; // IsCallingEnabled;
+	function IsEnabledByQuestSystem() : Bool; // IsEnabledByQuestSystem;
+	function IsEnabledByVisiblity() : Bool; // IsEnabledByVisiblity;
+	function IsPhoneAvailable() : Bool; // IsPhoneAvailable;
+	function IsPhoneEnabled() : Bool; // IsPhoneEnabled;
+	function IsPhoneOpened() : Bool; // IsPhoneOpened;
+	function IsShowingMessage() : Bool; // IsShowingMessage;
+	function IsTextingBlockedByStatus() : Bool; // IsTextingBlockedByStatus;
+	function IsTextingEnabled() : Bool; // IsTextingEnabled;
+	function OnAttach(); // OnAttach;
+	function OnContactsStateChanged(newState : Bool); // OnContactsStateChanged;Bool
+	function OnDetach(); // OnDetach;
+	function OnMinimizeCallRequest(request : handle:questMinimizeCallRequest); // OnMinimizeCallRequest;questMinimizeCallRequest
+	function OnPhoneTimeoutRequest(request : handle:PhoneTimeoutRequest); // OnPhoneTimeoutRequest;PhoneTimeoutRequest
+	function OnPhoneVisibilityChanged(newValue : Variant); // OnPhoneVisibilityChanged;Variant
+	function OnPickupPhone(request : handle:PickupPhoneRequest); // OnPickupPhone;PickupPhoneRequest
+	function OnSetPhoneStatus(request : handle:questSetPhoneStatusRequest); // OnSetPhoneStatus;questSetPhoneStatusRequest
+	function OnTalkingTriggerRequest(request : handle:TalkingTriggerRequest); // OnTalkingTriggerRequest;TalkingTriggerRequest
+	function OnTriggerCall(request : handle:questTriggerCallRequest); // OnTriggerCall;questTriggerCallRequest
+	function OnUsePhone(request : handle:UsePhoneRequest); // OnUsePhone;UsePhoneRequest
+	function PlayerAttachedCallback(playerPuppet : handle:gameObject); // PlayerAttachedCallback;GameObject
+	function PlayerDetached(); // PlayerDetached;
+	function RefreshPhoneEnabled(); // RefreshPhoneEnabled;
+	function SetPhoneFact(isPlayerCalling : Bool, contactName : CName, state : questPhoneTalkingState); // SetPhoneFact;BoolCNamequestPhoneTalkingState
+	function ToggleContacts(open : Bool); // ToggleContacts;Bool
+	function TriggerCall(callMode : questPhoneCallMode, isAudio : Bool, contactName : CName, isPlayerCalling : Bool, callPhase : questPhoneCallPhase, isPlayerTriggered : Bool, optional isRejectable : Bool, showAvatar : Bool, callVisuals : questPhoneCallVisuals); // TriggerCall;questPhoneCallModeBoolCNameBoolquestPhoneCallPhaseBoolBoolBoolquestPhoneCallVisuals
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

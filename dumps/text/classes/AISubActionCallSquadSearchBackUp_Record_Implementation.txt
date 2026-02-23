@@ -1,0 +1,22 @@
+class abstract AISubActionCallSquadSearchBackUp_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCallSquadSearchBackUp_Record); // AISubActionCallSquadSearchBackUp_Record_Implementation::Activate;ScriptExecutionContextAISubActionCallSquadSearchBackUp_Record
+	static function CallBackup(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCallSquadSearchBackUp_Record); // AISubActionCallSquadSearchBackUp_Record_Implementation::CallBackup;ScriptExecutionContextAISubActionCallSquadSearchBackUp_Record
+	static function CallBackupOneTarget(source : handle:gameObject, target : handle:gameObject, combatVersion : Bool, remainingDuration : Float, purelyDirect : Bool); // AISubActionCallSquadSearchBackUp_Record_Implementation::CallBackupOneTarget;GameObjectGameObjectBoolFloatBool
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCallSquadSearchBackUp_Record, duration : Float, interrupted : Bool); // AISubActionCallSquadSearchBackUp_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionCallSquadSearchBackUp_RecordFloatBool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionCallSquadSearchBackUp_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionCallSquadSearchBackUp_Record_Implementation::Update;ScriptExecutionContextAISubActionCallSquadSearchBackUp_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

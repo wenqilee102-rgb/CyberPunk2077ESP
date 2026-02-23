@@ -1,0 +1,6 @@
+import struct animSAnimationBufferBitwiseCompressedBoneTrack
+{
+	var position : animSAnimationBufferBitwiseCompressedData;
+	var orientation : animSAnimationBufferBitwiseCompressedData;
+	var scale : animSAnimationBufferBitwiseCompressedData;
+}

@@ -1,0 +1,41 @@
+import class gamedataVehicleEngineData_Record extends gamedataTweakDBRecord
+{
+	import function EngineMaxTorque() : Float; // EngineMaxTorque
+	import function FastR1GearChange() : Bool; // FastR1GearChange
+	import function FinalGearTorqueDecimationScalor() : Float; // FinalGearTorqueDecimationScalor
+	import function FlyWheelMomentOfInertia() : Float; // FlyWheelMomentOfInertia
+	import function ForceReverseRPMToMin() : Bool; // ForceReverseRPMToMin
+	import function GearChangeCooldown() : Float; // GearChangeCooldown
+	import function GearChangeTime() : Float; // GearChangeTime
+	import function GearCurvesPath() : redResourceReferenceScriptToken; // GearCurvesPath
+	import function Gears(out outList : array:whandle:gamedataVehicleGear_Record); // Gears
+	import function GearsContains(item : whandle:gamedataVehicleGear_Record) : Bool; // GearsContains
+	import function GetGearsCount() : Int32; // GetGearsCount
+	import function GetGearsItem(index : Int32) : whandle:gamedataVehicleGear_Record; // GetGearsItem
+	import function GetGearsItemHandle(index : Int32) : handle:gamedataVehicleGear_Record; // GetGearsItemHandle
+	import function MaxRPM() : Float; // MaxRPM
+	import function MinRPM() : Float; // MinRPM
+	import function ResistanceTorque() : Float; // ResistanceTorque
+	import function ReverseDirDelay() : Float; // ReverseDirDelay
+	import function WheelsResistanceRatio() : Float; // WheelsResistanceRatio
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+import struct questReInitContainers_NodeTypeParams
+{
+	var containerNodeRef : NodeRef;
+	var lootTables : array:TweakDBID;
+	var useAreaLoot : Bool;
+}

@@ -1,0 +1,31 @@
+import class gameEffectInstance extends gameIEffect
+{
+	import function AttachToEntity(entity : whandle:entEntity, positionParameter : gamebbScriptID_Vector4, optional offset : Vector4); // AttachToEntity
+	import function AttachToSlot(entity : whandle:entEntity, slotName : CName, positionParameter : gamebbScriptID_Vector4, directionParameter : gamebbScriptID_Vector4); // AttachToSlot
+	import function GetBlackboard() : handle:gameIBlackboard; // GetBlackboard
+	import function GetExecutionInfo(); // GetExecutionInfo
+	import function GetLastError() : String; // GetLastError
+	import function GetSharedData() : gameEffectData; // GetSharedData
+	import function IsFinished() : Bool; // IsFinished
+	import function RegisterCallbackEntity(entity : whandle:entEntity, tag : String); // RegisterCallbackEntity
+	import function Run() : Bool; // Run
+	import function Terminate(); // Terminate
+}
+
+import class abstract gameIEffect extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct MaterialUsedParameter
+{
+	var name : CName;
+	var register : Uint8;
+}

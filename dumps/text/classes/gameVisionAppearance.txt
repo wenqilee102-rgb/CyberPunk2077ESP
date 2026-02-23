@@ -1,0 +1,7 @@
+import struct gameVisionAppearance
+{
+	var fill : Int32;
+	var outline : Int32;
+	var showThroughWalls : Bool;
+	var patternType : gameVisionModePatternType;
+}

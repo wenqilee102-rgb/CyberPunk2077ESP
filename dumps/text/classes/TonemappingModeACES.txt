@@ -1,0 +1,13 @@
+import class TonemappingModeACES extends ITonemappingMode
+{
+	var params : STonemappingACESParams;
+}
+
+import class abstract ITonemappingMode extends ISerializable
+{
+	var colorPreservation : curveData:Float;
+}
+
+import class abstract ISerializable
+{
+}

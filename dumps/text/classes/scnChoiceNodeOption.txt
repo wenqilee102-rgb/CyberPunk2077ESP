@@ -1,0 +1,20 @@
+import struct scnChoiceNodeOption
+{
+	var screenplayOptionId : scnscreenplayItemId;
+	var caption : CName;
+	var blueline : Bool;
+	var isFixedAsRead : Bool;
+	var isSingleChoice : Bool;
+	var type : gameinteractionsChoiceTypeWrapper;
+	var timedParams : handle:scnChoiceNodeNsTimedParams;
+	var questCondition : handle:questIBaseCondition;
+	var triggerCondition : handle:questIBaseCondition;
+	var bluelineCondition : handle:questIBaseCondition;
+	var emphasisCondition : handle:questIBaseCondition;
+	var iconCondition : handle:questIBaseCondition;
+	var gameplayAction : TweakDBID;
+	var iconTagIds : array:TweakDBID;
+	var exDataFlags : Uint32;
+	var mappinReferencePointId : scnReferencePointId;
+	var timedCondition : handle:scnTimedCondition;
+}

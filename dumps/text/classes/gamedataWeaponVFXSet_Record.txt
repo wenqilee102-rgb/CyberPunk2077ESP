@@ -1,0 +1,28 @@
+import class gamedataWeaponVFXSet_Record extends gamedataTweakDBRecord
+{
+	import function Actions(out outList : array:whandle:gamedataWeaponVFXAction_Record); // Actions
+	import function ActionsContains(item : whandle:gamedataWeaponVFXAction_Record) : Bool; // ActionsContains
+	import function GetActionsCount() : Int32; // GetActionsCount
+	import function GetActionsItem(index : Int32) : whandle:gamedataWeaponVFXAction_Record; // GetActionsItem
+	import function GetActionsItemHandle(index : Int32) : handle:gamedataWeaponVFXAction_Record; // GetActionsItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

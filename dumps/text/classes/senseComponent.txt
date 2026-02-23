@@ -1,0 +1,191 @@
+import class senseComponent extends entIPlacedComponent
+{
+	var enableBeingDetectable : Bool;
+	var visibleObject : handle:senseVisibleObject;
+	var sensorObject : handle:senseSensorObject;
+	var isEnabled : Bool;
+	var forceDisableUI : Bool;
+	private   var highLevelCb : handle:redCallbackObject;
+	private   var reactionCb : handle:redCallbackObject;
+	private   var wantedLevelChangedCb : handle:redCallbackObject;
+	private   var highLevelState : gamedataNPCHighLevelState;
+	private   var mainPreset : TweakDBID;
+	private   var secondaryPreset : TweakDBID;
+	private   var puppetBlackboard : whandle:gameIBlackboard;
+	private   var uiWantedBarBB : whandle:gameIBlackboard;
+	private   var hideUIElements : Bool;
+	private   var enabledSenses : Bool;
+	private   var shouldStartDetectingPlayerCached : Bool;
+	private   var wasPlayerLastReactionTarget : Bool;
+	private   var logSource : ESenseLogSource;
+	private   var playerTakedownStateCallbackID : handle:redCallbackObject;
+	private   var playerUpperBodyStateCallbackID : handle:redCallbackObject;
+	private   var playerCarryingStateCallbackID : handle:redCallbackObject;
+	private   var playerInPerception : whandle:PlayerPuppet;
+
+	static function RequestDetectionOverwriteReevaluation(obj : whandle:gameObject, target : whandle:entEntity, optional delay : Float); // senseComponent::RequestDetectionOverwriteReevaluation;GameObjectEntityFloat
+	static function RequestMainPresetChange(obj : whandle:gameObject, presetName : script_ref:String); // senseComponent::RequestMainPresetChange;GameObjectscript_ref<String>
+	static function RequestPresetChange(obj : whandle:gameObject, presetID : TweakDBID, mainPreset : Bool); // senseComponent::RequestPresetChange;GameObjectTweakDBIDBool
+	static function RequestSecondaryPresetChange(obj : whandle:gameObject, presetName : script_ref:String); // senseComponent::RequestSecondaryPresetChange;GameObjectscript_ref<String>
+	static function RequestSecondaryPresetChange(obj : whandle:gameObject, presetID : TweakDBID); // senseComponent::RequestSecondaryPresetChange;GameObjectTweakDBID
+	static function ResetPreset(obj : whandle:gameObject); // senseComponent::ResetPreset;GameObject
+	static function ShouldIgnoreIfPlayerCompanion(owner : whandle:entEntity, target : whandle:entEntity) : Bool; // senseComponent::ShouldIgnoreIfPlayerCompanion;EntityEntity
+
+	import function AddDetection(target : handle:senseComponent, detection : Float) : Bool; // AddDetection
+	import function CreateHearingMappin(); // CreateHearingMappin
+	import function CreateSenseMappin(); // CreateSenseMappin
+	import function GetCurrentPreset() : TweakDBID; // GetCurrentPreset
+	import function GetCurrentPreset(); // GetCurrentPreset
+	import function GetDetection(entityID : entEntityID) : Float; // GetDetection
+	import function GetDetectionMultiplier(entityID : entEntityID) : Float; // GetDetectionMultiplier
+	import function GetDistToTraceEndFromPosToMainTrackedObject(traceType : senseAdditionalTraceType) : Float; // GetDistToTraceEndFromPosToMainTrackedObject
+	import function GetSenseShapes() : array:handle:senseIShape; // GetSenseShapes
+	import function GetTimeSinceLastEntityVisible(entityID : entEntityID) : Float; // GetTimeSinceLastEntityVisible
+	import function GetVisibilityTraceEndToAgentDist(object : handle:gameObject) : Float; // GetVisibilityTraceEndToAgentDist
+	import function HasDetectionAttitudeOverwrite(attitudeGroup : CName) : Bool; // HasDetectionAttitudeOverwrite
+	import function HasDetectionOverwrite(entityID : entEntityID) : Bool; // HasDetectionOverwrite
+	import function HasHearingMappin() : Bool; // HasHearingMappin
+	import function HasSenseMappin() : Bool; // HasSenseMappin
+	import function IgnoreLODChange(ignoreLOD : Bool); // IgnoreLODChange
+	import function IsAgentVisible(object : handle:gameObject) : Bool; // IsAgentVisible
+	import function IsHearingEnabled() : Bool; // IsHearingEnabled
+	import function RemoveDetectionAttitudeOverwrite(attitudeGroup : CName) : Bool; // RemoveDetectionAttitudeOverwrite
+	import function RemoveDetectionOverwrite(entityID : entEntityID) : Bool; // RemoveDetectionOverwrite
+	import function RemoveForcedSensesTracing(targetObjectType : gamedataSenseObjectType, attitudeToTarget : EAIAttitude) : Bool; // RemoveForcedSensesTracing
+	import function RemoveHearingMappin(); // RemoveHearingMappin
+	import function RemoveSenseMappin(); // RemoveSenseMappin
+	import function RequestRemovingSenseMappin(); // RequestRemovingSenseMappin
+	import function ResetDetection(entityID : entEntityID) : Bool; // ResetDetection
+	import function SetCrowdsAggressiveState(isAggresive : Bool); // SetCrowdsAggressiveState
+	import function SetDetectionAttitudeOverwrite(attitudeGroup : CName); // SetDetectionAttitudeOverwrite
+	import function SetDetectionCoolDown(coolDown : Float); // SetDetectionCoolDown
+	import function SetDetectionDropFactor(detectionDrop : Float); // SetDetectionDropFactor
+	import function SetDetectionFactor(detection : Float, optional shapeName : CName) : Bool; // SetDetectionFactor
+	import function SetDetectionMinRange(range : Float) : Bool; // SetDetectionMinRange
+	import function SetDetectionMultiplier(entityID : entEntityID, multiplier : Float); // SetDetectionMultiplier
+	import function SetDetectionOverwrite(entityID : entEntityID); // SetDetectionOverwrite
+	import function SetForcedSensesTracing(targetObjectType : gamedataSenseObjectType, attitudeToTarget : EAIAttitude) : Bool; // SetForcedSensesTracing
+	import function SetHasPierceableWapon(hasTechWeapon : Bool) : Bool; // SetHasPierceableWapon
+	import function SetHearingEnabled(enabled : Bool); // SetHearingEnabled
+	import function SetIsPlayerInterestingFromSecuritySystemPOV(isPlayerInteresting : Bool); // SetIsPlayerInterestingFromSecuritySystemPOV
+	import function SetMainTrackedObject(target : whandle:gameObject) : Bool; // SetMainTrackedObject
+	import function SetMainTrackedObjectTraceZOffset(traceType : senseAdditionalTraceType, zOffset : Float) : Bool; // SetMainTrackedObjectTraceZOffset
+	import function SetSensorObjectType(objectType : gamedataSenseObjectType) : Bool; // SetSensorObjectType
+	import function SetTickDistanceOverride(overrideDistance : Float) : Bool; // SetTickDistanceOverride
+	import function SetVisibleObjectType(objectType : gamedataSenseObjectType) : Bool; // SetVisibleObjectType
+	import function SetVisionBlockersIgnoredBySensor(ignoredVisionBlockers : senseVisionBlockerTypeFlags) : Bool; // SetVisionBlockersIgnoredBySensor
+	import function UpdateCrowdMappin(); // UpdateCrowdMappin
+	import function UsePreset(presetID : TweakDBID) : Bool; // UsePreset
+
+	event OnAddToBlacklistEvent(evt : handle:AddToBlacklistEvent) : Bool; // OnAddToBlacklistEvent
+	event OnAttitudeChanged(evt : handle:gameeventsAttitudeChangedEvent) : Bool; // OnAttitudeChanged
+	event OnAttitudeGroupChanged(evt : handle:gameeventsAttitudeGroupChangedEvent) : Bool; // OnAttitudeGroupChanged
+	event OnCurrentWantedLevelChanged(value : Int32) : Bool; // OnCurrentWantedLevelChanged
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDefeated(evt : handle:gameeventsDefeatedEvent) : Bool; // OnDefeated
+	event OnDetectedEvent(evt : handle:senseOnDetectedEvent) : Bool; // OnDetectedEvent
+	event OnDetectionReachedZero(evt : handle:senseOnRemoveDetection) : Bool; // OnDetectionReachedZero
+	event OnHACK_UseSensePresetEvent(evt : handle:gameHACK_UseSensePresetEvent) : Bool; // OnHACK_UseSensePresetEvent
+	event OnHighLevelChanged(value : Int32) : Bool; // OnHighLevelChanged
+	event OnReactionChanged(value : Int32) : Bool; // OnReactionChanged
+	event OnReevaluateDetectionOverwriteEvent(evt : handle:ReevaluateDetectionOverwriteEvent) : Bool; // OnReevaluateDetectionOverwriteEvent
+	event OnRemoveFromBlacklistEvent(evt : handle:RemoveFromBlacklistEvent) : Bool; // OnRemoveFromBlacklistEvent
+	event OnResurrect(evt : handle:gameeventsResurrectEvent) : Bool; // OnResurrect
+	event OnSecurityAreaCrossingPerimeter(evt : handle:SecurityAreaCrossingPerimeter) : Bool; // OnSecurityAreaCrossingPerimeter
+	event OnSenseEnabledEvent(evt : handle:senseEnabledEvent) : Bool; // OnSenseEnabledEvent
+	event OnSenseInitialize(evt : handle:senseInitializeEvent) : Bool; // OnSenseInitialize
+	event OnSensePresetChangeEvent(evt : handle:sensePresetChangeEvent) : Bool; // OnSensePresetChangeEvent
+	event OnSenseVisibilityEvent(evt : handle:senseVisibilityEvent) : Bool; // OnSenseVisibilityEvent
+	event OnSensorOwnerChangedEvent(evt : handle:senseSensorOwnerChangedEvent) : Bool; // OnSensorOwnerChangedEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnSuspiciousObjectEvent(evt : handle:AIbehaviorSuspiciousObjectEvent) : Bool; // OnSuspiciousObjectEvent
+	event OnTargetAssessmentRequest(evt : handle:TargetAssessmentRequest) : Bool; // OnTargetAssessmentRequest
+
+	function GetConstOwnerPuppet() : handle:ScriptedPuppet; // GetConstOwnerPuppet;
+	function GetGame() : ScriptGameInstance; // GetGame;
+	function GetOwner() : handle:gameObject; // GetOwner;
+	function GetOwnerDevice() : handle:SensorDevice; // GetOwnerDevice;
+	function GetOwnerPuppet() : handle:ScriptedPuppet; // GetOwnerPuppet;
+	function GetSecuritySystem() : handle:SecuritySystemControllerPS; // GetSecuritySystem;
+	function GetShouldStartDetectingPlayerCached() : Bool; // GetShouldStartDetectingPlayerCached;
+	function InitDetectionOverwrite(); // InitDetectionOverwrite;
+	function IsOwnerFriendlyTowardsPlayer() : Bool; // IsOwnerFriendlyTowardsPlayer;
+	function IsOwnerFriendlyTowardsTarget(target : whandle:gameObject) : Bool; // IsOwnerFriendlyTowardsTarget;GameObject
+	function IsOwnerHostileTowardsPlayer() : Bool; // IsOwnerHostileTowardsPlayer;
+	function IsOwnerHostileTowardsTarget(target : whandle:gameObject) : Bool; // IsOwnerHostileTowardsTarget;GameObject
+	function IsPlayerRecentlyDroppedThreat(target : whandle:gameObject) : Bool; // IsPlayerRecentlyDroppedThreat;GameObject
+	function IsTargetInteresting(target : whandle:gameObject) : Bool; // IsTargetInteresting;GameObject
+	function IsTargetInterestingForSecuritySystem(target : whandle:gameObject) : Bool; // IsTargetInterestingForSecuritySystem;GameObject
+	function IsTargetPlayer(target : whandle:gameObject) : Bool; // IsTargetPlayer;GameObject
+	function Log(category : CName, message : String); // Log;CNameString
+	function LogBySource(category : CName, message : String); // LogBySource;CNameString
+	function LogCategory(suffix : String) : CName; // LogCategory;String
+	function LogEnabled() : Bool; // LogEnabled;
+	function LogInfo(message : String); // LogInfo;String
+	function LogStart(source : ESenseLogSource, message : String); // LogStart;ESenseLogSourceString
+	function LogTrueFalse(message : String, value : Bool); // LogTrueFalse;StringBool
+	function OnDetach(); // OnDetach;
+	function OnPlayerCarryingStateChange(carrying : Bool); // OnPlayerCarryingStateChange;Bool
+	function OnPlayerTakedownStateChange(takedownState : Int32); // OnPlayerTakedownStateChange;Int32
+	function OnPlayerUpperBodyStateChange(upperBodyState : Int32); // OnPlayerUpperBodyStateChange;Int32
+	function PlayerEnteredPerception(player : whandle:PlayerPuppet); // PlayerEnteredPerception;PlayerPuppet
+	function PlayerExitedPercpetion(player : whandle:PlayerPuppet); // PlayerExitedPercpetion;PlayerPuppet
+	function ReevaluateDetectionOverwrite(target : whandle:gameObject, optional isVisible : Bool) : Bool; // ReevaluateDetectionOverwrite;GameObjectBool
+	function ReevaluatePlayerInterestFromSecuritySystemPOV() : Bool; // ReevaluatePlayerInterestFromSecuritySystemPOV;
+	function RefreshCombatDetectionMultiplier(target : handle:ScriptedPuppet); // RefreshCombatDetectionMultiplier;ScriptedPuppet
+	function SendDetectionRiseEvent(target : whandle:gameObject, isVisible : Bool); // SendDetectionRiseEvent;GameObjectBool
+	function ShouldStartDetecting(target : handle:gameObject) : Bool; // ShouldStartDetecting;GameObject
+	function ShouldStartDetectingPlayer(player : handle:PlayerPuppet) : Bool; // ShouldStartDetectingPlayer;PlayerPuppet
+	function ToggleComponent(condition : Bool); // ToggleComponent;Bool
+	function ToggleSenses(condition : Bool); // ToggleSenses;Bool
+	function TryCreateSenseMappin() : Bool; // TryCreateSenseMappin;
+	function UpdateVisionBlockersIgnoredBySensor(); // UpdateVisionBlockersIgnoredBySensor;
+}
+
+import class abstract entIPlacedComponent extends entIComponent
+{
+	var localTransform : WorldTransform;
+	var parentTransform : handle:entITransformBinding;
+
+	import function GetInitialOrientation() : Quaternion; // GetInitialOrientation
+	import function GetInitialPosition() : Vector4; // GetInitialPosition
+	import function GetInitialTransform() : Matrix; // GetInitialTransform
+	import function GetLocalOrientation() : Quaternion; // GetLocalOrientation
+	import function GetLocalPosition() : Vector4; // GetLocalPosition
+	import function GetLocalToWorld() : Matrix; // GetLocalToWorld
+	import function GetLocalTransform() : Matrix; // GetLocalTransform
+	import function GetTransformParent(); // GetTransformParent
+	import function SetLocalOrientation(rot : Quaternion); // SetLocalOrientation
+	import function SetLocalPosition(pos : Vector4); // SetLocalPosition
+	import function SetLocalTransform(pos : Vector4, rot : Quaternion); // SetLocalTransform
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

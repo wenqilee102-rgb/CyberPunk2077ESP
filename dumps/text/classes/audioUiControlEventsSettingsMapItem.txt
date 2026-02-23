@@ -1,0 +1,18 @@
+import class audioUiControlEventsSettingsMapItem extends audioAudioMetadata
+{
+	var baseEvent : CName;
+	var customActionsDictionary : handle:audioKeySoundEventDictionary;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

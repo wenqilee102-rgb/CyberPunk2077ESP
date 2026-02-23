@@ -1,0 +1,1 @@
+{"a":"gameIGameSystemReplicatedState","b":"gameDamageSystemSharedState","d":8,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"gamedamageServerHitData"}}},"b":"hitHistory","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gamedamageServerKillData"}}},"b":"killHistory","c":128}]}

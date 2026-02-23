@@ -1,0 +1,6 @@
+import struct scnSpawnSetParams
+{
+	var reference : NodeRef;
+	var entryName : CName;
+	var forceMaxVisibility : Bool;
+}

@@ -1,0 +1,30 @@
+import class CParticleModificatorNoise extends IParticleModificator
+{
+	var amplitude : handle:IEvaluatorVector;
+	var offset : handle:IEvaluatorVector;
+	var frequency : handle:IEvaluatorVector;
+	var changeRate : Vector3;
+	var applyToPosition : Bool;
+	var worldSpaceOffset : Bool;
+	var noiseType : ENoiseType;
+}
+
+import class abstract IParticleModificator extends IParticleInitializer
+{
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

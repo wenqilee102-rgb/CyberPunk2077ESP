@@ -1,0 +1,13 @@
+import struct gameEffectDefinition
+{
+	var tag : CName;
+	var objectProviders : array:handle:gameEffectObjectProvider;
+	var objectFilters : array:handle:gameEffectObjectFilter;
+	var effectExecutors : array:handle:gameEffectExecutor;
+	var durationModifiers : array:handle:gameEffectDurationModifier;
+	var preActions : array:handle:gameEffectPreAction;
+	var postActions : array:handle:gameEffectPostAction;
+	var noTargetsActions : array:handle:gameEffectAction;
+	var settings : gameEffectSettings;
+	var debugSettings : gameEffectDebugSettings;
+}

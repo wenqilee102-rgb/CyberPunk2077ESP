@@ -1,0 +1,6 @@
+enum gameAutodriveLaneValidityResult
+{
+	OnValidLane = 0,
+	NotOnValidLane = 1,
+	NotOnRoad = 2
+}

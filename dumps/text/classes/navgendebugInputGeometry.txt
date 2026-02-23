@@ -1,0 +1,6 @@
+import struct navgendebugInputGeometry
+{
+	var triangles : array:navgendebugInputGeometryTriangle;
+	var tileBoundingBox : Box;
+	var extrudedBoundingBox : Box;
+}

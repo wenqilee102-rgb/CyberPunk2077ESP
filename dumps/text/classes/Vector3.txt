@@ -1,0 +1,8 @@
+import struct Vector3
+{
+	var X : Float;
+	var Y : Float;
+	var Z : Float;
+
+	static function Lerp(a : Vector3, b : Vector3, t : Float) : Vector3; // Vector3::Lerp;Vector3Vector3Float
+}

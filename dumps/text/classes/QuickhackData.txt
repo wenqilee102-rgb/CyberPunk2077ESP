@@ -1,0 +1,50 @@
+class QuickhackData extends IScriptable
+{
+	public    var actionOwner : entEntityID;
+	public    var action : handle:BaseScriptableAction;
+	public    var actionOwnerName : CName;
+	public    var itemID : gameItemID;
+	public    var icon : TweakDBID;
+	public    var iconCategory : CName;
+	public    var title : String;
+	public    var titleAlternative : String;
+	public    var description : String;
+	public    var inactiveReason : String;
+	public    var isLocked : Bool;
+	public    var actionState : EActionInactivityReson;
+	public    var type : gamedataObjectActionType;
+	public    var cost : Int32;
+	public    var awarenessCost : Float;
+	public    var showRevealInfo : Bool;
+	public    var willReveal : Bool;
+	public    var costRaw : Int32;
+	public    var uploadTime : Float;
+	public    var duration : Float;
+	public    var ICELevelVisible : Bool;
+	public    var ICELevel : Float;
+	public    var vulnerabilities : array:TweakDBID;
+	public    var quality : Int32;
+	public    var isInstant : Bool;
+	public    var cooldown : Float;
+	public    var cooldownTweak : TweakDBID;
+	public    var actionMatchesTarget : Bool;
+	public    var maxListSize : Int32;
+	public    var category : whandle:gamedataHackCategory_Record;
+	public    var actionCompletionEffects : array:whandle:gamedataObjectActionEffect_Record;
+	public    var noQuickhackData : Bool;
+	public    var networkBreached : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,16 @@
+import class worldTrafficLanesSpotsResource extends resStreamedResource
+{
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

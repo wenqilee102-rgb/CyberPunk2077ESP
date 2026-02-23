@@ -1,0 +1,5 @@
+import struct gameSmartObjectTransformSequenceDictionaryEntry
+{
+	var sequence : array:Uint16;
+	var id : Uint8;
+}

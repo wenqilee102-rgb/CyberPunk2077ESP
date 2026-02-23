@@ -1,0 +1,37 @@
+import class animAnimFeature_Climb extends animAnimFeature
+{
+	var verticalPosition : Vector4;
+	var horizontalPosition : Vector4;
+	var toVerticalTime : Float;
+	var verticalToHorizontalTime : Float;
+	var frontEdgePosition : Vector4;
+	var frontEdgeNormal : Vector4;
+	var yawAngle : Float;
+	var stateLength : Float;
+	var climbType : Int32;
+	var state : Int32;
+
+	import function SetFrontEdgeNormal(); // SetFrontEdgeNormal
+	import function SetFrontEdgePosition(); // SetFrontEdgePosition
+	import function SetHorizontalPosition(); // SetHorizontalPosition
+	import function SetVerticalPosition(); // SetVerticalPosition
+	import function SetVerticalToHorizontalTime(); // SetVerticalToHorizontalTime
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

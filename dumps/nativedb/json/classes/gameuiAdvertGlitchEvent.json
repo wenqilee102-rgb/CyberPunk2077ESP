@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameuiAdvertGlitchEvent","c":"AdvertGlitchEvent","d":24,"e":[{"a":{"a":10},"b":"glitchValue","c":128}],"f":[{"a":"SetGlitchTime","d":4,"e":[{"a":{"a":10},"b":"glitchTime","c":0}]},{"a":"SetShouldGlitch","d":4,"e":[{"a":{"a":10},"b":"shouldGlitch","c":0}]}]}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"gamedataPackageNode","d":8,"e":[{"a":{"a":12},"b":"name","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gamedataVariableNode"}}},"b":"serializedVariables","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gamedataGroupNode"}}},"b":"serializedGroups","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"gamedataFileNode"}}},"b":"files","c":128}]}

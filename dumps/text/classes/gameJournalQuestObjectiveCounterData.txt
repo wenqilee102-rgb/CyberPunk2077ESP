@@ -1,0 +1,6 @@
+import struct gameJournalQuestObjectiveCounterData
+{
+	var entryPath : handle:gameJournalPath;
+	var oldValue : Int32;
+	var newValue : Int32;
+}

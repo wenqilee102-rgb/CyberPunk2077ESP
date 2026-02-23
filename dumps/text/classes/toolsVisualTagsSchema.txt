@@ -1,0 +1,10 @@
+import class toolsVisualTagsSchema extends ISerializable
+{
+	var name : CName;
+	var categories : array:toolsVisualTagsGroup;
+	var presets : array:toolsVisualTagsGroup;
+}
+
+import class abstract ISerializable
+{
+}

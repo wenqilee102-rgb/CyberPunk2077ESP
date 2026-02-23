@@ -1,0 +1,9 @@
+import struct gameuiUnlockableProgram
+{
+	var name : CName;
+	var note : CName;
+	var isFulfilled : Bool;
+	var programTweakID : TweakDBID;
+	var iconTweakID : TweakDBID;
+	var hidden : Bool;
+}

@@ -1,0 +1,5 @@
+import struct inkSize
+{
+	var width : Float;
+	var height : Float;
+}

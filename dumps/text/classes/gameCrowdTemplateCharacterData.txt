@@ -1,0 +1,5 @@
+import struct gameCrowdTemplateCharacterData
+{
+	var characterRecordId : TweakDBID;
+	var weight : Float;
+}

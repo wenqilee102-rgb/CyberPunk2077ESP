@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorFindNavigablePointTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"destination","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"outAdjustedDestination","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"outWasAdjusted","c":128}]}

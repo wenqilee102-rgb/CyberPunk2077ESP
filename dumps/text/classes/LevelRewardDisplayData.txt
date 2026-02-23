@@ -1,0 +1,29 @@
+class LevelRewardDisplayData extends IDisplayData
+{
+	public    var level : Int32;
+	public    var rewardName : String;
+	public    var description : String;
+	public    var icon : CName;
+	public    var locPackage : handle:gameUILocalizationDataPackage;
+	public    var descPackage : handle:gameUILocalizationDataPackage;
+	public    var isLock : Bool;
+}
+
+class IDisplayData extends IScriptable
+{
+	function CreateTooltipData(manager : handle:PlayerDevelopmentDataManager) : handle:BasePerksMenuTooltipData; // CreateTooltipData;PlayerDevelopmentDataManager
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

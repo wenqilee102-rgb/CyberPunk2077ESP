@@ -1,0 +1,34 @@
+class ScannerName extends ScannerChunk
+{
+	private   var displayName : String;
+	private   var hasArchetype : Bool;
+	private   var textParams : handle:textTextParameterSet;
+
+	function GetDisplayName() : String; // GetDisplayName;
+	function GetTextParams() : handle:textTextParameterSet; // GetTextParams;
+	function GetType() : ScannerDataType; // GetType;
+	function HasArchetype() : Bool; // HasArchetype;
+	function Set(_displayName : script_ref:String); // Set;script_ref<String>
+	function SetArchetype(has : Bool); // SetArchetype;Bool
+	function SetTextParams(_params : handle:textTextParameterSet); // SetTextParams;inkTextParams
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

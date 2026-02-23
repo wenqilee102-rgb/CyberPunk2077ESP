@@ -1,0 +1,29 @@
+class EvaluateMinigame extends redEvent
+{
+	public    var minigameBB : whandle:gameIBlackboard;
+	public    var reward : TweakDBID;
+	public    var journalEntry : String;
+	public    var fact : CName;
+	public    var factValue : Int32;
+	public    var item : gameItemID;
+	public    var showPopup : Bool;
+	public    var returnToJournal : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

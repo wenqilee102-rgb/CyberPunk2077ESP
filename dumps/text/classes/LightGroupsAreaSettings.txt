@@ -1,0 +1,14 @@
+import class LightGroupsAreaSettings extends IAreaSettings
+{
+	var groupFade : [8]curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

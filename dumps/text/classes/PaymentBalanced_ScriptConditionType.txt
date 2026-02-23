@@ -1,0 +1,49 @@
+class PaymentBalanced_ScriptConditionType extends PaymentConditionTypeBase
+{
+	public    var questAssignment : TweakDBID;
+	public    var difficulty : EGameplayChallengeLevel;
+
+	function GetBluelinePart(playerObject : handle:gameObject) : handle:gameinteractionsvisBluelinePart; // GetBluelinePart;GameObject
+	function GetPaymentAmount(playerObject : handle:gameObject) : Uint32; // GetPaymentAmount;GameObject
+	function ToString() : String; // ToString;
+}
+
+class PaymentConditionTypeBase extends BluelineConditionTypeBase
+{
+	public    var inverted : Bool;
+	public    var payWhenSucceded : Bool;
+
+	function Evaluate(playerObject : handle:gameObject) : Bool; // Evaluate;GameObject
+	function ExecuteBluelineAction(playerObject : handle:gameObject); // ExecuteBluelineAction;GameObject
+	function GetPaymentAmount(playerObject : handle:gameObject) : Uint32; // GetPaymentAmount;GameObject
+	function GetPaymentData(playerObject : handle:gameObject) : questPaymentConditionData; // GetPaymentData;GameObject
+	function GetPaymentMoneyItemId() : gameItemID; // GetPaymentMoneyItemId;
+	function IsInverted() : Bool; // IsInverted;
+	function IsPaidWhenSucceeded() : Bool; // IsPaidWhenSucceeded;
+}
+
+class abstract BluelineConditionTypeBase extends ScriptConditionTypeBase
+{
+	function ExecuteBluelineAction(playerObject : handle:gameObject); // ExecuteBluelineAction;GameObject
+	function GetBluelinePart(playerObject : handle:gameObject) : handle:gameinteractionsvisBluelinePart; // GetBluelinePart;GameObject
+}
+
+class abstract ScriptConditionTypeBase extends IScriptable
+{
+	function Evaluate(playerObject : handle:gameObject) : Bool; // Evaluate;GameObject
+	function ToString() : String; // ToString;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,31 @@
+class WeaponDataDef extends gamebbScriptDefinition
+{
+	public    var Charge : gamebbScriptID_Float;
+	public    var OverheatPercentage : gamebbScriptID_Float;
+	public    var IsInForcedOverheatCooldown : gamebbScriptID_Bool;
+	public    var ChargeStep : gamebbScriptID_Variant;
+	public    var TriggerMode : gamebbScriptID_Variant;
+	public    var MagazineAmmoCapacity : gamebbScriptID_Uint32;
+	public    var MagazineAmmoCount : gamebbScriptID_Uint32;
+	public    var MagazineAmmoID : gamebbScriptID_Variant;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

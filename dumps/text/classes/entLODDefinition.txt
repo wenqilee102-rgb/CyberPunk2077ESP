@@ -1,0 +1,15 @@
+import class entLODDefinition extends ISerializable
+{
+	var backgroundDistanceLODs : static:4,Float;
+	var regularDistanceLODs : static:4,Float;
+	var cinematicDistanceLODs : static:4,Float;
+	var vehicleDistanceLODs : static:4,Float;
+	var cinematicVehicleDistanceLODs : static:4,Float;
+	var vehicleInteriorDistanceLODs : static:4,Float;
+	var vehicleDecorationDistanceLODs : static:4,Float;
+	var consoleDistanceLODs : static:4,Float;
+}
+
+import class abstract ISerializable
+{
+}

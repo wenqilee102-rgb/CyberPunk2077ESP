@@ -1,0 +1,6 @@
+struct InventoryItemDisplayData
+{
+	public    var itemID : gameItemID;
+	public    var equipmentArea : gamedataEquipmentArea;
+	public    var slotIndex : Int32;
+}

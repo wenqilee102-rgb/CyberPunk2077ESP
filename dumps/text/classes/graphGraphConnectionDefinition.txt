@@ -1,0 +1,13 @@
+import class graphGraphConnectionDefinition extends graphIGraphObjectDefinition
+{
+	var source : whandle:graphGraphSocketDefinition;
+	var destination : whandle:graphGraphSocketDefinition;
+}
+
+import class abstract graphIGraphObjectDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

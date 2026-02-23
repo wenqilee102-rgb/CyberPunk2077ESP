@@ -1,0 +1,24 @@
+import class AICTreeNodeActionReloadWeaponDefinition extends AICTreeNodeActionDefinition
+{
+}
+
+import class abstract AICTreeNodeActionDefinition extends AICTreeExtendableNodeDefinition
+{
+}
+
+import class abstract AICTreeExtendableNodeDefinition extends AICTreeNodeDefinition
+{
+	var optionalChild : handle:LibTreeINodeDefinition;
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

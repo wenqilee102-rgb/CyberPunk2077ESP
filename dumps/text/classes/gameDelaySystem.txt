@@ -1,0 +1,39 @@
+import class gameDelaySystem extends gameIDelaySystem
+{
+	import function CancelCallback(delayID : gameDelayID); // CancelCallback
+	import function CancelDelay(delayID : gameDelayID); // CancelDelay
+	import function CancelTick(delayID : gameDelayID); // CancelTick
+	import function DelayCallback(delayCallback : handle:gameDelaySystemScriptedDelayCallbackWrapper, timeToDelay : Float, optional isAffectedByTimeDilation : Bool) : gameDelayID; // DelayCallback
+	import function DelayCallbackNextFrame(delayCallback : handle:gameDelaySystemScriptedDelayCallbackWrapper); // DelayCallbackNextFrame
+	import function DelayEvent(entity : whandle:entEntity, eventToDelay : handle:redEvent, timeToDelay : Float, optional isAffectedByTimeDilation : Bool) : gameDelayID; // DelayEvent
+	import function DelayEventNextFrame(entity : whandle:entEntity, eventToDelay : handle:redEvent); // DelayEventNextFrame
+	import function DelayPSEvent(psID : gamePersistentID, classType : CName, eventToDelay : handle:redEvent, timeToDelay : Float, optional isAffectedByTimeDilation : Bool) : gameDelayID; // DelayPSEvent
+	import function DelayPSEventNextFrame(psID : gamePersistentID, classType : CName, eventToDelay : handle:redEvent); // DelayPSEventNextFrame
+	import function DelayScriptableSystemRequest(systemName : CName, requestToDelay : handle:gameScriptableSystemRequest, timeToDelay : Float, optional isAffectedByTimeDilation : Bool) : gameDelayID; // DelayScriptableSystemRequest
+	import function DelayScriptableSystemRequestNextFrame(systemName : CName, requestToDelay : handle:gameScriptableSystemRequest); // DelayScriptableSystemRequestNextFrame
+	import function GetRemainingDelayTime(delayID : gameDelayID) : Float; // GetRemainingDelayTime
+	import function QueueTask(caller : handle:IScriptable, data : handle:gameScriptTaskData, funtionName : CName, executionStage : gameScriptTaskExecutionStage); // QueueTask
+	import function TickOnEvent(entity : whandle:entEntity, eventToTick : handle:gameTickableEvent, duration : Float) : gameDelayID; // TickOnEvent
+}
+
+import class abstract gameIDelaySystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

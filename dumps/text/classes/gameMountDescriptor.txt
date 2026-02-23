@@ -1,0 +1,8 @@
+import struct gameMountDescriptor
+{
+	var parentId : entEntityID;
+	var slotName : CName;
+	var initialTransform : Transform;
+	var state : gamePuppetVehicleState;
+	var mountType : gameMountDescriptorMountType;
+}

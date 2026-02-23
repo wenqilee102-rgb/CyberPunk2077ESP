@@ -1,0 +1,7 @@
+struct DebuggerProperties
+{
+	public    var exclusiveMode : Bool;
+	public    var factActivated : CName;
+	public    var debugName : CName;
+	public    var layerIDs : array:Uint32;
+}

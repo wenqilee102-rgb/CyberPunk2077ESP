@@ -1,0 +1,21 @@
+import class AIbehaviorCommandConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var commandName : handle:AIArgumentMapping;
+	var useInheritance : Bool;
+	var isWaiting : Bool;
+	var isExecuting : Bool;
+	var commandOut : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

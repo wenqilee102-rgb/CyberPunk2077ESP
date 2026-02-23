@@ -1,0 +1,52 @@
+import class gamedataShooterGameplay_Record extends gamedataArcadeGameplay_Record
+{
+	import function ArcadeShooterGameplayMusic() : CName; // ArcadeShooterGameplayMusic
+	import function ArcadeShooterMenuMusic() : CName; // ArcadeShooterMenuMusic
+	import function ArcadeShooterStartMusic() : CName; // ArcadeShooterStartMusic
+	import function ArcadeShooterStopMusic() : CName; // ArcadeShooterStopMusic
+	import function AttackDroneTDBID() : CName; // AttackDroneTDBID
+	import function BarrelTDBID() : CName; // BarrelTDBID
+	import function BasiliskTDBID() : CName; // BasiliskTDBID
+	import function FlyingDroneTDBID() : CName; // FlyingDroneTDBID
+	import function LandMineTDBID() : CName; // LandMineTDBID
+	import function MeatheadTDBID() : CName; // MeatheadTDBID
+	import function MeleeTDBID() : CName; // MeleeTDBID
+	import function NinjaTDBID() : CName; // NinjaTDBID
+	import function PickUpTransporterTDBID() : CName; // PickUpTransporterTDBID
+	import function PlayerTDBID() : CName; // PlayerTDBID
+	import function PowerupDroneTDBID() : CName; // PowerupDroneTDBID
+	import function RangeGrenadeTDBID() : CName; // RangeGrenadeTDBID
+	import function RangeTDBID() : CName; // RangeTDBID
+	import function RescueTransporterTDBID() : CName; // RescueTransporterTDBID
+	import function ShieldDroneTDBID() : CName; // ShieldDroneTDBID
+	import function SpiderDroneTDBID() : CName; // SpiderDroneTDBID
+	import function TransporterTDBID() : CName; // TransporterTDBID
+	import function VipPlatTDBID() : CName; // VipPlatTDBID
+	import function VipTDBID() : CName; // VipTDBID
+}
+
+import class gamedataArcadeGameplay_Record extends gamedataTweakDBRecord
+{
+	import function ArcadeGameplayPausedSFX() : CName; // ArcadeGameplayPausedSFX
+	import function ArcadeGameplaySilentBackgroundMusic() : CName; // ArcadeGameplaySilentBackgroundMusic
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

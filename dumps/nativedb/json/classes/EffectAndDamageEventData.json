@@ -1,0 +1,1 @@
+{"a":"gameScriptTaskData","b":"EffectAndDamageEventData","d":0,"e":[{"a":{"a":26,"c":{"b":"gameeventsHitEvent"}},"b":"hitevent","c":128},{"a":{"a":31,"c":{"a":27,"c":{"b":"entEntity"}}},"b":"threats","c":128},{"a":{"a":26,"c":{"b":"TriggerAttackOnNearbyEnemiesEffector"}},"b":"effectorInstance","c":128}]}

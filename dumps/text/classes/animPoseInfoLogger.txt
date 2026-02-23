@@ -1,0 +1,7 @@
+import struct animPoseInfoLogger
+{
+	var enabled : Bool;
+	var showStackTransformsCount : Bool;
+	var showStackTracksCount : Bool;
+	var entries : array:handle:animPoseInfoLoggerEntry;
+}

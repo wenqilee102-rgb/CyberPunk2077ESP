@@ -1,0 +1,35 @@
+import class gamedataShooterWeaponData_Record extends gamedataTweakDBRecord
+{
+	import function Cooldown() : Float; // Cooldown
+	import function ImageTextureAtlas() : redResourceReferenceScriptToken; // ImageTextureAtlas
+	import function ImageTexturePart() : CName; // ImageTexturePart
+	import function Interval() : Float; // Interval
+	import function Name() : CName; // Name
+	import function Rounds() : Int32; // Rounds
+	import function SfxShoot() : CName; // SfxShoot
+	import function SpecialValue() : Float; // SpecialValue
+	import function UpgradedBulletTextureAtlas() : redResourceReferenceScriptToken; // UpgradedBulletTextureAtlas
+	import function UpgradedBulletTexturePart() : CName; // UpgradedBulletTexturePart
+	import function UpgradedValue() : Float; // UpgradedValue
+	import function Value() : Float; // Value
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

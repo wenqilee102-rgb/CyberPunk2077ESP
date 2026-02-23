@@ -1,0 +1,29 @@
+class FocusForcedHighlightPersistentData extends IScriptable
+{
+	private   var sourceID : entEntityID;
+	private   var sourceName : CName;
+	private   var highlightType : EFocusForcedHighlightType;
+	private   var outlineType : EFocusOutlineType;
+	private   var priority : EPriority;
+	private   var inTransitionTime : Float;
+	private   var outTransitionTime : Float;
+	private   var isRevealed : Bool;
+	private   var patternType : gameVisionModePatternType;
+
+	function GetData() : handle:FocusForcedHighlightData; // GetData;
+	function Initialize(data : handle:FocusForcedHighlightData); // Initialize;FocusForcedHighlightData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,48 @@
+class PlayerHandicapSystem extends gameIPlayerHandicapSystem
+{
+	private   var canDropHealingConsumable : Bool;
+	private   var canDropAmmo : Bool;
+
+	static function GetInstance(owner : whandle:gameObject) : handle:PlayerHandicapSystem; // PlayerHandicapSystem::GetInstance;GameObject
+
+	function CanDropAmmo() : Bool; // CanDropAmmo;
+	function CanDropHealingConsumable() : Bool; // CanDropHealingConsumable;
+	function OnBlockAmmoDrop(request : handle:gameBlockAmmoDrop); // OnBlockAmmoDrop;BlockAmmoDrop
+	function OnBlockHealingConsumableDrop(request : handle:BlockHealingConsumableDrop); // OnBlockHealingConsumableDrop;BlockHealingConsumableDrop
+	function OnUnblockAmmoDrop(request : handle:UnblockAmmoDrop); // OnUnblockAmmoDrop;UnblockAmmoDrop
+	function OnUnblockHealingConsumableDrop(request : handle:UnblockHealingConsumableDrop); // OnUnblockHealingConsumableDrop;UnblockHealingConsumableDrop
+}
+
+import class gameIPlayerHandicapSystem extends gameScriptableSystem
+{
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"worldFoliageRawItem","d":8,"e":[{"a":{"a":30,"c":{"b":"CMesh"}},"b":"Mesh","c":128},{"a":{"a":14},"b":"MeshAppearance","c":128},{"a":{"b":"Vector3"},"b":"Position","c":128},{"a":{"b":"Quaternion"},"b":"Rotation","c":128},{"a":{"a":10},"b":"Scale","c":128}]}

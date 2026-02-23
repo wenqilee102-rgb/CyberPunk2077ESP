@@ -1,0 +1,1 @@
+{"b":"BeamData","d":0,"g":true,"e":[{"a":{"b":"Vector4"},"b":"startDirection","c":128},{"a":{"b":"Vector4"},"b":"endDirection","c":128},{"a":{"a":26,"c":{"b":"gameEffectInstance"}},"b":"effect","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"target","c":128}]}

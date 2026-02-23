@@ -1,0 +1,13 @@
+import class gameTransformAnimation_PlaySound extends gameTransformAnimationTrackItemImpl
+{
+	var soundName : CName;
+	var unique : Bool;
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

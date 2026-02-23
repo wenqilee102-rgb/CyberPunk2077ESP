@@ -1,0 +1,34 @@
+import class AIbehaviorDrivePatrolTreeNodeDefinition extends AIbehaviorDriveTreeNodeDefinition
+{
+	var maxSpeed : handle:AIArgumentMapping;
+	var minSpeed : handle:AIArgumentMapping;
+	var clearTrafficOnPath : handle:AIArgumentMapping;
+	var emergencyPatrol : handle:AIArgumentMapping;
+	var numPatrolLoops : handle:AIArgumentMapping;
+	var forcedStartSpeed : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDriveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct ColorBalance
+{
+	var Red : Float;
+	var Green : Float;
+	var Blue : Float;
+	var Luminance : Float;
+}

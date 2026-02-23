@@ -1,0 +1,32 @@
+import class gamedataAISubActionGameplayLogicPackage_Record extends gamedataAISubAction_Record
+{
+	import function GetPackagesCount() : Int32; // GetPackagesCount
+	import function GetPackagesItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetPackagesItem
+	import function GetPackagesItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetPackagesItemHandle
+	import function Packages(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // Packages
+	import function PackagesContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // PackagesContains
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

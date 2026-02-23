@@ -1,0 +1,1 @@
+{"b":"gameEquipParam","c":"RequestItemParam","d":8,"g":true,"e":[{"a":{"a":15},"b":"slotID","c":128},{"a":{"b":"gameItemID"},"b":"itemIDToEquip","c":128},{"a":{"a":1},"b":"forceFirstEquip","c":128},{"a":{"a":1},"b":"instant","c":128}]}

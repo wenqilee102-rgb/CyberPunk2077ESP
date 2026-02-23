@@ -1,0 +1,28 @@
+import class gamedataAINodeMapField_Record extends gamedataTweakDBRecord
+{
+	import function ForLOD() : Int32; // ForLOD
+	import function IsOverriddenBy() : whandle:gamedataAIRecord_Record; // IsOverriddenBy
+	import function IsOverriddenByHandle() : handle:gamedataAIRecord_Record; // IsOverriddenByHandle
+	import function Node() : whandle:gamedataAIRecord_Record; // Node
+	import function NodeHandle() : handle:gamedataAIRecord_Record; // NodeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

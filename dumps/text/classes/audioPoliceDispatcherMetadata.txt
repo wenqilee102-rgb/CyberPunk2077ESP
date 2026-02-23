@@ -1,0 +1,22 @@
+import class audioPoliceDispatcherMetadata extends audioAudioMetadata
+{
+	var regularInputs : array:CName;
+	var playerChaseStartInputs : array:CName;
+	var playerChaseBackupNeededInputs : array:CName;
+	var playerChaseEndInputs : array:CName;
+	var dispatcherTimeInterval : Float;
+	var sceneFilePath : String;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+class abstract ItemPreviewHelper extends IScriptable
+{
+	static function GetPreviewData(controller : handle:IScriptable, itemData : script_ref:gameInventoryItemData, isGarment : Bool) : handle:InventoryItemPreviewData; // ItemPreviewHelper::GetPreviewData;IScriptablescript_ref<InventoryItemData>Bool
+	static function GetPreviewData(controller : handle:IScriptable, itemData : whandle:UIInventoryItem, isGarment : Bool) : handle:InventoryItemPreviewData; // ItemPreviewHelper::GetPreviewData;IScriptableUIInventoryItemBool
+	static function ShowPreviewItem(controller : handle:gameuiWidgetGameController, itemData : whandle:UIInventoryItem, isGarment : Bool, callbackName : CName) : handle:inkGameNotificationToken; // ItemPreviewHelper::ShowPreviewItem;inkGameControllerUIInventoryItemBoolCName
+	static function ShowPreviewItem(controller : handle:inkWidgetLogicController, itemData : script_ref:gameInventoryItemData, isGarment : Bool, callbackName : CName) : handle:inkGameNotificationToken; // ItemPreviewHelper::ShowPreviewItem;inkLogicControllerscript_ref<InventoryItemData>BoolCName
+	static function ShowPreviewItem(controller : handle:gameuiWidgetGameController, itemData : script_ref:gameInventoryItemData, isGarment : Bool, callbackName : CName) : handle:inkGameNotificationToken; // ItemPreviewHelper::ShowPreviewItem;inkGameControllerscript_ref<InventoryItemData>BoolCName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

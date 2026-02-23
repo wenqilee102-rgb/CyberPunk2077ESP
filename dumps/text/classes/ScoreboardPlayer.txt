@@ -1,0 +1,5 @@
+struct ScoreboardPlayer
+{
+	public    var playerName : String;
+	public    var playerScore : Int32;
+}

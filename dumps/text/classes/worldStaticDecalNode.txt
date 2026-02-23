@@ -1,0 +1,30 @@
+import class worldStaticDecalNode extends worldNode
+{
+	var material : raRef:IMaterial;
+	var autoHideDistance : Float;
+	var verticalFlip : Bool;
+	var horizontalFlip : Bool;
+	var alpha : Float;
+	var normalThreshold : Float;
+	var roughnessScale : Float;
+	var diffuseColorScale : HDRColor;
+	var isStretchingEnabled : Bool;
+	var enableNormalTreshold : Bool;
+	var orderNo : Uint16;
+	var surfaceType : ERenderObjectType;
+	var normalsBlendingMode : RenderDecalNormalsBlendingMode;
+	var decalRenderMode : EDecalRenderMode;
+	var shouldCollectWithRayTracing : Bool;
+	var forcedAutoHideDistance : Float;
+	var decalNodeVersion : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import struct gameTelemetryQuickHack
+{
+	var actionName : CName;
+	var titleLocKey : String;
+	var targetType : String;
+	var quickHackRecordID : TweakDBID;
+	var quality : gamedataQuality;
+}

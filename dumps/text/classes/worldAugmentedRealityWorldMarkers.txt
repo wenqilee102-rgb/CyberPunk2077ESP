@@ -1,0 +1,8 @@
+import class worldAugmentedRealityWorldMarkers extends ISerializable
+{
+	var transforms : array:Transform;
+}
+
+import class abstract ISerializable
+{
+}

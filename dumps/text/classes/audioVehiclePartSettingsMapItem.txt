@@ -1,0 +1,6 @@
+import struct audioVehiclePartSettingsMapItem
+{
+	var name : CName;
+	var onDetachEvent : CName;
+	var onDetachAcousticsIsolationFactorReduction : Float;
+}

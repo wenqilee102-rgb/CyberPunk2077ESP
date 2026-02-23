@@ -1,0 +1,5 @@
+enum EItemOperationType
+{
+	ADD = 0,
+	REMOVE = 1
+}

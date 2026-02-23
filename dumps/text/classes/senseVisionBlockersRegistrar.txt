@@ -1,0 +1,23 @@
+import class senseVisionBlockersRegistrar extends IScriptable
+{
+	import function AttachToParent(blockerId : Uint32, parent : handle:gameObject, optional offsetFromParent : Vector4); // AttachToParent
+	import function DetachFromParent(blockerId : Uint32); // DetachFromParent
+	import function RegisterVisionBlocker(blockerShape : handle:senseIVisionBlockerShape, blockerType : EVisionBlockerType, optional detectionModifier : Float, optional tbhModifier : Float, optional isBlockingCompletely : Bool, optional blocksParent : Bool) : Uint32; // RegisterVisionBlocker
+	import function SetIsBlockingCompletely(blockerId : Uint32, blockingCompletely : Bool); // SetIsBlockingCompletely
+	import function UnregisterVisionBlocker(blockerId : Uint32); // UnregisterVisionBlocker
+	import function UpdateVisionBlockerPosition(blockerId : Uint32, newPosition : Vector4); // UpdateVisionBlockerPosition
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

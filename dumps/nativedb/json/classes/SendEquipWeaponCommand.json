@@ -1,0 +1,1 @@
+{"a":"AIbehaviortaskScript","b":"SendEquipWeaponCommand","d":0,"e":[{"a":{"a":1},"b":"secondary","c":128}],"f":[{"a":"Activate;ScriptExecutionContext","b":"Activate","d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

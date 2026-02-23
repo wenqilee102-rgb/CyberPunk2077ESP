@@ -1,0 +1,79 @@
+import class gameGameAudioSystem extends gameIGameAudioSystem
+{
+	private   var enemyPingStimCount : Uint8;
+	private   var mixHasDetectedCombat : Bool;
+
+	import function AddTriggerEffect(effectName : CName, label : CName); // AddTriggerEffect
+	import function CloseAcousticPortal(object : handle:gameObject); // CloseAcousticPortal
+	import function EquipNewFootwearByPlayer(itemID : gameItemID); // EquipNewFootwearByPlayer
+	import function EquipNewOutfitByPlayer(itemID : gameItemID); // EquipNewOutfitByPlayer
+	import function GetLeftTriggerState() : gameInputTriggerState; // GetLeftTriggerState
+	import function GetMeleeChargedAttackMinimumValue(configName : CName) : Float; // GetMeleeChargedAttackMinimumValue
+	import function GetPlaylistCurrentSong(playlistName : CName) : CName; // GetPlaylistCurrentSong
+	import function GetPlaylistSongs(playlistName : CName) : array:CName; // GetPlaylistSongs
+	import function GetRightTriggerState() : gameInputTriggerState; // GetRightTriggerState
+	import function GlobalParameter(parameterName : CName, parameterValue : Float); // GlobalParameter
+	import function IsInScanningMode() : Bool; // IsInScanningMode
+	import function NotifyGameTone(eventName : CName); // NotifyGameTone
+	import function OpenAcousticPortal(object : handle:gameObject); // OpenAcousticPortal
+	import function Parameter(parameterName : CName, parameterValue : Float, optional entityID : entEntityID, optional emitterName : CName); // Parameter
+	import function Play(eventName : CName, optional entityID : entEntityID, optional emitterName : CName); // Play
+	import function PlayImpact(impactContext : CName, position : Vector4, object : handle:gameObject); // PlayImpact
+	import function PlayOnEmitter(eventName : CName, entityID : entEntityID, emitterName : CName); // PlayOnEmitter
+	import function PlayShockwave(shockwaveType : CName, position : Vector4); // PlayShockwave
+	import function RegisterEnemyPingStim(enemyState : gamedataNPCHighLevelState, isPoliceman : Bool); // RegisterEnemyPingStim
+	import function RegisterPreventionHeatStage(preventionHeatStage : Uint8); // RegisterPreventionHeatStage
+	import function RemoveAllTriggerEffects(); // RemoveAllTriggerEffects
+	import function RemoveTriggerEffect(label : CName); // RemoveTriggerEffect
+	import function ReplaceTriggerEffect(effectName : CName, label : CName, optional createIfNotPresent : Bool); // ReplaceTriggerEffect
+	import function ReplaceTriggerEffectMode(id : Uint16, effect : CName); // ReplaceTriggerEffectMode
+	import function RequestSongOnPlaylist(playlistName : CName, songName : CName); // RequestSongOnPlaylist
+	import function RequestSongOnRadioStation(stationName : CName, songName : CName); // RequestSongOnRadioStation
+	import function RevertTriggerEffect(label : CName); // RevertTriggerEffect
+	import function SetBDCameraListenerOverride(value : Bool); // SetBDCameraListenerOverride
+	import function SetInScanningMode(inScanningMode : Bool); // SetInScanningMode
+	import function SetTriggerEffectMode(effect : CName) : Uint16; // SetTriggerEffectMode
+	import function SetTriggerEffectModeTimed(effect : CName, time : Float) : Uint16; // SetTriggerEffectModeTimed
+	import function State(stateGroup : String, state : String); // State
+	import function Stop(eventName : CName, optional entityID : entEntityID, optional emitterName : CName); // Stop
+	import function Switch(switchName : CName, switchValue : CName, optional entityID : entEntityID, optional emitterName : CName); // Switch
+	import function TriggerFlyby(position : Vector4, direction : Vector4, startPosition : Vector4, object : handle:gameObject); // TriggerFlyby
+	import function UnequipOutfitByPlayer(itemID : gameItemID); // UnequipOutfitByPlayer
+	import function UnsetTriggerEffectMode(id : Uint16); // UnsetTriggerEffectMode
+	import function UpdateTriggerEffectFrequency(); // UpdateTriggerEffectFrequency
+	import function VoIsPerceptible(entityId : entEntityID) : Bool; // VoIsPerceptible
+
+	event OnGameEnd() : Bool; // OnGameEnd
+
+	function AddTriggerEffectIfPlayerNotInVehicleDriverSeat(playerObject : handle:gameObject, triggerName : CName, triggerLabel : CName); // AddTriggerEffectIfPlayerNotInVehicleDriverSeat;GameObjectCNameCName
+	function HandleCombatMix(localPlayer : handle:gameObject); // HandleCombatMix;GameObject
+	function HandleDynamicMixAreaEnter(localPlayer : handle:gameObject); // HandleDynamicMixAreaEnter;GameObject
+	function HandleDynamicMixAreaExit(localPlayer : handle:gameObject); // HandleDynamicMixAreaExit;GameObject
+	function HandleOutOfCombatMix(localPlayer : handle:gameObject); // HandleOutOfCombatMix;GameObject
+	function IsPlayerInVehicleInDriverSeat(playerObject : handle:gameObject) : Bool; // IsPlayerInVehicleInDriverSeat;GameObject
+	function PlayItemActionSound(action : CName, itemData : whandle:gameItemData); // PlayItemActionSound;CNamegameItemData
+	function PlayItemLootedSound(itemData : whandle:gameItemData); // PlayItemLootedSound;gameItemData
+	function PlayLootAllSound(); // PlayLootAllSound;
+}
+
+import class abstract gameIGameAudioSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

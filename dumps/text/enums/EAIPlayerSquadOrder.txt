@@ -1,0 +1,5 @@
+enum EAIPlayerSquadOrder
+{
+	Takedown = 0,
+	Invalid = 1
+}

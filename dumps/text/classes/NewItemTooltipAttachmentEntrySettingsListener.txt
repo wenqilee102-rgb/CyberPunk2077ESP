@@ -1,0 +1,27 @@
+class NewItemTooltipAttachmentEntrySettingsListener extends userSettingsVarListener
+{
+	private   var ctrl : whandle:NewItemTooltipAttachmentEntryController;
+
+	function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+	function RegisterController(ctrl : handle:NewItemTooltipAttachmentEntryController); // RegisterController;NewItemTooltipAttachmentEntryController
+}
+
+import class userSettingsVarListener extends IScriptable
+{
+	import function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified
+	import function Register(groupPath : CName) : Bool; // Register
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

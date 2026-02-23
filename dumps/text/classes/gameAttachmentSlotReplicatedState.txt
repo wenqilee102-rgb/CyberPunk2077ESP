@@ -1,0 +1,6 @@
+import struct gameAttachmentSlotReplicatedState
+{
+	var slotID : TweakDBID;
+	var activeItemID : gameItemID;
+	var hasItemObject : Bool;
+}

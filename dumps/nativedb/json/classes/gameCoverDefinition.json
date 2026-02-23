@@ -1,0 +1,1 @@
+{"a":"gameSmartObjectWorkspotDefinition","b":"gameCoverDefinition","d":8,"e":[{"a":{"a":10},"b":"overridenCoveringFOVDegrees","c":128},{"a":{"a":10},"b":"overridenCoveringVerticalFOVDegrees","c":128},{"a":{"a":10},"b":"fovExposureDegrees","c":128},{"a":{"b":"gameCoverHeight"},"b":"overridenHeight","c":128},{"a":{"a":1},"b":"overrideGeneratedCoverAngles","c":128}]}

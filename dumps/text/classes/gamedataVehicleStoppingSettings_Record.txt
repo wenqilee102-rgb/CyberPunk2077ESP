@@ -1,0 +1,28 @@
+import class gamedataVehicleStoppingSettings_Record extends gamedataTweakDBRecord
+{
+	import function DecreaseMul() : Float; // DecreaseMul
+	import function ErrorMagnitudeForFullBrakingChange() : Float; // ErrorMagnitudeForFullBrakingChange
+	import function ErrorMagnitudeForMildBrakingChange() : Float; // ErrorMagnitudeForMildBrakingChange
+	import function FullBrakingChangeSpeed() : Float; // FullBrakingChangeSpeed
+	import function MildBrakingChangeSpeed() : Float; // MildBrakingChangeSpeed
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

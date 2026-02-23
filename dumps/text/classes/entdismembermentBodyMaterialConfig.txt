@@ -1,0 +1,5 @@
+import struct entdismembermentBodyMaterialConfig
+{
+	var FleshBodyMask : physicsRagdollBodyPartE;
+	var CyberBodyMask : physicsRagdollBodyPartE;
+}

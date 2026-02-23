@@ -1,0 +1,37 @@
+import class CDecalSpawner extends ISerializable
+{
+	var materialStatic : rRef:IMaterial;
+	var materialSkinned : rRef:IMaterial;
+	var specularColor : Color;
+	var specularScale : Float;
+	var specularBase : Float;
+	var roughnessScale : Float;
+	var normalThreshold : Float;
+	var additiveNormals : Bool;
+	var diffuseRandomColor0 : Color;
+	var diffuseRandomColor1 : Color;
+	var subUVType : ERenderDynamicDecalAtlas;
+	var specularity : Float;
+	var farZ : Float;
+	var nearZ : Float;
+	var size : handle:IEvaluatorFloat;
+	var depthFadePower : Float;
+	var normalFadeBias : Float;
+	var normalFadeScale : Float;
+	var doubleSided : Bool;
+	var projectionMode : ERenderDynamicDecalProjection;
+	var decalLifetime : handle:IEvaluatorFloat;
+	var decalFadeTime : Float;
+	var decalFadeInTime : Float;
+	var projectOnStatic : Bool;
+	var projectOnSkinned : Bool;
+	var startScale : Float;
+	var scaleTime : Float;
+	var useVerticalProjection : Bool;
+	var spawnPriority : EDynamicDecalSpawnPriority;
+	var autoHideDistance : Float;
+}
+
+import class abstract ISerializable
+{
+}

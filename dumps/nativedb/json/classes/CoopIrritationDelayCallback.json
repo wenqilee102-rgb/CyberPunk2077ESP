@@ -1,0 +1,1 @@
+{"a":"gameDelaySystemScriptedDelayCallbackWrapper","b":"CoopIrritationDelayCallback","d":0,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"companion","c":128}],"f":[{"a":"CoopIrritationDelayCallback::TryCreate;GameObject","b":"TryCreate","d":56,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"dmgInstigator","c":0}]},{"a":"Call;","b":"Call","d":32}]}

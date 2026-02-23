@@ -1,0 +1,120 @@
+class abstract AICondition extends IScriptable
+{
+	static function ActivationCheck(context : AIbehaviorScriptExecutionContext, actionRecord : handle:gamedataAIAction_Record) : Bool; // AICondition::ActivationCheck;ScriptExecutionContextAIAction_Record
+	static function AnimationStreamedInCheck(context : AIbehaviorScriptExecutionContext, actionRecord : handle:gamedataAIAction_Record) : Bool; // AICondition::AnimationStreamedInCheck;ScriptExecutionContextAIAction_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIIsShootingBlockedFromPrevention_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIIsShootingBlockedFromPrevention_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIVelocitiesDotCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIVelocitiesDotCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAICanShootInCarChaseCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAICanShootInCarChaseCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIVehicleCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIVehicleCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIOptimalDistanceCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIOptimalDistanceCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIExtendTargetCirclingCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIExtendTargetCirclingCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIEverPerformedChase_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIEverPerformedChase_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAISpatialCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAISpatialCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIMovementCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIMovementCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAICoverCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAICoverCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIDodgeCountCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIDodgeCountCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIStatusEffectCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIStatusEffectCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIVelocityDotCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIVelocityDotCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAISignalCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAISignalCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIGoToCoverCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIGoToCoverCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAISecurityCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAISecurityCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAITargetCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAITargetCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIAssignedVehicleInRace_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIAssignedVehicleInRace_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAITresspassingCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAITresspassingCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIFriendlyFireCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIFriendlyFireCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAINPCRarityCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAINPCRarityCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAINPCTypeCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAINPCTypeCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIIsFromDynamicSpawnSystem_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIIsFromDynamicSpawnSystem_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAITargetInPreventionFreeArea_Record) : Bool; // AICondition::Check;ScriptExecutionContextAITargetInPreventionFreeArea_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIDriverCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIDriverCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIReactionCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIReactionCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIIsOnNavmeshCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIIsOnNavmeshCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAILookAtCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAILookAtCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAICalculatePathCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAICalculatePathCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIStateCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIStateCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIHitCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIHitCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAINPCDifficultyCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAINPCDifficultyCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIAssignedVehicleInPanicDriving_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIAssignedVehicleInPanicDriving_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIAssignedVehicleCanReachTargetCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIAssignedVehicleCanReachTargetCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAITargetStandingOnTopOfMovingVehicleCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAITargetStandingOnTopOfMovingVehicleCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIWeakSpotCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIWeakSpotCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIRestrictedMovementAreaCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIRestrictedMovementAreaCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIItemCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIItemCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIAbilityCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIAbilityCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAISlotCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAISlotCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAICalculateLineOfSightVector_Record) : Bool; // AICondition::Check;ScriptExecutionContextAICalculateLineOfSightVector_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIMovingInCirclesCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIMovingInCirclesCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIThrowCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIThrowCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAISquadCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAISquadCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIPreviousAttackCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIPreviousAttackCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIAmmoCountCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIAmmoCountCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIStatPoolCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIStatPoolCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIIsHeatStage5Active_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIIsHeatStage5Active_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAITargetInUnmountingRangeCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAITargetInUnmountingRangeCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIIsFromPreventionSystem_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIIsFromPreventionSystem_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIWeaponLockedOnTargetCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIWeaponLockedOnTargetCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIHasWeapon_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIHasWeapon_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIVelocityCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIVelocityCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIBlockCountCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIBlockCountCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIInTacticPositionCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIInTacticPositionCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAICommandCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAICommandCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIPercentageChanceCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIPercentageChanceCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIVehicleInsideInnerAreaOfAreaSpeedLimiter_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIVehicleInsideInnerAreaOfAreaSpeedLimiter_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAILoSPositionCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAILoSPositionCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIInArmedVehicleCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIInArmedVehicleCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIValidCoversCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIValidCoversCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIGameDifficultyCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIGameDifficultyCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIIsInActiveCameraCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIIsInActiveCameraCond_Record
+	static function Check(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIWorkspotCond_Record) : Bool; // AICondition::Check;ScriptExecutionContextAIWorkspotCond_Record
+	static function CheckAbilities(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckAbilities;ScriptExecutionContextAIActionCondition_Record
+	static function CheckAbility(context : AIbehaviorScriptExecutionContext, ability : whandle:gamedataGameplayAbility_Record) : Bool; // AICondition::CheckAbility;ScriptExecutionContextGameplayAbility_Record
+	static function CheckActionCondition(puppet : whandle:ScriptedPuppet, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckActionCondition;ScriptedPuppetAIActionCondition_Record
+	static function CheckActionCondition(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckActionCondition;ScriptExecutionContextAIActionCondition_Record
+	static function CheckActionConditions(context : AIbehaviorScriptExecutionContext, conditions : script_ref:array:whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckActionConditions;ScriptExecutionContextscript_ref<array<AIActionCondition_Record>>
+	static function CheckAmmoCounts(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckAmmoCounts;ScriptExecutionContextAIActionCondition_Record
+	static function CheckAngle2ObjInternal(owner : whandle:gamePuppet, source : whandle:gameObject, sourcePosition : Vector4, sourceCoverID : Uint64, target : whandle:gameObject, targetPosition : Vector4, targetCoverID : Uint64, coneAngleRange : Vector2, condition : whandle:gamedataAISpatialCond_Record, out returnVal : Bool) : Bool; // AICondition::CheckAngle2ObjInternal;gamePuppetGameObjectVector4Uint64GameObjectVector4Uint64Vector2AISpatialCond_RecordBool
+	static function CheckAngle3ObjInternal(owner : whandle:gamePuppet, source : whandle:gameObject, sourcePosition : Vector4, sourceCoverID : Uint64, target : whandle:gameObject, targetPosition : Vector4, targetCoverID : Uint64, targetOpt : whandle:gameObject, targetPositionOpt : Vector4, targetCoverIDOpt : Uint64, coneAngleRange : Vector2, condition : whandle:gamedataAISpatialCond_Record, out returnVal : Bool) : Bool; // AICondition::CheckAngle3ObjInternal;gamePuppetGameObjectVector4Uint64GameObjectVector4Uint64GameObjectVector4Uint64Vector2AISpatialCond_RecordBool
+	static function CheckCalculateLineOfSightVector(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckCalculateLineOfSightVector;ScriptExecutionContextAIActionCondition_Record
+	static function CheckCalculatePaths(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckCalculatePaths;ScriptExecutionContextAIActionCondition_Record
+	static function CheckCommands(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckCommands;ScriptExecutionContextAIActionCondition_Record
+	static function CheckDistanceInternal(owner : handle:gamePuppet, sourcePosition : Vector4, targetPosition : Vector4, distanceRange : Vector2, condition : whandle:gamedataAISpatialCond_Record, out returnVal : Bool) : Bool; // AICondition::CheckDistanceInternal;gamePuppetVector4Vector4Vector2AISpatialCond_RecordBool
+	static function CheckItems(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckItems;ScriptExecutionContextAIActionCondition_Record
+	static function CheckLookats(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckLookats;ScriptExecutionContextAIActionCondition_Record
+	static function CheckMovements(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckMovements;ScriptExecutionContextAIActionCondition_Record
+	static function CheckReactions(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckReactions;ScriptExecutionContextAIActionCondition_Record
+	static function CheckRestrictedMovementAreas(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckRestrictedMovementAreas;ScriptExecutionContextAIActionCondition_Record
+	static function CheckSignals(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckSignals;ScriptExecutionContextAIActionCondition_Record
+	static function CheckSlots(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckSlots;ScriptExecutionContextAIActionCondition_Record
+	static function CheckSpatial(ownerContext : AIbehaviorScriptExecutionContext, targetContext : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAISpatialCond_Record) : Bool; // AICondition::CheckSpatial;ScriptExecutionContextScriptExecutionContextAISpatialCond_Record
+	static function CheckSpatials(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckSpatials;ScriptExecutionContextAIActionCondition_Record
+	static function CheckStatPools(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckStatPools;ScriptExecutionContextAIActionCondition_Record
+	static function CheckStates(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckStates;ScriptExecutionContextAIActionCondition_Record
+	static function CheckStatusEffects(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckStatusEffects;ScriptExecutionContextAIActionCondition_Record
+	static function CheckTickets(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckTickets;ScriptExecutionContextAIActionCondition_Record
+	static function CheckTresspassings(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckTresspassings;ScriptExecutionContextAIActionCondition_Record
+	static function CheckVehicles(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckVehicles;ScriptExecutionContextAIActionCondition_Record
+	static function CheckWeakSpots(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIActionCondition_Record) : Bool; // AICondition::CheckWeakSpots;ScriptExecutionContextAIActionCondition_Record
+	static function CheckZDiffInternal(sourcePosition : Vector4, targetPosition : Vector4, ZDiffRange : Vector2, condition : whandle:gamedataAISpatialCond_Record, out returnVal : Bool) : Bool; // AICondition::CheckZDiffInternal;Vector4Vector4Vector2AISpatialCond_RecordBool
+	static function GetDifficultyValue(difficulty : gameDifficulty) : Int32; // AICondition::GetDifficultyValue;gameDifficulty
+	static function GetPowerDifferentialValue(difficulty : gameEPowerDifferential) : Int32; // AICondition::GetPowerDifferentialValue;gameEPowerDifferential
+	static function GetPuppetVelocity(puppet : whandle:ScriptedPuppet, timePeriod : Float) : Vector4; // AICondition::GetPuppetVelocity;ScriptedPuppetFloat
+	static function IsAwareOfBeingFlankedByAnyThreat(ownerPuppet : whandle:ScriptedPuppet, threats : script_ref:array:AITrackedLocation) : Bool; // AICondition::IsAwareOfBeingFlankedByAnyThreat;ScriptedPuppetscript_ref<array<TrackedLocation>>
+	static function IsAwareOfBeingFlankedByThreat(ownerPuppet : whandle:ScriptedPuppet, threat : script_ref:AITrackedLocation) : Bool; // AICondition::IsAwareOfBeingFlankedByThreat;ScriptedPuppetscript_ref<TrackedLocation>
+	static function NextPhaseCheck(context : AIbehaviorScriptExecutionContext, phase : Uint32, actionRecord : handle:gamedataAIAction_Record) : Bool; // AICondition::NextPhaseCheck;ScriptExecutionContextUint32AIAction_Record
+	static function OnCantFindProperCheck(conditionName : CName); // AICondition::OnCantFindProperCheck;CName
+	static function RepeatPhaseCheck(context : AIbehaviorScriptExecutionContext, phase : Uint32, actionRecord : handle:gamedataAIAction_Record) : Bool; // AICondition::RepeatPhaseCheck;ScriptExecutionContextUint32AIAction_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,32 @@
+class abstract AISubActionShootWithWeapon_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionShootWithWeapon_Record); // AISubActionShootWithWeapon_Record_Implementation::Activate;ScriptExecutionContextAISubActionShootWithWeapon_Record
+	static function ConvertVector3ArrayToVector4Array(v3 : script_ref:array:Vector3) : array:Vector4; // AISubActionShootWithWeapon_Record_Implementation::ConvertVector3ArrayToVector4Array;script_ref<array<Vector3>>
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionShootWithWeapon_Record, duration : Float, interrupted : Bool); // AISubActionShootWithWeapon_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionShootWithWeapon_RecordFloatBool
+	static function GetWeapon(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionShootWithWeapon_Record, weaponsList : script_ref:array:whandle:gameweaponObject) : Bool; // AISubActionShootWithWeapon_Record_Implementation::GetWeapon;ScriptExecutionContextAISubActionShootWithWeapon_Recordscript_ref<array<WeaponObject>>
+	static function QueueFirstShot(weapon : whandle:gameweaponObject); // AISubActionShootWithWeapon_Record_Implementation::QueueFirstShot;WeaponObject
+	static function QueueNextShot(weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, duration : Float); // AISubActionShootWithWeapon_Record_Implementation::QueueNextShot;WeaponObjectgamedataTriggerModeFloat
+	static function SetShootPointsByCoordinate(context : AIbehaviorScriptExecutionContext, target : whandle:gameObject, coordinateArray : script_ref:array:Vector4, shootPointPosition : script_ref:array:Vector4) : Bool; // AISubActionShootWithWeapon_Record_Implementation::SetShootPointsByCoordinate;ScriptExecutionContextGameObjectscript_ref<array<Vector4>>script_ref<array<Vector4>>
+	static function SetShootPointsBytag(context : AIbehaviorScriptExecutionContext, tags : script_ref:array:CName, shootPointPosition : script_ref:array:Vector4) : Bool; // AISubActionShootWithWeapon_Record_Implementation::SetShootPointsBytag;ScriptExecutionContextscript_ref<array<CName>>script_ref<array<Vector4>>
+	static function Shoot(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionShootWithWeapon_Record, duration : Float, weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, targetPosition : Vector4, target : whandle:gameObject, optional offset : Vector4, optional predictionTime : Float, optional muzzleOffset : Vector4, optional weaponCustomEvent : CName); // AISubActionShootWithWeapon_Record_Implementation::Shoot;ScriptExecutionContextAISubActionShootWithWeapon_RecordFloatWeaponObjectgamedataTriggerModeVector4GameObjectVector4FloatVector4CName
+	static function ShootChimeraMetalstorm(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionChimeraMetalstorm_Record, weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, target : whandle:gameObject, targetPosition : Vector4, duration : Float) : Bool; // AISubActionShootWithWeapon_Record_Implementation::ShootChimeraMetalstorm;ScriptExecutionContextAISubActionChimeraMetalstorm_RecordWeaponObjectgamedataTriggerModeGameObjectVector4Float
+	static function ShootMissileRainCircular(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMissileRainCircular_Record, weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, target : whandle:gameObject, targetPosition : Vector4, duration : Float) : Bool; // AISubActionShootWithWeapon_Record_Implementation::ShootMissileRainCircular;ScriptExecutionContextAISubActionMissileRainCircular_RecordWeaponObjectgamedataTriggerModeGameObjectVector4Float
+	static function ShootMissileRainGrid(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMissileRainGrid_Record, weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, target : whandle:gameObject, targetPosition : Vector4, duration : Float) : Bool; // AISubActionShootWithWeapon_Record_Implementation::ShootMissileRainGrid;ScriptExecutionContextAISubActionMissileRainGrid_RecordWeaponObjectgamedataTriggerModeGameObjectVector4Float
+	static function ShootToPoints(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionShootToPoint_Record, weapon : whandle:gameweaponObject, requestedTriggerMode : gamedataTriggerMode, duration : Float) : Bool; // AISubActionShootWithWeapon_Record_Implementation::ShootToPoints;ScriptExecutionContextAISubActionShootToPoint_RecordWeaponObjectgamedataTriggerModeFloat
+	static function ShouldTrackTarget(owner : whandle:gamePuppet, record : whandle:gamedataAISubActionShootWithWeapon_Record, weapon : whandle:gameweaponObject) : Bool; // AISubActionShootWithWeapon_Record_Implementation::ShouldTrackTarget;gamePuppetAISubActionShootWithWeapon_RecordWeaponObject
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionShootWithWeapon_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionShootWithWeapon_Record_Implementation::Update;ScriptExecutionContextAISubActionShootWithWeapon_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

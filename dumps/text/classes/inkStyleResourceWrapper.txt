@@ -1,0 +1,8 @@
+import class inkStyleResourceWrapper extends ISerializable
+{
+	var styleResource : raRef:inkStyleResource;
+}
+
+import class abstract ISerializable
+{
+}

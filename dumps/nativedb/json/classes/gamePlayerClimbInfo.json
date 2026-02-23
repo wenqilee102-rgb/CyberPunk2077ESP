@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamePlayerClimbInfo","c":"PlayerClimbInfo","d":8,"e":[{"a":{"a":26,"c":{"b":"worldgeometryDescriptionResult"}},"b":"descResult","c":128},{"a":{"b":"Vector4"},"b":"obstacleEnd","c":128},{"a":{"b":"Vector4"},"b":"inputDirection","c":128},{"a":{"a":1},"b":"climbValid","c":128},{"a":{"a":1},"b":"vaultValid","c":128}]}

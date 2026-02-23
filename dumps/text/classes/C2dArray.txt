@@ -1,0 +1,14 @@
+import class C2dArray extends CResource
+{
+	var headers : array:String;
+	var data : array:array:String;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

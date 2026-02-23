@@ -1,0 +1,6 @@
+struct SecuritySystemOutputData
+{
+	public    var link : DeviceLink;
+	public    var breachOrigin : EBreachOrigin;
+	public    var delayDuration : Float;
+}

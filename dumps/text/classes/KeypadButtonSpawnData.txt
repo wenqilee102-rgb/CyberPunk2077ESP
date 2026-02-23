@@ -1,0 +1,23 @@
+class KeypadButtonSpawnData extends IScriptable
+{
+	public    var widgetName : CName;
+	public    var locKey : String;
+	public    var isActionButton : Bool;
+	public    var widgetData : SDeviceWidgetPackage;
+
+	function Initialize(widgetName : CName, locKey : script_ref:String, isActionButton : Bool, widgetData : script_ref:SDeviceWidgetPackage); // Initialize;CNamescript_ref<String>Boolscript_ref<SDeviceWidgetPackage>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

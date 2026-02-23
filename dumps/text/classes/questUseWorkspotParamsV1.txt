@@ -1,0 +1,48 @@
+import class questUseWorkspotParamsV1 extends questAICommandParams
+{
+	var function : questUseWorkspotNodeFunctions;
+	var workspotNode : NodeRef;
+	var teleport : Bool;
+	var finishAnimation : Bool;
+	var forceEntryAnimName : CName;
+	var jumpToEntry : Bool;
+	var entryId : workWorkEntryId;
+	var entryTag : CName;
+	var changeWorkspot : Bool;
+	var enableIdleMode : Bool;
+	var exitEntryId : workWorkEntryId;
+	var exitAnimName : CName;
+	var instant : Bool;
+	var isWorkspotInfinite : Bool;
+	var isPlayer : Bool;
+	var playerParams : questUseWorkspotPlayerParams;
+	var repeatCommandOnInterrupt : Bool;
+	var workExcludedGestures : array:workWorkEntryId;
+	var movementType : moveMovementType;
+	var continueInCombat : Bool;
+	var maxAnimTimeLimit : Float;
+	var meshDissolvingEnabled : Bool;
+	var dangleResetSimulation : Bool;
+}
+
+import class abstract questAICommandParams extends scnAICommandFactory
+{
+}
+
+import class abstract scnAICommandFactory extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

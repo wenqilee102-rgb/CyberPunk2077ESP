@@ -1,0 +1,15 @@
+import class worldDebugColoring_Duplicates extends worldEditorDebugColoringSettings
+{
+	var defaultColor : Color;
+	var duplicateColor : Color;
+	var refreshPrefab : rRef:worldPrefab;
+	var refresh : Bool;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

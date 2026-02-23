@@ -1,0 +1,66 @@
+class UIInventoryItemStatsManager extends IScriptable
+{
+	public    var Stats : array:handle:UIInventoryItemStat;
+	public    var TooltipStats : array:handle:UIInventoryItemStat;
+	public    var AdditionalStats : array:handle:UIInventoryItemStat;
+	public    var AttributeAllocationStats : array:handle:UIInventoryItemStat;
+	private   var item : whandle:UIInventoryItem;
+	private   var gameItemData : whandle:gameItemData;
+	private   var itemType : gamedataItemType;
+	private   var manager : whandle:UIInventoryItemsManager;
+	private   var statMap : whandle:gamedataUIStatsMap_Record;
+	private   var statsFetched : Bool;
+	private   var tooltipStatsFetched : Bool;
+	private   var weaponBars : handle:UIInventoryItemWeaponBars;
+	private   var weaponBarsFetched : Bool;
+	private   var useBareStats : Bool;
+
+	static function FromMinimalItemTooltipData(data : handle:MinimalItemTooltipData, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItemStatsManager; // UIInventoryItemStatsManager::FromMinimalItemTooltipData;MinimalItemTooltipDataUIInventoryItemsManager
+	static function FromMinimalItemTooltipDataToTooltipStats(data : handle:MinimalItemTooltipData, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItemStatsManager; // UIInventoryItemStatsManager::FromMinimalItemTooltipDataToTooltipStats;MinimalItemTooltipDataUIInventoryItemsManager
+	static function IsBarTypeMelee(type : WeaponBarType) : Bool; // UIInventoryItemStatsManager::IsBarTypeMelee;WeaponBarType
+	static function IsUsingCurveCustom(itemType : gamedataItemType, type : WeaponBarType) : Bool; // UIInventoryItemStatsManager::IsUsingCurveCustom;gamedataItemTypeWeaponBarType
+	static function Make(itemData : whandle:gameItemData, statMap : whandle:gamedataUIStatsMap_Record, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItemStatsManager; // UIInventoryItemStatsManager::Make;gameItemDataUIStatsMap_RecordUIInventoryItemsManager
+	static function Make(item : whandle:UIInventoryItem, statMap : whandle:gamedataUIStatsMap_Record, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItemStatsManager; // UIInventoryItemStatsManager::Make;UIInventoryItemUIStatsMap_RecordUIInventoryItemsManager
+	static function MapBarTypeToStat(type : WeaponBarType) : gamedataStatType; // UIInventoryItemStatsManager::MapBarTypeToStat;WeaponBarType
+
+	function FetchAdditionalStatByType(statType : gamedataStatType) : whandle:UIInventoryItemStat; // FetchAdditionalStatByType;gamedataStatType
+	function FetchSecondayStats(); // FetchSecondayStats;
+	function FetchTooltipStats(); // FetchTooltipStats;
+	function FlushComparedBars(); // FlushComparedBars;
+	function Get(index : Int32) : whandle:UIInventoryItemStat; // Get;Int32
+	function GetAdditionalStatByType(type : gamedataStatType) : whandle:UIInventoryItemStat; // GetAdditionalStatByType;gamedataStatType
+	function GetAttachedPlayer() : whandle:PlayerPuppet; // GetAttachedPlayer;
+	function GetAttributeAllocationStatByType(type : gamedataStatType) : whandle:UIInventoryItemStat; // GetAttributeAllocationStatByType;gamedataStatType
+	function GetAttributeAllocationStats(index : Int32) : whandle:UIInventoryItemStat; // GetAttributeAllocationStats;Int32
+	function GetByType(type : gamedataStatType) : whandle:UIInventoryItemStat; // GetByType;gamedataStatType
+	function GetGameItemData() : whandle:gameItemData; // GetGameItemData;
+	function GetPercentageCurveName(type : WeaponBarType) : CName; // GetPercentageCurveName;WeaponBarType
+	function GetPercentageFromCurve(type : WeaponBarType, value : Float) : Float; // GetPercentageFromCurve;WeaponBarTypeFloat
+	function GetTooltipStat(index : Int32) : whandle:UIInventoryItemStat; // GetTooltipStat;Int32
+	function GetTooltipStatByType(type : gamedataStatType) : whandle:UIInventoryItemStat; // GetTooltipStatByType;gamedataStatType
+	function GetWeaponBars(optional force : Bool) : whandle:UIInventoryItemWeaponBars; // GetWeaponBars;Bool
+	function GetWeaponBarsType(itemType : gamedataItemType, item : whandle:UIInventoryItem) : UIInventoryItemWeaponBarsType; // GetWeaponBarsType;gamedataItemTypeUIInventoryItem
+	function GetWeaponBarsType(itemType : gamedataItemType, itemData : handle:gameItemData) : UIInventoryItemWeaponBarsType; // GetWeaponBarsType;gamedataItemTypegameItemData
+	function InternalFetchStatByType(statType : gamedataStatType, statId : TweakDBID, skipEmpty : Bool) : handle:UIInventoryItemStat; // InternalFetchStatByType;gamedataStatTypeTweakDBIDBool
+	function IsCurveBarsEnabled() : Bool; // IsCurveBarsEnabled;
+	function IsItemTypeUsingBars(itemData : handle:UIInventoryItem) : Bool; // IsItemTypeUsingBars;UIInventoryItem
+	function IsSeparatorBarsEnabled() : Bool; // IsSeparatorBarsEnabled;
+	function SetTooltipsStats(tooltipStats : script_ref:array:handle:UIInventoryItemStat); // SetTooltipsStats;script_ref<array<UIInventoryItemStat>>
+	function Size() : Int32; // Size;
+	function SizeAttributeAllocationStats() : Int32; // SizeAttributeAllocationStats;
+	function SizeTooltipStats() : Int32; // SizeTooltipStats;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

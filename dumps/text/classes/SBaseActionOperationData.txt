@@ -1,0 +1,5 @@
+struct SBaseActionOperationData
+{
+	public    var action : handle:ScriptableDeviceAction;
+	public    var operation : SBaseDeviceOperationData;
+}

@@ -1,0 +1,1 @@
+{"a":"BaseHitPrereqCondition","b":"DismembermentTriggeredHitPrereqCondition","d":0,"e":[{"a":{"a":7},"b":"currValue","c":129}],"f":[{"a":"Evaluate;gameHitEvent","b":"Evaluate","c":{"a":1},"d":32,"e":[{"a":{"a":26,"c":{"b":"gameeventsHitEvent"}},"b":"hitEvent","c":0}]}]}

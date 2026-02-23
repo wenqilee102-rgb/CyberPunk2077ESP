@@ -1,0 +1,7 @@
+import struct worldTriggerAreaEventInfo
+{
+	var nodeInstance : handle:worldTriggerAreaNodeInstance;
+	var eventWorldPosition : Vector3;
+	var numActivatorsInArea : Uint32;
+	var activatorID : Uint32;
+}

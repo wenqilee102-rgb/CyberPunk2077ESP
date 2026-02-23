@@ -1,0 +1,4 @@
+struct WeakFenceSetup
+{
+	public    var hasGenericInteraction : Bool;
+}

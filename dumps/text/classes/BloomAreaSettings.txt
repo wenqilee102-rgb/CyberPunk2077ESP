@@ -1,0 +1,23 @@
+import class BloomAreaSettings extends IAreaSettings
+{
+	var blurSizeX : Float;
+	var blurSizeY : Float;
+	var mipColors : [5]Color;
+	var mipLuminanceClamp : [3]Float;
+	var luminanceThresholdMin : Float;
+	var luminanceThresholdMax : Float;
+	var sceneColorScale : Float;
+	var bloomColorScale : Float;
+	var numDownsamplePasses : Uint8;
+	var shaftsAreaSettings : ShaftsAreaSettings;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

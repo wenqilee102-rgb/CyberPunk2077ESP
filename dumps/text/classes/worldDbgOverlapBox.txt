@@ -1,0 +1,7 @@
+import struct worldDbgOverlapBox
+{
+	var box : Box;
+	var transform : Transform;
+	var level : Uint32;
+	var isHit : Bool;
+}

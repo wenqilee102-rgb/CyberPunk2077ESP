@@ -1,0 +1,1 @@
+{"a":"entIComponent","b":"gameComponent","c":"GameComponent","d":24,"e":[{"a":{"a":26,"c":{"b":"gamePersistentState"}},"b":"persistentState","c":128}],"f":[{"a":"GetBasePS","c":{"a":26,"c":{"b":"gameComponentPS"}},"d":132},{"a":"GetPS","c":{"a":26,"c":{"b":"gameComponentPS"}},"d":132},{"a":"GetPersistentID","c":{"b":"gamePersistentID"},"d":132}]}

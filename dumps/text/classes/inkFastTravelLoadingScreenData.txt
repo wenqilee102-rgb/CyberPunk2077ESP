@@ -1,0 +1,11 @@
+import struct inkFastTravelLoadingScreenData extends inkILoadingScreenPersistentData
+{
+}
+
+import struct inkILoadingScreenPersistentData extends inkILoadingScreenData
+{
+}
+
+import struct inkILoadingScreenData
+{
+}

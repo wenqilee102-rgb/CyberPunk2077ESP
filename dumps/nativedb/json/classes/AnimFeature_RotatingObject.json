@@ -1,0 +1,1 @@
+{"a":"animAnimFeature","b":"AnimFeature_RotatingObject","d":0,"e":[{"a":{"a":1},"b":"rotateClockwise","c":128},{"a":{"a":1},"b":"randomizeBladesRotation","c":128},{"a":{"a":10},"b":"maxRotationSpeed","c":128},{"a":{"a":10},"b":"timeToMaxRotation","c":128}]}

@@ -1,0 +1,60 @@
+import class gamedataNewPerk_Record extends gamedataTweakDBRecord
+{
+	import function Attribute() : whandle:gamedataAttributeData_Record; // Attribute
+	import function AttributeHandle() : handle:gamedataAttributeData_Record; // AttributeHandle
+	import function BinkPath() : redResourceReferenceScriptToken; // BinkPath
+	import function Category() : whandle:gamedataNewPerkCategory_Record; // Category
+	import function CategoryHandle() : handle:gamedataNewPerkCategory_Record; // CategoryHandle
+	import function DataPackage() : whandle:gamedataGameplayLogicPackage_Record; // DataPackage
+	import function DataPackageHandle() : handle:gamedataGameplayLogicPackage_Record; // DataPackageHandle
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetLevelsCount() : Int32; // GetLevelsCount
+	import function GetLevelsItem(index : Int32) : whandle:gamedataNewPerkLevelData_Record; // GetLevelsItem
+	import function GetLevelsItemHandle(index : Int32) : handle:gamedataNewPerkLevelData_Record; // GetLevelsItemHandle
+	import function GetRequiresPerksCount() : Int32; // GetRequiresPerksCount
+	import function GetRequiresPerksItem(index : Int32) : whandle:gamedataNewPerk_Record; // GetRequiresPerksItem
+	import function GetRequiresPerksItemHandle(index : Int32) : handle:gamedataNewPerk_Record; // GetRequiresPerksItemHandle
+	import function IconPath() : CName; // IconPath
+	import function Levels(out outList : array:whandle:gamedataNewPerkLevelData_Record); // Levels
+	import function LevelsContains(item : whandle:gamedataNewPerkLevelData_Record) : Bool; // LevelsContains
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function PerkIcon() : whandle:gamedataUIIcon_Record; // PerkIcon
+	import function PerkIconHandle() : handle:gamedataUIIcon_Record; // PerkIconHandle
+	import function PerkWeaponGroup() : whandle:gamedataPerkWeaponGroup_Record; // PerkWeaponGroup
+	import function PerkWeaponGroupHandle() : handle:gamedataPerkWeaponGroup_Record; // PerkWeaponGroupHandle
+	import function Requirement() : whandle:gamedataIPrereq_Record; // Requirement
+	import function RequirementHandle() : handle:gamedataIPrereq_Record; // RequirementHandle
+	import function RequiresPerks(out outList : array:whandle:gamedataNewPerk_Record); // RequiresPerks
+	import function RequiresPerksContains(item : whandle:gamedataNewPerk_Record) : Bool; // RequiresPerksContains
+	import function Slot() : whandle:gamedataNewPerkSlot_Record; // Slot
+	import function SlotHandle() : handle:gamedataNewPerkSlot_Record; // SlotHandle
+	import function StatusEffect() : whandle:gamedataStatusEffect_Record; // StatusEffect
+	import function StatusEffectHandle() : handle:gamedataStatusEffect_Record; // StatusEffectHandle
+	import function Tier() : whandle:gamedataNewPerkTier_Record; // Tier
+	import function TierHandle() : handle:gamedataNewPerkTier_Record; // TierHandle
+	import function Type() : gamedataNewPerkType; // Type
+	import function UiData() : whandle:gamedataNewPerkLevelUIData_Record; // UiData
+	import function UiDataHandle() : handle:gamedataNewPerkLevelUIData_Record; // UiDataHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

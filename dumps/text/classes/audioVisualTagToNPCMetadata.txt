@@ -1,0 +1,5 @@
+import struct audioVisualTagToNPCMetadata
+{
+	var visualTags : array:CName;
+	var foleyNPCMetadata : CName;
+}

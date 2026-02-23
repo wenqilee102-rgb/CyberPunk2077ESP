@@ -1,0 +1,5 @@
+import struct gameSVisualTagProcessing
+{
+	var areaType : gamedataEquipmentArea;
+	var showItem : Bool;
+}

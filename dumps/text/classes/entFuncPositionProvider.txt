@@ -1,0 +1,31 @@
+import class entFuncPositionProvider extends entIPositionProvider
+{
+}
+
+import class abstract entIPositionProvider extends IScriptable
+{
+	import static function CreateCollisionPredictionPositionProvider(targetPosProvider : handle:entIPositionProvider, ownerPosProvider : handle:entIPositionProvider, targetVelocityProvider : handle:entIVelocityProvider, ownerVelocity : Float) : handle:entIPositionProvider; // CreateCollisionPredictionPositionProvider
+	import static function CreateEntityHistoryPositionProvider(transformHistoryComp : whandle:entTransformHistoryComponent, timeDelay : Float, optional localOffset : Vector3) : handle:entIPositionProvider; // CreateEntityHistoryPositionProvider
+	import static function CreateEntityPositionProvider(entity : handle:entEntity, optional localOffset : Vector3) : handle:entIPositionProvider; // CreateEntityPositionProvider
+	import static function CreatePlacedComponentPositionProvider(entity : handle:entIPlacedComponent, optional localOffset : Vector3) : handle:entIPositionProvider; // CreatePlacedComponentPositionProvider
+	import static function CreateSlotPositionProvider(entity : handle:entEntity, slotName : CName, optional localOffset : Vector3) : handle:entIPositionProvider; // CreateSlotPositionProvider
+	import static function CreateStaticPositionProvider(position : WorldPosition) : handle:entIPositionProvider; // CreateStaticPositionProvider
+
+	import function CalculatePosition(out outPos : Vector4) : Bool; // CalculatePosition
+	import function GetWorldOffset() : Vector4; // GetWorldOffset
+	import function SetWorldOffset(worldOffset : Vector4); // SetWorldOffset
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

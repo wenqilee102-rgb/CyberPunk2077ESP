@@ -1,0 +1,5 @@
+bitfield gameLootSlotState
+{
+	Looted = 1 << 0,
+	Unavailable = 1 << 1
+}

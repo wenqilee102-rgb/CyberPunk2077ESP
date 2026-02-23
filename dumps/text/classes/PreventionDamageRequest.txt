@@ -1,0 +1,32 @@
+class PreventionDamageRequest extends gameScriptableSystemRequest
+{
+	public    var isInternal : Bool;
+	public    var damageDealtPercentValue : Float;
+	public    var targetID : entEntityID;
+	public    var targetPosition : Vector4;
+	public    var isTargetKilled : Bool;
+	public    var isTargetPrevention : Bool;
+	public    var isTargetVehicle : Bool;
+	public    var requestedHeat : EPreventionHeatStage;
+	public    var attackType : gamedataAttackType;
+	public    var telemetryInfo : String;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

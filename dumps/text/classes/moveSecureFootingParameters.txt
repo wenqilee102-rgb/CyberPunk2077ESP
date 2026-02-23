@@ -1,0 +1,14 @@
+import struct moveSecureFootingParameters
+{
+	var unsecureCollisionFilterName : CName;
+	var maxVerticalDistanceForCentreRaycast : Float;
+	var maxAngularDistanceForOtherRaycasts : Float;
+	var standingMinNumberOfRaycasts : Uint32;
+	var standingMinCollisionHorizontalDistance : Float;
+	var fallingMinNumberOfRaycasts : Uint32;
+	var fallingMinCollisionHorizontalDistance : Float;
+	var maxStaticGroundFactor : Float;
+	var needsCentreRaycast : Bool;
+	var minVelocityForFalling : Float;
+	var slopeCurveName : CName;
+}

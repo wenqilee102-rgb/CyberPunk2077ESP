@@ -1,0 +1,10 @@
+import struct gameReplAnimTransformSkipRequest extends gameReplAnimTransformRequestBase
+{
+	var animName : CName;
+	var skipTime : Float;
+}
+
+import struct gameReplAnimTransformRequestBase
+{
+	var applyServerTime : netTime;
+}

@@ -1,0 +1,7 @@
+import struct LibTreeParameter
+{
+	var parameterName : CName;
+	var parameterId : Uint16;
+	var parameterType : LibTreeEParameterType;
+	var value : Variant;
+}

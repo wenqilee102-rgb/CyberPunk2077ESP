@@ -1,0 +1,10 @@
+import struct gameRewardPack
+{
+	var id : String;
+	var title : String;
+	var reason : String;
+	var iconSlot : CName;
+	var group : CName;
+	var slotType : CName;
+	var rewards : array:Uint64;
+}

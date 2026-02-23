@@ -1,0 +1,37 @@
+class ShardReadPopupData extends inkGameNotificationData
+{
+	public    var title : String;
+	public    var text : String;
+	public    var isCrypted : Bool;
+	public    var itemID : gameItemID;
+	public    var imageId : TweakDBID;
+}
+
+import class inkGameNotificationData extends inkUserData
+{
+	var notificationName : CName;
+	var requiredGameState : CName;
+	var isBlocking : Bool;
+	var useCursor : Bool;
+	var queueName : CName;
+	var introAnimation : CName;
+	var token : whandle:inkGameNotificationToken;
+}
+
+import class inkUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,23 @@
+import class gameSmartObjectsCompiledResource extends resStreamedResource
+{
+	var animationDatabase : handle:gameSmartObjectAnimationDatabase;
+	var compiledNodesData : handle:gameCompiledNodes;
+	var transformDictionary : handle:gameSmartObjectTransformDictionary;
+	var propertyDictionary : handle:gameSmartObjectPropertyDictionary;
+	var transformSequenceDictionary : handle:gameSmartObjectTransformSequenceDictionary;
+	var soMembership : handle:gameSmartObjectMembership;
+	var localBoundingBox : Box;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

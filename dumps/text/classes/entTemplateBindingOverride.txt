@@ -1,0 +1,6 @@
+import struct entTemplateBindingOverride
+{
+	var componentName : CName;
+	var propertyName : CName;
+	var binding : handle:entIBinding;
+}

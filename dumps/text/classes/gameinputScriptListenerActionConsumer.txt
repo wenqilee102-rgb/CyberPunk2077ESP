@@ -1,0 +1,7 @@
+import struct gameinputScriptListenerActionConsumer
+{
+	import static function AxisWaitForZero(me : gameinputScriptListenerActionConsumer); // AxisWaitForZero
+	import static function Consume(me : gameinputScriptListenerActionConsumer); // Consume
+	import static function ConsumeSingleAction(me : gameinputScriptListenerActionConsumer); // ConsumeSingleAction
+	import static function DontSendReleaseEvent(me : gameinputScriptListenerActionConsumer); // DontSendReleaseEvent
+}

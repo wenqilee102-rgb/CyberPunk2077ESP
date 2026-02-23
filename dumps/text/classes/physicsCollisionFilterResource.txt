@@ -1,0 +1,12 @@
+import class physicsCollisionFilterResource extends ISerializable
+{
+	var collisionPresetJson : rRef:JsonResource;
+	var overridesJson : rRef:JsonResource;
+	var queryPresetJson : rRef:JsonResource;
+	var collisionGroups : static:64,CName;
+	var queryGroups : static:64,CName;
+}
+
+import class abstract ISerializable
+{
+}

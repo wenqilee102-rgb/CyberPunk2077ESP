@@ -1,0 +1,72 @@
+class PlayerVisionModeController extends IScriptable
+{
+	private   var gameplayActiveFlagsRefreshPolicy : PlayerVisionModeControllerRefreshPolicy;
+	private   var blackboardIds : PlayerVisionModeControllerBBIds;
+	private   var blackboardValuesIds : PlayerVisionModeControllerBBValuesIds;
+	private   var blackboardListenersFunctions : PlayerVisionModeControllerBlackboardListenersFunctions;
+	private   var blackboardListeners : PlayerVisionModeControllerBBListeners;
+	private   var gameplayActiveFlags : PlayerVisionModeControllerActiveFlags;
+	private   var inputActionsNames : PlayerVisionModeControllerInputActionsNames;
+	private   var inputListeners : PlayerVisionModeControllerInputListeners;
+	private   var inputActiveFlags : PlayerVisionModeControllerInputActiveFlags;
+	private   var otherVars : PlayerVisionModeControllerOtherVars;
+	private   var owner : whandle:gameObject;
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+	event OnBraindanceActiveChanged(value : Bool) : Bool; // OnBraindanceActiveChanged
+	event OnBraindanceFPPChanged(value : Bool) : Bool; // OnBraindanceFPPChanged
+	event OnBriefingChange(value : Bool) : Bool; // OnBriefingChange
+	event OnDeadChanged(value : Int32) : Bool; // OnDeadChanged
+	event OnDeviceTakeoverChanged(value : entEntityID) : Bool; // OnDeviceTakeoverChanged
+	event OnKerenzikovChanged(value : Int32) : Bool; // OnKerenzikovChanged
+	event OnRestrictedSceneChanged(value : Int32) : Bool; // OnRestrictedSceneChanged
+	event OnTakedownChanged(value : Int32) : Bool; // OnTakedownChanged
+	event OnTwintoneChange(value : Bool) : Bool; // OnTwintoneChange
+	event OnVeryHardLandingChanged(value : Int32) : Bool; // OnVeryHardLandingChanged
+
+	function ActivateVisionMode(); // ActivateVisionMode;
+	function ApplyFocusModeLocomotionRestriction(); // ApplyFocusModeLocomotionRestriction;
+	function DeactivateVisionMode(); // DeactivateVisionMode;
+	function ForceInputOff(); // ForceInputOff;
+	function GetVisionAimSnapParams() : gameaimAssistAimRequest; // GetVisionAimSnapParams;
+	function HasMeleeWeaponEquipped() : Bool; // HasMeleeWeaponEquipped;
+	function InitBlackboardFunctions(); // InitBlackboardFunctions;
+	function InitBlackboardIds(); // InitBlackboardIds;
+	function InitBlackboardValuesIds(); // InitBlackboardValuesIds;
+	function InitInputActionsNames(); // InitInputActionsNames;
+	function InitPlayerVisionModeControllerRefreshPolicy(); // InitPlayerVisionModeControllerRefreshPolicy;
+	function InvalidateActivationState(active : Bool); // InvalidateActivationState;Bool
+	function IsPlayerInDriverCombat() : Bool; // IsPlayerInDriverCombat;
+	function OnEnablePhotoMode(enable : Bool); // OnEnablePhotoMode;Bool
+	function OnInvalidateActiveState(evt : handle:PlayerVisionModeControllerInvalidateEvent); // OnInvalidateActiveState;PlayerVisionModeControllerInvalidateEvent
+	function ProcessFlagsRefreshPolicy(); // ProcessFlagsRefreshPolicy;
+	function RegisterBlackboardListeners(); // RegisterBlackboardListeners;
+	function RegisterInputListeners(); // RegisterInputListeners;
+	function RegisterOwner(owner : handle:gameObject); // RegisterOwner;GameObject
+	function RemoveFocusModeLocomotionRestriction(); // RemoveFocusModeLocomotionRestriction;
+	function SendPSMBoolParameter(id : CName, value : Bool, aspect : gamestateMachineParameterAspect); // SendPSMBoolParameter;CNameBoolgamestateMachineParameterAspect
+	function SetBlackboardIntVariable(definition : handle:gamebbScriptDefinition, id : gamebbScriptID_Int32, value : Int32); // SetBlackboardIntVariable;BlackboardDefinitionBlackboardID_IntInt32
+	function SetFocusModeAnimFeature(newState : Bool); // SetFocusModeAnimFeature;Bool
+	function SetupLockHoldInput(); // SetupLockHoldInput;
+	function SetupLockToggleInput(); // SetupLockToggleInput;
+	function UnregisterBlackboardListeners(); // UnregisterBlackboardListeners;
+	function UnregisterInputListeners(); // UnregisterInputListeners;
+	function UnregisterOwner(); // UnregisterOwner;
+	function UpdateBlackboardValues(); // UpdateBlackboardValues;
+	function UpdateNoScanningRestriction(); // UpdateNoScanningRestriction;
+	function VerifyActivation(); // VerifyActivation;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

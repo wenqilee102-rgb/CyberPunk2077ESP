@@ -1,0 +1,5 @@
+struct ThreatPersistanceMemory
+{
+	public    var threats : array:whandle:entEntity;
+	public    var isPersistent : array:Bool;
+}

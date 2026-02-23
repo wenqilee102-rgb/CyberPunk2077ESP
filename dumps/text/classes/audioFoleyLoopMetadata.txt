@@ -1,0 +1,5 @@
+import struct audioFoleyLoopMetadata
+{
+	var startEvent : CName;
+	var stopEvent : CName;
+}

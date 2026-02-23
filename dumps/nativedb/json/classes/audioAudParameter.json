@@ -1,0 +1,1 @@
+{"b":"audioAudParameter","d":8,"g":true,"e":[{"a":{"a":14},"b":"name","c":128},{"a":{"a":10},"b":"value","c":128},{"a":{"b":"audioESoundCurveType"},"b":"enterCurveType","c":128},{"a":{"a":10},"b":"enterCurveTime","c":128},{"a":{"b":"audioESoundCurveType"},"b":"exitCurveType","c":128},{"a":{"a":10},"b":"exitCurveTime","c":128}]}

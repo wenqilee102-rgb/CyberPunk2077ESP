@@ -1,0 +1,1 @@
+{"b":"worldGlobalNodeID","c":"GlobalNodeID","d":8,"g":true,"e":[{"a":{"a":9},"b":"hash","c":132}],"f":[{"a":"GetRoot","c":{"b":"worldGlobalNodeID"},"d":12},{"a":"IsDefined","c":{"a":1},"d":12,"e":[{"a":{"b":"worldGlobalNodeID"},"b":"id","c":0}]}]}

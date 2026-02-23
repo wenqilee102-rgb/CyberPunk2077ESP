@@ -1,0 +1,38 @@
+class HotkeyAssignmentRequest extends gamePlayerScriptableSystemRequest
+{
+	protected var itemID : gameItemID;
+	private   var hotkey : gameEHotkey;
+	protected var requestType : EHotkeyRequestType;
+
+	static function Construct(itemID : gameItemID, hotkey : gameEHotkey, owner : whandle:gameObject, requestType : EHotkeyRequestType) : handle:HotkeyAssignmentRequest; // HotkeyAssignmentRequest::Construct;ItemIDEHotkeyGameObjectEHotkeyRequestType
+
+	function GetHotkey() : gameEHotkey; // GetHotkey;
+	function GetRequestType() : EHotkeyRequestType; // GetRequestType;
+	function IsValid() : Bool; // IsValid;
+	function ItemID() : gameItemID; // ItemID;
+	function Owner() : handle:gameObject; // Owner;
+}
+
+import class gamePlayerScriptableSystemRequest extends gameScriptableSystemRequest
+{
+	var owner : whandle:gameObject;
+}
+
+import class gameScriptableSystemRequest extends IScriptable
+{
+	import function Cancel(); // Cancel
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

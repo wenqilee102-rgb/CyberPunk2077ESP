@@ -1,0 +1,4 @@
+import struct scnAnimSetAnimNames
+{
+	var animationNames : array:CName;
+}

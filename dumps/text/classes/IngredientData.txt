@@ -1,0 +1,14 @@
+struct IngredientData
+{
+	public    var label : String;
+	public    var quantity : Int32;
+	public    var baseQuantity : Int32;
+	public    var itemAmount : Int32;
+	public    var inventoryQuantity : Int32;
+	public    var id : handle:gamedataItem_Record;
+	public    var icon : String;
+	public    var iconGender : gameItemIconGender;
+	public    var playerSelectableIngredient : Bool;
+	public    var buyableIngredient : Bool;
+	public    var hasEnoughQuantity : Bool;
+}

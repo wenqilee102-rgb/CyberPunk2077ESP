@@ -1,0 +1,10 @@
+struct STvChannel
+{
+	public    var channelName : String;
+	public    var videoPath : redResourceReferenceScriptToken;
+	public    var messageRecordID : TweakDBID;
+	public    var audioEvent : CName;
+	public    var looped : Bool;
+	public    var sequence : array:SequenceVideo;
+	public    var channelTweakID : TweakDBID;
+}

@@ -1,0 +1,1 @@
+{"a":"questISensesConditionType","b":"questStimuli_ConditionType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"instigatorRef","c":128},{"a":{"a":1},"b":"isPlayerInstigator","c":128},{"a":{"b":"gameEntityReference"},"b":"targetRef","c":128},{"a":{"b":"gamedataStimType"},"b":"type","c":128}]}

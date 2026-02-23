@@ -1,0 +1,40 @@
+import class gamedataDeviceWidgetDefinition_Record extends gamedataWidgetDefinition_Record
+{
+}
+
+import class gamedataWidgetDefinition_Record extends gamedataTweakDBRecord
+{
+	import function GetRatiosCount() : Int32; // GetRatiosCount
+	import function GetRatiosItem(index : Int32) : whandle:gamedataWidgetRatio_Record; // GetRatiosItem
+	import function GetRatiosItemHandle(index : Int32) : handle:gamedataWidgetRatio_Record; // GetRatiosItemHandle
+	import function GetStylesCount() : Int32; // GetStylesCount
+	import function GetStylesItem(index : Int32) : whandle:gamedataWidgetStyle_Record; // GetStylesItem
+	import function GetStylesItemHandle(index : Int32) : handle:gamedataWidgetStyle_Record; // GetStylesItemHandle
+	import function LibraryID() : String; // LibraryID
+	import function LibraryPath() : redResourceReferenceScriptToken; // LibraryPath
+	import function Ratios(out outList : array:whandle:gamedataWidgetRatio_Record); // Ratios
+	import function RatiosContains(item : whandle:gamedataWidgetRatio_Record) : Bool; // RatiosContains
+	import function Styles(out outList : array:whandle:gamedataWidgetStyle_Record); // Styles
+	import function StylesContains(item : whandle:gamedataWidgetStyle_Record) : Bool; // StylesContains
+	import function UseContentRatio() : Bool; // UseContentRatio
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,21 @@
+import class animAnimEvent_Sound extends animAnimEvent
+{
+	var switches : array:audioAudSwitch;
+	var params : array:audioAudParameter;
+	var dynamicParams : array:CName;
+	var metadataContext : CName;
+	var onlyPlayOn : CName;
+	var dontPlayOn : CName;
+	var playerGenderAlt : animAnimEventGenderAlt;
+}
+
+import class abstract animAnimEvent extends ISerializable
+{
+	var startFrame : Uint32;
+	var durationInFrames : Uint32;
+	var eventName : CName;
+}
+
+import class abstract ISerializable
+{
+}

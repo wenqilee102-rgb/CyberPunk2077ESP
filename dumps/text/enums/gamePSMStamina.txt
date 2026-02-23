@@ -1,0 +1,6 @@
+enum gamePSMStamina
+{
+	Rested = 0,
+	Fatigued = 1,
+	Exhausted = 2
+}

@@ -1,0 +1,13 @@
+import class animAnimStateTransitionCondition_WrapperValue extends animIAnimStateTransitionCondition
+{
+	var wrapperName : CName;
+	var checkIfWrapperIsSet : Bool;
+}
+
+import class abstract animIAnimStateTransitionCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

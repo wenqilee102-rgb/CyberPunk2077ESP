@@ -1,0 +1,6 @@
+struct cameraShotEffect_TranslationAffectedAxis
+{
+	public    var X : Bool;
+	public    var Y : Bool;
+	public    var Z : Bool;
+}

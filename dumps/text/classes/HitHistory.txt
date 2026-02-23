@@ -1,0 +1,24 @@
+class HitHistory extends IScriptable
+{
+	private   var hitHistory : array:HitHistoryItem;
+	private   var maxEntries : Int32;
+
+	function Add(instigator : whandle:gameObject, hitTime : Float, attackType : gamedataAttackType); // Add;GameObjectFloatgamedataAttackType
+	function AddHit(evt : handle:gameeventsHitEvent); // AddHit;gameHitEvent
+	function GetLastDamageTime(object : handle:gameObject, out isMelee : Bool) : Float; // GetLastDamageTime;GameObjectBool
+	function GetLastDamageType(instigator : handle:gameObject) : gamedataAttackType; // GetLastDamageType;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

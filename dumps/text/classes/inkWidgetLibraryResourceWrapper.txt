@@ -1,0 +1,8 @@
+import struct inkWidgetLibraryResourceWrapper
+{
+	var library : raRef:inkWidgetLibraryResource;
+
+	import static function GetHash(self : inkWidgetLibraryResourceWrapper) : Uint64; // GetHash
+	import static function GetPath(self : inkWidgetLibraryResourceWrapper) : redResourceReferenceScriptToken; // GetPath
+	import static function IsValid(self : inkWidgetLibraryResourceWrapper) : Bool; // IsValid
+}

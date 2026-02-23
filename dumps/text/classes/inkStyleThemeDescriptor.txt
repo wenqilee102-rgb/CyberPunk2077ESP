@@ -1,0 +1,5 @@
+import struct inkStyleThemeDescriptor
+{
+	var themeID : CName;
+	var themeNameLocKey : CName;
+}

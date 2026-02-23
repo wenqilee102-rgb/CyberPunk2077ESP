@@ -1,0 +1,7 @@
+struct SBinkperationData
+{
+	public    var componentName : CName;
+	public    var binkPath : redResourceReferenceScriptToken;
+	public    var loop : Bool;
+	public    var operationType : EBinkOperationType;
+}

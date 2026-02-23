@@ -1,0 +1,31 @@
+import class questUnequipItemNodeDefinition extends questSignalStoppingNodeDefinition
+{
+	var entityReference : gameEntityReference;
+	var params : questUnequipItemParams;
+}
+
+import class abstract questSignalStoppingNodeDefinition extends questDisableableNodeDefinition
+{
+}
+
+import class abstract questDisableableNodeDefinition extends questNodeDefinition
+{
+}
+
+import class abstract questNodeDefinition extends graphGraphNodeDefinition
+{
+	var id : Uint16;
+}
+
+import class abstract graphGraphNodeDefinition extends graphIGraphObjectDefinition
+{
+	var sockets : array:handle:graphGraphSocketDefinition;
+}
+
+import class abstract graphIGraphObjectDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

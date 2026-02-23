@@ -1,0 +1,5 @@
+import struct questUseWorkspotParams
+{
+	var workspotNode : NodeRef;
+	var forceEntryAnimName : CName;
+}

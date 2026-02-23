@@ -1,0 +1,4 @@
+import struct scnReferencePointId
+{
+	var id : Uint32;
+}

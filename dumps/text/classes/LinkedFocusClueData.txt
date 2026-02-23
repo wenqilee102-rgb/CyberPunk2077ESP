@@ -1,0 +1,12 @@
+struct LinkedFocusClueData
+{
+	public    var clueGroupID : CName;
+	public    var ownerID : entEntityID;
+	public    var clueIndex : Int32;
+	public    var clueRecord : TweakDBID;
+	public    var extendedClueRecords : array:ClueRecordData;
+	public    var isScanned : Bool;
+	public    var wasInspected : Bool;
+	public    var isEnabled : Bool;
+	public    var psData : PSOwnerData;
+}

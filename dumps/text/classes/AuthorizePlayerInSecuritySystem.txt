@@ -1,0 +1,26 @@
+class AuthorizePlayerInSecuritySystem extends redEvent
+{
+	public    var authorize : Bool;
+	public    var forceRemoveFromBlacklist : Bool;
+	public    var ESL : ESecurityAccessLevel;
+
+	function GetFriendlyDescription() : String; // GetFriendlyDescription;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

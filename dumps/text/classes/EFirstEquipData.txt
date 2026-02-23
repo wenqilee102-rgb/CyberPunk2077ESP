@@ -1,0 +1,5 @@
+struct EFirstEquipData
+{
+	public    var weaponID : TweakDBID;
+	public    var hasPlayedFirstEquip : Bool;
+}

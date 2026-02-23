@@ -1,0 +1,1 @@
+{"a":"questIDynamicSpawnSystemType","b":"questDynamicVehicleSpawn_NodeType","d":8,"e":[{"a":{"a":31,"c":{"a":15}},"b":"VehicleData","c":128},{"a":{"a":14},"b":"waveTag","c":128},{"a":{"b":"questSpawnDirectionPreference"},"b":"spawnDirectionPreference","c":128},{"a":{"b":"Vector2"},"b":"distanceRange","c":128}]}

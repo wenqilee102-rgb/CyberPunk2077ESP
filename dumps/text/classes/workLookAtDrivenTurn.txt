@@ -1,0 +1,16 @@
+import class workLookAtDrivenTurn extends workIEntry
+{
+	var turnAngle : Int32;
+	var turnAnimName : CName;
+	var blendTime : Float;
+}
+
+import class abstract workIEntry extends ISerializable
+{
+	var id : workWorkEntryId;
+	var flags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

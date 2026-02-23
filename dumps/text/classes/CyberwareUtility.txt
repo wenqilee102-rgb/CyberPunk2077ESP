@@ -1,0 +1,21 @@
+class CyberwareUtility extends IScriptable
+{
+	static function GetActiveCyberwareItem(player : handle:PlayerPuppet) : TweakDBID; // CyberwareUtility::GetActiveCyberwareItem;PlayerPuppet
+	static function GetMaxActiveTimeFromTweak(item : TweakDBID) : Float; // CyberwareUtility::GetMaxActiveTimeFromTweak;TweakDBID
+	static function IsCurrentCyberwareOnCooldown(player : handle:PlayerPuppet) : Bool; // CyberwareUtility::IsCurrentCyberwareOnCooldown;PlayerPuppet
+	static function StartGenericCwCooldown(player : handle:PlayerPuppet); // CyberwareUtility::StartGenericCwCooldown;PlayerPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

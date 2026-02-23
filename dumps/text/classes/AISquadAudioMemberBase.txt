@@ -1,0 +1,11 @@
+import class AISquadAudioMemberBase extends AISquadMemberBase
+{
+}
+
+import class abstract AISquadMemberBase extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

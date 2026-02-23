@@ -1,0 +1,4 @@
+import struct worldNodesGroupPath
+{
+	var elements : array:CName;
+}

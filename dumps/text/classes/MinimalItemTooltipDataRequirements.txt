@@ -1,0 +1,30 @@
+class MinimalItemTooltipDataRequirements extends IScriptable
+{
+	public    var isLevelRequirementNotMet : Bool;
+	public    var isSmartlinkRequirementNotMet : Bool;
+	public    var isStrengthRequirementNotMet : Bool;
+	public    var isReflexRequirementNotMet : Bool;
+	public    var isAnyStatRequirementNotMet : Bool;
+	public    var isHumanityStatRequirementNotMet : Bool;
+	public    var isPerkRequirementNotMet : Bool;
+	public    var isRarityRequirementNotMet : Bool;
+	public    var strengthOrReflexStatName : String;
+	public    var perkLocKey : String;
+	public    var strengthOrReflexValue : Int32;
+	public    var requiredLevel : Int32;
+	public    var anyStatRequirements : array:handle:MinimalItemTooltipDataStatRequirement;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

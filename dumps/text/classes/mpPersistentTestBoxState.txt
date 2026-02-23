@@ -1,0 +1,14 @@
+import struct mpPersistentTestBoxState extends netIEntityState
+{
+	var isOn : Bool;
+	var weakPersistentEntity : whandle:mpPersistentTestBox;
+	var weakPersistentEntityComponent : whandle:entIComponent;
+	var weakDynamicEntity : whandle:gameObject;
+	var weakDynamicEntityComponent : whandle:entIComponent;
+}
+
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

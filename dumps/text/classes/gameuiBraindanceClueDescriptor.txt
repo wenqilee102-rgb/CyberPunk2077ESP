@@ -1,0 +1,8 @@
+import struct gameuiBraindanceClueDescriptor
+{
+	var mode : gameuiEClueDescriptorMode;
+	var layer : gameuiEBraindanceLayer;
+	var startTime : Float;
+	var endTime : Float;
+	var clueName : CName;
+}

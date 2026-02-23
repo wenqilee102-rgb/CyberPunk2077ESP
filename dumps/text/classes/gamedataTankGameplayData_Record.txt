@@ -1,0 +1,36 @@
+import class gamedataTankGameplayData_Record extends gamedataTweakDBRecord
+{
+	import function GetLevelListCount() : Int32; // GetLevelListCount
+	import function GetLevelListItem(index : Int32) : whandle:gamedataTankLevelGameplay_Record; // GetLevelListItem
+	import function GetLevelListItemHandle(index : Int32) : handle:gamedataTankLevelGameplay_Record; // GetLevelListItemHandle
+	import function GetScoreMultiplierBreakpointListCount() : Int32; // GetScoreMultiplierBreakpointListCount
+	import function GetScoreMultiplierBreakpointListItem(index : Int32) : whandle:gamedataTankScoreMultiplierBreakpoint_Record; // GetScoreMultiplierBreakpointListItem
+	import function GetScoreMultiplierBreakpointListItemHandle(index : Int32) : handle:gamedataTankScoreMultiplierBreakpoint_Record; // GetScoreMultiplierBreakpointListItemHandle
+	import function LevelList(out outList : array:whandle:gamedataTankLevelGameplay_Record); // LevelList
+	import function LevelListContains(item : whandle:gamedataTankLevelGameplay_Record) : Bool; // LevelListContains
+	import function ScoreMultiplierBreakpointList(out outList : array:whandle:gamedataTankScoreMultiplierBreakpoint_Record); // ScoreMultiplierBreakpointList
+	import function ScoreMultiplierBreakpointListContains(item : whandle:gamedataTankScoreMultiplierBreakpoint_Record) : Bool; // ScoreMultiplierBreakpointListContains
+	import function ScoreMultiplierDecayBlockedTime() : Float; // ScoreMultiplierDecayBlockedTime
+	import function ScoreMultiplierDecayRate() : Float; // ScoreMultiplierDecayRate
+	import function WorldVelocity() : Vector2; // WorldVelocity
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

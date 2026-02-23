@@ -1,0 +1,9 @@
+import struct animFacialSetup_OneSermoPoseBufferInfo
+{
+	var numMainPoses : Uint16;
+	var numCorrectivePoses : Uint16;
+	var numMainTransforms : Uint32;
+	var numMainScales : Uint32;
+	var numCorrectiveTransforms : Uint32;
+	var numCorrectiveScales : Uint32;
+}

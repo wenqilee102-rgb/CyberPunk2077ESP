@@ -1,0 +1,1 @@
+{"a":"AIbehaviorconditionScript","b":"CheckStimRevealsInstigatorPosition","d":0,"e":[{"a":{"a":1},"b":"checkStimType","c":128},{"a":{"b":"gamedataStimType"},"b":"stimType","c":128}],"f":[{"a":"Check;ScriptExecutionContext","b":"Check","c":{"b":"AIbehaviorConditionOutcomes"},"d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

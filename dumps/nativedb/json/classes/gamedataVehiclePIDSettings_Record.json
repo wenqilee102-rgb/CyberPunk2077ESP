@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataVehiclePIDSettings_Record","c":"VehiclePIDSettings_Record","d":24,"f":[{"a":"D","c":{"a":10},"d":4},{"a":"I","c":{"a":10},"d":4},{"a":"IntegratorClampingLimit","c":{"a":10},"d":4},{"a":"OutputSaturationLimit","c":{"a":10},"d":4},{"a":"P","c":{"a":10},"d":4}]}

@@ -1,0 +1,1 @@
+{"b":"grsDeathmatchState","d":8,"g":true,"e":[{"a":{"b":"netTime"},"b":"time","c":128},{"a":{"b":"grsDeathmatchStatus"},"b":"status","c":128},{"a":{"b":"netTime"},"b":"sessionLength","c":128},{"a":{"a":31,"c":{"b":"grsDeathmatchPlayerGameInfo"}},"b":"playersInfo","c":128}]}

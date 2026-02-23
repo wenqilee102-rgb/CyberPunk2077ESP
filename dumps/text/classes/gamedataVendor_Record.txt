@@ -1,0 +1,76 @@
+import class gamedataVendor_Record extends gamedataTweakDBRecord
+{
+	import function AccessPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // AccessPrereqs
+	import function AccessPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // AccessPrereqsContains
+	import function Craftbooks(out outList : array:whandle:gamedataVendorCraftable_Record); // Craftbooks
+	import function CraftbooksContains(item : whandle:gamedataVendorCraftable_Record) : Bool; // CraftbooksContains
+	import function CustomerFilterTags() : array:CName; // CustomerFilterTags
+	import function CustomerFilterTagsContains(item : CName) : Bool; // CustomerFilterTagsContains
+	import function CustomerInverseFilterTags() : array:CName; // CustomerInverseFilterTags
+	import function CustomerInverseFilterTagsContains(item : CName) : Bool; // CustomerInverseFilterTagsContains
+	import function ExperienceStock(out outList : array:whandle:gamedataVendorExperience_Record); // ExperienceStock
+	import function ExperienceStockContains(item : whandle:gamedataVendorExperience_Record) : Bool; // ExperienceStockContains
+	import function Faction() : whandle:gamedataAffiliation_Record; // Faction
+	import function FactionHandle() : handle:gamedataAffiliation_Record; // FactionHandle
+	import function GetAccessPrereqsCount() : Int32; // GetAccessPrereqsCount
+	import function GetAccessPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetAccessPrereqsItem
+	import function GetAccessPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetAccessPrereqsItemHandle
+	import function GetCraftbooksCount() : Int32; // GetCraftbooksCount
+	import function GetCraftbooksItem(index : Int32) : whandle:gamedataVendorCraftable_Record; // GetCraftbooksItem
+	import function GetCraftbooksItemHandle(index : Int32) : handle:gamedataVendorCraftable_Record; // GetCraftbooksItemHandle
+	import function GetCustomerFilterTagsCount() : Int32; // GetCustomerFilterTagsCount
+	import function GetCustomerFilterTagsItem(index : Int32) : CName; // GetCustomerFilterTagsItem
+	import function GetCustomerInverseFilterTagsCount() : Int32; // GetCustomerInverseFilterTagsCount
+	import function GetCustomerInverseFilterTagsItem(index : Int32) : CName; // GetCustomerInverseFilterTagsItem
+	import function GetExperienceStockCount() : Int32; // GetExperienceStockCount
+	import function GetExperienceStockItem(index : Int32) : whandle:gamedataVendorExperience_Record; // GetExperienceStockItem
+	import function GetExperienceStockItemHandle(index : Int32) : handle:gamedataVendorExperience_Record; // GetExperienceStockItemHandle
+	import function GetItemQueriesCount() : Int32; // GetItemQueriesCount
+	import function GetItemQueriesItem(index : Int32) : whandle:gamedataVendorItemQuery_Record; // GetItemQueriesItem
+	import function GetItemQueriesItemHandle(index : Int32) : handle:gamedataVendorItemQuery_Record; // GetItemQueriesItemHandle
+	import function GetItemStockCount() : Int32; // GetItemStockCount
+	import function GetItemStockItem(index : Int32) : whandle:gamedataVendorItem_Record; // GetItemStockItem
+	import function GetItemStockItemHandle(index : Int32) : handle:gamedataVendorItem_Record; // GetItemStockItemHandle
+	import function GetMapVisibilityPrereqsCount() : Int32; // GetMapVisibilityPrereqsCount
+	import function GetMapVisibilityPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetMapVisibilityPrereqsItem
+	import function GetMapVisibilityPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetMapVisibilityPrereqsItemHandle
+	import function GetVendorFilterTagsCount() : Int32; // GetVendorFilterTagsCount
+	import function GetVendorFilterTagsItem(index : Int32) : CName; // GetVendorFilterTagsItem
+	import function GetVendorInverseFilterTagsCount() : Int32; // GetVendorInverseFilterTagsCount
+	import function GetVendorInverseFilterTagsItem(index : Int32) : CName; // GetVendorInverseFilterTagsItem
+	import function InGameTimeToRestock() : Float; // InGameTimeToRestock
+	import function ItemQueries(out outList : array:whandle:gamedataVendorItemQuery_Record); // ItemQueries
+	import function ItemQueriesContains(item : whandle:gamedataVendorItemQuery_Record) : Bool; // ItemQueriesContains
+	import function ItemStock(out outList : array:whandle:gamedataVendorItem_Record); // ItemStock
+	import function ItemStockContains(item : whandle:gamedataVendorItem_Record) : Bool; // ItemStockContains
+	import function LocalizedDescription() : String; // LocalizedDescription
+	import function LocalizedName() : String; // LocalizedName
+	import function MapVisibilityPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // MapVisibilityPrereqs
+	import function MapVisibilityPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // MapVisibilityPrereqsContains
+	import function VendorFilterTags() : array:CName; // VendorFilterTags
+	import function VendorFilterTagsContains(item : CName) : Bool; // VendorFilterTagsContains
+	import function VendorInverseFilterTags() : array:CName; // VendorInverseFilterTags
+	import function VendorInverseFilterTagsContains(item : CName) : Bool; // VendorInverseFilterTagsContains
+	import function VendorType() : whandle:gamedataVendorType_Record; // VendorType
+	import function VendorTypeHandle() : handle:gamedataVendorType_Record; // VendorTypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

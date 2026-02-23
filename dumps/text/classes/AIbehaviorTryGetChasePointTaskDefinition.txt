@@ -1,0 +1,16 @@
+import class AIbehaviorTryGetChasePointTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var inPlayerPositionDelay : handle:AIArgumentMapping;
+	var inPlayerPositionMaxDistance : handle:AIArgumentMapping;
+	var inNearestNavmeshPolyExtent : handle:AIArgumentMapping;
+	var outChasePosition : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

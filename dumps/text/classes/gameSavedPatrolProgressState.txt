@@ -1,0 +1,15 @@
+import class gameSavedPatrolProgressState extends ISerializable
+{
+	var entrySplineParam : Float;
+	var entrySectionIndex : Uint32;
+	var controlPointIndex : Uint32;
+	var splineEntryPosition : Vector3;
+	var splineEntryTangent : Vector3;
+	var isSplineReversed : Bool;
+	var currentDestinationPosition : Vector3;
+	var currentDestinationTangent : Vector3;
+}
+
+import class abstract ISerializable
+{
+}

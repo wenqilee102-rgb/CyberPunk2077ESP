@@ -1,0 +1,9 @@
+import struct questSimpleMoveOnSplineParams
+{
+	var movementType : moveMovementType;
+	var facingTargetRef : handle:questUniversalRef;
+	var rotateEntityTowardsFacingTarget : Bool;
+	var snapToTerrain : Bool;
+	var useOffMeshLinkReservation : Bool;
+	var allowCrowdOnPath : Bool;
+}

@@ -1,0 +1,1 @@
+{"a":"HitCallback","b":"AmmoStateHitCallback","d":0,"f":[{"a":"RegisterState;PrereqState","b":"RegisterState","d":32,"e":[{"a":{"a":26,"c":{"b":"gamePrereqState"}},"b":"state","c":0}]},{"a":"UpdateState;gameHitEvent","b":"UpdateState","d":34,"e":[{"a":{"a":26,"c":{"b":"gameeventsHitEvent"}},"b":"hitEvent","c":0}]}]}

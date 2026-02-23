@@ -1,0 +1,225 @@
+import class gamedataSubCharacter_Record extends gamedataCharacter_Record
+{
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetStartingEquippedItemsCount() : Int32; // GetStartingEquippedItemsCount
+	import function GetStartingEquippedItemsItem(index : Int32) : whandle:gamedataItem_Record; // GetStartingEquippedItemsItem
+	import function GetStartingEquippedItemsItemHandle(index : Int32) : handle:gamedataItem_Record; // GetStartingEquippedItemsItemHandle
+	import function IsPrevention() : Bool; // IsPrevention
+	import function ReferenceName() : CName; // ReferenceName
+	import function StartingEquippedItems(out outList : array:whandle:gamedataItem_Record); // StartingEquippedItems
+	import function StartingEquippedItemsContains(item : whandle:gamedataItem_Record) : Bool; // StartingEquippedItemsContains
+	import function Type() : gamedataSubCharacter; // Type
+}
+
+import class gamedataCharacter_Record extends gamedataSpawnableObject_Record
+{
+	import function Abilities(out outList : array:whandle:gamedataGameplayAbility_Record); // Abilities
+	import function AbilitiesContains(item : whandle:gamedataGameplayAbility_Record) : Bool; // AbilitiesContains
+	import function ActionMap() : whandle:gamedataActionMap_Record; // ActionMap
+	import function ActionMapHandle() : handle:gamedataActionMap_Record; // ActionMapHandle
+	import function Affiliation() : whandle:gamedataAffiliation_Record; // Affiliation
+	import function AffiliationHandle() : handle:gamedataAffiliation_Record; // AffiliationHandle
+	import function AlternativeDisplayName() : CName; // AlternativeDisplayName
+	import function AlternativeFullDisplayName() : CName; // AlternativeFullDisplayName
+	import function ArchetypeData() : whandle:gamedataArchetypeData_Record; // ArchetypeData
+	import function ArchetypeDataHandle() : handle:gamedataArchetypeData_Record; // ArchetypeDataHandle
+	import function ArchetypeName() : CName; // ArchetypeName
+	import function AttachmentSlots(out outList : array:whandle:gamedataAttachmentSlot_Record); // AttachmentSlots
+	import function AttachmentSlotsContains(item : whandle:gamedataAttachmentSlot_Record) : Bool; // AttachmentSlotsContains
+	import function AudioMeleeMaterial() : CName; // AudioMeleeMaterial
+	import function AudioResourceName() : CName; // AudioResourceName
+	import function BaseAttitudeGroup() : CName; // BaseAttitudeGroup
+	import function BossHealthBarThresholds() : array:Float; // BossHealthBarThresholds
+	import function BossHealthBarThresholdsContains(item : Float) : Bool; // BossHealthBarThresholdsContains
+	import function BountyDrawTable() : whandle:gamedataBountyDrawTable_Record; // BountyDrawTable
+	import function BountyDrawTableHandle() : handle:gamedataBountyDrawTable_Record; // BountyDrawTableHandle
+	import function CanHaveGenericTalk() : Bool; // CanHaveGenericTalk
+	import function CharacterType() : whandle:gamedataNPCType_Record; // CharacterType
+	import function CharacterTypeHandle() : handle:gamedataNPCType_Record; // CharacterTypeHandle
+	import function CommunitySquad() : CName; // CommunitySquad
+	import function ContentAssignment() : whandle:gamedataContentAssignment_Record; // ContentAssignment
+	import function ContentAssignmentHandle() : handle:gamedataContentAssignment_Record; // ContentAssignmentHandle
+	import function CpoCharacterBuild() : String; // CpoCharacterBuild
+	import function CpoClassName() : CName; // CpoClassName
+	import function CrowdAppearanceNames() : array:CName; // CrowdAppearanceNames
+	import function CrowdAppearanceNamesContains(item : CName) : Bool; // CrowdAppearanceNamesContains
+	import function CrowdMemberSettings() : whandle:gamedataCrowdSettingsPackageBase_Record; // CrowdMemberSettings
+	import function CrowdMemberSettingsHandle() : handle:gamedataCrowdSettingsPackageBase_Record; // CrowdMemberSettingsHandle
+	import function DefaultCrosshair() : whandle:gamedataCrosshair_Record; // DefaultCrosshair
+	import function DefaultCrosshairHandle() : handle:gamedataCrosshair_Record; // DefaultCrosshairHandle
+	import function DefaultEquipment() : whandle:gamedataNPCEquipmentItem_Record; // DefaultEquipment
+	import function DefaultEquipmentHandle() : handle:gamedataNPCEquipmentItem_Record; // DefaultEquipmentHandle
+	import function DespawnChildCommunityWhenPlayerInVehicle() : Bool; // DespawnChildCommunityWhenPlayerInVehicle
+	import function DevNotes() : String; // DevNotes
+	import function DisableDefeatedState() : Bool; // DisableDefeatedState
+	import function DisplayDescription() : CName; // DisplayDescription
+	import function DisplayName() : CName; // DisplayName
+	import function Driving() : whandle:gamedataBaseDrivingParameters_Record; // Driving
+	import function DrivingHandle() : handle:gamedataBaseDrivingParameters_Record; // DrivingHandle
+	import function DropsAmmoOnDeathChance() : Float; // DropsAmmoOnDeathChance
+	import function DropsControlledLoot() : Bool; // DropsControlledLoot
+	import function DropsMoneyOnDeath() : Bool; // DropsMoneyOnDeath
+	import function DropsWeaponOnDeath() : Bool; // DropsWeaponOnDeath
+	import function EnableSensesOnStart() : Bool; // EnableSensesOnStart
+	import function EquipmentAreas(out outList : array:whandle:gamedataEquipmentArea_Record); // EquipmentAreas
+	import function EquipmentAreasContains(item : whandle:gamedataEquipmentArea_Record) : Bool; // EquipmentAreasContains
+	import function ForceCanHaveGenericTalk() : Bool; // ForceCanHaveGenericTalk
+	import function ForcedTBHZOffset() : Float; // ForcedTBHZOffset
+	import function FullDisplayName() : CName; // FullDisplayName
+	import function Genders(out outList : array:whandle:gamedataGenderEntity_Record); // Genders
+	import function GendersContains(item : whandle:gamedataGenderEntity_Record) : Bool; // GendersContains
+	import function GetAbilitiesCount() : Int32; // GetAbilitiesCount
+	import function GetAbilitiesItem(index : Int32) : whandle:gamedataGameplayAbility_Record; // GetAbilitiesItem
+	import function GetAbilitiesItemHandle(index : Int32) : handle:gamedataGameplayAbility_Record; // GetAbilitiesItemHandle
+	import function GetAttachmentSlotsCount() : Int32; // GetAttachmentSlotsCount
+	import function GetAttachmentSlotsItem(index : Int32) : whandle:gamedataAttachmentSlot_Record; // GetAttachmentSlotsItem
+	import function GetAttachmentSlotsItemHandle(index : Int32) : handle:gamedataAttachmentSlot_Record; // GetAttachmentSlotsItemHandle
+	import function GetBossHealthBarThresholdsCount() : Int32; // GetBossHealthBarThresholdsCount
+	import function GetBossHealthBarThresholdsItem(index : Int32) : Float; // GetBossHealthBarThresholdsItem
+	import function GetCrowdAppearanceNamesCount() : Int32; // GetCrowdAppearanceNamesCount
+	import function GetCrowdAppearanceNamesItem(index : Int32) : CName; // GetCrowdAppearanceNamesItem
+	import function GetEquipmentAreasCount() : Int32; // GetEquipmentAreasCount
+	import function GetEquipmentAreasItem(index : Int32) : whandle:gamedataEquipmentArea_Record; // GetEquipmentAreasItem
+	import function GetEquipmentAreasItemHandle(index : Int32) : handle:gamedataEquipmentArea_Record; // GetEquipmentAreasItemHandle
+	import function GetGendersCount() : Int32; // GetGendersCount
+	import function GetGendersItem(index : Int32) : whandle:gamedataGenderEntity_Record; // GetGendersItem
+	import function GetGendersItemHandle(index : Int32) : handle:gamedataGenderEntity_Record; // GetGendersItemHandle
+	import function GetItemGroupsCount() : Int32; // GetItemGroupsCount
+	import function GetItemGroupsItem(index : Int32) : whandle:gamedataInventoryItemGroup_Record; // GetItemGroupsItem
+	import function GetItemGroupsItemHandle(index : Int32) : handle:gamedataInventoryItemGroup_Record; // GetItemGroupsItemHandle
+	import function GetItemsCount() : Int32; // GetItemsCount
+	import function GetItemsItem(index : Int32) : whandle:gamedataInventoryItem_Record; // GetItemsItem
+	import function GetItemsItemHandle(index : Int32) : handle:gamedataInventoryItem_Record; // GetItemsItemHandle
+	import function GetOnSpawnGLPsCount() : Int32; // GetOnSpawnGLPsCount
+	import function GetOnSpawnGLPsItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetOnSpawnGLPsItem
+	import function GetOnSpawnGLPsItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetOnSpawnGLPsItemHandle
+	import function GlobalSquad() : CName; // GlobalSquad
+	import function HasDirectionalStarts() : Bool; // HasDirectionalStarts
+	import function HideUIDetection() : Bool; // HideUIDetection
+	import function HideUIElements() : Bool; // HideUIElements
+	import function HolocallInitializerPath() : redResourceReferenceScriptToken; // HolocallInitializerPath
+	import function IdleActions() : whandle:gamedataAIActionSmartComposite_Record; // IdleActions
+	import function IdleActionsHandle() : handle:gamedataAIActionSmartComposite_Record; // IdleActionsHandle
+	import function IgnoreDetectionForAudioCue() : Bool; // IgnoreDetectionForAudioCue
+	import function IsBumpable() : Bool; // IsBumpable
+	import function IsChild() : Bool; // IsChild
+	import function IsCrowd() : Bool; // IsCrowd
+	import function IsLightCrowd() : Bool; // IsLightCrowd
+	import function ItemGroups(out outList : array:whandle:gamedataInventoryItemGroup_Record); // ItemGroups
+	import function ItemGroupsContains(item : whandle:gamedataInventoryItemGroup_Record) : Bool; // ItemGroupsContains
+	import function Items(out outList : array:whandle:gamedataInventoryItem_Record); // Items
+	import function ItemsContains(item : whandle:gamedataInventoryItem_Record) : Bool; // ItemsContains
+	import function LootBagEntity() : CName; // LootBagEntity
+	import function LootDrop() : whandle:gamedataLootTable_Record; // LootDrop
+	import function LootDropHandle() : handle:gamedataLootTable_Record; // LootDropHandle
+	import function LootInjectionParams() : whandle:gamedataLootInjectionSettings_Record; // LootInjectionParams
+	import function LootInjectionParamsHandle() : handle:gamedataLootInjectionSettings_Record; // LootInjectionParamsHandle
+	import function MinigameInstance() : whandle:gamedataMinigame_Def_Record; // MinigameInstance
+	import function MinigameInstanceHandle() : handle:gamedataMinigame_Def_Record; // MinigameInstanceHandle
+	import function OnSpawnGLPs(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // OnSpawnGLPs
+	import function OnSpawnGLPsContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // OnSpawnGLPsContains
+	import function PrimaryEquipment() : whandle:gamedataNPCEquipmentGroup_Record; // PrimaryEquipment
+	import function PrimaryEquipmentHandle() : handle:gamedataNPCEquipmentGroup_Record; // PrimaryEquipmentHandle
+	import function Quest() : whandle:gamedataNPCQuestAffiliation_Record; // Quest
+	import function QuestHandle() : handle:gamedataNPCQuestAffiliation_Record; // QuestHandle
+	import function Rarity() : whandle:gamedataNPCRarity_Record; // Rarity
+	import function RarityHandle() : handle:gamedataNPCRarity_Record; // RarityHandle
+	import function ReactionPreset() : whandle:gamedataReactionPreset_Record; // ReactionPreset
+	import function ReactionPresetHandle() : handle:gamedataReactionPreset_Record; // ReactionPresetHandle
+	import function ScannerModulePreset() : whandle:gamedataScannerModuleVisibilityPreset_Record; // ScannerModulePreset
+	import function ScannerModulePresetHandle() : handle:gamedataScannerModuleVisibilityPreset_Record; // ScannerModulePresetHandle
+	import function SecondaryEquipment() : whandle:gamedataNPCEquipmentGroup_Record; // SecondaryEquipment
+	import function SecondaryEquipmentHandle() : handle:gamedataNPCEquipmentGroup_Record; // SecondaryEquipmentHandle
+	import function SecuritySquad() : CName; // SecuritySquad
+	import function SensePreset() : whandle:gamedataSensePreset_Record; // SensePreset
+	import function SensePresetHandle() : handle:gamedataSensePreset_Record; // SensePresetHandle
+	import function SkipDisplayArchetype() : Bool; // SkipDisplayArchetype
+	import function SquadParamsID() : whandle:gamedataAISquadParams_Record; // SquadParamsID
+	import function SquadParamsIDHandle() : handle:gamedataAISquadParams_Record; // SquadParamsIDHandle
+	import function StateMachineName() : CName; // StateMachineName
+	import function StaticCommunityAppearancesDistributionEnabled() : Bool; // StaticCommunityAppearancesDistributionEnabled
+	import function ThreatTrackingPreset() : whandle:gamedataThreatTrackingPresetBase_Record; // ThreatTrackingPreset
+	import function ThreatTrackingPresetHandle() : handle:gamedataThreatTrackingPresetBase_Record; // ThreatTrackingPresetHandle
+	import function UiNameplate() : whandle:gamedataUINameplate_Record; // UiNameplate
+	import function UiNameplateHandle() : handle:gamedataUINameplate_Record; // UiNameplateHandle
+	import function UseForcedTBHZOffset() : Bool; // UseForcedTBHZOffset
+	import function VendorID() : whandle:gamedataVendor_Record; // VendorID
+	import function VendorIDHandle() : handle:gamedataVendor_Record; // VendorIDHandle
+	import function VoiceTag() : CName; // VoiceTag
+}
+
+import class gamedataSpawnableObject_Record extends gamedataBaseObject_Record
+{
+	import function AppearanceName() : CName; // AppearanceName
+	import function EntityTemplatePath() : redResourceReferenceScriptToken; // EntityTemplatePath
+	import function GetMultiplayerTemplatePathsCount() : Int32; // GetMultiplayerTemplatePathsCount
+	import function GetMultiplayerTemplatePathsItem(index : Int32) : redResourceReferenceScriptToken; // GetMultiplayerTemplatePathsItem
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function GetVisualTagsCount() : Int32; // GetVisualTagsCount
+	import function GetVisualTagsItem(index : Int32) : CName; // GetVisualTagsItem
+	import function MultiplayerTemplatePaths() : array:redResourceReferenceScriptToken; // MultiplayerTemplatePaths
+	import function PersistentName() : CName; // PersistentName
+	import function Priority() : whandle:gamedataSpawnableObjectPriority_Record; // Priority
+	import function PriorityHandle() : handle:gamedataSpawnableObjectPriority_Record; // PriorityHandle
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+	import function VisualTags() : array:CName; // VisualTags
+	import function VisualTagsContains(item : CName) : Bool; // VisualTagsContains
+}
+
+import class gamedataBaseObject_Record extends gamedataTweakDBRecord
+{
+	import function Effectors(out outList : array:whandle:gamedataEffector_Record); // Effectors
+	import function EffectorsContains(item : whandle:gamedataEffector_Record) : Bool; // EffectorsContains
+	import function GetEffectorsCount() : Int32; // GetEffectorsCount
+	import function GetEffectorsItem(index : Int32) : whandle:gamedataEffector_Record; // GetEffectorsItem
+	import function GetEffectorsItemHandle(index : Int32) : handle:gamedataEffector_Record; // GetEffectorsItemHandle
+	import function GetObjectActionsCount() : Int32; // GetObjectActionsCount
+	import function GetObjectActionsItem(index : Int32) : whandle:gamedataObjectAction_Record; // GetObjectActionsItem
+	import function GetObjectActionsItemHandle(index : Int32) : handle:gamedataObjectAction_Record; // GetObjectActionsItemHandle
+	import function GetStatModifierGroupsCount() : Int32; // GetStatModifierGroupsCount
+	import function GetStatModifierGroupsItem(index : Int32) : whandle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItem
+	import function GetStatModifierGroupsItemHandle(index : Int32) : handle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function GetStatPoolsCount() : Int32; // GetStatPoolsCount
+	import function GetStatPoolsItem(index : Int32) : whandle:gamedataStatPool_Record; // GetStatPoolsItem
+	import function GetStatPoolsItemHandle(index : Int32) : handle:gamedataStatPool_Record; // GetStatPoolsItemHandle
+	import function GetWeakspotsCount() : Int32; // GetWeakspotsCount
+	import function GetWeakspotsItem(index : Int32) : whandle:gamedataWeakspot_Record; // GetWeakspotsItem
+	import function GetWeakspotsItemHandle(index : Int32) : handle:gamedataWeakspot_Record; // GetWeakspotsItemHandle
+	import function ObjectActions(out outList : array:whandle:gamedataObjectAction_Record); // ObjectActions
+	import function ObjectActionsContains(item : whandle:gamedataObjectAction_Record) : Bool; // ObjectActionsContains
+	import function Savable() : Bool; // Savable
+	import function StatModifierGroups(out outList : array:whandle:gamedataStatModifierGroup_Record); // StatModifierGroups
+	import function StatModifierGroupsContains(item : whandle:gamedataStatModifierGroup_Record) : Bool; // StatModifierGroupsContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function StatPools(out outList : array:whandle:gamedataStatPool_Record); // StatPools
+	import function StatPoolsContains(item : whandle:gamedataStatPool_Record) : Bool; // StatPoolsContains
+	import function Weakspots(out outList : array:whandle:gamedataWeakspot_Record); // Weakspots
+	import function WeakspotsContains(item : whandle:gamedataWeakspot_Record) : Bool; // WeakspotsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

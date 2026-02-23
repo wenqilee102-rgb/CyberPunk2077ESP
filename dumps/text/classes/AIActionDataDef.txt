@@ -1,0 +1,60 @@
+class AIActionDataDef extends AIBlackboardDef
+{
+	public    var ownerMeleeAttackBlockedCount : gamebbScriptID_Int32;
+	public    var ownerMeleeAttackParriedCount : gamebbScriptID_Int32;
+	public    var ownerMeleeAttackDodgedCount : gamebbScriptID_Int32;
+	public    var ownerLastAttackTimeStamp : gamebbScriptID_Float;
+	public    var ownerLastAttackName : gamebbScriptID_CName;
+	public    var ownerInTumble : gamebbScriptID_Bool;
+	public    var ownerCurrentAnimVariationSet : gamebbScriptID_Bool;
+	public    var ownerLastAnimVariationAction : gamebbScriptID_Variant;
+	public    var ownerLastAnimVariation : gamebbScriptID_Int32;
+	public    var ownerLastBlockAnimVariation : gamebbScriptID_Int32;
+	public    var ownerItemsToEquip : gamebbScriptID_Variant;
+	public    var ownerItemsUnequipped : gamebbScriptID_Variant;
+	public    var ownerItemsForceUnequipped : gamebbScriptID_Variant;
+	public    var ownerLastEquippedItems : gamebbScriptID_Variant;
+	public    var ownerLastUnequipTimestamp : gamebbScriptID_Float;
+	public    var ownerEquipItemTime : gamebbScriptID_Float;
+	public    var ownerEquipDuration : gamebbScriptID_Float;
+	public    var dropItemOnUnequip : gamebbScriptID_Bool;
+	public    var archetypeEffectorsApplied : gamebbScriptID_Bool;
+	public    var ownerTimeDilation : gamebbScriptID_Float;
+	public    var ownerGlobalTimeDilation : gamebbScriptID_Float;
+	public    var operationHasBeenProcessed : gamebbScriptID_Bool;
+	public    var weaponTrailInitialised : gamebbScriptID_Bool;
+	public    var weaponTrailAborted : gamebbScriptID_Bool;
+	public    var netrunner : gamebbScriptID_Variant;
+	public    var netrunnerProxy : gamebbScriptID_Variant;
+	public    var netrunnerTarget : gamebbScriptID_Variant;
+	public    var ignoreInCombatMoveCommand : gamebbScriptID_Bool;
+	public    var avoidLOSTimeStamp : gamebbScriptID_Float;
+	public    var attackBlocked : gamebbScriptID_Bool;
+	public    var attackParried : gamebbScriptID_Bool;
+	public    var lastGrenadeThrowTimestamp : gamebbScriptID_Float;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+	function Initialize(blackboard : handle:gameIBlackboard); // Initialize;IBlackboard
+}
+
+class abstract AIBlackboardDef extends gamebbScriptDefinition
+{
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

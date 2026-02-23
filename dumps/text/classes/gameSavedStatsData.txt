@@ -1,0 +1,10 @@
+import struct gameSavedStatsData
+{
+	var statModifiers : array:handle:gameStatModifierData_Deprecated;
+	var modifiersBuffer : DataBuffer;
+	var forcedModifiersBuffer : DataBuffer;
+	var savedModifierGroupStatTypesBuffer : DataBuffer;
+	var inactiveStats : array:gamedataStatType;
+	var recordID : TweakDBID;
+	var seed : Uint32;
+}

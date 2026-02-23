@@ -1,0 +1,20 @@
+import class CCubeTexture extends ITexture
+{
+	var setup : STextureGroupSetup;
+	var size : Uint32;
+	var renderResourceBlob : handle:IRenderResourceBlob;
+	var renderTextureResource : rendRenderTextureResource;
+}
+
+import class abstract ITexture extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

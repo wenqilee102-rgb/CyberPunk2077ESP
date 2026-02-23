@@ -1,0 +1,28 @@
+import class animAnimNode_FloatCumulative extends animAnimNode_FloatValue
+{
+	var clamp : Bool;
+	var resetOnActivation : Bool;
+	var normalize180 : Bool;
+	var defaultValue : Float;
+	var resetExternalEventName : CName;
+	var inputNode : animFloatLink;
+	var minValue : animFloatLink;
+	var maxValue : animFloatLink;
+	var resetSpeed : animFloatLink;
+	var override : animBoolLink;
+	var curValue : animFloatLink;
+	var normalize180Input : animBoolLink;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

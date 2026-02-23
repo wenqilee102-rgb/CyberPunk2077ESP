@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"QuickHackDistraction","d":0,"f":[{"a":"GetInteractionIcon;","b":"GetInteractionIcon","c":{"a":27,"c":{"b":"gamedataChoiceCaptionIconPart_Record"}},"d":160},{"a":"SetProperties;","b":"SetProperties","d":48},{"a":"SetProperties;CName","b":"SetProperties","d":48,"e":[{"a":{"a":14},"b":"interaction","c":0}]}]}

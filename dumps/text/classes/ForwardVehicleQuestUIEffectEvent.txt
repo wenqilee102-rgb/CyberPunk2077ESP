@@ -1,0 +1,27 @@
+class ForwardVehicleQuestUIEffectEvent extends redEvent
+{
+	public    var glitch : Bool;
+	public    var panamVehicleStartup : Bool;
+	public    var panamScreenType1 : Bool;
+	public    var panamScreenType2 : Bool;
+	public    var panamScreenType3 : Bool;
+	public    var panamScreenType4 : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

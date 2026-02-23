@@ -1,0 +1,40 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class worldDesiredSlotsCountInfo : CVariable
+	{
+		private CFloat _siredSlotsCount;
+		private CFloat _nCoeff;
+		private CFloat _nCoeffWhenMounted;
+
+		[Ordinal(0)] 
+		[RED("siredSlotsCount")] 
+		public CFloat SiredSlotsCount
+		{
+			get => GetProperty(ref _siredSlotsCount);
+			set => SetProperty(ref _siredSlotsCount, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("nCoeff")] 
+		public CFloat NCoeff
+		{
+			get => GetProperty(ref _nCoeff);
+			set => SetProperty(ref _nCoeff, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("nCoeffWhenMounted")] 
+		public CFloat NCoeffWhenMounted
+		{
+			get => GetProperty(ref _nCoeffWhenMounted);
+			set => SetProperty(ref _nCoeffWhenMounted, value);
+		}
+
+		public worldDesiredSlotsCountInfo(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

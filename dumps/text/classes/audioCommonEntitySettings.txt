@@ -1,0 +1,6 @@
+import struct audioCommonEntitySettings
+{
+	var onAttachEvent : CName;
+	var onDetachEvent : CName;
+	var stopAllSoundsOnDetach : Bool;
+}

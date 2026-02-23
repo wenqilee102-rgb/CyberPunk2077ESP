@@ -1,0 +1,37 @@
+import class gameEffectExecutor_NewEffect_RicochetScan extends gameEffectExecutor_NewEffect
+{
+	var box : Vector4;
+	var isPreview : Bool;
+	var onlyForPlayer : Bool;
+}
+
+import class abstract gameEffectExecutor_NewEffect extends gameEffectExecutor
+{
+	var tagInThisFile : CName;
+	var forwardOffset : Float;
+	var childEffect : Bool;
+	var childEffectTag : CName;
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

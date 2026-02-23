@@ -1,0 +1,13 @@
+import class effectSlotEntries extends effectIPlacementEntries
+{
+	var inheritRotation : Bool;
+	var slots : array:effectSlotEntry;
+}
+
+import class abstract effectIPlacementEntries extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameHitDetectionDebugFrameData
+{
+	var t : Bool;
+	var mponent : whandle:gameHitRepresentationComponent;
+	var tTime : netTime;
+	var apes : array:gameHitDetectionDebugFrameDataShapeEntry;
+}

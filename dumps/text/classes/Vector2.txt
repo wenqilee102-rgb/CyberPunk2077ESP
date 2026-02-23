@@ -1,0 +1,7 @@
+import struct Vector2
+{
+	var X : Float;
+	var Y : Float;
+
+	import static function Normalize(a : Vector2) : Vector2; // Normalize
+}

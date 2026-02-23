@@ -1,0 +1,6 @@
+import struct gameprojectileVelocityParams
+{
+	var xFactor : Float;
+	var yFactor : Float;
+	var zFactor : Float;
+}

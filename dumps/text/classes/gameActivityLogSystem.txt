@@ -1,0 +1,27 @@
+import class gameActivityLogSystem extends gameIActivityLogSystem
+{
+	import function AddLog(logEntry : String); // AddLog
+	import function AddLogFromParts(textpart1 : String, optional textpart2 : String, optional textpart3 : String, optional textpart4 : String, optional textpart5 : String); // AddLogFromParts
+}
+
+import class abstract gameIActivityLogSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,57 @@
+import class senseStimuliEvent extends senseBaseStimuliEvent
+{
+	var sourceObject : whandle:gameObject;
+	var stimInvestigateData : senseStimInvestigateData;
+	var movePositions : array:Vector4;
+	var sourcePosition : Vector4;
+	var stimRecord : whandle:gamedataStim_Record;
+	var radius : Float;
+	var detection : Float;
+	var stimType : gamedataStimType;
+	var stimPropagation : gamedataStimPropagation;
+	var data : handle:senseStimuliData;
+	var purelyDirect : Bool;
+	public    var id : Uint32;
+
+	import function IsTagInStimuli(tag : CName) : Bool; // IsTagInStimuli
+
+	function GetStimInterval() : Float; // GetStimInterval;
+	function GetStimType() : gamedataStimType; // GetStimType;
+	function IsAudio() : Bool; // IsAudio;
+	function IsCategory(category : CName) : Bool; // IsCategory;CName
+	function IsPurelyDirect() : Bool; // IsPurelyDirect;
+	function IsVisual() : Bool; // IsVisual;
+	function SetPurelyDirect(pureDirect : Bool); // SetPurelyDirect;Bool
+	function SetStimType(newStimType : gamedataStimType); // SetStimType;gamedataStimType
+}
+
+import class senseBaseStimuliEvent extends AIAIEvent
+{
+}
+
+import class AIAIEvent extends redEvent
+{
+	var name : CName;
+	var timeToLive : Float;
+
+	import function GetTimeToLive() : Float; // GetTimeToLive
+	import function HasTag(tag : CName) : Bool; // HasTag
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

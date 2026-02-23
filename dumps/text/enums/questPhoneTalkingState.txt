@@ -1,0 +1,7 @@
+enum questPhoneTalkingState
+{
+	Ended = 0,
+	Initializing = 1,
+	Talking = 2,
+	Rejected = 3
+}

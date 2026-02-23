@@ -1,0 +1,1 @@
+{"a":"worldTriggerAreaNode","b":"worldAudioSignpostTriggerNode","d":8,"e":[{"a":{"a":14},"b":"enterSignpost","c":128},{"a":{"a":14},"b":"exitSignpost","c":128},{"a":{"a":14},"b":"reEnterSignpost","c":128},{"a":{"a":14},"b":"preExitSignpost","c":128},{"a":{"a":10},"b":"exitCooldown","c":128}]}

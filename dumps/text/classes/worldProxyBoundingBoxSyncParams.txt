@@ -1,0 +1,8 @@
+import struct worldProxyBoundingBoxSyncParams
+{
+	var positiveAxis : worldProxyBBoxSyncOptions;
+	var negativeAxis : worldProxyBBoxSyncOptions;
+	var pullRange : Float;
+	var makeStackable : Bool;
+	var stackOffset : Vector3;
+}

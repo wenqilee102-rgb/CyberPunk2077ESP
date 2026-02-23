@@ -1,0 +1,11 @@
+import class effectTrackBase extends effectBaseItem
+{
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import class gameJoinTrafficSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

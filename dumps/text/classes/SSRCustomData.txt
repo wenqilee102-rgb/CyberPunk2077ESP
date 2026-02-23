@@ -1,0 +1,7 @@
+import struct SSRCustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

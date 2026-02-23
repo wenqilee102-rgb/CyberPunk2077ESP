@@ -1,0 +1,43 @@
+import class gamedataTPPLookAtPresets_Record extends gamedataTweakDBRecord
+{
+	import function GetNoWeaponPresetsCount() : Int32; // GetNoWeaponPresetsCount
+	import function GetNoWeaponPresetsItem(index : Int32) : whandle:gamedataLookAtPreset_Record; // GetNoWeaponPresetsItem
+	import function GetNoWeaponPresetsItemHandle(index : Int32) : handle:gamedataLookAtPreset_Record; // GetNoWeaponPresetsItemHandle
+	import function GetReloadPresetsCount() : Int32; // GetReloadPresetsCount
+	import function GetReloadPresetsItem(index : Int32) : whandle:gamedataLookAtPreset_Record; // GetReloadPresetsItem
+	import function GetReloadPresetsItemHandle(index : Int32) : handle:gamedataLookAtPreset_Record; // GetReloadPresetsItemHandle
+	import function GetWeaponReadyPresetsCount() : Int32; // GetWeaponReadyPresetsCount
+	import function GetWeaponReadyPresetsItem(index : Int32) : whandle:gamedataLookAtPreset_Record; // GetWeaponReadyPresetsItem
+	import function GetWeaponReadyPresetsItemHandle(index : Int32) : handle:gamedataLookAtPreset_Record; // GetWeaponReadyPresetsItemHandle
+	import function GetWeaponSafePresetsCount() : Int32; // GetWeaponSafePresetsCount
+	import function GetWeaponSafePresetsItem(index : Int32) : whandle:gamedataLookAtPreset_Record; // GetWeaponSafePresetsItem
+	import function GetWeaponSafePresetsItemHandle(index : Int32) : handle:gamedataLookAtPreset_Record; // GetWeaponSafePresetsItemHandle
+	import function NoWeaponPresets(out outList : array:whandle:gamedataLookAtPreset_Record); // NoWeaponPresets
+	import function NoWeaponPresetsContains(item : whandle:gamedataLookAtPreset_Record) : Bool; // NoWeaponPresetsContains
+	import function ReloadPresets(out outList : array:whandle:gamedataLookAtPreset_Record); // ReloadPresets
+	import function ReloadPresetsContains(item : whandle:gamedataLookAtPreset_Record) : Bool; // ReloadPresetsContains
+	import function WeaponReadyPresets(out outList : array:whandle:gamedataLookAtPreset_Record); // WeaponReadyPresets
+	import function WeaponReadyPresetsContains(item : whandle:gamedataLookAtPreset_Record) : Bool; // WeaponReadyPresetsContains
+	import function WeaponSafePresets(out outList : array:whandle:gamedataLookAtPreset_Record); // WeaponSafePresets
+	import function WeaponSafePresetsContains(item : whandle:gamedataLookAtPreset_Record) : Bool; // WeaponSafePresetsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

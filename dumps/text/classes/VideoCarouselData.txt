@@ -1,0 +1,6 @@
+struct VideoCarouselData
+{
+	public    var videoTitleKey : CName;
+	public    var videoDescriptionKey : CName;
+	public    var videoResPath : redResourceReferenceScriptToken;
+}

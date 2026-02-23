@@ -1,0 +1,5 @@
+struct SInspectableClue
+{
+	public    var clueName : CName;
+	public    var isScanned : Bool;
+}

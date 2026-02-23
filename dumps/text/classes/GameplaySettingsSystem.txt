@@ -1,0 +1,50 @@
+class GameplaySettingsSystem extends gameScriptableSystem
+{
+	private   var gameplaySettingsListener : handle:GameplaySettingsListener;
+	private   var wasEverJohnny : Bool;
+
+	static function GetAdditiveCameraMovementsSetting(owner : handle:gameObject) : Float; // GameplaySettingsSystem::GetAdditiveCameraMovementsSetting;GameObject
+	static function GetGameplaySettingsSystemInstance(owner : handle:gameObject) : handle:GameplaySettingsSystem; // GameplaySettingsSystem::GetGameplaySettingsSystemInstance;GameObject
+	static function GetIsFastForwardByLine(owner : handle:gameObject) : Bool; // GameplaySettingsSystem::GetIsFastForwardByLine;GameObject
+	static function GetMovementDodgeEnabled(owner : handle:gameObject) : Bool; // GameplaySettingsSystem::GetMovementDodgeEnabled;GameObject
+	static function GetVehicleCombatHoldToShootEnabled(owner : handle:gameObject) : Bool; // GameplaySettingsSystem::GetVehicleCombatHoldToShootEnabled;GameObject
+	static function SetWasEverJohnny(owner : handle:gameObject, value : Bool); // GameplaySettingsSystem::SetWasEverJohnny;GameObjectBool
+	static function WasEverJohnny(owner : handle:gameObject) : Bool; // GameplaySettingsSystem::WasEverJohnny;GameObject
+
+	function GetIsFastForwardByLine() : Bool; // GetIsFastForwardByLine;
+	function GetIsInputHintEnabled() : Bool; // GetIsInputHintEnabled;
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnPlayerDetach(request : handle:gamePlayerDetachRequest); // OnPlayerDetach;PlayerDetachRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function SetWasEverJohnny(value : Bool); // SetWasEverJohnny;Bool
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class inkInputKeyDictionaryJSON extends ISerializable
+{
+	var devicesMappings : array:inkInputDevicesMappingsJSON;
+}
+
+import class abstract ISerializable
+{
+}

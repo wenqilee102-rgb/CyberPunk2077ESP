@@ -1,0 +1,30 @@
+import class audioAcousticsEmitterMetadata extends audioEmitterMetadata
+{
+	var obstuctionEnabled : Bool;
+	var occlusionEnabled : Bool;
+	var repositioningEnabled : Bool;
+	var obstructionFadeTime : Float;
+	var enableOutdoorness : Bool;
+	var postDopplerFactor : Bool;
+	var dopplerParameter : CName;
+	var ignoreOcclusionRadius : Float;
+	var elevateSource : Bool;
+	var leakingFloorHack : Bool;
+}
+
+import class abstract audioEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

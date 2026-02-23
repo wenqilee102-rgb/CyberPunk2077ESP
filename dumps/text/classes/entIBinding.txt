@@ -1,0 +1,10 @@
+import class abstract entIBinding extends ISerializable
+{
+	var enabled : Bool;
+	var enableMask : entTagMask;
+	var bindName : CName;
+}
+
+import class abstract ISerializable
+{
+}

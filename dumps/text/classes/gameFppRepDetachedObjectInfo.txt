@@ -1,0 +1,5 @@
+import struct gameFppRepDetachedObjectInfo
+{
+	var slotID : TweakDBID;
+	var itemTDBID : TweakDBID;
+}

@@ -1,0 +1,27 @@
+import class gamedataVehicleFxWheelsParticlesMaterial_Record extends gamedataTweakDBRecord
+{
+	import function Material() : whandle:gamedataMaterial_Record; // Material
+	import function MaterialHandle() : handle:gamedataMaterial_Record; // MaterialHandle
+	import function Skid_marks_particles() : redResourceReferenceScriptToken; // Skid_marks_particles
+	import function Tire_tracks_particles() : redResourceReferenceScriptToken; // Tire_tracks_particles
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

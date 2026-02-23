@@ -1,0 +1,5 @@
+import struct CurveSetEntry
+{
+	var name : CName;
+	var curve : curveData:Float;
+}

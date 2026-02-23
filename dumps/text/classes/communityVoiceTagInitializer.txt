@@ -1,0 +1,12 @@
+import class communityVoiceTagInitializer extends communitySpawnInitializer
+{
+	var voiceTagName : CName;
+}
+
+import class abstract communitySpawnInitializer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

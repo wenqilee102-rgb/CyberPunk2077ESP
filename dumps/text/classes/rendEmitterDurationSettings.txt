@@ -1,0 +1,6 @@
+import struct rendEmitterDurationSettings
+{
+	var emitterDuration : Float;
+	var emitterDurationLow : Float;
+	var useEmitterDurationRange : Bool;
+}

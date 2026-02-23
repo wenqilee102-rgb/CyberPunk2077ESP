@@ -1,0 +1,11 @@
+import class gamestateMachineStateMachineBody extends gamestateMachineIStateMachineBody
+{
+}
+
+import class abstract gamestateMachineIStateMachineBody extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

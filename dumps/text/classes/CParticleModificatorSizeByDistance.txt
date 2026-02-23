@@ -1,0 +1,29 @@
+import class CParticleModificatorSizeByDistance extends IParticleModificator
+{
+	var nearDistanceRangeStart : handle:IEvaluatorFloat;
+	var nearDistanceRangeEnd : handle:IEvaluatorFloat;
+	var nearDistanceSizeMultiplier : handle:IEvaluatorFloat;
+	var farDistanceRangeStart : handle:IEvaluatorFloat;
+	var farDistanceRangeEnd : handle:IEvaluatorFloat;
+	var farDistanceSizeMultiplier : handle:IEvaluatorFloat;
+}
+
+import class abstract IParticleModificator extends IParticleInitializer
+{
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

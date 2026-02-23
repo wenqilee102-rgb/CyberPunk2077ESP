@@ -1,0 +1,17 @@
+import class AIbehaviorSendSignalTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var signalName : CName;
+	var startAction : gameBoolSignalAction;
+	var startActionUserData : handle:gameSignalUserDataDefinition;
+	var endAction : gameBoolSignalAction;
+	var endActionUserData : handle:gameSignalUserDataDefinition;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

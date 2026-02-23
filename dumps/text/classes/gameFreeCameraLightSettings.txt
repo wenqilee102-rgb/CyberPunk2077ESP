@@ -1,0 +1,8 @@
+import struct gameFreeCameraLightSettings
+{
+	var s : Vector3;
+	var dius : Float;
+	var tensity : Float;
+	var mperature : Float;
+	var lor : Vector4;
+}

@@ -1,0 +1,7 @@
+import struct interopRTTIClassDump
+{
+	var classNames : array:String;
+	var descriptiveNames : array:String;
+	var resourceInfos : array:interopRTTIResourceDumpInfo;
+	var entries : array:interopRTTIClassDumpEntry;
+}

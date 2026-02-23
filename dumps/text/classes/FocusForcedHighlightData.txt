@@ -1,0 +1,35 @@
+class FocusForcedHighlightData extends IScriptable
+{
+	public    var sourceID : entEntityID;
+	public    var sourceName : CName;
+	public    var highlightType : EFocusForcedHighlightType;
+	public    var outlineType : EFocusOutlineType;
+	public    var priority : EPriority;
+	public    var inTransitionTime : Float;
+	public    var outTransitionTime : Float;
+	public    var hudData : handle:HighlightInstance;
+	public    var isRevealed : Bool;
+	public    var isSavable : Bool;
+	public    var patternType : gameVisionModePatternType;
+
+	function GetBlackwallVisionApperance() : gameVisionAppearance; // GetBlackwallVisionApperance;
+	function GetFillColorIndex() : Int32; // GetFillColorIndex;
+	function GetOutlineColorIndex() : Int32; // GetOutlineColorIndex;
+	function GetVisionApperance() : gameVisionAppearance; // GetVisionApperance;
+	function InitializeWithHudInstruction(data : handle:HighlightInstance); // InitializeWithHudInstruction;HighlightInstance
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

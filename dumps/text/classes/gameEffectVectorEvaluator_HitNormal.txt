@@ -1,0 +1,12 @@
+import class gameEffectVectorEvaluator_HitNormal extends gameEffectVectorEvaluator
+{
+}
+
+import class abstract gameEffectVectorEvaluator extends ISerializable
+{
+	var modifier : Float;
+}
+
+import class abstract ISerializable
+{
+}

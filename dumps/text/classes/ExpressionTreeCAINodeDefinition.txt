@@ -1,0 +1,15 @@
+import class abstract ExpressionTreeCAINodeDefinition extends ExpressionTreeCNodeDefinition
+{
+}
+
+import class abstract ExpressionTreeCNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

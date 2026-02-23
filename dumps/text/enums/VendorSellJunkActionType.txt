@@ -1,0 +1,5 @@
+enum VendorSellJunkActionType
+{
+	Sell = 0,
+	Disassemble = 1
+}

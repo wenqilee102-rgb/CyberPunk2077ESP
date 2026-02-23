@@ -1,0 +1,1 @@
+{"a":"gameIPingSystem","b":"gamePingSystem","c":"PingSystem","d":8,"f":[{"a":"IsPingSystemEnabled","c":{"a":1},"d":12},{"a":"TriggerPing","d":4,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"instigator","c":0}]}]}

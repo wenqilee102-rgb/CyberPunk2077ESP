@@ -1,0 +1,36 @@
+import class gamedataAISubActionSetWorldPosition_Record extends gamedataAISubAction_Record
+{
+	import function CheckForNavmesh() : Bool; // CheckForNavmesh
+	import function CustomPositionTarget() : whandle:gamedataAIActionTarget_Record; // CustomPositionTarget
+	import function CustomPositionTargetHandle() : handle:gamedataAIActionTarget_Record; // CustomPositionTargetHandle
+	import function MaxOffsetFromTarget() : Vector3; // MaxOffsetFromTarget
+	import function MinOffsetFromTarget() : Vector3; // MinOffsetFromTarget
+	import function RandomizePoint() : Bool; // RandomizePoint
+	import function ReferenceTarget() : whandle:gamedataAIActionTarget_Record; // ReferenceTarget
+	import function ReferenceTargetHandle() : handle:gamedataAIActionTarget_Record; // ReferenceTargetHandle
+	import function UseLocalSpace() : Bool; // UseLocalSpace
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+import class RTAOAreaSettings extends IAreaSettings
+{
+	var RangeNear : curveData:Float;
+	var RangeFar : curveData:Float;
+	var RadiusNear : curveData:Float;
+	var RadiusFar : curveData:Float;
+	var coneAoDiffuseStrength : curveData:Float;
+	var coneAoSpecularStrength : curveData:Float;
+	var coneAoSpecularTreshold : curveData:Float;
+	var lightAoDiffuseStrength : curveData:Float;
+	var lightAoSpecularStrength : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

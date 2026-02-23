@@ -1,0 +1,44 @@
+import class worldTrafficSplineNode extends worldTrafficSourceNode
+{
+	var usage : worldTrafficSplineNodeUsage;
+	var maxSlotMaxSpeed : Float;
+	var width : Float;
+	var pathSamplingDistance : Float;
+	var bidirectional : Bool;
+	var autoConnectionRange : Float;
+	var markings : array:CName;
+	var outLanes : array:worldTrafficLaneExitDefinition;
+	var lights : array:worldTrafficLightDefinition;
+	var neverDeadEnd : Bool;
+	var trafficDisabled : Bool;
+	var laneSamplingAngle : Float;
+	var noAIDriving : Bool;
+	var noAutodrive : Bool;
+}
+
+import class abstract worldTrafficSourceNode extends worldSplineNode
+{
+}
+
+import class worldSplineNode extends worldSocketNode
+{
+	var splineData : handle:Spline;
+	var destSnapedNode : NodeRef;
+	var destSnapedSocketName : CName;
+	var entrySnapedNode : NodeRef;
+	var entrySnapedSocketName : CName;
+}
+
+import class abstract worldSocketNode extends worldNode
+{
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

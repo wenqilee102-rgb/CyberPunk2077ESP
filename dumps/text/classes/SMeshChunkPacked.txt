@@ -1,0 +1,16 @@
+import struct SMeshChunkPacked
+{
+	var vertexType : EMeshVertexType;
+	var materialID : array:CName;
+	var numBonesPerVertex : Uint8;
+	var numVertices : Uint32;
+	var numIndices : Uint32;
+	var firstVertex : Uint32;
+	var firstIndex : Uint32;
+	var renderMask : EMeshChunkRenderMask;
+	var chunkRenderMask : EMeshChunkFlags;
+	var useForShadowmesh : Bool;
+	var streams : array:SMeshStream;
+	var streamMask : Uint64;
+	var lodMask : Uint8;
+}

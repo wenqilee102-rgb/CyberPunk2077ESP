@@ -1,0 +1,1 @@
+{"b":"gameMotionConstrainedTierDataParams","c":"MotionConstrainedTierDataParams","d":8,"g":true,"e":[{"a":{"a":16},"b":"splineRef","c":128},{"a":{"a":10},"b":"adjustingSpeed","c":128},{"a":{"a":10},"b":"adjustingDuration","c":128},{"a":{"a":10},"b":"travellingSpeed","c":128},{"a":{"a":10},"b":"travellingDuration","c":128},{"a":{"a":6},"b":"notificationBackwardIndex","c":128}]}

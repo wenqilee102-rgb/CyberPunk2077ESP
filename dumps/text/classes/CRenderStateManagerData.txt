@@ -1,0 +1,7 @@
+import struct CRenderStateManagerData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

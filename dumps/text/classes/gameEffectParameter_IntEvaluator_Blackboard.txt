@@ -1,0 +1,12 @@
+import class gameEffectParameter_IntEvaluator_Blackboard extends gameIEffectParameter_IntEvaluator
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+}
+
+import class abstract gameIEffectParameter_IntEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

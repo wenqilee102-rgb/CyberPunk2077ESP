@@ -1,0 +1,20 @@
+class StatsManager extends IScriptable
+{
+	public    var playerGodModeModifierData : handle:gameStatModifierData_Deprecated;
+
+	static function GetObjectDPS(obj : handle:gameObject) : DPSPackage; // StatsManager::GetObjectDPS;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

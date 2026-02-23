@@ -1,0 +1,13 @@
+import class AIISerializableArgumentInstancePS extends AIArgumentInstancePS
+{
+	var value : handle:ISerializable;
+}
+
+import class abstract AIArgumentInstancePS extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,63 @@
+class SquadMemberBaseComponent extends gameSquadMemberComponent
+{
+	private   var baseSquadRecord : whandle:gamedataAISquadParams_Record;
+
+	event OnSquadActionEvent(evt : handle:SquadActionEvent) : Bool; // OnSquadActionEvent
+
+	function GetBaseSquadRecord() : whandle:gamedataAISquadParams_Record; // GetBaseSquadRecord;
+	function GetSquadInterface(out interface : whandle:AISquadScriptInterface) : Bool; // GetSquadInterface;SquadScriptInterface
+	function GetTicketType(actionName : CName, entity : handle:entEntity, out ticketRecord : handle:gamedataAITicket_Record) : Bool; // GetTicketType;CNameEntityAITicket_Record
+	function OnSquadActionSignalReceived(signal : handle:SquadActionSignal); // OnSquadActionSignalReceived;SquadActionSignal
+	function PerformSquadVerb(squadActionName : CName, squadVerb : EAISquadVerb); // PerformSquadVerb;CNameEAISquadVerb
+}
+
+import class gameSquadMemberComponent extends gameComponent
+{
+	import function FindSquad(sqName : CName) : handle:AISquadScriptInterface; // FindSquad
+	import function GetGameTime() : Float; // GetGameTime
+	import function MySquad(sqtype : AISquadType) : handle:AISquadScriptInterface; // MySquad
+	import function MySquadName(sqtype : AISquadType) : CName; // MySquadName
+	import function MySquadNameCurrentOrRecent(sqtype : AISquadType) : CName; // MySquadNameCurrentOrRecent
+	import function MySquads() : array:handle:AISquadScriptInterface; // MySquads
+	import function MySquadsNames() : array:CName; // MySquadsNames
+	import function MySquadsNamesCurrentOrRecent() : array:CName; // MySquadsNamesCurrentOrRecent
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

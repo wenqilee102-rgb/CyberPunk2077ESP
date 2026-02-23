@@ -1,0 +1,8 @@
+import class abstract AIArgumentInstancePS extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

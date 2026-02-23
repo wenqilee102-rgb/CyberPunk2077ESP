@@ -1,0 +1,17 @@
+import class audioVoiceTagAppearanceMapping extends audioAudioMetadata
+{
+	var mappings : array:audioVoiceTagAppearanceGroup;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

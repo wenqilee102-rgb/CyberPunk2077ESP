@@ -1,0 +1,8 @@
+import struct gameTutorialBracketData
+{
+	var bracketID : CName;
+	var bracketType : gameTutorialBracketType;
+	var anchor : inkEAnchor;
+	var offset : Vector2;
+	var size : Vector2;
+}

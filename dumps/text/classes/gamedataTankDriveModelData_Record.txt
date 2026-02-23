@@ -1,0 +1,106 @@
+import class gamedataTankDriveModelData_Record extends gamedataVehicleDriveModelData_Record
+{
+	import function GetTankSpringsLocalPositionsCount() : Int32; // GetTankSpringsLocalPositionsCount
+	import function GetTankSpringsLocalPositionsItem(index : Int32) : Vector2; // GetTankSpringsLocalPositionsItem
+	import function TankAcceleration() : Float; // TankAcceleration
+	import function TankCTOD() : Float; // TankCTOD
+	import function TankCTOI() : Float; // TankCTOI
+	import function TankCTOP() : Float; // TankCTOP
+	import function TankDeceleration() : Float; // TankDeceleration
+	import function TankGravityMul() : Float; // TankGravityMul
+	import function TankMaxSpeed() : Float; // TankMaxSpeed
+	import function TankSpringDamping() : Float; // TankSpringDamping
+	import function TankSpringDistance() : Float; // TankSpringDistance
+	import function TankSpringRadius() : Float; // TankSpringRadius
+	import function TankSpringStiffness() : Float; // TankSpringStiffness
+	import function TankSpringVerticalOffset() : Float; // TankSpringVerticalOffset
+	import function TankSpringsLocalPositions() : array:Vector2; // TankSpringsLocalPositions
+	import function TankSpringsLocalPositionsContains(item : Vector2) : Bool; // TankSpringsLocalPositionsContains
+	import function TankTurningSpeed() : Float; // TankTurningSpeed
+}
+
+import class gamedataVehicleDriveModelData_Record extends gamedataTweakDBRecord
+{
+	import function AirResistanceFactor() : Float; // AirResistanceFactor
+	import function AntiSwaybarDampingScalor() : Float; // AntiSwaybarDampingScalor
+	import function BankBodyFBTanMultiplier() : Float; // BankBodyFBTanMultiplier
+	import function BankBodyLRTanMultiplier() : Float; // BankBodyLRTanMultiplier
+	import function BodyFriction() : Float; // BodyFriction
+	import function BrakingEstimationMagicFactor() : Float; // BrakingEstimationMagicFactor
+	import function BrakingFrictionFactor() : Float; // BrakingFrictionFactor
+	import function BurnOut() : whandle:gamedataVehicleBurnOut_Record; // BurnOut
+	import function BurnOutHandle() : handle:gamedataVehicleBurnOut_Record; // BurnOutHandle
+	import function Center_of_mass_offset() : Vector3; // Center_of_mass_offset
+	import function Chassis_mass() : Float; // Chassis_mass
+	import function DifferentialOvershootFactor() : Float; // DifferentialOvershootFactor
+	import function DriveHelpers(out outList : array:whandle:gamedataDriveHelper_Record); // DriveHelpers
+	import function DriveHelpersContains(item : whandle:gamedataDriveHelper_Record) : Bool; // DriveHelpersContains
+	import function FlatTireSim() : whandle:gamedataVehicleFlatTireSimulation_Record; // FlatTireSim
+	import function FlatTireSimHandle() : handle:gamedataVehicleFlatTireSimulation_Record; // FlatTireSimHandle
+	import function ForwardWeightTransferFactor() : Float; // ForwardWeightTransferFactor
+	import function GetDriveHelpersCount() : Int32; // GetDriveHelpersCount
+	import function GetDriveHelpersItem(index : Int32) : whandle:gamedataDriveHelper_Record; // GetDriveHelpersItem
+	import function GetDriveHelpersItemHandle(index : Int32) : handle:gamedataDriveHelper_Record; // GetDriveHelpersItemHandle
+	import function HandbrakeBrakingTorque() : Float; // HandbrakeBrakingTorque
+	import function LowVelStoppingDeceleration() : Float; // LowVelStoppingDeceleration
+	import function MaxWheelTurnDeg() : Float; // MaxWheelTurnDeg
+	import function MomentOfInertia() : Vector3; // MomentOfInertia
+	import function MomentOfInertiaScale() : Vector3; // MomentOfInertiaScale
+	import function PerfectSteeringFactor() : Float; // PerfectSteeringFactor
+	import function SideWeightTransferFactor() : Float; // SideWeightTransferFactor
+	import function SlipAngleCurveScale() : Float; // SlipAngleCurveScale
+	import function SlipAngleMinSpeedThreshold() : Float; // SlipAngleMinSpeedThreshold
+	import function SlipRatioCurveScale() : Float; // SlipRatioCurveScale
+	import function SlipRatioMinSpeedThreshold() : Float; // SlipRatioMinSpeedThreshold
+	import function SlopeTractionReductionBegin() : Float; // SlopeTractionReductionBegin
+	import function SlopeTractionReductionFactor() : Float; // SlopeTractionReductionFactor
+	import function SlopeTractionReductionMax() : Float; // SlopeTractionReductionMax
+	import function SmoothWheelContactDecreaseTime() : Float; // SmoothWheelContactDecreaseTime
+	import function SmoothWheelContactIncreseTime() : Float; // SmoothWheelContactIncreseTime
+	import function Total_mass() : Float; // Total_mass
+	import function TurnUpdateBaseSpeedThreshold() : Float; // TurnUpdateBaseSpeedThreshold
+	import function TurnUpdateInputDiffForFastChange() : Float; // TurnUpdateInputDiffForFastChange
+	import function TurnUpdateInputDiffForSlowChange() : Float; // TurnUpdateInputDiffForSlowChange
+	import function TurnUpdateInputDiffProgressionPow() : Float; // TurnUpdateInputDiffProgressionPow
+	import function TurnUpdateInputFastChangeSpeed() : Float; // TurnUpdateInputFastChangeSpeed
+	import function TurnUpdateInputSlowChangeSpeed() : Float; // TurnUpdateInputSlowChangeSpeed
+	import function TurnUpdateMaxSpeedThreshold() : Float; // TurnUpdateMaxSpeedThreshold
+	import function TurnUpdateMaxSpeedTurnChangeMul() : Float; // TurnUpdateMaxSpeedTurnChangeMul
+	import function TurnUpdateMaxSpeedTurnMul() : Float; // TurnUpdateMaxSpeedTurnMul
+	import function TurnUpdateMidSpeedThreshold() : Float; // TurnUpdateMidSpeedThreshold
+	import function TurnUpdateMidSpeedTurnChangeMul() : Float; // TurnUpdateMidSpeedTurnChangeMul
+	import function TurnUpdateMidSpeedTurnMul() : Float; // TurnUpdateMidSpeedTurnMul
+	import function TurningRollFactor() : Float; // TurningRollFactor
+	import function TurningRollFactorWeakContactMul() : Float; // TurningRollFactorWeakContactMul
+	import function TurningRollFactorWeakContactThresholdMax() : Float; // TurningRollFactorWeakContactThresholdMax
+	import function TurningRollFactorWeakContactThresholdMin() : Float; // TurningRollFactorWeakContactThresholdMin
+	import function UseAlternativeTurnUpdate() : Bool; // UseAlternativeTurnUpdate
+	import function WaterParams() : whandle:gamedataVehicleWater_Record; // WaterParams
+	import function WaterParamsHandle() : handle:gamedataVehicleWater_Record; // WaterParamsHandle
+	import function WheelSetup() : whandle:gamedataVehicleWheelDrivingSetup_Record; // WheelSetup
+	import function WheelSetupHandle() : handle:gamedataVehicleWheelDrivingSetup_Record; // WheelSetupHandle
+	import function WheelTurnMaxAddPerSecond() : Float; // WheelTurnMaxAddPerSecond
+	import function WheelTurnMaxSubPerSecond() : Float; // WheelTurnMaxSubPerSecond
+	import function WheelsFrictionMap() : whandle:gamedataVehicleWheelsFrictionMap_Record; // WheelsFrictionMap
+	import function WheelsFrictionMapHandle() : handle:gamedataVehicleWheelsFrictionMap_Record; // WheelsFrictionMapHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

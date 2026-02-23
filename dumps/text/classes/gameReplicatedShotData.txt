@@ -1,0 +1,7 @@
+import struct gameReplicatedShotData
+{
+	var timeStamp : netTime;
+	var attackId : TweakDBID;
+	var target : whandle:gameObject;
+	var targetLocalOffset : Vector3;
+}

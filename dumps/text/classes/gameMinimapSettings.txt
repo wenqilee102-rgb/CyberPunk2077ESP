@@ -1,0 +1,33 @@
+import class gameMinimapSettings extends IScriptable
+{
+	var globalVisionRadiusBounds : gameRange;
+	var visionRadiusVehicle : gameRange;
+	var visionRadiusCombat : gameRange;
+	var visionRadiusQuestArea : gameRange;
+	var visionRadiusSecurityArea : gameRange;
+	var visionRadiusInterior : gameRange;
+	var visionRadiusExterior : gameRange;
+	var speedBoundsSprint : gameRange;
+	var speedBoundsVehicle : gameRange;
+	var smoothingStrengthOnZoomIn : Float;
+	var smoothingStrengthOnZoomOut : Float;
+	var playerMarkerTransitionSpeedOnVehicleMount : Float;
+	var playerMarkerTransitionSpeedOnVehicleUnmount : Float;
+	var visionRadiusLocked : Bool;
+	var dynamicVisionRadiusEnabled : Bool;
+	var smoothingEnabled : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

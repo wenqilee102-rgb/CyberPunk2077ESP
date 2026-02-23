@@ -1,0 +1,5 @@
+import struct gamestateMachineActionParameterTweakDBID
+{
+	var name : CName;
+	var value : TweakDBID;
+}

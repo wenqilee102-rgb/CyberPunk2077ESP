@@ -1,0 +1,11 @@
+import class scnCheckSpeakerDistractedInterruptCondition extends scnIInterruptCondition
+{
+}
+
+import class abstract scnIInterruptCondition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

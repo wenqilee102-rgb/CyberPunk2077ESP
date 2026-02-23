@@ -1,0 +1,1 @@
+{"a":"animAnimNode_Base","b":"animAnimNode_BaseSwitch","d":8,"e":[{"a":{"a":10},"b":"blendTime","c":128},{"a":{"a":1},"b":"timeWarpingEnabled","c":128},{"a":{"a":26,"c":{"b":"animISyncMethod"}},"b":"syncMethod","c":128},{"a":{"a":31,"c":{"b":"animPoseLink"}},"b":"inputNodes","c":128},{"a":{"a":1},"b":"canRequestInertialization","c":128}]}

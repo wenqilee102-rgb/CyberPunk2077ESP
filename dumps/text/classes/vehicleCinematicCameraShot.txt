@@ -1,0 +1,38 @@
+import class vehicleCinematicCameraShot extends IScriptable
+{
+	var name : String;
+	var enabled : Bool;
+	var probability : Int32;
+	var duration : Float;
+	var scaleForVehicle : Bool;
+	var root : handle:vehicleCinematicCameraShotRoot;
+	var effects : array:handle:vehicleCinematicCameraShotEffect;
+	var stopConditions : array:handle:vehicleCinematicCameraShotStopCondition;
+	private   var runtimeData : CinematicCameraData;
+
+	function CreateCinematicCameraDataFromContext(context : vehicleCinematicCameraShotUpdateContext) : CinematicCameraData; // CreateCinematicCameraDataFromContext;vehicleCinematicCameraShotUpdateContext
+	function GetCanBeSelectedFromContext(context : vehicleCinematicCameraShotUpdateContext) : Bool; // GetCanBeSelectedFromContext;vehicleCinematicCameraShotUpdateContext
+	function GetRootTransformFromContext(context : vehicleCinematicCameraShotUpdateContext) : WorldTransform; // GetRootTransformFromContext;vehicleCinematicCameraShotUpdateContext
+	function GetShotProbabilityFromContext(context : vehicleCinematicCameraShotUpdateContext) : Int32; // GetShotProbabilityFromContext;vehicleCinematicCameraShotUpdateContext
+	function GetZoneRelativeToVehicle(worldPosition : WorldPosition, context : vehicleCinematicCameraShotUpdateContext) : ZoneRelativeToVehicle; // GetZoneRelativeToVehicle;WorldPositionvehicleCinematicCameraShotUpdateContext
+	function IsStaticCameraShot() : Bool; // IsStaticCameraShot;
+	function Reset(); // Reset;
+	function ShouldStop(finalTransform : WorldTransform) : Bool; // ShouldStop;WorldTransform
+	function Start(context : vehicleCinematicCameraShotUpdateContext); // Start;vehicleCinematicCameraShotUpdateContext
+	function Update(context : vehicleCinematicCameraShotUpdateContext) : WorldTransform; // Update;vehicleCinematicCameraShotUpdateContext
+	function UpdateCinematicCameraData(data : script_ref:CinematicCameraData, context : vehicleCinematicCameraShotUpdateContext); // UpdateCinematicCameraData;script_ref<CinematicCameraData>vehicleCinematicCameraShotUpdateContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

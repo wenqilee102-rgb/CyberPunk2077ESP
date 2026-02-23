@@ -1,0 +1,44 @@
+import class animAnimNode_ConeLimit extends animAnimNode_OnePoseInput
+{
+	var coneTransform : animTransformIndex;
+	var constrainedTransform : animTransformIndex;
+	var coneAxisLs : Vector3;
+	var coneAxisNormalizedLs : Vector3;
+	var coneOffsetMs : Vector3;
+	var coneOffsetMsLink : animVectorLink;
+	var marginEaseOutCurve : curveData:Float;
+	var limit1 : Float;
+	var limit1Link : animFloatLink;
+	var limit1FloatTrack : animNamedTrackIndex;
+	var paraboloidRadius1 : Float;
+	var limit2 : Float;
+	var limit2Link : animFloatLink;
+	var limit2FloatTrack : animNamedTrackIndex;
+	var paraboloidRadius2 : Float;
+	var limit3 : Float;
+	var limit3Link : animFloatLink;
+	var limit3FloatTrack : animNamedTrackIndex;
+	var paraboloidRadius3 : Float;
+	var limit4 : Float;
+	var limit4Link : animFloatLink;
+	var limit4FloatTrack : animNamedTrackIndex;
+	var paraboloidRadius4 : Float;
+	var coneLimitReached : animNamedTrackIndex;
+	var debug : Bool;
+	var colorfulCone : Bool;
+	var applyDebugConeScalling : Bool;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

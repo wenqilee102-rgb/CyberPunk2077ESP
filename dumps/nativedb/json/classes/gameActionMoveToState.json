@@ -1,0 +1,1 @@
+{"a":"gameActionReplicatedState","b":"gameActionMoveToState","d":8,"g":true,"e":[{"a":{"b":"Vector3"},"b":"targetPos","c":128},{"a":{"a":10},"b":"toleranceRadius","c":128},{"a":{"a":1},"b":"rotateEntity","c":128},{"a":{"a":7},"b":"moveStyle","c":128}]}

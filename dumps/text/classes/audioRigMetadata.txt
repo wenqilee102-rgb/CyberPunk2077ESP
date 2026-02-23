@@ -1,0 +1,18 @@
+import class audioRigMetadata extends audioAudioMetadata
+{
+	var positionBones : array:CName;
+	var defaultBone : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

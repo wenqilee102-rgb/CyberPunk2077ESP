@@ -1,0 +1,32 @@
+import class abstract gameuiICharacterCustomizationState extends IScriptable
+{
+	import function GetAttribute(type : gamedataStatType) : Uint32; // GetAttribute
+	import function GetAttributePointsAvailable() : Uint32; // GetAttributePointsAvailable
+	import function GetAttributes() : array:gameuiCharacterCustomizationAttribute; // GetAttributes
+	import function GetLifePath() : TweakDBID; // GetLifePath
+	import function HasOption(groupName : CName, optionName : CName, isFPP : Bool) : Bool; // HasOption
+	import function HasTag(tag : CName) : Bool; // HasTag
+	import function IsBodyGenderMale() : Bool; // IsBodyGenderMale
+	import function IsBrainGenderMale() : Bool; // IsBrainGenderMale
+	import function IsExpansionStandalone() : Bool; // IsExpansionStandalone
+	import function SetAttribute(type : gamedataStatType, value : Uint32); // SetAttribute
+	import function SetAttributePointsAvailable(value : Uint32); // SetAttributePointsAvailable
+	import function SetIsBodyGenderMale(isMale : Bool); // SetIsBodyGenderMale
+	import function SetIsBrainGenderMale(isMale : Bool); // SetIsBrainGenderMale
+	import function SetIsExpansionStandalone(isExpansionStandalone : Bool); // SetIsExpansionStandalone
+	import function SetLifePath(lifepath : TweakDBID); // SetLifePath
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

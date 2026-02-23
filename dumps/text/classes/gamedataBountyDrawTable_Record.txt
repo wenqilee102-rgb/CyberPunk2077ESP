@@ -1,0 +1,28 @@
+import class gamedataBountyDrawTable_Record extends gamedataTweakDBRecord
+{
+	import function BountyChoices(out outList : array:whandle:gamedataBounty_Record); // BountyChoices
+	import function BountyChoicesContains(item : whandle:gamedataBounty_Record) : Bool; // BountyChoicesContains
+	import function GetBountyChoicesCount() : Int32; // GetBountyChoicesCount
+	import function GetBountyChoicesItem(index : Int32) : whandle:gamedataBounty_Record; // GetBountyChoicesItem
+	import function GetBountyChoicesItemHandle(index : Int32) : handle:gamedataBounty_Record; // GetBountyChoicesItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

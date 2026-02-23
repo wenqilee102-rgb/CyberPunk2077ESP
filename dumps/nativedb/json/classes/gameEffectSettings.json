@@ -1,0 +1,1 @@
+{"b":"gameEffectSettings","d":8,"g":true,"e":[{"a":{"a":1},"b":"advancedTargetHandling","c":128},{"a":{"a":1},"b":"synchronousProcessingForPlayer","c":128},{"a":{"a":1},"b":"forceSynchronousProcessing","c":128},{"a":{"a":1},"b":"tempExecuteOnlyOnce","c":128},{"a":{"a":10},"b":"tickRate","c":128},{"a":{"a":1},"b":"useSimTimeForTick","c":128}]}

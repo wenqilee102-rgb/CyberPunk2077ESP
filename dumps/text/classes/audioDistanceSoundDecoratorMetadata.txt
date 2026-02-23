@@ -1,0 +1,24 @@
+import class audioDistanceSoundDecoratorMetadata extends audioEmitterMetadata
+{
+	var onEnter : CName;
+	var onLeave : CName;
+	var triggerDistance : Float;
+	var stopOnlyVirtualSounds : Bool;
+}
+
+import class abstract audioEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

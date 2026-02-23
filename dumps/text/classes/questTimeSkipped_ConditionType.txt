@@ -1,0 +1,16 @@
+import class questTimeSkipped_ConditionType extends questIUIConditionType
+{
+	var mode : questTimeSkipMode;
+}
+
+import class abstract questIUIConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

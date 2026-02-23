@@ -1,0 +1,9 @@
+import struct worldTrafficLaneExitDefinition
+{
+	var outLaneRef : NodeRef;
+	var exitPosition : Vector4;
+	var exitProbability : Float;
+	var endConnection : Bool;
+	var thisLaneReversed : Bool;
+	var outLaneReversed : Bool;
+}

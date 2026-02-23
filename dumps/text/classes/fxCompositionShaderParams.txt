@@ -1,0 +1,33 @@
+import struct fxCompositionShaderParams
+{
+	var glitchParam : Float;
+	var glitchParam1 : Float;
+	var health : Float;
+	var visionActiveTime : Float;
+	var uiFactor : Float;
+	var uiPassthroughFactor : Float;
+	var mainRenderFactor : Float;
+	var blurredRenderFactor : Float;
+	var backgroundTextureFactor : Float;
+	var backgroundBlurRadius : Float;
+	var sphericalDistPower : Vector2;
+	var shadowDistance : Vector2;
+	var shadowIntensity : Float;
+	var shadowRadius : Float;
+	var glowIntensity : Float;
+	var glowTresholdStart : Float;
+	var glowTresholdEnd : Float;
+	var glowBlurRadius : Float;
+	var vignetteStart : Float;
+	var vignetteEnd : Float;
+	var vignetteIntensity : Float;
+	var blurredRenderSaturation : Float;
+	var uiSaturation : Float;
+	var chromaticAberrationStrength : Float;
+	var uiLayer2Scale : Vector2;
+	var uiLayer3Scale : Vector2;
+	var uiLayer4Scale : Vector2;
+	var uiLayer2Weight : Float;
+	var uiLayer3Weight : Float;
+	var uiLayer4Weight : Float;
+}

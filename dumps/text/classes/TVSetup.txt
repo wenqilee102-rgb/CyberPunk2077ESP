@@ -1,0 +1,9 @@
+struct TVSetup
+{
+	public    var channels : array:STvChannel;
+	public    var initialChannel : Int32;
+	public    var initialGlobalTvChannel : TweakDBID;
+	public    var muteInterface : Bool;
+	public    var isInteractive : Bool;
+	public    var isGlobalTvOnly : Bool;
+}

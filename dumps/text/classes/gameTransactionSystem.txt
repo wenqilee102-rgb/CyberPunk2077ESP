@@ -1,0 +1,114 @@
+import class gameTransactionSystem extends gameITransactionSystem
+{
+	import function AddItemToSlot(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID, optional highPriority : Bool, optional itemObject : whandle:gameItemObject, optional plane : ERenderingPlane, optional keepWorldTransform : Bool, optional ignoreRestrictions : Bool, optional garmentAppearanceName : CName, optional appearanceItem : gameItemID, optional dontCacheEquippedItem : Bool) : Bool; // AddItemToSlot
+	import function AddPart(obj : handle:gameObject, itemID : gameItemID, partItemID : gameItemID, optional slotID : TweakDBID) : Bool; // AddPart
+	import function CalculateTemporaryStatsBundle(obj : handle:gameObject, rootPartID : gameItemID, replacementPartID : gameItemID, slotIdForReplacement : TweakDBID) : handle:gameStatsBundleHandler; // CalculateTemporaryStatsBundle
+	import function CanItemBeActiveInSlot(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID) : Bool; // CanItemBeActiveInSlot
+	import function CanPlaceItemInSlot(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID) : Bool; // CanPlaceItemInSlot
+	import function ChangeItemAppearanceByItemID(obj : handle:gameObject, itemID : gameItemID, newItemID : gameItemID); // ChangeItemAppearanceByItemID
+	import function ChangeItemAppearanceByName(obj : handle:gameObject, itemID : gameItemID, newAppearanceName : CName); // ChangeItemAppearanceByName
+	import function ChangeItemAppearanceWithItemData(); // ChangeItemAppearanceWithItemData
+	import function ChangeItemToSlot(obj : handle:gameObject, newSlotID : TweakDBID, itemID : gameItemID) : Bool; // ChangeItemToSlot
+	import function ClearAllSlots(obj : handle:gameObject) : Bool; // ClearAllSlots
+	import function ClearAttachmentAppearance(obj : handle:gameObject, slotID : TweakDBID); // ClearAttachmentAppearance
+	import function CreatePreviewItemID(itemID : gameItemID) : gameItemID; // CreatePreviewItemID
+	import function CycleActiveItemInSlot(obj : handle:gameObject, slotID : TweakDBID) : gameItemID; // CycleActiveItemInSlot
+	import function DropItemFromSlot(obj : handle:gameObject, slotID : TweakDBID, optional shouldDestroyEntity : Bool, optional keepWorldTransform : Bool, optional skipSendAnimEquipEvents : Bool) : Bool; // DropItemFromSlot
+	import function EquipActiveItemInSlot(obj : handle:gameObject, slotID : TweakDBID, highPriority : Bool) : Bool; // EquipActiveItemInSlot
+	import function ForcePartInSlot(obj : handle:gameObject, itemID : gameItemID, partItemID : gameItemID, slotID : TweakDBID) : Bool; // ForcePartInSlot
+	import function GetActiveItemInSlot(obj : handle:gameObject, slotID : TweakDBID) : gameItemID; // GetActiveItemInSlot
+	import function GetAvailableSlotsOnItem(obj : handle:gameObject, itemID : gameItemID, out availableSlots : array:TweakDBID); // GetAvailableSlotsOnItem
+	import function GetEmptySlotsOnItem(obj : handle:gameObject, itemID : gameItemID, out emptySlots : array:TweakDBID); // GetEmptySlotsOnItem
+	import function GetItemAppearance(obj : handle:gameObject, itemID : gameItemID) : CName; // GetItemAppearance
+	import function GetItemData(obj : handle:gameObject, itemID : gameItemID) : whandle:gameItemData; // GetItemData
+	import function GetItemDataByOwnerEntityId(id : entEntityID, itemID : gameItemID) : whandle:gameItemData; // GetItemDataByOwnerEntityId
+	import function GetItemDataByTDBID(obj : handle:gameObject, itemTDBID : TweakDBID) : whandle:gameItemData; // GetItemDataByTDBID
+	import function GetItemInSlot(obj : handle:gameObject, slotID : TweakDBID) : handle:gameItemObject; // GetItemInSlot
+	import function GetItemInSlotByItemID(obj : handle:gameObject, itemID : gameItemID) : handle:gameItemObject; // GetItemInSlotByItemID
+	import function GetItemList(obj : handle:gameObject, out itemList : array:whandle:gameItemData) : Bool; // GetItemList
+	import function GetItemListByTag(obj : handle:gameObject, tag : CName, out itemList : array:whandle:gameItemData) : Bool; // GetItemListByTag
+	import function GetItemListByTags(obj : handle:gameObject, tagList : array:CName, out itemList : array:whandle:gameItemData) : Bool; // GetItemListByTags
+	import function GetItemListExcludingTags(obj : handle:gameObject, tagList : array:CName, out itemList : array:whandle:gameItemData) : Bool; // GetItemListExcludingTags
+	import function GetItemListFilteredByTags(obj : handle:gameObject, tags : array:CName, excludedTags : array:CName, out itemList : array:whandle:gameItemData) : Bool; // GetItemListFilteredByTags
+	import function GetItemQuantity(obj : handle:gameObject, itemID : gameItemID) : Int32; // GetItemQuantity
+	import function GetItemQuantityByTag(obj : handle:gameObject, tag : CName) : Int32; // GetItemQuantityByTag
+	import function GetItemQuantityWithDuplicates(obj : handle:gameObject, itemID : gameItemID) : Int32; // GetItemQuantityWithDuplicates
+	import function GetItemsInstallableInSlot(obj : handle:gameObject, itemID : gameItemID, slotID : TweakDBID, out installableItems : array:gameItemID); // GetItemsInstallableInSlot
+	import function GetNextActiveItemInSlot(obj : handle:gameObject, slotID : TweakDBID) : gameItemID; // GetNextActiveItemInSlot
+	import function GetNumItems(obj : handle:gameObject, optional tagFilters : array:CName) : Int32; // GetNumItems
+	import function GetTotalItemQuantity(obj : handle:gameObject) : Int32; // GetTotalItemQuantity
+	import function GetUsedSlotsOnItem(obj : handle:gameObject, itemID : gameItemID, out used : array:TweakDBID); // GetUsedSlotsOnItem
+	import function GetVisualTags(entity : handle:entEntity, optional matchUsingDefaultAppearance : Bool) : array:CName; // GetVisualTags
+	import function GetVisualTagsByItemID(itemID : gameItemID, owner : handle:gameObject) : array:CName; // GetVisualTagsByItemID
+	import function GiveItem(obj : handle:gameObject, itemID : gameItemID, amount : Int32, optional dynamicTags : array:CName) : Bool; // GiveItem
+	import function GiveItemByItemArrayQuery(obj : handle:gameObject, itemQueryTDBID : TweakDBID, optional seed : Uint64) : Bool; // GiveItemByItemArrayQuery
+	import function GiveItemByItemData(obj : handle:gameObject, itemData : handle:gameItemData) : Bool; // GiveItemByItemData
+	import function GiveItemByItemQuery(obj : handle:gameObject, itemQueryTDBID : TweakDBID, optional amount : Uint32, optional seed : Uint64, optional telemetryLogSource : String) : Bool; // GiveItemByItemQuery
+	import function GiveItemByTDBID(obj : handle:gameObject, tdbID : TweakDBID, amount : Int32) : Bool; // GiveItemByTDBID
+	import function GiveItems(obj : handle:gameObject, itemList : array:gameItemModParams) : Bool; // GiveItems
+	import function GiveMoney(target : handle:gameObject, amount : Int32, currency : CName) : Bool; // GiveMoney
+	import function GivePreviewItemByItemData(obj : handle:gameObject, itemData : handle:gameItemData) : Bool; // GivePreviewItemByItemData
+	import function GivePreviewItemByItemID(obj : handle:gameObject, itemID : gameItemID) : Bool; // GivePreviewItemByItemID
+	import function HasItem(obj : handle:gameObject, itemID : gameItemID) : Bool; // HasItem
+	import function HasItemDataInSlot(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID) : Bool; // HasItemDataInSlot
+	import function HasItemInAnySlot(obj : handle:gameObject, itemID : gameItemID) : Bool; // HasItemInAnySlot
+	import function HasItemInSlot(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID) : Bool; // HasItemInSlot
+	import function HasTag(obj : handle:gameObject, tag : CName, itemID : gameItemID) : Bool; // HasTag
+	import function InitializeSlots(obj : handle:gameObject, out slotIDList : array:TweakDBID) : Bool; // InitializeSlots
+	import function IsSlotEmpty(obj : handle:gameObject, slotID : TweakDBID) : Bool; // IsSlotEmpty
+	import function IsSlotEmptySpawningItem(obj : handle:gameObject, slotID : TweakDBID) : Bool; // IsSlotEmptySpawningItem
+	import function IsSlotSpawningAnyItem(obj : handle:gameObject, slotID : TweakDBID) : Bool; // IsSlotSpawningAnyItem
+	import function IsSlotSpawningItem(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID) : Bool; // IsSlotSpawningItem
+	import function MatchVisualTag(entity : handle:entEntity, tag : CName, optional matchUsingDefaultAppearance : Bool) : Bool; // MatchVisualTag
+	import function MatchVisualTagByItemID(itemID : gameItemID, owner : handle:gameObject, tag : CName) : Bool; // MatchVisualTagByItemID
+	import function OnItemAddedToEquipmentSlot(owner : handle:gameObject, itemID : gameItemID, optional garmentAppearanceName : CName, optional appearanceItem : gameItemID) : Bool; // OnItemAddedToEquipmentSlot
+	import function OnItemRemovedFromEquipmentSlot(owner : handle:gameObject, itemID : gameItemID) : Bool; // OnItemRemovedFromEquipmentSlot
+	import function PrefetchItemAppearance(obj : handle:gameObject, itemID : gameItemID, newAppearanceName : CName); // PrefetchItemAppearance
+	import function RefreshAttachment(obj : handle:gameObject, out slotID : TweakDBID, optional keepWorldTransform : Bool); // RefreshAttachment
+	import function RegisterAttachmentSlotListener(owner : handle:gameObject, callback : handle:gameAttachmentSlotsScriptCallback) : handle:gameAttachmentSlotsScriptListener; // RegisterAttachmentSlotListener
+	import function RegisterInventoryListener(owner : handle:gameObject, callback : handle:gameInventoryScriptCallback) : handle:gameInventoryScriptListener; // RegisterInventoryListener
+	import function ReinitializeStatsOnEntityItems(obj : handle:gameObject); // ReinitializeStatsOnEntityItems
+	import function ReleaseItem(owner : handle:gameObject, item : whandle:gameItemObject) : Bool; // ReleaseItem
+	import function RemoveAllItems(obj : handle:gameObject) : Bool; // RemoveAllItems
+	import function RemoveItem(obj : handle:gameObject, itemID : gameItemID, amount : Int32) : Bool; // RemoveItem
+	import function RemoveItemByTDBID(obj : handle:gameObject, tdbID : TweakDBID, amount : Int32, optional checkMultipleInstances : Bool) : Bool; // RemoveItemByTDBID
+	import function RemoveItemFromAnySlot(obj : handle:gameObject, itemID : gameItemID, optional shouldDestroyEntity : Bool, optional keepWorldTransform : Bool) : Bool; // RemoveItemFromAnySlot
+	import function RemoveItemFromSlot(obj : handle:gameObject, slotID : TweakDBID, optional shouldDestroyEntity : Bool, optional keepWorldTransform : Bool, optional skipSendAnimEquipEvents : Bool) : Bool; // RemoveItemFromSlot
+	import function RemoveMoney(obj : handle:gameObject, amount : Int32, currency : CName) : Bool; // RemoveMoney
+	import function RemovePart(obj : handle:gameObject, itemID : gameItemID, slotID : TweakDBID, optional shouldUpdateEntity : Bool) : gameItemID; // RemovePart
+	import function ResetItemAppearance(obj : handle:gameObject, itemID : gameItemID); // ResetItemAppearance
+	import function RunItemArrayQuery(out itemRecords : array:handle:gamedataItem_Record, itemQueryTDBID : TweakDBID, optional excludeItems : array:TweakDBID, optional uniquesOnly : Bool, optional context : handle:gameObject, optional seed : Uint64); // RunItemArrayQuery
+	import function RunItemQuery(itemQueryTDBID : TweakDBID, optional context : handle:gameObject, optional seed : Uint64) : handle:gamedataItem_Record; // RunItemQuery
+	import function SellItem(seller : handle:gameObject, buyer : handle:gameObject, itemID : gameItemID, amount : Int32, currency : CName, optional price : Int32) : Bool; // SellItem
+	import function SellItemStrict(seller : handle:gameObject, buyer : handle:gameObject, itemID : gameItemID, amount : Int32, currency : CName, optional price : Int32) : Bool; // SellItemStrict
+	import function SetActiveItemInSlot(obj : handle:gameObject, slotID : TweakDBID, itemID : gameItemID) : Bool; // SetActiveItemInSlot
+	import function TakeItem(newOwner : handle:gameObject, itemToLoot : whandle:gameItemObject) : Bool; // TakeItem
+	import function ThrowItem(owner : handle:gameObject, item : whandle:gameObject, setUpAndLaunchEvent : handle:gameprojectileSetUpAndLaunchEvent) : Bool; // ThrowItem
+	import function TransferAllItems(source : handle:gameObject, target : handle:gameObject) : Bool; // TransferAllItems
+	import function TransferItem(source : handle:gameObject, target : handle:gameObject, itemID : gameItemID, amount : Int32, optional dynamicTags : array:CName, optional force : Bool, optional flagItemAsSilent : Bool) : Bool; // TransferItem
+	import function TransferMoney(source : handle:gameObject, target : handle:gameObject, amount : Int32, currency : CName) : Bool; // TransferMoney
+	import function UnregisterAttachmentSlotListener(owner : handle:gameObject, listener : handle:gameAttachmentSlotsScriptListener); // UnregisterAttachmentSlotListener
+	import function UnregisterInventoryListener(owner : handle:gameObject, listener : handle:gameInventoryScriptListener); // UnregisterInventoryListener
+}
+
+import class abstract gameITransactionSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,35 @@
+import class gamedataAIActionAnimData_Record extends gamedataTweakDBRecord
+{
+	import function AnimFeature() : CName; // AnimFeature
+	import function AnimSlot() : whandle:gamedataAIActionAnimSlot_Record; // AnimSlot
+	import function AnimSlotHandle() : handle:gamedataAIActionAnimSlot_Record; // AnimSlotHandle
+	import function AnimVariation() : Int32; // AnimVariation
+	import function AnimVariationSubAction() : whandle:gamedataAISubAction_Record; // AnimVariationSubAction
+	import function AnimVariationSubActionHandle() : handle:gamedataAISubAction_Record; // AnimVariationSubActionHandle
+	import function Direction() : whandle:gamedataAIActionAnimDirection_Record; // Direction
+	import function DirectionHandle() : handle:gamedataAIActionAnimDirection_Record; // DirectionHandle
+	import function MarginToPlayer() : Float; // MarginToPlayer
+	import function RagdollOnDeath() : Bool; // RagdollOnDeath
+	import function UpdateMovePolicy() : Bool; // UpdateMovePolicy
+	import function WeaponOverride() : Int32; // WeaponOverride
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

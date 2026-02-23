@@ -1,0 +1,12 @@
+import class gameinteractionsvisLootVisualizerDefinition extends gameinteractionsvisIVisualizerDefinition
+{
+}
+
+import class abstract gameinteractionsvisIVisualizerDefinition extends ISerializable
+{
+	var flags : gameinteractionsvisEVisualizerDefinitionFlags;
+}
+
+import class abstract ISerializable
+{
+}

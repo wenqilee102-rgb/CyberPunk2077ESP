@@ -1,0 +1,5 @@
+import struct physicsControllerHit
+{
+	var worldPos : Vector4;
+	var worldNormal : Vector4;
+}

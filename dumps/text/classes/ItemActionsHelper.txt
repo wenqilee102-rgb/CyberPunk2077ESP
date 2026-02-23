@@ -1,0 +1,49 @@
+class abstract ItemActionsHelper extends IScriptable
+{
+	static function ConsumeItem(executor : whandle:gameObject, itemID : gameItemID, fromInventory : Bool); // ItemActionsHelper::ConsumeItem;GameObjectItemIDBool
+	static function CrackItem(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::CrackItem;GameObjectItemID
+	static function DisassembleItem(executor : whandle:gameObject, itemID : gameItemID, quantity : Int32); // ItemActionsHelper::DisassembleItem;GameObjectItemIDInt32
+	static function DisassembleItem(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::DisassembleItem;GameObjectItemID
+	static function DownloadFunds(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::DownloadFunds;GameObjectItemID
+	static function DrinkItem(executor : whandle:gameObject, itemID : gameItemID, fromInventory : Bool); // ItemActionsHelper::DrinkItem;GameObjectItemIDBool
+	static function DropItem(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::DropItem;GameObjectItemID
+	static function EatItem(executor : whandle:gameObject, itemID : gameItemID, fromInventory : Bool); // ItemActionsHelper::EatItem;GameObjectItemIDBool
+	static function EquipItem(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::EquipItem;GameObjectItemID
+	static function GetConsumeAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetConsumeAction;ItemID
+	static function GetCrackAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetCrackAction;ItemID
+	static function GetDisassembleAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetDisassembleAction;ItemID
+	static function GetDownloadFunds(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetDownloadFunds;ItemID
+	static function GetDrinkAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetDrinkAction;ItemID
+	static function GetDropAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetDropAction;ItemID
+	static function GetEatAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetEatAction;ItemID
+	static function GetEquipAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetEquipAction;ItemID
+	static function GetItemActionByType(itemID : gameItemID, type : CName) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetItemActionByType;ItemIDCName
+	static function GetItemCustomAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetItemCustomAction;ItemID
+	static function GetItemCustonActions(itemID : gameItemID) : array:whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetItemCustonActions;ItemID
+	static function GetLearnAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetLearnAction;ItemID
+	static function GetReadAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetReadAction;ItemID
+	static function GetUseAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetUseAction;ItemID
+	static function GetUseHealChargeAction(itemID : gameItemID) : whandle:gamedataObjectAction_Record; // ItemActionsHelper::GetUseHealChargeAction;ItemID
+	static function LearnItem(executor : whandle:gameObject, itemID : gameItemID, fromInventory : Bool); // ItemActionsHelper::LearnItem;GameObjectItemIDBool
+	static function PerformItemAction(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::PerformItemAction;GameObjectItemID
+	static function ProcessItemAction(gi : ScriptGameInstance, executor : whandle:gameObject, itemData : whandle:gameItemData, actionID : TweakDBID, fromInventory : Bool) : Bool; // ItemActionsHelper::ProcessItemAction;GameInstanceGameObjectgameItemDataTweakDBIDBool
+	static function ProcessItemAction(gi : ScriptGameInstance, executor : whandle:gameObject, itemData : whandle:gameItemData, actionID : TweakDBID, fromInventory : Bool, quantity : Int32) : Bool; // ItemActionsHelper::ProcessItemAction;GameInstanceGameObjectgameItemDataTweakDBIDBoolInt32
+	static function ReadItem(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::ReadItem;GameObjectItemID
+	static function SetupItemAction(gi : ScriptGameInstance, executor : whandle:gameObject, itemData : whandle:gameItemData, actionID : TweakDBID, fromInventory : Bool) : handle:BaseItemAction; // ItemActionsHelper::SetupItemAction;GameInstanceGameObjectgameItemDataTweakDBIDBool
+	static function UseHealCharge(executor : whandle:gameObject, itemID : gameItemID); // ItemActionsHelper::UseHealCharge;GameObjectItemID
+	static function UseItem(executor : whandle:gameObject, itemID : gameItemID) : Bool; // ItemActionsHelper::UseItem;GameObjectItemID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

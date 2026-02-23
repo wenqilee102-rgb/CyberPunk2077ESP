@@ -1,0 +1,6 @@
+import struct entAnimTrackParameter
+{
+	var animTrackName : CName;
+	var parameterName : CName;
+	var defaultValue : Float;
+}

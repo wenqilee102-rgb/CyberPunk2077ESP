@@ -1,0 +1,49 @@
+import class AINavigationSystem extends AIINavigationSystem
+{
+	static function HasPathFromAtoB(owner : whandle:entEntity, game : ScriptGameInstance, originPoint : Vector4, targetPoint : Vector4) : Bool; // AINavigationSystem::HasPathFromAtoB;EntityGameInstanceVector4Vector4
+
+	import function CalculatePathForCharacter(startPoint : Vector4, endPoint : Vector4, findPointTolerance : Float, owner : handle:entEntity, optional costModCircle : handle:worldNavigationScriptCostModCircle) : handle:worldNavigationScriptPath; // CalculatePathForCharacter
+	import function FindPointInBoxForCharacter(center : Vector4, extents : Vector4, owner : handle:entEntity) : worldNavigationScriptFindPointResult; // FindPointInBoxForCharacter
+	import function FindPointInSphereForCharacter(center : Vector4, radius : Float, owner : handle:entEntity) : worldNavigationScriptFindPointResult; // FindPointInSphereForCharacter
+	import function FindWallInLineForCharacter(startPoint : Vector4, endPoint : Vector4, findPointTolerance : Float, owner : handle:entEntity) : handle:worldNavigationScriptFindWallResult; // FindWallInLineForCharacter
+	import function GetResult(id : Uint32, result : script_ref:AINavigationSystemResult) : Bool; // GetResult
+	import function StartPathfinding(query : script_ref:AINavigationSystemQuery) : Uint32; // StartPathfinding
+	import function StopPathfinding(id : Uint32) : Bool; // StopPathfinding
+
+	function FindPointBelowForCharacter(origin : Vector4, querySphereRadius : Float, numberOfSpheres : Int32, character : whandle:entEntity, out resultingZOffset : Float) : worldNavigationScriptFindPointResult; // FindPointBelowForCharacter;Vector4FloatInt32EntityFloat
+	function FindPointBelowForCharacter(origin : Vector4, querySphereRadius : Float, numberOfSpheres : Int32, character : whandle:entEntity) : worldNavigationScriptFindPointResult; // FindPointBelowForCharacter;Vector4FloatInt32Entity
+	function GetFurthestNavmeshPointBehind(origin : whandle:entEntity, querySphereRadius : Float, numberOfSpheres : Int32, out point : Vector4, optional offsetFromOrigin : Vector4, optional checkPathToOrigin : Bool, optional ratioCurveName : CName) : Bool; // GetFurthestNavmeshPointBehind;EntityFloatInt32Vector4Vector4BoolCName
+	function GetFurthestNavmeshPointInFront(origin : whandle:entEntity, querySphereRadius : Float, numberOfSpheres : Int32, out point : Vector4, optional offsetFromOrigin : Vector4, optional checkPathToOrigin : Bool, optional ratioCurveName : CName) : Bool; // GetFurthestNavmeshPointInFront;EntityFloatInt32Vector4Vector4BoolCName
+	function GetNearestNavmeshPointBehind(origin : whandle:entEntity, querySphereRadius : Float, numberOfSpheres : Int32, out point : Vector4, optional checkPathToOrigin : Bool) : Bool; // GetNearestNavmeshPointBehind;EntityFloatInt32Vector4Bool
+	function GetNearestNavmeshPointBelow(character : whandle:entEntity, origin : Vector4, querySphereRadius : Float, numberOfSpheres : Int32) : Vector4; // GetNearestNavmeshPointBelow;EntityVector4FloatInt32
+	function HasPathForward(sourceObject : whandle:gameObject, distance : Float) : Bool; // HasPathForward;GameObjectFloat
+	function IsPointOnNavmesh(character : whandle:entEntity, point : Vector4, optional tolerance : Float) : Bool; // IsPointOnNavmesh;EntityVector4Float
+	function IsPointOnNavmesh(character : whandle:entEntity, point : Vector4, tolerance : Vector4) : Bool; // IsPointOnNavmesh;EntityVector4Vector4
+	function IsPointOnNavmesh(character : whandle:entEntity, point : Vector4, tolerance : Vector4, out navmeshPoint : Vector4) : Bool; // IsPointOnNavmesh;EntityVector4Vector4Vector4
+	function TryToFindNavmeshPointAroundPoint(owner : whandle:entEntity, originPosition : Vector4, originOrientation : Quaternion, probeDimensions : Vector4, numberOfSpheres : Int32, sphereDistanceFromOrigin : Float, out point : Vector4, optional checkPathToOrigin : Bool) : Bool; // TryToFindNavmeshPointAroundPoint;EntityVector4QuaternionVector4Int32FloatVector4Bool
+}
+
+import class abstract AIINavigationSystem extends gameIGameSystem
+{
+	import function GetResult(); // GetResult
+	import function StartPathfinding(); // StartPathfinding
+	import function StopPathfinding(); // StopPathfinding
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

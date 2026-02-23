@@ -1,0 +1,5 @@
+import struct audioPlaylistTrackEventStruct
+{
+	var playlistName : CName;
+	var trackName : CName;
+}

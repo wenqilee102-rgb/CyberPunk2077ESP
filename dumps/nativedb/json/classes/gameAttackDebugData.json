@@ -1,0 +1,1 @@
+{"b":"gameAttackDebugData","c":"AttackDebugData","d":8,"g":true,"e":[{"a":{"b":"WorldTransform"},"b":"pointOfViewTransform","c":128},{"a":{"b":"Vector4"},"b":"projectileHitplaneSpread","c":128},{"a":{"b":"Vector4"},"b":"bulletStartPosition","c":128}]}

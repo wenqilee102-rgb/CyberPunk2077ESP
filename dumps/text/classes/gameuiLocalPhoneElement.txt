@@ -1,0 +1,13 @@
+import struct gameuiLocalPhoneElement extends gameuiPhoneElementVisibility
+{
+	var libraryID : CName;
+	var request : whandle:inkAsyncSpawnRequest;
+	var widget : whandle:inkWidget;
+}
+
+import struct gameuiPhoneElementVisibility
+{
+	var tierVisibility : worlduiContextVisibility;
+	var gameContextVisibility : gameuiContext;
+	var slot : inkCompoundWidgetReference;
+}

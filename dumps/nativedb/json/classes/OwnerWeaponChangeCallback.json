@@ -1,0 +1,1 @@
+{"a":"gameAttachmentSlotsScriptCallback","b":"OwnerWeaponChangeCallback","d":0,"e":[{"a":{"a":26,"c":{"b":"AIFollowerRole"}},"b":"followerRole","c":128}],"f":[{"a":"OnItemEquipped;TweakDBIDItemID","b":"OnItemEquipped","d":32,"e":[{"a":{"a":15},"b":"slotIDArg","c":0},{"a":{"b":"gameItemID"},"b":"itemIDArg","c":0}]}]}

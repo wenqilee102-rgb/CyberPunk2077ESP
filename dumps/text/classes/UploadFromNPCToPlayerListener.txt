@@ -1,0 +1,73 @@
+class UploadFromNPCToPlayerListener extends QuickHackUploadListener
+{
+	public    var playerPuppet : whandle:ScriptedPuppet;
+	public    var npcPuppet : whandle:ScriptedPuppet;
+	public    var npcSquad : array:entEntityID;
+	public    var HUDData : HUDProgressBarData;
+	public    var hudBlackboard : whandle:gameIBlackboard;
+	private   var startUploadTimeStamp : Float;
+	private   var ssAction : Bool;
+	private   var preventionHackLoopAction : Bool;
+	private   var shouldStopRevealOnPreventionDeescalation : Bool;
+	private   var squadScriptInterface : handle:AISquadScriptInterface;
+	private   var useInterruptionPrereqs : Bool;
+
+	event OnStatPoolAdded() : Bool; // OnStatPoolAdded
+	event OnStatPoolMaxValueReached(value : Float) : Bool; // OnStatPoolMaxValueReached
+
+	function ForceClose(); // ForceClose;
+	function Initialize(); // Initialize;
+	function IsSquadAlive() : Bool; // IsSquadAlive;
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+	function SendUploadStartedEvent(action : handle:ScriptableDeviceAction); // SendUploadStartedEvent;ScriptableDeviceAction
+	function StopHackBasedOnTier(currentTier : Int32) : Bool; // StopHackBasedOnTier;Int32
+	function TryStartCombat(player : whandle:ScriptedPuppet, npc : whandle:ScriptedPuppet, targetTracker : whandle:TargetTrackingExtension); // TryStartCombat;ScriptedPuppetScriptedPuppetTargetTrackingExtension
+}
+
+class QuickHackUploadListener extends ActionUploadListener
+{
+	event OnStatPoolAdded() : Bool; // OnStatPoolAdded
+	event OnStatPoolMaxValueReached(value : Float) : Bool; // OnStatPoolMaxValueReached
+
+	function Initialize(); // Initialize;
+	function PlayQuickHackSound(eventName : CName); // PlayQuickHackSound;CName
+	function RemoveLink(owner : whandle:ScriptedPuppet); // RemoveLink;ScriptedPuppet
+	function RemoveLinkedStatusEffects(owner : whandle:ScriptedPuppet, optional ssAction : Bool); // RemoveLinkedStatusEffects;ScriptedPuppetBool
+	function SendUploadFinishedEvent(); // SendUploadFinishedEvent;
+	function SendUploadStartedEvent(action : handle:ScriptableDeviceAction); // SendUploadStartedEvent;ScriptableDeviceAction
+	function SetRegenBehavior(); // SetRegenBehavior;
+}
+
+class ActionUploadListener extends gameCustomValueStatPoolsListener
+{
+	public    var action : handle:ScriptableDeviceAction;
+	public    var gameInstance : ScriptGameInstance;
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

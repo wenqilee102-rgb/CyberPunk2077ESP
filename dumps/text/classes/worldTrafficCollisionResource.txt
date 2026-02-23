@@ -1,0 +1,13 @@
+import class worldTrafficCollisionResource extends CResource
+{
+	var data : handle:worldTrafficStaticCollisionData;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

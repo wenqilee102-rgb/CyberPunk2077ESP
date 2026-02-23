@@ -1,0 +1,30 @@
+import class gamedataDynamicVehicleData_Record extends gamedataTweakDBRecord
+{
+	import function GetUnitRecordsPoolCount() : Int32; // GetUnitRecordsPoolCount
+	import function GetUnitRecordsPoolItem(index : Int32) : whandle:gamedataWeightedCharacter_Record; // GetUnitRecordsPoolItem
+	import function GetUnitRecordsPoolItemHandle(index : Int32) : handle:gamedataWeightedCharacter_Record; // GetUnitRecordsPoolItemHandle
+	import function UnitRecordsPool(out outList : array:whandle:gamedataWeightedCharacter_Record); // UnitRecordsPool
+	import function UnitRecordsPoolContains(item : whandle:gamedataWeightedCharacter_Record) : Bool; // UnitRecordsPoolContains
+	import function VehicleRecord() : whandle:gamedataVehicle_Record; // VehicleRecord
+	import function VehicleRecordHandle() : handle:gamedataVehicle_Record; // VehicleRecordHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

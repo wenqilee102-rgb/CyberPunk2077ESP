@@ -1,0 +1,14 @@
+import class senseSensorObject extends ISerializable
+{
+	var presetID : TweakDBID;
+	var detectionFactor : Float;
+	var detectionDropFactor : Float;
+	var detectionCoolDownTime : Float;
+	var detectionPartCoolDownTime : Float;
+	var hearingEnabled : Bool;
+	var sensorObjectType : gamedataSenseObjectType;
+}
+
+import class abstract ISerializable
+{
+}

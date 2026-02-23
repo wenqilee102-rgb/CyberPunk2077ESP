@@ -1,0 +1,40 @@
+import class AIReactionSystem extends AIIReactionSystem
+{
+	import function AddFearSource(sourcePos : Vector3, halfExtend : Float, optional debugInfo : CName); // AddFearSource
+	import function AddTrafficRunnersDirectly(runner : handle:gameObject, threat : handle:gameObject) : Bool; // AddTrafficRunnersDirectly
+	import function IsInImmovableWorkspot(npcId : entEntityID) : Bool; // IsInImmovableWorkspot
+	import function IsRegisteredAsAggressive(npcId : entEntityID) : Bool; // IsRegisteredAsAggressive
+	import function MarkDeadBody(id : entEntityID, isAggressive : Bool, isInScene : Bool); // MarkDeadBody
+	import function MarkDespawnCandidate(id : entEntityID); // MarkDespawnCandidate
+	import function RegisterFearReaction(npc : handle:gameObject, threat : handle:gameObject); // RegisterFearReaction
+	import function RegisterReaction(reaction : CName) : AIReactionCountOutcome; // RegisterReaction
+	import function TryAndJoinTraffic(npc : handle:gameObject, threatPos : Vector3, shouldRunInTraffic : Bool) : Bool; // TryAndJoinTraffic
+	import function TryRegisteringAggressiveNPC(civilianNPC : handle:gameObject, checkPlayerLos : Bool) : Bool; // TryRegisteringAggressiveNPC
+	import function TryUnregisteringAggressiveNPC(npcId : entEntityID) : Bool; // TryUnregisteringAggressiveNPC
+	import function UnmarkDespawnCandidate(id : entEntityID); // UnmarkDespawnCandidate
+	import function UnregisterFearReaction(runner : handle:gameObject); // UnregisterFearReaction
+	import function UnregisterReaction(reaction : CName) : AIReactionCountOutcome; // UnregisterReaction
+	import function UsesLoreAnimationWorkspot(npcId : entEntityID) : Bool; // UsesLoreAnimationWorkspot
+}
+
+import class abstract AIIReactionSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

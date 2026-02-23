@@ -1,0 +1,6 @@
+import struct questForceModule_NodeTypeParams
+{
+	var objectRef : NodeRef;
+	var module : String;
+	var components : array:CName;
+}

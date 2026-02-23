@@ -1,0 +1,28 @@
+class InteractiveSignCustomData extends WidgetCustomData
+{
+	private   var messege : String;
+	private   var signShape : SignShape;
+
+	function GetMessege() : String; // GetMessege;
+	function GetShape() : SignShape; // GetShape;
+	function SetMessege(text : script_ref:String); // SetMessege;script_ref<String>
+	function SetShape(shape : SignShape); // SetShape;SignShape
+}
+
+class WidgetCustomData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

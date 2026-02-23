@@ -1,0 +1,25 @@
+import class questvehicleOnSplineParams extends questVehicleSpecificCommandParams
+{
+	var splineRef : NodeRef;
+	var reverseSpline : Bool;
+	var backwards : Bool;
+	var closest : Bool;
+	var forcedStartSpeed : Float;
+	var stopAtEnd : Bool;
+	var keepDistance : Bool;
+	var keepDistanceParam : handle:questParamKeepDistance;
+	var rubberBanding : Bool;
+	var rubberBandingParam : handle:questParamRubberbanding;
+	var audioCurvesParam : handle:vehicleAudioCurvesParam;
+}
+
+import class abstract questVehicleSpecificCommandParams extends ISerializable
+{
+	var pushOtherVehiclesAside : Bool;
+	var needDriver : Bool;
+	var secureTimeOut : Float;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct worldPackageNodeRefSerializer extends redPackageCustomTypeSerializer
+{
+}
+
+import struct abstract redPackageCustomTypeSerializer
+{
+}

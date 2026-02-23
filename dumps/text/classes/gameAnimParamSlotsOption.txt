@@ -1,0 +1,6 @@
+import struct gameAnimParamSlotsOption
+{
+	var slotID : TweakDBID;
+	var paramName : CName;
+	var function : entAnimParamSlotFunction;
+}

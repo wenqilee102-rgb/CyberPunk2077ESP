@@ -1,0 +1,9 @@
+import struct netEntityReplicatedState extends netIEntityState
+{
+}
+
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

@@ -1,0 +1,5 @@
+import struct gamestateMachineActionParameterBool
+{
+	var name : CName;
+	var value : Bool;
+}

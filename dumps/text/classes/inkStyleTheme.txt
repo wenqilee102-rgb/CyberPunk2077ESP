@@ -1,0 +1,5 @@
+import struct inkStyleTheme
+{
+	var themeID : CName;
+	var styleResource : rRef:inkStyleResource;
+}

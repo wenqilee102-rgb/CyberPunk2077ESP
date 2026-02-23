@@ -1,0 +1,7 @@
+import struct gameinputActionDisplayData
+{
+	var name : CName;
+	var isHold : Bool;
+	var inputDisplayPad : String;
+	var inputDisplayKeyboard : String;
+}

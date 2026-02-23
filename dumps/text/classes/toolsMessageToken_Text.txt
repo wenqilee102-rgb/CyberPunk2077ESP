@@ -1,0 +1,12 @@
+import class toolsMessageToken_Text extends toolsIMessageToken
+{
+	var text : String;
+}
+
+import class abstract toolsIMessageToken extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

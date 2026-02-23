@@ -1,0 +1,11 @@
+import struct gameuiIndexedAppearanceDefinition
+{
+	var index : Int32;
+	var color : Color;
+	var icon : TweakDBID;
+	var name : CName;
+	var localizedName : String;
+	var actions : array:gameuiCharacterCustomizationAction;
+	var tags : redTagList;
+	var randomizationInfo : gameuiCharacterRandomizationInfo;
+}

@@ -1,0 +1,49 @@
+import class cpPlayerSystem extends gamePlayerSystem
+{
+	import function FindPlayerControlledObjects(position : Vector4, radius : Float, includeLocalPlayers : Bool, includeRemotePlayers : Bool, out outPlayerGameObjects : array:handle:gameObject) : Uint32; // FindPlayerControlledObjects
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetLocalPlayerControlledGameObject() : handle:gameObject; // GetLocalPlayerControlledGameObject
+	import function GetLocalPlayerMainGameObject() : handle:gameObject; // GetLocalPlayerMainGameObject
+	import function IsCPOControlSchemeForced() : Bool; // IsCPOControlSchemeForced
+	import function IsInFreeCamera() : Bool; // IsInFreeCamera
+	import function LocalPlayerControlExistingObject(entityID : entEntityID); // LocalPlayerControlExistingObject
+	import function RegisterPlayerPuppetAttachedCallback(object : handle:IScriptable, func : CName) : Uint32; // RegisterPlayerPuppetAttachedCallback
+	import function RegisterPlayerPuppetDetachedCallback(object : handle:IScriptable, func : CName) : Uint32; // RegisterPlayerPuppetDetachedCallback
+	import function SetFreeCameraTransform(newTransform : Transform); // SetFreeCameraTransform
+	import function UnregisterPlayerPuppetAttachedCallback(callbackID : Uint32); // UnregisterPlayerPuppetAttachedCallback
+	import function UnregisterPlayerPuppetDetachedCallback(callbackID : Uint32); // UnregisterPlayerPuppetDetachedCallback
+
+	event OnGameRestored() : Bool; // OnGameRestored
+	event OnLocalPlayerChanged(controlledObject : whandle:gameObject) : Bool; // OnLocalPlayerChanged
+	event OnLocalPlayerPossesionChanged(playerPossesion : gamedataPlayerPossesion) : Bool; // OnLocalPlayerPossesionChanged
+	event OnShutdown() : Bool; // OnShutdown
+
+	function GetPossessedByJohnnyFactName() : String; // GetPossessedByJohnnyFactName;
+}
+
+import class abstract gamePlayerSystem extends gameIPlayerSystem
+{
+	import function PlayerEnteredCombat(playerEnteredCombat : Bool); // PlayerEnteredCombat
+}
+
+import class abstract gameIPlayerSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

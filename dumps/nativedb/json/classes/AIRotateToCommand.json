@@ -1,0 +1,1 @@
+{"a":"AIMoveCommand","b":"AIRotateToCommand","d":8,"e":[{"a":{"b":"AIPositionSpec"},"b":"target","c":132},{"a":{"a":10},"b":"angleTolerance","c":132},{"a":{"a":10},"b":"angleOffset","c":132},{"a":{"a":10},"b":"speed","c":132}]}

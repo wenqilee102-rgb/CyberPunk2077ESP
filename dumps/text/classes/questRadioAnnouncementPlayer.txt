@@ -1,0 +1,7 @@
+import struct questRadioAnnouncementPlayer extends audioBaseRadioAnnouncementPlayer
+{
+}
+
+import struct audioBaseRadioAnnouncementPlayer
+{
+}

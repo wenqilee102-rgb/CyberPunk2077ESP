@@ -1,0 +1,43 @@
+class DeviceOperationsContainer extends IScriptable
+{
+	private   var operations : array:handle:DeviceOperationBase;
+	private   var triggers : array:handle:DeviceOperationsTrigger;
+
+	function EvaluateActivatorTriggers(owner : whandle:gameObject); // EvaluateActivatorTriggers;GameObject
+	function EvaluateBaseStateTriggers(state : EDeviceStatus, owner : whandle:gameObject); // EvaluateBaseStateTriggers;EDeviceStatusGameObject
+	function EvaluateCustomActionTriggers(actionID : CName, owner : whandle:gameObject); // EvaluateCustomActionTriggers;CNameGameObject
+	function EvaluateDeviceActionTriggers(actionClassName : CName, owner : whandle:gameObject); // EvaluateDeviceActionTriggers;CNameGameObject
+	function EvaluateDoorStateTriggers(state : EDoorStatus, owner : whandle:gameObject); // EvaluateDoorStateTriggers;EDoorStatusGameObject
+	function EvaluateFactTriggers(owner : whandle:gameObject, factName : CName); // EvaluateFactTriggers;GameObjectCName
+	function EvaluateFocusModeTriggers(owner : whandle:gameObject, operationType : ETriggerOperationType); // EvaluateFocusModeTriggers;GameObjectETriggerOperationType
+	function EvaluateHitTriggers(owner : whandle:gameObject, activator : whandle:gameObject, attackData : handle:gamedamageAttackData); // EvaluateHitTriggers;GameObjectGameObjectAttackData
+	function EvaluateInteractionAreaTriggers(areaTag : CName, owner : whandle:gameObject, activator : whandle:gameObject, operationType : gameinteractionsEInteractionEventType); // EvaluateInteractionAreaTriggers;CNameGameObjectGameObjectgameinteractionsEInteractionEventType
+	function EvaluateSenseTriggers(owner : whandle:gameObject, activator : whandle:gameObject, operationType : ETriggerOperationType); // EvaluateSenseTriggers;GameObjectGameObjectETriggerOperationType
+	function EvaluateTriggerVolumeTriggers(componentName : CName, owner : whandle:gameObject, activator : whandle:gameObject, operationType : ETriggerOperationType); // EvaluateTriggerVolumeTriggers;CNameGameObjectGameObjectETriggerOperationType
+	function Execute(operationName : CName, owner : whandle:gameObject); // Execute;CNameGameObject
+	function HasOperation(className : CName) : Bool; // HasOperation;CName
+	function Initialize(owner : handle:gameObject); // Initialize;GameObject
+	function IsOperationEnabled(index : Int32) : Bool; // IsOperationEnabled;Int32
+	function IsOperationEnabled(operationName : CName) : Bool; // IsOperationEnabled;CName
+	function Restore(operationName : CName, owner : whandle:gameObject); // Restore;CNameGameObject
+	function RestoreCustomActionOperations(actionID : CName, owner : whandle:gameObject); // RestoreCustomActionOperations;CNameGameObject
+	function RestoreDeviceActionOperations(actionClassName : CName, owner : whandle:gameObject); // RestoreDeviceActionOperations;CNameGameObject
+	function ToggleOperationByIndex(enable : Bool, index : Int32); // ToggleOperationByIndex;BoolInt32
+	function ToggleOperationByName(enable : Bool, operationName : CName); // ToggleOperationByName;BoolCName
+	function ToggleOperations(operations : script_ref:array:SToggleDeviceOperationData); // ToggleOperations;script_ref<array<SToggleDeviceOperationData>>
+	function UnInitialize(owner : handle:gameObject); // UnInitialize;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

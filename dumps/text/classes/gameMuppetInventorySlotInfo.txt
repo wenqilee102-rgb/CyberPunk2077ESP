@@ -1,0 +1,6 @@
+import struct gameMuppetInventorySlotInfo
+{
+	var itemCategory : TweakDBID;
+	var itemId : gameItemID;
+	var quantity : Uint32;
+}

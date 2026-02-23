@@ -1,0 +1,16 @@
+import struct AIGateSignal
+{
+	var tags : static:4,CName;
+	var flags : AISignalFlags;
+	var priority : Float;
+	var lifeTime : Float;
+
+	import static function AddFlag(self : script_ref:AIGateSignal, flag : AISignalFlags); // AddFlag
+	import static function AddTag(self : script_ref:AIGateSignal, tag : CName); // AddTag
+	import static function GetTag(self : script_ref:AIGateSignal, index : Uint32) : CName; // GetTag
+	import static function GetTagCount(self : script_ref:AIGateSignal) : Uint32; // GetTagCount
+	import static function HasAllTagsOf(self : script_ref:AIGateSignal, other : script_ref:AIGateSignal) : Bool; // HasAllTagsOf
+	import static function HasFlag(self : script_ref:AIGateSignal, flag : AISignalFlags) : Bool; // HasFlag
+	import static function HasTag(self : script_ref:AIGateSignal, tag : CName) : Bool; // HasTag
+	import static function IsEmpty(self : script_ref:AIGateSignal) : Bool; // IsEmpty
+}

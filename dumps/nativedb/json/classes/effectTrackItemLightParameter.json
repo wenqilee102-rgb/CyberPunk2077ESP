@@ -1,0 +1,1 @@
+{"a":"effectTrackItem","b":"effectTrackItemLightParameter","d":8,"e":[{"a":{"a":10},"b":"scale","c":128},{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"intensityMultiplier","c":128},{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"intensity","c":128},{"a":{"b":"effectEffectParameterEvaluatorFloat"},"b":"radius","c":128}]}

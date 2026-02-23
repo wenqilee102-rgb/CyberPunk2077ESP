@@ -1,0 +1,7 @@
+import struct physicsPhysicsJointDrive
+{
+	var forceLimit : Float;
+	var isAcceleration : Bool;
+	var stiffness : Float;
+	var damping : Float;
+}

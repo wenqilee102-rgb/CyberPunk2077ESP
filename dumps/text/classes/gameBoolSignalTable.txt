@@ -1,0 +1,25 @@
+import class gameBoolSignalTable extends IScriptable
+{
+	import function GetCurrentData(signalId : Uint16) : handle:gameSignalUserData; // GetCurrentData
+	import function GetCurrentValue(signalId : Uint16) : Bool; // GetCurrentValue
+	import function GetOrCreateSignal(signalName : CName) : Uint16; // GetOrCreateSignal
+	import function GetOrCreateTagSignal(signalName : CName) : Uint16; // GetOrCreateTagSignal
+	import function Set(signalId : Uint16, value : Bool) : Bool; // Set
+	import function SetByName(signalName : CName, value : Bool) : Bool; // SetByName
+	import function SetTimed(signalId : Uint16, duration : Float) : Bool; // SetTimed
+	import function SetWithData(signalId : Uint16, data : handle:gameSignalUserData) : Bool; // SetWithData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

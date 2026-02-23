@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataHandicapLootPreset_Record","c":"HandicapLootPreset_Record","d":24,"f":[{"a":"HandicapLimit","c":{"a":6},"d":4},{"a":"HandicapMaxQty","c":{"a":6},"d":4},{"a":"HandicapMinQty","c":{"a":6},"d":4},{"a":"Item","c":{"a":27,"c":{"b":"gamedataItem_Record"}},"d":4},{"a":"ItemHandle","c":{"a":26,"c":{"b":"gamedataItem_Record"}},"d":4}]}

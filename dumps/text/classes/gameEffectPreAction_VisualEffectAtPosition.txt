@@ -1,0 +1,30 @@
+import class gameEffectPreAction_VisualEffectAtPosition extends gameEffectPreAction
+{
+	var effect : raRef:worldEffect;
+	var attached : Bool;
+	var breakLoopOnDetach : Bool;
+	var vertical : Bool;
+	var effectTag : CName;
+}
+
+import class abstract gameEffectPreAction extends gameEffectAction
+{
+}
+
+import class abstract gameEffectAction extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

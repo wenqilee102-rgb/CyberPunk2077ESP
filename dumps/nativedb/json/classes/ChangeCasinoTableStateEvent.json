@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"ChangeCasinoTableStateEvent","d":0,"e":[{"a":{"b":"gameEntityReference"},"b":"slotUser","c":128},{"a":{"b":"CasinoTableSlot"},"b":"slot","c":128},{"a":{"b":"CasinoTableState"},"b":"state","c":128},{"a":{"b":"BetData"},"b":"betData","c":128}]}

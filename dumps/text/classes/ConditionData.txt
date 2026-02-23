@@ -1,0 +1,5 @@
+struct ConditionData
+{
+	public    var conditionOperator : ELogicOperator;
+	public    var requirementList : array:Condition;
+}

@@ -1,0 +1,5 @@
+struct CachedItemLoadout
+{
+	public    var itemID : gameItemID;
+	public    var slot : TweakDBID;
+}

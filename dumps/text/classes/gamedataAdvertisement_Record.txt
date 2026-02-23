@@ -1,0 +1,30 @@
+import class gamedataAdvertisement_Record extends gamedataTweakDBRecord
+{
+	import function Definitions(out outList : array:whandle:gamedataAdvertisementFormatDef_Record); // Definitions
+	import function DefinitionsContains(item : whandle:gamedataAdvertisementFormatDef_Record) : Bool; // DefinitionsContains
+	import function GetDefinitionsCount() : Int32; // GetDefinitionsCount
+	import function GetDefinitionsItem(index : Int32) : whandle:gamedataAdvertisementFormatDef_Record; // GetDefinitionsItem
+	import function GetDefinitionsItemHandle(index : Int32) : handle:gamedataAdvertisementFormatDef_Record; // GetDefinitionsItemHandle
+	import function LocalizationKey() : CName; // LocalizationKey
+	import function Resource() : redResourceReferenceScriptToken; // Resource
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

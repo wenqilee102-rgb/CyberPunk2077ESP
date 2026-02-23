@@ -1,0 +1,7 @@
+import struct Rect
+{
+	var left : Int32;
+	var top : Int32;
+	var right : Int32;
+	var bottom : Int32;
+}

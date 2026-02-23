@@ -1,0 +1,11 @@
+import struct navgendebugContourSet
+{
+	var contours : array:navgendebugCompactContour;
+	var boundingBox : Box;
+	var cellSize : Float;
+	var cellHeight : Float;
+	var width : Int32;
+	var height : Int32;
+	var borderSize : Int32;
+	var maxError : Float;
+}

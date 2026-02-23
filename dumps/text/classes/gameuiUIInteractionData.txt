@@ -1,0 +1,7 @@
+import struct gameuiUIInteractionData
+{
+	var interactionListActive : Bool;
+	var terminalInteractionActive : Bool;
+
+	import static function HasAnyInteraction(self : gameuiUIInteractionData) : Bool; // HasAnyInteraction
+}

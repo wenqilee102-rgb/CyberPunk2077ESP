@@ -1,0 +1,11 @@
+import struct sharedMenuItem
+{
+	var id : CName;
+	var displayName : String;
+	var tooltip : String;
+	var subItems : array:sharedMenuItem;
+	var isEnabled : Bool;
+	var type : sharedMenuItemType;
+	var isChecked : Bool;
+	var checkGroup : String;
+}

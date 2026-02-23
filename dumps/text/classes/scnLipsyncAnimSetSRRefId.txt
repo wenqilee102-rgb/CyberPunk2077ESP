@@ -1,0 +1,4 @@
+import struct scnLipsyncAnimSetSRRefId
+{
+	var id : Uint32;
+}

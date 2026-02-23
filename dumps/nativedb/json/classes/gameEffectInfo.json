@@ -1,0 +1,1 @@
+{"b":"gameEffectInfo","c":"EffectInfo","d":8,"g":true,"f":[{"a":"GetFilteredCount","c":{"a":6},"d":12,"e":[{"a":{"b":"gameEffectInfo"},"b":"info","c":0}]},{"a":"GetGatheredCount","c":{"a":6},"d":12,"e":[{"a":{"b":"gameEffectInfo"},"b":"info","c":0}]},{"a":"GetProcessedCount","c":{"a":6},"d":12,"e":[{"a":{"b":"gameEffectInfo"},"b":"info","c":0}]}]}

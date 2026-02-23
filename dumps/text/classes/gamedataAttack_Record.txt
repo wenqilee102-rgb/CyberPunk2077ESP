@@ -1,0 +1,56 @@
+import class gamedataAttack_Record extends gamedataTweakDBRecord
+{
+	import function AttackName() : CName; // AttackName
+	import function AttackType() : whandle:gamedataAttackType_Record; // AttackType
+	import function AttackTypeHandle() : handle:gamedataAttackType_Record; // AttackTypeHandle
+	import function ClassName() : CName; // ClassName
+	import function DamageType() : whandle:gamedataDamageType_Record; // DamageType
+	import function DamageTypeHandle() : handle:gamedataDamageType_Record; // DamageTypeHandle
+	import function ExplosionDamageVSVehicles() : Float; // ExplosionDamageVSVehicles
+	import function GetHitFlagsCount() : Int32; // GetHitFlagsCount
+	import function GetHitFlagsItem(index : Int32) : String; // GetHitFlagsItem
+	import function GetStaminaCostCount() : Int32; // GetStaminaCostCount
+	import function GetStaminaCostItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStaminaCostItem
+	import function GetStaminaCostItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStaminaCostItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function GetStatusEffectsCount() : Int32; // GetStatusEffectsCount
+	import function GetStatusEffectsItem(index : Int32) : whandle:gamedataStatusEffectAttackData_Record; // GetStatusEffectsItem
+	import function GetStatusEffectsItemHandle(index : Int32) : handle:gamedataStatusEffectAttackData_Record; // GetStatusEffectsItemHandle
+	import function HitFlags() : array:String; // HitFlags
+	import function HitFlagsContains(item : String) : Bool; // HitFlagsContains
+	import function HitReactionSeverityMax() : Int32; // HitReactionSeverityMax
+	import function HitReactionSeverityMin() : Int32; // HitReactionSeverityMin
+	import function PlayerIncomingDamageMultiplier() : Float; // PlayerIncomingDamageMultiplier
+	import function Range() : Float; // Range
+	import function StaminaCost(out outList : array:whandle:gamedataStatModifier_Record); // StaminaCost
+	import function StaminaCostContains(item : whandle:gamedataStatModifier_Record) : Bool; // StaminaCostContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function StatusEffects(out outList : array:whandle:gamedataStatusEffectAttackData_Record); // StatusEffects
+	import function StatusEffectsContains(item : whandle:gamedataStatusEffectAttackData_Record) : Bool; // StatusEffectsContains
+	import function UseDefaultAimData() : Bool; // UseDefaultAimData
+	import function UserDataPath() : String; // UserDataPath
+	import function Velocity() : Float; // Velocity
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

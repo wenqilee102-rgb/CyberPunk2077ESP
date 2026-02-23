@@ -1,0 +1,1 @@
+{"a":"gameuiInteractionMappinController","b":"gameuiQuestMappinController","c":"BaseQuestMappinController","d":8,"e":[{"a":{"a":1},"b":"nameplateVisible","c":128},{"a":{"b":"inkTextWidgetReference"},"b":"distanceText","c":128},{"a":{"b":"inkTextWidgetReference"},"b":"displayName","c":128}],"f":[{"a":"UpdateDisplayName","d":4},{"a":"UpdateDistanceText","d":4}]}

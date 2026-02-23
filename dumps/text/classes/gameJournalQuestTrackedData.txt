@@ -1,0 +1,6 @@
+import struct gameJournalQuestTrackedData
+{
+	var entryPath : handle:gameJournalPath;
+	var entryType : CName;
+	var state : gameJournalEntryState;
+}

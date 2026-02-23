@@ -1,0 +1,20 @@
+import class animAnimStateTransitionDescription extends ISerializable
+{
+	var targetStateIndex : Uint32;
+	var condition : handle:animIAnimStateTransitionCondition;
+	var isEnabled : Bool;
+	var interpolator : handle:animIAnimStateTransitionInterpolator;
+	var duration : Float;
+	var priority : Int32;
+	var syncMethod : handle:animISyncMethod;
+	var isForcedToTrue : Bool;
+	var supportBlendFromPose : Bool;
+	var canRequestInertialization : Bool;
+	var animFeatureName : CName;
+	var actionAnimDatabaseRef : rRef:animActionAnimDatabase;
+	var isOutTransitionFromAction : Bool;
+}
+
+import class abstract ISerializable
+{
+}

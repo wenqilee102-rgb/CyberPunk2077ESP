@@ -1,0 +1,30 @@
+import class gameCompanionSystem extends gameICompanionSystem
+{
+	import function DespawnAll(); // DespawnAll
+	import function DespawnSubcharacter(recordID : TweakDBID); // DespawnSubcharacter
+	import function GetSpawnedEntities(out entities : array:whandle:entEntity, optional recordID : TweakDBID); // GetSpawnedEntities
+	import function SpawnSubcharacter(recordID : TweakDBID, offset : Float, offsetDir : Vector3); // SpawnSubcharacter
+	import function SpawnSubcharacterOnPosition(recordID : TweakDBID, pos : Vector3); // SpawnSubcharacterOnPosition
+}
+
+import class abstract gameICompanionSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

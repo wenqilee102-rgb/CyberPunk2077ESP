@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"OptionalAreaEffectData","d":0,"e":[{"a":{"a":1},"b":"includeInAoeData","c":129},{"a":{"a":26,"c":{"b":"AreaEffectData"}},"b":"aoeData","c":129}],"f":[{"a":"GetAoeData;","b":"GetAoeData","c":{"a":26,"c":{"b":"AreaEffectData"}},"d":48},{"a":"ShouldIncludeInAoeData;","b":"ShouldIncludeInAoeData","c":{"a":1},"d":48}]}

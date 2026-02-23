@@ -1,0 +1,33 @@
+import class gamedataVehicleWheelsFrictionPreset_Record extends gamedataTweakDBRecord
+{
+	import function AudioMaterialCoeff() : Float; // AudioMaterialCoeff
+	import function DisplayName() : String; // DisplayName
+	import function FrictionCurveSet() : redResourceReferenceScriptToken; // FrictionCurveSet
+	import function FrictionLatMultiplier() : Float; // FrictionLatMultiplier
+	import function FrictionLongMultiplier() : Float; // FrictionLongMultiplier
+	import function LooseSurfaceLatResistanceCoeff() : Float; // LooseSurfaceLatResistanceCoeff
+	import function LooseSurfaceLatSpeedMax() : Float; // LooseSurfaceLatSpeedMax
+	import function LooseSurfaceLongDriveResistanceCoeff() : Float; // LooseSurfaceLongDriveResistanceCoeff
+	import function LooseSurfaceLongNonDriveResistanceCoeff() : Float; // LooseSurfaceLongNonDriveResistanceCoeff
+	import function LooseSurfaceLongSpeedMax() : Float; // LooseSurfaceLongSpeedMax
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

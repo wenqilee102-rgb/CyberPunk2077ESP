@@ -1,0 +1,11 @@
+import struct SamplerStateInfo
+{
+	var filteringMin : ETextureFilteringMin;
+	var filteringMag : ETextureFilteringMag;
+	var filteringMip : ETextureFilteringMip;
+	var addressU : ETextureAddressing;
+	var addressV : ETextureAddressing;
+	var addressW : ETextureAddressing;
+	var comparisonFunc : ETextureComparisonFunction;
+	var register : Uint8;
+}

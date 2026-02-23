@@ -1,0 +1,8 @@
+import struct inkWindowDrawMetrics
+{
+	var allTextures : array:Vector2;
+	var textureSizeTypes : array:Vector2;
+	var textureTypeTotal : array:Uint32;
+	var maxUsedTextureTypes : array:Uint32;
+	var drawMetrics : array:inkSingleDrawMetric;
+}

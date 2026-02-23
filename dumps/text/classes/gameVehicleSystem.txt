@@ -1,0 +1,58 @@
+import class gameVehicleSystem extends gameIVehicleSystem
+{
+	private   var restrictionTags : array:CName;
+
+	static function IsPlayerInVehicle(game : ScriptGameInstance) : Bool; // gameVehicleSystem::IsPlayerInVehicle;GameInstance
+	static function IsSummoningVehiclesRestricted(game : ScriptGameInstance) : Bool; // gameVehicleSystem::IsSummoningVehiclesRestricted;GameInstance
+
+	import function CanDriverShootInCarChase(vehicleID : entEntityID) : Bool; // CanDriverShootInCarChase
+	import function CanPassengersShootInCarChase(vehicleID : entEntityID) : Bool; // CanPassengersShootInCarChase
+	import function DespawnPlayerVehicle(vehicleID : vehicleGarageVehicleID); // DespawnPlayerVehicle
+	import function EnableAllPlayerVehicles(); // EnableAllPlayerVehicles
+	import function EnablePlayerVehicle(vehicle : String, enable : Bool, optional despawnIfDisabling : Bool) : Bool; // EnablePlayerVehicle
+	import function EnablePlayerVehicleCollision(enable : Bool); // EnablePlayerVehicleCollision
+	import function GetActivePlayerVehicle(optional vehicleType : gamedataVehicleType) : vehiclePlayerVehicle; // GetActivePlayerVehicle
+	import function GetPlayerUnlockedVehicles(out unlockedVehicles : array:vehiclePlayerVehicle); // GetPlayerUnlockedVehicles
+	import function GetPlayerVehicles(out vehicles : array:vehiclePlayerVehicle); // GetPlayerVehicles
+	import function IsActivePlayerVehicleOnCooldown(optional vehicleType : gamedataVehicleType) : Bool; // IsActivePlayerVehicleOnCooldown
+	import function IsPlayerVehicleOnCooldown(optional vehicleType : gamedataVehicleType, optional vehicleID : TweakDBID) : Bool; // IsPlayerVehicleOnCooldown
+	import function IsVehiclePlayerUnlocked(recordID : TweakDBID) : Bool; // IsVehiclePlayerUnlocked
+	import function ResetChaseManager(); // ResetChaseManager
+	import function SetChaseManagerLimit(limit : Int32); // SetChaseManagerLimit
+	import function SetRammingAttemptDuration(value : Float); // SetRammingAttemptDuration
+	import function SetRammingUponCollisionDuration(value : Float); // SetRammingUponCollisionDuration
+	import function SetSuicideSpeedChancePercentage(value : Float); // SetSuicideSpeedChancePercentage
+	import function SpawnActivePlayerVehicle(optional vehicleType : gamedataVehicleType) : Bool; // SpawnActivePlayerVehicle
+	import function SpawnPlayerVehicle(optional vehicleType : gamedataVehicleType, optional vehicleID : TweakDBID, optional spawnOnlyOnValidRoad : Bool) : Bool; // SpawnPlayerVehicle
+	import function TogglePlayerActiveVehicle(vehicleID : vehicleGarageVehicleID, vehicleType : gamedataVehicleType, enable : Bool); // TogglePlayerActiveVehicle
+	import function TogglePlayerFavoriteVehicle(vehicleID : vehicleGarageVehicleID) : Bool; // TogglePlayerFavoriteVehicle
+	import function ToggleSummonMode(); // ToggleSummonMode
+	import function UnregisterPlayerVehicle(vehicleID : vehicleGarageVehicleID); // UnregisterPlayerVehicle
+
+	event OnSummonVehicleFailed() : Bool; // OnSummonVehicleFailed
+
+	function GetVehicleRestrictions() : array:CName; // GetVehicleRestrictions;
+	function OnVehicleSystemAttach(); // OnVehicleSystemAttach;
+}
+
+import class abstract gameIVehicleSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

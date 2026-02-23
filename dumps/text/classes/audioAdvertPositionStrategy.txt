@@ -1,0 +1,7 @@
+import struct audioAdvertPositionStrategy extends audioApplySoundPositionStrategy
+{
+}
+
+import struct abstract audioApplySoundPositionStrategy
+{
+}

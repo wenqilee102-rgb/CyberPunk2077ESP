@@ -1,0 +1,5 @@
+import struct abstract inkCallbackBase
+{
+	var callbackName : CName;
+	var listeners : array:inkCallbackListener;
+}

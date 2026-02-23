@@ -1,0 +1,5 @@
+import struct questNodeVisibilityMapArrayElement
+{
+	var globalNodeRef : worldGlobalNodeRef;
+	var visible : Bool;
+}

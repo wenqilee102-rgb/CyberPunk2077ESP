@@ -1,0 +1,19 @@
+import class questvehiclePanicParams extends questVehicleSpecificCommandParams
+{
+	var allowSimplifiedMovement : Bool;
+	var ignoreTickets : Bool;
+	var disableStuckDetection : Bool;
+	var useSpeedBasedLookupRange : Bool;
+	var tryDriveAwayFromPlayer : Bool;
+}
+
+import class abstract questVehicleSpecificCommandParams extends ISerializable
+{
+	var pushOtherVehiclesAside : Bool;
+	var needDriver : Bool;
+	var secureTimeOut : Float;
+}
+
+import class abstract ISerializable
+{
+}

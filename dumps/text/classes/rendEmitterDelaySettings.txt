@@ -1,0 +1,7 @@
+import struct rendEmitterDelaySettings
+{
+	var emitterDelay : Float;
+	var emitterDelayLow : Float;
+	var useEmitterDelayRange : Bool;
+	var useEmitterDelayOnce : Bool;
+}

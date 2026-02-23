@@ -1,0 +1,7 @@
+import struct SimpleTemporalCustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

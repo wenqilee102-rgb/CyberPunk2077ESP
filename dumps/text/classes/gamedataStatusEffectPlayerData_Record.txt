@@ -1,0 +1,44 @@
+import class gamedataStatusEffectPlayerData_Record extends gamedataTweakDBRecord
+{
+	import function AirRecoveryAnimDuration() : Float; // AirRecoveryAnimDuration
+	import function BlockMovement() : Bool; // BlockMovement
+	import function CameraInputInterference() : Bool; // CameraInputInterference
+	import function CameraShakeStrength() : Float; // CameraShakeStrength
+	import function DisableCrouch() : Bool; // DisableCrouch
+	import function DisableDodge() : Bool; // DisableDodge
+	import function DisableJump() : Bool; // DisableJump
+	import function DisableSprint() : Bool; // DisableSprint
+	import function ForceSafeWeapon() : Bool; // ForceSafeWeapon
+	import function ForceUnequipWeapon() : Bool; // ForceUnequipWeapon
+	import function ImpulseDistance() : Float; // ImpulseDistance
+	import function JamWeapon() : Bool; // JamWeapon
+	import function LandAnimDuration() : Float; // LandAnimDuration
+	import function Priority() : Float; // Priority
+	import function RecoveryAnimDuration() : Float; // RecoveryAnimDuration
+	import function RotateToSource() : Bool; // RotateToSource
+	import function ScaleImpulseDistance() : Bool; // ScaleImpulseDistance
+	import function StartupAnimDuration() : Float; // StartupAnimDuration
+	import function StartupAnimInterruptPoint() : Float; // StartupAnimInterruptPoint
+	import function StatusEffectVariation() : whandle:gamedataStatusEffectVariation_Record; // StatusEffectVariation
+	import function StatusEffectVariationHandle() : handle:gamedataStatusEffectVariation_Record; // StatusEffectVariationHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

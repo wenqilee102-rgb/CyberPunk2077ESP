@@ -1,0 +1,1 @@
+{"a":"UIInventoryItemMod","b":"UIInventoryItemModAttachment","d":0,"e":[{"a":{"a":1},"b":"IsEmpty","c":128},{"a":{"a":12},"b":"SlotName","c":128},{"a":{"b":"gamedataQuality"},"b":"Quality","c":128},{"a":{"a":6},"b":"AbilitiesSize","c":128},{"a":{"a":31,"c":{"b":"gameInventoryItemAbility"}},"b":"Abilities","c":128}]}

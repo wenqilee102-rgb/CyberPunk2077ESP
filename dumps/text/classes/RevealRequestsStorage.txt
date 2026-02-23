@@ -1,0 +1,27 @@
+class RevealRequestsStorage extends IScriptable
+{
+	private   var currentRequestersAmount : Int32;
+	private   var requestersList : array:entEntityID;
+
+	function ClearAllRequests(); // ClearAllRequests;
+	function IsRequesterLegal(requester : entEntityID, addsRequest : Bool) : Bool; // IsRequesterLegal;EntityIDBool
+	function IsRequesterOnTheList(requester : entEntityID) : Bool; // IsRequesterOnTheList;EntityID
+	function LegalRequestAdd(requester : entEntityID); // LegalRequestAdd;EntityID
+	function LegalRequestRemove(requester : entEntityID); // LegalRequestRemove;EntityID
+	function RegisterLegalRequest(requester : entEntityID, shouldAdd : Bool); // RegisterLegalRequest;EntityIDBool
+	function ShouldReveal() : Bool; // ShouldReveal;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

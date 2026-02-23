@@ -1,0 +1,17 @@
+import class animAnimNode_FloatTrackModifier extends animAnimNode_Base
+{
+	var floatTrack : animNamedTrackIndex;
+	var operationType : animFloatTrackOperationType;
+	var inputFloatTrack : animNamedTrackIndex;
+	var poseInputNode : animPoseLink;
+	var floatInputNode : animFloatLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import struct gameuiInputHintData
+{
+	var action : CName;
+	var source : CName;
+	var groupId : CName;
+	var tutorialAction : CName;
+	var localizedLabel : String;
+	var queuePriority : Int32;
+	var sortingPriority : Int32;
+	var tutorialActionCount : Int32;
+	var holdIndicationType : inkInputHintHoldIndicationType;
+	var inputHintKeyCombinationType : inkInputHintKeyCombinationType;
+	var enableHoldAnimation : Bool;
+}

@@ -1,0 +1,5 @@
+import struct audioAudioFoliageMaterial
+{
+	var loopStart : CName;
+	var loopEnd : CName;
+}

@@ -1,0 +1,11 @@
+import class abstract AISmartSpot extends AISpot
+{
+}
+
+import class abstract AISpot extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

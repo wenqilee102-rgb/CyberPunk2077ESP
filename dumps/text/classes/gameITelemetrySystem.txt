@@ -1,0 +1,34 @@
+import class abstract gameITelemetrySystem extends gameIGameSystem
+{
+	import function ClearPlaythroughEp1(); // ClearPlaythroughEp1
+	import function LogCharacterCustomizationCancelled(); // LogCharacterCustomizationCancelled
+	import function LogCharacterCustomizationChanged(); // LogCharacterCustomizationChanged
+	import function LogInitialChoiceAttributeChanged(attribute : gamedataStatType); // LogInitialChoiceAttributeChanged
+	import function LogInitialChoiceBodyGenderSelected(isMale : Bool); // LogInitialChoiceBodyGenderSelected
+	import function LogInitialChoiceBrainGenderSelected(isMale : Bool); // LogInitialChoiceBrainGenderSelected
+	import function LogInitialChoiceDifficultySelected(difficulty : gameDifficulty); // LogInitialChoiceDifficultySelected
+	import function LogInitialChoiceLifePathSelected(lifePathID : TweakDBID); // LogInitialChoiceLifePathSelected
+	import function LogInitialChoiceOptionSelected(option : handle:gameuiCharacterCustomizationOption, value : Uint32); // LogInitialChoiceOptionSelected
+	import function LogInitialChoicePresetSelected(presetName : CName, optional fromInit : Bool); // LogInitialChoicePresetSelected
+	import function LogInitialChoiceSetStatege(state : gameInitalChoiceStage); // LogInitialChoiceSetStatege
+	import function LogNewGameStarted(); // LogNewGameStarted
+	import function LogPlaythroughEp1(); // LogPlaythroughEp1
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

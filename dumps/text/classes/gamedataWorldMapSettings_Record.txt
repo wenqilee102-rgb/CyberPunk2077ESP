@@ -1,0 +1,41 @@
+import class gamedataWorldMapSettings_Record extends gamedataTweakDBRecord
+{
+	import function CameraModeTransitionTime() : Float; // CameraModeTransitionTime
+	import function CursorBoundaryMax() : Vector2; // CursorBoundaryMax
+	import function CursorBoundaryMin() : Vector2; // CursorBoundaryMin
+	import function EnableGroupTransitionAnimations() : Bool; // EnableGroupTransitionAnimations
+	import function FreeCamera() : whandle:gamedataWorldMapFreeCameraSettings_Record; // FreeCamera
+	import function FreeCameraHandle() : handle:gamedataWorldMapFreeCameraSettings_Record; // FreeCameraHandle
+	import function GetZoomLevelsCount() : Int32; // GetZoomLevelsCount
+	import function GetZoomLevelsItem(index : Int32) : whandle:gamedataWorldMapZoomLevel_Record; // GetZoomLevelsItem
+	import function GetZoomLevelsItemHandle(index : Int32) : handle:gamedataWorldMapZoomLevel_Record; // GetZoomLevelsItemHandle
+	import function MouseZoomTransitionTime() : Float; // MouseZoomTransitionTime
+	import function NCPDEventsVisibilityRange() : Float; // NCPDEventsVisibilityRange
+	import function TopDownCamera() : whandle:gamedataWorldMapFreeCameraSettings_Record; // TopDownCamera
+	import function TopDownCameraHandle() : handle:gamedataWorldMapFreeCameraSettings_Record; // TopDownCameraHandle
+	import function ZoomLevels(out outList : array:whandle:gamedataWorldMapZoomLevel_Record); // ZoomLevels
+	import function ZoomLevelsContains(item : whandle:gamedataWorldMapZoomLevel_Record) : Bool; // ZoomLevelsContains
+	import function ZoomToEnabledAtMinimumZoom() : Float; // ZoomToEnabledAtMinimumZoom
+	import function ZoomToZoomValue() : Float; // ZoomToZoomValue
+	import function ZoomTransitionTime() : Float; // ZoomTransitionTime
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

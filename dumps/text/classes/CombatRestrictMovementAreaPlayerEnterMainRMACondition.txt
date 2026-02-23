@@ -1,0 +1,27 @@
+class CombatRestrictMovementAreaPlayerEnterMainRMACondition extends AICombatGuardAreaScriptCondition
+{
+	function IsFulfilled(game : ScriptGameInstance, entityId : entEntityID, area : AIScriptGuardArea, entityEntered : Bool) : Bool; // IsFulfilled;GameInstanceEntityIDRestrictMovementAreaBool
+}
+
+import class AICombatGuardAreaScriptCondition extends AIICombatGuardAreaCondition
+{
+	function IsFulfilled(game : ScriptGameInstance, entityId : entEntityID, area : AIScriptGuardArea, entityEntered : Bool) : Bool; // IsFulfilled;GameInstanceEntityIDRestrictMovementAreaBool
+}
+
+import class abstract AIICombatGuardAreaCondition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

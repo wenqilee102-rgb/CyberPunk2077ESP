@@ -1,0 +1,40 @@
+import class gamedataAIActionSlideData_Record extends gamedataTweakDBRecord
+{
+	import function DirectionAngle() : Float; // DirectionAngle
+	import function DisablePositionSlideAgainstNpc() : Bool; // DisablePositionSlideAgainstNpc
+	import function Distance() : Float; // Distance
+	import function Duration() : Float; // Duration
+	import function FinalRotationAngle() : Float; // FinalRotationAngle
+	import function OffsetAroundTarget() : Float; // OffsetAroundTarget
+	import function OffsetToTarget() : Float; // OffsetToTarget
+	import function OverrideOffsetToTargetFromWeapon() : Bool; // OverrideOffsetToTargetFromWeapon
+	import function PositionPredictionTime() : Float; // PositionPredictionTime
+	import function PositionSpeed() : Float; // PositionSpeed
+	import function RotationSpeed() : Float; // RotationSpeed
+	import function SlideStartDelay() : Float; // SlideStartDelay
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function UsePositionSlide() : Bool; // UsePositionSlide
+	import function UseRotationSlide() : Bool; // UseRotationSlide
+	import function ZAlignmentCollisionThreshold() : Float; // ZAlignmentCollisionThreshold
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,44 @@
+import class gamedataAIOptimalDistanceCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function CheckRings(out outList : array:whandle:gamedataAIRingType_Record); // CheckRings
+	import function CheckRingsContains(item : whandle:gamedataAIRingType_Record) : Bool; // CheckRingsContains
+	import function DistanceMult() : Float; // DistanceMult
+	import function DistanceOffset() : Float; // DistanceOffset
+	import function FailWhenCloserThanCurrentRing() : Bool; // FailWhenCloserThanCurrentRing
+	import function FailWhenFurtherThantCurrentRing() : Bool; // FailWhenFurtherThantCurrentRing
+	import function GetCheckRingsCount() : Int32; // GetCheckRingsCount
+	import function GetCheckRingsItem(index : Int32) : whandle:gamedataAIRingType_Record; // GetCheckRingsItem
+	import function GetCheckRingsItemHandle(index : Int32) : handle:gamedataAIRingType_Record; // GetCheckRingsItemHandle
+	import function PredictionTime() : Float; // PredictionTime
+	import function Source() : whandle:gamedataAIActionTarget_Record; // Source
+	import function SourceHandle() : handle:gamedataAIActionTarget_Record; // SourceHandle
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function ToleranceMult() : Float; // ToleranceMult
+	import function ToleranceOffset() : Float; // ToleranceOffset
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

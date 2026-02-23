@@ -1,0 +1,1 @@
+{"a":"DeviceOperationTriggerData","b":"HitOperationTriggerData","d":0,"e":[{"a":{"a":1},"b":"isAttackerPlayer","c":128},{"a":{"a":1},"b":"isAttackerNPC","c":128},{"a":{"a":1},"b":"bullets","c":128},{"a":{"a":1},"b":"explosions","c":128},{"a":{"a":1},"b":"melee","c":128},{"a":{"a":10},"b":"healthPercentage","c":128}]}

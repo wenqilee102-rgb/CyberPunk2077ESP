@@ -1,0 +1,9 @@
+import struct gamecarryReplicatedEntitySetAttachmentToWorld extends netEntityAttachmentInterface
+{
+	var localTransform : Transform;
+}
+
+import struct netEntityAttachmentInterface
+{
+	var time : netTime;
+}

@@ -1,0 +1,25 @@
+class ProjectileLaunchHelper extends IScriptable
+{
+	static function SetCurvedLaunchTrajectory(projectileComponent : handle:gameprojectileComponent, optional targetObject : whandle:gameObject, targetComponent : handle:entIPlacedComponent, startVelocity : Float, linearTimeRatio : Float, interpolationTimeRatio : Float, returnTimeMargin : Float, bendTimeRatio : Float, bendFactor : Float, halfLeanAngle : Float, endLeanAngle : Float, angleInterpolationDuration : Float) : Bool; // ProjectileLaunchHelper::SetCurvedLaunchTrajectory;ProjectileComponentGameObjectIPlacedComponentFloatFloatFloatFloatFloatFloatFloatFloatFloat
+	static function SetCustomTargetPositionToFollow(projectileComponent : handle:gameprojectileComponent, localToWorld : script_ref:Matrix, startVelocity : Float, distance : Float, sideOffset : Float, height : Float, linearTimeRatio : Float, interpolationTimeRatio : Float, returnTimeMargin : Float, bendTimeRatio : Float, bendFactor : Float, accuracy : Float, halfLeanAngle : Float, endLeanAngle : Float, angleInterpolationDuration : Float) : Bool; // ProjectileLaunchHelper::SetCustomTargetPositionToFollow;ProjectileComponentscript_ref<Matrix>FloatFloatFloatFloatFloatFloatFloatFloatFloatFloatFloatFloatFloat
+	static function SetLinearLaunchTrajectory(projectileComponent : handle:gameprojectileComponent, velocity : Float) : Bool; // ProjectileLaunchHelper::SetLinearLaunchTrajectory;ProjectileComponentFloat
+	static function SetParabolicLaunchTrajectory(projectileComponent : handle:gameprojectileComponent, gravitySimulation : Float, velocity : Float, energyLossFactorAfterCollision : Float) : Bool; // ProjectileLaunchHelper::SetParabolicLaunchTrajectory;ProjectileComponentFloatFloatFloat
+	static function SpawnArmsLauncherProjectileWithRotation(ownerObject : handle:gameObject, projectileTemplateName : CName, itemObj : handle:gameItemObject, optional rotationRad : Float) : Bool; // ProjectileLaunchHelper::SpawnArmsLauncherProjectileWithRotation;GameObjectCNameItemObjectFloat
+	static function SpawnProjectile(ownerObject : handle:gameObject, projectileTemplateName : CName, appearance : CName, itemObj : handle:gameItemObject, logicalPositionProvider : handle:entIPositionProvider, logicalOrientationProvider : handle:entIOrientationProvider) : Bool; // ProjectileLaunchHelper::SpawnProjectile;GameObjectCNameCNameItemObjectIPositionProviderIOrientationProvider
+	static function SpawnProjectileFromRightHand(ownerObject : handle:gameObject, projectileTemplateName : CName, appearance : CName, itemObj : handle:gameItemObject) : Bool; // ProjectileLaunchHelper::SpawnProjectileFromRightHand;GameObjectCNameCNameItemObject
+	static function SpawnProjectileFromScreenCenter(ownerObject : handle:gameObject, projectileTemplateName : CName, appearance : CName, itemObj : handle:gameItemObject) : Bool; // ProjectileLaunchHelper::SpawnProjectileFromScreenCenter;GameObjectCNameCNameItemObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

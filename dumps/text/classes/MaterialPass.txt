@@ -1,0 +1,13 @@
+import struct MaterialPass
+{
+	var stagePassNameRegular : CName;
+	var stagePassNameDiscarded : CName;
+	var depthStencilMode : PSODescDepthStencilModeDesc;
+	var rasterizerMode : PSODescRasterizerModeDesc;
+	var blendMode : PSODescBlendModeDesc;
+	var stencilReadMask : Uint8;
+	var stencilWriteMask : Uint8;
+	var stencilRef : Uint8;
+	var orderIndex : Uint8;
+	var enablePixelShader : Bool;
+}

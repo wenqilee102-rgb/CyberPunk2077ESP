@@ -1,0 +1,18 @@
+import class audioAnimationOverrideDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioAnimationOverrideDictionaryItem;
+	var entryType : handle:audioAnimationOverrideDictionaryItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

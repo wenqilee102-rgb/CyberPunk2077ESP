@@ -1,0 +1,16 @@
+import class worldStreamingSector extends CResource
+{
+	var localInplaceResource : array:rRef:CResource;
+	var externInplaceResource : raRef:worldStreamingSectorInplaceContent;
+	var level : Uint8;
+	var category : worldStreamingSectorCategory;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

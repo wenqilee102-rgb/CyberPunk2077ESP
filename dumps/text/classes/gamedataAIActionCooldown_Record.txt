@@ -1,0 +1,30 @@
+import class gamedataAIActionCooldown_Record extends gamedataTweakDBRecord
+{
+	import function ActivationCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // ActivationCondition
+	import function ActivationConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // ActivationConditionContains
+	import function Duration() : Float; // Duration
+	import function GetActivationConditionCount() : Int32; // GetActivationConditionCount
+	import function GetActivationConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetActivationConditionItem
+	import function GetActivationConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetActivationConditionItemHandle
+	import function Name() : CName; // Name
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+class CooldownRequest extends IScriptable
+{
+	private   var action : handle:BaseScriptableAction;
+	private   var contactBook : array:PSOwnerData;
+	private   var requestTriggerType : RequestType;
+
+	function GetAction() : handle:BaseScriptableAction; // GetAction;
+	function GetContactBook() : array:PSOwnerData; // GetContactBook;
+	function GetTriggerRequestType() : RequestType; // GetTriggerRequestType;
+	function SetUp(action : handle:BaseScriptableAction, shouldTriggerCooldownImmediately : Bool); // SetUp;BaseScriptableActionBool
+	function SetUp(action : handle:BaseScriptableAction, go : whandle:gameObject, shouldTriggerCooldownImmediately : Bool); // SetUp;BaseScriptableActionGameObjectBool
+	function SetUp(action : handle:BaseScriptableAction, ps : whandle:gamePersistentState, shouldTriggerCooldownImmediately : Bool); // SetUp;BaseScriptableActionPersistentStateBool
+	function SetUpAdvanced(action : handle:BaseScriptableAction, addressees : script_ref:array:PSOwnerData, shouldTriggerCooldownImmediately : Bool); // SetUpAdvanced;BaseScriptableActionscript_ref<array<PSOwnerData>>Bool
+	function SetUpTriggerType(shouldTriggerImmediately : Bool); // SetUpTriggerType;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,45 @@
+import class gamedataWorldMapFreeCameraSettings_Record extends gamedataTweakDBRecord
+{
+	import function FovMax() : Float; // FovMax
+	import function FovMin() : Float; // FovMin
+	import function IconScaleMax() : Float; // IconScaleMax
+	import function IconScaleMin() : Float; // IconScaleMin
+	import function MousePanStrength() : Float; // MousePanStrength
+	import function MouseRotateStrength() : Float; // MouseRotateStrength
+	import function MouseZoomSpeedMax() : Float; // MouseZoomSpeedMax
+	import function MouseZoomSpeedMin() : Float; // MouseZoomSpeedMin
+	import function PanSpeedMax() : Float; // PanSpeedMax
+	import function PanSpeedMin() : Float; // PanSpeedMin
+	import function PitchRelativeToZoom() : Bool; // PitchRelativeToZoom
+	import function RotationDefault() : EulerAngles; // RotationDefault
+	import function RotationMax() : EulerAngles; // RotationMax
+	import function RotationMin() : EulerAngles; // RotationMin
+	import function RotationSpeed() : EulerAngles; // RotationSpeed
+	import function ZoomDefault() : Float; // ZoomDefault
+	import function ZoomDefaultInFastTravel() : Float; // ZoomDefaultInFastTravel
+	import function ZoomMax() : Float; // ZoomMax
+	import function ZoomMin() : Float; // ZoomMin
+	import function ZoomSpeed() : Float; // ZoomSpeed
+	import function ZoomSpeedMax() : Float; // ZoomSpeedMax
+	import function ZoomSpeedMin() : Float; // ZoomSpeedMin
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

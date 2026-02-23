@@ -1,0 +1,8 @@
+import class worldSharedDataBuffer extends ISerializable
+{
+	var buffer : DataBuffer;
+}
+
+import class abstract ISerializable
+{
+}

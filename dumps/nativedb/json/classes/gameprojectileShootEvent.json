@@ -1,0 +1,1 @@
+{"a":"gameprojectileSetUpEvent","b":"gameprojectileShootEvent","d":24,"e":[{"a":{"b":"Matrix"},"b":"localToWorld","c":128},{"a":{"b":"Vector4"},"b":"startPoint","c":128},{"a":{"b":"Vector4"},"b":"startVelocity","c":128},{"a":{"b":"Vector4"},"b":"weaponVelocity","c":128},{"a":{"b":"gameprojectileWeaponParams"},"b":"params","c":128}]}

@@ -1,0 +1,23 @@
+import struct inkWaitingSignLayerDefinition extends inkLayerDefinition
+{
+	var introAnimName : CName;
+	var waitingAnimName : CName;
+	var outroAnimName : CName;
+	var delayTime : Float;
+	var introTime : Float;
+	var waitingTime : Float;
+	var postWaitTime : Float;
+	var outroTime : Float;
+}
+
+import struct inkLayerDefinition
+{
+	var enabled : Bool;
+	var rootLibrary : rRef:inkWidgetLibraryResource;
+	var activeByDefault : Bool;
+	var isPermanent : Bool;
+	var useGlobalStyleTheme : Bool;
+	var isAffectedByFadeout : Bool;
+	var useGameInput : Bool;
+	var inputContext : CName;
+}

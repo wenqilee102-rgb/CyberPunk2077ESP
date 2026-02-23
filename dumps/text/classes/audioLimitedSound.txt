@@ -1,0 +1,5 @@
+import struct audioLimitedSound
+{
+	var soundType : audioLimitedSoundType;
+	var attenuationDistance : Float;
+}

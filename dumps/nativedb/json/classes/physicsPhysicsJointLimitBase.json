@@ -1,0 +1,1 @@
+{"b":"physicsPhysicsJointLimitBase","d":8,"g":true,"e":[{"a":{"a":10},"b":"restitution","c":128},{"a":{"a":10},"b":"bounceThreshold","c":128},{"a":{"a":10},"b":"stiffness","c":128},{"a":{"a":10},"b":"damping","c":128},{"a":{"a":10},"b":"contactDistance","c":128}]}

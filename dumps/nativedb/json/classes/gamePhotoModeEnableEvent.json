@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gamePhotoModeEnableEvent","c":"PhotoModeEnableEvent","d":8,"f":[{"a":"GetEnable","c":{"a":1},"d":4},{"a":"SetEnable","d":4,"e":[{"a":{"a":1},"b":"enable","c":0}]}]}

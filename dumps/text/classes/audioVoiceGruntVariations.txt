@@ -1,0 +1,4 @@
+import struct audioVoiceGruntVariations
+{
+	var cachedVariations : array:CName;
+}

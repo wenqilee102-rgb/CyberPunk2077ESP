@@ -1,0 +1,10 @@
+import class abstract scnSceneGraphNode extends ISerializable
+{
+	var nodeId : scnNodeId;
+	var ffStrategy : scnFastForwardStrategy;
+	var outputSockets : array:scnOutputSocket;
+}
+
+import class abstract ISerializable
+{
+}

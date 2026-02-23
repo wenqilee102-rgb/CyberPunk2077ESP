@@ -1,0 +1,4 @@
+struct PlayerCombatControllerBBValuesIds
+{
+	public    var crouchActive : gamebbScriptID_Int32;
+}

@@ -1,0 +1,7 @@
+import struct gsmStateObserver_UserSignInOut extends gsmIStateObserver
+{
+}
+
+import struct abstract gsmIStateObserver
+{
+}

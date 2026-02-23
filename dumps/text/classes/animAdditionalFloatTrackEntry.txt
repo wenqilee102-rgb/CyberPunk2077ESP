@@ -1,0 +1,10 @@
+import class animAdditionalFloatTrackEntry extends ISerializable
+{
+	var name : CName;
+	var trackInfo : animFloatTrackInfo;
+	var values : curveData:Float;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+import struct WorldTransform
+{
+	var Position : WorldPosition;
+	var Orientation : Quaternion;
+
+	import static function GetForward(xform : WorldTransform) : Vector4; // GetForward
+	import static function GetInverse(xform : WorldTransform) : WorldTransform; // GetInverse
+	import static function GetOrientation(xform : WorldTransform) : Quaternion; // GetOrientation
+	import static function GetRight(xform : WorldTransform) : Vector4; // GetRight
+	import static function GetUp(xform : WorldTransform) : Vector4; // GetUp
+	import static function GetWorldPosition(xform : WorldTransform) : WorldPosition; // GetWorldPosition
+	import static function SetIdentity(xform : WorldTransform); // SetIdentity
+	import static function SetOrientation(xform : WorldTransform, value : Quaternion); // SetOrientation
+	import static function SetOrientationEuler(xform : WorldTransform, value : EulerAngles); // SetOrientationEuler
+	import static function SetOrientationFromDir(xform : WorldTransform, value : Vector4); // SetOrientationFromDir
+	import static function SetPosition(xform : WorldTransform, value : Vector4); // SetPosition
+	import static function SetWorldPosition(xform : WorldTransform, value : WorldPosition); // SetWorldPosition
+	import static function ToMatrix(xform : WorldTransform) : Matrix; // ToMatrix
+	import static function TransformInvPoint(xform : WorldTransform, value : Vector4) : Vector4; // TransformInvPoint
+	import static function TransformInvWorldPosition(xform : WorldTransform, value : WorldPosition) : Vector4; // TransformInvWorldPosition
+	import static function TransformInvWorldXForm(xform : WorldTransform, value : WorldTransform) : Transform; // TransformInvWorldXForm
+	import static function TransformInvXForm(xform : WorldTransform, value : Transform) : Transform; // TransformInvXForm
+	import static function TransformPoint(xform : WorldTransform, value : Vector4) : WorldPosition; // TransformPoint
+	import static function TransformWorldPosition(xform : WorldTransform, value : WorldPosition) : WorldPosition; // TransformWorldPosition
+	import static function TransformWorldXForm(xform : WorldTransform, value : WorldTransform) : WorldTransform; // TransformWorldXForm
+	import static function TransformXForm(xform : WorldTransform, value : Transform) : WorldTransform; // TransformXForm
+	import static function _ToXForm(xform : WorldTransform) : Transform; // _ToXForm
+}

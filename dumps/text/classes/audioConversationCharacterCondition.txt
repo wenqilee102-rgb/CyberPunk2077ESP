@@ -1,0 +1,7 @@
+import struct audioConversationCharacterCondition
+{
+	var voiceTag : CName;
+	var characterRecordId : Uint64;
+	var actorContextName : CName;
+	var actorsInitialWorkspotNodeRefHash : Uint64;
+}

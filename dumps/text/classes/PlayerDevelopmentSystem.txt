@@ -1,0 +1,112 @@
+class PlayerDevelopmentSystem extends gameScriptableSystem
+{
+	private   var playerData : array:handle:PlayerDevelopmentData;
+	private   var playerDevelopmentUpdated : Bool;
+	private   var progressionBuildUpdated : Bool;
+
+	static function CanSellNewPerk(player : handle:PlayerPuppet, perkType : gamedataNewPerkType) : CanSellNewPerkResult; // PlayerDevelopmentSystem::CanSellNewPerk;PlayerPuppetgamedataNewPerkType
+	static function CanSellNewPerks(player : handle:PlayerPuppet) : CanSellNewPerkResult; // PlayerDevelopmentSystem::CanSellNewPerks;PlayerPuppet
+	static function GetData(owner : handle:gameObject) : handle:PlayerDevelopmentData; // PlayerDevelopmentSystem::GetData;GameObject
+	static function GetInstance(owner : handle:gameObject) : handle:PlayerDevelopmentSystem; // PlayerDevelopmentSystem::GetInstance;GameObject
+
+	function BuyAttribute(owner : handle:gameObject, obj : handle:gameObject, type : gamedataStatType) : Bool; // BuyAttribute;GameObjectGameObjectgamedataStatType
+	function BuyNewPerk(owner : handle:gameObject, perkType : gamedataNewPerkType) : Bool; // BuyNewPerk;GameObjectgamedataNewPerkType
+	function GetAttributes(owner : handle:gameObject) : array:SAttribute; // GetAttributes;GameObject
+	function GetCurrentLevelProficiencyExp(owner : handle:gameObject, type : gamedataProficiencyType) : Int32; // GetCurrentLevelProficiencyExp;GameObjectgamedataProficiencyType
+	function GetDevPoints(owner : handle:gameObject, type : gamedataDevelopmentPointType) : Int32; // GetDevPoints;GameObjectgamedataDevelopmentPointType
+	function GetDevelopmentData(owner : handle:gameObject) : handle:PlayerDevelopmentData; // GetDevelopmentData;GameObject
+	function GetDominatingCombatProficiency(owner : handle:gameObject) : gamedataProficiencyType; // GetDominatingCombatProficiency;GameObject
+	function GetHighestCompletedMinigameLevel(owner : handle:gameObject) : Int32; // GetHighestCompletedMinigameLevel;GameObject
+	function GetIsProgressionBuildSetCompleted(owner : handle:gameObject) : Bool; // GetIsProgressionBuildSetCompleted;GameObject
+	function GetLifePath(owner : handle:gameObject) : gamedataLifePath; // GetLifePath;GameObject
+	function GetPerkLevel(owner : handle:gameObject, type : gamedataPerkType) : Int32; // GetPerkLevel;GameObjectgamedataPerkType
+	function GetPerkLevel(owner : handle:gameObject, type : gamedataNewPerkType) : Int32; // GetPerkLevel;GameObjectgamedataNewPerkType
+	function GetPerkMaxLevel(owner : handle:gameObject, type : gamedataNewPerkType) : Int32; // GetPerkMaxLevel;GameObjectgamedataNewPerkType
+	function GetPerkMaxLevel(owner : handle:gameObject, type : gamedataPerkType) : Int32; // GetPerkMaxLevel;GameObjectgamedataPerkType
+	function GetPerks(owner : handle:gameObject) : array:SPerk; // GetPerks;GameObject
+	function GetProficiencyAbsoluteMaxLevel(owner : handle:gameObject, type : gamedataProficiencyType) : Int32; // GetProficiencyAbsoluteMaxLevel;GameObjectgamedataProficiencyType
+	function GetProficiencyLevel(owner : handle:gameObject, type : gamedataProficiencyType) : Int32; // GetProficiencyLevel;GameObjectgamedataProficiencyType
+	function GetProficiencyRecord(type : gamedataProficiencyType) : handle:gamedataProficiency_Record; // GetProficiencyRecord;gamedataProficiencyType
+	function GetRemainingExpForLevelUp(owner : handle:gameObject, type : gamedataProficiencyType) : Int32; // GetRemainingExpForLevelUp;GameObjectgamedataProficiencyType
+	function GetTotalProfExperience(owner : handle:gameObject, type : gamedataProficiencyType) : Int32; // GetTotalProfExperience;GameObjectgamedataProficiencyType
+	function GrantFreeRespec(); // GrantFreeRespec;
+	function HasPerk(owner : handle:gameObject, type : gamedataPerkType) : Bool; // HasPerk;GameObjectgamedataPerkType
+	function IsNewPerkBought(owner : handle:gameObject, perkType : gamedataNewPerkType) : Int32; // IsNewPerkBought;GameObjectgamedataNewPerkType
+	function IsNewPerkUnlocked(owner : handle:gameObject, perkType : gamedataNewPerkType) : Bool; // IsNewPerkUnlocked;GameObjectgamedataNewPerkType
+	function IsPerkImplemented(owner : handle:gameObject, perk : gamedataPerkType) : Bool; // IsPerkImplemented;GameObjectgamedataPerkType
+	function IsProficiencyMaxLvl(owner : handle:gameObject, type : gamedataProficiencyType) : Bool; // IsProficiencyMaxLvl;GameObjectgamedataProficiencyType
+	function LockNewPerk(owner : handle:gameObject, perkType : gamedataNewPerkType) : Bool; // LockNewPerk;GameObjectgamedataNewPerkType
+	function OnAllPerksRemoved(request : handle:RemoveAllPerks); // OnAllPerksRemoved;RemoveAllPerks
+	function OnAttributeBuy(request : handle:BuyAttribute); // OnAttributeBuy;BuyAttribute
+	function OnAttributeSet(request : handle:SetAttribute); // OnAttributeSet;SetAttribute
+	function OnBumpNetrunnerMinigameLevel(request : handle:BumpNetrunnerMinigameLevel); // OnBumpNetrunnerMinigameLevel;BumpNetrunnerMinigameLevel
+	function OnBuyNewPerk(request : handle:BuyNewPerk); // OnBuyNewPerk;BuyNewPerk
+	function OnClearAllDevPoints(evt : handle:ClearAllDevPointsRequest); // OnClearAllDevPoints;ClearAllDevPointsRequest
+	function OnDevelopmentPointsAdded(request : handle:questAddDevelopmentPointsRequest); // OnDevelopmentPointsAdded;AddDevelopmentPoints
+	function OnExperienceAdded(request : handle:AddExperience); // OnExperienceAdded;AddExperience
+	function OnExperienceQueued(request : handle:QueueCombatExperience); // OnExperienceQueued;QueueCombatExperience
+	function OnLevelUpProficiency(request : handle:questLevelUpProficiency); // OnLevelUpProficiency;LevelUpProficiency
+	function OnLockNewPerk(request : handle:LockNewPerk); // OnLockNewPerk;LockNewPerk
+	function OnLockPerkArea(request : handle:LockPerkArea); // OnLockPerkArea;LockPerkArea
+	function OnPerkBought(request : handle:BuyPerk); // OnPerkBought;BuyPerk
+	function OnPerkRemoved(request : handle:RemovePerk); // OnPerkRemoved;RemovePerk
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnPlayerDetach(request : handle:gamePlayerDetachRequest); // OnPlayerDetach;PlayerDetachRequest
+	function OnProcessQueuedExperience(request : handle:ProcessQueuedCombatExperience); // OnProcessQueuedExperience;ProcessQueuedCombatExperience
+	function OnRefreshPerkAreas(request : handle:RefreshPerkAreas); // OnRefreshPerkAreas;RefreshPerkAreas
+	function OnReinitializeProficiencies(request : handle:ReinitializeProficiencies); // OnReinitializeProficiencies;ReinitializeProficiencies
+	function OnRequestStatsBB(request : handle:RequestStatsBB); // OnRequestStatsBB;RequestStatsBB
+	function OnResetProgressionForNewPerks(request : handle:ResetProgressionForNewPerks); // OnResetProgressionForNewPerks;ResetProgressionForNewPerks
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSellNewPerk(request : handle:SellNewPerk); // OnSellNewPerk;SellNewPerk
+	function OnSetLifePath(request : handle:questSetLifePathRequest); // OnSetLifePath;questSetLifePathRequest
+	function OnSetProficiencyLevel(request : handle:SetProficiencyLevel); // OnSetProficiencyLevel;SetProficiencyLevel
+	function OnSetProgressionBuild(request : handle:SetProgressionBuild); // OnSetProgressionBuild;SetProgressionBuild
+	function OnSetProgressionBuild(request : handle:questSetProgressionBuildRequest); // OnSetProgressionBuild;questSetProgressionBuildRequest
+	function OnSetProgressionBuild(request : handle:gameSetProgressionBuildRequest); // OnSetProgressionBuild;gameSetProgressionBuildRequest
+	function OnSkillCheckPrereqModified(request : handle:ModifySkillCheckPrereq); // OnSkillCheckPrereqModified;ModifySkillCheckPrereq
+	function OnStatCheckPrereqModified(request : handle:ModifyStatCheckPrereq); // OnStatCheckPrereqModified;ModifyStatCheckPrereq
+	function OnTraitLevelIncreased(request : handle:IncreaseTraitLevel); // OnTraitLevelIncreased;IncreaseTraitLevel
+	function OnUnlockNewPerk(request : handle:UnlockNewPerk); // OnUnlockNewPerk;UnlockNewPerk
+	function OnUnlockPerkArea(request : handle:UnlockPerkArea); // OnUnlockPerkArea;UnlockPerkArea
+	function OnUpdatePlayerDevelopment(request : handle:UpdatePlayerDevelopment); // OnUpdatePlayerDevelopment;UpdatePlayerDevelopment
+	function ReinitializeProficiencies(); // ReinitializeProficiencies;
+	function ResetProgressionForNewPerks(); // ResetProgressionForNewPerks;
+	function RetrofixCraftingComponent(player : handle:PlayerPuppet, transactionSystem : handle:gameTransactionSystem, requirementID : TweakDBID, itemIDs : array:TweakDBID) : Bool; // RetrofixCraftingComponent;PlayerPuppetTransactionSystemTweakDBIDarray<TweakDBID>
+	function RetrofixCraftingComponents(); // RetrofixCraftingComponents;
+	function SellNewPerk(owner : handle:gameObject, perkType : gamedataNewPerkType) : Bool; // SellNewPerk;GameObjectgamedataNewPerkType
+	function SetAttribute(owner : handle:gameObject, obj : handle:gameObject, type : gamedataStatType, amount : Float); // SetAttribute;GameObjectGameObjectgamedataStatTypeFloat
+	function SetIsProgressionBuildSetCompleted(owner : handle:gameObject, value : Bool); // SetIsProgressionBuildSetCompleted;GameObjectBool
+	function UnlockNewPerk(owner : handle:gameObject, perkType : gamedataNewPerkType) : Bool; // UnlockNewPerk;GameObjectgamedataNewPerkType
+	function UpgradeExperienceToSkills2(); // UpgradeExperienceToSkills2;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

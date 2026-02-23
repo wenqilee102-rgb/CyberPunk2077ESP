@@ -1,0 +1,17 @@
+import class animDyngConstraintLink extends animIDyngConstraint
+{
+	var bone1 : animTransformIndex;
+	var bone2 : animTransformIndex;
+	var linkType : animDyngConstraintLinkType;
+	var lengthLowerBoundRatioPercentage : Float;
+	var lengthUpperBoundRatioPercentage : Float;
+	var lookAtAxis : Vector3;
+}
+
+import class abstract animIDyngConstraint extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

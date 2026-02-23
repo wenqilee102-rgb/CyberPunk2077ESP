@@ -1,0 +1,85 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class cpMeatBag : gameObject
+	{
+		private CFloat _rotationLerpFactor;
+		private CName _kinematicBodyBoneName;
+		private CName _bagBodyBoneName;
+		private CName _physicalComponentName;
+		private CName _bagHitComponentName;
+		private CName _bagDestroyComponentName;
+		private CName _destructionEffectName;
+		private CName _jiggleEffectName;
+
+		[Ordinal(36)] 
+		[RED("rotationLerpFactor")] 
+		public CFloat RotationLerpFactor
+		{
+			get => GetProperty(ref _rotationLerpFactor);
+			set => SetProperty(ref _rotationLerpFactor, value);
+		}
+
+		[Ordinal(37)] 
+		[RED("kinematicBodyBoneName")] 
+		public CName KinematicBodyBoneName
+		{
+			get => GetProperty(ref _kinematicBodyBoneName);
+			set => SetProperty(ref _kinematicBodyBoneName, value);
+		}
+
+		[Ordinal(38)] 
+		[RED("bagBodyBoneName")] 
+		public CName BagBodyBoneName
+		{
+			get => GetProperty(ref _bagBodyBoneName);
+			set => SetProperty(ref _bagBodyBoneName, value);
+		}
+
+		[Ordinal(39)] 
+		[RED("physicalComponentName")] 
+		public CName PhysicalComponentName
+		{
+			get => GetProperty(ref _physicalComponentName);
+			set => SetProperty(ref _physicalComponentName, value);
+		}
+
+		[Ordinal(40)] 
+		[RED("bagHitComponentName")] 
+		public CName BagHitComponentName
+		{
+			get => GetProperty(ref _bagHitComponentName);
+			set => SetProperty(ref _bagHitComponentName, value);
+		}
+
+		[Ordinal(41)] 
+		[RED("bagDestroyComponentName")] 
+		public CName BagDestroyComponentName
+		{
+			get => GetProperty(ref _bagDestroyComponentName);
+			set => SetProperty(ref _bagDestroyComponentName, value);
+		}
+
+		[Ordinal(42)] 
+		[RED("destructionEffectName")] 
+		public CName DestructionEffectName
+		{
+			get => GetProperty(ref _destructionEffectName);
+			set => SetProperty(ref _destructionEffectName, value);
+		}
+
+		[Ordinal(43)] 
+		[RED("jiggleEffectName")] 
+		public CName JiggleEffectName
+		{
+			get => GetProperty(ref _jiggleEffectName);
+			set => SetProperty(ref _jiggleEffectName, value);
+		}
+
+		public cpMeatBag(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

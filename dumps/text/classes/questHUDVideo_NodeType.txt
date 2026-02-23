@@ -1,0 +1,32 @@
+import class questHUDVideo_NodeType extends questIUIManagerNodeType
+{
+	var video : raRef:Bink;
+	var skippable : Bool;
+	var audioEvent : CName;
+	var syncToAudio : Bool;
+	var retriggerAudioOnLoop : Bool;
+	var looped : Bool;
+	var forceVideoFrameRate : Bool;
+	var playOnHud : Bool;
+	var fullScreen : Bool;
+	var useFullscreenVideoState : Bool;
+	var keepWidescreenAspectRatio : Bool;
+	var position : Vector2;
+	var size : Vector2;
+}
+
+import class abstract questIUIManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

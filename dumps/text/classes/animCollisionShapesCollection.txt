@@ -1,0 +1,8 @@
+import class animCollisionShapesCollection extends ISerializable
+{
+	var collisionRoundedShapes : array:animCollisionRoundedShape;
+}
+
+import class abstract ISerializable
+{
+}

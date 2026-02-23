@@ -1,0 +1,9 @@
+import struct inkMargin
+{
+	var left : Float;
+	var top : Float;
+	var right : Float;
+	var bottom : Float;
+
+	import static function SetUniform(self : inkMargin, uniformThickness : Float); // SetUniform
+}

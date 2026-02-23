@@ -1,0 +1,22 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class BaseButtonView : inkDiscreteNavigationController
+	{
+		private wCHandle<inkButtonController> _buttonController;
+
+		[Ordinal(4)] 
+		[RED("ButtonController")] 
+		public wCHandle<inkButtonController> ButtonController
+		{
+			get => GetProperty(ref _buttonController);
+			set => SetProperty(ref _buttonController, value);
+		}
+
+		public BaseButtonView(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

@@ -1,0 +1,23 @@
+import class worldWeatherScriptInterface extends IScriptable
+{
+	import function GetRainIntensity() : Float; // GetRainIntensity
+	import function GetRainIntensityType() : worldRainIntensity; // GetRainIntensityType
+	import function GetRainMoisture() : Float; // GetRainMoisture
+	import function GetRainPuddles() : Float; // GetRainPuddles
+	import function RegisterWeatherListener(callback : handle:worldWeatherScriptListener) : Uint32; // RegisterWeatherListener
+	import function UnregisterWeatherListener(callbackId : Uint32); // UnregisterWeatherListener
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

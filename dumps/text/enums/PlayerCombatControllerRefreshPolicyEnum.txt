@@ -1,0 +1,5 @@
+enum PlayerCombatControllerRefreshPolicyEnum
+{
+	Persistent = 0,
+	Eventful = 1
+}

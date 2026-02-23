@@ -1,0 +1,13 @@
+import class gameDeviceResource extends CResource
+{
+	var data : handle:gameDeviceResourceData;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

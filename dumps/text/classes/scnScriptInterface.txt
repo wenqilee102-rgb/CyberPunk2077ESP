@@ -1,0 +1,41 @@
+import class scnScriptInterface extends IScriptable
+{
+	import function AreEntitiesInDialogue(firstEntity : entEntityID, secondEntity : entEntityID) : Bool; // AreEntitiesInDialogue
+	import function FastForwardingActivate(ffMode : scnFastForwardMode); // FastForwardingActivate
+	import function FastForwardingDeactivate(); // FastForwardingDeactivate
+	import function GetRewindableSectionDurationInSec() : Float; // GetRewindableSectionDurationInSec
+	import function GetRewindableSectionPlayDirection() : scnPlayDirection; // GetRewindableSectionPlayDirection
+	import function GetRewindableSectionPlaySpeed() : scnPlaySpeed; // GetRewindableSectionPlaySpeed
+	import function GetRewindableSectionProgress() : Float; // GetRewindableSectionProgress
+	import function GetRewindableSectionSpeedModifier() : Float; // GetRewindableSectionSpeedModifier
+	import function GetRewindableSectionTimeInSec() : Float; // GetRewindableSectionTimeInSec
+	import function GetSceneSystemCameraControlEnabled() : Bool; // GetSceneSystemCameraControlEnabled
+	import function GetSceneSystemCameraLastCameraOrientation() : Quaternion; // GetSceneSystemCameraLastCameraOrientation
+	import function GetSceneSystemCameraLastCameraPosition() : WorldPosition; // GetSceneSystemCameraLastCameraPosition
+	import function IsEntityInDialogue(entity : entEntityID) : Bool; // IsEntityInDialogue
+	import function IsEntityInScene(entity : entEntityID) : Bool; // IsEntityInScene
+	import function IsFastForwardingActive(ffMode : scnFastForwardMode) : Bool; // IsFastForwardingActive
+	import function IsFastForwardingAllowed(ffMode : scnFastForwardMode) : Bool; // IsFastForwardingAllowed
+	import function IsRewindableSectionActive() : Bool; // IsRewindableSectionActive
+	import function IsRewindableSectionPaused() : Bool; // IsRewindableSectionPaused
+	import function IsRewindableSectionResetting() : Bool; // IsRewindableSectionResetting
+	import function JumpRewindableSection(resetSpeed : Float, jumpTime : Float, postResetPlayDirection : scnPlayDirection, postResetPlaySpeed : scnPlaySpeed) : Bool; // JumpRewindableSection
+	import function ResetRewindableSection(resetSpeed : Float, postResetPlayDirection : scnPlayDirection, postResetPlaySpeed : scnPlaySpeed); // ResetRewindableSection
+	import function SetRewindableSectionPlayDirection(direction : scnPlayDirection); // SetRewindableSectionPlayDirection
+	import function SetRewindableSectionPlaySpeed(speed : scnPlaySpeed); // SetRewindableSectionPlaySpeed
+	import function SetSceneSystemCameraControlEnabled(enabled : Bool, optional blendTime : Float); // SetSceneSystemCameraControlEnabled
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

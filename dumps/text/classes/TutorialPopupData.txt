@@ -1,0 +1,43 @@
+class TutorialPopupData extends inkGameNotificationData
+{
+	public    var closeAtInput : Bool;
+	public    var pauseGame : Bool;
+	public    var isModal : Bool;
+	public    var position : gamePopupPosition;
+	public    var margin : inkMargin;
+	public    var imageId : TweakDBID;
+	public    var title : String;
+	public    var message : String;
+	public    var messageOverrideDataList : array:handle:gameJournalEntryOverrideData;
+	public    var videoType : gameVideoType;
+	public    var video : redResourceReferenceScriptToken;
+}
+
+import class inkGameNotificationData extends inkUserData
+{
+	var notificationName : CName;
+	var requiredGameState : CName;
+	var isBlocking : Bool;
+	var useCursor : Bool;
+	var queueName : CName;
+	var introAnimation : CName;
+	var token : whandle:inkGameNotificationToken;
+}
+
+import class inkUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

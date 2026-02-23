@@ -1,0 +1,18 @@
+import class audioGenericNameEventDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioGenericNameEventItem;
+	var entryType : handle:audioGenericNameEventItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

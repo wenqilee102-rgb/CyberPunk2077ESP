@@ -1,0 +1,5 @@
+enum gameStatPoolModificationTypes
+{
+	Regeneration = 0,
+	Decay = 1
+}

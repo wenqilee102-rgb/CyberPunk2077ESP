@@ -1,0 +1,8 @@
+import struct gameuiIndexedMorphName
+{
+	var index : Int32;
+	var morphName : CName;
+	var localizedName : String;
+	var tags : redTagList;
+	var randomizationInfo : gameuiCharacterRandomizationInfo;
+}

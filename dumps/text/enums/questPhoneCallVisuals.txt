@@ -1,0 +1,5 @@
+enum questPhoneCallVisuals
+{
+	Default = 0,
+	Somi = 1
+}

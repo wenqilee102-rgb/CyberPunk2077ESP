@@ -1,0 +1,25 @@
+import class gameFxInstance extends IScriptable
+{
+	import function AttachToComponent(entity : whandle:entEntity, targetType : entAttachmentTarget, componentName : CName, optional localTransform : WorldTransform); // AttachToComponent
+	import function AttachToSlot(entity : whandle:entEntity, targetType : entAttachmentTarget, slotName : CName, optional localTransform : WorldTransform); // AttachToSlot
+	import function BreakLoop(); // BreakLoop
+	import function IsValid() : Bool; // IsValid
+	import function Kill(); // Kill
+	import function SetBlackboardValue(parameterName : CName, clampedValue : Float); // SetBlackboardValue
+	import function UpdateTargetPosition(position : WorldPosition); // UpdateTargetPosition
+	import function UpdateTransform(transform : WorldTransform); // UpdateTransform
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

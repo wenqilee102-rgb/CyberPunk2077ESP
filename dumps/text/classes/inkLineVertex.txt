@@ -1,0 +1,5 @@
+import struct inkLineVertex
+{
+	var int : Vector2;
+	var neType : inkLineType;
+}

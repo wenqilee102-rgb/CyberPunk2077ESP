@@ -1,0 +1,40 @@
+import class gamedataPerk_Record extends gamedataTweakDBRecord
+{
+	import function BinkPath() : redResourceReferenceScriptToken; // BinkPath
+	import function DisplayName() : String; // DisplayName
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function GetLevelsCount() : Int32; // GetLevelsCount
+	import function GetLevelsItem(index : Int32) : whandle:gamedataPerkLevelData_Record; // GetLevelsItem
+	import function GetLevelsItemHandle(index : Int32) : handle:gamedataPerkLevelData_Record; // GetLevelsItemHandle
+	import function IconPath() : CName; // IconPath
+	import function Levels(out outList : array:whandle:gamedataPerkLevelData_Record); // Levels
+	import function LevelsContains(item : whandle:gamedataPerkLevelData_Record) : Bool; // LevelsContains
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function PerkIcon() : whandle:gamedataUIIcon_Record; // PerkIcon
+	import function PerkIconHandle() : handle:gamedataUIIcon_Record; // PerkIconHandle
+	import function Type() : gamedataPerkType; // Type
+	import function Utility() : whandle:gamedataPerkUtility_Record; // Utility
+	import function UtilityHandle() : handle:gamedataPerkUtility_Record; // UtilityHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

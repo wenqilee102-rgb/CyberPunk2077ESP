@@ -1,0 +1,1 @@
+{"a":"animAnimFeature","b":"animAnimFeature_BasicAim","c":"AnimFeature_BasicAim","d":8,"e":[{"a":{"a":6},"b":"aimState","c":128},{"a":{"a":6},"b":"zoomState","c":128}],"f":[{"a":"SetAimState","d":4,"e":[{"a":{"b":"animAimState"},"b":"aimState","c":0}]},{"a":"SetZoomState","d":4,"e":[{"a":{"b":"animAimState"},"b":"zoomState","c":0}]}]}

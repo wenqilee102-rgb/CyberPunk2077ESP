@@ -1,0 +1,29 @@
+import class gamedataVehicleDeformablePart_Record extends gamedataTweakDBRecord
+{
+	import function Component() : CName; // Component
+	import function GetZonesCount() : Int32; // GetZonesCount
+	import function GetZonesItem(index : Int32) : whandle:gamedataVehicleDeformableZone_Record; // GetZonesItem
+	import function GetZonesItemHandle(index : Int32) : handle:gamedataVehicleDeformableZone_Record; // GetZonesItemHandle
+	import function Zones(out outList : array:whandle:gamedataVehicleDeformableZone_Record); // Zones
+	import function ZonesContains(item : whandle:gamedataVehicleDeformableZone_Record) : Bool; // ZonesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

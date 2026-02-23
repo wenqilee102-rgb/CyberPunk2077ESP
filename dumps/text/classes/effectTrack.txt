@@ -1,0 +1,16 @@
+import class effectTrack extends effectTrackBase
+{
+	var items : array:handle:effectTrackItem;
+}
+
+import class effectTrackBase extends effectBaseItem
+{
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

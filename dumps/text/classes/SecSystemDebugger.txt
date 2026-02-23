@@ -1,0 +1,67 @@
+class SecSystemDebugger extends gameScriptableSystem
+{
+	private   var lastInstruction : EReprimandInstructions;
+	private   var instructionSet : Bool;
+	private   var lastInstructionTime : Float;
+	private   var lastInput : ESecurityNotificationType;
+	private   var inputSet : Bool;
+	private   var lastInputTime : Float;
+	private   var lastUpdateTime : Float;
+	private   var realTimeCallbackID : gameDelayID;
+	private   var realTimeCallback : Bool;
+	private   var realTime : Float;
+	private   var callstack : array:CName;
+	private   var ids : array:Uint32;
+	private   var background : Uint32;
+	private   var sysName : Uint32;
+	private   var sysState : Uint32;
+	private   var mostDangerousArea : Uint32;
+	private   var blacklistReason : Uint32;
+	private   var blacklistCount : Uint32;
+	private   var reprimand : Uint32;
+	private   var repInstruction : Uint32;
+	private   var reprimandID : Uint32;
+	private   var input : Uint32;
+	private   var regTime : Uint32;
+	private   var inputTime : Uint32;
+	private   var instructionTime : Uint32;
+	private   var actualTime : Uint32;
+	private   var system : handle:SecuritySystemControllerPS;
+	private   var refreshTime : Float;
+
+	function Clean(dvs : handle:gameDebugVisualizerSystem); // Clean;DebugVisualizerSystem
+	function OnRealTimeUpdate(req : handle:RealTimeUpdateRequest); // OnRealTimeUpdate;RealTimeUpdateRequest
+	function OnUpdateDebuggerRequest(req : handle:UpdateDebuggerRequest); // OnUpdateDebuggerRequest;UpdateDebuggerRequest
+	function RealTimeUpdate(evt : handle:gameTickableEvent, time : Float); // RealTimeUpdate;TickableEventFloat
+	function Update(sys : handle:SecuritySystemControllerPS, time : Float, instructionsAttached : Bool, inputAttached : Bool, trace : CName, optional instruction : EReprimandInstructions, optional recentInput : handle:SecuritySystemInput); // Update;SecuritySystemControllerPSFloatBoolBoolCNameEReprimandInstructionsSecuritySystemInput
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

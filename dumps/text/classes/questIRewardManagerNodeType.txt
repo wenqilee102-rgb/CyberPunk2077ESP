@@ -1,0 +1,7 @@
+import class abstract questIRewardManagerNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class gameSmartObjectPropertyDictionary extends ISerializable
+{
+	var properties : array:gameSmartObjectPropertyDictionaryPropertyEntry;
+}
+
+import class abstract ISerializable
+{
+}

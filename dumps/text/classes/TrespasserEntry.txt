@@ -1,0 +1,9 @@
+struct TrespasserEntry
+{
+	public    var trespasser : whandle:gameObject;
+	public    var isScanned : Bool;
+	public    var isInsideA : Bool;
+	public    var isInsideB : Bool;
+	public    var isInsideScanner : Bool;
+	public    var areaStack : array:CName;
+}

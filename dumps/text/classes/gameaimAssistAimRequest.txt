@@ -1,0 +1,24 @@
+import struct gameaimAssistAimRequest
+{
+	var duration : Float;
+	var adjustPitch : Bool;
+	var adjustYaw : Bool;
+	var endOnTargetReached : Bool;
+	var endOnCameraInputApplied : Bool;
+	var endOnTimeExceeded : Bool;
+	var endOnAimingStopped : Bool;
+	var cameraInputMagToBreak : Float;
+	var cameraMouseInputMagToBreak : Float;
+	var precision : Float;
+	var maxDuration : Float;
+	var easeIn : Bool;
+	var easeOut : Bool;
+	var checkRange : Bool;
+	var lookAtTarget : Vector4;
+	var processAsInput : Bool;
+	var bodyPartsTracking : Bool;
+	var bptMaxDot : Float;
+	var bptMaxSwitches : Float;
+	var bptMinInputMag : Float;
+	var bptMinResetInputMag : Float;
+}

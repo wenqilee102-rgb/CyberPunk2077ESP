@@ -1,0 +1,19 @@
+struct NewTurnMinigameData
+{
+	public    var position : Vector2;
+	public    var doConsume : Bool;
+	public    var nextHighlightMode : HighlightMode;
+	public    var newPlayerBufferContent : array:ElementData;
+	public    var newEnemyBufferContent : array:ElementData;
+	public    var doRegenerateGrid : Bool;
+	public    var regeneratedGridData : array:CellData;
+	public    var basicAccessCompletionState : ProgramProgressData;
+	public    var playerProgramsCompletionState : array:ProgramProgressData;
+	public    var enemyProgramsCompletionState : array:ProgramProgressData;
+	public    var playerProgramsChange : Bool;
+	public    var playerProgramsAdded : array:ProgramData;
+	public    var playerProgramsRemoved : array:ProgramData;
+	public    var enemyProgramsChange : Bool;
+	public    var enemyprogramsAdded : array:ProgramData;
+	public    var enemyprogramsRemoved : array:ProgramData;
+}

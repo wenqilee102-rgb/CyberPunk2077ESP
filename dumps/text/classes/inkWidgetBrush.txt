@@ -1,0 +1,27 @@
+import class inkWidgetBrush extends IScriptable
+{
+	var textureAtlas : rRef:inkTextureAtlas;
+	var texturePartId : CName;
+	var tileType : inkBrushTileType;
+	var mirrorType : inkBrushMirrorType;
+
+	import function GetMirrorType(); // GetMirrorType
+	import function GetTexturePart(); // GetTexturePart
+	import function GetTileType(); // GetTileType
+	import function IsTexturePartExist(); // IsTexturePartExist
+	import function SetTexturePart(); // SetTexturePart
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

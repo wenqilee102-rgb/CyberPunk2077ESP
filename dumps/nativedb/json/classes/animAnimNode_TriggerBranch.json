@@ -1,0 +1,1 @@
+{"a":"animAnimNode_Base","b":"animAnimNode_TriggerBranch","d":8,"e":[{"a":{"b":"animPoseLink"},"b":"base","c":128},{"a":{"b":"animPoseLink"},"b":"overlay","c":128},{"a":{"a":10},"b":"blendIn","c":128},{"a":{"a":10},"b":"blendOut","c":128},{"a":{"a":14},"b":"startEvent","c":128},{"a":{"a":14},"b":"endEvent","c":128},{"a":{"a":10},"b":"cooldown","c":128}]}

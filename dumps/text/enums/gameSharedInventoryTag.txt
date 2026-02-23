@@ -1,0 +1,5 @@
+enum gameSharedInventoryTag
+{
+	None = 0,
+	PlayerStash = 1000000
+}

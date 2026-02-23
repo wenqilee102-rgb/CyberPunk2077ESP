@@ -1,0 +1,20 @@
+class abstract UILocalizationHelper extends IScriptable
+{
+	static function GetStatNameLockey(statRecord : whandle:gamedataStat_Record) : String; // UILocalizationHelper::GetStatNameLockey;Stat_Record
+	static function GetSystemBaseUnit() : EMeasurementUnit; // UILocalizationHelper::GetSystemBaseUnit;
+	static function IsStatProficiency(statType : gamedataStatType) : Bool; // UILocalizationHelper::IsStatProficiency;gamedataStatType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

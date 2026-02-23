@@ -1,0 +1,29 @@
+import class gamedataObjectActionPrereq_Record extends gamedataTweakDBRecord
+{
+	import function FailureConditionPrereq(out outList : array:whandle:gamedataIPrereq_Record); // FailureConditionPrereq
+	import function FailureConditionPrereqContains(item : whandle:gamedataIPrereq_Record) : Bool; // FailureConditionPrereqContains
+	import function FailureExplanation() : String; // FailureExplanation
+	import function GetFailureConditionPrereqCount() : Int32; // GetFailureConditionPrereqCount
+	import function GetFailureConditionPrereqItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetFailureConditionPrereqItem
+	import function GetFailureConditionPrereqItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetFailureConditionPrereqItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import struct gameQuestTypeRequestFilter extends gameCustomRequestFilter
+{
+	var includeMainQuests : Bool;
+	var includeSideQuests : Bool;
+	var includeStreetStories : Bool;
+	var includeCyberPsycho : Bool;
+	var includeContracts : Bool;
+}
+
+import struct abstract gameCustomRequestFilter
+{
+}

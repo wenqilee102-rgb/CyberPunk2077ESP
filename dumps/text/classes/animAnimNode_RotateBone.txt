@@ -1,0 +1,26 @@
+import class animAnimNode_RotateBone extends animAnimNode_Base
+{
+	var inputNode : animPoseLink;
+	var angleNode : animFloatLink;
+	var minValueNode : animFloatLink;
+	var maxValueNode : animFloatLink;
+	var bone : animTransformIndex;
+	var axis : animETransformAxis;
+	var scale : Float;
+	var biasAngle : Float;
+	var minAngle : Float;
+	var maxAngle : Float;
+	var clampRotation : Bool;
+	var useIncrementalMode : Bool;
+	var resetOnActivation : Bool;
+	var inModelSpace : Bool;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

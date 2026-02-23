@@ -1,0 +1,21 @@
+class abstract ItemCategoryFliter extends IScriptable
+{
+	static function FilterItem(filter : ItemFilterCategory, wrappedData : handle:WrappedInventoryItemData) : Bool; // ItemCategoryFliter::FilterItem;ItemFilterCategoryWrappedInventoryItemData
+	static function GetItemCategoryType(data : whandle:UIInventoryItem) : ItemFilterCategory; // ItemCategoryFliter::GetItemCategoryType;UIInventoryItem
+	static function GetItemCategoryType(data : whandle:gameItemData) : ItemFilterCategory; // ItemCategoryFliter::GetItemCategoryType;gameItemData
+	static function IsOfCategoryType(filter : ItemFilterCategory, data : whandle:gameItemData) : Bool; // ItemCategoryFliter::IsOfCategoryType;ItemFilterCategorygameItemData
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

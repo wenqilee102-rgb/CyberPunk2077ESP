@@ -1,0 +1,13 @@
+import struct rendRenderMultilayerMaskBlobHeader
+{
+	var version : Uint32;
+	var atlasWidth : Uint32;
+	var atlasHeight : Uint32;
+	var numLayers : Uint32;
+	var maskWidth : Uint32;
+	var maskHeight : Uint32;
+	var maskWidthLow : Uint32;
+	var maskHeightLow : Uint32;
+	var maskTileSize : Uint32;
+	var flags : Uint32;
+}

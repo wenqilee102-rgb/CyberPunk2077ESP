@@ -1,0 +1,1 @@
+{"a":"gameTransformAnimationTrackItemImpl","b":"gameTransformAnimation_RotateFromTo","d":8,"e":[{"a":{"a":26,"c":{"b":"gameTransformAnimation_Rotation"}},"b":"startRotationEvaluator","c":128},{"a":{"a":26,"c":{"b":"gameTransformAnimation_Rotation"}},"b":"targetRotationEvaluator","c":128},{"a":{"a":26,"c":{"b":"gameTransformAnimation_Movement"}},"b":"movement","c":128}]}

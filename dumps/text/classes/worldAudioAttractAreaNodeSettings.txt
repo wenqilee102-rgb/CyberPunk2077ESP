@@ -1,0 +1,4 @@
+import struct worldAudioAttractAreaNodeSettings
+{
+	var metadataName : CName;
+}

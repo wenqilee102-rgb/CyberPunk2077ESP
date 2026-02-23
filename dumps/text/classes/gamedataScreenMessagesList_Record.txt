@@ -1,0 +1,28 @@
+import class gamedataScreenMessagesList_Record extends gamedataTweakDBRecord
+{
+	import function GetMessagesCount() : Int32; // GetMessagesCount
+	import function GetMessagesItem(index : Int32) : whandle:gamedataScreenMessageData_Record; // GetMessagesItem
+	import function GetMessagesItemHandle(index : Int32) : handle:gamedataScreenMessageData_Record; // GetMessagesItemHandle
+	import function Messages(out outList : array:whandle:gamedataScreenMessageData_Record); // Messages
+	import function MessagesContains(item : whandle:gamedataScreenMessageData_Record) : Bool; // MessagesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+import class animAnimNode_BlendMultiple extends animAnimNode_Base
+{
+	var inputValues : array:Float;
+	var sortedInputValues : array:Float;
+	var minWeight : Float;
+	var maxWeight : Float;
+	var radialBlending : Bool;
+	var timeWarpingEnabled : Bool;
+	var syncMethod : handle:animISyncMethod;
+	var motionProvider : handle:animIMotionTableProvider;
+	var weightNode : animFloatLink;
+	var inputNodes : array:animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

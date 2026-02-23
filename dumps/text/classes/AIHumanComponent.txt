@@ -1,0 +1,200 @@
+import class AIHumanComponent extends AICAgent
+{
+	var movementParamsRecord : TweakDBID;
+	private   var shootingBlackboard : whandle:gameIBlackboard;
+	private   var gadgetBlackboard : whandle:gameIBlackboard;
+	private   var coverBlackboard : whandle:gameIBlackboard;
+	private   var actionBlackboard : whandle:gameIBlackboard;
+	private   var patrolBlackboard : whandle:gameIBlackboard;
+	private   var alertedPatrolBlackboard : whandle:gameIBlackboard;
+	private   var prereqsBlackboard : whandle:gameIBlackboard;
+	private   var friendlyFireCheckID : Uint32;
+	private   var ffs : handle:gameIFriendlyFireSystem;
+	private   var LoSFinderCheckID : Uint32;
+	private   var loSFinderSystem : handle:gameLoSIFinderSystem;
+	private   var LoSFinderVisibleObject : whandle:senseVisibleObject;
+	private   var actionAnimationScriptProxy : handle:ActionAnimationScriptProxy;
+	private   var lastOwnerBlockedAttackEventID : gameDelayID;
+	private   var lastOwnerParriedAttackEventID : gameDelayID;
+	private   var lastOwnerDodgedAttackEventID : gameDelayID;
+	private   var grenadeThrowQueryTarget : whandle:gameObject;
+	private   var grenadeThrowQueryId : Int32;
+	private   var scriptContext : AIbehaviorScriptExecutionContext;
+	private   var scriptContextInitialized : Bool;
+	private   var kerenzikovAbilityRecord : handle:gamedataGameplayAbility_Record;
+	private   var highLevelCb : Uint32;
+	private   var lastReservedSeatVehicle : entEntityID;
+	private   var assignedVehicleStuck : Bool;
+	private   var activeCommands : AIbehaviorUniqueActiveCommandList;
+
+	static function Get(owner : whandle:ScriptedPuppet, out aiComponent : handle:AIHumanComponent) : Bool; // AIHumanComponent::Get;ScriptedPuppetAIHumanComponent
+	static function GetAssignedVehicle(owner : whandle:ScriptedPuppet, out vehicle : whandle:gameObject) : Bool; // AIHumanComponent::GetAssignedVehicle;ScriptedPuppetGameObject
+	static function GetLastUsedVehicleSlot(owner : whandle:ScriptedPuppet, out vehicleSlotName : CName) : Bool; // AIHumanComponent::GetLastUsedVehicleSlot;ScriptedPuppetCName
+	static function GetLastUsedVehicleSlot(owner : whandle:ScriptedPuppet, out vehicleSlot : gamemountingMountingSlotId) : Bool; // AIHumanComponent::GetLastUsedVehicleSlot;ScriptedPuppetMountingSlotId
+	static function GetScriptContext(puppet : whandle:ScriptedPuppet, out context : AIbehaviorScriptExecutionContext) : Bool; // AIHumanComponent::GetScriptContext;ScriptedPuppetScriptExecutionContext
+	static function SetCurrentRole(owner : handle:gameObject, newRole : handle:AIRole); // AIHumanComponent::SetCurrentRole;GameObjectAIRole
+
+	import function GetAssignedVehicleId() : entEntityID; // GetAssignedVehicleId
+	import function GetAssignedVehicleSlot() : gamemountingMountingSlotId; // GetAssignedVehicleSlot
+	import function GetMovementParams(type : moveMovementType) : moveMovementParameters; // GetMovementParams
+	import function HasVehicleAssigned() : Bool; // HasVehicleAssigned
+	import function OverrideAssignedVehicleInfoForPreventionBlockade(); // OverrideAssignedVehicleInfoForPreventionBlockade
+	import function SetMovementParams(params : moveMovementParameters); // SetMovementParams
+	import function SetTDBMovementParams(paramsID : TweakDBID) : Bool; // SetTDBMovementParams
+	import function WasForcedToEnterCrowd() : Bool; // WasForcedToEnterCrowd
+
+	event OnAnimParamsEvent(evt : handle:entAnimParamsEvent) : Bool; // OnAnimParamsEvent
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDefeated(evt : handle:gameeventsDefeatedEvent) : Bool; // OnDefeated
+	event OnDelayPassiveConditionEvaluationEvent(evt : handle:DelayPassiveConditionEvaluationEvent) : Bool; // OnDelayPassiveConditionEvaluationEvent
+	event OnEnemyThreatDetected(evt : handle:AIEnemyThreatDetected) : Bool; // OnEnemyThreatDetected
+	event OnHitAiEventReceived(hitAIEvent : handle:AIAIEvent) : Bool; // OnHitAiEventReceived
+	event OnHostileThreatDetected(evt : handle:AIHostileThreatDetected) : Bool; // OnHostileThreatDetected
+	event OnNewThreat(evt : handle:AINewThreat) : Bool; // OnNewThreat
+	event OnPlayerCombatChanged(value : Int32) : Bool; // OnPlayerCombatChanged
+	event OnReserveAssignedSeat(evt : handle:ReserveAssignedSeat) : Bool; // OnReserveAssignedSeat
+	event OnSetScriptExecutionContext(evt : handle:SetScriptExecutionContextEvent) : Bool; // OnSetScriptExecutionContext
+	event OnStartGrenadeThrowQueryEvent(evt : handle:StartGrenadeThrowQueryEvent) : Bool; // OnStartGrenadeThrowQueryEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStatusEffectRemoved(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectRemoved
+	event OnStuckEvent(evt : handle:vehicleVehicleStuckEvent) : Bool; // OnStuckEvent
+	event OnThreatRemoved(evt : handle:AIThreatRemoved) : Bool; // OnThreatRemoved
+	event OnVehicleAssign(evt : handle:gameMountAIEvent) : Bool; // OnVehicleAssign
+
+	function CacheThrowGrenadeAtTargetQuery(target : whandle:gameObject) : Bool; // CacheThrowGrenadeAtTargetQuery;GameObject
+	function CanThrowGrenadeAtTarget(target : whandle:gameObject, out throwPositions : Vector4, out throwAngle : Float, out throwStartType : gameGrenadeThrowStartType) : Bool; // CanThrowGrenadeAtTarget;GameObjectVector4FloatgameGrenadeThrowStartType
+	function CheckTweakCondition(ActionConditionName : script_ref:String) : Bool; // CheckTweakCondition;script_ref<String>
+	function ClearActionCommandID(commandClassNames : script_ref:array:CName); // ClearActionCommandID;script_ref<array<CName>>
+	function CombatQueriesSystemInit() : Bool; // CombatQueriesSystemInit;
+	function FriendlyFireCheck() : Bool; // FriendlyFireCheck;
+	function FriendlyFireCheckInit() : Bool; // FriendlyFireCheckInit;
+	function FriendlyFireTargetUpdateInit(); // FriendlyFireTargetUpdateInit;
+	function GetAIAlertedPatrolBlackboard() : handle:gameIBlackboard; // GetAIAlertedPatrolBlackboard;
+	function GetAIPatrolBlackboard() : handle:gameIBlackboard; // GetAIPatrolBlackboard;
+	function GetAIPrereqsBlackboard() : handle:gameIBlackboard; // GetAIPrereqsBlackboard;
+	function GetActionAnimationScriptProxy() : handle:ActionAnimationScriptProxy; // GetActionAnimationScriptProxy;
+	function GetActionBlackboard() : handle:gameIBlackboard; // GetActionBlackboard;
+	function GetActiveCommandID(commandClassName : CName) : Int32; // GetActiveCommandID;CName
+	function GetActiveCommandsCount() : Int32; // GetActiveCommandsCount;
+	function GetAssignedVehicle(gi : ScriptGameInstance, out vehicle : whandle:gameObject) : Bool; // GetAssignedVehicle;GameInstanceGameObject
+	function GetAssignedVehicleData(out vehicleID : entEntityID, out vehicleSlot : gamemountingMountingSlotId) : Bool; // GetAssignedVehicleData;EntityIDMountingSlotId
+	function GetCombatGadgetBlackboard() : handle:gameIBlackboard; // GetCombatGadgetBlackboard;
+	function GetCoverBlackboard() : handle:gameIBlackboard; // GetCoverBlackboard;
+	function GetCurrentRole() : handle:AIRole; // GetCurrentRole;
+	function GetFriendlyFireCheckID() : Uint32; // GetFriendlyFireCheckID;
+	function GetFriendlyTarget(out friendlyTarget : whandle:gameObject) : Bool; // GetFriendlyTarget;GameObject
+	function GetFriendlyTargetAsPlayer(out player : whandle:PlayerPuppet) : Bool; // GetFriendlyTargetAsPlayer;PlayerPuppet
+	function GetGame() : ScriptGameInstance; // GetGame;
+	function GetReachedLoSPosition(ownerId : entEntityID, entityPos : Vector4, losMode : Int32, radiusXY : Float, radiusZ : Float, maxNotFoundTime : Float) : Bool; // GetReachedLoSPosition;EntityIDVector4Int32FloatFloatFloat
+	function GetScriptContext(out context : AIbehaviorScriptExecutionContext) : Bool; // GetScriptContext;ScriptExecutionContext
+	function GetShootingBlackboard() : handle:gameIBlackboard; // GetShootingBlackboard;
+	function GetVehicleHandle(entityID : entEntityID, out vehicle : handle:vehicleBaseObject) : Bool; // GetVehicleHandle;EntityIDVehicleObject
+	function IsAssignedVehicleStuck() : Bool; // IsAssignedVehicleStuck;
+	function IsCommandActive(commandClassName : CName) : Bool; // IsCommandActive;CName
+	function IsCommandActive(commandID : Uint32) : Bool; // IsCommandActive;Uint32
+	function IsCommandReceivedOrOverriden(commandClassName : CName) : Bool; // IsCommandReceivedOrOverriden;CName
+	function IsCommandReceivedOrOverriden(commandID : Uint32) : Bool; // IsCommandReceivedOrOverriden;Uint32
+	function IsFriendlyFiring() : Bool; // IsFriendlyFiring;
+	function IsPlayerCompanion() : Bool; // IsPlayerCompanion;
+	function LoSFinderCheckInit() : Bool; // LoSFinderCheckInit;
+	function NULLCachedThrowGrenadeAtTargetQuery(); // NULLCachedThrowGrenadeAtTargetQuery;
+	function OnAIRoleChanged(newRole : handle:AIRole, oldRole : handle:AIRole); // OnAIRoleChanged;AIRoleAIRole
+	function OnAttach(); // OnAttach;
+	function OnCommandStateChanged(command : handle:AICommand, oldState : AICommandState, newState : AICommandState); // OnCommandStateChanged;AICommandAICommandStateAICommandState
+	function OnDetach(); // OnDetach;
+	function OnSeatReserved(vehicleID : entEntityID); // OnSeatReserved;EntityID
+	function OnSignalCombatQueriesRequest(signalId : Uint16, newValue : Bool); // OnSignalCombatQueriesRequest;Uint16Bool
+	function OnSignalCommandSignal(signalId : Uint16, newValue : Bool); // OnSignalCommandSignal;Uint16Bool
+	function ReleaseReservedSeat(); // ReleaseReservedSeat;
+	function ResetBehaviorCoverArguments(); // ResetBehaviorCoverArguments;
+	function StartGrenadeThrowQuery(target : whandle:gameObject); // StartGrenadeThrowQuery;GameObject
+	function TrackActionCommandID(commandClassNames : script_ref:array:CName); // TrackActionCommandID;script_ref<array<CName>>
+	function TryBulletDodgeOpportunity() : Bool; // TryBulletDodgeOpportunity;
+	function UpdateMyAttackBlockedCount(resetBB : Bool); // UpdateMyAttackBlockedCount;Bool
+	function UpdateMyAttackDodgedCount(resetBB : Bool); // UpdateMyAttackDodgedCount;Bool
+	function UpdateMyAttackParriedCount(resetBB : Bool); // UpdateMyAttackParriedCount;Bool
+}
+
+import class AICAgent extends gameComponent
+{
+	static function CancelCommand(obj : whandle:ScriptedPuppet, cmd : handle:AICommand); // AICAgent::CancelCommand;ScriptedPuppetAICommand
+	static function DebugLogEnabled(puppet : whandle:ScriptedPuppet) : Bool; // AICAgent::DebugLogEnabled;ScriptedPuppet
+	static function InvokeBehaviorCallback(obj : whandle:ScriptedPuppet, cbName : CName); // AICAgent::InvokeBehaviorCallback;ScriptedPuppetCName
+	static function SendCommand(obj : whandle:ScriptedPuppet, cmd : handle:AICommand); // AICAgent::SendCommand;ScriptedPuppetAICommand
+
+	import function CancelCommand(cmd : handle:AICommand) : Bool; // CancelCommand
+	import function CancelCommandById(cmdId : Uint32, optional doNotRepeat : Bool) : Bool; // CancelCommandById
+	import function CancelOrInterruptCommand(commandName : CName, useInheritance : Bool, success : Bool) : Bool; // CancelOrInterruptCommand
+	import function DebugLog(category : CName, message : String); // DebugLog
+	import function DebugLogEnabled() : Bool; // DebugLogEnabled
+	import function DisableCollider(); // DisableCollider
+	import function EnableCollider(); // EnableCollider
+	import function ForceTickNextFrame(); // ForceTickNextFrame
+	import function GetAIRole() : handle:AIRole; // GetAIRole
+	import function GetBehaviorArgument(n : CName) : Variant; // GetBehaviorArgument
+	import function GetCombatMode() : AIbehaviorCombatModes; // GetCombatMode
+	import function GetCombatSpaceSize() : AICombatSpaceSize; // GetCombatSpaceSize
+	import function GetCombatSpaceSizeMultiplier() : Float; // GetCombatSpaceSizeMultiplier
+	import function GetCommandState(cmd : handle:AICommand) : AICommandState; // GetCommandState
+	import function GetEnqueuedOrExecutingCommand(commandName : CName, useInheritance : Bool) : handle:AICommand; // GetEnqueuedOrExecutingCommand
+	import function GetFriendlyFireSystem() : handle:gameIFriendlyFireSystem; // GetFriendlyFireSystem
+	import function GetHighLevelState() : gamedataNPCHighLevelState; // GetHighLevelState
+	import function GetLOD() : Int32; // GetLOD
+	import function GetLoSFinderSystem() : handle:gameLoSIFinderSystem; // GetLoSFinderSystem
+	import function GetOrCreateBlackboard(definition : handle:gamebbScriptDefinition, cache : script_ref:whandle:gameIBlackboard) : handle:gameIBlackboard; // GetOrCreateBlackboard
+	import function GetSignals() : handle:gameBoolSignalTable; // GetSignals
+	import function GetStoryTier() : gameStoryTier; // GetStoryTier
+	import function GetUpdateTickCount() : Uint32; // GetUpdateTickCount
+	import function InvokeBehaviorCallback(cbName : CName); // InvokeBehaviorCallback
+	import function IsCommandExecuting(commandName : CName, useInheritance : Bool) : Bool; // IsCommandExecuting
+	import function IsCommandWaiting(commandName : CName, useInheritance : Bool) : Bool; // IsCommandWaiting
+	import function SendCommand(cmd : handle:AICommand) : Bool; // SendCommand
+	import function SetAIRole(role : handle:AIRole); // SetAIRole
+	import function SetBehaviorArgument(n : CName, nv : Variant); // SetBehaviorArgument
+	import function SetCombatSpaceSize(combatSpaceSize : AICombatSpaceSize); // SetCombatSpaceSize
+	import function SetCombatSpaceSizeMultiplier(multiplier : Float); // SetCombatSpaceSizeMultiplier
+	import function StartExecutingCommand(cmd : handle:AICommand) : Bool; // StartExecutingCommand
+	import function StopExecutingCommand(cmd : handle:AICommand, success : Bool) : Bool; // StopExecutingCommand
+	import function StopExecutingCommandById(cmdId : Uint32, success : Bool) : Bool; // StopExecutingCommandById
+
+	function GetCurrentReactionPreset() : whandle:gamedataReactionPreset_Record; // GetCurrentReactionPreset;
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

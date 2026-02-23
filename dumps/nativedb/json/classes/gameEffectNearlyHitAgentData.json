@@ -1,0 +1,1 @@
+{"b":"gameEffectNearlyHitAgentData","d":8,"g":true,"e":[{"a":{"b":"Vector4"},"b":"hitPosition","c":128},{"a":{"b":"Vector4"},"b":"hitDirection","c":128},{"a":{"a":27,"c":{"b":"entEntity"}},"b":"entity","c":128},{"a":{"a":1},"b":"isPlayer","c":128},{"a":{"a":1},"b":"wasHit","c":128}]}

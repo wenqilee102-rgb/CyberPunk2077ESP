@@ -1,0 +1,27 @@
+import class animAnimNode_AddIkRequest extends animAnimNode_OnePoseInput
+{
+	var ikChain : CName;
+	var targetBone : animTransformIndex;
+	var positionOffset : Vector3;
+	var rotationOffset : Quaternion;
+	var poleVector : animPoleVectorDetails;
+	var weightPosition : Float;
+	var weightRotation : Float;
+	var blendTimeIn : Float;
+	var blendTimeOut : Float;
+	var priority : Int32;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

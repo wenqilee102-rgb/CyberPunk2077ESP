@@ -1,0 +1,6 @@
+import struct locVoLineEntry
+{
+	var stringId : CRUID;
+	var femaleResPath : raRef:locVoResource;
+	var maleResPath : raRef:locVoResource;
+}

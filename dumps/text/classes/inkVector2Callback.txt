@@ -1,0 +1,9 @@
+import struct inkVector2Callback extends inkCallbackBase
+{
+}
+
+import struct abstract inkCallbackBase
+{
+	var callbackName : CName;
+	var listeners : array:inkCallbackListener;
+}

@@ -1,0 +1,6 @@
+import struct questComponentCollisionMapArrayElement
+{
+	var componentNameKey : CName;
+	var enableCollision : Bool;
+	var enableQueries : Bool;
+}

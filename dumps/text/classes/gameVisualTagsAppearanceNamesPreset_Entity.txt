@@ -1,0 +1,10 @@
+import class gameVisualTagsAppearanceNamesPreset_Entity extends ISerializable
+{
+	var entityPathHash : Uint64;
+	var debugEntityPath : CName;
+	var tagsToAppearances : array:gameVisualTagsAppearanceNamesPreset_TagsAppearances;
+}
+
+import class abstract ISerializable
+{
+}

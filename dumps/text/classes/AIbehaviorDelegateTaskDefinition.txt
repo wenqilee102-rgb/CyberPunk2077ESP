@@ -1,0 +1,15 @@
+import class AIbehaviorDelegateTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var onActivate : AIbehaviorDelegateTaskRef;
+	var onUpdate : AIbehaviorDelegateTaskRef;
+	var onDeactivate : AIbehaviorDelegateTaskRef;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

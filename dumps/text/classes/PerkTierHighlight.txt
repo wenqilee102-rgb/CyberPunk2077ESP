@@ -1,0 +1,5 @@
+struct PerkTierHighlight
+{
+	public    var position : Float;
+	public    var height : Float;
+}

@@ -1,0 +1,5 @@
+struct ItemRemovedData
+{
+	public    var itemID : gameItemID;
+	public    var isBackpackItem : Bool;
+}

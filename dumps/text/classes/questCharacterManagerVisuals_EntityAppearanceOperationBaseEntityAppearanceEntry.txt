@@ -1,0 +1,6 @@
+import struct questCharacterManagerVisuals_EntityAppearanceOperationBaseEntityAppearanceEntry
+{
+	var puppetRef : gameEntityReference;
+	var isPlayer : Bool;
+	var appearanceName : CName;
+}

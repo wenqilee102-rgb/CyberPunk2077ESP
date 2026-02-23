@@ -1,0 +1,7 @@
+import struct workIdleTransitionCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

@@ -1,0 +1,8 @@
+import class worldPrefabVariantsList extends ISerializable
+{
+	var activeVariants : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

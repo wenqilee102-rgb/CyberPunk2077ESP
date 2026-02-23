@@ -1,0 +1,21 @@
+import class inkMenuEventDispatcher extends IScriptable
+{
+	import function RegisterToEvent(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToEvent
+	import function SpawnAddressedEvent(scenario : CName, name : CName, optional userData : handle:IScriptable); // SpawnAddressedEvent
+	import function SpawnEvent(name : CName, optional userData : handle:IScriptable); // SpawnEvent
+	import function UnregisterFromEvent(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromEvent
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

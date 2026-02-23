@@ -1,0 +1,7 @@
+import struct physicsclothPhaseConfig
+{
+	var stiffness : Float;
+	var stiffnessMultiplier : Float;
+	var compressionLimit : Float;
+	var stretchLimit : Float;
+}

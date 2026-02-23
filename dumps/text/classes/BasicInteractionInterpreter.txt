@@ -1,0 +1,18 @@
+class BasicInteractionInterpreter extends IScriptable
+{
+	static function Evaluate(isSecured : Bool, actions : array:handle:gamedeviceAction, allApplicableChoices : script_ref:array:gameinteractionsChoice, onlyInteractableChoices : script_ref:array:gameinteractionsChoice); // BasicInteractionInterpreter::Evaluate;Boolarray<DeviceAction>script_ref<array<InteractionChoice>>script_ref<array<InteractionChoice>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

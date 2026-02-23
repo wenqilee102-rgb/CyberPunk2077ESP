@@ -1,0 +1,11 @@
+import class AIbehaviorGetSelectedAgentDebuggerCommand extends AIbehaviorIDebuggerCommand
+{
+}
+
+import class abstract AIbehaviorIDebuggerCommand extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

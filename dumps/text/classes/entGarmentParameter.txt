@@ -1,0 +1,14 @@
+import class entGarmentParameter extends entEntityParameter
+{
+	var componentsData : array:entGarmentParameterComponentData;
+	var collarArea : garmentCollarAreaParams;
+	var lastUpdateDateTime : CDateTime;
+}
+
+import class abstract entEntityParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

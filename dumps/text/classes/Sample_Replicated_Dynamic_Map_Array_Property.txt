@@ -1,0 +1,4 @@
+import struct Sample_Replicated_Dynamic_Map_Array_Property
+{
+	var property : array:SampleMapArrayElement;
+}

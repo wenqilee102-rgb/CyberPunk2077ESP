@@ -1,0 +1,8 @@
+struct ReprimandData
+{
+	public    var isActive : Bool;
+	public    var receiver : entEntityID;
+	public    var receiverAttitudeGroup : CName;
+	public    var reprimandID : Int32;
+	public    var count : Int32;
+}

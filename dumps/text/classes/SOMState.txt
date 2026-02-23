@@ -1,0 +1,9 @@
+import struct SOMState
+{
+	var depthStencilModeDesc : PSODescDepthStencilModeDesc;
+	var rasterizerModeDesc : PSODescRasterizerModeDesc;
+	var blendModeDesc : PSODescBlendModeDesc;
+	var stencilReadMask : Uint8;
+	var stencilWriteMask : Uint8;
+	var stencilRef : Uint8;
+}

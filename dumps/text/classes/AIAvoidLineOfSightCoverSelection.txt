@@ -1,0 +1,7 @@
+import struct AIAvoidLineOfSightCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

@@ -1,0 +1,372 @@
+class HitReactionComponent extends AIMandatoryComponents
+{
+	protected var ownerNPC : whandle:NPCPuppet;
+	protected var ownerPuppet : whandle:ScriptedPuppet;
+	protected var ownerWeapon : whandle:gameweaponObject;
+	protected var ownerID : entEntityID;
+	protected var statsSystem : handle:gameStatsSystem;
+	protected var ownerIsMassive : Bool;
+	protected var impactDamageDuration : Float;
+	protected var staggerDamageDuration : Float;
+	protected var impactDamageDurationMelee : Float;
+	protected var staggerDamageDurationMelee : Float;
+	protected var knockdownDamageDuration : Float;
+	protected var defeatedMinDuration : Float;
+	protected var previousHitTime : Float;
+	protected var reactionType : animHitReactionType;
+	protected var animHitReaction : handle:animAnimFeature_HitReactionsData;
+	protected var lastAnimHitReaction : handle:animAnimFeature_HitReactionsData;
+	protected var hitReactionAction : handle:ActionHitReactionScriptProxy;
+	protected var previousAnimHitReactionArray : array:ScriptHitData;
+	protected var lastHitReactionPlayed : EAILastHitReactionPlayed;
+	protected var hitShapeData : gameShapeData;
+	protected var animVariation : Int32;
+	protected var specificHitTimeout : Float;
+	protected var quickMeleeCooldown : Float;
+	protected var dismembermentBodyPartDamageThreshold : array:Float;
+	protected var woundedBodyPartDamageThreshold : array:Float;
+	protected var defeatedBodyPartDamageThreshold : array:Float;
+	protected var defeatedDamageThreshold : Float;
+	protected var impactDamageThreshold : Float;
+	protected var staggerDamageThreshold : Float;
+	protected var knockdownDamageThreshold : Float;
+	protected var knockdownImpulseThreshold : Float;
+	protected var immuneToKnockDown : Bool;
+	protected var hitComboReset : Float;
+	protected var physicalImpulseReset : Float;
+	protected var guardBreakImpulseReset : Float;
+	protected var cumulatedDamages : Float;
+	protected var bodyPartWoundCumulatedDamages : array:Float;
+	protected var bodyPartDismemberCumulatedDamages : array:Float;
+	protected var attackerWeaponKnockdownImpulse : Float;
+	protected var attackerWeaponKnockdownImpulseForEvade : Float;
+	protected var attackerWeaponKnockdownImpulseForEvadeCumulation : Float;
+	protected var ownerWeaponKnockdownImpulseForEvade : Float;
+	protected var cumulatedPhysicalImpulse : Float;
+	protected var cumulatedGuardBreakImpulse : Float;
+	protected var cumulatedEvadeBreakImpulse : Float;
+	protected var ragdollImpulse : Float;
+	protected var ragdollInfluenceRadius : Float;
+	protected var hitIntensity : EAIHitIntensity;
+	protected var previousMeleeHitTimeStamp : Float;
+	protected var previousRangedHitTimeStamp : Float;
+	protected var previousBlockTimeStamp : Float;
+	protected var previousParryTimeStamp : Float;
+	protected var previousDodgeTimeStamp : Float;
+	protected var previousRagdollTimeStamp : Float;
+	protected var previousHackStaggerTimeStamp : Float;
+	protected var previousHackImpactTimeStamp : Float;
+	protected var blockCount : Int32;
+	protected var parryCount : Int32;
+	protected var dodgeCount : Int32;
+	public    var hitCount : Uint32;
+	protected var defeatedHasBeenPlayed : Bool;
+	protected var defeatedRegisteredTime : Float;
+	protected var deathHasBeenPlayed : Bool;
+	protected var deathRegisteredTime : Float;
+	protected var extendedDeathRegisteredTime : Float;
+	protected var extendedDeathDelayRegisteredTime : Float;
+	protected var extendedHitReactionRegisteredTime : Float;
+	protected var extendedHitReactionDelayRegisteredTime : Float;
+	protected var scatteredGuts : Bool;
+	protected var cumulativeDamageUpdateInterval : Float;
+	protected var cumulativeDamageUpdateRequested : Bool;
+	protected var currentStimId : Uint32;
+	protected var attackData : handle:gamedamageAttackData;
+	protected var attackDirectionToInt : Int32;
+	protected var hitPosition : Vector4;
+	protected var hitDirection : Vector4;
+	protected var hitDirectionToInt : Int32;
+	protected var overridenHitDirection : Bool;
+	protected var lastHitReactionBehaviorData : handle:HitReactionBehaviorData;
+	protected var lastStimName : CName;
+	protected var deathStimName : CName;
+	protected var meleeHitCount : Int32;
+	protected var strongMeleeHitCount : Int32;
+	protected var meleeBaseMaxHitChain : Int32;
+	protected var rangedBaseMaxHitChain : Int32;
+	protected var maxHitChainForMelee : Int32;
+	protected var maxHitChainForRanged : Int32;
+	protected var isAlive : Bool;
+	protected var frameDamageHealthFactor : Float;
+	protected var hitCountData : [100]Float;
+	protected var hitCountArrayEnd : Int32;
+	protected var hitCountArrayCurrent : Int32;
+	protected var allowDefeatedOnCompanion : Bool;
+	protected var baseCumulativeDamagesDecreaser : Float;
+	protected var blockCountInterval : Float;
+	protected var dodgeCountInterval : Float;
+	protected var globalHitTimer : Float;
+	protected var hasMantisBladesinRecord : Bool;
+	private   var indicatorEnabledBlackboardId : handle:redCallbackObject;
+	private   var hitIndicatorEnabled : Bool;
+	private   var hasBeenWounded : Bool;
+	private   var inWorkspot : Bool;
+	private   var inCover : Bool;
+	private   var healthListener : handle:NPCHealthListener;
+	private   var hitReactionComponentStatsListener : handle:NPCHitReactionComponentStatsListener;
+	private   var currentHealth : Float;
+	private   var totalHealth : Float;
+	private   var totalStamina : Float;
+	private   var currentCanDropWeapon : Float;
+	private   var currentExtendedHitReactionImmunity : Float;
+	private   var currentIsInvulnerable : Float;
+	private   var currentDefeatedDamageThreshold : Float;
+	private   var currentImpactDamageThreshold : Float;
+	private   var currentImpactDamageThresholdInCover : Float;
+	private   var currentKnockdownDamageThreshold : Float;
+	private   var currentKnockdownDamageThresholdImpulse : Float;
+	private   var currentKnockdownDamageThresholdInCover : Float;
+	private   var currentKnockdownImmunity : Float;
+	private   var currentMeleeHitReactionResistance : Float;
+	private   var currentStaggerDamageThreshold : Float;
+	private   var currentStaggerDamageThresholdInCover : Float;
+	private   var currentCanBlock : Float;
+	private   var currentHasKerenzikov : Float;
+	private   var dismemberExecuteHealthRange : Vector2;
+	private   var dismemberExecuteDistanceRange : Vector2;
+	private   var executeDismembered : Bool;
+	private   var attackIsValidBodyPerk : Bool;
+	private   var invalidForExecuteDismember : Bool;
+	private   var hitReactionData : handle:animAnimFeature_HitReactionsData;
+
+	static function ClearHitStim(obj : handle:gameObject); // HitReactionComponent::ClearHitStim;GameObject
+	static function GetMantisBladesInstantDismembermentSpyBuffStatusEffectID() : TweakDBID; // HitReactionComponent::GetMantisBladesInstantDismembermentSpyBuffStatusEffectID;
+
+	event OnClearHitStimEvent(evt : handle:ClearHitStimEvent) : Bool; // OnClearHitStimEvent
+	event OnDeath(evt : handle:gameeventsDeathEvent) : Bool; // OnDeath
+	event OnDefeated(evt : handle:gameeventsDefeatedEvent) : Bool; // OnDefeated
+	event OnForcedDeathEvent(forcedDeath : handle:ForcedDeathEvent) : Bool; // OnForcedDeathEvent
+	event OnForcedHitReaction(forcedHitReaction : handle:ForcedHitReactionEvent) : Bool; // OnForcedHitReaction
+	event OnHitIndicatorEnabledChanged(value : Bool) : Bool; // OnHitIndicatorEnabledChanged
+	event OnHitReactionCumulativeDamageUpdate(evt : handle:HitReactionCumulativeDamageUpdate) : Bool; // OnHitReactionCumulativeDamageUpdate
+	event OnHitReactionStopMotionExtraction(evt : handle:HitReactionStopMotionExtraction) : Bool; // OnHitReactionStopMotionExtraction
+	event OnItemAddedToSlot(evt : handle:gameAttachmentSlotEventsItemAddedToSlot) : Bool; // OnItemAddedToSlot
+	event OnPlayGrandFinaleVFX(evt : handle:PlayGrandFinaleVFX) : Bool; // OnPlayGrandFinaleVFX
+	event OnPlayOnePunchVFX(evt : handle:PlayOnePunchVFX) : Bool; // OnPlayOnePunchVFX
+	event OnRequestHitReaction(evt : handle:HitReactionRequest) : Bool; // OnRequestHitReaction
+	event OnResurrect(evt : handle:gameeventsResurrectEvent) : Bool; // OnResurrect
+	event OnSetLastHitReactionBehaviorData(evt : handle:LastHitDataEvent) : Bool; // OnSetLastHitReactionBehaviorData
+	event OnSetNewHitReactionBehaviorData(evt : handle:NewHitDataEvent) : Bool; // OnSetNewHitReactionBehaviorData
+
+	function CacheVars(hitEvent : handle:gameeventsHitEvent); // CacheVars;gameHitEvent
+	function CanAttackGuardBreak(weaponType : gamedataItemType, guardBreakImpulse : Float) : Bool; // CanAttackGuardBreak;gamedataItemTypeFloat
+	function CanDieCondition(optional doNotCheckAttackData : Bool) : Bool; // CanDieCondition;Bool
+	function CheckBrainMeltDeath() : Bool; // CheckBrainMeltDeath;
+	function CheckInstantDismembermentOnDeath() : Bool; // CheckInstantDismembermentOnDeath;
+	function ClearBodyPerkDismembermentChance(player : whandle:gameObject); // ClearBodyPerkDismembermentChance;GameObject
+	function DefeatedRemoveConditions(npc : handle:NPCPuppet) : Bool; // DefeatedRemoveConditions;NPCPuppet
+	function DismembermentConditions() : Bool; // DismembermentConditions;
+	function EvaluateHit(newHitEvent : handle:gameeventsHitEvent); // EvaluateHit;gameHitEvent
+	function GetAttackDirection() : Int32; // GetAttackDirection;
+	function GetAttackTag() : CName; // GetAttackTag;
+	function GetAttackType() : gamedataAttackType; // GetAttackType;
+	function GetBlockCount() : Int32; // GetBlockCount;
+	function GetBodyPart(hitEvent : handle:gameeventsHitEvent) : Bool; // GetBodyPart;gameHitEvent
+	function GetCanBlock() : Bool; // GetCanBlock;
+	function GetCumulatedDamage() : Float; // GetCumulatedDamage;
+	function GetCurrentTime() : Float; // GetCurrentTime;
+	function GetDBParameters(); // GetDBParameters;
+	function GetDeathHasBeenPlayed() : Bool; // GetDeathHasBeenPlayed;
+	function GetDeathStimName() : CName; // GetDeathStimName;
+	function GetDefeatedHasBeenPlayed() : Bool; // GetDefeatedHasBeenPlayed;
+	function GetDismembermentWoundType() : gameDismWoundType; // GetDismembermentWoundType;
+	function GetDodgeCount() : Int32; // GetDodgeCount;
+	function GetFrameDamage() : Float; // GetFrameDamage;
+	function GetFrameDismembermentDamage() : Float; // GetFrameDismembermentDamage;
+	function GetFrameWoundsDamage() : Float; // GetFrameWoundsDamage;
+	function GetHasKerenzikov() : Bool; // GetHasKerenzikov;
+	function GetHealthPecentageNormalized() : Float; // GetHealthPecentageNormalized;
+	function GetHitAnimationInProgress() : Bool; // GetHitAnimationInProgress;
+	function GetHitCountData(index : Int32) : Float; // GetHitCountData;Int32
+	function GetHitCountDataArrayCurrent() : Int32; // GetHitCountDataArrayCurrent;
+	function GetHitCountDataArrayEnd() : Int32; // GetHitCountDataArrayEnd;
+	function GetHitCountInCombo() : Int32; // GetHitCountInCombo;
+	function GetHitDirection() : Vector4; // GetHitDirection;
+	function GetHitDirectionToInt() : Int32; // GetHitDirectionToInt;
+	function GetHitInstigator() : whandle:gameObject; // GetHitInstigator;
+	function GetHitIntensity(defeatedOverride : Bool); // GetHitIntensity;Bool
+	function GetHitPosition() : Vector4; // GetHitPosition;
+	function GetHitReactionData() : handle:animAnimFeature_HitReactionsData; // GetHitReactionData;
+	function GetHitReactionProxyAction() : handle:ActionHitReactionScriptProxy; // GetHitReactionProxyAction;
+	function GetHitReactionType() : Int32; // GetHitReactionType;
+	function GetHitShapeUserData() : handle:HitShapeUserDataBase; // GetHitShapeUserData;
+	function GetHitSoundName(hitEvent : handle:gameeventsHitEvent) : CName; // GetHitSoundName;gameHitEvent
+	function GetHitSource() : whandle:gameObject; // GetHitSource;
+	function GetHitStimEvent() : handle:animAnimFeature_HitReactionsData; // GetHitStimEvent;
+	function GetHitTimerAvailability() : Bool; // GetHitTimerAvailability;
+	function GetIsOwnerImmuneToExtendedHitReaction() : Float; // GetIsOwnerImmuneToExtendedHitReaction;
+	function GetIsOwnerResistantToMeleeHitReaction() : Bool; // GetIsOwnerResistantToMeleeHitReaction;
+	function GetKillSoundName(hitEvent : handle:gameeventsHitEvent) : CName; // GetKillSoundName;gameHitEvent
+	function GetLastHitReactionBehaviorData() : handle:HitReactionBehaviorData; // GetLastHitReactionBehaviorData;
+	function GetLastHitReactionData() : handle:animAnimFeature_HitReactionsData; // GetLastHitReactionData;
+	function GetLastHitTimeStamp() : Float; // GetLastHitTimeStamp;
+	function GetLastStimID() : Uint32; // GetLastStimID;
+	function GetLastStimName() : CName; // GetLastStimName;
+	function GetMeleeMaxHitChain() : Int32; // GetMeleeMaxHitChain;
+	function GetOverridenHitDirection() : Vector4; // GetOverridenHitDirection;
+	function GetOwnerCurrentHealth() : Float; // GetOwnerCurrentHealth;
+	function GetOwnerHPPercentage() : Float; // GetOwnerHPPercentage;
+	function GetOwnerTotalHealth() : Float; // GetOwnerTotalHealth;
+	function GetParryCount() : Int32; // GetParryCount;
+	function GetPhysicalImpulse(attackData : handle:gamedamageAttackData, hitPosition : Vector4, out frameImpulse : Float) : Float; // GetPhysicalImpulse;AttackDataVector4Float
+	function GetRagdollImpulse() : Float; // GetRagdollImpulse;
+	function GetRangedMaxHitChain() : Int32; // GetRangedMaxHitChain;
+	function GetReactionType(guardBreakImpulse : Float, newHitEvent : handle:gameeventsHitEvent) : animHitReactionType; // GetReactionType;FloatgameHitEvent
+	function GetShouldEvade() : Bool; // GetShouldEvade;
+	function GetStrongHitCountInCombo() : Int32; // GetStrongHitCountInCombo;
+	function GetSubAttackSubType() : gamedataAttackSubtype; // GetSubAttackSubType;
+	function IncrementBodyPerkDismembermentChance(player : whandle:gameObject); // IncrementBodyPerkDismembermentChance;GameObject
+	function IncrementHitCountData(); // IncrementHitCountData;
+	function IsExecutedByDismemberment() : Bool; // IsExecutedByDismemberment;
+	function IsInKnockdown() : Bool; // IsInKnockdown;
+	function IsOwnerFacingInstigator() : Bool; // IsOwnerFacingInstigator;
+	function IsPowerDifferenceBelow(powerDifferential : gameEPowerDifferential) : Bool; // IsPowerDifferenceBelow;gameEPowerDifferential
+	function IsSoundCriticalHit(hitEvent : handle:gameeventsHitEvent) : Bool; // IsSoundCriticalHit;gameHitEvent
+	function IsStrongExplosion(attackData : handle:gamedamageAttackData) : Bool; // IsStrongExplosion;AttackData
+	function IsValidBodyPerkDismemberAttack(healthMissing : Float) : Bool; // IsValidBodyPerkDismemberAttack;Float
+	function NotifyAboutDismembermentInstigated(instigator : whandle:gameObject, bodyPart : EHitReactionZone, targetPosition : Vector4); // NotifyAboutDismembermentInstigated;GameObjectEHitReactionZoneVector4
+	function NotifyAboutWoundedInstigated(instigator : whandle:gameObject, bodyPart : EHitReactionZone); // NotifyAboutWoundedInstigated;GameObjectEHitReactionZone
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameAttached(); // OnGameAttached;
+	function OnGameDetach(); // OnGameDetach;
+	function ProcessBodyPerkDismembement(); // ProcessBodyPerkDismembement;
+	function ProcessDefeated(npc : handle:NPCPuppet) : Bool; // ProcessDefeated;NPCPuppet
+	function ProcessDropWeaponOnHit(owner : handle:gameObject, hitBodyPart : EHitReactionZone, hitReaction : animHitReactionType); // ProcessDropWeaponOnHit;GameObjectEHitReactionZoneanimHitReactionType
+	function ProcessExplosionDismembement(); // ProcessExplosionDismembement;
+	function ProcessExtendedDeathAnimData(hitEvent : handle:gameeventsHitEvent); // ProcessExtendedDeathAnimData;gameHitEvent
+	function ProcessExtendedHitReactionAnimData(hitEvent : handle:gameeventsHitEvent); // ProcessExtendedHitReactionAnimData;gameHitEvent
+	function ProcessFragmentationSplinterReaction(hitPosition : Vector4); // ProcessFragmentationSplinterReaction;Vector4
+	function ProcessGrandFinaleHitImpact(target : handle:ScriptedPuppet, instigator : handle:gameObject); // ProcessGrandFinaleHitImpact;ScriptedPuppetGameObject
+	function ProcessHitReactionZone(bodyPart : EHitReactionZone) : EHitReactionZone; // ProcessHitReactionZone;EHitReactionZone
+	function ProcessOnePunchAttackHitImpact(target : handle:ScriptedPuppet, instigator : handle:gameObject); // ProcessOnePunchAttackHitImpact;ScriptedPuppetGameObject
+	function ProcessSpecialFX(hitevent : handle:gameeventsHitEvent); // ProcessSpecialFX;gameHitEvent
+	function ProcessWoundsAndDismemberment(); // ProcessWoundsAndDismemberment;
+	function ReactionZoneEnumToBarkListEnum(reactionZone : EHitReactionZone) : EBarkList; // ReactionZoneEnumToBarkListEnum;EHitReactionZone
+	function ReactionZoneEnumToBodyPartID(reactionZone : EHitReactionZone) : Int32; // ReactionZoneEnumToBodyPartID;EHitReactionZone
+	function RecalculateHitReactionValsForHacks(currentTimeStamp : Float, out hitReactionMin : Int32, out hitReactionMax : Int32); // RecalculateHitReactionValsForHacks;FloatInt32Int32
+	function RequestCumulativeDamageUpdate(); // RequestCumulativeDamageUpdate;
+	function ResetFrameDamage(); // ResetFrameDamage;
+	function ResetHitCount(); // ResetHitCount;
+	function SendDataToAIBehavior(reactionPlayed : animHitReactionType); // SendDataToAIBehavior;animHitReactionType
+	function SendDismembermentCriticalEvent(dismembermentType : gameDismWoundType, bodyPart : gameDismBodyPart, explosionEpicentrum : Vector4, strength : Float, hitPosition : Vector4); // SendDismembermentCriticalEvent;gameDismWoundTypegameDismBodyPartVector4FloatVector4
+	function SendMechDataToAIBehavior(reactionPlayed : animHitReactionType); // SendMechDataToAIBehavior;animHitReactionType
+	function SendTwitchDataToAnimationGraph(); // SendTwitchDataToAnimationGraph;
+	function SendTwitchDataToPlayerAnimationGraph(playerObject : whandle:gameObject); // SendTwitchDataToPlayerAnimationGraph;GameObject
+	function SetAnimVariation(out hitDirection : Int32, out hitReactionZone : EHitReactionZone); // SetAnimVariation;Int32EHitReactionZone
+	function SetCumulatedDamages(target : whandle:gameObject, out guardBreakImpulse : Float); // SetCumulatedDamages;GameObjectFloat
+	function SetCumulatedDamagesForDeadNPC(); // SetCumulatedDamagesForDeadNPC;
+	function SetDeathStimName(laststimName : CName); // SetDeathStimName;CName
+	function SetHitReactionImmunities(); // SetHitReactionImmunities;
+	function SetHitReactionSource(hitSource : EAIHitSource); // SetHitReactionSource;EAIHitSource
+	function SetHitReactionThresholds(); // SetHitReactionThresholds;
+	function SetHitReactionType(hitType : animHitReactionType); // SetHitReactionType;animHitReactionType
+	function SetHitSource(attackType : gamedataAttackType); // SetHitSource;gamedataAttackType
+	function SetHitStimEvent(hitData : handle:animAnimFeature_HitReactionsData); // SetHitStimEvent;AnimFeature_HitReactionsData
+	function SetLastStimName(laststimName : CName); // SetLastStimName;CName
+	function SetStance(); // SetStance;
+	function StartGuardBreakCooldown(); // StartGuardBreakCooldown;
+	function StoreHitData(attackAngle : Int32, hitSeverity : EAIHitIntensity, reactionType : animHitReactionType, bodyPart : EHitReactionZone, variation : Int32); // StoreHitData;Int32EAIHitIntensityanimHitReactionTypeEHitReactionZoneInt32
+	function TryTriggerBodyPerkDismembement(remainingHealth : Float) : Bool; // TryTriggerBodyPerkDismembement;Float
+	function UpdateBlockCount(); // UpdateBlockCount;
+	function UpdateCoverDamage(npc : handle:NPCPuppet, coverId : Uint64); // UpdateCoverDamage;NPCPuppetUint64
+	function UpdateCumulatedDamages(deltaTime : Float) : Bool; // UpdateCumulatedDamages;Float
+	function UpdateDBParams(data : handle:gameScriptTaskData); // UpdateDBParams;ScriptTaskData
+	function UpdateDeathHasBeenPlayed(); // UpdateDeathHasBeenPlayed;
+	function UpdateDefeated(); // UpdateDefeated;
+	function UpdateDodgeCount(); // UpdateDodgeCount;
+	function UpdateLastStimID() : Uint32; // UpdateLastStimID;
+	function UpdateOwnerCanBlockData(Value : Float); // UpdateOwnerCanBlockData;Float
+	function UpdateOwnerCanDropWeaponData(Value : Float); // UpdateOwnerCanDropWeaponData;Float
+	function UpdateOwnerExtendedHitReactionImmunityData(Value : Float); // UpdateOwnerExtendedHitReactionImmunityData;Float
+	function UpdateOwnerHasKerenzikovData(Value : Float); // UpdateOwnerHasKerenzikovData;Float
+	function UpdateOwnerHealthData(Value : Float); // UpdateOwnerHealthData;Float
+	function UpdateOwnerImpactDamageThresholdData(Value : Float); // UpdateOwnerImpactDamageThresholdData;Float
+	function UpdateOwnerImpactDamageThresholdInCoverData(Value : Float); // UpdateOwnerImpactDamageThresholdInCoverData;Float
+	function UpdateOwnerIsInvulnerableData(Value : Float); // UpdateOwnerIsInvulnerableData;Float
+	function UpdateOwnerKnockdownDamageThresholdData(Value : Float); // UpdateOwnerKnockdownDamageThresholdData;Float
+	function UpdateOwnerKnockdownDamageThresholdImpulseData(Value : Float); // UpdateOwnerKnockdownDamageThresholdImpulseData;Float
+	function UpdateOwnerKnockdownDamageThresholdInCoverData(Value : Float); // UpdateOwnerKnockdownDamageThresholdInCoverData;Float
+	function UpdateOwnerKnockdownImmunityData(Value : Float); // UpdateOwnerKnockdownImmunityData;Float
+	function UpdateOwnerMeleeHitReactionResistanceData(Value : Float); // UpdateOwnerMeleeHitReactionResistanceData;Float
+	function UpdateOwnerStaggerDamageThresholdData(Value : Float); // UpdateOwnerStaggerDamageThresholdData;Float
+	function UpdateOwnerStaggerDamageThresholdInCoverData(Value : Float); // UpdateOwnerStaggerDamageThresholdInCoverData;Float
+	function UpdateParryCount(); // UpdateParryCount;
+	function WoundedBaseConditions() : Bool; // WoundedBaseConditions;
+	function WoundedCyberConditions(dismembermentCheck : Bool, woundedBaseConditions : Bool) : Bool; // WoundedCyberConditions;BoolBool
+	function WoundedFleshConditions(dismembermentCheck : Bool, woundedBaseConditions : Bool) : Bool; // WoundedFleshConditions;BoolBool
+}
+
+class abstract AIMandatoryComponents extends AIRelatedComponents
+{
+}
+
+class abstract AIRelatedComponents extends gameScriptableComponent
+{
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

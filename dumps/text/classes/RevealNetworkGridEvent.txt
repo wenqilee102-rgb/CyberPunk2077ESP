@@ -1,0 +1,27 @@
+class RevealNetworkGridEvent extends redEvent
+{
+	public    var shouldDraw : Bool;
+	public    var ownerEntityPosition : Vector4;
+	public    var fxDefault : gameFxResource;
+	public    var fxBreached : gameFxResource;
+	public    var revealSlave : Bool;
+	public    var revealMaster : Bool;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

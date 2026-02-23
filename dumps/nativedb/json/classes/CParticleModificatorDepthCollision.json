@@ -1,0 +1,1 @@
+{"a":"IParticleModificator","b":"CParticleModificatorDepthCollision","d":8,"e":[{"a":{"a":7},"b":"maxCollisions","c":128},{"a":{"a":10},"b":"restitution","c":128},{"a":{"a":10},"b":"friction","c":128},{"a":{"a":10},"b":"radius","c":128},{"a":{"b":"EDepthCollisionEffect"},"b":"collisionEffect","c":128}]}

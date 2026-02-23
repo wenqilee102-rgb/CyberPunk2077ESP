@@ -1,0 +1,45 @@
+import class animAnimNode_AnimDatabase extends animAnimNode_SkPhaseWithDurationAnim
+{
+	var animDataBase : animAnimDatabaseCollectionEntry;
+	var inputLinks : array:animIntLink;
+}
+
+import class animAnimNode_SkPhaseWithDurationAnim extends animAnimNode_SkPhaseAnim
+{
+	var durationLink : animFloatLink;
+}
+
+import class animAnimNode_SkPhaseAnim extends animAnimNode_SkAnim
+{
+	var phase : CName;
+}
+
+import class animAnimNode_SkAnim extends animAnimNode_Base
+{
+	var animation : CName;
+	var applyMotion : Bool;
+	var isLooped : Bool;
+	var resume : Bool;
+	var collectEvents : Bool;
+	var fireAnimLoopEvent : Bool;
+	var animLoopEventName : CName;
+	var clipFront : Float;
+	var clipEnd : Float;
+	var clipFrontByEvent : CName;
+	var clipEndByEvent : CName;
+	var pushDataByTag : CName;
+	var popDataByTag : CName;
+	var pushSafeCutTag : CName;
+	var convertToAdditive : Bool;
+	var motionProvider : handle:animIMotionTableProvider;
+	var applyInertializationOnAnimSetSwap : Bool;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

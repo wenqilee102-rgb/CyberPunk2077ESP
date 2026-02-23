@@ -1,0 +1,17 @@
+import class animAnimNode_TransformJoin extends animAnimNode_TransformValue
+{
+	var input : animTransformLink;
+}
+
+import class abstract animAnimNode_TransformValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

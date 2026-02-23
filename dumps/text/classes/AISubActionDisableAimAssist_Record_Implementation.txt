@@ -1,0 +1,22 @@
+class abstract AISubActionDisableAimAssist_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableAimAssist_Record); // AISubActionDisableAimAssist_Record_Implementation::Activate;ScriptExecutionContextAISubActionDisableAimAssist_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableAimAssist_Record, duration : Float, interrupted : Bool); // AISubActionDisableAimAssist_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionDisableAimAssist_RecordFloatBool
+	static function DisableAimAssist(context : AIbehaviorScriptExecutionContext, optional reason : CName); // AISubActionDisableAimAssist_Record_Implementation::DisableAimAssist;ScriptExecutionContextCName
+	static function EnableAimAssist(context : AIbehaviorScriptExecutionContext); // AISubActionDisableAimAssist_Record_Implementation::EnableAimAssist;ScriptExecutionContext
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionDisableAimAssist_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionDisableAimAssist_Record_Implementation::Update;ScriptExecutionContextAISubActionDisableAimAssist_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

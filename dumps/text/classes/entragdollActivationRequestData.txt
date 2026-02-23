@@ -1,0 +1,10 @@
+import struct entragdollActivationRequestData
+{
+	var type : entragdollActivationRequestType;
+	var activationNoGroundThreshold : Float;
+	var activateOnCollision : Bool;
+	var applyPowerPose : Bool;
+	var applyMomentum : Bool;
+	var filterDataOverride : CName;
+	var calculateEarlyPositionGroundHeight : Bool;
+}

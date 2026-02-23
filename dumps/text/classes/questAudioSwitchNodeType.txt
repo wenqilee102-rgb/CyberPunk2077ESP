@@ -1,0 +1,15 @@
+import class questAudioSwitchNodeType extends questIAudioNodeType
+{
+	var switch : audioAudSwitch;
+	var isMusic : Bool;
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

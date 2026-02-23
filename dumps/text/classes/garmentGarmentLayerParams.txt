@@ -1,0 +1,16 @@
+import class garmentGarmentLayerParams extends CResource
+{
+	var bending : garmentBendingParams;
+	var smoothing : garmentSmoothingParams;
+	var collarArea : garmentCollarAreaParams;
+	var hiddenTrianglesRemoval : garmentHiddenTrianglesRemovalParams;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

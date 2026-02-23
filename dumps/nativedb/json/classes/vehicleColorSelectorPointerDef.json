@@ -1,0 +1,1 @@
+{"b":"vehicleColorSelectorPointerDef","d":0,"g":true,"e":[{"a":{"b":"inkWidgetReference"},"b":"pointerRoot","c":128},{"a":{"a":10},"b":"pointerCircleRadius","c":128},{"a":{"a":10},"b":"selectionMargin","c":128},{"a":{"a":1},"b":"paintOnSelection","c":128},{"a":{"b":"inkWidgetReference"},"b":"partToPaint","c":128}]}

@@ -1,0 +1,1 @@
+{"b":"BaseDeviceData","d":0,"g":true,"e":[{"a":{"b":"EDeviceStatus"},"b":"deviceState","c":128},{"a":{"b":"EDeviceDurabilityType"},"b":"durabilityType","c":128},{"a":{"a":12},"b":"deviceName","c":128},{"a":{"a":14},"b":"debugName","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"hackOwner","c":128}]}

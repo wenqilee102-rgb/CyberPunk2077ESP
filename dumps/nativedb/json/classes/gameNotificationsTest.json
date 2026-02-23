@@ -1,0 +1,1 @@
+{"a":"gameuiWidgetGameController","b":"gameNotificationsTest","d":0,"e":[{"a":{"a":26,"c":{"b":"inkGameNotificationToken"}},"b":"token","c":128}],"f":[{"a":"OnInitialize","c":{"a":1},"d":98},{"a":"OnResponse","c":{"a":1},"d":98,"e":[{"a":{"a":26,"c":{"b":"inkGameNotificationData"}},"b":"data","c":0}]}]}

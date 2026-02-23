@@ -1,0 +1,39 @@
+import class TestStepLogic extends IScriptable
+{
+	var maxExecutionTimeSec : Float;
+	var executionTimeSec : Float;
+	var paramsData : array:ParamData;
+
+	import function GetATUI(); // GetATUI
+	import function GetAudioFunctionalTests(); // GetAudioFunctionalTests
+	import function GetFunctionalTestsGameSystem(); // GetFunctionalTestsGameSystem
+	import function GetGameInstance(); // GetGameInstance
+	import function GetNavigationFunctionalTests(); // GetNavigationFunctionalTests
+	import function GetOptionalParam(); // GetOptionalParam
+	import function GetParam(); // GetParam
+	import function GetPhysicsFunctionalTests(); // GetPhysicsFunctionalTests
+	import function GetPlayerFunctionalTests(); // GetPlayerFunctionalTests
+	import function GetPlayerSystem(); // GetPlayerSystem
+	import function GetRenderingFunctionalTests(); // GetRenderingFunctionalTests
+	import function GetUIFunctionalTests(); // GetUIFunctionalTests
+	import function GetWorldFunctionalTests(); // GetWorldFunctionalTests
+	import function RegisterToEntityEvents(); // RegisterToEntityEvents
+	import function ReturnResult(); // ReturnResult
+	import function ReturnValue(); // ReturnValue
+	import function SetParamTypes(); // SetParamTypes
+	import function StartTest(); // StartTest
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

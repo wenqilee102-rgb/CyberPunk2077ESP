@@ -1,0 +1,5 @@
+import struct gameSItemStackRequirementData
+{
+	var statType : gamedataStatType;
+	var requiredValue : Float;
+}

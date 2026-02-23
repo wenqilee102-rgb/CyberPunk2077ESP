@@ -1,0 +1,16 @@
+import class animMotionTableProvider_MultiBlend extends animIMotionTableProvider
+{
+}
+
+import class abstract animIMotionTableProvider extends ISerializable
+{
+	var id : Int32;
+	var parentId : Int32;
+	var type : animMotionTableType;
+	var action : animMotionTableAction;
+	var parentStaticSwitchBranch : animParentStaticSwitchBranch;
+}
+
+import class abstract ISerializable
+{
+}

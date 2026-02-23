@@ -1,0 +1,7 @@
+import struct locVoLanguageDataEntry
+{
+	var languageCode : CName;
+	var voiceverMapReport : raRef:JsonResource;
+	var lengthMapReport : raRef:JsonResource;
+	var voMapChunks : array:raRef:JsonResource;
+}

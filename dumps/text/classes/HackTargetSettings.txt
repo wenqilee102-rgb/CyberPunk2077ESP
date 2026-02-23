@@ -1,0 +1,7 @@
+struct HackTargetSettings
+{
+	public    var showDirectionalIndicator : Bool;
+	public    var isRevealPositionAction : Bool;
+	public    var skipBeingHackedSetUp : Bool;
+	public    var HUDData : HUDProgressBarData;
+}

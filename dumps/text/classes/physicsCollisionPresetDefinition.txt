@@ -1,0 +1,13 @@
+import class physicsCollisionPresetDefinition extends ISerializable
+{
+	var Name : CName;
+	var Description : String;
+	var ForceEnableCollisionCallbacks : Bool;
+	var CollisionType : array:CName;
+	var CollisionMask : array:CName;
+	var QueryDetect : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

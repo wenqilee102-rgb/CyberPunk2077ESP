@@ -1,0 +1,7 @@
+import struct inkMinigameMenuState extends inkIStateMachineState
+{
+}
+
+import struct abstract inkIStateMachineState
+{
+}

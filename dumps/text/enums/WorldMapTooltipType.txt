@@ -1,0 +1,5 @@
+enum WorldMapTooltipType
+{
+	Default = 0,
+	Police = 1
+}

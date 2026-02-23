@@ -1,0 +1,6 @@
+import struct gameuiKillInfo
+{
+	var killerEntity : whandle:gameObject;
+	var victimEntity : whandle:gameObject;
+	var killType : gameKillType;
+}

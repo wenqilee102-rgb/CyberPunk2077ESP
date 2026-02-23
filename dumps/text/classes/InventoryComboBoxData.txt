@@ -1,0 +1,9 @@
+struct InventoryComboBoxData
+{
+	public    var Message : String;
+	public    var ItemsToDisplay : array:gameInventoryItemData;
+	public    var ShowUnequipButton : Bool;
+	public    var ShowcaseItem : gameInventoryItemData;
+	public    var DisplayShowcase : Bool;
+	public    var ForceDouble : Bool;
+}

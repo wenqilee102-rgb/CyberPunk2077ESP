@@ -1,0 +1,5 @@
+struct SGenericDeviceActionsData
+{
+	public    var toggleON : SDeviceActionBoolData;
+	public    var togglePower : SDeviceActionBoolData;
+}

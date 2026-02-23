@@ -1,0 +1,35 @@
+class ChargedItemsPrereqState extends gamePrereqState
+{
+	public    var chargesState : EChargesAmount;
+	public    var typeOfItem : EChargesItem;
+	public    var listener : handle:BaseStatPoolPrereqListener;
+	public    var owner : ScriptGameInstance;
+
+	function GetChargesState() : EChargesAmount; // GetChargesState;
+	function SetChargesState(value : EChargesAmount); // SetChargesState;EChargesAmount
+	function SetTypeOfItem(value : EChargesItem); // SetTypeOfItem;EChargesItem
+	function getTypeOfItem() : EChargesItem; // getTypeOfItem;
+}
+
+import class gamePrereqState extends IScriptable
+{
+	import function GetContext() : handle:IScriptable; // GetContext
+	import function GetPrereq() : handle:gameIPrereq; // GetPrereq
+	import function IsFulfilled() : Bool; // IsFulfilled
+	import function OnChanged(newState : Bool); // OnChanged
+	import function OnChangedRepeated(optional callOnlyOnStateFulfilled : Bool); // OnChangedRepeated
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

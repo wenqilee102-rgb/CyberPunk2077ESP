@@ -1,0 +1,7 @@
+import class abstract toolsIResolverUserContext extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import struct rendRenderTextureBlobHeader
+{
+	var version : Uint32;
+	var sizeInfo : rendRenderTextureBlobSizeInfo;
+	var textureInfo : rendRenderTextureBlobTextureInfo;
+	var mipMapInfo : array:rendRenderTextureBlobMipMapInfo;
+	var histogramData : array:rendHistogramBias;
+	var flags : Uint32;
+}

@@ -1,0 +1,14 @@
+import class inkFontFamilyResource extends CResource
+{
+	var familyName : CName;
+	var fontStyles : array:inkFontStyle;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

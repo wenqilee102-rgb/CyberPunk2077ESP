@@ -1,0 +1,304 @@
+class InventoryDataManagerV2 extends IScriptable
+{
+	private   var owner : whandle:gameuiHUDGameController;
+	private   var Player : whandle:PlayerPuppet;
+	private   var TransactionSystem : whandle:gameTransactionSystem;
+	private   var EquipmentSystem : whandle:EquipmentSystem;
+	private   var StatsSystem : whandle:gameStatsSystem;
+	private   var ItemModificationSystem : whandle:ItemModificationSystem;
+	private   var LocMgr : handle:UILocalizationMap;
+	private   var InventoryItemsData : array:gameInventoryItemData;
+	private   var EquipmentAreaInventoryItemsData : array:array:gameInventoryItemData;
+	private   var InventoryItemsDataWithoutEquipment : array:gameInventoryItemData;
+	private   var EquipmentItemsData : array:gameInventoryItemData;
+	private   var WeaponItemsData : array:gameInventoryItemData;
+	private   var QuickSlotsData : array:gameInventoryItemData;
+	private   var ConsumablesSlotsData : array:gameInventoryItemData;
+	private   var PartsData : array:InventoryPartsData;
+	private   var ToRebuild : Bool;
+	private   var ToRebuildEquipmentArea : array:Bool;
+	private   var ToRebuildItemsWithEquipped : Bool;
+	private   var ToRebuildWeapons : Bool;
+	private   var ToRebuildEquipment : Bool;
+	private   var ToRebuildQuickSlots : Bool;
+	private   var ToRebuildConsumables : Bool;
+	private   var ActiveWeapon : gameItemID;
+	private   var EquipRecords : array:handle:gamedataEquipmentArea_Record;
+	private   var ItemIconGender : gameItemIconGender;
+	private   var WeaponUIBlackboard : whandle:gameIBlackboard;
+	private   var UIBBEquipmentBlackboard : whandle:gameIBlackboard;
+	private   var UIBBItemModBlackbord : whandle:gameIBlackboard;
+	private   var UIBBEquipment : handle:UI_EquipmentDef;
+	private   var UIBBItemMod : handle:UI_ItemModSystemDef;
+	private   var InventoryBBID : handle:redCallbackObject;
+	private   var EquipmentBBID : handle:redCallbackObject;
+	private   var SubEquipmentBBID : handle:redCallbackObject;
+	private   var ItemModBBID : handle:redCallbackObject;
+	private   var BBWeaponList : handle:redCallbackObject;
+	private   var InventoryItemDataWrappers : array:handle:InventoryItemDataWrapper;
+	private   var HashMapCache : handle:inkScriptWeakHashMap;
+	private   var uiInventorySystem : whandle:UIInventoryScriptableSystem;
+
+	static function GetAllCyberwareAreas() : array:gamedataEquipmentArea; // InventoryDataManagerV2::GetAllCyberwareAreas;
+	static function GetAttachmentSlotByItemID(itemData : script_ref:gameInventoryItemData, attachmentID : gameItemID) : TweakDBID; // InventoryDataManagerV2::GetAttachmentSlotByItemID;script_ref<InventoryItemData>ItemID
+	static function GetAttachmentSlotsForInventory() : array:TweakDBID; // InventoryDataManagerV2::GetAttachmentSlotsForInventory;
+	static function GetAttachmentsTypes() : array:gamedataItemType; // InventoryDataManagerV2::GetAttachmentsTypes;
+	static function GetConsumablesNum() : Int32; // InventoryDataManagerV2::GetConsumablesNum;
+	static function GetDryGameItemData(itemRecord : handle:gamedataItem_Record, inventorySystem : handle:gameInventoryManager, player : whandle:PlayerPuppet) : handle:gameItemData; // InventoryDataManagerV2::GetDryGameItemData;Item_RecordInventoryManagerPlayerPuppet
+	static function GetDryGameItemData(itemRecord : handle:gamedataItem_Record, inventorySystem : handle:gameInventoryManager, player : whandle:PlayerPuppet, parentQuality : gamedataQuality) : handle:gameItemData; // InventoryDataManagerV2::GetDryGameItemData;Item_RecordInventoryManagerPlayerPuppetgamedataQuality
+	static function GetInventoryCyberwareAreas() : array:gamedataEquipmentArea; // InventoryDataManagerV2::GetInventoryCyberwareAreas;
+	static function GetInventoryEquipmentAreas() : array:gamedataEquipmentArea; // InventoryDataManagerV2::GetInventoryEquipmentAreas;
+	static function GetInventoryPocketAreas() : array:gamedataEquipmentArea; // InventoryDataManagerV2::GetInventoryPocketAreas;
+	static function GetInventoryWeaponTypes() : array:gamedataItemType; // InventoryDataManagerV2::GetInventoryWeaponTypes;
+	static function GetItemTypesForSorting() : array:gamedataItemType; // InventoryDataManagerV2::GetItemTypesForSorting;
+	static function GetQuickSlotsNum() : Int32; // InventoryDataManagerV2::GetQuickSlotsNum;
+	static function GetRarityTypesForSorting() : array:gamedataQuality; // InventoryDataManagerV2::GetRarityTypesForSorting;
+	static function GetWeaponDamageType(statList : script_ref:array:gameStatViewData) : gamedataDamageType; // InventoryDataManagerV2::GetWeaponDamageType;script_ref<array<StatViewData>>
+	static function GetWeaponSlotsNum() : Int32; // InventoryDataManagerV2::GetWeaponSlotsNum;
+	static function HasPlayerSmartGunLink(player : whandle:PlayerPuppet, statsystem : handle:gameStatsSystem) : Bool; // InventoryDataManagerV2::HasPlayerSmartGunLink;PlayerPuppetStatsSystem
+	static function IsAreaClothing(equipmentArea : gamedataEquipmentArea) : Bool; // InventoryDataManagerV2::IsAreaClothing;gamedataEquipmentArea
+	static function IsAreaHead(equipmentArea : gamedataEquipmentArea) : Bool; // InventoryDataManagerV2::IsAreaHead;gamedataEquipmentArea
+	static function IsAreaSelfComparable(equipmentArea : gamedataEquipmentArea) : Bool; // InventoryDataManagerV2::IsAreaSelfComparable;gamedataEquipmentArea
+	static function IsAttachmentType(type : gamedataItemType) : Bool; // InventoryDataManagerV2::IsAttachmentType;gamedataItemType
+	static function IsEquipmentAreaComparable(equipmentArea : gamedataEquipmentArea) : Bool; // InventoryDataManagerV2::IsEquipmentAreaComparable;gamedataEquipmentArea
+	static function IsEquipmentAreaCyberware(areaTypes : script_ref:array:gamedataEquipmentArea) : Bool; // InventoryDataManagerV2::IsEquipmentAreaCyberware;script_ref<array<gamedataEquipmentArea>>
+	static function IsEquipmentAreaCyberware(areaType : gamedataEquipmentArea) : Bool; // InventoryDataManagerV2::IsEquipmentAreaCyberware;gamedataEquipmentArea
+	static function IsItemBlacklisted(itemData : whandle:gameItemData, optional forceShowCurrencyOnHUDTooltip : Bool, optional isRadialQuerying : Bool, optional additionalTags : array:CName) : Bool; // InventoryDataManagerV2::IsItemBlacklisted;gameItemDataBoolBoolarray<CName>
+	static function IsItemCraftingMaterial(itemData : whandle:gameItemData) : Bool; // InventoryDataManagerV2::IsItemCraftingMaterial;gameItemData
+	static function IsProgramSlot(slotID : TweakDBID) : Bool; // InventoryDataManagerV2::IsProgramSlot;TweakDBID
+	static function PlayerLevel(player : whandle:PlayerPuppet, statsystem : handle:gameStatsSystem) : Int32; // InventoryDataManagerV2::PlayerLevel;PlayerPuppetStatsSystem
+	static function PlayerReflexes(player : whandle:PlayerPuppet, statsystem : handle:gameStatsSystem) : Int32; // InventoryDataManagerV2::PlayerReflexes;PlayerPuppetStatsSystem
+	static function PlayerStreetCred(player : whandle:PlayerPuppet, statsSystem : handle:gameStatsSystem) : Int32; // InventoryDataManagerV2::PlayerStreetCred;PlayerPuppetStatsSystem
+	static function PlayerStrength(player : whandle:PlayerPuppet, statsystem : handle:gameStatsSystem) : Int32; // InventoryDataManagerV2::PlayerStrength;PlayerPuppetStatsSystem
+	static function ProcessQuickhackEffects(player : handle:gameObject, statusEffectRecord : whandle:gamedataStatusEffect_Record, result : script_ref:array:handle:DamageEffectUIEntry) : Bool; // InventoryDataManagerV2::ProcessQuickhackEffects;GameObjectStatusEffect_Recordscript_ref<array<DamageEffectUIEntry>>
+
+	event OnMarkForRebuild(value : Variant) : Bool; // OnMarkForRebuild
+	event OnWeaponDataChanged(value : Variant) : Bool; // OnWeaponDataChanged
+
+	function CanCompareItems(itemId : gameItemID, compareItemId : gameItemID) : Bool; // CanCompareItems;ItemIDItemID
+	function CanInstallPart(itemData : script_ref:gameInventoryItemData) : Bool; // CanInstallPart;script_ref<InventoryItemData>
+	function CanItemTypeBeCompared(itemId : gameItemID, compareItemId : gameItemID) : Bool; // CanItemTypeBeCompared;ItemIDItemID
+	function ClearInventoryItemDataCache(); // ClearInventoryItemDataCache;
+	function DistinctPrograms(items : script_ref:array:gameItemID) : array:gameItemID; // DistinctPrograms;script_ref<array<ItemID>>
+	function DryMakeItem(selectedRecipe : handle:RecipeData, inventorySystem : handle:gameInventoryManager, inventoryManager : handle:InventoryDataManagerV2, player : whandle:PlayerPuppet, out selectedItemGameData : handle:gameItemData, out selectedItemData : gameInventoryItemData); // DryMakeItem;RecipeDataInventoryManagerInventoryDataManagerV2PlayerPuppetgameItemDataInventoryItemData
+	function EquipItem(itemId : gameItemID, slot : Int32); // EquipItem;ItemIDInt32
+	function EquipVisuals(itemId : gameItemID); // EquipVisuals;ItemID
+	function EquipmentAreaToItemTypes(area : gamedataEquipmentArea) : array:gamedataItemType; // EquipmentAreaToItemTypes;gamedataEquipmentArea
+	function FillBarsComparisonData(inspectedData : handle:MinimalItemTooltipData, equippedData : handle:MinimalItemTooltipData); // FillBarsComparisonData;MinimalItemTooltipDataMinimalItemTooltipData
+	function FillSpecialAbilities(itemRecord : handle:gamedataItem_Record, abilities : script_ref:array:gameInventoryItemAbility, optional itemData : whandle:gameItemData, optional partItemData : gameInnerItemData); // FillSpecialAbilities;Item_Recordscript_ref<array<InventoryItemAbility>>gameItemDataInnerItemData
+	function FillStatsList(statProvider : handle:StatProvider, statRecords : script_ref:array:whandle:gamedataStat_Record, statList : script_ref:array:gameStatViewData, compareStatRecords : script_ref:array:whandle:gamedataStat_Record, optional compareWithData : handle:StatProvider); // FillStatsList;StatProviderscript_ref<array<Stat_Record>>script_ref<array<StatViewData>>script_ref<array<Stat_Record>>StatProvider
+	function FilterComparableItems(itemToCompare : gameItemID, items : script_ref:array:gameInventoryItemData) : array:gameInventoryItemData; // FilterComparableItems;ItemIDscript_ref<array<InventoryItemData>>
+	function FilterComparableItemsIDs(itemToCompare : gameItemID, ids : script_ref:array:gameItemID) : array:gameItemID; // FilterComparableItemsIDs;ItemIDscript_ref<array<ItemID>>
+	function FilterHotkeyConsumables(items : script_ref:array:gameItemID) : array:gameItemID; // FilterHotkeyConsumables;script_ref<array<ItemID>>
+	function FilterOutEmptyItems(items : script_ref:array:gameInventoryItemData) : array:gameInventoryItemData; // FilterOutEmptyItems;script_ref<array<InventoryItemData>>
+	function FilterOutInvalidIDs(ids : script_ref:array:gameItemID) : array:gameItemID; // FilterOutInvalidIDs;script_ref<array<ItemID>>
+	function GetAbilityData(itemId : gameItemID) : AbilityData; // GetAbilityData;ItemID
+	function GetAdditionalOverheatDuration(effectToCast : whandle:gamedataStatusEffect_Record) : Float; // GetAdditionalOverheatDuration;StatusEffect_Record
+	function GetAllComparisonItems(equipmentArea : gamedataEquipmentArea) : array:gameInventoryItemData; // GetAllComparisonItems;gamedataEquipmentArea
+	function GetAllCyberwareAbilities() : array:AbilityData; // GetAllCyberwareAbilities;
+	function GetAmmoCountForAllAmmoTypes() : array:gameInventoryItemData; // GetAmmoCountForAllAmmoTypes;
+	function GetAmmoForWeaponType(itemData : script_ref:gameInventoryItemData) : Int32; // GetAmmoForWeaponType;script_ref<InventoryItemData>
+	function GetAmmoTypeForWeapon(targetItem : TweakDBID) : TweakDBID; // GetAmmoTypeForWeapon;TweakDBID
+	function GetAttachements(owner : whandle:gameObject, itemId : gameItemID, itemData : whandle:gameItemData, attachments : script_ref:array:handle:gameInventoryItemAttachments, abilities : script_ref:array:gameInventoryItemAbility, optional isDryItem : Bool); // GetAttachements;GameObjectItemIDgameItemDatascript_ref<array<InventoryItemAttachments>>script_ref<array<InventoryItemAbility>>Bool
+	function GetAttachements(owner : whandle:gameObject, itemData : whandle:gameItemData, usedSlots : array:TweakDBID, emptySlots : array:TweakDBID, mods : script_ref:array:handle:MinimalItemTooltipModData, dedicatedMods : script_ref:array:handle:MinimalItemTooltipModAttachmentData); // GetAttachements;GameObjectgameItemDataarray<TweakDBID>array<TweakDBID>script_ref<array<MinimalItemTooltipModData>>script_ref<array<MinimalItemTooltipModAttachmentData>>
+	function GetBaseQuickhackCooldownRecord() : whandle:gamedataStatModifierGroup_Record; // GetBaseQuickhackCooldownRecord;
+	function GetBuyPrice(itemID : gameItemID) : Float; // GetBuyPrice;ItemID
+	function GetBuyPrice(owner : whandle:gameObject, itemID : gameItemID) : Float; // GetBuyPrice;GameObjectItemID
+	function GetCachedInventoryItemData(itemData : whandle:gameItemData) : gameInventoryItemData; // GetCachedInventoryItemData;gameItemData
+	function GetCachedInventoryItemData(itemData : whandle:gameItemData, inventoryItemData : script_ref:gameInventoryItemData, optional forceShowCurrencyOnHUDTooltip : Bool, optional isRadialQuerying : Bool); // GetCachedInventoryItemData;gameItemDatascript_ref<InventoryItemData>BoolBool
+	function GetCachedInventoryItemDataInternal(itemData : whandle:gameItemData, ID : gameItemID, itemRecord : whandle:gamedataItem_Record, inventoryItemData : script_ref:gameInventoryItemData); // GetCachedInventoryItemDataInternal;gameItemDataItemIDItem_Recordscript_ref<InventoryItemData>
+	function GetCommonsCraftingMaterialTypes() : array:gameInventoryItemData; // GetCommonsCraftingMaterialTypes;
+	function GetComparisonItems(item : script_ref:gameInventoryItemData) : array:gameInventoryItemData; // GetComparisonItems;script_ref<InventoryItemData>
+	function GetComparisonItemsIDs(itemID : gameItemID, equipmentArea : gamedataEquipmentArea) : array:gameItemID; // GetComparisonItemsIDs;ItemIDgamedataEquipmentArea
+	function GetComparisonTooltipsData(equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional equipped : Bool, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetComparisonTooltipsData;script_ref<InventoryItemData>script_ref<InventoryItemData>BoolDEBUG_IconErrorInfoBool
+	function GetCraftingCountForAllCraftingMaterialTypes() : array:gameInventoryItemData; // GetCraftingCountForAllCraftingMaterialTypes;
+	function GetCyberdeckTooltipForInventoryItem(item : whandle:UIInventoryItem, equipped : Bool, iconErrorInfo : handle:DEBUG_IconErrorInfo, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetCyberdeckTooltipForInventoryItem;UIInventoryItemBoolDEBUG_IconErrorInfoBoolBool
+	function GetCyberdeckTooltipForInventoryItem(tooltipItemData : script_ref:gameInventoryItemData, equipped : Bool, iconErrorInfo : handle:DEBUG_IconErrorInfo, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetCyberdeckTooltipForInventoryItem;script_ref<InventoryItemData>BoolDEBUG_IconErrorInfoBoolBool
+	function GetDPS(data : script_ref:gameInventoryItemData) : Int32; // GetDPS;script_ref<InventoryItemData>
+	function GetEquipment() : array:gameInventoryItemData; // GetEquipment;
+	function GetEquipmentAreaLocalizedName(equipmentArea : gamedataEquipmentArea) : String; // GetEquipmentAreaLocalizedName;gamedataEquipmentArea
+	function GetEquippedConsumables() : array:gameInventoryItemData; // GetEquippedConsumables;
+	function GetEquippedCounterpartForInventroyItem(inspectedItemData : script_ref:gameInventoryItemData) : gameInventoryItemData; // GetEquippedCounterpartForInventroyItem;script_ref<InventoryItemData>
+	function GetEquippedItemIDs(owner : whandle:gameObject) : array:gameItemID; // GetEquippedItemIDs;GameObject
+	function GetEquippedItemIdInArea(equipArea : gamedataEquipmentArea, optional slot : Int32) : gameItemID; // GetEquippedItemIdInArea;gamedataEquipmentAreaInt32
+	function GetEquippedQuickSlots() : array:gameInventoryItemData; // GetEquippedQuickSlots;
+	function GetEquippedWeapons() : array:gameInventoryItemData; // GetEquippedWeapons;
+	function GetEquippedWeaponsIDs() : array:gameItemID; // GetEquippedWeaponsIDs;
+	function GetExternalGameItemData(ownerId : entEntityID, externalItemId : gameItemID) : whandle:gameItemData; // GetExternalGameItemData;EntityIDItemID
+	function GetExternalGameObject(entityId : entEntityID) : whandle:gameObject; // GetExternalGameObject;EntityID
+	function GetExternalItemData(ownerId : entEntityID, externalItem : whandle:gameItemData, optional forceShowCurrencyOnHUDTooltip : Bool) : gameInventoryItemData; // GetExternalItemData;EntityIDgameItemDataBool
+	function GetExternalItemData(ownerId : entEntityID, externalItemId : gameItemID, optional forceShowCurrencyOnHUDTooltip : Bool) : gameInventoryItemData; // GetExternalItemData;EntityIDItemIDBool
+	function GetExternalItemStats(ownerId : entEntityID, externalItemId : gameItemID, optional compareItemId : gameItemID) : gameItemViewData; // GetExternalItemStats;EntityIDItemIDItemID
+	function GetGame() : ScriptGameInstance; // GetGame;
+	function GetGrenadeContinousEffector(attackRecord : whandle:gamedataAttack_Record) : whandle:gamedataContinuousAttackEffector_Record; // GetGrenadeContinousEffector;Attack_Record
+	function GetGrenadeDamageStats(itemData : whandle:gameItemData, outputArray : script_ref:array:handle:InventoryTooltiData_GrenadeDamageData); // GetGrenadeDamageStats;gameItemDatascript_ref<array<InventoryTooltiData_GrenadeDamageData>>
+	function GetGrenadeDelay(continuousAttackEffector : whandle:gamedataContinuousAttackEffector_Record) : Float; // GetGrenadeDelay;ContinuousAttackEffector_Record
+	function GetGrenadeDoTTickDamage(continuousAttackEffector : whandle:gamedataContinuousAttackEffector_Record) : Float; // GetGrenadeDoTTickDamage;ContinuousAttackEffector_Record
+	function GetGrenadeDuration(attackRecord : whandle:gamedataAttack_Record) : Float; // GetGrenadeDuration;Attack_Record
+	function GetGrenadeRange(grenadeRecord : whandle:gamedataGrenade_Record) : Float; // GetGrenadeRange;Grenade_Record
+	function GetGrenadeTooltipData(itemID : TweakDBID, itemData : whandle:gameItemData) : handle:InventoryTooltiData_GrenadeData; // GetGrenadeTooltipData;TweakDBIDgameItemData
+	function GetGrenadeTooltipData(tooltipItemData : script_ref:gameInventoryItemData) : handle:InventoryTooltiData_GrenadeData; // GetGrenadeTooltipData;script_ref<InventoryItemData>
+	function GetGrenadeTotalDamageFromStats(itemData : whandle:gameItemData) : Float; // GetGrenadeTotalDamageFromStats;gameItemData
+	function GetGrenadeType(itemID : TweakDBID) : EGrenadeType; // GetGrenadeType;TweakDBID
+	function GetHackingCraftingMaterialTypes() : array:gameInventoryItemData; // GetHackingCraftingMaterialTypes;
+	function GetHotkeyItemData(hotkey : gameEHotkey) : gameInventoryItemData; // GetHotkeyItemData;EHotkey
+	function GetHotkeyTypeForItemID(itemID : gameItemID, out hotkey : gameEHotkey) : Bool; // GetHotkeyTypeForItemID;ItemIDEHotkey
+	function GetHotkeyTypeFromItemID(itemID : gameItemID, out hotkey : gameEHotkey) : Bool; // GetHotkeyTypeFromItemID;ItemIDEHotkey
+	function GetIconGender() : gameItemIconGender; // GetIconGender;
+	function GetIgnoredDurationStats() : array:whandle:gamedataStatusEffect_Record; // GetIgnoredDurationStats;
+	function GetInventoryCyberware() : array:gameInventoryItemData; // GetInventoryCyberware;
+	function GetInventoryCyberwareSize() : Int32; // GetInventoryCyberwareSize;
+	function GetInventoryItemData(owner : whandle:gameObject, itemData : whandle:gameItemData, optional forceShowCurrencyOnHUDTooltip : Bool, optional isRadialQuerying : Bool) : gameInventoryItemData; // GetInventoryItemData;GameObjectgameItemDataBoolBool
+	function GetInventoryItemData(itemData : whandle:gameItemData) : gameInventoryItemData; // GetInventoryItemData;gameItemData
+	function GetInventoryItemDataForDryItem(itemData : whandle:gameItemData) : gameInventoryItemData; // GetInventoryItemDataForDryItem;gameItemData
+	function GetInventoryItemDataFromItemID(itemID : gameItemID) : gameInventoryItemData; // GetInventoryItemDataFromItemID;ItemID
+	function GetInventoryItemDataFromItemRecord(itemRecord : handle:gamedataItem_Record) : gameInventoryItemData; // GetInventoryItemDataFromItemRecord;Item_Record
+	function GetInventoryItemDataFromItemRecordInternal(itemRecord : handle:gamedataItem_Record) : gameInventoryItemData; // GetInventoryItemDataFromItemRecordInternal;Item_Record
+	function GetInventoryItemDataInternal(owner : whandle:gameObject, itemData : whandle:gameItemData, optional itemRecord : whandle:gamedataItem_Record) : gameInventoryItemData; // GetInventoryItemDataInternal;GameObjectgameItemDataItem_Record
+	function GetItemDataEquippedInArea(equipArea : gamedataEquipmentArea, optional slot : Int32) : gameInventoryItemData; // GetItemDataEquippedInArea;gamedataEquipmentAreaInt32
+	function GetItemDataFromIDInLoadout(id : gameItemID) : gameInventoryItemData; // GetItemDataFromIDInLoadout;ItemID
+	function GetItemFromRecord(tweakPath : script_ref:String) : gameInventoryItemData; // GetItemFromRecord;script_ref<String>
+	function GetItemFromRecord(id : TweakDBID) : gameInventoryItemData; // GetItemFromRecord;TweakDBID
+	function GetItemIDToCompare(equipmentArea : gamedataEquipmentArea) : gameItemID; // GetItemIDToCompare;gamedataEquipmentArea
+	function GetItemSlotsIDs(gameObject : handle:gameObject, itemID : gameItemID) : array:TweakDBID; // GetItemSlotsIDs;GameObjectItemID
+	function GetItemStatsByData(itemData : whandle:gameItemData, optional compareWithData : whandle:gameItemData) : gameItemViewData; // GetItemStatsByData;gameItemDatagameItemData
+	function GetItemToCompare(equipmentArea : gamedataEquipmentArea) : gameInventoryItemData; // GetItemToCompare;gamedataEquipmentArea
+	function GetItemsIDsToCompare(equipmentArea : gamedataEquipmentArea) : array:gameItemID; // GetItemsIDsToCompare;gamedataEquipmentArea
+	function GetItemsToCompare(item : script_ref:gameInventoryItemData) : array:gameInventoryItemData; // GetItemsToCompare;script_ref<InventoryItemData>
+	function GetItemsToCompare(equipmentArea : gamedataEquipmentArea) : array:gameInventoryItemData; // GetItemsToCompare;gamedataEquipmentArea
+	function GetLocalizedStatName(statRecord : whandle:gamedataStat_Record) : String; // GetLocalizedStatName;Stat_Record
+	function GetMinimalComparisionLootingData(); // GetMinimalComparisionLootingData;
+	function GetMinimalComparisonTooltipsData(equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional equipped : Bool, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool) : handle:MinimalItemTooltipData; // GetMinimalComparisonTooltipsData;script_ref<InventoryItemData>script_ref<InventoryItemData>BoolDEBUG_IconErrorInfoBool
+	function GetMinimalTooltipDataForInventoryItem(tooltipItemData : script_ref:gameInventoryItemData, equipped : Bool, iconErrorInfo : handle:DEBUG_IconErrorInfo, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:MinimalItemTooltipData; // GetMinimalTooltipDataForInventoryItem;script_ref<InventoryItemData>BoolDEBUG_IconErrorInfoBoolBool
+	function GetNumberOfSlots(equipmentArea : gamedataEquipmentArea, optional includeLocked : Bool) : Int32; // GetNumberOfSlots;gamedataEquipmentAreaBool
+	function GetOrCreateInventoryItemSortData(inventoryItemData : script_ref:gameInventoryItemData, scriptableSystem : whandle:UIScriptableSystem); // GetOrCreateInventoryItemSortData;script_ref<InventoryItemData>UIScriptableSystem
+	function GetPartInventoryItemData(owner : whandle:gameObject, innerItemData : gameInnerItemData, optional parentItemData : whandle:gameItemData) : gameInventoryItemData; // GetPartInventoryItemData;GameObjectInnerItemDatagameItemData
+	function GetPlayerAmmoCount(itemRecord : whandle:gamedataItem_Record) : Int32; // GetPlayerAmmoCount;Item_Record
+	function GetPlayerAmmoCount(targetItem : TweakDBID) : Int32; // GetPlayerAmmoCount;TweakDBID
+	function GetPlayerArmorStats(statsList : script_ref:array:gameStatViewData); // GetPlayerArmorStats;script_ref<array<StatViewData>>
+	function GetPlayerCraftingMaterials() : array:gameInventoryItemData; // GetPlayerCraftingMaterials;
+	function GetPlayerCyberwareCapacitStats(statsList : script_ref:array:gameStatViewData); // GetPlayerCyberwareCapacitStats;script_ref<array<StatViewData>>
+	function GetPlayerDPSStats(statsList : script_ref:array:gameStatViewData); // GetPlayerDPSStats;script_ref<array<StatViewData>>
+	function GetPlayerEquipmentAreaInventoryData(equipArea : gamedataEquipmentArea) : array:gameInventoryItemData; // GetPlayerEquipmentAreaInventoryData;gamedataEquipmentArea
+	function GetPlayerHealth() : Float; // GetPlayerHealth;
+	function GetPlayerHealthStats(statsList : script_ref:array:gameStatViewData); // GetPlayerHealthStats;script_ref<array<StatViewData>>
+	function GetPlayerIconicWeaponsByType(type : gamedataItemType, optional skipEquippedItems : Bool, optional additionalTagFilters : array:CName, optional filteredItems : array:gameItemModParams) : array:gameInventoryItemData; // GetPlayerIconicWeaponsByType;gamedataItemTypeBoolarray<CName>array<ItemModParams>
+	function GetPlayerInventory(optional additionalTagFilters : array:CName) : array:whandle:gameItemData; // GetPlayerInventory;array<CName>
+	function GetPlayerInventoryData(optional additionalTagFilters : array:CName) : array:gameInventoryItemData; // GetPlayerInventoryData;array<CName>
+	function GetPlayerInventoryData(equipAreas : script_ref:array:gamedataEquipmentArea, optional skipEquipped : Bool, optional filteredItems : array:gameItemModParams) : array:gameInventoryItemData; // GetPlayerInventoryData;script_ref<array<gamedataEquipmentArea>>Boolarray<ItemModParams>
+	function GetPlayerInventoryData(equipArea : gamedataEquipmentArea, optional skipEquipped : Bool, optional filteredItems : array:gameItemModParams) : array:gameInventoryItemData; // GetPlayerInventoryData;gamedataEquipmentAreaBoolarray<ItemModParams>
+	function GetPlayerInventoryDataExcludingLoadout() : array:gameInventoryItemData; // GetPlayerInventoryDataExcludingLoadout;
+	function GetPlayerInventoryDataRef(equipAreas : script_ref:array:gamedataEquipmentArea, optional skipEquipped : Bool, optional filteredItems : array:gameItemModParams, outputItems : script_ref:array:gameInventoryItemData); // GetPlayerInventoryDataRef;script_ref<array<gamedataEquipmentArea>>Boolarray<ItemModParams>script_ref<array<InventoryItemData>>
+	function GetPlayerInventoryItems(optional additionalTagFilters : array:CName) : array:whandle:gameItemData; // GetPlayerInventoryItems;array<CName>
+	function GetPlayerInventoryItemsExcludingCraftingMaterials() : array:gameInventoryItemData; // GetPlayerInventoryItemsExcludingCraftingMaterials;
+	function GetPlayerInventoryItemsExcludingLoadout() : array:whandle:gameItemData; // GetPlayerInventoryItemsExcludingLoadout;
+	function GetPlayerInventoryParts(slotId : TweakDBID) : array:gameInventoryItemData; // GetPlayerInventoryParts;TweakDBID
+	function GetPlayerInventoryPartsDataForItem(item : gameItemID, slotIDs : script_ref:array:TweakDBID) : array:whandle:gameItemData; // GetPlayerInventoryPartsDataForItem;ItemIDscript_ref<array<TweakDBID>>
+	function GetPlayerInventoryPartsForItem(item : gameItemID, slotID : TweakDBID) : array:gameInventoryItemData; // GetPlayerInventoryPartsForItem;ItemIDTweakDBID
+	function GetPlayerInventoryPartsForItem(item : gameItemID, slotIDs : script_ref:array:TweakDBID) : array:gameInventoryItemData; // GetPlayerInventoryPartsForItem;ItemIDscript_ref<array<TweakDBID>>
+	function GetPlayerInventoryPartsForItemRef(item : gameItemID, slotID : TweakDBID, outputItems : script_ref:array:gameInventoryItemData); // GetPlayerInventoryPartsForItemRef;ItemIDTweakDBIDscript_ref<array<InventoryItemData>>
+	function GetPlayerInventoryPartsForItemRef(item : gameItemID, slotIDs : script_ref:array:TweakDBID, outputItems : script_ref:array:gameInventoryItemData); // GetPlayerInventoryPartsForItemRef;ItemIDscript_ref<array<TweakDBID>>script_ref<array<InventoryItemData>>
+	function GetPlayerInventoryStats(statsList : script_ref:array:gameStatViewData); // GetPlayerInventoryStats;script_ref<array<StatViewData>>
+	function GetPlayerItemData(itemId : gameItemID) : whandle:gameItemData; // GetPlayerItemData;ItemID
+	function GetPlayerItemStats(itemId : gameItemID, optional compareItemId : gameItemID) : gameItemViewData; // GetPlayerItemStats;ItemIDItemID
+	function GetPlayerItems() : array:whandle:gameItemData; // GetPlayerItems;
+	function GetPlayerItemsByType(type : gamedataItemType, optional skipEquippedItems : Bool, optional additionalTagFilters : array:CName, optional filteredItems : array:gameItemModParams) : array:gameInventoryItemData; // GetPlayerItemsByType;gamedataItemTypeBoolarray<CName>array<ItemModParams>
+	function GetPlayerItemsIDs(optional item : gameInventoryItemData, optional slotID : TweakDBID, optional itemType : gamedataItemType, optional equipmentArea : gamedataEquipmentArea, optional skipEquipped : Bool, items : script_ref:array:gameItemID); // GetPlayerItemsIDs;InventoryItemDataTweakDBIDgamedataItemTypegamedataEquipmentAreaBoolscript_ref<array<ItemID>>
+	function GetPlayerItemsIDsByType(type : gamedataItemType, items : script_ref:array:gameItemID); // GetPlayerItemsIDsByType;gamedataItemTypescript_ref<array<ItemID>>
+	function GetPlayerItemsIDsByTypes(types : script_ref:array:gamedataItemType, items : script_ref:array:gameItemID); // GetPlayerItemsIDsByTypes;script_ref<array<gamedataItemType>>script_ref<array<ItemID>>
+	function GetPlayerItemsIDsFast(optional item : gameItemID, optional slotID : TweakDBID, optional itemType : gamedataItemType, optional equipmentArea : gamedataEquipmentArea, optional skipEquipped : Bool, items : script_ref:array:gameItemID); // GetPlayerItemsIDsFast;ItemIDTweakDBIDgamedataItemTypegamedataEquipmentAreaBoolscript_ref<array<ItemID>>
+	function GetPlayerLevel() : Int32; // GetPlayerLevel;
+	function GetPlayerOtherStats(statsList : script_ref:array:gameStatViewData); // GetPlayerOtherStats;script_ref<array<StatViewData>>
+	function GetPlayerPartsInventoryData(slotIDs : script_ref:array:TweakDBID) : array:gameInventoryItemData; // GetPlayerPartsInventoryData;script_ref<array<TweakDBID>>
+	function GetPlayerPartsInventoryData(slotID : TweakDBID) : array:gameInventoryItemData; // GetPlayerPartsInventoryData;TweakDBID
+	function GetPlayerReflex() : Int32; // GetPlayerReflex;
+	function GetPlayerStats(statsList : script_ref:array:gameStatViewData); // GetPlayerStats;script_ref<array<StatViewData>>
+	function GetPlayerStatsFromMap(statsList : script_ref:array:gameStatViewData, uiMap : script_ref:String); // GetPlayerStatsFromMap;script_ref<array<StatViewData>>script_ref<String>
+	function GetPlayerStreetCred() : Int32; // GetPlayerStreetCred;
+	function GetPlayerStrength() : Int32; // GetPlayerStrength;
+	function GetPrefferedComparableItem(item : script_ref:gameInventoryItemData, comparableItems : script_ref:array:gameInventoryItemData) : gameInventoryItemData; // GetPrefferedComparableItem;script_ref<InventoryItemData>script_ref<array<InventoryItemData>>
+	function GetPrefferedComparisonItem(item : script_ref:gameInventoryItemData, comparableItems : script_ref:array:gameInventoryItemData) : gameInventoryItemData; // GetPrefferedComparisonItem;script_ref<InventoryItemData>script_ref<array<InventoryItemData>>
+	function GetPrefferedComparisonItemID(item : whandle:gameItemData, itemRecord : whandle:gamedataItem_Record, equipmentArea : gamedataEquipmentArea, comparableItems : array:gameItemID) : gameItemID; // GetPrefferedComparisonItemID;gameItemDataItem_RecordgamedataEquipmentAreaarray<ItemID>
+	function GetPrefferedEquipedItemIDToCompare(item : whandle:gameItemData, itemRecord : whandle:gamedataItem_Record, equipmentArea : gamedataEquipmentArea, idsToCompare : script_ref:array:gameItemID) : Int32; // GetPrefferedEquipedItemIDToCompare;gameItemDataItem_RecordgamedataEquipmentAreascript_ref<array<ItemID>>
+	function GetPrefferedEquipedItemIDToCompare(item : script_ref:gameInventoryItemData, itemsToCompare : script_ref:array:gameInventoryItemData) : Int32; // GetPrefferedEquipedItemIDToCompare;script_ref<InventoryItemData>script_ref<array<InventoryItemData>>
+	function GetPrefferedEquipedItemToCompare(item : script_ref:gameInventoryItemData, itemsToCompare : array:gameInventoryItemData) : Int32; // GetPrefferedEquipedItemToCompare;script_ref<InventoryItemData>array<InventoryItemData>
+	function GetPrefferedEquipedItemToCompare(item : script_ref:gameInventoryItemData) : Int32; // GetPrefferedEquipedItemToCompare;script_ref<InventoryItemData>
+	function GetPrefferedEquipedItemToCompareRef(item : script_ref:gameInventoryItemData, itemsToCompare : script_ref:array:gameInventoryItemData) : Int32; // GetPrefferedEquipedItemToCompareRef;script_ref<InventoryItemData>script_ref<array<InventoryItemData>>
+	function GetProgramComparisionTooltipsData(equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional equipped : Bool, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetProgramComparisionTooltipsData;script_ref<InventoryItemData>script_ref<InventoryItemData>BoolDEBUG_IconErrorInfoBool
+	function GetQuickhackBaseObjectActionRecord() : whandle:gamedataObjectAction_Record; // GetQuickhackBaseObjectActionRecord;
+	function GetQuickhackTooltipData(itemID : TweakDBID) : InventoryTooltipData_QuickhackData; // GetQuickhackTooltipData;TweakDBID
+	function GetQuickhackTooltipData(tooltipItemData : script_ref:gameInventoryItemData) : InventoryTooltipData_QuickhackData; // GetQuickhackTooltipData;script_ref<InventoryItemData>
+	function GetQunatityToFilterOut(item : gameItemID, filteredItems : script_ref:array:gameItemModParams) : Int32; // GetQunatityToFilterOut;ItemIDscript_ref<array<ItemModParams>>
+	function GetSellPrice(owner : whandle:gameObject, itemID : gameItemID) : Float; // GetSellPrice;GameObjectItemID
+	function GetSellPrice(owner : whandle:gameObject, itemData : whandle:gameItemData) : Float; // GetSellPrice;GameObjectgameItemData
+	function GetSellPrice(itemID : gameItemID) : Float; // GetSellPrice;ItemID
+	function GetSellPrice(itemData : whandle:gameItemData) : Float; // GetSellPrice;gameItemData
+	function GetStatsList(mapPath : TweakDBID, statProvider : handle:StatProvider, primeStatsList : script_ref:array:gameStatViewData, secondStatsList : script_ref:array:gameStatViewData, optional compareWithData : handle:StatProvider); // GetStatsList;TweakDBIDStatProviderscript_ref<array<StatViewData>>script_ref<array<StatViewData>>StatProvider
+	function GetStatsList(mapPath : TweakDBID, itemData : gameInnerItemData, primeStatsList : script_ref:array:gameStatViewData, secondStatsList : script_ref:array:gameStatViewData, optional compareWithData : whandle:gameItemData); // GetStatsList;TweakDBIDInnerItemDatascript_ref<array<StatViewData>>script_ref<array<StatViewData>>gameItemData
+	function GetStatsList(mapPath : TweakDBID, itemData : script_ref:gameInventoryItemData, primeStatsList : script_ref:array:gameStatViewData, secondStatsList : script_ref:array:gameStatViewData, compareWithData : script_ref:gameInventoryItemData); // GetStatsList;TweakDBIDscript_ref<InventoryItemData>script_ref<array<StatViewData>>script_ref<array<StatViewData>>script_ref<InventoryItemData>
+	function GetStatsList(mapPath : TweakDBID, itemData : whandle:gameItemData, primeStatsList : script_ref:array:gameStatViewData, secondStatsList : script_ref:array:gameStatViewData, optional compareWithData : whandle:gameItemData); // GetStatsList;TweakDBIDgameItemDatascript_ref<array<StatViewData>>script_ref<array<StatViewData>>gameItemData
+	function GetStatsUIMapName(itemId : gameItemID) : String; // GetStatsUIMapName;ItemID
+	function GetStatsUIMapName(itemData : whandle:gameItemData) : String; // GetStatsUIMapName;gameItemData
+	function GetTooltipDataForInventoryItem(tooltipItemData : script_ref:gameInventoryItemData, equipped : Bool, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetTooltipDataForInventoryItem;script_ref<InventoryItemData>BoolBoolBool
+	function GetTooltipDataForInventoryItem(tooltipItemData : script_ref:gameInventoryItemData, equipped : Bool, iconErrorInfo : handle:DEBUG_IconErrorInfo, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetTooltipDataForInventoryItem;script_ref<InventoryItemData>BoolDEBUG_IconErrorInfoBoolBool
+	function GetTooltipDataForInventoryItem(item : whandle:UIInventoryItem, equipped : Bool, iconErrorInfo : handle:DEBUG_IconErrorInfo, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetTooltipDataForInventoryItem;UIInventoryItemBoolDEBUG_IconErrorInfoBoolBool
+	function GetTooltipDataForInventoryItem(tooltipItemData : whandle:UIInventoryItem, equipped : Bool, optional vendorItem : Bool, optional overrideRarity : Bool) : handle:InventoryTooltipData; // GetTooltipDataForInventoryItem;UIInventoryItemBoolBoolBool
+	function GetTooltipDataForVisualItem(tooltipItemData : script_ref:gameInventoryItemData, equipped : Bool, displayContextData : handle:ItemDisplayContextData) : handle:MinimalItemTooltipData; // GetTooltipDataForVisualItem;script_ref<InventoryItemData>BoolItemDisplayContextData
+	function GetTooltipForEmptySlot(slot : script_ref:String) : handle:MessageTooltipData; // GetTooltipForEmptySlot;script_ref<String>
+	function GetTransactionSystem() : whandle:gameTransactionSystem; // GetTransactionSystem;
+	function GetTransmogTooltipForEmptySlot(slot : script_ref:String, transmogItem : gameItemID, iconPath : CName, noIcon : Bool) : handle:TransmogMessageTooltipData; // GetTransmogTooltipForEmptySlot;script_ref<String>ItemIDCNameBool
+	function GetUIInventorySystem() : whandle:UIInventoryScriptableSystem; // GetUIInventorySystem;
+	function GetVisualItemInSlot(area : gamedataEquipmentArea) : gameItemID; // GetVisualItemInSlot;gamedataEquipmentArea
+	function GetWeaponEquippedInSlot(slot : Int32) : gameInventoryItemData; // GetWeaponEquippedInSlot;Int32
+	function HasPlayerSmartGunLink() : Bool; // HasPlayerSmartGunLink;
+	function Initialize(player : handle:PlayerPuppet, optional owner : handle:gameuiHUDGameController); // Initialize;PlayerPuppetinkHUDGameController
+	function InstallPart(itemData : script_ref:gameInventoryItemData, partID : gameItemID, slotID : TweakDBID); // InstallPart;script_ref<InventoryItemData>ItemIDTweakDBID
+	function InstallPart(itemId : gameItemID, partId : gameItemID, slotID : TweakDBID); // InstallPart;ItemIDItemIDTweakDBID
+	function IsAttachmentDedicated(slotID : TweakDBID) : Bool; // IsAttachmentDedicated;TweakDBID
+	function IsFilledWithDummyPart(innerItemData : gameInnerItemData) : Bool; // IsFilledWithDummyPart;InnerItemData
+	function IsSlotLocked(equipmentArea : gamedataEquipmentArea, slotIndex : Int32, out visibleWhenLocked : Bool) : Bool; // IsSlotLocked;gamedataEquipmentAreaInt32Bool
+	function IsSlotOverriden(area : gamedataEquipmentArea) : Bool; // IsSlotOverriden;gamedataEquipmentArea
+	function IsTransmogEnabled() : Int32; // IsTransmogEnabled;
+	function IsWardrobeEnabled() : Bool; // IsWardrobeEnabled;
+	function MakeTooltipMinimalAndAttachManager(tooltip : handle:InventoryTooltipData) : handle:MinimalItemTooltipData; // MakeTooltipMinimalAndAttachManager;InventoryTooltipData
+	function MarkToRebuild(); // MarkToRebuild;
+	function PlacementSlotsContains(staticData : whandle:gamedataItem_Record, slotID : TweakDBID) : Bool; // PlacementSlotsContains;Item_RecordTweakDBID
+	function PushComparisonTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushComparisonTooltipsData;script_ref<array<ATooltipData>>script_ref<InventoryItemData>script_ref<InventoryItemData>DEBUG_IconErrorInfoBool
+	function PushIdentifiedComparisonTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, name1 : CName, name2 : CName, equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushIdentifiedComparisonTooltipsData;script_ref<array<ATooltipData>>CNameCNamescript_ref<InventoryItemData>script_ref<InventoryItemData>DEBUG_IconErrorInfoBool
+	function PushIdentifiedComparisonTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, name1 : CName, name2 : CName, inspectedItem : whandle:UIInventoryItem, equippedItem : whandle:UIInventoryItem, equippedDisplayContext : whandle:ItemDisplayContextData, inspectedDisplayContext : whandle:ItemDisplayContextData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushIdentifiedComparisonTooltipsData;script_ref<array<ATooltipData>>CNameCNameUIInventoryItemUIInventoryItemItemDisplayContextDataItemDisplayContextDataDEBUG_IconErrorInfoBool
+	function PushIdentifiedProgramComparisionTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushIdentifiedProgramComparisionTooltipsData;script_ref<array<ATooltipData>>script_ref<InventoryItemData>script_ref<InventoryItemData>DEBUG_IconErrorInfoBool
+	function PushIdentifiedProgramComparisionTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, name1 : CName, name2 : CName, equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushIdentifiedProgramComparisionTooltipsData;script_ref<array<ATooltipData>>CNameCNamescript_ref<InventoryItemData>script_ref<InventoryItemData>DEBUG_IconErrorInfoBool
+	function PushMinimalIdentifiedComparisonTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, name1 : CName, name2 : CName, equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushMinimalIdentifiedComparisonTooltipsData;script_ref<array<ATooltipData>>CNameCNamescript_ref<InventoryItemData>script_ref<InventoryItemData>DEBUG_IconErrorInfoBool
+	function PushProgramComparisionTooltipsData(tooltipsData : script_ref:array:handle:ATooltipData, equippedItem : script_ref:gameInventoryItemData, inspectedItemData : script_ref:gameInventoryItemData, optional iconErrorInfo : handle:DEBUG_IconErrorInfo, optional overrideRarity : Bool); // PushProgramComparisionTooltipsData;script_ref<array<ATooltipData>>script_ref<InventoryItemData>script_ref<InventoryItemData>DEBUG_IconErrorInfoBool
+	function RegisterToBB(); // RegisterToBB;
+	function RemoveInventoryItemFromCache(itemId : gameItemID) : Bool; // RemoveInventoryItemFromCache;ItemID
+	function RemovePart(itemId : gameItemID, slotId : TweakDBID); // RemovePart;ItemIDTweakDBID
+	function SetActiveWeapon(activeWeapon : gameItemID); // SetActiveWeapon;ItemID
+	function SetComparisonQualityF(inspectedData : handle:MinimalItemTooltipData, equippedData : handle:MinimalItemTooltipData); // SetComparisonQualityF;MinimalItemTooltipDataMinimalItemTooltipData
+	function SetCyberdeckDataForTooltip(tooltipItemData : handle:InventoryTooltipData, optional viewingTooltipFromCyberwareMenu : Bool); // SetCyberdeckDataForTooltip;InventoryTooltipDataBool
+	function SetPlayerStats(inventoryItemData : script_ref:gameInventoryItemData); // SetPlayerStats;script_ref<InventoryItemData>
+	function SetRequiredPerk(inventoryItemData : script_ref:gameInventoryItemData); // SetRequiredPerk;script_ref<InventoryItemData>
+	function ShouldItemBeFiltered(item : gameItemID, filteredItems : script_ref:array:gameItemModParams) : Bool; // ShouldItemBeFiltered;ItemIDscript_ref<array<ItemModParams>>
+	function ShouldSlotBeAvailable(itemData : whandle:gameItemData, attachmentSlotRecord : whandle:gamedataAttachmentSlot_Record, owner : whandle:gameObject, itemId : gameItemID) : Bool; // ShouldSlotBeAvailable;gameItemDataAttachmentSlot_RecordGameObjectItemID
+	function SortDataByRarity(items : script_ref:array:gameInventoryItemData) : array:gameInventoryItemData; // SortDataByRarity;script_ref<array<InventoryItemData>>
+	function StatModifiersExcept(statModifiers : script_ref:array:whandle:gamedataStatModifier_Record, except : script_ref:array:whandle:gamedataStatModifier_Record) : array:whandle:gamedataStatModifier_Record; // StatModifiersExcept;script_ref<array<StatModifier_Record>>script_ref<array<StatModifier_Record>>
+	function SwapPart(itemId : gameItemID, partId : gameItemID, slotId : TweakDBID); // SwapPart;ItemIDItemIDTweakDBID
+	function UnInitialize(); // UnInitialize;
+	function UnequipItem(equipArea : gamedataEquipmentArea, slot : Int32, optional forceOperation : Bool); // UnequipItem;gamedataEquipmentAreaInt32Bool
+	function UnequipVisuals(area : gamedataEquipmentArea); // UnequipVisuals;gamedataEquipmentArea
+	function UnregisterFromBB(); // UnregisterFromBB;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

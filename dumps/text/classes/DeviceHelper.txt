@@ -1,0 +1,14 @@
+struct DeviceHelper
+{
+	static function ConvertActionIntoScriptableAction(inActions : script_ref:array:handle:gamedeviceAction, outActions : script_ref:array:handle:ScriptableDeviceAction) : Bool; // DeviceHelper::ConvertActionIntoScriptableAction;script_ref<array<DeviceAction>>script_ref<array<ScriptableDeviceAction>>
+	static function ConvertActionsArray(puppetActions : script_ref:array:handle:PuppetAction) : array:handle:gamedeviceAction; // DeviceHelper::ConvertActionsArray;script_ref<array<PuppetAction>>
+	static function DebugLog(gameInstance : ScriptGameInstance, message : script_ref:String); // DeviceHelper::DebugLog;GameInstancescript_ref<String>
+	static function ExtractSpecificStateClass(states : script_ref:array:handle:gamePersistentState, desiredClassName : CName, extractedStates : array:handle:gamePersistentState) : Bool; // DeviceHelper::ExtractSpecificStateClass;script_ref<array<PersistentState>>CNamearray<PersistentState>
+	static function FindAction(actionName : CName, actions : script_ref:array:handle:gamedeviceAction, out foundAction : handle:gamedeviceAction) : Int32; // DeviceHelper::FindAction;CNamescript_ref<array<DeviceAction>>DeviceAction
+	static function FindStatusAction(actions : script_ref:array:handle:gamedeviceAction, out status : handle:BaseDeviceStatus) : Int32; // DeviceHelper::FindStatusAction;script_ref<array<DeviceAction>>BaseDeviceStatus
+	static function IDMO(gameInstance : ScriptGameInstance) : Bool; // DeviceHelper::IDMO;GameInstance
+	static function IsDebugModeON(gameInstance : ScriptGameInstance) : Bool; // DeviceHelper::IsDebugModeON;GameInstance
+	static function PushActionsIntoInteractionChoice(choice : script_ref:gameinteractionsChoice, actions : script_ref:array:handle:gamedeviceAction); // DeviceHelper::PushActionsIntoInteractionChoice;script_ref<InteractionChoice>script_ref<array<DeviceAction>>
+	static function RemoveActionFromArray(actionName : CName, actions : script_ref:array:handle:gamedeviceAction); // DeviceHelper::RemoveActionFromArray;CNamescript_ref<array<DeviceAction>>
+	static function RemoveStatusAction(actions : script_ref:array:handle:gamedeviceAction) : Bool; // DeviceHelper::RemoveStatusAction;script_ref<array<DeviceAction>>
+}

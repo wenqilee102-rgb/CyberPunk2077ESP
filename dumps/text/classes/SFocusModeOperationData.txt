@@ -1,0 +1,6 @@
+struct SFocusModeOperationData
+{
+	public    var operationType : ETriggerOperationType;
+	public    var isLookedAt : Bool;
+	public    var operation : SBaseDeviceOperationData;
+}

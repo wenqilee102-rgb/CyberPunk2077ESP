@@ -1,0 +1,15 @@
+import class worldDebugColoring_StreamingCullingFlag extends worldEditorDebugColoringSettings
+{
+	var cullableColor : Color;
+	var forceCulledAlwaysColor : Color;
+	var forceCulledPeripheralColor : Color;
+	var defaultColor : Color;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

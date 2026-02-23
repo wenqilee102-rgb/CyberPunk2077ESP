@@ -1,0 +1,7 @@
+import class gamegraphCNode extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

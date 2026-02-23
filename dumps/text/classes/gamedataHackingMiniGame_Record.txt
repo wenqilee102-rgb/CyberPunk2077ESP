@@ -1,0 +1,71 @@
+import class gamedataHackingMiniGame_Record extends gamedataTweakDBRecord
+{
+	import function AllowedTraps(out outList : array:whandle:gamedataTrap_Record); // AllowedTraps
+	import function AllowedTrapsContains(item : whandle:gamedataTrap_Record) : Bool; // AllowedTrapsContains
+	import function BufferModifier() : Int32; // BufferModifier
+	import function Dimension() : Int32; // Dimension
+	import function EnemyNetrunnerLevel() : Int32; // EnemyNetrunnerLevel
+	import function GameType() : Int32; // GameType
+	import function GetAllowedTrapsCount() : Int32; // GetAllowedTrapsCount
+	import function GetAllowedTrapsItem(index : Int32) : whandle:gamedataTrap_Record; // GetAllowedTrapsItem
+	import function GetAllowedTrapsItemHandle(index : Int32) : handle:gamedataTrap_Record; // GetAllowedTrapsItemHandle
+	import function GetPredefinedBasicAccessCount() : Int32; // GetPredefinedBasicAccessCount
+	import function GetPredefinedBasicAccessItem(index : Int32) : String; // GetPredefinedBasicAccessItem
+	import function GetPredefinedCyberdeckProgramsCount() : Int32; // GetPredefinedCyberdeckProgramsCount
+	import function GetPredefinedCyberdeckProgramsItem(index : Int32) : String; // GetPredefinedCyberdeckProgramsItem
+	import function GetPredefinedEnemyProgramsCount() : Int32; // GetPredefinedEnemyProgramsCount
+	import function GetPredefinedEnemyProgramsItem(index : Int32) : String; // GetPredefinedEnemyProgramsItem
+	import function GetPredefinedGridCount() : Int32; // GetPredefinedGridCount
+	import function GetPredefinedGridItem(index : Int32) : String; // GetPredefinedGridItem
+	import function GetPredefinedNetworkProgramsCount() : Int32; // GetPredefinedNetworkProgramsCount
+	import function GetPredefinedNetworkProgramsItem(index : Int32) : String; // GetPredefinedNetworkProgramsItem
+	import function GetSymbolProbabilitiesAlternativeCount() : Int32; // GetSymbolProbabilitiesAlternativeCount
+	import function GetSymbolProbabilitiesAlternativeItem(index : Int32) : String; // GetSymbolProbabilitiesAlternativeItem
+	import function GetSymbolProbabilitiesCount() : Int32; // GetSymbolProbabilitiesCount
+	import function GetSymbolProbabilitiesItem(index : Int32) : String; // GetSymbolProbabilitiesItem
+	import function GetSymbolsCount() : Int32; // GetSymbolsCount
+	import function GetSymbolsItem(index : Int32) : String; // GetSymbolsItem
+	import function HasEnemyNetrunner() : Bool; // HasEnemyNetrunner
+	import function HasHiddenCells() : Bool; // HasHiddenCells
+	import function HasInitialTimer() : Bool; // HasInitialTimer
+	import function HiddenCellsProbability() : Int32; // HiddenCellsProbability
+	import function InitialTimer() : Int32; // InitialTimer
+	import function NetworkLevel() : Int32; // NetworkLevel
+	import function Officer() : Bool; // Officer
+	import function PredefinedBasicAccess() : array:String; // PredefinedBasicAccess
+	import function PredefinedBasicAccessContains(item : String) : Bool; // PredefinedBasicAccessContains
+	import function PredefinedCyberdeckPrograms() : array:String; // PredefinedCyberdeckPrograms
+	import function PredefinedCyberdeckProgramsContains(item : String) : Bool; // PredefinedCyberdeckProgramsContains
+	import function PredefinedEnemyPrograms() : array:String; // PredefinedEnemyPrograms
+	import function PredefinedEnemyProgramsContains(item : String) : Bool; // PredefinedEnemyProgramsContains
+	import function PredefinedGrid() : array:String; // PredefinedGrid
+	import function PredefinedGridContains(item : String) : Bool; // PredefinedGridContains
+	import function PredefinedNetworkPrograms() : array:String; // PredefinedNetworkPrograms
+	import function PredefinedNetworkProgramsContains(item : String) : Bool; // PredefinedNetworkProgramsContains
+	import function SymbolProbabilities() : array:String; // SymbolProbabilities
+	import function SymbolProbabilitiesAlternative() : array:String; // SymbolProbabilitiesAlternative
+	import function SymbolProbabilitiesAlternativeContains(item : String) : Bool; // SymbolProbabilitiesAlternativeContains
+	import function SymbolProbabilitiesContains(item : String) : Bool; // SymbolProbabilitiesContains
+	import function Symbols() : array:String; // Symbols
+	import function SymbolsContains(item : String) : Bool; // SymbolsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

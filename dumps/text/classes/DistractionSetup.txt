@@ -1,0 +1,14 @@
+struct DistractionSetup
+{
+	public    var StimuliRange : Float;
+	public    var disableOnActivation : Bool;
+	public    var hasSimpleInteraction : Bool;
+	public    var hasSpiderbotInteraction : Bool;
+	public    var hasQuickHack : Bool;
+	public    var hasComputerInteraction : Bool;
+	public    var alternativeInteractionName : TweakDBID;
+	public    var alternativeSpiderbotInteractionName : TweakDBID;
+	public    var alternativeQuickHackName : TweakDBID;
+	public    var skillChecks : handle:EngDemoContainer;
+	public    var explosionDefinition : array:ExplosiveDeviceResourceDefinition;
+}

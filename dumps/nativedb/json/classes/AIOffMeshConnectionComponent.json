@@ -1,0 +1,1 @@
+{"a":"entIComponent","b":"AIOffMeshConnectionComponent","c":"OffMeshConnectionComponent","d":8,"e":[{"a":{"a":31,"c":{"a":16}},"b":"offMeshConnectionNodesRefs","c":128},{"a":{"b":"NavGenAgentSize"},"b":"agentSize","c":128}],"f":[{"a":"DisableForPlayer","d":4},{"a":"DisableOffMeshConnection","d":4},{"a":"EnableForPlayer","d":4},{"a":"EnableOffMeshConnection","d":4}]}

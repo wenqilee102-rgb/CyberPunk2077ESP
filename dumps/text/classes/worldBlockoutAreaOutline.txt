@@ -1,0 +1,9 @@
+import class worldBlockoutAreaOutline extends ISerializable
+{
+	var points : array:Uint32;
+	var edges : array:Uint32;
+}
+
+import class abstract ISerializable
+{
+}

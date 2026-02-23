@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameeventsVehicleMeleeCleaveEvent","c":"gameVehicleMeleeCleaveEvent","d":8,"e":[{"a":{"a":26,"c":{"b":"gamedamageAttackData"}},"b":"attackData","c":128},{"a":{"b":"Vector4"},"b":"hitPosition","c":128},{"a":{"b":"Vector4"},"b":"hitDirection","c":128},{"a":{"a":27,"c":{"b":"entIPlacedComponent"}},"b":"hitComponent","c":128}]}

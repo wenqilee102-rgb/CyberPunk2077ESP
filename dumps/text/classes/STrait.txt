@@ -1,0 +1,6 @@
+struct STrait
+{
+	public    var type : gamedataTraitType;
+	public    var unlocked : Bool;
+	public    var currLevel : Int32;
+}

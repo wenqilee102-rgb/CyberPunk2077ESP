@@ -1,0 +1,15 @@
+import class worldCompiledCrowdParkingSpaceNode extends worldNode
+{
+	var crowdCreationIndex : Uint32;
+	var parkingSpaceId : Uint32;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

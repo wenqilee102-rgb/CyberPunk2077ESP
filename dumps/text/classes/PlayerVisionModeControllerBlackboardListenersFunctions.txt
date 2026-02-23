@@ -1,0 +1,13 @@
+struct PlayerVisionModeControllerBlackboardListenersFunctions
+{
+	public    var kerenzikov : CName;
+	public    var restrictedScene : CName;
+	public    var dead : CName;
+	public    var takedown : CName;
+	public    var deviceTakeover : CName;
+	public    var braindanceFPP : CName;
+	public    var braindanceActive : CName;
+	public    var veryHardLanding : CName;
+	public    var isBriefingActive : CName;
+	public    var twintoneOverrideShown : CName;
+}

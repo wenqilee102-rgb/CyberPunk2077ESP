@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"CActionScriptProxy","d":12,"f":[{"a":"Bind","d":4,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"go","c":0}]},{"a":"GetStatus","c":{"b":"gameEActionStatus"},"d":4},{"a":"Launch","d":4},{"a":"Stop","d":4}]}

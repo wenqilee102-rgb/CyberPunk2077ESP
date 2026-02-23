@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"vehicleVehicleBumpEvent","c":"VehicleBumpEvent","d":24,"e":[{"a":{"a":10},"b":"impactVelocityChange","c":128},{"a":{"a":1},"b":"isInTraffic","c":128},{"a":{"a":27,"c":{"b":"vehicleBaseObject"}},"b":"hitVehicle","c":128},{"a":{"b":"Vector3"},"b":"hitNormal","c":128}]}

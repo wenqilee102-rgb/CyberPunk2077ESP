@@ -1,0 +1,20 @@
+class abstract AISubActionFailIfFriendlyFire_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFailIfFriendlyFire_Record); // AISubActionFailIfFriendlyFire_Record_Implementation::Activate;ScriptExecutionContextAISubActionFailIfFriendlyFire_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFailIfFriendlyFire_Record, duration : Float, interrupted : Bool); // AISubActionFailIfFriendlyFire_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionFailIfFriendlyFire_RecordFloatBool
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionFailIfFriendlyFire_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionFailIfFriendlyFire_Record_Implementation::Update;ScriptExecutionContextAISubActionFailIfFriendlyFire_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

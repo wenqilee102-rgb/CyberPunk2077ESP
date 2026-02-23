@@ -1,0 +1,23 @@
+import class AIbehaviorDistanceToTargetObjectConditionDefinition extends AIbehaviorDistanceToTargetConditionDefinition
+{
+}
+
+import class abstract AIbehaviorDistanceToTargetConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var target : handle:AIArgumentMapping;
+	var distance : handle:AIArgumentMapping;
+	var comparisonOperator : EComparisonType;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

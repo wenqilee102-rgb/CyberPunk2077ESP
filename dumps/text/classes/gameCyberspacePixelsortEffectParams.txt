@@ -1,0 +1,10 @@
+import struct gameCyberspacePixelsortEffectParams
+{
+	var fullscreen : Bool;
+	var vfx : Bool;
+	var initialDatamosh : Float;
+	var targetDatamosh : Float;
+	var initialIntensity : Float;
+	var targetIntensity : Float;
+	var timeBlend : Float;
+}

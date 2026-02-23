@@ -1,0 +1,23 @@
+import class worldPhysicalDestructionNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var forceLODLevel : Int32;
+	var forceAutoHideDistance : Float;
+	var destructionParams : physicsDestructionParams;
+	var destructionLevelData : array:physicsDestructionLevelData;
+	var audioMetadata : CName;
+	var navigationSetting : NavGenNavigationSetting;
+	var useMeshNavmeshSettings : Bool;
+	var systemsToNotifyFlags : Uint16;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

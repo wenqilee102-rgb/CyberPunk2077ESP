@@ -1,0 +1,20 @@
+import class audioShockwaveGlobalSettings extends audioAudioMetadata
+{
+	var explosionPropagationSpeed : Float;
+	var thumpPropagationSpeed : Float;
+	var electroshockPropagationSpeed : Float;
+	var revealPropagationSpeed : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

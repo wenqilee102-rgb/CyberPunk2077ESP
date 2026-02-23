@@ -1,0 +1,1 @@
+{"b":"VehicleActionsContext","d":0,"g":true,"e":[{"a":{"b":"entEntityID"},"b":"requestorID","c":128},{"a":{"b":"gamedeviceRequestType"},"b":"requestType","c":128},{"a":{"a":14},"b":"interactionLayerTag","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"processInitiatorObject","c":128},{"a":{"b":"gameinteractionsEInteractionEventType"},"b":"eventType","c":128}]}

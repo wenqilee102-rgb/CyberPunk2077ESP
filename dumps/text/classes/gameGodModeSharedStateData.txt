@@ -1,0 +1,5 @@
+import struct gameGodModeSharedStateData
+{
+	var entity : whandle:entEntity;
+	var flags : Int32;
+}

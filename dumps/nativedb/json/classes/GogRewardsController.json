@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"GogRewardsController","d":0,"e":[{"a":{"b":"inkWidgetReference"},"b":"containerWidget","c":128}],"f":[{"a":"UpdateRewardsList;array<GogRewardEntryData>","b":"UpdateRewardsList","d":48,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"GogRewardEntryData"}}},"b":"rewards","c":0}]}]}

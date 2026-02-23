@@ -1,0 +1,14 @@
+import class genRandomizerMarker extends worldIMarker
+{
+	var id : String;
+	var templateName : CName;
+	var probability : Float;
+}
+
+import class abstract worldIMarker extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,16 @@
+import class inkFullscreenCompositionResource extends CResource
+{
+	var compositionPresets : array:inkCompositionPreset;
+	var backgroundMenuTextureUHDRes : raRef:CBitmapTexture;
+	var backgroundMenuTextureFHDRes : raRef:CBitmapTexture;
+	var previewSettings : handle:inkCompositionPreviewSettings;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

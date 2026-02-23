@@ -1,0 +1,32 @@
+import class audioBulletImpactSettings extends audioEntitySettings
+{
+	var lowImpactSound : CName;
+	var medImpactSound : CName;
+	var hiImpactSound : CName;
+	var critImpactSound : CName;
+	var npcImpactSound : CName;
+	var mediumDamageDistance : Float;
+	var highDamageDistance : Float;
+}
+
+import class abstract audioEntitySettings extends audioAudioMetadata
+{
+	var commonSettings : audioCommonEntitySettings;
+	var scanningSettings : audioScanningSettings;
+	var auxiliaryMetadata : audioAuxiliaryMetadata;
+	var emitterDecoratorMetadata : CName;
+	var preferSoundComponentPosition : Bool;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

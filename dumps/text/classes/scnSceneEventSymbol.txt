@@ -1,0 +1,6 @@
+import struct scnSceneEventSymbol
+{
+	var editorEventId : Uint64;
+	var originNodeId : scnNodeId;
+	var sceneEventIds : array:scnSceneEventId;
+}

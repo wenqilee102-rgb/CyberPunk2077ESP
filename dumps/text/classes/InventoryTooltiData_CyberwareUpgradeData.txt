@@ -1,0 +1,27 @@
+class InventoryTooltiData_CyberwareUpgradeData extends IScriptable
+{
+	public    var upgradeQuality : gamedataQuality;
+	public    var isUpgradable : Bool;
+	public    var isRipperdoc : Bool;
+	public    var isUpgradeScreen : Bool;
+	public    var playerComponents : Int32;
+	public    var upgradeCost : CyberwareUpgradeCostData;
+
+	static function Make(item : whandle:UIInventoryItem, player : whandle:gameObject, optional isUpgradeScreen : Bool) : handle:InventoryTooltiData_CyberwareUpgradeData; // InventoryTooltiData_CyberwareUpgradeData::Make;UIInventoryItemGameObjectBool
+
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

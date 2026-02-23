@@ -1,0 +1,13 @@
+import class scnWorkspotData_ExternalWorkspotResource extends scnWorkspotData
+{
+	var workspotResource : rRef:workWorkspotResource;
+}
+
+import class abstract scnWorkspotData extends ISerializable
+{
+	var dataId : scnSceneWorkspotDataId;
+}
+
+import class abstract ISerializable
+{
+}

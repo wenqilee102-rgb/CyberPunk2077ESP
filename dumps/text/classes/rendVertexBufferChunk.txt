@@ -1,0 +1,5 @@
+import struct rendVertexBufferChunk
+{
+	var vertexLayout : GpuWrapApiVertexLayoutDesc;
+	var byteOffsets : static:5,Uint32;
+}

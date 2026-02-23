@@ -1,0 +1,37 @@
+import class gamedataAIHitCond_Record extends gamedataAIActionSubCondition_Record
+{
+	import function AttackTag() : CName; // AttackTag
+	import function CumulatedDamageThreshold() : Int32; // CumulatedDamageThreshold
+	import function HitDirection() : Int32; // HitDirection
+	import function HitTimeout() : Float; // HitTimeout
+	import function MaxHitSeverity() : Int32; // MaxHitSeverity
+	import function MinHitSeverity() : Int32; // MinHitSeverity
+	import function Target() : whandle:gamedataAIActionTarget_Record; // Target
+	import function TargetHandle() : handle:gamedataAIActionTarget_Record; // TargetHandle
+	import function TargetHitCount() : Int32; // TargetHitCount
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

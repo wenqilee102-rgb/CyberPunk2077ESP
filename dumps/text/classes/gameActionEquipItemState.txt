@@ -1,0 +1,18 @@
+import struct gameActionEquipItemState extends gameActionReplicatedState
+{
+	var slotId : TweakDBID;
+	var itemId : gameItemID;
+	var animFeatureNameRight : CName;
+	var animFeatureNameLeft : CName;
+	var duration : Float;
+	var spawnDelay : Float;
+}
+
+import struct gameActionReplicatedState
+{
+	var replicationId : Uint32;
+	var type : Uint16;
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var updateBucket : Uint8;
+}

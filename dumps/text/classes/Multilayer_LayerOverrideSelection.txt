@@ -1,0 +1,9 @@
+import struct Multilayer_LayerOverrideSelection
+{
+	var colorScale : CName;
+	var normalStrength : CName;
+	var roughLevelsIn : CName;
+	var roughLevelsOut : CName;
+	var metalLevelsIn : CName;
+	var metalLevelsOut : CName;
+}

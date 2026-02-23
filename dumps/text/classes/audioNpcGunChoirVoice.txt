@@ -1,0 +1,23 @@
+import class audioNpcGunChoirVoice extends audioAudioMetadata
+{
+	var fireSound : CName;
+	var burstFireSound : CName;
+	var chargedSound : CName;
+	var autoFireSound : CName;
+	var autoFireStop : CName;
+	var shutdown : CName;
+	var init : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

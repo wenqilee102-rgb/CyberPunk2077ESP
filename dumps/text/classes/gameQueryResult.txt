@@ -1,0 +1,4 @@
+import struct gameQueryResult
+{
+	var hitShapes : array:gameShapeData;
+}

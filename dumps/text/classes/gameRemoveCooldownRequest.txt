@@ -1,0 +1,4 @@
+import struct gameRemoveCooldownRequest
+{
+	var id : Uint32;
+}

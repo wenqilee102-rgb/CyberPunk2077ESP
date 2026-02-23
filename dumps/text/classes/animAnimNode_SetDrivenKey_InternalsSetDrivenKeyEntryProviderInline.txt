@@ -1,0 +1,12 @@
+import class animAnimNode_SetDrivenKey_InternalsSetDrivenKeyEntryProviderInline extends animAnimNode_SetDrivenKey_InternalsISetDrivenKeyEntryProvider
+{
+	var entries : array:animAnimNode_SetDrivenKey_InternalsEntry;
+}
+
+import class abstract animAnimNode_SetDrivenKey_InternalsISetDrivenKeyEntryProvider extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

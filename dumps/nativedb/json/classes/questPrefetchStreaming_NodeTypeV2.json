@@ -1,0 +1,1 @@
+{"a":"questIWorldDataManagerNodeType","b":"questPrefetchStreaming_NodeTypeV2","d":8,"e":[{"a":{"a":16},"b":"prefetchPositionRef","c":128},{"a":{"a":1},"b":"useStreamingOcclusion","c":128},{"a":{"a":10},"b":"maxDistance","c":128},{"a":{"a":1},"b":"forceEnable","c":128}]}

@@ -1,0 +1,5 @@
+enum ERevealPlayerType
+{
+	DONT_REVEAL = 0,
+	REVEAL_ONCE = 1
+}

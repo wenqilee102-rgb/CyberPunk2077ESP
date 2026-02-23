@@ -1,0 +1,13 @@
+struct PlayerVisionModeControllerBBIds
+{
+	public    var kerenzikov : handle:gamebbScriptDefinition;
+	public    var restrictedScene : handle:gamebbScriptDefinition;
+	public    var dead : handle:gamebbScriptDefinition;
+	public    var takedown : handle:gamebbScriptDefinition;
+	public    var deviceTakeover : handle:gamebbScriptDefinition;
+	public    var braindanceFPP : handle:gamebbScriptDefinition;
+	public    var braindanceActive : handle:gamebbScriptDefinition;
+	public    var veryHardLanding : handle:gamebbScriptDefinition;
+	public    var isBriefingActive : handle:gamebbScriptDefinition;
+	public    var twintoneOverrideShown : handle:gamebbScriptDefinition;
+}

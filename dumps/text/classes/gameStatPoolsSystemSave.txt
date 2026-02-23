@@ -1,0 +1,9 @@
+import class gameStatPoolsSystemSave extends ISerializable
+{
+	var mapping : array:gameStatsObjectID;
+	var statPools : array:gameStatPoolData;
+}
+
+import class abstract ISerializable
+{
+}

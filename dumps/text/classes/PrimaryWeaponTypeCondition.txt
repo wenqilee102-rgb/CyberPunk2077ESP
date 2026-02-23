@@ -1,0 +1,25 @@
+class PrimaryWeaponTypeCondition extends workIScriptedCondition
+{
+	protected var weaponType : WorkspotWeaponConditionEnum;
+
+	function CheckCondition(ent : handle:entEntity) : Bool; // CheckCondition;Entity
+}
+
+import class workIScriptedCondition extends IScriptable
+{
+	function CheckCondition(ent : handle:entEntity) : Bool; // CheckCondition;Entity
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

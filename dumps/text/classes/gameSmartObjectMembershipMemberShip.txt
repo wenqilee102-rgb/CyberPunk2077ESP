@@ -1,0 +1,5 @@
+import struct gameSmartObjectMembershipMemberShip
+{
+	var hash : Uint64;
+	var index : Uint32;
+}

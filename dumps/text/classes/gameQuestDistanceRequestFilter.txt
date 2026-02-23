@@ -1,0 +1,8 @@
+import struct gameQuestDistanceRequestFilter extends gameCustomRequestFilter
+{
+	var distanceSquared : Float;
+}
+
+import struct abstract gameCustomRequestFilter
+{
+}

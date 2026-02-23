@@ -1,0 +1,9 @@
+struct SVFXOperationData
+{
+	public    var vfxName : CName;
+	public    var vfxResource : gameFxResource;
+	public    var shouldPersist : Bool;
+	public    var size : Float;
+	public    var nodeRef : NodeRef;
+	public    var operationType : EEffectOperationType;
+}

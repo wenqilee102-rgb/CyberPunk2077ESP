@@ -1,0 +1,36 @@
+class RoyceHealthChangeListener extends gameCustomValueStatPoolsListener
+{
+	public    var owner : whandle:NPCPuppet;
+	private   var royceComponent : handle:RoyceComponent;
+	private   var weakspots : array:whandle:gameWeakspotObject;
+
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class gameCustomValueStatPoolsListener extends gameScriptStatPoolsListener
+{
+	import function SetValue(valuePerc : Float); // SetValue
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

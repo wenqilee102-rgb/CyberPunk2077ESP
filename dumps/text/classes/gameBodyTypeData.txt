@@ -1,0 +1,6 @@
+import struct gameBodyTypeData
+{
+	var rigHash : Uint64;
+	var animsetHashes : array:Uint64;
+	var overrides : array:gameAnimsetOverrideData;
+}

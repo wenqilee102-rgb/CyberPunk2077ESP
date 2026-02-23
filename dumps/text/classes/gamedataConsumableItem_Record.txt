@@ -1,0 +1,260 @@
+import class gamedataConsumableItem_Record extends gamedataItem_Record
+{
+	import function AtlasIcon() : CName; // AtlasIcon
+	import function CastPoint() : Float; // CastPoint
+	import function ConsumableBaseName() : whandle:gamedataConsumableBaseName_Record; // ConsumableBaseName
+	import function ConsumableBaseNameHandle() : handle:gamedataConsumableBaseName_Record; // ConsumableBaseNameHandle
+	import function ConsumableType() : whandle:gamedataConsumableType_Record; // ConsumableType
+	import function ConsumableTypeHandle() : handle:gamedataConsumableType_Record; // ConsumableTypeHandle
+	import function CycleDuration() : Float; // CycleDuration
+	import function InitBlendDuration() : Float; // InitBlendDuration
+	import function RemovePoint() : Float; // RemovePoint
+}
+
+import class gamedataItem_Record extends gamedataBaseObject_Record
+{
+	import function AnimFeatureName() : CName; // AnimFeatureName
+	import function AnimName() : CName; // AnimName
+	import function AnimSetResource() : redResourceReferenceScriptToken; // AnimSetResource
+	import function AnimationParameters() : array:CName; // AnimationParameters
+	import function AnimationParametersContains(item : CName) : Bool; // AnimationParametersContains
+	import function AppearanceName() : CName; // AppearanceName
+	import function AppearanceResourceName() : CName; // AppearanceResourceName
+	import function AppearanceSuffixes(out outList : array:whandle:gamedataItemsFactoryAppearanceSuffixBase_Record); // AppearanceSuffixes
+	import function AppearanceSuffixesContains(item : whandle:gamedataItemsFactoryAppearanceSuffixBase_Record) : Bool; // AppearanceSuffixesContains
+	import function AppearanceSuffixesOwnerOverride() : array:Bool; // AppearanceSuffixesOwnerOverride
+	import function AppearanceSuffixesOwnerOverrideContains(item : Bool) : Bool; // AppearanceSuffixesOwnerOverrideContains
+	import function AttachmentSlots(out outList : array:whandle:gamedataAttachmentSlot_Record); // AttachmentSlots
+	import function AttachmentSlotsContains(item : whandle:gamedataAttachmentSlot_Record) : Bool; // AttachmentSlotsContains
+	import function AudioName() : CName; // AudioName
+	import function AudioSwitchName() : CName; // AudioSwitchName
+	import function AudioSwitchValue() : CName; // AudioSwitchValue
+	import function Blueprint() : whandle:gamedataItemBlueprint_Record; // Blueprint
+	import function BlueprintHandle() : handle:gamedataItemBlueprint_Record; // BlueprintHandle
+	import function BuyPrice(out outList : array:whandle:gamedataStatModifier_Record); // BuyPrice
+	import function BuyPriceContains(item : whandle:gamedataStatModifier_Record) : Bool; // BuyPriceContains
+	import function CameraForward() : Vector3; // CameraForward
+	import function CameraUp() : Vector3; // CameraUp
+	import function CanDrop() : Bool; // CanDrop
+	import function Connections(out outList : array:whandle:gamedataItemPartConnection_Record); // Connections
+	import function ConnectionsContains(item : whandle:gamedataItemPartConnection_Record) : Bool; // ConnectionsContains
+	import function Counterpart() : whandle:gamedataItem_Record; // Counterpart
+	import function CounterpartHandle() : handle:gamedataItem_Record; // CounterpartHandle
+	import function CpoItemCategory() : whandle:gamedataCPOItemCategoryBase_Record; // CpoItemCategory
+	import function CpoItemCategoryHandle() : handle:gamedataCPOItemCategoryBase_Record; // CpoItemCategoryHandle
+	import function CraftingData() : whandle:gamedataCraftingPackage_Record; // CraftingData
+	import function CraftingDataHandle() : handle:gamedataCraftingPackage_Record; // CraftingDataHandle
+	import function Crosshair() : whandle:gamedataCrosshair_Record; // Crosshair
+	import function CrosshairHandle() : handle:gamedataCrosshair_Record; // CrosshairHandle
+	import function Deprecated() : Bool; // Deprecated
+	import function DisplayName() : CName; // DisplayName
+	import function DropObject() : CName; // DropObject
+	import function DropSettings() : whandle:gamedataItemDropSettings_Record; // DropSettings
+	import function DropSettingsHandle() : handle:gamedataItemDropSettings_Record; // DropSettingsHandle
+	import function EnableNpcRPGData() : Bool; // EnableNpcRPGData
+	import function EntityName() : CName; // EntityName
+	import function EquipArea() : whandle:gamedataEquipmentArea_Record; // EquipArea
+	import function EquipAreaHandle() : handle:gamedataEquipmentArea_Record; // EquipAreaHandle
+	import function EquipAreas(out outList : array:whandle:gamedataEquipmentArea_Record); // EquipAreas
+	import function EquipAreasContains(item : whandle:gamedataEquipmentArea_Record) : Bool; // EquipAreasContains
+	import function EquipPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // EquipPrereqs
+	import function EquipPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // EquipPrereqsContains
+	import function EquipSoundMetadata() : CName; // EquipSoundMetadata
+	import function Equivalent() : whandle:gamedataItem_Record; // Equivalent
+	import function EquivalentHandle() : handle:gamedataItem_Record; // EquivalentHandle
+	import function FriendlyName() : String; // FriendlyName
+	import function GameplayRestrictions(out outList : array:whandle:gamedataGameplayRestrictionStatusEffect_Record); // GameplayRestrictions
+	import function GameplayRestrictionsContains(item : whandle:gamedataGameplayRestrictionStatusEffect_Record) : Bool; // GameplayRestrictionsContains
+	import function GarmentOffset() : Int32; // GarmentOffset
+	import function GetAnimationParametersCount() : Int32; // GetAnimationParametersCount
+	import function GetAnimationParametersItem(index : Int32) : CName; // GetAnimationParametersItem
+	import function GetAppearanceSuffixesCount() : Int32; // GetAppearanceSuffixesCount
+	import function GetAppearanceSuffixesItem(index : Int32) : whandle:gamedataItemsFactoryAppearanceSuffixBase_Record; // GetAppearanceSuffixesItem
+	import function GetAppearanceSuffixesItemHandle(index : Int32) : handle:gamedataItemsFactoryAppearanceSuffixBase_Record; // GetAppearanceSuffixesItemHandle
+	import function GetAppearanceSuffixesOwnerOverrideCount() : Int32; // GetAppearanceSuffixesOwnerOverrideCount
+	import function GetAppearanceSuffixesOwnerOverrideItem(index : Int32) : Bool; // GetAppearanceSuffixesOwnerOverrideItem
+	import function GetAttachmentSlotsCount() : Int32; // GetAttachmentSlotsCount
+	import function GetAttachmentSlotsItem(index : Int32) : whandle:gamedataAttachmentSlot_Record; // GetAttachmentSlotsItem
+	import function GetAttachmentSlotsItemHandle(index : Int32) : handle:gamedataAttachmentSlot_Record; // GetAttachmentSlotsItemHandle
+	import function GetBuyPriceCount() : Int32; // GetBuyPriceCount
+	import function GetBuyPriceItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetBuyPriceItem
+	import function GetBuyPriceItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetBuyPriceItemHandle
+	import function GetConnectionsCount() : Int32; // GetConnectionsCount
+	import function GetConnectionsItem(index : Int32) : whandle:gamedataItemPartConnection_Record; // GetConnectionsItem
+	import function GetConnectionsItemHandle(index : Int32) : handle:gamedataItemPartConnection_Record; // GetConnectionsItemHandle
+	import function GetEquipAreasCount() : Int32; // GetEquipAreasCount
+	import function GetEquipAreasItem(index : Int32) : whandle:gamedataEquipmentArea_Record; // GetEquipAreasItem
+	import function GetEquipAreasItemHandle(index : Int32) : handle:gamedataEquipmentArea_Record; // GetEquipAreasItemHandle
+	import function GetEquipPrereqsCount() : Int32; // GetEquipPrereqsCount
+	import function GetEquipPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetEquipPrereqsItem
+	import function GetEquipPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetEquipPrereqsItemHandle
+	import function GetGameplayRestrictionsCount() : Int32; // GetGameplayRestrictionsCount
+	import function GetGameplayRestrictionsItem(index : Int32) : whandle:gamedataGameplayRestrictionStatusEffect_Record; // GetGameplayRestrictionsItem
+	import function GetGameplayRestrictionsItemHandle(index : Int32) : handle:gamedataGameplayRestrictionStatusEffect_Record; // GetGameplayRestrictionsItemHandle
+	import function GetHairSkinnedMeshComponentsCount() : Int32; // GetHairSkinnedMeshComponentsCount
+	import function GetHairSkinnedMeshComponentsItem(index : Int32) : CName; // GetHairSkinnedMeshComponentsItem
+	import function GetOnAttachCount() : Int32; // GetOnAttachCount
+	import function GetOnAttachItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetOnAttachItem
+	import function GetOnAttachItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetOnAttachItemHandle
+	import function GetOnEquipCount() : Int32; // GetOnEquipCount
+	import function GetOnEquipItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetOnEquipItem
+	import function GetOnEquipItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetOnEquipItemHandle
+	import function GetOnLootedCount() : Int32; // GetOnLootedCount
+	import function GetOnLootedItem(index : Int32) : whandle:gamedataGameplayLogicPackage_Record; // GetOnLootedItem
+	import function GetOnLootedItemHandle(index : Int32) : handle:gamedataGameplayLogicPackage_Record; // GetOnLootedItemHandle
+	import function GetPartsCount() : Int32; // GetPartsCount
+	import function GetPartsItem(index : Int32) : whandle:gamedataItem_Record; // GetPartsItem
+	import function GetPartsItemHandle(index : Int32) : handle:gamedataItem_Record; // GetPartsItemHandle
+	import function GetPlacementSlotsCount() : Int32; // GetPlacementSlotsCount
+	import function GetPlacementSlotsItem(index : Int32) : whandle:gamedataAttachmentSlot_Record; // GetPlacementSlotsItem
+	import function GetPlacementSlotsItemHandle(index : Int32) : handle:gamedataAttachmentSlot_Record; // GetPlacementSlotsItemHandle
+	import function GetPreviewBBoxOverrideCount() : Int32; // GetPreviewBBoxOverrideCount
+	import function GetPreviewBBoxOverrideItem(index : Int32) : Vector3; // GetPreviewBBoxOverrideItem
+	import function GetRequiredSlotsCount() : Int32; // GetRequiredSlotsCount
+	import function GetRequiredSlotsItem(index : Int32) : whandle:gamedataItemRequiredSlot_Record; // GetRequiredSlotsItem
+	import function GetRequiredSlotsItemHandle(index : Int32) : handle:gamedataItemRequiredSlot_Record; // GetRequiredSlotsItemHandle
+	import function GetSellPriceCount() : Int32; // GetSellPriceCount
+	import function GetSellPriceItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetSellPriceItem
+	import function GetSellPriceItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetSellPriceItemHandle
+	import function GetSlotPartListCount() : Int32; // GetSlotPartListCount
+	import function GetSlotPartListItem(index : Int32) : whandle:gamedataSlotItemPartListElement_Record; // GetSlotPartListItem
+	import function GetSlotPartListItemHandle(index : Int32) : handle:gamedataSlotItemPartListElement_Record; // GetSlotPartListItemHandle
+	import function GetSlotPartListPresetCount() : Int32; // GetSlotPartListPresetCount
+	import function GetSlotPartListPresetItem(index : Int32) : whandle:gamedataSlotItemPartPreset_Record; // GetSlotPartListPresetItem
+	import function GetSlotPartListPresetItemHandle(index : Int32) : handle:gamedataSlotItemPartPreset_Record; // GetSlotPartListPresetItemHandle
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function GetVariantsCount() : Int32; // GetVariantsCount
+	import function GetVariantsItem(index : Int32) : whandle:gamedataRandomVariant_Record; // GetVariantsItem
+	import function GetVariantsItemHandle(index : Int32) : handle:gamedataRandomVariant_Record; // GetVariantsItemHandle
+	import function GetVisualTagsCount() : Int32; // GetVisualTagsCount
+	import function GetVisualTagsItem(index : Int32) : CName; // GetVisualTagsItem
+	import function HairSkinnedMeshComponents() : array:CName; // HairSkinnedMeshComponents
+	import function HairSkinnedMeshComponentsContains(item : CName) : Bool; // HairSkinnedMeshComponentsContains
+	import function Icon() : whandle:gamedataUIIcon_Record; // Icon
+	import function IconHandle() : handle:gamedataUIIcon_Record; // IconHandle
+	import function IconPath() : String; // IconPath
+	import function IsCached() : Bool; // IsCached
+	import function IsCoreCW() : Bool; // IsCoreCW
+	import function IsCustomizable() : Bool; // IsCustomizable
+	import function IsGarment() : Bool; // IsGarment
+	import function IsPart() : Bool; // IsPart
+	import function IsSingleInstance() : Bool; // IsSingleInstance
+	import function ItemCategory() : whandle:gamedataItemCategory_Record; // ItemCategory
+	import function ItemCategoryHandle() : handle:gamedataItemCategory_Record; // ItemCategoryHandle
+	import function ItemSecondaryAction() : whandle:gamedataItemAction_Record; // ItemSecondaryAction
+	import function ItemSecondaryActionHandle() : handle:gamedataItemAction_Record; // ItemSecondaryActionHandle
+	import function ItemStructure() : whandle:gamedataItemStructure_Record; // ItemStructure
+	import function ItemStructureHandle() : handle:gamedataItemStructure_Record; // ItemStructureHandle
+	import function ItemType() : whandle:gamedataItemType_Record; // ItemType
+	import function ItemTypeHandle() : handle:gamedataItemType_Record; // ItemTypeHandle
+	import function LocalizedDescription() : CName; // LocalizedDescription
+	import function LocalizedName() : String; // LocalizedName
+	import function Mass() : Float; // Mass
+	import function MinigameInstance() : whandle:gamedataMinigame_Def_Record; // MinigameInstance
+	import function MinigameInstanceHandle() : handle:gamedataMinigame_Def_Record; // MinigameInstanceHandle
+	import function MovementPattern() : CName; // MovementPattern
+	import function MovementSound() : whandle:gamedataEquipmentMovementSound_Record; // MovementSound
+	import function MovementSoundHandle() : handle:gamedataEquipmentMovementSound_Record; // MovementSoundHandle
+	import function NextUpgradeItem() : whandle:gamedataItem_Record; // NextUpgradeItem
+	import function NextUpgradeItemHandle() : handle:gamedataItem_Record; // NextUpgradeItemHandle
+	import function NpcRPGData() : whandle:gamedataRPGDataPackage_Record; // NpcRPGData
+	import function NpcRPGDataHandle() : handle:gamedataRPGDataPackage_Record; // NpcRPGDataHandle
+	import function OnAttach(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // OnAttach
+	import function OnAttachContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // OnAttachContains
+	import function OnEquip(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // OnEquip
+	import function OnEquipContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // OnEquipContains
+	import function OnEquipStats() : whandle:gamedataStatsList_Record; // OnEquipStats
+	import function OnEquipStatsHandle() : handle:gamedataStatsList_Record; // OnEquipStatsHandle
+	import function OnLooted(out outList : array:whandle:gamedataGameplayLogicPackage_Record); // OnLooted
+	import function OnLootedContains(item : whandle:gamedataGameplayLogicPackage_Record) : Bool; // OnLootedContains
+	import function ParentAttachmentType() : whandle:gamedataParentAttachmentType_Record; // ParentAttachmentType
+	import function ParentAttachmentTypeHandle() : handle:gamedataParentAttachmentType_Record; // ParentAttachmentTypeHandle
+	import function Parts(out outList : array:whandle:gamedataItem_Record); // Parts
+	import function PartsContains(item : whandle:gamedataItem_Record) : Bool; // PartsContains
+	import function PlacementSlots(out outList : array:whandle:gamedataAttachmentSlot_Record); // PlacementSlots
+	import function PlacementSlotsContains(item : whandle:gamedataAttachmentSlot_Record) : Bool; // PlacementSlotsContains
+	import function PowerLevelDeterminedByParent() : Bool; // PowerLevelDeterminedByParent
+	import function PreviewBBoxOverride() : array:Vector3; // PreviewBBoxOverride
+	import function PreviewBBoxOverrideContains(item : Vector3) : Bool; // PreviewBBoxOverrideContains
+	import function Quality() : whandle:gamedataQuality_Record; // Quality
+	import function QualityHandle() : handle:gamedataQuality_Record; // QualityHandle
+	import function QualityRestrictedByParent() : Bool; // QualityRestrictedByParent
+	import function ReplicateWhenNotActive() : Bool; // ReplicateWhenNotActive
+	import function RequiredSlots(out outList : array:whandle:gamedataItemRequiredSlot_Record); // RequiredSlots
+	import function RequiredSlotsContains(item : whandle:gamedataItemRequiredSlot_Record) : Bool; // RequiredSlotsContains
+	import function SellPrice(out outList : array:whandle:gamedataStatModifier_Record); // SellPrice
+	import function SellPriceContains(item : whandle:gamedataStatModifier_Record) : Bool; // SellPriceContains
+	import function SideUpgradeItem() : whandle:gamedataItem_Record; // SideUpgradeItem
+	import function SideUpgradeItemHandle() : handle:gamedataItem_Record; // SideUpgradeItemHandle
+	import function SlotPartList(out outList : array:whandle:gamedataSlotItemPartListElement_Record); // SlotPartList
+	import function SlotPartListContains(item : whandle:gamedataSlotItemPartListElement_Record) : Bool; // SlotPartListContains
+	import function SlotPartListPreset(out outList : array:whandle:gamedataSlotItemPartPreset_Record); // SlotPartListPreset
+	import function SlotPartListPresetContains(item : whandle:gamedataSlotItemPartPreset_Record) : Bool; // SlotPartListPresetContains
+	import function StateMachineName() : CName; // StateMachineName
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+	import function UpgradeCostMult() : Float; // UpgradeCostMult
+	import function UseHeadgearGarmentAggregator() : Bool; // UseHeadgearGarmentAggregator
+	import function UseNewSpawnMethod() : Bool; // UseNewSpawnMethod
+	import function UsesVariants() : Bool; // UsesVariants
+	import function Variants(out outList : array:whandle:gamedataRandomVariant_Record); // Variants
+	import function VariantsContains(item : whandle:gamedataRandomVariant_Record) : Bool; // VariantsContains
+	import function VisualTags() : array:CName; // VisualTags
+	import function VisualTagsContains(item : CName) : Bool; // VisualTagsContains
+}
+
+import class gamedataBaseObject_Record extends gamedataTweakDBRecord
+{
+	import function Effectors(out outList : array:whandle:gamedataEffector_Record); // Effectors
+	import function EffectorsContains(item : whandle:gamedataEffector_Record) : Bool; // EffectorsContains
+	import function GetEffectorsCount() : Int32; // GetEffectorsCount
+	import function GetEffectorsItem(index : Int32) : whandle:gamedataEffector_Record; // GetEffectorsItem
+	import function GetEffectorsItemHandle(index : Int32) : handle:gamedataEffector_Record; // GetEffectorsItemHandle
+	import function GetObjectActionsCount() : Int32; // GetObjectActionsCount
+	import function GetObjectActionsItem(index : Int32) : whandle:gamedataObjectAction_Record; // GetObjectActionsItem
+	import function GetObjectActionsItemHandle(index : Int32) : handle:gamedataObjectAction_Record; // GetObjectActionsItemHandle
+	import function GetStatModifierGroupsCount() : Int32; // GetStatModifierGroupsCount
+	import function GetStatModifierGroupsItem(index : Int32) : whandle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItem
+	import function GetStatModifierGroupsItemHandle(index : Int32) : handle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItemHandle
+	import function GetStatModifiersCount() : Int32; // GetStatModifiersCount
+	import function GetStatModifiersItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetStatModifiersItem
+	import function GetStatModifiersItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetStatModifiersItemHandle
+	import function GetStatPoolsCount() : Int32; // GetStatPoolsCount
+	import function GetStatPoolsItem(index : Int32) : whandle:gamedataStatPool_Record; // GetStatPoolsItem
+	import function GetStatPoolsItemHandle(index : Int32) : handle:gamedataStatPool_Record; // GetStatPoolsItemHandle
+	import function GetWeakspotsCount() : Int32; // GetWeakspotsCount
+	import function GetWeakspotsItem(index : Int32) : whandle:gamedataWeakspot_Record; // GetWeakspotsItem
+	import function GetWeakspotsItemHandle(index : Int32) : handle:gamedataWeakspot_Record; // GetWeakspotsItemHandle
+	import function ObjectActions(out outList : array:whandle:gamedataObjectAction_Record); // ObjectActions
+	import function ObjectActionsContains(item : whandle:gamedataObjectAction_Record) : Bool; // ObjectActionsContains
+	import function Savable() : Bool; // Savable
+	import function StatModifierGroups(out outList : array:whandle:gamedataStatModifierGroup_Record); // StatModifierGroups
+	import function StatModifierGroupsContains(item : whandle:gamedataStatModifierGroup_Record) : Bool; // StatModifierGroupsContains
+	import function StatModifiers(out outList : array:whandle:gamedataStatModifier_Record); // StatModifiers
+	import function StatModifiersContains(item : whandle:gamedataStatModifier_Record) : Bool; // StatModifiersContains
+	import function StatPools(out outList : array:whandle:gamedataStatPool_Record); // StatPools
+	import function StatPoolsContains(item : whandle:gamedataStatPool_Record) : Bool; // StatPoolsContains
+	import function Weakspots(out outList : array:whandle:gamedataWeakspot_Record); // Weakspots
+	import function WeakspotsContains(item : whandle:gamedataWeakspot_Record) : Bool; // WeakspotsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

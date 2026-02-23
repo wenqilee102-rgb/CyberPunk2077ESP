@@ -1,0 +1,10 @@
+import struct entReplicatedInputSetterVector extends entReplicatedInputSetterBase
+{
+	var value : Vector4;
+}
+
+import struct entReplicatedInputSetterBase
+{
+	var name : CName;
+	var applyServerTime : netTime;
+}

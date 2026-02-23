@@ -1,0 +1,23 @@
+class DoorReplicatedState extends gameDeviceReplicatedState
+{
+	public    var isOpen : Bool;
+	public    var wasImmediateChange : Bool;
+}
+
+import class gameDeviceReplicatedState extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

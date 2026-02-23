@@ -1,0 +1,34 @@
+class TargetNPCRarityHitPrereqCondition extends BaseHitPrereqCondition
+{
+	public    var rarity : gamedataNPCRarity;
+
+	function Evaluate(hitEvent : handle:gameeventsHitEvent) : Bool; // Evaluate;gameHitEvent
+	function SetData(recordID : TweakDBID); // SetData;TweakDBID
+}
+
+class BaseHitPrereqCondition extends IScriptable
+{
+	public    var invert : Bool;
+	public    var onlyOncePerShot : Bool;
+	public    var lastAttackTime : Float;
+
+	function CheckOnlyOncePerShot(hitEvent : handle:gameeventsHitEvent) : Bool; // CheckOnlyOncePerShot;gameHitEvent
+	function Evaluate(hitEvent : handle:gameeventsHitEvent) : Bool; // Evaluate;gameHitEvent
+	function GetObjectToCheck(obj : CName, hitEvent : handle:gameeventsHitEvent) : whandle:gameObject; // GetObjectToCheck;CNamegameHitEvent
+	function OnMissTriggered(missEvent : handle:gameeventsMissEvent); // OnMissTriggered;gameMissEvent
+	function SetData(recordID : TweakDBID); // SetData;TweakDBID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

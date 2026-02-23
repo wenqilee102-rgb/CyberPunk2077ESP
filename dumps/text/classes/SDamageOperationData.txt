@@ -1,0 +1,6 @@
+struct SDamageOperationData
+{
+	public    var range : Float;
+	public    var offset : Vector4;
+	public    var damageType : TweakDBID;
+}

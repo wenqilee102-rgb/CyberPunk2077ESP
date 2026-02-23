@@ -1,0 +1,1 @@
+{"a":"GenericNotificationController","b":"BountyCollectedNotification","d":0,"e":[{"a":{"a":14},"b":"bountyCollectedUpdateAnimation","c":129}],"f":[{"a":"SetNotificationData","d":32,"e":[{"a":{"a":26,"c":{"b":"gameuiGenericNotificationViewData"}},"b":"notificationData","c":0}]}]}

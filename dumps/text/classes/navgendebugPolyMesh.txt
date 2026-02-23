@@ -1,0 +1,15 @@
+import class navgendebugPolyMesh extends ISerializable
+{
+	var vertices : array:Vector3;
+	var polygons : array:navgendebugCompactPolygon;
+	var bounds : Box;
+	var cellSize : Float;
+	var cellHeight : Float;
+	var borderSize : Int32;
+	var maxEdgeError : Float;
+	var maxVerticesPerPolygon : Int32;
+}
+
+import class abstract ISerializable
+{
+}

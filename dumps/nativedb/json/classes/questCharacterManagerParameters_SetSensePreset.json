@@ -1,0 +1,1 @@
+{"a":"questICharacterManagerParameters_NodeSubType","b":"questCharacterManagerParameters_SetSensePreset","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"puppetRef","c":128},{"a":{"a":15},"b":"presetID","c":128},{"a":{"a":1},"b":"main","c":128},{"a":{"a":1},"b":"resetToMain","c":128}]}

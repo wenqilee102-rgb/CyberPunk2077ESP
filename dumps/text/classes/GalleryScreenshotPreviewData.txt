@@ -1,0 +1,43 @@
+class GalleryScreenshotPreviewData extends inkGameNotificationData
+{
+	public    var screenshotIndex : Int32;
+	public    var screenshotWidth : Int32;
+	public    var screenshotHeight : Int32;
+	public    var Path : String;
+	public    var Hash : Uint32;
+	public    var creationDate : Uint64;
+	public    var isFavorite : Bool;
+	public    var canBeDeleted : Bool;
+	public    var screenshotItem : whandle:GalleryScreenshotItem;
+	public    var favoriteManager : whandle:GalleryFavoriteManager;
+	public    var galleryController : whandle:GalleryMenuGameController;
+}
+
+import class inkGameNotificationData extends inkUserData
+{
+	var notificationName : CName;
+	var requiredGameState : CName;
+	var isBlocking : Bool;
+	var useCursor : Bool;
+	var queueName : CName;
+	var introAnimation : CName;
+	var token : whandle:inkGameNotificationToken;
+}
+
+import class inkUserData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

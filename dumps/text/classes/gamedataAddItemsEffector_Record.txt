@@ -1,0 +1,42 @@
+import class gamedataAddItemsEffector_Record extends gamedataEffector_Record
+{
+	import function GetItemsToAddCount() : Int32; // GetItemsToAddCount
+	import function GetItemsToAddItem(index : Int32) : whandle:gamedataInventoryItem_Record; // GetItemsToAddItem
+	import function GetItemsToAddItemHandle(index : Int32) : handle:gamedataInventoryItem_Record; // GetItemsToAddItemHandle
+	import function ItemsToAdd(out outList : array:whandle:gamedataInventoryItem_Record); // ItemsToAdd
+	import function ItemsToAddContains(item : whandle:gamedataInventoryItem_Record) : Bool; // ItemsToAddContains
+}
+
+import class gamedataEffector_Record extends gamedataTweakDBRecord
+{
+	import function EffectorClassName() : CName; // EffectorClassName
+	import function GetStatModifierGroupsCount() : Int32; // GetStatModifierGroupsCount
+	import function GetStatModifierGroupsItem(index : Int32) : whandle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItem
+	import function GetStatModifierGroupsItemHandle(index : Int32) : handle:gamedataStatModifierGroup_Record; // GetStatModifierGroupsItemHandle
+	import function PrereqRecord() : whandle:gamedataIPrereq_Record; // PrereqRecord
+	import function PrereqRecordHandle() : handle:gamedataIPrereq_Record; // PrereqRecordHandle
+	import function RemoveAfterActionCall() : Bool; // RemoveAfterActionCall
+	import function RemoveAfterPrereqCheck() : Bool; // RemoveAfterPrereqCheck
+	import function StatModifierGroups(out outList : array:whandle:gamedataStatModifierGroup_Record); // StatModifierGroups
+	import function StatModifierGroupsContains(item : whandle:gamedataStatModifierGroup_Record) : Bool; // StatModifierGroupsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

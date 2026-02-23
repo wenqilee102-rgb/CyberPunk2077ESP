@@ -1,0 +1,1 @@
+{"a":"AIbehaviorActionTreeNodeDefinition","b":"AIbehaviorActionSlideNodeDefinition","d":12,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"duration","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"ignoreNavigation","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"rotateTowardsMovementDirection","c":128}]}

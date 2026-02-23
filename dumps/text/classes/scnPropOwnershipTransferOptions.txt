@@ -1,0 +1,6 @@
+import struct scnPropOwnershipTransferOptions
+{
+	var type : scnPropOwnershipTransferOptionsType;
+	var dettachFromSlot : Bool;
+	var removeFromInventory : Bool;
+}

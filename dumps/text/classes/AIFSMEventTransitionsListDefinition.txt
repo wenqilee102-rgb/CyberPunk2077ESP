@@ -1,0 +1,5 @@
+import struct AIFSMEventTransitionsListDefinition
+{
+	var eventName : CName;
+	var transitions : AIFSMTransitionListDefinition;
+}

@@ -1,0 +1,13 @@
+import class animUncompressedMotionExtraction extends animIMotionExtraction
+{
+	var frames : array:Vector4;
+	var duration : Float;
+}
+
+import class abstract animIMotionExtraction extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

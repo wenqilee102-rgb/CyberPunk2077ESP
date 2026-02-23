@@ -1,0 +1,1 @@
+{"b":"gameMuppetPhysicalState","d":8,"g":true,"e":[{"a":{"b":"Vector4"},"b":"position","c":128},{"a":{"a":10},"b":"worldYaw","c":128},{"a":{"b":"Vector4"},"b":"velocity","c":128},{"a":{"a":1},"b":"isOnGround","c":128},{"a":{"b":"Vector4"},"b":"groundNormal","c":128}]}

@@ -1,0 +1,1 @@
+{"b":"gameAttackInitContext","c":"AttackInitContext","d":8,"g":true,"e":[{"a":{"a":26,"c":{"b":"gamedataAttack_Record"}},"b":"record","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"instigator","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"source","c":128},{"a":{"a":27,"c":{"b":"gameweaponObject"}},"b":"weapon","c":128}]}

@@ -1,0 +1,6 @@
+import struct gameEffectOutputParameter_Bool
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+
+	import static function Set(ctx : gameEffectOutputParameter_Bool, bb : handle:gameIBlackboard, value : Bool); // Set
+}

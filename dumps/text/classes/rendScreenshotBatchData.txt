@@ -1,0 +1,8 @@
+import struct rendScreenshotBatchData
+{
+	var batchPositionsPath : AbsolutePathSerializable;
+	var delayTime : Float;
+	var numberOfCoordinatesToDump : Uint32;
+	var mergeScreenshots : Bool;
+	var streamingObserverMode : rendEStreamingObserverMode;
+}

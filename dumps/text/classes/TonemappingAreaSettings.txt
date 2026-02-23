@@ -1,0 +1,15 @@
+import class TonemappingAreaSettings extends IAreaSettings
+{
+	var mode : handle:ITonemappingMode;
+	var hdrMode : handle:ITonemappingMode;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

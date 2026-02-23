@@ -1,0 +1,7 @@
+import struct ShadowCascadeConfig
+{
+	var range : Float;
+	var filterSize : Float;
+	var blendRange : Float;
+	var biasOffset : Float;
+}

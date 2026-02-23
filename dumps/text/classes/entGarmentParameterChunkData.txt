@@ -1,0 +1,7 @@
+import struct entGarmentParameterChunkData
+{
+	var morphOffsetScales : array:Uint8;
+	var morphOffsetScalesHash : Uint64;
+	var visibleTriangleInds : array:Uint16;
+	var vertexTbn : array:Uint32;
+}

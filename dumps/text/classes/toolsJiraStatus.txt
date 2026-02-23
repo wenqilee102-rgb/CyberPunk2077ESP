@@ -1,0 +1,5 @@
+import struct toolsJiraStatus
+{
+	var name : String;
+	var id : String;
+}

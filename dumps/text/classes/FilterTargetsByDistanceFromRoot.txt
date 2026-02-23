@@ -1,0 +1,37 @@
+class FilterTargetsByDistanceFromRoot extends gameEffectObjectSingleFilter_Scripted
+{
+	private   var rootOffset_Z : Float;
+	private   var tollerance : Float;
+
+	function Process(ctx : gameEffectScriptContext, filterCtx : gameEffectSingleFilterScriptContext) : Bool; // Process;EffectScriptContextEffectSingleFilterScriptContext
+}
+
+import class gameEffectObjectSingleFilter_Scripted extends gameEffectObjectSingleFilter
+{
+}
+
+import class abstract gameEffectObjectSingleFilter extends gameEffectObjectFilter
+{
+}
+
+import class abstract gameEffectObjectFilter extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

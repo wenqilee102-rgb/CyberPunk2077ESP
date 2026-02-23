@@ -1,0 +1,21 @@
+import class ImageBasedFlareAreaSettings extends IAreaSettings
+{
+	var treshold : Float;
+	var dispersal : Float;
+	var haloWidth : Float;
+	var distortion : Float;
+	var curve : Float;
+	var tint : [8]Color;
+	var scale : curveData:Float;
+	var saturation : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,11 @@
+import struct gameinteractionsChoiceCaption
+{
+	var parts : array:handle:gameinteractionsChoiceCaptionPart;
+
+	import static function AddPartFromRecord(self : gameinteractionsChoiceCaption, record : whandle:gamedataChoiceCaptionPart_Record); // AddPartFromRecord
+	import static function AddPartFromRecordID(self : gameinteractionsChoiceCaption, recordId : gamedataTDBIDHelper); // AddPartFromRecordID
+	import static function AddScriptPart(self : gameinteractionsChoiceCaption, part : handle:gameinteractionsChoiceCaptionScriptPart); // AddScriptPart
+	import static function AddTagPart(self : gameinteractionsChoiceCaption, tag : String); // AddTagPart
+	import static function AddTextPart(self : gameinteractionsChoiceCaption, text : String); // AddTextPart
+	import static function Clear(self : gameinteractionsChoiceCaption); // Clear
+}

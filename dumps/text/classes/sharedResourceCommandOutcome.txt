@@ -1,0 +1,6 @@
+import struct sharedResourceCommandOutcome
+{
+	var result : sharedCommandResult;
+	var modifiedFiles : array:String;
+	var message : String;
+}

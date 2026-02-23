@@ -1,0 +1,31 @@
+class ActionNotifier extends IScriptable
+{
+	public    var external : Bool;
+	public    var internal : Bool;
+	public    var failed : Bool;
+
+	function IsAll() : Bool; // IsAll;
+	function IsExternalOnly() : Bool; // IsExternalOnly;
+	function IsFailed() : Bool; // IsFailed;
+	function IsInternalOnly() : Bool; // IsInternalOnly;
+	function IsNone() : Bool; // IsNone;
+	function SetAll(); // SetAll;
+	function SetExternalOnly(); // SetExternalOnly;
+	function SetFailed(); // SetFailed;
+	function SetInternalOnly(); // SetInternalOnly;
+	function SetNone(); // SetNone;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,15 @@
+import struct inkWidgetPath
+{
+	var names : array:CName;
+
+	import static function IsValid(self : inkWidgetPath) : Bool; // IsValid
+
+	static function Build(n0 : CName, n1 : CName, n2 : CName, n3 : CName, n4 : CName, n5 : CName, n6 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCNameCNameCNameCNameCNameCName
+	static function Build(n0 : CName, n1 : CName, n2 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCNameCName
+	static function Build(n0 : CName, n1 : CName, n2 : CName, n3 : CName, n4 : CName, n5 : CName, n6 : CName, n7 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCNameCNameCNameCNameCNameCNameCName
+	static function Build(n0 : CName, n1 : CName, n2 : CName, n3 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCNameCNameCName
+	static function Build(n0 : CName, n1 : CName, n2 : CName, n3 : CName, n4 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCNameCNameCNameCName
+	static function Build(n0 : CName) : inkWidgetPath; // inkWidgetPath::Build;CName
+	static function Build(n0 : CName, n1 : CName, n2 : CName, n3 : CName, n4 : CName, n5 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCNameCNameCNameCNameCName
+	static function Build(n0 : CName, n1 : CName) : inkWidgetPath; // inkWidgetPath::Build;CNameCName
+}

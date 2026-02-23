@@ -1,0 +1,22 @@
+struct ActivatedDeviceSetup
+{
+	public    var actionName : CName;
+	public    var disableOnActivation : Bool;
+	public    var glitchOnActivation : Bool;
+	public    var vfxResource : gameFxResource;
+	public    var activationVFXname : CName;
+	public    var hasSimpleInteraction : Bool;
+	public    var hasSpiderbotInteraction : Bool;
+	public    var hasQuickHack : Bool;
+	public    var hasQuickHackDistraction : Bool;
+	public    var alternativeInteractionName : TweakDBID;
+	public    var alternativeSpiderbotInteractionName : TweakDBID;
+	public    var alternativeQuickHackName : TweakDBID;
+	public    var activatedDeviceSkillChecks : handle:EngDemoContainer;
+	public    var attackType : TweakDBID;
+	public    var shouldActivateTrapOnAreaEnter : Bool;
+	public    var shouldRagdollOnAttack : Bool;
+	public    var deviceWidgetRecord : TweakDBID;
+	public    var thumbnailIconRecord : TweakDBID;
+	public    var actionWidgetRecord : TweakDBID;
+}

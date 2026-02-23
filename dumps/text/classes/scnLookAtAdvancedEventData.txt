@@ -1,0 +1,5 @@
+import struct scnLookAtAdvancedEventData
+{
+	var basic : scnAnimTargetBasicData;
+	var requests : array:animLookAtRequestForPart;
+}

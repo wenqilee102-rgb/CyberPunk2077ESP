@@ -1,0 +1,4 @@
+import struct rendDebugDrawerScriptProxy
+{
+	import static function TestDebugFilterMask(debugDrawer : script_ref:rendDebugDrawerScriptProxy, debugFilterName : String) : Bool; // TestDebugFilterMask
+}

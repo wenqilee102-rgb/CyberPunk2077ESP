@@ -1,0 +1,9 @@
+import class entIAttachment extends ISerializable
+{
+	var source : whandle:entIComponent;
+	var destination : whandle:entIComponent;
+}
+
+import class abstract ISerializable
+{
+}

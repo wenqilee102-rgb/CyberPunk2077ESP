@@ -1,0 +1,10 @@
+import class gameinteractionsCHotSpotGameLogicFilterDefinition extends ISerializable
+{
+	var hotSpotPrereq : handle:gameIPrereq;
+	var activatorPrereq : handle:gameIPrereq;
+	var scriptedConditionClass : handle:gameinteractionsInteractionScriptedCondition;
+}
+
+import class abstract ISerializable
+{
+}

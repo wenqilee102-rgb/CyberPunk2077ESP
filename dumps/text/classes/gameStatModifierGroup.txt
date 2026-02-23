@@ -1,0 +1,12 @@
+import struct gameStatModifierGroup
+{
+	var statModifierArray : array:gameStatModifierHandle;
+	var statModifiersLimit : Int32;
+	var statModifiersLimitModifier : TweakDBID;
+	var relatedModifierGroups : array:TweakDBID;
+	var statModifierGroupRecordID : TweakDBID;
+	var stackCount : Uint16;
+	var drawBasedOnStatType : Bool;
+	var saveBasedOnStatType : Bool;
+	var optimiseCombinedModifiers : Bool;
+}

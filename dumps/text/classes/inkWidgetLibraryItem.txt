@@ -1,0 +1,6 @@
+import struct inkWidgetLibraryItem
+{
+	var name : CName;
+	var package : SharedDataBuffer;
+	var packageData : DataBuffer;
+}

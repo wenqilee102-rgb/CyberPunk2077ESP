@@ -1,0 +1,9 @@
+struct TutorialStep
+{
+	public    var description : String;
+	public    var showPointer : Bool;
+	public    var pointerRotation : Float;
+	public    var pointerXPos : Float;
+	public    var pointerYPos : Float;
+	public    var allowedActions : array:CName;
+}

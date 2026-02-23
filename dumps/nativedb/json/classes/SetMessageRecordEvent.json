@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"SetMessageRecordEvent","d":0,"e":[{"a":{"a":15},"b":"messageRecordID","c":128},{"a":{"a":1},"b":"replaceTextWithCustomNumber","c":128},{"a":{"a":6},"b":"customNumber","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

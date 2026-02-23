@@ -1,0 +1,55 @@
+class TriggerAttackOnNearbyEnemiesEffector extends gameEffector
+{
+	public    var owner : whandle:gameObject;
+	public    var attackRecord : whandle:gamedataAttack_Record;
+	public    var targetHowManyEnemies : Int32;
+	public    var targetMaxDistance : Float;
+	public    var targetMinDistance : Float;
+	public    var ignoreCivilians : Bool;
+	public    var gameInstance : ScriptGameInstance;
+	public    var playVFXOnHitTargets : CName;
+	public    var statusEffectRecord : whandle:gamedataStatusEffect_Record;
+	public    var enemySlotTransform : CName;
+
+	function ActionOn(owner : handle:gameObject); // ActionOn;GameObject
+	function AddHitFlags(attackData : handle:gamedamageAttackData); // AddHitFlags;AttackData
+	function CanRaycastBetweenTwoPositions(spatialQueriesSystem : handle:gameSpatialQueriesSystem, hitPosition1 : Vector4, hitPosition2 : Vector4) : Bool; // CanRaycastBetweenTwoPositions;SpatialQueriesSystemVector4Vector4
+	function GetClosestEnemies(hitevent : handle:gameeventsHitEvent, threats : array:whandle:entEntity, out closestEnemies : array:handle:ScriptedPuppet); // GetClosestEnemies;gameHitEventarray<Entity>array<ScriptedPuppet>
+	function Initialize(record : TweakDBID, game : ScriptGameInstance, parentRecord : TweakDBID); // Initialize;TweakDBIDGameInstanceTweakDBID
+	function RepeatedAction(owner : handle:gameObject); // RepeatedAction;GameObject
+	function SendEffectAndDamageToEnemies(hitevent : handle:gameeventsHitEvent, closestEnemies : array:handle:ScriptedPuppet); // SendEffectAndDamageToEnemies;gameHitEventarray<ScriptedPuppet>
+	function SendHitEvent(hitevent : handle:gameeventsHitEvent, enemy : handle:ScriptedPuppet, enemyHitWorldPosition : Vector4); // SendHitEvent;gameHitEventScriptedPuppetVector4
+}
+
+import class gameEffector extends IScriptable
+{
+	import function GetInstigator() : handle:gameObject; // GetInstigator
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetParentRecord() : TweakDBID; // GetParentRecord
+	import function GetPrereqState() : handle:gamePrereqState; // GetPrereqState
+	import function GetProxyEntityID() : entEntityID; // GetProxyEntityID
+	import function GetRecord() : TweakDBID; // GetRecord
+
+	function ActionOff(owner : handle:gameObject); // ActionOff;GameObject
+	function ActionOn(owner : handle:gameObject); // ActionOn;GameObject
+	function GetApplicationTarget(effectorOwner : handle:gameObject, applicationTarget : CName, out targetID : entEntityID) : Bool; // GetApplicationTarget;GameObjectCNameEntityID
+	function GetApplicationTarget(effectorOwner : handle:gameObject, applicationTarget : CName, out target : whandle:gameObject) : Bool; // GetApplicationTarget;GameObjectCNameGameObject
+	function GetApplicationTargetAsStatsObjectID(effectorOwner : handle:gameObject, applicationTarget : CName, out targetID : gameStatsObjectID) : Bool; // GetApplicationTargetAsStatsObjectID;GameObjectCNameStatsObjectID
+	function Initialize(record : TweakDBID, game : ScriptGameInstance, parentRecord : TweakDBID); // Initialize;TweakDBIDGameInstanceTweakDBID
+	function RepeatedAction(owner : handle:gameObject); // RepeatedAction;GameObject
+	function Uninitialize(game : ScriptGameInstance); // Uninitialize;GameInstance
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

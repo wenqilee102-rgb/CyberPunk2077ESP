@@ -1,0 +1,5 @@
+struct ConditionGroupData
+{
+	public    var conditions : array:handle:GameplayConditionBase;
+	public    var logicOperator : ELogicOperator;
+}

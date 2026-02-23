@@ -1,0 +1,15 @@
+import struct FunctionalTestsGameEngine extends CGameEngine
+{
+}
+
+import struct CGameEngine extends BaseGameEngine
+{
+}
+
+import struct BaseGameEngine extends CBaseEngine
+{
+}
+
+import struct CBaseEngine
+{
+}

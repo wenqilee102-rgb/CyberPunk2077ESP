@@ -1,0 +1,4 @@
+import struct FeatureFlagsMask
+{
+	var flags : Uint64;
+}

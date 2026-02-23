@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorSavePatrolProgressTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"patrolProgress","c":128},{"a":{"a":1},"b":"saveOnDeactivation","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"savedState","c":128}]}

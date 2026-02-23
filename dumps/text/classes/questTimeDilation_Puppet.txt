@@ -1,0 +1,14 @@
+import class questTimeDilation_Puppet extends questTimeDilation_NodeTypeParam
+{
+	var operation : handle:questTimeDilation_Operation;
+	var globalTimeDilationOverride : questETimeDilationOverride;
+	var puppets : gameEntityReference;
+}
+
+import class abstract questTimeDilation_NodeTypeParam extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

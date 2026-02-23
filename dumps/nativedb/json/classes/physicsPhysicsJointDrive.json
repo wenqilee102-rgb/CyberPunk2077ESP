@@ -1,0 +1,1 @@
+{"b":"physicsPhysicsJointDrive","d":8,"g":true,"e":[{"a":{"a":10},"b":"forceLimit","c":128},{"a":{"a":1},"b":"isAcceleration","c":128},{"a":{"a":10},"b":"stiffness","c":128},{"a":{"a":10},"b":"damping","c":128}]}

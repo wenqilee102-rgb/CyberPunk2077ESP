@@ -1,0 +1,5 @@
+struct SItemTransaction
+{
+	public    var itemStack : gameSItemStack;
+	public    var pricePerItem : Int32;
+}

@@ -1,0 +1,24 @@
+import class scneventsVFXBraindanceEvent extends scnSceneEvent
+{
+	var performerId : scnPerformerId;
+	var nodeRef : NodeRef;
+	var effectEntry : scnEffectEntry;
+	var sequenceShift : Uint32;
+	var glitchEffectEntry : scnEffectEntry;
+	var glitchSequenceShift : Uint32;
+	var fullyRewindable : Bool;
+}
+
+import class abstract scnSceneEvent extends ISerializable
+{
+	var id : scnSceneEventId;
+	var type : scnEventType;
+	var startTime : Uint32;
+	var duration : Uint32;
+	var executionTagFlags : Uint8;
+	var scalingData : handle:scnIScalingData;
+}
+
+import class abstract ISerializable
+{
+}

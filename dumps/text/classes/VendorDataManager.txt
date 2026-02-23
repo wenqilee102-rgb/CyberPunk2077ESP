@@ -1,0 +1,85 @@
+class VendorDataManager extends IScriptable
+{
+	private   var VendorObject : whandle:gameObject;
+	private   var BuyingCart : array:VendorShoppingCartItem;
+	private   var SellingCart : array:VendorShoppingCartItem;
+	private   var VendorID : TweakDBID;
+	private   var VendingBlacklist : array:EVendorMode;
+	private   var TimeToCompletePurchase : Float;
+	protected var UIBBEquipment : handle:UI_EquipmentDef;
+	private   var InventoryBBID : handle:redCallbackObject;
+	private   var EquipmentBBID : handle:redCallbackObject;
+	private   var openTime : GameTime;
+
+	static function GetLocalPlayer(game : ScriptGameInstance) : whandle:PlayerPuppet; // VendorDataManager::GetLocalPlayer;GameInstance
+	static function GetLocalPlayerCurrencyAmount(player : whandle:gameObject) : Int32; // VendorDataManager::GetLocalPlayerCurrencyAmount;GameObject
+
+	function AddToBuyingCart(itemToAdd : whandle:gameItemData) : ECartOperationResult; // AddToBuyingCart;gameItemData
+	function AddToCart(itemToAdd : whandle:gameItemData, out cart : array:VendorShoppingCartItem); // AddToCart;gameItemDataarray<VendorShoppingCartItem>
+	function AddToSellingCart(itemToAdd : whandle:gameItemData) : ECartOperationResult; // AddToSellingCart;gameItemData
+	function ArePlayerQuestItemsHidden() : Bool; // ArePlayerQuestItemsHidden;
+	function BuyItemFromVendor(itemData : whandle:gameItemData, amount : Int32, optional requestId : Int32); // BuyItemFromVendor;gameItemDataInt32Int32
+	function BuybackItemFromVendor(itemData : whandle:gameItemData, amount : Int32, optional requestId : Int32); // BuybackItemFromVendor;gameItemDataInt32Int32
+	function CanAddToBuyingCart(itemToAdd : whandle:gameItemData) : ECartOperationResult; // CanAddToBuyingCart;gameItemData
+	function CanAddToSellingCart(itemToAdd : whandle:gameItemData) : ECartOperationResult; // CanAddToSellingCart;gameItemData
+	function CanPlayerSellItem(itemID : gameItemID) : Bool; // CanPlayerSellItem;ItemID
+	function Checkout(andEquip : Bool) : Bool; // Checkout;Bool
+	function ClearBuyingCart(); // ClearBuyingCart;
+	function ClearCart(); // ClearCart;
+	function ClearSellingCart(); // ClearSellingCart;
+	function GetAmountInBuiyngCart(item : whandle:gameItemData) : Int32; // GetAmountInBuiyngCart;gameItemData
+	function GetAmountInCart(itemToAdd : whandle:gameItemData, cart : script_ref:array:VendorShoppingCartItem) : Int32; // GetAmountInCart;gameItemDatascript_ref<array<VendorShoppingCartItem>>
+	function GetAmountInSellingCart(item : whandle:gameItemData) : Int32; // GetAmountInSellingCart;gameItemData
+	function GetBuyingPrice(itemID : gameItemID) : Int32; // GetBuyingPrice;ItemID
+	function GetItemDataFromBuyingCart(items : script_ref:array:whandle:gameItemData); // GetItemDataFromBuyingCart;script_ref<array<gameItemData>>
+	function GetItemDataFromCart(items : script_ref:array:whandle:gameItemData, cart : script_ref:array:VendorShoppingCartItem); // GetItemDataFromCart;script_ref<array<gameItemData>>script_ref<array<VendorShoppingCartItem>>
+	function GetItemDataFromSellingCart(items : script_ref:array:whandle:gameItemData); // GetItemDataFromSellingCart;script_ref<array<gameItemData>>
+	function GetItemIDsFromCart(itemIds : script_ref:array:gameItemID, cart : script_ref:array:VendorShoppingCartItem); // GetItemIDsFromCart;script_ref<array<ItemID>>script_ref<array<VendorShoppingCartItem>>
+	function GetItemsPlayerCanSell() : array:handle:gameItemData; // GetItemsPlayerCanSell;
+	function GetItemsPlayerCanSellFast(player : whandle:gameObject, optional excludeEquipped : Bool) : array:whandle:gameItemData; // GetItemsPlayerCanSellFast;GameObjectBool
+	function GetLocalPlayer() : whandle:PlayerPuppet; // GetLocalPlayer;
+	function GetLocalPlayerCurrencyAmount() : Int32; // GetLocalPlayerCurrencyAmount;
+	function GetOpenTime() : GameTime; // GetOpenTime;
+	function GetPriceInBuyingCart() : Int32; // GetPriceInBuyingCart;
+	function GetPriceInSellingCart() : Int32; // GetPriceInSellingCart;
+	function GetRipperDocItems() : array:handle:VendorGameItemData; // GetRipperDocItems;
+	function GetSellingPrice(itemID : gameItemID) : Int32; // GetSellingPrice;ItemID
+	function GetStorageItems() : array:handle:gameItemData; // GetStorageItems;
+	function GetTimeToCompletePurchase() : Float; // GetTimeToCompletePurchase;
+	function GetTotalAmountInCart(cart : script_ref:array:VendorShoppingCartItem) : Int32; // GetTotalAmountInCart;script_ref<array<VendorShoppingCartItem>>
+	function GetVendorDescription() : String; // GetVendorDescription;
+	function GetVendorID() : TweakDBID; // GetVendorID;
+	function GetVendorInstance() : whandle:gameObject; // GetVendorInstance;
+	function GetVendorInventoryItems() : array:handle:VendorGameItemData; // GetVendorInventoryItems;
+	function GetVendorName() : String; // GetVendorName;
+	function GetVendorRecord() : whandle:gamedataVendor_Record; // GetVendorRecord;
+	function GetVendorSoldItems() : handle:SoldItemsCache; // GetVendorSoldItems;
+	function Initialize(owner : whandle:gameObject, entityID : entEntityID); // Initialize;GameObjectEntityID
+	function Initialize(vendor : whandle:gameObject, vendingTerminalSetup : script_ref:VendingTerminalSetup); // Initialize;GameObjectscript_ref<VendingTerminalSetup>
+	function NumItemsInAllCarts() : Int32; // NumItemsInAllCarts;
+	function NumItemsInBuyingCart() : Int32; // NumItemsInBuyingCart;
+	function NumItemsInSellingCart() : Int32; // NumItemsInSellingCart;
+	function ProcessTooltipsData(vendorMode : EVendorMode, tooltipsData : script_ref:array:handle:ATooltipData); // ProcessTooltipsData;EVendorModescript_ref<array<ATooltipData>>
+	function RemoveFromBuyingCart(itemToRemove : whandle:gameItemData) : ECartOperationResult; // RemoveFromBuyingCart;gameItemData
+	function RemoveFromCart(itemToAdd : whandle:gameItemData, out cart : array:VendorShoppingCartItem) : Bool; // RemoveFromCart;gameItemDataarray<VendorShoppingCartItem>
+	function RemoveFromSellingCart(itemToRemove : whandle:gameItemData) : ECartOperationResult; // RemoveFromSellingCart;gameItemData
+	function SellItemToVendor(itemData : whandle:gameItemData, amount : Int32, optional requestId : Int32); // SellItemToVendor;gameItemDataInt32Int32
+	function SellItemsToVendor(itemsData : script_ref:array:whandle:gameItemData, amounts : script_ref:array:Int32, optional requestId : Int32); // SellItemsToVendor;script_ref<array<gameItemData>>script_ref<array<Int32>>Int32
+	function TotalNumItemsInAllCarts() : Int32; // TotalNumItemsInAllCarts;
+	function TransferItem(source : whandle:gameObject, target : whandle:gameObject, itemData : whandle:gameItemData, amount : Int32); // TransferItem;GameObjectGameObjectgameItemDataInt32
+	function UpdateOpenTime(gameInstance : ScriptGameInstance); // UpdateOpenTime;GameInstance
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

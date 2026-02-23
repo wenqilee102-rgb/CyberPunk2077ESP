@@ -1,0 +1,23 @@
+class RipperdocInventoryItemData extends IScriptable
+{
+	public    var InventoryItem : gameInventoryItemData;
+	public    var IsVendor : Bool;
+	public    var IsBuyback : Bool;
+	public    var IsUpgraded : Bool;
+	public    var IsEnoughMoney : Bool;
+	public    var Delay : Float;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

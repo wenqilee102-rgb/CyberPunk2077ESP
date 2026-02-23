@@ -1,0 +1,6 @@
+import struct MipMapGenParams
+{
+	var applyToksvig_ShouldInvChannel : Bool;
+	var applyToksvig_Channel : Uint8;
+	var applyToksvig_sourceNormalMap : raRef:CBitmapTexture;
+}

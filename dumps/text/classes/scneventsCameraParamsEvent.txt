@@ -1,0 +1,31 @@
+import class scneventsCameraParamsEvent extends scnSceneEvent
+{
+	var cameraRef : NodeRef;
+	var fovValue : Float;
+	var fovWeigh : Float;
+	var dofIntensity : Float;
+	var dofNearBlur : Float;
+	var dofNearFocus : Float;
+	var dofFarBlur : Float;
+	var dofFarFocus : Float;
+	var useNearPlane : Bool;
+	var useFarPlane : Bool;
+	var isPlayerCamera : Bool;
+	var cameraOverrideSettings : scneventsCameraOverrideSettings;
+	var targetActor : scnPerformerId;
+	var targetSlot : CName;
+}
+
+import class abstract scnSceneEvent extends ISerializable
+{
+	var id : scnSceneEventId;
+	var type : scnEventType;
+	var startTime : Uint32;
+	var duration : Uint32;
+	var executionTagFlags : Uint8;
+	var scalingData : handle:scnIScalingData;
+}
+
+import class abstract ISerializable
+{
+}

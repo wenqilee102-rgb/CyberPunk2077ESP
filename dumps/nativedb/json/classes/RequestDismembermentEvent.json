@@ -1,0 +1,1 @@
+{"a":"AIAIEvent","b":"RequestDismembermentEvent","d":0,"e":[{"a":{"b":"gameDismBodyPart"},"b":"bodyPart","c":128},{"a":{"b":"gameDismWoundType"},"b":"dismembermentType","c":128},{"a":{"b":"Vector4"},"b":"hitPosition","c":128},{"a":{"a":1},"b":"isCritical","c":128}]}

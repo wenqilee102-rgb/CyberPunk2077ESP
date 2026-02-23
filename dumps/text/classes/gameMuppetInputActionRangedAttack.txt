@@ -1,0 +1,8 @@
+import struct gameMuppetInputActionRangedAttack extends gameIMuppetInputAction
+{
+	var actionType : gameMuppetInputActionType;
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

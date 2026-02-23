@@ -1,0 +1,12 @@
+import class gameObjectSpawnParametersList extends gameObjectSpawnParameter
+{
+	var parameterList : array:handle:gameObjectSpawnParameter;
+}
+
+import class abstract gameObjectSpawnParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import struct grsHeistPlayerGameInfo
+{
+	var peerID : netPeerID;
+	var isInGame : Bool;
+	var isReady : Bool;
+	var isRespawning : Bool;
+	var isDead : Bool;
+	var spawnTime : netTime;
+	var killCount : Uint32;
+	var deathCount : Uint32;
+	var characterRecord : String;
+}

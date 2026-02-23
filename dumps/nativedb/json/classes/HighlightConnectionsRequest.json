@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"HighlightConnectionsRequest","d":0,"e":[{"a":{"a":1},"b":"shouldHighlight","c":128},{"a":{"a":1},"b":"isTriggeredByMasterDevice","c":128},{"a":{"a":31,"c":{"a":16}},"b":"highlightTargets","c":128},{"a":{"b":"entEntityID"},"b":"requestingDevice","c":128}]}

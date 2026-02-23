@@ -1,0 +1,5 @@
+import struct questPlayRazerAnimation_NodeTypeParams
+{
+	var animationName : CName;
+	var loop : Bool;
+}

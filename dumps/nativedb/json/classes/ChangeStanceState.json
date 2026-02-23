@@ -1,0 +1,1 @@
+{"a":"ChangeStanceStateAbstract","b":"ChangeStanceState","d":0,"e":[{"a":{"b":"gamedataNPCStanceState"},"b":"newState","c":128}],"f":[{"a":"GetDesiredStanceState;ScriptExecutionContext","b":"GetDesiredStanceState","c":{"b":"gamedataNPCStanceState"},"d":33,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

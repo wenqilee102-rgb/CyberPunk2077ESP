@@ -1,0 +1,6 @@
+import struct animAnimDatabaseCollectionEntry
+{
+	var name : CName;
+	var animDatabase : rRef:C2dArray;
+	var overrideAnimDatabase : rRef:animGenericAnimDatabase;
+}

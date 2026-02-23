@@ -1,0 +1,5 @@
+import struct scnEffectInstance
+{
+	var effectInstanceId : scnEffectInstanceId;
+	var compiledEffect : worldCompiledEffectInfo;
+}

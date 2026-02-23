@@ -1,0 +1,13 @@
+import class AIbehaviorJoinFollowerSquadWithTargetDefinition extends AIbehaviorTaskDefinition
+{
+	var follower : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

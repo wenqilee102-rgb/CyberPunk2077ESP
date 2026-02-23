@@ -1,0 +1,51 @@
+import class inkGameSettingsResource extends CResource
+{
+	var compositionResource : rRef:inkFullscreenCompositionResource;
+	var permanentTextureAtlases : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesPC : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesDurango : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesOrbis : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesProspero : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesStadiaSwitch : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesStadia : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesStadiaDurango : array:raRef:inkTextureAtlas;
+	var permanentTextureAtlasesStadiaOrbis : array:raRef:inkTextureAtlas;
+	var themes : array:inkStyleThemeDescriptor;
+	var layersResource : rRef:inkLayersResource;
+	var iconReferenceFallbackTextureAtlas : raRef:inkTextureAtlas;
+	var initLoadingScreenLogoLoopVideo : raRef:Bink;
+	var npcNameplateResource : raRef:inkWidgetLibraryResource;
+	var defaultShapeCollectionResource : rRef:inkShapeCollectionResource;
+	var globalTVBinkLengthDataResource : raRef:JsonResource;
+	var worldMapFloorplanWidgetResource : raRef:inkWidgetLibraryResource;
+	var gpsAugmentedRealitySignEntity : raRef:entEntityTemplate;
+	var gpsAugmentedRealityWidgetTurnLeft : raRef:inkWidgetLibraryResource;
+	var gpsAugmentedRealityWidgetTurnRight : raRef:inkWidgetLibraryResource;
+	var gpsAugmentedRealityWidgetTurnBack : raRef:inkWidgetLibraryResource;
+	var malePresetResource : raRef:CResource;
+	var femalePresetResource : raRef:CResource;
+	var fallbackHeadCustomizationFpp : raRef:CResource;
+	var fallbackHeadCustomizationTpp : raRef:CResource;
+	var fallbackHeadCustomizationTppFaceRig : raRef:CResource;
+	var fallbackBodyCustomization : raRef:CResource;
+	var fallbackArmsCustomization : raRef:CResource;
+	var vsetSceneResource : raRef:CResource;
+	var keyboardIconsAtlas : raRef:inkTextureAtlas;
+	var steamIconsAtlas : raRef:inkTextureAtlas;
+	var durangoIconsAtlas : raRef:inkTextureAtlas;
+	var orbisIconsAtlas : raRef:inkTextureAtlas;
+	var prosperoIconsAtlas : raRef:inkTextureAtlas;
+	var nintendoSwitchIconsAtlas : raRef:inkTextureAtlas;
+	var stadiaIconsAtlas : raRef:inkTextureAtlas;
+	var stadiaDurangoIconsAtlas : raRef:inkTextureAtlas;
+	var stadiaOrbisIconsAtlas : raRef:inkTextureAtlas;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import class animAnimNodeSourceChannel_WeightedQsTransform extends ISerializable
+{
+	var channel : handle:animIAnimNodeSourceChannel_QsTransform;
+	var weight : Float;
+}
+
+import class abstract ISerializable
+{
+}

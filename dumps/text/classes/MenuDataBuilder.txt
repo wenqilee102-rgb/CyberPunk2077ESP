@@ -1,0 +1,31 @@
+class MenuDataBuilder extends IScriptable
+{
+	public    var data : array:MenuData;
+
+	static function Make() : handle:MenuDataBuilder; // MenuDataBuilder::Make;
+
+	function Add(identifier : Int32, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:MenuDataBuilder; // Add;Int32CNameCNameCNameIScriptable
+	function Add(data : MenuData, identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, optional userData : handle:IScriptable, optional disabled : Bool) : handle:MenuDataBuilder; // Add;MenuDataHubMenuItemsHubMenuItemsCNameCNameIScriptableBool
+	function Add(identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, labelKey : String, optional userData : handle:IScriptable, optional disabled : Bool) : handle:MenuDataBuilder; // Add;HubMenuItemsHubMenuItemsCNameCNameStringIScriptableBool
+	function Add(identifier : HubMenuItems, parentIdentifier : HubMenuItems, fullscreenName : CName, icon : CName, labelName : CName, optional userData : handle:IScriptable, optional disabled : Bool) : handle:MenuDataBuilder; // Add;HubMenuItemsHubMenuItemsCNameCNameCNameIScriptableBool
+	function AddIf(condition : Bool, identifier : Int32, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable) : handle:MenuDataBuilder; // AddIf;BoolInt32CNameCNameCNameIScriptable
+	function AddWithSubmenu(identifier : Int32, fullscreenName : CName, icon : CName, labelKey : CName, optional userData : handle:IScriptable, optional disabled : Bool) : handle:SubmenuDataBuilder; // AddWithSubmenu;Int32CNameCNameCNameIScriptableBool
+	function Get() : array:MenuData; // Get;
+	function GetData(identifier : Int32) : MenuData; // GetData;Int32
+	function GetData(fullscreenName : CName) : MenuData; // GetData;CName
+	function GetMainMenus() : array:MenuData; // GetMainMenus;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

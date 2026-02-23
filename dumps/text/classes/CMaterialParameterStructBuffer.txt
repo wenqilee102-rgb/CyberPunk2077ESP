@@ -1,0 +1,13 @@
+import class CMaterialParameterStructBuffer extends CMaterialParameter
+{
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+import class questQuestsContentSystem extends questIQuestsContentSystem
+{
+	import function IsTokensActivationBlocked() : Bool; // IsTokensActivationBlocked
+	import function IsTokensActivationBlockedBySource(source : CName) : Bool; // IsTokensActivationBlockedBySource
+	import function RegisterLockListener(listener : handle:questScriptQuestContentLockListener) : Bool; // RegisterLockListener
+	import function UnregisterLockListener(listener : handle:questScriptQuestContentLockListener) : Bool; // UnregisterLockListener
+}
+
+import class abstract questIQuestsContentSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

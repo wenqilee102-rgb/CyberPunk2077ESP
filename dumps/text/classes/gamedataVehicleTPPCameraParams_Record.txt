@@ -1,0 +1,64 @@
+import class gamedataVehicleTPPCameraParams_Record extends gamedataTweakDBRecord
+{
+	import function AirFlowDistortion() : Bool; // AirFlowDistortion
+	import function AutoCenterMaxSpeedThreshold() : Float; // AutoCenterMaxSpeedThreshold
+	import function AutoCenterSpeed() : Float; // AutoCenterSpeed
+	import function CameraBoomExtensionSpeed() : Float; // CameraBoomExtensionSpeed
+	import function CameraMaxPitch() : Float; // CameraMaxPitch
+	import function CameraMinPitch() : Float; // CameraMinPitch
+	import function CameraSphereRadius() : Float; // CameraSphereRadius
+	import function CollisionDetection() : Bool; // CollisionDetection
+	import function DrivingDirectionCompensation() : Bool; // DrivingDirectionCompensation
+	import function DrivingDirectionCompensationAngle() : Float; // DrivingDirectionCompensationAngle
+	import function DrivingDirectionCompensationAngleSmooth() : Float; // DrivingDirectionCompensationAngleSmooth
+	import function DrivingDirectionCompensationAngularVelocityMin() : Float; // DrivingDirectionCompensationAngularVelocityMin
+	import function DrivingDirectionCompensationSpeedCoef() : Float; // DrivingDirectionCompensationSpeedCoef
+	import function DrivingDirectionCompensationSpeedMax() : Float; // DrivingDirectionCompensationSpeedMax
+	import function DrivingDirectionCompensationSpeedMin() : Float; // DrivingDirectionCompensationSpeedMin
+	import function ElasticBoomAcceleration() : Bool; // ElasticBoomAcceleration
+	import function ElasticBoomAccelerationExpansionLength() : Float; // ElasticBoomAccelerationExpansionLength
+	import function ElasticBoomForwardAccelerationCoef() : Float; // ElasticBoomForwardAccelerationCoef
+	import function ElasticBoomSpeedExpansionLength() : Float; // ElasticBoomSpeedExpansionLength
+	import function ElasticBoomSpeedExpansionSpeedMax() : Float; // ElasticBoomSpeedExpansionSpeedMax
+	import function ElasticBoomSpeedExpansionSpeedMin() : Float; // ElasticBoomSpeedExpansionSpeedMin
+	import function ElasticBoomVelocity() : Bool; // ElasticBoomVelocity
+	import function Fov() : Float; // Fov
+	import function HeadLookAtCenterYawThreshold() : Float; // HeadLookAtCenterYawThreshold
+	import function HeadLookAtMaxPitchDown() : Float; // HeadLookAtMaxPitchDown
+	import function HeadLookAtMaxPitchUp() : Float; // HeadLookAtMaxPitchUp
+	import function HeadLookAtMaxYaw() : Float; // HeadLookAtMaxYaw
+	import function HeadLookAtRotationSpeed() : Float; // HeadLookAtRotationSpeed
+	import function InverseCameraInputBreakThreshold() : Float; // InverseCameraInputBreakThreshold
+	import function LockedCamera() : Bool; // LockedCamera
+	import function SlopeAdjustement() : Bool; // SlopeAdjustement
+	import function SlopeCorrectionInAirDampFactor() : Float; // SlopeCorrectionInAirDampFactor
+	import function SlopeCorrectionInAirFallCoef() : Float; // SlopeCorrectionInAirFallCoef
+	import function SlopeCorrectionInAirPitchMax() : Float; // SlopeCorrectionInAirPitchMax
+	import function SlopeCorrectionInAirPitchMin() : Float; // SlopeCorrectionInAirPitchMin
+	import function SlopeCorrectionInAirRaiseCoef() : Float; // SlopeCorrectionInAirRaiseCoef
+	import function SlopeCorrectionInAirSpeedMax() : Float; // SlopeCorrectionInAirSpeedMax
+	import function SlopeCorrectionInAirStrength() : Float; // SlopeCorrectionInAirStrength
+	import function SlopeCorrectionOnGroundPitchMax() : Float; // SlopeCorrectionOnGroundPitchMax
+	import function SlopeCorrectionOnGroundPitchMin() : Float; // SlopeCorrectionOnGroundPitchMin
+	import function SlopeCorrectionOnGroundStrength() : Float; // SlopeCorrectionOnGroundStrength
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

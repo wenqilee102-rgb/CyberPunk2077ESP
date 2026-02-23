@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataMappinUIPreventionSettings_Record","c":"MappinUIPreventionSettings_Record","d":24,"f":[{"a":"PreventionDetectionThresholdForVisionCone","c":{"a":10},"d":4},{"a":"PreventionMappinMaxDistance","c":{"a":10},"d":4},{"a":"PreventionVehicleMappinMaxDistance","c":{"a":10},"d":4}]}

@@ -1,0 +1,42 @@
+import class gamedataVehicleWater_Record extends gamedataTweakDBRecord
+{
+	import function AngularDampingCoef() : Float; // AngularDampingCoef
+	import function BuoyancyCoef() : Float; // BuoyancyCoef
+	import function DepthThresholdForFallFx() : Float; // DepthThresholdForFallFx
+	import function DisableAirControl() : Bool; // DisableAirControl
+	import function DisableEngine() : Bool; // DisableEngine
+	import function ImpulseOverhangDistance() : Float; // ImpulseOverhangDistance
+	import function ImpulseRadius() : Float; // ImpulseRadius
+	import function ImpulseStrength() : Float; // ImpulseStrength
+	import function ImpulseStrengthFallMultiplierMax() : Float; // ImpulseStrengthFallMultiplierMax
+	import function ImpulseStrengthFallMultiplierMin() : Float; // ImpulseStrengthFallMultiplierMin
+	import function LinearDampingCoef() : Float; // LinearDampingCoef
+	import function MaxVehicleSpeed() : Float; // MaxVehicleSpeed
+	import function MinDistanceBetweenFx() : Float; // MinDistanceBetweenFx
+	import function MinDistanceBetweenImpulses() : Float; // MinDistanceBetweenImpulses
+	import function MinSpeedToApplyImpulses() : Float; // MinSpeedToApplyImpulses
+	import function ParamVehicleSpeed() : CName; // ParamVehicleSpeed
+	import function SubmergedThreshold() : Float; // SubmergedThreshold
+	import function VerticalVelocityThresholdForFallFx() : Float; // VerticalVelocityThresholdForFallFx
+	import function Vfx_impact_water() : redResourceReferenceScriptToken; // Vfx_impact_water
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

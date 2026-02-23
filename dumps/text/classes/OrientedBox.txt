@@ -1,0 +1,6 @@
+import struct OrientedBox
+{
+	var position : Vector4;
+	var edge 1 : Vector4;
+	var edge 2 : Vector4;
+}

@@ -1,0 +1,34 @@
+class MessengerUtils extends IScriptable
+{
+	static function AddContactData(journal : handle:gameJournalManager, contactDataArray : script_ref:array:handle:IScriptable, contactEntry : handle:gameJournalContact, trackedEntriesHashList : script_ref:array:Int32, includeUnknown : Bool, skipEmpty : Bool, includeWithNoUnread : Bool, includeWithNoReplies : Bool, optional activeDataSync : whandle:MessengerContactSyncData); // MessengerUtils::AddContactData;JournalManagerscript_ref<array<IScriptable>>JournalContactscript_ref<array<Int32>>BoolBoolBoolBoolMessengerContactSyncData
+	static function ContainsQuestRelatedMessage(journal : handle:gameJournalManager, trackedEntriesHashList : script_ref:array:Int32, messagesReceived : script_ref:array:whandle:gameJournalEntry) : Bool; // MessengerUtils::ContainsQuestRelatedMessage;JournalManagerscript_ref<array<Int32>>script_ref<array<JournalEntry>>
+	static function FetchTrackedQuestCodexLinks(journal : handle:gameJournalManager, context : gameJournalRequestContext) : array:Int32; // MessengerUtils::FetchTrackedQuestCodexLinks;JournalManagerJournalRequestContext
+	static function FindContactHash(journal : handle:gameJournalManager, entry : whandle:gameJournalEntry) : Int32; // MessengerUtils::FindContactHash;JournalManagerJournalEntry
+	static function FindConversationHash(journal : handle:gameJournalManager, entry : whandle:gameJournalEntry) : Int32; // MessengerUtils::FindConversationHash;JournalManagerJournalEntry
+	static function GetCallableAndNonEmptyContacts(journal : handle:gameJournalManager) : array:handle:IScriptable; // MessengerUtils::GetCallableAndNonEmptyContacts;JournalManager
+	static function GetContactMessageData(out contactData : handle:ContactData, journal : handle:gameJournalManager, messagesReceived : script_ref:array:whandle:gameJournalEntry, playerReplies : script_ref:array:whandle:gameJournalEntry); // MessengerUtils::GetContactMessageData;ContactDataJournalManagerscript_ref<array<JournalEntry>>script_ref<array<JournalEntry>>
+	static function GetConversationHash(journal : handle:gameJournalManager, conversationEntry : whandle:gameJournalPhoneConversation) : Int32; // MessengerUtils::GetConversationHash;JournalManagerJournalPhoneConversation
+	static function GetMessageDataArrayForContact(journal : handle:gameJournalManager, concactHash : Int32, includeUnknown : Bool, skipEmpty : Bool, optional activeDataSync : whandle:MessengerContactSyncData) : array:handle:IScriptable; // MessengerUtils::GetMessageDataArrayForContact;JournalManagerInt32BoolBoolMessengerContactSyncData
+	static function GetSimpleContactDataArray(journal : handle:gameJournalManager, includeUnknown : Bool, skipEmpty : Bool, includeWithNoUnread : Bool, optional activeDataSync : whandle:MessengerContactSyncData) : array:handle:IScriptable; // MessengerUtils::GetSimpleContactDataArray;JournalManagerBoolBoolBoolMessengerContactSyncData
+	static function GetUnreadMessagesCount(journal : handle:gameJournalManager, contactEntry : whandle:gameJournalContact) : Int32; // MessengerUtils::GetUnreadMessagesCount;JournalManagerJournalContact
+	static function HasPhoneObjective(journal : handle:gameJournalManager) : Bool; // MessengerUtils::HasPhoneObjective;JournalManager
+	static function HasQuestImportantCalls(journal : handle:gameJournalManager) : Bool; // MessengerUtils::HasQuestImportantCalls;JournalManager
+	static function HasQuestImportantMessages(journal : handle:gameJournalManager) : Bool; // MessengerUtils::HasQuestImportantMessages;JournalManager
+	static function RefreshQuestRelatedStatus(out contactData : handle:ContactData, journal : handle:gameJournalManager, messagesReceived : script_ref:array:whandle:gameJournalEntry); // MessengerUtils::RefreshQuestRelatedStatus;ContactDataJournalManagerscript_ref<array<JournalEntry>>
+	static function SetTimestamp(out contactData : handle:ContactData, journal : handle:gameJournalManager, messagesReceived : script_ref:array:whandle:gameJournalEntry, conversationEntry : whandle:gameJournalPhoneConversation); // MessengerUtils::SetTimestamp;ContactDataJournalManagerscript_ref<array<JournalEntry>>JournalPhoneConversation
+	static function SetTitle(out contactData : handle:ContactData, conversationEntry : whandle:gameJournalPhoneConversation); // MessengerUtils::SetTitle;ContactDataJournalPhoneConversation
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameuiRoadEditorDecorationSettings
+{
+	var libraryName : CName;
+	var offset : Float;
+	var repeatPatternDensity : Uint32;
+	var repeatPatternStartOffset : Uint32;
+}

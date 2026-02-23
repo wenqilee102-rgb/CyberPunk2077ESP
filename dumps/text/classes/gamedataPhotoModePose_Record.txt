@@ -1,0 +1,47 @@
+import class gamedataPhotoModePose_Record extends gamedataPhotoModeItem_Record
+{
+	import function AcceptedWeaponConfig() : CName; // AcceptedWeaponConfig
+	import function AllowMoveUpDown() : Bool; // AllowMoveUpDown
+	import function AnimationName() : CName; // AnimationName
+	import function AnimationTime() : Float; // AnimationTime
+	import function Category() : CName; // Category
+	import function DisableLookAtForGarmentTags() : array:CName; // DisableLookAtForGarmentTags
+	import function DisableLookAtForGarmentTagsContains(item : CName) : Bool; // DisableLookAtForGarmentTagsContains
+	import function FilterOutForGarmentTags() : array:CName; // FilterOutForGarmentTags
+	import function FilterOutForGarmentTagsContains(item : CName) : Bool; // FilterOutForGarmentTagsContains
+	import function GetDisableLookAtForGarmentTagsCount() : Int32; // GetDisableLookAtForGarmentTagsCount
+	import function GetDisableLookAtForGarmentTagsItem(index : Int32) : CName; // GetDisableLookAtForGarmentTagsItem
+	import function GetFilterOutForGarmentTagsCount() : Int32; // GetFilterOutForGarmentTagsCount
+	import function GetFilterOutForGarmentTagsItem(index : Int32) : CName; // GetFilterOutForGarmentTagsItem
+	import function LookAtPreset() : CName; // LookAtPreset
+	import function PoseSize() : Float; // PoseSize
+	import function PoseStateConfig() : CName; // PoseStateConfig
+	import function PositionOffset() : Vector3; // PositionOffset
+	import function Rotation() : Vector3; // Rotation
+}
+
+import class gamedataPhotoModeItem_Record extends gamedataTweakDBRecord
+{
+	import function DisplayName() : CName; // DisplayName
+	import function Locked() : Bool; // Locked
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct SWeaponPlaneParams
+{
+	var weaponNearPlaneCM : Float;
+	var blurIntensity : Float;
+}

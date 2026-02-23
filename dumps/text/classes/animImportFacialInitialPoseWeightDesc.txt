@@ -1,0 +1,5 @@
+import struct animImportFacialInitialPoseWeightDesc
+{
+	var poseNames : array:CName;
+	var weights : array:Float;
+}

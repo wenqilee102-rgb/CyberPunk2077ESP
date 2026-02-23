@@ -1,0 +1,6 @@
+import struct questChangeContactList_NodeTypeParams
+{
+	var contact : handle:gameJournalPath;
+	var addContact : Bool;
+	var sendNotification : Bool;
+}

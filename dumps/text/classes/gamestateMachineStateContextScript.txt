@@ -1,0 +1,99 @@
+import class gamestateMachineStateContextScript extends IScriptable
+{
+	import function GetBoolParameter(parameterName : CName, optional isPermanent : Bool) : Bool; // GetBoolParameter
+	import function GetConditionBool(parameterName : CName) : Bool; // GetConditionBool
+	import function GetConditionBoolParameter(parameterName : CName) : gamestateMachineResultBool; // GetConditionBoolParameter
+	import function GetConditionCNameParameter(parameterName : CName) : gamestateMachineResultCName; // GetConditionCNameParameter
+	import function GetConditionFloat(parameterName : CName) : Float; // GetConditionFloat
+	import function GetConditionFloatParameter(parameterName : CName) : gamestateMachineResultFloat; // GetConditionFloatParameter
+	import function GetConditionInt(parameterName : CName) : Int32; // GetConditionInt
+	import function GetConditionIntParameter(parameterName : CName) : gamestateMachineResultInt; // GetConditionIntParameter
+	import function GetConditionScriptableParameter(parameterName : CName) : handle:IScriptable; // GetConditionScriptableParameter
+	import function GetConditionTweakDBIDParameter(parameterName : CName) : TweakDBID; // GetConditionTweakDBIDParameter
+	import function GetConditionVectorParameter(parameterName : CName) : gamestateMachineResultVector; // GetConditionVectorParameter
+	import function GetConditionWeakScriptableParameter(parameterName : CName) : whandle:IScriptable; // GetConditionWeakScriptableParameter
+	import function GetCurrentStates(stateMachineIdentifier : gamestateMachineStateMachineIdentifier) : array:CName; // GetCurrentStates
+	import function GetCurrentStatesWithIdentifier(); // GetCurrentStatesWithIdentifier
+	import function GetDoubleParameter(parameterName : CName, optional isPermanent : Bool) : Double; // GetDoubleParameter
+	import function GetFloatParameter(parameterName : CName, optional isPermanent : Bool) : Float; // GetFloatParameter
+	import function GetIntParameter(parameterName : CName, optional isPermanent : Bool) : Int32; // GetIntParameter
+	import function GetPermanentBoolParameter(parameterName : CName) : gamestateMachineResultBool; // GetPermanentBoolParameter
+	import function GetPermanentCNameParameter(parameterName : CName) : gamestateMachineResultCName; // GetPermanentCNameParameter
+	import function GetPermanentDoubleParameter(parameterName : CName) : gamestateMachineResultDouble; // GetPermanentDoubleParameter
+	import function GetPermanentFloatParameter(parameterName : CName) : gamestateMachineResultFloat; // GetPermanentFloatParameter
+	import function GetPermanentIntParameter(parameterName : CName) : gamestateMachineResultInt; // GetPermanentIntParameter
+	import function GetPermanentScriptableParameter(parameterName : CName) : handle:IScriptable; // GetPermanentScriptableParameter
+	import function GetPermanentTweakDBIDParameter(parameterName : CName) : TweakDBID; // GetPermanentTweakDBIDParameter
+	import function GetPermanentVectorParameter(parameterName : CName) : gamestateMachineResultVector; // GetPermanentVectorParameter
+	import function GetStateMachineCurrentState(stateMachineName : CName) : CName; // GetStateMachineCurrentState
+	import function GetStateMachineCurrentStateWithIdentifier(stateMachineIdentifier : gamestateMachineStateMachineIdentifier) : CName; // GetStateMachineCurrentStateWithIdentifier
+	import function GetTemporaryBoolParameter(parameterName : CName) : gamestateMachineResultBool; // GetTemporaryBoolParameter
+	import function GetTemporaryCNameParameter(parameterName : CName) : gamestateMachineResultCName; // GetTemporaryCNameParameter
+	import function GetTemporaryDoubleParameter(parameterName : CName) : gamestateMachineResultDouble; // GetTemporaryDoubleParameter
+	import function GetTemporaryFloatParameter(parameterName : CName) : gamestateMachineResultFloat; // GetTemporaryFloatParameter
+	import function GetTemporaryIntParameter(parameterName : CName) : gamestateMachineResultInt; // GetTemporaryIntParameter
+	import function GetTemporaryScriptableParameter(parameterName : CName) : handle:IScriptable; // GetTemporaryScriptableParameter
+	import function GetTemporaryTweakDBIDParameter(parameterName : CName) : TweakDBID; // GetTemporaryTweakDBIDParameter
+	import function GetTemporaryVectorParameter(parameterName : CName) : gamestateMachineResultVector; // GetTemporaryVectorParameter
+	import function GetVectorParameter(parameterName : CName, optional isPermanent : Bool) : Vector4; // GetVectorParameter
+	import function IsStateActive(stateMachineName : CName, stateName : CName) : Bool; // IsStateActive
+	import function IsStateActiveWithIdentifier(stateMachineIdentifier : gamestateMachineStateMachineIdentifier, stateName : CName) : Bool; // IsStateActiveWithIdentifier
+	import function IsStateJustBecomeActive(stateMachineName : CName, stateName : CName) : Bool; // IsStateJustBecomeActive
+	import function IsStateJustBecomeActiveWithIdentifier(stateMachineIdentifier : gamestateMachineStateMachineIdentifier, stateName : CName) : Bool; // IsStateJustBecomeActiveWithIdentifier
+	import function IsStateMachineActive(stateMachineName : CName) : Bool; // IsStateMachineActive
+	import function IsStateMachineActiveWithIdentifier(stateMachineIdentifier : gamestateMachineStateMachineIdentifier) : Bool; // IsStateMachineActiveWithIdentifier
+	import function RemoveConditionBoolParameter(parameterName : CName) : Bool; // RemoveConditionBoolParameter
+	import function RemoveConditionCNameParameter(parameterName : CName) : Bool; // RemoveConditionCNameParameter
+	import function RemoveConditionFloatParameter(parameterName : CName) : Bool; // RemoveConditionFloatParameter
+	import function RemoveConditionIntParameter(parameterName : CName) : Bool; // RemoveConditionIntParameter
+	import function RemoveConditionScriptableParameter(parameterName : CName) : Bool; // RemoveConditionScriptableParameter
+	import function RemoveConditionTweakDBIDParameter(parameterName : CName) : Bool; // RemoveConditionTweakDBIDParameter
+	import function RemoveConditionVectorParameter(parameterName : CName) : Bool; // RemoveConditionVectorParameter
+	import function RemoveConditionWeakScriptableParameter(parameterName : CName) : Bool; // RemoveConditionWeakScriptableParameter
+	import function RemovePermanentBoolParameter(parameterName : CName) : Bool; // RemovePermanentBoolParameter
+	import function RemovePermanentCNameParameter(parameterName : CName) : Bool; // RemovePermanentCNameParameter
+	import function RemovePermanentDoubleParameter(parameterName : CName) : Bool; // RemovePermanentDoubleParameter
+	import function RemovePermanentFloatParameter(parameterName : CName) : Bool; // RemovePermanentFloatParameter
+	import function RemovePermanentIntParameter(parameterName : CName) : Bool; // RemovePermanentIntParameter
+	import function RemovePermanentScriptableParameter(parameterName : CName) : Bool; // RemovePermanentScriptableParameter
+	import function RemovePermanentTweakDBIDParameter(parameterName : CName) : Bool; // RemovePermanentTweakDBIDParameter
+	import function RemovePermanentVectorParameter(parameterName : CName) : Bool; // RemovePermanentVectorParameter
+	import function SetConditionBoolParameter(parameterName : CName, value : Bool, optional force : Bool); // SetConditionBoolParameter
+	import function SetConditionCNameParameter(parameterName : CName, value : CName, optional force : Bool); // SetConditionCNameParameter
+	import function SetConditionFloatParameter(parameterName : CName, value : Float, optional force : Bool); // SetConditionFloatParameter
+	import function SetConditionIntParameter(parameterName : CName, value : Int32, optional force : Bool); // SetConditionIntParameter
+	import function SetConditionScriptableParameter(parameterName : CName, value : handle:IScriptable, optional force : Bool); // SetConditionScriptableParameter
+	import function SetConditionTweakDBIDParameter(parameterName : CName, value : TweakDBID, optional force : Bool); // SetConditionTweakDBIDParameter
+	import function SetConditionVectorParameter(parameterName : CName, value : Vector4, optional force : Bool); // SetConditionVectorParameter
+	import function SetConditionWeakScriptableParameter(parameterName : CName, value : whandle:IScriptable, optional force : Bool); // SetConditionWeakScriptableParameter
+	import function SetPermanentBoolParameter(parameterName : CName, value : Bool, optional force : Bool); // SetPermanentBoolParameter
+	import function SetPermanentCNameParameter(parameterName : CName, value : CName, optional force : Bool); // SetPermanentCNameParameter
+	import function SetPermanentDoubleParameter(parameterName : CName, value : Double, optional force : Bool); // SetPermanentDoubleParameter
+	import function SetPermanentFloatParameter(parameterName : CName, value : Float, optional force : Bool); // SetPermanentFloatParameter
+	import function SetPermanentIntParameter(parameterName : CName, value : Int32, optional force : Bool); // SetPermanentIntParameter
+	import function SetPermanentScriptableParameter(parameterName : CName, value : handle:IScriptable, optional force : Bool); // SetPermanentScriptableParameter
+	import function SetPermanentTweakDBIDParameter(parameterName : CName, value : TweakDBID, optional force : Bool); // SetPermanentTweakDBIDParameter
+	import function SetPermanentVectorParameter(parameterName : CName, value : Vector4, optional force : Bool); // SetPermanentVectorParameter
+	import function SetTemporaryBoolParameter(parameterName : CName, value : Bool, optional force : Bool); // SetTemporaryBoolParameter
+	import function SetTemporaryCNameParameter(parameterName : CName, value : CName, optional force : Bool); // SetTemporaryCNameParameter
+	import function SetTemporaryDoubleParameter(parameterName : CName, value : Double, optional force : Bool); // SetTemporaryDoubleParameter
+	import function SetTemporaryFloatParameter(parameterName : CName, value : Float, optional force : Bool); // SetTemporaryFloatParameter
+	import function SetTemporaryIntParameter(parameterName : CName, value : Int32, optional force : Bool); // SetTemporaryIntParameter
+	import function SetTemporaryScriptableParameter(parameterName : CName, value : handle:IScriptable, optional force : Bool); // SetTemporaryScriptableParameter
+	import function SetTemporaryTweakDBIDParameter(parameterName : CName, value : TweakDBID, optional force : Bool); // SetTemporaryTweakDBIDParameter
+	import function SetTemporaryVectorParameter(parameterName : CName, value : Vector4, optional force : Bool); // SetTemporaryVectorParameter
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

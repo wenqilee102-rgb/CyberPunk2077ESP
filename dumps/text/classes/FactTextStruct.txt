@@ -1,0 +1,6 @@
+struct FactTextStruct
+{
+	public    var locKeyList : array:CName;
+	public    var description : inkTextWidgetReference;
+	public    var factName : CName;
+}

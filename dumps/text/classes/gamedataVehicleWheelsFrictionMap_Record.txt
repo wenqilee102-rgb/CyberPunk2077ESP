@@ -1,0 +1,30 @@
+import class gamedataVehicleWheelsFrictionMap_Record extends gamedataTweakDBRecord
+{
+	import function DefaultFrictionPreset() : whandle:gamedataVehicleWheelsFrictionPreset_Record; // DefaultFrictionPreset
+	import function DefaultFrictionPresetHandle() : handle:gamedataVehicleWheelsFrictionPreset_Record; // DefaultFrictionPresetHandle
+	import function GetSurfacesCount() : Int32; // GetSurfacesCount
+	import function GetSurfacesItem(index : Int32) : whandle:gamedataVehicleSurfaceBinding_Record; // GetSurfacesItem
+	import function GetSurfacesItemHandle(index : Int32) : handle:gamedataVehicleSurfaceBinding_Record; // GetSurfacesItemHandle
+	import function Surfaces(out outList : array:whandle:gamedataVehicleSurfaceBinding_Record); // Surfaces
+	import function SurfacesContains(item : whandle:gamedataVehicleSurfaceBinding_Record) : Bool; // SurfacesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,51 @@
+class CooldownStorage extends IScriptable
+{
+	private   var owner : PSOwnerData;
+	private   var initialized : EBOOL;
+	private   var gameInstanceHack : ScriptGameInstance;
+	private   var packages : array:handle:CooldownPackage;
+	private   var currentID : Uint32;
+	private   var map : array:CooldownPackageDelayIDs;
+
+	function AttachUniqueLabel() : CooldownStorageID; // AttachUniqueLabel;
+	function CancelCooldown(id : CooldownStorageID) : Bool; // CancelCooldown;CooldownStorageID
+	function CancelCooldown(action : TweakDBID) : Bool; // CancelCooldown;TweakDBID
+	function CancelDelayEvents(package : handle:CooldownPackage); // CancelDelayEvents;CooldownPackage
+	function FindMapEntry(id : CooldownStorageID) : Int32; // FindMapEntry;CooldownStorageID
+	function FindMapEntry(package : handle:CooldownPackage) : Int32; // FindMapEntry;CooldownPackage
+	function FindPackageIndexByAction(actionID : TweakDBID) : Int32; // FindPackageIndexByAction;TweakDBID
+	function FindPackageIndexByID(label : CooldownStorageID) : Int32; // FindPackageIndexByID;CooldownStorageID
+	function GenerateLabel(id : Uint32) : CooldownStorageID; // GenerateLabel;Uint32
+	function GetPackage(label : CooldownStorageID) : handle:CooldownPackage; // GetPackage;CooldownStorageID
+	function GetPackage(action : TweakDBID) : handle:CooldownPackage; // GetPackage;TweakDBID
+	function Initialize(id : gamePersistentID, className : CName, gameInstanceHack : ScriptGameInstance); // Initialize;PersistentIDCNameGameInstance
+	function IsActionReady(action : TweakDBID) : Bool; // IsActionReady;TweakDBID
+	function IsActionReady(id : CooldownStorageID) : Bool; // IsActionReady;CooldownStorageID
+	function IsActionReady(index : Int32) : Bool; // IsActionReady;Int32
+	function IsInitialized() : EBOOL; // IsInitialized;
+	function ManuallyTriggerCooldown(actionID : TweakDBID) : Bool; // ManuallyTriggerCooldown;TweakDBID
+	function ProcessNewPackage(request : handle:CooldownRequest) : CooldownStorageID; // ProcessNewPackage;CooldownRequest
+	function RemoveCooldown(label : CooldownStorageID) : Bool; // RemoveCooldown;CooldownStorageID
+	function RemoveCooldown(action : TweakDBID) : Bool; // RemoveCooldown;TweakDBID
+	function RemoveCooldown(index : Int32) : Bool; // RemoveCooldown;Int32
+	function RemoveMapEntry(index : Int32) : Bool; // RemoveMapEntry;Int32
+	function ResolveCooldownEvent(evt : handle:ActionCooldownEvent); // ResolveCooldownEvent;ActionCooldownEvent
+	function StartCooldownRequest(request : handle:CooldownRequest) : CooldownStorageID; // StartCooldownRequest;CooldownRequest
+	function StartSimpleCooldown(action : handle:BaseScriptableAction) : CooldownStorageID; // StartSimpleCooldown;BaseScriptableAction
+	function TriggerPackageListeners(package : handle:CooldownPackage); // TriggerPackageListeners;CooldownPackage
+	function UpdateMap(label : CooldownStorageID, ids : script_ref:array:gameDelayID); // UpdateMap;CooldownStorageIDscript_ref<array<DelayID>>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

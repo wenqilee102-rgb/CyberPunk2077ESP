@@ -1,0 +1,9 @@
+import struct scnfppGenderSpecificParams
+{
+	var genderMask : scnGenderMask;
+	var transitionBlendInTrajectorySpaceAngles : array:EulerAngles;
+	var transitionBlendInCameraSpace : array:Float;
+	var transitionEndInputAngles : array:EulerAngles;
+	var idleCameraLs : EulerAngles;
+	var idleControlCameraMs : EulerAngles;
+}

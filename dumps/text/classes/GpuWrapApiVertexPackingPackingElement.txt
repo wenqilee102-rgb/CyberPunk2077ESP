@@ -1,0 +1,8 @@
+import struct GpuWrapApiVertexPackingPackingElement
+{
+	var type : GpuWrapApiVertexPackingePackingType;
+	var usage : GpuWrapApiVertexPackingePackingUsage;
+	var usageIndex : Uint8;
+	var streamIndex : Uint8;
+	var streamType : GpuWrapApiVertexPackingEStreamType;
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameprojectileSpawnerLaunchEvent","d":24,"e":[{"a":{"b":"gameprojectileLaunchParams"},"b":"launchParams","c":128},{"a":{"a":14},"b":"templateName","c":128},{"a":{"a":14},"b":"appearance","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"owner","c":128},{"a":{"b":"gameprojectileWeaponParams"},"b":"projectileParams","c":128}]}

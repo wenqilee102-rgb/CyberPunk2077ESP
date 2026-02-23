@@ -1,0 +1,14 @@
+import class rendRenderParticleBlob extends IRenderResourceBlob
+{
+	var header : rendRenderParticleBlobHeader;
+	var updaterData : rendRenderParticleUpdaterData;
+	var gpuSimShaders : rendEmitterSimulationShaders;
+}
+
+import class abstract IRenderResourceBlob extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,6 @@
+struct CombatTarget
+{
+	public    var puppet : whandle:ScriptedPuppet;
+	public    var hasTime : Bool;
+	public    var highlightTime : Float;
+}

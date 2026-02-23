@@ -1,0 +1,50 @@
+import class gamestateMachineparameterTypeActionLocomotionParameters extends IScriptable
+{
+	var imperfectTurn : Bool;
+	var speedBoostInputRequired : Bool;
+	var speedBoostMultiplyByDot : Bool;
+	var useCameraHeadingForMovement : Bool;
+	var validImperfectTurn : Bool;
+	var validSpeedBoostInputRequired : Bool;
+	var validSpeedBoostMultiplyByDot : Bool;
+	var validUseCameraHeadingForMovement : Bool;
+	var doJump : Bool;
+	var doSpeedBoost : Bool;
+
+	import function GetCapsuleHeight(defaultValue : Float) : Float; // GetCapsuleHeight
+	import function GetCapsuleRadius(defaultValue : Float) : Float; // GetCapsuleRadius
+	import function GetDoJump(defaultValue : Bool) : Bool; // GetDoJump
+	import function GetDoSpeedBoost(); // GetDoSpeedBoost
+	import function GetDownwardsGravity(defaultValue : Float) : Float; // GetDownwardsGravity
+	import function GetIgnoreSlope(defaultValue : Bool) : Bool; // GetIgnoreSlope
+	import function GetImperfectTurn(defaultValue : Bool) : Bool; // GetImperfectTurn
+	import function GetSpeedBoostInputRequired(defaultValue : Bool) : Bool; // GetSpeedBoostInputRequired
+	import function GetSpeedBoostMultiplyByDot(defaultValue : Bool) : Bool; // GetSpeedBoostMultiplyByDot
+	import function GetUpwardsGravity(defaultValue : Float) : Float; // GetUpwardsGravity
+	import function GetUseCameraHeadingForMovement(defaultValue : Bool) : Bool; // GetUseCameraHeadingForMovement
+	import function SetCapsuleHeight(value : Float); // SetCapsuleHeight
+	import function SetCapsuleRadius(value : Float); // SetCapsuleRadius
+	import function SetDoJump(value : Bool); // SetDoJump
+	import function SetDoSpeedBoost(); // SetDoSpeedBoost
+	import function SetDownwardsGravity(value : Float); // SetDownwardsGravity
+	import function SetIgnoreSlope(value : Bool); // SetIgnoreSlope
+	import function SetImperfectTurn(value : Bool); // SetImperfectTurn
+	import function SetSpeedBoostInputRequired(value : Bool); // SetSpeedBoostInputRequired
+	import function SetSpeedBoostMultiplyByDot(value : Bool); // SetSpeedBoostMultiplyByDot
+	import function SetUpwardsGravity(value : Float); // SetUpwardsGravity
+	import function SetUseCameraHeadingForMovement(value : Bool); // SetUseCameraHeadingForMovement
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

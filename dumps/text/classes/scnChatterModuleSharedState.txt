@@ -1,0 +1,8 @@
+import class scnChatterModuleSharedState extends ISerializable
+{
+	var chatterHistory : array:handle:scnChatter;
+}
+
+import class abstract ISerializable
+{
+}

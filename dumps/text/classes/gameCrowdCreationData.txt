@@ -1,0 +1,4 @@
+import struct gameCrowdCreationData
+{
+	var timePeriods : static:4,gameCrowdPhaseTimePeriod;
+}

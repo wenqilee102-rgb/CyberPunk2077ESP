@@ -1,0 +1,5 @@
+import struct inkFontStyle
+{
+	var styleName : CName;
+	var font : rRef:rendFont;
+}

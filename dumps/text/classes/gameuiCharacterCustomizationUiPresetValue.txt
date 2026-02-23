@@ -1,0 +1,6 @@
+import struct gameuiCharacterCustomizationUiPresetValue
+{
+	var optionName : CName;
+	var isActive : Bool;
+	var value : Uint32;
+}

@@ -1,0 +1,9 @@
+import class questParamKeepDistance extends ISerializable
+{
+	var companionTargetRef : handle:questUniversalRef;
+	var distance : Float;
+}
+
+import class abstract ISerializable
+{
+}

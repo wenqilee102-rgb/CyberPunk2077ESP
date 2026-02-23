@@ -1,0 +1,18 @@
+struct SecurityAccessLevelEntryClient extends SecurityAccessLevelEntry
+{
+	public    var level : ESecurityAccessLevel;
+
+	static function IsDataValid(self : SecurityAccessLevelEntryClient) : Bool; // SecurityAccessLevelEntryClient::IsDataValid;SecurityAccessLevelEntryClient
+	static function IsKeycardValid(self : SecurityAccessLevelEntryClient) : Bool; // SecurityAccessLevelEntryClient::IsKeycardValid;SecurityAccessLevelEntryClient
+	static function IsPasswordValid(self : SecurityAccessLevelEntryClient) : Bool; // SecurityAccessLevelEntryClient::IsPasswordValid;SecurityAccessLevelEntryClient
+}
+
+struct SecurityAccessLevelEntry
+{
+	public    var keycard : TweakDBID;
+	public    var password : CName;
+
+	static function IsDataValid(self : SecurityAccessLevelEntry) : Bool; // SecurityAccessLevelEntry::IsDataValid;SecurityAccessLevelEntry
+	static function IsKeycardValid(self : SecurityAccessLevelEntry) : Bool; // SecurityAccessLevelEntry::IsKeycardValid;SecurityAccessLevelEntry
+	static function IsPasswordValid(self : SecurityAccessLevelEntry) : Bool; // SecurityAccessLevelEntry::IsPasswordValid;SecurityAccessLevelEntry
+}

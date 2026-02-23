@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"OverloadDevice","d":0,"e":[{"a":{"a":10},"b":"killDelay","c":130}],"f":[{"a":"GetKillDelay;","b":"GetKillDelay","c":{"a":10},"d":48},{"a":"GetTweakDBChoiceRecord;","b":"GetTweakDBChoiceRecord","c":{"a":12},"d":32},{"a":"SetKillDelay;Float","b":"SetKillDelay","d":48,"e":[{"a":{"a":10},"b":"delay","c":0}]},{"a":"SetProperties;","b":"SetProperties","d":48}]}

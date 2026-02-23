@@ -1,0 +1,6 @@
+import struct CComStaticSkeletonDataEntry
+{
+	var boneIndex : Int32;
+	var mass : Float;
+	var locationLS : Vector4;
+}

@@ -1,0 +1,9 @@
+struct DoorResaveData
+{
+	public    var doorType : EDoorType;
+	public    var canPlayerToggleLockState : Bool;
+	public    var canPlayerToggleSealState : Bool;
+	public    var initialStatus : EDoorStatus;
+	public    var keycardName : TweakDBID;
+	public    var passcode : CName;
+}

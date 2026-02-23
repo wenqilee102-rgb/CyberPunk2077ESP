@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataPreventionFallbackUnitData_Record","c":"PreventionFallbackUnitData_Record","d":24,"f":[{"a":"CharacterRecord","c":{"a":27,"c":{"b":"gamedataCharacter_Record"}},"d":4},{"a":"CharacterRecordHandle","c":{"a":26,"c":{"b":"gamedataCharacter_Record"}},"d":4},{"a":"MinSpawnRange","c":{"a":10},"d":4},{"a":"UnitsCount","c":{"a":6},"d":4}]}

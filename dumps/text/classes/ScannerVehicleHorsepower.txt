@@ -1,0 +1,29 @@
+class ScannerVehicleHorsepower extends ScannerChunk
+{
+	private   var horsepower : Int32;
+
+	function GetHorsepower() : Int32; // GetHorsepower;
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+	function Set(hp : Int32); // Set;Int32
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

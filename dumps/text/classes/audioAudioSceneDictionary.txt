@@ -1,0 +1,18 @@
+import class audioAudioSceneDictionary extends audioInlinedAudioMetadata
+{
+	var entries : array:audioAudioSceneDictionaryItem;
+	var entryType : handle:audioAudioSceneDictionaryItem;
+}
+
+import class audioInlinedAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

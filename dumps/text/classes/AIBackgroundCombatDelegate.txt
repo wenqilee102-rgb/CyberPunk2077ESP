@@ -1,0 +1,59 @@
+class AIBackgroundCombatDelegate extends AIbehaviorScriptBehaviorDelegate
+{
+	private   var command : handle:AIBackgroundCombatCommand;
+	private   var execute : Bool;
+	private   var steps : array:AIBackgroundCombatStep;
+	private   var currentStep : Int32;
+	private   var desiredCover : NodeRef;
+	private   var desiredCoverExposureMethod : AICoverExposureMethod;
+	private   var desiredDestination : NodeRef;
+	private   var hasDesiredTarget : Bool;
+	private   var desiredTarget : gameEntityReference;
+	private   var desiredCoverId : Uint64;
+	private   var currentCoverId : Uint64;
+	private   var currentTarget : whandle:gameObject;
+	private   var canFireFromCover : Bool;
+	private   var canFireOutOfCover : Bool;
+
+	function DoAllowCoverChange(context : AIbehaviorScriptExecutionContext) : Bool; // DoAllowCoverChange;ScriptExecutionContext
+	function DoCompleteCoverChange() : Bool; // DoCompleteCoverChange;
+	function DoCompleteTargetChange(context : AIbehaviorScriptExecutionContext) : Bool; // DoCompleteTargetChange;ScriptExecutionContext
+	function DoDisableShootingFromCover(context : AIbehaviorScriptExecutionContext) : Bool; // DoDisableShootingFromCover;ScriptExecutionContext
+	function DoEnableShootingFromCover(context : AIbehaviorScriptExecutionContext) : Bool; // DoEnableShootingFromCover;ScriptExecutionContext
+	function DoEndCommand(context : AIbehaviorScriptExecutionContext) : Bool; // DoEndCommand;ScriptExecutionContext
+	function DoExecuteCurrentStep(context : AIbehaviorScriptExecutionContext) : Bool; // DoExecuteCurrentStep;ScriptExecutionContext
+	function DoStartCommand(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartCommand;ScriptExecutionContext
+	function DoStartCoverChange() : Bool; // DoStartCoverChange;
+	function DoStartNextStep(context : AIbehaviorScriptExecutionContext) : Bool; // DoStartNextStep;ScriptExecutionContext
+	function SetDesiredCover(context : AIbehaviorScriptExecutionContext, cover : NodeRef, exposureMethod : AICoverExposureMethod); // SetDesiredCover;ScriptExecutionContextNodeRefAICoverExposureMethod
+	function SetDesiredDestination(context : AIbehaviorScriptExecutionContext, destination : NodeRef); // SetDesiredDestination;ScriptExecutionContextNodeRef
+	function SetDesiredTarget(context : AIbehaviorScriptExecutionContext, target : gameEntityReference); // SetDesiredTarget;ScriptExecutionContextEntityReference
+	function SetExecute(context : AIbehaviorScriptExecutionContext, value : Bool); // SetExecute;ScriptExecutionContextBool
+}
+
+import class AIbehaviorScriptBehaviorDelegate extends AIbehaviorBehaviorDelegate
+{
+}
+
+import class abstract AIbehaviorBehaviorDelegate extends AIbehaviorBehaviorBlackboard
+{
+	import function GetParent() : handle:AIbehaviorBehaviorDelegate; // GetParent
+}
+
+import class abstract AIbehaviorBehaviorBlackboard extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

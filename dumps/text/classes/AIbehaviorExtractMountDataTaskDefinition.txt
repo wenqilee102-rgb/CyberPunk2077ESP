@@ -1,0 +1,16 @@
+import class AIbehaviorExtractMountDataTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var mountEventData : handle:AIArgumentMapping;
+	var outWorkspotData : handle:AIArgumentMapping;
+	var outIsInstant : handle:AIArgumentMapping;
+	var outAllowFailsafeTeleport : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

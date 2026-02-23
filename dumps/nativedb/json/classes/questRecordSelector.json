@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"questRecordSelector","d":8,"e":[{"a":{"a":1},"b":"isCharacter","c":128},{"a":{"a":15},"b":"characterRecordID","c":128},{"a":{"a":1},"b":"isDevice","c":128},{"a":{"a":15},"b":"deviceRecordID","c":128},{"a":{"a":1},"b":"isItem","c":128},{"a":{"a":15},"b":"itemRecordID","c":128}]}

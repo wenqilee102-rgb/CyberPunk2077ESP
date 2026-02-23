@@ -1,0 +1,13 @@
+import class worldFoliageBrush extends CResource
+{
+	var items : array:handle:worldFoliageBrushItem;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+import class CParticleInitializerVelocity extends IParticleInitializer
+{
+	var velocity : handle:IEvaluatorVector;
+	var scale : Float;
+	var worldSpace : Bool;
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

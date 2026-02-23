@@ -1,0 +1,7 @@
+import struct worldTrafficLaneUID
+{
+	var nodeRefHash : Uint64;
+	var laneNumber : Uint16;
+	var seqNumber : Uint16;
+	var isReversed : Bool;
+}

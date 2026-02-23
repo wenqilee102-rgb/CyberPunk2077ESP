@@ -1,0 +1,11 @@
+import class inkNoChildren extends inkChildren
+{
+}
+
+import class abstract inkChildren extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

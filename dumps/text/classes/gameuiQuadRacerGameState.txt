@@ -1,0 +1,31 @@
+import class gameuiQuadRacerGameState extends gameuiMinigameState
+{
+	var timeLeft : Float;
+	var boostTime : Float;
+	var pointsBonusTime : Float;
+	var maxSpeed : Float;
+	var speed : Float;
+	var hasPassedCheckpoint : Bool;
+	var shouldPushBackPlayer : Bool;
+	var lapsPassed : Int32;
+}
+
+import class gameuiMinigameState extends IScriptable
+{
+	var currentLives : Int32;
+	var currentScore : Int32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

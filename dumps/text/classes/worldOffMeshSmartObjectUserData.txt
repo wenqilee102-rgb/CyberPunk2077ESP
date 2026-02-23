@@ -1,0 +1,16 @@
+import class worldOffMeshSmartObjectUserData extends worldOffMeshUserData
+{
+	var nodeTransform : WorldTransform;
+	var localSpaceTrajectoryStartPoint : Vector3;
+	var localSpaceTrajectoryEndPoint : Vector3;
+	var smartObjectDefinition : handle:gameSmartObjectDefinition;
+	var type : worldOffMeshConnectionType;
+}
+
+import class worldOffMeshUserData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

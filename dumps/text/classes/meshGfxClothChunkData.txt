@@ -1,0 +1,10 @@
+import struct meshGfxClothChunkData
+{
+	var positions : DataBuffer;
+	var indices : DataBuffer;
+	var skinWeights : DataBuffer;
+	var skinIndices : DataBuffer;
+	var skinWeightsExt : DataBuffer;
+	var skinIndicesExt : DataBuffer;
+	var simulation : array:Uint16;
+}

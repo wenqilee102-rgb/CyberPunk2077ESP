@@ -1,0 +1,14 @@
+import class physicsSystemResource extends CResource
+{
+	var bodies : array:handle:physicsSystemBody;
+	var joints : array:handle:physicsSystemJoint;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"CResource","b":"worldHeatmapResource","d":8,"e":[{"a":{"b":"worldHeatmapSetup"},"b":"setup","c":128},{"a":{"a":12},"b":"name","c":128},{"a":{"a":31,"c":{"a":12}},"b":"layerNames","c":128},{"a":{"a":31,"c":{"a":30,"c":{"b":"worldHeatmapLayer"}}},"b":"layers","c":128}]}

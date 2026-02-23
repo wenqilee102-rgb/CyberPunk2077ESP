@@ -1,0 +1,31 @@
+import class animAnimNode_FloorIk extends animAnimNode_FloorIkBase
+{
+	var pelvis : animSBehaviorConstraintNodeFloorIKVerticalBoneData;
+	var legs : animSBehaviorConstraintNodeFloorIKLegsData;
+	var leftLegIK : animSTwoBonesIKSolverData;
+	var rightLegIK : animSTwoBonesIKSolverData;
+}
+
+import class animAnimNode_FloorIkBase extends animAnimNode_OnePoseInput
+{
+	var requiredAnimEvent : CName;
+	var blockAnimEvent : CName;
+	var canBeDisabledDueToFrameRate : Bool;
+	var useFixedVersion : Bool;
+	var slopeAngleDamp : Float;
+	var common : animSBehaviorConstraintNodeFloorIKCommonData;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

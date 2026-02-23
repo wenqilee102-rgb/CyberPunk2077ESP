@@ -1,0 +1,20 @@
+import class worldPopulationSpawnerNode extends worldNode
+{
+	var objectRecordId : TweakDBID;
+	var appearanceName : CName;
+	var spawnOnStart : Bool;
+	var alwaysSpawned : gameAlwaysSpawnedState;
+	var spawnInView : gameSpawnInViewState;
+	var prefetchAppearance : Bool;
+	var isVehicle : Bool;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

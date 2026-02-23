@@ -1,0 +1,6 @@
+enum BarType
+{
+	Armor = 0,
+	CurrentCapacity = 1,
+	Edgerunner = 2
+}

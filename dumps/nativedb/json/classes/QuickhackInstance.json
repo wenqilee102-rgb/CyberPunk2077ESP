@@ -1,0 +1,1 @@
+{"a":"ModuleInstance","b":"QuickhackInstance","d":0,"e":[{"a":{"a":1},"b":"open","c":129},{"a":{"a":1},"b":"process","c":129}],"f":[{"a":"SetContext;Bool","b":"SetContext","d":48,"e":[{"a":{"a":1},"b":"_open","c":0}]},{"a":"ShouldOpen;","b":"ShouldOpen","c":{"a":1},"d":48},{"a":"ShouldProcess;","b":"ShouldProcess","c":{"a":1},"d":48}]}

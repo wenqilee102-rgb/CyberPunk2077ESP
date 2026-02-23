@@ -1,0 +1,6 @@
+import struct gameReplicatedContinuousAttack
+{
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var attackId : TweakDBID;
+}

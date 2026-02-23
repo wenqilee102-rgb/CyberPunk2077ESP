@@ -1,0 +1,10 @@
+import class questUniversalRef extends ISerializable
+{
+	var entityReference : gameEntityReference;
+	var refLocalPlayer : Bool;
+	var mainPlayerObject : Bool;
+}
+
+import class abstract ISerializable
+{
+}

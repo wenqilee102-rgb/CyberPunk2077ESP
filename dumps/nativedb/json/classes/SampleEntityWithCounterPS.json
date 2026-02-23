@@ -1,0 +1,1 @@
+{"a":"gameObjectPS","b":"SampleEntityWithCounterPS","d":0,"e":[{"a":{"a":6},"b":"counter","c":134}],"f":[{"a":"OnBumpTheCounter;SampleBumpEvent","b":"OnBumpTheCounter","c":{"b":"EntityNotificationType"},"d":48,"e":[{"a":{"a":26,"c":{"b":"SampleBumpEvent"}},"b":"evt","c":0}]},{"a":"ReadTheCounter;","b":"ReadTheCounter","c":{"a":6},"d":176}]}

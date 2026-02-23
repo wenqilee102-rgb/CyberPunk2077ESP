@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorGetPatrolPointTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"inPatrolDistance","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"inLastKnownPosition","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"outFollowTrailPoint","c":128}]}

@@ -1,0 +1,10 @@
+import class gsmMainQuest extends ISerializable
+{
+	var questFile : raRef:questQuestResource;
+	var additionalContent : Bool;
+	var additionalContentName : CName;
+}
+
+import class abstract ISerializable
+{
+}

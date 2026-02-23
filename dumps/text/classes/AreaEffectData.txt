@@ -1,0 +1,47 @@
+class AreaEffectData extends IScriptable
+{
+	public    var action : handle:ScriptableDeviceAction;
+	public    var actionRecordID : TweakDBID;
+	public    var areaEffectID : CName;
+	public    var indicatorEffectName : CName;
+	public    var useIndicatorEffect : Bool;
+	public    var indicatorEffectSize : Float;
+	public    var stimRange : Float;
+	public    var stimLifetime : Float;
+	public    var stimType : DeviceStimType;
+	public    var stimSource : NodeRef;
+	public    var additionaStimSources : array:NodeRef;
+	public    var investigateSpot : NodeRef;
+	public    var investigateController : Bool;
+	public    var controllerSource : NodeRef;
+	public    var highlightTargets : Bool;
+	public    var highlightType : EFocusForcedHighlightType;
+	public    var outlineType : EFocusOutlineType;
+	public    var highlightPriority : EPriority;
+	public    var effectInstance : handle:gameEffectInstance;
+	public    var gameEffectOverrideName : CName;
+
+	function CopyData(areaEffectDataToCopy : handle:AreaEffectData); // CopyData;AreaEffectData
+	function CopyData(sAreaEffectDataToCopy : SAreaEffectData); // CopyData;SAreaEffectData
+	function EffectInstanceClear(); // EffectInstanceClear;
+	function GetActionNameFromRecord(record : whandle:gamedataObjectAction_Record) : CName; // GetActionNameFromRecord;ObjectAction_Record
+	function GetActionNameFromRecord() : CName; // GetActionNameFromRecord;
+	function GetActionRecord() : whandle:gamedataObjectAction_Record; // GetActionRecord;
+	function GetData() : SAreaEffectData; // GetData;
+	function IsMatching(_action : handle:BaseScriptableAction) : Bool; // IsMatching;BaseScriptableAction
+	function SetEffectInstance(effect : handle:gameEffectInstance); // SetEffectInstance;EffectInstance
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

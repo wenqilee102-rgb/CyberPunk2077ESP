@@ -1,0 +1,6 @@
+import struct LibTreeDefISerializable
+{
+	var variableId : Uint16;
+	var treeVariable : CName;
+	var v : handle:ISerializable;
+}

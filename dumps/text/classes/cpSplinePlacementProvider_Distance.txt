@@ -1,0 +1,12 @@
+import class cpSplinePlacementProvider_Distance extends cpSplinePlacementProvider
+{
+	var distance : Float;
+}
+
+import class abstract cpSplinePlacementProvider extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

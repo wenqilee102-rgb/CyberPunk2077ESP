@@ -1,0 +1,5 @@
+import struct AIInterruptionSignal
+{
+	var importance : AIEInterruptionImportance;
+	var signal : CName;
+}

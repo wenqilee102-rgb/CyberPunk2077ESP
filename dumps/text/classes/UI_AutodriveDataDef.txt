@@ -1,0 +1,30 @@
+class UI_AutodriveDataDef extends gamebbScriptDefinition
+{
+	public    var AutoDriveAvailable : gamebbScriptID_Bool;
+	public    var AutoDriveEnabled : gamebbScriptID_Bool;
+	public    var AutoDriveDelamain : gamebbScriptID_Bool;
+	public    var FreeRoamEnabled : gamebbScriptID_Bool;
+	public    var DestinationRemainingLength : gamebbScriptID_Float;
+	public    var DestinationRemainingTime : gamebbScriptID_Float;
+	public    var CinematicCameraActive : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

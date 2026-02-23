@@ -1,0 +1,54 @@
+class PlayerCombatController extends IScriptable
+{
+	private   var gameplayActiveFlagsRefreshPolicy : PlayerCombatControllerRefreshPolicy;
+	private   var blackboardIds : PlayerCombatControllerBBIds;
+	private   var blackboardValuesIds : PlayerCombatControllerBBValuesIds;
+	private   var blackboardListenersFunctions : PlayerCombatControllerBlackboardListenersFunctions;
+	private   var blackboardListeners : PlayerCombatControllerBBListeners;
+	private   var delayEventsIds : PlayerCombatControllerDelayCallbacksIds;
+	private   var gameplayActiveFlags : PlayerCombatControllerActiveFlags;
+	private   var otherVars : PlayerCombatControllerOtherVars;
+	private   var owner : whandle:gameObject;
+
+	function ActivateCombat(); // ActivateCombat;
+	function ActivateOutOfCombat(); // ActivateOutOfCombat;
+	function ActivateStealth(); // ActivateStealth;
+	function GetBoolFromQuestDB(varName : CName) : Bool; // GetBoolFromQuestDB;CName
+	function InitBlackboardFunctions(); // InitBlackboardFunctions;
+	function InitBlackboardIds(); // InitBlackboardIds;
+	function InitBlackboardValuesIds(); // InitBlackboardValuesIds;
+	function InitOwnerVars(owner : handle:gameObject); // InitOwnerVars;GameObject
+	function InitPlayerCombatControllerRefreshPolicy(); // InitPlayerCombatControllerRefreshPolicy;
+	function InvalidateActivationState(state : PlayerCombatState); // InvalidateActivationState;PlayerCombatState
+	function IsRightHandInUnequippedState() : Bool; // IsRightHandInUnequippedState;
+	function OnCrouchActiveChanged(value : Int32); // OnCrouchActiveChanged;Int32
+	function OnCrouchDelayEvent(evt : handle:CrouchDelayEvent); // OnCrouchDelayEvent;CrouchDelayEvent
+	function OnInvalidateActiveState(evt : handle:PlayerCombatControllerInvalidateEvent); // OnInvalidateActiveState;PlayerCombatControllerInvalidateEvent
+	function OnStartedBeingTrackedAsHostile(evt : handle:AIStartedBeingTrackedAsHostile); // OnStartedBeingTrackedAsHostile;StartedBeingTrackedAsHostile
+	function OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent, gameplayTags : script_ref:array:CName); // OnStatusEffectApplied;ApplyStatusEffectEventscript_ref<array<CName>>
+	function OnStatusEffectRemoved(evt : handle:gameeventsRemoveStatusEffect, gameplayTags : script_ref:array:CName); // OnStatusEffectRemoved;RemoveStatusEffectscript_ref<array<CName>>
+	function OnStoppedBeingTrackedAsHostile(); // OnStoppedBeingTrackedAsHostile;
+	function ProcessFlagsRefreshPolicy(); // ProcessFlagsRefreshPolicy;
+	function RegisterBlackboardListeners(); // RegisterBlackboardListeners;
+	function RegisterOwner(owner : handle:gameObject); // RegisterOwner;GameObject
+	function SendAnimFeatureData(inCombat : Bool); // SendAnimFeatureData;Bool
+	function SetBlackboardIntVariable(id : gamebbScriptID_Int32, value : Int32); // SetBlackboardIntVariable;BlackboardID_IntInt32
+	function TutorialSetFact(factName : CName); // TutorialSetFact;CName
+	function UnregisterBlackboardListeners(); // UnregisterBlackboardListeners;
+	function UnregisterOwner(); // UnregisterOwner;
+	function VerifyActivation(); // VerifyActivation;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

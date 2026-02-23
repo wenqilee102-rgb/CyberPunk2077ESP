@@ -1,0 +1,8 @@
+struct STriggerVolumeOperationData
+{
+	public    var isActivatorPlayer : Bool;
+	public    var isActivatorNPC : Bool;
+	public    var componentName : CName;
+	public    var operationType : ETriggerOperationType;
+	public    var operation : SBaseDeviceOperationData;
+}

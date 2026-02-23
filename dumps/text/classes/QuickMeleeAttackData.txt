@@ -1,0 +1,14 @@
+struct QuickMeleeAttackData
+{
+	public    var attackGameEffectDelay : Float;
+	public    var attackGameEffectDuration : Float;
+	public    var attackRange : Float;
+	public    var forcePlayerToStand : Bool;
+	public    var shouldAdjust : Bool;
+	public    var adjustmentRange : Float;
+	public    var adjustmentDuration : Float;
+	public    var adjustmentRadius : Float;
+	public    var adjustmentCurve : CName;
+	public    var cooldown : Float;
+	public    var duration : Float;
+}

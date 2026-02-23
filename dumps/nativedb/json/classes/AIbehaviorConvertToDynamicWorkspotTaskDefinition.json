@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorConvertToDynamicWorkspotTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"workspotData","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"spotInstance","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"jumpToEntry","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"entryId","c":128}]}

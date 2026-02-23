@@ -1,0 +1,24 @@
+import struct rendRenderParticleUpdaterData
+{
+	var data : DataBuffer;
+	var modifOffset : Uint32;
+	var animFrameInit : array:Float;
+	var turbulenceNoiseInterval : Float;
+	var turbulenceDuration : Float;
+	var collisionMask : Uint64;
+	var collisionDynamicFriction : Float;
+	var collisionStaticFriction : Float;
+	var collisionRestitution : Float;
+	var collisionVelocityDamp : Float;
+	var collisionDisableGravity : Bool;
+	var collisionRadius : Float;
+	var collisionEffectMask : Uint32;
+	var maxCollisions : Uint8;
+	var eventGenerate : CName;
+	var eventReceive : CName;
+	var eventFrequency : Float;
+	var eventProbability : Float;
+	var noiseType : Uint8;
+	var randomPerChannel : Bool;
+	var eventSpawnObject : Uint8;
+}

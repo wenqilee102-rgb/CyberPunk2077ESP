@@ -1,0 +1,6 @@
+struct PlayerQuickhackData
+{
+	public    var itemID : gameItemID;
+	public    var actionRecord : whandle:gamedataObjectAction_Record;
+	public    var quality : Int32;
+}

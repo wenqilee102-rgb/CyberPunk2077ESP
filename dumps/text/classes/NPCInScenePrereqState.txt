@@ -1,0 +1,29 @@
+class NPCInScenePrereqState extends gamePrereqState
+{
+	public    var sceneListener : handle:gameScriptedPrereqSceneInspectionListenerWrapper;
+
+	function OnSceneInspectionStateChanged(isEntityInScene : Bool); // OnSceneInspectionStateChanged;Bool
+}
+
+import class gamePrereqState extends IScriptable
+{
+	import function GetContext() : handle:IScriptable; // GetContext
+	import function GetPrereq() : handle:gameIPrereq; // GetPrereq
+	import function IsFulfilled() : Bool; // IsFulfilled
+	import function OnChanged(newState : Bool); // OnChanged
+	import function OnChangedRepeated(optional callOnlyOnStateFulfilled : Bool); // OnChangedRepeated
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

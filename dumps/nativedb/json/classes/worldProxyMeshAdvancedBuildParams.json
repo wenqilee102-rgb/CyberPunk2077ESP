@@ -1,0 +1,1 @@
+{"b":"worldProxyMeshAdvancedBuildParams","d":8,"g":true,"e":[{"a":{"b":"worldProxyBoundingBoxSyncParams"},"b":"boundingBoxSyncParams","c":128},{"a":{"b":"worldProxySurfaceFlattenParams"},"b":"surfaceFlattenParams","c":128},{"a":{"b":"worldProxyMiscAdvancedParams"},"b":"misc","c":128},{"a":{"a":10},"b":"rayBias","c":128},{"a":{"a":10},"b":"rayMaxDistance","c":128}]}

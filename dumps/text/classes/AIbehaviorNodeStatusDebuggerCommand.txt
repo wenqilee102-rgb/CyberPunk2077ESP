@@ -1,0 +1,14 @@
+import class AIbehaviorNodeStatusDebuggerCommand extends AIbehaviorIDebuggerCommand
+{
+	var behaviorResourceHash : Uint32;
+	var generation : Uint32;
+	var entries : array:AIbehaviorNodeStatusDebuggerCommandEntry;
+}
+
+import class abstract AIbehaviorIDebuggerCommand extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

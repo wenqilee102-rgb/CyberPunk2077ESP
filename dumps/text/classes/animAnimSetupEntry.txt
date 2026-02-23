@@ -1,0 +1,6 @@
+import struct animAnimSetupEntry
+{
+	var priority : Uint8;
+	var animSet : raRef:animAnimSet;
+	var variableNames : array:CName;
+}

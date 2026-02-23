@@ -1,0 +1,25 @@
+import class audioAudioFoliageMetadata extends audioAudioMetadata
+{
+	var loopStartEvent : CName;
+	var loopStopEvent : CName;
+	var locomotionTotalVelocityParam : CName;
+	var locomotionTotalVelocityThreshold : Float;
+	var locomotionAngularVelocityMultiplier : Float;
+	var minFoliageMeshVolumeThreshold : Float;
+	var maxFoliageMeshHeight : Float;
+	var playerInsideRequiredPercentage : Float;
+	var foliageMaterials : handle:audioAudioFoliageMaterialDictionary;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

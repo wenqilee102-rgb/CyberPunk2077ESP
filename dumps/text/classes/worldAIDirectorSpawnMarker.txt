@@ -1,0 +1,11 @@
+import class worldAIDirectorSpawnMarker extends worldIMarker
+{
+}
+
+import class abstract worldIMarker extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

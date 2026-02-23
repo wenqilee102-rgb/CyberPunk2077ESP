@@ -1,0 +1,10 @@
+import struct animMultipleParentConstraint_JsonEntry
+{
+	var parentTransform : CName;
+	var parentWeightMode : animConstraintWeightMode;
+	var parentStaticWeight : Float;
+	var parentTrackWeight : CName;
+	var useComplementWeight : Bool;
+	var useOffset : Bool;
+	var offset : QsTransform;
+}

@@ -1,0 +1,91 @@
+import class abstract gameIBlackboard extends IScriptable
+{
+	import static function Create(definition : handle:gamebbScriptDefinition) : handle:gameIBlackboard; // Create
+
+	import function ClearAllFields(signal : Bool); // ClearAllFields
+	import function FireCallbacks(); // FireCallbacks
+	import function GetBool(id : gamebbScriptID_Bool) : Bool; // GetBool
+	import function GetEntityID(id : gamebbScriptID_EntityID) : entEntityID; // GetEntityID
+	import function GetFloat(id : gamebbScriptID_Float) : Float; // GetFloat
+	import function GetInt(id : gamebbScriptID_Int32) : Int32; // GetInt
+	import function GetName(id : gamebbScriptID_CName) : CName; // GetName
+	import function GetQuat(id : gamebbScriptID_Quaternion) : Quaternion; // GetQuat
+	import function GetString(id : gamebbScriptID_String) : String; // GetString
+	import function GetUint(id : gamebbScriptID_Uint32) : Uint32; // GetUint
+	import function GetVariant(tag : gamebbScriptID_Variant) : Variant; // GetVariant
+	import function GetVector2(id : gamebbScriptID_Vector2) : Vector2; // GetVector2
+	import function GetVector4(id : gamebbScriptID_Vector4) : Vector4; // GetVector4
+	import function RegisterDelayedListenerBool(id : gamebbScriptID_Bool, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerBool
+	import function RegisterDelayedListenerEntityID(id : gamebbScriptID_EntityID, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerEntityID
+	import function RegisterDelayedListenerFloat(id : gamebbScriptID_Float, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerFloat
+	import function RegisterDelayedListenerInt(id : gamebbScriptID_Int32, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerInt
+	import function RegisterDelayedListenerName(id : gamebbScriptID_CName, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerName
+	import function RegisterDelayedListenerQuat(id : gamebbScriptID_Quaternion, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerQuat
+	import function RegisterDelayedListenerString(id : gamebbScriptID_String, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerString
+	import function RegisterDelayedListenerUint(id : gamebbScriptID_Uint32, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerUint
+	import function RegisterDelayedListenerVariant(id : gamebbScriptID_Variant, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerVariant
+	import function RegisterDelayedListenerVector2(id : gamebbScriptID_Vector2, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerVector2
+	import function RegisterDelayedListenerVector4(id : gamebbScriptID_Vector4, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterDelayedListenerVector4
+	import function RegisterEntity(id : gamebbScriptID, gameInstance : ScriptGameInstance, entityID : entEntityID) : Uint32; // RegisterEntity
+	import function RegisterListenerBool(id : gamebbScriptID_Bool, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerBool
+	import function RegisterListenerEntityID(id : gamebbScriptID_EntityID, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerEntityID
+	import function RegisterListenerFloat(id : gamebbScriptID_Float, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerFloat
+	import function RegisterListenerInt(id : gamebbScriptID_Int32, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerInt
+	import function RegisterListenerName(id : gamebbScriptID_CName, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerName
+	import function RegisterListenerQuat(id : gamebbScriptID_Quaternion, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerQuat
+	import function RegisterListenerString(id : gamebbScriptID_String, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerString
+	import function RegisterListenerUint(id : gamebbScriptID_Uint32, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerUint
+	import function RegisterListenerVariant(tag : gamebbScriptID_Variant, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerVariant
+	import function RegisterListenerVector2(id : gamebbScriptID_Vector2, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerVector2
+	import function RegisterListenerVector4(id : gamebbScriptID_Vector4, object : handle:IScriptable, func : CName, optional fireIfValueExist : Bool) : handle:redCallbackObject; // RegisterListenerVector4
+	import function SetBool(id : gamebbScriptID_Bool, value : Bool, optional forceFire : Bool); // SetBool
+	import function SetEntityID(id : gamebbScriptID_EntityID, value : entEntityID, optional forceFire : Bool); // SetEntityID
+	import function SetFloat(id : gamebbScriptID_Float, value : Float, optional forceFire : Bool); // SetFloat
+	import function SetInt(id : gamebbScriptID_Int32, value : Int32, optional forceFire : Bool); // SetInt
+	import function SetName(id : gamebbScriptID_CName, value : CName, optional forceFire : Bool); // SetName
+	import function SetQuat(id : gamebbScriptID_Quaternion, value : Quaternion, optional forceFire : Bool); // SetQuat
+	import function SetString(id : gamebbScriptID_String, value : String, optional forceFire : Bool); // SetString
+	import function SetUint(id : gamebbScriptID_Uint32, value : Uint32, optional forceFire : Bool); // SetUint
+	import function SetVariant(tag : gamebbScriptID_Variant, value : Variant, optional forceFire : Bool); // SetVariant
+	import function SetVector2(id : gamebbScriptID_Vector2, value : Vector2, optional forceFire : Bool); // SetVector2
+	import function SetVector4(id : gamebbScriptID_Vector4, value : Vector4, optional forceFire : Bool); // SetVector4
+	import function Signal(id : gamebbScriptID); // Signal
+	import function SignalBool(id : gamebbScriptID_Bool); // SignalBool
+	import function SignalEntityID(id : gamebbScriptID_EntityID); // SignalEntityID
+	import function SignalFloat(id : gamebbScriptID_Float); // SignalFloat
+	import function SignalInt(id : gamebbScriptID_Int32); // SignalInt
+	import function SignalName(id : gamebbScriptID_CName); // SignalName
+	import function SignalQuat(id : gamebbScriptID_Quaternion); // SignalQuat
+	import function SignalString(id : gamebbScriptID_String); // SignalString
+	import function SignalUint(id : gamebbScriptID_Uint32); // SignalUint
+	import function SignalVariant(id : gamebbScriptID_Variant); // SignalVariant
+	import function SignalVector2(id : gamebbScriptID_Vector2); // SignalVector2
+	import function SignalVector4(id : gamebbScriptID_Vector4); // SignalVector4
+	import function UnregisterDelayedListener(id : gamebbScriptID, out callbackHandle : handle:redCallbackObject); // UnregisterDelayedListener
+	import function UnregisterEntity(id : gamebbScriptID, out callbackHandle : handle:redCallbackObject); // UnregisterEntity
+	import function UnregisterListenerBool(id : gamebbScriptID_Bool, out callbackHandle : handle:redCallbackObject); // UnregisterListenerBool
+	import function UnregisterListenerEntityID(id : gamebbScriptID_EntityID, out callbackHandle : handle:redCallbackObject); // UnregisterListenerEntityID
+	import function UnregisterListenerFloat(id : gamebbScriptID_Float, out callbackHandle : handle:redCallbackObject); // UnregisterListenerFloat
+	import function UnregisterListenerInt(id : gamebbScriptID_Int32, out callbackHandle : handle:redCallbackObject); // UnregisterListenerInt
+	import function UnregisterListenerName(id : gamebbScriptID_CName, out callbackHandle : handle:redCallbackObject); // UnregisterListenerName
+	import function UnregisterListenerQuat(id : gamebbScriptID_Quaternion, out callbackHandle : handle:redCallbackObject); // UnregisterListenerQuat
+	import function UnregisterListenerString(id : gamebbScriptID_String, out callbackHandle : handle:redCallbackObject); // UnregisterListenerString
+	import function UnregisterListenerUint(id : gamebbScriptID_Uint32, out callbackHandle : handle:redCallbackObject); // UnregisterListenerUint
+	import function UnregisterListenerVariant(id : gamebbScriptID_Variant, out callbackHandle : handle:redCallbackObject); // UnregisterListenerVariant
+	import function UnregisterListenerVector2(id : gamebbScriptID_Vector2, out callbackHandle : handle:redCallbackObject); // UnregisterListenerVector2
+	import function UnregisterListenerVector4(id : gamebbScriptID_Vector4, out callbackHandle : handle:redCallbackObject); // UnregisterListenerVector4
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

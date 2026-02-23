@@ -1,0 +1,1 @@
+{"a":"AIBaseUseWorkspotCommand","b":"scnUseSceneWorkspotCommand","d":8,"e":[{"a":{"b":"scnSceneInstanceId"},"b":"sceneInstanceId","c":128},{"a":{"b":"scnSceneWorkspotInstanceId"},"b":"workspotInstanceId","c":128},{"a":{"b":"workWorkspotItemOverride"},"b":"itemOverride","c":128},{"a":{"b":"scnNodeId"},"b":"nodeId","c":128}]}

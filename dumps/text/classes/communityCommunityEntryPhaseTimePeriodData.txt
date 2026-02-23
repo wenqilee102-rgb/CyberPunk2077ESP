@@ -1,0 +1,6 @@
+import struct communityCommunityEntryPhaseTimePeriodData
+{
+	var periodName : CName;
+	var spotNodeIds : array:worldGlobalNodeID;
+	var isSequence : Bool;
+}

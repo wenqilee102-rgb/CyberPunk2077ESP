@@ -1,0 +1,7 @@
+struct CasinoTableSlotData
+{
+	public    var widget : inkWidgetReference;
+	public    var controller : whandle:CasinoTableSlotLogicController;
+	public    var casinoChipsListener : whandle:gameInventoryScriptListener;
+	public    var slotUser : whandle:gameObject;
+}

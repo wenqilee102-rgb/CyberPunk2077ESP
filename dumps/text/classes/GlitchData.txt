@@ -1,0 +1,5 @@
+struct GlitchData
+{
+	public    var intensity : Float;
+	public    var state : EGlitchState;
+}

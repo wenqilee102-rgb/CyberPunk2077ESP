@@ -1,0 +1,1 @@
+{"a":"WorkSpotTask","b":"ReserveWorkSpotTask","d":0,"e":[{"a":{"a":16},"b":"workspotRef","c":128},{"a":{"a":27,"c":{"b":"gameObject"}},"b":"workspotObject","c":128}],"f":[{"a":"Activate;ScriptExecutionContext","b":"Activate","d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

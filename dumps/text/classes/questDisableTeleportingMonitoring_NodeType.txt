@@ -1,0 +1,19 @@
+import class questDisableTeleportingMonitoring_NodeType extends questIWorldDataManagerNodeType
+{
+}
+
+import class abstract questIWorldDataManagerNodeType extends questIRetNodeType
+{
+}
+
+import class abstract questIRetNodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

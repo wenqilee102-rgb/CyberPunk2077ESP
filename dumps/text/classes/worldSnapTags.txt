@@ -1,0 +1,5 @@
+import struct worldSnapTags
+{
+	var includeTags : array:CName;
+	var excludeTags : array:CName;
+}

@@ -1,0 +1,1 @@
+{"a":"AIbehaviorTaskDefinition","b":"AIbehaviorFindAlertedWorkspotTaskDefinition","d":8,"e":[{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"usedTokens","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"spots","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"radius","c":128},{"a":{"a":26,"c":{"b":"AIArgumentMapping"}},"b":"outWorkspotData","c":128}]}

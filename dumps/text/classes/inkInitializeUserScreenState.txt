@@ -1,0 +1,7 @@
+import struct inkInitializeUserScreenState extends inkIStateMachineState
+{
+}
+
+import struct abstract inkIStateMachineState
+{
+}

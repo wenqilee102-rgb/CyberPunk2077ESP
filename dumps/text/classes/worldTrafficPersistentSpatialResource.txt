@@ -1,0 +1,17 @@
+import class worldTrafficPersistentSpatialResource extends resStreamedResource
+{
+	var neighborGroups : array:array:Uint16;
+}
+
+import class abstract resStreamedResource extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

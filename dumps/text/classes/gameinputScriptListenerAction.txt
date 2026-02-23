@@ -1,0 +1,13 @@
+import struct gameinputScriptListenerAction
+{
+	import static function GetKey(me : gameinputScriptListenerAction) : array:Int32; // GetKey
+	import static function GetName(me : gameinputScriptListenerAction) : CName; // GetName
+	import static function GetType(me : gameinputScriptListenerAction) : gameinputActionType; // GetType
+	import static function GetValue(me : gameinputScriptListenerAction) : Float; // GetValue
+	import static function IsAction(me : gameinputScriptListenerAction, name : CName) : Bool; // IsAction
+	import static function IsAxisChangeAction(me : gameinputScriptListenerAction) : Bool; // IsAxisChangeAction
+	import static function IsButton(me : gameinputScriptListenerAction) : Bool; // IsButton
+	import static function IsButtonJustPressed(me : gameinputScriptListenerAction) : Bool; // IsButtonJustPressed
+	import static function IsButtonJustReleased(me : gameinputScriptListenerAction) : Bool; // IsButtonJustReleased
+	import static function IsRelativeChangeAction(me : gameinputScriptListenerAction) : Bool; // IsRelativeChangeAction
+}

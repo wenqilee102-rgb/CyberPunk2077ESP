@@ -1,0 +1,19 @@
+import class animAnimVariableVector extends animAnimVariable
+{
+	var x : Float;
+	var y : Float;
+	var z : Float;
+	var w : Float;
+	var default : Vector4;
+	var min : Vector4;
+	var max : Vector4;
+}
+
+import class abstract animAnimVariable extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

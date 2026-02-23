@@ -1,0 +1,13 @@
+import class meshMeshParamShadowMeshCreationData extends meshMeshParameter
+{
+	var geometries : array:handle:physicsICollider;
+	var bonesPerGeometry : array:Int32;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

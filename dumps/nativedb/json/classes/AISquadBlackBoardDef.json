@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"AISquadBlackBoardDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Bool"},"b":"BarkPlayed","c":128},{"a":{"b":"gamebbScriptID_Bool"},"b":"LowHealthBarkPlayed","c":128},{"a":{"b":"gamebbScriptID_Float"},"b":"BarkPlayedTimeStamp","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

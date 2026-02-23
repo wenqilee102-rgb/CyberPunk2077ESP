@@ -1,0 +1,5 @@
+enum EExplosiveAdditionalGameEffectType
+{
+	none = 0,
+	EMP = 1
+}

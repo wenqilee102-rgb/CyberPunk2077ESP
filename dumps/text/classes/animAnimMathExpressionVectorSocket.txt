@@ -1,0 +1,5 @@
+import struct animAnimMathExpressionVectorSocket
+{
+	var link : animVectorLink;
+	var expressionVarId : Uint16;
+}

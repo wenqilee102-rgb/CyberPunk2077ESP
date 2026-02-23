@@ -1,0 +1,20 @@
+import class audioSourceBasedReverbBussesMetadata extends audioAudioMetadata
+{
+	var exterior : CName;
+	var interiorLarge : CName;
+	var interiorMedium : CName;
+	var interiorSmall : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

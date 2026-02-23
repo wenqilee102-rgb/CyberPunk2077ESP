@@ -1,0 +1,7 @@
+import struct AIRandomCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

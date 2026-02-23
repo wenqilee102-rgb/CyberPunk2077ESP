@@ -1,0 +1,4 @@
+import struct audioMeleeRigTypeMeleeWeaponConfigurationMap
+{
+	var mapItems : array:audioMeleeRigTypeMeleeWeaponConfigurationMapItem;
+}

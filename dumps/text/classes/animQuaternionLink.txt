@@ -1,0 +1,4 @@
+import struct animQuaternionLink
+{
+	var node : whandle:animAnimNode_QuaternionValue;
+}

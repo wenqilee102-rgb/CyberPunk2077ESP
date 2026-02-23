@@ -1,0 +1,29 @@
+import class AICTreeNodePositionSharedVarDecoratorDefinition extends AICTreeNodeSingleSharedVarDecoratorDefinition
+{
+}
+
+import class abstract AICTreeNodeSingleSharedVarDecoratorDefinition extends AICTreeNodeSharedVarsBaseDecoratorDefinition
+{
+	var sharedVarName : LibTreeSharedVarRegistrationName;
+}
+
+import class abstract AICTreeNodeSharedVarsBaseDecoratorDefinition extends AICTreeNodeDecoratorDefinition
+{
+}
+
+import class abstract AICTreeNodeDecoratorDefinition extends AICTreeNodeDefinition
+{
+	var child : handle:LibTreeINodeDefinition;
+}
+
+import class abstract AICTreeNodeDefinition extends LibTreeINodeDefinition
+{
+}
+
+import class abstract LibTreeINodeDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

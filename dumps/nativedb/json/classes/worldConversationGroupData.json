@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"worldConversationGroupData","d":8,"e":[{"a":{"a":29,"c":{"b":"scnInterestingConversationsResource"}},"b":"conversationGroup","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"scnIInterruptionOperation"}}},"b":"interruptionOperations","c":128},{"a":{"a":1},"b":"ignoreLocalLimit","c":128},{"a":{"a":1},"b":"ignoreGlobalLimit","c":128}]}

@@ -1,0 +1,20 @@
+import struct gameActionAnimationState extends gameActionReplicatedState
+{
+	var animFeatureName : CName;
+	var animFeature : handle:animAnimFeature_AIAction;
+	var useRootMotion : Bool;
+	var usePoseMatching : Bool;
+	var motionDynamicObjectsCheck : Bool;
+	var slideParams : gameActionAnimationSlideParams;
+	var targetObject : whandle:gameObject;
+	var sendLoopEvent : Bool;
+}
+
+import struct gameActionReplicatedState
+{
+	var replicationId : Uint32;
+	var type : Uint16;
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var updateBucket : Uint8;
+}

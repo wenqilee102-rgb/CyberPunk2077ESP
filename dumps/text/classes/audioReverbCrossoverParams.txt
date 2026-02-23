@@ -1,0 +1,5 @@
+import struct audioReverbCrossoverParams
+{
+	var dist : Float;
+	var fade : Float;
+}

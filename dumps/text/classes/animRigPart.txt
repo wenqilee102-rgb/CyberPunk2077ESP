@@ -1,0 +1,9 @@
+import struct animRigPart
+{
+	var name : CName;
+	var singleBones : array:animRigPartBone;
+	var treeBones : array:animRigPartBoneTree;
+	var bonesWithRotationInModelSpace : array:CName;
+	var mask : array:animTransformMask;
+	var maskRotMS : array:Int32;
+}

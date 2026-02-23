@@ -1,0 +1,5 @@
+import struct navLocomotionPathPointInfo
+{
+	var point : navSerializableSplineProgression;
+	var userDataIndex : Uint32;
+}

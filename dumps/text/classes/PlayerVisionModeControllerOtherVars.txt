@@ -1,0 +1,9 @@
+struct PlayerVisionModeControllerOtherVars
+{
+	public    var enabledByToggle : Bool;
+	public    var active : Bool;
+	public    var toggledDuringHold : Bool;
+	public    var buttonHoldPressTime : Float;
+	public    var buttonHoldTapTime : Float;
+	public    var buttonHoldTapCount : Int32;
+}

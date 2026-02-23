@@ -1,0 +1,7 @@
+struct AccumulatedDamageDigitsNode
+{
+	public    var used : Bool;
+	public    var entityID : entEntityID;
+	public    var controller : whandle:AccumulatedDamageDigitLogicController;
+	public    var isDamageOverTime : Bool;
+}

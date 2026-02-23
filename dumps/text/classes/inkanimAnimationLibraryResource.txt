@@ -1,0 +1,13 @@
+import class inkanimAnimationLibraryResource extends CResource
+{
+	var sequences : array:handle:inkanimSequence;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

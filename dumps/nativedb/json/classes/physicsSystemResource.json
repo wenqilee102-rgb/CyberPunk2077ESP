@@ -1,0 +1,1 @@
+{"a":"CResource","b":"physicsSystemResource","d":8,"e":[{"a":{"a":31,"c":{"a":26,"c":{"b":"physicsSystemBody"}}},"b":"bodies","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"physicsSystemJoint"}}},"b":"joints","c":128}]}

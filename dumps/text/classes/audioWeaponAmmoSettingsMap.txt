@@ -1,0 +1,25 @@
+import class audioWeaponAmmoSettingsMap extends audioAudioMetadata
+{
+	var standardFlyby : audioFlybySettings;
+	var sniperFlyby : audioFlybySettings;
+	var shotFlyby : audioFlybySettings;
+	var railFlyby : audioFlybySettings;
+	var automaticFlyby : audioFlybySettings;
+	var smartFlyby : audioFlybySettings;
+	var smartSniperFlyby : audioFlybySettings;
+	var hmgFlyby : audioFlybySettings;
+	var flybyMinDistance : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

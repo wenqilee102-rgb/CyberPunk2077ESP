@@ -1,0 +1,38 @@
+import class AIbehaviorActionMoveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+	var movementTarget : handle:AIArgumentMapping;
+	var lookAtTarget : handle:AIArgumentMapping;
+	var movementType : handle:AIArgumentMapping;
+	var tolerance : handle:AIArgumentMapping;
+	var ignoreNavigation : handle:AIArgumentMapping;
+	var rotateEntity : handle:AIArgumentMapping;
+	var useStart : handle:AIArgumentMapping;
+	var useStop : handle:AIArgumentMapping;
+	var destinationTangent : handle:AIArgumentMapping;
+	var startTangent : handle:AIArgumentMapping;
+	var spotReservation : handle:AIArgumentMapping;
+	var ignoreRestrictedArea : handle:AIArgumentMapping;
+	var ignoreCollisionsWhenCloseToTarget : handle:AIArgumentMapping;
+	var failWhenStoppedByCollision : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

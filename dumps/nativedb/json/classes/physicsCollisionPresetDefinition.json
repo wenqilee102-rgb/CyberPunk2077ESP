@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"physicsCollisionPresetDefinition","d":8,"e":[{"a":{"a":14},"b":"Name","c":128},{"a":{"a":12},"b":"Description","c":128},{"a":{"a":1},"b":"ForceEnableCollisionCallbacks","c":128},{"a":{"a":31,"c":{"a":14}},"b":"CollisionType","c":128},{"a":{"a":31,"c":{"a":14}},"b":"CollisionMask","c":128},{"a":{"a":31,"c":{"a":14}},"b":"QueryDetect","c":128}]}

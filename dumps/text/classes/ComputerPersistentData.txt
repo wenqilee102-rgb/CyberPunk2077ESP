@@ -1,0 +1,10 @@
+struct ComputerPersistentData
+{
+	public    var mails : array:gamedeviceGenericDataContent;
+	public    var files : array:gamedeviceGenericDataContent;
+	public    var newsFeedElements : array:SNewsFeedElementData;
+	public    var internetData : SInternetData;
+	public    var initialUIPosition : String;
+	public    var openedFileIDX : Int32;
+	public    var openedFolderIDX : Int32;
+}

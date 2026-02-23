@@ -1,0 +1,1 @@
+{"b":"meshChunkFlags","d":8,"g":true,"e":[{"a":{"a":1},"b":"renderInScene","c":128},{"a":{"a":1},"b":"renderInShadows","c":128},{"a":{"a":1},"b":"isTwoSided","c":128},{"a":{"a":1},"b":"isRayTracedEmissive","c":128},{"a":{"a":1},"b":"isConsoleLOD0","c":128},{"a":{"a":1},"b":"skipDynamicDecalGeneration","c":128}]}

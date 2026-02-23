@@ -1,0 +1,7 @@
+import struct gameSEquipSlot
+{
+	var itemID : gameItemID;
+	var slotID : TweakDBID;
+	var unlockPrereq : handle:gameIPrereq;
+	var visibleWhenLocked : Bool;
+}

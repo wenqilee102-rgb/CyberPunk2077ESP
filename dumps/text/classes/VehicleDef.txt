@@ -1,0 +1,60 @@
+class VehicleDef extends gamebbScriptDefinition
+{
+	public    var BikeTilt : gamebbScriptID_Float;
+	public    var SpeedValue : gamebbScriptID_Float;
+	public    var GearValue : gamebbScriptID_Int32;
+	public    var RPMValue : gamebbScriptID_Float;
+	public    var RPMMax : gamebbScriptID_Float;
+	public    var SuspensionTransversalForce : gamebbScriptID_Float;
+	public    var SuspensionLongitudinalForce : gamebbScriptID_Float;
+	public    var IsAutopilotOn : gamebbScriptID_Bool;
+	public    var DeclutchTimer : gamebbScriptID_Float;
+	public    var HandlingPenalty : gamebbScriptID_Float;
+	public    var HeadLightMode : gamebbScriptID_Int32;
+	public    var VehicleState : gamebbScriptID_Int32;
+	public    var VehicleReady : gamebbScriptID_Bool;
+	public    var VehRadioState : gamebbScriptID_Bool;
+	public    var VehRadioStationName : gamebbScriptID_CName;
+	public    var IsCrowd : gamebbScriptID_Bool;
+	public    var IsUIActive : gamebbScriptID_Bool;
+	public    var GameTime : gamebbScriptID_String;
+	public    var Collision : gamebbScriptID_Bool;
+	public    var DamageState : gamebbScriptID_Int32;
+	public    var MeanSlipRatio : gamebbScriptID_Float;
+	public    var IsHandbraking : gamebbScriptID_Int32;
+	public    var EngineTemp : gamebbScriptID_Float;
+	public    var IsInWater : gamebbScriptID_Bool;
+	public    var RaceTimer : gamebbScriptID_String;
+	public    var IsTargetingFriendly : gamebbScriptID_Bool;
+	public    var ChaseIsChaseDontAvoidPedestrians : gamebbScriptID_Bool;
+	public    var ChaseMaxRammingTickets : gamebbScriptID_Uint32;
+	public    var ChaseTimeDelayToLeaveVehicle : gamebbScriptID_Float;
+	public    var MinimapMappinDeleteAnim : gamebbScriptID_CName;
+	public    var UseCarAlarmStim : gamebbScriptID_Bool;
+	public    var VehicleCustomizationBlockedByDamage : gamebbScriptID_Bool;
+	public    var VehicleCustomizationActive : gamebbScriptID_Bool;
+	public    var VehicleCustomizationDecoPreset : gamebbScriptID_Int32;
+	public    var VehicleCustomizationInstant : gamebbScriptID_Bool;
+	public    var VehicleCustomizationWidgetDelay : gamebbScriptID_Float;
+	public    var VehicleCustomizationPhotoMode : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

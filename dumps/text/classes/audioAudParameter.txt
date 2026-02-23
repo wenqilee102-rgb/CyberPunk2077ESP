@@ -1,0 +1,9 @@
+import struct audioAudParameter
+{
+	var name : CName;
+	var value : Float;
+	var enterCurveType : audioESoundCurveType;
+	var enterCurveTime : Float;
+	var exitCurveType : audioESoundCurveType;
+	var exitCurveTime : Float;
+}

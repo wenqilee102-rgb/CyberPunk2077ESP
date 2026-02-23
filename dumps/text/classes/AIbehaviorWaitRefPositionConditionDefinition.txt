@@ -1,0 +1,16 @@
+import class AIbehaviorWaitRefPositionConditionDefinition extends AIbehaviorConditionDefinition
+{
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+enum RipperdocModes
+{
+	Default = 0,
+	Item = 1
+}

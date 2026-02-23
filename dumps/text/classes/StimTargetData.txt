@@ -1,0 +1,7 @@
+struct StimTargetData
+{
+	public    var spawnerRef : NodeRef;
+	public    var entryID : CName;
+
+	static function IsValid(self : StimTargetData) : Bool; // StimTargetData::IsValid;StimTargetData
+}

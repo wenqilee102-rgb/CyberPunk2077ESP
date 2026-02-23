@@ -1,0 +1,16 @@
+import class CRenderSimWaterFFT extends IDynamicTextureGenerator
+{
+	var windDir : Float;
+	var windSpeed : Float;
+	var windScale : Float;
+	var amplitude : Float;
+	var lambda : Float;
+}
+
+import class abstract IDynamicTextureGenerator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

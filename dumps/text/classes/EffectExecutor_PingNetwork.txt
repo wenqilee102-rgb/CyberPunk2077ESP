@@ -1,0 +1,38 @@
+class EffectExecutor_PingNetwork extends gameEffectExecutor_Scripted
+{
+	private   var fxResource : gameFxResource;
+
+	function GetFxResource(object : handle:gameObject) : gameFxResource; // GetFxResource;GameObject
+	function GetNetworkSystem(ctx : gameEffectScriptContext) : handle:NetworkSystem; // GetNetworkSystem;EffectScriptContext
+	function IsTargetValid(target : handle:gameObject, source : handle:gameObject, ctx : gameEffectScriptContext) : Bool; // IsTargetValid;GameObjectGameObjectEffectScriptContext
+	function Process(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // Process;EffectScriptContextEffectExecutionScriptContext
+	function ShouldRevealObject(object : handle:gameObject) : Bool; // ShouldRevealObject;GameObject
+	function TargetLost(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext); // TargetLost;EffectScriptContextEffectExecutionScriptContext
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class gameTransformAnimation_Rotation_LocalRotation extends gameTransformAnimation_Rotation
+{
+	var rotation : Quaternion;
+}
+
+import class abstract gameTransformAnimation_Rotation extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

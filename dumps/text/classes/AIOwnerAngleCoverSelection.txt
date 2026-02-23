@@ -1,0 +1,7 @@
+import struct AIOwnerAngleCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

@@ -1,0 +1,5 @@
+import struct animRigPartBone
+{
+	var bone : CName;
+	var weight : Float;
+}

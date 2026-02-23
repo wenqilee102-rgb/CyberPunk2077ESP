@@ -1,0 +1,4 @@
+struct NPCAbility
+{
+	public    var abilityName : String;
+}

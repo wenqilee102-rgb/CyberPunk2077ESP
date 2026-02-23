@@ -1,0 +1,36 @@
+import class gamedataMappinDefinition_Record extends gamedataBase_MappinDefinition_Record
+{
+	import function GetPossibleVariantsCount() : Int32; // GetPossibleVariantsCount
+	import function GetPossibleVariantsItem(index : Int32) : whandle:gamedataMappinVariant_Record; // GetPossibleVariantsItem
+	import function GetPossibleVariantsItemHandle(index : Int32) : handle:gamedataMappinVariant_Record; // GetPossibleVariantsItemHandle
+	import function PossibleVariants(out outList : array:whandle:gamedataMappinVariant_Record); // PossibleVariants
+	import function PossibleVariantsContains(item : whandle:gamedataMappinVariant_Record) : Bool; // PossibleVariantsContains
+}
+
+import class gamedataBase_MappinDefinition_Record extends gamedataTweakDBRecord
+{
+	import function ShowInWorld() : Bool; // ShowInWorld
+	import function ShowOnMap() : Bool; // ShowOnMap
+	import function ShowOnMinimap() : Bool; // ShowOnMinimap
+	import function VisibilityRange() : Float; // VisibilityRange
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

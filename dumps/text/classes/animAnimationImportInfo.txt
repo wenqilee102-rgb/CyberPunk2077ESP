@@ -1,0 +1,8 @@
+import struct animAnimationImportInfo
+{
+	var AnimationType : animAnimationType;
+	var BufferType : animcompressionBufferTypePreset;
+	var CompressionPreset : animcompressionQualityPreset;
+	var FrameratePreset : animcompressionFrameratePreset;
+	var MotionExtractionCompression : animEMotionExtractionCompressionType;
+}

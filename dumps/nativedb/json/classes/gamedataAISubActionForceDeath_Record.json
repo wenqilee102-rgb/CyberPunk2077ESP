@@ -1,0 +1,1 @@
+{"a":"gamedataAISubAction_Record","b":"gamedataAISubActionForceDeath_Record","c":"AISubActionForceDeath_Record","d":24,"f":[{"a":"Delay","c":{"a":10},"d":4},{"a":"HitBodyPart","c":{"a":6},"d":4},{"a":"HitDirection","c":{"a":6},"d":4},{"a":"HitIntensity","c":{"a":6},"d":4},{"a":"HitSource","c":{"a":6},"d":4}]}

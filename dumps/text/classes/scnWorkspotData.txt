@@ -1,0 +1,8 @@
+import class abstract scnWorkspotData extends ISerializable
+{
+	var dataId : scnSceneWorkspotDataId;
+}
+
+import class abstract ISerializable
+{
+}

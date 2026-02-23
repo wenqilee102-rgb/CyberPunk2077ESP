@@ -1,0 +1,6 @@
+import struct ParamData
+{
+	var name : String;
+	var type : String;
+	var defaultValue : Variant;
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"NetworkLinkQuickhackEvent","d":0,"e":[{"a":{"b":"entEntityID"},"b":"netrunnerID","c":128},{"a":{"b":"entEntityID"},"b":"proxyID","c":128},{"a":{"b":"entEntityID"},"b":"targetID","c":128},{"a":{"b":"entEntityID"},"b":"from","c":128},{"a":{"b":"entEntityID"},"b":"to","c":128}]}

@@ -1,0 +1,27 @@
+class ReprimandUpdate extends redEvent
+{
+	public    var reprimandInstructions : EReprimandInstructions;
+	public    var target : entEntityID;
+	public    var targetPos : Vector4;
+	public    var currentPerformer : whandle:gameObject;
+
+	static function Construct(performer : handle:gameObject, target : entEntityID, instructions : EReprimandInstructions, optional pos : Vector4) : handle:ReprimandUpdate; // ReprimandUpdate::Construct;GameObjectEntityIDEReprimandInstructionsVector4
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"b":"scnWorkspotInstance","d":8,"g":true,"e":[{"a":{"b":"scnSceneWorkspotInstanceId"},"b":"workspotInstanceId","c":128},{"a":{"b":"scnSceneWorkspotDataId"},"b":"dataId","c":128},{"a":{"b":"Transform"},"b":"localTransform","c":128},{"a":{"a":1},"b":"playAtActorLocation","c":128},{"a":{"b":"scnMarker"},"b":"originMarker","c":128}]}

@@ -1,0 +1,26 @@
+class NewPerksPerkItemInitData extends IScriptable
+{
+	public    var perkRecord : whandle:gamedataNewPerk_Record;
+	public    var perkType : gamedataNewPerkType;
+	public    var requiredAttributePoints : Int32;
+	public    var isAttributeRequirementMet : Bool;
+	public    var maxPerkLevel : Int32;
+	public    var icon : TweakDBID;
+	public    var binkRef : redResourceReferenceScriptToken;
+	public    var category : gamedataNewPerkCategoryType;
+	public    var stat : gamedataStatType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

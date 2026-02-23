@@ -1,0 +1,31 @@
+import class gamedataInventoryItem_Record extends gamedataTweakDBRecord
+{
+	import function ActiveForSlot() : whandle:gamedataAttachmentSlot_Record; // ActiveForSlot
+	import function ActiveForSlotHandle() : handle:gamedataAttachmentSlot_Record; // ActiveForSlotHandle
+	import function ChanceInCrowd() : Float; // ChanceInCrowd
+	import function EquipSlot_DEPRECATED() : whandle:gamedataAttachmentSlot_Record; // EquipSlot_DEPRECATED
+	import function EquipSlot_DEPRECATEDHandle() : handle:gamedataAttachmentSlot_Record; // EquipSlot_DEPRECATEDHandle
+	import function Item() : whandle:gamedataItem_Record; // Item
+	import function ItemHandle() : handle:gamedataItem_Record; // ItemHandle
+	import function Quantity() : Int32; // Quantity
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

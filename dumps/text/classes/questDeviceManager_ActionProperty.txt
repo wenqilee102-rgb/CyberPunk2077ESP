@@ -1,0 +1,7 @@
+import struct questDeviceManager_ActionProperty
+{
+	var name : CName;
+	var value : Variant;
+	var min : Float;
+	var max : Float;
+}

@@ -1,0 +1,40 @@
+class BulletCollisionEvaluator extends gameprojectileScriptCollisionEvaluator
+{
+	protected var user : whandle:gameObject;
+	private   var hasStopped : Bool;
+	private   var stoppedPosition : Vector4;
+	private   var weaponParams : gameprojectileWeaponParams;
+	private   var isExplodingBullet : Bool;
+	private   var isSmartBullet : Bool;
+
+	function EvaluateCollision(defaultOnCollisionAction : gameprojectileOnCollisionAction, params : handle:gameprojectileCollisionEvaluatorParams) : gameprojectileOnCollisionAction; // EvaluateCollision;gameprojectileOnCollisionActionCollisionEvaluatorParams
+	function GetStoppedPosition() : Vector4; // GetStoppedPosition;
+	function HasReportedStopped() : Bool; // HasReportedStopped;
+	function SetIsExplodingBullet(isExplodingBullet : Bool); // SetIsExplodingBullet;Bool
+	function SetIsSmartBullet(isSmartBullet : Bool); // SetIsSmartBullet;Bool
+	function SetUser(user : whandle:gameObject); // SetUser;GameObject
+	function SetWeaponParams(params : script_ref:gameprojectileWeaponParams); // SetWeaponParams;script_ref<gameprojectileWeaponParams>
+}
+
+import class gameprojectileScriptCollisionEvaluator extends gameprojectileCollisionEvaluator
+{
+	function EvaluateCollision(defaultOnCollisionAction : gameprojectileOnCollisionAction, params : handle:gameprojectileCollisionEvaluatorParams) : gameprojectileOnCollisionAction; // EvaluateCollision;gameprojectileOnCollisionActionCollisionEvaluatorParams
+}
+
+import class gameprojectileCollisionEvaluator extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

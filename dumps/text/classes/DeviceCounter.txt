@@ -1,0 +1,5 @@
+struct DeviceCounter
+{
+	public    var devices : array:handle:gameDeviceComponentPS;
+	public    var systemType : EVirtualSystem;
+}

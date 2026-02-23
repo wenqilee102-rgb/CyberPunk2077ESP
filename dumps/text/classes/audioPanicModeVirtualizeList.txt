@@ -1,0 +1,17 @@
+import class audioPanicModeVirtualizeList extends audioAudioMetadata
+{
+	var tags : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

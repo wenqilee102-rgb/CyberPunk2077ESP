@@ -1,0 +1,5 @@
+enum inputContextType
+{
+	Action = 0,
+	RPG = 1
+}

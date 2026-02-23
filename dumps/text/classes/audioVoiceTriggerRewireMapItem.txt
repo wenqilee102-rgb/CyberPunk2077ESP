@@ -1,0 +1,8 @@
+import struct audioVoiceTriggerRewireMapItem
+{
+	var name : CName;
+	var inputToBeRewiredVariationIndex : Uint32;
+	var inputToBeActuallyPlayedName : CName;
+	var inputToBeActuallyPlayedVariationIndex : Uint32;
+	var allowReuse : Bool;
+}

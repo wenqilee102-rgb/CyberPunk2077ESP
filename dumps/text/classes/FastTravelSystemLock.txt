@@ -1,0 +1,5 @@
+struct FastTravelSystemLock
+{
+	public    var lockReason : CName;
+	public    var linkedStatusEffectID : TweakDBID;
+}

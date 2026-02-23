@@ -1,0 +1,13 @@
+import class animActionAnimDatabase extends CResource
+{
+	var rows : array:animActionAnimDatabase_DatabaseRow;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

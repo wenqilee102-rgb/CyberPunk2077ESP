@@ -1,0 +1,11 @@
+import class gameDebugTimeState extends gameITimeState
+{
+}
+
+import class abstract gameITimeState extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

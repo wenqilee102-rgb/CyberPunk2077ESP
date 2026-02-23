@@ -1,0 +1,7 @@
+import struct physicsSectorEntry
+{
+	var sectorBounds : Box;
+	var sectorHash : Uint64;
+	var entryOffset : Uint32;
+	var entrySize : Uint32;
+}

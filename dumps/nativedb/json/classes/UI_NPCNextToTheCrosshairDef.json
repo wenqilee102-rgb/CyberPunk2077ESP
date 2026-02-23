@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"UI_NPCNextToTheCrosshairDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Variant"},"b":"NameplateData","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"BuffsList","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"DebuffsList","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

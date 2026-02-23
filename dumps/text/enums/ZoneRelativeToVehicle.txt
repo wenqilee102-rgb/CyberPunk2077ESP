@@ -1,0 +1,6 @@
+enum ZoneRelativeToVehicle
+{
+	Right = 0,
+	Left = 1,
+	Middle = 2
+}

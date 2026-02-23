@@ -1,0 +1,9 @@
+import struct physicsQueryFilter
+{
+	var mask1 : Uint64;
+	var mask2 : Uint64;
+
+	import static function ALL() : physicsQueryFilter; // ALL
+	import static function AddGroup(out filter : physicsQueryFilter, group : CName); // AddGroup
+	import static function ZERO() : physicsQueryFilter; // ZERO
+}

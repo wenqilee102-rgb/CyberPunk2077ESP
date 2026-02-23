@@ -1,0 +1,25 @@
+import class gameDamage extends IScriptable
+{
+	var damageType : gamedataDamageType;
+	var value : Float;
+
+	import function GetType() : gamedataDamageType; // GetType
+	import function GetValue() : Float; // GetValue
+	import function IsValid() : Bool; // IsValid
+	import function SetType(dmgType : gamedataDamageType); // SetType
+	import function SetValue(value : Float); // SetValue
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

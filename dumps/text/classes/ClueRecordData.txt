@@ -1,0 +1,7 @@
+struct ClueRecordData
+{
+	public    var clueRecord : TweakDBID;
+	public    var percentage : Float;
+	public    var facts : array:SFactOperationData;
+	public    var wasInspected : Bool;
+}

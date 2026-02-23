@@ -1,0 +1,6 @@
+import struct gameEffectOutputParameter_Quat
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+
+	import static function Set(ctx : gameEffectOutputParameter_Quat, bb : handle:gameIBlackboard, value : Quaternion); // Set
+}

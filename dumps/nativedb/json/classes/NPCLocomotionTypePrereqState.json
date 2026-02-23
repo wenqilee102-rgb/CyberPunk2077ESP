@@ -1,0 +1,1 @@
+{"a":"gamePrereqState","b":"NPCLocomotionTypePrereqState","d":0,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"owner","c":128},{"a":{"a":26,"c":{"b":"redCallbackObject"}},"b":"listenerInt","c":128}],"f":[{"a":"OnLocomotionTypeChanged","c":{"a":1},"d":98,"e":[{"a":{"a":6},"b":"value","c":0}]}]}

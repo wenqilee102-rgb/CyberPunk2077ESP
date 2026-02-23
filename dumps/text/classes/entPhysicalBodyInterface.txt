@@ -1,0 +1,43 @@
+import class entPhysicalBodyInterface extends IScriptable
+{
+	import function AddLinearImpulse(impulse : Vector4, originInCOM : Bool, optional offset : Vector4); // AddLinearImpulse
+	import function GetAngularVelocity(); // GetAngularVelocity
+	import function GetBodyIndex() : Int32; // GetBodyIndex
+	import function GetBounds(); // GetBounds
+	import function GetBoundsCenter(); // GetBoundsCenter
+	import function GetDimensions(); // GetDimensions
+	import function GetDisplacement(); // GetDisplacement
+	import function GetLinearSpeed(); // GetLinearSpeed
+	import function GetLinearVelocity(); // GetLinearVelocity
+	import function GetLocalCenterOfMass(); // GetLocalCenterOfMass
+	import function GetMass(); // GetMass
+	import function GetTransform() : Transform; // GetTransform
+	import function IsKinematic() : Bool; // IsKinematic
+	import function IsQueryable() : Bool; // IsQueryable
+	import function IsSimulated() : Bool; // IsSimulated
+	import function SetAngularVelocity(); // SetAngularVelocity
+	import function SetDisplacement(); // SetDisplacement
+	import function SetIsKinematic(enable : Bool); // SetIsKinematic
+	import function SetIsQueryable(enable : Bool); // SetIsQueryable
+	import function SetIsSleeping(); // SetIsSleeping
+	import function SetLinearVelocity(); // SetLinearVelocity
+	import function SetMass(); // SetMass
+	import function SetQueryFilter(); // SetQueryFilter
+	import function SetSimulationFilter(); // SetSimulationFilter
+	import function SetTransform(pos : Transform); // SetTransform
+	import function ToggleKinematic(flag : Bool); // ToggleKinematic
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,68 @@
+import class animAnimFeature_FPPCamera extends animAnimFeature
+{
+	var fov : Float;
+	var deltaYaw : Float;
+	var deltaYawExternal : Float;
+	var deltaYawInput : Float;
+	var yawSpeed : Float;
+	var yawMaxLeft : Float;
+	var yawMaxRight : Float;
+	var deltaPitch : Float;
+	var deltaPitchExternal : Float;
+	var deltaPitchInput : Float;
+	var pitchSpeed : Float;
+	var pitchMin : Float;
+	var pitchMax : Float;
+	var resetYawSpeed : Float;
+	var resetPitchSpeed : Float;
+	var resetExternalsSpeed : Float;
+	var isSceneMode : Bool;
+	var t4Blend : Float;
+	var t4Pitch : Float;
+	var t4Yaw : Float;
+	var t4Roll : Float;
+	var t4CopyPitchAndYaw : Bool;
+	var sceneCameraUseTrajectorySpace : Bool;
+	var sceneTransitioningToGameplay : Bool;
+	var yawMultiplier : Float;
+	var pitchMultiplier : Float;
+	var overridePitchInput : Float;
+	var overridePitchRef : Float;
+	var overrideYawInput : Float;
+	var overrideYawRef : Float;
+	var override : Float;
+	var parallaxSide : Float;
+	var parallaxForward : Float;
+	var parallaxSpace : Float;
+	var normalizeYaw : Bool;
+	var vehicleOffsetWeight : Float;
+	var gameplayCameraPoseWeight : Float;
+	var additiveCameraMovementsWeight : Float;
+	var vehicleProceduralCameraWeight : Float;
+	var t4CameraIdleOrientation : Quaternion;
+	var t4UseCameraIdleOrientation : Bool;
+	var t4CameraControlIdleOrientation : Quaternion;
+
+	import function SetDeltaPitch(deltaPitch : Float); // SetDeltaPitch
+	import function SetDeltaYaw(deltaYaw : Float); // SetDeltaYaw
+	import function SetPitchSpeed(pitchSpeed : Float); // SetPitchSpeed
+	import function SetYawSpeed(yawSpeed : Float); // SetYawSpeed
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

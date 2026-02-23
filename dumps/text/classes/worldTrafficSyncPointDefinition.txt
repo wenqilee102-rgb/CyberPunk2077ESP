@@ -1,0 +1,6 @@
+import struct worldTrafficSyncPointDefinition
+{
+	var laneRefs : array:NodeRef;
+	var lanePositions : array:Float;
+	var length : Float;
+}

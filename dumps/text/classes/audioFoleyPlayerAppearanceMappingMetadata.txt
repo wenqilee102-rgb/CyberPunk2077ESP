@@ -1,0 +1,21 @@
+import class audioFoleyPlayerAppearanceMappingMetadata extends audioAudioMetadata
+{
+	var fallbackMetadata : CName;
+	var jacketSettings : array:audioAppearanceToPlayerMetadata;
+	var topSettings : array:audioAppearanceToPlayerMetadata;
+	var bottomSettings : array:audioAppearanceToPlayerMetadata;
+	var jewelrySettings : array:audioAppearanceToPlayerMetadata;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

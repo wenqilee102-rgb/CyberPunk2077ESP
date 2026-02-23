@@ -1,0 +1,30 @@
+class MinimalItemTooltipStatData extends IScriptable
+{
+	public    var value : Float;
+	public    var diff : Float;
+	public    var statName : String;
+	public    var type : gamedataStatType;
+	public    var decimalPlaces : Int32;
+	public    var displayPercent : Bool;
+	public    var displayPlus : Bool;
+	public    var inMeters : Bool;
+	public    var inSeconds : Bool;
+	public    var inSpeed : Bool;
+	public    var multiplyBy100InText : Bool;
+	public    var roundValue : Bool;
+	public    var flipNegative : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

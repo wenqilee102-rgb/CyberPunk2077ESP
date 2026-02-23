@@ -1,0 +1,17 @@
+import class questDrillingState_ConditionType extends questIObjectConditionType
+{
+	var objectRef : NodeRef;
+	var state : questDrillingState;
+}
+
+import class abstract questIObjectConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

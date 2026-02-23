@@ -1,0 +1,13 @@
+import class questObjectDistance extends questIDistance
+{
+	var entityRef : handle:questUniversalRef;
+	var nodeRef2 : gameEntityReference;
+}
+
+import class abstract questIDistance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

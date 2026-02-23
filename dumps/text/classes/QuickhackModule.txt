@@ -1,0 +1,61 @@
+class QuickhackModule extends HUDModule
+{
+	private   var calculateClose : Bool;
+
+	static function CheckCommandDuplicates(commands : script_ref:array:handle:QuickhackData, optional characterRecord : whandle:gamedataCharacter_Record); // QuickhackModule::CheckCommandDuplicates;script_ref<array<QuickhackData>>Character_Record
+	static function IsQuickhackBlockedByScene(player : handle:gameObject) : Bool; // QuickhackModule::IsQuickhackBlockedByScene;GameObject
+	static function RequestCloseQuickhackMenu(context : ScriptGameInstance, requester : entEntityID); // QuickhackModule::RequestCloseQuickhackMenu;GameInstanceEntityID
+	static function RequestRefreshQuickhackMenu(context : ScriptGameInstance, requester : entEntityID); // QuickhackModule::RequestRefreshQuickhackMenu;GameInstanceEntityID
+	static function SendRevealQuickhackMenu(hudManager : handle:HUDManager, requester : entEntityID, shouldOpen : Bool); // QuickhackModule::SendRevealQuickhackMenu;HUDManagerEntityIDBool
+	static function SortCommandPriority(commands : script_ref:array:handle:QuickhackData, context : ScriptGameInstance); // QuickhackModule::SortCommandPriority;script_ref<array<QuickhackData>>GameInstance
+	static function TranslateEmptyQuickSlotCommands(context : ScriptGameInstance) : array:handle:QuickhackData; // QuickhackModule::TranslateEmptyQuickSlotCommands;GameInstance
+
+	function BaseOpenCheck() : Bool; // BaseOpenCheck;
+	function DuplicateLastInstance(actor : handle:gameHudActor) : handle:QuickhackInstance; // DuplicateLastInstance;HUDActor
+	function IsModuleOperational() : Bool; // IsModuleOperational;
+	function Process(out task : HUDJob, mode : ActiveMode); // Process;HUDJobActiveMode
+	function Process(out jobs : array:HUDJob, mode : ActiveMode); // Process;array<HUDJob>ActiveMode
+	function SendFakeCommands(commands : script_ref:array:handle:QuickhackData, shouldReveal : Bool); // SendFakeCommands;script_ref<array<QuickhackData>>Bool
+	function SetCalculateClose(value : Bool); // SetCalculateClose;Bool
+	function Suppress(jobs : script_ref:array:HUDJob); // Suppress;script_ref<array<HUDJob>>
+}
+
+class abstract HUDModule extends IScriptable
+{
+	protected var hud : whandle:HUDManager;
+	protected var state : ModuleState;
+	protected var instancesList : array:handle:ModuleInstance;
+
+	function DuplicateLastInstance(actor : handle:gameHudActor) : handle:ModuleInstance; // DuplicateLastInstance;HUDActor
+	function GetActiveMode() : ActiveMode; // GetActiveMode;
+	function GetPlayer() : handle:gameObject; // GetPlayer;
+	function GetState() : ModuleState; // GetState;
+	function HasCurrentTarget() : Bool; // HasCurrentTarget;
+	function InitializeModule(hud : whandle:HUDManager, state : ModuleState); // InitializeModule;HUDManagerModuleState
+	function IsActorLookedAt(actor : handle:gameHudActor) : Bool; // IsActorLookedAt;HUDActor
+	function IsActorLooted(actor : handle:gameHudActor) : Bool; // IsActorLooted;HUDActor
+	function IsActorQuickHackTarget(actor : handle:gameHudActor) : Bool; // IsActorQuickHackTarget;HUDActor
+	function IsIndexOK(index : Int32) : Bool; // IsIndexOK;Int32
+	function IsModuleOperational() : Bool; // IsModuleOperational;
+	function Iterate(out jobs : array:HUDJob, optional forcedMode : ActiveMode); // Iterate;array<HUDJob>ActiveMode
+	function Iterate(out job : HUDJob, optional forcedMode : ActiveMode); // Iterate;HUDJobActiveMode
+	function OverrideInstance(index : Int32, instance : handle:ModuleInstance); // OverrideInstance;Int32ModuleInstance
+	function Process(out jobs : array:HUDJob, mode : ActiveMode); // Process;array<HUDJob>ActiveMode
+	function Process(out task : HUDJob, mode : ActiveMode); // Process;HUDJobActiveMode
+	function Suppress(jobs : script_ref:array:HUDJob); // Suppress;script_ref<array<HUDJob>>
+	function UnregisterActor(actor : handle:gameHudActor); // UnregisterActor;HUDActor
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,19 @@
+import class gameHitShape_OBB extends gameHitShapeBase
+{
+	var dimensions : Vector3;
+}
+
+import class abstract gameHitShapeBase extends gameIHitShape
+{
+	var translation : Vector3;
+	var rotation : Quaternion;
+	var localTransform : Matrix;
+}
+
+import class abstract gameIHitShape extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

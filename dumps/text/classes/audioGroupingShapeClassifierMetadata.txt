@@ -1,0 +1,25 @@
+import class audioGroupingShapeClassifierMetadata extends audioAudioMetadata
+{
+	var useAngle : Bool;
+	var minGroupSize : Float;
+	var maxGroupSize : Float;
+	var minGroupAngleSpread : Float;
+	var maxGroupAngleSpread : Float;
+	var floorLimit : Bool;
+	var ceilingLimit : Bool;
+	var minDistanceLimit : CName;
+	var maxDistanceLimit : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,52 @@
+import class gamedataPreventionHeatData_Record extends gamedataTweakDBRecord
+{
+	import function AvRecord() : whandle:gamedataVehicle_Record; // AvRecord
+	import function AvRecordHandle() : handle:gamedataVehicle_Record; // AvRecordHandle
+	import function AvSpawnAngleRange() : Vector2; // AvSpawnAngleRange
+	import function AvSpawnDistanceRange() : Vector2; // AvSpawnDistanceRange
+	import function CrimeScoreMultiplier() : Float; // CrimeScoreMultiplier
+	import function FallbackUnitData() : whandle:gamedataPreventionFallbackUnitData_Record; // FallbackUnitData
+	import function FallbackUnitDataHandle() : handle:gamedataPreventionFallbackUnitData_Record; // FallbackUnitDataHandle
+	import function GetQuestVehicleRecordPoolCount() : Int32; // GetQuestVehicleRecordPoolCount
+	import function GetQuestVehicleRecordPoolItem(index : Int32) : whandle:gamedataPreventionVehiclePoolData_Record; // GetQuestVehicleRecordPoolItem
+	import function GetQuestVehicleRecordPoolItemHandle(index : Int32) : handle:gamedataPreventionVehiclePoolData_Record; // GetQuestVehicleRecordPoolItemHandle
+	import function GetUnitRecordsPoolCount() : Int32; // GetUnitRecordsPoolCount
+	import function GetUnitRecordsPoolItem(index : Int32) : whandle:gamedataPreventionUnitPoolData_Record; // GetUnitRecordsPoolItem
+	import function GetUnitRecordsPoolItemHandle(index : Int32) : handle:gamedataPreventionUnitPoolData_Record; // GetUnitRecordsPoolItemHandle
+	import function GetVehicleRecordPoolCount() : Int32; // GetVehicleRecordPoolCount
+	import function GetVehicleRecordPoolItem(index : Int32) : whandle:gamedataPreventionVehiclePoolData_Record; // GetVehicleRecordPoolItem
+	import function GetVehicleRecordPoolItemHandle(index : Int32) : handle:gamedataPreventionVehiclePoolData_Record; // GetVehicleRecordPoolItemHandle
+	import function QuestVehicleRecordPool(out outList : array:whandle:gamedataPreventionVehiclePoolData_Record); // QuestVehicleRecordPool
+	import function QuestVehicleRecordPoolContains(item : whandle:gamedataPreventionVehiclePoolData_Record) : Bool; // QuestVehicleRecordPoolContains
+	import function RoadblockadeSpawnRange() : Vector2; // RoadblockadeSpawnRange
+	import function SpawnInterval() : Float; // SpawnInterval
+	import function SpawnRange() : Vector2; // SpawnRange
+	import function UnitRecordsPool(out outList : array:whandle:gamedataPreventionUnitPoolData_Record); // UnitRecordsPool
+	import function UnitRecordsPoolContains(item : whandle:gamedataPreventionUnitPoolData_Record) : Bool; // UnitRecordsPoolContains
+	import function UnitsCount() : Int32; // UnitsCount
+	import function VehicleCount() : Int32; // VehicleCount
+	import function VehicleRecordPool(out outList : array:whandle:gamedataPreventionVehiclePoolData_Record); // VehicleRecordPool
+	import function VehicleRecordPoolContains(item : whandle:gamedataPreventionVehiclePoolData_Record) : Bool; // VehicleRecordPoolContains
+	import function VehicleSpawnAngleRange() : Vector2; // VehicleSpawnAngleRange
+	import function VehicleSpawnDistanceRange() : Vector2; // VehicleSpawnDistanceRange
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

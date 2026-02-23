@@ -1,0 +1,1 @@
+{"b":"NPCDebugInfo","d":0,"g":true,"e":[{"a":{"b":"entEntityID"},"b":"spawnerID","c":128},{"a":{"a":14},"b":"communityName","c":128},{"a":{"a":26,"c":{"b":"gamedataCharacter_Record"}},"b":"characterRecord","c":128}],"f":[{"a":"NPCDebugInfo::IsValid;NPCDebugInfo","b":"IsValid","c":{"a":1},"d":56,"e":[{"a":{"b":"NPCDebugInfo"},"b":"self","c":0}]}]}

@@ -1,0 +1,7 @@
+import struct questdbgRuntimeData
+{
+	var version : Uint64;
+	var questResourcePathHash : Uint64;
+	var selectedBlockId : Uint64;
+	var objects : array:handle:ISerializable;
+}

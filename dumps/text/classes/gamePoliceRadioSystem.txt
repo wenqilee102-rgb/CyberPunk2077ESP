@@ -1,0 +1,31 @@
+import class gamePoliceRadioSystem extends gameIPoliceRadioSystem
+{
+	public    var lastDistrictEntry : CName;
+	public    var isHeat1LineRequestOngoing : Bool;
+
+	import function AbortCurrentRadioLine(); // AbortCurrentRadioLine
+	import function GetRecentRequests() : [3]CName; // GetRecentRequests
+	import function PoliceRadioRequest(voRequest : CName); // PoliceRadioRequest
+}
+
+import class abstract gameIPoliceRadioSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

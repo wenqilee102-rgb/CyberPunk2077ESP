@@ -1,0 +1,1 @@
+{"a":"inkanimInterpolator","b":"inkanimVideoInterpolator","c":"inkAnimVideo","d":8,"e":[{"a":{"a":10},"b":"startValue","c":128},{"a":{"a":10},"b":"endValue","c":128},{"a":{"a":1},"b":"synchronizeToAudio","c":128},{"a":{"a":1},"b":"allowSkipBackward","c":128},{"a":{"a":14},"b":"audioEvent","c":128},{"a":{"a":1},"b":"retriggerAudioOnLoop","c":128}]}

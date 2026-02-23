@@ -1,0 +1,21 @@
+class ContactDataHelper extends IScriptable
+{
+	static function Contains(data : script_ref:array:handle:IScriptable, hashToFind : Int32) : Bool; // ContactDataHelper::Contains;script_ref<array<IScriptable>>Int32
+	static function FetchContactHash(contactData : whandle:ContactData) : Int32; // ContactDataHelper::FetchContactHash;ContactData
+	static function FindClosestContactWithUnread(dataView : whandle:DialerContactDataView, startIndex : Int32) : handle:ContactData; // ContactDataHelper::FindClosestContactWithUnread;DialerContactDataViewInt32
+	static function IndexOfOrZero(dataView : whandle:DialerContactDataView, hash : Int32) : Uint32; // ContactDataHelper::IndexOfOrZero;DialerContactDataViewInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

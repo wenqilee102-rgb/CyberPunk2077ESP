@@ -1,0 +1,21 @@
+import class questCrowdManagerNodeType_EnableNullArea extends questICrowdManager_NodeType
+{
+	var areaReference : NodeRef;
+	var enable : Bool;
+}
+
+import class abstract questICrowdManager_NodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

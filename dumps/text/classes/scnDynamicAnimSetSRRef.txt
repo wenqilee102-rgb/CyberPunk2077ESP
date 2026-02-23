@@ -1,0 +1,4 @@
+import struct scnDynamicAnimSetSRRef
+{
+	var asyncAnimSet : raRef:animAnimSet;
+}

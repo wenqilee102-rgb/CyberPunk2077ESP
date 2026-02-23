@@ -1,0 +1,20 @@
+import class CParticleDrawerFacingBeam extends IParticleDrawer
+{
+	var texturesPerUnit : Float;
+	var dynamicTexCoords : Bool;
+	var transparencyOffset : Float;
+	var transparencyLength : Float;
+	var numSegments : Uint32;
+	var sourceTangent : Vector4;
+	var targetTangent : Vector4;
+	var debugTargetTranslation : Vector3;
+}
+
+import class abstract IParticleDrawer extends ISerializable
+{
+	var pivotOffset : Float;
+}
+
+import class abstract ISerializable
+{
+}

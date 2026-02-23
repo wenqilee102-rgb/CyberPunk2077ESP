@@ -1,0 +1,32 @@
+import struct gameActionMoveToSmartObjectState extends gameActionMoveToState
+{
+	var targetHash : Uint64;
+	var usePathfinding : Bool;
+	var useStart : Bool;
+	var useStop : Bool;
+	var entryType : gameSmartObjectInstanceEntryType;
+	var movementType : moveMovementType;
+	var strafingTarget : whandle:gameObject;
+	var entryDirection : Vector3;
+	var entryPointPos : Vector3;
+	var entryPointDir : Vector4;
+	var animationName : CName;
+	var isInSmartObject : Bool;
+}
+
+import struct gameActionMoveToState extends gameActionReplicatedState
+{
+	var targetPos : Vector3;
+	var toleranceRadius : Float;
+	var rotateEntity : Bool;
+	var moveStyle : Uint32;
+}
+
+import struct gameActionReplicatedState
+{
+	var replicationId : Uint32;
+	var type : Uint16;
+	var startTimeStamp : netTime;
+	var stopTimeStamp : netTime;
+	var updateBucket : Uint8;
+}

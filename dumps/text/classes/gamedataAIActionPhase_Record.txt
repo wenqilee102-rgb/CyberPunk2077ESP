@@ -1,0 +1,49 @@
+import class gamedataAIActionPhase_Record extends gamedataTweakDBRecord
+{
+	import function AnimationDuration() : Float; // AnimationDuration
+	import function ChangeNPCState() : whandle:gamedataAIActionChangeNPCState_Record; // ChangeNPCState
+	import function ChangeNPCStateHandle() : handle:gamedataAIActionChangeNPCState_Record; // ChangeNPCStateHandle
+	import function CompleteActionWithFailureOnCondition() : Bool; // CompleteActionWithFailureOnCondition
+	import function ConditionSuccessDuration() : Float; // ConditionSuccessDuration
+	import function DontStopInfiniteOnSubActionsCompletion() : Bool; // DontStopInfiniteOnSubActionsCompletion
+	import function Duration() : Float; // Duration
+	import function DynamicDuration() : whandle:gamedataAISubAction_Record; // DynamicDuration
+	import function DynamicDurationHandle() : handle:gamedataAISubAction_Record; // DynamicDurationHandle
+	import function ForceZeroUpdateInterval() : Bool; // ForceZeroUpdateInterval
+	import function GetNotRepeatPhaseConditionCount() : Int32; // GetNotRepeatPhaseConditionCount
+	import function GetNotRepeatPhaseConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetNotRepeatPhaseConditionItem
+	import function GetNotRepeatPhaseConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetNotRepeatPhaseConditionItemHandle
+	import function GetToNextPhaseConditionCount() : Int32; // GetToNextPhaseConditionCount
+	import function GetToNextPhaseConditionItem(index : Int32) : whandle:gamedataAIActionCondition_Record; // GetToNextPhaseConditionItem
+	import function GetToNextPhaseConditionItemHandle(index : Int32) : handle:gamedataAIActionCondition_Record; // GetToNextPhaseConditionItemHandle
+	import function MaxDuration() : Float; // MaxDuration
+	import function MovePolicy() : whandle:gamedataMovementPolicy_Record; // MovePolicy
+	import function MovePolicyHandle() : handle:gamedataMovementPolicy_Record; // MovePolicyHandle
+	import function NotRepeatPhaseCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // NotRepeatPhaseCondition
+	import function NotRepeatPhaseConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // NotRepeatPhaseConditionContains
+	import function Repeat() : Int32; // Repeat
+	import function ToNextPhaseCondition(out outList : array:whandle:gamedataAIActionCondition_Record); // ToNextPhaseCondition
+	import function ToNextPhaseConditionCheckInterval() : Float; // ToNextPhaseConditionCheckInterval
+	import function ToNextPhaseConditionContains(item : whandle:gamedataAIActionCondition_Record) : Bool; // ToNextPhaseConditionContains
+	import function UseDurationFromAnimSlot() : Bool; // UseDurationFromAnimSlot
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

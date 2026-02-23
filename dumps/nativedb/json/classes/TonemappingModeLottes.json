@@ -1,0 +1,1 @@
+{"a":"ITonemappingMode","b":"TonemappingModeLottes","d":8,"e":[{"a":{"a":10},"b":"maxInput","c":128},{"a":{"a":10},"b":"contrast","c":128},{"a":{"a":10},"b":"midIn","c":128},{"a":{"a":10},"b":"midOut","c":128},{"a":{"b":"Vector3"},"b":"crosstalk","c":128},{"a":{"b":"Vector3"},"b":"crosstalkSaturation","c":128}]}

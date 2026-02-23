@@ -1,0 +1,18 @@
+import class questCharacterAim_ConditionType extends questICharacterConditionType
+{
+	var isPlayer : Bool;
+	var preciseAiming : Bool;
+	var targetRef : gameEntityReference;
+}
+
+import class abstract questICharacterConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

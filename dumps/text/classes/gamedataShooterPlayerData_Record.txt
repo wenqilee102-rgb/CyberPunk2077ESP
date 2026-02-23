@@ -1,0 +1,48 @@
+import class gamedataShooterPlayerData_Record extends gamedataTweakDBRecord
+{
+	import function AnalogThreshold() : Float; // AnalogThreshold
+	import function ArTextureAtlas() : redResourceReferenceScriptToken; // ArTextureAtlas
+	import function BaseMemberFollowDelay() : Float; // BaseMemberFollowDelay
+	import function ColliderAnchorPointOffset() : Float; // ColliderAnchorPointOffset
+	import function CutSceneDelay() : Float; // CutSceneDelay
+	import function DefaultWeapon() : CName; // DefaultWeapon
+	import function EndMoveLerpTime() : Float; // EndMoveLerpTime
+	import function FadeTime() : Float; // FadeTime
+	import function Gravity() : Float; // Gravity
+	import function InvincibleTime() : Float; // InvincibleTime
+	import function JumpSize() : Vector2; // JumpSize
+	import function JumpSpeed() : Float; // JumpSpeed
+	import function LmgTextureAtlas() : redResourceReferenceScriptToken; // LmgTextureAtlas
+	import function LsTextureAtlas() : redResourceReferenceScriptToken; // LsTextureAtlas
+	import function MaxHealth() : Int32; // MaxHealth
+	import function MinOpacity() : Float; // MinOpacity
+	import function MlTextureAtlas() : redResourceReferenceScriptToken; // MlTextureAtlas
+	import function MovementSpeed() : Float; // MovementSpeed
+	import function ProneSize() : Vector2; // ProneSize
+	import function SfxDamage() : CName; // SfxDamage
+	import function SfxDead() : CName; // SfxDead
+	import function SfxJump() : CName; // SfxJump
+	import function SgTextureAtlas() : redResourceReferenceScriptToken; // SgTextureAtlas
+	import function SquadDistanceCap() : Float; // SquadDistanceCap
+	import function StartMoveLerpTime() : Float; // StartMoveLerpTime
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

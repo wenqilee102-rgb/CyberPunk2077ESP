@@ -1,0 +1,27 @@
+import class gamedataVirtualNetworkPath_Record extends gamedataTweakDBRecord
+{
+	import function GetPointsCount() : Int32; // GetPointsCount
+	import function GetPointsItem(index : Int32) : Vector3; // GetPointsItem
+	import function Points() : array:Vector3; // Points
+	import function PointsContains(item : Vector3) : Bool; // PointsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

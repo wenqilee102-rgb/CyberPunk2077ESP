@@ -1,0 +1,37 @@
+import class animAnimFeature_Cover extends animAnimFeature
+{
+	var coverPosition : Vector4;
+	var coverDirection : Vector4;
+	var coverState : Int32;
+	var coverAngleToAction : Float;
+	var stance : Int32;
+	var behavior : Int32;
+	var coverAction : Int32;
+	var behaviorTime_PreAction : Float;
+	var behaviorTime_Action : Float;
+	var behaviorTime_PostAction : Float;
+
+	import function SetCoverAction(coverAction : animCoverAction); // SetCoverAction
+	import function SetCoverAngleToAction(angleToAction : Float); // SetCoverAngleToAction
+	import function SetCoverDirection(direction : Vector4); // SetCoverDirection
+	import function SetCoverPosition(position : Vector4); // SetCoverPosition
+	import function SetCoverState(coverState : animCoverState); // SetCoverState
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

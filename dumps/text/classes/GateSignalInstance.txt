@@ -1,0 +1,6 @@
+struct GateSignalInstance
+{
+	public    var gateSignal : handle:GateSignal;
+	public    var timeStamp : Float;
+	public    var consumeTags : array:CName;
+}

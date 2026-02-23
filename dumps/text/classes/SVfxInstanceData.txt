@@ -1,0 +1,5 @@
+struct SVfxInstanceData
+{
+	public    var fx : handle:gameFxInstance;
+	public    var id : CName;
+}

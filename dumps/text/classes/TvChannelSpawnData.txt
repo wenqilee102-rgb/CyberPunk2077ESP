@@ -1,0 +1,22 @@
+class TvChannelSpawnData extends IScriptable
+{
+	public    var channelName : CName;
+	public    var localizedName : String;
+	public    var order : Int32;
+
+	function Initialize(channelName : CName, localizedName : script_ref:String, order : Int32); // Initialize;CNamescript_ref<String>Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

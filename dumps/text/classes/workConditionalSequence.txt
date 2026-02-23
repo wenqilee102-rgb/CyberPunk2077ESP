@@ -1,0 +1,29 @@
+import class workConditionalSequence extends workSequence
+{
+	var multipleConditionOperator : workLogicalOperation;
+	var conditionList : array:handle:workIWorkspotCondition;
+}
+
+import class workSequence extends workIContainerEntry
+{
+	var previousLoopInfinitely : Bool;
+	var loopInfinitely : Bool;
+	var category : gamedataWorkspotCategory;
+}
+
+import class abstract workIContainerEntry extends workIEntry
+{
+	var list : array:handle:workIEntry;
+	var disableAutoTransition : Bool;
+	var idleAnim : CName;
+}
+
+import class abstract workIEntry extends ISerializable
+{
+	var id : workWorkEntryId;
+	var flags : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

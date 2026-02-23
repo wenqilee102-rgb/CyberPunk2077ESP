@@ -1,0 +1,10 @@
+import struct gameAreaData
+{
+	var position : Vector4;
+	var size : Float;
+	var type : gameEAreaType;
+	var shape : gameEAreaShape;
+	var name : CName;
+	var priority : Uint32;
+	var lootID : TweakDBID;
+}

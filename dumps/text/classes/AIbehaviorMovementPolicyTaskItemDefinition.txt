@@ -1,0 +1,9 @@
+import class AIbehaviorMovementPolicyTaskItemDefinition extends ISerializable
+{
+	var function : AIbehaviorMovementPolicyTaskFunctions;
+	var params : static:4,handle:AIbehaviorExpressionSocket;
+}
+
+import class abstract ISerializable
+{
+}

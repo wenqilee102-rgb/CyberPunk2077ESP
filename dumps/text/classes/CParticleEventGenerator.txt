@@ -1,0 +1,22 @@
+import class CParticleEventGenerator extends IParticleEvent
+{
+	var evtType : EParticleEventType;
+	var frequency : Float;
+	var probability : Float;
+}
+
+import class abstract IParticleEvent extends IParticleModule
+{
+	var eventName : CName;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

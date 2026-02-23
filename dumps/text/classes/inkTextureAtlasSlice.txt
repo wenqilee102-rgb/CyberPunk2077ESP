@@ -1,0 +1,5 @@
+import struct inkTextureAtlasSlice
+{
+	var partName : CName;
+	var nineSliceScaleRect : RectF;
+}

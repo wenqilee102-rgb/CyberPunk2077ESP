@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataVirtualNetworkPath_Record","c":"VirtualNetworkPath_Record","d":24,"f":[{"a":"GetPointsCount","c":{"a":6},"d":4},{"a":"GetPointsItem","c":{"b":"Vector3"},"d":4,"e":[{"a":{"a":6},"b":"index","c":0}]},{"a":"Points","c":{"a":31,"c":{"b":"Vector3"}},"d":4},{"a":"PointsContains","c":{"a":1},"d":4,"e":[{"a":{"b":"Vector3"},"b":"item","c":0}]}]}

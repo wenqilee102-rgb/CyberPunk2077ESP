@@ -1,0 +1,4 @@
+import struct questQuestPrefabEntry
+{
+	var prefabNodeRef : NodeRef;
+}

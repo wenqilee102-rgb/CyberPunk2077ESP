@@ -1,0 +1,6 @@
+import struct gamesmartGunUISightParameters
+{
+	var center : Vector2;
+	var targetableRegionSize : Vector2;
+	var reticleSize : Vector2;
+}

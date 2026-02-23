@@ -1,0 +1,33 @@
+import class gamedamageHitDebugData extends IScriptable
+{
+	var sourceHitPosition : Vector4;
+	var targetHitPosition : Vector4;
+	var attackTime : Float;
+	var instigator : whandle:gameObject;
+	var source : whandle:gameObject;
+	var target : whandle:gameObject;
+	var instigatorName : CName;
+	var sourceName : CName;
+	var targetName : CName;
+	var sourceAttackDebugData : gameAttackDebugData;
+	var sourceWeaponName : CName;
+	var sourceAttackName : CName;
+	var calculatedDamages : array:handle:gamedamageDamageDebugData;
+	var appliedDamages : array:handle:gamedamageDamageDebugData;
+	var hitType : CName;
+	var hitFlags : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

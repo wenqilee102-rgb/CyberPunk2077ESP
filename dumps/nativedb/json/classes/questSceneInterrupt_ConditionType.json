@@ -1,0 +1,1 @@
+{"a":"questISceneConditionType","b":"questSceneInterrupt_ConditionType","d":8,"e":[{"a":{"a":30,"c":{"b":"scnSceneResource"}},"b":"sceneFile","c":128},{"a":{"a":1},"b":"onlyInSafeMoment","c":128},{"a":{"a":31,"c":{"a":26,"c":{"b":"scnIInterruptCondition"}}},"b":"interruptConditions","c":128}]}

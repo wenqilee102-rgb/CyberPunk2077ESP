@@ -1,0 +1,14 @@
+import class gameTransformAnimation_Move extends gameTransformAnimationTrackItemImpl
+{
+	var startPositionEvaluator : handle:gameTransformAnimation_Position;
+	var targetPositionEvaluator : handle:gameTransformAnimation_Position;
+	var movement : handle:gameTransformAnimation_Movement;
+}
+
+import class abstract gameTransformAnimationTrackItemImpl extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

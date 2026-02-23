@@ -1,0 +1,6 @@
+import struct navLocomotionPathSegmentInfo
+{
+	var type : navLocomotionPathSegmentTypes;
+	var segmentEnd : navSerializableSplineProgression;
+	var offMeshLink : Uint64;
+}

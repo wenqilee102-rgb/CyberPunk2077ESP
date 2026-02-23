@@ -1,0 +1,45 @@
+class EffectExecutor_PuppetForceVisionAppearance extends gameEffectExecutor_Scripted
+{
+	function GetEffectName(ctx : gameEffectScriptContext) : String; // GetEffectName;EffectScriptContext
+	function GetForceVisionAppearanceData(ctx : gameEffectScriptContext) : handle:PuppetForceVisionAppearanceData; // GetForceVisionAppearanceData;EffectScriptContext
+	function GetHighlightType(ctx : gameEffectScriptContext) : EFocusForcedHighlightType; // GetHighlightType;EffectScriptContext
+	function GetOutlineType(ctx : gameEffectScriptContext) : EFocusOutlineType; // GetOutlineType;EffectScriptContext
+	function GetPriority(ctx : gameEffectScriptContext) : EPriority; // GetPriority;EffectScriptContext
+	function GetTransitionTime(ctx : gameEffectScriptContext) : Float; // GetTransitionTime;EffectScriptContext
+	function Init(ctx : gameEffectScriptContext) : Bool; // Init;EffectScriptContext
+	function IsSourceHighlighted(ctx : gameEffectScriptContext) : Bool; // IsSourceHighlighted;EffectScriptContext
+	function IsSourceValid(source : handle:gameObject) : Bool; // IsSourceValid;GameObject
+	function Process(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // Process;EffectScriptContextEffectExecutionScriptContext
+	function SendForceVisionApperaceEvent(enable : Bool, owner : whandle:gameObject, source : whandle:gameObject, ctx : gameEffectScriptContext); // SendForceVisionApperaceEvent;BoolGameObjectGameObjectEffectScriptContext
+	function SetForceVisionAppearanceData(ctx : gameEffectScriptContext, data : handle:PuppetForceVisionAppearanceData); // SetForceVisionAppearanceData;EffectScriptContextPuppetForceVisionAppearanceData
+	function TargetAcquired(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext); // TargetAcquired;EffectScriptContextEffectExecutionScriptContext
+	function TargetLost(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext); // TargetLost;EffectScriptContextEffectExecutionScriptContext
+	function UpdateSourceHighlight(source : whandle:gameObject, ctx : gameEffectScriptContext); // UpdateSourceHighlight;GameObjectEffectScriptContext
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

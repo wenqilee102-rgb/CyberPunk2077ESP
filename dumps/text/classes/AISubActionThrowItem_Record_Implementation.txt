@@ -1,0 +1,29 @@
+class abstract AISubActionThrowItem_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionThrowItem_Record); // AISubActionThrowItem_Record_Implementation::Activate;ScriptExecutionContextAISubActionThrowItem_Record
+	static function CreateCurvedTrajectory(target : whandle:gameObject, paramsTDBRecord : TweakDBID, predictionTime : Float) : handle:gameprojectileTrajectoryParams; // AISubActionThrowItem_Record_Implementation::CreateCurvedTrajectory;GameObjectTweakDBIDFloat
+	static function CreateCurvedTrajectoryFollowTargetSlot(target : whandle:gameObject, slotName : CName, paramsTDBRecord : TweakDBID) : handle:gameprojectileTrajectoryParams; // AISubActionThrowItem_Record_Implementation::CreateCurvedTrajectoryFollowTargetSlot;GameObjectCNameTweakDBID
+	static function CreateParabolicTrajectory(record : whandle:gamedataAISubActionThrowItem_Record, targetPosition : Vector4, throwAngle : Float) : handle:gameprojectileTrajectoryParams; // AISubActionThrowItem_Record_Implementation::CreateParabolicTrajectory;AISubActionThrowItem_RecordVector4Float
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionThrowItem_Record, duration : Float, interrupted : Bool); // AISubActionThrowItem_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionThrowItem_RecordFloatBool
+	static function DropItem(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionThrowItem_Record); // AISubActionThrowItem_Record_Implementation::DropItem;ScriptExecutionContextAISubActionThrowItem_Record
+	static function GetCachedGrenadeQuery(context : AIbehaviorScriptExecutionContext, out targetPosition : Vector4, out throwAngle : Float, outStartType : gameGrenadeThrowStartType) : Bool; // AISubActionThrowItem_Record_Implementation::GetCachedGrenadeQuery;ScriptExecutionContextVector4FloatgameGrenadeThrowStartType
+	static function ReadCurvedTrajectoryTDBParams(out trajectoryParams : handle:gameprojectileFollowCurveTrajectoryParams, paramsTDBRecord : TweakDBID); // AISubActionThrowItem_Record_Implementation::ReadCurvedTrajectoryTDBParams;FollowCurveTrajectoryParamsTweakDBID
+	static function SetNPCThrowingGrenade(context : AIbehaviorScriptExecutionContext); // AISubActionThrowItem_Record_Implementation::SetNPCThrowingGrenade;ScriptExecutionContext
+	static function ThrowInit(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionThrowItem_Record); // AISubActionThrowItem_Record_Implementation::ThrowInit;ScriptExecutionContextAISubActionThrowItem_Record
+	static function ThrowItem(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionThrowItem_Record) : Bool; // AISubActionThrowItem_Record_Implementation::ThrowItem;ScriptExecutionContextAISubActionThrowItem_Record
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionThrowItem_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionThrowItem_Record_Implementation::Update;ScriptExecutionContextAISubActionThrowItem_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

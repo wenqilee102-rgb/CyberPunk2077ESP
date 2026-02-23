@@ -1,0 +1,5 @@
+import struct worldRoadMaterialInfo
+{
+	var startOffset : Float;
+	var material : worldRoadMaterial;
+}

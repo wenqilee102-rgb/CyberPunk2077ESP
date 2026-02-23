@@ -1,0 +1,8 @@
+struct SecuritySystemMorphData
+{
+	public    var state : handle:State;
+	public    var reprimandData : handle:Reprimand;
+	public    var blacklist : handle:Blacklist;
+	public    var protectedEntities : handle:ProtectedEntities;
+	public    var entitiesAtGate : handle:EntitiesAtGate;
+}

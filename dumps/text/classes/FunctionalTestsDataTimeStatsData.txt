@@ -1,0 +1,17 @@
+import class FunctionalTestsDataTimeStatsData extends ISerializable
+{
+	var engineTick : Uint64;
+	var lastFps : Float;
+	var minFps : Float;
+	var lastTimeDelta : Float;
+	var engineTime : Double;
+	var cpuTime : Float;
+	var gpuTime : Float;
+	var rawLocalTime : Uint64;
+	var playerPosition : String;
+	var playerOrientation : String;
+}
+
+import class abstract ISerializable
+{
+}

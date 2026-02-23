@@ -1,0 +1,9 @@
+import class gameSmartObjectAnimationDatabase extends ISerializable
+{
+	var animationData : array:gameAnimationExtractedData;
+	var bodyTypesData : array:gameBodyTypeData;
+}
+
+import class abstract ISerializable
+{
+}

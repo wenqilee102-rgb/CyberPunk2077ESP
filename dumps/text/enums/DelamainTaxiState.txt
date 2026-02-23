@@ -1,0 +1,12 @@
+enum DelamainTaxiState
+{
+	None = 0,
+	Spawned = 1,
+	Parked = 2,
+	Ready = 3,
+	Started = 4,
+	Arrived = 5,
+	Cancelled = 6,
+	Finished = 7,
+	Freeroam = 8
+}

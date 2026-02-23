@@ -1,0 +1,7 @@
+import struct animAnimDebuggerCommand_NormalizedProgressOutputApplied extends animIAnimDebuggerCommand
+{
+}
+
+import struct abstract animIAnimDebuggerCommand
+{
+}

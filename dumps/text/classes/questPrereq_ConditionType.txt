@@ -1,0 +1,18 @@
+import class questPrereq_ConditionType extends questISystemConditionType
+{
+	var objectRef : gameEntityReference;
+	var isObjectPlayer : Bool;
+	var prereq : handle:gameIPrereq;
+}
+
+import class abstract questISystemConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

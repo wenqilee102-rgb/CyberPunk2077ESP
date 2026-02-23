@@ -1,0 +1,1 @@
+{"a":"WidgetCustomData","b":"LiftWidgetCustomData","d":0,"e":[{"a":{"b":"gamePlatformMovementState"},"b":"movementState","c":129}],"f":[{"a":"GetMovementState;","b":"GetMovementState","c":{"b":"gamePlatformMovementState"},"d":48},{"a":"SetMovementState;gamePlatformMovementState","b":"SetMovementState","d":48,"e":[{"a":{"b":"gamePlatformMovementState"},"b":"value","c":0}]}]}

@@ -1,0 +1,52 @@
+import class gameStatsSystem extends gameIStatsSystem
+{
+	import function AddModifier(objID : gameStatsObjectID, modifierData : handle:gameStatModifierData_Deprecated) : Bool; // AddModifier
+	import function AddModifiers(objID : gameStatsObjectID, modifierData : array:handle:gameStatModifierData_Deprecated) : Bool; // AddModifiers
+	import function AddSavedModifier(objID : gameStatsObjectID, modifierData : handle:gameStatModifierData_Deprecated) : Bool; // AddSavedModifier
+	import function ApplyModifierGroup(objID : gameStatsObjectID, groupID : Uint64) : Bool; // ApplyModifierGroup
+	import function CalculateModifierListValue(objID : gameStatsObjectID, modifierData : array:whandle:gamedataStatModifier_Record) : Float; // CalculateModifierListValue
+	import function DefineModifierGroupFromRecord(groupID : Uint64, recordID : TweakDBID) : Bool; // DefineModifierGroupFromRecord
+	import function ForceModifier(objID : gameStatsObjectID, modifierData : handle:gameStatModifierData_Deprecated) : Bool; // ForceModifier
+	import function GetDamageRecordFromId(damageTypeRecordId : TweakDBID) : whandle:gamedataDamageType_Record; // GetDamageRecordFromId
+	import function GetDamageRecordFromType(damageType : gamedataDamageType) : whandle:gamedataDamageType_Record; // GetDamageRecordFromType
+	import function GetDamageRecordId(damageType : gamedataDamageType) : TweakDBID; // GetDamageRecordId
+	import function GetDamageType(statType : gamedataStatType) : gamedataDamageType; // GetDamageType
+	import function GetDamageTypeByRecordID(damageTypeRecordId : TweakDBID) : gamedataDamageType; // GetDamageTypeByRecordID
+	import function GetSortedStatsThemes(objID : gameStatsObjectID, out outThemes : array:CName); // GetSortedStatsThemes
+	import function GetStatBoolValue(objID : gameStatsObjectID, statType : gamedataStatType) : Bool; // GetStatBoolValue
+	import function GetStatDetails(objID : gameStatsObjectID) : array:gameStatDetailedData; // GetStatDetails
+	import function GetStatType(damageType : gamedataDamageType) : gamedataStatType; // GetStatType
+	import function GetStatValue(objID : gameStatsObjectID, statType : gamedataStatType) : Float; // GetStatValue
+	import function GetStatValueFromDamageType(objId : gameStatsObjectID, damageType : gamedataDamageType) : Float; // GetStatValueFromDamageType
+	import function RegisterListener(objID : gameStatsObjectID, listener : handle:gameIStatsListener); // RegisterListener
+	import function RemoveAllModifiers(objID : gameStatsObjectID, statType : gamedataStatType, optional removeSavedModifiers : Bool) : Bool; // RemoveAllModifiers
+	import function RemoveAndUncacheModifier(objID : gameStatsObjectID, modifierData : handle:gameStatModifierData_Deprecated) : Bool; // RemoveAndUncacheModifier
+	import function RemoveModifier(objID : gameStatsObjectID, modifierData : handle:gameStatModifierData_Deprecated) : Bool; // RemoveModifier
+	import function RemoveModifierGroup(objID : gameStatsObjectID, groupID : Uint64) : Bool; // RemoveModifierGroup
+	import function RemoveSavedModifiers(objID : gameStatsObjectID, statType : gamedataStatType) : Bool; // RemoveSavedModifiers
+	import function UndefineModifierGroup(groupID : Uint64) : Bool; // UndefineModifierGroup
+	import function UnforceStat(objID : gameStatsObjectID, statType : gamedataStatType) : Bool; // UnforceStat
+	import function UnregisterListener(objID : gameStatsObjectID, listener : handle:gameIStatsListener); // UnregisterListener
+}
+
+import class abstract gameIStatsSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

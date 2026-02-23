@@ -1,0 +1,5 @@
+import struct worldNavigationScriptFindPointResult
+{
+	var status : worldNavigationRequestStatus;
+	var point : Vector4;
+}

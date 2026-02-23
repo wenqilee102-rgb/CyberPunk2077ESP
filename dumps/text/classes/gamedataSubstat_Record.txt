@@ -1,0 +1,60 @@
+import class gamedataSubstat_Record extends gamedataStat_Record
+{
+	import function ModifierType() : CName; // ModifierType
+}
+
+import class gamedataStat_Record extends gamedataTweakDBRecord
+{
+	import function CanBeForcedByQuests() : Bool; // CanBeForcedByQuests
+	import function DecimalPlaces() : Int32; // DecimalPlaces
+	import function DisplayPercent() : Bool; // DisplayPercent
+	import function DisplayPlus() : Bool; // DisplayPlus
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : String; // EnumName
+	import function Flags() : array:CName; // Flags
+	import function FlagsContains(item : CName) : Bool; // FlagsContains
+	import function GetFlagsCount() : Int32; // GetFlagsCount
+	import function GetFlagsItem(index : Int32) : CName; // GetFlagsItem
+	import function GetSubstatsCount() : Int32; // GetSubstatsCount
+	import function GetSubstatsItem(index : Int32) : whandle:gamedataSubstat_Record; // GetSubstatsItem
+	import function GetSubstatsItemHandle(index : Int32) : handle:gamedataSubstat_Record; // GetSubstatsItemHandle
+	import function GetThemesCount() : Int32; // GetThemesCount
+	import function GetThemesItem(index : Int32) : CName; // GetThemesItem
+	import function ImprovementRelation() : whandle:gamedataImprovementRelation_Record; // ImprovementRelation
+	import function ImprovementRelationHandle() : handle:gamedataImprovementRelation_Record; // ImprovementRelationHandle
+	import function InMeters() : Bool; // InMeters
+	import function InSeconds() : Bool; // InSeconds
+	import function InSpeed() : Bool; // InSpeed
+	import function LocalizedDescription() : String; // LocalizedDescription
+	import function LocalizedName() : String; // LocalizedName
+	import function LocalizedStatDisplay() : String; // LocalizedStatDisplay
+	import function Max() : Float; // Max
+	import function Min() : Float; // Min
+	import function MultiplyBy100InText() : Bool; // MultiplyBy100InText
+	import function RoundValue() : Bool; // RoundValue
+	import function StatType() : gamedataStatType; // StatType
+	import function Substats(out outList : array:whandle:gamedataSubstat_Record); // Substats
+	import function SubstatsContains(item : whandle:gamedataSubstat_Record) : Bool; // SubstatsContains
+	import function Themes() : array:CName; // Themes
+	import function ThemesContains(item : CName) : Bool; // ThemesContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

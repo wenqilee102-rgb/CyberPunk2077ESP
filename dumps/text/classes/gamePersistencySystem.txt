@@ -1,0 +1,37 @@
+import class gamePersistencySystem extends gameIPersistencySystem
+{
+	import function EntityProxy_DisablePhysics(targetEntity : entEntityID, disable : Bool); // EntityProxy_DisablePhysics
+	import function ForgetObject(targetID : gamePersistentID, notifyEntity : Bool); // ForgetObject
+	import function GetConstAccessToPSObject(targetID : gamePersistentID, psClassName : CName) : handle:gamePersistentState; // GetConstAccessToPSObject
+	import function GetPersistentBool(targetEntity : gamePersistentID, psClassName : CName, varName : CName) : Bool; // GetPersistentBool
+	import function GetPersistentFloat(targetEntity : gamePersistentID, psClassName : CName, varName : CName) : Float; // GetPersistentFloat
+	import function GetPersistentInt(targetEntity : gamePersistentID, psClassName : CName, varName : CName) : Int32; // GetPersistentInt
+	import function QueueEntityEvent(targetEntity : entEntityID, evt : handle:redEvent); // QueueEntityEvent
+	import function QueuePSDeviceEvent(action : handle:gamedeviceAction); // QueuePSDeviceEvent
+	import function QueuePSEvent(targetID : gamePersistentID, psClassName : CName, evt : handle:redEvent); // QueuePSEvent
+	import function SetPersistentBool(targetEntity : gamePersistentID, psClassName : CName, varName : CName, newValue : Bool); // SetPersistentBool
+	import function SetPersistentFloat(targetEntity : gamePersistentID, psClassName : CName, varName : CName, newValue : Float); // SetPersistentFloat
+	import function SetPersistentInt(targetEntity : gamePersistentID, psClassName : CName, varName : CName, newValue : Int32); // SetPersistentInt
+}
+
+import class abstract gameIPersistencySystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

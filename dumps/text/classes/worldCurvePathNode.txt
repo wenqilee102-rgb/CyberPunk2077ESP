@@ -1,0 +1,37 @@
+import class worldCurvePathNode extends worldSplineNode
+{
+	var userInput : animCurvePathBakerUserInput;
+	var defaultForwardVector : Vector4;
+	var globalInBlendTime : Float;
+	var globalOutBlendTime : Float;
+	var defaultPoseAnimationName : CName;
+	var defaultPoseSampleTime : Float;
+	var initialDiffYaw : Float;
+	var turnCharacterToMatchVelocity : Bool;
+	var rig : rRef:animRig;
+	var animSets : array:rRef:animAnimSet;
+	var timeDeltaMultiplier : Float;
+}
+
+import class worldSplineNode extends worldSocketNode
+{
+	var splineData : handle:Spline;
+	var destSnapedNode : NodeRef;
+	var destSnapedSocketName : CName;
+	var entrySnapedNode : NodeRef;
+	var entrySnapedSocketName : CName;
+}
+
+import class abstract worldSocketNode extends worldNode
+{
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

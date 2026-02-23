@@ -1,0 +1,30 @@
+class abstract PlayerStaminaHelpers extends IScriptable
+{
+	static function GetAirDodgeStaminaCost() : Float; // PlayerStaminaHelpers::GetAirDodgeStaminaCost;
+	static function GetAirLeapAttackStaminaCost() : Float; // PlayerStaminaHelpers::GetAirLeapAttackStaminaCost;
+	static function GetBlockStaminaDelay() : Float; // PlayerStaminaHelpers::GetBlockStaminaDelay;
+	static function GetCrouchSprintStaminaCost() : Float; // PlayerStaminaHelpers::GetCrouchSprintStaminaCost;
+	static function GetDodgeStaminaCost() : Float; // PlayerStaminaHelpers::GetDodgeStaminaCost;
+	static function GetExhaustedStatusEffectID() : TweakDBID; // PlayerStaminaHelpers::GetExhaustedStatusEffectID;
+	static function GetJumpStaminaCost() : Float; // PlayerStaminaHelpers::GetJumpStaminaCost;
+	static function GetLeapAttackStaminaCost() : Float; // PlayerStaminaHelpers::GetLeapAttackStaminaCost;
+	static function GetSlideStaminaCost() : Float; // PlayerStaminaHelpers::GetSlideStaminaCost;
+	static function GetSprintStaminaCost() : Float; // PlayerStaminaHelpers::GetSprintStaminaCost;
+	static function ModifyStamina(player : handle:PlayerPuppet, delta : Float, optional perc : Bool); // PlayerStaminaHelpers::ModifyStamina;PlayerPuppetFloatBool
+	static function ModifyStaminaBasedOnLeapAttackDistance(player : handle:PlayerPuppet, isPlayerOnGround : Bool, targetDistance : Float, targetMaxDistance : Float); // PlayerStaminaHelpers::ModifyStaminaBasedOnLeapAttackDistance;PlayerPuppetBoolFloatFloat
+	static function OnPlayerBlock(player : handle:PlayerPuppet); // PlayerStaminaHelpers::OnPlayerBlock;PlayerPuppet
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

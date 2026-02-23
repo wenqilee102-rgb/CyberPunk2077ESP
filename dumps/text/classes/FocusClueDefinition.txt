@@ -1,0 +1,14 @@
+struct FocusClueDefinition
+{
+	public    var extendedClueRecords : array:ClueRecordData;
+	public    var clueRecord : TweakDBID;
+	public    var factToActivate : CName;
+	public    var facts : array:SFactOperationData;
+	public    var useAutoInspect : Bool;
+	public    var isEnabled : Bool;
+	public    var isProgressing : Bool;
+	public    var clueGroupID : CName;
+	public    var wasInspected : Bool;
+	public    var qDbCallbackID : Uint32;
+	public    var conclusionQuestState : EConclusionQuestState;
+}

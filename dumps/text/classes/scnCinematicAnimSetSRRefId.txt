@@ -1,0 +1,4 @@
+import struct scnCinematicAnimSetSRRefId
+{
+	var id : Uint32;
+}

@@ -1,0 +1,5 @@
+import struct audioMaterialOverride
+{
+	var base : CName;
+	var override : CName;
+}

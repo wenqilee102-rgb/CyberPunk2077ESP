@@ -1,0 +1,5 @@
+struct QuickWheelStartUIStructure
+{
+	public    var WheelItems : array:QuickSlotCommand;
+	public    var dpadSlot : EDPadSlot;
+}

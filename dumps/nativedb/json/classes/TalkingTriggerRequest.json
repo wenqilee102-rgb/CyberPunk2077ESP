@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"TalkingTriggerRequest","d":0,"e":[{"a":{"a":1},"b":"isPlayerCalling","c":128},{"a":{"a":14},"b":"contact","c":128},{"a":{"b":"questPhoneTalkingState"},"b":"state","c":128},{"a":{"b":"questPhoneCallVisuals"},"b":"visuals","c":128}]}

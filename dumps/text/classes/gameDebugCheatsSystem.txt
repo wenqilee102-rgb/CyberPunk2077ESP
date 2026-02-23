@@ -1,0 +1,36 @@
+import class gameDebugCheatsSystem extends gameIDebugCheatsSystem
+{
+	import function DecreaseGlobalTimeDilation(); // DecreaseGlobalTimeDilation
+	import function DecreasePlayerTimeDilation(); // DecreasePlayerTimeDilation
+	import function EnableCheat(object : handle:gameObject, cheatType : gamecheatsystemFlag, enable : Bool) : Bool; // EnableCheat
+	import function HasCheat(object : handle:gameObject, gmType : gamecheatsystemFlag) : Bool; // HasCheat
+	import function IncreaseGlobalTimeDilation(); // IncreaseGlobalTimeDilation
+	import function IncreasePlayerTimeDilation(); // IncreasePlayerTimeDilation
+	import function ToggleCheat(object : handle:gameObject, gmType : gamecheatsystemFlag) : Bool; // ToggleCheat
+}
+
+import class abstract gameIDebugCheatsSystem extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

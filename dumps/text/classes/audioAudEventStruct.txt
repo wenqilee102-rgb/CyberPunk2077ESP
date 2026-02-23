@@ -1,0 +1,4 @@
+import struct audioAudEventStruct
+{
+	var event : CName;
+}

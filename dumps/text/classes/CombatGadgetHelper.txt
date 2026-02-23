@@ -1,0 +1,19 @@
+class CombatGadgetHelper extends IScriptable
+{
+	static function SpawnAttack(source : handle:gameObject, radius : Float, attackRecord : handle:gamedataAttack_Record, instigator : whandle:gameObject); // CombatGadgetHelper::SpawnAttack;GameObjectFloatAttack_RecordGameObject
+	static function SpawnPhysicalImpulse(source : handle:gameObject, radius : Float); // CombatGadgetHelper::SpawnPhysicalImpulse;GameObjectFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

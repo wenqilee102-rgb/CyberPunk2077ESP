@@ -1,0 +1,15 @@
+import class worldDebugColoring_PrefabProxy extends worldEditorDebugColoringSettings
+{
+	var regularMeshColor : Color;
+	var instancedMeshColor : Color;
+	var prefabProxyMeshColor : Color;
+	var distinguishInstancedMesh : Bool;
+}
+
+import class abstract worldEditorDebugColoringSettings extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

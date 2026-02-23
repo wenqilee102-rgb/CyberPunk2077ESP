@@ -1,0 +1,12 @@
+import class questPuppetsUnconscious extends questPuppetsEffector
+{
+	var setUnconscious : Bool;
+}
+
+import class abstract questPuppetsEffector extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

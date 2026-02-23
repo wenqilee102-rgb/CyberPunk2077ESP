@@ -1,0 +1,21 @@
+import class CParticleDrawerFacingTrail extends CParticleDrawerTrail
+{
+}
+
+import class CParticleDrawerTrail extends IParticleDrawer
+{
+	var texturesPerUnit : Float;
+	var dynamicTexCoords : Bool;
+	var minSegmentsPer360Degrees : Int32;
+	var ribbonize : Bool;
+	var ribbonTesselationDelta : Float;
+}
+
+import class abstract IParticleDrawer extends ISerializable
+{
+	var pivotOffset : Float;
+}
+
+import class abstract ISerializable
+{
+}

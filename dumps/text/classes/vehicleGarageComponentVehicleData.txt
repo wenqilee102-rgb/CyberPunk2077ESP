@@ -1,0 +1,7 @@
+import struct vehicleGarageComponentVehicleData
+{
+	var spawnRecordID : TweakDBID;
+	var entityID : entEntityID;
+	var vehicleNameNodeRef : NodeRef;
+	var despawnOnDistanceEnabled : Bool;
+}

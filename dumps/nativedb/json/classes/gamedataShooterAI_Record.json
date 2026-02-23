@@ -1,0 +1,1 @@
+{"a":"gamedataShooterObject_Record","b":"gamedataShooterAI_Record","c":"ShooterAI_Record","d":24,"f":[{"a":"CollisionDelay","c":{"a":10},"d":4},{"a":"Health","c":{"a":10},"d":4},{"a":"LibraryWidget","c":{"a":12},"d":4},{"a":"MoveSpeed","c":{"a":10},"d":4},{"a":"SfxDamage","c":{"a":14},"d":4},{"a":"SfxDead","c":{"a":14},"d":4}]}

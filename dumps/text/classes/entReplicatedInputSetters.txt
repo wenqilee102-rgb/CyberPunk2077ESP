@@ -1,0 +1,4 @@
+import struct entReplicatedInputSetters
+{
+	var serverReplicatedTime : netTime;
+}

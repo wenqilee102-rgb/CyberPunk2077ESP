@@ -1,0 +1,41 @@
+class NewPerkDisplayData extends BasePerkDisplayData
+{
+	public    var area : gamedataNewPerkSlotType;
+	public    var type : gamedataNewPerkType;
+	public    var isRipperdoc : Bool;
+
+	function CreateTooltipData(manager : handle:PlayerDevelopmentDataManager) : handle:BasePerksMenuTooltipData; // CreateTooltipData;PlayerDevelopmentDataManager
+}
+
+class BasePerkDisplayData extends IDisplayData
+{
+	public    var attributeId : TweakDBID;
+	public    var name : CName;
+	public    var localizedName : String;
+	public    var localizedDescription : String;
+	public    var iconID : TweakDBID;
+	public    var binkRef : redResourceReferenceScriptToken;
+	public    var level : Int32;
+	public    var maxLevel : Int32;
+	public    var locked : Bool;
+	public    var proficiency : gamedataProficiencyType;
+}
+
+class IDisplayData extends IScriptable
+{
+	function CreateTooltipData(manager : handle:PlayerDevelopmentDataManager) : handle:BasePerksMenuTooltipData; // CreateTooltipData;PlayerDevelopmentDataManager
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

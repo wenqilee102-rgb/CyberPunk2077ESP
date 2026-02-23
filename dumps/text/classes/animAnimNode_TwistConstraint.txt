@@ -1,0 +1,22 @@
+import class animAnimNode_TwistConstraint extends animAnimNode_OnePoseInput
+{
+	var frontAxis : animAxis;
+	var transformA : animTransformIndex;
+	var transformB : animTransformIndex;
+	var outputs : array:animTwistOutput;
+	var debug : Bool;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

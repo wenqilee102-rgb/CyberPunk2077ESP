@@ -1,0 +1,19 @@
+import class CEvaluatorVectorMultiCurve extends IEvaluatorVector
+{
+	var curves : multiChannelCurve:Float;
+	var numberOfCurveSamples : Uint32;
+}
+
+import class abstract IEvaluatorVector extends IEvaluator
+{
+	var freeAxes : EFreeVectorAxes;
+	var spill : Bool;
+}
+
+import class IEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

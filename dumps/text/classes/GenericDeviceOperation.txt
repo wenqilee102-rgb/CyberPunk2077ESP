@@ -1,0 +1,66 @@
+class GenericDeviceOperation extends DeviceOperationBase
+{
+	private   var fxInstances : array:SVfxInstanceData;
+	public    var transformAnimations : array:STransformAnimationData;
+	public    var VFXs : array:SVFXOperationData;
+	public    var SFXs : array:SSFXOperationData;
+	public    var facts : array:SFactOperationData;
+	public    var components : array:SComponentOperationData;
+	public    var stims : array:SStimOperationData;
+	public    var statusEffects : array:SStatusEffectOperationData;
+	public    var damages : array:SDamageOperationData;
+	public    var items : array:SInventoryOperationData;
+	public    var teleport : STeleportOperationData;
+	public    var meshesAppearence : CName;
+	public    var playerWorkspot : SWorkspotData;
+
+	function CreateFxInstance(owner : whandle:gameObject, id : CName, resource : gameFxResource, transform : WorldTransform) : handle:gameFxInstance; // CreateFxInstance;GameObjectCNameFxResourceWorldTransform
+	function EnterWorkspot(target : handle:Device, activator : handle:gameObject, optional freeCamera : Bool, optional componentName : CName); // EnterWorkspot;DeviceGameObjectBoolCName
+	function Execute(owner : whandle:gameObject); // Execute;GameObject
+	function GetFxInstance(id : CName) : handle:gameFxInstance; // GetFxInstance;CName
+	function LeaveWorkspot(activator : handle:gameObject); // LeaveWorkspot;GameObject
+	function RemoveFxInstance(id : CName); // RemoveFxInstance;CName
+	function ResolveComponents(componentsData : script_ref:array:SComponentOperationData, owner : whandle:gameObject); // ResolveComponents;script_ref<array<SComponentOperationData>>GameObject
+	function ResolveDamages(damagesArg : script_ref:array:SDamageOperationData, owner : whandle:gameObject); // ResolveDamages;script_ref<array<SDamageOperationData>>GameObject
+	function ResolveFacts(factsArg : script_ref:array:SFactOperationData, owner : whandle:gameObject, optional restore : Bool); // ResolveFacts;script_ref<array<SFactOperationData>>GameObjectBool
+	function ResolveItems(itemsArg : script_ref:array:SInventoryOperationData, owner : whandle:gameObject); // ResolveItems;script_ref<array<SInventoryOperationData>>GameObject
+	function ResolveMeshesAppearence(appearanceName : CName, owner : whandle:gameObject); // ResolveMeshesAppearence;CNameGameObject
+	function ResolveSFXs(SFXsArg : script_ref:array:SSFXOperationData, owner : whandle:gameObject); // ResolveSFXs;script_ref<array<SSFXOperationData>>GameObject
+	function ResolveStatusEffects(statusEffectsArg : array:SStatusEffectOperationData, owner : whandle:gameObject); // ResolveStatusEffects;array<SStatusEffectOperationData>GameObject
+	function ResolveStims(stimsArg : script_ref:array:SStimOperationData, owner : whandle:gameObject); // ResolveStims;script_ref<array<SStimOperationData>>GameObject
+	function ResolveTeleport(teleportArg : STeleportOperationData, owner : whandle:gameObject); // ResolveTeleport;STeleportOperationDataGameObject
+	function ResolveTransformAnimations(animations : script_ref:array:STransformAnimationData, owner : whandle:gameObject); // ResolveTransformAnimations;script_ref<array<STransformAnimationData>>GameObject
+	function ResolveVFXs(VFXsArg : array:SVFXOperationData, owner : whandle:gameObject); // ResolveVFXs;array<SVFXOperationData>GameObject
+	function ResolveWorkspots(workspot : SWorkspotData, owner : whandle:gameObject); // ResolveWorkspots;SWorkspotDataGameObject
+	function Restore(owner : whandle:gameObject); // Restore;GameObject
+	function StoreFxInstance(id : CName, fx : handle:gameFxInstance); // StoreFxInstance;CNameFxInstance
+}
+
+class abstract DeviceOperationBase extends IScriptable
+{
+	public    var operationName : CName;
+	public    var executeOnce : Bool;
+	protected var isEnabled : Bool;
+	public    var toggleOperations : array:SToggleDeviceOperationData;
+	public    var disableDevice : Bool;
+
+	function Execute(owner : whandle:gameObject); // Execute;GameObject
+	function IsEnabled() : Bool; // IsEnabled;
+	function ResolveDisable(disable : Bool, owner : whandle:gameObject); // ResolveDisable;BoolGameObject
+	function Restore(owner : whandle:gameObject); // Restore;GameObject
+	function SetIsEnabled(enabled : Bool); // SetIsEnabled;Bool
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

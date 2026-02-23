@@ -1,0 +1,14 @@
+import class CTerrainSetup extends CResource
+{
+	var tiling : array:Float;
+	var physicalMaterial : array:CName;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

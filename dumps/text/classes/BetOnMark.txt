@@ -1,0 +1,5 @@
+struct BetOnMark
+{
+	public    var betOn : CasinoTableBet;
+	public    var mark : inkWidgetReference;
+}

@@ -1,0 +1,9 @@
+import struct gameReplAnimTransformSyncMatrixRequest extends gameReplAnimTransformRequestBase
+{
+	var transform : Transform;
+}
+
+import struct gameReplAnimTransformRequestBase
+{
+	var applyServerTime : netTime;
+}

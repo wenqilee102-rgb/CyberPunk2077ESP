@@ -1,0 +1,18 @@
+import class gameScriptedPrereqAttitudeListenerWrapper extends IScriptable
+{
+	import static function CreateListener(gameInstance : ScriptGameInstance, agent1 : whandle:gameAttitudeAgent, agent2 : whandle:gameAttitudeAgent, prereqState : whandle:gamePrereqState) : handle:gameScriptedPrereqAttitudeListenerWrapper; // CreateListener
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

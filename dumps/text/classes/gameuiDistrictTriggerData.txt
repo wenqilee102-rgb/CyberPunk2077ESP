@@ -1,0 +1,5 @@
+import struct gameuiDistrictTriggerData
+{
+	var district : gamedataDistrict;
+	var triggerName : CName;
+}

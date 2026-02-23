@@ -1,0 +1,25 @@
+import class animAnimNode_OrientConstraint extends animAnimNode_OnePoseInput
+{
+	var areSourceChannelsResaved : Bool;
+	var inputTransforms : array:handle:animAnimNodeSourceChannel_WeightedQuat;
+	var preprocessedWeights : array:Float;
+	var inputWeightedTransforms : array:animAnimNode_OrientConstraint_WeightedTransform;
+	var transformIndex : animTransformIndex;
+	var weightMode : animConstraintWeightMode;
+	var weight : Float;
+	var weightFloatTrack : animNamedTrackIndex;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

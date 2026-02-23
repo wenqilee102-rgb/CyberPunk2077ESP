@@ -1,0 +1,9 @@
+import struct gamePhantomEntityParameters
+{
+	var teleportStartEffect : CName;
+	var teleportEndEffect : CName;
+	var spawnEffect : CName;
+	var glitchEffect : CName;
+	var phantomVisibleStates : array:gamePhantomEntityState;
+	var blendableAppearanceMatches : array:gamePhantomEntityParametersBlendableAppearanceMatch;
+}

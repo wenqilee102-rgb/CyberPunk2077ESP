@@ -1,0 +1,97 @@
+import class gameprojectileComponent extends entIPlacedComponent
+{
+	var onCollisionAction : gameprojectileOnCollisionAction;
+	var useSweepCollision : Bool;
+	var collisionsFilterClosest : Bool;
+	var sweepCollisionRadius : Float;
+	var rotationOffset : Quaternion;
+	var deriveOwnerVelocity : Bool;
+	var derivedVelocityParams : gameprojectileVelocityParams;
+	var filterData : handle:physicsFilterData;
+	var queryPreset : physicsQueryPreset;
+	var previewEffect : raRef:worldEffect;
+	var bouncePreviewEffect : raRef:worldEffect;
+	var explosionPreviewEffect : raRef:worldEffect;
+	var explosionPreviewTime : Float;
+	var gameEffectRef : gameEffectRef;
+
+	import function AddAccelerateTowards(params : handle:gameprojectileAccelerateTowardsTrajectoryParams); // AddAccelerateTowards
+	import function AddAxisRotation(axis : Vector4, value : Float); // AddAxisRotation
+	import function AddFollow(params : handle:gameprojectileFollowTrajectoryParams); // AddFollow
+	import function AddFollowCurve(params : handle:gameprojectileFollowCurveTrajectoryParams); // AddFollowCurve
+	import function AddIgnoredEntity(entityID : entEntityID); // AddIgnoredEntity
+	import function AddLinear(params : handle:gameprojectileLinearTrajectoryParams); // AddLinear
+	import function AddParabolic(params : handle:gameprojectileParabolicTrajectoryParams); // AddParabolic
+	import function ClearIgnoredEntities(); // ClearIgnoredEntities
+	import function ClearTrajectories(); // ClearTrajectories
+	import function GetGameEffectInstance() : handle:gameEffectInstance; // GetGameEffectInstance
+	import function GetPrintVelocity() : Vector4; // GetPrintVelocity
+	import function GetProjectileOwner() : whandle:gameObject; // GetProjectileOwner
+	import function GetTrailVFXName() : CName; // GetTrailVFXName
+	import function GetTrailVFXScale() : Float; // GetTrailVFXScale
+	import function IsTrajectoryEmpty() : Bool; // IsTrajectoryEmpty
+	import function LockOrientation(enable : Bool); // LockOrientation
+	import function LogDebugVariable(key : CName, value : String); // LogDebugVariable
+	import function RemoveIgnoredEntity(entityID : entEntityID); // RemoveIgnoredEntity
+	import function SetCollisionCooldown(cooldown : Float); // SetCollisionCooldown
+	import function SetCollisionEvaluator(collisionEvaluator : handle:gameprojectileScriptCollisionEvaluator); // SetCollisionEvaluator
+	import function SetDeactivationDepth(depth : Float); // SetDeactivationDepth
+	import function SetDesiredTransform(transform : Transform); // SetDesiredTransform
+	import function SetEnergyLossFactor(energyLossFactor : Float, puppetEnergyLossFactor : Float); // SetEnergyLossFactor
+	import function SetEnergyLossFactor(); // SetEnergyLossFactor
+	import function SetExplosionVisualRadius(explosionRadius : Float); // SetExplosionVisualRadius
+	import function SetOnCollisionAction(action : gameprojectileOnCollisionAction); // SetOnCollisionAction
+	import function SetSpiral(params : handle:gameprojectileSpiralParams); // SetSpiral
+	import function SetWasTrajectoryStopped(wasStopped : Bool); // SetWasTrajectoryStopped
+	import function Slide(params : handle:gameprojectileSlideTrajectoryParams); // Slide
+	import function SpawnTrailVFX(); // SpawnTrailVFX
+	import function ToggleAxisRotation(enabled : Bool); // ToggleAxisRotation
+}
+
+import class abstract entIPlacedComponent extends entIComponent
+{
+	var localTransform : WorldTransform;
+	var parentTransform : handle:entITransformBinding;
+
+	import function GetInitialOrientation() : Quaternion; // GetInitialOrientation
+	import function GetInitialPosition() : Vector4; // GetInitialPosition
+	import function GetInitialTransform() : Matrix; // GetInitialTransform
+	import function GetLocalOrientation() : Quaternion; // GetLocalOrientation
+	import function GetLocalPosition() : Vector4; // GetLocalPosition
+	import function GetLocalToWorld() : Matrix; // GetLocalToWorld
+	import function GetLocalTransform() : Matrix; // GetLocalTransform
+	import function GetTransformParent(); // GetTransformParent
+	import function SetLocalOrientation(rot : Quaternion); // SetLocalOrientation
+	import function SetLocalPosition(pos : Vector4); // SetLocalPosition
+	import function SetLocalTransform(pos : Vector4, rot : Quaternion); // SetLocalTransform
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

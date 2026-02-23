@@ -1,0 +1,48 @@
+import class AIbehaviorDriveRacingTreeNodeDefinition extends AIbehaviorDriveTreeNodeDefinition
+{
+	var useKinematic : handle:AIArgumentMapping;
+	var needDriver : handle:AIArgumentMapping;
+	var spline : handle:AIArgumentMapping;
+	var secureTimeOut : handle:AIArgumentMapping;
+	var backwards : handle:AIArgumentMapping;
+	var reverse : handle:AIArgumentMapping;
+	var closest : handle:AIArgumentMapping;
+	var forcedStartSpeed : handle:AIArgumentMapping;
+	var stopAtPathEnd : handle:AIArgumentMapping;
+	var keepDistanceParamBool : handle:AIArgumentMapping;
+	var keepDistanceParamCompanion : handle:AIArgumentMapping;
+	var keepDistanceParamDistance : handle:AIArgumentMapping;
+	var rubberBandingBool : handle:AIArgumentMapping;
+	var rubberBandingTargetRef : handle:AIArgumentMapping;
+	var rubberBandingTargetForwardOffset : handle:AIArgumentMapping;
+	var rubberBandingMinDistance : handle:AIArgumentMapping;
+	var rubberBandingMaxDistance : handle:AIArgumentMapping;
+	var rubberBandingStopAndWait : handle:AIArgumentMapping;
+	var rubberBandingTeleportToCatchUp : handle:AIArgumentMapping;
+	var rubberBandingStayInFront : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorDriveTreeNodeDefinition extends AIbehaviorActionTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorActionTreeNodeDefinition extends AIbehaviorLeafTreeNodeDefinition
+{
+	var command : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorLeafTreeNodeDefinition extends AIbehaviorTreeNodeDefinition
+{
+}
+
+import class abstract AIbehaviorTreeNodeDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

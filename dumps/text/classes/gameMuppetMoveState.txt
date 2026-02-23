@@ -1,0 +1,10 @@
+import struct gameMuppetMoveState
+{
+	var desiredSpeed : Float;
+	var isJumping : Bool;
+	var isFalling : Bool;
+	var isDoubleJumped : Bool;
+	var moveStyle : gameMuppetMoveStyle;
+	var jumpStartFrameId : Uint32;
+	var landFrameId : Uint32;
+}

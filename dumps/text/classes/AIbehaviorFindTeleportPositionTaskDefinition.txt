@@ -1,0 +1,15 @@
+import class AIbehaviorFindTeleportPositionTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var patrolPath : handle:AIArgumentMapping;
+	var teleportPosition : handle:AIArgumentMapping;
+	var teleportRotation : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

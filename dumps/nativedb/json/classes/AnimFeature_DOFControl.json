@@ -1,0 +1,1 @@
+{"a":"animAnimFeature","b":"AnimFeature_DOFControl","d":0,"e":[{"a":{"a":10},"b":"dofIntensity","c":128},{"a":{"a":10},"b":"dofNearBlur","c":128},{"a":{"a":10},"b":"dofNearFocus","c":128},{"a":{"a":10},"b":"dofFarBlur","c":128},{"a":{"a":10},"b":"dofFarFocus","c":128},{"a":{"a":10},"b":"dofBlendInTime","c":128},{"a":{"a":10},"b":"dofBlendOutTime","c":128}]}

@@ -1,0 +1,29 @@
+import class gamedataUICharacterCreationAttribute_Record extends gamedataTweakDBRecord
+{
+	import function Attribute() : whandle:gamedataStat_Record; // Attribute
+	import function AttributeHandle() : handle:gamedataStat_Record; // AttributeHandle
+	import function Description() : String; // Description
+	import function IconPath() : CName; // IconPath
+	import function Shortcut() : String; // Shortcut
+	import function Value() : Float; // Value
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

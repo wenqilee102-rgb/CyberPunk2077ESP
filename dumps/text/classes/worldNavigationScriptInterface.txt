@@ -1,0 +1,31 @@
+import class worldNavigationScriptInterface extends IScriptable
+{
+	import function AddObstacle(position : Vector4, radius : Float, height : Float, agentSize : NavGenAgentSize) : handle:worldNavigationScriptObstacle; // AddObstacle
+	import function CalculatePathOnlyHumanNavmesh(startPoint : Vector4, endPoint : Vector4, agentSize : NavGenAgentSize, findPointTolerance : Float, optional costModCircle : handle:worldNavigationScriptCostModCircle) : handle:worldNavigationScriptPath; // CalculatePathOnlyHumanNavmesh
+	import function FindNavmeshPointAwayFromReferencePoint(pos : Vector4, refPos : Vector4, distance : Float, agentSize : NavGenAgentSize, out destination : Vector4, optional distanceTolerance : Float, optional angleTolerance : Float) : Bool; // FindNavmeshPointAwayFromReferencePoint
+	import function FindPointInBox(); // FindPointInBox
+	import function FindPointInSphereOnlyHumanNavmesh(center : Vector4, radius : Float, agentSize : NavGenAgentSize, heightDetail : Bool) : worldNavigationScriptFindPointResult; // FindPointInSphereOnlyHumanNavmesh
+	import function FindPursuitPoint(playerPos : Vector4, pos : Vector4, dir : Vector4, radius : Float, navVisCheck : Bool, agentSize : NavGenAgentSize, out destination : Vector4, out isDestinationFallback : Bool) : Bool; // FindPursuitPoint
+	import function FindPursuitPointRange(playerPos : Vector4, pos : Vector4, dir : Vector4, radiusMin : Float, radiusMax : Float, navVisCheck : Bool, agentSize : NavGenAgentSize, out destination : Vector4, out isDestinationFallback : Bool) : Bool; // FindPursuitPointRange
+	import function FindPursuitPointsRange(playerPos : Vector4, pos : Vector4, dir : Vector4, radiusMin : Float, radiusMax : Float, count : Int32, navVisCheck : Bool, agentSize : NavGenAgentSize, out results : array:Vector4, out fallbackResults : array:Vector4) : Bool; // FindPursuitPointsRange
+	import function FindWallInLineOnlyHumanNavmesh(startPoint : Vector4, endPoint : Vector4, agentSize : NavGenAgentSize, findPointTolerance : Float) : handle:worldNavigationScriptFindWallResult; // FindWallInLineOnlyHumanNavmesh
+	import function IsNavmeshStreamedInLocation(origin : Vector4, findPointTolerance : Float, optional allowedMask : Uint16, optional blockedMask : Uint16) : Bool; // IsNavmeshStreamedInLocation
+	import function RemoveObstacle(obstacle : handle:worldNavigationScriptObstacle); // RemoveObstacle
+
+	function GetNearestNavmeshPointBelowOnlyHumanNavmesh(origin : Vector4, querySphereRadius : Float, numberOfSpheres : Int32) : Vector4; // GetNearestNavmeshPointBelowOnlyHumanNavmesh;Vector4FloatInt32
+	function IsOnGround(target : handle:gameObject, optional queryLength : Float) : Bool; // IsOnGround;GameObjectFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

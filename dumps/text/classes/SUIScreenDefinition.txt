@@ -1,0 +1,5 @@
+struct SUIScreenDefinition
+{
+	public    var screenDefinition : TweakDBID;
+	public    var style : TweakDBID;
+}

@@ -1,0 +1,8 @@
+import class AIbehaviorUsedSpotTokensList extends ISerializable
+{
+	var tokens : array:AISpotUsageToken;
+}
+
+import class abstract ISerializable
+{
+}

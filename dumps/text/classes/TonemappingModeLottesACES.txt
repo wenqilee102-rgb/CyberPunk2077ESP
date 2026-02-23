@@ -1,0 +1,16 @@
+import class TonemappingModeLottesACES extends ITonemappingMode
+{
+	var maxInput : Float;
+	var contrast : Float;
+	var midIn : Float;
+	var midOut : Float;
+}
+
+import class abstract ITonemappingMode extends ISerializable
+{
+	var colorPreservation : curveData:Float;
+}
+
+import class abstract ISerializable
+{
+}

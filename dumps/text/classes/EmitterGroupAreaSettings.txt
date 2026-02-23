@@ -1,0 +1,15 @@
+import class EmitterGroupAreaSettings extends IAreaSettings
+{
+	var emitterGroupParams : array:EmitterGroupParams;
+	var EmitterGroupParams : array:EmitterGroupAreaParams;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

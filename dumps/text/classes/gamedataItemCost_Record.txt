@@ -1,0 +1,34 @@
+import class gamedataItemCost_Record extends gamedataObjectActionCost_Record
+{
+	import function Item() : whandle:gamedataItem_Record; // Item
+	import function ItemHandle() : handle:gamedataItem_Record; // ItemHandle
+}
+
+import class gamedataObjectActionCost_Record extends gamedataTweakDBRecord
+{
+	import function CostMods(out outList : array:whandle:gamedataStatModifier_Record); // CostMods
+	import function CostModsContains(item : whandle:gamedataStatModifier_Record) : Bool; // CostModsContains
+	import function GetCostModsCount() : Int32; // GetCostModsCount
+	import function GetCostModsItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetCostModsItem
+	import function GetCostModsItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetCostModsItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

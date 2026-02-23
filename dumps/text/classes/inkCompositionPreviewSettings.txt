@@ -1,0 +1,13 @@
+import class inkCompositionPreviewSettings extends ISerializable
+{
+	var sourceState : CName;
+	var targetState : CName;
+	var previewResolution : inkETextureResolution;
+	var gameFrameTexture : raRef:CBitmapTexture;
+	var textureAtlas : raRef:inkTextureAtlas;
+	var texturePart : CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,31 @@
+import class gamedataAIDirectorSchedulePlanEnemyEntry_Record extends gamedataTweakDBRecord
+{
+	import function Character() : whandle:gamedataCharacter_Record; // Character
+	import function CharacterHandle() : handle:gamedataCharacter_Record; // CharacterHandle
+	import function GetTagsCount() : Int32; // GetTagsCount
+	import function GetTagsItem(index : Int32) : CName; // GetTagsItem
+	import function MaxAmountConcurrently() : Int32; // MaxAmountConcurrently
+	import function SpawnChanceFactor() : Float; // SpawnChanceFactor
+	import function Tags() : array:CName; // Tags
+	import function TagsContains(item : CName) : Bool; // TagsContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

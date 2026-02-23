@@ -1,0 +1,1 @@
+{"a":"gameEffectExecutor_Scripted","b":"LookAtTargetExecutor","d":0,"f":[{"a":"Process;EffectScriptContextEffectExecutionScriptContext","b":"Process","c":{"a":1},"d":48,"e":[{"a":{"b":"gameEffectScriptContext"},"b":"ctx","c":0},{"a":{"b":"gameEffectExecutionScriptContext"},"b":"applierCtx","c":0}]}]}

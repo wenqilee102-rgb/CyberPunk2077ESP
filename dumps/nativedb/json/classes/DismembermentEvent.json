@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"DismembermentEvent","d":0,"e":[{"a":{"b":"gameDismBodyPart"},"b":"bodyPart","c":128},{"a":{"b":"gameDismWoundType"},"b":"woundType","c":128},{"a":{"a":10},"b":"strength","c":128},{"a":{"a":1},"b":"isCritical","c":128},{"a":{"a":12},"b":"debrisPath","c":128},{"a":{"a":10},"b":"debrisStrength","c":128}]}

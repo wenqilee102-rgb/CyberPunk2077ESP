@@ -1,0 +1,21 @@
+import struct scnPlayerActorDef
+{
+	var actorId : scnActorId;
+	var specTemplate : CName;
+	var specCharacterRecordId : TweakDBID;
+	var specAppearance : CName;
+	var voicetagId : scnVoicetagId;
+	var animSets : array:scnSRRefId;
+	var lipsyncAnimSet : scnLipsyncAnimSetSRRefId;
+	var facialAnimSets : array:scnRidFacialAnimSetSRRefId;
+	var cyberwareAnimSets : array:scnRidCyberwareAnimSetSRRefId;
+	var deformationAnimSets : array:scnRidDeformationAnimSetSRRefId;
+	var bodyCinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var facialCinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var cyberwareCinematicAnimSets : array:scnCinematicAnimSetSRRefId;
+	var dynamicAnimSets : array:scnDynamicAnimSetSRRefId;
+	var acquisitionPlan : scnEntityAcquisitionPlan;
+	var findNetworkPlayerParams : scnFindNetworkPlayerParams;
+	var findActorInContextParams : scnFindEntityInContextParams;
+	var playerName : String;
+}

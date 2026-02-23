@@ -1,0 +1,11 @@
+import struct entRagdollComponentReplicatedState extends netIComponentState
+{
+	var transforms : array:Transform;
+	var isSleeping : Bool;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

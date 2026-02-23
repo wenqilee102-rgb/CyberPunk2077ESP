@@ -1,0 +1,19 @@
+import class animAnimNode_DirectionToEuler extends animAnimNode_FloatValue
+{
+	var inputNode : animVectorLink;
+	var initialForwardVector : Vector4;
+	var conversionType : animEDirectionToEuler;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

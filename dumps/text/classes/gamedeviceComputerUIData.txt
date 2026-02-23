@@ -1,0 +1,5 @@
+import struct gamedeviceComputerUIData
+{
+	var mails : array:gamedeviceGenericDataContent;
+	var files : array:gamedeviceGenericDataContent;
+}

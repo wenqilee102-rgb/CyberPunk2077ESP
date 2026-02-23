@@ -1,0 +1,1 @@
+{"b":"scnFindEntityInEntityParams","d":8,"g":true,"e":[{"a":{"b":"scnActorId"},"b":"actorId","c":128},{"a":{"b":"scnPerformerId"},"b":"performerId","c":128},{"a":{"a":15},"b":"itemID","c":128},{"a":{"a":15},"b":"slotID","c":128},{"a":{"a":1},"b":"forceMaxVisibility","c":128},{"a":{"b":"scnPropOwnershipTransferOptions"},"b":"ownershipTransferOptions","c":128}]}

@@ -1,0 +1,12 @@
+import struct gameEffectExecutionScriptContext
+{
+	import static function GetGameEffectSystem(); // GetGameEffectSystem
+	import static function GetHitNormal(applierCtx : gameEffectExecutionScriptContext) : Vector4; // GetHitNormal
+	import static function GetHitPosition(applierCtx : gameEffectExecutionScriptContext) : Vector4; // GetHitPosition
+	import static function GetHitThroughTechSurface(applierCtx : gameEffectExecutionScriptContext) : Bool; // GetHitThroughTechSurface
+	import static function GetHitThroughWaterSurface(applierCtx : gameEffectExecutionScriptContext) : Bool; // GetHitThroughWaterSurface
+	import static function GetTarget(applierCtx : gameEffectExecutionScriptContext) : handle:entEntity; // GetTarget
+	import static function GetTargetNode(applierCtx : gameEffectExecutionScriptContext) : worldGlobalNodeID; // GetTargetNode
+	import static function GetTimeDelta(applierCtx : gameEffectExecutionScriptContext) : Float; // GetTimeDelta
+	import static function IsTargetWater(applierCtx : gameEffectExecutionScriptContext) : Bool; // IsTargetWater
+}

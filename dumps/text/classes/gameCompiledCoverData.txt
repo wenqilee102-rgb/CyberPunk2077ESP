@@ -1,0 +1,11 @@
+import class gameCompiledCoverData extends gameCompiledSmartObjectData
+{
+}
+
+import class gameCompiledSmartObjectData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

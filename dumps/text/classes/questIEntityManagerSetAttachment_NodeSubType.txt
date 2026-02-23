@@ -1,0 +1,23 @@
+import class abstract questIEntityManagerSetAttachment_NodeSubType extends questIEntityManager_NodeSubType
+{
+}
+
+import class abstract questIEntityManager_NodeSubType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+enum ItemModeGridSize
+{
+	Default = 0,
+	Outfit = 1
+}

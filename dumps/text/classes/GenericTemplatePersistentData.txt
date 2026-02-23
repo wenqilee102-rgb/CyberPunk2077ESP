@@ -1,0 +1,19 @@
+struct GenericTemplatePersistentData
+{
+	public    var primaryColorDefined : Bool;
+	public    var primaryColorR : Uint8;
+	public    var primaryColorG : Uint8;
+	public    var primaryColorB : Uint8;
+	public    var secondaryColorDefined : Bool;
+	public    var secondaryColorR : Uint8;
+	public    var secondaryColorG : Uint8;
+	public    var secondaryColorB : Uint8;
+	public    var lightsColorDefined : Bool;
+	public    var lightsColorHue : Float;
+
+	static function Equals(dataA : GenericTemplatePersistentData, dataB : GenericTemplatePersistentData) : Bool; // GenericTemplatePersistentData::Equals;GenericTemplatePersistentDataGenericTemplatePersistentData
+	static function GetPrimaryColor(data : GenericTemplatePersistentData) : Color; // GenericTemplatePersistentData::GetPrimaryColor;GenericTemplatePersistentData
+	static function GetSecondaryColor(data : GenericTemplatePersistentData) : Color; // GenericTemplatePersistentData::GetSecondaryColor;GenericTemplatePersistentData
+	static function SetPrimaryColor(out data : GenericTemplatePersistentData, color : Color); // GenericTemplatePersistentData::SetPrimaryColor;GenericTemplatePersistentDataColor
+	static function SetSecondaryColor(out data : GenericTemplatePersistentData, color : Color); // GenericTemplatePersistentData::SetSecondaryColor;GenericTemplatePersistentDataColor
+}

@@ -1,0 +1,13 @@
+import class AIbehaviorSendActionEventTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var event : handle:gameActionEvent;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

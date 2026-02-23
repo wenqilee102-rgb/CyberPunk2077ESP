@@ -1,0 +1,7 @@
+enum EAimAssistLevel
+{
+	Off = 0,
+	Light = 1,
+	Standard = 2,
+	Heavy = 3
+}

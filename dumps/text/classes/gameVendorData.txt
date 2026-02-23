@@ -1,0 +1,6 @@
+import struct gameVendorData
+{
+	var vendorId : String;
+	var entityID : entEntityID;
+	var isActive : Bool;
+}

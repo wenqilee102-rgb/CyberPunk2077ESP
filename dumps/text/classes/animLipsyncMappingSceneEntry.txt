@@ -1,0 +1,5 @@
+import struct animLipsyncMappingSceneEntry
+{
+	var actorVoiceTags : array:CRUID;
+	var animSets : array:raRef:animAnimSet;
+}

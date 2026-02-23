@@ -1,0 +1,6 @@
+import struct ShaftsAreaSettings
+{
+	var shaftsLevelIndex : Uint32;
+	var shaftsIntensity : Float;
+	var shaftsThresholdsScale : Float;
+}

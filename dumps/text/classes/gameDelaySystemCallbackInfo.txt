@@ -1,0 +1,11 @@
+import class abstract gameDelaySystemCallbackInfo extends gameDelaySystemDelayStruct
+{
+}
+
+import class abstract gameDelaySystemDelayStruct extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

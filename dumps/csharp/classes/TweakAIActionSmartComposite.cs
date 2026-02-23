@@ -1,0 +1,103 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class TweakAIActionSmartComposite : TweakAIActionAbstract
+	{
+		private TweakDBID _smartComposite;
+		private wCHandle<gamedataAIActionSmartComposite_Record> _smartCompositeRecord;
+		private CBool _interruptionRequested;
+		private CFloat _conditionSuccessfulCheckTimeStamp;
+		private CFloat _conditionCheckTimeStamp;
+		private CUInt32 _iteration;
+		private CInt32 _nodeIterator;
+		private CInt32 _currentNodeIterator;
+		private CEnum<ETweakAINodeType> _currentNodeType;
+		private wCHandle<gamedataAINode_Record> _currentNode;
+
+		[Ordinal(37)] 
+		[RED("smartComposite")] 
+		public TweakDBID SmartComposite
+		{
+			get => GetProperty(ref _smartComposite);
+			set => SetProperty(ref _smartComposite, value);
+		}
+
+		[Ordinal(38)] 
+		[RED("smartCompositeRecord")] 
+		public wCHandle<gamedataAIActionSmartComposite_Record> SmartCompositeRecord
+		{
+			get => GetProperty(ref _smartCompositeRecord);
+			set => SetProperty(ref _smartCompositeRecord, value);
+		}
+
+		[Ordinal(39)] 
+		[RED("interruptionRequested")] 
+		public CBool InterruptionRequested
+		{
+			get => GetProperty(ref _interruptionRequested);
+			set => SetProperty(ref _interruptionRequested, value);
+		}
+
+		[Ordinal(40)] 
+		[RED("conditionSuccessfulCheckTimeStamp")] 
+		public CFloat ConditionSuccessfulCheckTimeStamp
+		{
+			get => GetProperty(ref _conditionSuccessfulCheckTimeStamp);
+			set => SetProperty(ref _conditionSuccessfulCheckTimeStamp, value);
+		}
+
+		[Ordinal(41)] 
+		[RED("conditionCheckTimeStamp")] 
+		public CFloat ConditionCheckTimeStamp
+		{
+			get => GetProperty(ref _conditionCheckTimeStamp);
+			set => SetProperty(ref _conditionCheckTimeStamp, value);
+		}
+
+		[Ordinal(42)] 
+		[RED("iteration")] 
+		public CUInt32 Iteration
+		{
+			get => GetProperty(ref _iteration);
+			set => SetProperty(ref _iteration, value);
+		}
+
+		[Ordinal(43)] 
+		[RED("nodeIterator")] 
+		public CInt32 NodeIterator
+		{
+			get => GetProperty(ref _nodeIterator);
+			set => SetProperty(ref _nodeIterator, value);
+		}
+
+		[Ordinal(44)] 
+		[RED("currentNodeIterator")] 
+		public CInt32 CurrentNodeIterator
+		{
+			get => GetProperty(ref _currentNodeIterator);
+			set => SetProperty(ref _currentNodeIterator, value);
+		}
+
+		[Ordinal(45)] 
+		[RED("currentNodeType")] 
+		public CEnum<ETweakAINodeType> CurrentNodeType
+		{
+			get => GetProperty(ref _currentNodeType);
+			set => SetProperty(ref _currentNodeType, value);
+		}
+
+		[Ordinal(46)] 
+		[RED("currentNode")] 
+		public wCHandle<gamedataAINode_Record> CurrentNode
+		{
+			get => GetProperty(ref _currentNode);
+			set => SetProperty(ref _currentNode, value);
+		}
+
+		public TweakAIActionSmartComposite(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

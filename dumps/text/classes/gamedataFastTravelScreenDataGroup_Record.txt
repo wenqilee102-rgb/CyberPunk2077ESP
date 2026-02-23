@@ -1,0 +1,28 @@
+import class gamedataFastTravelScreenDataGroup_Record extends gamedataTweakDBRecord
+{
+	import function GetScreensDataCount() : Int32; // GetScreensDataCount
+	import function GetScreensDataItem(index : Int32) : whandle:gamedataFastTravelScreenData_Record; // GetScreensDataItem
+	import function GetScreensDataItemHandle(index : Int32) : handle:gamedataFastTravelScreenData_Record; // GetScreensDataItemHandle
+	import function ScreensData(out outList : array:whandle:gamedataFastTravelScreenData_Record); // ScreensData
+	import function ScreensDataContains(item : whandle:gamedataFastTravelScreenData_Record) : Bool; // ScreensDataContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

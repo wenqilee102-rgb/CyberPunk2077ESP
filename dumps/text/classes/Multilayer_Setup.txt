@@ -1,0 +1,15 @@
+import class Multilayer_Setup extends CResource
+{
+	var layers : array:Multilayer_Layer;
+	var ratio : Float;
+	var useNormal : Bool;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

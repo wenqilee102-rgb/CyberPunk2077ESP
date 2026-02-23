@@ -1,0 +1,22 @@
+import class animAnimNode_TranslationLimit extends animAnimNode_OnePoseInput
+{
+	var constrainedTransform : animTransformIndex;
+	var parentTransform : animTransformIndex;
+	var limitOnXAxis : animFloatClamp;
+	var limitOnYAxis : animFloatClamp;
+	var limitOnZAxis : animFloatClamp;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

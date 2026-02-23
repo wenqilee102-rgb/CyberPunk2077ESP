@@ -1,0 +1,32 @@
+class PreventionMinimapMappinComponent extends IScriptable
+{
+	private   var minimapStealthMappinController : whandle:gameuiMinimapStealthMappinController;
+	private   var uiWantedBarBB : whandle:gameIBlackboard;
+	private   var uiWantedBarBBDef : handle:UI_WantedBarDef;
+	private   var currentWantedStateCallback : handle:redCallbackObject;
+	private   var playerWanted : Bool;
+	private   var playerEscapingPursuit : Bool;
+	private   var maxVisibilityDistance : Float;
+
+	event OnCurrentWantedStateChanged(value : CName) : Bool; // OnCurrentWantedStateChanged
+
+	function CanShowMappin(distance : Float) : Bool; // CanShowMappin;Float
+	function IsPlayerEscapingPursuit() : Bool; // IsPlayerEscapingPursuit;
+	function OnInitialize(minimapStealthMappinController : whandle:gameuiMinimapStealthMappinController, gameObject : whandle:gameObject); // OnInitialize;MinimapStealthMappinControllerGameObject
+	function OnUninitialize(); // OnUninitialize;
+	function UpdatePlayerEscapingPursuit(value : CName); // UpdatePlayerEscapingPursuit;CName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

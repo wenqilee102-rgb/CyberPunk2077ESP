@@ -1,0 +1,15 @@
+import class AIbehaviorMountEventResolverDefinition extends AIbehaviorEventResolverDefinition
+{
+	var mountData : handle:AIArgumentMapping;
+	var workspotData : handle:AIArgumentMapping;
+	var isInstant : handle:AIArgumentMapping;
+	var behaviorCallbackName : CName;
+}
+
+import class abstract AIbehaviorEventResolverDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

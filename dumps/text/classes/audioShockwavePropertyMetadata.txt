@@ -1,0 +1,19 @@
+import class audioShockwavePropertyMetadata extends audioAudioMetadata
+{
+	var eventName : CName;
+	var maxDistance : Float;
+	var probability : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

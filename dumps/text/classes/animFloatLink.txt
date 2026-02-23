@@ -1,0 +1,4 @@
+import struct animFloatLink
+{
+	var node : whandle:animAnimNode_FloatValue;
+}

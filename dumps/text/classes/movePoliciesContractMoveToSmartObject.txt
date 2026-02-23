@@ -1,0 +1,11 @@
+import class movePoliciesContractMoveToSmartObject extends movePoliciesContract
+{
+}
+
+import class abstract movePoliciesContract extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

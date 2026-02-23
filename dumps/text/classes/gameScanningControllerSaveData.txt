@@ -1,0 +1,8 @@
+import class gameScanningControllerSaveData extends ISerializable
+{
+	var taggedObjectIDs : array:entEntityID;
+}
+
+import class abstract ISerializable
+{
+}

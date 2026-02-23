@@ -1,0 +1,30 @@
+import class animAnimNode_Ik2Constraint extends animAnimNode_OnePoseInput
+{
+	var inputTarget : handle:animIAnimNodeSourceChannel_Vector;
+	var inputPoleVector : handle:animIAnimNodeSourceChannel_Vector;
+	var inputTargetOrientation : handle:animAnimNodeSourceChannel_WeightedQuat;
+	var firstBoneIndex : animTransformIndex;
+	var secondBoneIndex : animTransformIndex;
+	var endBoneIndex : animTransformIndex;
+	var hingeAxis : animAxis;
+	var twistValue : Float;
+	var weight : Float;
+	var weightFloatTrack : animNamedTrackIndex;
+	var weightNode : animFloatLink;
+	var twistNode : animFloatLink;
+	var maxHingeAngle : Float;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import class worldTrafficCollisionDebug extends ISerializable
+{
+	var overlapBoxes : array:worldDbgOverlapBox;
+}
+
+import class abstract ISerializable
+{
+}

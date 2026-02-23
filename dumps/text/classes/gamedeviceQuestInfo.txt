@@ -1,0 +1,5 @@
+import struct gamedeviceQuestInfo
+{
+	var isHighlighted : Bool;
+	var factName : CName;
+}

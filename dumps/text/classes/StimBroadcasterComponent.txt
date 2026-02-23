@@ -1,0 +1,126 @@
+class StimBroadcasterComponent extends gameScriptableComponent
+{
+	public    var activeRequests : array:handle:StimRequest;
+	public    var currentID : Uint32;
+	public    var shouldBroadcast : Bool;
+	public    var targets : array:gameNPCstubData;
+	private   var blockedStims : array:StimIdentificationData;
+	public    var fallbackInterval : Float;
+
+	static function BroadcastActiveStim(sender : whandle:gameObject, gdStimType : gamedataStimType, optional lifetime : Float, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool); // StimBroadcasterComponent::BroadcastActiveStim;GameObjectgamedataStimTypeFloatFloatstimInvestigateDataBool
+	static function BroadcastStim(sender : whandle:gameObject, gdStimType : gamedataStimType, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool); // StimBroadcasterComponent::BroadcastStim;GameObjectgamedataStimTypeFloatstimInvestigateDataBool
+	static function SendStimDirectly(sender : whandle:gameObject, gdStimType : gamedataStimType, target : handle:gameObject, optional investigateData : senseStimInvestigateData, optional delay : Float); // StimBroadcasterComponent::SendStimDirectly;GameObjectgamedataStimTypeGameObjectstimInvestigateDataFloat
+	static function nameToStimEnum(stimName : CName, out stimType : gamedataStimType); // StimBroadcasterComponent::nameToStimEnum;CNamegamedataStimType
+
+	event OnBlockStimProcessingCooldownEvent(evt : handle:BlockStimProcessingCooldownEvent) : Bool; // OnBlockStimProcessingCooldownEvent
+	event OnBroadcastEvent(evt : handle:BroadcastEvent) : Bool; // OnBroadcastEvent
+	event OnRecurrentStimuliEvent(evt : handle:RecurrentStimuliEvent) : Bool; // OnRecurrentStimuliEvent
+	event OnStatusEffectApplied(evt : handle:gameeventsApplyStatusEffectEvent) : Bool; // OnStatusEffectApplied
+	event OnStimTargetsUpdate(evt : handle:StimTargetsEvent) : Bool; // OnStimTargetsUpdate
+
+	function AddActiveStimuli(contextOwner : whandle:gameObject, gdStimType : gamedataStimType, optional lifetime : Float, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool, optional shouldOverride : Bool); // AddActiveStimuli;GameObjectgamedataStimTypeFloatFloatstimInvestigateDataBoolBool
+	function AddActiveStimulus(gdStimType : gamedataStimType, lifetime : Float, optional shouldOverride : Bool, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool); // AddActiveStimulus;gamedataStimTypeFloatBoolFloatstimInvestigateDataBool
+	function AddBlockedStim(data : script_ref:StimIdentificationData); // AddBlockedStim;script_ref<StimIdentificationData>
+	function AddNewDelayEvent(); // AddNewDelayEvent;
+	function AddStimmTarget(data : StimTargetData); // AddStimmTarget;StimTargetData
+	function AssignNextValidUniqueID() : StimRequestID; // AssignNextValidUniqueID;
+	function ClearRequests(); // ClearRequests;
+	function ClearStimTargets(); // ClearStimTargets;
+	function CreateStimRequest(gdStimType : gamedataStimType, optional duration : Float, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool) : handle:StimRequest; // CreateStimRequest;gamedataStimTypeFloatFloatstimInvestigateDataBool
+	function DetermineHowManyRepeats(request : handle:StimRequest) : Int32; // DetermineHowManyRepeats;StimRequest
+	function FindRequestIndex(request : handle:StimRequest) : Int32; // FindRequestIndex;StimRequest
+	function FindRequestIndexByID(id : StimRequestID) : Int32; // FindRequestIndexByID;StimRequestID
+	function FindRequestIndexByName(gdStimType : gamedataStimType) : Int32; // FindRequestIndexByName;gamedataStimType
+	function GenerateRequestID(id : Uint32, valid : Bool) : StimRequestID; // GenerateRequestID;Uint32Bool
+	function GetRequestByArrayIndex(index : Int32) : handle:StimRequest; // GetRequestByArrayIndex;Int32
+	function GetRequestByID(id : StimRequestID) : handle:StimRequest; // GetRequestByID;StimRequestID
+	function GetRequestByName(gdStimType : gamedataStimType) : handle:StimRequest; // GetRequestByName;gamedataStimType
+	function HasStimTarget(data : StimTargetData) : Bool; // HasStimTarget;StimTargetData
+	function HasStimTargets() : Bool; // HasStimTargets;
+	function IsEqual(stim : handle:senseStimuliEvent, gdStimType : gamedataStimType) : Bool; // IsEqual;StimuliEventgamedataStimType
+	function IsRequestDuplicated(gdStimType : gamedataStimType) : Bool; // IsRequestDuplicated;gamedataStimType
+	function IsStimBlocked(data : script_ref:StimIdentificationData) : Bool; // IsStimBlocked;script_ref<StimIdentificationData>
+	function IsStimProcessingBlocked(sourceID : entEntityID, stimType : gamedataStimType, optional stimName : CName) : Bool; // IsStimProcessingBlocked;EntityIDgamedataStimTypeCName
+	function OnGameDetach(); // OnGameDetach;
+	function ProcessStartRequest(gdStimType : gamedataStimType, lifetime : Float, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool) : StimRequestID; // ProcessStartRequest;gamedataStimTypeFloatFloatstimInvestigateDataBool
+	function ProcessStopRequest(gdStimType : gamedataStimType); // ProcessStopRequest;gamedataStimType
+	function RebroadcastStimuli(evt : handle:RecurrentStimuliEvent) : Bool; // RebroadcastStimuli;RecurrentStimuliEvent
+	function RemoveActiveStimByID(id : StimRequestID); // RemoveActiveStimByID;StimRequestID
+	function RemoveActiveStimuliByName(contextOwner : whandle:gameObject, gdStimType : gamedataStimType); // RemoveActiveStimuliByName;GameObjectgamedataStimType
+	function RemoveBlockedStim(delayID : gameDelayID); // RemoveBlockedStim;DelayID
+	function RemoveBlockedStim(data : script_ref:StimIdentificationData); // RemoveBlockedStim;script_ref<StimIdentificationData>
+	function RemoveRequest(request : handle:StimRequest); // RemoveRequest;StimRequest
+	function RemoveRequest(index : Int32); // RemoveRequest;Int32
+	function ResolveStimProcessingCooldown(sourceID : entEntityID, stimType : gamedataStimType, optional stimName : CName, cooldown : Float) : Bool; // ResolveStimProcessingCooldown;EntityIDgamedataStimTypeCNameFloat
+	function SendDrirectStimuliToTarget(contextOwner : whandle:gameObject, gdStimType : gamedataStimType, target : handle:gameObject, optional investigateData : senseStimInvestigateData, optional delay : Float, optional purelyDirect : Bool, optional propagationChange : Bool); // SendDrirectStimuliToTarget;GameObjectgamedataStimTypeGameObjectstimInvestigateDataFloatBoolBool
+	function SetSingleActiveStimuli(contextOwner : whandle:gameObject, gdStimType : gamedataStimType, optional lifetime : Float, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool); // SetSingleActiveStimuli;GameObjectgamedataStimTypeFloatFloatstimInvestigateDataBool
+	function StopTriggeringStims(); // StopTriggeringStims;
+	function TriggerNoiseStim(owner : whandle:gameObject, takedownActionType : ETakedownActionType); // TriggerNoiseStim;GameObjectETakedownActionType
+	function TriggerSingleBroadcast(contextOwner : whandle:gameObject, gdStimType : gamedataStimType, optional radius : Float, optional investigateData : senseStimInvestigateData, optional propagationChange : Bool); // TriggerSingleBroadcast;GameObjectgamedataStimTypeFloatstimInvestigateDataBool
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

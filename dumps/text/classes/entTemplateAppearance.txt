@@ -1,0 +1,6 @@
+import struct entTemplateAppearance
+{
+	var name : CName;
+	var appearanceResource : raRef:appearanceAppearanceResource;
+	var appearanceName : CName;
+}

@@ -1,0 +1,27 @@
+import class worldCollisionNode extends worldNode
+{
+	var compiledData : DataBuffer;
+	var numActors : Uint16;
+	var numShapeInfos : Uint16;
+	var numShapePositions : Uint16;
+	var numShapeRotations : Uint16;
+	var numScales : Uint16;
+	var numMaterials : Uint16;
+	var numPresets : Uint16;
+	var numMaterialIndices : Uint16;
+	var numShapeIndices : Uint16;
+	var sectorHash : Uint64;
+	var extents : Vector4;
+	var lod : Uint8;
+	var resourceVersion : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

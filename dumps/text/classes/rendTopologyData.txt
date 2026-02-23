@@ -1,0 +1,7 @@
+import struct rendTopologyData
+{
+	var data : array:Uint8;
+	var metadata : array:Uint8;
+	var dataStride : Uint32;
+	var metadataStride : Uint32;
+}

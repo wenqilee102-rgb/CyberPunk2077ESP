@@ -1,0 +1,27 @@
+class UIInventoryItemTooltipWrapper extends ATooltipData
+{
+	public    var data : whandle:UIInventoryItem;
+	public    var displayContext : handle:ItemDisplayContextData;
+	public    var overridePrice : Int32;
+	public    var comparisonData : handle:UIInventoryItemComparisonManager;
+
+	static function Make(data : whandle:UIInventoryItem, displayContext : handle:ItemDisplayContextData) : handle:UIInventoryItemTooltipWrapper; // UIInventoryItemTooltipWrapper::Make;UIInventoryItemItemDisplayContextData
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

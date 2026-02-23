@@ -1,0 +1,56 @@
+import class scnPlaySkAnimEvent extends scnPlayFPPControlAnimEvent
+{
+	var animName : handle:scnAnimName;
+	var poseBlendOutWorkspot : handle:scnEventBlendWorkspotSetupParameters;
+	var rootMotionData : scnPlaySkAnimRootMotionData;
+	var playerData : scnPlayerAnimData;
+}
+
+import class scnPlayFPPControlAnimEvent extends scnPlayAnimEvent
+{
+	var gameplayAnimName : handle:scnAnimName;
+	var FPPControlActive : Bool;
+	var blendOverride : scnfppBlendOverride;
+	var cameraUseTrajectorySpace : Bool;
+	var cameraBlendInDuration : Float;
+	var cameraBlendOutDuration : Float;
+	var stayInScene : Bool;
+	var idleIsMountedWorkspot : Bool;
+	var enableWorldSpaceSmoothing : Bool;
+	var isSceneCarrying : Bool;
+	var cameraParallaxWeight : Float;
+	var cameraParallaxSpace : scnfppParallaxSpace;
+	var vehicleProceduralCameraWeight : Float;
+	var yawLimitLeft : Float;
+	var yawLimitRight : Float;
+	var pitchLimitTop : Float;
+	var pitchLimitBottom : Float;
+	var genderSpecificParams : array:scnfppGenderSpecificParams;
+}
+
+import class abstract scnPlayAnimEvent extends scnSceneEvent
+{
+	var animData : scneventsPlayAnimEventExData;
+	var performer : scnPerformerId;
+	var actorComponent : CName;
+	var convertToAdditive : Bool;
+	var muteAnimEvents : animMuteAnimEvents;
+	var neckWeight : Float;
+	var upperFaceBlendAdditive : Bool;
+	var lowerFaceBlendAdditive : Bool;
+	var eyesBlendAdditive : Bool;
+}
+
+import class abstract scnSceneEvent extends ISerializable
+{
+	var id : scnSceneEventId;
+	var type : scnEventType;
+	var startTime : Uint32;
+	var duration : Uint32;
+	var executionTagFlags : Uint8;
+	var scalingData : handle:scnIScalingData;
+}
+
+import class abstract ISerializable
+{
+}

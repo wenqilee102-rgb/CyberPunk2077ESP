@@ -1,0 +1,23 @@
+import class FunctionalTestsDataMemoryStatsData extends ISerializable
+{
+	var totalPhysicalMemory : Uint64;
+	var availablePhysicalMemory : Uint64;
+	var runtimeTotalBytesAllocated : Uint64;
+	var cpuBytesAllocated : Uint64;
+	var gpuBytesAllocated : Uint64;
+	var totalAllocationCount : Uint32;
+	var cpuAllocationCount : Uint32;
+	var gpuAllocationCount : Uint32;
+	var engineTick : Uint64;
+	var lastTimeDelta : Float;
+	var engineTime : Double;
+	var rawLocalTime : Uint64;
+	var playerPosition : String;
+	var playerOrientation : String;
+	var poolsRuntimeInfo : array:FunctionalTestsDataMemoryPoolRuntimeData;
+	var poolsCurrentInfo : array:FunctionalTestsDataMemoryPoolStaticData;
+}
+
+import class abstract ISerializable
+{
+}

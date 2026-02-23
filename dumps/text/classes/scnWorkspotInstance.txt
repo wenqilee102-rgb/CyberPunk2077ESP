@@ -1,0 +1,8 @@
+import struct scnWorkspotInstance
+{
+	var workspotInstanceId : scnSceneWorkspotInstanceId;
+	var dataId : scnSceneWorkspotDataId;
+	var localTransform : Transform;
+	var playAtActorLocation : Bool;
+	var originMarker : scnMarker;
+}

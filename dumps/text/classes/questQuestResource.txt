@@ -1,0 +1,23 @@
+import class questQuestResource extends questQuestPhaseResource
+{
+}
+
+import class questQuestPhaseResource extends graphGraphResource
+{
+	var phasePrefabs : array:questQuestPrefabEntry;
+	var inplacePhases : array:rRef:CResource;
+}
+
+import class abstract graphGraphResource extends CResource
+{
+	var graph : handle:graphGraphDefinition;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,17 @@
+import class AIbehaviorFindClosestPointOnPathTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var path : handle:AIArgumentMapping;
+	var forceStartFromClosest : handle:AIArgumentMapping;
+	var patrolProgress : handle:AIArgumentMapping;
+	var positionOnPath : handle:AIArgumentMapping;
+	var entryTangent : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

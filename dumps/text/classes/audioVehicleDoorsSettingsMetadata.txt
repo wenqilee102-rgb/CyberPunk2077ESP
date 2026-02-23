@@ -1,0 +1,6 @@
+import struct audioVehicleDoorsSettingsMetadata
+{
+	var door : audioVehicleDoorsSettings;
+	var trunk : audioVehicleDoorsSettings;
+	var hood : audioVehicleDoorsSettings;
+}

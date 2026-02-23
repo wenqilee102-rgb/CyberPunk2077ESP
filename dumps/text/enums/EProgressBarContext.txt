@@ -1,0 +1,5 @@
+enum EProgressBarContext
+{
+	QuickHack = 0,
+	PhoneCall = 1
+}

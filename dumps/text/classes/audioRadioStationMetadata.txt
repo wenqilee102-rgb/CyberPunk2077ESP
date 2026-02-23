@@ -1,0 +1,19 @@
+import class audioRadioStationMetadata extends audioAudioMetadata
+{
+	var tracks : array:CName;
+	var blips : array:audioRadioBlip;
+	var speaker : audioRadioSpeakerType;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

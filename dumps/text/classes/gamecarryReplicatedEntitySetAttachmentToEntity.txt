@@ -1,0 +1,11 @@
+import struct gamecarryReplicatedEntitySetAttachmentToEntity extends netEntityAttachmentInterface
+{
+	var entity : whandle:entEntity;
+	var slot : CName;
+	var localTransform : Transform;
+}
+
+import struct netEntityAttachmentInterface
+{
+	var time : netTime;
+}

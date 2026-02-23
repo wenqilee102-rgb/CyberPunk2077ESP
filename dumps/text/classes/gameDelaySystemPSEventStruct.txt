@@ -1,0 +1,11 @@
+import class abstract gameDelaySystemPSEventStruct extends gameDelaySystemDelayStruct
+{
+}
+
+import class abstract gameDelaySystemDelayStruct extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

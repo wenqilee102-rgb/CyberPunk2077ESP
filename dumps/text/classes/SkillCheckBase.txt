@@ -1,0 +1,47 @@
+class abstract SkillCheckBase extends IScriptable
+{
+	protected var alternativeName : TweakDBID;
+	protected var difficulty : EGameplayChallengeLevel;
+	protected var additionalRequirements : handle:GameplayConditionContainer;
+	protected var duration : Float;
+	protected var isActive : Bool;
+	protected var wasPassed : Bool;
+	protected var skillCheckPerformed : Bool;
+	protected var skillToCheck : EDeviceChallengeSkill;
+	protected var baseSkill : handle:GameplaySkillCondition;
+	protected var isDynamic : Bool;
+
+	function CheckPerformed(); // CheckPerformed;
+	function Evaluate(requester : handle:gameObject) : Bool; // Evaluate;GameObject
+	function GetAdditionalRequirements() : handle:GameplayConditionContainer; // GetAdditionalRequirements;
+	function GetAlternativeName() : TweakDBID; // GetAlternativeName;
+	function GetBaseSkill() : handle:GameplaySkillCondition; // GetBaseSkill;
+	function GetDifficulty() : EGameplayChallengeLevel; // GetDifficulty;
+	function GetDuration() : Float; // GetDuration;
+	function GetSkill() : EDeviceChallengeSkill; // GetSkill;
+	function Initialize(); // Initialize;
+	function IsActive() : Bool; // IsActive;
+	function IsDynamic() : Bool; // IsDynamic;
+	function IsPassed() : Bool; // IsPassed;
+	function SetAlternativeName(name : TweakDBID); // SetAlternativeName;TweakDBID
+	function SetDifficulty(difficulty : EGameplayChallengeLevel); // SetDifficulty;EGameplayChallengeLevel
+	function SetDuration(duration : Float); // SetDuration;Float
+	function SetDynamic(isDynamic : Bool); // SetDynamic;Bool
+	function SetIsActive(value : Bool); // SetIsActive;Bool
+	function SetIsPassed(value : Bool); // SetIsPassed;Bool
+	function WasPerformed() : Bool; // WasPerformed;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"inkEvent","d":8,"f":[{"a":"Cancel","d":132},{"a":"GetCurrentTarget","c":{"a":27,"c":{"b":"inkWidget"}},"d":132},{"a":"GetDebugString","c":{"a":12},"d":132},{"a":"GetTarget","c":{"a":27,"c":{"b":"inkWidget"}},"d":132},{"a":"Handle","d":132},{"a":"IsCanceled","c":{"a":1},"d":132},{"a":"IsHandled","c":{"a":1},"d":132}]}

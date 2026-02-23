@@ -1,0 +1,30 @@
+class RevealRequestEvent extends redEvent
+{
+	private   var shouldReveal : Bool;
+	private   var requester : entEntityID;
+	private   var oneFrame : Bool;
+
+	function CreateRequest(doReveal : Bool, whoWantsToReveal : entEntityID); // CreateRequest;BoolEntityID
+	function GetRequester() : entEntityID; // GetRequester;
+	function GetShouldReveal() : Bool; // GetShouldReveal;
+	function IsOneFrame() : Bool; // IsOneFrame;
+	function SetOneFrame(); // SetOneFrame;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

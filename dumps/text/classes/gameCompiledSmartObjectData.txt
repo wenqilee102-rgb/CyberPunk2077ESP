@@ -1,0 +1,7 @@
+import class gameCompiledSmartObjectData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,7 @@
+import struct gameMuppetInputActionMeleeAttack extends gameIMuppetInputAction
+{
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

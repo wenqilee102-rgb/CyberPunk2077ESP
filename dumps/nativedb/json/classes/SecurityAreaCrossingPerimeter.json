@@ -1,0 +1,1 @@
+{"a":"SecurityAreaEvent","b":"SecurityAreaCrossingPerimeter","d":0,"e":[{"a":{"a":1},"b":"entered","c":129}],"f":[{"a":"GetEnteredState;","b":"GetEnteredState","c":{"a":1},"d":48},{"a":"SetProperties;GameObjectBool","b":"SetProperties","d":48,"e":[{"a":{"a":26,"c":{"b":"gameObject"}},"b":"whoBreached","c":0},{"a":{"a":1},"b":"didEnter","c":0}]}]}

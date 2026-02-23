@@ -1,0 +1,40 @@
+class ContactData extends IScriptable
+{
+	public    var id : String;
+	public    var localizedName : String;
+	public    var localizedPreview : String;
+	public    var avatarID : TweakDBID;
+	public    var questRelated : Bool;
+	public    var hasQuestImportantReply : Bool;
+	public    var hasMessages : Bool;
+	public    var unreadMessegeCount : Int32;
+	public    var unreadMessages : array:Int32;
+	public    var playerCanReply : Bool;
+	public    var playerIsLastSender : Bool;
+	public    var lastMesssagePreview : String;
+	public    var activeDataSync : whandle:MessengerContactSyncData;
+	public    var threadsCount : Int32;
+	public    var timeStamp : GameTime;
+	public    var hash : Int32;
+	public    var conversationHash : Int32;
+	public    var type : MessengerContactType;
+	public    var hasValidTitle : Bool;
+	public    var isCallable : Bool;
+	public    var contactId : String;
+	public    var messagesCount : Int32;
+	public    var repliesCount : Int32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

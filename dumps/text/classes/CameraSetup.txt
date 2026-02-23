@@ -1,0 +1,4 @@
+struct CameraSetup
+{
+	public    var canStreamVideo : Bool;
+}

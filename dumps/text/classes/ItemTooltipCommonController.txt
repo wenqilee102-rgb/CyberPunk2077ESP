@@ -1,0 +1,263 @@
+class ItemTooltipCommonController extends AGenericTooltipControllerWithDebug
+{
+	protected var backgroundContainer : inkWidgetReference;
+	protected var itemEquippedContainer : inkWidgetReference;
+	protected var itemRecipeContainer : inkWidgetReference;
+	protected var itemHeaderContainer : inkWidgetReference;
+	protected var itemIconContainer : inkWidgetReference;
+	protected var itemWeaponInfoContainer : inkWidgetReference;
+	protected var itemClothingInfoContainer : inkWidgetReference;
+	protected var itemGrenadeInfoContainer : inkWidgetReference;
+	protected var itemCyberwareContainer : inkWidgetReference;
+	protected var itemRequirementsContainer : inkWidgetReference;
+	protected var itemDetailsContainer : inkWidgetReference;
+	protected var itemRecipeDataContainer : inkWidgetReference;
+	protected var itemEvolutionContainer : inkWidgetReference;
+	protected var itemCraftedContainer : inkWidgetReference;
+	protected var itemActionContainer : inkWidgetReference;
+	protected var itemBottomContainer : inkWidgetReference;
+	protected var itemCWUpgradeContainer : inkWidgetReference;
+	protected var itemCWQuickHackMenuLinkContainer : inkWidgetReference;
+	protected var contentWrapper : inkWidgetReference;
+	protected var cornerContainer : inkWidgetReference;
+	protected var root : inkWidgetReference;
+	protected var iconicBG : inkWidgetReference;
+	protected var recipeBG : inkWidgetReference;
+	protected var illegalBG : inkWidgetReference;
+	protected var descriptionWrapper : inkWidgetReference;
+	protected var descriptionText : inkTextWidgetReference;
+	protected var cyberwareUpgradeModuleName : CName;
+	protected var cyberwareQuickHackMenuLinkName : CName;
+	protected var cyberwareModulesLibraryRes : redResourceReferenceScriptToken;
+	protected var DEBUG_iconErrorWrapper : inkWidgetReference;
+	protected var DEBUG_iconErrorText : inkTextWidgetReference;
+	protected var spawnedModules : array:whandle:ItemTooltipModuleController;
+	protected var itemEquippedController : whandle:ItemTooltipEquippedModule;
+	protected var itemRecipeController : whandle:ItemTooltipRepiceModule;
+	protected var itemHeaderController : whandle:ItemTooltipHeaderController;
+	protected var itemIconController : whandle:ItemTooltipIconModule;
+	protected var itemWeaponInfoController : whandle:ItemTooltipWeaponInfoModule;
+	protected var itemClothingInfoController : whandle:ItemTooltipClothingInfoModule;
+	protected var itemGrenadeInfoController : whandle:ItemTooltipGrenadeInfoModule;
+	protected var itemCyberwareController : whandle:ItemTooltipCyberwareWeaponModule;
+	protected var itemRequirementsController : whandle:ItemTooltipRequirementsModule;
+	protected var itemDetailsController : whandle:ItemTooltipDetailsModule;
+	protected var itemRecipeDataController : whandle:ItemTooltipRecipeDataModule;
+	protected var itemEvolutionController : whandle:ItemTooltipEvolutionModule;
+	protected var itemCraftedController : whandle:ItemTooltipCraftedModule;
+	protected var itemCWUpgradeController : whandle:ItemTooltipCyberwareUpgradeController;
+	protected var itemBottomController : whandle:ItemTooltipBottomModule;
+	protected var DEBUG_showAdditionalInfo : Bool;
+	protected var data : handle:MinimalItemTooltipData;
+	protected var inventoryTooltipData : handle:InventoryTooltipData;
+	protected var itemData : handle:UIInventoryItem;
+	protected var comparisonData : handle:UIInventoryItemComparisonManager;
+	public    var player : whandle:PlayerPuppet;
+	protected var requestedModules : array:CName;
+	protected var pendingModules : array:CName;
+	protected var displayContext : handle:ItemDisplayContextData;
+	protected var tooltipDisplayContext : InventoryTooltipDisplayContext;
+	protected var itemDisplayContext : gameItemDisplayContext;
+	protected var priceOverride : Int32;
+	protected var settings : handle:userSettingsUserSettings;
+	protected var settingsListener : handle:ItemTooltipSettingsListener;
+	protected var groupPath : CName;
+	protected var minWidth : inkWidgetReference;
+	protected var bigFontEnabled : Bool;
+	protected var inCrafting : Bool;
+
+	event OnBottomModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnBottomModuleSpawned
+	event OnClothingInfoModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnClothingInfoModuleSpawned
+	event OnCraftedModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnCraftedModuleSpawned
+	event OnCyberwareUpgradeModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnCyberwareUpgradeModuleSpawned
+	event OnDetailsModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnDetailsModuleSpawned
+	event OnEquippedModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnEquippedModuleSpawned
+	event OnEvolutionModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnEvolutionModuleSpawned
+	event OnGrenadeInfoModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnGrenadeInfoModuleSpawned
+	event OnHeaderModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnHeaderModuleSpawned
+	event OnHideIconModuleEvent(evt : handle:HideIconModuleEvent) : Bool; // OnHideIconModuleEvent
+	event OnIconModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnIconModuleSpawned
+	event OnNEW_BottomModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_BottomModuleSpawned
+	event OnNEW_ClothingInfoModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_ClothingInfoModuleSpawned
+	event OnNEW_CraftedModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_CraftedModuleSpawned
+	event OnNEW_CyberwareUpgradeModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_CyberwareUpgradeModuleSpawned
+	event OnNEW_DetailsModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_DetailsModuleSpawned
+	event OnNEW_EquippedModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_EquippedModuleSpawned
+	event OnNEW_EvolutionModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_EvolutionModuleSpawned
+	event OnNEW_GrenadeInfoModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_GrenadeInfoModuleSpawned
+	event OnNEW_HeaderModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_HeaderModuleSpawned
+	event OnNEW_HideIconModuleEvent(evt : handle:HideIconModuleEvent) : Bool; // OnNEW_HideIconModuleEvent
+	event OnNEW_IconModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_IconModuleSpawned
+	event OnNEW_RecipeDataModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_RecipeDataModuleSpawned
+	event OnNEW_RecipeModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_RecipeModuleSpawned
+	event OnNEW_RequirementsModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_RequirementsModuleSpawned
+	event OnNEW_TransmogModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_TransmogModuleSpawned
+	event OnNEW_UpdateStatBarsModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_UpdateStatBarsModuleSpawned
+	event OnNEW_WeaponInfoModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnNEW_WeaponInfoModuleSpawned
+	event OnRecipeDataModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnRecipeDataModuleSpawned
+	event OnRecipeModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnRecipeModuleSpawned
+	event OnRequirementsModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnRequirementsModuleSpawned
+	event OnUpdateStatBarsModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnUpdateStatBarsModuleSpawned
+	event OnWeaponInfoModuleSpawned(widget : handle:inkWidget, userData : handle:IScriptable) : Bool; // OnWeaponInfoModuleSpawned
+
+	function DEBUG_NewUpdateIconErrorInfo(); // DEBUG_NewUpdateIconErrorInfo;
+	function DEBUG_UpdateDebugInfo(); // DEBUG_UpdateDebugInfo;
+	function ForceNoEquipped(); // ForceNoEquipped;
+	function HandleModuleSpawned(widget : whandle:inkWidget, data : handle:ItemTooltipModuleSpawnedCallbackData); // HandleModuleSpawned;inkWidgetItemTooltipModuleSpawnedCallbackData
+	function InvalidateSpawnedModules(); // InvalidateSpawnedModules;
+	function NEW_UpdateBottomModule(); // NEW_UpdateBottomModule;
+	function NEW_UpdateClothingInfoModule(); // NEW_UpdateClothingInfoModule;
+	function NEW_UpdateCraftedModule(); // NEW_UpdateCraftedModule;
+	function NEW_UpdateCyberwareQuickHackMenuLinkModule(); // NEW_UpdateCyberwareQuickHackMenuLinkModule;
+	function NEW_UpdateCyberwareUpgradeModule(); // NEW_UpdateCyberwareUpgradeModule;
+	function NEW_UpdateDetailsModule(); // NEW_UpdateDetailsModule;
+	function NEW_UpdateEquippedModule(); // NEW_UpdateEquippedModule;
+	function NEW_UpdateEvolutionModule(); // NEW_UpdateEvolutionModule;
+	function NEW_UpdateGrenadeInfoModule(); // NEW_UpdateGrenadeInfoModule;
+	function NEW_UpdateHeaderModule(); // NEW_UpdateHeaderModule;
+	function NEW_UpdateIconModule(); // NEW_UpdateIconModule;
+	function NEW_UpdateIconicBG(); // NEW_UpdateIconicBG;
+	function NEW_UpdateIllegalBG(); // NEW_UpdateIllegalBG;
+	function NEW_UpdateLayout(); // NEW_UpdateLayout;
+	function NEW_UpdateRecipeBG(); // NEW_UpdateRecipeBG;
+	function NEW_UpdateRecipeDataModule(); // NEW_UpdateRecipeDataModule;
+	function NEW_UpdateRecipeModule(); // NEW_UpdateRecipeModule;
+	function NEW_UpdateRequirementsModule(); // NEW_UpdateRequirementsModule;
+	function NEW_UpdateStatBarsModule(); // NEW_UpdateStatBarsModule;
+	function NEW_UpdateTransmogModule(); // NEW_UpdateTransmogModule;
+	function NEW_UpdateWeaponInfoModule(); // NEW_UpdateWeaponInfoModule;
+	function OnVarModified(groupPath : CName, varName : CName, varType : InGameConfigVarType, reason : InGameConfigChangeReason); // OnVarModified;CNameCNameConfigVarTypeConfigChangeReason
+	function PrespawnLazyModules(); // PrespawnLazyModules;
+	function RegisterUserSettingsListener(); // RegisterUserSettingsListener;
+	function RequestExternalModule(container : inkWidgetReference, moduleName : CName, modulesLibraryRes : redResourceReferenceScriptToken, callback : CName, optional data : handle:ItemTooltipModuleSpawnedCallbackData) : Bool; // RequestExternalModule;inkWidgetRefCNameResRefCNameItemTooltipModuleSpawnedCallbackData
+	function RequestModule(container : inkWidgetReference, moduleName : CName, callback : CName, optional data : handle:ItemTooltipModuleSpawnedCallbackData) : Bool; // RequestModule;inkWidgetRefCNameCNameItemTooltipModuleSpawnedCallbackData
+	function SetData(tooltipData : handle:ATooltipData); // SetData;ATooltipData
+	function SetData(data : script_ref:gameItemViewData); // SetData;script_ref<ItemViewData>
+	function SetTooltipSize(value : Bool); // SetTooltipSize;Bool
+	function ShouldHideDescription(itemType : gamedataItemType) : Bool; // ShouldHideDescription;gamedataItemType
+	function UpdateBottomModule(); // UpdateBottomModule;
+	function UpdateClothingInfoModule(); // UpdateClothingInfoModule;
+	function UpdateCraftedModule(); // UpdateCraftedModule;
+	function UpdateCyberwareQuickHackMenuLinkModule(); // UpdateCyberwareQuickHackMenuLinkModule;
+	function UpdateCyberwareUpgradeModule(); // UpdateCyberwareUpgradeModule;
+	function UpdateData(tooltipData : handle:InventoryTooltipData); // UpdateData;InventoryTooltipData
+	function UpdateDetailsModule(); // UpdateDetailsModule;
+	function UpdateEquippedModule(); // UpdateEquippedModule;
+	function UpdateEvolutionModule(); // UpdateEvolutionModule;
+	function UpdateGrenadeInfoModule(); // UpdateGrenadeInfoModule;
+	function UpdateHeaderModule(); // UpdateHeaderModule;
+	function UpdateIconModule(); // UpdateIconModule;
+	function UpdateIconicBG(); // UpdateIconicBG;
+	function UpdateIllegalBG(); // UpdateIllegalBG;
+	function UpdateLayout(); // UpdateLayout;
+	function UpdateRecipeBG(); // UpdateRecipeBG;
+	function UpdateRecipeDataModule(); // UpdateRecipeDataModule;
+	function UpdateRecipeModule(); // UpdateRecipeModule;
+	function UpdateRequirementsModule(); // UpdateRequirementsModule;
+	function UpdateStatBarsModule(); // UpdateStatBarsModule;
+	function UpdateTooltipSize(); // UpdateTooltipSize;
+	function UpdateTransmogModule(); // UpdateTransmogModule;
+	function UpdateWeaponInfoModule(); // UpdateWeaponInfoModule;
+}
+
+class abstract AGenericTooltipControllerWithDebug extends AGenericTooltipController
+{
+	protected var DEBUG_showDebug : Bool;
+	protected var DEBUG_openInVSCode : Bool;
+	protected var DEBUG_openInVSCodeBlocked : Bool;
+
+	event OnGlobalPress_DEBUG(evt : handle:inkPointerEvent) : Bool; // OnGlobalPress_DEBUG
+	event OnGlobalRelease_DEBUG(evt : handle:inkPointerEvent) : Bool; // OnGlobalRelease_DEBUG
+	event OnInitialize() : Bool; // OnInitialize
+	event OnUninitialize() : Bool; // OnUninitialize
+
+	function DEBUG_UpdateDebugInfo(); // DEBUG_UpdateDebugInfo;
+	function OpenTweakDBRecordInVSCodeIfRequested(tdbID : TweakDBID); // OpenTweakDBRecordInVSCodeIfRequested;TweakDBID
+}
+
+class abstract AGenericTooltipController extends inkWidgetLogicController
+{
+	protected var Root : whandle:inkCompoundWidget;
+
+	event OnInitialize() : Bool; // OnInitialize
+
+	function Hide(); // Hide;
+	function PrespawnLazyModules(); // PrespawnLazyModules;
+	function Refresh(); // Refresh;
+	function SetData(tooltipData : handle:ATooltipData); // SetData;ATooltipData
+	function SetStyle(styleResPath : redResourceReferenceScriptToken); // SetStyle;ResRef
+	function Show(); // Show;
+}
+
+import class inkWidgetLogicController extends inkIWidgetLogicController
+{
+	import function AsyncSpawnFromExternal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal
+	import function AsyncSpawnFromLocal(spawnData : handle:inkAsyncSpawnData, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal
+	import function CallCustomCallback(eventName : CName); // CallCustomCallback
+	import function GetChildControllerByPath(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetChildControllerByPath
+	import function GetChildWidgetByPath(widgetNamePath : CName) : whandle:inkWidget; // GetChildWidgetByPath
+	import function GetController(optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetController
+	import function GetControllerByBaseType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByBaseType
+	import function GetControllerByType(controllerType : CName, optional path : inkWidgetPath) : whandle:inkWidgetLogicController; // GetControllerByType
+	import function GetControllers(optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllers
+	import function GetControllersByType(controllerType : CName, optional path : inkWidgetPath) : array:whandle:inkWidgetLogicController; // GetControllersByType
+	import function GetNumControllers(optional path : inkWidgetPath) : Int32; // GetNumControllers
+	import function GetNumControllersOfType(controllerType : CName, optional path : inkWidgetPath) : Int32; // GetNumControllersOfType
+	import function GetRootCompoundWidget() : whandle:inkCompoundWidget; // GetRootCompoundWidget
+	import function GetRootWidget() : whandle:inkWidget; // GetRootWidget
+	import function GetWidget(path : inkWidgetPath) : whandle:inkWidget; // GetWidget
+	import function HasExternalLibrary(resourcePath : redResourceReferenceScriptToken, optional libraryID : CName) : Bool; // HasExternalLibrary
+	import function HasLocalLibrary(libraryID : CName) : Bool; // HasLocalLibrary
+	import function PlayLibraryAnimation(animationName : CName, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimation
+	import function PlayLibraryAnimationOnAutoSelectedTargets(animationName : CName, target : handle:inkWidget, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnAutoSelectedTargets
+	import function PlayLibraryAnimationOnTargets(animationName : CName, targets : handle:inkWidgetsSet, optional playbackOptions : inkanimPlaybackOptions) : handle:inkanimProxy; // PlayLibraryAnimationOnTargets
+	import function PlayRumble(rStrength : inkRumbleStrength, rType : inkRumbleType, rPosition : inkRumblePosition); // PlayRumble
+	import function PlayRumbleByName(eventName : CName); // PlayRumbleByName
+	import function PlayRumbleLoop(rStrength : inkRumbleStrength); // PlayRumbleLoop
+	import function PlaySound(widgetName : CName, eventName : CName, optional actionKey : CName); // PlaySound
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function RegisterToCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToCallback
+	import function RegisterToGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // RegisterToGlobalInputCallback
+	import function Reparent(newParent : whandle:inkCompoundWidget, optional index : Int32); // Reparent
+	import function SetCursorContext(context : CName, optional data : handle:inkUserData); // SetCursorContext
+	import function SetCursorOverWidget(widget : whandle:inkWidget, optional time : Float); // SetCursorOverWidget
+	import function ShowGameNotification(data : handle:inkGameNotificationData) : handle:inkGameNotificationToken; // ShowGameNotification
+	import function SpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName) : whandle:inkWidget; // SpawnFromExternal
+	import function SpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName) : whandle:inkWidget; // SpawnFromLocal
+	import function StopRumbleLoop(rStrength : inkRumbleStrength); // StopRumbleLoop
+	import function UnregisterFromCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromCallback
+	import function UnregisterFromGlobalInputCallback(eventName : CName, object : handle:IScriptable, functionName : CName); // UnregisterFromGlobalInputCallback
+
+	function AsyncSpawnFromExternal(parentWidget : whandle:inkWidget, resourcePath : redResourceReferenceScriptToken, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromExternal;inkWidgetResRefCNameIScriptableCNameIScriptable
+	function AsyncSpawnFromLocal(parentWidget : whandle:inkWidget, libraryID : CName, optional callbackObject : handle:IScriptable, optional callbackFunctionName : CName, optional userData : handle:IScriptable) : whandle:inkAsyncSpawnRequest; // AsyncSpawnFromLocal;inkWidgetCNameIScriptableCNameIScriptable
+	function CreateWidget(parentWidget : whandle:inkWidget, id : CName, path : redResourceReferenceScriptToken) : whandle:inkWidget; // CreateWidget;inkWidgetCNameResRef
+	function CreateWidgetAsync(parentWidget : whandle:inkWidget, id : CName, optional path : redResourceReferenceScriptToken, spawnData : handle:AsyncSpawnData) : Bool; // CreateWidgetAsync;inkWidgetCNameResRefAsyncSpawnData
+	function FindWidgetDataInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : SWidgetPackageBase; // FindWidgetDataInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function FindWidgetInLibrary(parentWidget : whandle:inkWidget, widgetRecord : handle:gamedataWidgetDefinition_Record, optional screenTypeRecord : handle:gamedataDeviceScreenType_Record, optional styleRecord : handle:gamedataWidgetStyle_Record, optional id : CName, optional path : redResourceReferenceScriptToken) : whandle:inkWidget; // FindWidgetInLibrary;inkWidgetWidgetDefinition_RecordDeviceScreenType_RecordWidgetStyle_RecordCNameResRef
+	function GetController(widgetNamePath : CName) : whandle:inkWidgetLogicController; // GetController;CName
+	function GetWidget(widgetNamePath : CName) : whandle:inkWidget; // GetWidget;CName
+	function SetTexture(imageRef : inkImageWidgetReference, textureID : TweakDBID); // SetTexture;inkImageRefTweakDBID
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageUIIcon_Record
+	function SetTexture(imageRef : inkImageWidgetReference, textureRecord : whandle:gamedataUIIcon_Record); // SetTexture;inkImageRefUIIcon_Record
+	function SetTexture(imageWidget : whandle:inkImageWidget, textureID : TweakDBID); // SetTexture;inkImageTweakDBID
+}
+
+import class abstract inkIWidgetLogicController extends IScriptable
+{
+	var audioMetadataName : CName;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,14 @@
+import class CMaterialParameterGradient extends CMaterialParameter
+{
+	var gradient : rRef:CGradient;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

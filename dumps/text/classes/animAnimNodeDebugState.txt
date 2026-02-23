@@ -1,0 +1,9 @@
+import class animAnimNodeDebugState extends ISerializable
+{
+	var nodeId : Uint32;
+	var active : Bool;
+}
+
+import class abstract ISerializable
+{
+}

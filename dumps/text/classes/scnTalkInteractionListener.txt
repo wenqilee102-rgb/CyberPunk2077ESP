@@ -1,0 +1,7 @@
+import class scnTalkInteractionListener extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

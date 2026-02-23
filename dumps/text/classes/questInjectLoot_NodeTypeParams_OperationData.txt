@@ -1,0 +1,10 @@
+import class questInjectLoot_NodeTypeParams_OperationData extends ISerializable
+{
+	var operationType : questInjectLootOperationType;
+	var itemTDBID : TweakDBID;
+	var quantity : Int32;
+}
+
+import class abstract ISerializable
+{
+}

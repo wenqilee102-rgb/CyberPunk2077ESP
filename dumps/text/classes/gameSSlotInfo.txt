@@ -1,0 +1,6 @@
+import struct gameSSlotInfo
+{
+	var areaType : gamedataEquipmentArea;
+	var equipSlot : TweakDBID;
+	var visualTag : CName;
+}

@@ -1,0 +1,1 @@
+{"a":"IParticleInitializer","b":"CParticleInitializerVelocitySpread","d":8,"e":[{"a":{"a":26,"c":{"b":"IEvaluatorFloat"}},"b":"scale","c":128},{"a":{"a":1},"b":"conserveMomentum","c":128}]}

@@ -1,0 +1,128 @@
+class PlayerStateMachineDef extends gamebbScriptDefinition
+{
+	public    var Locomotion : gamebbScriptID_Int32;
+	public    var LocomotionDetailed : gamebbScriptID_Int32;
+	public    var HighLevel : gamebbScriptID_Int32;
+	public    var UpperBody : gamebbScriptID_Int32;
+	public    var TimeDilation : gamebbScriptID_Int32;
+	public    var Weapon : gamebbScriptID_Int32;
+	public    var LatestWeaponReloadTime : gamebbScriptID_Float;
+	public    var Melee : gamebbScriptID_Int32;
+	public    var UI : gamebbScriptID_Int32;
+	public    var Crosshair : gamebbScriptID_Int32;
+	public    var Reaction : gamebbScriptID_Int32;
+	public    var Zones : gamebbScriptID_Int32;
+	public    var SecurityZoneData : gamebbScriptID_Variant;
+	public    var Vision : gamebbScriptID_Int32;
+	public    var VisionDebug : gamebbScriptID_Int32;
+	public    var SceneTier : gamebbScriptID_Int32;
+	public    var CombatGadget : gamebbScriptID_Int32;
+	public    var LastCombatGadgetUsed : gamebbScriptID_Variant;
+	public    var Consumable : gamebbScriptID_Int32;
+	public    var Vehicle : gamebbScriptID_Int32;
+	public    var MountedToVehicleInDriverSeat : gamebbScriptID_Bool;
+	public    var MountedToCombatVehicle : gamebbScriptID_Bool;
+	public    var MountedToVehicle : gamebbScriptID_Bool;
+	public    var InArmoredVehicle : gamebbScriptID_Bool;
+	public    var ZoomLevel : gamebbScriptID_Float;
+	public    var MaxZoomLevel : gamebbScriptID_Int32;
+	public    var ToggleFireMode : gamebbScriptID_Bool;
+	public    var SwitchWeapon : gamebbScriptID_Bool;
+	public    var IsDoorInteractionActive : gamebbScriptID_Bool;
+	public    var FinisherTarget : gamebbScriptID_EntityID;
+	public    var IsInteractingWithDevice : gamebbScriptID_Bool;
+	public    var IsInteractingViaPersonalLink : gamebbScriptID_Bool;
+	public    var IsForceOpeningDoor : gamebbScriptID_Bool;
+	public    var IsControllingDevice : gamebbScriptID_Bool;
+	public    var IsControllingCamera : gamebbScriptID_Bool;
+	public    var IsUIZoomDevice : gamebbScriptID_Bool;
+	public    var UIZoomDeviceID : gamebbScriptID_EntityID;
+	public    var UseUnarmed : gamebbScriptID_Bool;
+	public    var Berserk : gamebbScriptID_Int32;
+	public    var ActiveCyberware : gamebbScriptID_Int32;
+	public    var Whip : gamebbScriptID_Int32;
+	public    var DEBUG_SilencedWeapon : gamebbScriptID_Bool;
+	public    var LeftHandCyberware : gamebbScriptID_Int32;
+	public    var UseLeftHand : gamebbScriptID_Bool;
+	public    var MeleeWeapon : gamebbScriptID_Int32;
+	public    var Carrying : gamebbScriptID_Bool;
+	public    var CarryingDisposal : gamebbScriptID_Bool;
+	public    var CurrentElevator : gamebbScriptID_Variant;
+	public    var IsPlayerInsideElevator : gamebbScriptID_Bool;
+	public    var IsPlayerInsideMovingElevator : gamebbScriptID_Bool;
+	public    var Combat : gamebbScriptID_Int32;
+	public    var Stamina : gamebbScriptID_Int32;
+	public    var Vitals : gamebbScriptID_Int32;
+	public    var Takedown : gamebbScriptID_Int32;
+	public    var TakedownTargetID : gamebbScriptID_EntityID;
+	public    var Fall : gamebbScriptID_Int32;
+	public    var Landing : gamebbScriptID_Int32;
+	public    var UsingCover : gamebbScriptID_Bool;
+	public    var IsInMinigame : gamebbScriptID_Bool;
+	public    var UploadingQuickHackIDs : gamebbScriptID_Variant;
+	public    var CostFreeActionID : gamebbScriptID_Variant;
+	public    var AmountOfCostFreeActions : gamebbScriptID_Int32;
+	public    var MeleeSpreadableQuickhackActionID : gamebbScriptID_Variant;
+	public    var EntityIDTargetingPlayer : gamebbScriptID_EntityID;
+	public    var EntityIDVehicleRemoteControlled : gamebbScriptID_EntityID;
+	public    var IsVehicleRemoteControlCameraTPP : gamebbScriptID_Bool;
+	public    var Swimming : gamebbScriptID_Int32;
+	public    var BodyCarrying : gamebbScriptID_Int32;
+	public    var BodyDisposalDetailed : gamebbScriptID_Int32;
+	public    var DisplayDeathMenu : gamebbScriptID_Bool;
+	public    var OverrideQuickHackPanelDilation : gamebbScriptID_Bool;
+	public    var NanoWireLaunchMode : gamebbScriptID_Int32;
+	public    var IsMovingHorizontally : gamebbScriptID_Bool;
+	public    var IsMovingVertically : gamebbScriptID_Bool;
+	public    var IsOnGround : gamebbScriptID_Bool;
+	public    var MinElevation : gamebbScriptID_Float;
+	public    var MaxElevation : gamebbScriptID_Float;
+	public    var ActionRestriction : gamebbScriptID_Variant;
+	public    var MeleeLeap : gamebbScriptID_Bool;
+	public    var IsInWorkspot : gamebbScriptID_Int32;
+	public    var QuestForceShoot : gamebbScriptID_Bool;
+	public    var LadderCameraParams : gamebbScriptID_Int32;
+	public    var DodgeTimeStamp : gamebbScriptID_Float;
+	public    var CanOnePunch : gamebbScriptID_Bool;
+	public    var HasSmartGunLockedOnTarget : gamebbScriptID_Bool;
+	public    var SceneAimForced : gamebbScriptID_Bool;
+	public    var SceneSafeForced : gamebbScriptID_Bool;
+	public    var SceneWeaponLoweringSpeedOverride : gamebbScriptID_Float;
+	public    var ScenePreventFirstEquip : gamebbScriptID_Bool;
+	public    var MountedPreventFirstEquip : gamebbScriptID_Bool;
+	public    var IgnoreBarbedWireStateEnterTime : gamebbScriptID_Float;
+	public    var IsInLoreAnimationScene : gamebbScriptID_Bool;
+	public    var Felled : gamebbScriptID_Bool;
+	public    var IsVehicleInTPP : gamebbScriptID_Bool;
+	public    var IsDriverCombatInTPP : gamebbScriptID_Bool;
+	public    var DriverCombatWeaponType : gamebbScriptID_Int32;
+	public    var TrackedTarget : gamebbScriptID_Variant;
+	public    var TPPAimPosition : gamebbScriptID_Vector4;
+	public    var BodySlamBump : gamebbScriptID_Int32;
+	public    var IsInBodySlamState : gamebbScriptID_Bool;
+	public    var AimInTimeRemaining : gamebbScriptID_Float;
+	public    var AimInTime : gamebbScriptID_Float;
+	public    var CanThrowCarriedNPC : gamebbScriptID_Bool;
+	public    var IsWeaponFirstEquip : gamebbScriptID_Bool;
+	public    var IsVisualCustomizationPhotomodeVehicleSlotTaken : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

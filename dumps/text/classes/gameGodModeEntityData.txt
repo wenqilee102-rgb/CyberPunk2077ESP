@@ -1,0 +1,5 @@
+import struct gameGodModeEntityData
+{
+	var overrides : array:gameGodModeData;
+	var base : array:gameGodModeData;
+}

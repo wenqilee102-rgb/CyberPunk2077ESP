@@ -1,0 +1,1 @@
+{"a":"ActionBool","b":"QuestStopFollowingTarget","d":0,"e":[{"a":{"b":"entEntityID"},"b":"targetEntityID","c":128}],"f":[{"a":"SetProperties;","b":"SetProperties","d":48}]}

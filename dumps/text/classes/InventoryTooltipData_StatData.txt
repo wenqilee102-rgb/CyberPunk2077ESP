@@ -1,0 +1,14 @@
+struct InventoryTooltipData_StatData
+{
+	public    var statType : gamedataStatType;
+	public    var statName : String;
+	public    var minStatValue : Int32;
+	public    var maxStatValue : Int32;
+	public    var currentValue : Int32;
+	public    var diffValue : Int32;
+	public    var minStatValueF : Float;
+	public    var maxStatValueF : Float;
+	public    var currentValueF : Float;
+	public    var diffValueF : Float;
+	public    var state : EInventoryDataStatDisplayType;
+}

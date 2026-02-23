@@ -1,0 +1,7 @@
+import struct gameuiInputHintGroupData
+{
+	var iconReference : TweakDBID;
+	var localizedTitle : String;
+	var localizedDescription : String;
+	var sortingPriority : Int32;
+}

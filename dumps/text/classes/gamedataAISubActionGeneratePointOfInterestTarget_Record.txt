@@ -1,0 +1,40 @@
+import class gamedataAISubActionGeneratePointOfInterestTarget_Record extends gamedataAISubAction_Record
+{
+	import function ChoosingClosestThreatChanceWeight() : Float; // ChoosingClosestThreatChanceWeight
+	import function ChoosingFriendlyTargetChanceWeight() : Float; // ChoosingFriendlyTargetChanceWeight
+	import function ChoosingRandomPointChanceWeight() : Float; // ChoosingRandomPointChanceWeight
+	import function ChoosingSquadMateChanceWeight() : Float; // ChoosingSquadMateChanceWeight
+	import function ClosestThreatDurationRange() : Vector2; // ClosestThreatDurationRange
+	import function ClosestThreatWatchingMaxAngle() : Float; // ClosestThreatWatchingMaxAngle
+	import function FriendlyTargetDurationRange() : Vector2; // FriendlyTargetDurationRange
+	import function FriendlyTargetWatchingMaxAngle() : Float; // FriendlyTargetWatchingMaxAngle
+	import function RandomPointDurationRange() : Vector2; // RandomPointDurationRange
+	import function RandomPointYRotationAngleRange() : Vector2; // RandomPointYRotationAngleRange
+	import function RandomPointZRotationAngleRange() : Vector2; // RandomPointZRotationAngleRange
+	import function SquadMateDurationRange() : Vector2; // SquadMateDurationRange
+	import function SquadMateWatchingMaxAngle() : Float; // SquadMateWatchingMaxAngle
+}
+
+import class gamedataAISubAction_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

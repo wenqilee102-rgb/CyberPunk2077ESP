@@ -1,0 +1,41 @@
+class AnimFeature_LookAt extends animAnimFeature
+{
+	public    var enableLookAt : Int32;
+	public    var enableLookAtChest : Int32;
+	public    var enableLookAtHead : Int32;
+	public    var enableLookAtLeftHanded : Int32;
+	public    var enableLookAtRightHanded : Int32;
+	public    var enableLookAtTwoHanded : Int32;
+	public    var gpLookAtTargetBlend : Float;
+	public    var gpLookAtUpBlend : Float;
+	public    var gpLookAtTarget : Vector4;
+	public    var gpLookAtUp : Vector4;
+	public    var lookAtChestMode : Int32;
+	public    var lookAtChestOverride : Float;
+	public    var lookAtHeadMode : Int32;
+	public    var lookAtHeadOverride : Float;
+	public    var lookAtLeftHandedMode : Int32;
+	public    var lookAtLeftHandedOverride : Float;
+	public    var lookAtRightHandedMode : Int32;
+	public    var lookAtRightHandedOverride : Float;
+	public    var lookAtTwoHandedMode : Int32;
+	public    var lookAtTwoHandedOverride : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

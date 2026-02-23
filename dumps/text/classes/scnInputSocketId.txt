@@ -1,0 +1,5 @@
+import struct scnInputSocketId
+{
+	var nodeId : scnNodeId;
+	var isockStamp : scnInputSocketStamp;
+}

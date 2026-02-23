@@ -1,0 +1,12 @@
+import struct gamestateMachineStateContextConsumableParameters
+{
+	var boolParameters : static:128,gamestateMachineConsumableParameterBool;
+	var intParameters : static:128,gamestateMachineConsumableParameterInt;
+	var floatParameters : static:128,gamestateMachineConsumableParameterFloat;
+	var doubleParameters : static:128,gamestateMachineConsumableParameterDouble;
+	var vectorParameters : static:128,gamestateMachineConsumableParameterVector;
+	var CNameParameters : static:128,gamestateMachineConsumableParameterCName;
+	var IScriptableParameters : static:128,gamestateMachineConsumableParameterIScriptable;
+	var weakIScriptableParameters : static:128,gamestateMachineConsumableParameterWeakIScriptable;
+	var tweakDBIDParameters : static:128,gamestateMachineConsumableParameterTweakDBID;
+}

@@ -1,0 +1,95 @@
+class MinimalItemTooltipData extends ATooltipData
+{
+	public    var itemID : gameItemID;
+	public    var itemTweakID : TweakDBID;
+	public    var itemData : whandle:gameItemData;
+	public    var transmogItem : gameItemID;
+	public    var itemName : String;
+	public    var quality : gamedataQuality;
+	public    var quantity : Int32;
+	public    var description : String;
+	public    var gameplayDescription : String;
+	public    var weight : Float;
+	public    var price : Float;
+	public    var dpsValue : Float;
+	public    var dpsDiff : Float;
+	public    var armorValue : Float;
+	public    var armorDiff : Float;
+	public    var compareDPS : Bool;
+	public    var compareArmor : Bool;
+	public    var comparedQuality : gamedataQuality;
+	public    var qualityF : Float;
+	public    var comparisonQualityF : Float;
+	public    var attackSpeed : Float;
+	public    var projectilesPerShot : Float;
+	public    var grenadeData : handle:InventoryTooltiData_GrenadeData;
+	public    var ammoCount : Int32;
+	public    var hasSilencer : Bool;
+	public    var hasScope : Bool;
+	public    var isSilencerInstalled : Bool;
+	public    var isScopeInstalled : Bool;
+	public    var requirements : handle:MinimalItemTooltipDataRequirements;
+	public    var recipeData : handle:MinimalItemTooltipRecipeData;
+	public    var attributeAllocationStats : array:handle:MinimalItemTooltipStatData;
+	public    var stats : array:handle:MinimalItemTooltipStatData;
+	public    var mods : array:handle:MinimalItemTooltipModData;
+	public    var dedicatedMods : array:handle:MinimalItemTooltipModAttachmentData;
+	public    var cyberwareUpgradeData : handle:InventoryTooltiData_CyberwareUpgradeData;
+	public    var itemType : gamedataItemType;
+	public    var itemCategory : gamedataItemCategory;
+	public    var equipmentArea : gamedataEquipmentArea;
+	public    var itemEvolution : gamedataWeaponEvolution;
+	public    var itemPerkGroup : gamedataPerkWeaponGroupType;
+	public    var lootItemType : gameLootItemType;
+	public    var iconPath : String;
+	public    var useMaleIcon : Bool;
+	public    var isIconic : Bool;
+	public    var isPlus : Float;
+	public    var isBroken : Bool;
+	public    var isCrafted : Bool;
+	public    var isEquipped : Bool;
+	public    var hasRarity : Bool;
+	public    var displayContextData : handle:ItemDisplayContextData;
+	public    var displayContext : InventoryTooltipDisplayContext;
+	public    var DEBUG_iconErrorInfo : handle:DEBUG_IconErrorInfo;
+	private   var statsManager : handle:UIInventoryItemStatsManager;
+	private   var statsManagerFetched : Bool;
+	private   var managerRef : whandle:UIInventoryItemsManager;
+
+	static function FillModsFromTooltipData(data : handle:InventoryTooltipData, mods : script_ref:array:handle:MinimalItemTooltipModData, dedicatedMods : script_ref:array:handle:MinimalItemTooltipModAttachmentData); // MinimalItemTooltipData::FillModsFromTooltipData;InventoryTooltipDatascript_ref<array<MinimalItemTooltipModData>>script_ref<array<MinimalItemTooltipModAttachmentData>>
+	static function FromInventoryItemData(itemData : script_ref:gameInventoryItemData) : handle:MinimalItemTooltipData; // MinimalItemTooltipData::FromInventoryItemData;script_ref<InventoryItemData>
+	static function FromInventoryTooltipData(tooltipData : handle:InventoryTooltipData) : handle:MinimalItemTooltipData; // MinimalItemTooltipData::FromInventoryTooltipData;InventoryTooltipData
+	static function GetAttributeAllocationStatsFromTooltipData(data : handle:InventoryTooltipData, optional filterZero : Bool) : array:handle:MinimalItemTooltipStatData; // MinimalItemTooltipData::GetAttributeAllocationStatsFromTooltipData;InventoryTooltipDataBool
+	static function GetDefaultModAttachmentData(data : handle:InventoryTooltipData, index : Int32, type : gameInventoryItemAttachmentType) : handle:MinimalItemTooltipModAttachmentData; // MinimalItemTooltipData::GetDefaultModAttachmentData;InventoryTooltipDataInt32InventoryItemAttachmentType
+	static function GetDefaultModAttachmentData(isEmpty : Bool, qualityName : CName, slotID : TweakDBID, itemName : script_ref:String, abilities : script_ref:array:gameInventoryItemAbility, type : gameInventoryItemAttachmentType) : handle:MinimalItemTooltipModAttachmentData; // MinimalItemTooltipData::GetDefaultModAttachmentData;BoolCNameTweakDBIDscript_ref<String>script_ref<array<InventoryItemAbility>>InventoryItemAttachmentType
+	static function GetMinimalTooltipDataRequirements(itemData : whandle:gameItemData, dataManager : handle:InventoryDataManagerV2) : handle:MinimalItemTooltipDataRequirements; // MinimalItemTooltipData::GetMinimalTooltipDataRequirements;gameItemDataInventoryDataManagerV2
+	static function GetMinimalTooltipDataRequirements(itemData : whandle:gameItemData, owner : whandle:gameObject, hasSmartlink : Bool, playerStrength : Int32, playerReflex : Int32, playerLevel : Int32) : handle:MinimalItemTooltipDataRequirements; // MinimalItemTooltipData::GetMinimalTooltipDataRequirements;gameItemDataGameObjectBoolInt32Int32Int32
+	static function GetMinimalTooltipDataRequirements(itemData : whandle:gameItemData, tooltipData : handle:InventoryTooltipData) : handle:MinimalItemTooltipDataRequirements; // MinimalItemTooltipData::GetMinimalTooltipDataRequirements;gameItemDataInventoryTooltipData
+	static function GetModsDataPackages(itemData : whandle:gameItemData, itemRecord : whandle:gamedataItem_Record, displayContext : InventoryTooltipDisplayContext, optional parentItemData : whandle:gameItemData, optional slotID : TweakDBID, mods : script_ref:array:handle:MinimalItemTooltipModData); // MinimalItemTooltipData::GetModsDataPackages;gameItemDataItem_RecordInventoryTooltipDisplayContextgameItemDataTweakDBIDscript_ref<array<MinimalItemTooltipModData>>
+	static function GetSecondaryStatsForStatMap(itemData : whandle:gameItemData, itemType : gamedataItemType, itemCategory : gamedataItemCategory) : array:handle:MinimalItemTooltipStatData; // MinimalItemTooltipData::GetSecondaryStatsForStatMap;gameItemDatagamedataItemTypegamedataItemCategory
+	static function GetSecondaryStatsFromTooltipData(data : handle:InventoryTooltipData, itemCategory : gamedataItemCategory, optional filterZero : Bool) : array:handle:MinimalItemTooltipStatData; // MinimalItemTooltipData::GetSecondaryStatsFromTooltipData;InventoryTooltipDatagamedataItemCategoryBool
+	static function IsAttributeAllocationStat(stat : gamedataStatType) : Bool; // MinimalItemTooltipData::IsAttributeAllocationStat;gamedataStatType
+	static function ShouldFilterOutGrenadeStat(stat : gamedataStatType) : Bool; // MinimalItemTooltipData::ShouldFilterOutGrenadeStat;gamedataStatType
+
+	function GetStatsManager(optional refetch : Bool) : whandle:UIInventoryItemStatsManager; // GetStatsManager;Bool
+	function GetStatsManagerPure(optional refetch : Bool) : whandle:UIInventoryItemStatsManager; // GetStatsManagerPure;Bool
+	function SetManager(manager : whandle:UIInventoryItemsManager); // SetManager;UIInventoryItemsManager
+}
+
+class abstract ATooltipData extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

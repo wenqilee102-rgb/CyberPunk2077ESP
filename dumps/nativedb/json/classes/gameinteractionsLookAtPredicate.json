@@ -1,0 +1,1 @@
+{"a":"gameinteractionsIPredicateType","b":"gameinteractionsLookAtPredicate","d":8,"e":[{"a":{"b":"gameinteractionsELookAtTarget"},"b":"testTarget","c":128},{"a":{"b":"gameinteractionsELookAtTest"},"b":"testType","c":128},{"a":{"a":1},"b":"stopOnTransparent","c":128}]}

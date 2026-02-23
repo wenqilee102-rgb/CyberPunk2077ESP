@@ -1,0 +1,26 @@
+import class audioBreathingTemporaryStateMetadata extends audioAudioMetadata
+{
+	var inhaleSound : CName;
+	var exhaleSound : CName;
+	var paramChangeSpeed : Float;
+	var targetBpm : Float;
+	var targetTimeDistortion : Float;
+	var time : Float;
+	var exhaustionChangeSpeed : Float;
+	var targetExhaustion : Float;
+	var loopBehavior : audiobreathingLoopBehavior;
+	var startStateFromBreath : Bool;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

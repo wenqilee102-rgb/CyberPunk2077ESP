@@ -1,0 +1,6 @@
+struct TransactionRequestData
+{
+	public    var itemID : gameItemID;
+	public    var quantity : Int32;
+	public    var powerLevel : Float;
+}

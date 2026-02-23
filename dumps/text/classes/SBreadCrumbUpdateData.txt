@@ -1,0 +1,6 @@
+struct SBreadCrumbUpdateData
+{
+	public    var elementName : String;
+	public    var elementID : Int32;
+	public    var context : CName;
+}

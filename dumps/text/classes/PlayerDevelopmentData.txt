@@ -1,0 +1,244 @@
+class PlayerDevelopmentData extends IScriptable
+{
+	public    var owner : whandle:gameObject;
+	private   var ownerID : entEntityID;
+	private   var queuedCombatExp : array:SExperiencePoints;
+	private   var proficiencies : array:SProficiency;
+	private   var attributes : array:SAttribute;
+	private   var perkAreas : array:SPerkArea;
+	private   var traits : array:STrait;
+	private   var devPoints : array:SDevelopmentPoints;
+	private   var skillPrereqs : array:handle:SkillCheckPrereqState;
+	private   var statPrereqs : array:handle:StatCheckPrereqState;
+	private   var knownRecipes : array:ItemRecipe;
+	private   var attributesData : array:SAttributeData;
+	private   var highestCompletedMinigameLevel : Int32;
+	private   var startingLevel : Int32;
+	private   var startingExperience : Int32;
+	private   var lifePath : gamedataLifePath;
+	private   var displayActivityLog : Bool;
+	private   var progressionBuildSetCompleted : Bool;
+
+	static function AttributeDataTypeToStatType(type : gamedataAttributeDataType) : gamedataStatType; // PlayerDevelopmentData::AttributeDataTypeToStatType;gamedataAttributeDataType
+	static function IsAttribute(type : gamedataStatType) : Bool; // PlayerDevelopmentData::IsAttribute;gamedataStatType
+	static function IsProfficiencyObsolete(profficeinct : gamedataProficiencyType) : Bool; // PlayerDevelopmentData::IsProfficiencyObsolete;gamedataProficiencyType
+	static function StatTypeToAttributeDataType(type : gamedataStatType) : gamedataAttributeDataType; // PlayerDevelopmentData::StatTypeToAttributeDataType;gamedataStatType
+
+	function ActivateNewPerk(perkType : gamedataNewPerkType, perkLevel : Int32); // ActivateNewPerk;gamedataNewPerkTypeInt32
+	function ActivatePerkLevelData(areaIndex : Int32, perkIndex : Int32); // ActivatePerkLevelData;Int32Int32
+	function ActivateTraitBase(traitType : gamedataTraitType); // ActivateTraitBase;gamedataTraitType
+	function AddDevelopmentPoints(amount : Int32, type : gamedataDevelopmentPointType); // AddDevelopmentPoints;Int32gamedataDevelopmentPointType
+	function AddExperience(amount : Int32, type : gamedataProficiencyType, telemetryGainReason : telemetryLevelGainReason, optional isDebug : Bool); // AddExperience;Int32gamedataProficiencyTypetelemetryLevelGainReasonBool
+	function AddLevels(type : gamedataProficiencyType, optional amount : Int32); // AddLevels;gamedataProficiencyTypeInt32
+	function AddProficiency(type : gamedataProficiencyType); // AddProficiency;gamedataProficiencyType
+	function AddTrait(traitType : gamedataTraitType); // AddTrait;gamedataTraitType
+	function BumpNetrunnerMinigameLevel(value : Int32); // BumpNetrunnerMinigameLevel;Int32
+	function BuyAttribute(type : gamedataStatType) : Bool; // BuyAttribute;gamedataStatType
+	function BuyNewPerk(perkType : gamedataNewPerkType, optional forceBuy : Bool) : Bool; // BuyNewPerk;gamedataNewPerkTypeBool
+	function BuyPerk(perkType : gamedataPerkType) : Bool; // BuyPerk;gamedataPerkType
+	function CanAttributeBeBought(type : gamedataStatType) : Bool; // CanAttributeBeBought;gamedataStatType
+	function CanGainNextProficiencyLevel(pIndex : Int32) : Bool; // CanGainNextProficiencyLevel;Int32
+	function CanNewPerkBeBought(perkType : gamedataNewPerkType, isEspionagePerk : Bool, isEspionageMilestonePerk : Bool) : Bool; // CanNewPerkBeBought;gamedataNewPerkTypeBoolBool
+	function CanPerkBeBought(perkType : gamedataPerkType) : Bool; // CanPerkBeBought;gamedataPerkType
+	function CanTraitBeBought() : Bool; // CanTraitBeBought;
+	function CheckIfAllNewPerkParentSold(attributeIdx : Int32, perkRecord : script_ref:SNewPerk) : Bool; // CheckIfAllNewPerkParentSold;Int32script_ref<SNewPerk>
+	function CheckIfAllnewPerkParentSold(perkType : gamedataNewPerkType) : Bool; // CheckIfAllnewPerkParentSold;gamedataNewPerkType
+	function CheckPlayerRespecCost() : Bool; // CheckPlayerRespecCost;
+	function CheckRelicMasterAchievement(); // CheckRelicMasterAchievement;
+	function CheckSpecialistAchievement(index : Int32); // CheckSpecialistAchievement;Int32
+	function ClearAllDevPoints(); // ClearAllDevPoints;
+	function ClearTraitInfiniteData(traitIndex : Int32); // ClearTraitInfiniteData;Int32
+	function DeactivateNewPerk(perkType : gamedataNewPerkType, perkLevel : Int32); // DeactivateNewPerk;gamedataNewPerkTypeInt32
+	function DeactivatePerkLevelData(areaIndex : Int32, perkIndex : Int32); // DeactivatePerkLevelData;Int32Int32
+	function EspionageAttributeRetrofix(); // EspionageAttributeRetrofix;
+	function EvaluatePerkAreas(prof : gamedataProficiencyType); // EvaluatePerkAreas;gamedataProficiencyType
+	function EvaluateTrait(profType : gamedataProficiencyType); // EvaluateTrait;gamedataProficiencyType
+	function EvaluateTraitInfiniteData(traitIndex : Int32); // EvaluateTraitInfiniteData;Int32
+	function FindNewPerk(perkType : gamedataNewPerkType, out i : Int32, out j : Int32) : Bool; // FindNewPerk;gamedataNewPerkTypeInt32Int32
+	function FlushDevelopment(); // FlushDevelopment;
+	function ForceSellNewPerk(perkType : gamedataNewPerkType, out perkLevelSold : Int32) : Bool; // ForceSellNewPerk;gamedataNewPerkTypeInt32
+	function GetAttributeData(type : gamedataAttributeDataType) : SAttributeData; // GetAttributeData;gamedataAttributeDataType
+	function GetAttributeData(statType : gamedataStatType, out attrData : SAttributeData) : Bool; // GetAttributeData;gamedataStatTypeSAttributeData
+	function GetAttributeDevCap(type : gamedataStatType) : Int32; // GetAttributeDevCap;gamedataStatType
+	function GetAttributeIndex(type : gamedataStatType) : Int32; // GetAttributeIndex;gamedataStatType
+	function GetAttributeNextLevelCost(type : gamedataStatType) : Int32; // GetAttributeNextLevelCost;gamedataStatType
+	function GetAttributePoints(attributeDataType : gamedataAttributeDataType) : Int32; // GetAttributePoints;gamedataAttributeDataType
+	function GetAttributeRecord(type : gamedataStatType) : handle:gamedataStat_Record; // GetAttributeRecord;gamedataStatType
+	function GetAttributeValue(type : gamedataStatType) : Float; // GetAttributeValue;gamedataStatType
+	function GetAttributes() : array:SAttribute; // GetAttributes;
+	function GetCurrentLevelProficiencyExp(type : gamedataProficiencyType) : Int32; // GetCurrentLevelProficiencyExp;gamedataProficiencyType
+	function GetDevPoints(type : gamedataDevelopmentPointType) : Int32; // GetDevPoints;gamedataDevelopmentPointType
+	function GetDevPointsForLevel(level : Int32, profType : gamedataProficiencyType, devPtsType : gamedataDevelopmentPointType) : Int32; // GetDevPointsForLevel;Int32gamedataProficiencyTypegamedataDevelopmentPointType
+	function GetDevPointsIndex(type : gamedataDevelopmentPointType) : Int32; // GetDevPointsIndex;gamedataDevelopmentPointType
+	function GetDominatingCombatProficiency() : gamedataProficiencyType; // GetDominatingCombatProficiency;
+	function GetEspionagePerksCount() : Int32; // GetEspionagePerksCount;
+	function GetExperienceForNextLevel(type : gamedataProficiencyType) : Int32; // GetExperienceForNextLevel;gamedataProficiencyType
+	function GetExperiencePercentage() : Int32; // GetExperiencePercentage;
+	function GetHighestCompletedMinigameLevel() : Int32; // GetHighestCompletedMinigameLevel;
+	function GetInvestedPerkPoints(profType : gamedataProficiencyType) : Int32; // GetInvestedPerkPoints;gamedataProficiencyType
+	function GetIsProgressionBuildSetCompleted() : Bool; // GetIsProgressionBuildSetCompleted;
+	function GetLifePath() : gamedataLifePath; // GetLifePath;
+	function GetNewPerkGLPackageTDBID(perkType : gamedataNewPerkType, perkLevel : Int32) : TweakDBID; // GetNewPerkGLPackageTDBID;gamedataNewPerkTypeInt32
+	function GetNewPerkMaxLevel(perkType : gamedataNewPerkType) : Int32; // GetNewPerkMaxLevel;gamedataNewPerkType
+	function GetOwner() : whandle:gameObject; // GetOwner;
+	function GetOwnerID() : entEntityID; // GetOwnerID;
+	function GetPerkAreaFromPerk(perkType : gamedataPerkType) : gamedataPerkArea; // GetPerkAreaFromPerk;gamedataPerkType
+	function GetPerkAreaIndex(areaType : gamedataPerkArea) : Int32; // GetPerkAreaIndex;gamedataPerkArea
+	function GetPerkAreaRecord(areaType : gamedataPerkArea) : handle:gamedataPerkArea_Record; // GetPerkAreaRecord;gamedataPerkArea
+	function GetPerkAttribute(perkType : gamedataNewPerkType) : whandle:gamedataAttributeData_Record; // GetPerkAttribute;gamedataNewPerkType
+	function GetPerkIndex(areaType : gamedataPerkArea, perkType : gamedataPerkType) : Int32; // GetPerkIndex;gamedataPerkAreagamedataPerkType
+	function GetPerkIndex(perkType : gamedataPerkType) : Int32; // GetPerkIndex;gamedataPerkType
+	function GetPerkIndex(areaIndex : Int32, perkType : gamedataPerkType) : Int32; // GetPerkIndex;Int32gamedataPerkType
+	function GetPerkLevel(perkType : gamedataPerkType) : Int32; // GetPerkLevel;gamedataPerkType
+	function GetPerkMaxLevel(perkType : gamedataPerkType) : Int32; // GetPerkMaxLevel;gamedataPerkType
+	function GetPerkPackageTDBID(areaIndex : Int32, perkIndex : Int32) : TweakDBID; // GetPerkPackageTDBID;Int32Int32
+	function GetPerkPackageTDBID(perkType : gamedataPerkType) : TweakDBID; // GetPerkPackageTDBID;gamedataPerkType
+	function GetPerkRecord(perkType : gamedataPerkType) : handle:gamedataPerk_Record; // GetPerkRecord;gamedataPerkType
+	function GetPerks() : array:SPerk; // GetPerks;
+	function GetProficiencyAbsoluteMaxLevel(type : gamedataProficiencyType) : Int32; // GetProficiencyAbsoluteMaxLevel;gamedataProficiencyType
+	function GetProficiencyExpCurveNames(type : gamedataProficiencyType, out curvName : CName, out colName : CName); // GetProficiencyExpCurveNames;gamedataProficiencyTypeCNameCName
+	function GetProficiencyFromPerkArea(perkArea : gamedataPerkArea) : gamedataProficiencyType; // GetProficiencyFromPerkArea;gamedataPerkArea
+	function GetProficiencyIndexByType(type : gamedataProficiencyType) : Int32; // GetProficiencyIndexByType;gamedataProficiencyType
+	function GetProficiencyIndexFromPerkArea(perkArea : gamedataPerkArea) : Int32; // GetProficiencyIndexFromPerkArea;gamedataPerkArea
+	function GetProficiencyLevel(type : gamedataProficiencyType) : Int32; // GetProficiencyLevel;gamedataProficiencyType
+	function GetProficiencyMaxLevel(type : gamedataProficiencyType) : Int32; // GetProficiencyMaxLevel;gamedataProficiencyType
+	function GetProficiencyRecordByIndex(index : Int32) : handle:gamedataProficiency_Record; // GetProficiencyRecordByIndex;Int32
+	function GetRemainingExpForLevelUp(type : gamedataProficiencyType) : Int32; // GetRemainingExpForLevelUp;gamedataProficiencyType
+	function GetRemainingRequiredPerkPoints(traitRecord : handle:gamedataTrait_Record, out amount : Int32) : Bool; // GetRemainingRequiredPerkPoints;Trait_RecordInt32
+	function GetRemainingRequiredPerkPoints(areaRecord : handle:gamedataPerkArea_Record, out amount : Int32) : Bool; // GetRemainingRequiredPerkPoints;PerkArea_RecordInt32
+	function GetSpentPerkPoints() : Int32; // GetSpentPerkPoints;
+	function GetSpentTraitPoints() : Int32; // GetSpentTraitPoints;
+	function GetTotalProfExperience(type : gamedataProficiencyType) : Int32; // GetTotalProfExperience;gamedataProficiencyType
+	function GetTotalRespecCost() : Int32; // GetTotalRespecCost;
+	function GetTraitIndex(traitType : gamedataTraitType) : Int32; // GetTraitIndex;gamedataTraitType
+	function GetTraitLevel(traitType : gamedataTraitType) : Int32; // GetTraitLevel;gamedataTraitType
+	function GetTraitLevel(traitIndex : Int32) : Int32; // GetTraitLevel;Int32
+	function GetTraitRecord(traitType : gamedataTraitType) : handle:gamedataTrait_Record; // GetTraitRecord;gamedataTraitType
+	function GetUnlockedPerkList(perkType : gamedataNewPerkType, out unlockedPerks : array:gamedataNewPerkType); // GetUnlockedPerkList;gamedataNewPerkTypearray<gamedataNewPerkType>
+	function HandleAddingPerkLevel(i : Int32, j : Int32); // HandleAddingPerkLevel;Int32Int32
+	function HandleRemovingPerkLevel(i : Int32, j : Int32) : Int32; // HandleRemovingPerkLevel;Int32Int32
+	function HandleRemovingTech_Central_Milestone_3(playerData : handle:EquipmentSystemPlayerData); // HandleRemovingTech_Central_Milestone_3;EquipmentSystemPlayerData
+	function HasEnoughtAttributePoints(perkType : gamedataNewPerkType) : Bool; // HasEnoughtAttributePoints;gamedataNewPerkType
+	function HasPerk(perkType : gamedataPerkType) : Bool; // HasPerk;gamedataPerkType
+	function IncreasePerkLevel(areaIndex : Int32, perkIndex : Int32); // IncreasePerkLevel;Int32Int32
+	function IncreaseTraitLevel(traitType : gamedataTraitType) : Bool; // IncreaseTraitLevel;gamedataTraitType
+	function InitializeAttributesData(); // InitializeAttributesData;
+	function InitializePerk(perkType : gamedataPerkType) : SPerk; // InitializePerk;gamedataPerkType
+	function InitializePerkArea(areaType : gamedataPerkArea); // InitializePerkArea;gamedataPerkArea
+	function InitializePerkAreas(); // InitializePerkAreas;
+	function InitializeTraits(); // InitializeTraits;
+	function IsEspionageMilestonePerk(type : gamedataNewPerkType) : Bool; // IsEspionageMilestonePerk;gamedataNewPerkType
+	function IsNewPerkBought(perkType : gamedataNewPerkType) : Int32; // IsNewPerkBought;gamedataNewPerkType
+	function IsNewPerkBoughtAnyLevel(perkType : gamedataNewPerkType) : Bool; // IsNewPerkBoughtAnyLevel;gamedataNewPerkType
+	function IsNewPerkEspionage(perkType : gamedataNewPerkType) : Bool; // IsNewPerkEspionage;gamedataNewPerkType
+	function IsNewPerkUnlocked(perkType : gamedataNewPerkType) : Bool; // IsNewPerkUnlocked;gamedataNewPerkType
+	function IsPerkAreaBaseReqMet(areaRecord : handle:gamedataPerkArea_Record) : Bool; // IsPerkAreaBaseReqMet;PerkArea_Record
+	function IsPerkAreaMasteryReqMet(areaRecord : handle:gamedataPerkArea_Record) : Bool; // IsPerkAreaMasteryReqMet;PerkArea_Record
+	function IsPerkAreaReqMet(areaRecord : handle:gamedataPerkArea_Record) : Bool; // IsPerkAreaReqMet;PerkArea_Record
+	function IsPerkAreaUnlocked(aIndex : Int32) : Bool; // IsPerkAreaUnlocked;Int32
+	function IsPerkAreaUnlocked(area : gamedataPerkArea) : Bool; // IsPerkAreaUnlocked;gamedataPerkArea
+	function IsPerkAreaValid(areaType : gamedataPerkArea) : Bool; // IsPerkAreaValid;gamedataPerkArea
+	function IsPerkMaxLevel(perkType : gamedataPerkType) : Bool; // IsPerkMaxLevel;gamedataPerkType
+	function IsProficiencyMaxLvl(type : gamedataProficiencyType) : Bool; // IsProficiencyMaxLvl;gamedataProficiencyType
+	function IsProficiencyStatAdded(type : gamedataProficiencyType) : Bool; // IsProficiencyStatAdded;gamedataProficiencyType
+	function IsStatValid(type : gamedataStatType) : Bool; // IsStatValid;gamedataStatType
+	function IsTraitReqMet(traitType : gamedataTraitType) : Bool; // IsTraitReqMet;gamedataTraitType
+	function IsTraitUnlocked(traitIndex : Int32) : Bool; // IsTraitUnlocked;Int32
+	function IsTraitUnlocked(traitType : gamedataTraitType) : Bool; // IsTraitUnlocked;gamedataTraitType
+	function LockAllNewPerkParents(attributeIdx : Int32, perkRecord : script_ref:SNewPerk); // LockAllNewPerkParents;Int32script_ref<SNewPerk>
+	function LockNewPerk(perkType : gamedataNewPerkType) : Bool; // LockNewPerk;gamedataNewPerkType
+	function LockPerkArea(areaType : gamedataPerkArea); // LockPerkArea;gamedataPerkArea
+	function ModifyAttribute(type : gamedataStatType, amount : Float); // ModifyAttribute;gamedataStatTypeFloat
+	function ModifyDevPoints(type : gamedataProficiencyType, level : Int32); // ModifyDevPoints;gamedataProficiencyTypeInt32
+	function ModifyProficiencyLevel(type : gamedataProficiencyType, optional isDebug : Bool, optional levelIncrease : Int32); // ModifyProficiencyLevel;gamedataProficiencyTypeBoolInt32
+	function ModifyProficiencyLevel(proficiencyIndex : Int32, isDebug : Bool, optional levelIncrease : Int32); // ModifyProficiencyLevel;Int32BoolInt32
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnNewGame(); // OnNewGame;
+	function OnRestored(gameInstance : ScriptGameInstance); // OnRestored;GameInstance
+	function ProcessBuildAttributes(attributes : script_ref:array:whandle:gamedataBuildAttribute_Record); // ProcessBuildAttributes;script_ref<array<BuildAttribute_Record>>
+	function ProcessBuildCyberware(cyberware : script_ref:array:whandle:gamedataBuildCyberware_Record); // ProcessBuildCyberware;script_ref<array<BuildCyberware_Record>>
+	function ProcessBuildEquipment(equipment : script_ref:array:whandle:gamedataBuildEquipment_Record, randomizeClothing : Bool); // ProcessBuildEquipment;script_ref<array<BuildEquipment_Record>>Bool
+	function ProcessBuildItems(items : script_ref:array:whandle:gamedataInventoryItem_Record); // ProcessBuildItems;script_ref<array<InventoryItem_Record>>
+	function ProcessBuildNewPerks(perks : script_ref:array:whandle:gamedataBuildNewPerk_Record, optional forceBuy : Bool); // ProcessBuildNewPerks;script_ref<array<BuildNewPerk_Record>>Bool
+	function ProcessBuildPerks(perks : script_ref:array:whandle:gamedataBuildPerk_Record); // ProcessBuildPerks;script_ref<array<BuildPerk_Record>>
+	function ProcessBuildProficiencies(proficiencies : script_ref:array:whandle:gamedataBuildProficiency_Record, isDebugBuild : Bool); // ProcessBuildProficiencies;script_ref<array<BuildProficiency_Record>>Bool
+	function ProcessBuildPrograms(programs : script_ref:array:whandle:gamedataBuildProgram_Record); // ProcessBuildPrograms;script_ref<array<BuildProgram_Record>>
+	function ProcessCraftbook(recipes : whandle:gamedataCraftable_Record); // ProcessCraftbook;Craftable_Record
+	function ProcessLifePath(lifePath : whandle:gamedataLifePath_Record); // ProcessLifePath;LifePath_Record
+	function ProcessProficiencyPassiveBonus(profIndex : Int32); // ProcessProficiencyPassiveBonus;Int32
+	function ProcessProgressionBuild(buildRecord : handle:gamedataProgressionBuild_Record, optional isDebugBuild : Bool); // ProcessProgressionBuild;ProgressionBuild_RecordBool
+	function ProcessQueuedCombatExperience(entity : entEntityID); // ProcessQueuedCombatExperience;EntityID
+	function ProcessTutorialFacts(); // ProcessTutorialFacts;
+	function QueueCombatExperience(amount : Float, type : gamedataProficiencyType, entity : entEntityID); // QueueCombatExperience;FloatgamedataProficiencyTypeEntityID
+	function RandomizeClothing(); // RandomizeClothing;
+	function RefreshDevelopmentSystem(); // RefreshDevelopmentSystem;
+	function RefreshDevelopmentSystemOnNewGameStarted(); // RefreshDevelopmentSystemOnNewGameStarted;
+	function RefreshPerkAreas(); // RefreshPerkAreas;
+	function RefreshProficiencyStats(); // RefreshProficiencyStats;
+	function RegisterSkillCheckPrereq(skillPrereq : handle:SkillCheckPrereqState); // RegisterSkillCheckPrereq;SkillCheckPrereqState
+	function RegisterStatCheckPrereq(statPrereq : handle:StatCheckPrereqState); // RegisterStatCheckPrereq;StatCheckPrereqState
+	function ReinitializeProficiencies(); // ReinitializeProficiencies;
+	function RemoveAllPerks(free : Bool); // RemoveAllPerks;Bool
+	function RemoveDeprecatedPerkPoints(); // RemoveDeprecatedPerkPoints;
+	function RemovePerk(perkType : gamedataPerkType) : Bool; // RemovePerk;gamedataPerkType
+	function RemovePerkRecipes(perkType : gamedataPerkType); // RemovePerkRecipes;gamedataPerkType
+	function RemoveTrait(traitType : gamedataTraitType) : Bool; // RemoveTrait;gamedataTraitType
+	function ResetAllDevPoints(); // ResetAllDevPoints;
+	function ResetAllProficienciesLevel(); // ResetAllProficienciesLevel;
+	function ResetAttribute(type : gamedataStatType); // ResetAttribute;gamedataStatType
+	function ResetAttributes(); // ResetAttributes;
+	function ResetDevelopmentPoints(type : gamedataDevelopmentPointType); // ResetDevelopmentPoints;gamedataDevelopmentPointType
+	function ResetNewPerks(); // ResetNewPerks;
+	function ResetProficiencyLevel(type : gamedataProficiencyType); // ResetProficiencyLevel;gamedataProficiencyType
+	function RestoreProficiencyPassiveBonuses(profIndex : Int32, gameInstance : ScriptGameInstance); // RestoreProficiencyPassiveBonuses;Int32GameInstance
+	function ReturnDevelopmentPointForSoldPerk(i : Int32, j : Int32); // ReturnDevelopmentPointForSoldPerk;Int32Int32
+	function ScaleItems(); // ScaleItems;
+	function ScaleNPCsToPlayerLevel(); // ScaleNPCsToPlayerLevel;
+	function SellAllAttributes(); // SellAllAttributes;
+	function SellAttribute(type : gamedataStatType) : Bool; // SellAttribute;gamedataStatType
+	function SellNewPerk(perkType : gamedataNewPerkType, out perkLevelSold : Int32) : Bool; // SellNewPerk;gamedataNewPerkTypeInt32
+	function SendMaxStreetCredLevelReachedTrackingRequest(); // SendMaxStreetCredLevelReachedTrackingRequest;
+	function SetAchievementProgress(index : Int32); // SetAchievementProgress;Int32
+	function SetAttribute(type : gamedataStatType, amount : Float); // SetAttribute;gamedataStatTypeFloat
+	function SetAttributes(); // SetAttributes;
+	function SetDevelopmentPoints(); // SetDevelopmentPoints;
+	function SetDevelopmentsPoint(type : gamedataDevelopmentPointType, value : Int32); // SetDevelopmentsPoint;gamedataDevelopmentPointTypeInt32
+	function SetIsProgressionBuildSetCompleted(value : Bool); // SetIsProgressionBuildSetCompleted;Bool
+	function SetLevel(type : gamedataProficiencyType, lvl : Int32, telemetryGainReason : telemetryLevelGainReason, optional isDebug : Bool); // SetLevel;gamedataProficiencyTypeInt32telemetryLevelGainReasonBool
+	function SetLifePath(lifePath : TweakDBID); // SetLifePath;TweakDBID
+	function SetOwner(owner : handle:gameObject); // SetOwner;GameObject
+	function SetProficiencies(); // SetProficiencies;
+	function SetProficiencyStat(type : gamedataProficiencyType, level : Int32); // SetProficiencyStat;gamedataProficiencyTypeInt32
+	function SetProgressionBuild(build : gamedataBuildType, optional isDebugBuild : Bool); // SetProgressionBuild;gamedataBuildTypeBool
+	function SetProgressionBuild(buildID : TweakDBID, optional isDebugBuild : Bool); // SetProgressionBuild;TweakDBIDBool
+	function ShouldPerkAreaBeAvailable(areaType : gamedataPerkArea) : Bool; // ShouldPerkAreaBeAvailable;gamedataPerkArea
+	function SpendDevelopmentPoint(type : gamedataDevelopmentPointType); // SpendDevelopmentPoint;gamedataDevelopmentPointType
+	function SpendDevelopmentPoint(type : gamedataDevelopmentPointType, amount : Int32); // SpendDevelopmentPoint;gamedataDevelopmentPointTypeInt32
+	function UnlockFreeNewPerks(attributeDataType : gamedataAttributeDataType); // UnlockFreeNewPerks;gamedataAttributeDataType
+	function UnlockNewPerk(perkType : gamedataNewPerkType) : Bool; // UnlockNewPerk;gamedataNewPerkType
+	function UnlockPerkArea(areaType : gamedataPerkArea); // UnlockPerkArea;gamedataPerkArea
+	function UnregisterSkillCheckPrereq(skillPrereq : handle:SkillCheckPrereqState); // UnregisterSkillCheckPrereq;SkillCheckPrereqState
+	function UnregisterStatCheckPrereq(statPrereq : handle:StatCheckPrereqState); // UnregisterStatCheckPrereq;StatCheckPrereqState
+	function UpdateAttributes(attributes : script_ref:array:gameuiCharacterCustomizationAttribute); // UpdateAttributes;script_ref<array<CharacterCustomizationAttribute>>
+	function UpdatePerkAreaBB(areaIndex : Int32); // UpdatePerkAreaBB;Int32
+	function UpdatePlayerXP(); // UpdatePlayerXP;
+	function UpdateProficiencyMaxLevels(); // UpdateProficiencyMaxLevels;
+	function UpdateSkillPrereqs(changedSkill : gamedataProficiencyType, newLevel : Int32); // UpdateSkillPrereqs;gamedataProficiencyTypeInt32
+	function UpdateStatPrereqs(changedStat : gamedataStatType, newValue : Float); // UpdateStatPrereqs;gamedataStatTypeFloat
+	function UpdateUIBB(); // UpdateUIBB;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

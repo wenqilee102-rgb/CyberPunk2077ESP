@@ -1,0 +1,28 @@
+import class gamedataBuildEquipmentSet_Record extends gamedataTweakDBRecord
+{
+	import function Equipment(out outList : array:whandle:gamedataBuildEquipment_Record); // Equipment
+	import function EquipmentContains(item : whandle:gamedataBuildEquipment_Record) : Bool; // EquipmentContains
+	import function GetEquipmentCount() : Int32; // GetEquipmentCount
+	import function GetEquipmentItem(index : Int32) : whandle:gamedataBuildEquipment_Record; // GetEquipmentItem
+	import function GetEquipmentItemHandle(index : Int32) : handle:gamedataBuildEquipment_Record; // GetEquipmentItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

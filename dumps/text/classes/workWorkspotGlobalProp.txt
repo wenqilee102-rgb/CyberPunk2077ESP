@@ -1,0 +1,6 @@
+import struct workWorkspotGlobalProp
+{
+	var id : CName;
+	var boneName : CName;
+	var prop : raRef:entEntityTemplate;
+}

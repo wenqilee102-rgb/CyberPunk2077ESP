@@ -1,0 +1,7 @@
+import class abstract inkFullscreenCompositionManager extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

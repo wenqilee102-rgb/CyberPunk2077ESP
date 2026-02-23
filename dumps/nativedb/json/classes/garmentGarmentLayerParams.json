@@ -1,0 +1,1 @@
+{"a":"CResource","b":"garmentGarmentLayerParams","d":8,"e":[{"a":{"b":"garmentBendingParams"},"b":"bending","c":128},{"a":{"b":"garmentSmoothingParams"},"b":"smoothing","c":128},{"a":{"b":"garmentCollarAreaParams"},"b":"collarArea","c":128},{"a":{"b":"garmentHiddenTrianglesRemovalParams"},"b":"hiddenTrianglesRemoval","c":128}]}

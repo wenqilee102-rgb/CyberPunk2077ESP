@@ -1,0 +1,26 @@
+class AnimFeatureDoor extends animAnimFeature
+{
+	public    var progress : Float;
+	public    var openingSpeed : Float;
+	public    var openingType : Int32;
+	public    var doorSide : Int32;
+	public    var malfunctioning : Int32;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

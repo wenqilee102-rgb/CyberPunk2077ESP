@@ -1,0 +1,5 @@
+import struct audioContextualVoiceGrunt
+{
+	var regularGrunt : CName;
+	var stealthGrunt : CName;
+}

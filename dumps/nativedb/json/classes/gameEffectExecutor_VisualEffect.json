@@ -1,0 +1,1 @@
+{"a":"gameEffectExecutor","b":"gameEffectExecutor_VisualEffect","d":8,"e":[{"a":{"a":30,"c":{"b":"worldEffect"}},"b":"effect","c":128},{"a":{"a":1},"b":"attached","c":128},{"a":{"a":1},"b":"breakLoopOnDetach","c":128},{"a":{"a":14},"b":"effectTag","c":128},{"a":{"a":26,"c":{"b":"gameEffectVectorEvaluator"}},"b":"vectorEvaluator","c":128}]}

@@ -1,0 +1,5 @@
+enum ESwitchAction
+{
+	ToggleOn = 0,
+	ToggleActivate = 1
+}

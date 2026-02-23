@@ -1,0 +1,1 @@
+{"a":"gameScriptableSystemRequest","b":"RegisterTimetableRequest","d":0,"e":[{"a":{"b":"PSOwnerData"},"b":"requesterData","c":128},{"a":{"a":31,"c":{"b":"SDeviceTimetableEntry"}},"b":"timeTable","c":128},{"a":{"a":6},"b":"lights","c":128}]}

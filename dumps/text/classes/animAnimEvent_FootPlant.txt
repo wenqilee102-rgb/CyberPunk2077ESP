@@ -1,0 +1,16 @@
+import class animAnimEvent_FootPlant extends animAnimEvent
+{
+	var side : animEventSide;
+	var customEvent : CName;
+}
+
+import class abstract animAnimEvent extends ISerializable
+{
+	var startFrame : Uint32;
+	var durationInFrames : Uint32;
+	var eventName : CName;
+}
+
+import class abstract ISerializable
+{
+}

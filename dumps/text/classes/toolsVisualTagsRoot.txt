@@ -1,0 +1,8 @@
+import class toolsVisualTagsRoot extends ISerializable
+{
+	var schemas : array:toolsVisualTagsSchema;
+}
+
+import class abstract ISerializable
+{
+}

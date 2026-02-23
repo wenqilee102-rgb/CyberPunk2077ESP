@@ -1,0 +1,5 @@
+import struct workWorkspotItemOverridePropOverride
+{
+	var prevItemId : CName;
+	var newItemId : CName;
+}

@@ -1,0 +1,6 @@
+import struct effectEffectParameterEvaluatorFloat
+{
+	var evaluator : handle:IEvaluatorFloat;
+	var inputParameterOverride : CName;
+	var inputParameterIsPostMultiplier : Bool;
+}

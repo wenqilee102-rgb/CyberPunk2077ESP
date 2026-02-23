@@ -1,0 +1,6 @@
+enum gamePSMWhip
+{
+	Default = 0,
+	Charging = 1,
+	Pulling = 2
+}

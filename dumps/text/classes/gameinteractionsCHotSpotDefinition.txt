@@ -1,0 +1,5 @@
+import struct gameinteractionsCHotSpotDefinition
+{
+	var suppressor : Bool;
+	var layersDefinition : array:handle:gameinteractionsCLinkedLayersDefinition;
+}

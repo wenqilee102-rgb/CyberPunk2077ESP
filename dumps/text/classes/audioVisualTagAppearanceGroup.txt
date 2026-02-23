@@ -1,0 +1,5 @@
+import struct audioVisualTagAppearanceGroup
+{
+	var appearances : array:CName;
+	var visualTags : array:CName;
+}

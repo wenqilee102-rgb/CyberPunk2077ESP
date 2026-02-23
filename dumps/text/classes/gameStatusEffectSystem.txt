@@ -1,0 +1,45 @@
+import class gameStatusEffectSystem extends gameIStatusEffectSystem
+{
+	import static function ObjectHasStatusEffect(target : whandle:gameObject, statusEffectID : TweakDBID) : Bool; // ObjectHasStatusEffect
+	import static function ObjectHasStatusEffectOfType(target : whandle:gameObject, statusEffectType : gamedataStatusEffectType) : Bool; // ObjectHasStatusEffectOfType
+	import static function ObjectHasStatusEffectOfTypeName(target : whandle:gameObject, statusEffectTypeName : String) : Bool; // ObjectHasStatusEffectOfTypeName
+	import static function ObjectHasStatusEffectWithTag(target : whandle:gameObject, tag : CName) : Bool; // ObjectHasStatusEffectWithTag
+	import static function ObjectHasStatusEffectWithTags(target : whandle:gameObject, tag : script_ref:array:CName) : Bool; // ObjectHasStatusEffectWithTags
+
+	import function ApplyStatusEffect(objID : entEntityID, statusEffectID : TweakDBID, optional instigatorID : TweakDBID, optional instigatorEntityID : entEntityID, optional applyCount : Uint32, optional direction : Vector4, optional isSavable : Bool, optional proxyEntityID : entEntityID) : Bool; // ApplyStatusEffect
+	import function GetAppliedEffects(objID : entEntityID, out appliedEffects : array:handle:gameStatusEffect); // GetAppliedEffects
+	import function GetAppliedEffectsOfType(objID : entEntityID, statusEffectType : gamedataStatusEffectType, out appliedEffects : array:handle:gameStatusEffect); // GetAppliedEffectsOfType
+	import function GetAppliedEffectsOfTypeName(objID : entEntityID, statusEffectTypeName : String, outappliedEffects : array:handle:gameStatusEffect); // GetAppliedEffectsOfTypeName
+	import function GetAppliedEffectsWithID(objID : entEntityID, statusEffectID : TweakDBID, out appliedEffects : array:handle:gameStatusEffect); // GetAppliedEffectsWithID
+	import function GetAppliedEffectsWithTag(objID : entEntityID, tag : CName, out appliedEffects : array:handle:gameStatusEffect); // GetAppliedEffectsWithTag
+	import function HasStatusEffect(objID : entEntityID, statusEffectID : TweakDBID) : Bool; // HasStatusEffect
+	import function HasStatusEffectOfType(objID : entEntityID, statusEffectType : gamedataStatusEffectType) : Bool; // HasStatusEffectOfType
+	import function HasStatusEffectOfTypeName(objID : entEntityID, statusEffectTypeName : String) : Bool; // HasStatusEffectOfTypeName
+	import function HasStatusEffectWithTag(objID : entEntityID, tag : CName) : Bool; // HasStatusEffectWithTag
+	import function RegisterListener(objID : entEntityID, listener : handle:gameIStatusEffectListener); // RegisterListener
+	import function RemoveAllStatusEffectOfType(objID : entEntityID, statusEffectType : gamedataStatusEffectType) : Bool; // RemoveAllStatusEffectOfType
+	import function RemoveStatusEffect(objID : entEntityID, statusEffectID : TweakDBID, optional removeCount : Uint32) : Bool; // RemoveStatusEffect
+	import function SetStatusEffectRemainingDuration(objID : entEntityID, statusEffectID : TweakDBID, duration : Float) : Bool; // SetStatusEffectRemainingDuration
+}
+
+import class abstract gameIStatusEffectSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

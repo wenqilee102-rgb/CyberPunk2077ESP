@@ -1,0 +1,5 @@
+struct ScriptLightSettings
+{
+	public    var strength : Float;
+	public    var color : Color;
+}

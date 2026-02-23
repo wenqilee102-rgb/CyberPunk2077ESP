@@ -1,0 +1,43 @@
+class GameplayRoleMappinData extends gamemappinsMappinScriptData
+{
+	public    var mappinVisualState : EMappinVisualState;
+	public    var isTagged : Bool;
+	public    var isQuest : Bool;
+	public    var isIconic : Bool;
+	public    var isBroken : Bool;
+	public    var isScanningCluesBlocked : Bool;
+	public    var isCurrentTarget : Bool;
+	public    var visibleThroughWalls : Bool;
+	public    var hasOffscreenArrow : Bool;
+	public    var isShardRead : Bool;
+	public    var range : Float;
+	public    var duration : Float;
+	public    var progressBarType : EProgressBarType;
+	public    var progressBarContext : EProgressBarContext;
+	public    var gameplayRole : EGameplayRole;
+	public    var braindanceLayer : braindanceVisionMode;
+	public    var quality : gamedataQuality;
+	public    var slotName : CName;
+	public    var textureID : TweakDBID;
+	public    var showOnMiniMap : Bool;
+	public    var action : handle:ScriptableDeviceAction;
+}
+
+import class gamemappinsMappinScriptData extends IScriptable
+{
+	var statPoolType : gamedataStatPoolType;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

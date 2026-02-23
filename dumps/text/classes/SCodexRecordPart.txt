@@ -1,0 +1,6 @@
+struct SCodexRecordPart
+{
+	public    var PartName : CName;
+	public    var PartContent : String;
+	public    var Unlocked : Bool;
+}

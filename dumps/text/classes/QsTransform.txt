@@ -1,0 +1,6 @@
+import struct QsTransform
+{
+	var Translation : Vector4;
+	var Rotation : Quaternion;
+	var Scale : Vector4;
+}

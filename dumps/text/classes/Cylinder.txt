@@ -1,0 +1,5 @@
+import struct Cylinder
+{
+	var positionAndRadius : Vector4;
+	var normalAndHeight : Vector4;
+}

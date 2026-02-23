@@ -1,0 +1,4 @@
+import struct animBoolLink
+{
+	var node : whandle:animAnimNode_BoolValue;
+}

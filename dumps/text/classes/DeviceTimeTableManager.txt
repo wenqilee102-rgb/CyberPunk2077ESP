@@ -1,0 +1,27 @@
+class DeviceTimeTableManager extends IScriptable
+{
+	protected var timeTable : array:SDeviceTimetableEntry;
+
+	function GetACtiveEntryID(game : ScriptGameInstance) : Int32; // GetACtiveEntryID;GameInstance
+	function GetCurrentTime(game : ScriptGameInstance) : GameTime; // GetCurrentTime;GameInstance
+	function GetDeviceStateForActiveEntry(game : ScriptGameInstance) : EDeviceStatus; // GetDeviceStateForActiveEntry;GameInstance
+	function GetTimeTable() : array:SDeviceTimetableEntry; // GetTimeTable;
+	function InitializeTimetable(owner : handle:gameObject); // InitializeTimetable;GameObject
+	function IsEntryActive(game : ScriptGameInstance, entryID : Int32) : Bool; // IsEntryActive;GameInstanceInt32
+	function IsValid() : Bool; // IsValid;
+	function UninitializeTimetable(game : ScriptGameInstance); // UninitializeTimetable;GameInstance
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

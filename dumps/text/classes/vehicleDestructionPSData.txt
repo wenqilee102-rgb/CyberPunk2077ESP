@@ -1,0 +1,10 @@
+import struct vehicleDestructionPSData
+{
+	var gridValues : [30]Float;
+	var brokenGlass : Uint32;
+	var brokenLights : Uint32;
+	var flatTire : Uint8;
+	var windshieldShattered : Bool;
+	var windshieldPoints : array:Vector3;
+	var detachedParts : array:CName;
+}

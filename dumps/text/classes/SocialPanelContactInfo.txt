@@ -1,0 +1,5 @@
+struct SocialPanelContactInfo
+{
+	public    var Hash : Int32;
+	public    var Contact : whandle:gameJournalContact;
+}

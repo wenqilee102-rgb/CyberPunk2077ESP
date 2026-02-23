@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"NewPerksScreenInitData","d":0,"e":[{"a":{"b":"gamedataStatType"},"b":"stat","c":128},{"a":{"a":15},"b":"attribute","c":128},{"a":{"a":27,"c":{"b":"gamedataAttributeData_Record"}},"b":"attributeData","c":128},{"a":{"b":"PerkMenuAttribute"},"b":"perkMenuAttribute","c":128},{"a":{"a":1},"b":"isPlayerInCombat","c":128}]}

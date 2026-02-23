@@ -1,0 +1,27 @@
+import class animAnimationBufferSimd extends animIAnimationBuffer
+{
+	var duration : Float;
+	var numFrames : Uint32;
+	var numExtraJoints : Uint8;
+	var numExtraTracks : Uint8;
+	var numJoints : Uint16;
+	var numTracks : Uint16;
+	var numTranslationsToCopy : Uint16;
+	var numTranslationsToEvalAlignedToSimd : Uint16;
+	var quantizationBits : Uint16;
+	var isScaleConstant : Bool;
+	var isTrackConstant : Bool;
+	var dataAddress : animAnimDataAddress;
+	var defferedBuffer : serializationDeferredDataBuffer;
+	var inplaceCompressedBuffer : DataBuffer;
+	var fallbackFrameIndices : array:Uint16;
+	var extraDataNames : array:CName;
+}
+
+import class abstract animIAnimationBuffer extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

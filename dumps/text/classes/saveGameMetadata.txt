@@ -1,0 +1,45 @@
+import struct saveGameMetadata
+{
+	var gameDefinition : String;
+	var activeQuests : String;
+	var trackedQuestEntry : String;
+	var trackedQuest : String;
+	var mainQuest : String;
+	var debugString : String;
+	var locationName : String;
+	var playerPosition : Vector3;
+	var playTime : Double;
+	var playthroughTime : Double;
+	var nextSavableEntityID : Uint32;
+	var nextNonSavableEntityID : Uint32;
+	var lifePath : gamedataLifePath;
+	var bodyGender : String;
+	var brainGender : String;
+	var level : Float;
+	var streetCred : Float;
+	var gunslinger : Float;
+	var assault : Float;
+	var demolition : Float;
+	var athletics : Float;
+	var brawling : Float;
+	var coldBlood : Float;
+	var stealth : Float;
+	var engineering : Float;
+	var crafting : Float;
+	var hacking : Float;
+	var combatHacking : Float;
+	var strength : Float;
+	var intelligence : Float;
+	var reflexes : Float;
+	var technicalAbility : Float;
+	var cool : Float;
+	var initialBuildID : String;
+	var finishedQuests : String;
+	var playthroughID : String;
+	var pointOfNoReturnId : String;
+	var visitID : String;
+	var buildSKU : String;
+	var buildPatch : String;
+	var difficulty : gameDifficulty;
+	var facts : array:String;
+}

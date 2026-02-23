@@ -1,0 +1,5 @@
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

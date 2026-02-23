@@ -1,0 +1,5 @@
+enum CasinoTableState
+{
+	Idle = 0,
+	Game = 1
+}

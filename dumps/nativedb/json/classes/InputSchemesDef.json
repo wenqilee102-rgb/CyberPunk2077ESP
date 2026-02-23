@@ -1,0 +1,1 @@
+{"a":"gamebbScriptDefinition","b":"InputSchemesDef","d":0,"e":[{"a":{"b":"gamebbScriptID_Uint32"},"b":"Device","c":128},{"a":{"b":"gamebbScriptID_Uint32"},"b":"Scheme","c":128},{"a":{"b":"gamebbScriptID_Variant"},"b":"InitializedInputHintManagerList","c":128}],"f":[{"a":"AutoCreateInSystem;","b":"AutoCreateInSystem","c":{"a":1},"d":176}]}

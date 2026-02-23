@@ -1,0 +1,5 @@
+import struct gameCoordinates
+{
+	var latitude : Int32;
+	var longitude : Int32;
+}

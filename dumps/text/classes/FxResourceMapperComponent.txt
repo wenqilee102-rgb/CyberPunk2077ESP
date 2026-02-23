@@ -1,0 +1,103 @@
+class FxResourceMapperComponent extends gameScriptableComponent
+{
+	protected var areaEffectData : array:handle:AreaEffectData;
+	protected var investigationSlotOffsetMultiplier : Float;
+	protected var areaEffectInFocusMode : array:handle:AreaEffectTargetData;
+	protected var optionalAreaEffectData : array:handle:OptionalAreaEffectData;
+	private   var DEBUG_copiedDataFromEntity : Bool;
+	private   var DEBUG_copiedDataFromFXStruct : Bool;
+	private   var isInitialized : Bool;
+
+	function CalculateRangeSphere(desiredRange : Float, out effectName : CName, out effectSize : Float); // CalculateRangeSphere;FloatCNameFloat
+	function CanCompareRanges(type : DeviceStimType, currentType : DeviceStimType) : Bool; // CanCompareRanges;DeviceStimTypeDeviceStimType
+	function CopyDataToFxMapClass(areaEffectsData : script_ref:array:SAreaEffectData, DEBUG_entityCopy : Bool, DEBUG_fxCopy : Bool); // CopyDataToFxMapClass;script_ref<array<SAreaEffectData>>BoolBool
+	function CopyEffectToFxMapClass(areaEffectsInFocusMode : script_ref:array:SAreaEffectTargetData); // CopyEffectToFxMapClass;script_ref<array<SAreaEffectTargetData>>
+	function CreateAreaEffectTargetData(mainEffect : handle:AreaEffectData); // CreateAreaEffectTargetData;AreaEffectData
+	function CreateData(attackTDBID : TweakDBID, index : Int32, optional gameEffectNameOverride : CName, optional dontHighlightOnLookat : Bool); // CreateData;TweakDBIDInt32CNameBool
+	function CreateEffectStructDataFromAttack(attackTDBID : TweakDBID, index : Int32, optional gameEffectNameOverride : CName, optional dontHighlightOnLookat : Bool); // CreateEffectStructDataFromAttack;TweakDBIDInt32CNameBool
+	function GetAreaEffectData() : array:handle:AreaEffectData; // GetAreaEffectData;
+	function GetAreaEffectDataByIndex(index : Int32) : handle:AreaEffectData; // GetAreaEffectDataByIndex;Int32
+	function GetAreaEffectDataIndexByAction(action : handle:BaseScriptableAction) : Int32; // GetAreaEffectDataIndexByAction;BaseScriptableAction
+	function GetAreaEffectDataIndexByName(effectName : CName) : Int32; // GetAreaEffectDataIndexByName;CName
+	function GetAreaEffectDataNameByIndex(effectIndex : Int32) : CName; // GetAreaEffectDataNameByIndex;Int32
+	function GetAreaEffectDataSize() : Int32; // GetAreaEffectDataSize;
+	function GetAreaEffectInFocusMode() : array:handle:AreaEffectTargetData; // GetAreaEffectInFocusMode;
+	function GetAreaEffectInFocusModeByIndex(index : Int32) : handle:AreaEffectTargetData; // GetAreaEffectInFocusModeByIndex;Int32
+	function GetAreaEffectInFocusSize() : Int32; // GetAreaEffectInFocusSize;
+	function GetDistractionRange(type : DeviceStimType) : Float; // GetDistractionRange;DeviceStimType
+	function GetInvestigationSlotOffset() : Float; // GetInvestigationSlotOffset;
+	function GetSmallestDistractionRange(type : DeviceStimType) : Float; // GetSmallestDistractionRange;DeviceStimType
+	function HasAnyDistractions() : Bool; // HasAnyDistractions;
+	function Initialize(); // Initialize;
+	function OnGameAttach(); // OnGameAttach;
+	function TryAddOptionalAoeData(); // TryAddOptionalAoeData;
+	function TryGetActionIndex(action : handle:ScriptableDeviceAction, out actionIndex : Int32) : Bool; // TryGetActionIndex;ScriptableDeviceActionInt32
+	function TryGetAreaEffectByAction(action : handle:ScriptableDeviceAction, out areaEffectData : handle:AreaEffectData) : Bool; // TryGetAreaEffectByAction;ScriptableDeviceActionAreaEffectData
+	function TryInitialize(); // TryInitialize;
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

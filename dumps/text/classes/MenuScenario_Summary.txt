@@ -1,0 +1,55 @@
+class MenuScenario_Summary extends MenuScenario_PreGameSubMenu
+{
+	event OnAccept() : Bool; // OnAccept
+	event OnEnterScenario(prevScenario : CName, userData : handle:IScriptable) : Bool; // OnEnterScenario
+	event OnLeaveScenario(nextScenario : CName) : Bool; // OnLeaveScenario
+}
+
+class MenuScenario_PreGameSubMenu extends inkMenuScenario
+{
+	protected var prevScenario : CName;
+	protected var currSubMenuName : CName;
+
+	event OnBack() : Bool; // OnBack
+	event OnCloseInitializeUserScreen() : Bool; // OnCloseInitializeUserScreen
+	event OnEnterScenario(prevScenario : CName, userData : handle:IScriptable) : Bool; // OnEnterScenario
+	event OnHandleEngagementScreen(evt : handle:inkShowEngagementScreen) : Bool; // OnHandleEngagementScreen
+	event OnHandleInitializeUserScreen(evt : handle:inkShowInitializeUserScreen) : Bool; // OnHandleInitializeUserScreen
+	event OnLeaveScenario(nextScenario : CName) : Bool; // OnLeaveScenario
+	event OnRequestHideMainMenuTooltip() : Bool; // OnRequestHideMainMenuTooltip
+	event OnRequestPatchNotes() : Bool; // OnRequestPatchNotes
+	event OnRequestShowMainMenuTooltip(userData : handle:IScriptable) : Bool; // OnRequestShowMainMenuTooltip
+	event OnRequetCloseExpansionPopup() : Bool; // OnRequetCloseExpansionPopup
+	event OnRequetClosePatchNotes() : Bool; // OnRequetClosePatchNotes
+	event OnRequetPurchaseDisabledError() : Bool; // OnRequetPurchaseDisabledError
+	event OnSwitchToEngagementScreen() : Bool; // OnSwitchToEngagementScreen
+	event OnSwitchToInitializeUserScreen() : Bool; // OnSwitchToInitializeUserScreen
+
+	function CloseSubMenu(); // CloseSubMenu;
+	function DisplayGog(); // DisplayGog;
+	function OnSubmenuOpen(); // OnSubmenuOpen;
+	function OpenSubMenu(menuName : CName, optional userData : handle:IScriptable); // OpenSubMenu;CNameIScriptable
+}
+
+import class inkMenuScenario extends IScriptable
+{
+	import function GetMenusState() : whandle:inkMenusState; // GetMenusState
+	import function GetSystemRequestsHandler() : whandle:inkISystemRequestsHandler; // GetSystemRequestsHandler
+	import function QueueBroadcastEvent(evt : handle:redEvent); // QueueBroadcastEvent
+	import function QueueEvent(evt : handle:redEvent); // QueueEvent
+	import function SwitchToScenario(name : CName, optional userData : handle:IScriptable); // SwitchToScenario
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

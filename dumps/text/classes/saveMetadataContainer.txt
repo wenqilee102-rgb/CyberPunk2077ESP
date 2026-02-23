@@ -1,0 +1,8 @@
+import class saveMetadataContainer extends ISerializable
+{
+	var metadata : saveMetadata;
+}
+
+import class abstract ISerializable
+{
+}

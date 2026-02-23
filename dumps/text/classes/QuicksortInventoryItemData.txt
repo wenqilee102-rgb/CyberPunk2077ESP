@@ -1,0 +1,19 @@
+class QuicksortInventoryItemData extends IScriptable
+{
+	static function Partition(items : script_ref:array:gameInventoryItemData, comparator : handle:InventoryItemDataComparator, leftIndex : Int32, rightIndex : Int32) : Int32; // QuicksortInventoryItemData::Partition;script_ref<array<InventoryItemData>>InventoryItemDataComparatorInt32Int32
+	static function Sort(items : script_ref:array:gameInventoryItemData, comparator : handle:InventoryItemDataComparator, leftIndex : Int32, rightIndex : Int32); // QuicksortInventoryItemData::Sort;script_ref<array<InventoryItemData>>InventoryItemDataComparatorInt32Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

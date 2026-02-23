@@ -1,0 +1,24 @@
+import class worldgeometryaverageNormalDetectionHelperQuery extends IScriptable
+{
+	import function SetFilter(filter : physicsQueryFilter); // SetFilter
+	import function SetOwnerDirection(ownerDirection : Vector4); // SetOwnerDirection
+	import function SetOwnerPosition(ownerPosition : Vector4); // SetOwnerPosition
+	import function SetQueryDirection(queryDirection : Vector4); // SetQueryDirection
+	import function SetQueryDistanceOffset(distanceOffset : Float); // SetQueryDistanceOffset
+	import function SetQueryLength(queryLength : Float); // SetQueryLength
+	import function SetRadius(radius : Float); // SetRadius
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

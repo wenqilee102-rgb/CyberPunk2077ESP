@@ -1,0 +1,4 @@
+import struct inkLocalizedBink
+{
+	var binks : array:inkBinkLanguageDescriptor;
+}

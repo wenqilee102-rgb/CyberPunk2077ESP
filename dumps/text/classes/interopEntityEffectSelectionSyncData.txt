@@ -1,0 +1,5 @@
+import struct interopEntityEffectSelectionSyncData
+{
+	var effectName : CName;
+	var effectIDPath : toolsEditorObjectIDPath;
+}

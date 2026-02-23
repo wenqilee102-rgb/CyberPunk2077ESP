@@ -1,0 +1,10 @@
+import class physicsCustomFilterData extends ISerializable
+{
+	var collisionType : array:CName;
+	var collideWith : array:CName;
+	var queryDetect : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,132 @@
+class UIInventoryItem extends IScriptable
+{
+	public    var ID : gameItemID;
+	public    var Hash : Uint64;
+	public    var DEBUG_iconErrorInfo : handle:DEBUG_IconErrorInfo;
+	private   var manager : whandle:UIInventoryItemsManager;
+	private   var owner : whandle:gameObject;
+	private   var itemData : whandle:gameItemData;
+	private   var realItemData : whandle:gameItemData;
+	private   var recipeItemData : handle:gameItemData;
+	private   var itemRecord : whandle:gamedataItem_Record;
+	private   var realItemRecord : whandle:gamedataItem_Record;
+	private   var itemTweakID : TweakDBID;
+	private   var realItemTweakID : TweakDBID;
+	private   var data : handle:UIInventoryItemInternalData;
+	private   var weaponData : handle:UIInventoryWeaponInternalData;
+	private   var programData : handle:UIInventoryItemProgramData;
+	private   var grenadeData : handle:UIInventoryItemGrenadeData;
+	private   var cyberwareUpgradeData : handle:InventoryTooltiData_CyberwareUpgradeData;
+	private   var parentItem : whandle:gameItemData;
+	private   var slotID : TweakDBID;
+	private   var fetchedFlags : Int32;
+	private   var isQuantityDirty : Bool;
+	private   var craftingResult : whandle:gamedataCraftingResult_Record;
+	private   var TEMP_isEquippedPrefetched : Bool;
+	public    var TEMP_isEquipped : Bool;
+
+	static function FromInventoryItemData(owner : whandle:gameObject, itemData : script_ref:gameInventoryItemData, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItem; // UIInventoryItem::FromInventoryItemData;GameObjectscript_ref<InventoryItemData>UIInventoryItemsManager
+	static function FromMinimalItemTooltipData(owner : whandle:gameObject, data : handle:MinimalItemTooltipData, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItem; // UIInventoryItem::FromMinimalItemTooltipData;GameObjectMinimalItemTooltipDataUIInventoryItemsManager
+	static function Make(owner : whandle:gameObject, itemData : handle:gameItemData, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItem; // UIInventoryItem::Make;GameObjectgameItemDataUIInventoryItemsManager
+	static function Make(owner : whandle:gameObject, itemData : handle:gameItemData, itemTweakID : TweakDBID, itemRecord : whandle:gamedataItem_Record, optional manager : whandle:UIInventoryItemsManager) : handle:UIInventoryItem; // UIInventoryItem::Make;GameObjectgameItemDataTweakDBIDItem_RecordUIInventoryItemsManager
+
+	function FetchDamageData(); // FetchDamageData;
+	function FetchImmediate(); // FetchImmediate;
+	function FetchWeaponImmediate(weaponType : WeaponType); // FetchWeaponImmediate;WeaponType
+	function GetAmmo(optional update : Bool) : Int32; // GetAmmo;Bool
+	function GetAttackSpeed() : Float; // GetAttackSpeed;
+	function GetBuyPrice() : Float; // GetBuyPrice;
+	function GetComparisonQualityF() : Float; // GetComparisonQualityF;
+	function GetCyberwareUpgradeData(player : whandle:gameObject, optional force : Bool) : handle:InventoryTooltiData_CyberwareUpgradeData; // GetCyberwareUpgradeData;GameObjectBool
+	function GetDamageMax() : Float; // GetDamageMax;
+	function GetDamageMin() : Float; // GetDamageMin;
+	function GetDescription() : String; // GetDescription;
+	function GetEquipmentArea() : gamedataEquipmentArea; // GetEquipmentArea;
+	function GetFilterCategory() : ItemFilterCategory; // GetFilterCategory;
+	function GetGameplayDescription() : String; // GetGameplayDescription;
+	function GetGrenadeData(player : whandle:PlayerPuppet, force : Bool) : whandle:UIInventoryItemGrenadeData; // GetGrenadeData;PlayerPuppetBool
+	function GetID() : gameItemID; // GetID;
+	function GetIconPath() : String; // GetIconPath;
+	function GetItemData() : whandle:gameItemData; // GetItemData;
+	function GetItemPlus() : Float; // GetItemPlus;
+	function GetItemRecord() : whandle:gamedataItem_Record; // GetItemRecord;
+	function GetItemType() : gamedataItemType; // GetItemType;
+	function GetItemTypeOrder() : Int32; // GetItemTypeOrder;
+	function GetModsManager() : whandle:UIInventoryItemModsManager; // GetModsManager;
+	function GetName() : String; // GetName;
+	function GetNumberOfPellets() : Int32; // GetNumberOfPellets;
+	function GetOwner() : whandle:gameObject; // GetOwner;
+	function GetPerkGroup() : gamedataPerkWeaponGroupType; // GetPerkGroup;
+	function GetPrimaryStat() : whandle:UIInventoryItemStat; // GetPrimaryStat;
+	function GetProgramData(player : whandle:PlayerPuppet, force : Bool) : whandle:UIInventoryItemProgramData; // GetProgramData;PlayerPuppetBool
+	function GetQuality() : gamedataQuality; // GetQuality;
+	function GetQualityInt() : Int32; // GetQualityInt;
+	function GetQualityName() : CName; // GetQualityName;
+	function GetQualityText(optional type : RarityItemType) : String; // GetQualityText;RarityItemType
+	function GetQuantity(optional update : Bool) : Int32; // GetQuantity;Bool
+	function GetRealItemData() : whandle:gameItemData; // GetRealItemData;
+	function GetRealItemRecord() : whandle:gamedataItem_Record; // GetRealItemRecord;
+	function GetRealTweakDBID() : TweakDBID; // GetRealTweakDBID;
+	function GetRequiredLevel() : Int32; // GetRequiredLevel;
+	function GetRequirementsManager(player : whandle:gameObject) : whandle:UIInventoryItemRequirementsManager; // GetRequirementsManager;GameObject
+	function GetSellPrice() : Float; // GetSellPrice;
+	function GetStatsManager() : whandle:UIInventoryItemStatsManager; // GetStatsManager;
+	function GetStatsManagerPure() : whandle:UIInventoryItemStatsManager; // GetStatsManagerPure;
+	function GetTweakDBID() : TweakDBID; // GetTweakDBID;
+	function GetUIItemCategory() : UIItemCategory; // GetUIItemCategory;
+	function GetWeaponEvolution() : gamedataWeaponEvolution; // GetWeaponEvolution;
+	function GetWeaponType() : WeaponType; // GetWeaponType;
+	function GetWeight() : Float; // GetWeight;
+	function HasAnyTag(tagsToCheck : script_ref:array:CName) : Bool; // HasAnyTag;script_ref<array<CName>>
+	function HasScopeInstalled() : Bool; // HasScopeInstalled;
+	function HasScopeSlot() : Bool; // HasScopeSlot;
+	function HasSilencerInstalled() : Bool; // HasSilencerInstalled;
+	function HasSilencerSlot() : Bool; // HasSilencerSlot;
+	function Internal_FlushComparedBars(); // Internal_FlushComparedBars;
+	function Internal_FlushCraftingResults(); // Internal_FlushCraftingResults;
+	function Internal_FlushCyberwareUpgrade(); // Internal_FlushCyberwareUpgrade;
+	function Internal_FlushRequirements(); // Internal_FlushRequirements;
+	function Internal_GetParentItem() : whandle:gameItemData; // Internal_GetParentItem;
+	function Internal_GetSlotID() : TweakDBID; // Internal_GetSlotID;
+	function Internal_MarkModsDirty(); // Internal_MarkModsDirty;
+	function Internal_MarkStatsDirty(); // Internal_MarkStatsDirty;
+	function IsAnyCyberware() : Bool; // IsAnyCyberware;
+	function IsBroken() : Bool; // IsBroken;
+	function IsClothing() : Bool; // IsClothing;
+	function IsCrafted() : Bool; // IsCrafted;
+	function IsCyberdeck() : Bool; // IsCyberdeck;
+	function IsCyberware() : Bool; // IsCyberware;
+	function IsCyberwareWeapon() : Bool; // IsCyberwareWeapon;
+	function IsEquipped(optional force : Bool) : Bool; // IsEquipped;Bool
+	function IsHealingItem() : Bool; // IsHealingItem;
+	function IsIconic() : Bool; // IsIconic;
+	function IsIllegal() : Bool; // IsIllegal;
+	function IsJunk() : Bool; // IsJunk;
+	function IsNew() : Bool; // IsNew;
+	function IsOfEquippableType() : Bool; // IsOfEquippableType;
+	function IsPart() : Bool; // IsPart;
+	function IsPlayerFavourite() : Bool; // IsPlayerFavourite;
+	function IsProgram() : Bool; // IsProgram;
+	function IsQuestItem() : Bool; // IsQuestItem;
+	function IsRecipe() : Bool; // IsRecipe;
+	function IsSellable() : Bool; // IsSellable;
+	function IsTransmogItem() : Bool; // IsTransmogItem;
+	function IsUsingBars() : Bool; // IsUsingBars;
+	function IsWeapon() : Bool; // IsWeapon;
+	function MarkQuantityDirty(); // MarkQuantityDirty;
+	function SetQuantity(quantity : Int32); // SetQuantity;Int32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

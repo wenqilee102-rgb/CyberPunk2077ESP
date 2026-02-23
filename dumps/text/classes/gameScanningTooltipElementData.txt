@@ -1,0 +1,6 @@
+import struct gameScanningTooltipElementData
+{
+	var recordID : TweakDBID;
+	var localizedName : CName;
+	var localizedDescription : CName;
+}

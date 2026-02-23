@@ -1,0 +1,36 @@
+class NPCManager extends IScriptable
+{
+	private   var owner : whandle:NPCPuppet;
+
+	static function HasAllTags(recordID : TweakDBID, tags : script_ref:array:CName) : Bool; // NPCManager::HasAllTags;TweakDBIDscript_ref<array<CName>>
+	static function HasAllVisualTags(puppet : whandle:ScriptedPuppet, visualTags : script_ref:array:CName) : Bool; // NPCManager::HasAllVisualTags;ScriptedPuppetscript_ref<array<CName>>
+	static function HasAnyTags(recordID : TweakDBID, tags : script_ref:array:CName) : Bool; // NPCManager::HasAnyTags;TweakDBIDscript_ref<array<CName>>
+	static function HasAnyVisualTags(puppet : whandle:ScriptedPuppet, visualTags : script_ref:array:CName) : Bool; // NPCManager::HasAnyVisualTags;ScriptedPuppetscript_ref<array<CName>>
+	static function HasTag(recordID : TweakDBID, tag : CName) : Bool; // NPCManager::HasTag;TweakDBIDCName
+	static function HasVisualTag(puppet : whandle:ScriptedPuppet, visualTag : CName) : Bool; // NPCManager::HasVisualTag;ScriptedPuppetCName
+
+	function ApplySpawnAnimWrappers(); // ApplySpawnAnimWrappers;
+	function ApplySpawnGLPs(record : whandle:gamedataCharacter_Record, applyAnimWrappers : Bool); // ApplySpawnGLPs;Character_RecordBool
+	function ClearNPCImmortalityMode(); // ClearNPCImmortalityMode;
+	function Init(owner : handle:gameObject); // Init;GameObject
+	function ScaleToPlayer(); // ScaleToPlayer;
+	function SetNPCAbilities(record : whandle:gamedataCharacter_Record); // SetNPCAbilities;Character_Record
+	function SetNPCArchetypeData(record : whandle:gamedataCharacter_Record); // SetNPCArchetypeData;Character_Record
+	function SetNPCImmortalityMode(record : whandle:gamedataCharacter_Record); // SetNPCImmortalityMode;Character_Record
+	function SetNPCVisualTagsStats(record : whandle:gamedataCharacter_Record); // SetNPCVisualTagsStats;Character_Record
+	function UnInit(owner : handle:gameObject); // UnInit;GameObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,35 @@
+class ThrowingKnifeResourcePoolListener extends gameScriptStatPoolsListener
+{
+	private   var Crosshair : whandle:Crosshair_Melee_Knife;
+	private   var shouldDisplayBar : Bool;
+	private   var evt : handle:ThrowingKnifeReloadFinishedCrosshairEvent;
+
+	event OnStatPoolMaxValueReached(value : Float) : Bool; // OnStatPoolMaxValueReached
+	event OnStatPoolMinValueReached(value : Float) : Bool; // OnStatPoolMinValueReached
+
+	function Bind(crosshair : whandle:Crosshair_Melee_Knife, shouldDisplayBar : Bool); // Bind;Crosshair_Melee_KnifeBool
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class gameScriptStatPoolsListener extends gameIStatPoolsListener
+{
+	function OnStatPoolValueChanged(oldValue : Float, newValue : Float, percToPoints : Float); // OnStatPoolValueChanged;FloatFloatFloat
+}
+
+import class abstract gameIStatPoolsListener extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

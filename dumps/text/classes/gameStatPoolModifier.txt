@@ -1,0 +1,10 @@
+import struct gameStatPoolModifier
+{
+	var enabled : Bool;
+	var rangeBegin : Float;
+	var rangeEnd : Float;
+	var startDelay : Float;
+	var valuePerSec : Float;
+	var delayOnChange : Bool;
+	var usingPointValues : Bool;
+}

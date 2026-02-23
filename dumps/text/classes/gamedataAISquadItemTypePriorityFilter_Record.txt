@@ -1,0 +1,45 @@
+import class gamedataAISquadItemTypePriorityFilter_Record extends gamedataAISquadItemPriorityFilter_Record
+{
+	import function GetTypesCount() : Int32; // GetTypesCount
+	import function GetTypesItem(index : Int32) : whandle:gamedataItemType_Record; // GetTypesItem
+	import function GetTypesItemHandle(index : Int32) : handle:gamedataItemType_Record; // GetTypesItemHandle
+	import function Types(out outList : array:whandle:gamedataItemType_Record); // Types
+	import function TypesContains(item : whandle:gamedataItemType_Record) : Bool; // TypesContains
+}
+
+import class gamedataAISquadItemPriorityFilter_Record extends gamedataAITicketFilter_Record
+{
+	import function RestoreOnFail() : Bool; // RestoreOnFail
+}
+
+import class gamedataAITicketFilter_Record extends gamedataAITicketCondition_Record
+{
+	import function ResetMembers() : Bool; // ResetMembers
+	import function ResetMembersIncludingUnwillings() : Bool; // ResetMembersIncludingUnwillings
+	import function SkipSelfOnce() : Bool; // SkipSelfOnce
+}
+
+import class gamedataAITicketCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

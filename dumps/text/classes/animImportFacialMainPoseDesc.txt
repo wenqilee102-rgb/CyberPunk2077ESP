@@ -1,0 +1,14 @@
+import struct animImportFacialMainPoseDesc
+{
+	var influencedBy : array:CName;
+	var influenceMainWeightIndices : array:Uint16;
+	var poses : array:animImportFacialPoseDesc;
+	var poseIndices : array:Uint16;
+	var weights : array:Float;
+	var inBetweenScopeMultipliers : array:Float;
+	var name : CName;
+	var index : Uint16;
+	var influenceType : Uint8;
+	var side : Uint8;
+	var facePart : Uint8;
+}

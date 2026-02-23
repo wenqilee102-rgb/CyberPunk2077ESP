@@ -1,0 +1,28 @@
+import class gamedataTankProjectileSpawnerData_Record extends gamedataTweakDBRecord
+{
+	import function GetProjectileListCount() : Int32; // GetProjectileListCount
+	import function GetProjectileListItem(index : Int32) : whandle:gamedataTankProjectile_Record; // GetProjectileListItem
+	import function GetProjectileListItemHandle(index : Int32) : handle:gamedataTankProjectile_Record; // GetProjectileListItemHandle
+	import function ProjectileList(out outList : array:whandle:gamedataTankProjectile_Record); // ProjectileList
+	import function ProjectileListContains(item : whandle:gamedataTankProjectile_Record) : Bool; // ProjectileListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

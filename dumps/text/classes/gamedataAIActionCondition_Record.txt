@@ -1,0 +1,227 @@
+import class gamedataAIActionCondition_Record extends gamedataTweakDBRecord
+{
+	import function Ability(out outList : array:whandle:gamedataAIAbilityCond_Record); // Ability
+	import function AbilityContains(item : whandle:gamedataAIAbilityCond_Record) : Bool; // AbilityContains
+	import function AmmoCountAND(out outList : array:whandle:gamedataAIAmmoCountCond_Record); // AmmoCountAND
+	import function AmmoCountANDContains(item : whandle:gamedataAIAmmoCountCond_Record) : Bool; // AmmoCountANDContains
+	import function AmmoCountOR(out outList : array:whandle:gamedataAIAmmoCountCond_Record); // AmmoCountOR
+	import function AmmoCountORContains(item : whandle:gamedataAIAmmoCountCond_Record) : Bool; // AmmoCountORContains
+	import function BlockCount() : whandle:gamedataAIBlockCountCond_Record; // BlockCount
+	import function BlockCountHandle() : handle:gamedataAIBlockCountCond_Record; // BlockCountHandle
+	import function CalculateLineOfSightVector(out outList : array:whandle:gamedataAICalculateLineOfSightVector_Record); // CalculateLineOfSightVector
+	import function CalculateLineOfSightVectorContains(item : whandle:gamedataAICalculateLineOfSightVector_Record) : Bool; // CalculateLineOfSightVectorContains
+	import function CalculatePath(out outList : array:whandle:gamedataAICalculatePathCond_Record); // CalculatePath
+	import function CalculatePathContains(item : whandle:gamedataAICalculatePathCond_Record) : Bool; // CalculatePathContains
+	import function CanThrow() : whandle:gamedataAIThrowCond_Record; // CanThrow
+	import function CanThrowHandle() : handle:gamedataAIThrowCond_Record; // CanThrowHandle
+	import function CommandAND(out outList : array:whandle:gamedataAICommandCond_Record); // CommandAND
+	import function CommandANDContains(item : whandle:gamedataAICommandCond_Record) : Bool; // CommandANDContains
+	import function CommandOR(out outList : array:whandle:gamedataAICommandCond_Record); // CommandOR
+	import function CommandORContains(item : whandle:gamedataAICommandCond_Record) : Bool; // CommandORContains
+	import function Condition() : whandle:gamedataAIActionSubCondition_Record; // Condition
+	import function ConditionHandle() : handle:gamedataAIActionSubCondition_Record; // ConditionHandle
+	import function Cooldown(out outList : array:whandle:gamedataAICooldownCond_Record); // Cooldown
+	import function CooldownContains(item : whandle:gamedataAICooldownCond_Record) : Bool; // CooldownContains
+	import function Cover() : whandle:gamedataAICoverCond_Record; // Cover
+	import function CoverHandle() : handle:gamedataAICoverCond_Record; // CoverHandle
+	import function DodgeCount() : whandle:gamedataAIDodgeCountCond_Record; // DodgeCount
+	import function DodgeCountHandle() : handle:gamedataAIDodgeCountCond_Record; // DodgeCountHandle
+	import function FriendlyFire() : whandle:gamedataAIFriendlyFireCond_Record; // FriendlyFire
+	import function FriendlyFireHandle() : handle:gamedataAIFriendlyFireCond_Record; // FriendlyFireHandle
+	import function GetAbilityCount() : Int32; // GetAbilityCount
+	import function GetAbilityItem(index : Int32) : whandle:gamedataAIAbilityCond_Record; // GetAbilityItem
+	import function GetAbilityItemHandle(index : Int32) : handle:gamedataAIAbilityCond_Record; // GetAbilityItemHandle
+	import function GetAmmoCountANDCount() : Int32; // GetAmmoCountANDCount
+	import function GetAmmoCountANDItem(index : Int32) : whandle:gamedataAIAmmoCountCond_Record; // GetAmmoCountANDItem
+	import function GetAmmoCountANDItemHandle(index : Int32) : handle:gamedataAIAmmoCountCond_Record; // GetAmmoCountANDItemHandle
+	import function GetAmmoCountORCount() : Int32; // GetAmmoCountORCount
+	import function GetAmmoCountORItem(index : Int32) : whandle:gamedataAIAmmoCountCond_Record; // GetAmmoCountORItem
+	import function GetAmmoCountORItemHandle(index : Int32) : handle:gamedataAIAmmoCountCond_Record; // GetAmmoCountORItemHandle
+	import function GetCalculateLineOfSightVectorCount() : Int32; // GetCalculateLineOfSightVectorCount
+	import function GetCalculateLineOfSightVectorItem(index : Int32) : whandle:gamedataAICalculateLineOfSightVector_Record; // GetCalculateLineOfSightVectorItem
+	import function GetCalculateLineOfSightVectorItemHandle(index : Int32) : handle:gamedataAICalculateLineOfSightVector_Record; // GetCalculateLineOfSightVectorItemHandle
+	import function GetCalculatePathCount() : Int32; // GetCalculatePathCount
+	import function GetCalculatePathItem(index : Int32) : whandle:gamedataAICalculatePathCond_Record; // GetCalculatePathItem
+	import function GetCalculatePathItemHandle(index : Int32) : handle:gamedataAICalculatePathCond_Record; // GetCalculatePathItemHandle
+	import function GetCommandANDCount() : Int32; // GetCommandANDCount
+	import function GetCommandANDItem(index : Int32) : whandle:gamedataAICommandCond_Record; // GetCommandANDItem
+	import function GetCommandANDItemHandle(index : Int32) : handle:gamedataAICommandCond_Record; // GetCommandANDItemHandle
+	import function GetCommandORCount() : Int32; // GetCommandORCount
+	import function GetCommandORItem(index : Int32) : whandle:gamedataAICommandCond_Record; // GetCommandORItem
+	import function GetCommandORItemHandle(index : Int32) : handle:gamedataAICommandCond_Record; // GetCommandORItemHandle
+	import function GetCooldownCount() : Int32; // GetCooldownCount
+	import function GetCooldownItem(index : Int32) : whandle:gamedataAICooldownCond_Record; // GetCooldownItem
+	import function GetCooldownItemHandle(index : Int32) : handle:gamedataAICooldownCond_Record; // GetCooldownItemHandle
+	import function GetInTacticPositionCount() : Int32; // GetInTacticPositionCount
+	import function GetInTacticPositionItem(index : Int32) : whandle:gamedataAIInTacticPositionCond_Record; // GetInTacticPositionItem
+	import function GetInTacticPositionItemHandle(index : Int32) : handle:gamedataAIInTacticPositionCond_Record; // GetInTacticPositionItemHandle
+	import function GetInventoryANDCount() : Int32; // GetInventoryANDCount
+	import function GetInventoryANDItem(index : Int32) : whandle:gamedataAIItemCond_Record; // GetInventoryANDItem
+	import function GetInventoryANDItemHandle(index : Int32) : handle:gamedataAIItemCond_Record; // GetInventoryANDItemHandle
+	import function GetInventoryORCount() : Int32; // GetInventoryORCount
+	import function GetInventoryORItem(index : Int32) : whandle:gamedataAIItemCond_Record; // GetInventoryORItem
+	import function GetInventoryORItemHandle(index : Int32) : handle:gamedataAIItemCond_Record; // GetInventoryORItemHandle
+	import function GetLookatCount() : Int32; // GetLookatCount
+	import function GetLookatItem(index : Int32) : whandle:gamedataAILookAtCond_Record; // GetLookatItem
+	import function GetLookatItemHandle(index : Int32) : handle:gamedataAILookAtCond_Record; // GetLookatItemHandle
+	import function GetMovementANDCount() : Int32; // GetMovementANDCount
+	import function GetMovementANDItem(index : Int32) : whandle:gamedataAIMovementCond_Record; // GetMovementANDItem
+	import function GetMovementANDItemHandle(index : Int32) : handle:gamedataAIMovementCond_Record; // GetMovementANDItemHandle
+	import function GetMovementORCount() : Int32; // GetMovementORCount
+	import function GetMovementORItem(index : Int32) : whandle:gamedataAIMovementCond_Record; // GetMovementORItem
+	import function GetMovementORItemHandle(index : Int32) : handle:gamedataAIMovementCond_Record; // GetMovementORItemHandle
+	import function GetReactionCount() : Int32; // GetReactionCount
+	import function GetReactionItem(index : Int32) : whandle:gamedataAIReactionCond_Record; // GetReactionItem
+	import function GetReactionItemHandle(index : Int32) : handle:gamedataAIReactionCond_Record; // GetReactionItemHandle
+	import function GetRestrictedMovementAreaCount() : Int32; // GetRestrictedMovementAreaCount
+	import function GetRestrictedMovementAreaItem(index : Int32) : whandle:gamedataAIRestrictedMovementAreaCond_Record; // GetRestrictedMovementAreaItem
+	import function GetRestrictedMovementAreaItemHandle(index : Int32) : handle:gamedataAIRestrictedMovementAreaCond_Record; // GetRestrictedMovementAreaItemHandle
+	import function GetSignalANDCount() : Int32; // GetSignalANDCount
+	import function GetSignalANDItem(index : Int32) : whandle:gamedataAISignalCond_Record; // GetSignalANDItem
+	import function GetSignalANDItemHandle(index : Int32) : handle:gamedataAISignalCond_Record; // GetSignalANDItemHandle
+	import function GetSignalORCount() : Int32; // GetSignalORCount
+	import function GetSignalORItem(index : Int32) : whandle:gamedataAISignalCond_Record; // GetSignalORItem
+	import function GetSignalORItemHandle(index : Int32) : handle:gamedataAISignalCond_Record; // GetSignalORItemHandle
+	import function GetSlotANDCount() : Int32; // GetSlotANDCount
+	import function GetSlotANDItem(index : Int32) : whandle:gamedataAISlotCond_Record; // GetSlotANDItem
+	import function GetSlotANDItemHandle(index : Int32) : handle:gamedataAISlotCond_Record; // GetSlotANDItemHandle
+	import function GetSlotORCount() : Int32; // GetSlotORCount
+	import function GetSlotORItem(index : Int32) : whandle:gamedataAISlotCond_Record; // GetSlotORItem
+	import function GetSlotORItemHandle(index : Int32) : handle:gamedataAISlotCond_Record; // GetSlotORItemHandle
+	import function GetSpatialANDCount() : Int32; // GetSpatialANDCount
+	import function GetSpatialANDItem(index : Int32) : whandle:gamedataAISpatialCond_Record; // GetSpatialANDItem
+	import function GetSpatialANDItemHandle(index : Int32) : handle:gamedataAISpatialCond_Record; // GetSpatialANDItemHandle
+	import function GetSpatialORCount() : Int32; // GetSpatialORCount
+	import function GetSpatialORItem(index : Int32) : whandle:gamedataAISpatialCond_Record; // GetSpatialORItem
+	import function GetSpatialORItemHandle(index : Int32) : handle:gamedataAISpatialCond_Record; // GetSpatialORItemHandle
+	import function GetSquadANDCount() : Int32; // GetSquadANDCount
+	import function GetSquadANDItem(index : Int32) : whandle:gamedataAISquadCond_Record; // GetSquadANDItem
+	import function GetSquadANDItemHandle(index : Int32) : handle:gamedataAISquadCond_Record; // GetSquadANDItemHandle
+	import function GetSquadORCount() : Int32; // GetSquadORCount
+	import function GetSquadORItem(index : Int32) : whandle:gamedataAISquadCond_Record; // GetSquadORItem
+	import function GetSquadORItemHandle(index : Int32) : handle:gamedataAISquadCond_Record; // GetSquadORItemHandle
+	import function GetStatPoolANDCount() : Int32; // GetStatPoolANDCount
+	import function GetStatPoolANDItem(index : Int32) : whandle:gamedataAIStatPoolCond_Record; // GetStatPoolANDItem
+	import function GetStatPoolANDItemHandle(index : Int32) : handle:gamedataAIStatPoolCond_Record; // GetStatPoolANDItemHandle
+	import function GetStatPoolORCount() : Int32; // GetStatPoolORCount
+	import function GetStatPoolORItem(index : Int32) : whandle:gamedataAIStatPoolCond_Record; // GetStatPoolORItem
+	import function GetStatPoolORItemHandle(index : Int32) : handle:gamedataAIStatPoolCond_Record; // GetStatPoolORItemHandle
+	import function GetStateCount() : Int32; // GetStateCount
+	import function GetStateItem(index : Int32) : whandle:gamedataAIStateCond_Record; // GetStateItem
+	import function GetStateItemHandle(index : Int32) : handle:gamedataAIStateCond_Record; // GetStateItemHandle
+	import function GetStatusEffectANDCount() : Int32; // GetStatusEffectANDCount
+	import function GetStatusEffectANDItem(index : Int32) : whandle:gamedataAIStatusEffectCond_Record; // GetStatusEffectANDItem
+	import function GetStatusEffectANDItemHandle(index : Int32) : handle:gamedataAIStatusEffectCond_Record; // GetStatusEffectANDItemHandle
+	import function GetStatusEffectORCount() : Int32; // GetStatusEffectORCount
+	import function GetStatusEffectORItem(index : Int32) : whandle:gamedataAIStatusEffectCond_Record; // GetStatusEffectORItem
+	import function GetStatusEffectORItemHandle(index : Int32) : handle:gamedataAIStatusEffectCond_Record; // GetStatusEffectORItemHandle
+	import function GetTresspassingCount() : Int32; // GetTresspassingCount
+	import function GetTresspassingItem(index : Int32) : whandle:gamedataAITresspassingCond_Record; // GetTresspassingItem
+	import function GetTresspassingItemHandle(index : Int32) : handle:gamedataAITresspassingCond_Record; // GetTresspassingItemHandle
+	import function GetVehicleANDCount() : Int32; // GetVehicleANDCount
+	import function GetVehicleANDItem(index : Int32) : whandle:gamedataAIVehicleCond_Record; // GetVehicleANDItem
+	import function GetVehicleANDItemHandle(index : Int32) : handle:gamedataAIVehicleCond_Record; // GetVehicleANDItemHandle
+	import function GetVehicleORCount() : Int32; // GetVehicleORCount
+	import function GetVehicleORItem(index : Int32) : whandle:gamedataAIVehicleCond_Record; // GetVehicleORItem
+	import function GetVehicleORItemHandle(index : Int32) : handle:gamedataAIVehicleCond_Record; // GetVehicleORItemHandle
+	import function GetWeakSpotANDCount() : Int32; // GetWeakSpotANDCount
+	import function GetWeakSpotANDItem(index : Int32) : whandle:gamedataAIWeakSpotCond_Record; // GetWeakSpotANDItem
+	import function GetWeakSpotANDItemHandle(index : Int32) : handle:gamedataAIWeakSpotCond_Record; // GetWeakSpotANDItemHandle
+	import function GetWeakSpotORCount() : Int32; // GetWeakSpotORCount
+	import function GetWeakSpotORItem(index : Int32) : whandle:gamedataAIWeakSpotCond_Record; // GetWeakSpotORItem
+	import function GetWeakSpotORItemHandle(index : Int32) : handle:gamedataAIWeakSpotCond_Record; // GetWeakSpotORItemHandle
+	import function GoToCover() : whandle:gamedataAIGoToCoverCond_Record; // GoToCover
+	import function GoToCoverHandle() : handle:gamedataAIGoToCoverCond_Record; // GoToCoverHandle
+	import function Hit() : whandle:gamedataAIHitCond_Record; // Hit
+	import function HitHandle() : handle:gamedataAIHitCond_Record; // HitHandle
+	import function InTacticPosition(out outList : array:whandle:gamedataAIInTacticPositionCond_Record); // InTacticPosition
+	import function InTacticPositionContains(item : whandle:gamedataAIInTacticPositionCond_Record) : Bool; // InTacticPositionContains
+	import function InventoryAND(out outList : array:whandle:gamedataAIItemCond_Record); // InventoryAND
+	import function InventoryANDContains(item : whandle:gamedataAIItemCond_Record) : Bool; // InventoryANDContains
+	import function InventoryOR(out outList : array:whandle:gamedataAIItemCond_Record); // InventoryOR
+	import function InventoryORContains(item : whandle:gamedataAIItemCond_Record) : Bool; // InventoryORContains
+	import function Lookat(out outList : array:whandle:gamedataAILookAtCond_Record); // Lookat
+	import function LookatContains(item : whandle:gamedataAILookAtCond_Record) : Bool; // LookatContains
+	import function MovementAND(out outList : array:whandle:gamedataAIMovementCond_Record); // MovementAND
+	import function MovementANDContains(item : whandle:gamedataAIMovementCond_Record) : Bool; // MovementANDContains
+	import function MovementOR(out outList : array:whandle:gamedataAIMovementCond_Record); // MovementOR
+	import function MovementORContains(item : whandle:gamedataAIMovementCond_Record) : Bool; // MovementORContains
+	import function NpcType() : whandle:gamedataAINPCTypeCond_Record; // NpcType
+	import function NpcTypeHandle() : handle:gamedataAINPCTypeCond_Record; // NpcTypeHandle
+	import function OptimalDistance() : whandle:gamedataAIOptimalDistanceCond_Record; // OptimalDistance
+	import function OptimalDistanceHandle() : handle:gamedataAIOptimalDistanceCond_Record; // OptimalDistanceHandle
+	import function PreviousAttack() : whandle:gamedataAIPreviousAttackCond_Record; // PreviousAttack
+	import function PreviousAttackHandle() : handle:gamedataAIPreviousAttackCond_Record; // PreviousAttackHandle
+	import function Reaction(out outList : array:whandle:gamedataAIReactionCond_Record); // Reaction
+	import function ReactionContains(item : whandle:gamedataAIReactionCond_Record) : Bool; // ReactionContains
+	import function RestrictedMovementArea(out outList : array:whandle:gamedataAIRestrictedMovementAreaCond_Record); // RestrictedMovementArea
+	import function RestrictedMovementAreaContains(item : whandle:gamedataAIRestrictedMovementAreaCond_Record) : Bool; // RestrictedMovementAreaContains
+	import function Security() : whandle:gamedataAISecurityCond_Record; // Security
+	import function SecurityHandle() : handle:gamedataAISecurityCond_Record; // SecurityHandle
+	import function SignalAND(out outList : array:whandle:gamedataAISignalCond_Record); // SignalAND
+	import function SignalANDContains(item : whandle:gamedataAISignalCond_Record) : Bool; // SignalANDContains
+	import function SignalOR(out outList : array:whandle:gamedataAISignalCond_Record); // SignalOR
+	import function SignalORContains(item : whandle:gamedataAISignalCond_Record) : Bool; // SignalORContains
+	import function SlotAND(out outList : array:whandle:gamedataAISlotCond_Record); // SlotAND
+	import function SlotANDContains(item : whandle:gamedataAISlotCond_Record) : Bool; // SlotANDContains
+	import function SlotOR(out outList : array:whandle:gamedataAISlotCond_Record); // SlotOR
+	import function SlotORContains(item : whandle:gamedataAISlotCond_Record) : Bool; // SlotORContains
+	import function SpatialAND(out outList : array:whandle:gamedataAISpatialCond_Record); // SpatialAND
+	import function SpatialANDContains(item : whandle:gamedataAISpatialCond_Record) : Bool; // SpatialANDContains
+	import function SpatialOR(out outList : array:whandle:gamedataAISpatialCond_Record); // SpatialOR
+	import function SpatialORContains(item : whandle:gamedataAISpatialCond_Record) : Bool; // SpatialORContains
+	import function SquadAND(out outList : array:whandle:gamedataAISquadCond_Record); // SquadAND
+	import function SquadANDContains(item : whandle:gamedataAISquadCond_Record) : Bool; // SquadANDContains
+	import function SquadOR(out outList : array:whandle:gamedataAISquadCond_Record); // SquadOR
+	import function SquadORContains(item : whandle:gamedataAISquadCond_Record) : Bool; // SquadORContains
+	import function StatPoolAND(out outList : array:whandle:gamedataAIStatPoolCond_Record); // StatPoolAND
+	import function StatPoolANDContains(item : whandle:gamedataAIStatPoolCond_Record) : Bool; // StatPoolANDContains
+	import function StatPoolOR(out outList : array:whandle:gamedataAIStatPoolCond_Record); // StatPoolOR
+	import function StatPoolORContains(item : whandle:gamedataAIStatPoolCond_Record) : Bool; // StatPoolORContains
+	import function State(out outList : array:whandle:gamedataAIStateCond_Record); // State
+	import function StateContains(item : whandle:gamedataAIStateCond_Record) : Bool; // StateContains
+	import function StatusEffectAND(out outList : array:whandle:gamedataAIStatusEffectCond_Record); // StatusEffectAND
+	import function StatusEffectANDContains(item : whandle:gamedataAIStatusEffectCond_Record) : Bool; // StatusEffectANDContains
+	import function StatusEffectOR(out outList : array:whandle:gamedataAIStatusEffectCond_Record); // StatusEffectOR
+	import function StatusEffectORContains(item : whandle:gamedataAIStatusEffectCond_Record) : Bool; // StatusEffectORContains
+	import function Target() : whandle:gamedataAITargetCond_Record; // Target
+	import function TargetHandle() : handle:gamedataAITargetCond_Record; // TargetHandle
+	import function Tresspassing(out outList : array:whandle:gamedataAITresspassingCond_Record); // Tresspassing
+	import function TresspassingContains(item : whandle:gamedataAITresspassingCond_Record) : Bool; // TresspassingContains
+	import function ValidCover() : whandle:gamedataAIValidCoversCond_Record; // ValidCover
+	import function ValidCoverHandle() : handle:gamedataAIValidCoversCond_Record; // ValidCoverHandle
+	import function VehicleAND(out outList : array:whandle:gamedataAIVehicleCond_Record); // VehicleAND
+	import function VehicleANDContains(item : whandle:gamedataAIVehicleCond_Record) : Bool; // VehicleANDContains
+	import function VehicleOR(out outList : array:whandle:gamedataAIVehicleCond_Record); // VehicleOR
+	import function VehicleORContains(item : whandle:gamedataAIVehicleCond_Record) : Bool; // VehicleORContains
+	import function WeakSpotAND(out outList : array:whandle:gamedataAIWeakSpotCond_Record); // WeakSpotAND
+	import function WeakSpotANDContains(item : whandle:gamedataAIWeakSpotCond_Record) : Bool; // WeakSpotANDContains
+	import function WeakSpotOR(out outList : array:whandle:gamedataAIWeakSpotCond_Record); // WeakSpotOR
+	import function WeakSpotORContains(item : whandle:gamedataAIWeakSpotCond_Record) : Bool; // WeakSpotORContains
+	import function Weapon() : whandle:gamedataAIHasWeapon_Record; // Weapon
+	import function WeaponHandle() : handle:gamedataAIHasWeapon_Record; // WeaponHandle
+	import function WeaponLockedOnTarget() : whandle:gamedataAIWeaponLockedOnTargetCond_Record; // WeaponLockedOnTarget
+	import function WeaponLockedOnTargetHandle() : handle:gamedataAIWeaponLockedOnTargetCond_Record; // WeaponLockedOnTargetHandle
+	import function Workspot() : whandle:gamedataAIWorkspotCond_Record; // Workspot
+	import function WorkspotHandle() : handle:gamedataAIWorkspotCond_Record; // WorkspotHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

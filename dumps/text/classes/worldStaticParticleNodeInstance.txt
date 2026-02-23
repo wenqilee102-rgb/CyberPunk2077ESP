@@ -1,0 +1,12 @@
+import class worldStaticParticleNodeInstance extends worldINodeInstance
+{
+	var renderLayerMask : RenderSceneLayerMask;
+}
+
+import class abstract worldINodeInstance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

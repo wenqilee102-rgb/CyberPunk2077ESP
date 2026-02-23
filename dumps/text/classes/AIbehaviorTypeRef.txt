@@ -1,0 +1,6 @@
+import struct AIbehaviorTypeRef
+{
+	var isSet : Bool;
+	var customType : CName;
+	var enumeratedType : AIArgumentType;
+}

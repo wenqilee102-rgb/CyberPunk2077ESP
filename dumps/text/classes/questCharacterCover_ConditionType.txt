@@ -1,0 +1,17 @@
+import class questCharacterCover_ConditionType extends questICharacterConditionType
+{
+	var puppetRef : gameEntityReference;
+	var coverRef : NodeRef;
+}
+
+import class abstract questICharacterConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,8 @@
+import struct gameBinkVideoSummary
+{
+	var currentTimeMs : Uint32;
+	var totalTimeMs : Uint32;
+	var currentFrame : Uint32;
+	var totalFrames : Uint32;
+	var frameRate : Uint32;
+}

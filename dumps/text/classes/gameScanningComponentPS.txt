@@ -1,0 +1,57 @@
+import class gameScanningComponentPS extends gameComponentPS
+{
+	var scanningState : gameScanningState;
+	var pctScanned : Float;
+	var isBlocked : Bool;
+	private   var storedClues : array:handle:CluePSData;
+	private   var isScanningDisabled : Bool;
+	private   var isDecriptionEnabled : Bool;
+	private   var objectDescriptionOverride : handle:ObjectScanningDescription;
+
+	function GetFocusClueSystem() : handle:FocusCluesSystem; // GetFocusClueSystem;
+	function GetMyEntityID() : entEntityID; // GetMyEntityID;
+	function GetObjectDecriptionOverride() : handle:ObjectScanningDescription; // GetObjectDecriptionOverride;
+	function GetOwnerEntityWeak() : whandle:entEntity; // GetOwnerEntityWeak;
+	function GetStoredClueData(id : Int32, out data : handle:CluePSData) : Bool; // GetStoredClueData;Int32CluePSData
+	function HasAnyStoredClues() : Bool; // HasAnyStoredClues;
+	function HasStoredClue(id : Int32) : Bool; // HasStoredClue;Int32
+	function IsDescriptionEnabled() : Bool; // IsDescriptionEnabled;
+	function IsScanningDisabled() : Bool; // IsScanningDisabled;
+	function OnClearCustomObjectDescription(evt : handle:ClearCustomObjectDescriptionEvent) : EntityNotificationType; // OnClearCustomObjectDescription;ClearCustomObjectDescriptionEvent
+	function OnClueStateChanged(evt : handle:gameFocusClueStateChangeEvent) : EntityNotificationType; // OnClueStateChanged;FocusClueStateChangeEvent
+	function OnDisableObjectDescription(evt : handle:DisableObjectDescriptionEvent) : EntityNotificationType; // OnDisableObjectDescription;DisableObjectDescriptionEvent
+	function OnDisableScanner(evt : handle:DisableScannerEvent) : EntityNotificationType; // OnDisableScanner;DisableScannerEvent
+	function OnLinkedClueUpdateEvent(evt : handle:linkedClueUpdateEvent) : EntityNotificationType; // OnLinkedClueUpdateEvent;linkedClueUpdateEvent
+	function OnQuestToggleClueConclusion(evt : handle:ToggleClueConclusionEvent) : EntityNotificationType; // OnQuestToggleClueConclusion;ToggleClueConclusionEvent
+	function OnSetCustomObjectDescription(evt : handle:SetCustomObjectDescriptionEvent) : EntityNotificationType; // OnSetCustomObjectDescription;SetCustomObjectDescriptionEvent
+	function OnToggleFocusClue(evt : handle:ToggleFocusClueEvent) : EntityNotificationType; // OnToggleFocusClue;ToggleFocusClueEvent
+	function RequestFocusClueSystemUpdate(clueData : handle:CluePSData); // RequestFocusClueSystemUpdate;CluePSData
+	function StoreClueData(id : Int32, clueData : script_ref:FocusClueDefinition, isScanned : Bool); // StoreClueData;Int32script_ref<FocusClueDefinition>Bool
+	function UpdateFocusClueData(id : Int32, clueData : script_ref:FocusClueDefinition) : Bool; // UpdateFocusClueData;Int32script_ref<FocusClueDefinition>
+}
+
+import class gameComponentPS extends gamePersistentState
+{
+}
+
+import class abstract gamePersistentState extends IScriptable
+{
+	import function ForcePersistentStateChanged(); // ForcePersistentStateChanged
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function GetID() : gamePersistentID; // GetID
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

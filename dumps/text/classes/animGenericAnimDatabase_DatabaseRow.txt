@@ -1,0 +1,5 @@
+import struct animGenericAnimDatabase_DatabaseRow
+{
+	var inputValues : array:Int32;
+	var animationData : animGenericAnimDatabase_AnimationData;
+}

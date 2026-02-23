@@ -1,0 +1,35 @@
+import class gamedataAimAssistConfigPreset_Record extends gamedataTweakDBRecord
+{
+	import function AimSnapParams() : whandle:gamedataAimAssistAimSnap_Record; // AimSnapParams
+	import function AimSnapParamsHandle() : handle:gamedataAimAssistAimSnap_Record; // AimSnapParamsHandle
+	import function BulletMagnetismParams() : whandle:gamedataAimAssistBulletMagnetism_Record; // BulletMagnetismParams
+	import function BulletMagnetismParamsHandle() : handle:gamedataAimAssistBulletMagnetism_Record; // BulletMagnetismParamsHandle
+	import function CommonParams() : whandle:gamedataAimAssistCommon_Record; // CommonParams
+	import function CommonParamsHandle() : handle:gamedataAimAssistCommon_Record; // CommonParamsHandle
+	import function FinishingParams() : whandle:gamedataAimAssistFinishing_Record; // FinishingParams
+	import function FinishingParamsHandle() : handle:gamedataAimAssistFinishing_Record; // FinishingParamsHandle
+	import function MagnetismParams() : whandle:gamedataAimAssistMagnetism_Record; // MagnetismParams
+	import function MagnetismParamsHandle() : handle:gamedataAimAssistMagnetism_Record; // MagnetismParamsHandle
+	import function MeleeParams() : whandle:gamedataAimAssistMelee_Record; // MeleeParams
+	import function MeleeParamsHandle() : handle:gamedataAimAssistMelee_Record; // MeleeParamsHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

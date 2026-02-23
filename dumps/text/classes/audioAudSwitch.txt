@@ -1,0 +1,5 @@
+import struct audioAudSwitch
+{
+	var name : CName;
+	var value : CName;
+}

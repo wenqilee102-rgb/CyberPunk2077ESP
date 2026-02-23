@@ -1,0 +1,43 @@
+import struct rendRenderParticleBlobEmitterInfo
+{
+	var emitterHash : Uint64;
+	var diffuseWrapFactor : Float;
+	var backLightingFactor : Float;
+	var lightingMipBias : Uint32;
+	var maskInsideCar : Bool;
+	var maskInsideInterior : Bool;
+	var maskAboveWater : Bool;
+	var maskUnderWater : Bool;
+	var maxParticles : Uint32;
+	var emitterLoops : Int8;
+	var internalPriority : Uint8;
+	var keepSimulationLocal : Bool;
+	var killOnCollision : Bool;
+	var initialParticleCount : Uint8;
+	var useSubFrameEmission : Bool;
+	var windInfluence : Float;
+	var particleType : Uint32;
+	var vertexDrawerType : Uint32;
+	var simulationType : Uint32;
+	var envColorGroup : Uint32;
+	var emitterGroup : Uint32;
+	var renderObjectType : ERenderObjectType;
+	var numModifiers : Uint32;
+	var modifierSetMask : Uint64;
+	var numInitializers : Uint32;
+	var initializerSetMask : Uint64;
+	var simulationHash : Uint64;
+	var eventSetMask : Uint16;
+	var seeds : array:Uint32;
+	var lods : array:rendEmitterLOD;
+	var volumetricParticleEnabled : Bool;
+	var volumetricParticleRelative : Bool;
+	var volumetricParticleUseFogColor : Bool;
+	var volumetricParticleColor : HDRColor;
+	var volumetricParticleSize : Float;
+	var volumetricParticleDensity : Float;
+	var volumetricParticleFalloff : Float;
+	var volumetricParticleNoiseScale : Float;
+	var volumetricParticleNoiseThreshold : Float;
+	var volumetricParticleNoiseVelocity : Vector3;
+}

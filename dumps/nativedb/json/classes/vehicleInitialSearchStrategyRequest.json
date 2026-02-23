@@ -1,0 +1,1 @@
+{"a":"vehicleBaseStrategyRequest","b":"vehicleInitialSearchStrategyRequest","c":"InitialSearchStrategyRequest","d":8,"f":[{"a":"vehicleInitialSearchStrategyRequest::Create;Vector2Float","b":"Create","c":{"a":26,"c":{"b":"vehicleInitialSearchStrategyRequest"}},"d":56,"e":[{"a":{"b":"Vector2"},"b":"spawnDistanceRange","c":0},{"a":{"a":10},"b":"minDirectDist","c":0}]}]}

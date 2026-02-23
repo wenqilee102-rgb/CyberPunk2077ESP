@@ -1,0 +1,36 @@
+import class gamedataTrait_Record extends gamedataTweakDBRecord
+{
+	import function BaseTraitData() : whandle:gamedataTraitData_Record; // BaseTraitData
+	import function BaseTraitDataHandle() : handle:gamedataTraitData_Record; // BaseTraitDataHandle
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function InfiniteTraitData() : whandle:gamedataTraitData_Record; // InfiniteTraitData
+	import function InfiniteTraitDataHandle() : handle:gamedataTraitData_Record; // InfiniteTraitDataHandle
+	import function Loc_desc_key() : String; // Loc_desc_key
+	import function Loc_name_key() : String; // Loc_name_key
+	import function Requirement() : whandle:gamedataIPrereq_Record; // Requirement
+	import function RequirementHandle() : handle:gamedataIPrereq_Record; // RequirementHandle
+	import function TraitIcon() : whandle:gamedataUIIcon_Record; // TraitIcon
+	import function TraitIconHandle() : handle:gamedataUIIcon_Record; // TraitIconHandle
+	import function Type() : gamedataTraitType; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

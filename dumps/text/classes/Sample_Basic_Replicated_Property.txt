@@ -1,0 +1,4 @@
+import struct Sample_Basic_Replicated_Property
+{
+	var property : Bool;
+}

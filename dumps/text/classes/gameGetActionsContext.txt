@@ -1,0 +1,12 @@
+import struct gameGetActionsContext
+{
+	var clearance : handle:gamedeviceClearance;
+	var requestorID : entEntityID;
+	var requestType : gamedeviceRequestType;
+	var actionPrereqs : array:gameActionPrereqs;
+	var interactionLayerTag : CName;
+	var processInitiatorObject : whandle:gameObject;
+	var ignoresAuthorization : Bool;
+	var allowsRemoteAuthorization : Bool;
+	var ignoresRPG : Bool;
+}

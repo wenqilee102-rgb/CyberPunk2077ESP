@@ -1,0 +1,9 @@
+import struct moveSecureFootingResult
+{
+	var slidingDirection : Vector4;
+	var normalDirection : Vector4;
+	var lowestLocalPosition : Vector4;
+	var staticGroundFactor : Float;
+	var reason : moveSecureFootingFailureReason;
+	var type : moveSecureFootingFailureType;
+}

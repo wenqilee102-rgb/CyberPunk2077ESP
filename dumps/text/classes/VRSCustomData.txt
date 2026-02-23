@@ -1,0 +1,7 @@
+import struct VRSCustomData extends ICameraStorageCustomData
+{
+}
+
+import struct abstract ICameraStorageCustomData
+{
+}

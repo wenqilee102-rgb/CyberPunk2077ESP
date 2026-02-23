@@ -1,0 +1,22 @@
+import class audioMixSettings extends audioAudioMetadata
+{
+	var masterVolume : Float;
+	var sfxVolume : Float;
+	var musicVolume : Float;
+	var voVolume : Float;
+	var uiMenuVolume : Float;
+	var onStartupEvent : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

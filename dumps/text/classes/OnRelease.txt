@@ -1,0 +1,61 @@
+import class OnRelease extends inkPointerEvent
+{
+}
+
+import class inkPointerEvent extends inkInputEvent
+{
+	import function GetAxisData() : Float; // GetAxisData
+	import function GetScreenSpacePosition() : Vector2; // GetScreenSpacePosition
+	import function GetWindowSpacePosition() : Vector2; // GetWindowSpacePosition
+}
+
+import class inkInputEvent extends inkEvent
+{
+	import function Consume(); // Consume
+	import function GetActionName() : handle:inkActionName; // GetActionName
+	import function GetHoldProgress() : Float; // GetHoldProgress
+	import function IsAction(actionName : CName) : Bool; // IsAction
+	import function IsAltDown() : Bool; // IsAltDown
+	import function IsCapsLocked() : Bool; // IsCapsLocked
+	import function IsCommandDown() : Bool; // IsCommandDown
+	import function IsConsumed() : Bool; // IsConsumed
+	import function IsControlDown() : Bool; // IsControlDown
+	import function IsLeftAltDown() : Bool; // IsLeftAltDown
+	import function IsLeftCommandDown() : Bool; // IsLeftCommandDown
+	import function IsLeftControlDown() : Bool; // IsLeftControlDown
+	import function IsLeftShiftDown() : Bool; // IsLeftShiftDown
+	import function IsRightAltDown() : Bool; // IsRightAltDown
+	import function IsRightCommandDown() : Bool; // IsRightCommandDown
+	import function IsRightControlDown() : Bool; // IsRightControlDown
+	import function IsRightShiftDown() : Bool; // IsRightShiftDown
+	import function IsShiftDown() : Bool; // IsShiftDown
+}
+
+import class inkEvent extends redEvent
+{
+	import function Cancel(); // Cancel
+	import function GetCurrentTarget() : whandle:inkWidget; // GetCurrentTarget
+	import function GetDebugString() : String; // GetDebugString
+	import function GetTarget() : whandle:inkWidget; // GetTarget
+	import function Handle(); // Handle
+	import function IsCanceled() : Bool; // IsCanceled
+	import function IsHandled() : Bool; // IsHandled
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

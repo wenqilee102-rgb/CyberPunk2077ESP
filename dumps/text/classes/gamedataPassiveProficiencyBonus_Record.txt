@@ -1,0 +1,29 @@
+import class gamedataPassiveProficiencyBonus_Record extends gamedataTweakDBRecord
+{
+	import function EffectorToTrigger() : whandle:gamedataEffector_Record; // EffectorToTrigger
+	import function EffectorToTriggerHandle() : handle:gamedataEffector_Record; // EffectorToTriggerHandle
+	import function StatGroup() : whandle:gamedataStatModifierGroup_Record; // StatGroup
+	import function StatGroupHandle() : handle:gamedataStatModifierGroup_Record; // StatGroupHandle
+	import function UiData() : whandle:gamedataPassiveProficiencyBonusUIData_Record; // UiData
+	import function UiDataHandle() : handle:gamedataPassiveProficiencyBonusUIData_Record; // UiDataHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

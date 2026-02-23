@@ -1,0 +1,1 @@
+{"a":"IAreaSettings","b":"SharpeningAreaSettings","d":8,"e":[{"a":{"a":10},"b":"sharpeningStrength","c":128},{"a":{"a":10},"b":"sharpeningStrengthWhenUpsaling","c":128},{"a":{"a":10},"b":"sharpeningStrengthUpscalingTreshold","c":128}]}

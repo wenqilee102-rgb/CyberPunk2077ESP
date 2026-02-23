@@ -1,0 +1,6 @@
+struct SpreadMapItem
+{
+	public    var key : whandle:gamedataInteractionBase_Record;
+	public    var count : Int32;
+	public    var range : Float;
+}

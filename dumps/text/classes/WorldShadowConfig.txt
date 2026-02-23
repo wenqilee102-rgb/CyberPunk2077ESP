@@ -1,0 +1,7 @@
+import struct WorldShadowConfig
+{
+	var contactShadows : ContactShadowsConfig;
+	var distantShadowsNumLevels : Uint32;
+	var distantShadowsBaseLevelRadius : Float;
+	var foliageShadowConfig : FoliageShadowConfig;
+}

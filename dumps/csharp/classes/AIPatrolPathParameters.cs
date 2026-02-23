@@ -1,0 +1,103 @@
+using WolvenKit.RED4.CR2W.Reflection;
+using FastMember;
+using static WolvenKit.RED4.CR2W.Types.Enums;
+
+namespace WolvenKit.RED4.CR2W.Types
+{
+	[REDMeta]
+	public class AIPatrolPathParameters : IScriptable
+	{
+		private NodeRef _path;
+		private CEnum<moveMovementType> _movementType;
+		private CEnum<AIPatrolContinuationPolicy> _continuationPolicy;
+		private CBool _startFromClosestPoint;
+		private CBool _patrolWithWeapon;
+		private CBool _isBackAndForth;
+		private CBool _isInfinite;
+		private CUInt32 _numberOfLoops;
+		private CBool _sortPatrolPoints;
+		private TweakDBID _patrolAction;
+
+		[Ordinal(0)] 
+		[RED("path")] 
+		public NodeRef Path
+		{
+			get => GetProperty(ref _path);
+			set => SetProperty(ref _path, value);
+		}
+
+		[Ordinal(1)] 
+		[RED("movementType")] 
+		public CEnum<moveMovementType> MovementType
+		{
+			get => GetProperty(ref _movementType);
+			set => SetProperty(ref _movementType, value);
+		}
+
+		[Ordinal(2)] 
+		[RED("continuationPolicy")] 
+		public CEnum<AIPatrolContinuationPolicy> ContinuationPolicy
+		{
+			get => GetProperty(ref _continuationPolicy);
+			set => SetProperty(ref _continuationPolicy, value);
+		}
+
+		[Ordinal(3)] 
+		[RED("startFromClosestPoint")] 
+		public CBool StartFromClosestPoint
+		{
+			get => GetProperty(ref _startFromClosestPoint);
+			set => SetProperty(ref _startFromClosestPoint, value);
+		}
+
+		[Ordinal(4)] 
+		[RED("patrolWithWeapon")] 
+		public CBool PatrolWithWeapon
+		{
+			get => GetProperty(ref _patrolWithWeapon);
+			set => SetProperty(ref _patrolWithWeapon, value);
+		}
+
+		[Ordinal(5)] 
+		[RED("isBackAndForth")] 
+		public CBool IsBackAndForth
+		{
+			get => GetProperty(ref _isBackAndForth);
+			set => SetProperty(ref _isBackAndForth, value);
+		}
+
+		[Ordinal(6)] 
+		[RED("isInfinite")] 
+		public CBool IsInfinite
+		{
+			get => GetProperty(ref _isInfinite);
+			set => SetProperty(ref _isInfinite, value);
+		}
+
+		[Ordinal(7)] 
+		[RED("numberOfLoops")] 
+		public CUInt32 NumberOfLoops
+		{
+			get => GetProperty(ref _numberOfLoops);
+			set => SetProperty(ref _numberOfLoops, value);
+		}
+
+		[Ordinal(8)] 
+		[RED("sortPatrolPoints")] 
+		public CBool SortPatrolPoints
+		{
+			get => GetProperty(ref _sortPatrolPoints);
+			set => SetProperty(ref _sortPatrolPoints, value);
+		}
+
+		[Ordinal(9)] 
+		[RED("patrolAction")] 
+		public TweakDBID PatrolAction
+		{
+			get => GetProperty(ref _patrolAction);
+			set => SetProperty(ref _patrolAction, value);
+		}
+
+		public AIPatrolPathParameters(IRed4EngineFile cr2w, CVariable parent, string name) : base(cr2w, parent, name) { }
+	}
+}

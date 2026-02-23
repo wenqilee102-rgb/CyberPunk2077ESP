@@ -1,0 +1,5 @@
+import struct gameMuppetStateMachineSnapshot
+{
+	var stateMachineId : CName;
+	var stateId : CName;
+}

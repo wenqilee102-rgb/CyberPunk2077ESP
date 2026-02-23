@@ -1,0 +1,38 @@
+class EffectExecutor_SetDeviceON extends EffectExecutor_Device
+{
+	function Process(ctx : gameEffectScriptContext, applierCtx : gameEffectExecutionScriptContext) : Bool; // Process;EffectScriptContextEffectExecutionScriptContext
+}
+
+class abstract EffectExecutor_Device extends gameEffectExecutor_Scripted
+{
+	public    var maxDelay : Float;
+
+	function QueueEventOnDevice(device : whandle:InteractiveDevice, evt : handle:ActionBool); // QueueEventOnDevice;InteractiveDeviceActionBool
+}
+
+import class gameEffectExecutor_Scripted extends gameEffectExecutor
+{
+}
+
+import class abstract gameEffectExecutor extends gameEffectNode
+{
+	var usesHitCooldown : Bool;
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

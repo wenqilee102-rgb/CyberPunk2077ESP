@@ -1,0 +1,32 @@
+import class worldVehicleForbiddenAreaNotifier extends worldITriggerAreaNotifer
+{
+	var innerAreaBoundToOuterArea : Bool;
+	var innerAreaOutline : handle:AreaShapeOutline;
+	var parkingSpots : array:NodeRef;
+	var innerAreaSpeedLimit : Float;
+	var areaSpeedLimit : Float;
+	var enableNullArea : Bool;
+	var dismount : Bool;
+	var enableSummoning : Bool;
+}
+
+import class abstract worldITriggerAreaNotifer extends IScriptable
+{
+	var isEnabled : Bool;
+	var includeChannels : TriggerChannel;
+	var excludeChannels : Uint32;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

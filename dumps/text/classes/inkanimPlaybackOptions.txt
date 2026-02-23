@@ -1,0 +1,14 @@
+import struct inkanimPlaybackOptions
+{
+	var playReversed : Bool;
+	var loopType : inkanimLoopType;
+	var loopCounter : Uint32;
+	var executionDelay : Float;
+	var loopInfinite : Bool;
+	var fromMarker : CName;
+	var toMarker : CName;
+	var oneSegment : Bool;
+	var dependsOnTimeDilation : Bool;
+	var applyCustomTimeDilation : Bool;
+	var customTimeDilation : Float;
+}

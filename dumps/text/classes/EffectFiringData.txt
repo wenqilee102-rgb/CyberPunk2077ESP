@@ -1,0 +1,6 @@
+struct EffectFiringData
+{
+	public    var FXTime : Float;
+	public    var VFX : CName;
+	public    var SFX : CName;
+}

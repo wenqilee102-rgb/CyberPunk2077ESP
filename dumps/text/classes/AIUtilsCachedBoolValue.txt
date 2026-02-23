@@ -1,0 +1,6 @@
+import struct AIUtilsCachedBoolValue
+{
+	import static function GetIfNotDirty(cachedValue : script_ref:AIUtilsCachedBoolValue, out value : Bool) : Bool; // GetIfNotDirty
+	import static function Set(cachedValue : script_ref:AIUtilsCachedBoolValue, value : Bool); // Set
+	import static function SetDirty(cachedValue : script_ref:AIUtilsCachedBoolValue); // SetDirty
+}

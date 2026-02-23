@@ -1,0 +1,1 @@
+{"a":"ActionSkillCheck","b":"ActionDemolition","d":0,"e":[{"a":{"b":"gamemountingMountingSlotId"},"b":"slotID","c":128}],"f":[{"a":"GetDefaultActionName;","b":"GetDefaultActionName","c":{"a":14},"d":34},{"a":"GetInteractionIcon;","b":"GetInteractionIcon","c":{"a":27,"c":{"b":"gamedataChoiceCaptionIconPart_Record"}},"d":160}]}

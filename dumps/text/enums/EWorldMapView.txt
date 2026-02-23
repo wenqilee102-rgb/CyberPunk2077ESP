@@ -1,0 +1,4 @@
+enum EWorldMapView
+{
+	Map = 0
+}

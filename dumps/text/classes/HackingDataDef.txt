@@ -1,0 +1,28 @@
+class HackingDataDef extends gamebbScriptDefinition
+{
+	public    var SpreadMap : gamebbScriptID_Variant;
+
+	static function AddItemToSpreadMap(player : whandle:PlayerPuppet, key : whandle:gamedataInteractionBase_Record, count : Int32, range : Float) : Bool; // HackingDataDef::AddItemToSpreadMap;PlayerPuppetInteractionBase_RecordInt32Float
+	static function DecrementCountFromSpreadMap(player : whandle:PlayerPuppet, key : whandle:gamedataInteractionBase_Record) : Bool; // HackingDataDef::DecrementCountFromSpreadMap;PlayerPuppetInteractionBase_Record
+	static function GetValuesFromSpreadMap(player : whandle:PlayerPuppet, key : whandle:gamedataInteractionBase_Record, out count : Int32, out range : Float) : Bool; // HackingDataDef::GetValuesFromSpreadMap;PlayerPuppetInteractionBase_RecordInt32Float
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

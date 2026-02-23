@@ -1,0 +1,13 @@
+import struct entAnimationControllerReplicatedState extends netIComponentState
+{
+	var animWrapperVarsState : entReplicatedAnimWrapperVars;
+	var lookAtReqs.m_replicatedVersionId : Uint32;
+	var animFeaturesState : entReplicatedAnimFeaturesState;
+	var inputSettersState : entReplicatedInputSetters;
+}
+
+import struct abstract netIComponentState
+{
+	var componentName : CName;
+	var enabled : Bool;
+}

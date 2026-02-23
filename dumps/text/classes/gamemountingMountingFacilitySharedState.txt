@@ -1,0 +1,12 @@
+import class gamemountingMountingFacilitySharedState extends ISerializable
+{
+	var children : array:whandle:entEntity;
+	var parents : array:whandle:entEntity;
+	var slotIds : array:gamemountingMountingSlotId;
+	var parentTypes : array:gameMountingObjectType;
+	var childTypes : array:gameMountingObjectType;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+struct MinimapLayerHighlightRequest
+{
+	public    var layer : minimapuiELayerType;
+	public    var data : minimapLayerHighlightRequestData;
+}

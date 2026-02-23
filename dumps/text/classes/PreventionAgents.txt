@@ -1,0 +1,28 @@
+class PreventionAgents extends IScriptable
+{
+	private   var groupName : CName;
+	private   var requsteredAgents : array:handle:SPreventionAgentData;
+
+	function AddAgent(ps : whandle:gamePersistentState); // AddAgent;PersistentState
+	function CreateGroup(groupName : CName, ps : whandle:gamePersistentState); // CreateGroup;CNamePersistentState
+	function GetAgentsNumber() : Int32; // GetAgentsNumber;
+	function GetAgetntByIndex(index : Int32) : whandle:gamePersistentState; // GetAgetntByIndex;Int32
+	function GetGroupName() : CName; // GetGroupName;
+	function HasAgents() : Bool; // HasAgents;
+	function IsAgentalreadyAdded(ps : whandle:gamePersistentState) : Bool; // IsAgentalreadyAdded;PersistentState
+	function RemoveAgent(ps : whandle:gamePersistentState); // RemoveAgent;PersistentState
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

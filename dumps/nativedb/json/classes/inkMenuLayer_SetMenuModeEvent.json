@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"inkMenuLayer_SetMenuModeEvent","d":8,"f":[{"a":"GetMenuMode","c":{"b":"inkMenuMode"},"d":132},{"a":"GetMenuState","c":{"b":"inkMenuState"},"d":132},{"a":"Init","d":4,"e":[{"a":{"b":"inkMenuMode"},"b":"mode","c":0},{"a":{"b":"inkMenuState"},"b":"state","c":0}]}]}

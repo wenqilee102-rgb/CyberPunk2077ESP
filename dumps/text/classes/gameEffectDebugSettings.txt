@@ -1,0 +1,6 @@
+import struct gameEffectDebugSettings
+{
+	var overrideGlobalSettings : Bool;
+	var duration : Float;
+	var color : Color;
+}

@@ -1,0 +1,30 @@
+class EffectObjectProvider_TrapEntities extends gameEffectObjectProvider_Scripted
+{
+	function Process(ctx : gameEffectScriptContext, providerCtx : gameEffectProviderScriptContext); // Process;EffectScriptContextEffectProviderScriptContext
+}
+
+import class gameEffectObjectProvider_Scripted extends gameEffectObjectProvider
+{
+}
+
+import class abstract gameEffectObjectProvider extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

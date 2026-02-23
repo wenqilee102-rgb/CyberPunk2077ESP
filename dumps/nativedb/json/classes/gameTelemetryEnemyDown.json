@@ -1,0 +1,1 @@
+{"b":"gameTelemetryEnemyDown","c":"TelemetryEnemyDown","d":8,"g":true,"e":[{"a":{"b":"gameTelemetryEnemy"},"b":"enemy","c":128},{"a":{"b":"gameTelemetryDamageSituation"},"b":"situation","c":128},{"a":{"b":"gameKillType"},"b":"killType","c":128}]}

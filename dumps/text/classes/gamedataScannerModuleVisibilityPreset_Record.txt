@@ -1,0 +1,36 @@
+import class gamedataScannerModuleVisibilityPreset_Record extends gamedataTweakDBRecord
+{
+	import function ShoulShowName() : Bool; // ShoulShowName
+	import function ShouldShowAttitude() : Bool; // ShouldShowAttitude
+	import function ShouldShowBounty() : Bool; // ShouldShowBounty
+	import function ShouldShowFaction() : Bool; // ShouldShowFaction
+	import function ShouldShowHealth() : Bool; // ShouldShowHealth
+	import function ShouldShowLevel() : Bool; // ShouldShowLevel
+	import function ShouldShowNetworkStatus() : Bool; // ShouldShowNetworkStatus
+	import function ShouldShowQuestClues() : Bool; // ShouldShowQuestClues
+	import function ShouldShowRarity() : Bool; // ShouldShowRarity
+	import function ShouldShowResistances() : Bool; // ShouldShowResistances
+	import function ShouldShowSquadInfo() : Bool; // ShouldShowSquadInfo
+	import function ShouldShowVulnerabilities() : Bool; // ShouldShowVulnerabilities
+	import function ShouldShowWeaponData() : Bool; // ShouldShowWeaponData
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

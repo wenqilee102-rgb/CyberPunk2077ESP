@@ -1,0 +1,30 @@
+import class worldCableMeshNode extends worldBendedMeshNode
+{
+	var destructionHashes : [2]Uint64;
+	var cableLength : Float;
+	var cableRadius : Float;
+}
+
+import class worldBendedMeshNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var deformationData : array:Matrix;
+	var deformedBox : Box;
+	var isBendedRoad : Bool;
+	var castShadows : shadowsShadowCastingMode;
+	var castLocalShadows : shadowsShadowCastingMode;
+	var removeFromRainMap : Bool;
+	var navigationSetting : NavGenNavigationSetting;
+	var version : Uint8;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

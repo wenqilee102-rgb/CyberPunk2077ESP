@@ -1,0 +1,11 @@
+import struct gameReplAnimTransformPlayRequest extends gameReplAnimTransformRequestBase
+{
+	var animName : CName;
+	var timeScale : Float;
+	var timesToPlay : Int32;
+}
+
+import struct gameReplAnimTransformRequestBase
+{
+	var applyServerTime : netTime;
+}

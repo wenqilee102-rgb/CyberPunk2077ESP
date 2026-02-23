@@ -1,0 +1,7 @@
+import struct inkILoadingScreenPersistentData extends inkILoadingScreenData
+{
+}
+
+import struct inkILoadingScreenData
+{
+}

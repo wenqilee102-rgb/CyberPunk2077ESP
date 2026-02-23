@@ -1,0 +1,9 @@
+import struct inkCharacterEventCallback extends inkCallbackBase
+{
+}
+
+import struct abstract inkCallbackBase
+{
+	var callbackName : CName;
+	var listeners : array:inkCallbackListener;
+}

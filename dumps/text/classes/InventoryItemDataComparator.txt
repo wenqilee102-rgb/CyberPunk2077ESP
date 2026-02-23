@@ -1,0 +1,18 @@
+class InventoryItemDataComparator extends IScriptable
+{
+	function Compare(left : script_ref:gameInventoryItemData, right : script_ref:gameInventoryItemData) : Int32; // Compare;script_ref<InventoryItemData>script_ref<InventoryItemData>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

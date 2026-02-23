@@ -1,0 +1,55 @@
+import class gamedataMaterialFx_Record extends gamedataTweakDBRecord
+{
+	import function GetImpact_decalCount() : Int32; // GetImpact_decalCount
+	import function GetImpact_decalItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_decalItem
+	import function GetImpact_dismemberment_piercingCount() : Int32; // GetImpact_dismemberment_piercingCount
+	import function GetImpact_dismemberment_piercingItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_dismemberment_piercingItem
+	import function GetImpact_main_effectCount() : Int32; // GetImpact_main_effectCount
+	import function GetImpact_main_effectItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_main_effectItem
+	import function GetImpact_pierce_decalCount() : Int32; // GetImpact_pierce_decalCount
+	import function GetImpact_pierce_decalItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_pierce_decalItem
+	import function GetImpact_pierce_effectCount() : Int32; // GetImpact_pierce_effectCount
+	import function GetImpact_pierce_effectItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_pierce_effectItem
+	import function GetImpact_pierce_splatter_farCount() : Int32; // GetImpact_pierce_splatter_farCount
+	import function GetImpact_pierce_splatter_farItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_pierce_splatter_farItem
+	import function GetImpact_pierce_splatter_nearCount() : Int32; // GetImpact_pierce_splatter_nearCount
+	import function GetImpact_pierce_splatter_nearItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_pierce_splatter_nearItem
+	import function GetImpact_reflected_effectCount() : Int32; // GetImpact_reflected_effectCount
+	import function GetImpact_reflected_effectItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_reflected_effectItem
+	import function GetImpact_underwater_effectCount() : Int32; // GetImpact_underwater_effectCount
+	import function GetImpact_underwater_effectItem(index : Int32) : redResourceReferenceScriptToken; // GetImpact_underwater_effectItem
+	import function Impact_decal() : array:redResourceReferenceScriptToken; // Impact_decal
+	import function Impact_dismemberment_piercing() : array:redResourceReferenceScriptToken; // Impact_dismemberment_piercing
+	import function Impact_main_effect() : array:redResourceReferenceScriptToken; // Impact_main_effect
+	import function Impact_pierce_decal() : array:redResourceReferenceScriptToken; // Impact_pierce_decal
+	import function Impact_pierce_effect() : array:redResourceReferenceScriptToken; // Impact_pierce_effect
+	import function Impact_pierce_splatter_far() : array:redResourceReferenceScriptToken; // Impact_pierce_splatter_far
+	import function Impact_pierce_splatter_near() : array:redResourceReferenceScriptToken; // Impact_pierce_splatter_near
+	import function Impact_reflected_effect() : array:redResourceReferenceScriptToken; // Impact_reflected_effect
+	import function Impact_underwater_effect() : array:redResourceReferenceScriptToken; // Impact_underwater_effect
+	import function Pierce_enter() : Bool; // Pierce_enter
+	import function Pierce_exit() : Bool; // Pierce_exit
+	import function Pierce_far_distance() : Float; // Pierce_far_distance
+	import function Pierce_near_distance() : Float; // Pierce_near_distance
+	import function Reflected_angle_max() : Float; // Reflected_angle_max
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

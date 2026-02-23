@@ -1,0 +1,34 @@
+class IntervalCaller extends gameDelaySystemScriptedDelayCallbackWrapper
+{
+	public    var preventionSystem : whandle:PreventionSystem;
+	public    var request : handle:gameScriptableSystemRequest;
+	private   var intervalSeconds : Float;
+	private   var selfDelayID : gameDelayID;
+
+	static function Create(preventionSystem : whandle:PreventionSystem) : handle:IntervalCaller; // IntervalCaller::Create;PreventionSystem
+
+	function Call(); // Call;
+	function Cancel(); // Cancel;
+	function IsRunning() : Bool; // IsRunning;
+	function Start(intervalSeconds : Float, request : handle:gameScriptableSystemRequest); // Start;FloatScriptableSystemRequest
+	function StartInternal(); // StartInternal;
+}
+
+import class gameDelaySystemScriptedDelayCallbackWrapper extends IScriptable
+{
+	function Call(); // Call;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

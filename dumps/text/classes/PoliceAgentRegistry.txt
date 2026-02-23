@@ -1,0 +1,65 @@
+class PoliceAgentRegistry extends IScriptable
+{
+	private   var game : ScriptGameInstance;
+	private   var vehicleAgents : array:handle:VehicleAgent;
+	private   var npcAgents : array:handle:NPCAgent;
+	private   var requestTickets : array:TicketData;
+
+	static function Construct(game : ScriptGameInstance) : handle:PoliceAgentRegistry; // PoliceAgentRegistry::Construct;GameInstance
+
+	function Contains(id : entEntityID) : Bool; // Contains;EntityID
+	function CreateTicket(request : Uint32, strategy : vehiclePoliceStrategy, optional isFallback : Bool); // CreateTicket;Uint32vehiclePoliceStrategyBool
+	function DistanceSquaredToTClosestMaxTacAgent(positionToCheck : Vector4) : Float; // DistanceSquaredToTClosestMaxTacAgent;Vector4
+	function GetAvCount() : Int32; // GetAvCount;
+	function GetEngagedNotDisengagingVehicleList(out vehicleArray : array:handle:VehicleAgent) : Bool; // GetEngagedNotDisengagingVehicleList;array<VehicleAgent>
+	function GetEngagedVehicleCount() : Int32; // GetEngagedVehicleCount;
+	function GetEngagedVehicleList() : array:handle:VehicleAgent; // GetEngagedVehicleList;
+	function GetExternalNPCCount() : Int32; // GetExternalNPCCount;
+	function GetFallbackNPCCount() : Int32; // GetFallbackNPCCount;
+	function GetMaxTacNPCCount() : Int32; // GetMaxTacNPCCount;
+	function GetMaxTacNPCList() : array:handle:NPCAgent; // GetMaxTacNPCList;
+	function GetNPCList() : array:handle:NPCAgent; // GetNPCList;
+	function GetNPCSpawnedType(id : entEntityID) : gameDynamicVehicleType; // GetNPCSpawnedType;EntityID
+	function GetNPCsAssignedToVehicle(vehicleEntityId : entEntityID, toFill : script_ref:array:handle:NPCAgent); // GetNPCsAssignedToVehicle;EntityIDscript_ref<array<NPCAgent>>
+	function GetPendingFallbackOnFootTicketCount() : Int32; // GetPendingFallbackOnFootTicketCount;
+	function GetPendingVehicleTicketsCount() : Int32; // GetPendingVehicleTicketsCount;
+	function GetRoadblockCount() : Int32; // GetRoadblockCount;
+	function GetRoadblockNPCList() : array:handle:NPCAgent; // GetRoadblockNPCList;
+	function GetRoadblockVehicleList() : array:handle:VehicleAgent; // GetRoadblockVehicleList;
+	function GetSupportVehicleCount() : Int32; // GetSupportVehicleCount;
+	function GetSupportVehicleList() : array:handle:VehicleAgent; // GetSupportVehicleList;
+	function GetSupportVehiclesWithStrategyCount(strategy : vehiclePoliceStrategy) : Int32; // GetSupportVehiclesWithStrategyCount;vehiclePoliceStrategy
+	function GetTotalNPCCount() : Int32; // GetTotalNPCCount;
+	function GetTotalPendingTicketsCount() : Int32; // GetTotalPendingTicketsCount;
+	function GetTotalVehicleCount() : Int32; // GetTotalVehicleCount;
+	function GetVehicleList() : array:handle:VehicleAgent; // GetVehicleList;
+	function GetVehiclesWithoutRegisteredPassengers(toFill : script_ref:array:handle:VehicleAgent); // GetVehiclesWithoutRegisteredPassengers;script_ref<array<VehicleAgent>>
+	function HasNPCBeenAttackedByPlayer(id : entEntityID) : Bool; // HasNPCBeenAttackedByPlayer;EntityID
+	function HasPoliceRecentlyDeescalated() : Bool; // HasPoliceRecentlyDeescalated;
+	function IsPoliceInCombatWithPalyer() : Bool; // IsPoliceInCombatWithPalyer;
+	function IsPreventionMaxTac(puppet : handle:gamePuppet) : Bool; // IsPreventionMaxTac;gamePuppet
+	function PopRequestTicket(request : Uint32, optional ticketData : script_ref:TicketData) : Bool; // PopRequestTicket;Uint32script_ref<TicketData>
+	function RegisterAgent(unit : handle:gameObject, type : gameDynamicVehicleType, optional strategy : vehiclePoliceStrategy, optional isFallback : Bool, overrideExisting : Bool) : Bool; // RegisterAgent;GameObjectDynamicVehicleTypevehiclePoliceStrategyBoolBool
+	function TryGetIndexOf_NPC(id : entEntityID, optional index : script_ref:Int32) : Bool; // TryGetIndexOf_NPC;EntityIDscript_ref<Int32>
+	function TryGetIndexOf_Ticket(id : Uint32, optional index : script_ref:Int32) : Bool; // TryGetIndexOf_Ticket;Uint32script_ref<Int32>
+	function TryGetIndexOf_Vehicle(id : entEntityID, optional index : script_ref:Int32) : Bool; // TryGetIndexOf_Vehicle;EntityIDscript_ref<Int32>
+	function TryGetNPCAgentByID(id : entEntityID, agent : script_ref:handle:NPCAgent) : Bool; // TryGetNPCAgentByID;EntityIDscript_ref<NPCAgent>
+	function TryGetVehicleAgentByID(id : entEntityID, agent : script_ref:handle:VehicleAgent) : Bool; // TryGetVehicleAgentByID;EntityIDscript_ref<VehicleAgent>
+	function UnregisterAgent(id : entEntityID) : UnregisterResult; // UnregisterAgent;EntityID
+	function UnregisterAll(); // UnregisterAll;
+	function UpdateVehiclePassengerCount(vehicleID : entEntityID, passengers : Int32); // UpdateVehiclePassengerCount;EntityIDInt32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

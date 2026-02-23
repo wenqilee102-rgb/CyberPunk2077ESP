@@ -1,0 +1,26 @@
+import class scneventsBraindanceVisibilityEvent extends scnSceneEvent
+{
+	var performerId : scnPerformerId;
+	var customMaterialParam : ECustomMaterialParam;
+	var parameterIndex : Uint32;
+	var override : Bool;
+	var priority : Uint8;
+	var eventStartEndBlend : Float;
+	var perspectiveBlend : Float;
+	var renderSettingsFPP : WorldRenderAreaSettings;
+	var renderSettingsTPP : WorldRenderAreaSettings;
+}
+
+import class abstract scnSceneEvent extends ISerializable
+{
+	var id : scnSceneEventId;
+	var type : scnEventType;
+	var startTime : Uint32;
+	var duration : Uint32;
+	var executionTagFlags : Uint8;
+	var scalingData : handle:scnIScalingData;
+}
+
+import class abstract ISerializable
+{
+}

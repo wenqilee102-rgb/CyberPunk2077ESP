@@ -1,0 +1,5 @@
+import struct gameRange
+{
+	var minValue : Float;
+	var maxValue : Float;
+}

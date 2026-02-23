@@ -1,0 +1,1 @@
+{"a":"questScriptedAICommandParams","b":"AIStopCoverCommandParams","d":0,"f":[{"a":"CreateCommand;","b":"CreateCommand","c":{"a":26,"c":{"b":"AICommand"}},"d":32},{"a":"GetCommandName;","b":"GetCommandName","c":{"a":12},"d":48}]}

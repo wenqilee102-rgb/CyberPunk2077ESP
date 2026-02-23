@@ -1,0 +1,20 @@
+import class CMaterialInstance extends IMaterial
+{
+	var baseMaterial : rRef:IMaterial;
+	var enableMask : Bool;
+	var audioTag : CName;
+	var resourceVersion : Uint8;
+}
+
+import class abstract IMaterial extends CResource
+{
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

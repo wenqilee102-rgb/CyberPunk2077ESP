@@ -1,0 +1,1 @@
+{"b":"GpuWrapApiVertexPackingPackingElement","d":8,"g":true,"e":[{"a":{"b":"GpuWrapApiVertexPackingePackingType"},"b":"type","c":128},{"a":{"b":"GpuWrapApiVertexPackingePackingUsage"},"b":"usage","c":128},{"a":{"a":3},"b":"usageIndex","c":128},{"a":{"a":3},"b":"streamIndex","c":128},{"a":{"b":"GpuWrapApiVertexPackingEStreamType"},"b":"streamType","c":128}]}

@@ -1,0 +1,8 @@
+import struct oauthAuthenticationToken
+{
+	var token : String;
+	var secret : String;
+	var sessionHandle : String;
+	var tokenExpiresIn : Uint64;
+	var authorizationExpiresIn : Uint64;
+}

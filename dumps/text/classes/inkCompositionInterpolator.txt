@@ -1,0 +1,8 @@
+import struct inkCompositionInterpolator
+{
+	var parameter : CName;
+	var interpolationMode : inkanimInterpolationMode;
+	var interpolationType : inkanimInterpolationType;
+	var duration : Float;
+	var startDelay : Float;
+}

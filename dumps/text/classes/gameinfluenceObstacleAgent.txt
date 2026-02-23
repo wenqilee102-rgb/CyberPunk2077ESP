@@ -1,0 +1,9 @@
+import struct gameinfluenceObstacleAgent extends gameinfluenceIAgent
+{
+	var useMeshes : Bool;
+	var radius : Float;
+}
+
+import struct abstract gameinfluenceIAgent
+{
+}

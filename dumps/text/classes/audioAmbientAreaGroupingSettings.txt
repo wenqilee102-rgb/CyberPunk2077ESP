@@ -1,0 +1,10 @@
+import struct audioAmbientAreaGroupingSettings
+{
+	var GroupCountTag : CName;
+	var GroupCountRtpc : CName;
+	var GroupAvgDistanceRtpc : CName;
+	var groupingVariant : audioAmbientGroupingVariant;
+	var MinDistance : Float;
+	var MaxDistance : Float;
+	var GroupingVerticallimit : Float;
+}

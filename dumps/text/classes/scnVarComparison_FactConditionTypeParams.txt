@@ -1,0 +1,6 @@
+import struct scnVarComparison_FactConditionTypeParams
+{
+	var factName : CName;
+	var value : Int32;
+	var comparisonType : EComparisonType;
+}

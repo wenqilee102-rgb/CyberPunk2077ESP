@@ -1,0 +1,36 @@
+class abstract AIActionTransactionSystem extends IScriptable
+{
+	static function CalculateEquipmentItems(puppet : whandle:ScriptedPuppet, equipmentGroupName : CName, out items : array:whandle:gamedataNPCEquipmentItem_Record, optional powerLevel : Int32); // AIActionTransactionSystem::CalculateEquipmentItems;ScriptedPuppetCNamearray<NPCEquipmentItem_Record>Int32
+	static function CalculateEquipmentItems(puppet : whandle:ScriptedPuppet, equipmentGroupRecord : whandle:gamedataNPCEquipmentGroup_Record, out items : array:whandle:gamedataNPCEquipmentItem_Record, powerLevel : Int32); // AIActionTransactionSystem::CalculateEquipmentItems;ScriptedPuppetNPCEquipmentGroup_Recordarray<NPCEquipmentItem_Record>Int32
+	static function CheckEquipmentGroupForEquipment(context : AIbehaviorScriptExecutionContext, condition : whandle:gamedataAIItemCond_Record) : Bool; // AIActionTransactionSystem::CheckEquipmentGroupForEquipment;ScriptExecutionContextAIItemCond_Record
+	static function CheckSlotsForEquipment(context : AIbehaviorScriptExecutionContext, equipmentGroup : CName) : Bool; // AIActionTransactionSystem::CheckSlotsForEquipment;ScriptExecutionContextCName
+	static function ChooseSingleItemsSetFromPool(powerLevel : Int32, seed : Uint32, itemPool : whandle:gamedataNPCEquipmentItemPool_Record, out outItems : array:whandle:gamedataNPCEquipmentItem_Record); // AIActionTransactionSystem::ChooseSingleItemsSetFromPool;Int32Uint32NPCEquipmentItemPool_Recordarray<NPCEquipmentItem_Record>
+	static function DoesItemMeetRequirements(weaponItemID : gameItemID, condition : handle:gamedataAIItemCond_Record, evolution : whandle:gamedataWeaponEvolution_Record) : Bool; // AIActionTransactionSystem::DoesItemMeetRequirements;ItemIDAIItemCond_RecordWeaponEvolution_Record
+	static function GetDefaultEquipment(context : AIbehaviorScriptExecutionContext, characterRecord : whandle:gamedataCharacter_Record, checkForUnequip : Bool, itemsList : script_ref:array:NPCItemToEquip) : Bool; // AIActionTransactionSystem::GetDefaultEquipment;ScriptExecutionContextCharacter_RecordBoolscript_ref<array<NPCItemToEquip>>
+	static function GetEquipment(context : AIbehaviorScriptExecutionContext, checkPrimaryEquipment : Bool, itemsList : script_ref:array:NPCItemToEquip) : Bool; // AIActionTransactionSystem::GetEquipment;ScriptExecutionContextBoolscript_ref<array<NPCItemToEquip>>
+	static function GetEquipmentWithCondition(context : AIbehaviorScriptExecutionContext, checkPrimaryEquipment : Bool, checkForUnequip : Bool, itemsList : script_ref:array:NPCItemToEquip) : Bool; // AIActionTransactionSystem::GetEquipmentWithCondition;ScriptExecutionContextBoolBoolscript_ref<array<NPCItemToEquip>>
+	static function GetFirstItemID(owner : whandle:gameObject, itemTag : CName, out itemID : gameItemID) : Bool; // AIActionTransactionSystem::GetFirstItemID;GameObjectCNameItemID
+	static function GetFirstItemID(owner : whandle:gameObject, itemType : whandle:gamedataItemType_Record, itemTag : CName, out itemID : gameItemID) : Bool; // AIActionTransactionSystem::GetFirstItemID;GameObjectItemType_RecordCNameItemID
+	static function GetFirstItemID(owner : whandle:gameObject, itemCategory : whandle:gamedataItemCategory_Record, itemTag : CName, out itemID : gameItemID) : Bool; // AIActionTransactionSystem::GetFirstItemID;GameObjectItemCategory_RecordCNameItemID
+	static function GetItemID(obj : whandle:ScriptedPuppet, itemRecord : whandle:gamedataItem_Record, onBodySlotID : TweakDBID, out itemID : gameItemID) : Bool; // AIActionTransactionSystem::GetItemID;ScriptedPuppetItem_RecordTweakDBIDItemID
+	static function GetItemIDFromRecord(itemRecord : whandle:gamedataItem_Record, out itemID : gameItemID) : Bool; // AIActionTransactionSystem::GetItemIDFromRecord;Item_RecordItemID
+	static function GetItemsBodySlot(owner : whandle:ScriptedPuppet, itemID : gameItemID, out onBodySlotID : TweakDBID) : Bool; // AIActionTransactionSystem::GetItemsBodySlot;ScriptedPuppetItemIDTweakDBID
+	static function GetOnBodyEquipment(obj : whandle:ScriptedPuppet, itemsToEquip : script_ref:array:NPCItemToEquip) : Bool; // AIActionTransactionSystem::GetOnBodyEquipment;ScriptedPuppetscript_ref<array<NPCItemToEquip>>
+	static function GetOnBodyEquipmentRecords(obj : whandle:ScriptedPuppet, outEquipmentRecords : script_ref:array:whandle:gamedataNPCEquipmentItem_Record) : Bool; // AIActionTransactionSystem::GetOnBodyEquipmentRecords;ScriptedPuppetscript_ref<array<NPCEquipmentItem_Record>>
+	static function IsSlotEmptySpawningItem(owner : whandle:gameObject, slotID : TweakDBID) : Bool; // AIActionTransactionSystem::IsSlotEmptySpawningItem;GameObjectTweakDBID
+	static function ShouldPerformEquipmentCheck(obj : whandle:ScriptedPuppet, equipmentGroup : CName) : Bool; // AIActionTransactionSystem::ShouldPerformEquipmentCheck;ScriptedPuppetCName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

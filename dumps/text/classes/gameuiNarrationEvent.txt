@@ -1,0 +1,6 @@
+import struct gameuiNarrationEvent
+{
+	var text : String;
+	var durationSec : Float;
+	var color : Color;
+}

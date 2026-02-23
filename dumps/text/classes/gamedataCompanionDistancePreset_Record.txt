@@ -1,0 +1,28 @@
+import class gamedataCompanionDistancePreset_Record extends gamedataTweakDBRecord
+{
+	import function Distance() : Float; // Distance
+	import function EnumComment() : String; // EnumComment
+	import function EnumName() : CName; // EnumName
+	import function Tolerance() : Float; // Tolerance
+	import function Type() : gamedataCompanionDistancePreset; // Type
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

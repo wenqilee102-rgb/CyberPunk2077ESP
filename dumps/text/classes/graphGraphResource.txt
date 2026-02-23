@@ -1,0 +1,13 @@
+import class abstract graphGraphResource extends CResource
+{
+	var graph : handle:graphGraphDefinition;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

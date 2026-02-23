@@ -1,0 +1,1 @@
+{"a":"AICombatRelatedCommand","b":"AIThrowGrenadeCommand","d":8,"e":[{"a":{"a":16},"b":"targetOverrideNodeRef","c":128},{"a":{"b":"gameEntityReference"},"b":"targetOverridePuppetRef","c":128},{"a":{"a":10},"b":"duration","c":128},{"a":{"a":1},"b":"once","c":128}]}

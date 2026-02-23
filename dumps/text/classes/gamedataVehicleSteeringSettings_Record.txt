@@ -1,0 +1,34 @@
+import class gamedataVehicleSteeringSettings_Record extends gamedataTweakDBRecord
+{
+	import function ErrorMagnitudeForFullSteering() : Float; // ErrorMagnitudeForFullSteering
+	import function ErrorMagnitudeForMildSteering() : Float; // ErrorMagnitudeForMildSteering
+	import function FullSteeringSpeed() : Float; // FullSteeringSpeed
+	import function IncreaseSteeringDistForAvoidance() : Bool; // IncreaseSteeringDistForAvoidance
+	import function MaxTargetDistance() : Float; // MaxTargetDistance
+	import function MildSteeringSpeed() : Float; // MildSteeringSpeed
+	import function MinTargetDistance() : Float; // MinTargetDistance
+	import function SpeedForMaxDistance() : Float; // SpeedForMaxDistance
+	import function SpeedForMinDistance() : Float; // SpeedForMinDistance
+	import function VehicleMaxTurnSpeed() : Float; // VehicleMaxTurnSpeed
+	import function VehicleMinTurnSpeed() : Float; // VehicleMinTurnSpeed
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

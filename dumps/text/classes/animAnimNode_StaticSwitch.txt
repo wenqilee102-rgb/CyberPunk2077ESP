@@ -1,0 +1,20 @@
+import class animAnimNode_StaticSwitch extends animAnimNode_MotionTableSwitch
+{
+	var condition : handle:animIStaticCondition;
+	var motionProvider : handle:animIMotionTableProvider;
+	var True : animPoseLink;
+	var False : animPoseLink;
+}
+
+import class abstract animAnimNode_MotionTableSwitch extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

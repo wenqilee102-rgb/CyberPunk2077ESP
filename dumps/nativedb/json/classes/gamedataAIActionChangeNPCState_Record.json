@@ -1,0 +1,1 @@
+{"a":"gamedataTweakDBRecord","b":"gamedataAIActionChangeNPCState_Record","c":"AIActionChangeNPCState_Record","d":24,"f":[{"a":"DefenseMode","c":{"a":14},"d":4},{"a":"HighLevelState","c":{"a":14},"d":4},{"a":"HitReactionMode","c":{"a":14},"d":4},{"a":"LocomotionMode","c":{"a":14},"d":4},{"a":"StanceState","c":{"a":14},"d":4},{"a":"UpperBodyState","c":{"a":14},"d":4}]}

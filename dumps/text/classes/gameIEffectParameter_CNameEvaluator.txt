@@ -1,0 +1,7 @@
+import class abstract gameIEffectParameter_CNameEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

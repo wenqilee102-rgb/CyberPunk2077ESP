@@ -1,0 +1,8 @@
+import class animStackTransformsExtender_JsonProperties extends ISerializable
+{
+	var entries : array:animStackTransformsExtender_JsonEntry;
+}
+
+import class abstract ISerializable
+{
+}

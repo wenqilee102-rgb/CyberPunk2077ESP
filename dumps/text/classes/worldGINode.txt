@@ -1,0 +1,15 @@
+import class worldGINode extends worldNode
+{
+	var data : raRef:CGIDataResource;
+	var location : [3]Int16;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

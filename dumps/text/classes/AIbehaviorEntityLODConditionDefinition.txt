@@ -1,0 +1,19 @@
+import class AIbehaviorEntityLODConditionDefinition extends AIbehaviorConditionDefinition
+{
+	var any : array:AIbehaviorEntityLODConditions;
+	var all : array:AIbehaviorEntityLODConditions;
+	var none : array:AIbehaviorEntityLODConditions;
+}
+
+import class abstract AIbehaviorConditionDefinition extends AIbehaviorBehaviorComponentDefinition
+{
+	var isInverted : Bool;
+}
+
+import class abstract AIbehaviorBehaviorComponentDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

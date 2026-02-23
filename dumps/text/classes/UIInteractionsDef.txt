@@ -1,0 +1,38 @@
+class UIInteractionsDef extends gamebbScriptDefinition
+{
+	public    var InteractionChoiceHub : gamebbScriptID_Variant;
+	public    var DialogChoiceHubs : gamebbScriptID_Variant;
+	public    var LootData : gamebbScriptID_Variant;
+	public    var ContactsData : gamebbScriptID_Variant;
+	public    var ActiveChoiceHubID : gamebbScriptID_Int32;
+	public    var SelectedIndex : gamebbScriptID_Int32;
+	public    var ActiveInteractions : gamebbScriptID_Variant;
+	public    var InteractionSkillCheckHub : gamebbScriptID_Variant;
+	public    var NameplateOwnerID : gamebbScriptID_EntityID;
+	public    var VisualizersInfo : gamebbScriptID_Variant;
+	public    var ShouldHideClampedMappins : gamebbScriptID_Bool;
+	public    var LastAttemptedChoice : gamebbScriptID_Variant;
+	public    var LookAtTargetVisualizerID : gamebbScriptID_Int32;
+	public    var HasScrollableInteraction : gamebbScriptID_Bool;
+	public    var IsQuestNotificationUp : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

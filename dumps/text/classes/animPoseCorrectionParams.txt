@@ -1,0 +1,5 @@
+import struct animPoseCorrectionParams
+{
+	var poseCorrectionGroup : animPoseCorrectionGroup;
+	var blendDuration : Float;
+}

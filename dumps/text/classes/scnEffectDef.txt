@@ -1,0 +1,5 @@
+import struct scnEffectDef
+{
+	var id : scnEffectId;
+	var effect : raRef:worldEffect;
+}

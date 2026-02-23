@@ -1,0 +1,125 @@
+class CraftingSystem extends gameScriptableSystem
+{
+	private   var lastActionStatus : Bool;
+	private   var playerCraftBook : handle:CraftBook;
+	private   var callback : handle:CraftingSystemInventoryCallback;
+	private   var inventoryListener : handle:gameInventoryScriptListener;
+	private   var itemIconGender : gameItemIconGender;
+
+	static function GetAmmoBulletAmount(ammoId : TweakDBID) : Int32; // CraftingSystem::GetAmmoBulletAmount;TweakDBID
+	static function GetInstance(gameInstance : ScriptGameInstance) : handle:CraftingSystem; // CraftingSystem::GetInstance;GameInstance
+	static function MarkItemAsCrafted(target : whandle:gameObject, itemData : whandle:gameItemData); // CraftingSystem::MarkItemAsCrafted;GameObjectgameItemData
+	static function SetItemLevel(target : whandle:gameObject, itemData : whandle:gameItemData); // CraftingSystem::SetItemLevel;GameObjectgameItemData
+
+	function AddAmmoRecipes(); // AddAmmoRecipes;
+	function AddCraftbookRecipes(); // AddCraftbookRecipes;
+	function AddDLCBaseRecipes(); // AddDLCBaseRecipes;
+	function AddIngredientToResult(ingredient : IngredientData, amountMultiplier : Int32, out outputResult : array:IngredientData); // AddIngredientToResult;IngredientDataInt32array<IngredientData>
+	function CalculateCraftingLevelBoost() : Float; // CalculateCraftingLevelBoost;
+	function CanCraftGivenQuality(itemData : whandle:gameItemData, out quality : gamedataQuality) : Bool; // CanCraftGivenQuality;gameItemDatagamedataQuality
+	function CanCraftGivenQuality(itemRecord : whandle:gamedataItem_Record, out quality : gamedataQuality) : Bool; // CanCraftGivenQuality;Item_RecordgamedataQuality
+	function CanItemBeCrafted(itemData : whandle:gameItemData) : Bool; // CanItemBeCrafted;gameItemData
+	function CanItemBeCrafted(itemRecord : whandle:gamedataItem_Record) : Bool; // CanItemBeCrafted;Item_Record
+	function CanItemBeDisassembled(owner : whandle:gameObject, itemID : gameItemID) : Bool; // CanItemBeDisassembled;GameObjectItemID
+	function CanItemBeDisassembled(itemData : whandle:gameItemData) : Bool; // CanItemBeDisassembled;gameItemData
+	function CanItemBeUpgraded(itemData : whandle:gameItemData) : Bool; // CanItemBeUpgraded;gameItemData
+	function ClearNonIconicSlots(itemData : whandle:gameItemData); // ClearNonIconicSlots;gameItemData
+	function ClearNonIconicSlotsFromWeaponsAndClothes(itemData : whandle:gameItemData); // ClearNonIconicSlotsFromWeaponsAndClothes;gameItemData
+	function ClearNonIconicSlotsWithoutDummyMods(itemData : whandle:gameItemData); // ClearNonIconicSlotsWithoutDummyMods;gameItemData
+	function CompensateForDeprecatedWeaponMods(itemData : whandle:gameItemData); // CompensateForDeprecatedWeaponMods;gameItemData
+	function CompensateForOwnedButchersKnifeRecipes(); // CompensateForOwnedButchersKnifeRecipes;
+	function CompensateForOwnedCraftableIconics(); // CompensateForOwnedCraftableIconics;
+	function CompensateForOwnedMilitaryKatanaRecipes(); // CompensateForOwnedMilitaryKatanaRecipes;
+	function CompensateForOwnedPipeWrenchRecipes(); // CompensateForOwnedPipeWrenchRecipes;
+	function CompensateMissingBuzzsawPsalmRecipes(); // CompensateMissingBuzzsawPsalmRecipes;
+	function CraftItem(target : whandle:gameObject, itemRecord : handle:gamedataItem_Record, amount : Int32, optional ammoBulletAmount : Int32) : whandle:gameItemData; // CraftItem;GameObjectItem_RecordInt32Int32
+	function CreateIngredientData(ingredientData : handle:gamedataRecipeElement_Record) : IngredientData; // CreateIngredientData;RecipeElement_Record
+	function CreateIngredientData(item : handle:gamedataItem_Record, amount : Int32) : IngredientData; // CreateIngredientData;Item_RecordInt32
+	function CreateIngredientDataOfQuality(amount : Int32, matQuality : gamedataQuality, out disassembleResult : array:IngredientData); // CreateIngredientDataOfQuality;Int32gamedataQualityarray<IngredientData>
+	function CreateInstallPartRequest_Attachment(player : whandle:PlayerPuppet, itemData : whandle:gameItemData, part : gameItemID) : handle:InstallItemPart; // CreateInstallPartRequest_Attachment;PlayerPuppetgameItemDataItemID
+	function CreateInstallPartRequest_Mod(player : whandle:PlayerPuppet, itemData : whandle:gameItemData, part : gameItemID) : handle:InstallItemPart; // CreateInstallPartRequest_Mod;PlayerPuppetgameItemDataItemID
+	function DisassembleItem(target : whandle:gameObject, itemID : gameItemID, amount : Int32); // DisassembleItem;GameObjectItemIDInt32
+	function EnoughIngredientsForCrafting(itemData : whandle:gameItemData) : Bool; // EnoughIngredientsForCrafting;gameItemData
+	function EnoughIngredientsForUpgrading(itemData : whandle:gameItemData) : Bool; // EnoughIngredientsForUpgrading;gameItemData
+	function GetDisassemblyResultItems(target : whandle:gameObject, itemID : gameItemID, amount : Int32, restoredAttachments : script_ref:array:ItemAttachments, optional calledFromUI : Bool) : array:IngredientData; // GetDisassemblyResultItems;GameObjectItemIDInt32script_ref<array<ItemAttachments>>Bool
+	function GetIngredientQuality(data : script_ref:IngredientData) : gamedataQuality; // GetIngredientQuality;script_ref<IngredientData>
+	function GetItemBaseUpgradeCost(itemType : gamedataItemType, quality : gamedataQuality) : array:IngredientData; // GetItemBaseUpgradeCost;gamedataItemTypegamedataQuality
+	function GetItemCraftingCost(itemData : whandle:gameItemData) : array:IngredientData; // GetItemCraftingCost;gameItemData
+	function GetItemCraftingCost(itemRecord : whandle:gamedataItem_Record) : array:IngredientData; // GetItemCraftingCost;Item_Record
+	function GetItemCraftingCost(record : whandle:gamedataItem_Record, craftingData : script_ref:array:whandle:gamedataRecipeElement_Record) : array:IngredientData; // GetItemCraftingCost;Item_Recordscript_ref<array<RecipeElement_Record>>
+	function GetItemFinalUpgradeCost(itemData : whandle:gameItemData) : array:IngredientData; // GetItemFinalUpgradeCost;gameItemData
+	function GetLastActionStatus() : Bool; // GetLastActionStatus;
+	function GetMaxCraftingAmount(itemData : whandle:gameItemData) : Int32; // GetMaxCraftingAmount;gameItemData
+	function GetPlayerCraftBook() : handle:CraftBook; // GetPlayerCraftBook;
+	function GetPlayerCraftableItems() : array:whandle:gamedataItem_Record; // GetPlayerCraftableItems;
+	function GetRecipeData(itemRecord : handle:gamedataItem_Record) : handle:RecipeData; // GetRecipeData;Item_Record
+	function GetSuccessNum(probability : Float, eventsNum : Int32) : Int32; // GetSuccessNum;FloatInt32
+	function GetUpgradeRecipeData(itemID : gameItemID) : handle:RecipeData; // GetUpgradeRecipeData;ItemID
+	function HasIngredients(required : script_ref:array:IngredientData) : Bool; // HasIngredients;script_ref<array<IngredientData>>
+	function HideButchersKnifeRecipes(); // HideButchersKnifeRecipes;
+	function HideDLCRecipes(); // HideDLCRecipes;
+	function HideDeprecatedCraftbookRecipes(); // HideDeprecatedCraftbookRecipes;
+	function HideDeprecatedCraftingRecipes(); // HideDeprecatedCraftingRecipes;
+	function HideIconicWeaponsRecipes(); // HideIconicWeaponsRecipes;
+	function HideMilitaryKatanaRecipes(); // HideMilitaryKatanaRecipes;
+	function HidePipeWrenchRecipes(); // HidePipeWrenchRecipes;
+	function InstallModsToRedesignedItems(); // InstallModsToRedesignedItems;
+	function IsRecipeKnown(recipe : TweakDBID, playerCraftBook : handle:CraftBook) : Bool; // IsRecipeKnown;TweakDBIDCraftBook
+	function MarkItemAsCrafted(itemData : whandle:gameItemData); // MarkItemAsCrafted;gameItemData
+	function OnAddRecipeRequest(request : handle:AddRecipeRequest); // OnAddRecipeRequest;AddRecipeRequest
+	function OnAttach(); // OnAttach;
+	function OnCraftItemRequest(request : handle:CraftItemRequest); // OnCraftItemRequest;CraftItemRequest
+	function OnDisassembleItemRequest(request : handle:DisassembleItemRequest); // OnDisassembleItemRequest;DisassembleItemRequest
+	function OnHideRecipeRequest(request : handle:HideRecipeRequest); // OnHideRecipeRequest;HideRecipeRequest
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnPlayerDetach(request : handle:gamePlayerDetachRequest); // OnPlayerDetach;PlayerDetachRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnShowRecipeRequest(request : handle:ShowRecipeRequest); // OnShowRecipeRequest;ShowRecipeRequest
+	function OnUpgradeItemRequest(request : handle:UpgradeItemRequest); // OnUpgradeItemRequest;UpgradeItemRequest
+	function ProcessAmazonGritAttachmentsPurge(); // ProcessAmazonGritAttachmentsPurge;
+	function ProcessCraftSkill(xpAmount : Float); // ProcessCraftSkill;Float
+	function ProcessCraftedItemsPowerBoost(); // ProcessCraftedItemsPowerBoost;
+	function ProcessDisassemblingPerks(amount : Int32, out disassembleResult : array:IngredientData, itemData : whandle:gameItemData, restoredAttachments : script_ref:array:ItemAttachments, optional calledFromUI : Bool); // ProcessDisassemblingPerks;Int32array<IngredientData>gameItemDatascript_ref<array<ItemAttachments>>Bool
+	function ProcessGritModsPurge(); // ProcessGritModsPurge;
+	function ProcessIconicRevampRestoration(); // ProcessIconicRevampRestoration;
+	function ProcessProgramCrafting(itemTDBID : TweakDBID); // ProcessProgramCrafting;TweakDBID
+	function ProcessUpgradingPerksData(target : whandle:gameObject, itemRecord : handle:gamedataItem_Record); // ProcessUpgradingPerksData;GameObjectItem_Record
+	function ProcessWeaponsAndClothingModsPurge(); // ProcessWeaponsAndClothingModsPurge;
+	function ProcessWeaponsModsCompensate(); // ProcessWeaponsModsCompensate;
+	function SendItemCraftedDataTrackingRequest(targetItem : gameItemID, amount : Int32); // SendItemCraftedDataTrackingRequest;ItemIDInt32
+	function SetItemLevel(itemData : whandle:gameItemData); // SetItemLevel;gameItemData
+	function SetItemQualityBasedOnPlayerSkill(itemData : whandle:gameItemData); // SetItemQualityBasedOnPlayerSkill;gameItemData
+	function UpdateBlackboard(lastCommand : CraftingCommands, optional lastItem : gameItemID, optional lastIngredients : array:IngredientData); // UpdateBlackboard;CraftingCommandsItemIDarray<IngredientData>
+	function UpgradeItem(owner : whandle:gameObject, itemID : gameItemID); // UpgradeItem;GameObjectItemID
+	function VendorIconicKnivesSecured(); // VendorIconicKnivesSecured;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

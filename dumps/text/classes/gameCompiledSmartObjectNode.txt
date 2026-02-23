@@ -1,0 +1,5 @@
+import struct gameCompiledSmartObjectNode
+{
+	var compiledData : handle:gameCompiledSmartObjectData;
+	var worldTransform : WorldTransform;
+}

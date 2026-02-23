@@ -1,0 +1,15 @@
+import struct interopTerrainSystemInstanceInfo
+{
+	var cellSize : Uint32;
+	var cellRes : Uint32;
+	var numUsedCells : Uint32;
+	var numPatches : Uint32;
+	var numPatchesFromTerrainNodes : Uint32;
+	var numPatchesFromRoadNodes : Uint32;
+	var isEnabled : Bool;
+	var isVisibleCompiled : Bool;
+	var useDebugDraw : Bool;
+	var gridWidth : Uint32;
+	var gridHeight : Uint32;
+	var numUsedLODCells : array:Uint32;
+}

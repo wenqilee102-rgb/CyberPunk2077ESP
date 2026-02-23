@@ -1,0 +1,9 @@
+import struct gameMotionConstrainedTierDataParams
+{
+	var splineRef : NodeRef;
+	var adjustingSpeed : Float;
+	var adjustingDuration : Float;
+	var travellingSpeed : Float;
+	var travellingDuration : Float;
+	var notificationBackwardIndex : Int32;
+}

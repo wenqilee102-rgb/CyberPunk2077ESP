@@ -1,0 +1,1 @@
+{"a":"ScannerChunk","b":"ScannerFaction","d":0,"e":[{"a":{"a":12},"b":"faction","c":128}],"f":[{"a":"GetFaction;","b":"GetFaction","c":{"a":12},"d":176},{"a":"GetType;","b":"GetType","c":{"b":"ScannerDataType"},"d":32},{"a":"Set;script_ref<String>","b":"Set","d":48,"e":[{"a":{"a":28,"c":{"a":12}},"b":"f","c":0}]}]}

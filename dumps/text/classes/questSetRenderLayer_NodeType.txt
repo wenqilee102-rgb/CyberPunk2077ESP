@@ -1,0 +1,20 @@
+import class questSetRenderLayer_NodeType extends questIRenderFxManagerNodeType
+{
+	var renderSceneLayer : RenderSceneLayer;
+}
+
+import class abstract questIRenderFxManagerNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import struct worldWorldGlobalLightParameters
+{
+	var unit : ELightUnit;
+	var sunColor : curveData:HDRColor;
+	var moonColor : curveData:HDRColor;
+	var sunSize : curveData:Float;
+	var moonSize : curveData:Float;
+	var specularTint : curveData:HDRColor;
+}

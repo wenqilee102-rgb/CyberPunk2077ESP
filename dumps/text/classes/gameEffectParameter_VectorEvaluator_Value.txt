@@ -1,0 +1,12 @@
+import class gameEffectParameter_VectorEvaluator_Value extends gameIEffectParameter_VectorEvaluator
+{
+	var value : Vector4;
+}
+
+import class abstract gameIEffectParameter_VectorEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

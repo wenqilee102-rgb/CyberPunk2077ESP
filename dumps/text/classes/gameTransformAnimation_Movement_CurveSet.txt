@@ -1,0 +1,11 @@
+import class gameTransformAnimation_Movement_CurveSet extends gameTransformAnimation_Movement
+{
+}
+
+import class abstract gameTransformAnimation_Movement extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

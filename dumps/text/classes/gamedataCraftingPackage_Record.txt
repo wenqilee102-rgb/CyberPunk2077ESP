@@ -1,0 +1,30 @@
+import class gamedataCraftingPackage_Record extends gamedataTweakDBRecord
+{
+	import function CraftingExpModifier() : Float; // CraftingExpModifier
+	import function CraftingRecipe(out outList : array:whandle:gamedataRecipeElement_Record); // CraftingRecipe
+	import function CraftingRecipeContains(item : whandle:gamedataRecipeElement_Record) : Bool; // CraftingRecipeContains
+	import function GetCraftingRecipeCount() : Int32; // GetCraftingRecipeCount
+	import function GetCraftingRecipeItem(index : Int32) : whandle:gamedataRecipeElement_Record; // GetCraftingRecipeItem
+	import function GetCraftingRecipeItemHandle(index : Int32) : handle:gamedataRecipeElement_Record; // GetCraftingRecipeItemHandle
+	import function OvercraftPenaltyModifier() : Float; // OvercraftPenaltyModifier
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

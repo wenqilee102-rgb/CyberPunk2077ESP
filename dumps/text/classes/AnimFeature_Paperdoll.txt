@@ -1,0 +1,44 @@
+class AnimFeature_Paperdoll extends animAnimFeature
+{
+	public    var genderSelection : Bool;
+	public    var characterCreation : Bool;
+	public    var characterCreation_Head : Bool;
+	public    var characterCreation_Teeth : Bool;
+	public    var characterCreation_Nails : Bool;
+	public    var characterCreation_Eyes : Bool;
+	public    var characterCreation_Nose : Bool;
+	public    var characterCreation_Lips : Bool;
+	public    var characterCreation_Hair : Bool;
+	public    var characterCreation_Jaw : Bool;
+	public    var characterCreation_Summary : Bool;
+	public    var inventoryScreen : Bool;
+	public    var inventoryScreen_Weapon : Bool;
+	public    var inventoryScreen_Legs : Bool;
+	public    var inventoryScreen_Feet : Bool;
+	public    var inventoryScreen_Cyberware : Bool;
+	public    var inventoryScreen_QuickSlot : Bool;
+	public    var inventoryScreen_Consumable : Bool;
+	public    var inventoryScreen_Outfit : Bool;
+	public    var inventoryScreen_Head : Bool;
+	public    var inventoryScreen_Face : Bool;
+	public    var inventoryScreen_InnerChest : Bool;
+	public    var inventoryScreen_OuterChest : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

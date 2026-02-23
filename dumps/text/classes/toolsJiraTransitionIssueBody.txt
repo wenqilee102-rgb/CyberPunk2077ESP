@@ -1,0 +1,8 @@
+import class toolsJiraTransitionIssueBody extends ISerializable
+{
+	var transition : toolsJiraIssueTransition;
+}
+
+import class abstract ISerializable
+{
+}

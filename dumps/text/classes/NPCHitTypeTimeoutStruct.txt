@@ -1,0 +1,5 @@
+struct NPCHitTypeTimeoutStruct
+{
+	public    var timeout : Float;
+	public    var delayID : gameDelayID;
+}

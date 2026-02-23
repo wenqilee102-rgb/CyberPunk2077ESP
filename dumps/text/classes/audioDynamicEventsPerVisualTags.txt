@@ -1,0 +1,5 @@
+import struct audioDynamicEventsPerVisualTags
+{
+	var visualTags : array:CName;
+	var grunts : array:audioDynamicEventsWithInterval;
+}

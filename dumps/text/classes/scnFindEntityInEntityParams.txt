@@ -1,0 +1,9 @@
+import struct scnFindEntityInEntityParams
+{
+	var actorId : scnActorId;
+	var performerId : scnPerformerId;
+	var itemID : TweakDBID;
+	var slotID : TweakDBID;
+	var forceMaxVisibility : Bool;
+	var ownershipTransferOptions : scnPropOwnershipTransferOptions;
+}

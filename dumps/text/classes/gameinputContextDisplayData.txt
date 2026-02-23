@@ -1,0 +1,5 @@
+import struct gameinputContextDisplayData
+{
+	var name : CName;
+	var actions : array:gameinputActionDisplayData;
+}

@@ -1,0 +1,6 @@
+import struct curveSingleChannelCurve
+{
+	var interpolationType : curveEInterpolationType;
+	var linkType : curveESegmentsLinkType;
+	var data : DataBuffer;
+}

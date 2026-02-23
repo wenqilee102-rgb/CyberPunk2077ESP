@@ -1,0 +1,10 @@
+import class gameDefaultAppearancePreset_Entity extends ISerializable
+{
+	var entityPathHash : Uint64;
+	var debugEntityPath : CName;
+	var defaultAppearanceName : CName;
+}
+
+import class abstract ISerializable
+{
+}

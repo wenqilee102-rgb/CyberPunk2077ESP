@@ -1,0 +1,22 @@
+import class audioVoiceContextMapItem extends audioAudioMetadata
+{
+	var voTrigger : CName;
+	var bark : audioVoBarkType;
+	var grunt : audioVoGruntType;
+	var answer : audioVoiceContextAnswer;
+	var overridingVoContext : locVoiceoverContext;
+	var gruntInterruptMode : audioVoGruntInterruptMode;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

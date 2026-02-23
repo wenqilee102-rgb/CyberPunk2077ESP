@@ -1,0 +1,6 @@
+struct TrafficLightResaveData
+{
+	public    var transitionDuration : Float;
+	public    var playNotificationSounds : Bool;
+	public    var invertTrafficEvents : Bool;
+}

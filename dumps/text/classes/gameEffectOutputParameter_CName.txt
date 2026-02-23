@@ -1,0 +1,6 @@
+import struct gameEffectOutputParameter_CName
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+
+	import static function Set(ctx : gameEffectOutputParameter_CName, bb : handle:gameIBlackboard, value : CName); // Set
+}

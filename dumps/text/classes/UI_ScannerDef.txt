@@ -1,0 +1,48 @@
+class UI_ScannerDef extends gamebbScriptDefinition
+{
+	public    var Scannables : gamebbScriptID_Variant;
+	public    var CurrentProgress : gamebbScriptID_Float;
+	public    var CurrentState : gamebbScriptID_Variant;
+	public    var ProgressBarText : gamebbScriptID_String;
+	public    var ScannedObject : gamebbScriptID_EntityID;
+	public    var ScannerMode : gamebbScriptID_Variant;
+	public    var scannerTooltip : gamebbScriptID_Int32;
+	public    var scannerChangeTargetTooltipVisibility : gamebbScriptID_Bool;
+	public    var scannerData : gamebbScriptID_Variant;
+	public    var scannerObjectDistance : gamebbScriptID_Float;
+	public    var scannerObjectStats : gamebbScriptID_Variant;
+	public    var scannerQuickHackActionId : gamebbScriptID_Int32;
+	public    var scannerQuickHackActionStarted : gamebbScriptID_Bool;
+	public    var scannerQuickHackTime : gamebbScriptID_Float;
+	public    var exclusiveFocusActive : gamebbScriptID_Bool;
+	public    var LastTaggedTarget : gamebbScriptID_Variant;
+	public    var skillCheckInfo : gamebbScriptID_Variant;
+	public    var ShowHudHintMessege : gamebbScriptID_Bool;
+	public    var HudHintMessegeContent : gamebbScriptID_String;
+	public    var UIVisible : gamebbScriptID_Bool;
+	public    var ScannerLookAt : gamebbScriptID_Bool;
+	public    var scannerActiveTab : gamebbScriptID_Variant;
+	public    var twintoneAvailable : gamebbScriptID_Bool;
+	public    var twintoneApplyAvailable : gamebbScriptID_Bool;
+	public    var twintoneNoModelAvailable : gamebbScriptID_Bool;
+
+	function AutoCreateInSystem() : Bool; // AutoCreateInSystem;
+}
+
+import class gamebbScriptDefinition extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

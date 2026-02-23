@@ -1,0 +1,5 @@
+enum PlayerVisionModeControllerRefreshPolicyEnum
+{
+	Persistent = 0,
+	Eventful = 1
+}

@@ -1,0 +1,9 @@
+import class AIbehaviorEventConditionDefinition extends ISerializable
+{
+	var condition : handle:AIbehaviorConditionDefinition;
+	var eventName : CName;
+}
+
+import class abstract ISerializable
+{
+}

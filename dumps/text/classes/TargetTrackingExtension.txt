@@ -1,0 +1,151 @@
+class TargetTrackingExtension extends AITargetTrackerComponent
+{
+	private   var trackedCombatSquads : array:handle:AICombatSquadScriptInterface;
+	private   var trackedCombatSquadsCounters : array:Int32;
+	private   var threatPersistanceMemory : ThreatPersistanceMemory;
+	private   var hasBeenSeenByPlayer : Bool;
+	private   var canBeAddedToBossHealthbar : Bool;
+	private   var playerPuppet : whandle:gameObject;
+
+	static function Get(puppet : whandle:ScriptedPuppet, out targetTracker : whandle:TargetTrackingExtension) : Bool; // TargetTrackingExtension::Get;ScriptedPuppetTargetTrackingExtension
+	static function Get(context : AIbehaviorScriptExecutionContext, out targetTracker : whandle:AITargetTrackerComponent) : Bool; // TargetTrackingExtension::Get;ScriptExecutionContextTargetTrackerComponent
+	static function Get(puppet : whandle:ScriptedPuppet, out targetTracker : whandle:AITargetTrackerComponent) : Bool; // TargetTrackingExtension::Get;ScriptedPuppetTargetTrackerComponent
+	static function GetHostileThreats(context : AIbehaviorScriptExecutionContext, visible : Bool, trackedLocations : script_ref:array:AITrackedLocation) : Bool; // TargetTrackingExtension::GetHostileThreats;ScriptExecutionContextBoolscript_ref<array<TrackedLocation>>
+	static function GetHostileThreats(puppet : whandle:ScriptedPuppet, visible : Bool, trackedLocations : script_ref:array:AITrackedLocation) : Bool; // TargetTrackingExtension::GetHostileThreats;ScriptedPuppetBoolscript_ref<array<TrackedLocation>>
+	static function GetPlayerFromThreats(hostileThreats : script_ref:array:AITrackedLocation, out player : whandle:gameObject) : Bool; // TargetTrackingExtension::GetPlayerFromThreats;script_ref<array<TrackedLocation>>GameObject
+	static function GetStrong(context : AIbehaviorScriptExecutionContext, out targetTracker : handle:AITargetTrackerComponent) : Bool; // TargetTrackingExtension::GetStrong;ScriptExecutionContextTargetTrackerComponent
+	static function GetTopThreat(context : AIbehaviorScriptExecutionContext, visible : Bool, out trackedLocation : AITrackedLocation) : Bool; // TargetTrackingExtension::GetTopThreat;ScriptExecutionContextBoolTrackedLocation
+	static function GetTrackedLocation(context : AIbehaviorScriptExecutionContext, target : whandle:entEntity, out trackedLocation : AITrackedLocation) : Bool; // TargetTrackingExtension::GetTrackedLocation;ScriptExecutionContextEntityTrackedLocation
+	static function GetTrackedLocation(puppet : whandle:ScriptedPuppet, target : whandle:entEntity, out trackedLocation : AITrackedLocation) : Bool; // TargetTrackingExtension::GetTrackedLocation;ScriptedPuppetEntityTrackedLocation
+	static function HasHostileThreat(puppet : whandle:ScriptedPuppet, optional onlyVisible : Bool, optional onlyEntities : Bool) : Bool; // TargetTrackingExtension::HasHostileThreat;ScriptedPuppetBoolBool
+	static function InjectThreat(puppet : whandle:ScriptedPuppet, threat : script_ref:AITrackedLocation); // TargetTrackingExtension::InjectThreat;ScriptedPuppetscript_ref<TrackedLocation>
+	static function InjectThreat(puppet : whandle:ScriptedPuppet, threat : whandle:entEntity, accuracy : Float, optional cooldown : Float); // TargetTrackingExtension::InjectThreat;ScriptedPuppetEntityFloatFloat
+	static function InjectThreat(puppet : whandle:ScriptedPuppet, threat : whandle:entEntity); // TargetTrackingExtension::InjectThreat;ScriptedPuppetEntity
+	static function InjectThreat(puppet : whandle:ScriptedPuppet, pos : Vector4, timeToLive : Float); // TargetTrackingExtension::InjectThreat;ScriptedPuppetVector4Float
+	static function IsThreatInThreatList(owner : whandle:ScriptedPuppet, threat : whandle:entEntity, visible : Bool, hostile : Bool) : Bool; // TargetTrackingExtension::IsThreatInThreatList;ScriptedPuppetEntityBoolBool
+	static function OnHit(ownerPuppet : whandle:ScriptedPuppet, evt : handle:gameeventsHitEvent); // TargetTrackingExtension::OnHit;ScriptedPuppetgameHitEvent
+	static function RemoveThreat(puppet : whandle:ScriptedPuppet, threat : whandle:entEntity); // TargetTrackingExtension::RemoveThreat;ScriptedPuppetEntity
+	static function SetCurrentThreatsPersistence(puppet : whandle:ScriptedPuppet, isPersistent : Bool, persistenceSource : Uint32); // TargetTrackingExtension::SetCurrentThreatsPersistence;ScriptedPuppetBoolUint32
+	static function SetThreatPersistence(puppet : whandle:ScriptedPuppet, target : whandle:entEntity, isPersistent : Bool, persistenceSource : Uint32); // TargetTrackingExtension::SetThreatPersistence;ScriptedPuppetEntityBoolUint32
+
+	event OnEnemyPushedToSquad(evt : handle:AIEnemyPushedToSquad) : Bool; // OnEnemyPushedToSquad
+	event OnEnemyThreatDetected(th : handle:AIEnemyThreatDetected) : Bool; // OnEnemyThreatDetected
+	event OnHostJoinedSquad(th : handle:AIHostJoinedSquad) : Bool; // OnHostJoinedSquad
+	event OnHostLeftSquad(th : handle:AIHostLeftSquad) : Bool; // OnHostLeftSquad
+	event OnHostileThreatDetected(th : handle:AIHostileThreatDetected) : Bool; // OnHostileThreatDetected
+	event OnNewThreat(th : handle:AINewThreat) : Bool; // OnNewThreat
+	event OnPlayerHostileThreatDetected(evt : handle:PlayerHostileThreatDetected) : Bool; // OnPlayerHostileThreatDetected
+	event OnPullSquadSyncRequest(evt : handle:PullSquadSyncRequest) : Bool; // OnPullSquadSyncRequest
+	event OnSeenByPlayerEvent(evt : handle:gameeventsProperlySeenByPlayerEvent) : Bool; // OnSeenByPlayerEvent
+	event OnSetThreatsPersistenceRequest(evt : handle:SetThreatsPersistenceRequest) : Bool; // OnSetThreatsPersistenceRequest
+	event OnSquadmateDeath(evt : handle:OnSquadmateDied) : Bool; // OnSquadmateDeath
+	event OnStoppedBeingTrackedAsHostile(evt : handle:AIStoppedBeingTrackedAsHostile) : Bool; // OnStoppedBeingTrackedAsHostile
+	event OnThreatRemoved(th : handle:AIThreatRemoved) : Bool; // OnThreatRemoved
+
+	function AddPotentialBossTarget(target : whandle:gameObject); // AddPotentialBossTarget;GameObject
+	function IsSquadTracked(cssi : handle:AICombatSquadScriptInterface) : Bool; // IsSquadTracked;CombatSquadScriptInterface
+	function OnHostileThreatAdded(owner : whandle:entEntity, threat : whandle:entEntity); // OnHostileThreatAdded;EntityEntity
+	function RegisterTrackedSquadMember(cssi : handle:AICombatSquadScriptInterface); // RegisterTrackedSquadMember;CombatSquadScriptInterface
+	function RemoveHostileCamerasFromThreats(); // RemoveHostileCamerasFromThreats;
+	function RemoveWholeSquadFromThreats(cssi : handle:AICombatSquadScriptInterface); // RemoveWholeSquadFromThreats;CombatSquadScriptInterface
+	function RevaluateTrackedSquads(); // RevaluateTrackedSquads;
+	function SquadTrackedMembersAmount(cssi : handle:AICombatSquadScriptInterface) : Int32; // SquadTrackedMembersAmount;CombatSquadScriptInterface
+	function TryToPlayVOOnCompanion(owner : whandle:ScriptedPuppet, threat : whandle:gameObject, detectedBySelf : Bool); // TryToPlayVOOnCompanion;ScriptedPuppetGameObjectBool
+	function TryToRegisterTrackedSquad(threat : handle:ScriptedPuppet); // TryToRegisterTrackedSquad;ScriptedPuppet
+	function WasThreatPersistent(threat : whandle:entEntity) : Bool; // WasThreatPersistent;Entity
+}
+
+import class AITargetTrackerComponent extends gameComponent
+{
+	var TriggersCombat : Bool;
+
+	import function ActivateThreat(et : handle:entEntity); // ActivateThreat
+	import function AddDroppingCooldown(et : handle:entEntity, value : Float); // AddDroppingCooldown
+	import function AddThreat(et : handle:entEntity, isHostile : Bool, pos : Vector4, accuracy : Float, cooldown : Float, isPersistent : Bool) : Uint32; // AddThreat
+	import function AddThreatOnPosition(pos : Vector4, timeToLive : Float) : Uint32; // AddThreatOnPosition
+	import function ClearForceDetected(); // ClearForceDetected
+	import function ClearThreats(); // ClearThreats
+	import function CollectTrackers(onlyHostiles : Bool, onlyInContact : Bool) : array:handle:entEntity; // CollectTrackers
+	import function DeactivateThreat(et : handle:entEntity); // DeactivateThreat
+	import function GetCurrentPreset() : TweakDBID; // GetCurrentPreset
+	import function GetDroppingCooldown(et : handle:entEntity) : Float; // GetDroppingCooldown
+	import function GetHostileThreats(onlyVisible : Bool) : array:AITrackedLocation; // GetHostileThreats
+	import function GetRecentlyDroppedThreat() : AIDroppedThreatData; // GetRecentlyDroppedThreat
+	import function GetThreatBeliefPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatBeliefPositionProvider
+	import function GetThreatLastKnownPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatLastKnownPositionProvider
+	import function GetThreatPersistence(et : handle:entEntity) : AIThreatPersistenceStatus; // GetThreatPersistence
+	import function GetThreatPersistenceBySource(et : handle:entEntity, src : Uint32) : AIThreatPersistenceStatus; // GetThreatPersistenceBySource
+	import function GetThreatPriorityModFromAttackersCurve(attackers : Uint32) : Float; // GetThreatPriorityModFromAttackersCurve
+	import function GetThreatPriorityModFromDistCurve(distanceFromThreat : Float) : Float; // GetThreatPriorityModFromDistCurve
+	import function GetThreatPriorityModFromDmgCurve(timeSinceLastDmg : Float) : Float; // GetThreatPriorityModFromDmgCurve
+	import function GetThreatPriorityModFromHisteresisCurve(timeSinceTargetChange : Float) : Float; // GetThreatPriorityModFromHisteresisCurve
+	import function GetThreatSharedBeliefPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatSharedBeliefPositionProvider
+	import function GetThreatSharedLastKnownPositionProvider(threat : whandle:entEntity, optional offset : Vector3, optional failIfVisible : Bool, optional slotName : CName, optional failSafeProvider : handle:entIPositionProvider) : handle:entIPositionProvider; // GetThreatSharedLastKnownPositionProvider
+	import function GetThreats(onlyVisible : Bool) : array:AITrackedLocation; // GetThreats
+	import function GetTopHostileThreat(onlyVisible : Bool, out threat : AITrackedLocation) : Bool; // GetTopHostileThreat
+	import function GetVisibleThreatBeliefAccuracy(et : handle:entEntity) : Float; // GetVisibleThreatBeliefAccuracy
+	import function HasHostileThreat(onlyVisible : Bool, optional onlyEntities : Bool) : Bool; // HasHostileThreat
+	import function IsPositionValid(pos : Vector4) : Bool; // IsPositionValid
+	import function MapThreat(et : handle:entEntity) : Uint32; // MapThreat
+	import function PullSquadSync(sqType : AISquadType); // PullSquadSync
+	import function PushSquadSync(sqType : AISquadType); // PushSquadSync
+	import function RegisterListener(et : handle:entEntity, listener : handle:AIScriptsTargetTrackingListener); // RegisterListener
+	import function RemoveThreat(id : Uint32); // RemoveThreat
+	import function RemoveThreatBeliefAccuracyMinValue(et : handle:entEntity, reason : CName); // RemoveThreatBeliefAccuracyMinValue
+	import function RequestThreatBeliefAccuracyMinValue(et : handle:entEntity, reason : CName, minAccuracy : Float); // RequestThreatBeliefAccuracyMinValue
+	import function ResetDroppingCooldown(et : handle:entEntity); // ResetDroppingCooldown
+	import function ResetRecentlyDroppedThreat(optional delay : Float); // ResetRecentlyDroppedThreat
+	import function ResetRecentlyDroppedThreatNoCallbacks(); // ResetRecentlyDroppedThreatNoCallbacks
+	import function SetCurrentPreset(presetId : TweakDBID); // SetCurrentPreset
+	import function SetCurrentThreatsPersistence(isPersistent : Bool, src : Uint32); // SetCurrentThreatsPersistence
+	import function SetForceDetect(); // SetForceDetect
+	import function SetRecentlyDroppedThreat(threat : whandle:entEntity, position : Vector4, optional validFor : Float); // SetRecentlyDroppedThreat
+	import function SetThreatAccuracy(et : handle:entEntity, accuracy : Float); // SetThreatAccuracy
+	import function SetThreatBaseMul(et : handle:entEntity, threatValue : Float); // SetThreatBaseMul
+	import function SetThreatBeliefAccuracy(et : handle:entEntity, accuracy : Float); // SetThreatBeliefAccuracy
+	import function SetThreatPersistence(et : handle:entEntity, isPersistent : Bool, src : Uint32); // SetThreatPersistence
+	import function SetThreatPriorityAttackersCurve(curveName : CName) : Bool; // SetThreatPriorityAttackersCurve
+	import function SetThreatPriorityDistCurve(curveName : CName) : Bool; // SetThreatPriorityDistCurve
+	import function SetThreatPriorityDmgCurve(curveName : CName) : Bool; // SetThreatPriorityDmgCurve
+	import function SetThreatPriorityHisteresisCurve(curveName : CName) : Bool; // SetThreatPriorityHisteresisCurve
+	import function ThreatFromEntity(et : handle:entEntity, out threat : AITrackedLocation) : Bool; // ThreatFromEntity
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

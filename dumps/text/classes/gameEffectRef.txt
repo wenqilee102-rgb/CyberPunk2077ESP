@@ -1,0 +1,5 @@
+import struct gameEffectRef
+{
+	var set : rRef:gameEffectSet;
+	var tag : CName;
+}

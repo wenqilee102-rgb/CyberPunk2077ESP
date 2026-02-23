@@ -1,0 +1,10 @@
+import struct rendEmitterLOD
+{
+	var lodSwitchDistance : Float;
+	var burstList : array:rendParticleBurst;
+	var birthRate : array:Float;
+	var emitterDurationSettings : rendEmitterDurationSettings;
+	var emitterDelaySettings : rendEmitterDelaySettings;
+	var sortingMode : rendEParticleSortingMode;
+	var isEnabled : Bool;
+}

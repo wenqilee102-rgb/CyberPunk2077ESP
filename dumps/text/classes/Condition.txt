@@ -1,0 +1,5 @@
+struct Condition
+{
+	public    var passed : Bool;
+	public    var description : String;
+}

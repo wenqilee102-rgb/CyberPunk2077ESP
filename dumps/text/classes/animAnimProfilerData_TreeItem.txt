@@ -1,0 +1,11 @@
+import class animAnimProfilerData_TreeItem extends ISerializable
+{
+	var className : CName;
+	var exclusiveTimeMS : Float;
+	var inclusiveTimeMS : Float;
+	var children : array:handle:animAnimProfilerData_TreeItem;
+}
+
+import class abstract ISerializable
+{
+}

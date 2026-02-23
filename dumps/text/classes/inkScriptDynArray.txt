@@ -1,0 +1,25 @@
+import class inkScriptDynArray extends IScriptable
+{
+	import function Clear(); // Clear
+	import function Empty() : Bool; // Empty
+	import function Get() : array:whandle:IScriptable; // Get
+	import function InsertAt(index : Uint32, object : whandle:IScriptable) : Bool; // InsertAt
+	import function PopBack() : whandle:IScriptable; // PopBack
+	import function PushBack(object : whandle:IScriptable); // PushBack
+	import function Remove(object : whandle:IScriptable) : Bool; // Remove
+	import function Size() : Int32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

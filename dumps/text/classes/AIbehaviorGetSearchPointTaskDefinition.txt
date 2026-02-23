@@ -1,0 +1,18 @@
+import class AIbehaviorGetSearchPointTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var inPlayerPositionDelay : handle:AIArgumentMapping;
+	var inSearchPositionMaxRadius : handle:AIArgumentMapping;
+	var inNearestNavmeshPolyExtent : handle:AIArgumentMapping;
+	var inPavementsOnly : handle:AIArgumentMapping;
+	var inLastKnownPosition : handle:AIArgumentMapping;
+	var outSearchPosition : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

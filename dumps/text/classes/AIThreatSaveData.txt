@@ -1,0 +1,5 @@
+import struct AIThreatSaveData
+{
+	var entityId : entEntityID;
+	var persistenceSourceBitMask : Uint32;
+}

@@ -1,0 +1,11 @@
+struct SquadTicketReceipt
+{
+	public    var acknowledgedTimeStamp : Float;
+	public    var conditionDeactivationCheckTimeStamp : Float;
+	public    var conditionDeactivationSuccessfulCheckTimeStamp : Float;
+	public    var conditionCheckRandomizedInterval : Float;
+	public    var lastRecipient : entEntityID;
+	public    var acknowledgesInQueue : Int32;
+	public    var numberOfOrders : Int32;
+	public    var cooldownID : Int32;
+}

@@ -1,0 +1,12 @@
+import struct gamedataTDBIDHelper
+{
+	import static function OpenRecordInVSCode(tdbID : TweakDBID) : Bool; // OpenRecordInVSCode
+
+	import function Append(out tdbID : TweakDBID, toAppend : TweakDBID); // Append
+	import function Create(str : String) : TweakDBID; // Create
+	import function IsValid(tdbID : TweakDBID) : Bool; // IsValid
+	import function None() : TweakDBID; // None
+	import function Prepend(out tdbID : TweakDBID, toPrepend : TweakDBID); // Prepend
+	import function ToNumber(tdbID : TweakDBID) : Uint64; // ToNumber
+	import function ToStringDEBUG(tdbID : TweakDBID) : String; // ToStringDEBUG
+}

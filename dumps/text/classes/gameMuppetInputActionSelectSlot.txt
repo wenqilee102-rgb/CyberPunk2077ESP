@@ -1,0 +1,8 @@
+import struct gameMuppetInputActionSelectSlot extends gameIMuppetInputAction
+{
+	var targetSlot : Int32;
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

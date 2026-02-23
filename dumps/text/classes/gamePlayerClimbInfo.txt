@@ -1,0 +1,22 @@
+import class gamePlayerClimbInfo extends IScriptable
+{
+	var descResult : handle:worldgeometryDescriptionResult;
+	var obstacleEnd : Vector4;
+	var inputDirection : Vector4;
+	var climbValid : Bool;
+	var vaultValid : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,18 @@
+import class ChromaticAberrationAreaSettings extends IAreaSettings
+{
+	var chromaticAberrationEnabled : Bool;
+	var chromaticAberrationMargin : Float;
+	var chromaticAberrationSize : Vector2;
+	var chromaticAberrationExp : Float;
+	var subpixelDispersal : Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,37 @@
+import class gamedataGenericMetroSign_Record extends gamedataBaseSign_Record
+{
+	import function GetMetroLineNameCount() : Int32; // GetMetroLineNameCount
+	import function GetMetroLineNameItem(index : Int32) : CName; // GetMetroLineNameItem
+	import function IconName() : CName; // IconName
+	import function MetroLineName() : array:CName; // MetroLineName
+	import function MetroLineNameContains(item : CName) : Bool; // MetroLineNameContains
+	import function StationName() : String; // StationName
+	import function SubDistrictName() : String; // SubDistrictName
+}
+
+import class gamedataBaseSign_Record extends gamedataTweakDBRecord
+{
+	import function IsUnique() : Bool; // IsUnique
+	import function Resource() : redResourceReferenceScriptToken; // Resource
+	import function StyleStateName() : CName; // StyleStateName
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

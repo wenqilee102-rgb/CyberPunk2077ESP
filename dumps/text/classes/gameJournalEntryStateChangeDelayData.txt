@@ -1,0 +1,10 @@
+import struct gameJournalEntryStateChangeDelayData
+{
+	var entryPath : handle:gameJournalPath;
+	var entryType : CName;
+	var oldState : gameJournalEntryState;
+	var newState : gameJournalEntryState;
+	var notifyOption : gameJournalNotifyOption;
+	var changeType : gameJournalChangeType;
+	var delay : Float;
+}

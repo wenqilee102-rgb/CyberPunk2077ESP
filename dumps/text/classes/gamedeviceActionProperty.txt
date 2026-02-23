@@ -1,0 +1,23 @@
+import class gamedeviceActionProperty extends IScriptable
+{
+	var name : CName;
+	var typeName : CName;
+	var first : Variant;
+	var second : Variant;
+	var third : Variant;
+	var flags : gamedeviceActionPropertyFlags;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

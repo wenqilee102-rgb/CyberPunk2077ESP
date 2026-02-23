@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"ScannerAbilityItemLogicController","d":0,"e":[{"a":{"b":"inkTextWidgetReference"},"b":"abilityNameText","c":129},{"a":{"b":"inkImageWidgetReference"},"b":"abilityIcon","c":129}],"f":[{"a":"Setup;IScriptable","b":"Setup","d":48,"e":[{"a":{"a":26,"c":{"b":"IScriptable"}},"b":"ability","c":0}]}]}

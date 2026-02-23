@@ -1,0 +1,14 @@
+import class meshMeshParamOccluderData extends meshMeshParameter
+{
+	var occluderResource : handle:visIOccluderResource;
+	var defaultOccluderType : visWorldOccluderType;
+	var autoHideDistanceScale : Uint8;
+}
+
+import class abstract meshMeshParameter extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

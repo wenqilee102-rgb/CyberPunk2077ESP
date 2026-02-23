@@ -1,0 +1,23 @@
+import class questPlayEnv_ForceRelitEnvProbe extends questIEnvironmentManagerNodeType
+{
+}
+
+import class abstract questIEnvironmentManagerNodeType extends questObjectNodeType
+{
+}
+
+import class abstract questObjectNodeType extends questINodeType
+{
+}
+
+import class abstract questINodeType extends questIBaseNodeType
+{
+}
+
+import class abstract questIBaseNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

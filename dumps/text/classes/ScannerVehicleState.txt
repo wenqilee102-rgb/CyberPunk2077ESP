@@ -1,0 +1,28 @@
+class ScannerVehicleState extends ScannerChunk
+{
+	private   var vehicleState : String;
+
+	function GetType() : ScannerDataType; // GetType;
+	function GetVehicleState() : String; // GetVehicleState;
+	function Set(vehState : script_ref:String); // Set;script_ref<String>
+}
+
+class ScannerChunk extends IScriptable
+{
+	function GetType() : ScannerDataType; // GetType;
+	function IsValid() : Bool; // IsValid;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

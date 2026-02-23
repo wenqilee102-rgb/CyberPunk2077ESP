@@ -1,0 +1,5 @@
+import struct audioVoLineSignal
+{
+	var ruid : CRUID;
+	var signal : CName;
+}

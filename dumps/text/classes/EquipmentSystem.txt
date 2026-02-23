@@ -1,0 +1,155 @@
+class EquipmentSystem extends gameIEquipmentSystem
+{
+	private   var ownerData : array:handle:EquipmentSystemPlayerData;
+
+	static function ComposeSDORootPath(ownerGameObject : whandle:gameObject, optional suffix : String) : String; // EquipmentSystem::ComposeSDORootPath;GameObjectString
+	static function GetActiveWardrobeSet(owner : handle:gameObject) : handle:gameClothingSet; // EquipmentSystem::GetActiveWardrobeSet;GameObject
+	static function GetActiveWardrobeSetID(owner : handle:gameObject) : gameWardrobeClothingSetIndex; // EquipmentSystem::GetActiveWardrobeSetID;GameObject
+	static function GetClothingEquipmentAreas() : array:gamedataEquipmentArea; // EquipmentSystem::GetClothingEquipmentAreas;
+	static function GetClothingItemAppearanceName(itemID : gameItemID) : CName; // EquipmentSystem::GetClothingItemAppearanceName;ItemID
+	static function GetData(owner : handle:gameObject) : handle:EquipmentSystemPlayerData; // EquipmentSystem::GetData;GameObject
+	static function GetEquipAreaType(item : gameItemID) : gamedataEquipmentArea; // EquipmentSystem::GetEquipAreaType;ItemID
+	static function GetEquipAreaTypeForDpad(item : gameItemID) : gamedataEquipmentArea; // EquipmentSystem::GetEquipAreaTypeForDpad;ItemID
+	static function GetFirstAvailableWeapon(owner : handle:gameObject) : gameItemID; // EquipmentSystem::GetFirstAvailableWeapon;GameObject
+	static function GetInstance(owner : handle:gameObject) : handle:EquipmentSystem; // EquipmentSystem::GetInstance;GameObject
+	static function GetItemsInArea(owner : handle:gameObject, area : gamedataEquipmentArea) : array:gameItemID; // EquipmentSystem::GetItemsInArea;GameObjectgamedataEquipmentArea
+	static function GetLastUsedItemByType(owner : handle:gameObject, type : ELastUsed) : gameItemID; // EquipmentSystem::GetLastUsedItemByType;GameObjectELastUsed
+	static function GetPlacementSlot(item : gameItemID) : TweakDBID; // EquipmentSystem::GetPlacementSlot;ItemID
+	static function GetSlotActiveItem(owner : handle:gameObject, requestSlot : EquipmentManipulationRequestSlot) : gameItemID; // EquipmentSystem::GetSlotActiveItem;GameObjectEquipmentManipulationRequestSlot
+	static function GetSlotOverridenItem(owner : handle:gameObject, area : gamedataEquipmentArea) : gameItemID; // EquipmentSystem::GetSlotOverridenItem;GameObjectgamedataEquipmentArea
+	static function HasItemInArea(owner : handle:gameObject, area : gamedataEquipmentArea) : Bool; // EquipmentSystem::HasItemInArea;GameObjectgamedataEquipmentArea
+	static function HasTag(item : handle:gameItemObject, tag : CName) : Bool; // EquipmentSystem::HasTag;ItemObjectCName
+	static function IsClothing(item : gameItemID) : Bool; // EquipmentSystem::IsClothing;ItemID
+	static function IsCyberdeckEquipped(owner : handle:gameObject) : Bool; // EquipmentSystem::IsCyberdeckEquipped;GameObject
+	static function IsItemCyberdeck(itemID : gameItemID) : Bool; // EquipmentSystem::IsItemCyberdeck;ItemID
+	static function IsItemOfCategory(item : gameItemID, category : gamedataItemCategory) : Bool; // EquipmentSystem::IsItemOfCategory;ItemIDgamedataItemCategory
+	static function RequestUnequipItem(owner : handle:gameObject, equipmentArea : gamedataEquipmentArea, slotIndex : Int32); // EquipmentSystem::RequestUnequipItem;GameObjectgamedataEquipmentAreaInt32
+	static function UnequipPrereqItems(owner : handle:gameObject); // EquipmentSystem::UnequipPrereqItems;GameObject
+
+	function BlockAndCompensateScaling(); // BlockAndCompensateScaling;
+	function CheckReginaRewardsPresence(); // CheckReginaRewardsPresence;
+	function CheckSaburoDogTagPresence(); // CheckSaburoDogTagPresence;
+	function ConsumablesChargesRework(); // ConsumablesChargesRework;
+	function Debug_FillESSlotData(slotIndex : Int32, area : gamedataEquipmentArea, itemID : gameItemID, ownerGameObject : whandle:gameObject); // Debug_FillESSlotData;Int32gamedataEquipmentAreaItemIDGameObject
+	function Debug_FillESSlotData(slotIndex : Int32, areaStr : script_ref:String, itemID : gameItemID, ownerGameObject : whandle:gameObject); // Debug_FillESSlotData;Int32script_ref<String>ItemIDGameObject
+	function Debug_SetESSlotData(slotIndex : Int32, areaStr : script_ref:String, ownerGameObject : whandle:gameObject); // Debug_SetESSlotData;Int32script_ref<String>GameObject
+	function Debug_SetupESAreaButton(equipArea : script_ref:gameSEquipArea, ownerGameObject : whandle:gameObject); // Debug_SetupESAreaButton;script_ref<SEquipArea>GameObject
+	function Debug_SetupESSlotButton(slotIndex : Int32, areaStr : script_ref:String, ownerGameObject : whandle:gameObject); // Debug_SetupESSlotButton;Int32script_ref<String>GameObject
+	function Debug_SetupEquipmentSystemOverlay(dataOwner : whandle:gameObject); // Debug_SetupEquipmentSystemOverlay;GameObject
+	function EquipCyberwareByTDBID(player : handle:PlayerPuppet, tdbid : TweakDBID); // EquipCyberwareByTDBID;PlayerPuppetTweakDBID
+	function EquipTutorialCyberware(player : handle:PlayerPuppet); // EquipTutorialCyberware;PlayerPuppet
+	function GetActiveItem(owner : handle:gameObject, area : gamedataEquipmentArea) : gameItemID; // GetActiveItem;GameObjectgamedataEquipmentArea
+	function GetActiveVisualItem(owner : handle:gameObject, area : gamedataEquipmentArea) : gameItemID; // GetActiveVisualItem;GameObjectgamedataEquipmentArea
+	function GetActiveWeaponObject(owner : handle:gameObject, area : gamedataEquipmentArea) : handle:gameItemObject; // GetActiveWeaponObject;GameObjectgamedataEquipmentArea
+	function GetAllInstalledCyberwareAbilities(owner : handle:gameObject) : array:gameSEquipSlot; // GetAllInstalledCyberwareAbilities;GameObject
+	function GetEquipAreaFromItemID(owner : handle:gameObject, item : gameItemID) : gameSEquipArea; // GetEquipAreaFromItemID;GameObjectItemID
+	function GetHairSuffix(itemId : gameItemID, owner : whandle:gameObject, suffixRecord : handle:gamedataItemsFactoryAppearanceSuffixBase_Record) : String; // GetHairSuffix;ItemIDGameObjectItemsFactoryAppearanceSuffixBase_Record
+	function GetHotkeyTypeForItemID(owner : whandle:gameObject, itemID : gameItemID) : gameEHotkey; // GetHotkeyTypeForItemID;GameObjectItemID
+	function GetHotkeyTypeFromItemID(owner : whandle:gameObject, itemID : gameItemID) : gameEHotkey; // GetHotkeyTypeFromItemID;GameObjectItemID
+	function GetInventoryManager(owner : whandle:gameObject) : whandle:InventoryDataManagerV2; // GetInventoryManager;GameObject
+	function GetItemIDFromHotkey(owner : whandle:gameObject, hotkey : gameEHotkey) : gameItemID; // GetItemIDFromHotkey;GameObjectEHotkey
+	function GetItemInEquipSlot(owner : handle:gameObject, equipArea : gamedataEquipmentArea, slotIndex : Int32) : gameItemID; // GetItemInEquipSlot;GameObjectgamedataEquipmentAreaInt32
+	function GetItemSlotIndex(owner : handle:gameObject, item : gameItemID) : Int32; // GetItemSlotIndex;GameObjectItemID
+	function GetPaperDollSlots(owner : handle:gameObject) : array:gamedataEquipmentArea; // GetPaperDollSlots;GameObject
+	function GetPlayerData(owner : handle:gameObject) : handle:EquipmentSystemPlayerData; // GetPlayerData;GameObject
+	function GiveAndEquipAutoscalingFleshFists(); // GiveAndEquipAutoscalingFleshFists;
+	function GiveFixerShirt(); // GiveFixerShirt;
+	function GiveSaburoTanto(); // GiveSaburoTanto;
+	function IconicsReworkCompensate(); // IconicsReworkCompensate;
+	function IconicsUpgradeCountWithEffectiveTierMatch(); // IconicsUpgradeCountWithEffectiveTierMatch;
+	function InitializeWardrobeDatabase(); // InitializeWardrobeDatabase;
+	function IsEquippable(owner : handle:gameObject, itemData : whandle:gameItemData) : Bool; // IsEquippable;GameObjectgameItemData
+	function IsEquipped(owner : handle:gameObject, item : gameItemID) : Bool; // IsEquipped;GameObjectItemID
+	function IsEquipped(owner : handle:gameObject, item : gameItemID, equipmentArea : gamedataEquipmentArea) : Bool; // IsEquipped;GameObjectItemIDgamedataEquipmentArea
+	function IsItemInHotkey(owner : whandle:gameObject, itemID : gameItemID) : Bool; // IsItemInHotkey;GameObjectItemID
+	function OnAssignHotkeyIfEmptySlot(request : handle:AssignHotkeyIfEmptySlot); // OnAssignHotkeyIfEmptySlot;AssignHotkeyIfEmptySlot
+	function OnAssignToCyberwareWheelRequest(request : handle:AssignToCyberwareWheelRequest); // OnAssignToCyberwareWheelRequest;AssignToCyberwareWheelRequest
+	function OnCheckRemovedItemWithSlotActiveItem(request : handle:CheckRemovedItemWithSlotActiveItem); // OnCheckRemovedItemWithSlotActiveItem;CheckRemovedItemWithSlotActiveItem
+	function OnClearAllWeaponSlotsRequest(request : handle:ClearAllWeaponSlotsRequest); // OnClearAllWeaponSlotsRequest;ClearAllWeaponSlotsRequest
+	function OnClearEquipmentRequest(request : handle:ClearEquipmentRequest); // OnClearEquipmentRequest;ClearEquipmentRequest
+	function OnDeleteEquipmentSetRequest(request : handle:DeleteEquipmentSetRequest); // OnDeleteEquipmentSetRequest;DeleteEquipmentSetRequest
+	function OnDeleteWardrobeSetRequest(request : handle:DeleteWardrobeSetRequest); // OnDeleteWardrobeSetRequest;DeleteWardrobeSetRequest
+	function OnDrawItemByContextRequest(request : handle:gameDrawItemByContextRequest); // OnDrawItemByContextRequest;DrawItemByContextRequest
+	function OnDrawItemRequest(request : handle:gameDrawItemRequest); // OnDrawItemRequest;DrawItemRequest
+	function OnEquipRequest(request : handle:gameEquipRequest); // OnEquipRequest;EquipRequest
+	function OnEquipVisualsRequest(request : handle:EquipVisualsRequest); // OnEquipVisualsRequest;EquipVisualsRequest
+	function OnEquipWardrobeSetRequest(request : handle:EquipWardrobeSetRequest); // OnEquipWardrobeSetRequest;EquipWardrobeSetRequest
+	function OnEquipmentSystemWeaponManipulationRequest(request : handle:EquipmentSystemWeaponManipulationRequest); // OnEquipmentSystemWeaponManipulationRequest;EquipmentSystemWeaponManipulationRequest
+	function OnEquipmentUIBBRequest(request : handle:EquipmentUIBBRequest); // OnEquipmentUIBBRequest;EquipmentUIBBRequest
+	function OnGameplayEquipProgramsRequest(request : handle:GameplayEquipProgramsRequest); // OnGameplayEquipProgramsRequest;GameplayEquipProgramsRequest
+	function OnGameplayEquipRequest(request : handle:GameplayEquipRequest); // OnGameplayEquipRequest;GameplayEquipRequest
+	function OnHotkeyAssignmentRequest(request : handle:HotkeyAssignmentRequest); // OnHotkeyAssignmentRequest;HotkeyAssignmentRequest
+	function OnHotkeyRefreshRequest(request : handle:HotkeyRefreshRequest); // OnHotkeyRefreshRequest;HotkeyRefreshRequest
+	function OnInstallCyberwareRequest(request : handle:InstallCyberwareRequest); // OnInstallCyberwareRequest;InstallCyberwareRequest
+	function OnLoadEquipmentSetRequest(request : handle:LoadEquipmentSetRequest); // OnLoadEquipmentSetRequest;LoadEquipmentSetRequest
+	function OnPartInstallRequest(request : handle:PartInstallRequest); // OnPartInstallRequest;PartInstallRequest
+	function OnPartUninstallRequest(request : handle:PartUninstallRequest); // OnPartUninstallRequest;PartUninstallRequest
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnPlayerDetach(request : handle:gamePlayerDetachRequest); // OnPlayerDetach;PlayerDetachRequest
+	function OnQuestDisableWardrobeSetRequest(request : handle:QuestDisableWardrobeSetRequest); // OnQuestDisableWardrobeSetRequest;QuestDisableWardrobeSetRequest
+	function OnQuestEnableWardrobeSetRequest(request : handle:QuestEnableWardrobeSetRequest); // OnQuestEnableWardrobeSetRequest;QuestEnableWardrobeSetRequest
+	function OnQuestHideSlotRequest(request : handle:QuestHideSlotRequest); // OnQuestHideSlotRequest;QuestHideSlotRequest
+	function OnQuestRestoreSlotRequest(request : handle:QuestRestoreSlotRequest); // OnQuestRestoreSlotRequest;QuestRestoreSlotRequest
+	function OnQuestRestoreWardrobeSetRequest(request : handle:QuestRestoreWardrobeSetRequest); // OnQuestRestoreWardrobeSetRequest;QuestRestoreWardrobeSetRequest
+	function OnReplaceEquipmentRequest(request : handle:ReplaceEquipmentRequest); // OnReplaceEquipmentRequest;ReplaceEquipmentRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSaveEquipmentSetRequest(request : handle:SaveEquipmentSetRequest); // OnSaveEquipmentSetRequest;SaveEquipmentSetRequest
+	function OnSetActiveItemInEquipmentArea(request : handle:SetActiveItemInEquipmentArea); // OnSetActiveItemInEquipmentArea;SetActiveItemInEquipmentArea
+	function OnSynchronizeAttachmentSlotRequest(request : handle:gameSynchronizeAttachmentSlotRequest); // OnSynchronizeAttachmentSlotRequest;SynchronizeAttachmentSlotRequest
+	function OnUnequipByContextRequest(request : handle:gameUnequipByContextRequest); // OnUnequipByContextRequest;UnequipByContextRequest
+	function OnUnequipByTDBIDRequest(request : handle:gameUnequipByTDBIDRequest); // OnUnequipByTDBIDRequest;UnequipByTDBIDRequest
+	function OnUnequipItemsRequest(request : handle:UnequipItemsRequest); // OnUnequipItemsRequest;UnequipItemsRequest
+	function OnUnequipRequest(request : handle:UnequipRequest); // OnUnequipRequest;UnequipRequest
+	function OnUnequipVisualsRequest(request : handle:UnequipVisualsRequest); // OnUnequipVisualsRequest;UnequipVisualsRequest
+	function OnUnequipWardrobeSetRequest(request : handle:UnequipWardrobeSetRequest); // OnUnequipWardrobeSetRequest;UnequipWardrobeSetRequest
+	function OnUninstallCyberwareRequest(request : handle:UninstallCyberwareRequest); // OnUninstallCyberwareRequest;UninstallCyberwareRequest
+	function PrintEquipment(); // PrintEquipment;
+	function ProcessIconicsFactsForBlackMarketer(); // ProcessIconicsFactsForBlackMarketer;
+	function ProcessMaskCWRestoration(); // ProcessMaskCWRestoration;
+	function ProcessNonIconicWeaponsRescale(); // ProcessNonIconicWeaponsRescale;
+	function ProcessQ105AccessCardFacts(); // ProcessQ105AccessCardFacts;
+	function RasetsuItemPlayerScaling(); // RasetsuItemPlayerScaling;
+	function RefreshItemPlayerScaling(); // RefreshItemPlayerScaling;
+	function RemoveDeprecatedReginaCWReward(); // RemoveDeprecatedReginaCWReward;
+	function RemoveNPCMeleeware(); // RemoveNPCMeleeware;
+	function ReplaceLeftHandVariantWeaponsWithRegular(); // ReplaceLeftHandVariantWeaponsWithRegular;
+	function RestoreCybWeaponQualities(); // RestoreCybWeaponQualities;
+	function RetrofixCyberwares(); // RetrofixCyberwares;
+	function RetrofixHolsteredArms(); // RetrofixHolsteredArms;
+	function RetrofixOverallocatedCyberware(); // RetrofixOverallocatedCyberware;
+	function RetrofixQuickhacks(); // RetrofixQuickhacks;
+}
+
+import class gameIEquipmentSystem extends gameScriptableSystem
+{
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,24 @@
+class AsyncSpawnData extends IScriptable
+{
+	public    var callbackTarget : whandle:IScriptable;
+	public    var controller : whandle:IScriptable;
+	public    var functionName : CName;
+	public    var libraryID : CName;
+	public    var widgetData : Variant;
+
+	function Initialize(callbackTarget : whandle:IScriptable, functionName : CName, widgetData : Variant, optional controller : whandle:IScriptable); // Initialize;IScriptableCNameVariantIScriptable
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

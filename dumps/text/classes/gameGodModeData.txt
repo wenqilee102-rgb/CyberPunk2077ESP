@@ -1,0 +1,5 @@
+import struct gameGodModeData
+{
+	var type : gameGodModeType;
+	var source : CName;
+}

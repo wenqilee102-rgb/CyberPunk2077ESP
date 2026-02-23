@@ -1,0 +1,5 @@
+struct gameStatTotalValue
+{
+	public    var statType : gamedataStatType;
+	public    var value : Float;
+}

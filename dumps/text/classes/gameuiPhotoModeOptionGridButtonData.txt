@@ -1,0 +1,6 @@
+import struct gameuiPhotoModeOptionGridButtonData
+{
+	var imagePart : CName;
+	var atlasResource : redResourceReferenceScriptToken;
+	var optionData : Int32;
+}

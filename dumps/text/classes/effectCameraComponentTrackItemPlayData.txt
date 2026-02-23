@@ -1,0 +1,11 @@
+import class abstract effectCameraComponentTrackItemPlayData extends effectTrackItemPlayData
+{
+}
+
+import class abstract effectTrackItemPlayData extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

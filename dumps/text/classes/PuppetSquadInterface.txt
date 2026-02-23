@@ -1,0 +1,108 @@
+class PuppetSquadInterface extends AICombatSquadScriptInterface
+{
+	private   var baseSquadRecord : whandle:gamedataAISquadParams_Record;
+	private   var ticketHistory : array:SquadTicketReceipt;
+	private   var enumValueToNdx : gameEnumNameToIndexCache;
+	private   var sectorsInitialized : Bool;
+
+	event OnAckOrder(orderId : Uint32, actionName : CName, entity : handle:entEntity) : Bool; // OnAckOrder
+	event OnCloseSquadAction(actionName : CName, entity : handle:entEntity) : Bool; // OnCloseSquadAction
+	event OnCommitToOrder(actionName : CName, orderId : Uint32, entity : handle:entEntity) : Bool; // OnCommitToOrder
+	event OnEvaluationActivation(actionName : CName, entity : handle:entEntity) : Bool; // OnEvaluationActivation
+	event OnEvaluationDeActivation(actionName : CName, entity : handle:entEntity) : Bool; // OnEvaluationDeActivation
+	event OnGiveOrder(orderId : Uint32, actionName : CName, entity : handle:entEntity) : Bool; // OnGiveOrder
+	event OnInitialise() : Bool; // OnInitialise
+	event OnOpenSquadAction(actionName : CName, entity : handle:entEntity) : Bool; // OnOpenSquadAction
+	event OnOrderDone(orderId : Uint32, actionName : CName, entity : handle:entEntity) : Bool; // OnOrderDone
+	event OnOrderFail(orderId : Uint32, actionName : CName, entity : handle:entEntity) : Bool; // OnOrderFail
+	event OnOrderRevoked(orderId : Uint32, actionName : CName, entity : handle:entEntity) : Bool; // OnOrderRevoked
+
+	function AcknowledgeTicket(actionName : CName, entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32, delay : Float) : Bool; // AcknowledgeTicket;CNameEntityAITicket_RecordInt32Float
+	function AllocateTacticsSectors(); // AllocateTacticsSectors;
+	function AllocateTicketHistoryArray(); // AllocateTicketHistoryArray;
+	function CheckCooldown(entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32) : Bool; // CheckCooldown;EntityAITicket_RecordInt32
+	function CheckTicketConditions(actionName : CName, entity : whandle:entEntity) : Bool; // CheckTicketConditions;CNameEntity
+	function EvaluateTicketActivation(actionName : CName, entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32, squadRecord : whandle:gamedataAISquadParams_Record) : Bool; // EvaluateTicketActivation;CNameEntityAITicket_RecordInt32AISquadParams_Record
+	function EvaluateTicketDeactivation(actionName : CName, entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32, squadRecord : whandle:gamedataAISquadParams_Record) : Bool; // EvaluateTicketDeactivation;CNameEntityAITicket_RecordInt32AISquadParams_Record
+	function GetAITime(entity : whandle:entEntity) : Float; // GetAITime;Entity
+	function GetAcknowledgeDelay(entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32, out acknowledgeDelay : Float) : Bool; // GetAcknowledgeDelay;EntityAITicket_RecordInt32Float
+	function GetLastTicketRecipient(actionName : CName) : entEntityID; // GetLastTicketRecipient;CName
+	function GetSquadRecord(entity : whandle:entEntity, out squadRecord : whandle:gamedataAISquadParams_Record) : Bool; // GetSquadRecord;EntityAISquadParams_Record
+	function GetTicketHistoryID(actionName : CName) : Int32; // GetTicketHistoryID;CName
+	function GetTicketType(actionName : CName, entity : handle:entEntity, out ticketRecord : handle:gamedataAITicket_Record, out ticketHistoryID : Int32, out squadRecord : handle:gamedataAISquadParams_Record) : Bool; // GetTicketType;CNameEntityAITicket_RecordInt32AISquadParams_Record
+	function GetTicketType(actionName : CName, entity : handle:entEntity, out ticketRecord : handle:gamedataAITicket_Record, out ticketHistoryID : Int32) : Bool; // GetTicketType;CNameEntityAITicket_RecordInt32
+	function ProcessRingTicket(entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record); // ProcessRingTicket;EntityAITicket_Record
+	function RandomizeDeactivationConditionCheckInterval(ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32); // RandomizeDeactivationConditionCheckInterval;AITicket_RecordInt32
+	function ReleaseSquadMembersTickets(actionName : CName, entity : whandle:entEntity); // ReleaseSquadMembersTickets;CNameEntity
+	function SimpleTicketConditionsCheck(actionName : CName, entity : whandle:entEntity) : Bool; // SimpleTicketConditionsCheck;CNameEntity
+	function UpdateTicketHistory(entity : whandle:entEntity, ticketRecord : whandle:gamedataAITicket_Record, ticketHistoryID : Int32, ticketStatus : EAITicketStatus); // UpdateTicketHistory;EntityAITicket_RecordInt32EAITicketStatus
+}
+
+import class AICombatSquadScriptInterface extends AISquadScriptInterface
+{
+	import function AddEnemy(et : handle:entEntity) : Bool; // AddEnemy
+	import function EnemyList() : array:handle:entEntity; // EnemyList
+	import function EnemyListWeak() : array:whandle:entEntity; // EnemyListWeak
+	import function GetDefensiveCombatAlley() : handle:AICombatAlley; // GetDefensiveCombatAlley
+	import function GetEnemiesCount() : Uint32; // GetEnemiesCount
+	import function GetEnemyAttackersCount(enemy : handle:entEntity) : Uint32; // GetEnemyAttackersCount
+	import function GetOffensiveCombatAlley() : handle:AICombatAlley; // GetOffensiveCombatAlley
+	import function GetTacticRatio() : AICombatSquadTacticRatio; // GetTacticRatio
+	import function IsEnemy(potentialEnemy : handle:entEntity) : Bool; // IsEnemy
+	import function PullEnemies(sourceSquadName : CName); // PullEnemies
+	import function RegisterTactic(sqAction : CName, sectors : array:AICombatSectorType, alley : handle:AICombatAlley, timeout : Float); // RegisterTactic
+	import function RemoveEnemy(et : handle:entEntity) : Bool; // RemoveEnemy
+	import function SetAsEnemyAttacker(squadMember : handle:entEntity, enemy : handle:entEntity); // SetAsEnemyAttacker
+	import function UnregisterTactic(sqAction : CName); // UnregisterTactic
+	import function ValidCombatSquad() : Bool; // ValidCombatSquad
+}
+
+import class AISquadScriptInterface extends IScriptable
+{
+	import function AckOrder(sqAction : CName, et : handle:entEntity) : Bool; // AckOrder
+	import function Commit(sqAction : CName, et : handle:entEntity) : Bool; // Commit
+	import function GetAllAcknowledgedOrders(et : handle:entEntity) : array:Uint32; // GetAllAcknowledgedOrders
+	import function GetAllCommitedOrders(et : handle:entEntity) : array:Uint32; // GetAllCommitedOrders
+	import function GetAllOrders(et : handle:entEntity) : array:Uint32; // GetAllOrders
+	import function GetMembersCount() : Uint32; // GetMembersCount
+	import function GetName() : CName; // GetName
+	import function GetOrderById(orderId : Uint32) : AIsquadsOrder; // GetOrderById
+	import function GetSquadType() : AISquadType; // GetSquadType
+	import function GetTemplate() : CName; // GetTemplate
+	import function GiveOrder(sqAction : CName, et : handle:entEntity) : Uint32; // GiveOrder
+	import function GuardedCall(callThisFunction : CName); // GuardedCall
+	import function HasAcknowledgedOrderBySquadAction(sqAction : CName, et : handle:entEntity) : Bool; // HasAcknowledgedOrderBySquadAction
+	import function HasOrderBySquadAction(sqAction : CName, et : handle:entEntity) : Bool; // HasOrderBySquadAction
+	import function IsSquadActionOpen(sqAction : CName, et : handle:entEntity) : Bool; // IsSquadActionOpen
+	import function Join(et : handle:entEntity) : Bool; // Join
+	import function Leave(et : handle:entEntity) : Bool; // Leave
+	import function ListMembers() : array:handle:entEntity; // ListMembers
+	import function ListMembersWeak() : array:whandle:entEntity; // ListMembersWeak
+	import function ListMembersWithSquadActionWeak(sqAction : CName) : array:whandle:entEntity; // ListMembersWithSquadActionWeak
+	import function LockAccess() : Bool; // LockAccess
+	import function OpenSquadAction(name : CName, et : handle:entEntity, timeout : Float) : Bool; // OpenSquadAction
+	import function RefreshSquadAction(name : CName, et : handle:entEntity, timeout : Float) : Bool; // RefreshSquadAction
+	import function ReportDone(sqAction : CName, et : handle:entEntity) : Bool; // ReportDone
+	import function ReportFail(sqAction : CName, et : handle:entEntity) : Bool; // ReportFail
+	import function RequestOrder(sqAction : CName, et : handle:entEntity) : Bool; // RequestOrder
+	import function RevokeOrder(sqAction : CName, et : handle:entEntity) : Bool; // RevokeOrder
+	import function RevokeSquadAction(name : CName, et : handle:entEntity) : Bool; // RevokeSquadAction
+	import function TriggerActivation(name : CName, et : handle:entEntity) : Bool; // TriggerActivation
+	import function TriggerDeactivation(name : CName, et : handle:entEntity) : Bool; // TriggerDeactivation
+	import function TriggerEvaluation(name : CName, et : handle:entEntity) : Bool; // TriggerEvaluation
+	import function UnlockAccess() : Bool; // UnlockAccess
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

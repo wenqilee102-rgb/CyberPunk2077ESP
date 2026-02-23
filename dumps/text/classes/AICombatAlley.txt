@@ -1,0 +1,23 @@
+import class AICombatAlley extends IScriptable
+{
+	import function GetClosestMemberFromSector(sector : AICombatSectorType) : handle:entEntity; // GetClosestMemberFromSector
+	import function GetDistanceFromSector(sector : AICombatSectorType, pos : Vector4) : Float; // GetDistanceFromSector
+	import function GetFurtherstMemberFromSector(sector : AICombatSectorType) : handle:entEntity; // GetFurtherstMemberFromSector
+	import function GetReferencePoint() : Vector4; // GetReferencePoint
+	import function GetSector(pos : Vector4) : AICombatSectorType; // GetSector
+	import function GetTargetPoint() : Vector4; // GetTargetPoint
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

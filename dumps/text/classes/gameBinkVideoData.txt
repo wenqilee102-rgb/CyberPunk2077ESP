@@ -1,0 +1,8 @@
+import class gameBinkVideoData extends ISerializable
+{
+	var data : array:gameBinkVideoRecord;
+}
+
+import class abstract ISerializable
+{
+}

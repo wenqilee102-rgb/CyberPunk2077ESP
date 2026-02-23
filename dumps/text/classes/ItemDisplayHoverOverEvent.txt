@@ -1,0 +1,31 @@
+class ItemDisplayHoverOverEvent extends redEvent
+{
+	public    var itemData : gameInventoryItemData;
+	public    var display : whandle:InventoryItemDisplayController;
+	public    var widget : whandle:inkWidget;
+	public    var isBuybackStack : Bool;
+	public    var isQuestBought : Bool;
+	public    var toggleVisibilityControll : Bool;
+	public    var isItemHidden : Bool;
+	public    var transmogItem : gameItemID;
+	public    var uiInventoryItem : whandle:UIInventoryItem;
+	public    var displayContextData : whandle:ItemDisplayContextData;
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

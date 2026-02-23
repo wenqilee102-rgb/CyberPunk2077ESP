@@ -1,0 +1,36 @@
+class AnimFeature_VehicleData extends animAnimFeature
+{
+	public    var isInVehicle : Bool;
+	public    var isDriver : Bool;
+	public    var vehType : Int32;
+	public    var vehSlot : Int32;
+	public    var isInCombat : Bool;
+	public    var isInWindowCombat : Bool;
+	public    var isInDriverCombat : Bool;
+	public    var vehClass : Int32;
+	public    var isEnteringCombat : Bool;
+	public    var enteringCombatDuration : Float;
+	public    var isExitingCombat : Bool;
+	public    var exitingCombatDuration : Float;
+	public    var isEnteringVehicle : Bool;
+	public    var isExitingVehicle : Bool;
+	public    var isWorldRenderPlane : Bool;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

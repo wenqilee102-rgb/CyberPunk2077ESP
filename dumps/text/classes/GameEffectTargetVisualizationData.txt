@@ -1,0 +1,25 @@
+class GameEffectTargetVisualizationData extends IScriptable
+{
+	private   var bucketName : CName;
+	private   var forceHighlightTargets : array:entEntityID;
+
+	function AddTargetToBucket(entityID : entEntityID); // AddTargetToBucket;EntityID
+	function ClearBucket(); // ClearBucket;
+	function GetBucketName() : CName; // GetBucketName;
+	function SendEventToAll(instance : ScriptGameInstance, evt : handle:redEvent); // SendEventToAll;GameInstanceEvent
+	function SetBucketName(_bucketName : CName); // SetBucketName;CName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

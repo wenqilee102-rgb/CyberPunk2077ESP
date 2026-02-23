@@ -1,0 +1,43 @@
+class ItemPreferredComparisonResolver extends IScriptable
+{
+	private   var cacheadAreaItems : array:handle:ItemPreferredAreaItems;
+	private   var cachedComparableTypes : array:handle:ItemComparableTypesCache;
+	private   var typeComparableItemsCache : array:handle:TypeComparableItemsCache;
+	private   var dataManager : handle:InventoryDataManagerV2;
+	private   var forcedCompareItem : gameInventoryItemData;
+	private   var useForceCompare : Bool;
+
+	static function Make(inventoryDataManager : handle:InventoryDataManagerV2) : handle:ItemPreferredComparisonResolver; // ItemPreferredComparisonResolver::Make;InventoryDataManagerV2
+
+	function CacheComparableType(item : script_ref:gameInventoryItemData) : handle:ItemComparableTypesCache; // CacheComparableType;script_ref<InventoryItemData>
+	function CompareItemsByQuality(lhs : script_ref:gameInventoryItemData, rhs : script_ref:gameInventoryItemData) : gameItemComparisonState; // CompareItemsByQuality;script_ref<InventoryItemData>script_ref<InventoryItemData>
+	function CompareItemsByStats(lhs : script_ref:gameInventoryItemData, rhs : script_ref:gameInventoryItemData) : gameItemComparisonState; // CompareItemsByStats;script_ref<InventoryItemData>script_ref<InventoryItemData>
+	function DisableForceComparedItem(); // DisableForceComparedItem;
+	function FlushCache(); // FlushCache;
+	function ForceComparedItem(item : script_ref:gameInventoryItemData); // ForceComparedItem;script_ref<InventoryItemData>
+	function ForceDisableComparison(); // ForceDisableComparison;
+	function GetAreaItems(equipmentArea : gamedataEquipmentArea) : handle:ItemPreferredAreaItems; // GetAreaItems;gamedataEquipmentArea
+	function GetComparableItems(item : script_ref:gameInventoryItemData) : array:gameInventoryItemData; // GetComparableItems;script_ref<InventoryItemData>
+	function GetComparableTypes(item : script_ref:gameInventoryItemData) : handle:ItemComparableTypesCache; // GetComparableTypes;script_ref<InventoryItemData>
+	function GetItemComparisonState(item : script_ref:gameInventoryItemData) : gameItemComparisonState; // GetItemComparisonState;script_ref<InventoryItemData>
+	function GetPreferredComparisonItem(item : script_ref:gameInventoryItemData) : gameInventoryItemData; // GetPreferredComparisonItem;script_ref<InventoryItemData>
+	function GetTypeComparableItems(item : script_ref:gameInventoryItemData) : handle:TypeComparableItemsCache; // GetTypeComparableItems;script_ref<InventoryItemData>
+	function IsAreaSelfComparable(item : script_ref:gameInventoryItemData) : Bool; // IsAreaSelfComparable;script_ref<InventoryItemData>
+	function IsBetterComparableNewItem(uiScriptableSystem : whandle:UIScriptableSystem, item : script_ref:gameInventoryItemData) : Bool; // IsBetterComparableNewItem;UIScriptableSystemscript_ref<InventoryItemData>
+	function IsComparable(item : script_ref:gameInventoryItemData) : Bool; // IsComparable;script_ref<InventoryItemData>
+	function IsTypeComparable(baseItem : script_ref:gameInventoryItemData, comparedType : gamedataItemType) : Bool; // IsTypeComparable;script_ref<InventoryItemData>gamedataItemType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

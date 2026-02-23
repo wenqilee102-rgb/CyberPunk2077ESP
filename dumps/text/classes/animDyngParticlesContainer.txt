@@ -1,0 +1,7 @@
+import struct animDyngParticlesContainer
+{
+	var externalForceWS : Vector3;
+	var externalForceWsLink : animVectorLink;
+	var particles : array:animDyngParticle;
+	var gravityWS : Float;
+}

@@ -1,0 +1,9 @@
+struct RagdollDamagePollData
+{
+	public    var worldPosition : WorldPosition;
+	public    var worldNormal : Vector4;
+	public    var maxForceMagnitude : Float;
+	public    var maxImpulseMagnitude : Float;
+	public    var maxVelocityChange : Float;
+	public    var maxZDiff : Float;
+}

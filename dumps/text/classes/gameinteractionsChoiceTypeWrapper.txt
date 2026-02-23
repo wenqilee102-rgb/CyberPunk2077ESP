@@ -1,0 +1,8 @@
+import struct gameinteractionsChoiceTypeWrapper
+{
+	var properties : Uint32;
+
+	import static function ClearType(context : gameinteractionsChoiceTypeWrapper, type : gameinteractionsChoiceType); // ClearType
+	import static function IsType(context : gameinteractionsChoiceTypeWrapper, type : gameinteractionsChoiceType) : Bool; // IsType
+	import static function SetType(context : gameinteractionsChoiceTypeWrapper, type : gameinteractionsChoiceType); // SetType
+}

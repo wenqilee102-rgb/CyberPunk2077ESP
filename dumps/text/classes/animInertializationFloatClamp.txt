@@ -1,0 +1,6 @@
+import struct animInertializationFloatClamp
+{
+	var isActive : Bool;
+	var min : Float;
+	var max : Float;
+}

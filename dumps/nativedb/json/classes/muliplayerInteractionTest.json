@@ -1,0 +1,1 @@
+{"a":"gameObject","b":"muliplayerInteractionTest","d":0,"e":[{"a":{"a":6},"b":"counter","c":128}],"f":[{"a":"OnGameAttached","c":{"a":1},"d":98},{"a":"OnInteractionChoice","c":{"a":1},"d":98,"e":[{"a":{"a":26,"c":{"b":"gameinteractionsChoiceEvent"}},"b":"choiceEvent","c":0}]}]}

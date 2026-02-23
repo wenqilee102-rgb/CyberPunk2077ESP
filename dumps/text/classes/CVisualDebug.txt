@@ -1,0 +1,33 @@
+import class CVisualDebug extends IScriptable
+{
+	import function AddArrow(); // AddArrow
+	import function AddAxis(); // AddAxis
+	import function AddBar(); // AddBar
+	import function AddBarColorAreas(); // AddBarColorAreas
+	import function AddBarColorSmooth(); // AddBarColorSmooth
+	import function AddBox(); // AddBox
+	import function AddLine(); // AddLine
+	import function AddSphere(); // AddSphere
+	import function AddText(); // AddText
+	import function RemoveArrow(); // RemoveArrow
+	import function RemoveAxis(); // RemoveAxis
+	import function RemoveBar(); // RemoveBar
+	import function RemoveBox(); // RemoveBox
+	import function RemoveLine(); // RemoveLine
+	import function RemoveSphere(); // RemoveSphere
+	import function RemoveText(); // RemoveText
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

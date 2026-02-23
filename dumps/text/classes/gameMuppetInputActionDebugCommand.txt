@@ -1,0 +1,8 @@
+import struct gameMuppetInputActionDebugCommand extends gameIMuppetInputAction
+{
+	var debugCommand : gameMuppetDebugCommand;
+}
+
+import struct abstract gameIMuppetInputAction
+{
+}

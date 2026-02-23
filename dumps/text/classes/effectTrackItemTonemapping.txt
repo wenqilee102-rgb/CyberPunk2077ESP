@@ -1,0 +1,23 @@
+import class effectTrackItemTonemapping extends effectTrackItem
+{
+	var override : Bool;
+	var maxStopsSDR : effectEffectParameterEvaluatorFloat;
+	var midGrayScaleSDR : effectEffectParameterEvaluatorFloat;
+	var maxStopsHDR : effectEffectParameterEvaluatorFloat;
+	var midGrayScaleHDR : effectEffectParameterEvaluatorFloat;
+}
+
+import class abstract effectTrackItem extends effectBaseItem
+{
+	var timeBegin : Float;
+	var timeDuration : Float;
+	var ruid : CRUID;
+}
+
+import class abstract effectBaseItem extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

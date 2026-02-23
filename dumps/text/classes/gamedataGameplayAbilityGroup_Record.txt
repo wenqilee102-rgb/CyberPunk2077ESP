@@ -1,0 +1,28 @@
+import class gamedataGameplayAbilityGroup_Record extends gamedataTweakDBRecord
+{
+	import function Abilities(out outList : array:whandle:gamedataGameplayAbility_Record); // Abilities
+	import function AbilitiesContains(item : whandle:gamedataGameplayAbility_Record) : Bool; // AbilitiesContains
+	import function GetAbilitiesCount() : Int32; // GetAbilitiesCount
+	import function GetAbilitiesItem(index : Int32) : whandle:gamedataGameplayAbility_Record; // GetAbilitiesItem
+	import function GetAbilitiesItemHandle(index : Int32) : handle:gamedataGameplayAbility_Record; // GetAbilitiesItemHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

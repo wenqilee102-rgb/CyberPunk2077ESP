@@ -1,0 +1,14 @@
+import class CMaterialParameterDynamicTexture extends CMaterialParameter
+{
+	var texture : rRef:ITexture;
+}
+
+import class abstract CMaterialParameter extends ISerializable
+{
+	var parameterName : CName;
+	var register : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,38 @@
+import class questQuestsSystem extends questIQuestsSystem
+{
+	import function GetFact(factName : CName) : Int32; // GetFact
+	import function GetFactStr(factName : String) : Int32; // GetFactStr
+	import function GetGameplayTimerData(out seconds : Float, out percent : Float); // GetGameplayTimerData
+	import function RegisterEntity(factName : CName, entityId : entEntityID) : Uint32; // RegisterEntity
+	import function RegisterListener(factName : CName, listener : handle:IScriptable, funcName : CName) : Uint32; // RegisterListener
+	import function SetFact(factName : CName, value : Int32); // SetFact
+	import function SetFactStr(factName : String, value : Int32); // SetFactStr
+	import function UnregisterEntity(factName : CName, callbackId : Uint32); // UnregisterEntity
+	import function UnregisterListener(factName : CName, id : Uint32); // UnregisterListener
+}
+
+import class abstract questIQuestsSystem extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

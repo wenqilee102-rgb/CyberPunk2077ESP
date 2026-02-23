@@ -1,0 +1,47 @@
+class abstract AIActionTarget extends IScriptable
+{
+	static function BossThreatCalculation(owner : whandle:ScriptedPuppet, ownerPos : Vector4, targetTrackerComponent : handle:AITargetTrackerComponent, newTargetObject : whandle:gameObject, threat : whandle:gameObject, timeSinceTargetChange : Float, currentTime : Float, out threatValue : Float); // AIActionTarget::BossThreatCalculation;ScriptedPuppetVector4TargetTrackerComponentGameObjectGameObjectFloatFloatFloat
+	static function Get(context : AIbehaviorScriptExecutionContext, record : handle:gamedataAIActionTarget_Record, out obj : whandle:gameObject, out pos : Vector4, out coverID : Uint64, optional predictionTime : Float) : Bool; // AIActionTarget::Get;ScriptExecutionContextAIActionTarget_RecordGameObjectVector4Uint64Float
+	static function Get(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionTarget_Record, getSlotPosition : Bool, out obj : whandle:gameObject, out position : Vector4, optional predictionTime : Float) : Bool; // AIActionTarget::Get;ScriptExecutionContextAIActionTarget_RecordBoolGameObjectVector4Float
+	static function Get(context : AIbehaviorScriptExecutionContext, record : handle:gamedataAIActionTarget_Record, getSlotPosition : Bool, out obj : whandle:gameObject, out pos : Vector4, out coverID : Uint64, optional predictionTime : Float) : Bool; // AIActionTarget::Get;ScriptExecutionContextAIActionTarget_RecordBoolGameObjectVector4Uint64Float
+	static function GetClosestMemberId(smi : handle:AISquadScriptInterface, pos : Vector4) : entEntityID; // AIActionTarget::GetClosestMemberId;SquadScriptInterfaceVector4
+	static function GetCoverID(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionTarget_Record, out coverID : Uint64) : Bool; // AIActionTarget::GetCoverID;ScriptExecutionContextAIActionTarget_RecordUint64
+	static function GetCoverID(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionTarget_Record, out coverID : Uint64, out position : Vector4) : Bool; // AIActionTarget::GetCoverID;ScriptExecutionContextAIActionTarget_RecordUint64Vector4
+	static function GetCoverPosition(context : AIbehaviorScriptExecutionContext, coverID : Uint64, out position : Vector4) : Bool; // AIActionTarget::GetCoverPosition;ScriptExecutionContextUint64Vector4
+	static function GetCurrentCoverID(context : AIbehaviorScriptExecutionContext, out coverID : Uint64, out position : Vector4) : Bool; // AIActionTarget::GetCurrentCoverID;ScriptExecutionContextUint64Vector4
+	static function GetCurrentCoverID(context : AIbehaviorScriptExecutionContext, out coverID : Uint64) : Bool; // AIActionTarget::GetCurrentCoverID;ScriptExecutionContextUint64
+	static function GetDistanceToThreat(ownerPos : Vector4, threat : handle:gameObject, out zDiff : Float, optional positionOfRoot : Bool) : Float; // AIActionTarget::GetDistanceToThreat;Vector4GameObjectFloatBool
+	static function GetLegacy(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionTarget_Record, getSlotPosition : Bool, out obj : whandle:gameObject, out pos : Vector4, out coverID : Uint64, optional predictionTime : Float) : Bool; // AIActionTarget::GetLegacy;ScriptExecutionContextAIActionTarget_RecordBoolGameObjectVector4Uint64Float
+	static function GetNetrunnerProxy(context : AIbehaviorScriptExecutionContext) : whandle:gameObject; // AIActionTarget::GetNetrunnerProxy;ScriptExecutionContext
+	static function GetObject(context : AIbehaviorScriptExecutionContext, record : handle:gamedataAIActionTarget_Record, out object : whandle:gameObject) : Bool; // AIActionTarget::GetObject;ScriptExecutionContextAIActionTarget_RecordGameObject
+	static function GetObjectLegacy(context : AIbehaviorScriptExecutionContext, record : handle:gamedataAIActionTarget_Record, out object : whandle:gameObject) : Bool; // AIActionTarget::GetObjectLegacy;ScriptExecutionContextAIActionTarget_RecordGameObject
+	static function GetPosition(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionTarget_Record, out position : Vector4, getSlotPosition : Bool, optional predictionTime : Float) : Bool; // AIActionTarget::GetPosition;ScriptExecutionContextAIActionTarget_RecordVector4BoolFloat
+	static function GetThreatAccessibilityFromCoverModifier(puppet : handle:ScriptedPuppet, threat : handle:gameObject) : Float; // AIActionTarget::GetThreatAccessibilityFromCoverModifier;ScriptedPuppetGameObject
+	static function GetThreatAttackersModifier(targetTrackerComponent : handle:AITargetTrackerComponent, puppet : handle:ScriptedPuppet, threat : handle:gameObject) : Float; // AIActionTarget::GetThreatAttackersModifier;TargetTrackerComponentScriptedPuppetGameObject
+	static function GetThreatDamageModifier(targetTrackerComponent : handle:AITargetTrackerComponent, puppet : handle:ScriptedPuppet, threat : handle:gameObject, distance : Float, currentTime : Float) : Float; // AIActionTarget::GetThreatDamageModifier;TargetTrackerComponentScriptedPuppetGameObjectFloatFloat
+	static function GetThreatDistanceModifier(targetTrackerComponent : handle:AITargetTrackerComponent, distance : Float) : Float; // AIActionTarget::GetThreatDistanceModifier;TargetTrackerComponentFloat
+	static function GetThreatHisteresisModifier(targetTrackerComponent : handle:AITargetTrackerComponent, threat : handle:gameObject, currentTarget : handle:gameObject, timeSinceTargetChange : Float) : Float; // AIActionTarget::GetThreatHisteresisModifier;TargetTrackerComponentGameObjectGameObjectFloat
+	static function GetThreatLastVisibilityModifier(puppet : handle:ScriptedPuppet, threat : handle:gameObject) : Float; // AIActionTarget::GetThreatLastVisibilityModifier;ScriptedPuppetGameObject
+	static function GetThreatZDiffModifier(zDiff : Float) : Float; // AIActionTarget::GetThreatZDiffModifier;Float
+	static function GetVehicleObject(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAIActionTarget_Record, out vehicleObject : whandle:vehicleBaseObject) : Bool; // AIActionTarget::GetVehicleObject;ScriptExecutionContextAIActionTarget_RecordVehicleObject
+	static function HasWeaponInInventory(owner : whandle:gameObject) : Bool; // AIActionTarget::HasWeaponInInventory;GameObject
+	static function IsThreatCloseOrVisibleByPlayer(ownerPos : Vector4, threat : handle:gameObject) : Bool; // AIActionTarget::IsThreatCloseOrVisibleByPlayer;Vector4GameObject
+	static function MadnessThreatCalculation(owner : whandle:ScriptedPuppet, ownerPos : Vector4, targetTrackerComponent : handle:AITargetTrackerComponent, newTargetObject : whandle:gameObject, threat : whandle:gameObject, timeSinceTargetChange : Float, currentTime : Float, out threatValue : Float); // AIActionTarget::MadnessThreatCalculation;ScriptedPuppetVector4TargetTrackerComponentGameObjectGameObjectFloatFloatFloat
+	static function RegularThreatCalculation(owner : whandle:ScriptedPuppet, ownerPos : Vector4, targetTrackerComponent : handle:AITargetTrackerComponent, newTargetObject : whandle:gameObject, threat : whandle:gameObject, timeSinceTargetChange : Float, currentTime : Float, out threatValue : Float); // AIActionTarget::RegularThreatCalculation;ScriptedPuppetVector4TargetTrackerComponentGameObjectGameObjectFloatFloatFloat
+	static function Set(context : AIbehaviorScriptExecutionContext, record : handle:gamedataAIActionTarget_Record, optional entity : whandle:entEntity, pos : Vector4, optional coverID : Uint32) : Bool; // AIActionTarget::Set;ScriptExecutionContextAIActionTarget_RecordEntityVector4Uint32
+	static function UpdateThreatsValue(puppet : handle:NPCPuppet, newTargetObject : handle:gameObject, timeSinceTargetChange : Float); // AIActionTarget::UpdateThreatsValue;NPCPuppetGameObjectFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,131 @@
+class CrackAction extends BaseItemAction
+{
+	function CompleteAction(gameInstance : ScriptGameInstance); // CompleteAction;GameInstance
+}
+
+class abstract BaseItemAction extends BaseScriptableAction
+{
+	private   var itemData : whandle:gameItemData;
+	private   var removeAfterUse : Bool;
+	private   var quantity : Int32;
+
+	function GetItemData() : whandle:gameItemData; // GetItemData;
+	function GetItemType() : gamedataItemType; // GetItemType;
+	function GetRequestQuantity() : Int32; // GetRequestQuantity;
+	function SetItemData(item : whandle:gameItemData); // SetItemData;gameItemData
+	function SetRemoveAfterUse(); // SetRemoveAfterUse;
+	function SetRequestQuantity(quantity : Int32); // SetRequestQuantity;Int32
+	function ShouldRemoveAfterUse() : Bool; // ShouldRemoveAfterUse;
+}
+
+class abstract BaseScriptableAction extends gamedeviceAction
+{
+	protected var requesterID : entEntityID;
+	protected var executor : whandle:gameObject;
+	protected var proxyExecutor : whandle:gameObject;
+	protected var costComponents : array:whandle:gamedataObjectActionCost_Record;
+	protected var objectActionID : TweakDBID;
+	protected var objectActionRecord : whandle:gamedataObjectAction_Record;
+	protected var inkWidgetID : TweakDBID;
+	protected var interactionChoice : gameinteractionsChoice;
+	protected var interactionLayer : CName;
+	protected var isActionRPGCheckDissabled : Bool;
+	protected var canSkipPayCost : Bool;
+	protected var calculatedBaseCost : Int32;
+	public    var deviceActionQueue : handle:DeviceActionQueue;
+	public    var isActionQueueingUsed : Bool;
+	public    var isQueuedAction : Bool;
+	public    var isInactive : Bool;
+	public    var isTargetDead : Bool;
+	public    var activationTimeReduction : Float;
+	public    var IsAppliedByMonowire : Bool;
+
+	static function GetBaseCostStatic(executor : whandle:gameObject, actionRecord : whandle:gamedataObjectAction_Record) : Int32; // BaseScriptableAction::GetBaseCostStatic;GameObjectObjectAction_Record
+	static function GetCostMods(costComponents : script_ref:array:whandle:gamedataObjectActionCost_Record, out costMods : array:whandle:gamedataStatModifier_Record); // BaseScriptableAction::GetCostMods;script_ref<array<ObjectActionCost_Record>>array<StatModifier_Record>
+
+	function CanInterrupt(target : whandle:gameObject, optional actionRecord : whandle:gamedataObjectAction_Record) : Bool; // CanInterrupt;GameObjectObjectAction_Record
+	function CanPayCost(optional user : handle:gameObject, optional checkForOverclockedState : Bool) : Bool; // CanPayCost;GameObjectBool
+	function CanSkipPayCost(isJustConsulting : Bool) : Bool; // CanSkipPayCost;Bool
+	function CompleteAction(gameInstance : ScriptGameInstance); // CompleteAction;GameInstance
+	function GetActionID() : CName; // GetActionID;
+	function GetActivationTime() : Float; // GetActivationTime;
+	function GetBaseCost() : Int32; // GetBaseCost;
+	function GetCooldownDuration() : Float; // GetCooldownDuration;
+	function GetCost() : Int32; // GetCost;
+	function GetDetonateGranadeCostReduction(legendaryPlusPlus : Bool) : Float; // GetDetonateGranadeCostReduction;Bool
+	function GetDeviceActionMaxQueueSize() : Int32; // GetDeviceActionMaxQueueSize;
+	function GetDeviceActionQueue() : whandle:DeviceActionQueue; // GetDeviceActionQueue;
+	function GetDeviceActionQueueNames() : array:CName; // GetDeviceActionQueueNames;
+	function GetDeviceActionQueueSize() : Int32; // GetDeviceActionQueueSize;
+	function GetDurationTime() : Float; // GetDurationTime;
+	function GetExecutor() : whandle:gameObject; // GetExecutor;
+	function GetExecutorLevel() : Float; // GetExecutorLevel;
+	function GetGameplayCategoryID() : TweakDBID; // GetGameplayCategoryID;
+	function GetGameplayCategoryRecord() : whandle:gamedataObjectActionGameplayCategory_Record; // GetGameplayCategoryRecord;
+	function GetIsActionRPGCheckDissabled() : Bool; // GetIsActionRPGCheckDissabled;
+	function GetMadnessLvl3ProgramCostReduction(targetID : entEntityID) : Float; // GetMadnessLvl3ProgramCostReduction;EntityID
+	function GetModifiedDurationTime(baseValue : Float) : Float; // GetModifiedDurationTime;Float
+	function GetObjectActionID() : TweakDBID; // GetObjectActionID;
+	function GetObjectActionRecord() : whandle:gamedataObjectAction_Record; // GetObjectActionRecord;
+	function GetOwnerPS(game : ScriptGameInstance) : handle:gamePersistentState; // GetOwnerPS;GameInstance
+	function GetPowerLevelDiff() : Float; // GetPowerLevelDiff;
+	function GetProxyExecutor() : whandle:gameObject; // GetProxyExecutor;
+	function GetRequesterID() : entEntityID; // GetRequesterID;
+	function GetTweakDBChoiceID() : TweakDBID; // GetTweakDBChoiceID;
+	function GetTweakDBChoiceRecord() : String; // GetTweakDBChoiceRecord;
+	function IsEyesInTheSkyPerk() : Bool; // IsEyesInTheSkyPerk;
+	function IsFirstUniqueCategoryInQueue(targetID : entEntityID, category : gamedataHackCategory) : Bool; // IsFirstUniqueCategoryInQueue;EntityIDgamedataHackCategory
+	function IsInactive() : Bool; // IsInactive;
+	function IsInteractionChoiceValid() : Bool; // IsInteractionChoiceValid;
+	function IsPossible(target : whandle:gameObject, optional actionRecord : whandle:gamedataObjectAction_Record, optional objectActionsCallbackController : whandle:gameObjectActionsCallbackController) : Bool; // IsPossible;GameObjectObjectAction_RecordgameObjectActionsCallbackController
+	function IsVisible(context : script_ref:gameGetActionsContext, optional objectActionsCallbackController : whandle:gameObjectActionsCallbackController) : Bool; // IsVisible;script_ref<GetActionsContext>gameObjectActionsCallbackController
+	function IsVisible(player : whandle:gameObject, optional objectActionsCallbackController : whandle:gameObjectActionsCallbackController) : Bool; // IsVisible;GameObjectgameObjectActionsCallbackController
+	function PayCost(optional checkForOverclockedState : Bool) : Bool; // PayCost;Bool
+	function ProcessEffectors(actionEffects : script_ref:array:whandle:gamedataObjectActionEffect_Record, gameInstance : ScriptGameInstance); // ProcessEffectors;script_ref<array<ObjectActionEffect_Record>>GameInstance
+	function ProcessRPGAction(gameInstance : ScriptGameInstance, optional gameplayRoleComponent : handle:GameplayRoleComponent); // ProcessRPGAction;GameInstanceGameplayRoleComponent
+	function ProcessStatusEffects(actionEffects : script_ref:array:whandle:gamedataObjectActionEffect_Record, gameInstance : ScriptGameInstance); // ProcessStatusEffects;script_ref<array<ObjectActionEffect_Record>>GameInstance
+	function ProduceInteractionPart(); // ProduceInteractionPart;
+	function PutActionInQuickhackQueue(gameInstance : ScriptGameInstance, gameplayRoleComponent : handle:GameplayRoleComponent) : Bool; // PutActionInQuickhackQueue;GameInstanceGameplayRoleComponent
+	function RegisterAsRequester(id : entEntityID); // RegisterAsRequester;EntityID
+	function ResetStatusEffectIfActionIsQueued(entityID : entEntityID, statusEffectRecord : handle:gamedataStatusEffect_Record, gameInstance : ScriptGameInstance); // ResetStatusEffectIfActionIsQueued;EntityIDStatusEffect_RecordGameInstance
+	function SetActive(); // SetActive;
+	function SetExecutor(executor : whandle:gameObject); // SetExecutor;GameObject
+	function SetInactive(); // SetInactive;
+	function SetIsActionRPGCheckDissabled(value : Bool); // SetIsActionRPGCheckDissabled;Bool
+	function SetObjectActionID(id : TweakDBID); // SetObjectActionID;TweakDBID
+	function SetProxyExecutor(proxy : whandle:gameObject); // SetProxyExecutor;GameObject
+	function StartAction(gameInstance : ScriptGameInstance); // StartAction;GameInstance
+	function StartUpload(gameInstance : ScriptGameInstance); // StartUpload;GameInstance
+}
+
+import class gamedeviceAction extends redEvent
+{
+	var actionName : CName;
+	var clearanceLevel : Int32;
+	var localizedObjectName : String;
+	var paymentQuantity : Int32;
+
+	import function GetCurrentDisplayString() : String; // GetCurrentDisplayString
+	import function GetDeviceClassName() : CName; // GetDeviceClassName
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+	import function GetProperties() : array:handle:gamedeviceActionProperty; // GetProperties
+	import function SetUp(ps : handle:gamePersistentState); // SetUp
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

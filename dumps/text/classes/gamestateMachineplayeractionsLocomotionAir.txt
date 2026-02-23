@@ -1,0 +1,23 @@
+import class gamestateMachineplayeractionsLocomotionAir extends gamestateMachineplayeractionsLocomotionSimple
+{
+}
+
+import class gamestateMachineplayeractionsLocomotionSimple extends gamestateMachineplayeractionsLocomotionBase
+{
+}
+
+import class gamestateMachineplayeractionsLocomotionBase extends gamestateMachineStateActionDefinition
+{
+}
+
+import class gamestateMachineStateActionDefinition extends gamestateMachineIStateActionDefinition
+{
+}
+
+import class abstract gamestateMachineIStateActionDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

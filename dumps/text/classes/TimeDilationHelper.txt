@@ -1,0 +1,36 @@
+class TimeDilationHelper extends IScriptable
+{
+	static function CanUseTimeDilation(playerGameObject : whandle:gameObject) : Bool; // TimeDilationHelper::CanUseTimeDilation;GameObject
+	static function GetCNameFromTimeSystemTweak(tweakDBPath : script_ref:String, paramName : script_ref:String) : CName; // TimeDilationHelper::GetCNameFromTimeSystemTweak;script_ref<String>script_ref<String>
+	static function GetFloatFromTimeSystemTweak(tweakDBPath : script_ref:String, paramName : script_ref:String) : Float; // TimeDilationHelper::GetFloatFromTimeSystemTweak;script_ref<String>script_ref<String>
+	static function GetFocusModeKey() : CName; // TimeDilationHelper::GetFocusModeKey;
+	static function GetFocusedStateKey() : CName; // TimeDilationHelper::GetFocusedStateKey;
+	static function GetKerenzikovKey() : CName; // TimeDilationHelper::GetKerenzikovKey;
+	static function GetSandevistanKey() : CName; // TimeDilationHelper::GetSandevistanKey;
+	static function GetSandevistanVersusSandevistanKey() : CName; // TimeDilationHelper::GetSandevistanVersusSandevistanKey;
+	static function GetTimeDilationKey() : CName; // TimeDilationHelper::GetTimeDilationKey;
+	static function GetTimeDilationParameters(out timeDilationParameters : handle:TimeDilationParameters, profileName : script_ref:String); // TimeDilationHelper::GetTimeDilationParameters;TimeDilationParametersscript_ref<String>
+	static function RestorePreviousIgnoreTimeDilationOnLocalPlayerZero(requester : whandle:gameObject) : Bool; // TimeDilationHelper::RestorePreviousIgnoreTimeDilationOnLocalPlayerZero;GameObject
+	static function SetIgnoreTimeDilationOnLocalPlayerZero(requester : whandle:gameObject, ignore : Bool) : Bool; // TimeDilationHelper::SetIgnoreTimeDilationOnLocalPlayerZero;GameObjectBool
+	static function SetIndividualTimeDilation(target : whandle:gameObject, reason : CName, timeDilation : Float, optional duration : Float, optional easeInCurve : CName, optional easeOutCurve : CName) : Bool; // TimeDilationHelper::SetIndividualTimeDilation;GameObjectCNameFloatFloatCNameCName
+	static function SetTimeDilation(requester : whandle:gameObject, reason : CName, timeDilation : Float, optional duration : Float, easeInCurve : CName, easeOutCurve : CName, allowMultipleTimeDilationSimultaneously : Bool, optional listener : handle:tickScriptTimeDilationListener) : Bool; // TimeDilationHelper::SetTimeDilation;GameObjectCNameFloatFloatCNameCNameBoolTimeDilationListener
+	static function SetTimeDilationOnPlayer(requester : whandle:gameObject, reason : CName, timeDilation : Float, optional duration : Float, easeInCurve : CName, easeOutCurve : CName, allowMultipleTimeDilationSimultaneously : Bool, optional listener : handle:tickScriptTimeDilationListener) : Bool; // TimeDilationHelper::SetTimeDilationOnPlayer;GameObjectCNameFloatFloatCNameCNameBoolTimeDilationListener
+	static function SetTimeDilationWithProfile(requester : whandle:gameObject, profileName : script_ref:String, enable : Bool, allowMultipleTimeDilationSimultaneously : Bool) : Bool; // TimeDilationHelper::SetTimeDilationWithProfile;GameObjectscript_ref<String>BoolBool
+	static function UnSetTimeDilation(requester : whandle:gameObject, optional reason : CName, optional easeOutCurve : CName) : Bool; // TimeDilationHelper::UnSetTimeDilation;GameObjectCNameCName
+	static function UnSetTimeDilationOnPlayer(requester : whandle:gameObject, optional reason : CName, optional easeOutCurve : CName) : Bool; // TimeDilationHelper::UnSetTimeDilationOnPlayer;GameObjectCNameCName
+	static function UnsetIndividualTimeDilation(target : whandle:gameObject, optional easeOutCurve : CName) : Bool; // TimeDilationHelper::UnsetIndividualTimeDilation;GameObjectCName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

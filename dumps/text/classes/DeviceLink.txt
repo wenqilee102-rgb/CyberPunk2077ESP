@@ -1,0 +1,12 @@
+struct DeviceLink
+{
+	private   var PSID : gamePersistentID;
+	private   var className : CName;
+
+	static function Construct(persistentStates : script_ref:array:handle:gamePersistentState) : array:DeviceLink; // DeviceLink::Construct;script_ref<array<PersistentState>>
+	static function Construct(ps : handle:gamePersistentState) : DeviceLink; // DeviceLink::Construct;PersistentState
+	static function Construct(id : gamePersistentID, _className : CName) : DeviceLink; // DeviceLink::Construct;PersistentIDCName
+	static function GetLinkClassName(s : script_ref:DeviceLink) : CName; // DeviceLink::GetLinkClassName;script_ref<DeviceLink>
+	static function GetLinkID(s : script_ref:DeviceLink) : gamePersistentID; // DeviceLink::GetLinkID;script_ref<DeviceLink>
+	static function IsValid(s : script_ref:DeviceLink) : Bool; // DeviceLink::IsValid;script_ref<DeviceLink>
+}

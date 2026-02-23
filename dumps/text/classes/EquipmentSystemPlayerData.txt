@@ -1,0 +1,289 @@
+class EquipmentSystemPlayerData extends IScriptable
+{
+	public    var owner : whandle:ScriptedPuppet;
+	private   var ownerID : entEntityID;
+	private   var equipment : gameSLoadout;
+	private   var lastUsedStruct : gameSLastUsedWeapon;
+	private   var slotActiveItemsInHands : gameSSlotActiveItems;
+	private   var clothingSlotsInfo : array:gameSSlotInfo;
+	private   var clothingVisualsInfo : array:gameSSlotVisualInfo;
+	private   var visualUnequipTransition : Bool;
+	private   var wardrobeDisabled : Bool;
+	private   var lastActiveWardrobeSet : gameWardrobeClothingSetIndex;
+	private   var visualTagProcessingInfo : array:gameSVisualTagProcessing;
+	private   var eventsSent : Int32;
+	private   var hotkeys : array:handle:Hotkey;
+	private   var inventoryManager : handle:InventoryDataManagerV2;
+	private   var wardrobeSystem : handle:gameWardrobeSystem;
+	private   var equipPending : Bool;
+	private   var equipAreaIndexCache : array:Int32;
+
+	static function ForceQualityAndDuplicateStatsShard(owner : handle:PlayerPuppet, originalItemID : gameItemID, destinationItemID : gameItemID); // EquipmentSystemPlayerData::ForceQualityAndDuplicateStatsShard;PlayerPuppetItemIDItemID
+	static function UpdateArmSlot(owner : handle:PlayerPuppet, itemToDraw : gameItemID, equipHolsteredItem : Bool); // EquipmentSystemPlayerData::UpdateArmSlot;PlayerPuppetItemIDBool
+
+	function AddItemToSlot(transactionSystem : handle:gameTransactionSystem, slot : TweakDBID, itemID : gameItemID, area : gamedataEquipmentArea) : Bool; // AddItemToSlot;TransactionSystemTweakDBIDItemIDgamedataEquipmentArea
+	function AddVisualItemToSlot(transactionSystem : handle:gameTransactionSystem, area : gamedataEquipmentArea) : Bool; // AddVisualItemToSlot;TransactionSystemgamedataEquipmentArea
+	function ApplyEquipGLPs(itemID : gameItemID); // ApplyEquipGLPs;ItemID
+	function ApplySlotGLPs(equipSlotID : TweakDBID); // ApplySlotGLPs;TweakDBID
+	function AssignItemToHotkey(newID : gameItemID, hotkey : gameEHotkey); // AssignItemToHotkey;ItemIDEHotkey
+	function AssignNextValidItemToHotkey(currentItem : gameItemID) : Bool; // AssignNextValidItemToHotkey;ItemID
+	function ChangeAppearanceToItem(item : gameItemID); // ChangeAppearanceToItem;ItemID
+	function CheckCyberjunkieAchievement(); // CheckCyberjunkieAchievement;
+	function CheckCyberwareItemForActivatedAction(item : gameItemID) : Bool; // CheckCyberwareItemForActivatedAction;ItemID
+	function CheckEquipPrereqs(itemID : gameItemID, randomVariant : Int32) : Bool; // CheckEquipPrereqs;ItemIDInt32
+	function CheckTagsInItem(itemID : gameItemID, requiredTags : script_ref:array:CName) : Bool; // CheckTagsInItem;ItemIDscript_ref<array<CName>>
+	function CheckWeaponAgainstGameplayRestrictions(weaponItem : gameItemID, optional suppressDriverWarnings : Bool) : Bool; // CheckWeaponAgainstGameplayRestrictions;ItemIDBool
+	function ClearAllWeaponSlots(); // ClearAllWeaponSlots;
+	function ClearEquipment(); // ClearEquipment;
+	function ClearItemAppearance(area : gamedataEquipmentArea); // ClearItemAppearance;gamedataEquipmentArea
+	function ClearItemAppearanceEvent(areaType : gamedataEquipmentArea); // ClearItemAppearanceEvent;gamedataEquipmentArea
+	function ClearItemFromHotkey(hotkey : gameEHotkey); // ClearItemFromHotkey;EHotkey
+	function ClearLastUsedStruct(); // ClearLastUsedStruct;
+	function ClearPreviewItem(area : gamedataEquipmentArea); // ClearPreviewItem;gamedataEquipmentArea
+	function ClearVisuals(area : gamedataEquipmentArea); // ClearVisuals;gamedataEquipmentArea
+	function CreateClothingVisualSlotInfo(area : gamedataEquipmentArea) : gameSSlotVisualInfo; // CreateClothingVisualSlotInfo;gamedataEquipmentArea
+	function CreateSlotInfo(area : gamedataEquipmentArea, slot : script_ref:String, visualTag : CName) : gameSSlotInfo; // CreateSlotInfo;gamedataEquipmentAreascript_ref<String>CName
+	function CreateUnequipConsumableWeaponManipulationRequest(); // CreateUnequipConsumableWeaponManipulationRequest;
+	function CreateUnequipGadgetWeaponManipulationRequest(); // CreateUnequipGadgetWeaponManipulationRequest;
+	function CreateUnequipWeaponManipulationRequest(); // CreateUnequipWeaponManipulationRequest;
+	function CycleWeapon(cycleNext : Bool, onlyCheck : Bool) : gameItemID; // CycleWeapon;BoolBool
+	function DeleteEquipmentSet(setName : script_ref:String); // DeleteEquipmentSet;script_ref<String>
+	function DeleteWardrobeSet(setID : gameWardrobeClothingSetIndex); // DeleteWardrobeSet;gameWardrobeClothingSetIndex
+	function DrawItem(itemToDraw : gameItemID, drawAnimationType : gameEquipAnimationType); // DrawItem;ItemIDgameEquipAnimationType
+	function EquipBaseFists() : gameItemID; // EquipBaseFists;
+	function EquipItem(itemID : gameItemID, optional blockActiveSlotsUpdate : Bool, optional forceEquipWeapon : Bool); // EquipItem;ItemIDBoolBool
+	function EquipItem(itemID : gameItemID, slotIndex : Int32, optional blockActiveSlotsUpdate : Bool, optional forceEquipWeapon : Bool); // EquipItem;ItemIDInt32BoolBool
+	function EquipVisuals(item : gameItemID); // EquipVisuals;ItemID
+	function EquipWardrobeSet(setID : gameWardrobeClothingSetIndex); // EquipWardrobeSet;gameWardrobeClothingSetIndex
+	function EvaluateUnderwearTopHiddenState() : Bool; // EvaluateUnderwearTopHiddenState;
+	function EvaluateUnderwearTopVisibility(unequippedItem : gameItemID) : Bool; // EvaluateUnderwearTopVisibility;ItemID
+	function EvaluateUnderwearVisibility(unequippedItem : gameItemID) : Bool; // EvaluateUnderwearVisibility;ItemID
+	function FinalizeVisualTagProcessing(); // FinalizeVisualTagProcessing;
+	function FindItemInEquipArea(item : gameItemID, area : gamedataEquipmentArea) : gameItemID; // FindItemInEquipArea;ItemIDgamedataEquipmentArea
+	function FindItemInEquipAreaByTag(tag : CName, area : gamedataEquipmentArea) : gameItemID; // FindItemInEquipAreaByTag;CNamegamedataEquipmentArea
+	function FindWardrobeClothingSetByID(setID : gameWardrobeClothingSetIndex) : handle:gameClothingSet; // FindWardrobeClothingSetByID;gameWardrobeClothingSetIndex
+	function GetActiveConsumable() : gameItemID; // GetActiveConsumable;
+	function GetActiveCyberware() : gameItemID; // GetActiveCyberware;
+	function GetActiveGadget() : gameItemID; // GetActiveGadget;
+	function GetActiveHeavyWeapon() : gameItemID; // GetActiveHeavyWeapon;
+	function GetActiveItem(equipArea : gamedataEquipmentArea) : gameItemID; // GetActiveItem;gamedataEquipmentArea
+	function GetActiveItemID(equipAreaIndex : Int32) : gameItemID; // GetActiveItemID;Int32
+	function GetActiveMeleeWare() : gameItemID; // GetActiveMeleeWare;
+	function GetActiveWardrobeSet() : handle:gameClothingSet; // GetActiveWardrobeSet;
+	function GetActiveWeapon() : gameItemID; // GetActiveWeapon;
+	function GetActiveWeaponObject(equipArea : gamedataEquipmentArea) : handle:gameItemObject; // GetActiveWeaponObject;gamedataEquipmentArea
+	function GetActiveWeaponToUnequip() : gameItemID; // GetActiveWeaponToUnequip;
+	function GetAllAbilityCyberwareSlots() : array:gameSEquipSlot; // GetAllAbilityCyberwareSlots;
+	function GetAllAbilityCyberwareSlotsByEquipmentArea(equipmentArea : gamedataEquipmentArea, outCyberwareList : script_ref:array:gameSEquipSlot); // GetAllAbilityCyberwareSlotsByEquipmentArea;gamedataEquipmentAreascript_ref<array<SEquipSlot>>
+	function GetAllCyberwareEquipmentAreas() : array:gamedataEquipmentArea; // GetAllCyberwareEquipmentAreas;
+	function GetAreaTypeByVisualTag(tag : CName) : gamedataEquipmentArea; // GetAreaTypeByVisualTag;CName
+	function GetBaseFistsItemID() : gameItemID; // GetBaseFistsItemID;
+	function GetEquipArea(areaType : gamedataEquipmentArea) : gameSEquipArea; // GetEquipArea;gamedataEquipmentArea
+	function GetEquipAreaFromItemID(item : gameItemID) : gameSEquipArea; // GetEquipAreaFromItemID;ItemID
+	function GetEquipAreaIndex(areaType : gamedataEquipmentArea) : Int32; // GetEquipAreaIndex;gamedataEquipmentArea
+	function GetEquipAreaIndex(equipAreaID : TweakDBID) : Int32; // GetEquipAreaIndex;TweakDBID
+	function GetEquipAreaRecordByType(areaType : gamedataEquipmentArea) : handle:gamedataEquipmentArea_Record; // GetEquipAreaRecordByType;gamedataEquipmentArea
+	function GetEquipment() : gameSLoadout; // GetEquipment;
+	function GetEquippedClothesAndWeapons() : array:gameItemID; // GetEquippedClothesAndWeapons;
+	function GetEquippedQuestItems() : array:gameItemID; // GetEquippedQuestItems;
+	function GetFirstMeleeWeaponItemID() : gameItemID; // GetFirstMeleeWeaponItemID;
+	function GetFistsItemID() : gameItemID; // GetFistsItemID;
+	function GetHighestPriorityMovementAudio() : CName; // GetHighestPriorityMovementAudio;
+	function GetHotkeyTypeForItemID(itemID : gameItemID) : gameEHotkey; // GetHotkeyTypeForItemID;ItemID
+	function GetHotkeyTypeFromItemID(itemID : gameItemID) : gameEHotkey; // GetHotkeyTypeFromItemID;ItemID
+	function GetInventoryManager() : whandle:InventoryDataManagerV2; // GetInventoryManager;
+	function GetItemAppearanceForGender(itemID : gameItemID) : CName; // GetItemAppearanceForGender;ItemID
+	function GetItemGLPs(itemID : TweakDBID) : array:whandle:gamedataGameplayLogicPackage_Record; // GetItemGLPs;TweakDBID
+	function GetItemIDFromHotkey(hotkey : gameEHotkey) : gameItemID; // GetItemIDFromHotkey;EHotkey
+	function GetItemIDfromEquipmentManipulationAction(eqManipulationAction : EquipmentManipulationAction) : gameItemID; // GetItemIDfromEquipmentManipulationAction;EquipmentManipulationAction
+	function GetItemInEquipSlot(areaType : gamedataEquipmentArea, slotIndex : Int32) : gameItemID; // GetItemInEquipSlot;gamedataEquipmentAreaInt32
+	function GetItemInEquipSlot(equipAreaIndex : Int32, slotIndex : Int32) : gameItemID; // GetItemInEquipSlot;Int32Int32
+	function GetItemsByEquipAreaAndItemType(equipmentArea : gamedataEquipmentArea, itemType : gamedataItemType, outItems : script_ref:array:gameSEquipSlot); // GetItemsByEquipAreaAndItemType;gamedataEquipmentAreagamedataItemTypescript_ref<array<SEquipSlot>>
+	function GetLastUsedItemID(lastUsedWeaponType : ELastUsed) : gameItemID; // GetLastUsedItemID;ELastUsed
+	function GetLastUsedMeleeWeaponItemID() : gameItemID; // GetLastUsedMeleeWeaponItemID;
+	function GetLastUsedOrFirstAvailableDriverCombatWeapon(driverCombatWeaponTag : CName) : gameItemID; // GetLastUsedOrFirstAvailableDriverCombatWeapon;CName
+	function GetLastUsedOrFirstAvailableMeleeWeapon() : gameItemID; // GetLastUsedOrFirstAvailableMeleeWeapon;
+	function GetLastUsedOrFirstAvailableOneHandedRangedWeapon() : gameItemID; // GetLastUsedOrFirstAvailableOneHandedRangedWeapon;
+	function GetLastUsedOrFirstAvailableRangedWeapon() : gameItemID; // GetLastUsedOrFirstAvailableRangedWeapon;
+	function GetLastUsedOrFirstAvailableWeapon() : gameItemID; // GetLastUsedOrFirstAvailableWeapon;
+	function GetLastUsedStruct() : gameSLastUsedWeapon; // GetLastUsedStruct;
+	function GetLastUsedWeaponItemID() : gameItemID; // GetLastUsedWeaponItemID;
+	function GetMeleewareOrFistsItemID() : gameItemID; // GetMeleewareOrFistsItemID;
+	function GetNextActiveItem(equipArea : gamedataEquipmentArea) : gameItemID; // GetNextActiveItem;gamedataEquipmentArea
+	function GetNextActiveItemIndex(equipAreaIndex : Int32) : Int32; // GetNextActiveItemIndex;Int32
+	function GetNextActiveItemIndex(equipAreaIndex : Int32, requiredTags : script_ref:array:CName) : Int32; // GetNextActiveItemIndex;Int32script_ref<array<CName>>
+	function GetNextItemInList(arr : script_ref:array:gameItemID, fromIndex : Int32) : gameItemID; // GetNextItemInList;script_ref<array<ItemID>>Int32
+	function GetNextThrowableWeapon() : gameItemID; // GetNextThrowableWeapon;
+	function GetNextWeaponWheelItem() : gameItemID; // GetNextWeaponWheelItem;
+	function GetNumberEquippedWeapons() : Int32; // GetNumberEquippedWeapons;
+	function GetNumberOfItemsInEquipmentArea(areaType : gamedataEquipmentArea) : Int32; // GetNumberOfItemsInEquipmentArea;gamedataEquipmentArea
+	function GetNumberOfSlots(areaType : gamedataEquipmentArea, optional includeLocked : Bool) : Int32; // GetNumberOfSlots;gamedataEquipmentAreaBool
+	function GetOriginalItemIDFromSideUpgrade(sideUpgradeID : gameItemID) : gameItemID; // GetOriginalItemIDFromSideUpgrade;ItemID
+	function GetOwner() : whandle:ScriptedPuppet; // GetOwner;
+	function GetOwnerGender() : CName; // GetOwnerGender;
+	function GetOwnerID() : entEntityID; // GetOwnerID;
+	function GetPaperDollEquipAreas() : array:gameSEquipArea; // GetPaperDollEquipAreas;
+	function GetPaperDollItems() : array:gameItemID; // GetPaperDollItems;
+	function GetPaperDollSlots() : array:gamedataEquipmentArea; // GetPaperDollSlots;
+	function GetPlacementSlot(equipAreaIndex : Int32, slotIndex : Int32) : TweakDBID; // GetPlacementSlot;Int32Int32
+	function GetPlacementSlotByAreaType(area : gamedataEquipmentArea) : TweakDBID; // GetPlacementSlotByAreaType;gamedataEquipmentArea
+	function GetPlayerEquipmentAreas(out list : array:whandle:gamedataEquipmentArea_Record); // GetPlayerEquipmentAreas;array<EquipmentArea_Record>
+	function GetRequestSlotFromEquipmentManipulationAction(eqManipulationAction : EquipmentManipulationAction) : EquipmentManipulationRequestSlot; // GetRequestSlotFromEquipmentManipulationAction;EquipmentManipulationAction
+	function GetRequestSlotFromItemID(item : gameItemID) : EquipmentManipulationRequestSlot; // GetRequestSlotFromItemID;ItemID
+	function GetSlotActiveItem(slot : EquipmentManipulationRequestSlot) : gameItemID; // GetSlotActiveItem;EquipmentManipulationRequestSlot
+	function GetSlotActiveItemStruct() : gameSSlotActiveItems; // GetSlotActiveItemStruct;
+	function GetSlotActiveWeapon() : gameItemID; // GetSlotActiveWeapon;
+	function GetSlotGLPs(equipSlotID : TweakDBID) : array:whandle:gamedataGameplayLogicPackage_Record; // GetSlotGLPs;TweakDBID
+	function GetSlotIndex(itemID : gameItemID, equipAreaType : gamedataEquipmentArea) : Int32; // GetSlotIndex;ItemIDgamedataEquipmentArea
+	function GetSlotIndex(itemID : gameItemID) : Int32; // GetSlotIndex;ItemID
+	function GetSlotOverridenVisualItem(area : gamedataEquipmentArea) : gameItemID; // GetSlotOverridenVisualItem;gamedataEquipmentArea
+	function GetSlotsInfoIndex(tag : CName) : Int32; // GetSlotsInfoIndex;CName
+	function GetVisualItemInSlot(area : gamedataEquipmentArea) : gameItemID; // GetVisualItemInSlot;gamedataEquipmentArea
+	function GetVisualSetIndex(area : gamedataEquipmentArea) : Int32; // GetVisualSetIndex;gamedataEquipmentArea
+	function GetVisualSlotIndex(area : gamedataEquipmentArea, optional excludeUnderwear : Bool) : Int32; // GetVisualSlotIndex;gamedataEquipmentAreaBool
+	function GetVisualTagByAreaType(area : gamedataEquipmentArea) : CName; // GetVisualTagByAreaType;gamedataEquipmentArea
+	function GetWeaponSlotItem(weaponSlot : Int32) : gameItemID; // GetWeaponSlotItem;Int32
+	function HandleArmsCWUnequip(owner : handle:PlayerPuppet); // HandleArmsCWUnequip;PlayerPuppet
+	function HandleStrongArmsEquip(armsCWID : gameItemID); // HandleStrongArmsEquip;ItemID
+	function HasItemEquipped(equipAreaIndex : Int32, optional slotIndex : Int32) : Bool; // HasItemEquipped;Int32Int32
+	function HasItemInInventory(item : gameItemID) : Bool; // HasItemInInventory;ItemID
+	function HasUnderwearVisualTags(item : gameItemID) : Bool; // HasUnderwearVisualTags;ItemID
+	function HideItem(area : gamedataEquipmentArea, hide : Bool); // HideItem;gamedataEquipmentAreaBool
+	function HotkeysOnRestore(); // HotkeysOnRestore;
+	function InitializeClothingOverrideInfo(); // InitializeClothingOverrideInfo;
+	function InitializeClothingSlotsInfo(); // InitializeClothingSlotsInfo;
+	function InitializeEquipSlotFromRecord(slotRecord : handle:gamedataEquipSlot_Record, out equipSlot : gameSEquipSlot); // InitializeEquipSlotFromRecord;EquipSlot_RecordSEquipSlot
+	function InitializeEquipSlotsFromRecords(slotRecords : array:whandle:gamedataEquipSlot_Record, out equipSlots : array:gameSEquipSlot); // InitializeEquipSlotsFromRecords;array<EquipSlot_Record>array<SEquipSlot>
+	function InitializeEquipment(); // InitializeEquipment;
+	function InitializeEquipmentArea(equipAreaRecord : handle:gamedataEquipmentArea_Record, out equipArea : gameSEquipArea); // InitializeEquipmentArea;EquipmentArea_RecordSEquipArea
+	function InitializeEquipmentAreaIndexCache(); // InitializeEquipmentAreaIndexCache;
+	function IsBuildCensored() : Bool; // IsBuildCensored;
+	function IsClothingVisualsInfoEmpty() : Bool; // IsClothingVisualsInfoEmpty;
+	function IsEquipPending() : Bool; // IsEquipPending;
+	function IsEquipmentManipulationAnUnequipRequest(eqManipulationAction : EquipmentManipulationAction) : Bool; // IsEquipmentManipulationAnUnequipRequest;EquipmentManipulationAction
+	function IsEquippable(itemData : whandle:gameItemData) : Bool; // IsEquippable;gameItemData
+	function IsEquipped(item : gameItemID) : Bool; // IsEquipped;ItemID
+	function IsEquipped(item : gameItemID, equipmentArea : gamedataEquipmentArea) : Bool; // IsEquipped;ItemIDgamedataEquipmentArea
+	function IsItemAWeapon(item : gameItemID) : Bool; // IsItemAWeapon;ItemID
+	function IsItemConstructed(item : gameItemID) : Bool; // IsItemConstructed;ItemID
+	function IsItemInHotkey(itemID : gameItemID) : Bool; // IsItemInHotkey;ItemID
+	function IsItemOfCategory(item : gameItemID, category : gamedataItemCategory) : Bool; // IsItemOfCategory;ItemIDgamedataItemCategory
+	function IsPartialVisualTagActive(itemID : gameItemID, transactionSystem : handle:gameTransactionSystem) : Bool; // IsPartialVisualTagActive;ItemIDTransactionSystem
+	function IsSideUpgradeEquipped(itemID : gameItemID) : Bool; // IsSideUpgradeEquipped;ItemID
+	function IsSlotHidden(area : gamedataEquipmentArea) : Bool; // IsSlotHidden;gamedataEquipmentArea
+	function IsSlotLocked(slot : gameSEquipSlot, out visibleWhenLocked : Bool) : Bool; // IsSlotLocked;SEquipSlotBool
+	function IsSlotLocked(equipAreaType : gamedataEquipmentArea, index : Int32, out visibleWhenLocked : Bool) : Bool; // IsSlotLocked;gamedataEquipmentAreaInt32Bool
+	function IsSlotOverriden(area : gamedataEquipmentArea) : Bool; // IsSlotOverriden;gamedataEquipmentArea
+	function IsTransmogBlockedOnSlot(area : gamedataEquipmentArea) : Bool; // IsTransmogBlockedOnSlot;gamedataEquipmentArea
+	function IsUnderwear(area : gamedataEquipmentArea) : Bool; // IsUnderwear;gamedataEquipmentArea
+	function IsUnderwearHidden() : Bool; // IsUnderwearHidden;
+	function IsVisualSetActive() : Bool; // IsVisualSetActive;
+	function IsVisualSetUnequipInTransition() : Bool; // IsVisualSetUnequipInTransition;
+	function IsVisualTagActive(tag : CName) : Bool; // IsVisualTagActive;CName
+	function IsVisualTagValid(tag : CName) : Bool; // IsVisualTagValid;CName
+	function IsWardrobeEnabled() : Bool; // IsWardrobeEnabled;
+	function LoadEquipmentSet(setName : script_ref:String); // LoadEquipmentSet;script_ref<String>
+	function OnAssignHotkeyIfEmptySlot(request : handle:AssignHotkeyIfEmptySlot); // OnAssignHotkeyIfEmptySlot;AssignHotkeyIfEmptySlot
+	function OnAssignToCyberwareWheelRequest(request : handle:AssignToCyberwareWheelRequest); // OnAssignToCyberwareWheelRequest;AssignToCyberwareWheelRequest
+	function OnAttach(); // OnAttach;
+	function OnCheckRemovedItemWithSlotActiveItem(request : handle:CheckRemovedItemWithSlotActiveItem); // OnCheckRemovedItemWithSlotActiveItem;CheckRemovedItemWithSlotActiveItem
+	function OnClearAllWeaponSlotsRequest(request : handle:ClearAllWeaponSlotsRequest); // OnClearAllWeaponSlotsRequest;ClearAllWeaponSlotsRequest
+	function OnClearEquipmentRequest(request : handle:ClearEquipmentRequest); // OnClearEquipmentRequest;ClearEquipmentRequest
+	function OnClearItemAppearance(resetItemID : gameItemID); // OnClearItemAppearance;ItemID
+	function OnDeleteEquipmentSetRequest(request : handle:DeleteEquipmentSetRequest); // OnDeleteEquipmentSetRequest;DeleteEquipmentSetRequest
+	function OnDetach(); // OnDetach;
+	function OnDrawItemRequest(request : handle:gameDrawItemRequest); // OnDrawItemRequest;DrawItemRequest
+	function OnEquipProcessVisualTags(itemID : gameItemID); // OnEquipProcessVisualTags;ItemID
+	function OnEquipRequest(request : handle:gameEquipRequest); // OnEquipRequest;EquipRequest
+	function OnEquipVisualsRequest(request : handle:EquipVisualsRequest); // OnEquipVisualsRequest;EquipVisualsRequest
+	function OnEquipmentSystemWeaponManipulationRequest(request : handle:EquipmentSystemWeaponManipulationRequest); // OnEquipmentSystemWeaponManipulationRequest;EquipmentSystemWeaponManipulationRequest
+	function OnEquipmentUIBBRequest(request : handle:EquipmentUIBBRequest); // OnEquipmentUIBBRequest;EquipmentUIBBRequest
+	function OnGameplayEquipProgramsRequest(request : handle:GameplayEquipProgramsRequest); // OnGameplayEquipProgramsRequest;GameplayEquipProgramsRequest
+	function OnGameplayEquipRequest(request : handle:GameplayEquipRequest); // OnGameplayEquipRequest;GameplayEquipRequest
+	function OnHotkeyAssignmentRequest(request : handle:HotkeyAssignmentRequest); // OnHotkeyAssignmentRequest;HotkeyAssignmentRequest
+	function OnHotkeyRefreshRequest(request : handle:HotkeyRefreshRequest); // OnHotkeyRefreshRequest;HotkeyRefreshRequest
+	function OnInitialize(); // OnInitialize;
+	function OnInstallCyberwareRequest(request : handle:InstallCyberwareRequest); // OnInstallCyberwareRequest;InstallCyberwareRequest
+	function OnLoadEquipmentSetRequest(request : handle:LoadEquipmentSetRequest); // OnLoadEquipmentSetRequest;LoadEquipmentSetRequest
+	function OnPartInstallRequest(request : handle:PartInstallRequest); // OnPartInstallRequest;PartInstallRequest
+	function OnPartUninstallRequest(request : handle:PartUninstallRequest); // OnPartUninstallRequest;PartUninstallRequest
+	function OnQuestDisableWardrobeSetRequest(request : handle:QuestDisableWardrobeSetRequest); // OnQuestDisableWardrobeSetRequest;QuestDisableWardrobeSetRequest
+	function OnQuestEnableWardrobeSetRequest(request : handle:QuestEnableWardrobeSetRequest); // OnQuestEnableWardrobeSetRequest;QuestEnableWardrobeSetRequest
+	function OnQuestRestoreWardrobeSetRequest(request : handle:QuestRestoreWardrobeSetRequest); // OnQuestRestoreWardrobeSetRequest;QuestRestoreWardrobeSetRequest
+	function OnReplaceEquipmentRequest(request : handle:ReplaceEquipmentRequest); // OnReplaceEquipmentRequest;ReplaceEquipmentRequest
+	function OnResetItemAppearance(resetItemID : gameItemID); // OnResetItemAppearance;ItemID
+	function OnRestored(); // OnRestored;
+	function OnSaveEquipmentSetRequest(request : handle:SaveEquipmentSetRequest); // OnSaveEquipmentSetRequest;SaveEquipmentSetRequest
+	function OnSetActiveItemInEquipmentArea(request : handle:SetActiveItemInEquipmentArea); // OnSetActiveItemInEquipmentArea;SetActiveItemInEquipmentArea
+	function OnSynchronizeAttachmentSlotRequest(request : handle:gameSynchronizeAttachmentSlotRequest); // OnSynchronizeAttachmentSlotRequest;SynchronizeAttachmentSlotRequest
+	function OnUnderwearEquipFailsafe(bottom : Bool); // OnUnderwearEquipFailsafe;Bool
+	function OnUnequipByTDBIDRequest(request : handle:gameUnequipByTDBIDRequest); // OnUnequipByTDBIDRequest;UnequipByTDBIDRequest
+	function OnUnequipItemsRequest(request : handle:UnequipItemsRequest); // OnUnequipItemsRequest;UnequipItemsRequest
+	function OnUnequipProcessVisualTags(currentItem : gameItemID, optional forceIfHidden : Bool); // OnUnequipProcessVisualTags;ItemIDBool
+	function OnUnequipRequest(request : handle:UnequipRequest); // OnUnequipRequest;UnequipRequest
+	function OnUnequipUpdateVisuals(currentItem : gameItemID, area : gamedataEquipmentArea); // OnUnequipUpdateVisuals;ItemIDgamedataEquipmentArea
+	function OnUnequipVisualsRequest(request : handle:UnequipVisualsRequest); // OnUnequipVisualsRequest;UnequipVisualsRequest
+	function OnUninstallCyberwareRequest(request : handle:UninstallCyberwareRequest); // OnUninstallCyberwareRequest;UninstallCyberwareRequest
+	function ProcessEquipRequest(owner : whandle:gameObject, slotIndex : Int32, addToInventory : Bool, itemID : gameItemID, equipToCurrentActiveSlot : Bool, optional blockUpdateWeaponActiveSlots : Bool, optional forceEquipWeapon : Bool, optional extraQuality : Float); // ProcessEquipRequest;GameObjectInt32BoolItemIDBoolBoolBoolFloat
+	function ProcessGadgetsTutorials(item : gameItemID); // ProcessGadgetsTutorials;ItemID
+	function QuestHideSlot(area : gamedataEquipmentArea); // QuestHideSlot;gamedataEquipmentArea
+	function QuestRestoreSlot(area : gamedataEquipmentArea); // QuestRestoreSlot;gamedataEquipmentArea
+	function RemoveEquipGLPs(itemID : gameItemID); // RemoveEquipGLPs;ItemID
+	function RemoveItemFromEquipSlot(item : gameItemID); // RemoveItemFromEquipSlot;ItemID
+	function RemoveItemFromSlotActiveItem(item : gameItemID); // RemoveItemFromSlotActiveItem;ItemID
+	function RemoveSlotGLPs(equipSlotID : TweakDBID); // RemoveSlotGLPs;TweakDBID
+	function RequestEquipmentStateMachine(reqType : EquipmentManipulationRequestType, reqSlot : EquipmentManipulationRequestSlot, equipAnim : gameEquipAnimationType, referenceName : CName, requestName : CName); // RequestEquipmentStateMachine;EquipmentManipulationRequestTypeEquipmentManipulationRequestSlotgameEquipAnimationTypeCNameCName
+	function ResetItemAppearance(area : gamedataEquipmentArea, optional force : Bool); // ResetItemAppearance;gamedataEquipmentAreaBool
+	function ResetItemAppearanceEvent(area : gamedataEquipmentArea); // ResetItemAppearanceEvent;gamedataEquipmentArea
+	function RestoreEquipSlotsData(out equipArea : gameSEquipArea); // RestoreEquipSlotsData;SEquipArea
+	function SaveEquipmentSet(setName : script_ref:String, setType : gameEquipmentSetType); // SaveEquipmentSet;script_ref<String>EEquipmentSetType
+	function SendEquipAudioEvents(itemID : gameItemID); // SendEquipAudioEvents;ItemID
+	function SendPSMWeaponManipulationRequest(reqType : EquipmentManipulationRequestType, reqSlot : EquipmentManipulationRequestSlot, equipAnim : gameEquipAnimationType); // SendPSMWeaponManipulationRequest;EquipmentManipulationRequestTypeEquipmentManipulationRequestSlotgameEquipAnimationType
+	function SendPaperdollUpdate(area : script_ref:gameSEquipArea, equipped : Bool, slot : TweakDBID, optional slotindex : Int32, optional ignoreSlot : Bool, optional force : Bool); // SendPaperdollUpdate;script_ref<SEquipArea>BoolTweakDBIDInt32BoolBool
+	function SendUnequipAudioEvents(itemID : gameItemID); // SendUnequipAudioEvents;ItemID
+	function SetLastUsedItem(item : gameItemID); // SetLastUsedItem;ItemID
+	function SetOwner(owner : handle:ScriptedPuppet); // SetOwner;ScriptedPuppet
+	function SetSlotActiveItem(slot : EquipmentManipulationRequestSlot, item : gameItemID); // SetSlotActiveItem;EquipmentManipulationRequestSlotItemID
+	function ShouldPickedUpItemBeAddedToHotkey(itemID : gameItemID, out hotkey : gameEHotkey) : Bool; // ShouldPickedUpItemBeAddedToHotkey;ItemIDEHotkey
+	function ShouldShowGenitals() : Bool; // ShouldShowGenitals;
+	function ShouldSlotBeHidden(area : gamedataEquipmentArea) : Bool; // ShouldSlotBeHidden;gamedataEquipmentArea
+	function ShouldUnderwearBeVisible(unequippedItem : gameItemID) : Bool; // ShouldUnderwearBeVisible;ItemID
+	function ShouldUnderwearBeVisibleInSet() : Bool; // ShouldUnderwearBeVisibleInSet;
+	function ShouldUnderwearTopBeVisible(unequippedItem : gameItemID) : Bool; // ShouldUnderwearTopBeVisible;ItemID
+	function ShouldUnderwearTopBeVisibleInSet() : Bool; // ShouldUnderwearTopBeVisibleInSet;
+	function SyncHotkeyData(hotkey : gameEHotkey); // SyncHotkeyData;EHotkey
+	function TryFillCyberwareHotkey(); // TryFillCyberwareHotkey;
+	function UnderwearEquipFailsafe(); // UnderwearEquipFailsafe;
+	function UnderwearTopEquipFailsafe(); // UnderwearTopEquipFailsafe;
+	function UnequipAllFoleyAudio(); // UnequipAllFoleyAudio;
+	function UnequipCyberwareParts(cyberwareData : whandle:gameItemData); // UnequipCyberwareParts;gameItemData
+	function UnequipFootwearAudio(); // UnequipFootwearAudio;
+	function UnequipItem(equipAreaIndex : Int32, slotIndex : Int32, optional forceRemove : Bool); // UnequipItem;Int32Int32Bool
+	function UnequipItem(itemID : gameItemID); // UnequipItem;ItemID
+	function UnequipOutfitFootwearAudio(); // UnequipOutfitFootwearAudio;
+	function UnequipPrereqItems(); // UnequipPrereqItems;
+	function UnequipVisuals(area : gamedataEquipmentArea); // UnequipVisuals;gamedataEquipmentArea
+	function UnequipWardrobeSet(); // UnequipWardrobeSet;
+	function UpdateActiveWheelItem(itemID : gameItemID); // UpdateActiveWheelItem;ItemID
+	function UpdateEquipAreaActiveIndex(newCurrentItem : gameItemID); // UpdateEquipAreaActiveIndex;ItemID
+	function UpdateEquipmentUIBB(paperDollEqData : SPaperdollEquipData, optional forceFire : Bool); // UpdateEquipmentUIBB;SPaperdollEquipDataBool
+	function UpdateInnerChest(); // UpdateInnerChest;
+	function UpdateQuickWheel(); // UpdateQuickWheel;
+	function UpdateUIBBAreaChanged(equipmentArea : gamedataEquipmentArea, slotIndex : Int32); // UpdateUIBBAreaChanged;gamedataEquipmentAreaInt32
+	function UpdateVisualTagProcessingInfo(area : gamedataEquipmentArea, show : Bool); // UpdateVisualTagProcessingInfo;gamedataEquipmentAreaBool
+	function UpdateWeaponWheel(); // UpdateWeaponWheel;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

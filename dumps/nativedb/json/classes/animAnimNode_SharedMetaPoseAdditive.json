@@ -1,0 +1,1 @@
+{"a":"animAnimNode_OnePoseInput","b":"animAnimNode_SharedMetaPoseAdditive","d":8,"e":[{"a":{"b":"animFloatLink"},"b":"weightLink","c":128},{"a":{"b":"animEAnimGraphAdditiveType"},"b":"additiveType","c":128},{"a":{"b":"animEBlendTracksMode"},"b":"blendTracks","c":128},{"a":{"a":1},"b":"convertParentPoseToAdditive","c":128}]}

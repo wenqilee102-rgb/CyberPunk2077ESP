@@ -1,0 +1,13 @@
+import class gamedebugFailure extends ISerializable
+{
+	var id : gamedebugFailureId;
+	var time : Float;
+	var message : String;
+	var path : gameDebugPath;
+	var previous : handle:gamedebugFailure;
+	var cause : handle:gamedebugFailure;
+}
+
+import class abstract ISerializable
+{
+}

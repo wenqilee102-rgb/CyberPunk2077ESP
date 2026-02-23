@@ -1,0 +1,1 @@
+{"a":"questICharacterConditionType","b":"questCharacterAim_ConditionType","d":8,"e":[{"a":{"a":1},"b":"isPlayer","c":128},{"a":{"a":1},"b":"preciseAiming","c":128},{"a":{"b":"gameEntityReference"},"b":"targetRef","c":128}]}

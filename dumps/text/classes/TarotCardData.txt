@@ -1,0 +1,9 @@
+struct TarotCardData
+{
+	public    var empty : Bool;
+	public    var index : Int32;
+	public    var imagePath : CName;
+	public    var label : String;
+	public    var desc : String;
+	public    var isEp1 : Bool;
+}

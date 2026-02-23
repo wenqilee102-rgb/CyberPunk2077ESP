@@ -1,0 +1,5 @@
+enum EWidgetPlacementType
+{
+	DOCKED = 0,
+	FLOATING = 1
+}

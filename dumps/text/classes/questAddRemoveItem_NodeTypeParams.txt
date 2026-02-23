@@ -1,0 +1,19 @@
+import class questAddRemoveItem_NodeTypeParams extends ISerializable
+{
+	var sendNotification : Bool;
+	var isPlayer : Bool;
+	var objectRef : gameEntityReference;
+	var entityRef : handle:questUniversalRef;
+	var nodeType : questEAddRemoveItemType;
+	var itemID : TweakDBID;
+	var quantity : Int32;
+	var flagItemAddedCallbackAsSilent : Bool;
+	var removeAllQuantity : Bool;
+	var tagToRemove : CName;
+	var itemIDsToIgnoreOnRemove : array:TweakDBID;
+	var tagsToIgnoreOnRemove : array:CName;
+}
+
+import class abstract ISerializable
+{
+}

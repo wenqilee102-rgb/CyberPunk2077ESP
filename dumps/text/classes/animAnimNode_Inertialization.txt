@@ -1,0 +1,21 @@
+import class animAnimNode_Inertialization extends animAnimNode_OnePoseInput
+{
+	var safeMode : Bool;
+	var transformsCountUpperBound : Uint32;
+	var tracksCountUpperBound : Uint32;
+	var rotationLimits : array:animInertializationRotationLimit;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

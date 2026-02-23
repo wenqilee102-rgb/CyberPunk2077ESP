@@ -1,0 +1,5 @@
+enum vehicleEVehicleWindowState
+{
+	Closed = 0,
+	Open = 1
+}

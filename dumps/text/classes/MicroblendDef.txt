@@ -1,0 +1,5 @@
+import struct MicroblendDef
+{
+	var name : CName;
+	var texture : rRef:CBitmapTexture;
+}

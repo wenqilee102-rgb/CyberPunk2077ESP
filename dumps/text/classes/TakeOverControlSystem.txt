@@ -1,0 +1,100 @@
+class TakeOverControlSystem extends gameScriptableSystem
+{
+	private   var controlledObject : whandle:gameObject;
+	private   var takeControlSourceID : entEntityID;
+	private   var isInputRegistered : Bool;
+	private   var isInputLockedFromQuest : Bool;
+	private   var isChainForcedFromQuest : Bool;
+	private   var isActionButtonLocked : Bool;
+	private   var isDeviceChainCreationLocked : Bool;
+	private   var isReleaseOnHitLocked : Bool;
+	private   var chainLockSources : array:CName;
+	private   var TCDUpdateDelayID : gameDelayID;
+	private   var TCSupdateRate : Float;
+	private   var lastInputSimTime : Float;
+	private   var sniperNestObject : whandle:gameObject;
+	private   var timestampLastTCS : Float;
+
+	static function CreateInputHint(context : ScriptGameInstance, isVisible : Bool); // TakeOverControlSystem::CreateInputHint;GameInstanceBool
+	static function PlayFollowupEvent(game : ScriptGameInstance, followupEvent : handle:redEvent, followupEventEntityID : entEntityID); // TakeOverControlSystem::PlayFollowupEvent;GameInstanceEventEntityID
+	static function ReleaseControl(game : ScriptGameInstance, optional followupEvent : handle:redEvent, optional followupEventEntityID : entEntityID) : Bool; // TakeOverControlSystem::ReleaseControl;GameInstanceEventEntityID
+	static function ReleaseControlOfRemoteControlledVehicle(game : ScriptGameInstance, playerID : entEntityID); // TakeOverControlSystem::ReleaseControlOfRemoteControlledVehicle;GameInstanceEntityID
+	static function ReleaseControlOnHit(player : whandle:PlayerPuppet) : Bool; // TakeOverControlSystem::ReleaseControlOnHit;PlayerPuppet
+	static function RequestTakeControl(context : handle:gameObject, originalevent : handle:ToggleTakeOverControl); // TakeOverControlSystem::RequestTakeControl;GameObjectToggleTakeOverControl
+
+	event OnAction(action : gameinputScriptListenerAction, consumer : gameinputScriptListenerActionConsumer) : Bool; // OnAction
+
+	function BreakTCSUpdate(); // BreakTCSUpdate;
+	function CleanupActiveEntityInChainBlackboard(); // CleanupActiveEntityInChainBlackboard;
+	function CleanupChainBlackboard(); // CleanupChainBlackboard;
+	function CleanupControlledObject(); // CleanupControlledObject;
+	function CreateTCSUpdate(); // CreateTCSUpdate;
+	function EnablePlayerTPPRepresenation(enable : Bool); // EnablePlayerTPPRepresenation;Bool
+	function ForceChainFromQuestRequest(isChainForced : Bool); // ForceChainFromQuestRequest;Bool
+	function GetCameraDataFromControlledObject(ent : handle:gameObject, player : handle:gameObject); // GetCameraDataFromControlledObject;GameObjectGameObject
+	function GetChain() : array:SWidgetPackage; // GetChain;
+	function GetControlledObject() : handle:gameObject; // GetControlledObject;
+	function GetCurrentActiveDeviceChainBlackboardIndex(deviceChain : script_ref:array:SWidgetPackage) : Int32; // GetCurrentActiveDeviceChainBlackboardIndex;script_ref<array<SWidgetPackage>>
+	function GetPackageFromChainNextToMe(higher : Bool, out isValid : Bool) : SWidgetPackage; // GetPackageFromChainNextToMe;BoolBool
+	function HideAdvanceInteractionInputHints(); // HideAdvanceInteractionInputHints;
+	function IsDeviceChainCreationLocked() : Bool; // IsDeviceChainCreationLocked;
+	function IsDeviceControlled() : Bool; // IsDeviceControlled;
+	function IsInputLockedFromQuest() : Bool; // IsInputLockedFromQuest;
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function LockInputFromQuestRequest(isLocked : Bool); // LockInputFromQuestRequest;Bool
+	function MoveToSpecificEntity(entity : entEntityID); // MoveToSpecificEntity;EntityID
+	function OnLockDeviceChainCreationRequest(request : handle:LockDeviceChainCreation); // OnLockDeviceChainCreationRequest;LockDeviceChainCreation
+	function OnLockReleaseOnHitRequest(request : handle:LockReleaseOnHit); // OnLockReleaseOnHitRequest;LockReleaseOnHit
+	function OnLockTakeControlActionRequest(request : handle:LockTakeControlAction); // OnLockTakeControlActionRequest;LockTakeControlAction
+	function OnRemoveFromChainRequest(request : handle:RemoveFromChainRequest); // OnRemoveFromChainRequest;RemoveFromChainRequest
+	function OnRequestQuestTakeControlInputLock(request : handle:RequestQuestTakeControlInputLock); // OnRequestQuestTakeControlInputLock;RequestQuestTakeControlInputLock
+	function OnRequestReleaseControl(request : handle:RequestReleaseControl); // OnRequestReleaseControl;RequestReleaseControl
+	function OnRequestTakeControl(request : handle:RequestTakeControl); // OnRequestTakeControl;RequestTakeControl
+	function OnTCSUpdate(request : handle:TCSUpdate); // OnTCSUpdate;TCSUpdate
+	function PSMSetIsPlayerControllDevice(controllsDevice : Bool); // PSMSetIsPlayerControllDevice;Bool
+	function RefreshDebug(lastXYValue : Bool); // RefreshDebug;Bool
+	function RegisterAsCurrentObject(entityID : entEntityID); // RegisterAsCurrentObject;EntityID
+	function RegisterBBActiveObjectAsCurrentObject(); // RegisterBBActiveObjectAsCurrentObject;
+	function RegisterObjectHandle(EntID : entEntityID); // RegisterObjectHandle;EntityID
+	function RegisterSystemOnInput(register : Bool); // RegisterSystemOnInput;Bool
+	function ReleaseCurrentObject(); // ReleaseCurrentObject;
+	function ReturnToDeviceScreen(); // ReturnToDeviceScreen;
+	function SendTSCActivateEventToEntity(isQuickhack : Bool); // SendTSCActivateEventToEntity;Bool
+	function ShowChainControls(show : Bool); // ShowChainControls;Bool
+	function ToggleToMainPlayerObject(); // ToggleToMainPlayerObject;
+	function ToggleToNextControlledDevice(); // ToggleToNextControlledDevice;
+	function ToggleToOtherDeviceFromChain(otherPackage : script_ref:SWidgetPackage); // ToggleToOtherDeviceFromChain;script_ref<SWidgetPackage>
+	function ToggleToPreviousControlledDevice(); // ToggleToPreviousControlledDevice;
+	function TryFillControlBlackboard(evt : handle:RequestTakeControl); // TryFillControlBlackboard;RequestTakeControl
+	function TryFillControlBlackboardByForce(evt : handle:RequestTakeControl); // TryFillControlBlackboardByForce;RequestTakeControl
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

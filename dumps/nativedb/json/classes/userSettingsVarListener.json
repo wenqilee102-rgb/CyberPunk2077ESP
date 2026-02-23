@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"userSettingsVarListener","c":"ConfigVarListener","d":8,"f":[{"a":"OnVarModified","d":4,"e":[{"a":{"a":14},"b":"groupPath","c":0},{"a":{"a":14},"b":"varName","c":0},{"a":{"b":"InGameConfigVarType"},"b":"varType","c":0},{"a":{"b":"InGameConfigChangeReason"},"b":"reason","c":0}]},{"a":"Register","c":{"a":1},"d":4,"e":[{"a":{"a":14},"b":"groupPath","c":0}]}]}

@@ -1,0 +1,23 @@
+import class worldGuardAreaNode extends worldAreaShapeNode
+{
+	var communityEntries : array:AIGuardAreaConnectedCommunity;
+	var combatCommunityEntries : array:AICombatGuardAreaConnectedCommunity;
+	var pursuitArea : NodeRef;
+	var pursuitRange : Float;
+}
+
+import class worldAreaShapeNode extends worldNode
+{
+	var color : Color;
+	var outline : handle:AreaShapeOutline;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

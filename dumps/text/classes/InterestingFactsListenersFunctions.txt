@@ -1,0 +1,4 @@
+struct InterestingFactsListenersFunctions
+{
+	public    var zone : CName;
+}

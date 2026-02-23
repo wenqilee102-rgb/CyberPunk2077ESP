@@ -1,0 +1,9 @@
+import class scnChoiceNodeNsMappinParams extends ISerializable
+{
+	var locationType : scnChoiceNodeNsMappinLocation;
+	var mappinSettings : TweakDBID;
+}
+
+import class abstract ISerializable
+{
+}

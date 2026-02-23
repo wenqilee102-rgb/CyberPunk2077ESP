@@ -1,0 +1,20 @@
+class InventoryTypeComparableItemsCache extends IScriptable
+{
+	public    var itemType : gamedataItemType;
+	public    var cache : handle:InventoryItemComparableTypesCache;
+	public    var items : array:whandle:UIInventoryItem;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

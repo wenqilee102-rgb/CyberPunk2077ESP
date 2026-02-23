@@ -1,0 +1,7 @@
+import struct workDebugSourceCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

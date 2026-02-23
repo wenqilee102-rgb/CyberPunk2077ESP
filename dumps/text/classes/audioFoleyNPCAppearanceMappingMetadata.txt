@@ -1,0 +1,20 @@
+import class audioFoleyNPCAppearanceMappingMetadata extends audioAudioMetadata
+{
+	var fallbackMetadata : CName;
+	var NPCsPerAppearance : array:audioAppearanceToNPCMetadata;
+	var NPCsPerMainMaterial : array:audioVisualTagToNPCMetadata;
+	var NPCsPerAdditive : array:audioVisualTagToNPCMetadata;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

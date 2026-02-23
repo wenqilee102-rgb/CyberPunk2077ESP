@@ -1,0 +1,6 @@
+import struct meshChunkIndicesOffset
+{
+	var start : Uint32;
+	var count : Uint32;
+	var boneIndex : Uint8;
+}

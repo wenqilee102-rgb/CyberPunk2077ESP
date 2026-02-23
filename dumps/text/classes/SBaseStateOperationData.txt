@@ -1,0 +1,5 @@
+struct SBaseStateOperationData
+{
+	public    var state : EDeviceStatus;
+	public    var operation : SBaseDeviceOperationData;
+}

@@ -1,0 +1,1 @@
+{"b":"animLookAtLimits","c":"LookAtLimits","d":8,"g":true,"e":[{"a":{"a":10},"b":"softLimitDegrees","c":128},{"a":{"a":10},"b":"hardLimitDegrees","c":128},{"a":{"a":10},"b":"hardLimitDistance","c":128},{"a":{"a":10},"b":"backLimitDegrees","c":128}]}

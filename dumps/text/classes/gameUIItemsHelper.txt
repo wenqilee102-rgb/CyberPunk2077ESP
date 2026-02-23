@@ -1,0 +1,82 @@
+import class gameUIItemsHelper extends IScriptable
+{
+	import static function IntToQuality(quality : Int32) : gamedataQuality; // IntToQuality
+	import static function QualityEnumToInt(quality : gamedataQuality) : Int32; // QualityEnumToInt
+	import static function QualityEnumToName(quality : gamedataQuality) : CName; // QualityEnumToName
+	import static function QualityEnumToString(quality : gamedataQuality) : String; // QualityEnumToString
+	import static function QualityIntToName(quality : Int32) : CName; // QualityIntToName
+	import static function QualityNameToEnum(quality : CName) : gamedataQuality; // QualityNameToEnum
+	import static function QualityNameToInt(quality : CName) : Int32; // QualityNameToInt
+	import static function QualityStringToInt(quality : String) : Int32; // QualityStringToInt
+	import static function QualityStringToStateName(quality : String) : CName; // QualityStringToStateName
+	import static function QualityToInt(quality : gamedataQuality) : Int32; // QualityToInt
+	import static function QualityToLocalizationKey(quality : gamedataQuality) : String; // QualityToLocalizationKey
+
+	static function GetAmmoIconByType(itemType : gamedataItemType) : CName; // gameUIItemsHelper::GetAmmoIconByType;gamedataItemType
+	static function GetBGIconNameForStat(statType : gamedataStatType) : CName; // gameUIItemsHelper::GetBGIconNameForStat;gamedataStatType
+	static function GetBasicPerkRelevance(perkGroup : gamedataPerkWeaponGroupType) : CName; // gameUIItemsHelper::GetBasicPerkRelevance;gamedataPerkWeaponGroupType
+	static function GetBasicPerkRelevanceGroup(itemType : gamedataItemType) : gamedataPerkWeaponGroupType; // gameUIItemsHelper::GetBasicPerkRelevanceGroup;gamedataItemType
+	static function GetEmptySlotName(slotId : TweakDBID) : String; // gameUIItemsHelper::GetEmptySlotName;TweakDBID
+	static function GetEvolutionWeaponType(itemType : gamedataItemType) : String; // gameUIItemsHelper::GetEvolutionWeaponType;gamedataItemType
+	static function GetIconNameForDamageType(damageType : gamedataDamageType) : String; // gameUIItemsHelper::GetIconNameForDamageType;gamedataDamageType
+	static function GetIconNameForStat(statType : gamedataStatType) : CName; // gameUIItemsHelper::GetIconNameForStat;gamedataStatType
+	static function GetItemName(itemData : script_ref:gameInventoryItemData) : String; // gameUIItemsHelper::GetItemName;script_ref<InventoryItemData>
+	static function GetItemName(itemRecord : handle:gamedataItem_Record, itemData : whandle:gameItemData) : String; // gameUIItemsHelper::GetItemName;Item_RecordgameItemData
+	static function GetItemName(itemID : TweakDBID, itemData : whandle:gameItemData) : String; // gameUIItemsHelper::GetItemName;TweakDBIDgameItemData
+	static function GetItemTypeKey(itemType : gamedataItemType) : String; // gameUIItemsHelper::GetItemTypeKey;gamedataItemType
+	static function GetItemTypeKey(itemID : TweakDBID, itemType : gamedataItemType, weaponEvolutionType : gamedataWeaponEvolution) : String; // gameUIItemsHelper::GetItemTypeKey;TweakDBIDgamedataItemTypegamedataWeaponEvolution
+	static function GetItemTypeKey(itemData : whandle:gameItemData, equipmentArea : gamedataEquipmentArea, itemID : TweakDBID, itemType : gamedataItemType, weaponEvolutionType : gamedataWeaponEvolution) : String; // gameUIItemsHelper::GetItemTypeKey;gameItemDatagamedataEquipmentAreaTweakDBIDgamedataItemTypegamedataWeaponEvolution
+	static function GetItemTypeKey(equipmentArea : gamedataEquipmentArea, itemID : TweakDBID, itemType : gamedataItemType, weaponEvolutionType : gamedataWeaponEvolution) : String; // gameUIItemsHelper::GetItemTypeKey;gamedataEquipmentAreaTweakDBIDgamedataItemTypegamedataWeaponEvolution
+	static function GetItemTypeKey(itemType : gamedataItemType, weaponEvolutionType : gamedataWeaponEvolution) : String; // gameUIItemsHelper::GetItemTypeKey;gamedataItemTypegamedataWeaponEvolution
+	static function GetLootingShadowIcon(itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetLootingShadowIcon;gamedataItemTypegamedataEquipmentArea
+	static function GetLootingShadowIcon(slotID : TweakDBID, itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetLootingShadowIcon;TweakDBIDgamedataItemTypegamedataEquipmentArea
+	static function GetLootingShadowIcon(itemTDBID : TweakDBID, slotID : TweakDBID, itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetLootingShadowIcon;TweakDBIDTweakDBIDgamedataItemTypegamedataEquipmentArea
+	static function GetLootingShadowIcon(equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetLootingShadowIcon;gamedataEquipmentArea
+	static function GetMasterPerkRelevanceGroup(itemType : gamedataItemType) : gamedataPerkWeaponGroupType; // gameUIItemsHelper::GetMasterPerkRelevanceGroup;gamedataItemType
+	static function GetMellewareEvolutionTexturePartByType(type : gamedataItemType) : CName; // gameUIItemsHelper::GetMellewareEvolutionTexturePartByType;gamedataItemType
+	static function GetMellewareSecondaryTypeText(type : gamedataItemType) : String; // gameUIItemsHelper::GetMellewareSecondaryTypeText;gamedataItemType
+	static function GetQualityF(item : script_ref:gameInventoryItemData) : Float; // gameUIItemsHelper::GetQualityF;script_ref<InventoryItemData>
+	static function GetQualityF(itemData : handle:gameItemData) : Float; // gameUIItemsHelper::GetQualityF;gameItemData
+	static function GetQualityF(qualityInt : Int32, isIconic : Bool, plusValue : Float) : Float; // gameUIItemsHelper::GetQualityF;Int32BoolFloat
+	static function GetShardData(itemRecord : whandle:gamedataItem_Record, gameInstance : ScriptGameInstance) : whandle:gameJournalOnscreen; // gameUIItemsHelper::GetShardData;Item_RecordGameInstance
+	static function GetShardName(itemRecord : whandle:gamedataItem_Record, gameInstance : ScriptGameInstance) : String; // gameUIItemsHelper::GetShardName;Item_RecordGameInstance
+	static function GetSlotName(itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : String; // gameUIItemsHelper::GetSlotName;gamedataItemTypegamedataEquipmentArea
+	static function GetSlotName(equipmentArea : gamedataEquipmentArea) : String; // gameUIItemsHelper::GetSlotName;gamedataEquipmentArea
+	static function GetSlotName(slotID : TweakDBID, itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : String; // gameUIItemsHelper::GetSlotName;TweakDBIDgamedataItemTypegamedataEquipmentArea
+	static function GetSlotShadowIcon(slotID : TweakDBID, itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetSlotShadowIcon;TweakDBIDgamedataItemTypegamedataEquipmentArea
+	static function GetSlotShadowIcon(equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetSlotShadowIcon;gamedataEquipmentArea
+	static function GetSlotShadowIcon(itemType : gamedataItemType, equipmentArea : gamedataEquipmentArea) : CName; // gameUIItemsHelper::GetSlotShadowIcon;gamedataItemTypegamedataEquipmentArea
+	static function GetStatTypeByDamageType(type : gamedataDamageType) : gamedataStatType; // gameUIItemsHelper::GetStatTypeByDamageType;gamedataDamageType
+	static function GetStateNameForDamageType(damageType : gamedataDamageType) : CName; // gameUIItemsHelper::GetStateNameForDamageType;gamedataDamageType
+	static function GetStateNameForStat(statType : gamedataStatType) : CName; // gameUIItemsHelper::GetStateNameForStat;gamedataStatType
+	static function GetStateNameForType(damageType : gamedataDamageType) : CName; // gameUIItemsHelper::GetStateNameForType;gamedataDamageType
+	static function GetTooltipItemName(data : handle:InventoryTooltipData) : String; // gameUIItemsHelper::GetTooltipItemName;InventoryTooltipData
+	static function GetTooltipItemName(itemID : TweakDBID, itemData : whandle:gameItemData, fallbackName : script_ref:String) : String; // gameUIItemsHelper::GetTooltipItemName;TweakDBIDgameItemDatascript_ref<String>
+	static function GetTweakDBIDForDamageType(damageType : gamedataDamageType) : TweakDBID; // gameUIItemsHelper::GetTweakDBIDForDamageType;gamedataDamageType
+	static function GetWeaponEvolutionTexturePart(evolution : gamedataWeaponEvolution) : CName; // gameUIItemsHelper::GetWeaponEvolutionTexturePart;gamedataWeaponEvolution
+	static function GetWeaponTooltipIcon(itemType : gamedataItemType) : CName; // gameUIItemsHelper::GetWeaponTooltipIcon;gamedataItemType
+	static function GetWeaponTypeIcon(itemType : gamedataItemType) : CName; // gameUIItemsHelper::GetWeaponTypeIcon;gamedataItemType
+	static function IsAttributeAllocationStat(stat : gamedataStatType) : Bool; // gameUIItemsHelper::IsAttributeAllocationStat;gamedataStatType
+	static function IsShardRead(itemTDBID : TweakDBID, gameInstance : ScriptGameInstance) : Bool; // gameUIItemsHelper::IsShardRead;TweakDBIDGameInstance
+	static function ItemTypeToRarity(itemType : gamedataItemType, optional itemData : whandle:gameItemData) : RarityItemType; // gameUIItemsHelper::ItemTypeToRarity;gamedataItemTypegameItemData
+	static function PerkWeaponGroupToText(perkGroup : gamedataPerkWeaponGroupType) : String; // gameUIItemsHelper::PerkWeaponGroupToText;gamedataPerkWeaponGroupType
+	static function QualityToDefaultString(quality : gamedataQuality, optional type : RarityItemType) : String; // gameUIItemsHelper::QualityToDefaultString;gamedataQualityRarityItemType
+	static function QualityToTierPlusString(quality : gamedataQuality) : String; // gameUIItemsHelper::QualityToTierPlusString;gamedataQuality
+	static function QualityToTierString(quality : gamedataQuality) : String; // gameUIItemsHelper::QualityToTierString;gamedataQuality
+	static function ShouldDisplayTier(itemType : gamedataItemType) : Bool; // gameUIItemsHelper::ShouldDisplayTier;gamedataItemType
+	static function WeaponEvolutionText(evolution : gamedataWeaponEvolution) : String; // gameUIItemsHelper::WeaponEvolutionText;gamedataWeaponEvolution
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

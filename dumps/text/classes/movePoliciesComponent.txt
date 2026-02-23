@@ -1,0 +1,55 @@
+import class movePoliciesComponent extends entIComponent
+{
+	import function AddPolicies(object : handle:movePolicies); // AddPolicies
+	import function ChangeMovementType(movementType : moveMovementType) : Bool; // ChangeMovementType
+	import function GetClosestPointToPath(point : Vector4) : Vector4; // GetClosestPointToPath
+	import function GetCurrentLocomotionAction() : moveLocomotionAction; // GetCurrentLocomotionAction
+	import function GetDestination() : Vector4; // GetDestination
+	import function GetDistanceToDestination() : Float; // GetDistanceToDestination
+	import function GetDistanceToDestinationFrom(destination : Vector4) : Float; // GetDistanceToDestinationFrom
+	import function GetExplorationOffMeshLinkType() : moveExplorationType; // GetExplorationOffMeshLinkType
+	import function GetInclineAngle() : Float; // GetInclineAngle
+	import function GetOffMeshLinkType(out type : worldOffMeshConnectionType) : Bool; // GetOffMeshLinkType
+	import function GetTopPolicies() : handle:movePolicies; // GetTopPolicies
+	import function HasLineOfSightFailed() : Bool; // HasLineOfSightFailed
+	import function IsConstrainedByRestrictedArea() : Bool; // IsConstrainedByRestrictedArea
+	import function IsDestinationCalculated() : Bool; // IsDestinationCalculated
+	import function IsDestinationChanged() : Bool; // IsDestinationChanged
+	import function IsInIdle() : Bool; // IsInIdle
+	import function IsOnOffMeshLink() : Bool; // IsOnOffMeshLink
+	import function IsOnStairs() : Bool; // IsOnStairs
+	import function IsPathfindingFailed() : Bool; // IsPathfindingFailed
+	import function IsPausedByDynamicCollision() : Bool; // IsPausedByDynamicCollision
+	import function IsTopPolicyEvaluated() : Bool; // IsTopPolicyEvaluated
+	import function PopPolicies(object : handle:movePolicies); // PopPolicies
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

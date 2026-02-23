@@ -1,0 +1,11 @@
+import struct gameRegisterNewCooldownRequest
+{
+	var owner : whandle:entEntity;
+	var ownerItemId : gameItemID;
+	var ownerRecord : TweakDBID;
+	var cooldownName : CName;
+	var duration : Float;
+	var type : gamedataStatType;
+	var modifiable : Bool;
+	var affectedByTimeDilation : Bool;
+}

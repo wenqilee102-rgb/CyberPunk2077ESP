@@ -1,0 +1,14 @@
+import class AIbehaviorSelectCombatTargetTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var target : handle:AIArgumentMapping;
+	var targetClosest : Bool;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,18 @@
+import class questCharacterBodyType_CondtionType extends questICharacterConditionType
+{
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+	var gender : CName;
+}
+
+import class abstract questICharacterConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

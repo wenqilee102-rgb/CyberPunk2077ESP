@@ -1,0 +1,4 @@
+import struct gameinteractionsLayerData
+{
+	var tag : CName;
+}

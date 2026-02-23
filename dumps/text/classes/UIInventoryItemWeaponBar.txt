@@ -1,0 +1,29 @@
+class UIInventoryItemWeaponBar extends IScriptable
+{
+	public    var Value : Float;
+	public    var MaxValue : Float;
+	public    var Percentage : Float;
+	public    var Type : WeaponBarType;
+	private   var isValueSet : Bool;
+
+	static function GetBarTypeGroup(barType : WeaponBarType) : WeaponBarTypeGroup; // UIInventoryItemWeaponBar::GetBarTypeGroup;WeaponBarType
+	static function Make(itemType : gamedataItemType, type : WeaponBarType, value : Float, maxValue : Float, optional withoutValue : Bool) : handle:UIInventoryItemWeaponBar; // UIInventoryItemWeaponBar::Make;gamedataItemTypeWeaponBarTypeFloatFloatBool
+	static function MakeCurve(type : WeaponBarType, value : Float, statsManager : handle:UIInventoryItemStatsManager, optional withoutValue : Bool) : handle:UIInventoryItemWeaponBar; // UIInventoryItemWeaponBar::MakeCurve;WeaponBarTypeFloatUIInventoryItemStatsManagerBool
+
+	function GetBarTypeGroup() : WeaponBarTypeGroup; // GetBarTypeGroup;
+	function IsValueSet() : Bool; // IsValueSet;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

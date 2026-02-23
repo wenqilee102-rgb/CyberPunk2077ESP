@@ -1,0 +1,6 @@
+import struct interopGlobalNodeIDResult
+{
+	var errorMessage : String;
+	var result : String;
+	var isValid : Bool;
+}

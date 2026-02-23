@@ -1,0 +1,5 @@
+import struct navLocomotionPathPointUserDataEntry
+{
+	var userData : handle:navLocomotionPathPointUserData;
+	var nextUserData : Uint32;
+}

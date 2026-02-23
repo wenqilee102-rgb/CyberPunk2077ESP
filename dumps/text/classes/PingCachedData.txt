@@ -1,0 +1,39 @@
+class PingCachedData extends IScriptable
+{
+	public    var sourceID : entEntityID;
+	public    var pingType : EPingType;
+	public    var pingNetworkEffect : handle:gameEffectInstance;
+	public    var timeout : Float;
+	public    var ammountOfIntervals : Int32;
+	public    var linksCount : Int32;
+	public    var currentInterval : Int32;
+	public    var delayID : gameDelayID;
+	public    var linkType : ELinkType;
+	public    var revealNetwork : Bool;
+	public    var linkFXresource : gameFxResource;
+	public    var sourcePosition : Vector4;
+	public    var hasActiveVirtualNetwork : Bool;
+	public    var virtualNetworkShape : whandle:gamedataVirtualNetwork_Record;
+
+	function GetCurrentMaxValue() : Float; // GetCurrentMaxValue;
+	function GetCurrentMinValue() : Float; // GetCurrentMinValue;
+	function GetLifetimeValue() : Float; // GetLifetimeValue;
+	function IncrementLinkCounter(); // IncrementLinkCounter;
+	function Initialize(sourceID : entEntityID, timeout : Float, ammountOfIntervals : Int32, pingType : EPingType, gameEffect : handle:gameEffectInstance, revealNetworkAtEnd : Bool, fxResource : gameFxResource, position : Vector4, virtualNetworkShapeID : TweakDBID); // Initialize;EntityIDFloatInt32EPingTypeEffectInstanceBoolFxResourceVector4TweakDBID
+	function Initialize(timeout : Float, ammountOfIntervals : Int32); // Initialize;FloatInt32
+	function UpdateCurrentInterval(); // UpdateCurrentInterval;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

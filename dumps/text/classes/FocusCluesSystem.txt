@@ -1,0 +1,61 @@
+class FocusCluesSystem extends gameScriptableSystem
+{
+	private   var linkedClues : array:LinkedFocusClueData;
+	private   var disabledGroupes : array:CName;
+	private   var activeLinkedClue : LinkedFocusClueData;
+
+	function AddLinkedClue(clue : script_ref:LinkedFocusClueData); // AddLinkedClue;script_ref<LinkedFocusClueData>
+	function DisableGroup(groupID : CName); // DisableGroup;CName
+	function EnableGroup(groupID : CName); // EnableGroup;CName
+	function GetActiveLinkedClue() : LinkedFocusClueData; // GetActiveLinkedClue;
+	function GetActiveLinkedClueScannableData() : array:gameScanningTooltipElementDef; // GetActiveLinkedClueScannableData;
+	function GetClueGroupData(groupID : CName, clue : script_ref:FocusClueDefinition) : Bool; // GetClueGroupData;CNamescript_ref<FocusClueDefinition>
+	function GetLinkedClueGroupData(groupID : CName, clue : script_ref:LinkedFocusClueData) : Bool; // GetLinkedClueGroupData;CNamescript_ref<LinkedFocusClueData>
+	function HasLinkedClue(clue : script_ref:LinkedFocusClueData) : Bool; // HasLinkedClue;script_ref<LinkedFocusClueData>
+	function IsGroupDisabled(groupID : CName) : Bool; // IsGroupDisabled;CName
+	function IsGroupTagged(clue : script_ref:LinkedFocusClueData) : Bool; // IsGroupTagged;script_ref<LinkedFocusClueData>
+	function IsGroupped(ownerID : entEntityID, out groupID : CName) : Bool; // IsGroupped;EntityIDCName
+	function IsRegistered(ownerID : entEntityID, groupID : CName) : Bool; // IsRegistered;EntityIDCName
+	function IsTagged(owner : handle:gameObject) : Bool; // IsTagged;GameObject
+	function OnRegisterLinkedClueRequest(request : handle:RegisterLinkedCluekRequest); // OnRegisterLinkedClueRequest;RegisterLinkedCluekRequest
+	function OnTagLinkedClueRequest(request : handle:TagLinkedCluekRequest); // OnTagLinkedClueRequest;TagLinkedCluekRequest
+	function OnUnregisterLinkedClueRequest(request : handle:UnregisterLinkedCluekRequest); // OnUnregisterLinkedClueRequest;UnregisterLinkedCluekRequest
+	function OnUpdateLinkedCluesRequest(request : handle:UpdateLinkedClueskRequest); // OnUpdateLinkedCluesRequest;UpdateLinkedClueskRequest
+	function RemoveLinkedClue(clue : script_ref:LinkedFocusClueData); // RemoveLinkedClue;script_ref<LinkedFocusClueData>
+	function RemoveLinkedClueByIndex(clueID : Int32); // RemoveLinkedClueByIndex;Int32
+	function ResolveLinkedCluesTagging(clue : script_ref:LinkedFocusClueData, tag : Bool); // ResolveLinkedCluesTagging;script_ref<LinkedFocusClueData>Bool
+	function SendlinkedClueTagEvent(linkedClue : script_ref:LinkedFocusClueData, requester : entEntityID, tag : Bool); // SendlinkedClueTagEvent;script_ref<LinkedFocusClueData>EntityIDBool
+	function SendlinkedClueUpdateEvent(linkedClue : script_ref:LinkedFocusClueData, requester : entEntityID); // SendlinkedClueUpdateEvent;script_ref<LinkedFocusClueData>EntityID
+	function UpdateLinkedClues(clue : script_ref:LinkedFocusClueData); // UpdateLinkedClues;script_ref<LinkedFocusClueData>
+	function UpdateSingleLinkedClue(clue : LinkedFocusClueData); // UpdateSingleLinkedClue;LinkedFocusClueData
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

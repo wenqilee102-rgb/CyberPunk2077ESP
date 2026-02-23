@@ -1,0 +1,6 @@
+import struct entReplicatedVariableValue
+{
+	var name : CName;
+	var value : Float;
+	var applyServerTime : netTime;
+}

@@ -1,0 +1,6 @@
+import struct inkSingleDrawMetric
+{
+	var exeedsLimit : Bool;
+	var hierarchySize : Vector2;
+	var usedTextures : array:Uint32;
+}

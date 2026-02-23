@@ -1,0 +1,19 @@
+import struct gameActionAnimationSlideParams
+{
+	var distance : Float;
+	var directionAngle : Float;
+	var finalRotationAngle : Float;
+	var offsetToTarget : Float;
+	var offsetAroundTarget : Float;
+	var slideToTarget : Bool;
+	var duration : Float;
+	var positionSpeed : Float;
+	var rotationSpeed : Float;
+	var maxSlidePositionDistance : Float;
+	var maxSlideRotationAngle : Float;
+	var slideStartDelay : Float;
+	var usePositionSlide : Bool;
+	var useRotationSlide : Bool;
+	var maxTargetVelocity : Float;
+	var zAlignmentThreshold : Float;
+}

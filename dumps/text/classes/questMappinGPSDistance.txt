@@ -1,0 +1,12 @@
+import class questMappinGPSDistance extends questIDistance
+{
+	var mappinPath : handle:gameJournalPath;
+}
+
+import class abstract questIDistance extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

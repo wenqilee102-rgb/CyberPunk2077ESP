@@ -1,0 +1,17 @@
+struct AIActionLookatParams
+{
+	public    var useLookat : Bool;
+	public    var useLeftHand : Bool;
+	public    var useRightHand : Bool;
+	public    var attachRightHandtoLeftHand : Bool;
+	public    var attachLeftHandtoRightHand : Bool;
+	public    var slotName : CName;
+	public    var lookatStyle : animLookAtStyle;
+	public    var hasOutTransition : Bool;
+	public    var outTransitionStyle : animLookAtStyle;
+	public    var softLimitDegrees : animLookAtLimitDegreesType;
+	public    var hardLimitDegrees : animLookAtLimitDegreesType;
+	public    var hardLimitDistance : animLookAtLimitDistanceType;
+	public    var backLimitDegrees : animLookAtLimitDegreesType;
+	public    var additionalParts : array:animLookAtPartRequest;
+}

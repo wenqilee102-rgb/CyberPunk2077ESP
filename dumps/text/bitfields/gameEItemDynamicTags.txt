@@ -1,0 +1,7 @@
+bitfield gameEItemDynamicTags
+{
+	Quest = 1 << 0,
+	UnequipBlocked = 1 << 1,
+	DLCAdded = 1 << 2,
+	TransmogBlocked = 1 << 3
+}

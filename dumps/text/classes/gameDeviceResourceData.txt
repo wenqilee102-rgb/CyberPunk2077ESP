@@ -1,0 +1,8 @@
+import class gameDeviceResourceData extends ISerializable
+{
+	var version : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"worldITriggerAreaNotifer","d":12,"e":[{"a":{"a":1},"b":"isEnabled","c":128},{"a":{"b":"TriggerChannel"},"b":"includeChannels","c":128},{"a":{"a":7},"b":"excludeChannels","c":128}]}

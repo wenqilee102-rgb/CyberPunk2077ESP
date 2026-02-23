@@ -1,0 +1,1 @@
+{"b":"audioMeleeAttackSettings","d":8,"g":true,"e":[{"a":{"a":14},"b":"hitEvent","c":128},{"a":{"a":14},"b":"penetratingHitEvent","c":128},{"a":{"a":14},"b":"criticalHitEvent","c":128},{"a":{"a":14},"b":"killingHitEvent","c":128}]}

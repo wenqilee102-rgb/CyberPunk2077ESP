@@ -1,0 +1,18 @@
+import class AIResource extends LibTreeCTreeResource
+{
+	var root : handle:AICTreeNodeDefinition;
+}
+
+import class abstract LibTreeCTreeResource extends CResource
+{
+	var variables : LibTreeDefTreeVariablesList;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,24 @@
+import class inkScriptIntHashMap extends IScriptable
+{
+	import function Clear(); // Clear
+	import function Get(key : Uint64) : Int32; // Get
+	import function GetValues(values : script_ref:array:Int32); // GetValues
+	import function Insert(key : Uint64, value : Int32); // Insert
+	import function KeyExist(key : Uint64) : Bool; // KeyExist
+	import function Remove(key : Uint64) : Bool; // Remove
+	import function Set(key : Uint64, value : Int32); // Set
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

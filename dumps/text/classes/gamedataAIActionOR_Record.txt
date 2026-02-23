@@ -1,0 +1,33 @@
+import class gamedataAIActionOR_Record extends gamedataAIActionSubCondition_Record
+{
+	import function GetORCount() : Int32; // GetORCount
+	import function GetORItem(index : Int32) : whandle:gamedataAIActionSubCondition_Record; // GetORItem
+	import function GetORItemHandle(index : Int32) : handle:gamedataAIActionSubCondition_Record; // GetORItemHandle
+	import function OR(out outList : array:whandle:gamedataAIActionSubCondition_Record); // OR
+	import function ORContains(item : whandle:gamedataAIActionSubCondition_Record) : Bool; // ORContains
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

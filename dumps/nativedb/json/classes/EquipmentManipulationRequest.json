@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"EquipmentManipulationRequest","d":0,"e":[{"a":{"b":"EquipmentManipulationRequestType"},"b":"requestType","c":128},{"a":{"b":"EquipmentManipulationRequestSlot"},"b":"requestSlot","c":128},{"a":{"b":"gameEquipAnimationType"},"b":"equipAnim","c":128}]}

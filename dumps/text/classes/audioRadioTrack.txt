@@ -1,0 +1,7 @@
+import struct audioRadioTrack
+{
+	var trackEventName : CName;
+	var localizationKey : CName;
+	var primaryLocKey : Uint64;
+	var isStreamingFriendly : Bool;
+}

@@ -1,0 +1,26 @@
+import struct scnLookAtEventData
+{
+	var id : Uint32;
+	var enable : Bool;
+	var singleBodyPartName : CName;
+	var singleTargetSlot : CName;
+	var bodyTargetSlot : CName;
+	var headTargetSlot : CName;
+	var eyesTargetSlot : CName;
+	var singleWeight : Float;
+	var bodyWeight : Float;
+	var headWeight : Float;
+	var eyesWeight : Float;
+	var useSingleWeightCurve : Bool;
+	var useBodyWeightCurve : Bool;
+	var useHeadWeightCurve : Bool;
+	var useEyesWeightCurve : Bool;
+	var singleWeightCurve : curveData:Float;
+	var bodyWeightCurve : curveData:Float;
+	var headWeightCurve : curveData:Float;
+	var eyesWeightCurve : curveData:Float;
+	var singleLimits : animLookAtLimits;
+	var bodyLimits : animLookAtLimits;
+	var headLimits : animLookAtLimits;
+	var eyesLimits : animLookAtLimits;
+}

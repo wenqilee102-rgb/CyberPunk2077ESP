@@ -1,0 +1,193 @@
+import struct gameInventoryItemData
+{
+	var ID : gameItemID;
+	var SlotID : TweakDBID;
+	var Name : String;
+	var Quality : CName;
+	var QualityF : Float;
+	var Quantity : Int32;
+	var Ammo : Int32;
+	var Shape : gameInventoryItemShape;
+	var ItemShape : gameInventoryItemShape;
+	var IconPath : String;
+	var CategoryName : String;
+	var ItemType : gamedataItemType;
+	var LocalizedItemType : String;
+	var Description : String;
+	var AdditionalDescription : String;
+	var GameplayDescription : String;
+	var Price : Float;
+	var BuyPrice : Float;
+	var UnlockProgress : Float;
+	var RequiredLevel : Int32;
+	var ItemLevel : Int32;
+	var DamageType : gamedataDamageType;
+	var EquipmentArea : gamedataEquipmentArea;
+	var ComparedQuality : gamedataQuality;
+	var Empty : Bool;
+	var IsPart : Bool;
+	var IsCraftingMaterial : Bool;
+	var IsEquipped : Bool;
+	var IsNew : Bool;
+	var IsAvailable : Bool;
+	var IsVendorItem : Bool;
+	var IsBroken : Bool;
+	var SlotIndex : Int32;
+	var PositionInBackpack : Uint32;
+	var IconGender : gameItemIconGender;
+	var GameItemData : whandle:gameItemData;
+	var HasPlayerSmartGunLink : Bool;
+	var PlayerLevel : Int32;
+	var PlayerStrength : Int32;
+	var PlayerReflexes : Int32;
+	var PlayerStreetCred : Int32;
+	var IsRequirementMet : Bool;
+	var IsEquippable : Bool;
+	var IsVisualsEquipped : Bool;
+	var Requirement : gameSItemStackRequirementData;
+	var EquipRequirement : gameSItemStackRequirementData;
+	var EquipRequirements : array:gameSItemStackRequirementData;
+	var LootItemType : gameLootItemType;
+	var Attachments : array:handle:gameInventoryItemAttachments;
+	var Abilities : array:gameInventoryItemAbility;
+	var PlacementSlots : array:TweakDBID;
+	var PrimaryStats : array:gameStatViewData;
+	var SecondaryStats : array:gameStatViewData;
+	var SortData : gameInventoryItemSortData;
+	var IsPerkRequired : Bool;
+	var PerkRequiredName : String;
+	var IsCrafted : Bool;
+	var IsIconic : Bool;
+
+	import static function GetArmor(); // GetArmor
+	import static function GetArmorF(self : gameInventoryItemData) : Float; // GetArmorF
+	import static function GetDPS(self : gameInventoryItemData) : Int32; // GetDPS
+	import static function GetDPSF(self : gameInventoryItemData) : Float; // GetDPSF
+	import static function IsGarment(self : gameInventoryItemData) : Bool; // IsGarment
+	import static function IsWeapon(self : gameInventoryItemData) : Bool; // IsWeapon
+
+	static function AddPlacementSlot(self : script_ref:gameInventoryItemData, slot : TweakDBID); // gameInventoryItemData::AddPlacementSlot;script_ref<InventoryItemData>TweakDBID
+	static function GetAbilities(self : script_ref:gameInventoryItemData) : array:gameInventoryItemAbility; // gameInventoryItemData::GetAbilities;script_ref<InventoryItemData>
+	static function GetAbilitiesSize(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetAbilitiesSize;script_ref<InventoryItemData>
+	static function GetAbility(self : script_ref:gameInventoryItemData, index : Int32) : gameInventoryItemAbility; // gameInventoryItemData::GetAbility;script_ref<InventoryItemData>Int32
+	static function GetAdditionalDescription(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetAdditionalDescription;script_ref<InventoryItemData>
+	static function GetAmmo(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetAmmo;script_ref<InventoryItemData>
+	static function GetAttachment(self : script_ref:gameInventoryItemData, index : Int32) : handle:gameInventoryItemAttachments; // gameInventoryItemData::GetAttachment;script_ref<InventoryItemData>Int32
+	static function GetAttachments(self : script_ref:gameInventoryItemData) : array:handle:gameInventoryItemAttachments; // gameInventoryItemData::GetAttachments;script_ref<InventoryItemData>
+	static function GetAttachmentsSize(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetAttachmentsSize;script_ref<InventoryItemData>
+	static function GetBuyPrice(self : script_ref:gameInventoryItemData) : Float; // gameInventoryItemData::GetBuyPrice;script_ref<InventoryItemData>
+	static function GetCategoryName(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetCategoryName;script_ref<InventoryItemData>
+	static function GetComparedQuality(self : script_ref:gameInventoryItemData) : gamedataQuality; // gameInventoryItemData::GetComparedQuality;script_ref<InventoryItemData>
+	static function GetDamageType(self : script_ref:gameInventoryItemData) : gamedataDamageType; // gameInventoryItemData::GetDamageType;script_ref<InventoryItemData>
+	static function GetDescription(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetDescription;script_ref<InventoryItemData>
+	static function GetEquipRequirement(self : script_ref:gameInventoryItemData) : gameSItemStackRequirementData; // gameInventoryItemData::GetEquipRequirement;script_ref<InventoryItemData>
+	static function GetEquipRequirements(self : script_ref:gameInventoryItemData) : array:gameSItemStackRequirementData; // gameInventoryItemData::GetEquipRequirements;script_ref<InventoryItemData>
+	static function GetEquipmentArea(self : script_ref:gameInventoryItemData) : gamedataEquipmentArea; // gameInventoryItemData::GetEquipmentArea;script_ref<InventoryItemData>
+	static function GetGameItemData(self : script_ref:gameInventoryItemData) : handle:gameItemData; // gameInventoryItemData::GetGameItemData;script_ref<InventoryItemData>
+	static function GetGameplayDescription(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetGameplayDescription;script_ref<InventoryItemData>
+	static function GetID(self : script_ref:gameInventoryItemData) : gameItemID; // gameInventoryItemData::GetID;script_ref<InventoryItemData>
+	static function GetIconGender(self : script_ref:gameInventoryItemData) : gameItemIconGender; // gameInventoryItemData::GetIconGender;script_ref<InventoryItemData>
+	static function GetIconPath(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetIconPath;script_ref<InventoryItemData>
+	static function GetIsCrafted(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::GetIsCrafted;script_ref<InventoryItemData>
+	static function GetIsPerkRequired(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::GetIsPerkRequired;script_ref<InventoryItemData>
+	static function GetItemLevel(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetItemLevel;script_ref<InventoryItemData>
+	static function GetItemShape(self : script_ref:gameInventoryItemData) : gameInventoryItemShape; // gameInventoryItemData::GetItemShape;script_ref<InventoryItemData>
+	static function GetItemType(self : script_ref:gameInventoryItemData) : gamedataItemType; // gameInventoryItemData::GetItemType;script_ref<InventoryItemData>
+	static function GetLocalizedItemType(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetLocalizedItemType;script_ref<InventoryItemData>
+	static function GetLootItemType(self : script_ref:gameInventoryItemData) : gameLootItemType; // gameInventoryItemData::GetLootItemType;script_ref<InventoryItemData>
+	static function GetName(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetName;script_ref<InventoryItemData>
+	static function GetPerkRequiredName(self : script_ref:gameInventoryItemData) : String; // gameInventoryItemData::GetPerkRequiredName;script_ref<InventoryItemData>
+	static function GetPlayerLevel(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetPlayerLevel;script_ref<InventoryItemData>
+	static function GetPlayerReflexes(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetPlayerReflexes;script_ref<InventoryItemData>
+	static function GetPlayerStreetCred(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetPlayerStreetCred;script_ref<InventoryItemData>
+	static function GetPlayerStrenght(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetPlayerStrenght;script_ref<InventoryItemData>
+	static function GetPositionInBackpack(self : script_ref:gameInventoryItemData) : Uint32; // gameInventoryItemData::GetPositionInBackpack;script_ref<InventoryItemData>
+	static function GetPrice(self : script_ref:gameInventoryItemData) : Float; // gameInventoryItemData::GetPrice;script_ref<InventoryItemData>
+	static function GetPrimaryStat(self : script_ref:gameInventoryItemData, index : Int32) : gameStatViewData; // gameInventoryItemData::GetPrimaryStat;script_ref<InventoryItemData>Int32
+	static function GetPrimaryStats(self : script_ref:gameInventoryItemData) : array:gameStatViewData; // gameInventoryItemData::GetPrimaryStats;script_ref<InventoryItemData>
+	static function GetPrimaryStatsSize(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetPrimaryStatsSize;script_ref<InventoryItemData>
+	static function GetQuality(self : script_ref:gameInventoryItemData) : CName; // gameInventoryItemData::GetQuality;script_ref<InventoryItemData>
+	static function GetQualityF(self : script_ref:gameInventoryItemData) : Float; // gameInventoryItemData::GetQualityF;script_ref<InventoryItemData>
+	static function GetQuantity(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetQuantity;script_ref<InventoryItemData>
+	static function GetRequiredLevel(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetRequiredLevel;script_ref<InventoryItemData>
+	static function GetRequirement(self : script_ref:gameInventoryItemData) : gameSItemStackRequirementData; // gameInventoryItemData::GetRequirement;script_ref<InventoryItemData>
+	static function GetSecondaryStat(self : script_ref:gameInventoryItemData, index : Int32) : gameStatViewData; // gameInventoryItemData::GetSecondaryStat;script_ref<InventoryItemData>Int32
+	static function GetSecondaryStats(self : script_ref:gameInventoryItemData) : array:gameStatViewData; // gameInventoryItemData::GetSecondaryStats;script_ref<InventoryItemData>
+	static function GetSecondaryStatsSize(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetSecondaryStatsSize;script_ref<InventoryItemData>
+	static function GetShape(self : script_ref:gameInventoryItemData) : gameInventoryItemShape; // gameInventoryItemData::GetShape;script_ref<InventoryItemData>
+	static function GetSlotID(self : script_ref:gameInventoryItemData) : TweakDBID; // gameInventoryItemData::GetSlotID;script_ref<InventoryItemData>
+	static function GetSlotIndex(self : script_ref:gameInventoryItemData) : Int32; // gameInventoryItemData::GetSlotIndex;script_ref<InventoryItemData>
+	static function GetSortData(self : script_ref:gameInventoryItemData) : gameInventoryItemSortData; // gameInventoryItemData::GetSortData;script_ref<InventoryItemData>
+	static function GetUnlockProgress(self : script_ref:gameInventoryItemData) : Float; // gameInventoryItemData::GetUnlockProgress;script_ref<InventoryItemData>
+	static function HasPlayerSmartGunLink(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::HasPlayerSmartGunLink;script_ref<InventoryItemData>
+	static function IsAvailable(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsAvailable;script_ref<InventoryItemData>
+	static function IsBroken(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsBroken;script_ref<InventoryItemData>
+	static function IsCraftingMaterial(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsCraftingMaterial;script_ref<InventoryItemData>
+	static function IsEmpty(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsEmpty;script_ref<InventoryItemData>
+	static function IsEquippable(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsEquippable;script_ref<InventoryItemData>
+	static function IsEquipped(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsEquipped;script_ref<InventoryItemData>
+	static function IsNew(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsNew;script_ref<InventoryItemData>
+	static function IsPart(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsPart;script_ref<InventoryItemData>
+	static function IsRequirementMet(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsRequirementMet;script_ref<InventoryItemData>
+	static function IsVendorItem(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsVendorItem;script_ref<InventoryItemData>
+	static function IsVisualsEquipped(self : script_ref:gameInventoryItemData) : Bool; // gameInventoryItemData::IsVisualsEquipped;script_ref<InventoryItemData>
+	static function PlacementSlotsContains(self : script_ref:gameInventoryItemData, slot : TweakDBID) : Bool; // gameInventoryItemData::PlacementSlotsContains;script_ref<InventoryItemData>TweakDBID
+	static function SetAbilities(self : script_ref:gameInventoryItemData, abilities : script_ref:array:gameInventoryItemAbility); // gameInventoryItemData::SetAbilities;script_ref<InventoryItemData>script_ref<array<InventoryItemAbility>>
+	static function SetAdditionalDescription(self : script_ref:gameInventoryItemData, description : script_ref:String); // gameInventoryItemData::SetAdditionalDescription;script_ref<InventoryItemData>script_ref<String>
+	static function SetAmmo(self : script_ref:gameInventoryItemData, ammo : Int32); // gameInventoryItemData::SetAmmo;script_ref<InventoryItemData>Int32
+	static function SetAttachments(self : script_ref:gameInventoryItemData, attachments : script_ref:array:handle:gameInventoryItemAttachments); // gameInventoryItemData::SetAttachments;script_ref<InventoryItemData>script_ref<array<InventoryItemAttachments>>
+	static function SetBuyPrice(self : script_ref:gameInventoryItemData, price : Float); // gameInventoryItemData::SetBuyPrice;script_ref<InventoryItemData>Float
+	static function SetCategoryName(self : script_ref:gameInventoryItemData, categoryName : script_ref:String); // gameInventoryItemData::SetCategoryName;script_ref<InventoryItemData>script_ref<String>
+	static function SetComparedQuality(self : script_ref:gameInventoryItemData, comparedQuality : gamedataQuality); // gameInventoryItemData::SetComparedQuality;script_ref<InventoryItemData>gamedataQuality
+	static function SetDamageType(self : script_ref:gameInventoryItemData, damageType : gamedataDamageType); // gameInventoryItemData::SetDamageType;script_ref<InventoryItemData>gamedataDamageType
+	static function SetDescription(self : script_ref:gameInventoryItemData, description : script_ref:String); // gameInventoryItemData::SetDescription;script_ref<InventoryItemData>script_ref<String>
+	static function SetEmpty(self : script_ref:gameInventoryItemData, empty : Bool); // gameInventoryItemData::SetEmpty;script_ref<InventoryItemData>Bool
+	static function SetEquipRequirement(self : script_ref:gameInventoryItemData, requirement : gameSItemStackRequirementData); // gameInventoryItemData::SetEquipRequirement;script_ref<InventoryItemData>SItemStackRequirementData
+	static function SetEquipRequirements(self : script_ref:gameInventoryItemData, requirements : script_ref:array:gameSItemStackRequirementData); // gameInventoryItemData::SetEquipRequirements;script_ref<InventoryItemData>script_ref<array<SItemStackRequirementData>>
+	static function SetEquipmentArea(self : script_ref:gameInventoryItemData, equipmentArea : gamedataEquipmentArea); // gameInventoryItemData::SetEquipmentArea;script_ref<InventoryItemData>gamedataEquipmentArea
+	static function SetGameItemData(self : script_ref:gameInventoryItemData, gameItemData : handle:gameItemData); // gameInventoryItemData::SetGameItemData;script_ref<InventoryItemData>gameItemData
+	static function SetGameplayDescription(self : script_ref:gameInventoryItemData, value : String); // gameInventoryItemData::SetGameplayDescription;script_ref<InventoryItemData>String
+	static function SetHasPlayerSmartGunLink(self : script_ref:gameInventoryItemData, hasPlayerSmartGunLink : Bool); // gameInventoryItemData::SetHasPlayerSmartGunLink;script_ref<InventoryItemData>Bool
+	static function SetID(self : script_ref:gameInventoryItemData, id : gameItemID); // gameInventoryItemData::SetID;script_ref<InventoryItemData>ItemID
+	static function SetIconGender(self : script_ref:gameInventoryItemData, iconGender : gameItemIconGender); // gameInventoryItemData::SetIconGender;script_ref<InventoryItemData>ItemIconGender
+	static function SetIconPath(self : script_ref:gameInventoryItemData, iconPath : script_ref:String); // gameInventoryItemData::SetIconPath;script_ref<InventoryItemData>script_ref<String>
+	static function SetIsAvailable(self : script_ref:gameInventoryItemData, isAvailable : Bool); // gameInventoryItemData::SetIsAvailable;script_ref<InventoryItemData>Bool
+	static function SetIsBroken(self : script_ref:gameInventoryItemData, isBroken : Bool); // gameInventoryItemData::SetIsBroken;script_ref<InventoryItemData>Bool
+	static function SetIsCrafted(self : script_ref:gameInventoryItemData, isCrafted : Bool); // gameInventoryItemData::SetIsCrafted;script_ref<InventoryItemData>Bool
+	static function SetIsCraftingMaterial(self : script_ref:gameInventoryItemData, isCraftingMaterial : Bool); // gameInventoryItemData::SetIsCraftingMaterial;script_ref<InventoryItemData>Bool
+	static function SetIsEquippable(self : script_ref:gameInventoryItemData, isEquippable : Bool); // gameInventoryItemData::SetIsEquippable;script_ref<InventoryItemData>Bool
+	static function SetIsEquipped(self : script_ref:gameInventoryItemData, isEquipped : Bool); // gameInventoryItemData::SetIsEquipped;script_ref<InventoryItemData>Bool
+	static function SetIsNew(self : script_ref:gameInventoryItemData, isNew : Bool); // gameInventoryItemData::SetIsNew;script_ref<InventoryItemData>Bool
+	static function SetIsPart(self : script_ref:gameInventoryItemData, isPart : Bool); // gameInventoryItemData::SetIsPart;script_ref<InventoryItemData>Bool
+	static function SetIsPerkRequired(self : script_ref:gameInventoryItemData, isRequired : Bool); // gameInventoryItemData::SetIsPerkRequired;script_ref<InventoryItemData>Bool
+	static function SetIsRequirementMet(self : script_ref:gameInventoryItemData, isRequirementMet : Bool); // gameInventoryItemData::SetIsRequirementMet;script_ref<InventoryItemData>Bool
+	static function SetIsVendorItem(self : script_ref:gameInventoryItemData, isVendorItem : Bool); // gameInventoryItemData::SetIsVendorItem;script_ref<InventoryItemData>Bool
+	static function SetIsVisualsEquipped(self : script_ref:gameInventoryItemData, value : Bool); // gameInventoryItemData::SetIsVisualsEquipped;script_ref<InventoryItemData>Bool
+	static function SetItemLevel(self : script_ref:gameInventoryItemData, itemLevel : Int32); // gameInventoryItemData::SetItemLevel;script_ref<InventoryItemData>Int32
+	static function SetItemShape(self : script_ref:gameInventoryItemData, shape : gameInventoryItemShape); // gameInventoryItemData::SetItemShape;script_ref<InventoryItemData>EInventoryItemShape
+	static function SetItemType(self : script_ref:gameInventoryItemData, itemType : gamedataItemType); // gameInventoryItemData::SetItemType;script_ref<InventoryItemData>gamedataItemType
+	static function SetLocalizedItemType(self : script_ref:gameInventoryItemData, localizedItemType : script_ref:String); // gameInventoryItemData::SetLocalizedItemType;script_ref<InventoryItemData>script_ref<String>
+	static function SetLootItemType(self : script_ref:gameInventoryItemData, lootItemType : gameLootItemType); // gameInventoryItemData::SetLootItemType;script_ref<InventoryItemData>LootItemType
+	static function SetName(self : script_ref:gameInventoryItemData, Name : script_ref:String); // gameInventoryItemData::SetName;script_ref<InventoryItemData>script_ref<String>
+	static function SetPerkRequiredName(self : script_ref:gameInventoryItemData, perkName : script_ref:String); // gameInventoryItemData::SetPerkRequiredName;script_ref<InventoryItemData>script_ref<String>
+	static function SetPlayerLevel(self : script_ref:gameInventoryItemData, playerLevel : Int32); // gameInventoryItemData::SetPlayerLevel;script_ref<InventoryItemData>Int32
+	static function SetPlayerReflexes(self : script_ref:gameInventoryItemData, playerReflexes : Int32); // gameInventoryItemData::SetPlayerReflexes;script_ref<InventoryItemData>Int32
+	static function SetPlayerStreetCred(self : script_ref:gameInventoryItemData, playerStreetCred : Int32); // gameInventoryItemData::SetPlayerStreetCred;script_ref<InventoryItemData>Int32
+	static function SetPlayerStrength(self : script_ref:gameInventoryItemData, playerStrength : Int32); // gameInventoryItemData::SetPlayerStrength;script_ref<InventoryItemData>Int32
+	static function SetPositionInBackpack(self : script_ref:gameInventoryItemData, positionInBackpack : Uint32); // gameInventoryItemData::SetPositionInBackpack;script_ref<InventoryItemData>Uint32
+	static function SetPrice(self : script_ref:gameInventoryItemData, price : Float); // gameInventoryItemData::SetPrice;script_ref<InventoryItemData>Float
+	static function SetPrimaryStats(self : script_ref:gameInventoryItemData, primaryStats : script_ref:array:gameStatViewData); // gameInventoryItemData::SetPrimaryStats;script_ref<InventoryItemData>script_ref<array<StatViewData>>
+	static function SetQuality(self : script_ref:gameInventoryItemData, quality : CName); // gameInventoryItemData::SetQuality;script_ref<InventoryItemData>CName
+	static function SetQualityF(self : script_ref:gameInventoryItemData, quality : Float); // gameInventoryItemData::SetQualityF;script_ref<InventoryItemData>Float
+	static function SetQuantity(self : script_ref:gameInventoryItemData, quantity : Int32); // gameInventoryItemData::SetQuantity;script_ref<InventoryItemData>Int32
+	static function SetRequiredLevel(self : script_ref:gameInventoryItemData, requiredLevel : Int32); // gameInventoryItemData::SetRequiredLevel;script_ref<InventoryItemData>Int32
+	static function SetRequirement(self : script_ref:gameInventoryItemData, requirement : gameSItemStackRequirementData); // gameInventoryItemData::SetRequirement;script_ref<InventoryItemData>SItemStackRequirementData
+	static function SetSecondaryStats(self : script_ref:gameInventoryItemData, secondaryStats : script_ref:array:gameStatViewData); // gameInventoryItemData::SetSecondaryStats;script_ref<InventoryItemData>script_ref<array<StatViewData>>
+	static function SetShape(self : script_ref:gameInventoryItemData, shape : gameInventoryItemShape); // gameInventoryItemData::SetShape;script_ref<InventoryItemData>EInventoryItemShape
+	static function SetSlotID(self : script_ref:gameInventoryItemData, id : TweakDBID); // gameInventoryItemData::SetSlotID;script_ref<InventoryItemData>TweakDBID
+	static function SetSlotIndex(self : script_ref:gameInventoryItemData, slotIndex : Int32); // gameInventoryItemData::SetSlotIndex;script_ref<InventoryItemData>Int32
+	static function SetSortData(self : script_ref:gameInventoryItemData, sortData : script_ref:gameInventoryItemSortData); // gameInventoryItemData::SetSortData;script_ref<InventoryItemData>script_ref<InventoryItemSortData>
+	static function SetUnlockProgress(self : script_ref:gameInventoryItemData, unlockProgress : Float); // gameInventoryItemData::SetUnlockProgress;script_ref<InventoryItemData>Float
+	static function UpdateSortData(self : script_ref:gameInventoryItemData, uiScriptableSystem : handle:UIScriptableSystem); // gameInventoryItemData::UpdateSortData;script_ref<InventoryItemData>UIScriptableSystem
+	static function UpdateSortData(self : script_ref:gameInventoryItemData, uiScriptableSystem : handle:UIScriptableSystem, isPlayerFavourite : Bool); // gameInventoryItemData::UpdateSortData;script_ref<InventoryItemData>UIScriptableSystemBool
+}

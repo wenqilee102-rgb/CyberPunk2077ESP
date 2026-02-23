@@ -1,0 +1,37 @@
+import class gameEffectObjectProvider_Laser extends gameEffectObjectProvider_PhysicalRay
+{
+	var inputTracesPerSecond : Uint32;
+	var inputRayOffset : Vector4;
+}
+
+import class gameEffectObjectProvider_PhysicalRay extends gameEffectObjectProvider
+{
+	var inputPosition : gameEffectInputParameter_Vector;
+	var inputForward : gameEffectInputParameter_Vector;
+	var inputRange : gameEffectInputParameter_Float;
+	var outputRaycastEnd : gameEffectOutputParameter_Vector;
+	var filterData : handle:physicsFilterData;
+	var queryPreset : physicsQueryPreset;
+}
+
+import class abstract gameEffectObjectProvider extends gameEffectNode
+{
+}
+
+import class abstract gameEffectNode extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

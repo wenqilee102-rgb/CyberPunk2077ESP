@@ -1,0 +1,19 @@
+import class scnVehicleMoveOnSpline_Overrides extends questIVehicleMoveOnSpline_Overrides
+{
+	var useEntry : Bool;
+	var useExit : Bool;
+	var entrySpeed : Float;
+	var exitSpeed : Float;
+	var entryTransform : Transform;
+	var exitTransform : Transform;
+	var entryMarker : scnMarker;
+	var exitMarker : scnMarker;
+}
+
+import class abstract questIVehicleMoveOnSpline_Overrides extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

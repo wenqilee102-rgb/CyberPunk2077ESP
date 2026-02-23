@@ -1,0 +1,12 @@
+import class attrToggleBtn extends attrAttribute
+{
+	var nLabel : String;
+}
+
+import class attrAttribute extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

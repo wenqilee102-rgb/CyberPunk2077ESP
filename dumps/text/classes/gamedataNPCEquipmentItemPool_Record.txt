@@ -1,0 +1,32 @@
+import class gamedataNPCEquipmentItemPool_Record extends gamedataNPCEquipmentGroupEntry_Record
+{
+	import function GetPoolCount() : Int32; // GetPoolCount
+	import function GetPoolItem(index : Int32) : whandle:gamedataNPCEquipmentItemsPoolEntry_Record; // GetPoolItem
+	import function GetPoolItemHandle(index : Int32) : handle:gamedataNPCEquipmentItemsPoolEntry_Record; // GetPoolItemHandle
+	import function Pool(out outList : array:whandle:gamedataNPCEquipmentItemsPoolEntry_Record); // Pool
+	import function PoolContains(item : whandle:gamedataNPCEquipmentItemsPoolEntry_Record) : Bool; // PoolContains
+}
+
+import class gamedataNPCEquipmentGroupEntry_Record extends gamedataTweakDBRecord
+{
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

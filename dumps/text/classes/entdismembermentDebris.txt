@@ -1,0 +1,13 @@
+import class entdismembermentDebris extends CResource
+{
+	var items : array:entdismembermentDebrisResourceItem;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

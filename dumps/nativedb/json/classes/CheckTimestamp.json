@@ -1,0 +1,1 @@
+{"a":"AIbehaviorconditionScript","b":"CheckTimestamp","d":0,"e":[{"a":{"a":10},"b":"validationTime","c":128},{"a":{"a":14},"b":"timestampArgument","c":128}],"f":[{"a":"Check;ScriptExecutionContext","b":"Check","c":{"b":"AIbehaviorConditionOutcomes"},"d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

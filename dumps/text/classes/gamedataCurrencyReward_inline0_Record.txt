@@ -1,0 +1,35 @@
+import class gamedataCurrencyReward_inline0_Record extends gamedataConstantStatModifier_Record
+{
+}
+
+import class gamedataConstantStatModifier_Record extends gamedataStatModifier_Record
+{
+	import function Value() : Float; // Value
+}
+
+import class gamedataStatModifier_Record extends gamedataTweakDBRecord
+{
+	import function ModifierType() : CName; // ModifierType
+	import function StatType() : whandle:gamedataStat_Record; // StatType
+	import function StatTypeHandle() : handle:gamedataStat_Record; // StatTypeHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

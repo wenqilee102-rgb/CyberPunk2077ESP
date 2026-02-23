@@ -1,0 +1,9 @@
+import class scnInterestingConversationData extends ISerializable
+{
+	var sceneFilename : raRef:scnSceneResource;
+	var interruptionOperations : array:handle:scnIInterruptionOperation;
+}
+
+import class abstract ISerializable
+{
+}

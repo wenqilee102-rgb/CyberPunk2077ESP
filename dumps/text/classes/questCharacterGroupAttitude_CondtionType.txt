@@ -1,0 +1,18 @@
+import class questCharacterGroupAttitude_CondtionType extends questICharacterConditionType
+{
+	var group1Name : CName;
+	var group2Name : CName;
+	var attitude : EAIAttitude;
+}
+
+import class abstract questICharacterConditionType extends questIConditionType
+{
+}
+
+import class abstract questIConditionType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,29 @@
+class TimetableCallbackData extends IScriptable
+{
+	private   var time : SSimpleGameTime;
+	private   var recipients : array:RecipientData;
+	private   var callbackID : Uint32;
+
+	function AddRecipient(recipient : RecipientData); // AddRecipient;RecipientData
+	function GetCallbackID() : Uint32; // GetCallbackID;
+	function GetGameTime() : GameTime; // GetGameTime;
+	function GetRecipients() : array:RecipientData; // GetRecipients;
+	function GetTime() : SSimpleGameTime; // GetTime;
+	function HasReciepient(recipient : RecipientData) : Bool; // HasReciepient;RecipientData
+	function Initialize(timetableEntry : SSimpleGameTime, recipient : RecipientData); // Initialize;SSimpleGameTimeRecipientData
+	function SetCallbackID(id : Uint32); // SetCallbackID;Uint32
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

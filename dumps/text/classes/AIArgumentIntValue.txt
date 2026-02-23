@@ -1,0 +1,16 @@
+import class AIArgumentIntValue extends AIArgumentDefinition
+{
+	var type : AIArgumentType;
+	var defaultValue : Int32;
+}
+
+import class abstract AIArgumentDefinition extends ISerializable
+{
+	var name : CName;
+	var isPersistent : Bool;
+	var behaviorCallbackName : CName;
+}
+
+import class abstract ISerializable
+{
+}

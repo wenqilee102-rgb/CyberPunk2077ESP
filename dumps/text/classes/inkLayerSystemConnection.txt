@@ -1,0 +1,5 @@
+import struct inkLayerSystemConnection
+{
+	var layerName : CName;
+	var system : handle:inkILayerSystemData;
+}

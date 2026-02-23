@@ -1,0 +1,27 @@
+import class audioWeaponTailSettings extends audioAudioMetadata
+{
+	var interiorDefault : CName;
+	var interiorWide : CName;
+	var interiorCar : CName;
+	var exteriorWide : CName;
+	var exteriorUrbanNarrow : CName;
+	var exteriorUrbanStreet : CName;
+	var exteriorUrbanStreetWide : CName;
+	var exteriorUrbanOpen : CName;
+	var exteriorUrbanEnclosed : CName;
+	var exteriorBadlandsOpen : CName;
+	var exteriorBadlandsCanyon : CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

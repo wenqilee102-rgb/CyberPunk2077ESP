@@ -1,0 +1,22 @@
+import class questAudioEventNodeType extends questIAudioNodeType
+{
+	var events : array:audioAudEventStruct;
+	var musicEvents : array:audioAudEventStruct;
+	var switches : array:audioAudSwitch;
+	var params : array:audioAudParameter;
+	var dynamicParams : array:CName;
+	var event : audioAudEventStruct;
+	var ambientUniqueName : CName;
+	var emitter : CName;
+	var isMusic : Bool;
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+}
+
+import class abstract questIAudioNodeType extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

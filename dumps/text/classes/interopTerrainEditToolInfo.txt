@@ -1,0 +1,14 @@
+import struct interopTerrainEditToolInfo
+{
+	var defaultHeightmapMode : Int32;
+	var defaultEmptyHeightmapWidth : Int32;
+	var defaultEmptyHeightmapHeight : Int32;
+	var defaultEmptyHeightmapMaskFalloff : Float;
+	var defaultEmptyHeightmapMaskRoundness : Float;
+	var defaultEmptyHeightmapZeroMaskMargin : Uint32;
+	var defaultHeightmap1 : String;
+	var defaultHeightmap2 : String;
+	var defaultColormap1 : String;
+	var defaultColormap2 : String;
+	var creationSlots : array:interopTerrainEditToolCreationSlotInfo;
+}

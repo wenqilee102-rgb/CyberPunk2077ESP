@@ -1,0 +1,15 @@
+import struct vehiclePlayerVehicle
+{
+	var name : CName;
+	var recordID : TweakDBID;
+	var vehicleType : gamedataVehicleType;
+	var isUnlocked : Bool;
+	var uiFavoriteIndex : Int32;
+	var overrideDisplay : Bool;
+	var icon : CName;
+	var defaultState : CName;
+	var activeState : CName;
+	var forcedFavorite : Bool;
+	var spawnOnlyOnValidRoad : Bool;
+	var destructionTimeStamp : EngineTime;
+}

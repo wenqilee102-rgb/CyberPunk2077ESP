@@ -1,0 +1,5 @@
+import struct gameBlackboardSerializableID
+{
+	var blackboardName : CName;
+	var fieldName : CName;
+}

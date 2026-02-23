@@ -1,0 +1,27 @@
+import class gamedataRadioStation_Record extends gamedataTweakDBRecord
+{
+	import function DisplayName() : String; // DisplayName
+	import function Icon() : whandle:gamedataUIIcon_Record; // Icon
+	import function IconHandle() : handle:gamedataUIIcon_Record; // IconHandle
+	import function Index() : Int32; // Index
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,22 @@
+import class animAnimNode_Signal extends animAnimNode_FloatValue
+{
+	var blendIn : Float;
+	var blendOut : Float;
+	var startEvent : CName;
+	var endEvent : CName;
+	var defaultState : Bool;
+	var cooldown : Float;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

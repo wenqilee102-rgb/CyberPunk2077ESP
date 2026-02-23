@@ -1,0 +1,64 @@
+class StatPoolBasedStatusEffectEffector extends gameEffector
+{
+	private   var statPool : gamedataStatPoolType;
+	private   var statusEffectID : TweakDBID;
+	private   var statPoolStep : Float;
+	private   var stepUsesPercent : Bool;
+	private   var startingThreshold : Float;
+	private   var thresholdUsesPercent : Bool;
+	private   var minStacks : Int32;
+	private   var maxStacks : Int32;
+	private   var inverted : Bool;
+	private   var roundUpwards : Bool;
+	private   var dontRemoveStacks : Bool;
+	private   var targetOfStatPoolCheck : String;
+	private   var listener : handle:StatPoolBasedStatusEffectEffectorListener;
+	private   var currentStacks : Int32;
+	private   var realMaxStacks : Int32;
+	private   var statPoolRecordID : TweakDBID;
+	private   var gameInstance : ScriptGameInstance;
+	private   var ownerID : entEntityID;
+	private   var checkStatPoolOnWeapon : Bool;
+	private   var ownerWeaponID : entEntityID;
+
+	function ActionOff(owner : handle:gameObject); // ActionOff;GameObject
+	function ActionOn(owner : handle:gameObject); // ActionOn;GameObject
+	function Clear(); // Clear;
+	function Initialize(record : TweakDBID, game : ScriptGameInstance, parentRecord : TweakDBID); // Initialize;TweakDBIDGameInstanceTweakDBID
+	function ProcessStacksChange(stacksChange : Int32); // ProcessStacksChange;Int32
+	function Uninitialize(game : ScriptGameInstance); // Uninitialize;GameInstance
+	function UpdateWithStatPoolValue(newPercValue : Float, percToPoints : Float); // UpdateWithStatPoolValue;FloatFloat
+}
+
+import class gameEffector extends IScriptable
+{
+	import function GetInstigator() : handle:gameObject; // GetInstigator
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetParentRecord() : TweakDBID; // GetParentRecord
+	import function GetPrereqState() : handle:gamePrereqState; // GetPrereqState
+	import function GetProxyEntityID() : entEntityID; // GetProxyEntityID
+	import function GetRecord() : TweakDBID; // GetRecord
+
+	function ActionOff(owner : handle:gameObject); // ActionOff;GameObject
+	function ActionOn(owner : handle:gameObject); // ActionOn;GameObject
+	function GetApplicationTarget(effectorOwner : handle:gameObject, applicationTarget : CName, out targetID : entEntityID) : Bool; // GetApplicationTarget;GameObjectCNameEntityID
+	function GetApplicationTarget(effectorOwner : handle:gameObject, applicationTarget : CName, out target : whandle:gameObject) : Bool; // GetApplicationTarget;GameObjectCNameGameObject
+	function GetApplicationTargetAsStatsObjectID(effectorOwner : handle:gameObject, applicationTarget : CName, out targetID : gameStatsObjectID) : Bool; // GetApplicationTargetAsStatsObjectID;GameObjectCNameStatsObjectID
+	function Initialize(record : TweakDBID, game : ScriptGameInstance, parentRecord : TweakDBID); // Initialize;TweakDBIDGameInstanceTweakDBID
+	function RepeatedAction(owner : handle:gameObject); // RepeatedAction;GameObject
+	function Uninitialize(game : ScriptGameInstance); // Uninitialize;GameInstance
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,1 @@
+{"a":"AIbehaviorconditionScript","b":"CheckReactionValueThreshold","d":0,"e":[{"a":{"b":"EReactionValue"},"b":"reactionValue","c":128}],"f":[{"a":"Check;ScriptExecutionContext","b":"Check","c":{"b":"AIbehaviorConditionOutcomes"},"d":34,"e":[{"a":{"b":"AIbehaviorScriptExecutionContext"},"b":"context","c":0}]}]}

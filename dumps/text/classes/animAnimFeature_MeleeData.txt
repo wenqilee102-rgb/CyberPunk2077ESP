@@ -1,0 +1,40 @@
+import class animAnimFeature_MeleeData extends animAnimFeature
+{
+	var isMeleeWeaponEquipped : Bool;
+	var attackSpeed : Float;
+	var isEquippingThrowable : Bool;
+	var isTargeting : Bool;
+	var isBlocking : Bool;
+	var isHolding : Bool;
+	var isAttacking : Bool;
+	var attackNumber : Int32;
+	var shouldHandsDisappear : Bool;
+	var isSliding : Bool;
+	var deflectDuration : Float;
+	var isSafe : Bool;
+	var keepRenderPlane : Bool;
+	var hasDeflectAnim : Bool;
+	var hasHitAnim : Bool;
+	var attackType : Int32;
+	public    var isParried : Bool;
+	public    var isThrowReloading : Bool;
+	public    var throwReloadTime : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

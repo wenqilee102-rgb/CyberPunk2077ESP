@@ -1,0 +1,64 @@
+import class gameTargetShootComponent extends entIComponent
+{
+	public    var weaponRecord : handle:gamedataWeaponItem_Record;
+	public    var weaponTDBID : TweakDBID;
+	public    var characterRecord : handle:gamedataCharacter_Record;
+	public    var characterTDBID : TweakDBID;
+
+	import function CalculateMissOffset(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, shootAtPointWS : Vector4, maxSpread : Float, useForcedMissZOffset : Bool, forcedMissZOffset : Float, isInLowCover : Bool) : Vector4; // CalculateMissOffset
+	import function GetBasicGroupCoefficient(weaponOwner : whandle:gameObject) : Float; // GetBasicGroupCoefficient
+	import function GetLastHitTime() : Float; // GetLastHitTime
+	import function GetPackageName() : String; // GetPackageName
+	import function InsertRecentHitter(weaponOwner : whandle:gameObject); // InsertRecentHitter
+	import function IsDebugEnabled() : Bool; // IsDebugEnabled
+	import function IsTimeBetweenHitsEnabled() : Bool; // IsTimeBetweenHitsEnabled
+	import function SetLastHitTime(value : Float); // SetLastHitTime
+
+	function CalculateTimeBetweenHits(params : script_ref:TimeBetweenHitsParameters) : Float; // CalculateTimeBetweenHits;script_ref<TimeBetweenHitsParameters>
+	function GetCoverCoefficient(weaponOwner : handle:gameObject, weaponRecord : handle:gamedataWeaponItem_Record, target : handle:gameObject) : Float; // GetCoverCoefficient;GameObjectWeaponItem_RecordGameObject
+	function GetDifficultyLevelCoefficient() : Float; // GetDifficultyLevelCoefficient;
+	function GetDistanceCoefficient(weapon : whandle:gameweaponObject, targetPosition : Vector4) : Float; // GetDistanceCoefficient;WeaponObjectVector4
+	function GetDistanceCoefficientFromCurve(curveName : CName, lookupValue : Float) : Float; // GetDistanceCoefficientFromCurve;CNameFloat
+	function GetGameObject() : handle:gameObject; // GetGameObject;
+	function GetGroupCoefficient(weaponOwner : handle:gameObject) : Float; // GetGroupCoefficient;GameObject
+	function GetHMGGroupMultiplier() : Float; // GetHMGGroupMultiplier;
+	function GetPlayersNumCoefficient(weaponOwner : handle:gameObject) : Float; // GetPlayersNumCoefficient;GameObject
+	function GetValueFromCurve(curveName : CName, lookupValue : Float) : Float; // GetValueFromCurve;CNameFloat
+	function GetVisibilityCoefficient(weaponOwner : handle:gameObject, weapon : handle:gameweaponObject, target : handle:gameObject, visibilityThresholdCoefficient : Float) : Float; // GetVisibilityCoefficient;GameObjectWeaponObjectGameObjectFloat
+	function GetVisibilityCoefficientFromCurve(curveName : CName, lookupValue : Float) : Float; // GetVisibilityCoefficientFromCurve;CNameFloat
+	function GetVisionBlockersCoefficient(weaponOwner : handle:gameObject, target : handle:gameObject) : Float; // GetVisionBlockersCoefficient;GameObjectGameObject
+	function HandleBeingShot(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, shootAtPoint : Vector4, maxSpread : Float, coefficientMultiplier : Float, out miss : Bool) : Vector4; // HandleBeingShot;GameObjectWeaponObjectVector4FloatFloatBool
+	function HandleBeingShot(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, shootAtPoint : Vector4, maxSpread : Float, coefficientMultiplier : Float) : Vector4; // HandleBeingShot;GameObjectWeaponObjectVector4FloatFloat
+	function HandleMissed(weaponOwner : whandle:gameObject, weapon : whandle:gameweaponObject, shootAtPoint : Vector4, maxSpread : Float) : Vector4; // HandleMissed;GameObjectWeaponObjectVector4Float
+	function ShouldBeHit(weaponOwner : handle:gameObject, weapon : whandle:gameweaponObject, weaponRecord : handle:gamedataWeaponItem_Record, visibilityThresholdCoefficient : Float) : Bool; // ShouldBeHit;GameObjectWeaponObjectWeaponItem_RecordFloat
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

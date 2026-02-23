@@ -1,0 +1,32 @@
+import class gamedataShooterLevel_Record extends gamedataTweakDBRecord
+{
+	import function Background() : whandle:gamedataShooterBackground_Record; // Background
+	import function BackgroundHandle() : handle:gamedataShooterBackground_Record; // BackgroundHandle
+	import function GetPreLoadedResourceListCount() : Int32; // GetPreLoadedResourceListCount
+	import function GetPreLoadedResourceListItem(index : Int32) : redResourceReferenceScriptToken; // GetPreLoadedResourceListItem
+	import function LevelNumber() : Int32; // LevelNumber
+	import function LevelWidget() : String; // LevelWidget
+	import function PlatformLibrary() : String; // PlatformLibrary
+	import function PreLoadedResourceList() : array:redResourceReferenceScriptToken; // PreLoadedResourceList
+	import function VariantType() : String; // VariantType
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

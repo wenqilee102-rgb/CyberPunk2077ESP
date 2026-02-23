@@ -1,0 +1,5 @@
+import struct scnAdditionalSpeaker
+{
+	var actorId : scnActorId;
+	var type : scnAdditionalSpeakerType;
+}

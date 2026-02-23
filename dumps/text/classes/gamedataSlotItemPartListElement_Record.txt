@@ -1,0 +1,31 @@
+import class gamedataSlotItemPartListElement_Record extends gamedataTweakDBRecord
+{
+	import function GetItemPartListCount() : Int32; // GetItemPartListCount
+	import function GetItemPartListItem(index : Int32) : whandle:gamedataItemPartListElement_Record; // GetItemPartListItem
+	import function GetItemPartListItemHandle(index : Int32) : handle:gamedataItemPartListElement_Record; // GetItemPartListItemHandle
+	import function ItemPartList(out outList : array:whandle:gamedataItemPartListElement_Record); // ItemPartList
+	import function ItemPartListContains(item : whandle:gamedataItemPartListElement_Record) : Bool; // ItemPartListContains
+	import function OptionalProbabilityCurveName() : String; // OptionalProbabilityCurveName
+	import function Slot() : whandle:gamedataAttachmentSlot_Record; // Slot
+	import function SlotHandle() : handle:gamedataAttachmentSlot_Record; // SlotHandle
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,23 @@
+import struct worldTrafficLanePersistent
+{
+	var outLanes : array:worldTrafficConnectivityOutLane;
+	var inLanes : array:worldTrafficConnectivityInLane;
+	var outline : array:Vector3;
+	var accumulatedLengths : array:Float;
+	var crowdCreationInfo : worldTrafficLaneCrowdCreationInfo;
+	var maxSpeed : Uint8;
+	var deadEndStart : Float;
+	var length : Float;
+	var width : Float;
+	var area : Float;
+	var flags : Uint16;
+	var subGraphId : Uint16;
+	var playerGPSInfo : worldTrafficLanePlayerGPSInfo;
+	var neighborGroupIndex : Uint16;
+	var nodeRefHash : Uint64;
+	var laneNumber : Uint16;
+	var seqNumber : Uint16;
+	var isReversed : Bool;
+	var roadMaterials : array:worldRoadMaterialInfo;
+	var polygon : array:Vector2;
+}

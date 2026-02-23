@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gamestateMachineparameterTypeItemUnequipRequest","c":"ItemUnequipRequest","d":8,"e":[{"a":{"a":15},"b":"slotId","c":128},{"a":{"b":"gameItemID"},"b":"itemId","c":128},{"a":{"a":1},"b":"instant","c":128}]}

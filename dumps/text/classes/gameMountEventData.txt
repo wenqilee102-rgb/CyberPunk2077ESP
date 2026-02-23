@@ -1,0 +1,33 @@
+import class gameMountEventData extends IScriptable
+{
+	var slotName : CName;
+	var mountParentEntityId : entEntityID;
+	var isInstant : Bool;
+	var entryAnimName : CName;
+	var entrySlotName : CName;
+	var initialTransformLS : Transform;
+	var setEntityVisibleWhenMountFinish : Bool;
+	var removePitchRollRotationOnDismount : Bool;
+	var ignoreHLS : Bool;
+	var switchRenderPlane : Bool;
+	var isJustAttached : Bool;
+	var isCarrying : Bool;
+	var allowFailsafeTeleport : Bool;
+	var mountEventOptions : handle:gameMountEventOptions;
+
+	function IsTransitionForced() : Bool; // IsTransitionForced;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

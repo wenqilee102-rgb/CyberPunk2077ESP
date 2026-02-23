@@ -1,0 +1,31 @@
+import class animAnimNode_LocomotionAdjusterOnEvent extends animAnimNode_LocomotionAdjuster
+{
+	var locomotionFeatureName : CName;
+	var targetAnimationName : CName;
+	var startAdjustmentAfterAnimEvent : CName;
+}
+
+import class animAnimNode_LocomotionAdjuster extends animAnimNode_OnePoseInput
+{
+	var targetPosition : animVectorLink;
+	var targetDirection : animVectorLink;
+	var initialForwardVector : Vector4;
+	var blendSpeedPos : Float;
+	var blendSpeedPosMin : Float;
+	var blendSpeedRot : Float;
+	var maxDistance : Float;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

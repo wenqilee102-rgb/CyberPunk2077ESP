@@ -1,0 +1,7 @@
+import class redTOMLBaseValue extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

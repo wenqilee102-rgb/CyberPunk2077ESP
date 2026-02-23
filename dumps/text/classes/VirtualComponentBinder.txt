@@ -1,0 +1,4 @@
+struct VirtualComponentBinder
+{
+	static function Bind(game : ScriptGameInstance, entityID : entEntityID, componentName : CName, psClassName : CName) : handle:gamePersistentState; // VirtualComponentBinder::Bind;GameInstanceEntityIDCNameCName
+}

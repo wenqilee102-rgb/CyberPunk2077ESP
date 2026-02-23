@@ -1,0 +1,8 @@
+import class toolsJiraCurrentUserInfo extends ISerializable
+{
+	var name : String;
+}
+
+import class abstract ISerializable
+{
+}

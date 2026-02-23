@@ -1,0 +1,8 @@
+import class gameuiUIGameState extends ISerializable
+{
+	var uiData : array:handle:gameuiBaseUIData;
+}
+
+import class abstract ISerializable
+{
+}

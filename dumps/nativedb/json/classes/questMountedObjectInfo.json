@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"questMountedObjectInfo","d":8,"e":[{"a":{"a":1},"b":"isFirst","c":128},{"a":{"a":1},"b":"isPlayer","c":128},{"a":{"b":"gameEntityReference"},"b":"ref","c":128},{"a":{"a":1},"b":"onMount","c":128},{"a":{"b":"gameMountingSlotRole"},"b":"role","c":128}]}

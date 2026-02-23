@@ -1,0 +1,1 @@
+{"a":"GenericNotificationController","b":"TarotCardAddedNotification","d":0,"e":[{"a":{"b":"inkImageWidgetReference"},"b":"cardImage","c":130},{"a":{"b":"inkTextWidgetReference"},"b":"cardNameLabel","c":130}],"f":[{"a":"SetNotificationData","d":32,"e":[{"a":{"a":26,"c":{"b":"gameuiGenericNotificationViewData"}},"b":"notificationData","c":0}]}]}

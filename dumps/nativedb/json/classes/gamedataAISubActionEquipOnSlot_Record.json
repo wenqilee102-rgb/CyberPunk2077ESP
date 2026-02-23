@@ -1,0 +1,1 @@
+{"a":"gamedataAISubActionCharacterRecordEquip_Record","b":"gamedataAISubActionEquipOnSlot_Record","c":"AISubActionEquipOnSlot_Record","d":24,"f":[{"a":"CacheEquippedItem","c":{"a":1},"d":4},{"a":"UseItemSpawnDelayFromWeapon","c":{"a":1},"d":4}]}

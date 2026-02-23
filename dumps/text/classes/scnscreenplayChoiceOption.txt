@@ -1,0 +1,6 @@
+import struct scnscreenplayChoiceOption
+{
+	var itemId : scnscreenplayItemId;
+	var usage : scnscreenplayOptionUsage;
+	var locstringId : scnlocLocstringId;
+}

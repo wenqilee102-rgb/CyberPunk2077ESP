@@ -1,0 +1,7 @@
+import struct questWorldStateSystemReplicatedState
+{
+	var nodeVisibilityMapArray : array:questNodeVisibilityMapArrayElement;
+	var isInMirrorsAreaMapArray : array:questIsInMirrorsAreaMapArrayElement;
+	var nodeCollisionMapArray : array:questNodeCollisionMapArrayElement;
+	var prefabVariants : array:questPrefabVariantMapArrayElement;
+}

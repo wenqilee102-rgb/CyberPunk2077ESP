@@ -1,0 +1,5 @@
+import struct scnChoiceNodeNsAttachToActorParams
+{
+	var actorId : scnActorId;
+	var visualizerStyle : scnChoiceNodeNsVisualizerStyle;
+}

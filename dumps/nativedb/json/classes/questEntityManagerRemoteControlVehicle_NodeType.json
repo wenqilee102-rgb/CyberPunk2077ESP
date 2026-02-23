@@ -1,0 +1,1 @@
+{"a":"questIEntityManager_NodeType","b":"questEntityManagerRemoteControlVehicle_NodeType","d":8,"e":[{"a":{"b":"gameEntityReference"},"b":"parentRef","c":128},{"a":{"a":1},"b":"enable","c":128},{"a":{"a":1},"b":"shouldUnseatPassengers","c":128},{"a":{"a":1},"b":"shouldModifyInteractionState","c":128}]}

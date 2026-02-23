@@ -1,0 +1,5 @@
+import struct gameuiMountedWeaponTarget
+{
+	var weaponIndex : Int32;
+	var targetLocation : Vector4;
+}

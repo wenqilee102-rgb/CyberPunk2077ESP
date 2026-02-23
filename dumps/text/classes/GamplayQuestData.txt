@@ -1,0 +1,34 @@
+class GamplayQuestData extends IScriptable
+{
+	public    var questUniqueID : String;
+	public    var objectives : array:handle:GemplayObjectiveData;
+
+	function AddObjective(objectiveData : handle:GemplayObjectiveData, journal : handle:gameJournalManager); // AddObjective;GemplayObjectiveDataJournalManager
+	function CreateObjective(objectiveData : handle:GemplayObjectiveData, journal : handle:gameJournalManager) : Bool; // CreateObjective;GemplayObjectiveDataJournalManager
+	function GetBaseObjectiveEntryID() : String; // GetBaseObjectiveEntryID;
+	function GetFreeObjectiveEntryID() : String; // GetFreeObjectiveEntryID;
+	function GetFreeObjectivePath() : String; // GetFreeObjectivePath;
+	function GetFreeQuestMappinPath() : String; // GetFreeQuestMappinPath;
+	function GetMappinEntryID() : String; // GetMappinEntryID;
+	function GetObjective(objectiveData : handle:GemplayObjectiveData) : handle:GemplayObjectiveData; // GetObjective;GemplayObjectiveData
+	function GetPhaseEntryID() : String; // GetPhaseEntryID;
+	function GetQuestEntryID() : String; // GetQuestEntryID;
+	function GetbjectivePath(objectiveData : handle:GemplayObjectiveData) : String; // GetbjectivePath;GemplayObjectiveData
+	function HasObjective(objectiveData : handle:GemplayObjectiveData) : Bool; // HasObjective;GemplayObjectiveData
+	function IsCompleted() : Bool; // IsCompleted;
+	function SetObjectiveState(objectiveData : handle:GemplayObjectiveData, journal : handle:gameJournalManager, state : gameJournalEntryState); // SetObjectiveState;GemplayObjectiveDataJournalManagergameJournalEntryState
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

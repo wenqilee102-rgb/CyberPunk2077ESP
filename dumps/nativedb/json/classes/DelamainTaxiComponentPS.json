@@ -1,0 +1,1 @@
+{"a":"gameComponentPS","b":"DelamainTaxiComponentPS","d":0,"e":[{"a":{"a":7},"b":"state","c":134}],"f":[{"a":"GetState;","b":"GetState","c":{"b":"DelamainTaxiState"},"d":176},{"a":"SetState;DelamainTaxiState","b":"SetState","d":48,"e":[{"a":{"b":"DelamainTaxiState"},"b":"state","c":0}]}]}

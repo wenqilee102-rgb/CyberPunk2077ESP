@@ -1,0 +1,44 @@
+import struct AIbehaviorScriptExecutionContext
+{
+	import static function AddBehaviorCallback(context : AIbehaviorScriptExecutionContext, cbName : CName, callback : handle:IScriptable) : Uint32; // AddBehaviorCallback
+	import static function CreateActionID(context : AIbehaviorScriptExecutionContext, actionStringName : String, actionPackageType : AIactionParamsPackageTypes) : TweakDBID; // CreateActionID
+	import static function CreateActionParamID(context : AIbehaviorScriptExecutionContext, actionStringName : String, paramName : String) : TweakDBID; // CreateActionParamID
+	import static function DebugLog(context : AIbehaviorScriptExecutionContext, category : CName, message : String); // DebugLog
+	import static function GetAITime(context : AIbehaviorScriptExecutionContext) : EngineTime; // GetAITime
+	import static function GetAITimeLastFrame(context : AIbehaviorScriptExecutionContext) : EngineTime; // GetAITimeLastFrame
+	import static function GetArgumentBool(context : AIbehaviorScriptExecutionContext, entry : CName) : Bool; // GetArgumentBool
+	import static function GetArgumentFloat(context : AIbehaviorScriptExecutionContext, entry : CName) : Float; // GetArgumentFloat
+	import static function GetArgumentGlobalNodeId(context : AIbehaviorScriptExecutionContext, entry : CName) : worldGlobalNodeID; // GetArgumentGlobalNodeId
+	import static function GetArgumentInt(context : AIbehaviorScriptExecutionContext, entry : CName) : Int32; // GetArgumentInt
+	import static function GetArgumentName(context : AIbehaviorScriptExecutionContext, entry : CName) : CName; // GetArgumentName
+	import static function GetArgumentNodeRef(context : AIbehaviorScriptExecutionContext, entry : CName) : NodeRef; // GetArgumentNodeRef
+	import static function GetArgumentObject(context : AIbehaviorScriptExecutionContext, entry : CName) : whandle:gameObject; // GetArgumentObject
+	import static function GetArgumentScriptable(context : AIbehaviorScriptExecutionContext, entry : CName) : whandle:IScriptable; // GetArgumentScriptable
+	import static function GetArgumentUint64(context : AIbehaviorScriptExecutionContext, entry : CName) : Uint64; // GetArgumentUint64
+	import static function GetArgumentVector(context : AIbehaviorScriptExecutionContext, entry : CName) : Vector4; // GetArgumentVector
+	import static function GetClosestDelegate(context : AIbehaviorScriptExecutionContext) : handle:AIbehaviorBehaviorDelegate; // GetClosestDelegate
+	import static function GetDelegate(context : AIbehaviorScriptExecutionContext) : handle:AIbehaviorBehaviorDelegate; // GetDelegate
+	import static function GetLOD(context : script_ref:AIbehaviorScriptExecutionContext) : Int32; // GetLOD
+	import static function GetMappingValue(context : AIbehaviorScriptExecutionContext, mapping : handle:AIArgumentMapping) : Variant; // GetMappingValue
+	import static function GetOverriddenNode(context : script_ref:AIbehaviorScriptExecutionContext, nodeId : TweakDBID, out result : handle:gamedataAIRecord_Record, lookupDefault : Bool) : Bool; // GetOverriddenNode
+	import static function GetOwner(context : AIbehaviorScriptExecutionContext) : handle:gamePuppet; // GetOwner
+	import static function GetScriptableMappingValue(context : AIbehaviorScriptExecutionContext, mapping : handle:AIArgumentMapping) : handle:IScriptable; // GetScriptableMappingValue
+	import static function GetTweakActionSystem(context : script_ref:AIbehaviorScriptExecutionContext) : handle:AIbehaviortweakTweakActionSystem; // GetTweakActionSystem
+	import static function GetTweakDBIDMappingValue(context : script_ref:AIbehaviorScriptExecutionContext, mapping : handle:AIArgumentMapping) : TweakDBID; // GetTweakDBIDMappingValue
+	import static function InvokeBehaviorCallback(context : script_ref:AIbehaviorScriptExecutionContext, cbName : CName); // InvokeBehaviorCallback
+	import static function IsTraceFlagSet(); // IsTraceFlagSet
+	import static function PuppetRefToObject(context : AIbehaviorScriptExecutionContext, puppetRef : gameEntityReference) : handle:gameObject; // PuppetRefToObject
+	import static function RemoveBehaviorCallback(context : AIbehaviorScriptExecutionContext, id : Uint32) : Bool; // RemoveBehaviorCallback
+	import static function SetArgumentBool(context : AIbehaviorScriptExecutionContext, entry : CName, value : Bool); // SetArgumentBool
+	import static function SetArgumentFloat(context : AIbehaviorScriptExecutionContext, entry : CName, value : Float); // SetArgumentFloat
+	import static function SetArgumentGlobalNodeId(context : AIbehaviorScriptExecutionContext, entry : CName, value : worldGlobalNodeID); // SetArgumentGlobalNodeId
+	import static function SetArgumentInt(context : AIbehaviorScriptExecutionContext, entry : CName, value : Int32); // SetArgumentInt
+	import static function SetArgumentName(context : AIbehaviorScriptExecutionContext, entry : CName, value : CName); // SetArgumentName
+	import static function SetArgumentNodeRef(context : AIbehaviorScriptExecutionContext, entry : CName, value : NodeRef); // SetArgumentNodeRef
+	import static function SetArgumentObject(context : AIbehaviorScriptExecutionContext, entry : CName, value : whandle:gameObject); // SetArgumentObject
+	import static function SetArgumentScriptable(context : AIbehaviorScriptExecutionContext, entry : CName, value : whandle:IScriptable); // SetArgumentScriptable
+	import static function SetArgumentUint64(context : AIbehaviorScriptExecutionContext, entry : CName, value : Uint64); // SetArgumentUint64
+	import static function SetArgumentVector(context : AIbehaviorScriptExecutionContext, entry : CName, value : Vector4); // SetArgumentVector
+	import static function SetEnumMappingValue(context : AIbehaviorScriptExecutionContext, mapping : handle:AIArgumentMapping, value : Int64) : Bool; // SetEnumMappingValue
+	import static function SetMappingValue(context : AIbehaviorScriptExecutionContext, mapping : handle:AIArgumentMapping, value : Variant) : Bool; // SetMappingValue
+}

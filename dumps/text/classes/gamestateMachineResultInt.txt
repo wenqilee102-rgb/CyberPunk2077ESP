@@ -1,0 +1,5 @@
+import struct gamestateMachineResultInt
+{
+	var value : Int32;
+	var valid : Bool;
+}

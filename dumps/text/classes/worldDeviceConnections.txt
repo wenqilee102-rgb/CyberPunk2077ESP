@@ -1,0 +1,5 @@
+import struct worldDeviceConnections
+{
+	var deviceClassName : CName;
+	var nodeRefs : array:NodeRef;
+}

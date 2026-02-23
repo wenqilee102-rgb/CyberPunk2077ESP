@@ -1,0 +1,6 @@
+import struct CutCone
+{
+	var positionAndRadius1 : Vector4;
+	var normalAndRadius2 : Vector4;
+	var height : Float;
+}

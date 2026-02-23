@@ -1,0 +1,19 @@
+import struct inkLoadingLayerDefinition extends inkLayerDefinition
+{
+	var splashLoadingScreenResource : raRef:inkWidgetLibraryResource;
+	var initialLoadingScreenResource : raRef:inkWidgetLibraryResource;
+	var fastTravelLoadingScreenResource : raRef:inkWidgetLibraryResource;
+	var fallbackLoadingScreenResource : raRef:inkWidgetLibraryResource;
+}
+
+import struct inkLayerDefinition
+{
+	var enabled : Bool;
+	var rootLibrary : rRef:inkWidgetLibraryResource;
+	var activeByDefault : Bool;
+	var isPermanent : Bool;
+	var useGlobalStyleTheme : Bool;
+	var isAffectedByFadeout : Bool;
+	var useGameInput : Bool;
+	var inputContext : CName;
+}

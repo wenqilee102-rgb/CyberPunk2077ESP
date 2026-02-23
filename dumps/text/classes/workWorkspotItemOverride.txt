@@ -1,0 +1,5 @@
+import struct workWorkspotItemOverride
+{
+	var propOverrides : array:workWorkspotItemOverridePropOverride;
+	var itemOverrides : array:workWorkspotItemOverrideItemOverride;
+}

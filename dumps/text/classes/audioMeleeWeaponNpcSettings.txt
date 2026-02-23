@@ -1,0 +1,23 @@
+import class audioMeleeWeaponNpcSettings extends audioMeleeWeaponSettings
+{
+}
+
+import class abstract audioMeleeWeaponSettings extends audioAudioMetadata
+{
+	var quickAttackSettings : audioMeleeAttackSettings;
+	var strongAttackSettings : audioMeleeAttackSettings;
+	var weaponHandlingSettings : audioWeaponHandlingSettings;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

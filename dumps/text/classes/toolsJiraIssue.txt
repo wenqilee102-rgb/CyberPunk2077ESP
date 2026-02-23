@@ -1,0 +1,7 @@
+import struct toolsJiraIssue
+{
+	var id : String;
+	var self : String;
+	var key : String;
+	var fields : toolsJiraIssueFields;
+}

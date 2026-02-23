@@ -1,0 +1,1 @@
+{"a":"animAnimNode_OnePoseInput","b":"animAnimNode_AddSnapToTerrainIkRequest","d":8,"e":[{"a":{"b":"animFloatLink"},"b":"animDeltaZ","c":128},{"a":{"b":"animSnapToTerrainIkRequest"},"b":"leftFootRequest","c":128},{"a":{"b":"animSnapToTerrainIkRequest"},"b":"rightFootRequest","c":128},{"a":{"b":"animHipsIkRequest"},"b":"hipsRequest","c":128}]}

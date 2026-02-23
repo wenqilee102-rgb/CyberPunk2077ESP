@@ -1,0 +1,20 @@
+import class animAnimNode_MultiBoolToFloatValue extends animAnimNode_FloatValue
+{
+	var allMustBeTrue : Bool;
+	var onTrue : Float;
+	var onFalse : Float;
+	var inputsData : array:animAnimMultiBoolToFloatEntry;
+}
+
+import class abstract animAnimNode_FloatValue extends animAnimNode_Base
+{
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

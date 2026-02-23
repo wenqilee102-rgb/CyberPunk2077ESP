@@ -1,0 +1,6 @@
+struct SSimpleGameTime
+{
+	public    var hours : Int32;
+	public    var minutes : Int32;
+	public    var seconds : Int32;
+}

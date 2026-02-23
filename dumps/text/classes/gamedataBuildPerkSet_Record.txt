@@ -1,0 +1,28 @@
+import class gamedataBuildPerkSet_Record extends gamedataTweakDBRecord
+{
+	import function GetPerksCount() : Int32; // GetPerksCount
+	import function GetPerksItem(index : Int32) : whandle:gamedataBuildPerk_Record; // GetPerksItem
+	import function GetPerksItemHandle(index : Int32) : handle:gamedataBuildPerk_Record; // GetPerksItemHandle
+	import function Perks(out outList : array:whandle:gamedataBuildPerk_Record); // Perks
+	import function PerksContains(item : whandle:gamedataBuildPerk_Record) : Bool; // PerksContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,5 @@
+import struct scnInputSocketStamp
+{
+	var name : Uint16;
+	var ordinal : Uint16;
+}

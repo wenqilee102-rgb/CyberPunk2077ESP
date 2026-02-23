@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"VehicleQuestChangeDoorStateEvent","d":0,"e":[{"a":{"b":"vehicleEVehicleDoor"},"b":"door","c":128},{"a":{"b":"vehicleEQuestVehicleDoorState"},"b":"newState","c":128},{"a":{"a":1},"b":"forceScene","c":128}],"f":[{"a":"GetFriendlyDescription;","b":"GetFriendlyDescription","c":{"a":12},"d":48}]}

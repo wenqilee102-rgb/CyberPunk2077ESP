@@ -1,0 +1,1 @@
+{"b":"gameItemModParams","c":"ItemModParams","d":8,"g":true,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"a":6},"b":"quantity","c":128},{"a":{"a":31,"c":{"b":"gameItemID"}},"b":"customPartsToInstall","c":128}]}

@@ -1,0 +1,18 @@
+import class audioVoiceContextMap extends audioAudioMetadata
+{
+	var includes : array:CName;
+	var contexts : array:audioVoiceContextMapItem;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

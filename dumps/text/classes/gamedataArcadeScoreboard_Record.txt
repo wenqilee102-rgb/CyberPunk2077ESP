@@ -1,0 +1,33 @@
+import class gamedataArcadeScoreboard_Record extends gamedataTweakDBRecord
+{
+	import function ArcadeScoreboardEntryList(out outList : array:whandle:gamedataArcadeScoreboardEntry_Record); // ArcadeScoreboardEntryList
+	import function ArcadeScoreboardEntryListContains(item : whandle:gamedataArcadeScoreboardEntry_Record) : Bool; // ArcadeScoreboardEntryListContains
+	import function ArcadeScoreboardHighScoreSFX() : CName; // ArcadeScoreboardHighScoreSFX
+	import function ArcadeScoreboardQuestFactList() : array:CName; // ArcadeScoreboardQuestFactList
+	import function ArcadeScoreboardQuestFactListContains(item : CName) : Bool; // ArcadeScoreboardQuestFactListContains
+	import function GetArcadeScoreboardEntryListCount() : Int32; // GetArcadeScoreboardEntryListCount
+	import function GetArcadeScoreboardEntryListItem(index : Int32) : whandle:gamedataArcadeScoreboardEntry_Record; // GetArcadeScoreboardEntryListItem
+	import function GetArcadeScoreboardEntryListItemHandle(index : Int32) : handle:gamedataArcadeScoreboardEntry_Record; // GetArcadeScoreboardEntryListItemHandle
+	import function GetArcadeScoreboardQuestFactListCount() : Int32; // GetArcadeScoreboardQuestFactListCount
+	import function GetArcadeScoreboardQuestFactListItem(index : Int32) : CName; // GetArcadeScoreboardQuestFactListItem
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

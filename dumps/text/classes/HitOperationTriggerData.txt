@@ -1,0 +1,28 @@
+class HitOperationTriggerData extends DeviceOperationTriggerData
+{
+	public    var isAttackerPlayer : Bool;
+	public    var isAttackerNPC : Bool;
+	public    var bullets : Bool;
+	public    var explosions : Bool;
+	public    var melee : Bool;
+	public    var healthPercentage : Float;
+}
+
+class DeviceOperationTriggerData extends IScriptable
+{
+	public    var operationsToExecute : array:handle:OperationExecutionData;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,31 @@
+struct Agent
+{
+	public    var link : DeviceLink;
+	public    var reprimands : array:ReprimandData;
+	public    var supportingAgents : array:gamePersistentID;
+	public    var areas : array:DeviceLink;
+	public    var incomingFilter : EFilterType;
+	public    var cachedDelayDuration : Float;
+
+	static function AddArea(self : script_ref:Agent, area : handle:SecurityAreaControllerPS); // Agent::AddArea;script_ref<Agent>SecurityAreaControllerPS
+	static function AddSupport(self : script_ref:Agent, id : gamePersistentID, shouldAdd : Bool) : Bool; // Agent::AddSupport;script_ref<Agent>PersistentIDBool
+	static function ClearSupport(self : script_ref:Agent); // Agent::ClearSupport;script_ref<Agent>
+	static function Construct(link : DeviceLink, areas : script_ref:array:handle:SecurityAreaControllerPS) : Agent; // Agent::Construct;DeviceLinkscript_ref<array<SecurityAreaControllerPS>>
+	static function ForceRelaseReprimands(self : script_ref:Agent); // Agent::ForceRelaseReprimands;script_ref<Agent>
+	static function GetAreas(self : script_ref:Agent, areas : script_ref:array:DeviceLink); // Agent::GetAreas;script_ref<Agent>script_ref<array<DeviceLink>>
+	static function GetReprimandReceiver(self : script_ref:Agent) : entEntityID; // Agent::GetReprimandReceiver;script_ref<Agent>
+	static function GetReprimandsCount(self : script_ref:Agent, target : entEntityID) : Int32; // Agent::GetReprimandsCount;script_ref<Agent>EntityID
+	static function HasSupport(self : script_ref:Agent) : Bool; // Agent::HasSupport;script_ref<Agent>
+	static function IsEligible(self : script_ref:Agent, state : ESecuritySystemState, breachedAreas : script_ref:array:handle:SecurityAreaControllerPS, inputsOutgoingFilter : EFilterType, out breachOrigin : EBreachOrigin) : Bool; // Agent::IsEligible;script_ref<Agent>ESecuritySystemStatescript_ref<array<SecurityAreaControllerPS>>EFilterTypeEBreachOrigin
+	static function IsEligibleToShareData(self : script_ref:Agent, state : ESecuritySystemState, breachedAreas : script_ref:array:handle:SecurityAreaControllerPS, inputsOutgoingFilter : EFilterType) : Bool; // Agent::IsEligibleToShareData;script_ref<Agent>ESecuritySystemStatescript_ref<array<SecurityAreaControllerPS>>EFilterType
+	static function IsPerformingReprimand(self : script_ref:Agent) : Bool; // Agent::IsPerformingReprimand;script_ref<Agent>
+	static function IsPerformingReprimandAgainst(self : script_ref:Agent, target : entEntityID) : Bool; // Agent::IsPerformingReprimandAgainst;script_ref<Agent>EntityID
+	static function IsValid(self : Agent) : Bool; // Agent::IsValid;Agent
+	static function ReleaseFromReprimand(self : script_ref:Agent, target : entEntityID); // Agent::ReleaseFromReprimand;script_ref<Agent>EntityID
+	static function RemoveArea(self : script_ref:Agent, remainingAreas : script_ref:array:handle:SecurityAreaControllerPS); // Agent::RemoveArea;script_ref<Agent>script_ref<array<SecurityAreaControllerPS>>
+	static function SetIncomingFilter(self : script_ref:Agent, area : handle:SecurityAreaControllerPS); // Agent::SetIncomingFilter;script_ref<Agent>SecurityAreaControllerPS
+	static function SetIncomingFilter(self : script_ref:Agent, areas : script_ref:array:handle:SecurityAreaControllerPS); // Agent::SetIncomingFilter;script_ref<Agent>script_ref<array<SecurityAreaControllerPS>>
+	static function StoreReprimand(self : script_ref:Agent, reprimandData : ReprimandData); // Agent::StoreReprimand;script_ref<Agent>ReprimandData
+	static function WipeReprimand(self : script_ref:Agent, attGroup : CName, attSystem : handle:gameCAttitudeManager); // Agent::WipeReprimand;script_ref<Agent>CNameAttitudeSystem
+	static function WipeReprimand(self : script_ref:Agent, target : entEntityID); // Agent::WipeReprimand;script_ref<Agent>EntityID
+}

@@ -1,0 +1,6 @@
+import struct gameJournalEntryVisitedStatusData
+{
+	var entryPath : handle:gameJournalPath;
+	var entryType : CName;
+	var isVisited : Bool;
+}

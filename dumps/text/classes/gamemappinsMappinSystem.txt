@@ -1,0 +1,58 @@
+import class gamemappinsMappinSystem extends gamemappinsIMappinSystem
+{
+	import function ChangeMappinVariant(id : gameNewMappinID, newVariant : gamedataMappinVariant); // ChangeMappinVariant
+	import function DebugDiscoverAllPoiMappins(); // DebugDiscoverAllPoiMappins
+	import function GetDelamainTrackedMappinID() : gameNewMappinID; // GetDelamainTrackedMappinID
+	import function GetManuallyTrackedMappinID() : gameNewMappinID; // GetManuallyTrackedMappinID
+	import function GetMappin(mappinId : gameNewMappinID) : handle:gamemappinsIMappin; // GetMappin
+	import function GetMappinEntries(targetType : gamemappinsMappinTargetType, out mappins : array:gamemappinsMappinEntry); // GetMappinEntries
+	import function GetMappinFromObjective(phaseEntry : whandle:gameJournalEntry, objectiveEntry : whandle:gameJournalEntry) : whandle:gamemappinsIMappin; // GetMappinFromObjective
+	import function GetMappinFromQuest(questEntry : whandle:gameJournalEntry) : whandle:gamemappinsIMappin; // GetMappinFromQuest
+	import function GetMappins(targetType : gamemappinsMappinTargetType, out mappins : array:handle:gamemappinsIMappin); // GetMappins
+	import function GetPointOfInterestMappinSavedState(hash : Uint32, out mappinPhase : Uint16, out mappinVariant : Uint16, out active : Bool) : Bool; // GetPointOfInterestMappinSavedState
+	import function GetQuestMappinPosition(mappinHash : Uint32, out position : Vector3) : Bool; // GetQuestMappinPosition
+	import function GetQuestMappinPositionsByObjective(objectiveHash : Uint32, out positions : array:Vector3) : Bool; // GetQuestMappinPositionsByObjective
+	import function OnAreaEntered(evt : handle:entAreaEnteredEvent); // OnAreaEntered
+	import function OnAreaExited(obj : whandle:gameObject, triggerId : entEntityID); // OnAreaExited
+	import function OnAreaTypeChanged(entityID : entEntityID, areaType : CName); // OnAreaTypeChanged
+	import function RegisterFastTravelMappin(data : gamemappinsMappinData, fastTravelData : handle:gameFastTravelPointData) : gameNewMappinID; // RegisterFastTravelMappin
+	import function RegisterGrenadeMappin(data : gamemappinsMappinData, grenadeObject : whandle:gameObject) : gameNewMappinID; // RegisterGrenadeMappin
+	import function RegisterMappin(data : gamemappinsMappinData, position : Vector4) : gameNewMappinID; // RegisterMappin
+	import function RegisterMappinWithObject(data : gamemappinsMappinData, object : whandle:gameObject, optional slotName : CName, optional offset : Vector3) : gameNewMappinID; // RegisterMappinWithObject
+	import function RegisterRemotePlayerMappin(data : gamemappinsMappinData, playerObject : whandle:gameObject) : gameNewMappinID; // RegisterRemotePlayerMappin
+	import function RegisterVehicleMappin(data : gamemappinsMappinData, object : whandle:gameObject, optional slotName : CName, optional offset : Vector3) : gameNewMappinID; // RegisterVehicleMappin
+	import function SetMappinActive(id : gameNewMappinID, active : Bool); // SetMappinActive
+	import function SetMappinDebugCaption(id : gameNewMappinID, caption : String); // SetMappinDebugCaption
+	import function SetMappinPosition(id : gameNewMappinID, position : Vector4); // SetMappinPosition
+	import function SetMappinScriptData(id : gameNewMappinID, scriptData : handle:gamemappinsMappinScriptData); // SetMappinScriptData
+	import function SetMappinTrackingAlternative(mappinID : gameNewMappinID, targetMappinID : gameNewMappinID); // SetMappinTrackingAlternative
+	import function UnregisterMappin(id : gameNewMappinID); // UnregisterMappin
+	import function UntrackMappin(); // UntrackMappin
+	import function UpdateCurrentLocationName(locationName : String, isNewLocation : Bool); // UpdateCurrentLocationName
+}
+
+import class abstract gamemappinsIMappinSystem extends gameIReplicatedGameSystem
+{
+}
+
+import class abstract gameIReplicatedGameSystem extends gameIGameSystem
+{
+}
+
+import class abstract gameIGameSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

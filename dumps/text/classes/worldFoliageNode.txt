@@ -1,0 +1,23 @@
+import class worldFoliageNode extends worldNode
+{
+	var mesh : raRef:CMesh;
+	var meshAppearance : CName;
+	var foliageResource : raRef:worldFoliageCompiledResource;
+	var foliageLocalBounds : Box;
+	var autoHideDistanceScale : Float;
+	var lodDistanceScale : Float;
+	var streamingDistance : Float;
+	var populationSpanInfo : worldFoliagePopulationSpanInfo;
+	var destructionHash : Uint64;
+	var meshHeight : Float;
+}
+
+import class worldNode extends ISerializable
+{
+	var isVisibleInGame : Bool;
+	var isHostOnly : Bool;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,24 @@
+import struct gameNpcPuppetReplicatedState extends gamePuppetReplicatedState
+{
+	var weaponStates : gameWeaponsReplicatedState;
+}
+
+import struct abstract gamePuppetReplicatedState extends netIEntityState
+{
+	var initialOrientation : EulerAngles;
+	var initialLocation : Vector3;
+	var initialAppearance : CName;
+	var actionsBuffer : gameActionsReplicationBuffer;
+	var health : Float;
+	var armor : Float;
+	var hasCPOMissionData : Bool;
+	var CPOMissionVotedHistory : array:CName;
+	var animEventsState : gameReplicatedAnimControllerEventsState;
+	var entityEventsState : gameReplicatedEntityEventsState;
+}
+
+import struct abstract netIEntityState
+{
+	var recordID : TweakDBID;
+	var persistentID : Uint64;
+}

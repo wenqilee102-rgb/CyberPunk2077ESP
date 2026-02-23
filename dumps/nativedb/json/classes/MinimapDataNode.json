@@ -1,0 +1,1 @@
+{"a":"worldNode","b":"MinimapDataNode","d":8,"e":[{"a":{"a":30,"c":{"b":"minimapEncodedShapes"}},"b":"encodedShapesRef","c":128},{"a":{"a":10},"b":"streamingDistance","c":128},{"a":{"b":"Box"},"b":"localBounds","c":128},{"a":{"a":1},"b":"allInteriorShapes","c":128}]}

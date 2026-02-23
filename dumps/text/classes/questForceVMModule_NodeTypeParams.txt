@@ -1,0 +1,6 @@
+import struct questForceVMModule_NodeTypeParams
+{
+	var reference : gameEntityReference;
+	var module : String;
+	var components : array:CName;
+}

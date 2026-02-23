@@ -1,0 +1,7 @@
+import struct animImportFacialPoseDesc
+{
+	var transforms : array:animImportFacialTransform;
+	var transformsNoScale : array:animImportFacialTransformNoScale;
+	var transformIds : array:Uint16;
+	var transformNames : array:CName;
+}

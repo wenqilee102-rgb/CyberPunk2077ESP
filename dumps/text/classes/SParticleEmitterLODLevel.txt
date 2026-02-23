@@ -1,0 +1,10 @@
+import struct SParticleEmitterLODLevel
+{
+	var emitterDurationSettings : EmitterDurationSettings;
+	var emitterDelaySettings : EmitterDelaySettings;
+	var burstList : array:ParticleBurst;
+	var birthRate : handle:IEvaluatorFloat;
+	var sortingMode : rendEParticleSortingMode;
+	var lodSwitchDistance : Float;
+	var isEnabled : Bool;
+}

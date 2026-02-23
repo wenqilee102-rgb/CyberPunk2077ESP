@@ -1,0 +1,41 @@
+import class gamedataTankArrangement_Record extends gamedataTweakDBRecord
+{
+	import function Arrangement() : array:Int32; // Arrangement
+	import function ArrangementContains(item : Int32) : Bool; // ArrangementContains
+	import function GetArrangementCount() : Int32; // GetArrangementCount
+	import function GetArrangementItem(index : Int32) : Int32; // GetArrangementItem
+	import function GetSpawnableObjectIDListCount() : Int32; // GetSpawnableObjectIDListCount
+	import function GetSpawnableObjectIDListItem(index : Int32) : whandle:gamedataArcadeSpawnableID_Record; // GetSpawnableObjectIDListItem
+	import function GetSpawnableObjectIDListItemHandle(index : Int32) : handle:gamedataArcadeSpawnableID_Record; // GetSpawnableObjectIDListItemHandle
+	import function GetSpawnableReplacementObjectCountCount() : Int32; // GetSpawnableReplacementObjectCountCount
+	import function GetSpawnableReplacementObjectCountItem(index : Int32) : Int32; // GetSpawnableReplacementObjectCountItem
+	import function GetSpawnableReplacementObjectIDListCount() : Int32; // GetSpawnableReplacementObjectIDListCount
+	import function GetSpawnableReplacementObjectIDListItem(index : Int32) : whandle:gamedataArcadeSpawnableID_Record; // GetSpawnableReplacementObjectIDListItem
+	import function GetSpawnableReplacementObjectIDListItemHandle(index : Int32) : handle:gamedataArcadeSpawnableID_Record; // GetSpawnableReplacementObjectIDListItemHandle
+	import function SpawnableObjectIDList(out outList : array:whandle:gamedataArcadeSpawnableID_Record); // SpawnableObjectIDList
+	import function SpawnableObjectIDListContains(item : whandle:gamedataArcadeSpawnableID_Record) : Bool; // SpawnableObjectIDListContains
+	import function SpawnableReplacementObjectCount() : array:Int32; // SpawnableReplacementObjectCount
+	import function SpawnableReplacementObjectCountContains(item : Int32) : Bool; // SpawnableReplacementObjectCountContains
+	import function SpawnableReplacementObjectIDList(out outList : array:whandle:gamedataArcadeSpawnableID_Record); // SpawnableReplacementObjectIDList
+	import function SpawnableReplacementObjectIDListContains(item : whandle:gamedataArcadeSpawnableID_Record) : Bool; // SpawnableReplacementObjectIDListContains
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

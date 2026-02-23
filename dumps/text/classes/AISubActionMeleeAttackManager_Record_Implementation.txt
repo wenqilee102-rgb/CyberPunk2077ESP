@@ -1,0 +1,24 @@
+class abstract AISubActionMeleeAttackManager_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMeleeAttackManager_Record); // AISubActionMeleeAttackManager_Record_Implementation::Activate;ScriptExecutionContextAISubActionMeleeAttackManager_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMeleeAttackManager_Record, duration : Float, interrupted : Bool); // AISubActionMeleeAttackManager_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionMeleeAttackManager_RecordFloatBool
+	static function StartStrongArmsTrailEffect(owner : handle:gameObject, weapon : handle:gameItemObject); // AISubActionMeleeAttackManager_Record_Implementation::StartStrongArmsTrailEffect;GameObjectItemObject
+	static function StartWeaponTrailEffect(context : AIbehaviorScriptExecutionContext, weapons : script_ref:array:whandle:gameItemObject); // AISubActionMeleeAttackManager_Record_Implementation::StartWeaponTrailEffect;ScriptExecutionContextscript_ref<array<ItemObject>>
+	static function StopWeaponTrailEffect(context : AIbehaviorScriptExecutionContext, weapons : script_ref:array:whandle:gameItemObject); // AISubActionMeleeAttackManager_Record_Implementation::StopWeaponTrailEffect;ScriptExecutionContextscript_ref<array<ItemObject>>
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionMeleeAttackManager_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionMeleeAttackManager_Record_Implementation::Update;ScriptExecutionContextAISubActionMeleeAttackManager_RecordFloat
+	static function stopStrongArmsTrailEffect(owner : handle:gameObject, weapon : handle:gameItemObject); // AISubActionMeleeAttackManager_Record_Implementation::stopStrongArmsTrailEffect;GameObjectItemObject
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

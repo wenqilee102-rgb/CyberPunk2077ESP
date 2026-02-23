@@ -1,0 +1,43 @@
+import class audioDirectorSystemSettings extends audioAudioMetadata
+{
+	var combatVoManagerSettingsName : CName;
+	var singleConversationMinRepeatTime : Float;
+	var allConversationsMinRepeatTime : Float;
+	var maxVelocityMagnitudeToConsiderPlayerVehicleInactive : Float;
+	var maxVelocityMagnitudeToConsiderTrafficVehicleIdle : Float;
+	var playerInactiveMinTimeNeededToEngageMovingFaster : Float;
+	var vehEngageMovingFasterInterpolation : audioVehicleEngageMovingFasterInterpolationData;
+	var playerBrakeEventCooldown : Float;
+	var trafficSpeedRC : Float;
+	var trafficAccelerationRC : Float;
+	var trafficRpmRC : Float;
+	var trafficSlipRatioSkidThreshold : Float;
+	var trafficHornSingleVehicleCooldown : Float;
+	var trafficHornAllVehiclesCooldown : Float;
+	var trafficHornMaxDistanceRangeToPlayer : Float;
+	var overHeadVisibilityMaxOcclusion : Float;
+	var overHeadVisibilityMaxObstruction : Float;
+	var conversationMixCooldown : Float;
+	var enemyPingCooldown : Float;
+	var idleTimeBeforeAllowingOwMusicChange : Float;
+	var drivingStreamingAmbientEmittersDistanceRolloff : Float;
+	var lowHealthStateMaxTime : Float;
+	var lowGearMaxTrafficSpeed : Float;
+	var lowGearAccelerationThreshold : Float;
+	var mediumGearMaxTrafficSpeed : Float;
+	var mediumGearAccelerationThreshold : Float;
+	var highGearAccelerationThreshold : Float;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

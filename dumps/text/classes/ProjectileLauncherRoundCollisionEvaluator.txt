@@ -1,0 +1,40 @@
+class ProjectileLauncherRoundCollisionEvaluator extends gameprojectileScriptCollisionEvaluator
+{
+	private   var collisionAction : gamedataProjectileOnCollisionAction;
+	private   var projectileStopped : Bool;
+	private   var maxBounceCount : Int32;
+	private   var projectileBounced : Bool;
+	private   var projectileStopAndStick : Bool;
+	private   var projectilePierced : Bool;
+
+	function EvaluateCollision(defaultOnCollisionAction : gameprojectileOnCollisionAction, params : handle:gameprojectileCollisionEvaluatorParams) : gameprojectileOnCollisionAction; // EvaluateCollision;gameprojectileOnCollisionActionCollisionEvaluatorParams
+	function ProjectileBounced() : Bool; // ProjectileBounced;
+	function ProjectilePierced() : Bool; // ProjectilePierced;
+	function ProjectileStopAndStick() : Bool; // ProjectileStopAndStick;
+	function ProjectileStopped() : Bool; // ProjectileStopped;
+	function SetCollisionAction(collisionAction : gamedataProjectileOnCollisionAction); // SetCollisionAction;gamedataProjectileOnCollisionAction
+	function SetNumberOfBounces(maxBounceCount : Int32); // SetNumberOfBounces;Int32
+}
+
+import class gameprojectileScriptCollisionEvaluator extends gameprojectileCollisionEvaluator
+{
+	function EvaluateCollision(defaultOnCollisionAction : gameprojectileOnCollisionAction, params : handle:gameprojectileCollisionEvaluatorParams) : gameprojectileOnCollisionAction; // EvaluateCollision;gameprojectileOnCollisionActionCollisionEvaluatorParams
+}
+
+import class gameprojectileCollisionEvaluator extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,16 @@
+import struct questAnimMoveOnSplineParams
+{
+	var controllersSetupName : CName;
+	var blendTime : Float;
+	var globalInBlendTime : Float;
+	var globalOutBlendTime : Float;
+	var turnCharacterToMatchVelocity : Bool;
+	var customStartAnimationName : CName;
+	var customMainAnimationName : CName;
+	var customStopAnimationName : CName;
+	var startSnapToTerrain : Bool;
+	var mainSnapToTerrain : Bool;
+	var stopSnapToTerrain : Bool;
+	var startSnapToTerrainBlendTime : Float;
+	var stopSnapToTerrainBlendTime : Float;
+}

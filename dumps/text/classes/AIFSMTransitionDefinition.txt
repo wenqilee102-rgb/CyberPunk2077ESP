@@ -1,0 +1,5 @@
+import struct AIFSMTransitionDefinition
+{
+	var destination : Uint16;
+	var condition : Uint16;
+}

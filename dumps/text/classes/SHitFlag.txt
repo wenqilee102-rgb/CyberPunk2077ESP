@@ -1,0 +1,5 @@
+struct SHitFlag
+{
+	public    var flag : hitFlag;
+	public    var source : CName;
+}

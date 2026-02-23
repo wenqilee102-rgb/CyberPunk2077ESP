@@ -1,0 +1,1 @@
+{"b":"SecurityGateDetectionProperties","d":0,"g":true,"e":[{"a":{"a":1},"b":"performWeaponCheck","c":128},{"a":{"a":1},"b":"performCyberwareCheck","c":128},{"a":{"b":"ESecurityGateEntranceType"},"b":"scannerEntranceType","c":128},{"a":{"a":1},"b":"performCheckOnPlayerOnly","c":128}]}

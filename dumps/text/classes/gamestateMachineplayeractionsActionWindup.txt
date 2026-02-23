@@ -1,0 +1,19 @@
+import class gamestateMachineplayeractionsActionWindup extends gamestateMachineplayeractionsWeaponActionBase
+{
+}
+
+import class gamestateMachineplayeractionsWeaponActionBase extends gamestateMachineStateActionDefinition
+{
+}
+
+import class gamestateMachineStateActionDefinition extends gamestateMachineIStateActionDefinition
+{
+}
+
+import class abstract gamestateMachineIStateActionDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

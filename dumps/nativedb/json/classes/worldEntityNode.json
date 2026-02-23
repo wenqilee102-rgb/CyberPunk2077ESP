@@ -1,0 +1,1 @@
+{"a":"worldNode","b":"worldEntityNode","d":8,"e":[{"a":{"a":30,"c":{"b":"entEntityTemplate"}},"b":"entityTemplate","c":128},{"a":{"a":26,"c":{"b":"entEntityInstanceData"}},"b":"instanceData","c":128},{"a":{"a":14},"b":"appearanceName","c":128},{"a":{"b":"entEntitySpawnPriority"},"b":"ioPriority","c":128},{"a":{"a":5},"b":"entityLod","c":128}]}

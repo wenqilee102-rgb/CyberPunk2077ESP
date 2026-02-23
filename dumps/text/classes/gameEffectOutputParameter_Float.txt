@@ -1,0 +1,6 @@
+import struct gameEffectOutputParameter_Float
+{
+	var blackboardProperty : gameBlackboardPropertyBindingDefinition;
+
+	import static function Set(ctx : gameEffectOutputParameter_Float, bb : handle:gameIBlackboard, value : Float); // Set
+}

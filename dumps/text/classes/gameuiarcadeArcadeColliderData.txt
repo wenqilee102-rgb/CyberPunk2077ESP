@@ -1,0 +1,5 @@
+import struct gameuiarcadeArcadeColliderData
+{
+	var type : gameuiarcadeArcadeColliderType;
+	var shape : handle:gameuiarcadeBoundingShape;
+}

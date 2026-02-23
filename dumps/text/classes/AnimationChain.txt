@@ -1,0 +1,21 @@
+class AnimationChain extends IScriptable
+{
+	public    var data : array:AnimationElement;
+	public    var name : CName;
+
+	function AddAnimation(name : CName, options : script_ref:inkanimPlaybackOptions); // AddAnimation;CNamescript_ref<inkAnimOptions>
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

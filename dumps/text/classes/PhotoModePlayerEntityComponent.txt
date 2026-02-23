@@ -1,0 +1,126 @@
+class PhotoModePlayerEntityComponent extends gameScriptableComponent
+{
+	private   var usedWeaponItemId : gameItemID;
+	private   var currentWeaponInSlot : gameItemID;
+	private   var swapMeleeWeaponItemId : gameItemID;
+	private   var swapHangunWeaponItemId : gameItemID;
+	private   var swapRifleWeaponItemId : gameItemID;
+	private   var swapShootgunWeaponItemId : gameItemID;
+	private   var fakePuppet : whandle:gamePuppet;
+	private   var mainPuppet : whandle:PlayerPuppet;
+	private   var currentPuppet : whandle:PlayerPuppet;
+	private   var TS : handle:gameTransactionSystem;
+	private   var loadingItems : array:gameItemID;
+	private   var loadingVisualItems : array:gameItemID;
+	private   var itemsLoadingTime : Float;
+	private   var muzzleEffectEnabled : Bool;
+	private   var customizable : Bool;
+	private   var holsteredArmsShouldBeVisible : Bool;
+	private   var holsteredArmsBeingSpawned : Bool;
+	private   var holsteredArmsVisible : Bool;
+	private   var holsteredArmsItem : gameItemID;
+	private   var cyberwareArmsBeingSpawned : Bool;
+	private   var cyberwareArmsVisible : Bool;
+	private   var cyberwareArmsItem : gameItemID;
+
+	event OnItemAddedToSlot(evt : handle:gameAttachmentSlotEventsItemAddedToSlot) : Bool; // OnItemAddedToSlot
+	event OnItemVisualsAddedToSlot(evt : handle:gameAttachmentSlotEventsItemVisualsAddedToSlot) : Bool; // OnItemVisualsAddedToSlot
+
+	function AddAmmoForWeapon(weaponID : gameItemID); // AddAmmoForWeapon;ItemID
+	function ClearInventory(); // ClearInventory;
+	function EquipHolsteredArms(); // EquipHolsteredArms;
+	function EquipWeaponOfThisType(typesList : array:gamedataItemType); // EquipWeaponOfThisType;array<gamedataItemType>
+	function FindMatchingEquipmentInEquipArea(area : gamedataEquipmentArea, typesList : array:gamedataItemType) : gameItemID; // FindMatchingEquipmentInEquipArea;gamedataEquipmentAreaarray<gamedataItemType>
+	function FindMatchingEquipmentInInventory(typesList : array:gamedataItemType) : gameItemID; // FindMatchingEquipmentInInventory;array<gamedataItemType>
+	function GetEquipArea(equipmentData : handle:EquipmentSystemPlayerData, areaType : gamedataEquipmentArea) : gameSEquipArea; // GetEquipArea;EquipmentSystemPlayerDatagamedataEquipmentArea
+	function GetPhotoModeActiveEquipAreas(equipmentData : handle:EquipmentSystemPlayerData) : array:gameSEquipArea; // GetPhotoModeActiveEquipAreas;EquipmentSystemPlayerData
+	function GetPhotoModeActiveSlots() : array:gamedataEquipmentArea; // GetPhotoModeActiveSlots;
+	function GetPhotoModeEquipAreas(equipmentData : handle:EquipmentSystemPlayerData, isVisual : Bool, withUnderwear : Bool) : array:gameSEquipArea; // GetPhotoModeEquipAreas;EquipmentSystemPlayerDataBoolBool
+	function GetPhotoModeVisualEquipAreas(equipmentData : handle:EquipmentSystemPlayerData, withUnderwear : Bool) : array:gameSEquipArea; // GetPhotoModeVisualEquipAreas;EquipmentSystemPlayerDataBool
+	function GetPhotoModeVisualSlots(withUnderwear : Bool) : array:gamedataEquipmentArea; // GetPhotoModeVisualSlots;Bool
+	function GetWeaponInHands() : gamedataItemType; // GetWeaponInHands;
+	function HasAllItemsFinishedLoading() : Bool; // HasAllItemsFinishedLoading;
+	function HasAllItemsVisualsFinishedLoading() : Bool; // HasAllItemsVisualsFinishedLoading;
+	function IsItemOfThisType(item : gameItemID, typesList : script_ref:array:gamedataItemType) : Bool; // IsItemOfThisType;ItemIDscript_ref<array<gamedataItemType>>
+	function IsMuzzleFireSupported() : Bool; // IsMuzzleFireSupported;
+	function OnGameAttach(); // OnGameAttach;
+	function OnGameDetach(); // OnGameDetach;
+	function PutOnFakeItem(itemToAdd : gameItemID, puppet : whandle:PlayerPuppet); // PutOnFakeItem;ItemIDPlayerPuppet
+	function PutOnFakeItemFromCurrentPuppet(itemToAdd : gameItemID); // PutOnFakeItemFromCurrentPuppet;ItemID
+	function PutOnFakeItemFromMainPuppet(itemToAdd : gameItemID); // PutOnFakeItemFromMainPuppet;ItemID
+	function ReevaluateArmsVisibility(); // ReevaluateArmsVisibility;
+	function RemoveAllItems(areas : script_ref:array:gameSEquipArea); // RemoveAllItems;script_ref<array<SEquipArea>>
+	function SetMuzzleEffectEnabled(enabled : Bool); // SetMuzzleEffectEnabled;Bool
+	function SetupInventory(isCurrentPlayerObjectCustomizable : Bool); // SetupInventory;Bool
+	function SetupUnderwear(); // SetupUnderwear;
+	function StopWeaponShootEffects(); // StopWeaponShootEffects;
+	function SwitchWardrobeSet(wardrobeSet : Int32); // SwitchWardrobeSet;Int32
+	function UnequipCyberwareArms(); // UnequipCyberwareArms;
+	function UnequipHolsteredArms(); // UnequipHolsteredArms;
+}
+
+import class gameScriptableComponent extends gameComponent
+{
+	var priority : Uint32;
+
+	import function GetAudioSystem() : handle:gameGameAudioSystem; // GetAudioSystem
+	import function GetDebugVisualizerSystem() : handle:gameDebugVisualizerSystem; // GetDebugVisualizerSystem
+	import function GetDelaySystem() : handle:gameDelaySystem; // GetDelaySystem
+	import function GetEngineTime() : EngineTime; // GetEngineTime
+	import function GetFriendlyFireSystem(); // GetFriendlyFireSystem
+	import function GetGameEffectSystem() : handle:gameEffectSystem; // GetGameEffectSystem
+	import function GetGameRulesSystem(); // GetGameRulesSystem
+	import function GetGameTime() : GameTime; // GetGameTime
+	import function GetLoSFinderSystem(); // GetLoSFinderSystem
+	import function GetOwner() : handle:gameObject; // GetOwner
+	import function GetPersistencySystem() : handle:gamePersistencySystem; // GetPersistencySystem
+	import function GetPlayerSystem() : handle:cpPlayerSystem; // GetPlayerSystem
+	import function GetQuestsSystem() : handle:questQuestsSystem; // GetQuestsSystem
+	import function GetSceneSystem(); // GetSceneSystem
+	import function GetSimTime() : EngineTime; // GetSimTime
+	import function GetStatPoolsSystem() : handle:gameStatPoolsSystem; // GetStatPoolsSystem
+	import function GetStatsSystem() : handle:gameStatsSystem; // GetStatsSystem
+	import function GetTargetingSystem() : handle:gametargetingTargetingSystem; // GetTargetingSystem
+	import function GetTimeSystem() : handle:gameTimeSystem; // GetTimeSystem
+	import function GetTransactionSystem() : handle:gameTransactionSystem; // GetTransactionSystem
+	import function GetVisionModeSystem() : handle:gameVisionModeSystem; // GetVisionModeSystem
+}
+
+import class gameComponent extends entIComponent
+{
+	var persistentState : handle:gamePersistentState;
+
+	import function GetBasePS() : handle:gameComponentPS; // GetBasePS
+	import function GetPS() : handle:gameComponentPS; // GetPS
+	import function GetPersistentID() : gamePersistentID; // GetPersistentID
+}
+
+import class abstract entIComponent extends IScriptable
+{
+	var name : CName;
+	var isReplicable : Bool;
+	var id : CRUID;
+
+	import function FindComponentByName(componentName : CName) : whandle:entIComponent; // FindComponentByName
+	import function GetAppearanceName() : CName; // GetAppearanceName
+	import function GetEntity() : whandle:entEntity; // GetEntity
+	import function GetName() : CName; // GetName
+	import function IsEnabled() : Bool; // IsEnabled
+	import function QueueEntityEvent(ev : handle:redEvent); // QueueEntityEvent
+	import function RegisterRenderDebug(filterName : String, functionName : CName); // RegisterRenderDebug
+	import function Toggle(on : Bool); // Toggle
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

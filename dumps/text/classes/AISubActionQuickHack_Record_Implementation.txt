@@ -1,0 +1,24 @@
+class abstract AISubActionQuickHack_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQuickHack_Record); // AISubActionQuickHack_Record_Implementation::Activate;ScriptExecutionContextAISubActionQuickHack_Record
+	static function CancelConnection(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQuickHack_Record); // AISubActionQuickHack_Record_Implementation::CancelConnection;ScriptExecutionContextAISubActionQuickHack_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQuickHack_Record, duration : Float, interrupted : Bool); // AISubActionQuickHack_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionQuickHack_RecordFloatBool
+	static function Hack(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQuickHack_Record); // AISubActionQuickHack_Record_Implementation::Hack;ScriptExecutionContextAISubActionQuickHack_Record
+	static function SendNetworkLinkEvent(netrunner : whandle:gameObject, proxy : whandle:gameObject, target : whandle:gameObject, from : whandle:gameObject, to : whandle:gameObject); // AISubActionQuickHack_Record_Implementation::SendNetworkLinkEvent;GameObjectGameObjectGameObjectGameObjectGameObject
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQuickHack_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionQuickHack_Record_Implementation::Update;ScriptExecutionContextAISubActionQuickHack_RecordFloat
+	static function VisualiseConnection(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionQuickHack_Record); // AISubActionQuickHack_Record_Implementation::VisualiseConnection;ScriptExecutionContextAISubActionQuickHack_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

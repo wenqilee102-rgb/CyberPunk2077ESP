@@ -1,0 +1,1 @@
+{"a":"IScriptable","b":"gameLazyDevice","c":"LazyDevice","d":24,"f":[{"a":"ExtractDevice","c":{"a":26,"c":{"b":"gameDeviceComponentPS"}},"d":132,"e":[{"a":{"b":"ScriptGameInstance"},"b":"game","c":0}]},{"a":"GetPersistentID","c":{"b":"gamePersistentID"},"d":132}]}

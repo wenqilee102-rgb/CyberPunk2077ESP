@@ -1,0 +1,12 @@
+import struct worldNavigationTileData
+{
+	var tileX : Int32;
+	var tileY : Int32;
+	var tileIndex : Uint32;
+	var bufferIndex : Uint32;
+	var agentSize : NavGenAgentSize;
+	var offMeshConnections : worldOffMeshConnectionsData;
+	var tileRef : Uint64;
+	var activeVariantIDs : array:Uint32;
+	var allVariantIDs : array:Uint32;
+}

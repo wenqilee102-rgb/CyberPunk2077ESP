@@ -1,0 +1,10 @@
+struct ReactionOutput
+{
+	public    var reactionBehavior : gamedataOutput;
+	public    var reactionPriority : Int32;
+	public    var AIbehaviorPriority : Float;
+	public    var reactionCooldown : Float;
+	public    var startedInWorkspot : Bool;
+	public    var workspotReaction : Bool;
+	public    var workspotReactionType : CName;
+}

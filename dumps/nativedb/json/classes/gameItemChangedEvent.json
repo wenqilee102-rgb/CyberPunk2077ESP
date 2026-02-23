@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"gameItemChangedEvent","c":"ItemChangedEvent","d":24,"e":[{"a":{"b":"gameItemID"},"b":"itemID","c":128},{"a":{"a":26,"c":{"b":"gameItemData"}},"b":"itemData","c":128},{"a":{"a":6},"b":"difference","c":128},{"a":{"a":6},"b":"currentQuantity","c":128}]}

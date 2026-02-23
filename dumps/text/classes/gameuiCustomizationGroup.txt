@@ -1,0 +1,6 @@
+import struct gameuiCustomizationGroup
+{
+	var name : CName;
+	var customization : array:gameuiCustomizationAppearance;
+	var morphs : array:gameuiCustomizationMorph;
+}

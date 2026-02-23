@@ -1,0 +1,1 @@
+{"a":"IEvaluatorVector","b":"CEvaluatorVectorRandomUniform","d":8,"e":[{"a":{"b":"Vector4"},"b":"min","c":128},{"a":{"b":"Vector4"},"b":"max","c":128},{"a":{"a":1},"b":"lockX","c":128},{"a":{"a":1},"b":"lockY","c":128},{"a":{"a":1},"b":"lockZ","c":128},{"a":{"a":1},"b":"lockW","c":128}]}

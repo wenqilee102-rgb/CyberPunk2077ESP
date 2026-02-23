@@ -1,0 +1,1 @@
+{"b":"SInteractionAreaOperationData","d":0,"g":true,"e":[{"a":{"a":1},"b":"isActivatorPlayer","c":128},{"a":{"a":1},"b":"isActivatorNPC","c":128},{"a":{"a":14},"b":"areaTag","c":128},{"a":{"b":"gameinteractionsEInteractionEventType"},"b":"operationType","c":128},{"a":{"b":"SBaseDeviceOperationData"},"b":"operation","c":128}]}

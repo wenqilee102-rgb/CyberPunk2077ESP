@@ -1,0 +1,27 @@
+import class gameNetrunnerPrototypeSpawnRequestEvent extends redEvent
+{
+	var whatToSpawn : CName;
+	var whereToSpawn : Vector3;
+	var scale : Vector3;
+	var colorIndex : Uint8;
+
+	import function Create(whatToSpawn : CName, whereToSpawn : Vector4, scale : Vector4, colorIndex : Uint8); // Create
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

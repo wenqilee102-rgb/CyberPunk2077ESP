@@ -1,0 +1,8 @@
+import class physicsCollisionPresetsResource extends ISerializable
+{
+	var presets : array:physicsCollisionPresetDefinition;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,30 @@
+import class gamedataGenderEntity_Record extends gamedataTweakDBRecord
+{
+	import function Entity() : redResourceReferenceScriptToken; // Entity
+	import function Gender() : whandle:gamedataGender_Record; // Gender
+	import function GenderHandle() : handle:gamedataGender_Record; // GenderHandle
+	import function GetMultiplayerEntitiesCount() : Int32; // GetMultiplayerEntitiesCount
+	import function GetMultiplayerEntitiesItem(index : Int32) : redResourceReferenceScriptToken; // GetMultiplayerEntitiesItem
+	import function Initial() : Bool; // Initial
+	import function MultiplayerEntities() : array:redResourceReferenceScriptToken; // MultiplayerEntities
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

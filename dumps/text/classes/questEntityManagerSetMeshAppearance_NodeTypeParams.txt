@@ -1,0 +1,7 @@
+import struct questEntityManagerSetMeshAppearance_NodeTypeParams
+{
+	var objectRef : gameEntityReference;
+	var isPlayer : Bool;
+	var componentName : CName;
+	var appearanceName : CName;
+}

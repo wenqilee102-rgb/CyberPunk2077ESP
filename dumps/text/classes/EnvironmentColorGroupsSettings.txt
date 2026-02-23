@@ -1,0 +1,15 @@
+import class EnvironmentColorGroupsSettings extends IAreaSettings
+{
+	var skyTint : curveData:HDRColor;
+	var colorGroup : [16]curveData:HDRColor;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

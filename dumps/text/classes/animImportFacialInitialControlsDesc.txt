@@ -1,0 +1,6 @@
+import struct animImportFacialInitialControlsDesc
+{
+	var transformIds : array:Uint16;
+	var transformNames : array:CName;
+	var transformRegions : array:Uint8;
+}

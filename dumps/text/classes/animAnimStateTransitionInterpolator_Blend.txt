@@ -1,0 +1,12 @@
+import class animAnimStateTransitionInterpolator_Blend extends animIAnimStateTransitionInterpolator
+{
+	var interpolationType : animAnimStateInterpolationType;
+}
+
+import class abstract animIAnimStateTransitionInterpolator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

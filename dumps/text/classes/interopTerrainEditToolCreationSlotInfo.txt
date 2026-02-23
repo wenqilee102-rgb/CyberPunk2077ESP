@@ -1,0 +1,7 @@
+import struct interopTerrainEditToolCreationSlotInfo
+{
+	var scale : Vector2;
+	var heightMappingOverrideEnable : Bool;
+	var heightMappingMin : Float;
+	var heightMappingMax : Float;
+}

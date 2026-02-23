@@ -1,0 +1,8 @@
+struct SettingsCategory
+{
+	public    var label : CName;
+	public    var subcategories : array:SettingsCategory;
+	public    var options : array:handle:userSettingsVar;
+	public    var isEmpty : Bool;
+	public    var groupPath : CName;
+}

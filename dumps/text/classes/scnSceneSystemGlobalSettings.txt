@@ -1,0 +1,4 @@
+import struct abstract scnSceneSystemGlobalSettings
+{
+	var syncLipsyncToSceneTime : Bool;
+}

@@ -1,0 +1,9 @@
+import class AIbehaviorParameterizedBehavior extends ISerializable
+{
+	var treeDefinition : rRef:AIbehaviorResource;
+	var argumentsOverrides : array:AIArgumentOverrideWrapper;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,39 @@
+class abstract AITicketCondition extends IScriptable
+{
+	static function Check(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, check : whandle:gamedataAITicketCheck_Record, ticketRecord : whandle:gamedataAITicket_Record, out squadMembers : array:whandle:entEntity) : Bool; // AITicketCondition::Check;EntityPuppetSquadInterfaceAITicketCheck_RecordAITicket_Recordarray<Entity>
+	static function CheckAND(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, check : whandle:gamedataAISquadANDCondition_Record, ticketRecord : whandle:gamedataAITicket_Record, out squadMembers : array:whandle:entEntity) : Bool; // AITicketCondition::CheckAND;EntityPuppetSquadInterfaceAISquadANDCondition_RecordAITicket_Recordarray<Entity>
+	static function CheckContainsSelf(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, check : whandle:gamedataAISquadContainsSelfCheck_Record, squadMembers : script_ref:array:whandle:entEntity) : Bool; // AITicketCondition::CheckContainsSelf;EntityPuppetSquadInterfaceAISquadContainsSelfCheck_Recordscript_ref<array<Entity>>
+	static function CheckDistanceRelationToSector(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, condition : whandle:gamedataAISquadDistanceRelationToSectorCheck_Record, closest : Bool, ticketRecord : whandle:gamedataAITicket_Record, squadMembers : script_ref:array:whandle:entEntity) : Bool; // AITicketCondition::CheckDistanceRelationToSector;EntityPuppetSquadInterfaceAISquadDistanceRelationToSectorCheck_RecordBoolAITicket_Recordscript_ref<array<Entity>>
+	static function CheckDistanceRelationToTarget(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, condition : whandle:gamedataAISquadDistanceRelationToTargetCheck_Record, closest : Bool, squadMembers : script_ref:array:whandle:entEntity) : Bool; // AITicketCondition::CheckDistanceRelationToTarget;EntityPuppetSquadInterfaceAISquadDistanceRelationToTargetCheck_RecordBoolscript_ref<array<Entity>>
+	static function CheckMembersAmount(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, check : whandle:gamedataAISquadMembersAmountCheck_Record, squadMembers : script_ref:array:whandle:entEntity) : Bool; // AITicketCondition::CheckMembersAmount;EntityPuppetSquadInterfaceAISquadMembersAmountCheck_Recordscript_ref<array<Entity>>
+	static function CheckNumberOfTickets(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, ticketRecord : whandle:gamedataAITicket_Record) : Bool; // AITicketCondition::CheckNumberOfTickets;EntityPuppetSquadInterfaceAITicket_Record
+	static function CheckOR(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, check : whandle:gamedataAISquadORCondition_Record, ticketRecord : whandle:gamedataAITicket_Record, out squadMembers : array:whandle:entEntity) : Bool; // AITicketCondition::CheckOR;EntityPuppetSquadInterfaceAISquadORCondition_RecordAITicket_Recordarray<Entity>
+	static function FilterAICondition(condition : whandle:gamedataAISquadFilterByAICondition_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterAICondition;AISquadFilterByAICondition_Recordscript_ref<array<Entity>>
+	static function FilterAgainstChoosingPreviouslySelected(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, condition : whandle:gamedataAISquadAvoidLastFilter_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterAgainstChoosingPreviouslySelected;EntityPuppetSquadInterfaceAISquadAvoidLastFilter_Recordscript_ref<array<Entity>>
+	static function FilterInSector(interface : whandle:PuppetSquadInterface, condition : whandle:gamedataAISquadInSectorFilter_Record, ticketRecord : whandle:gamedataAITicket_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterInSector;PuppetSquadInterfaceAISquadInSectorFilter_RecordAITicket_Recordscript_ref<array<Entity>>
+	static function FilterItemPriority(condition : whandle:gamedataAISquadItemPriorityFilter_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterItemPriority;AISquadItemPriorityFilter_Recordscript_ref<array<Entity>>
+	static function FilterItemTypePredicate(itemRecord : whandle:gamedataItem_Record, condition : whandle:gamedataAISquadItemTypePriorityFilter_Record, index : Int32) : Bool; // AITicketCondition::FilterItemTypePredicate;Item_RecordAISquadItemTypePriorityFilter_RecordInt32
+	static function FilterItemTypePredicate(itemRecord : whandle:gamedataItem_Record, condition : whandle:gamedataAISquadItemCategoryPriorityFilter_Record, index : Int32) : Bool; // AITicketCondition::FilterItemTypePredicate;Item_RecordAISquadItemCategoryPriorityFilter_RecordInt32
+	static function FilterJustSelf(entity : whandle:entEntity, condition : whandle:gamedataAISquadJustSelfFilter_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterJustSelf;EntityAISquadJustSelfFilter_Recordscript_ref<array<Entity>>
+	static function FilterOut(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, filter : whandle:gamedataAITicketFilter_Record, ticketRecord : whandle:gamedataAITicket_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterOut;EntityPuppetSquadInterfaceAITicketFilter_RecordAITicket_Recordscript_ref<array<Entity>>
+	static function FilterSpatialForOwnTarget(entity : whandle:entEntity, condition : whandle:gamedataAISquadSpatialForOwnTarget_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterSpatialForOwnTarget;EntityAISquadSpatialForOwnTarget_Recordscript_ref<array<Entity>>
+	static function FilterTargetSpotted(entity : whandle:entEntity, condition : whandle:gamedataAISquadFilterOwnTargetSpotted_Record, squadMembers : script_ref:array:whandle:entEntity); // AITicketCondition::FilterTargetSpotted;EntityAISquadFilterOwnTargetSpotted_Recordscript_ref<array<Entity>>
+	static function GetItem(entity : whandle:entEntity) : whandle:gameItemObject; // AITicketCondition::GetItem;Entity
+	static function IsTargetSpotted(context : AIbehaviorScriptExecutionContext, target : whandle:gameObject) : Bool; // AITicketCondition::IsTargetSpotted;ScriptExecutionContextGameObject
+	static function PerformChecking(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, conditions : script_ref:array:whandle:gamedataAITicketCondition_Record, ticketRecord : whandle:gamedataAITicket_Record, squadRecord : whandle:gamedataAISquadParams_Record) : Bool; // AITicketCondition::PerformChecking;EntityPuppetSquadInterfacescript_ref<array<AITicketCondition_Record>>AITicket_RecordAISquadParams_Record
+	static function PerformChecking(entity : whandle:entEntity, interface : whandle:PuppetSquadInterface, conditions : script_ref:array:whandle:gamedataAITicketCondition_Record, ticketRecord : whandle:gamedataAITicket_Record) : Bool; // AITicketCondition::PerformChecking;EntityPuppetSquadInterfacescript_ref<array<AITicketCondition_Record>>AITicket_Record
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

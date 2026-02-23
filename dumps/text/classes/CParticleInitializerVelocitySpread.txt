@@ -1,0 +1,21 @@
+import class CParticleInitializerVelocitySpread extends IParticleInitializer
+{
+	var scale : handle:IEvaluatorFloat;
+	var conserveMomentum : Bool;
+}
+
+import class abstract IParticleInitializer extends IParticleModule
+{
+	var seed : Uint32;
+}
+
+import class abstract IParticleModule extends ISerializable
+{
+	var editorName : String;
+	var editorGroup : String;
+	var isEnabled : Bool;
+}
+
+import class abstract ISerializable
+{
+}

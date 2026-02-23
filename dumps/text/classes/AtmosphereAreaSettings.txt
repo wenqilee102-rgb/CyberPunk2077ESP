@@ -1,0 +1,45 @@
+import class AtmosphereAreaSettings extends IAreaSettings
+{
+	var skydomeColor : curveData:HDRColor;
+	var skylightColor : curveData:HDRColor;
+	var groundReflectance : curveData:HDRColor;
+	var sunMinZ : curveData:Float;
+	var horizonMinZ : curveData:Float;
+	var horizonFalloff : curveData:Float;
+	var turbidity : curveData:Float;
+	var lutTurbidity : curveData:Float;
+	var artisticDarkeningColor : curveData:HDRColor;
+	var artisticDarkeningStartPoint : curveData:Float;
+	var artisticDarkeningEndPoint : curveData:Float;
+	var artisticDarkeningExponent : curveData:Float;
+	var sunColor : curveData:HDRColor;
+	var sunFalloff : curveData:Float;
+	var rayTracedSunShadowRange : curveData:Float;
+	var moonColor : curveData:HDRColor;
+	var moonFalloff : curveData:Float;
+	var moonGlowIntensity : curveData:Float;
+	var moonGlowFalloff : curveData:Float;
+	var moonTexture : rRef:CBitmapTexture;
+	var galaxyIntensity : curveData:Float;
+	var starMapIntensity : curveData:Float;
+	var starMapBrightScale : curveData:Float;
+	var starMapDimScale : curveData:Float;
+	var starMapConstelationsScale : curveData:Float;
+	var starCornerLuminanceFix : curveData:Float;
+	var starMapTexture : rRef:CCubeTexture;
+	var galaxyTexture : rRef:CBitmapTexture;
+	var probeColorOverrideHorizon : curveData:HDRColor;
+	var probeAlphaOverrideHorizon : curveData:Float;
+	var probeColorOverrideZenith : curveData:HDRColor;
+	var probeAlphaOverrideZenith : curveData:Float;
+}
+
+import class abstract IAreaSettings extends ISerializable
+{
+	var enable : Bool;
+	var disabledIndexedProperties : Uint64;
+}
+
+import class abstract ISerializable
+{
+}

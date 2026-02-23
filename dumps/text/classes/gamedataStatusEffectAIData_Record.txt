@@ -1,0 +1,51 @@
+import class gamedataStatusEffectAIData_Record extends gamedataTweakDBRecord
+{
+	import function ActivationPrereqs(out outList : array:whandle:gamedataIPrereq_Record); // ActivationPrereqs
+	import function ActivationPrereqsContains(item : whandle:gamedataIPrereq_Record) : Bool; // ActivationPrereqsContains
+	import function AllowDelayStatusEffectSignalIfSamePriorityExecuting() : Bool; // AllowDelayStatusEffectSignalIfSamePriorityExecuting
+	import function BehaviorEventFlag() : whandle:gamedataStatusEffectAIBehaviorFlag_Record; // BehaviorEventFlag
+	import function BehaviorEventFlagHandle() : handle:gamedataStatusEffectAIBehaviorFlag_Record; // BehaviorEventFlagHandle
+	import function BehaviorSignalResendDelay(out outList : array:whandle:gamedataStatModifier_Record); // BehaviorSignalResendDelay
+	import function BehaviorSignalResendDelayContains(item : whandle:gamedataStatModifier_Record) : Bool; // BehaviorSignalResendDelayContains
+	import function BehaviorType() : whandle:gamedataStatusEffectAIBehaviorType_Record; // BehaviorType
+	import function BehaviorTypeHandle() : handle:gamedataStatusEffectAIBehaviorType_Record; // BehaviorTypeHandle
+	import function BehaviourName() : CName; // BehaviourName
+	import function GetActivationPrereqsCount() : Int32; // GetActivationPrereqsCount
+	import function GetActivationPrereqsItem(index : Int32) : whandle:gamedataIPrereq_Record; // GetActivationPrereqsItem
+	import function GetActivationPrereqsItemHandle(index : Int32) : handle:gamedataIPrereq_Record; // GetActivationPrereqsItemHandle
+	import function GetBehaviorSignalResendDelayCount() : Int32; // GetBehaviorSignalResendDelayCount
+	import function GetBehaviorSignalResendDelayItem(index : Int32) : whandle:gamedataStatModifier_Record; // GetBehaviorSignalResendDelayItem
+	import function GetBehaviorSignalResendDelayItemHandle(index : Int32) : handle:gamedataStatModifier_Record; // GetBehaviorSignalResendDelayItemHandle
+	import function GetStimulisCount() : Int32; // GetStimulisCount
+	import function GetStimulisItem(index : Int32) : whandle:gamedataStim_Record; // GetStimulisItem
+	import function GetStimulisItemHandle(index : Int32) : handle:gamedataStim_Record; // GetStimulisItemHandle
+	import function Priority() : Float; // Priority
+	import function SensePreset() : whandle:gamedataSensePreset_Record; // SensePreset
+	import function SensePresetHandle() : handle:gamedataSensePreset_Record; // SensePresetHandle
+	import function ShouldDelayStatusEffectApplication() : Bool; // ShouldDelayStatusEffectApplication
+	import function ShouldProcessAIDataOnReapplication() : Bool; // ShouldProcessAIDataOnReapplication
+	import function StimRangeMultiplier() : Float; // StimRangeMultiplier
+	import function Stimulis(out outList : array:whandle:gamedataStim_Record); // Stimulis
+	import function StimulisContains(item : whandle:gamedataStim_Record) : Bool; // StimulisContains
+	import function UpdateSenses() : Bool; // UpdateSenses
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

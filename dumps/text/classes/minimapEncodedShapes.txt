@@ -1,0 +1,25 @@
+import class minimapEncodedShapes extends CResource
+{
+	var Buffer : DataBuffer;
+	var QuantizationScale : Vector2;
+	var QuantizationBias : Vector2;
+	var BoxQuantizationScale : Vector3;
+	var BoxQuantizationBias : Vector3;
+	var NumPoints : Uint32;
+	var NumBorderPoints : Uint32;
+	var NumFillPoints : Uint32;
+	var NumShapes : Uint32;
+	var NumSpatialBuckets : Uint32;
+	var NumUniqueGeometry : Uint32;
+	var NumOwners : Uint32;
+	var Version : Uint32;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

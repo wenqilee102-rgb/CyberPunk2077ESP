@@ -1,0 +1,33 @@
+import class gamedataAIActionAnimSlot_Record extends gamedataTweakDBRecord
+{
+	import function LoopSlide() : whandle:gamedataAIActionSlideData_Record; // LoopSlide
+	import function LoopSlideHandle() : handle:gamedataAIActionSlideData_Record; // LoopSlideHandle
+	import function RecoverySlide() : whandle:gamedataAIActionSlideData_Record; // RecoverySlide
+	import function RecoverySlideHandle() : handle:gamedataAIActionSlideData_Record; // RecoverySlideHandle
+	import function ResetRagdollOnStart() : Bool; // ResetRagdollOnStart
+	import function StartupSlide() : whandle:gamedataAIActionSlideData_Record; // StartupSlide
+	import function StartupSlideHandle() : handle:gamedataAIActionSlideData_Record; // StartupSlideHandle
+	import function UseDynamicObjectsCheck() : Bool; // UseDynamicObjectsCheck
+	import function UsePoseMatching() : Bool; // UsePoseMatching
+	import function UseRootMotion() : Bool; // UseRootMotion
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

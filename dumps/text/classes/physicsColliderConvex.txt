@@ -1,0 +1,23 @@
+import class physicsColliderConvex extends physicsICollider
+{
+	var vertices : array:Vector3;
+	var indexBuffer : array:Uint8;
+	var polygonVertices : array:Uint16;
+	var compiledGeometryBuffer : DataBuffer;
+}
+
+import class abstract physicsICollider extends ISerializable
+{
+	var localToBody : Transform;
+	var material : CName;
+	var materialApperanceOverrides : array:physicsApperanceMaterial;
+	var tag : CName;
+	var isImported : Bool;
+	var isQueryShapeOnly : Bool;
+	var volumeModifier : Float;
+	var filterData : handle:physicsFilterData;
+}
+
+import class abstract ISerializable
+{
+}

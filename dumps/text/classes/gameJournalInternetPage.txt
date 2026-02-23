@@ -1,0 +1,51 @@
+import class gameJournalInternetPage extends gameJournalEntry
+{
+	var address : String;
+	var factsToSet : array:gameJournalFactNameValue;
+	var additionallyFilledFromScripts : Bool;
+	var reloadOnZoomIn : Bool;
+	var widgetFile : raRef:inkWidgetLibraryResource;
+	var scale : Float;
+	var texts : array:handle:gameJournalInternetText;
+	var rectangles : array:handle:gameJournalInternetRectangle;
+	var images : array:handle:gameJournalInternetImage;
+	var videos : array:handle:gameJournalInternetVideo;
+	var canvases : array:handle:gameJournalInternetCanvas;
+
+	import function GetAddress() : String; // GetAddress
+	import function GetCanvases() : array:handle:gameJournalInternetCanvas; // GetCanvases
+	import function GetFactsToSet() : array:gameJournalFactNameValue; // GetFactsToSet
+	import function GetImages() : array:handle:gameJournalInternetImage; // GetImages
+	import function GetRectangles() : array:handle:gameJournalInternetRectangle; // GetRectangles
+	import function GetScale() : Float; // GetScale
+	import function GetTexts() : array:handle:gameJournalInternetText; // GetTexts
+	import function GetVideos() : array:handle:gameJournalInternetVideo; // GetVideos
+	import function GetWidgetPath() : redResourceReferenceScriptToken; // GetWidgetPath
+	import function IsAdditionallyFilledFromScripts() : Bool; // IsAdditionallyFilledFromScripts
+	import function ShouldReloadOnZoomIn() : Bool; // ShouldReloadOnZoomIn
+}
+
+import class abstract gameJournalEntry extends IScriptable
+{
+	var id : String;
+	var journalEntryOverrideDataList : array:gameJournalEntryOverrideData;
+
+	import function GetEditorName() : String; // GetEditorName
+	import function GetId() : String; // GetId
+	import function GetJournalEntryOverrideDataList(out journalEntryOverrideDataList : array:handle:gameJournalEntryOverrideData); // GetJournalEntryOverrideDataList
+	import function GetJournalEntryOverrideDataListCount() : Int32; // GetJournalEntryOverrideDataListCount
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

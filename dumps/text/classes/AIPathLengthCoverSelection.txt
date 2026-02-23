@@ -1,0 +1,7 @@
+import struct AIPathLengthCoverSelection extends AICoverSelectionParameters
+{
+}
+
+import struct abstract AICoverSelectionParameters
+{
+}

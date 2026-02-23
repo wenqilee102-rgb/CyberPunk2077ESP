@@ -1,0 +1,7 @@
+import struct inkWidgetUtils
+{
+	import static function GlobalToLocal(widget : handle:inkWidget, globalPosition : Vector2) : Vector2; // GlobalToLocal
+	import static function LocalToGlobal(widget : handle:inkWidget, optional localOffset : Vector2) : Vector2; // LocalToGlobal
+	import static function WidgetToWidget(sourceWidget : handle:inkWidget, destinationWidget : handle:inkWidget) : Vector2; // WidgetToWidget
+	import static function WidgetToWidgetGlobal(sourceWidget : handle:inkWidget, destinationWidget : handle:inkWidget) : Vector2; // WidgetToWidgetGlobal
+}

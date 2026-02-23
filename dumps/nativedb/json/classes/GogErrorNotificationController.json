@@ -1,0 +1,1 @@
+{"a":"inkWidgetLogicController","b":"GogErrorNotificationController","d":0,"e":[{"a":{"b":"inkWidgetReference"},"b":"errorMessageWidget","c":128}],"f":[{"a":"ShowErrorMessage;GOGRewardsSystemErrors","b":"ShowErrorMessage","d":48,"e":[{"a":{"b":"gameOnlineSystemErrors"},"b":"error","c":0}]}]}

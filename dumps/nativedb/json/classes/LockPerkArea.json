@@ -1,0 +1,1 @@
+{"a":"gamePlayerScriptableSystemRequest","b":"LockPerkArea","d":0,"e":[{"a":{"b":"gamedataPerkArea"},"b":"perkArea","c":128}],"f":[{"a":"Set;GameObjectgamedataPerkArea","b":"Set","d":48,"e":[{"a":{"a":27,"c":{"b":"gameObject"}},"b":"_owner","c":0},{"a":{"b":"gamedataPerkArea"},"b":"areaType","c":0}]}]}

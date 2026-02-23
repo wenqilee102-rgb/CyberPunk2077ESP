@@ -1,0 +1,30 @@
+import struct gamePreventionSystemDebugData
+{
+	var totalCrimeScore : Float;
+	var heatStage : Int32;
+	var heatThreshold : Float;
+	var heatMultiplierDistrict : Float;
+	var heatMultiplierQuest : Float;
+	var totalVehiclesCount : Int32;
+	var totalAVsCount : Int32;
+	var totalBlockadesCount : Int32;
+	var totalNPCCount : Int32;
+	var currentVehicleTicketCount : Int32;
+	var maxVehicleTicketCount : Int32;
+	var maxTacNPCCount : Int32;
+	var engagedVehiclesCount : Int32;
+	var engagedVehiclesLimit : Int32;
+	var supportVehiclesCount : Int32;
+	var supportVehiclesLimit : Int32;
+	var maxAVPlayerDistance : Float;
+	var lastAVRequestedSpawnPosition : Vector3;
+	var totalNPCLimit : Int32;
+	var externalNPCCount : Int32;
+	var fallbackNPCCount : Int32;
+	var registeredPendingTickets : Int32;
+	var awaitedAVSpawnPointsRequestID : Uint32;
+	var lastKnownPosition : Vector4;
+	var heatChangeReason : String;
+	var systemEnabled : Bool;
+	var systemLockEventSources : array:String;
+}

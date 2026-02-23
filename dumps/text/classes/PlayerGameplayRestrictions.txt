@@ -1,0 +1,29 @@
+class PlayerGameplayRestrictions extends IScriptable
+{
+	static function AcquireHotkeyRestrictionTags(hotkey : gameEHotkey, hotkeyTags : script_ref:array:CName) : Bool; // PlayerGameplayRestrictions::AcquireHotkeyRestrictionTags;EHotkeyscript_ref<array<CName>>
+	static function ChangeFastTravelSystemState(enable : Bool, reason : CName, player : whandle:PlayerPuppet, statusEffectID : TweakDBID); // PlayerGameplayRestrictions::ChangeFastTravelSystemState;BoolCNamePlayerPuppetTweakDBID
+	static function GetMenuEventName(blockMenu : Bool, menuType : EMenuType) : CName; // PlayerGameplayRestrictions::GetMenuEventName;BoolEMenuType
+	static function IsHotkeyRestricted(game : ScriptGameInstance, hotkey : gameEHotkey) : Bool; // PlayerGameplayRestrictions::IsHotkeyRestricted;GameInstanceEHotkey
+	static function OnGameplayRestrictionAdded(player : whandle:PlayerPuppet, record : handle:gamedataStatusEffect_Record, gameplayTags : script_ref:array:CName); // PlayerGameplayRestrictions::OnGameplayRestrictionAdded;PlayerPuppetStatusEffect_Recordscript_ref<array<CName>>
+	static function OnGameplayRestrictionRemoved(player : whandle:PlayerPuppet, evt : handle:gameeventsRemoveStatusEffect, gameplayTags : script_ref:array:CName); // PlayerGameplayRestrictions::OnGameplayRestrictionRemoved;PlayerPuppetRemoveStatusEffectscript_ref<array<CName>>
+	static function PushForceRefreshInputHintsEventToPSM(requester : handle:gameObject); // PlayerGameplayRestrictions::PushForceRefreshInputHintsEventToPSM;GameObject
+	static function RemoveAllGameplayRestrictions(target : whandle:gameObject); // PlayerGameplayRestrictions::RemoveAllGameplayRestrictions;GameObject
+	static function RequestFists(player : whandle:PlayerPuppet, optional animType : gameEquipAnimationType); // PlayerGameplayRestrictions::RequestFists;PlayerPuppetgameEquipAnimationType
+	static function RequestLastUsedWeapon(player : whandle:PlayerPuppet, optional animType : gameEquipAnimationType); // PlayerGameplayRestrictions::RequestLastUsedWeapon;PlayerPuppetgameEquipAnimationType
+	static function RequestMeleeWeapon(player : whandle:PlayerPuppet, optional animType : gameEquipAnimationType); // PlayerGameplayRestrictions::RequestMeleeWeapon;PlayerPuppetgameEquipAnimationType
+	static function SendBlockMenuRequest(player : whandle:PlayerPuppet, blockMenu : Bool, menuType : EMenuType); // PlayerGameplayRestrictions::SendBlockMenuRequest;PlayerPuppetBoolEMenuType
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

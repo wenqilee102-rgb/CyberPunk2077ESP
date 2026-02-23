@@ -1,0 +1,29 @@
+import class ActionAnimationScriptProxy extends CActionScriptProxy
+{
+	import function ForceLaunch(animFeatureName : CName, animFeature : handle:animAnimFeature_AIAction, useRootMotion : Bool, usePoseMatching : Bool, resetRagdollOnStart : Bool, motionDynamicObjectsCheck : Bool, slideParams : gameActionAnimationSlideParams, targetObject : whandle:gameObject, marginToPlayer : Float, optional tagetPositionProvider : handle:entIPositionProvider); // ForceLaunch
+	import function GetPhaseDuration(animFeatureName : CName, animFeature : handle:animAnimFeature_AIAction) : Float; // GetPhaseDuration
+	import function Setup(animFeatureName : CName, animFeature : handle:animAnimFeature_AIAction, useRootMotion : Bool, usePoseMatching : Bool, resetRagdollOnStart : Bool, motionDynamicObjectsCheck : Bool, updadeMovePolicy : Bool, slideParams : gameActionAnimationSlideParams, targetObject : whandle:gameObject, marginToPlayer : Float, optional tagetPositionProvider : handle:entIPositionProvider) : Bool; // Setup
+	import function Terminate(); // Terminate
+}
+
+import class abstract CActionScriptProxy extends IScriptable
+{
+	import function Bind(go : handle:gameObject); // Bind
+	import function GetStatus() : gameEActionStatus; // GetStatus
+	import function Launch(); // Launch
+	import function Stop(); // Stop
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

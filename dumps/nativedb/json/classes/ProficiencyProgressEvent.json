@@ -1,0 +1,1 @@
+{"a":"redEvent","b":"ProficiencyProgressEvent","d":0,"e":[{"a":{"b":"gamedataProficiencyType"},"b":"type","c":128},{"a":{"a":6},"b":"expValue","c":128},{"a":{"a":6},"b":"remainingXP","c":128},{"a":{"a":6},"b":"delta","c":128},{"a":{"a":6},"b":"currentLevel","c":128},{"a":{"a":1},"b":"isLevelMaxed","c":128}]}

@@ -1,0 +1,11 @@
+import class Spline extends ISerializable
+{
+	var points : array:SplinePoint;
+	var looped : Bool;
+	var reversed : Bool;
+	var hasDirection : Bool;
+}
+
+import class abstract ISerializable
+{
+}

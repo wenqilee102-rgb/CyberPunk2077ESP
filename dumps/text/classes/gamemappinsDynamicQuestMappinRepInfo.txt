@@ -1,0 +1,5 @@
+import struct gamemappinsDynamicQuestMappinRepInfo
+{
+	var journalPathHash : Uint32;
+	var entity : whandle:entEntity;
+}

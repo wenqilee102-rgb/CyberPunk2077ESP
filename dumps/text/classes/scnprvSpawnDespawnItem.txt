@@ -1,0 +1,5 @@
+import struct scnprvSpawnDespawnItem
+{
+	var recordID : TweakDBID;
+	var finalTransform : Transform;
+}

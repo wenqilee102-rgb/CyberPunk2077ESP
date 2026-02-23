@@ -1,0 +1,12 @@
+import class gameEffectParameter_CNameEvaluator_Value extends gameIEffectParameter_CNameEvaluator
+{
+	var value : CName;
+}
+
+import class abstract gameIEffectParameter_CNameEvaluator extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

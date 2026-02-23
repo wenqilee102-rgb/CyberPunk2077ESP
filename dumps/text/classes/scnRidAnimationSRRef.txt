@@ -1,0 +1,5 @@
+import struct scnRidAnimationSRRef
+{
+	var resourceId : scnRidResourceId;
+	var animationSN : scnRidSerialNumber;
+}

@@ -1,0 +1,5 @@
+import struct audioVoiceContextAnswer
+{
+	var answerContext : CName;
+	var radius : Float;
+}

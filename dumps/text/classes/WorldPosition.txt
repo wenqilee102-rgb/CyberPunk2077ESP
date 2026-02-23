@@ -1,0 +1,16 @@
+import struct WorldPosition
+{
+	var x : FixedPoint;
+	var y : FixedPoint;
+	var z : FixedPoint;
+
+	import static function GetX(worldPosition : WorldPosition) : Float; // GetX
+	import static function GetY(worldPosition : WorldPosition) : Float; // GetY
+	import static function GetZ(worldPosition : WorldPosition) : Float; // GetZ
+	import static function SetVector4(worldPosition : WorldPosition, value : Vector4); // SetVector4
+	import static function SetX(worldPosition : WorldPosition, value : Float); // SetX
+	import static function SetXYZ(worldPosition : WorldPosition, x : Float, y : Float, z : Float); // SetXYZ
+	import static function SetY(worldPosition : WorldPosition, value : Float); // SetY
+	import static function SetZ(worldPosition : WorldPosition, value : Float); // SetZ
+	import static function ToVector4(worldPosition : WorldPosition) : Vector4; // ToVector4
+}

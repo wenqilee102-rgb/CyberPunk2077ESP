@@ -1,0 +1,38 @@
+import class inkScriptableDataSourceWrapper extends inkBaseScriptableDataSource
+{
+	import function AppendItem(data : handle:IScriptable); // AppendItem
+	import function Clear(); // Clear
+	import function GetArray() : array:handle:IScriptable; // GetArray
+	import function GetArraySize() : Uint32; // GetArraySize
+	import function InsertItemAt(index : Uint32, data : handle:IScriptable); // InsertItemAt
+	import function RemoveItem(data : handle:IScriptable); // RemoveItem
+	import function RemoveItemAt(index : Uint32); // RemoveItemAt
+	import function Reset(scriptables : array:handle:IScriptable); // Reset
+}
+
+import class inkBaseScriptableDataSource extends inkAbstractDataSourceWrapper
+{
+	import function GetItem(index : Uint32) : handle:IScriptable; // GetItem
+	import function HasItem(data : handle:IScriptable) : Bool; // HasItem
+}
+
+import class inkAbstractDataSourceWrapper extends IScriptable
+{
+	import function GetItemAsVariant(index : Uint32) : Variant; // GetItemAsVariant
+	import function HasItemAsVariant(data : Variant) : Bool; // HasItemAsVariant
+	import function Size() : Uint32; // Size
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,12 @@
+import class animAnimStateMachineConditionalEntry extends ISerializable
+{
+	var targetStateIndex : Uint32;
+	var condition : handle:animIAnimStateTransitionCondition;
+	var isEnabled : Bool;
+	var priority : Int32;
+	var isForcedToTrue : Bool;
+}
+
+import class abstract ISerializable
+{
+}

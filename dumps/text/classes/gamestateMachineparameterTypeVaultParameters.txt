@@ -1,0 +1,30 @@
+import class gamestateMachineparameterTypeVaultParameters extends gamestateMachineparameterTypeClimbParametersBase
+{
+	import function SetMinSpeed(val : Float); // SetMinSpeed
+	import function SetObstacleDepth(val : Float); // SetObstacleDepth
+	import function SetObstacleDestination(val : Vector4); // SetObstacleDestination
+}
+
+import class gamestateMachineparameterTypeClimbParametersBase extends IScriptable
+{
+	import function SetAnimationNameApproach(val : CName); // SetAnimationNameApproach
+	import function SetObstacleFrontEdgeNormal(val : Vector4); // SetObstacleFrontEdgeNormal
+	import function SetObstacleFrontEdgePosition(val : Vector4); // SetObstacleFrontEdgePosition
+	import function SetObstacleHorizontalDestination(val : Vector4); // SetObstacleHorizontalDestination
+	import function SetObstacleSurfaceNormal(val : Vector4); // SetObstacleSurfaceNormal
+	import function SetObstacleVerticalDestination(val : Vector4); // SetObstacleVerticalDestination
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

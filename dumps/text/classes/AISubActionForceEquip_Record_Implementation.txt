@@ -1,0 +1,23 @@
+class abstract AISubActionForceEquip_Record_Implementation extends IScriptable
+{
+	static function Activate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceEquip_Record); // AISubActionForceEquip_Record_Implementation::Activate;ScriptExecutionContextAISubActionForceEquip_Record
+	static function ApplyAnimFeature(context : AIbehaviorScriptExecutionContext, itemsToEquip : script_ref:array:NPCItemToEquip, record : whandle:gamedataAISubActionForceEquip_Record); // AISubActionForceEquip_Record_Implementation::ApplyAnimFeature;ScriptExecutionContextscript_ref<array<NPCItemToEquip>>AISubActionForceEquip_Record
+	static function Deactivate(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceEquip_Record, duration : Float, interrupted : Bool); // AISubActionForceEquip_Record_Implementation::Deactivate;ScriptExecutionContextAISubActionForceEquip_RecordFloatBool
+	static function Equip(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceEquip_Record) : Bool; // AISubActionForceEquip_Record_Implementation::Equip;ScriptExecutionContextAISubActionForceEquip_Record
+	static function GetItemID(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceEquip_Record, out itemID : gameItemID) : Bool; // AISubActionForceEquip_Record_Implementation::GetItemID;ScriptExecutionContextAISubActionForceEquip_RecordItemID
+	static function Update(context : AIbehaviorScriptExecutionContext, record : whandle:gamedataAISubActionForceEquip_Record, duration : Float) : AIbehaviorUpdateOutcome; // AISubActionForceEquip_Record_Implementation::Update;ScriptExecutionContextAISubActionForceEquip_RecordFloat
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

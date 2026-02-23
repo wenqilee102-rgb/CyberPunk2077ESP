@@ -1,0 +1,5 @@
+bitfield physicsFractureFieldOptions
+{
+	FFO_OnlyPrefractured = 1 << 0,
+	FFO_DisableReiteration = 1 << 1
+}

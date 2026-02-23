@@ -1,0 +1,17 @@
+import class AIbehaviorRestoreSavedPatrolProgressTaskDefinition extends AIbehaviorTaskDefinition
+{
+	var path : handle:AIArgumentMapping;
+	var savedState : handle:AIArgumentMapping;
+	var patrolProgress : handle:AIArgumentMapping;
+	var destinationPosition : handle:AIArgumentMapping;
+	var destinationTangent : handle:AIArgumentMapping;
+}
+
+import class abstract AIbehaviorTaskDefinition extends ISerializable
+{
+	var ignoreTaskCompletion : Bool;
+}
+
+import class abstract ISerializable
+{
+}

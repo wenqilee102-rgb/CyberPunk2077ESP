@@ -1,0 +1,39 @@
+import class questEquipItemParams extends questAICommandParams
+{
+	var slotId : TweakDBID;
+	var type : questNodeType;
+	var itemId : TweakDBID;
+	var equipDurationOverride : Float;
+	var unequipDurationOverride : Float;
+	var failIfItemNotFound : Bool;
+	var instant : Bool;
+	var equipLastWeapon : Bool;
+	var forceFirstEquip : Bool;
+	var ignoreStateMachine : Bool;
+	var isPlayer : Bool;
+	var equipTypes : gameItemEquipContexts;
+	var unequipTypes : gameItemUnequipContexts;
+	var byItem : Bool;
+}
+
+import class abstract questAICommandParams extends scnAICommandFactory
+{
+}
+
+import class abstract scnAICommandFactory extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

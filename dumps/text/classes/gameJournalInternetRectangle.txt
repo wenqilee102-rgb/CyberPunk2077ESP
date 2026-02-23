@@ -1,0 +1,30 @@
+import class gameJournalInternetRectangle extends gameJournalInternetBase
+{
+}
+
+import class abstract gameJournalInternetBase extends IScriptable
+{
+	var name : CName;
+	var linkAddress : String;
+	var tintColor : Color;
+	var hoverTintColor : Color;
+
+	import function GetColor() : Color; // GetColor
+	import function GetHoverColor() : Color; // GetHoverColor
+	import function GetLinkAddress() : String; // GetLinkAddress
+	import function GetName() : CName; // GetName
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

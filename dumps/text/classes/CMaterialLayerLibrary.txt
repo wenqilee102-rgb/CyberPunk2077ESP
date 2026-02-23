@@ -1,0 +1,18 @@
+import class CMaterialLayerLibrary extends CResource
+{
+	var uvTiling : Float;
+	var mbTiling : Float;
+	var microblendContrast : Float;
+	var paletteColorIndex : Uint32;
+	var layers : array:MaterialLayerDef;
+	var microblends : array:MicroblendDef;
+}
+
+import class abstract CResource extends ISerializable
+{
+	var cookingPlatform : ECookingPlatform;
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,28 @@
+class DamageManager extends IScriptable
+{
+	static function CalculateGlobalModifiers(hitEvent : handle:gameeventsHitEvent); // DamageManager::CalculateGlobalModifiers;gameHitEvent
+	static function CalculateSourceModifiers(hitEvent : handle:gameeventsHitEvent); // DamageManager::CalculateSourceModifiers;gameHitEvent
+	static function CalculateTargetModifiers(hitEvent : handle:gameeventsHitEvent); // DamageManager::CalculateTargetModifiers;gameHitEvent
+	static function CanBlockBullet(hitEvent : handle:gameeventsHitEvent) : Bool; // DamageManager::CanBlockBullet;gameHitEvent
+	static function DealStaminaDamage(hitEvent : handle:gameeventsHitEvent, targetID : gameStatsObjectID, statSystem : handle:gameStatsSystem); // DamageManager::DealStaminaDamage;gameHitEventStatsObjectIDStatsSystem
+	static function GetScriptedPuppetTarget(hitEvent : handle:gameeventsHitEvent) : handle:ScriptedPuppet; // DamageManager::GetScriptedPuppetTarget;gameHitEvent
+	static function IsValidDirectionToDefendMeleeAttack(attackerForward : Vector4, defenderForward : Vector4, optional kerenzikov : Bool) : Bool; // DamageManager::IsValidDirectionToDefendMeleeAttack;Vector4Vector4Bool
+	static function ModifyHitData(hitEvent : handle:gameeventsHitEvent); // DamageManager::ModifyHitData;gameHitEvent
+	static function PostProcess(hitEvent : handle:gameeventsHitEvent); // DamageManager::PostProcess;gameHitEvent
+	static function ProcessDefensiveState(hitEvent : handle:gameeventsHitEvent); // DamageManager::ProcessDefensiveState;gameHitEvent
+	static function SendNameEventToPSM(eventName : CName, hitEvent : handle:gameeventsHitEvent); // DamageManager::SendNameEventToPSM;CNamegameHitEvent
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

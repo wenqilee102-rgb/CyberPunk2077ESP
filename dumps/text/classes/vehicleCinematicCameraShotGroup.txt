@@ -1,0 +1,28 @@
+import class vehicleCinematicCameraShotGroup extends IScriptable
+{
+	var name : String;
+	var conditions : array:handle:vehicleCinematicCameraShotStartCondition;
+	var shots : array:vehicleCinematicCameraShot;
+	public    var enabled : Bool;
+
+	import function GetCondition(index : Int32) : handle:vehicleCinematicCameraShotStartCondition; // GetCondition
+	import function GetConditionCount() : Int32; // GetConditionCount
+	import function GetShot(index : Int32) : handle:vehicleCinematicCameraShot; // GetShot
+	import function GetShotCount() : Int32; // GetShotCount
+
+	function CanBeSelected(context : vehicleCinematicCameraShotUpdateContext) : Bool; // CanBeSelected;vehicleCinematicCameraShotUpdateContext
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

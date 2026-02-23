@@ -1,0 +1,22 @@
+import class audioDefaultMixingSignposts extends audioAudioMetadata
+{
+	var endOfCombat : CName;
+	var inCombat : CName;
+	var inStealth : CName;
+	var aiAlerted : CName;
+	var sceneBootstrapSignpost : CName;
+	var reservedSignposts : array:CName;
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

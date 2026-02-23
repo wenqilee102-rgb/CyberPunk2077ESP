@@ -1,0 +1,8 @@
+struct vehicleColorSelectorPointerDef
+{
+	public    var pointerRoot : inkWidgetReference;
+	public    var pointerCircleRadius : Float;
+	public    var selectionMargin : Float;
+	public    var paintOnSelection : Bool;
+	public    var partToPaint : inkWidgetReference;
+}

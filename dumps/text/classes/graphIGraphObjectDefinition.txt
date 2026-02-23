@@ -1,0 +1,7 @@
+import class abstract graphIGraphObjectDefinition extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

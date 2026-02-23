@@ -1,0 +1,12 @@
+import class attrSlider extends attrAttribute
+{
+	var ep : Float;
+}
+
+import class attrAttribute extends ISerializable
+{
+}
+
+import class abstract ISerializable
+{
+}

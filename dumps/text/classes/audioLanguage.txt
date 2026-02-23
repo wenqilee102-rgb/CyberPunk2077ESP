@@ -1,0 +1,6 @@
+import struct audioLanguage
+{
+	var longName : String;
+	var codeName : String;
+	var hasVO : Bool;
+}

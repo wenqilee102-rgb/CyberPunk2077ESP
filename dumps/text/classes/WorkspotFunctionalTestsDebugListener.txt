@@ -1,0 +1,59 @@
+class WorkspotFunctionalTestsDebugListener extends IScriptable
+{
+	private   var entityId : entEntityID;
+	private   var instancesCreated : Int32;
+	private   var instancesRemoved : Int32;
+	private   var workspotsSetup : Int32;
+	private   var workspotsStarted : Int32;
+	private   var workspotsFinished : Int32;
+	private   var animationsStack : array:String;
+	private   var animationsSkippedStack : array:String;
+	private   var animationsMissingStack : array:String;
+	private   var skipOverflows : Int32;
+	private   var teleportRequests : Int32;
+	private   var movementRequests : Int32;
+
+	event OnAnimationChanged(animName : CName, workEntryID : workWorkEntryId) : Bool; // OnAnimationChanged
+	event OnAnimationMissing(animName : CName, workEntryID : workWorkEntryId) : Bool; // OnAnimationMissing
+	event OnAnimationSkipped(animName : CName, workEntryID : workWorkEntryId) : Bool; // OnAnimationSkipped
+	event OnInstanceCreated() : Bool; // OnInstanceCreated
+	event OnInstanceRemoved() : Bool; // OnInstanceRemoved
+	event OnMovementRequest() : Bool; // OnMovementRequest
+	event OnSkipOverflow() : Bool; // OnSkipOverflow
+	event OnTeleportRequest() : Bool; // OnTeleportRequest
+	event OnWorkspotFinished() : Bool; // OnWorkspotFinished
+	event OnWorkspotSetup(path : String) : Bool; // OnWorkspotSetup
+	event OnWorkspotStarted() : Bool; // OnWorkspotStarted
+
+	function GetAnimationPlayCount(animationName : script_ref:String) : Int32; // GetAnimationPlayCount;script_ref<String>
+	function GetAnimationStack() : array:String; // GetAnimationStack;
+	function GetEntityID() : entEntityID; // GetEntityID;
+	function GetInstancesCreatedCount() : Int32; // GetInstancesCreatedCount;
+	function GetInstancesRemovedCount() : Int32; // GetInstancesRemovedCount;
+	function GetLastMissingAnimation() : String; // GetLastMissingAnimation;
+	function GetLastPlayedAnimation() : String; // GetLastPlayedAnimation;
+	function GetLastSkippedAnimation() : String; // GetLastSkippedAnimation;
+	function GetMissingAnimationStack() : array:String; // GetMissingAnimationStack;
+	function GetMovementRequestsCount() : Int32; // GetMovementRequestsCount;
+	function GetSkipOverflowsCount() : Int32; // GetSkipOverflowsCount;
+	function GetSkippedAnimationStack() : array:String; // GetSkippedAnimationStack;
+	function GetTeleportRequestsCount() : Int32; // GetTeleportRequestsCount;
+	function GetWorkspotsFinishedCount() : Int32; // GetWorkspotsFinishedCount;
+	function GetWorkspotsSetupCount() : Int32; // GetWorkspotsSetupCount;
+	function GetWorkspotsStartedCount() : Int32; // GetWorkspotsStartedCount;
+	function SetEntityID(entID : entEntityID); // SetEntityID;EntityID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

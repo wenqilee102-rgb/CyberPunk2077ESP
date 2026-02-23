@@ -1,0 +1,1 @@
+{"a":"ISerializable","b":"animBoneTraceCondition","d":8,"e":[{"a":{"a":4},"b":"boneIndex","c":128},{"a":{"a":1},"b":"traceByRotation","c":128},{"a":{"a":10},"b":"rotationAngleTolerance","c":128},{"a":{"a":1},"b":"traceByTranslation","c":128},{"a":{"a":10},"b":"translationTolerance","c":128}]}

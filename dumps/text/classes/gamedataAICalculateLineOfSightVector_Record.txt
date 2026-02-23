@@ -1,0 +1,35 @@
+import class gamedataAICalculateLineOfSightVector_Record extends gamedataAIActionSubCondition_Record
+{
+	import function EndPosition() : whandle:gamedataAIActionTarget_Record; // EndPosition
+	import function EndPositionHandle() : handle:gamedataAIActionTarget_Record; // EndPositionHandle
+	import function EndPositionOffset() : Vector3; // EndPositionOffset
+	import function IgnoreNonPenetrableObj() : Bool; // IgnoreNonPenetrableObj
+	import function StartPosition() : whandle:gamedataAIActionTarget_Record; // StartPosition
+	import function StartPositionHandle() : handle:gamedataAIActionTarget_Record; // StartPositionHandle
+	import function StartPositionOffset() : Vector3; // StartPositionOffset
+}
+
+import class gamedataAIActionSubCondition_Record extends gamedataTweakDBRecord
+{
+	import function Invert() : Bool; // Invert
+}
+
+import class gamedataTweakDBRecord extends IScriptable
+{
+	import function GetID() : TweakDBID; // GetID
+	import function GetRecordID() : TweakDBID; // GetRecordID
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

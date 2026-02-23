@@ -1,0 +1,5 @@
+import struct worldCollisionGroupEntry
+{
+	var neRef : NodeRef;
+	var Reversed : Bool;
+}

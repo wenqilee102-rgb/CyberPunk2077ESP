@@ -1,0 +1,24 @@
+class VirutalNestedListData extends IScriptable
+{
+	public    var collapsable : Bool;
+	public    var isHeader : Bool;
+	public    var level : Int32;
+	public    var forceToTopWithinLevel : Bool;
+	public    var widgetType : Uint32;
+	public    var data : handle:IScriptable;
+	public    var isSortable : Bool;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

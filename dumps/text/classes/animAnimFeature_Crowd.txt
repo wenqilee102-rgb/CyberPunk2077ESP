@@ -1,0 +1,41 @@
+import class animAnimFeature_Crowd extends animAnimFeature
+{
+	var stopType : Int32;
+	var speedType : Int32;
+	var speedOverrideType : Int32;
+	var bumpDirection : Int32;
+	var threatSource : Int32;
+	var locomotionState : Int32;
+	var bumpSourceLocation : Int32;
+	var lookAtAngle : Float;
+	var fearStage : Int32;
+	var startType : Int32;
+	var startDirectionAngle : Float;
+	var animTime : Float;
+	var isBlocked : Bool;
+	var bumpType : Int32;
+	var fleeType : Int32;
+	var randomVariation : Float;
+	var animScale : Float;
+	var slopeRatio : Float;
+	var distanceToPlayer2D : Float;
+	var angleToPlayer : Float;
+}
+
+import class animAnimFeature extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

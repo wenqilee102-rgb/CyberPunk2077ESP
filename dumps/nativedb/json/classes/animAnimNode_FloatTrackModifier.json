@@ -1,0 +1,1 @@
+{"a":"animAnimNode_Base","b":"animAnimNode_FloatTrackModifier","d":8,"e":[{"a":{"b":"animNamedTrackIndex"},"b":"floatTrack","c":128},{"a":{"b":"animFloatTrackOperationType"},"b":"operationType","c":128},{"a":{"b":"animNamedTrackIndex"},"b":"inputFloatTrack","c":128},{"a":{"b":"animPoseLink"},"b":"poseInputNode","c":128},{"a":{"b":"animFloatLink"},"b":"floatInputNode","c":128}]}

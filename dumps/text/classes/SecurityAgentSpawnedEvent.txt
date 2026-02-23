@@ -1,0 +1,26 @@
+class SecurityAgentSpawnedEvent extends redEvent
+{
+	public    var spawnedAgent : DeviceLink;
+	public    var eventType : gameEntitySpawnerEventType;
+	public    var securityAreas : array:handle:SecurityAreaControllerPS;
+
+	static function Construct(agentLink : DeviceLink, type : gameEntitySpawnerEventType, areas : script_ref:array:handle:SecurityAreaControllerPS) : handle:SecurityAgentSpawnedEvent; // SecurityAgentSpawnedEvent::Construct;DeviceLinkgameEntitySpawnerEventTypescript_ref<array<SecurityAreaControllerPS>>
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

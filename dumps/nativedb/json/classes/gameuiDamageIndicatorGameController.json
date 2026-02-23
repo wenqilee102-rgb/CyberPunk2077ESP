@@ -1,0 +1,1 @@
+{"a":"gameuiHUDGameController","b":"gameuiDamageIndicatorGameController","c":"DamageIndicatorGameController","d":8,"e":[{"a":{"a":3},"b":"maxVisibleParts","c":128}],"f":[{"a":"ShouldShowDamage;gameDamageReceivedEvent","b":"ShouldShowDamage","c":{"a":1},"d":49,"e":[{"a":{"a":26,"c":{"b":"gameeventsDamageReceivedEvent"}},"b":"evt","c":0}]}]}

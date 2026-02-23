@@ -1,0 +1,1 @@
+{"a":"questIItemManagerNodeType","b":"questUseWeapon_NodeType","d":8,"e":[{"a":{"b":"questWeaponUsageType"},"b":"usageType","c":128},{"a":{"a":26,"c":{"b":"questUniversalRef"}},"b":"objectRef","c":128},{"a":{"a":14},"b":"overrideShootEffect","c":128},{"a":{"a":14},"b":"weaponSlotName","c":128},{"a":{"a":15},"b":"attackTDBID","c":128}]}

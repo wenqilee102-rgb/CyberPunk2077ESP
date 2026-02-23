@@ -1,0 +1,29 @@
+class SysDebuggerEvent extends gameTickableEvent
+{
+}
+
+import class gameTickableEvent extends redEvent
+{
+	var state : gameTickableEventState;
+
+	import function GetProgress() : Float; // GetProgress
+	import function GetState() : gameTickableEventState; // GetState
+}
+
+import class redEvent extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

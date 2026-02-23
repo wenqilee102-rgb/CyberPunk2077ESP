@@ -1,0 +1,7 @@
+import struct AITargetNodeInstance extends AIITarget
+{
+}
+
+import struct abstract AIITarget
+{
+}

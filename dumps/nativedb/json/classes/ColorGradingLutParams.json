@@ -1,0 +1,1 @@
+{"b":"ColorGradingLutParams","d":8,"g":true,"e":[{"a":{"a":29,"c":{"b":"CBitmapTexture"}},"b":"LUT","c":128},{"a":{"b":"EColorMappingFunction"},"b":"inputMapping","c":128},{"a":{"b":"EColorMappingFunction"},"b":"outputMapping","c":128}]}

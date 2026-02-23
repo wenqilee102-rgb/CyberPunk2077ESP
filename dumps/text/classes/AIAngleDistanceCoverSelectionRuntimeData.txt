@@ -1,0 +1,7 @@
+import struct AIAngleDistanceCoverSelectionRuntimeData extends AICoverSelectionRuntimeData
+{
+}
+
+import struct abstract AICoverSelectionRuntimeData
+{
+}

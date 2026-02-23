@@ -1,0 +1,30 @@
+class PlaySoundEvent extends MusicSettings
+{
+	protected var soundEvent : CName;
+
+	function GetSoundName() : CName; // GetSoundName;
+	function SetSoundName(soundname : CName); // SetSoundName;CName
+}
+
+class abstract MusicSettings extends IScriptable
+{
+	protected var statusEffect : ESoundStatusEffects;
+
+	function GetSoundName() : CName; // GetSoundName;
+	function GetStatusEffect() : ESoundStatusEffects; // GetStatusEffect;
+	function SetStatusEffect(effect : ESoundStatusEffects); // SetStatusEffect;ESoundStatusEffects
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

@@ -1,0 +1,9 @@
+import struct SplinePoint
+{
+	var position : Vector3;
+	var rotation : Quaternion;
+	var tangents : [2]Vector3;
+	var continuousTangents : Bool;
+	var automaticTangents : Bool;
+	var id : Uint32;
+}

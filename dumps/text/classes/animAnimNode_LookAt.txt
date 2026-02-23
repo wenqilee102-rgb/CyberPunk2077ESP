@@ -1,0 +1,24 @@
+import class animAnimNode_LookAt extends animAnimNode_OnePoseInput
+{
+	var transform : animTransformIndex;
+	var forwardAxis : animAxis;
+	var useLimits : Bool;
+	var limitAxis : animAxis;
+	var limitAngle : Float;
+	var targetNode : animVectorLink;
+	var weightNode : animFloatLink;
+}
+
+import class abstract animAnimNode_OnePoseInput extends animAnimNode_Base
+{
+	var inputLink : animPoseLink;
+}
+
+import class abstract animAnimNode_Base extends ISerializable
+{
+	var id : Uint32;
+}
+
+import class abstract ISerializable
+{
+}

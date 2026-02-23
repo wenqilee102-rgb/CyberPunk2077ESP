@@ -1,0 +1,6 @@
+import struct MorphTargetsTextureBlendInfo
+{
+	var blend : Bool;
+	var diffSize : MorphTargetsDiffTextureSize;
+	var name : CName;
+}

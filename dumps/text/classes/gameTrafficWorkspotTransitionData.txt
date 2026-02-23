@@ -1,0 +1,11 @@
+import class gameTrafficWorkspotTransitionData extends ISerializable
+{
+	var workspotData : handle:gameSetupWorkspotActionEvent;
+	var returnPosition : handle:worldTrafficGlobalPathPosition;
+	var workspotExitTangent : Vector3;
+	var trafficLaneReturnTangent : Vector3;
+}
+
+import class abstract ISerializable
+{
+}

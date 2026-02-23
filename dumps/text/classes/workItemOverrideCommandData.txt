@@ -1,0 +1,7 @@
+import struct workItemOverrideCommandData extends workIWorkspotCommandData
+{
+}
+
+import struct abstract workIWorkspotCommandData
+{
+}

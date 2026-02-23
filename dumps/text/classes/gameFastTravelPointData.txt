@@ -1,0 +1,38 @@
+import class gameFastTravelPointData extends IScriptable
+{
+	var pointRecord : TweakDBID;
+	var markerRef : NodeRef;
+	var requesterID : entEntityID;
+	var isEP1 : Bool;
+	public    var mappinID : gameNewMappinID;
+
+	import function IsResolvable() : Bool; // IsResolvable
+	import function IsValid() : Bool; // IsValid
+
+	function GetDistrictDisplayName() : String; // GetDistrictDisplayName;
+	function GetMarkerRef() : NodeRef; // GetMarkerRef;
+	function GetPointDisplayDescription() : String; // GetPointDisplayDescription;
+	function GetPointDisplayName() : String; // GetPointDisplayName;
+	function GetPointRecord() : TweakDBID; // GetPointRecord;
+	function GetRequesterID() : entEntityID; // GetRequesterID;
+	function HasReqesterID() : Bool; // HasReqesterID;
+	function IsAnEP1Node() : Bool; // IsAnEP1Node;
+	function IsSubway() : Bool; // IsSubway;
+	function SetRequesterID(id : entEntityID); // SetRequesterID;EntityID
+	function ShouldShowMappinInWorld() : Bool; // ShouldShowMappinInWorld;
+	function ShouldShowMappinOnWorldMap() : Bool; // ShouldShowMappinOnWorldMap;
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}

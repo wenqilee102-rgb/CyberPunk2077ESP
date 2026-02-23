@@ -1,0 +1,803 @@
+import static function AIInstantiateObject(); // AIInstantiateObject
+import static function AIInstantiatePrototype(); // AIInstantiatePrototype
+import static function AIReleaseObject(); // AIReleaseObject
+import static function AT_AddATID(widget : whandle:inkWidget, atid : script_ref:String); // AT_AddATID
+import static function Abs(a : Int32) : Int32; // Abs
+import static function AbsF(a : Float) : Float; // AbsF
+import static function AcosF(a : Float) : Float; // AcosF
+import static function ActivateTickForTransformAnimator(entityID : entEntityID, componentName : CName, activate : Bool); // ActivateTickForTransformAnimator
+import static function AngleApproach(target : Float, cur : Float, step : Float) : Float; // AngleApproach
+import static function AngleDistance(target : Float, current : Float) : Float; // AngleDistance
+import static function AngleNormalize(a : Float) : Float; // AngleNormalize
+import static function AngleNormalize180(a : Float) : Float; // AngleNormalize180
+import static function AreDebugContextsEnabled() : Bool; // AreDebugContextsEnabled
+import static function ArmouryEquipWeapon(itemID : gameItemID, QuickslotID : Int32); // ArmouryEquipWeapon
+import static function ArraySortFloats(); // ArraySortFloats
+import static function ArraySortInts(); // ArraySortInts
+import static function ArraySortStrings(); // ArraySortStrings
+import static function AsinF(a : Float) : Float; // AsinF
+import static function AtanF(a : Float, b : Float) : Float; // AtanF
+import static function BoolToString(value : Bool) : String; // BoolToString
+import static function BuildWidgetPath(names : array:CName) : inkWidgetPath; // BuildWidgetPath
+import static function CalcSeed(object : handle:IScriptable) : Int32; // CalcSeed
+import static function Cast;BlackboardID_Bool;BlackboardID(id : gamebbScriptID_Bool) : gamebbScriptID; // Cast;BlackboardID_Bool;BlackboardID
+import static function Cast;BlackboardID_Entity;BlackboardID(id : gamebbScriptID_EntityPtr) : gamebbScriptID; // Cast;BlackboardID_Entity;BlackboardID
+import static function Cast;BlackboardID_EntityID;BlackboardID(id : gamebbScriptID_EntityID) : gamebbScriptID; // Cast;BlackboardID_EntityID;BlackboardID
+import static function Cast;BlackboardID_EulerAngles;BlackboardID(id : gamebbScriptID_EulerAngles) : gamebbScriptID; // Cast;BlackboardID_EulerAngles;BlackboardID
+import static function Cast;BlackboardID_Float;BlackboardID(id : gamebbScriptID_Float) : gamebbScriptID; // Cast;BlackboardID_Float;BlackboardID
+import static function Cast;BlackboardID_Int;BlackboardID(id : gamebbScriptID_Int32) : gamebbScriptID; // Cast;BlackboardID_Int;BlackboardID
+import static function Cast;BlackboardID_Name;BlackboardID(id : gamebbScriptID_CName) : gamebbScriptID; // Cast;BlackboardID_Name;BlackboardID
+import static function Cast;BlackboardID_Quat;BlackboardID(id : gamebbScriptID_Quaternion) : gamebbScriptID; // Cast;BlackboardID_Quat;BlackboardID
+import static function Cast;BlackboardID_String;BlackboardID(id : gamebbScriptID_String) : gamebbScriptID; // Cast;BlackboardID_String;BlackboardID
+import static function Cast;BlackboardID_Uint;BlackboardID(id : gamebbScriptID_Uint32) : gamebbScriptID; // Cast;BlackboardID_Uint;BlackboardID
+import static function Cast;BlackboardID_Variant;BlackboardID(id : gamebbScriptID_Variant) : gamebbScriptID; // Cast;BlackboardID_Variant;BlackboardID
+import static function Cast;BlackboardID_Vector2;BlackboardID(id : gamebbScriptID_Vector2) : gamebbScriptID; // Cast;BlackboardID_Vector2;BlackboardID
+import static function Cast;BlackboardID_Vector4;BlackboardID(id : gamebbScriptID_Vector4) : gamebbScriptID; // Cast;BlackboardID_Vector4;BlackboardID
+import static function Cast;Double;Bool(a : Double) : Bool; // Cast;Double;Bool
+import static function Cast;Double;Float(a : Double) : Float; // Cast;Double;Float
+import static function Cast;Double;Int16(a : Double) : Int16; // Cast;Double;Int16
+import static function Cast;Double;Int32(a : Double) : Int32; // Cast;Double;Int32
+import static function Cast;Double;Int64(a : Double) : Int64; // Cast;Double;Int64
+import static function Cast;Double;Int8(a : Double) : Int8; // Cast;Double;Int8
+import static function Cast;Double;Uint16(a : Double) : Uint16; // Cast;Double;Uint16
+import static function Cast;Double;Uint32(a : Double) : Uint32; // Cast;Double;Uint32
+import static function Cast;Double;Uint64(a : Double) : Uint64; // Cast;Double;Uint64
+import static function Cast;Double;Uint8(a : Double) : Uint8; // Cast;Double;Uint8
+import static function Cast;EntityID;PersistentID(a : entEntityID) : gamePersistentID; // Cast;EntityID;PersistentID
+import static function Cast;EntityID;StatsObjectID(a : entEntityID) : gameStatsObjectID; // Cast;EntityID;StatsObjectID
+import static function Cast;Float;Bool(a : Float) : Bool; // Cast;Float;Bool
+import static function Cast;Float;Double(a : Float) : Double; // Cast;Float;Double
+import static function Cast;Float;Int16(a : Float) : Int16; // Cast;Float;Int16
+import static function Cast;Float;Int32(a : Float) : Int32; // Cast;Float;Int32
+import static function Cast;Float;Int64(a : Float) : Int64; // Cast;Float;Int64
+import static function Cast;Float;Int8(a : Float) : Int8; // Cast;Float;Int8
+import static function Cast;Float;Uint16(a : Float) : Uint16; // Cast;Float;Uint16
+import static function Cast;Float;Uint32(a : Float) : Uint32; // Cast;Float;Uint32
+import static function Cast;Float;Uint64(a : Float) : Uint64; // Cast;Float;Uint64
+import static function Cast;Float;Uint8(a : Float) : Uint8; // Cast;Float;Uint8
+import static function Cast;GlobalNodeID;EntityID(a : worldGlobalNodeID) : entEntityID; // Cast;GlobalNodeID;EntityID
+import static function Cast;GlobalNodeID;GlobalNodeRef(a : worldGlobalNodeID) : worldGlobalNodeRef; // Cast;GlobalNodeID;GlobalNodeRef
+import static function Cast;GlobalNodeID;PersistentID(a : worldGlobalNodeID) : gamePersistentID; // Cast;GlobalNodeID;PersistentID
+import static function Cast;GlobalNodeRef;EntityID(a : worldGlobalNodeRef) : entEntityID; // Cast;GlobalNodeRef;EntityID
+import static function Cast;GlobalNodeRef;PersistentID(a : worldGlobalNodeRef) : gamePersistentID; // Cast;GlobalNodeRef;PersistentID
+import static function Cast;Int16;Bool(a : Int16) : Bool; // Cast;Int16;Bool
+import static function Cast;Int16;Double(a : Int16) : Double; // Cast;Int16;Double
+import static function Cast;Int16;Float(a : Int16) : Float; // Cast;Int16;Float
+import static function Cast;Int16;Int32(a : Int16) : Int32; // Cast;Int16;Int32
+import static function Cast;Int16;Int64(a : Int16) : Int64; // Cast;Int16;Int64
+import static function Cast;Int16;Int8(a : Int16) : Int8; // Cast;Int16;Int8
+import static function Cast;Int16;Uint16(a : Int16) : Uint16; // Cast;Int16;Uint16
+import static function Cast;Int16;Uint32(a : Int16) : Uint32; // Cast;Int16;Uint32
+import static function Cast;Int16;Uint64(a : Int16) : Uint64; // Cast;Int16;Uint64
+import static function Cast;Int16;Uint8(a : Int16) : Uint8; // Cast;Int16;Uint8
+import static function Cast;Int32;Bool(a : Int32) : Bool; // Cast;Int32;Bool
+import static function Cast;Int32;Double(a : Int32) : Double; // Cast;Int32;Double
+import static function Cast;Int32;Float(a : Int32) : Float; // Cast;Int32;Float
+import static function Cast;Int32;Int16(a : Int32) : Int16; // Cast;Int32;Int16
+import static function Cast;Int32;Int64(a : Int32) : Int64; // Cast;Int32;Int64
+import static function Cast;Int32;Int8(a : Int32) : Int8; // Cast;Int32;Int8
+import static function Cast;Int32;Uint16(a : Int32) : Uint16; // Cast;Int32;Uint16
+import static function Cast;Int32;Uint32(a : Int32) : Uint32; // Cast;Int32;Uint32
+import static function Cast;Int32;Uint64(a : Int32) : Uint64; // Cast;Int32;Uint64
+import static function Cast;Int32;Uint8(a : Int32) : Uint8; // Cast;Int32;Uint8
+import static function Cast;Int64;Bool(a : Int64) : Bool; // Cast;Int64;Bool
+import static function Cast;Int64;Double(a : Int64) : Double; // Cast;Int64;Double
+import static function Cast;Int64;Float(a : Int64) : Float; // Cast;Int64;Float
+import static function Cast;Int64;Int16(a : Int64) : Int16; // Cast;Int64;Int16
+import static function Cast;Int64;Int32(a : Int64) : Int32; // Cast;Int64;Int32
+import static function Cast;Int64;Int8(a : Int64) : Int8; // Cast;Int64;Int8
+import static function Cast;Int64;Uint16(a : Int64) : Uint16; // Cast;Int64;Uint16
+import static function Cast;Int64;Uint32(a : Int64) : Uint32; // Cast;Int64;Uint32
+import static function Cast;Int64;Uint64(a : Int64) : Uint64; // Cast;Int64;Uint64
+import static function Cast;Int64;Uint8(a : Int64) : Uint8; // Cast;Int64;Uint8
+import static function Cast;Int8;Bool(a : Int8) : Bool; // Cast;Int8;Bool
+import static function Cast;Int8;Double(a : Int8) : Double; // Cast;Int8;Double
+import static function Cast;Int8;Float(a : Int8) : Float; // Cast;Int8;Float
+import static function Cast;Int8;Int16(a : Int8) : Int16; // Cast;Int8;Int16
+import static function Cast;Int8;Int32(a : Int8) : Int32; // Cast;Int8;Int32
+import static function Cast;Int8;Int64(a : Int8) : Int64; // Cast;Int8;Int64
+import static function Cast;Int8;Uint16(a : Int8) : Uint16; // Cast;Int8;Uint16
+import static function Cast;Int8;Uint32(a : Int8) : Uint32; // Cast;Int8;Uint32
+import static function Cast;Int8;Uint64(a : Int8) : Uint64; // Cast;Int8;Uint64
+import static function Cast;Int8;Uint8(a : Int8) : Uint8; // Cast;Int8;Uint8
+import static function Cast;ItemID;StatsObjectID(a : gameItemID) : gameStatsObjectID; // Cast;ItemID;StatsObjectID
+import static function Cast;TweakDBID;GarageVehicleID(a : TweakDBID) : vehicleGarageVehicleID; // Cast;TweakDBID;GarageVehicleID
+import static function Cast;Uint16;Bool(a : Uint16) : Bool; // Cast;Uint16;Bool
+import static function Cast;Uint16;Double(a : Uint16) : Double; // Cast;Uint16;Double
+import static function Cast;Uint16;Float(a : Uint16) : Float; // Cast;Uint16;Float
+import static function Cast;Uint16;Int16(a : Uint16) : Int16; // Cast;Uint16;Int16
+import static function Cast;Uint16;Int32(a : Uint16) : Int32; // Cast;Uint16;Int32
+import static function Cast;Uint16;Int64(a : Uint16) : Int64; // Cast;Uint16;Int64
+import static function Cast;Uint16;Int8(a : Uint16) : Int8; // Cast;Uint16;Int8
+import static function Cast;Uint16;Uint32(a : Uint16) : Uint32; // Cast;Uint16;Uint32
+import static function Cast;Uint16;Uint64(a : Uint16) : Uint64; // Cast;Uint16;Uint64
+import static function Cast;Uint16;Uint8(a : Uint16) : Uint8; // Cast;Uint16;Uint8
+import static function Cast;Uint32;Bool(a : Uint32) : Bool; // Cast;Uint32;Bool
+import static function Cast;Uint32;Double(a : Uint32) : Double; // Cast;Uint32;Double
+import static function Cast;Uint32;Float(a : Uint32) : Float; // Cast;Uint32;Float
+import static function Cast;Uint32;Int16(a : Uint32) : Int16; // Cast;Uint32;Int16
+import static function Cast;Uint32;Int32(a : Uint32) : Int32; // Cast;Uint32;Int32
+import static function Cast;Uint32;Int64(a : Uint32) : Int64; // Cast;Uint32;Int64
+import static function Cast;Uint32;Int8(a : Uint32) : Int8; // Cast;Uint32;Int8
+import static function Cast;Uint32;Uint16(a : Uint32) : Uint16; // Cast;Uint32;Uint16
+import static function Cast;Uint32;Uint64(a : Uint32) : Uint64; // Cast;Uint32;Uint64
+import static function Cast;Uint32;Uint8(a : Uint32) : Uint8; // Cast;Uint32;Uint8
+import static function Cast;Uint64;Bool(a : Uint64) : Bool; // Cast;Uint64;Bool
+import static function Cast;Uint64;Double(a : Uint64) : Double; // Cast;Uint64;Double
+import static function Cast;Uint64;Float(a : Uint64) : Float; // Cast;Uint64;Float
+import static function Cast;Uint64;Int16(a : Uint64) : Int16; // Cast;Uint64;Int16
+import static function Cast;Uint64;Int32(a : Uint64) : Int32; // Cast;Uint64;Int32
+import static function Cast;Uint64;Int64(a : Uint64) : Int64; // Cast;Uint64;Int64
+import static function Cast;Uint64;Int8(a : Uint64) : Int8; // Cast;Uint64;Int8
+import static function Cast;Uint64;Uint16(a : Uint64) : Uint16; // Cast;Uint64;Uint16
+import static function Cast;Uint64;Uint32(a : Uint64) : Uint32; // Cast;Uint64;Uint32
+import static function Cast;Uint64;Uint8(a : Uint64) : Uint8; // Cast;Uint64;Uint8
+import static function Cast;Uint8;Bool(a : Uint8) : Bool; // Cast;Uint8;Bool
+import static function Cast;Uint8;Double(a : Uint8) : Double; // Cast;Uint8;Double
+import static function Cast;Uint8;Float(a : Uint8) : Float; // Cast;Uint8;Float
+import static function Cast;Uint8;Int16(a : Uint8) : Int16; // Cast;Uint8;Int16
+import static function Cast;Uint8;Int32(a : Uint8) : Int32; // Cast;Uint8;Int32
+import static function Cast;Uint8;Int64(a : Uint8) : Int64; // Cast;Uint8;Int64
+import static function Cast;Uint8;Int8(a : Uint8) : Int8; // Cast;Uint8;Int8
+import static function Cast;Uint8;Uint16(a : Uint8) : Uint16; // Cast;Uint8;Uint16
+import static function Cast;Uint8;Uint32(a : Uint8) : Uint32; // Cast;Uint8;Uint32
+import static function Cast;Uint8;Uint64(a : Uint8) : Uint64; // Cast;Uint8;Uint64
+import static function Cast;Vector3;Vector4(a : Vector3) : Vector4; // Cast;Vector3;Vector4
+import static function Cast;Vector4;Vector3(a : Vector4) : Vector3; // Cast;Vector4;Vector3
+import static function CeilF(a : Float) : Int32; // CeilF
+import static function Clamp(v : Int32, min : Int32, max : Int32) : Int32; // Clamp
+import static function ClampF(v : Float, min : Float, max : Float) : Float; // ClampF
+import static function ColorToHexString(value : script_ref:Color) : String; // ColorToHexString
+import static function CompareArrayNameContents(arr1 : array:CName, arr2 : array:CName) : Bool; // CompareArrayNameContents
+import static function CosF(a : Float) : Float; // CosF
+import static function CreateEntityReference(nodeRefString : script_ref:String, communityEntryNames : array:CName) : gameEntityReference; // CreateEntityReference
+import static function CreatePersistentID(entityID : entEntityID, optional componentName : CName) : gamePersistentID; // CreatePersistentID
+import static function DebugBreak(); // DebugBreak
+import static function Deg2Rad(deg : Float) : Float; // Deg2Rad
+import static function DumpClassHierarchy(); // DumpClassHierarchy
+import static function EnsureFailure(message : script_ref:String) : Bool; // EnsureFailure
+import static function EnumGetMax(type : CName) : Int64; // EnumGetMax
+import static function EnumGetMin(type : CName) : Int64; // EnumGetMin
+import static function EnumValueFromName(enumName : CName, enumValue : CName) : Int64; // EnumValueFromName
+import static function EnumValueFromString(enumStr : script_ref:String, enumValue : script_ref:String) : Int64; // EnumValueFromString
+import static function EnumValueToName(enumName : CName, enumValue : Int64) : CName; // EnumValueToName
+import static function EnumValueToString(enumStr : script_ref:String, enumValue : Int64) : String; // EnumValueToString
+import static function EquipPickableItemOnClient(itemID : gameItemID, quickSlotID : Int32); // EquipPickableItemOnClient
+import static function ExpF(a : Float) : Float; // ExpF
+import static function FTLog(value : script_ref:String); // FTLog
+import static function FTLogError(value : script_ref:String); // FTLogError
+import static function FTLogWarning(value : script_ref:String); // FTLogWarning
+import static function FloatToString(value : Float) : String; // FloatToString
+import static function FloatToStringPrec(value : Float, precision : Int32) : String; // FloatToStringPrec
+import static function FloorF(a : Float) : Int32; // FloorF
+import static function GOGRewardSystemErrorToDisplayString(error : gameOnlineSystemErrors) : String; // GOGRewardSystemErrorToDisplayString
+import static function GameTimeIntervalContainsTime(); // GameTimeIntervalContainsTime
+import static function GetAllBlackboardDefs() : handle:gamebbAllScriptDefinitions; // GetAllBlackboardDefs
+import static function GetFixedEntityIdsFromEntityReference(puppetRef : gameEntityReference, gameInstance : ScriptGameInstance, out outEntityIds : array:entEntityID); // GetFixedEntityIdsFromEntityReference
+import static function GetFixedEntityIdsFromSpawnerEntityID(entityID : entEntityID, communityEntryNames : array:CName, gameInstance : ScriptGameInstance, out outEntityIds : array:entEntityID); // GetFixedEntityIdsFromSpawnerEntityID
+import static function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+import static function GetGameObjectsFromSpawnerEntityID(entityID : entEntityID, communityEntryNames : array:CName, gameInstance : ScriptGameInstance, out outGameObjects : array:handle:gameObject); // GetGameObjectsFromSpawnerEntityID
+import static function GetLocalizedItemNameByCName(hashKey : CName) : String; // GetLocalizedItemNameByCName
+import static function GetLocalizedItemNameByString(hashKey : CName) : String; // GetLocalizedItemNameByString
+import static function GetLocalizedText(textKey : script_ref:String) : String; // GetLocalizedText
+import static function GetLocalizedTextByKey(hashKey : CName) : String; // GetLocalizedTextByKey
+import static function GetLocalizedTextGanderDepened(textKey : script_ref:String, variantIsFemale : Bool) : String; // GetLocalizedTextGanderDepened
+import static function GetLocalizedTextGanderDepenedByKey(hashKey : CName, variantIsFemale : Bool) : String; // GetLocalizedTextGanderDepenedByKey
+import static function GetLookAtLimitDegreesValue(limitType : animLookAtLimitDegreesType) : Float; // GetLookAtLimitDegreesValue
+import static function GetLookAtLimitDistanceValue(limitType : animLookAtLimitDistanceType) : Float; // GetLookAtLimitDistanceValue
+import static function GetLookAtLimits(softLimitDegreesType : animLookAtLimitDegreesType, hardLimitDegreesType : animLookAtLimitDegreesType, hardLimitDistanceType : animLookAtLimitDistanceType, backLimitDegreesType : animLookAtLimitDegreesType) : animLookAtLimits; // GetLookAtLimits
+import static function GetLookAtStatus(status : animLookAtStatus, currentStatus : Float) : Bool; // GetLookAtStatus
+import static function GetLookAtTransitionSpeed(style : animLookAtStyle) : Float; // GetLookAtTransitionSpeed
+import static function GetPlatformShortName() : String; // GetPlatformShortName
+import static function GetQueryMask(); // GetQueryMask
+import static function GetQueryMaskAll(); // GetQueryMaskAll
+import static function GetQueryMaskNONE(); // GetQueryMaskNONE
+import static function GetRadioStationCurrentTrackName(radioReceiverStationName : CName) : CName; // GetRadioStationCurrentTrackName
+import static function GetRadioStationLocalizedName(radioStation : Uint32) : CName; // GetRadioStationLocalizedName
+import static function GetScreenPosition(widget : whandle:inkWidget) : RectF; // GetScreenPosition
+import static function Int8ToInt(); // Int8ToInt
+import static function IntToInt8(); // IntToInt8
+import static function IntToString(value : Int32) : String; // IntToString
+import static function IntToUint64(); // IntToUint64
+import static function IsClient() : Bool; // IsClient
+import static function IsEP1() : Bool; // IsEP1
+import static function IsEntityInInteriorArea(entity : whandle:entEntity) : Bool; // IsEntityInInteriorArea
+import static function IsFinal() : Bool; // IsFinal
+import static function IsHost() : Bool; // IsHost
+import static function IsLanguageVoicePackInstalled(language : CName) : Bool; // IsLanguageVoicePackInstalled
+import static function IsMultiplayer() : Bool; // IsMultiplayer
+import static function IsNameValid(n : CName) : Bool; // IsNameValid
+import static function IsNoInputIconsModeEnabled() : Bool; // IsNoInputIconsModeEnabled
+import static function IsNodeRefDefined(id : NodeRef) : Bool; // IsNodeRefDefined
+import static function IsServer() : Bool; // IsServer
+import static function IsSingleplayer() : Bool; // IsSingleplayer
+import static function IsStringNumber(value : script_ref:String) : Bool; // IsStringNumber
+import static function IsStringValid(n : script_ref:String) : Bool; // IsStringValid
+import static function LerpF(alpha : Float, a : Float, b : Float, optional clamp : Bool) : Float; // LerpF
+import static function LoadResource(); // LoadResource
+import static function LoadResourceAsync(); // LoadResourceAsync
+import static function LocKeyToString(hashKey : CName) : String; // LocKeyToString
+import static function Log(); // Log
+import static function LogChannel(); // LogChannel
+import static function LogChannelError(); // LogChannelError
+import static function LogChannelWarning(); // LogChannelWarning
+import static function LogError(); // LogError
+import static function LogF(a : Float) : Float; // LogF
+import static function LogWarning(); // LogWarning
+import static function MP.AddChat(message : String, senderID : netPeerID); // MP.AddChat
+import static function MP.Deathmatch.DebugMessageKill(killerID : netPeerID, victimID : netPeerID); // MP.Deathmatch.DebugMessageKill
+import static function MP.Deathmatch.DebugMessageNameChanged(oldName : String, newName : String); // MP.Deathmatch.DebugMessageNameChanged
+import static function MP.Heist.DebugMessageNameChanged(oldName : String, newName : String); // MP.Heist.DebugMessageNameChanged
+import static function MP.Heist.MessagePlayerReady(peerID : netPeerID); // MP.Heist.MessagePlayerReady
+import static function MP.Heist.SetPlayerCharacterClass(peerID : netPeerID, characterRecordID : TweakDBID); // MP.Heist.SetPlayerCharacterClass
+import static function MP.SendChat(message : String); // MP.SendChat
+import static function MPChangeMessageBoxValues(data : gamePopupData, settings : gamePopupSettings, visible : Bool); // MPChangeMessageBoxValues
+import static function MPDisplayNarrationEventEntry(text : String, duration : Float, color : Color); // MPDisplayNarrationEventEntry
+import static function MPDisplayOnscreenMessage(duration : Float, message : String, display : Bool); // MPDisplayOnscreenMessage
+import static function MPDisplayWarningMessage(duration : Float, message : String, display : Bool); // MPDisplayWarningMessage
+import static function MPEquipWeapon(itemID : gameItemID, QuickslotID : Int32); // MPEquipWeapon
+import static function MPReplicateComboAttack(position : Vector4, instigator : whandle:gameObject); // MPReplicateComboAttack
+import static function Max(a : Int32, b : Int32) : Int32; // Max
+import static function MaxF(a : Float, b : Float) : Float; // MaxF
+import static function Min(a : Int32, b : Int32) : Int32; // Min
+import static function MinF(a : Float, b : Float) : Float; // MinF
+import static function NameToString(n : CName) : String; // NameToString
+import static function NoTrailZeros(str : script_ref:String) : String; // NoTrailZeros
+import static function OperatorAdd;BoolScript_RefString;String(a : Bool, b : script_ref:String) : String; // OperatorAdd;BoolScript_RefString;String
+import static function OperatorAdd;CNameCName;CName(a : CName, b : CName) : CName; // OperatorAdd;CNameCName;CName
+import static function OperatorAdd;DoubleDouble;Double(a : Double, b : Double) : Double; // OperatorAdd;DoubleDouble;Double
+import static function OperatorAdd;DoubleScript_RefString;String(); // OperatorAdd;DoubleScript_RefString;String
+import static function OperatorAdd;EngineTimeEngineTime;EngineTime(a : EngineTime, b : EngineTime) : EngineTime; // OperatorAdd;EngineTimeEngineTime;EngineTime
+import static function OperatorAdd;EngineTimeFloat;EngineTime(a : EngineTime, b : Float) : EngineTime; // OperatorAdd;EngineTimeFloat;EngineTime
+import static function OperatorAdd;FloatFloat;Float(a : Float, b : Float) : Float; // OperatorAdd;FloatFloat;Float
+import static function OperatorAdd;FloatScript_RefString;String(a : Float, b : script_ref:String) : String; // OperatorAdd;FloatScript_RefString;String
+import static function OperatorAdd;GameTimeGameTime;GameTime(a : GameTime, b : GameTime) : GameTime; // OperatorAdd;GameTimeGameTime;GameTime
+import static function OperatorAdd;GameTimeInt32;GameTime(a : GameTime, b : Int32) : GameTime; // OperatorAdd;GameTimeInt32;GameTime
+import static function OperatorAdd;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorAdd;Int16Int16;Int16
+import static function OperatorAdd;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorAdd;Int32Int32;Int32
+import static function OperatorAdd;Int32Script_RefString;String(a : Int32, b : script_ref:String) : String; // OperatorAdd;Int32Script_RefString;String
+import static function OperatorAdd;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorAdd;Int64Int64;Int64
+import static function OperatorAdd;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorAdd;Int8Int8;Int8
+import static function OperatorAdd;QuaternionQuaternion;Quaternion(a : Quaternion, b : Quaternion) : Quaternion; // OperatorAdd;QuaternionQuaternion;Quaternion
+import static function OperatorAdd;Script_RefStringBool;String(a : script_ref:String, b : Bool) : String; // OperatorAdd;Script_RefStringBool;String
+import static function OperatorAdd;Script_RefStringDouble;String(); // OperatorAdd;Script_RefStringDouble;String
+import static function OperatorAdd;Script_RefStringFloat;String(a : script_ref:String, b : Float) : String; // OperatorAdd;Script_RefStringFloat;String
+import static function OperatorAdd;Script_RefStringInt32;String(a : script_ref:String, b : Int32) : String; // OperatorAdd;Script_RefStringInt32;String
+import static function OperatorAdd;Script_RefStringScript_RefString;String(a : script_ref:String, b : script_ref:String) : String; // OperatorAdd;Script_RefStringScript_RefString;String
+import static function OperatorAdd;Script_RefStringUint32;String(); // OperatorAdd;Script_RefStringUint32;String
+import static function OperatorAdd;TweakDBIDTweakDBID;TweakDBID(a : TweakDBID, b : TweakDBID) : TweakDBID; // OperatorAdd;TweakDBIDTweakDBID;TweakDBID
+import static function OperatorAdd;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorAdd;Uint16Uint16;Uint16
+import static function OperatorAdd;Uint32Script_RefString;String(); // OperatorAdd;Uint32Script_RefString;String
+import static function OperatorAdd;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorAdd;Uint32Uint32;Uint32
+import static function OperatorAdd;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorAdd;Uint64Uint64;Uint64
+import static function OperatorAdd;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorAdd;Uint8Uint8;Uint8
+import static function OperatorAdd;Vector4Float;Vector4(a : Vector4, b : Float) : Vector4; // OperatorAdd;Vector4Float;Vector4
+import static function OperatorAdd;Vector4Vector4;Vector4(a : Vector4, b : Vector4) : Vector4; // OperatorAdd;Vector4Vector4;Vector4
+import static function OperatorAdd;WorldPositionVector4;WorldPosition(a : WorldPosition, b : Vector4) : WorldPosition; // OperatorAdd;WorldPositionVector4;WorldPosition
+import static function OperatorAdd;WorldPositionWorldPosition;WorldPosition(a : WorldPosition, b : WorldPosition) : WorldPosition; // OperatorAdd;WorldPositionWorldPosition;WorldPosition
+import static function OperatorAnd;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorAnd;Int16Int16;Int16
+import static function OperatorAnd;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorAnd;Int32Int32;Int32
+import static function OperatorAnd;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorAnd;Int64Int64;Int64
+import static function OperatorAnd;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorAnd;Int8Int8;Int8
+import static function OperatorAnd;TSFMVTSFMV;TSFMV(a : gametargetingSystemSearchFilterMaskValue, b : gametargetingSystemSearchFilterMaskValue) : gametargetingSystemSearchFilterMaskValue; // OperatorAnd;TSFMVTSFMV;TSFMV
+import static function OperatorAnd;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorAnd;Uint16Uint16;Uint16
+import static function OperatorAnd;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorAnd;Uint32Uint32;Uint32
+import static function OperatorAnd;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorAnd;Uint64Uint64;Uint64
+import static function OperatorAnd;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorAnd;Uint8Uint8;Uint8
+import static function OperatorAssignAdd;OutDamageFloat;Damage(out a : handle:gameDamage, b : Float) : handle:gameDamage; // OperatorAssignAdd;OutDamageFloat;Damage
+import static function OperatorAssignAdd;OutDoubleDouble;Double(out a : Double, b : Double) : Double; // OperatorAssignAdd;OutDoubleDouble;Double
+import static function OperatorAssignAdd;OutEngineTimeEngineTime;EngineTime(out a : EngineTime, b : EngineTime) : EngineTime; // OperatorAssignAdd;OutEngineTimeEngineTime;EngineTime
+import static function OperatorAssignAdd;OutEngineTimeFloat;EngineTime(out a : EngineTime, b : Float) : EngineTime; // OperatorAssignAdd;OutEngineTimeFloat;EngineTime
+import static function OperatorAssignAdd;OutFloatFloat;Float(out a : Float, b : Float) : Float; // OperatorAssignAdd;OutFloatFloat;Float
+import static function OperatorAssignAdd;OutGameTimeGameTime;GameTime(out a : GameTime, b : GameTime) : GameTime; // OperatorAssignAdd;OutGameTimeGameTime;GameTime
+import static function OperatorAssignAdd;OutGameTimeInt32;GameTime(out a : GameTime, b : Int32) : GameTime; // OperatorAssignAdd;OutGameTimeInt32;GameTime
+import static function OperatorAssignAdd;OutInt16Int16;Int16(out a : Int16, b : Int16) : Int16; // OperatorAssignAdd;OutInt16Int16;Int16
+import static function OperatorAssignAdd;OutInt32Int32;Int32(out a : Int32, b : Int32) : Int32; // OperatorAssignAdd;OutInt32Int32;Int32
+import static function OperatorAssignAdd;OutInt64Int64;Int64(out a : Int64, b : Int64) : Int64; // OperatorAssignAdd;OutInt64Int64;Int64
+import static function OperatorAssignAdd;OutInt8Int8;Int8(out a : Int8, b : Int8) : Int8; // OperatorAssignAdd;OutInt8Int8;Int8
+import static function OperatorAssignAdd;OutQuaternionQuaternion;Quaternion(out a : Quaternion, b : Quaternion) : Quaternion; // OperatorAssignAdd;OutQuaternionQuaternion;Quaternion
+import static function OperatorAssignAdd;OutTweakDBIDTweakDBID;TweakDBID(out a : TweakDBID, b : TweakDBID) : TweakDBID; // OperatorAssignAdd;OutTweakDBIDTweakDBID;TweakDBID
+import static function OperatorAssignAdd;OutUint16Uint16;Uint16(out a : Uint16, b : Uint16) : Uint16; // OperatorAssignAdd;OutUint16Uint16;Uint16
+import static function OperatorAssignAdd;OutUint32Uint32;Uint32(out a : Uint32, b : Uint32) : Uint32; // OperatorAssignAdd;OutUint32Uint32;Uint32
+import static function OperatorAssignAdd;OutUint64Uint64;Uint64(out a : Uint64, b : Uint64) : Uint64; // OperatorAssignAdd;OutUint64Uint64;Uint64
+import static function OperatorAssignAdd;OutUint8Uint8;Uint8(out a : Uint8, b : Uint8) : Uint8; // OperatorAssignAdd;OutUint8Uint8;Uint8
+import static function OperatorAssignAdd;OutVector4Float;Vector4(out a : Vector4, b : Float) : Vector4; // OperatorAssignAdd;OutVector4Float;Vector4
+import static function OperatorAssignAdd;OutVector4Vector4;Vector4(out a : Vector4, b : Vector4) : Vector4; // OperatorAssignAdd;OutVector4Vector4;Vector4
+import static function OperatorAssignAdd;OutWorldPositionVector4;WorldPosition(out a : WorldPosition, b : Vector4) : WorldPosition; // OperatorAssignAdd;OutWorldPositionVector4;WorldPosition
+import static function OperatorAssignAdd;OutWorldPositionWorldPosition;WorldPosition(out a : WorldPosition, b : WorldPosition) : WorldPosition; // OperatorAssignAdd;OutWorldPositionWorldPosition;WorldPosition
+import static function OperatorAssignAdd;Script_RefStringScript_RefString;String(a : script_ref:String, b : script_ref:String) : String; // OperatorAssignAdd;Script_RefStringScript_RefString;String
+import static function OperatorAssignAnd;OutInt16Int16;Int16(out a : Int16, b : Int16) : Int16; // OperatorAssignAnd;OutInt16Int16;Int16
+import static function OperatorAssignAnd;OutInt32Int32;Int32(out a : Int32, b : Int32) : Int32; // OperatorAssignAnd;OutInt32Int32;Int32
+import static function OperatorAssignAnd;OutInt64Int64;Int64(out a : Int64, b : Int64) : Int64; // OperatorAssignAnd;OutInt64Int64;Int64
+import static function OperatorAssignAnd;OutInt8Int8;Int8(out a : Int8, b : Int8) : Int8; // OperatorAssignAnd;OutInt8Int8;Int8
+import static function OperatorAssignAnd;OutUint16Uint16;Uint16(out a : Uint16, b : Uint16) : Uint16; // OperatorAssignAnd;OutUint16Uint16;Uint16
+import static function OperatorAssignAnd;OutUint32Uint32;Uint32(out a : Uint32, b : Uint32) : Uint32; // OperatorAssignAnd;OutUint32Uint32;Uint32
+import static function OperatorAssignAnd;OutUint64Uint64;Uint64(out a : Uint64, b : Uint64) : Uint64; // OperatorAssignAnd;OutUint64Uint64;Uint64
+import static function OperatorAssignAnd;OutUint8Uint8;Uint8(out a : Uint8, b : Uint8) : Uint8; // OperatorAssignAnd;OutUint8Uint8;Uint8
+import static function OperatorAssignDivide;OutDoubleDouble;Double(out a : Double, b : Double) : Double; // OperatorAssignDivide;OutDoubleDouble;Double
+import static function OperatorAssignDivide;OutEngineTimeFloat;EngineTime(out a : EngineTime, b : Float) : EngineTime; // OperatorAssignDivide;OutEngineTimeFloat;EngineTime
+import static function OperatorAssignDivide;OutFloatFloat;Float(out a : Float, b : Float) : Float; // OperatorAssignDivide;OutFloatFloat;Float
+import static function OperatorAssignDivide;OutGameTimeFloat;GameTime(out a : GameTime, b : Float) : GameTime; // OperatorAssignDivide;OutGameTimeFloat;GameTime
+import static function OperatorAssignDivide;OutInt16Int16;Int16(out a : Int16, b : Int16) : Int16; // OperatorAssignDivide;OutInt16Int16;Int16
+import static function OperatorAssignDivide;OutInt32Int32;Int32(out a : Int32, b : Int32) : Int32; // OperatorAssignDivide;OutInt32Int32;Int32
+import static function OperatorAssignDivide;OutInt64Int64;Int64(out a : Int64, b : Int64) : Int64; // OperatorAssignDivide;OutInt64Int64;Int64
+import static function OperatorAssignDivide;OutInt8Int8;Int8(out a : Int8, b : Int8) : Int8; // OperatorAssignDivide;OutInt8Int8;Int8
+import static function OperatorAssignDivide;OutQuaternionFloat;Quaternion(out a : Quaternion, b : Float) : Quaternion; // OperatorAssignDivide;OutQuaternionFloat;Quaternion
+import static function OperatorAssignDivide;OutUint16Uint16;Uint16(out a : Uint16, b : Uint16) : Uint16; // OperatorAssignDivide;OutUint16Uint16;Uint16
+import static function OperatorAssignDivide;OutUint32Uint32;Uint32(out a : Uint32, b : Uint32) : Uint32; // OperatorAssignDivide;OutUint32Uint32;Uint32
+import static function OperatorAssignDivide;OutUint64Uint64;Uint64(out a : Uint64, b : Uint64) : Uint64; // OperatorAssignDivide;OutUint64Uint64;Uint64
+import static function OperatorAssignDivide;OutUint8Uint8;Uint8(out a : Uint8, b : Uint8) : Uint8; // OperatorAssignDivide;OutUint8Uint8;Uint8
+import static function OperatorAssignDivide;OutVector4Float;Vector4(out a : Vector4, b : Float) : Vector4; // OperatorAssignDivide;OutVector4Float;Vector4
+import static function OperatorAssignDivide;OutVector4Vector4;Vector4(out a : Vector4, b : Vector4) : Vector4; // OperatorAssignDivide;OutVector4Vector4;Vector4
+import static function OperatorAssignMultiply;OutDamageDamage;Damage(out a : handle:gameDamage, b : handle:gameDamage) : handle:gameDamage; // OperatorAssignMultiply;OutDamageDamage;Damage
+import static function OperatorAssignMultiply;OutDamageFloat;Damage(out a : handle:gameDamage, b : Float) : handle:gameDamage; // OperatorAssignMultiply;OutDamageFloat;Damage
+import static function OperatorAssignMultiply;OutDamagePackFloat;DamagePack(); // OperatorAssignMultiply;OutDamagePackFloat;DamagePack
+import static function OperatorAssignMultiply;OutDoubleDouble;Double(out a : Double, b : Double) : Double; // OperatorAssignMultiply;OutDoubleDouble;Double
+import static function OperatorAssignMultiply;OutEngineTimeFloat;EngineTime(out a : EngineTime, b : Float) : EngineTime; // OperatorAssignMultiply;OutEngineTimeFloat;EngineTime
+import static function OperatorAssignMultiply;OutFloatFloat;Float(out a : Float, b : Float) : Float; // OperatorAssignMultiply;OutFloatFloat;Float
+import static function OperatorAssignMultiply;OutGameTimeFloat;GameTime(out a : GameTime, b : Float) : GameTime; // OperatorAssignMultiply;OutGameTimeFloat;GameTime
+import static function OperatorAssignMultiply;OutInt16Int16;Int16(out a : Int16, b : Int16) : Int16; // OperatorAssignMultiply;OutInt16Int16;Int16
+import static function OperatorAssignMultiply;OutInt32Int32;Int32(out a : Int32, b : Int32) : Int32; // OperatorAssignMultiply;OutInt32Int32;Int32
+import static function OperatorAssignMultiply;OutInt64Int64;Int64(out a : Int64, b : Int64) : Int64; // OperatorAssignMultiply;OutInt64Int64;Int64
+import static function OperatorAssignMultiply;OutInt8Int8;Int8(out a : Int8, b : Int8) : Int8; // OperatorAssignMultiply;OutInt8Int8;Int8
+import static function OperatorAssignMultiply;OutMatrixMatrix;Matrix(out a : Matrix, b : Matrix) : Matrix; // OperatorAssignMultiply;OutMatrixMatrix;Matrix
+import static function OperatorAssignMultiply;OutQuaternionFloat;Quaternion(out a : Quaternion, b : Float) : Quaternion; // OperatorAssignMultiply;OutQuaternionFloat;Quaternion
+import static function OperatorAssignMultiply;OutQuaternionQuaternion;Quaternion(out a : Quaternion, b : Quaternion) : Quaternion; // OperatorAssignMultiply;OutQuaternionQuaternion;Quaternion
+import static function OperatorAssignMultiply;OutUint16Uint16;Uint16(out a : Uint16, b : Uint16) : Uint16; // OperatorAssignMultiply;OutUint16Uint16;Uint16
+import static function OperatorAssignMultiply;OutUint32Uint32;Uint32(out a : Uint32, b : Uint32) : Uint32; // OperatorAssignMultiply;OutUint32Uint32;Uint32
+import static function OperatorAssignMultiply;OutUint64Uint64;Uint64(out a : Uint64, b : Uint64) : Uint64; // OperatorAssignMultiply;OutUint64Uint64;Uint64
+import static function OperatorAssignMultiply;OutUint8Uint8;Uint8(out a : Uint8, b : Uint8) : Uint8; // OperatorAssignMultiply;OutUint8Uint8;Uint8
+import static function OperatorAssignMultiply;OutVector4Float;Vector4(out a : Vector4, b : Float) : Vector4; // OperatorAssignMultiply;OutVector4Float;Vector4
+import static function OperatorAssignMultiply;OutVector4Vector4;Vector4(out a : Vector4, b : Vector4) : Vector4; // OperatorAssignMultiply;OutVector4Vector4;Vector4
+import static function OperatorAssignOr;OutInt16Int16;Int16(out a : Int16, b : Int16) : Int16; // OperatorAssignOr;OutInt16Int16;Int16
+import static function OperatorAssignOr;OutInt32Int32;Int32(out a : Int32, b : Int32) : Int32; // OperatorAssignOr;OutInt32Int32;Int32
+import static function OperatorAssignOr;OutInt64Int64;Int64(out a : Int64, b : Int64) : Int64; // OperatorAssignOr;OutInt64Int64;Int64
+import static function OperatorAssignOr;OutInt8Int8;Int8(out a : Int8, b : Int8) : Int8; // OperatorAssignOr;OutInt8Int8;Int8
+import static function OperatorAssignOr;OutUint16Uint16;Uint16(out a : Uint16, b : Uint16) : Uint16; // OperatorAssignOr;OutUint16Uint16;Uint16
+import static function OperatorAssignOr;OutUint32Uint32;Uint32(out a : Uint32, b : Uint32) : Uint32; // OperatorAssignOr;OutUint32Uint32;Uint32
+import static function OperatorAssignOr;OutUint64Uint64;Uint64(out a : Uint64, b : Uint64) : Uint64; // OperatorAssignOr;OutUint64Uint64;Uint64
+import static function OperatorAssignOr;OutUint8Uint8;Uint8(out a : Uint8, b : Uint8) : Uint8; // OperatorAssignOr;OutUint8Uint8;Uint8
+import static function OperatorAssignSubtract;OutDoubleDouble;Double(out a : Double, b : Double) : Double; // OperatorAssignSubtract;OutDoubleDouble;Double
+import static function OperatorAssignSubtract;OutEngineTimeEngineTime;EngineTime(out a : EngineTime, b : EngineTime) : EngineTime; // OperatorAssignSubtract;OutEngineTimeEngineTime;EngineTime
+import static function OperatorAssignSubtract;OutEngineTimeFloat;EngineTime(out a : EngineTime, b : Float) : EngineTime; // OperatorAssignSubtract;OutEngineTimeFloat;EngineTime
+import static function OperatorAssignSubtract;OutFloatFloat;Float(out a : Float, b : Float) : Float; // OperatorAssignSubtract;OutFloatFloat;Float
+import static function OperatorAssignSubtract;OutGameTimeGameTime;GameTime(out a : GameTime, b : GameTime) : GameTime; // OperatorAssignSubtract;OutGameTimeGameTime;GameTime
+import static function OperatorAssignSubtract;OutGameTimeInt32;GameTime(out a : GameTime, b : Int32) : GameTime; // OperatorAssignSubtract;OutGameTimeInt32;GameTime
+import static function OperatorAssignSubtract;OutInt16Int16;Int16(out a : Int16, b : Int16) : Int16; // OperatorAssignSubtract;OutInt16Int16;Int16
+import static function OperatorAssignSubtract;OutInt32Int32;Int32(out a : Int32, b : Int32) : Int32; // OperatorAssignSubtract;OutInt32Int32;Int32
+import static function OperatorAssignSubtract;OutInt64Int64;Int64(out a : Int64, b : Int64) : Int64; // OperatorAssignSubtract;OutInt64Int64;Int64
+import static function OperatorAssignSubtract;OutInt8Int8;Int8(out a : Int8, b : Int8) : Int8; // OperatorAssignSubtract;OutInt8Int8;Int8
+import static function OperatorAssignSubtract;OutQuaternionQuaternion;Quaternion(out a : Quaternion, b : Quaternion) : Quaternion; // OperatorAssignSubtract;OutQuaternionQuaternion;Quaternion
+import static function OperatorAssignSubtract;OutUint16Uint16;Uint16(out a : Uint16, b : Uint16) : Uint16; // OperatorAssignSubtract;OutUint16Uint16;Uint16
+import static function OperatorAssignSubtract;OutUint32Uint32;Uint32(out a : Uint32, b : Uint32) : Uint32; // OperatorAssignSubtract;OutUint32Uint32;Uint32
+import static function OperatorAssignSubtract;OutUint64Uint64;Uint64(out a : Uint64, b : Uint64) : Uint64; // OperatorAssignSubtract;OutUint64Uint64;Uint64
+import static function OperatorAssignSubtract;OutUint8Uint8;Uint8(out a : Uint8, b : Uint8) : Uint8; // OperatorAssignSubtract;OutUint8Uint8;Uint8
+import static function OperatorAssignSubtract;OutVector4Float;Vector4(out a : Vector4, b : Float) : Vector4; // OperatorAssignSubtract;OutVector4Float;Vector4
+import static function OperatorAssignSubtract;OutVector4Vector4;Vector4(out a : Vector4, b : Vector4) : Vector4; // OperatorAssignSubtract;OutVector4Vector4;Vector4
+import static function OperatorAssignSubtract;OutWorldPositionVector4;WorldPosition(out a : WorldPosition, b : Vector4) : WorldPosition; // OperatorAssignSubtract;OutWorldPositionVector4;WorldPosition
+import static function OperatorAssignSubtract;OutWorldPositionWorldPosition;WorldPosition(out a : WorldPosition, b : WorldPosition) : WorldPosition; // OperatorAssignSubtract;OutWorldPositionWorldPosition;WorldPosition
+import static function OperatorBitNot;Int16;Int16(a : Int16) : Int16; // OperatorBitNot;Int16;Int16
+import static function OperatorBitNot;Int32;Int32(a : Int32) : Int32; // OperatorBitNot;Int32;Int32
+import static function OperatorBitNot;Int64;Int64(a : Int64) : Int64; // OperatorBitNot;Int64;Int64
+import static function OperatorBitNot;Int8;Int8(a : Int8) : Int8; // OperatorBitNot;Int8;Int8
+import static function OperatorBitNot;Uint16;Uint16(a : Uint16) : Uint16; // OperatorBitNot;Uint16;Uint16
+import static function OperatorBitNot;Uint32;Uint32(a : Uint32) : Uint32; // OperatorBitNot;Uint32;Uint32
+import static function OperatorBitNot;Uint64;Uint64(a : Uint64) : Uint64; // OperatorBitNot;Uint64;Uint64
+import static function OperatorBitNot;Uint8;Uint8(a : Uint8) : Uint8; // OperatorBitNot;Uint8;Uint8
+import static function OperatorDivide;DoubleDouble;Double(a : Double, b : Double) : Double; // OperatorDivide;DoubleDouble;Double
+import static function OperatorDivide;EngineTimeFloat;EngineTime(a : EngineTime, b : Float) : EngineTime; // OperatorDivide;EngineTimeFloat;EngineTime
+import static function OperatorDivide;FloatFloat;Float(a : Float, b : Float) : Float; // OperatorDivide;FloatFloat;Float
+import static function OperatorDivide;GameTimeFloat;GameTime(a : GameTime, b : Float) : GameTime; // OperatorDivide;GameTimeFloat;GameTime
+import static function OperatorDivide;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorDivide;Int16Int16;Int16
+import static function OperatorDivide;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorDivide;Int32Int32;Int32
+import static function OperatorDivide;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorDivide;Int64Int64;Int64
+import static function OperatorDivide;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorDivide;Int8Int8;Int8
+import static function OperatorDivide;QuaternionFloat;Quaternion(a : Quaternion, b : Float) : Quaternion; // OperatorDivide;QuaternionFloat;Quaternion
+import static function OperatorDivide;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorDivide;Uint16Uint16;Uint16
+import static function OperatorDivide;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorDivide;Uint32Uint32;Uint32
+import static function OperatorDivide;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorDivide;Uint64Uint64;Uint64
+import static function OperatorDivide;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorDivide;Uint8Uint8;Uint8
+import static function OperatorDivide;Vector4Float;Vector4(a : Vector4, b : Float) : Vector4; // OperatorDivide;Vector4Float;Vector4
+import static function OperatorDivide;Vector4Vector4;Vector4(a : Vector4, b : Vector4) : Vector4; // OperatorDivide;Vector4Vector4;Vector4
+import static function OperatorEqual;DelayIDDelayID;Bool(a : gameDelayID, b : gameDelayID) : Bool; // OperatorEqual;DelayIDDelayID;Bool
+import static function OperatorEqual;DoubleDouble;Bool(a : Double, b : Double) : Bool; // OperatorEqual;DoubleDouble;Bool
+import static function OperatorEqual;EngineTimeEngineTime;Bool(a : EngineTime, b : EngineTime) : Bool; // OperatorEqual;EngineTimeEngineTime;Bool
+import static function OperatorEqual;EntityIDEntityID;Bool(a : entEntityID, b : entEntityID) : Bool; // OperatorEqual;EntityIDEntityID;Bool
+import static function OperatorEqual;FloatFloat;Bool(a : Float, b : Float) : Bool; // OperatorEqual;FloatFloat;Bool
+import static function OperatorEqual;GameTimeGameTime;Bool(a : GameTime, b : GameTime) : Bool; // OperatorEqual;GameTimeGameTime;Bool
+import static function OperatorEqual;IScriptableIScriptable;Bool(a : handle:IScriptable, b : handle:IScriptable) : Bool; // OperatorEqual;IScriptableIScriptable;Bool
+import static function OperatorEqual;Int16Int16;Bool(a : Int16, b : Int16) : Bool; // OperatorEqual;Int16Int16;Bool
+import static function OperatorEqual;Int32Int32;Bool(a : Int32, b : Int32) : Bool; // OperatorEqual;Int32Int32;Bool
+import static function OperatorEqual;Int64Int64;Bool(a : Int64, b : Int64) : Bool; // OperatorEqual;Int64Int64;Bool
+import static function OperatorEqual;Int8Int8;Bool(a : Int8, b : Int8) : Bool; // OperatorEqual;Int8Int8;Bool
+import static function OperatorEqual;ItemIDItemID;Bool(a : gameItemID, b : gameItemID) : Bool; // OperatorEqual;ItemIDItemID;Bool
+import static function OperatorEqual;TweakDBIDTweakDBID;Bool(a : TweakDBID, b : TweakDBID) : Bool; // OperatorEqual;TweakDBIDTweakDBID;Bool
+import static function OperatorEqual;Uint16Uint16;Bool(a : Uint16, b : Uint16) : Bool; // OperatorEqual;Uint16Uint16;Bool
+import static function OperatorEqual;Uint32Uint32;Bool(a : Uint32, b : Uint32) : Bool; // OperatorEqual;Uint32Uint32;Bool
+import static function OperatorEqual;Uint64Uint64;Bool(a : Uint64, b : Uint64) : Bool; // OperatorEqual;Uint64Uint64;Bool
+import static function OperatorEqual;Uint8Uint8;Bool(a : Uint8, b : Uint8) : Bool; // OperatorEqual;Uint8Uint8;Bool
+import static function OperatorGreater;DoubleDouble;Bool(a : Double, b : Double) : Bool; // OperatorGreater;DoubleDouble;Bool
+import static function OperatorGreater;EngineTimeEngineTime;Bool(a : EngineTime, b : EngineTime) : Bool; // OperatorGreater;EngineTimeEngineTime;Bool
+import static function OperatorGreater;EngineTimeFloat;Bool(a : EngineTime, b : Float) : Bool; // OperatorGreater;EngineTimeFloat;Bool
+import static function OperatorGreater;FloatFloat;Bool(a : Float, b : Float) : Bool; // OperatorGreater;FloatFloat;Bool
+import static function OperatorGreater;GameTimeGameTime;Bool(a : GameTime, b : GameTime) : Bool; // OperatorGreater;GameTimeGameTime;Bool
+import static function OperatorGreater;Int16Int16;Bool(a : Int16, b : Int16) : Bool; // OperatorGreater;Int16Int16;Bool
+import static function OperatorGreater;Int32Int32;Bool(a : Int32, b : Int32) : Bool; // OperatorGreater;Int32Int32;Bool
+import static function OperatorGreater;Int64Int64;Bool(a : Int64, b : Int64) : Bool; // OperatorGreater;Int64Int64;Bool
+import static function OperatorGreater;Int8Int8;Bool(a : Int8, b : Int8) : Bool; // OperatorGreater;Int8Int8;Bool
+import static function OperatorGreater;Uint16Uint16;Bool(a : Uint16, b : Uint16) : Bool; // OperatorGreater;Uint16Uint16;Bool
+import static function OperatorGreater;Uint32Uint32;Bool(a : Uint32, b : Uint32) : Bool; // OperatorGreater;Uint32Uint32;Bool
+import static function OperatorGreater;Uint64Uint64;Bool(a : Uint64, b : Uint64) : Bool; // OperatorGreater;Uint64Uint64;Bool
+import static function OperatorGreater;Uint8Uint8;Bool(a : Uint8, b : Uint8) : Bool; // OperatorGreater;Uint8Uint8;Bool
+import static function OperatorGreaterEqual;DoubleDouble;Bool(a : Double, b : Double) : Bool; // OperatorGreaterEqual;DoubleDouble;Bool
+import static function OperatorGreaterEqual;EngineTimeEngineTime;Bool(a : EngineTime, b : EngineTime) : Bool; // OperatorGreaterEqual;EngineTimeEngineTime;Bool
+import static function OperatorGreaterEqual;EngineTimeFloat;Bool(a : EngineTime, b : Float) : Bool; // OperatorGreaterEqual;EngineTimeFloat;Bool
+import static function OperatorGreaterEqual;FloatFloat;Bool(a : Float, b : Float) : Bool; // OperatorGreaterEqual;FloatFloat;Bool
+import static function OperatorGreaterEqual;GameTimeGameTime;Bool(a : GameTime, b : GameTime) : Bool; // OperatorGreaterEqual;GameTimeGameTime;Bool
+import static function OperatorGreaterEqual;Int16Int16;Bool(a : Int16, b : Int16) : Bool; // OperatorGreaterEqual;Int16Int16;Bool
+import static function OperatorGreaterEqual;Int32Int32;Bool(a : Int32, b : Int32) : Bool; // OperatorGreaterEqual;Int32Int32;Bool
+import static function OperatorGreaterEqual;Int64Int64;Bool(a : Int64, b : Int64) : Bool; // OperatorGreaterEqual;Int64Int64;Bool
+import static function OperatorGreaterEqual;Int8Int8;Bool(a : Int8, b : Int8) : Bool; // OperatorGreaterEqual;Int8Int8;Bool
+import static function OperatorGreaterEqual;Uint16Uint16;Bool(a : Uint16, b : Uint16) : Bool; // OperatorGreaterEqual;Uint16Uint16;Bool
+import static function OperatorGreaterEqual;Uint32Uint32;Bool(a : Uint32, b : Uint32) : Bool; // OperatorGreaterEqual;Uint32Uint32;Bool
+import static function OperatorGreaterEqual;Uint64Uint64;Bool(a : Uint64, b : Uint64) : Bool; // OperatorGreaterEqual;Uint64Uint64;Bool
+import static function OperatorGreaterEqual;Uint8Uint8;Bool(a : Uint8, b : Uint8) : Bool; // OperatorGreaterEqual;Uint8Uint8;Bool
+import static function OperatorLess;DoubleDouble;Bool(a : Double, b : Double) : Bool; // OperatorLess;DoubleDouble;Bool
+import static function OperatorLess;EngineTimeEngineTime;Bool(a : EngineTime, b : EngineTime) : Bool; // OperatorLess;EngineTimeEngineTime;Bool
+import static function OperatorLess;EngineTimeFloat;Bool(a : EngineTime, b : Float) : Bool; // OperatorLess;EngineTimeFloat;Bool
+import static function OperatorLess;EntityIDEntityID;Bool(a : entEntityID, b : entEntityID) : Bool; // OperatorLess;EntityIDEntityID;Bool
+import static function OperatorLess;FloatFloat;Bool(a : Float, b : Float) : Bool; // OperatorLess;FloatFloat;Bool
+import static function OperatorLess;GameTimeGameTime;Bool(a : GameTime, b : GameTime) : Bool; // OperatorLess;GameTimeGameTime;Bool
+import static function OperatorLess;Int16Int16;Bool(a : Int16, b : Int16) : Bool; // OperatorLess;Int16Int16;Bool
+import static function OperatorLess;Int32Int32;Bool(a : Int32, b : Int32) : Bool; // OperatorLess;Int32Int32;Bool
+import static function OperatorLess;Int64Int64;Bool(a : Int64, b : Int64) : Bool; // OperatorLess;Int64Int64;Bool
+import static function OperatorLess;Int8Int8;Bool(a : Int8, b : Int8) : Bool; // OperatorLess;Int8Int8;Bool
+import static function OperatorLess;Uint16Uint16;Bool(a : Uint16, b : Uint16) : Bool; // OperatorLess;Uint16Uint16;Bool
+import static function OperatorLess;Uint32Uint32;Bool(a : Uint32, b : Uint32) : Bool; // OperatorLess;Uint32Uint32;Bool
+import static function OperatorLess;Uint64Uint64;Bool(a : Uint64, b : Uint64) : Bool; // OperatorLess;Uint64Uint64;Bool
+import static function OperatorLess;Uint8Uint8;Bool(a : Uint8, b : Uint8) : Bool; // OperatorLess;Uint8Uint8;Bool
+import static function OperatorLessEqual;DoubleDouble;Bool(a : Double, b : Double) : Bool; // OperatorLessEqual;DoubleDouble;Bool
+import static function OperatorLessEqual;EngineTimeEngineTime;Bool(a : EngineTime, b : EngineTime) : Bool; // OperatorLessEqual;EngineTimeEngineTime;Bool
+import static function OperatorLessEqual;EngineTimeFloat;Bool(a : EngineTime, b : Float) : Bool; // OperatorLessEqual;EngineTimeFloat;Bool
+import static function OperatorLessEqual;FloatFloat;Bool(a : Float, b : Float) : Bool; // OperatorLessEqual;FloatFloat;Bool
+import static function OperatorLessEqual;GameTimeGameTime;Bool(a : GameTime, b : GameTime) : Bool; // OperatorLessEqual;GameTimeGameTime;Bool
+import static function OperatorLessEqual;Int16Int16;Bool(a : Int16, b : Int16) : Bool; // OperatorLessEqual;Int16Int16;Bool
+import static function OperatorLessEqual;Int32Int32;Bool(a : Int32, b : Int32) : Bool; // OperatorLessEqual;Int32Int32;Bool
+import static function OperatorLessEqual;Int64Int64;Bool(a : Int64, b : Int64) : Bool; // OperatorLessEqual;Int64Int64;Bool
+import static function OperatorLessEqual;Int8Int8;Bool(a : Int8, b : Int8) : Bool; // OperatorLessEqual;Int8Int8;Bool
+import static function OperatorLessEqual;Uint16Uint16;Bool(a : Uint16, b : Uint16) : Bool; // OperatorLessEqual;Uint16Uint16;Bool
+import static function OperatorLessEqual;Uint32Uint32;Bool(a : Uint32, b : Uint32) : Bool; // OperatorLessEqual;Uint32Uint32;Bool
+import static function OperatorLessEqual;Uint64Uint64;Bool(a : Uint64, b : Uint64) : Bool; // OperatorLessEqual;Uint64Uint64;Bool
+import static function OperatorLessEqual;Uint8Uint8;Bool(a : Uint8, b : Uint8) : Bool; // OperatorLessEqual;Uint8Uint8;Bool
+import static function OperatorLogicAnd;BoolSkipBool;Bool(a : Bool, b : Bool) : Bool; // OperatorLogicAnd;BoolSkipBool;Bool
+import static function OperatorLogicNot;Bool;Bool(a : Bool) : Bool; // OperatorLogicNot;Bool;Bool
+import static function OperatorLogicOr;BoolSkipBool;Bool(a : Bool, b : Bool) : Bool; // OperatorLogicOr;BoolSkipBool;Bool
+import static function OperatorModulo;DoubleDouble;Double(a : Double, b : Double) : Double; // OperatorModulo;DoubleDouble;Double
+import static function OperatorModulo;FloatFloat;Float(a : Float, b : Float) : Float; // OperatorModulo;FloatFloat;Float
+import static function OperatorModulo;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorModulo;Int16Int16;Int16
+import static function OperatorModulo;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorModulo;Int32Int32;Int32
+import static function OperatorModulo;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorModulo;Int64Int64;Int64
+import static function OperatorModulo;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorModulo;Int8Int8;Int8
+import static function OperatorModulo;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorModulo;Uint16Uint16;Uint16
+import static function OperatorModulo;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorModulo;Uint32Uint32;Uint32
+import static function OperatorModulo;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorModulo;Uint64Uint64;Uint64
+import static function OperatorModulo;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorModulo;Uint8Uint8;Uint8
+import static function OperatorMultiply;DoubleDouble;Double(a : Double, b : Double) : Double; // OperatorMultiply;DoubleDouble;Double
+import static function OperatorMultiply;EngineTimeFloat;EngineTime(a : EngineTime, b : Float) : EngineTime; // OperatorMultiply;EngineTimeFloat;EngineTime
+import static function OperatorMultiply;FloatFloat;Float(a : Float, b : Float) : Float; // OperatorMultiply;FloatFloat;Float
+import static function OperatorMultiply;FloatVector4;Vector4(a : Float, b : Vector4) : Vector4; // OperatorMultiply;FloatVector4;Vector4
+import static function OperatorMultiply;GameTimeFloat;GameTime(a : GameTime, b : Float) : GameTime; // OperatorMultiply;GameTimeFloat;GameTime
+import static function OperatorMultiply;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorMultiply;Int16Int16;Int16
+import static function OperatorMultiply;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorMultiply;Int32Int32;Int32
+import static function OperatorMultiply;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorMultiply;Int64Int64;Int64
+import static function OperatorMultiply;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorMultiply;Int8Int8;Int8
+import static function OperatorMultiply;MatrixMatrix;Matrix(a : Matrix, b : Matrix) : Matrix; // OperatorMultiply;MatrixMatrix;Matrix
+import static function OperatorMultiply;QuaternionFloat;Quaternion(a : Quaternion, b : Float) : Quaternion; // OperatorMultiply;QuaternionFloat;Quaternion
+import static function OperatorMultiply;QuaternionQuaternion;Quaternion(a : Quaternion, b : Quaternion) : Quaternion; // OperatorMultiply;QuaternionQuaternion;Quaternion
+import static function OperatorMultiply;QuaternionVector4;Vector4(a : Quaternion, b : Vector4) : Vector4; // OperatorMultiply;QuaternionVector4;Vector4
+import static function OperatorMultiply;TransformTransform;Transform(xform1 : Transform, xform2 : Transform) : Transform; // OperatorMultiply;TransformTransform;Transform
+import static function OperatorMultiply;TransformVector4;Vector4(xform : Transform, v : Vector4) : Vector4; // OperatorMultiply;TransformVector4;Vector4
+import static function OperatorMultiply;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorMultiply;Uint16Uint16;Uint16
+import static function OperatorMultiply;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorMultiply;Uint32Uint32;Uint32
+import static function OperatorMultiply;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorMultiply;Uint64Uint64;Uint64
+import static function OperatorMultiply;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorMultiply;Uint8Uint8;Uint8
+import static function OperatorMultiply;Vector4Float;Vector4(a : Vector4, b : Float) : Vector4; // OperatorMultiply;Vector4Float;Vector4
+import static function OperatorMultiply;Vector4Vector4;Vector4(a : Vector4, b : Vector4) : Vector4; // OperatorMultiply;Vector4Vector4;Vector4
+import static function OperatorNeg;Double;Double(a : Double) : Double; // OperatorNeg;Double;Double
+import static function OperatorNeg;Float;Float(a : Float) : Float; // OperatorNeg;Float;Float
+import static function OperatorNeg;GameTime;GameTime(a : GameTime) : GameTime; // OperatorNeg;GameTime;GameTime
+import static function OperatorNeg;Int16;Int16(a : Int16) : Int16; // OperatorNeg;Int16;Int16
+import static function OperatorNeg;Int32;Int32(a : Int32) : Int32; // OperatorNeg;Int32;Int32
+import static function OperatorNeg;Int64;Int64(a : Int64) : Int64; // OperatorNeg;Int64;Int64
+import static function OperatorNeg;Int8;Int8(a : Int8) : Int8; // OperatorNeg;Int8;Int8
+import static function OperatorNeg;Quaternion;Quaternion(a : Quaternion) : Quaternion; // OperatorNeg;Quaternion;Quaternion
+import static function OperatorNeg;Vector4;Vector4(b : Vector4) : Vector4; // OperatorNeg;Vector4;Vector4
+import static function OperatorNeg;WorldPosition;WorldPosition(b : WorldPosition) : WorldPosition; // OperatorNeg;WorldPosition;WorldPosition
+import static function OperatorNotEqual;DelayIDDelayID;Bool(a : gameDelayID, b : gameDelayID) : Bool; // OperatorNotEqual;DelayIDDelayID;Bool
+import static function OperatorNotEqual;DoubleDouble;Bool(a : Double, b : Double) : Bool; // OperatorNotEqual;DoubleDouble;Bool
+import static function OperatorNotEqual;EngineTimeEngineTime;Bool(a : EngineTime, b : EngineTime) : Bool; // OperatorNotEqual;EngineTimeEngineTime;Bool
+import static function OperatorNotEqual;EntityIDEntityID;Bool(a : entEntityID, b : entEntityID) : Bool; // OperatorNotEqual;EntityIDEntityID;Bool
+import static function OperatorNotEqual;FloatFloat;Bool(a : Float, b : Float) : Bool; // OperatorNotEqual;FloatFloat;Bool
+import static function OperatorNotEqual;GameTimeGameTime;Bool(a : GameTime, b : GameTime) : Bool; // OperatorNotEqual;GameTimeGameTime;Bool
+import static function OperatorNotEqual;IScriptableIScriptable;Bool(a : handle:IScriptable, b : handle:IScriptable) : Bool; // OperatorNotEqual;IScriptableIScriptable;Bool
+import static function OperatorNotEqual;Int16Int16;Bool(a : Int16, b : Int16) : Bool; // OperatorNotEqual;Int16Int16;Bool
+import static function OperatorNotEqual;Int32Int32;Bool(a : Int32, b : Int32) : Bool; // OperatorNotEqual;Int32Int32;Bool
+import static function OperatorNotEqual;Int64Int64;Bool(a : Int64, b : Int64) : Bool; // OperatorNotEqual;Int64Int64;Bool
+import static function OperatorNotEqual;Int8Int8;Bool(a : Int8, b : Int8) : Bool; // OperatorNotEqual;Int8Int8;Bool
+import static function OperatorNotEqual;ItemIDItemID;Bool(a : gameItemID, b : gameItemID) : Bool; // OperatorNotEqual;ItemIDItemID;Bool
+import static function OperatorNotEqual;TweakDBIDTweakDBID;Bool(a : TweakDBID, b : TweakDBID) : Bool; // OperatorNotEqual;TweakDBIDTweakDBID;Bool
+import static function OperatorNotEqual;Uint16Uint16;Bool(a : Uint16, b : Uint16) : Bool; // OperatorNotEqual;Uint16Uint16;Bool
+import static function OperatorNotEqual;Uint32Uint32;Bool(a : Uint32, b : Uint32) : Bool; // OperatorNotEqual;Uint32Uint32;Bool
+import static function OperatorNotEqual;Uint64Uint64;Bool(a : Uint64, b : Uint64) : Bool; // OperatorNotEqual;Uint64Uint64;Bool
+import static function OperatorNotEqual;Uint8Uint8;Bool(a : Uint8, b : Uint8) : Bool; // OperatorNotEqual;Uint8Uint8;Bool
+import static function OperatorOr;DMGPipelineTypeDMGPipelineType;DMGPipelineType(a : gameDamageListenerPipelineType, b : gameDamageListenerPipelineType) : gameDamageListenerPipelineType; // OperatorOr;DMGPipelineTypeDMGPipelineType;DMGPipelineType
+import static function OperatorOr;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorOr;Int16Int16;Int16
+import static function OperatorOr;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorOr;Int32Int32;Int32
+import static function OperatorOr;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorOr;Int64Int64;Int64
+import static function OperatorOr;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorOr;Int8Int8;Int8
+import static function OperatorOr;TSFMVTSFMV;TSFMV(a : gametargetingSystemSearchFilterMaskValue, b : gametargetingSystemSearchFilterMaskValue) : gametargetingSystemSearchFilterMaskValue; // OperatorOr;TSFMVTSFMV;TSFMV
+import static function OperatorOr;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorOr;Uint16Uint16;Uint16
+import static function OperatorOr;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorOr;Uint32Uint32;Uint32
+import static function OperatorOr;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorOr;Uint64Uint64;Uint64
+import static function OperatorOr;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorOr;Uint8Uint8;Uint8
+import static function OperatorSubtract;DoubleDouble;Double(a : Double, b : Double) : Double; // OperatorSubtract;DoubleDouble;Double
+import static function OperatorSubtract;EngineTimeEngineTime;EngineTime(a : EngineTime, b : EngineTime) : EngineTime; // OperatorSubtract;EngineTimeEngineTime;EngineTime
+import static function OperatorSubtract;EngineTimeFloat;EngineTime(a : EngineTime, b : Float) : EngineTime; // OperatorSubtract;EngineTimeFloat;EngineTime
+import static function OperatorSubtract;FloatFloat;Float(a : Float, b : Float) : Float; // OperatorSubtract;FloatFloat;Float
+import static function OperatorSubtract;GameTimeGameTime;GameTime(a : GameTime, b : GameTime) : GameTime; // OperatorSubtract;GameTimeGameTime;GameTime
+import static function OperatorSubtract;GameTimeInt32;GameTime(a : GameTime, b : Int32) : GameTime; // OperatorSubtract;GameTimeInt32;GameTime
+import static function OperatorSubtract;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorSubtract;Int16Int16;Int16
+import static function OperatorSubtract;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorSubtract;Int32Int32;Int32
+import static function OperatorSubtract;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorSubtract;Int64Int64;Int64
+import static function OperatorSubtract;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorSubtract;Int8Int8;Int8
+import static function OperatorSubtract;QuaternionQuaternion;Quaternion(a : Quaternion, b : Quaternion) : Quaternion; // OperatorSubtract;QuaternionQuaternion;Quaternion
+import static function OperatorSubtract;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorSubtract;Uint16Uint16;Uint16
+import static function OperatorSubtract;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorSubtract;Uint32Uint32;Uint32
+import static function OperatorSubtract;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorSubtract;Uint64Uint64;Uint64
+import static function OperatorSubtract;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorSubtract;Uint8Uint8;Uint8
+import static function OperatorSubtract;Vector4Float;Vector4(a : Vector4, b : Float) : Vector4; // OperatorSubtract;Vector4Float;Vector4
+import static function OperatorSubtract;Vector4Vector4;Vector4(a : Vector4, b : Vector4) : Vector4; // OperatorSubtract;Vector4Vector4;Vector4
+import static function OperatorSubtract;WorldPositionVector4;WorldPosition(a : WorldPosition, b : Vector4) : WorldPosition; // OperatorSubtract;WorldPositionVector4;WorldPosition
+import static function OperatorSubtract;WorldPositionWorldPosition;Vector4(a : WorldPosition, b : WorldPosition) : Vector4; // OperatorSubtract;WorldPositionWorldPosition;Vector4
+import static function OperatorXor;Int16Int16;Int16(a : Int16, b : Int16) : Int16; // OperatorXor;Int16Int16;Int16
+import static function OperatorXor;Int32Int32;Int32(a : Int32, b : Int32) : Int32; // OperatorXor;Int32Int32;Int32
+import static function OperatorXor;Int64Int64;Int64(a : Int64, b : Int64) : Int64; // OperatorXor;Int64Int64;Int64
+import static function OperatorXor;Int8Int8;Int8(a : Int8, b : Int8) : Int8; // OperatorXor;Int8Int8;Int8
+import static function OperatorXor;Uint16Uint16;Uint16(a : Uint16, b : Uint16) : Uint16; // OperatorXor;Uint16Uint16;Uint16
+import static function OperatorXor;Uint32Uint32;Uint32(a : Uint32, b : Uint32) : Uint32; // OperatorXor;Uint32Uint32;Uint32
+import static function OperatorXor;Uint64Uint64;Uint64(a : Uint64, b : Uint64) : Uint64; // OperatorXor;Uint64Uint64;Uint64
+import static function OperatorXor;Uint8Uint8;Uint8(a : Uint8, b : Uint8) : Uint8; // OperatorXor;Uint8Uint8;Uint8
+import static function ParseNodeRef(); // ParseNodeRef
+import static function PowF(a : Float, x : Float) : Float; // PowF
+import static function PreviewConfig_DisableTurrets() : Bool; // PreviewConfig_DisableTurrets
+import static function PropagateDebugHitInformations(hitDebugInfos : array:gameHitDetectionDebugFrameData); // PropagateDebugHitInformations
+import static function PvdClientConnect(server : script_ref:String); // PvdClientConnect
+import static function PvdFileDumpConnect(filePath : script_ref:String); // PvdFileDumpConnect
+import static function Rad2Deg(rad : Float) : Float; // Rad2Deg
+import static function Rand(); // Rand
+import static function RandDifferent(lastValue : Int32, range : Int32) : Int32; // RandDifferent
+import static function RandF() : Float; // RandF
+import static function RandNoiseF(seed : Int32, max : Float, optional min : Float) : Float; // RandNoiseF
+import static function RandPerlinNoiseF(seed : Int32, offset : Float) : Float; // RandPerlinNoiseF
+import static function RandRange(min : Int32, max : Int32) : Int32; // RandRange
+import static function RandRangeF(min : Float, max : Float) : Float; // RandRangeF
+import static function RefreshSettings(); // RefreshSettings
+import static function ReinterpretIntAsFloat(a : Int32) : Float; // ReinterpretIntAsFloat
+import static function RepDecreaseGlobalTimeDilation(); // RepDecreaseGlobalTimeDilation
+import static function RepDecreasePlayerTimeDilation(); // RepDecreasePlayerTimeDilation
+import static function RepEnableCheatOnPlayer(player : whandle:gameObject, cheat : Uint32, enable : Bool); // RepEnableCheatOnPlayer
+import static function RepIncreaseGlobalTimeDilation(); // RepIncreaseGlobalTimeDilation
+import static function RepIncreasePlayerTimeDilation(); // RepIncreasePlayerTimeDilation
+import static function RepResetTimeDilation(); // RepResetTimeDilation
+import static function RepTeleportPlayer(player : whandle:gameObject, pos : Vector3, rot : EulerAngles); // RepTeleportPlayer
+import static function RepToggleGamePause(); // RepToggleGamePause
+import static function ReportFailure(message : script_ref:String) : Bool; // ReportFailure
+import static function RequestInstallLanguagePackDialog(language : CName); // RequestInstallLanguagePackDialog
+import static function ResolveNodeRef(id : NodeRef, context : worldGlobalNodeRef) : worldGlobalNodeRef; // ResolveNodeRef
+import static function ResolveNodeRefWithEntityID(id : NodeRef, context : entEntityID) : worldGlobalNodeRef; // ResolveNodeRefWithEntityID
+import static function RoundF(a : Float) : Int32; // RoundF
+import static function RoundFEx(a : Float) : Int32; // RoundFEx
+import static function ServerAddPingTarget(pingEntry : gamePingEntry); // ServerAddPingTarget
+import static function SinF(a : Float) : Float; // SinF
+import static function SortHandleWithValueArray(arr : script_ref:array:scriptOptimizationsHandleWithValue); // SortHandleWithValueArray
+import static function SqrF(a : Float) : Float; // SqrF
+import static function SqrtF(a : Float) : Float; // SqrtF
+import static function StatsEffectsEnumToTDBID(statsEffectsEnum : Int32) : TweakDBID; // StatsEffectsEnumToTDBID
+import static function StrAfterFirst(str : script_ref:String, match : script_ref:String) : String; // StrAfterFirst
+import static function StrAfterLast(str : script_ref:String, match : script_ref:String) : String; // StrAfterLast
+import static function StrBeforeFirst(str : script_ref:String, match : script_ref:String) : String; // StrBeforeFirst
+import static function StrBeforeLast(str : script_ref:String, match : script_ref:String) : String; // StrBeforeLast
+import static function StrBeginsWith(str : script_ref:String, match : script_ref:String) : Bool; // StrBeginsWith
+import static function StrChar(i : Int32) : String; // StrChar
+import static function StrCmp(str : script_ref:String, with : script_ref:String, optional length : Int32, optional noCase : Bool) : Int32; // StrCmp
+import static function StrContains(str : script_ref:String, subStr : script_ref:String) : Bool; // StrContains
+import static function StrEndsWith(str : script_ref:String, match : script_ref:String) : Bool; // StrEndsWith
+import static function StrFindFirst(str : script_ref:String, match : script_ref:String) : Int32; // StrFindFirst
+import static function StrFindLast(str : script_ref:String, match : script_ref:String) : Int32; // StrFindLast
+import static function StrFrontToLower(str : script_ref:String) : String; // StrFrontToLower
+import static function StrFrontToUpper(str : script_ref:String) : String; // StrFrontToUpper
+import static function StrLeft(str : script_ref:String, length : Int32) : String; // StrLeft
+import static function StrLen(str : script_ref:String) : Int32; // StrLen
+import static function StrLower(str : script_ref:String) : String; // StrLower
+import static function StrMid(str : script_ref:String, first : Int32, optional length : Int32) : String; // StrMid
+import static function StrReplace(str : script_ref:String, match : script_ref:String, with : script_ref:String) : String; // StrReplace
+import static function StrReplaceAll(str : script_ref:String, match : script_ref:String, with : script_ref:String) : String; // StrReplaceAll
+import static function StrRight(str : script_ref:String, length : Int32) : String; // StrRight
+import static function StrSplit(str : script_ref:String, divider : script_ref:String, optional includeEmpty : Bool) : array:String; // StrSplit
+import static function StrSplitFirst(str : script_ref:String, divider : script_ref:String, out left : String, out right : String) : Bool; // StrSplitFirst
+import static function StrSplitLast(str : script_ref:String, divider : script_ref:String, out left : String, out right : String) : Bool; // StrSplitLast
+import static function StrUpper(str : script_ref:String) : String; // StrUpper
+import static function StringToBool(s : script_ref:String) : Bool; // StringToBool
+import static function StringToFloat(value : script_ref:String, optional defValue : Float) : Float; // StringToFloat
+import static function StringToHex(str : script_ref:String, lineLength : Uint32) : String; // StringToHex
+import static function StringToInt(value : script_ref:String, optional defValue : Int32) : Int32; // StringToInt
+import static function StringToName(str : script_ref:String) : CName; // StringToName
+import static function StringToUint64(value : script_ref:String, optional defValue : Uint64) : Uint64; // StringToUint64
+import static function TSF_All(mask : gametargetingSystemSearchFilterMaskValue) : gameTargetSearchFilter; // TSF_All
+import static function TSF_And(tsf1 : gameTargetSearchFilter, tsf2 : gameTargetSearchFilter, optional tsf3 : gameTargetSearchFilter, optional tsf4 : gameTargetSearchFilter) : gameTargetSearchFilter; // TSF_And
+import static function TSF_Any(mask : gametargetingSystemSearchFilterMaskValue) : gameTargetSearchFilter; // TSF_Any
+import static function TSF_Not(mask : gametargetingSystemSearchFilterMaskValue) : gameTargetSearchFilter; // TSF_Not
+import static function TSF_Or(tsf1 : gameTargetSearchFilter, tsf2 : gameTargetSearchFilter, optional tsf3 : gameTargetSearchFilter, optional tsf4 : gameTargetSearchFilter) : gameTargetSearchFilter; // TSF_Or
+import static function TanF(a : Float) : Float; // TanF
+import static function Trace(); // Trace
+import static function TraceToString(); // TraceToString
+import static function Uint64ToInt(); // Uint64ToInt
+import static function Uint64ToString(); // Uint64ToString
+import static function UnicodeLength(str : script_ref:String) : Int32; // UnicodeLength
+import static function UnicodeStringCompare(str : script_ref:String, str2 : script_ref:String) : Int32; // UnicodeStringCompare
+import static function UnicodeStringEqual(str : script_ref:String, str2 : script_ref:String) : Bool; // UnicodeStringEqual
+import static function UnicodeStringLessThan(str : script_ref:String, str2 : script_ref:String) : Bool; // UnicodeStringLessThan
+import static function UnicodeStringLessThanEqual(str : script_ref:String, str2 : script_ref:String) : Bool; // UnicodeStringLessThanEqual
+import static function UseProfiler(); // UseProfiler
+
+static function AddFact(game : ScriptGameInstance, factName : CName, optional factCount : Int32) : Bool; // AddFact;GameInstanceCNameInt32
+static function ApplyStatPoolModifier(gi : ScriptGameInstance, statPoolTypeString : script_ref:String, rangeBegin : Float, rangeEnd : Float, startDelay : Float, valuePerSec : Float, delayOnChange : Bool, statPoolModType : gameStatPoolModificationTypes); // ApplyStatPoolModifier;GameInstancescript_ref<String>FloatFloatFloatFloatBoolgameStatPoolModificationTypes
+static function ArraySort(arr : array:Int32) : array:Int32; // ArraySort;array<Int32>
+static function ArraySortReverse(arr : array:Int32) : array:Int32; // ArraySortReverse;array<Int32>
+static function BasicAvailabilityTest(device : handle:ScriptableDeviceComponentPS) : Bool; // BasicAvailabilityTest;ScriptableDeviceComponentPS
+static function CanChangeAttitudeRelationFor(groupName : CName) : Bool; // CanChangeAttitudeRelationFor;CName
+static function CanLog() : Bool; // CanLog;
+static function Cast(value : Bool) : AIbehaviorConditionOutcomes; // Cast;Bool;AIbehaviorConditionOutcomes
+static function Cast(flag : EAIGateSignalFlags) : AISignalFlags; // Cast;EAIGateSignalFlags;AISignalFlags
+static function Cast(value : AIbehaviorConditionOutcomes) : Bool; // Cast;AIbehaviorConditionOutcomes;Bool
+static function Cast(hotkey : gameEHotkey) : Int32; // Cast;EHotkey;Int32
+static function Cast(value : Int64) : AIPatrolContinuationPolicy; // Cast;Int64;AIPatrolContinuationPolicy
+static function Compare(comparator : ECompareOp, val1 : Int32, val2 : Int32) : Bool; // Compare;ECompareOpInt32Int32
+static function CompareF(comparator : ECompareOp, val1 : Float, val2 : Float) : Bool; // CompareF;ECompareOpFloatFloat
+static function CreateDisableRagdollEvent(debugSourceName : CName) : handle:entRagdollDisableEvent; // CreateDisableRagdollEvent;CName
+static function CreateForceRagdollEvent(debugSourceName : CName) : handle:entRagdollActivationRequestEvent; // CreateForceRagdollEvent;CName
+static function CreateForceRagdollNoPowerPoseEvent(debugSourceName : CName) : handle:entRagdollActivationRequestEvent; // CreateForceRagdollNoPowerPoseEvent;CName
+static function CreateForceRagdollWithCustomFilterDataEvent(customFilterData : CName, debugSourceName : CName) : handle:entRagdollActivationRequestEvent; // CreateForceRagdollWithCustomFilterDataEvent;CNameCName
+static function CreateRagdollActivationRequestEvent(activationType : entragdollActivationRequestType, filterDataOverride : CName, applyPowerPose : Bool, applyMomentum : Bool, debugSourceName : CName) : handle:entRagdollActivationRequestEvent; // CreateRagdollActivationRequestEvent;entragdollActivationRequestTypeCNameBoolBoolCName
+static function CreateRagdollApplyImpulseEvent(worldPos : Vector4, imuplseVal : Vector4, influenceRadius : Float) : handle:entRagdollApplyImpulseEvent; // CreateRagdollApplyImpulseEvent;Vector4Vector4Float
+static function DebugDevices(gameInstance : ScriptGameInstance, shouldDebug : Bool); // DebugDevices;GameInstanceBool
+static function DebugGiveHotkeys(gameInstance : ScriptGameInstance); // DebugGiveHotkeys;GameInstance
+static function DebugNPCs_NonExec(gi : ScriptGameInstance, optional durationStr : String, optional radiusStr : String, optional moveWithPlayerStr : String); // DebugNPCs_NonExec;GameInstanceStringStringString
+static function Debug_WeaponSpread_Set(gameInstance : ScriptGameInstance, useCircularDistribution : Bool, useEvenDistribution : Bool, rowCount : Int32, projectilesPerShot : Int32); // Debug_WeaponSpread_Set;GameInstanceBoolBoolInt32Int32
+static function EMPTY_ENTITY_ID() : entEntityID; // EMPTY_ENTITY_ID;
+static function EmptyInventoryItemData() : gameInventoryItemData; // EmptyInventoryItemData;
+static function FloatIsEqual(f : Float, to : Float) : Bool; // FloatIsEqual;FloatFloat
+static function GetActionAnimationSlideParams(slideRecord : handle:gamedataAIActionSlideData_Record) : gameActionAnimationSlideParams; // GetActionAnimationSlideParams;AIActionSlideData_Record
+static function GetAnimOptionsInfiniteLoop(loopType : inkanimLoopType) : inkanimPlaybackOptions; // GetAnimOptionsInfiniteLoop;inkanimLoopType
+static function GetCaptionTagsFromArray(argList : script_ref:array:handle:gameinteractionsChoiceCaptionPart) : String; // GetCaptionTagsFromArray;script_ref<array<InteractionChoiceCaptionPart>>
+static function GetDamageSystemLogFlags() : Int64; // GetDamageSystemLogFlags;
+static function GetDisplaySize(wrapperSize : Vector2, frameSize : Vector2) : Vector2; // GetDisplaySize;Vector2Vector2
+static function GetFact(game : ScriptGameInstance, factName : CName) : Int32; // GetFact;GameInstanceCName
+static function GetFilledUV(containerSize : Vector2, contentSize : Vector2) : RectF; // GetFilledUV;Vector2Vector2
+static function GetGameObjectFromEntityReference(reference : gameEntityReference, gameInstance : ScriptGameInstance, out target : whandle:gameObject) : Bool; // GetGameObjectFromEntityReference;EntityReferenceGameInstanceGameObject
+static function GetIgnoredVisionBlockerTypes(game : ScriptGameInstance, objID : gameStatsObjectID) : senseVisionBlockerTypeFlags; // GetIgnoredVisionBlockerTypes;GameInstanceStatsObjectID
+static function GetImmortality(gameObject : handle:gameObject, out type : gameGodModeType) : Bool; // GetImmortality;GameObjectgameGodModeType
+static function GetInvalidDelayID() : gameDelayID; // GetInvalidDelayID;
+static function GetInvalidVisionBlockerID() : Uint32; // GetInvalidVisionBlockerID;
+static function GetItemTypeFromContext(context : AIbehaviorScriptExecutionContext) : Int32; // GetItemTypeFromContext;ScriptExecutionContext
+static function GetMainPlayer(gameInstance : ScriptGameInstance) : handle:PlayerPuppet; // GetMainPlayer;GameInstance
+static function GetMountedVehicle(object : handle:gameObject) : whandle:vehicleBaseObject; // GetMountedVehicle;GameObject
+static function GetNotSavableClasses() : array:CName; // GetNotSavableClasses;
+static function GetOppositeRotation180(rot : EulerAngles) : EulerAngles; // GetOppositeRotation180;EulerAngles
+static function GetPSGeneratorVersion() : Int32; // GetPSGeneratorVersion;
+static function GetPlayer(gameInstance : ScriptGameInstance) : handle:PlayerPuppet; // GetPlayer;GameInstance
+static function GetPlayerObject(gameInstance : ScriptGameInstance) : handle:gameObject; // GetPlayerObject;GameInstance
+static function HalfPi() : Float; // HalfPi;
+static function InitializeScripts(); // InitializeScripts;
+static function IntToEPreventionHeatStage(index : Int32) : EPreventionHeatStage; // IntToEPreventionHeatStage;Int32
+static function IsFastForwardPossibleInVehicle(stateContext : handle:gamestateMachineStateContextScript, scriptInterface : handle:gamestateMachineGameScriptInterface) : Bool; // IsFastForwardPossibleInVehicle;StateContextStateGameScriptInterface
+static function IsFriendlyTowardsPlayer(object : whandle:gameObject) : Bool; // IsFriendlyTowardsPlayer;GameObject
+static function IsHostileTowardsPlayer(object : whandle:gameObject) : Bool; // IsHostileTowardsPlayer;GameObject
+static function KillAll_NonExec(gameInstance : ScriptGameInstance, player : handle:PlayerPuppet, optional radiusStr : String); // KillAll_NonExec;GameInstancePlayerPuppetString
+static function Kill_NonExec(gi : ScriptGameInstance, player : handle:PlayerPuppet); // Kill_NonExec;GameInstancePlayerPuppet
+static function LerpAngleF(alpha : Float, a : Float, b : Float) : Float; // LerpAngleF;FloatFloatFloat
+static function ModF(a : Float, b : Float) : Float; // ModF;FloatFloat
+static function ModifierTypeToString(type : gameStatModifierType) : String; // ModifierTypeToString;gameStatModifierType
+static function NoScreenMessage() : gameSimpleScreenMessage; // NoScreenMessage;
+static function OperatorAdd(o : handle:gameObject, s : String) : String; // OperatorAdd;GameObjectString;String
+static function OperatorAdd(s : String, stat : gamedataStatType) : String; // OperatorAdd;StringgamedataStatType;String
+static function OperatorAdd(stat : gamedataStatType, s : String) : String; // OperatorAdd;gamedataStatTypeString;String
+static function OperatorAdd(s : String, mode : gamecheatsystemFlag) : String; // OperatorAdd;StringgamecheatsystemFlag;String
+static function OperatorAdd(mode : gameGodModeType, s : String) : String; // OperatorAdd;gameGodModeTypeString;String
+static function OperatorAdd(mode : gamecheatsystemFlag, s : String) : String; // OperatorAdd;gamecheatsystemFlagString;String
+static function OperatorAdd(s : String, o : handle:gameObject) : String; // OperatorAdd;StringGameObject;String
+static function OperatorAdd(att : EAIAttitude, s : String) : String; // OperatorAdd;EAIAttitudeString;String
+static function OperatorAdd(s : String, att : EAIAttitude) : String; // OperatorAdd;StringEAIAttitude;String
+static function OperatorAdd(s : String, mode : gameGodModeType) : String; // OperatorAdd;StringgameGodModeType;String
+static function OperatorAnd(l : FTEntityRequirementsFlag, r : FTEntityRequirementsFlag) : FTEntityRequirementsFlag; // OperatorAnd;FTEntityRequirementsFlagFTEntityRequirementsFlag;FTEntityRequirementsFlag
+static function OperatorAnd(i : Int64, f : damageSystemLogFlags) : Int64; // OperatorAnd;Int64damageSystemLogFlags;Int64
+static function OperatorArray(out widgetDataObject : at_uiWidgetData, widgetATID : String) : Bool; // OperatorArray;Outat_uiWidgetDataString;Bool
+static function OperatorEqual(action1 : handle:gamedeviceAction, action2 : handle:gamedeviceAction) : Bool; // OperatorEqual;DeviceActionDeviceAction;Bool
+static function OperatorEqual(var1 : inkWidgetReference, var2 : inkWidgetReference) : Bool; // OperatorEqual;inkWidgetRefinkWidgetRef;Bool
+static function OperatorEqual(x : redResourceReferenceScriptToken, y : redResourceReferenceScriptToken) : Bool; // OperatorEqual;redResourceReferenceScriptTokenResRef;Bool
+static function OperatorEqual(rbool : Bool, ebool : EBOOL) : Bool; // OperatorEqual;BoolEBOOL;Bool
+static function OperatorEqual(l1 : DeviceLink, l2 : DeviceLink) : Bool; // OperatorEqual;DeviceLinkDeviceLink;Bool
+static function OperatorEqual(ps : handle:gamePersistentState, link : DeviceLink) : Bool; // OperatorEqual;PersistentStateDeviceLink;Bool
+static function OperatorEqual(hudInstance1 : handle:ModuleInstance, hudInstance2 : handle:ModuleInstance) : Bool; // OperatorEqual;ModuleInstanceModuleInstance;Bool
+static function OperatorEqual(x : redResourceReferenceScriptToken, y : redResourceReferenceScriptToken) : Bool; // OperatorEqual;ResRefredResourceReferenceScriptToken;Bool
+static function OperatorEqual(action1 : handle:PuppetAction, action2 : handle:PuppetAction) : Bool; // OperatorEqual;PuppetActionPuppetAction;Bool
+static function OperatorEqual(link : DeviceLink, ps : handle:gamePersistentState) : Bool; // OperatorEqual;DeviceLinkPersistentState;Bool
+static function OperatorEqual(record_1 : TweakDBID, record_2 : gameItemID) : Bool; // OperatorEqual;TweakDBIDItemID;Bool
+static function OperatorEqual(ebool : EBOOL, rbool : Bool) : Bool; // OperatorEqual;EBOOLBool;Bool
+static function OperatorEqual(goTarget : whandle:gameObject, target : handle:Target) : Bool; // OperatorEqual;WPtrGameObjectTarget;Bool
+static function OperatorEqual(target : handle:Target, goTarget : whandle:gameObject) : Bool; // OperatorEqual;TargetWPtrGameObject;Bool
+static function OperatorEqual(documentAdress1 : SDocumentAdress, documentAdress2 : SDocumentAdress) : Bool; // OperatorEqual;SDocumentAdressSDocumentAdress;Bool
+static function OperatorEqual(record_1 : gameItemID, record_2 : TweakDBID) : Bool; // OperatorEqual;ItemIDTweakDBID;Bool
+static function OperatorGreater(enum1 : ESecurityAreaType, enum2 : ESecurityAreaType) : Bool; // OperatorGreater;ESecurityAreaTypeESecurityAreaType;Bool
+static function OperatorGreater(enum1 : ESecurityNotificationType, enum2 : ESecurityNotificationType) : Bool; // OperatorGreater;ESecurityNotificationTypeESecurityNotificationType;Bool
+static function OperatorGreater(enum1 : ESecurityAccessLevel, enum2 : ESecurityAccessLevel) : Bool; // OperatorGreater;ESecurityAccessLevelESecurityAccessLevel;Bool
+static function OperatorGreater(q1 : gamedataQuality, q2 : gamedataQuality) : Bool; // OperatorGreater;gamedataQualitygamedataQuality;Bool
+static function OperatorGreater(enum1 : gameCityAreaType, enum2 : gameCityAreaType) : Bool; // OperatorGreater;gameCityAreaTypegameCityAreaType;Bool
+static function OperatorGreater(enum1 : ESecuritySystemState, enum2 : ESecuritySystemState) : Bool; // OperatorGreater;ESecuritySystemStateESecuritySystemState;Bool
+static function OperatorGreaterEqual(activeMode1 : ActiveMode, activeMode2 : ActiveMode) : Bool; // OperatorGreaterEqual;ActiveModeActiveMode;Bool
+static function OperatorGreaterEqual(enum1 : ESecurityNotificationType, enum2 : ESecurityNotificationType) : Bool; // OperatorGreaterEqual;ESecurityNotificationTypeESecurityNotificationType;Bool
+static function OperatorGreaterEqual(q1 : gamedataQuality, q2 : gamedataQuality) : Bool; // OperatorGreaterEqual;gamedataQualitygamedataQuality;Bool
+static function OperatorLess(enum1 : ESecurityNotificationType, enum2 : ESecurityNotificationType) : Bool; // OperatorLess;ESecurityNotificationTypeESecurityNotificationType;Bool
+static function OperatorLess(enum1 : ESecuritySystemState, enum2 : ESecuritySystemState) : Bool; // OperatorLess;ESecuritySystemStateESecuritySystemState;Bool
+static function OperatorLess(enum1 : ESecurityAccessLevel, enum2 : ESecurityAccessLevel) : Bool; // OperatorLess;ESecurityAccessLevelESecurityAccessLevel;Bool
+static function OperatorLess(q1 : gamedataQuality, q2 : gamedataQuality) : Bool; // OperatorLess;gamedataQualitygamedataQuality;Bool
+static function OperatorLess(enum1 : ESecurityAreaType, enum2 : ESecurityAreaType) : Bool; // OperatorLess;ESecurityAreaTypeESecurityAreaType;Bool
+static function OperatorLess(f1 : hitFlag, f2 : hitFlag) : Bool; // OperatorLess;hitFlaghitFlag;Bool
+static function OperatorLessEqual(activeMode1 : ActiveMode, activeMode2 : ActiveMode) : Bool; // OperatorLessEqual;ActiveModeActiveMode;Bool
+static function OperatorLessEqual(enum1 : ESecurityNotificationType, enum2 : ESecurityNotificationType) : Bool; // OperatorLessEqual;ESecurityNotificationTypeESecurityNotificationType;Bool
+static function OperatorLessEqual(q1 : gamedataQuality, q2 : gamedataQuality) : Bool; // OperatorLessEqual;gamedataQualitygamedataQuality;Bool
+static function OperatorLogicNot(a : TweakDBID) : Bool; // OperatorLogicNot;TweakDBID;Bool
+static function OperatorLogicNot(ebool : EBOOL) : Bool; // OperatorLogicNot;EBOOL;Bool
+static function OperatorLogicOr(att : EAIAttitude, match : Bool) : Bool; // OperatorLogicOr;EAIAttitudeBool;Bool
+static function OperatorMultiply(a : String, count : Int32) : String; // OperatorMultiply;StringInt32;String
+static function OperatorNotEqual(ebool : EBOOL, rbool : Bool) : Bool; // OperatorNotEqual;EBOOLBool;Bool
+static function OperatorNotEqual(rbool : Bool, ebool : EBOOL) : Bool; // OperatorNotEqual;BoolEBOOL;Bool
+static function OperatorOr(l : FTEntityRequirementsFlag, r : FTEntityRequirementsFlag) : FTEntityRequirementsFlag; // OperatorOr;FTEntityRequirementsFlagFTEntityRequirementsFlag;FTEntityRequirementsFlag
+static function OperatorOr(i : Int64, f : damageSystemLogFlags) : Int64; // OperatorOr;Int64damageSystemLogFlags;Int64
+static function OperatorOr(f1 : damageSystemLogFlags, f2 : damageSystemLogFlags) : Int64; // OperatorOr;damageSystemLogFlagsdamageSystemLogFlags;Int64
+static function OperatorOr(f : damageSystemLogFlags, i : Int64) : Int64; // OperatorOr;damageSystemLogFlagsInt64;Int64
+static function OperatorSubtract(level1 : ESecurityAccessLevel, value : Int32) : ESecurityAccessLevel; // OperatorSubtract;ESecurityAccessLevelInt32;ESecurityAccessLevel
+static function OperatorXor(a : Bool, b : Bool) : Bool; // OperatorXor;BoolBool;Bool
+static function Pi() : Float; // Pi;
+static function PocketRadioRestrictionCount() : Int32; // PocketRadioRestrictionCount;
+static function PreloadGameEffectAttackResources(attackRecord : handle:gamedataAttack_GameEffect_Record, effectSystem : handle:gameEffectSystem); // PreloadGameEffectAttackResources;Attack_GameEffect_RecordEffectSystem
+static function ProcessCompare(comparator : EComparisonType, valA : Float, valB : Float) : Bool; // ProcessCompare;EComparisonTypeFloatFloat
+static function ProcessCompareInt(comparator : EComparisonType, valA : Int32, valB : Int32) : Bool; // ProcessCompareInt;EComparisonTypeInt32Int32
+static function ProgressMultipleAchievementsImpl(gameInstance : ScriptGameInstance, achievementId : String, achievementCount : String, baseProgressString : String, intervalString : String); // ProgressMultipleAchievementsImpl;GameInstanceStringStringStringString
+static function ProportionalClampF(inMin : Float, inMax : Float, v : Float, outMin : Float, outMax : Float) : Float; // ProportionalClampF;FloatFloatFloatFloatFloat
+static function ReleaseGameEffectAttackResources(attackRecord : handle:gamedataAttack_GameEffect_Record, effectSystem : handle:gameEffectSystem); // ReleaseGameEffectAttackResources;Attack_GameEffect_RecordEffectSystem
+static function RoundMath(f : Float) : Int32; // RoundMath;Float
+static function RoundTo(f : Float, decimal : Int32) : Float; // RoundTo;FloatInt32
+static function SelectWidgets(widget : handle:inkWidget, optional selectionRule : inkSelectionRule, optional param : String) : handle:inkWidgetsSet; // SelectWidgets;inkWidgetinkSelectionRuleString
+static function SendInputHintData(context : ScriptGameInstance, show : Bool, data : script_ref:gameuiInputHintData, optional targetHintContainer : CName); // SendInputHintData;GameInstanceBoolscript_ref<InputHintData>CName
+static function SetDefaultStatPoolModifiers(gi : ScriptGameInstance, statPoolTypeString : script_ref:String, statPoolModType : gameStatPoolModificationTypes); // SetDefaultStatPoolModifiers;GameInstancescript_ref<String>gameStatPoolModificationTypes
+static function SetFactValue(game : ScriptGameInstance, factName : CName, factCount : Int32) : Bool; // SetFactValue;GameInstanceCNameInt32
+static function SgnF(a : Float) : Float; // SgnF;Float
+static function SpaceFill(str : String, length : Int32, optional mode : ESpaceFillMode, optional fillChar : String) : String; // SpaceFill;StringInt32ESpaceFillModeString
+static function SpawnVirtualPS(game : ScriptGameInstance, entityID : entEntityID, componentName : CName, psClassName : CName) : handle:gamePersistentState; // SpawnVirtualPS;GameInstanceEntityIDCNameCName
+static function SwitchPlayerImmortalityMode(gi : ScriptGameInstance, cheat : gamecheatsystemFlag); // SwitchPlayerImmortalityMode;GameInstancegamecheatsystemFlag
+static function TSF_EnemyNPC() : gameTargetSearchFilter; // TSF_EnemyNPC;
+static function TSF_NPC() : gameTargetSearchFilter; // TSF_NPC;
+static function TSF_Quickhackable() : gameTargetSearchFilter; // TSF_Quickhackable;
+static function TSQ_ALL() : gameTargetSearchQuery; // TSQ_ALL;
+static function TSQ_EnemyNPC() : gameTargetSearchQuery; // TSQ_EnemyNPC;
+static function TSQ_NPC() : gameTargetSearchQuery; // TSQ_NPC;
+static function ToInventoryItemData(owner : whandle:gameObject, itemID : gameItemID) : gameInventoryItemData; // ToInventoryItemData;GameObjectItemID
+static function ToTelemetryDamage(attackData : handle:gamedamageAttackData) : gameTelemetryDamage; // ToTelemetryDamage;AttackData
+static function ToTelemetryDamage(evt : handle:gameeventsTargetDamageEvent) : gameTelemetryDamage; // ToTelemetryDamage;gameTargetDamageEvent
+static function ToTelemetryDamage(evt : handle:gameeventsDamageReceivedEvent) : gameTelemetryDamage; // ToTelemetryDamage;gameDamageReceivedEvent
+static function ToTelemetryDamageDealt(evt : handle:gameeventsDamageReceivedEvent, situation : gameTelemetryDamageSituation, distance : Float, time : Float) : gameTelemetryDamageDealt; // ToTelemetryDamageDealt;gameDamageReceivedEventgameTelemetryDamageSituationFloatFloat
+static function ToTelemetryDamageDealt(evt : handle:gameeventsTargetDamageEvent, situation : gameTelemetryDamageSituation, distance : Float, time : Float) : gameTelemetryDamageDealt; // ToTelemetryDamageDealt;gameTargetDamageEventgameTelemetryDamageSituationFloatFloat
+static function ToTelemetryEnemy(target : whandle:gameObject) : gameTelemetryEnemy; // ToTelemetryEnemy;GameObject
+static function ToTelemetryInventoryItem(inventoryItemData : script_ref:gameInventoryItemData) : gameTelemetryInventoryItem; // ToTelemetryInventoryItem;script_ref<InventoryItemData>
+static function VectorToString(vec : Vector4) : String; // VectorToString;Vector4

@@ -1,0 +1,30 @@
+import class audioSecurityTurretMetadata extends audioCustomEmitterMetadata
+{
+	var singleFire : CName;
+	var activated : CName;
+	var deactivaed : CName;
+	var destroyed : CName;
+	var idleStart : CName;
+	var idleStop : CName;
+	var triggerEffectSingle : CName;
+	var triggerEffectAuto : CName;
+	var obstructionEnabled : Bool;
+	var occlusionEnabled : Bool;
+}
+
+import class abstract audioCustomEmitterMetadata extends audioAudioMetadata
+{
+}
+
+import class abstract audioAudioMetadata extends audioAudioMetadataBase
+{
+}
+
+import class abstract audioAudioMetadataBase extends ISerializable
+{
+	var name : CName;
+}
+
+import class abstract ISerializable
+{
+}

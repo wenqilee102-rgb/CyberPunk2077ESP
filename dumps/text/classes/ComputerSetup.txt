@@ -1,0 +1,28 @@
+struct ComputerSetup extends TerminalSetup
+{
+	public    var startingMenu : EComputerMenuType;
+	public    var mailsMenu : Bool;
+	public    var filesMenu : Bool;
+	public    var systemMenu : Bool;
+	public    var internetMenu : Bool;
+	public    var newsFeedMenu : Bool;
+	public    var stylePreset : TweakDBID;
+	public    var hideTopNavigationBar : Bool;
+	public    var mailsStructure : array:gamedeviceGenericDataContent;
+	public    var filesStructure : array:gamedeviceGenericDataContent;
+	public    var newsFeed : array:SNewsFeedElementData;
+	public    var newsFeedInterval : Float;
+	public    var internetSubnet : SInternetData;
+	public    var animationState : EComputerAnimationState;
+	public    var animationStateSetFactName : CName;
+	public    var ignoreSleepMode : Bool;
+}
+
+struct TerminalSetup
+{
+	public    var minClearance : Int32;
+	public    var maxClearance : Int32;
+	public    var ignoreSlaveAuthorizationModule : Bool;
+	public    var allowRemoteAuthorization : Bool;
+	public    var shouldForceVirtualSystem : Bool;
+}

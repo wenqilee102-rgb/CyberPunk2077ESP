@@ -1,0 +1,91 @@
+class UIScriptableSystem extends gameScriptableSystem
+{
+	private   var backpackActiveSorting : Int32;
+	private   var backpackActiveFilter : Int32;
+	private   var isBackpackActiveFilterSaved : Bool;
+	private   var vendorPanelPlayerActiveSorting : Int32;
+	private   var vendorPanelVendorActiveSorting : Int32;
+	private   var playerFavouriteItems : array:gameItemID;
+	private   var newItems : array:gameItemID;
+	private   var DLCAddedItems : array:TweakDBID;
+	private   var newWardrobeSets : array:gameWardrobeClothingSetIndex;
+	private   var newWardrobeItems : array:gameItemID;
+	private   var availableCars : array:CName;
+	private   var previousAttributeLevels : array:UIScriptableSystemAttributeLevel;
+	private   var comparisionTooltipDisabled : Bool;
+	private   var attachedPlayer : whandle:PlayerPuppet;
+	private   var inventoryListenerCallback : handle:UIScriptableInventoryListenerCallback;
+	private   var inventoryListener : handle:gameInventoryScriptListener;
+	private   var DEV_useNewTooltips : Bool;
+	private   var DEV_useLongScanTooltips : Bool;
+
+	static function GetInstance(gameInstance : ScriptGameInstance) : handle:UIScriptableSystem; // UIScriptableSystem::GetInstance;GameInstance
+
+	function DEV_IsNewTooltipEnabled() : Bool; // DEV_IsNewTooltipEnabled;
+	function DEV_IsScanLongTooltipEnabled() : Bool; // DEV_IsScanLongTooltipEnabled;
+	function GetBackpackActiveFilter(optional defaultValue : Int32) : Int32; // GetBackpackActiveFilter;Int32
+	function GetBackpackActiveSorting(optional defaultValue : Int32) : Int32; // GetBackpackActiveSorting;Int32
+	function GetPreviousAttributeLevel(stat : gamedataStatType) : Int32; // GetPreviousAttributeLevel;gamedataStatType
+	function GetVendorPanelPlayerActiveSorting(optional defaultValue : Int32) : Int32; // GetVendorPanelPlayerActiveSorting;Int32
+	function GetVendorPanelVendorActiveSorting(optional defaultValue : Int32) : Int32; // GetVendorPanelVendorActiveSorting;Int32
+	function IsAvailableCarNew(carFact : CName) : Bool; // IsAvailableCarNew;CName
+	function IsComparisionTooltipDisabled() : Bool; // IsComparisionTooltipDisabled;
+	function IsDLCAddedActiveItem(itemTweakDBID : TweakDBID) : Bool; // IsDLCAddedActiveItem;TweakDBID
+	function IsInventoryItemNew(itemID : gameItemID) : Bool; // IsInventoryItemNew;ItemID
+	function IsItemPlayerFavourite(itemID : gameItemID) : Bool; // IsItemPlayerFavourite;ItemID
+	function IsWardrobeItemNew(itemID : gameItemID) : Bool; // IsWardrobeItemNew;ItemID
+	function IsWardrobeSetNew(wardrobeSet : gameWardrobeClothingSetIndex) : Bool; // IsWardrobeSetNew;gameWardrobeClothingSetIndex
+	function OnAttach(); // OnAttach;
+	function OnAvailableCarAdded(request : handle:UIScriptableSystemAddAvailableCar); // OnAvailableCarAdded;UIScriptableSystemAddAvailableCar
+	function OnComparisionTooltipDisabled(request : handle:UIScriptableSystemSetComparisionTooltipDisabled); // OnComparisionTooltipDisabled;UIScriptableSystemSetComparisionTooltipDisabled
+	function OnDLCAddedItemInspected(request : handle:UIScriptableSystemDLCAddedItemInspected); // OnDLCAddedItemInspected;UIScriptableSystemDLCAddedItemInspected
+	function OnDetach(); // OnDetach;
+	function OnEnableScanLongDescription(request : handle:ScanLongDescriptionCall); // OnEnableScanLongDescription;ScanLongDescriptionCall
+	function OnInventoryItemAdded(request : handle:UIScriptableSystemInventoryAddItem); // OnInventoryItemAdded;UIScriptableSystemInventoryAddItem
+	function OnInventoryItemInspected(request : handle:UIScriptableSystemInventoryInspectItem); // OnInventoryItemInspected;UIScriptableSystemInventoryInspectItem
+	function OnInventoryItemRemoved(request : handle:UIScriptableSystemInventoryRemoveItem); // OnInventoryItemRemoved;UIScriptableSystemInventoryRemoveItem
+	function OnPlayerAttach(request : handle:gamePlayerAttachRequest); // OnPlayerAttach;PlayerAttachRequest
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+	function OnSetBackpackFilter(request : handle:UIScriptableSystemSetBackpackFilter); // OnSetBackpackFilter;UIScriptableSystemSetBackpackFilter
+	function OnSetBackpackSorting(request : handle:UIScriptableSystemSetBackpackSorting); // OnSetBackpackSorting;UIScriptableSystemSetBackpackSorting
+	function OnSetItemPlayerFavourite(request : handle:UIScriptableSystemSetItemPlayerFavourite); // OnSetItemPlayerFavourite;UIScriptableSystemSetItemPlayerFavourite
+	function OnSetPreviousAttributeLevel(request : handle:UIScriptableSystemSetPreviousAttributeLevel); // OnSetPreviousAttributeLevel;UIScriptableSystemSetPreviousAttributeLevel
+	function OnSetVendorPanelPlayerSorting(request : handle:UIScriptableSystemSetVendorPanelPlayerSorting); // OnSetVendorPanelPlayerSorting;UIScriptableSystemSetVendorPanelPlayerSorting
+	function OnSetVendorPanelVendorSorting(request : handle:UIScriptableSystemSetVendorPanelVendorSorting); // OnSetVendorPanelVendorSorting;UIScriptableSystemSetVendorPanelVendorSorting
+	function OnWardrobeItemAdded(request : handle:UIScriptableSystemWardrobeAddItem); // OnWardrobeItemAdded;UIScriptableSystemWardrobeAddItem
+	function OnWardrobeItemInspected(request : handle:UIScriptableSystemWardrobeInspectItem); // OnWardrobeItemInspected;UIScriptableSystemWardrobeInspectItem
+	function OnWardrobeSetAdded(request : handle:UIScriptableSystemWardrobeSetAdded); // OnWardrobeSetAdded;UIScriptableSystemWardrobeSetAdded
+	function OnWardrobeSetInspected(request : handle:UIScriptableSystemWardrobeSetInspected); // OnWardrobeSetInspected;UIScriptableSystemWardrobeSetInspected
+	function On_DEV_ScriptableSystemUseNewTooltips(request : handle:UI_DEV_ScriptableSystemUseNewTooltips); // On_DEV_ScriptableSystemUseNewTooltips;UI_DEV_ScriptableSystemUseNewTooltips
+	function SetupInstance(); // SetupInstance;
+}
+
+import class gameScriptableSystem extends gameIScriptableSystem
+{
+	import function GetGameInstance() : ScriptGameInstance; // GetGameInstance
+	import function QueueRequest(request : handle:gameScriptableSystemRequest); // QueueRequest
+	import function WasRestored() : Bool; // WasRestored
+
+	function IsSavingLocked() : Bool; // IsSavingLocked;
+	function OnAttach(); // OnAttach;
+	function OnDetach(); // OnDetach;
+	function OnRestored(saveVersion : Int32, gameVersion : Int32); // OnRestored;Int32Int32
+}
+
+import class abstract gameIScriptableSystem extends IScriptable
+{
+}
+
+import class IScriptable extends ISerializable
+{
+	import static function DetectScriptableCycles(); // DetectScriptableCycles
+
+	import function GetClassName() : CName; // GetClassName
+	import function IsA(className : CName) : Bool; // IsA
+	import function IsExactlyA(className : CName) : Bool; // IsExactlyA
+	import function ToString() : String; // ToString
+}
+
+import class abstract ISerializable
+{
+}
