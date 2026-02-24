@@ -49,17 +49,7 @@ namespace Aimbot
     {
         if (g_UseTargetingSystem)
         {
-            auto pos = GetHeadPositionFromTargeting(entity, g_TargetingSystemPart);
-            if (pos.X == 0.0f && pos.Y == 0.0f && pos.Z == 0.0f)
-            {
-                static bool loggedOnce = false;
-                if (!loggedOnce)
-                {
-                    DBG_INFO("[Aimbot] TargetingSystem returned zero position");
-                    loggedOnce = true;
-                }
-            }
-            return pos;
+            return GetHeadPositionFromTargeting(entity, g_TargetingSystemPart);
         }
 
         auto basePos = GameUtils::GetEntityPosition(entity);
@@ -154,6 +144,38 @@ namespace Aimbot
 
         RED4ext::CStack queryStack(nullptr, nullptr, 0, &queryResult);
         GameUtils::RttiUtils::g_TSQ_ALLFunc->Execute(&queryStack);
+
+        auto queryClass = rtti->GetClass("gameTargetSearchQuery");
+        if (queryClass)
+        {
+            auto maxDistanceProp = queryClass->GetProperty(RED4ext::CName("maxDistance"));
+            if (maxDistanceProp)
+            {
+                float maxDistance = 1000.0f;
+                maxDistanceProp->SetValue(queryMemory, &maxDistance);
+            }
+
+            auto filterByDistanceProp = queryClass->GetProperty(RED4ext::CName("filterObjectByDistance"));
+            if (filterByDistanceProp)
+            {
+                bool filterByDistance = false;
+                filterByDistanceProp->SetValue(queryMemory, &filterByDistance);
+            }
+
+            auto includeSecondaryProp = queryClass->GetProperty(RED4ext::CName("includeSecondaryTargets"));
+            if (includeSecondaryProp)
+            {
+                bool includeSecondary = true;
+                includeSecondaryProp->SetValue(queryMemory, &includeSecondary);
+            }
+
+            auto ignoreInstigatorProp = queryClass->GetProperty(RED4ext::CName("ignoreInstigator"));
+            if (ignoreInstigatorProp)
+            {
+                bool ignoreInstigator = false;
+                ignoreInstigatorProp->SetValue(queryMemory, &ignoreInstigator);
+            }
+        }
 
         if (GameUtils::RttiUtils::g_GetEntityIDFunc)
         {

@@ -8,6 +8,8 @@
 #include <RED4ext/Scripting/Natives/Generated/Matrix.hpp>
 #include <RED4ext/Scripting/Natives/Generated/ent/EntityID.hpp>
 #include <RED4ext/Scripting/Natives/Generated/game/targeting/TargetPartInfo.hpp>
+#include <atomic>
+#include <memory>
 
 namespace GameUtils
 {
@@ -30,8 +32,19 @@ namespace GameUtils
             bool IsValid;
         };
 
-        static TargetingCacheEntry g_TargetingCache[64] = {};
-        static DeathStateCacheEntry g_DeathStateCache[128] = {};
+        struct TargetingCacheBuffer
+        {
+            TargetingCacheEntry Entries[64];
+        };
+
+        struct DeathStateCacheBuffer
+        {
+            DeathStateCacheEntry Entries[128];
+        };
+
+        static TargetingCacheBuffer g_TargetingCacheBuffers[2];
+        static DeathStateCacheBuffer g_DeathStateCacheBuffers[2];
+        static std::atomic<int> g_CurrentReadBufferIndex{0};
         static uint32_t g_CacheFrameCount = 0;
         const uint32_t g_CacheLifetime = 30;
 
@@ -40,9 +53,18 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return Utils::Vector3(0, 0, 0);
 
+            int readIndex = g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+            if (readIndex < 0 || readIndex >= 2)
+                return Utils::Vector3(0, 0, 0);
+                
+            auto& buffer = g_TargetingCacheBuffers[readIndex];
+
             for (int i = 0; i < 64; i++)
             {
-                auto& entry = g_TargetingCache[i];
+                auto& entry = buffer.Entries[i];
+                if (!Utils::IsValidPtr(&entry))
+                    continue;
+                    
                 if (entry.IsValid && entry.EntityPtr == entity)
                 {
                     uint32_t age = g_CacheFrameCount - entry.Timestamp;
@@ -50,10 +72,6 @@ namespace GameUtils
                     {
                         ESP::g_TargetingDebugInfo.SelectedPartIndex = entry.SelectedPartIndex;
                         return entry.Position;
-                    }
-                    else
-                    {
-                        entry.IsValid = false;
                     }
                 }
             }
@@ -65,13 +83,24 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return;
 
+            int readIndex = g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+            int writeIndex = 1 - readIndex;
+            
+            if (writeIndex < 0 || writeIndex >= 2)
+                return;
+                
+            auto& buffer = g_TargetingCacheBuffers[writeIndex];
+
             int oldestIndex = 0;
             uint32_t oldestAge = 0;
             int freeIndex = -1;
 
             for (int i = 0; i < 64; i++)
             {
-                auto& entry = g_TargetingCache[i];
+                auto& entry = buffer.Entries[i];
+                if (!Utils::IsValidPtr(&entry))
+                    continue;
+                    
                 if (!entry.IsValid)
                 {
                     freeIndex = i;
@@ -86,11 +115,15 @@ namespace GameUtils
             }
 
             int targetIndex = (freeIndex >= 0) ? freeIndex : oldestIndex;
-            g_TargetingCache[targetIndex].EntityPtr = entity;
-            g_TargetingCache[targetIndex].Position = pos;
-            g_TargetingCache[targetIndex].SelectedPartIndex = selectedPartIndex;
-            g_TargetingCache[targetIndex].Timestamp = g_CacheFrameCount;
-            g_TargetingCache[targetIndex].IsValid = true;
+            
+            if (targetIndex < 0 || targetIndex >= 64)
+                return;
+
+            buffer.Entries[targetIndex].EntityPtr = entity;
+            buffer.Entries[targetIndex].Position = pos;
+            buffer.Entries[targetIndex].SelectedPartIndex = selectedPartIndex;
+            buffer.Entries[targetIndex].Timestamp = g_CacheFrameCount;
+            buffer.Entries[targetIndex].IsValid = true;
         }
 
         static void ClearCachedHeadPosition(void* entity)
@@ -98,9 +131,20 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return;
 
+            int readIndex = g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+            int writeIndex = 1 - readIndex;
+            
+            if (writeIndex < 0 || writeIndex >= 2)
+                return;
+                
+            auto& buffer = g_TargetingCacheBuffers[writeIndex];
+
             for (int i = 0; i < 64; i++)
             {
-                auto& entry = g_TargetingCache[i];
+                auto& entry = buffer.Entries[i];
+                if (!Utils::IsValidPtr(&entry))
+                    continue;
+                    
                 if (entry.IsValid && entry.EntityPtr == entity)
                 {
                     entry.IsValid = false;
@@ -168,19 +212,24 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return true;
 
+            int readIndex = g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+            if (readIndex < 0 || readIndex >= 2)
+                return false;
+            
+            auto& buffer = g_DeathStateCacheBuffers[readIndex];
+
             for (int i = 0; i < 128; i++)
             {
-                auto& entry = g_DeathStateCache[i];
+                auto& entry = buffer.Entries[i];
+                if (!Utils::IsValidPtr(&entry))
+                    continue;
+                    
                 if (entry.IsValid && entry.EntityPtr == entity)
                 {
                     uint32_t age = g_CacheFrameCount - entry.Timestamp;
                     if (age < g_CacheLifetime)
                     {
                         return entry.IsDead;
-                    }
-                    else
-                    {
-                        entry.IsValid = false;
                     }
                 }
             }
@@ -201,6 +250,9 @@ namespace GameUtils
                 return false;
 
             auto scriptable = reinterpret_cast<RED4ext::IScriptable*>(entity);
+            if (!Utils::IsValidPtr(scriptable))
+                return false;
+                
             auto entityType = scriptable->GetType();
             if (!entityType || !entityType->IsA(gameObjectClass))
                 return false;
@@ -222,31 +274,46 @@ namespace GameUtils
                 return false;
             }
 
-            int freeIndex = -1;
-            int oldestIndex = 0;
-            uint32_t oldestAge = 0;
-
-            for (int i = 0; i < 128; i++)
             {
-                auto& entry = g_DeathStateCache[i];
-                if (!entry.IsValid)
-                {
-                    freeIndex = i;
-                    break;
-                }
-                uint32_t age = g_CacheFrameCount - entry.Timestamp;
-                if (age > oldestAge)
-                {
-                    oldestAge = age;
-                    oldestIndex = i;
-                }
-            }
+                int writeIndex = 1 - readIndex;
+                if (writeIndex < 0 || writeIndex >= 2)
+                    return isDead;
+                    
+                auto& writeBuffer = g_DeathStateCacheBuffers[writeIndex];
 
-            int targetIndex = (freeIndex >= 0) ? freeIndex : oldestIndex;
-            g_DeathStateCache[targetIndex].EntityPtr = entity;
-            g_DeathStateCache[targetIndex].IsDead = isDead;
-            g_DeathStateCache[targetIndex].Timestamp = g_CacheFrameCount;
-            g_DeathStateCache[targetIndex].IsValid = true;
+                int freeIndex = -1;
+                int oldestIndex = 0;
+                uint32_t oldestAge = 0;
+
+                for (int i = 0; i < 128; i++)
+                {
+                    auto& entry = writeBuffer.Entries[i];
+                    if (!Utils::IsValidPtr(&entry))
+                        continue;
+                        
+                    if (!entry.IsValid)
+                    {
+                        freeIndex = i;
+                        break;
+                    }
+                    uint32_t age = g_CacheFrameCount - entry.Timestamp;
+                    if (age > oldestAge)
+                    {
+                        oldestAge = age;
+                        oldestIndex = i;
+                    }
+                }
+
+                int targetIndex = (freeIndex >= 0) ? freeIndex : oldestIndex;
+                
+                if (targetIndex < 0 || targetIndex >= 128)
+                    return isDead;
+
+                writeBuffer.Entries[targetIndex].EntityPtr = entity;
+                writeBuffer.Entries[targetIndex].IsDead = isDead;
+                writeBuffer.Entries[targetIndex].Timestamp = g_CacheFrameCount;
+                writeBuffer.Entries[targetIndex].IsValid = true;
+            }
 
             return isDead;
         }
@@ -254,6 +321,13 @@ namespace GameUtils
         void UpdateCacheFrame()
         {
             g_CacheFrameCount++;
+        }
+
+        void SwapCacheBuffers()
+        {
+            int currentIndex = g_CurrentReadBufferIndex.load(std::memory_order_relaxed);
+            int newIndex = 1 - currentIndex;
+            g_CurrentReadBufferIndex.store(newIndex, std::memory_order_release);
         }
 
         bool IsEntityValid(void* entity)
@@ -421,8 +495,6 @@ namespace GameUtils
 
         Utils::Vector3 GetHeadPositionFromTargeting(void* entity, int boneIndex)
         {
-            g_CacheFrameCount++;
-
             if (!Utils::IsValidPtr(entity))
                 return Utils::Vector3(0, 0, 0);
 
@@ -522,6 +594,38 @@ namespace GameUtils
 
             RED4ext::CStack queryStack(nullptr, nullptr, 0, &queryResult);
             RttiUtils::g_TSQ_ALLFunc->Execute(&queryStack);
+
+            auto queryClass = rtti->GetClass("gameTargetSearchQuery");
+            if (queryClass)
+            {
+                auto maxDistanceProp = queryClass->GetProperty(RED4ext::CName("maxDistance"));
+                if (maxDistanceProp)
+                {
+                    float maxDistance = 1000.0f;
+                    maxDistanceProp->SetValue(queryMemory, &maxDistance);
+                }
+
+                auto filterByDistanceProp = queryClass->GetProperty(RED4ext::CName("filterObjectByDistance"));
+                if (filterByDistanceProp)
+                {
+                    bool filterByDistance = false;
+                    filterByDistanceProp->SetValue(queryMemory, &filterByDistance);
+                }
+
+                auto includeSecondaryProp = queryClass->GetProperty(RED4ext::CName("includeSecondaryTargets"));
+                if (includeSecondaryProp)
+                {
+                    bool includeSecondary = true;
+                    includeSecondaryProp->SetValue(queryMemory, &includeSecondary);
+                }
+
+                auto ignoreInstigatorProp = queryClass->GetProperty(RED4ext::CName("ignoreInstigator"));
+                if (ignoreInstigatorProp)
+                {
+                    bool ignoreInstigator = false;
+                    ignoreInstigatorProp->SetValue(queryMemory, &ignoreInstigator);
+                }
+            }
 
             if (RttiUtils::g_GetEntityIDFunc)
             {

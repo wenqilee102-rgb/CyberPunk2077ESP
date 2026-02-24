@@ -56,7 +56,7 @@ namespace Menu
                 ImGui::Checkbox("Show Dead", &ESP::ESPSettings::g_ShowDead);
                 
                 ImGui::Separator();
-                ImGui::SliderFloat("Max Distance", &ESP::ESPSettings::g_MaxDistance, 10.0f, 500.0f, "%.0fm");
+                ImGui::SliderFloat("ESP Max Distance", &ESP::ESPSettings::g_MaxDistance, 10.0f, 500.0f, "%.0fm");
             }
             
             if (ImGui::CollapsingHeader("Aimbot"))
@@ -69,7 +69,7 @@ namespace Menu
                 ImGui::Separator();
                 ImGui::SliderFloat("FOV", &Aimbot::g_FOV, 10.0f, 180.0f, "%.0f");
                 ImGui::SliderFloat("Smoothness", &Aimbot::g_Smoothness, 0.0f, 1.0f, "%.2f");
-                ImGui::SliderFloat("Max Distance", &Aimbot::g_MaxDistance, 10.0f, 500.0f, "%.0fm");
+                ImGui::SliderFloat("Aimbot Max Distance", &Aimbot::g_MaxDistance, 10.0f, 500.0f, "%.0fm");
                 
                 ImGui::Separator();
                 ImGui::Checkbox("Use Targeting System", &Aimbot::g_UseTargetingSystem);

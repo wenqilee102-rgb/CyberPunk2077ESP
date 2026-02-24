@@ -109,6 +109,10 @@ namespace ESP
         void* playerPtr = GameUtils::g_PlayerHandle ? GameUtils::g_PlayerHandle.GetPtr() : nullptr;
 
         uint32_t entityCount = entities.size;
+        uint32_t maxEntitiesToProcess = 256;
+        if (entityCount > maxEntitiesToProcess)
+            entityCount = maxEntitiesToProcess;
+
         for (uint32_t i = 0; i < entityCount && g_CachedEntityCount < 128; i++)
         {
             auto& entityHandle = entities[i];
@@ -134,9 +138,6 @@ namespace ESP
             float dy = entityPos.Y - GameUtils::g_PlayerPosition.Y;
             float dz = entityPos.Z - GameUtils::g_PlayerPosition.Z;
             float distance = sqrtf(dx * dx + dy * dy + dz * dz);
-
-            if (distance > ESPSettings::g_MaxDistance)
-                continue;
 
             bool isDead = GameUtils::IsEntityDead(entity);
             if (isDead && !ESPSettings::g_ShowDead)
@@ -208,6 +209,8 @@ namespace ESP
             g_CachedEntityCount++;
             g_VisibleEntityCount++;
         }
+
+        GameUtils::EntityUtils::SwapCacheBuffers();
     }
 
     void DrawESP(ImDrawList* drawList, float screenWidth, float screenHeight)
@@ -713,6 +716,38 @@ namespace ESP
 
         RED4ext::CStack queryStack(nullptr, nullptr, 0, &queryResult);
         GameUtils::RttiUtils::g_TSQ_ALLFunc->Execute(&queryStack);
+
+        auto queryClass = rtti->GetClass("gameTargetSearchQuery");
+        if (queryClass)
+        {
+            auto maxDistanceProp = queryClass->GetProperty(RED4ext::CName("maxDistance"));
+            if (maxDistanceProp)
+            {
+                float maxDistance = 1000.0f;
+                maxDistanceProp->SetValue(queryMemory, &maxDistance);
+            }
+
+            auto filterByDistanceProp = queryClass->GetProperty(RED4ext::CName("filterObjectByDistance"));
+            if (filterByDistanceProp)
+            {
+                bool filterByDistance = false;
+                filterByDistanceProp->SetValue(queryMemory, &filterByDistance);
+            }
+
+            auto includeSecondaryProp = queryClass->GetProperty(RED4ext::CName("includeSecondaryTargets"));
+            if (includeSecondaryProp)
+            {
+                bool includeSecondary = true;
+                includeSecondaryProp->SetValue(queryMemory, &includeSecondary);
+            }
+
+            auto ignoreInstigatorProp = queryClass->GetProperty(RED4ext::CName("ignoreInstigator"));
+            if (ignoreInstigatorProp)
+            {
+                bool ignoreInstigator = false;
+                ignoreInstigatorProp->SetValue(queryMemory, &ignoreInstigator);
+            }
+        }
 
         if (GameUtils::RttiUtils::g_GetEntityIDFunc)
         {

@@ -18,5 +18,6 @@ namespace GameUtils
         Utils::Vector3 GetHeadPositionFromSlot(void* entity);
         float GetEntityHeight(void* entity);
         void UpdateCacheFrame();
+        void SwapCacheBuffers();
     }
 }

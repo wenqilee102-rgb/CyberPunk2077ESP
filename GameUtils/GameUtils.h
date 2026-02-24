@@ -64,6 +64,7 @@ namespace GameUtils
         Utils::Vector3 GetHeadPositionFromSlot(void* entity);
         float GetEntityHeight(void* entity);
         void UpdateCacheFrame();
+        void SwapCacheBuffers();
     }
 
     namespace PlayerUtils
@@ -94,6 +95,8 @@ namespace GameUtils
     inline Utils::Vector3 GetHeadPositionFromTargeting(void* entity, int boneIndex) { return EntityUtils::GetHeadPositionFromTargeting(entity, boneIndex); }
     inline Utils::Vector3 GetHeadPositionFromSlot(void* entity) { return EntityUtils::GetHeadPositionFromSlot(entity); }
     inline float GetEntityHeight(void* entity) { return EntityUtils::GetEntityHeight(entity); }
+    inline void UpdateCacheFrame() { EntityUtils::UpdateCacheFrame(); }
+    inline void SwapCacheBuffers() { EntityUtils::SwapCacheBuffers(); }
     inline void UpdatePlayerPosition() { PlayerUtils::UpdatePlayerPosition(); }
     inline bool WorldToScreen(const Utils::Vector3& worldPos, ImVec2& screenPos, float screenWidth, float screenHeight) { return CameraUtils::WorldToScreen(worldPos, screenPos, screenWidth, screenHeight); }
     inline float GetDistanceToCrosshair(const Utils::Vector3& worldPos, float screenWidth, float screenHeight) { return CameraUtils::GetDistanceToCrosshair(worldPos, screenWidth, screenHeight); }
