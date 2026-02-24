@@ -17,19 +17,26 @@ namespace GameUtils
     {
         struct TargetingCacheEntry
         {
-            void* EntityPtr;
-            Utils::Vector3 Position;
-            int SelectedPartIndex;
-            uint32_t Timestamp;
-            bool IsValid;
+            void* EntityPtr = nullptr;
+            Utils::Vector3 Position{};
+            int SelectedPartIndex = 0;
+            uint32_t Timestamp = 0;
+            bool IsValid = false;
         };
 
         struct DeathStateCacheEntry
         {
-            void* EntityPtr;
-            bool IsDead;
-            uint32_t Timestamp;
-            bool IsValid;
+            void* EntityPtr = nullptr;
+            bool IsDead = false;
+            uint32_t Timestamp = 0;
+            bool IsValid = false;
+        };
+
+        struct EntityValidityCacheEntry
+        {
+            void* EntityPtr = nullptr;
+            bool IsValid = false;
+            uint32_t Timestamp = 0;
         };
 
         struct TargetingCacheBuffer
@@ -42,8 +49,14 @@ namespace GameUtils
             DeathStateCacheEntry Entries[128];
         };
 
+        struct EntityValidityCacheBuffer
+        {
+            EntityValidityCacheEntry Entries[256];
+        };
+
         static TargetingCacheBuffer g_TargetingCacheBuffers[2];
         static DeathStateCacheBuffer g_DeathStateCacheBuffers[2];
+        static EntityValidityCacheBuffer g_EntityValidityCacheBuffer;
         static std::atomic<int> g_CurrentReadBufferIndex{0};
         static uint32_t g_CacheFrameCount = 0;
         const uint32_t g_CacheLifetime = 30;
@@ -191,25 +204,92 @@ namespace GameUtils
 
             if (RttiUtils::g_GetWorldPositionFunc && Utils::IsValidPtr(RttiUtils::g_GetWorldPositionFunc))
             {
-                Utils::Vector4 worldPos;
-                RED4ext::CStackType resultType;
-                resultType.type = RED4ext::CRTTISystem::Get()->GetType("Vector4");
-                resultType.value = &worldPos;
+                try
+                {
+                    Utils::Vector4 worldPos;
+                    RED4ext::CStackType resultType;
+                    resultType.type = RED4ext::CRTTISystem::Get()->GetType("Vector4");
+                    if (!resultType.type)
+                        return result;
+                    resultType.value = &worldPos;
 
-                RED4ext::CStack stack(entity, nullptr, 0, &resultType);
-                RttiUtils::g_GetWorldPositionFunc->Execute(&stack);
+                    RED4ext::CStack stack(entity, nullptr, 0, &resultType);
+                    RttiUtils::g_GetWorldPositionFunc->Execute(&stack);
 
-                result.X = worldPos.X;
-                result.Y = worldPos.Y;
-                result.Z = worldPos.Z;
+                    result.X = worldPos.X;
+                    result.Y = worldPos.Y;
+                    result.Z = worldPos.Z;
+                }
+                catch (...)
+                {
+                    return Utils::Vector3(0, 0, 0);
+                }
             }
 
             return result;
         }
 
-        bool IsEntityDead(void* entity)
+        bool IsEntityValid(void* entity)
         {
             if (!Utils::IsValidPtr(entity))
+                return false;
+
+            for (int i = 0; i < 256; i++)
+            {
+                auto& entry = g_EntityValidityCacheBuffer.Entries[i];
+                if (!Utils::IsValidPtr(&entry))
+                    continue;
+                    
+                if (entry.EntityPtr == entity)
+                {
+                    uint32_t age = g_CacheFrameCount - entry.Timestamp;
+                    if (age < g_CacheLifetime)
+                    {
+                        return entry.IsValid;
+                    }
+                }
+            }
+
+            bool isValid = Utils::IsValidPtr(entity);
+            
+            int freeIndex = -1;
+            int oldestIndex = 0;
+            uint32_t oldestAge = 0;
+
+            for (int i = 0; i < 256; i++)
+            {
+                auto& entry = g_EntityValidityCacheBuffer.Entries[i];
+                if (!Utils::IsValidPtr(&entry))
+                    continue;
+                        
+                if (!entry.IsValid)
+                {
+                    freeIndex = i;
+                    break;
+                }
+                uint32_t age = g_CacheFrameCount - entry.Timestamp;
+                if (age > oldestAge)
+                {
+                    oldestAge = age;
+                    oldestIndex = i;
+                }
+            }
+
+            int targetIndex = (freeIndex >= 0) ? freeIndex : oldestIndex;
+            
+            if (targetIndex >= 0 && targetIndex < 256)
+            {
+                g_EntityValidityCacheBuffer.Entries[targetIndex].EntityPtr = entity;
+                g_EntityValidityCacheBuffer.Entries[targetIndex].IsValid = isValid;
+                g_EntityValidityCacheBuffer.Entries[targetIndex].Timestamp = g_CacheFrameCount;
+            }
+
+            return isValid;
+        }
+
+        bool IsEntityDead(void* entity)
+        {
+            if (!IsEntityValid(entity))
                 return true;
 
             int readIndex = g_CurrentReadBufferIndex.load(std::memory_order_acquire);
@@ -253,8 +333,19 @@ namespace GameUtils
             if (!Utils::IsValidPtr(scriptable))
                 return false;
                 
+            auto vtable = *reinterpret_cast<void**>(scriptable);
+            if (!Utils::IsValidPtr(vtable))
+                return false;
+                
             auto entityType = scriptable->GetType();
-            if (!entityType || !entityType->IsA(gameObjectClass))
+            if (!entityType)
+                return false;
+                
+            auto vtable2 = *reinterpret_cast<void**>(entityType);
+            if (!Utils::IsValidPtr(vtable2))
+                return false;
+                
+            if (!entityType->IsA(gameObjectClass))
                 return false;
 
             bool isDead = false;
@@ -323,24 +414,12 @@ namespace GameUtils
             g_CacheFrameCount++;
         }
 
-        void SwapCacheBuffers()
-        {
-            int currentIndex = g_CurrentReadBufferIndex.load(std::memory_order_relaxed);
-            int newIndex = 1 - currentIndex;
-            g_CurrentReadBufferIndex.store(newIndex, std::memory_order_release);
-        }
-
-        bool IsEntityValid(void* entity)
-        {
-            if (!Utils::IsValidPtr(entity))
-                return false;
-
-            return true;
-        }
-
         void* GetSkinnedMeshComponent(void* entity)
         {
             if (!Utils::IsValidPtr(entity))
+                return nullptr;
+
+            if (!IsEntityValid(entity))
                 return nullptr;
 
             auto entityPtr = reinterpret_cast<uintptr_t>(entity);
@@ -401,6 +480,9 @@ namespace GameUtils
         void* GetSlotComponent(void* entity)
         {
             if (!Utils::IsValidPtr(entity))
+                return nullptr;
+
+            if (!IsEntityValid(entity))
                 return nullptr;
 
             if (RttiUtils::Properties::g_ScriptedPuppet_SlotComponent)
@@ -481,6 +563,9 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return GetEntityPosition(entity);
 
+            if (!IsEntityValid(entity))
+                return GetEntityPosition(entity);
+
             auto slotPos = GetHeadPositionFromSlot(entity);
             if (slotPos.IsValid())
                 return slotPos;
@@ -496,6 +581,9 @@ namespace GameUtils
         Utils::Vector3 GetHeadPositionFromTargeting(void* entity, int boneIndex)
         {
             if (!Utils::IsValidPtr(entity))
+                return Utils::Vector3(0, 0, 0);
+
+            if (!IsEntityValid(entity))
                 return Utils::Vector3(0, 0, 0);
 
             static void* lastEntity = nullptr;
@@ -538,25 +626,35 @@ namespace GameUtils
                 return Utils::Vector3(0, 0, 0);
             }
 
-            auto engine = RED4ext::CGameEngine::Get();
+            try
+            {
+                auto engine = RED4ext::CGameEngine::Get();
             if (!Utils::IsValidPtr(engine) || !Utils::IsValidPtr(engine->framework) || 
                 !Utils::IsValidPtr(engine->framework->gameInstance))
                 return Utils::Vector3(0, 0, 0);
 
             auto gameInstance = engine->framework->gameInstance;
+            if (!Utils::IsValidPtr(gameInstance))
+                return Utils::Vector3(0, 0, 0);
 
             RED4ext::ScriptGameInstance scriptGameInstance(gameInstance);
 
             RED4ext::Handle<RED4ext::IScriptable> targetingSystemHandle;
             RED4ext::CStackType tsResult;
             tsResult.type = rtti->GetType("handle:gametargetingTargetingSystem");
+            if (!tsResult.type)
+                return Utils::Vector3(0, 0, 0);
             tsResult.value = &targetingSystemHandle;
 
             RED4ext::CStackType args[1];
             args[0].type = rtti->GetType("ScriptGameInstance");
+            if (!args[0].type)
+                return Utils::Vector3(0, 0, 0);
             args[0].value = &scriptGameInstance;
 
             RED4ext::CStack tsStack(nullptr, args, 1, &tsResult);
+            if (!RttiUtils::g_GetTargetingSystemFunc)
+                return Utils::Vector3(0, 0, 0);
             RttiUtils::g_GetTargetingSystemFunc->Execute(&tsStack);
 
             if (!targetingSystemHandle.instance)
@@ -570,6 +668,8 @@ namespace GameUtils
             }
 
             auto targetingSystem = targetingSystemHandle.instance;
+            if (!Utils::IsValidPtr(targetingSystem))
+                return Utils::Vector3(0, 0, 0);
 
             RED4ext::CName queryTypeName = RED4ext::CName("gameTargetSearchQuery");
             auto queryType = rtti->GetType(queryTypeName);
@@ -750,6 +850,11 @@ namespace GameUtils
             }
 
             return Utils::Vector3(0, 0, 0);
+            }
+            catch (...)
+            {
+                return Utils::Vector3(0, 0, 0);
+            }
         }
 
         Utils::Vector3 GetHeadPositionFromSlot(void* entity)
@@ -758,9 +863,6 @@ namespace GameUtils
             if (!Utils::IsValidPtr(slotComponent))
                 return GetEntityPosition(entity);
             
-            RED4ext::CName headSlot("head");
-            RED4ext::WorldTransform worldTransform;
-            
             if (!RttiUtils::g_GetSlotTransformFunc)
                 return GetEntityPosition(entity);
             
@@ -768,26 +870,42 @@ namespace GameUtils
             if (!rtti)
                 return GetEntityPosition(entity);
             
-            RED4ext::CStackType args[2];
-            args[0].type = rtti->GetType("CName");
-            args[0].value = &headSlot;
-            args[1].type = rtti->GetType("WorldTransform");
-            args[1].value = &worldTransform;
-            
-            RED4ext::CStackType result;
-            result.type = rtti->GetType("Bool");
-            bool success = false;
-            result.value = &success;
-            
-            RED4ext::CStack stack(slotComponent, args, 2, &result);
-            RttiUtils::g_GetSlotTransformFunc->Execute(&stack);
-            
-            if (success)
+            try
             {
-                float posX = static_cast<float>(worldTransform.Position.x.Bits) / 131072.0f;
-                float posY = static_cast<float>(worldTransform.Position.y.Bits) / 131072.0f;
-                float posZ = static_cast<float>(worldTransform.Position.z.Bits) / 131072.0f;
-                return Utils::Vector3(posX, posY, posZ);
+                RED4ext::CName headSlot("head");
+                RED4ext::WorldTransform worldTransform;
+                
+                RED4ext::CStackType args[2];
+                args[0].type = rtti->GetType("CName");
+                if (!args[0].type)
+                    return GetEntityPosition(entity);
+                args[0].value = &headSlot;
+                args[1].type = rtti->GetType("WorldTransform");
+                if (!args[1].type)
+                    return GetEntityPosition(entity);
+                args[1].value = &worldTransform;
+                
+                RED4ext::CStackType result;
+                result.type = rtti->GetType("Bool");
+                if (!result.type)
+                    return GetEntityPosition(entity);
+                bool success = false;
+                result.value = &success;
+                
+                RED4ext::CStack stack(slotComponent, args, 2, &result);
+                RttiUtils::g_GetSlotTransformFunc->Execute(&stack);
+                
+                if (success)
+                {
+                    float posX = static_cast<float>(worldTransform.Position.x.Bits) / 131072.0f;
+                    float posY = static_cast<float>(worldTransform.Position.y.Bits) / 131072.0f;
+                    float posZ = static_cast<float>(worldTransform.Position.z.Bits) / 131072.0f;
+                    return Utils::Vector3(posX, posY, posZ);
+                }
+            }
+            catch (...)
+            {
+                return GetEntityPosition(entity);
             }
             
             return GetEntityPosition(entity);
@@ -796,6 +914,9 @@ namespace GameUtils
         float GetEntityHeight(void* entity)
         {
             if (!Utils::IsValidPtr(entity))
+                return 1.8f;
+
+            if (!IsEntityValid(entity))
                 return 1.8f;
 
             auto skinnedMesh = GetSkinnedMeshComponent(entity);

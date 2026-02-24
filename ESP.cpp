@@ -23,12 +23,16 @@ namespace ESP
         bool g_DebugMode = false;
     }
 
-    CachedEntity g_CachedEntities[128];
     int g_CachedEntityCount = 0;
     int g_VisibleEntityCount = 0;
     int g_FrameCount = 0;
     const int g_CacheUpdateInterval = 5;
     TargetingDebugInfo g_TargetingDebugInfo = {};
+
+    EntityCache g_EntityCache = {};
+
+    EntityCacheBuffer g_EntityCacheBuffers[2] = {};
+    std::atomic<int> g_CurrentReadBufferIndex(0);
 
     void DrawESPBox(ImDrawList* drawList, const Utils::Vector3& pos, float height, float distance,
                    float screenWidth, float screenHeight, ImU32 color)
@@ -74,9 +78,8 @@ namespace ESP
 
     void UpdateEntityCache()
     {
-        g_CachedEntityCount = 0;
-        g_VisibleEntityCount = 0;
-
+        g_FrameCount++;
+        
         auto rtti = RED4ext::CRTTISystem::Get();
         if (!rtti) return;
 
@@ -100,7 +103,10 @@ namespace ESP
         GameUtils::RttiUtils::g_GetEntityListFunc->Execute(&stack);
 
         if (entities.size == 0)
+        {
+            g_EntityCache.Reset();
             return;
+        }
 
         auto gamePuppetClass = rtti->GetClass("gamePuppet");
         auto scriptedPuppetClass = rtti->GetClass("ScriptedPuppet");
@@ -108,12 +114,10 @@ namespace ESP
 
         void* playerPtr = GameUtils::g_PlayerHandle ? GameUtils::g_PlayerHandle.GetPtr() : nullptr;
 
-        uint32_t entityCount = entities.size;
-        uint32_t maxEntitiesToProcess = 256;
-        if (entityCount > maxEntitiesToProcess)
-            entityCount = maxEntitiesToProcess;
+        g_EntityCache.EntityCount = 0;
+        g_EntityCache.UpdateFrame = g_FrameCount;
 
-        for (uint32_t i = 0; i < entityCount && g_CachedEntityCount < 128; i++)
+        for (uint32_t i = 0; i < entities.size && g_EntityCache.EntityCount < 500; i++)
         {
             auto& entityHandle = entities[i];
             auto entity = entityHandle.GetPtr();
@@ -139,8 +143,57 @@ namespace ESP
             float dz = entityPos.Z - GameUtils::g_PlayerPosition.Z;
             float distance = sqrtf(dx * dx + dy * dy + dz * dz);
 
-            bool isDead = GameUtils::IsEntityDead(entity);
-            if (isDead && !ESPSettings::g_ShowDead)
+            if (distance > ESPSettings::g_MaxDistance)
+                continue;
+
+            auto& entityData = g_EntityCache.Entities[g_EntityCache.EntityCount];
+            entityData.EntityPtr = entity;
+            entityData.Position = entityPos;
+            entityData.Distance = distance;
+            entityData.IsValid = true;
+            entityData.DeathFlag = 0;
+            entityData.DeathCheckFrame = 0;
+            g_EntityCache.EntityCount++;
+        }
+
+        int writeIndex = 1 - g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+        if (writeIndex < 0 || writeIndex >= 2)
+            return;
+
+        auto& writeBuffer = g_EntityCacheBuffers[writeIndex];
+        writeBuffer.EntityCount = 0;
+        writeBuffer.UpdateFrame = g_FrameCount;
+
+        g_VisibleEntityCount = 0;
+
+        for (int i = 0; i < g_EntityCache.EntityCount && writeBuffer.EntityCount < 150; i++)
+        {
+            auto& entityData = g_EntityCache.Entities[i];
+            if (!entityData.IsValid) continue;
+            
+            if (!entityData.IsStructureValid())
+                continue;
+
+            auto entity = entityData.EntityPtr;
+            auto scriptable = static_cast<RED4ext::IScriptable*>(entity);
+            if (!scriptable) continue;
+
+            auto nativeType = scriptable->GetNativeType();
+            if (!nativeType) continue;
+
+            bool isDead = false;
+            if (entityData.DeathFlag == 0)
+            {
+                isDead = GameUtils::IsEntityDead(entity);
+                entityData.DeathFlag = isDead ? 2 : 1;
+                entityData.DeathCheckFrame = g_FrameCount;
+            }
+            else if (entityData.DeathFlag == 2)
+            {
+                isDead = true;
+            }
+
+            if (isDead)
                 continue;
 
             float height = GameUtils::GetEntityHeight(entity);
@@ -156,49 +209,53 @@ namespace ESP
             
             if (isScriptedPuppet && Utils::IsValidPtr(nativeType))
             {
-                auto entityPtr = reinterpret_cast<uintptr_t>(entity);
+                auto entityPtr2 = reinterpret_cast<uintptr_t>(entity);
 
                 if (GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsCivilian)
                 {
-                    auto isCivilianPtr = reinterpret_cast<bool*>(entityPtr + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsCivilian->valueOffset);
+                    auto isCivilianPtr = reinterpret_cast<bool*>(entityPtr2 + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsCivilian->valueOffset);
                     if (Utils::IsValidPtr(isCivilianPtr))
                         isCivilian = *isCivilianPtr;
                 }
 
                 if (GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsPolice)
                 {
-                    auto isPolicePtr = reinterpret_cast<bool*>(entityPtr + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsPolice->valueOffset);
+                    auto isPolicePtr = reinterpret_cast<bool*>(entityPtr2 + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsPolice->valueOffset);
                     if (Utils::IsValidPtr(isPolicePtr))
                         isPolice = *isPolicePtr;
                 }
 
                 if (GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsGanger)
                 {
-                    auto isGangerPtr = reinterpret_cast<bool*>(entityPtr + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsGanger->valueOffset);
+                    auto isGangerPtr = reinterpret_cast<bool*>(entityPtr2 + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsGanger->valueOffset);
                     if (Utils::IsValidPtr(isGangerPtr))
                         isGanger = *isGangerPtr;
                 }
 
                 if (GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsCyberpsycho)
                 {
-                    auto isCyberpsychoPtr = reinterpret_cast<bool*>(entityPtr + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsCyberpsycho->valueOffset);
+                    auto isCyberpsychoPtr = reinterpret_cast<bool*>(entityPtr2 + GameUtils::RttiUtils::Properties::g_ScriptedPuppet_IsCyberpsycho->valueOffset);
                     if (Utils::IsValidPtr(isCyberpsychoPtr))
                         isCyberpsycho = *isCyberpsychoPtr;
                 }
             }
 
-            auto& cached = g_CachedEntities[g_CachedEntityCount];
+            auto& cached = writeBuffer.Entities[writeBuffer.EntityCount];
             cached.EntityPtr = entity;
-            cached.Position = entityPos;
-            cached.Distance = distance;
+            cached.Position = entityData.Position;
+            cached.Distance = entityData.Distance;
             cached.Height = height;
             cached.Width = height * 0.4f;
             cached.IsValid = true;
-            cached.IsDead = isDead;
+            cached.IsDead = false;
             cached.IsCivilian = isCivilian;
             cached.IsPolice = isPolice;
             cached.IsGanger = isGanger;
             cached.IsCyberpsycho = isCyberpsycho;
+            cached.DeathFlag = entityData.DeathFlag;
+            cached.DeathCheckFrame = entityData.DeathCheckFrame;
+            cached.TargetingPartIndex = 0;
+            cached.TargetingCheckFrame = 0;
 
             const char* typeName = nativeType->name.ToString();
             strncpy_s(cached.TypeName, typeName, sizeof(cached.TypeName) - 1);
@@ -206,11 +263,13 @@ namespace ESP
 
             GameUtils::GetInheritancePath(nativeType, cached.InheritancePath, sizeof(cached.InheritancePath));
 
-            g_CachedEntityCount++;
+            writeBuffer.EntityCount++;
             g_VisibleEntityCount++;
         }
 
-        GameUtils::EntityUtils::SwapCacheBuffers();
+        g_CachedEntityCount = writeBuffer.EntityCount;
+
+        g_CurrentReadBufferIndex.store(writeIndex, std::memory_order_release);
     }
 
     void DrawESP(ImDrawList* drawList, float screenWidth, float screenHeight)
@@ -227,15 +286,18 @@ namespace ESP
             UpdateEntityCache();
         }
 
+        int readIndex = g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+        if (readIndex < 0 || readIndex >= 2)
+            return;
+
+        auto& buffer = g_EntityCacheBuffers[readIndex];
+
         g_VisibleEntityCount = 0;
 
-        for (int i = 0; i < g_CachedEntityCount; i++)
+        for (int i = 0; i < buffer.EntityCount; i++)
         {
-            auto& cached = g_CachedEntities[i];
+            auto& cached = buffer.Entities[i];
             if (!cached.IsValid)
-                continue;
-
-            if (cached.IsDead && !ESPSettings::g_ShowDead)
                 continue;
 
             bool shouldShow = false;
@@ -284,13 +346,17 @@ namespace ESP
     {
         struct NPCInfo
         {
-            void* EntityPtr;
-            Utils::Vector3 Position;
-            float Distance;
-            bool IsDead;
-            bool IsAlive;
-            bool WillDieSoon;
-            bool IsValid;
+            void* EntityPtr = nullptr;
+            Utils::Vector3 Position{};
+            float Distance = 0.0f;
+            bool IsDead = false;
+            bool IsAlive = false;
+            bool WillDieSoon = false;
+            bool IsValid = false;
+            int DeathFlag = 0;
+            uint32_t DeathCheckFrame = 0;
+            int TargetingPartIndex = 0;
+            uint32_t TargetingCheckFrame = 0;
         };
 
         auto rtti = RED4ext::CRTTISystem::Get();
@@ -535,10 +601,14 @@ namespace ESP
     {
         struct NPCInfo
         {
-            Utils::Vector3 Position;
-            float Distance;
-            void* EntityPtr;
-            bool IsValid;
+            Utils::Vector3 Position{};
+            float Distance = 0.0f;
+            void* EntityPtr = nullptr;
+            bool IsValid = false;
+            int DeathFlag = 0;
+            uint32_t DeathCheckFrame = 0;
+            int TargetingPartIndex = 0;
+            uint32_t TargetingCheckFrame = 0;
         };
 
         auto rtti = RED4ext::CRTTISystem::Get();
@@ -660,17 +730,26 @@ namespace ESP
 
         auto rtti = RED4ext::CRTTISystem::Get();
         if (!rtti)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: RTTI not available");
             return;
+        }
 
         if (!GameUtils::RttiUtils::g_GetTargetingSystemFunc || !GameUtils::RttiUtils::g_GetTargetPartsFunc || 
             !GameUtils::RttiUtils::g_TargetPartGetComponentFunc || !GameUtils::RttiUtils::g_GetLocalToWorldFunc ||
             !GameUtils::RttiUtils::g_TSQ_ALLFunc)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: RTTI functions not initialized");
             return;
+        }
 
         auto engine = RED4ext::CGameEngine::Get();
         if (!Utils::IsValidPtr(engine) || !Utils::IsValidPtr(engine->framework) || 
             !Utils::IsValidPtr(engine->framework->gameInstance))
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: Game engine not available");
             return;
+        }
 
         auto gameInstance = engine->framework->gameInstance;
 
@@ -689,22 +768,34 @@ namespace ESP
         GameUtils::RttiUtils::g_GetTargetingSystemFunc->Execute(&tsStack);
 
         if (!targetingSystemHandle.instance)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: TargetingSystem not available");
             return;
+        }
 
         auto targetingSystem = targetingSystemHandle.instance;
 
         RED4ext::CName queryTypeName = RED4ext::CName("gameTargetSearchQuery");
         auto queryType = rtti->GetType(queryTypeName);
         if (!queryType)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: QueryType not available");
             return;
+        }
 
         auto scriptAllocator = RED4ext::Memory::ScriptAllocator::Get();
         if (!scriptAllocator)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: ScriptAllocator not available");
             return;
+        }
 
         auto allocResult = scriptAllocator->Alloc(0x100);
         if (!allocResult.memory)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "Error: Memory allocation failed");
             return;
+        }
 
         uint8_t* queryMemory = static_cast<uint8_t*>(allocResult.memory);
         memset(queryMemory, 0, 0x100);
@@ -808,7 +899,10 @@ namespace ESP
         scriptAllocator->Free(allocResult);
 
         if (!getPartsResult || partsArray.size == 0)
+        {
+            snprintf(g_TargetingDebugInfo.PartsInfo, sizeof(g_TargetingDebugInfo.PartsInfo), "No parts found (result=%d, size=%d)", getPartsResult, partsArray.size);
             return;
+        }
 
         g_TargetingDebugInfo.PartsCount = partsArray.size;
         g_TargetingDebugInfo.IsValid = true;

@@ -53,6 +53,9 @@ namespace Aimbot
         }
 
         auto basePos = GameUtils::GetEntityPosition(entity);
+        if (!basePos.IsValid())
+            return Utils::Vector3(0, 0, 0);
+            
         float height = GameUtils::GetEntityHeight(entity);
         
         if (height <= 0.0f)
@@ -120,6 +123,8 @@ namespace Aimbot
             return Utils::Vector3(0, 0, 0);
 
         auto targetingSystem = targetingSystemHandle.instance;
+        if (!Utils::IsValidPtr(targetingSystem))
+            return Utils::Vector3(0, 0, 0);
 
         RED4ext::CName queryTypeName = RED4ext::CName("gameTargetSearchQuery");
         auto queryType = rtti->GetType(queryTypeName);
@@ -236,7 +241,9 @@ namespace Aimbot
         scriptAllocator->Free(allocResult);
 
         if (!getPartsResult || partsArray.size == 0)
+        {
             return Utils::Vector3(0, 0, 0);
+        }
 
         Utils::Vector3 bestPos(0, 0, 0);
         bool foundPrimary = false;
@@ -262,6 +269,8 @@ namespace Aimbot
                 continue;
 
             auto component = componentWhandle.instance;
+            if (!Utils::IsValidPtr(component))
+                continue;
             
             bool isPrimary = false;
             auto componentClass = rtti->GetClass("gameTargetingComponent");
@@ -337,23 +346,22 @@ namespace Aimbot
         if (!ESP::ESPSettings::g_Enabled)
             return -1;
 
+        int readIndex = ESP::g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+        if (readIndex < 0 || readIndex >= 2)
+            return -1;
+
+        auto& buffer = ESP::g_EntityCacheBuffers[readIndex];
+
         float closestDist = FLT_MAX;
         int closestIdx = -1;
 
-        for (int i = 0; i < ESP::g_CachedEntityCount; i++)
+        for (int i = 0; i < buffer.EntityCount; i++)
         {
-            auto& cached = ESP::g_CachedEntities[i];
+            auto& cached = buffer.Entities[i];
             if (!cached.IsValid) continue;
             
             if (cached.Distance > g_MaxDistance)
                 continue;
-
-            bool isDead = GameUtils::IsEntityDead(cached.EntityPtr);
-            if (isDead)
-            {
-                cached.IsDead = true;
-                continue;
-            }
 
             bool shouldTarget = false;
 
@@ -373,6 +381,8 @@ namespace Aimbot
 
             Utils::Vector3 bonePos;
             bonePos = GetHeadPosition(cached.EntityPtr);
+            if (!bonePos.IsValid())
+                continue;
             float dist = GetDistanceToCrosshair(bonePos, screenWidth, screenHeight);
 
             if (dist < closestDist && dist < g_FOV)
@@ -387,6 +397,9 @@ namespace Aimbot
 
     void AimAt(const Utils::Vector3& targetPos, float screenWidth, float screenHeight)
     {
+        if (!targetPos.IsValid())
+            return;
+
         ImVec2 screenPos;
         if (!GameUtils::WorldToScreen(targetPos, screenPos, screenWidth, screenHeight))
             return;
@@ -428,12 +441,31 @@ namespace Aimbot
         int targetIdx = FindClosestTarget(screenWidth, screenHeight);
         if (targetIdx >= 0)
         {
-            auto& cached = ESP::g_CachedEntities[targetIdx];
+            int readIndex = ESP::g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+            if (readIndex < 0 || readIndex >= 2)
+            {
+                g_CurrentTarget = nullptr;
+                g_CurrentTargetIndex = -1;
+                return;
+            }
+
+            auto& buffer = ESP::g_EntityCacheBuffers[readIndex];
+            if (targetIdx >= buffer.EntityCount)
+            {
+                g_CurrentTarget = nullptr;
+                g_CurrentTargetIndex = -1;
+                return;
+            }
+
+            auto& cached = buffer.Entities[targetIdx];
             g_CurrentTarget = cached.EntityPtr;
             g_CurrentTargetIndex = targetIdx;
 
             Utils::Vector3 bonePos = GetHeadPosition(cached.EntityPtr);
-            AimAt(bonePos, screenWidth, screenHeight);
+            if (bonePos.IsValid())
+            {
+                AimAt(bonePos, screenWidth, screenHeight);
+            }
         }
         else
         {
@@ -455,10 +487,18 @@ namespace Aimbot
 
     void DrawTargetIndicator(ImDrawList* drawList, float screenWidth, float screenHeight)
     {
-        if (!ESP::ESPSettings::g_Enabled || g_CurrentTargetIndex < 0 || g_CurrentTargetIndex >= ESP::g_CachedEntityCount)
+        if (!ESP::ESPSettings::g_Enabled || g_CurrentTargetIndex < 0)
             return;
 
-        auto& cached = ESP::g_CachedEntities[g_CurrentTargetIndex];
+        int readIndex = ESP::g_CurrentReadBufferIndex.load(std::memory_order_acquire);
+        if (readIndex < 0 || readIndex >= 2)
+            return;
+
+        auto& buffer = ESP::g_EntityCacheBuffers[readIndex];
+        if (g_CurrentTargetIndex >= buffer.EntityCount)
+            return;
+
+        auto& cached = buffer.Entities[g_CurrentTargetIndex];
         if (!cached.IsValid) return;
 
         Utils::Vector3 bonePos;
