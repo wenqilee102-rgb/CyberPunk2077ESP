@@ -30,6 +30,7 @@ namespace GameUtils
             bool IsDead = false;
             uint32_t Timestamp = 0;
             bool IsValid = false;
+            size_t IsDeadOffset = 0;
         };
 
         struct EntityValidityCacheEntry
@@ -202,6 +203,10 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return result;
 
+            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtr > 0x00004fffffffffffULL)
+                return result;
+
             if (RttiUtils::g_GetWorldPositionFunc && Utils::IsValidPtr(RttiUtils::g_GetWorldPositionFunc))
             {
                 try
@@ -234,6 +239,10 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return false;
 
+            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtr > 0x00004fffffffffffULL)
+                return false;
+
             for (int i = 0; i < 256; i++)
             {
                 auto& entry = g_EntityValidityCacheBuffer.Entries[i];
@@ -245,6 +254,12 @@ namespace GameUtils
                     uint32_t age = g_CacheFrameCount - entry.Timestamp;
                     if (age < g_CacheLifetime)
                     {
+                        uintptr_t cachedEntityPtr = reinterpret_cast<uintptr_t>(entry.EntityPtr);
+                        if (cachedEntityPtr > 0x00004fffffffffffULL)
+                        {
+                            entry.IsValid = false;
+                            return false;
+                        }
                         return entry.IsValid;
                     }
                 }
@@ -287,8 +302,27 @@ namespace GameUtils
             return isValid;
         }
 
+        static bool CallIsDeadSafely(void* entity, RED4ext::CStack* stack)
+        {
+            __try
+            {
+                return RttiUtils::g_IsDeadFunc->Execute(stack);
+            }
+            __except(EXCEPTION_EXECUTE_HANDLER)
+            {
+                return false;
+            }
+        }
+
         bool IsEntityDead(void* entity)
         {
+            if (!entity)
+                return true;
+
+            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtr > 0x00004fffffffffffULL)
+                return true;
+
             if (!IsEntityValid(entity))
                 return true;
 
@@ -306,9 +340,30 @@ namespace GameUtils
                     
                 if (entry.IsValid && entry.EntityPtr == entity)
                 {
+                    uintptr_t cachedEntityPtr = reinterpret_cast<uintptr_t>(entry.EntityPtr);
+                    if (cachedEntityPtr > 0x00004fffffffffffULL)
+                    {
+                        entry.IsValid = false;
+                        return true;
+                    }
+
+                    if (entry.IsDead)
+                    {
+                        return true;
+                    }
+                    
                     uint32_t age = g_CacheFrameCount - entry.Timestamp;
                     if (age < g_CacheLifetime)
                     {
+                        if (entry.IsDeadOffset > 0)
+                        {
+                            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+                            if (Utils::IsValidPtr(reinterpret_cast<void*>(entityPtr + entry.IsDeadOffset)))
+                            {
+                                bool* isDeadPtr = reinterpret_cast<bool*>(entityPtr + entry.IsDeadOffset);
+                                return *isDeadPtr;
+                            }
+                        }
                         return entry.IsDead;
                     }
                 }
@@ -332,6 +387,10 @@ namespace GameUtils
             auto scriptable = reinterpret_cast<RED4ext::IScriptable*>(entity);
             if (!Utils::IsValidPtr(scriptable))
                 return false;
+
+            uintptr_t scriptablePtr = reinterpret_cast<uintptr_t>(scriptable);
+            if (scriptablePtr > 0x00004fffffffffffULL)
+                return false;
                 
             auto vtable = *reinterpret_cast<void**>(scriptable);
             if (!Utils::IsValidPtr(vtable))
@@ -341,12 +400,25 @@ namespace GameUtils
             if (!entityType)
                 return false;
                 
+            uintptr_t entityTypePtr = reinterpret_cast<uintptr_t>(entityType);
+            if (entityTypePtr > 0x00004fffffffffffULL)
+                return false;
+                
             auto vtable2 = *reinterpret_cast<void**>(entityType);
             if (!Utils::IsValidPtr(vtable2))
                 return false;
                 
             if (!entityType->IsA(gameObjectClass))
                 return false;
+
+            uintptr_t entityPtrFinal = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtrFinal > 0x00004fffffffffffULL)
+                return false;
+
+            if (!Utils::IsValidPtr(entity))
+                return false;
+
+            uintptr_t entityPtrBefore = reinterpret_cast<uintptr_t>(entity);
 
             bool isDead = false;
             RED4ext::CStackType resultType;
@@ -355,14 +427,23 @@ namespace GameUtils
 
             RED4ext::CStack stack(entity, nullptr, 0, &resultType);
             
-            try
-            {
-                if (!RttiUtils::g_IsDeadFunc->Execute(&stack))
-                    return false;
-            }
-            catch (...)
-            {
+            if (!CallIsDeadSafely(entity, &stack))
                 return false;
+
+            uintptr_t entityPtrAfter = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtrAfter > 0x00004fffffffffffULL)
+                return false;
+
+            if (entityPtrBefore != entityPtrAfter)
+                return false;
+
+            if (!Utils::IsValidPtr(entity))
+                return false;
+
+            size_t isDeadOffset = 0;
+            if (RttiUtils::Properties::g_GameObject_IsDead)
+            {
+                isDeadOffset = RttiUtils::Properties::g_GameObject_IsDead->valueOffset;
             }
 
             {
@@ -404,6 +485,7 @@ namespace GameUtils
                 writeBuffer.Entries[targetIndex].IsDead = isDead;
                 writeBuffer.Entries[targetIndex].Timestamp = g_CacheFrameCount;
                 writeBuffer.Entries[targetIndex].IsValid = true;
+                writeBuffer.Entries[targetIndex].IsDeadOffset = isDeadOffset;
             }
 
             return isDead;
@@ -563,6 +645,10 @@ namespace GameUtils
             if (!Utils::IsValidPtr(entity))
                 return GetEntityPosition(entity);
 
+            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtr > 0x00004fffffffffffULL)
+                return GetEntityPosition(entity);
+
             if (!IsEntityValid(entity))
                 return GetEntityPosition(entity);
 
@@ -581,6 +667,10 @@ namespace GameUtils
         Utils::Vector3 GetHeadPositionFromTargeting(void* entity, int boneIndex)
         {
             if (!Utils::IsValidPtr(entity))
+                return Utils::Vector3(0, 0, 0);
+
+            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtr > 0x00004fffffffffffULL)
                 return Utils::Vector3(0, 0, 0);
 
             if (!IsEntityValid(entity))
@@ -914,6 +1004,10 @@ namespace GameUtils
         float GetEntityHeight(void* entity)
         {
             if (!Utils::IsValidPtr(entity))
+                return 1.8f;
+
+            uintptr_t entityPtr = reinterpret_cast<uintptr_t>(entity);
+            if (entityPtr > 0x00004fffffffffffULL)
                 return 1.8f;
 
             if (!IsEntityValid(entity))
